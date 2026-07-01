@@ -1,0 +1,25 @@
+# Raw PDFs (can be large, friend uploads)
+raw/**/*.pdf
+!raw/แบบบ้าน/*.pdf
+raw/**/*.dwg
+raw/**/*.dxf
+
+# Rasterized images (can be large, generated)
+processing/**/page_*.png
+processing/**/page_*.jpg
+raw/image/**
+
+# Don't ignore the metadata tracking, but ignore large files
+!processing/**/metadata.json
+
+# Qwen outputs are OK to commit (JSON is small)
+# qwen-output/ is tracked
+
+# Annotated datasets should be committed (small JSON)
+# annotated/ is tracked
+
+# Never commit real Supabase/API keys
+supabase.js
+.env
+.env.local
+*.key

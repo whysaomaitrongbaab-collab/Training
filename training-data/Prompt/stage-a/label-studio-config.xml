@@ -1,0 +1,54 @@
+<!--
+  Label Studio — Labeling Interface Config
+  Stage A: Page Classification
+
+  วิธีใช้:
+  1. สร้าง project ใหม่ใน Label Studio
+  2. Settings > Labeling Interface > Code → วาง XML นี้ → Save
+  3. Import tasks JSON ที่แปลงจาก Stage A output (ดู prompt.md → toLabeStudioTasks())
+-->
+
+<View>
+  <Header value="Thai RC Drawing — Page Classification (Stage A)" size="2"/>
+
+  <!-- รูปหน้าแบบ -->
+  <Image name="image" value="$image" zoom="true" zoomControl="true"/>
+
+  <!-- Metadata จาก AI — script inject ตอน build tasks -->
+  <View style="background:#f0f4ff; padding:10px; border-radius:6px; margin:8px 0; font-size:13px;">
+    <Text name="meta_info"
+      value="📄 Page $page_number  |  📁 $source_pdf"/>
+    <Text name="meta_ai"
+      value="🤖 AI identified: $key_identifiers"/>
+  </View>
+
+  <!-- Classification — human เลือก/แก้ไข -->
+  <Header value="ประเภทหน้า (Sheet Type)" size="3"/>
+  <Choices name="sheet_type" toName="image" required="true" showInLine="false">
+    <Choice value="table_of_contents">สารบัญ / รายการแบบ</Choice>
+    <Choice value="general_notes">หมายเหตุทั่วไป / ข้อกำหนด</Choice>
+    <Choice value="schedule_table">ตารางเสา / ตารางคาน (Schedule)</Choice>
+    <Choice value="floor_plan">ผังโครงสร้าง / ผังพื้น (Floor Plan)</Choice>
+    <Choice value="section_detail">รายละเอียดหน้าตัด (Section / Detail)</Choice>
+    <Choice value="architectural">แบบสถาปัตยกรรม (ไม่ใช่โครงสร้าง)</Choice>
+    <Choice value="unknown">ไม่แน่ใจ / อ่านไม่ออก</Choice>
+  </Choices>
+
+  <!-- QA flags — ช่วย track ว่า AI ถูกหรือผิด -->
+  <Header value="ผล AI" size="4"/>
+  <Choices name="ai_result" toName="image" showInLine="true" required="true">
+    <Choice value="ai_correct">✅ AI ถูก</Choice>
+    <Choice value="ai_wrong">❌ AI ผิด — แก้ไขแล้ว</Choice>
+    <Choice value="mixed_content">⚠️ หน้ามีหลายประเภท</Choice>
+    <Choice value="low_quality">🔍 สแกนไม่ชัด</Choice>
+  </Choices>
+
+  <!-- หมายเหตุ — กรอกเมื่อแก้ไข AI หรือพบ edge case -->
+  <TextArea
+    name="reviewer_note"
+    toName="image"
+    placeholder="กรณีแก้ไข: ระบุเหตุผล เช่น 'มี schedule table แต่ element ID เล็กมาก AI เข้าใจเป็น section_detail'"
+    rows="2"
+    editable="true"
+  />
+</View>

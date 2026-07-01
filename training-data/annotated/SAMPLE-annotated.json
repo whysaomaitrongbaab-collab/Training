@@ -1,0 +1,211 @@
+{
+  "record_id": "sample-1floor-001",
+  "source_file": "1floor-residential-sample.pdf",
+  "annotation_date": "2026-06-27T14:30:00Z",
+  "review_status": "approved",
+  "human_reviewer": "your_name",
+  "qwen_extraction": {
+    "elements": [
+      {
+        "id": "C1",
+        "type": "column",
+        "location": "A-1",
+        "dimensions": {
+          "width_mm": 400,
+          "depth_mm": 400,
+          "height_mm": 3500
+        },
+        "concrete_grade_ksc": 240,
+        "rebar_main": {
+          "grade": "SD30",
+          "diameter_mm": 16,
+          "quantity": 4
+        },
+        "rebar_stirrups": {
+          "diameter_mm": 6,
+          "spacing_mm": 200
+        },
+        "notes": "Clear from schedule, all dimensions visible",
+        "confidence": 0.98,
+        "verified": true
+      },
+      {
+        "id": "C2",
+        "type": "column",
+        "location": "A-2",
+        "dimensions": {
+          "width_mm": 400,
+          "depth_mm": 400,
+          "height_mm": 3500
+        },
+        "concrete_grade_ksc": 240,
+        "rebar_main": {
+          "grade": "SD30",
+          "diameter_mm": 16,
+          "quantity": 4
+        },
+        "rebar_stirrups": {
+          "diameter_mm": 6,
+          "spacing_mm": 200
+        },
+        "notes": "Identical to C1",
+        "confidence": 0.97,
+        "verified": true
+      },
+      {
+        "id": "C3",
+        "type": "column",
+        "location": "B-1",
+        "dimensions": {
+          "width_mm": 350,
+          "depth_mm": 350,
+          "height_mm": 3500
+        },
+        "concrete_grade_ksc": 240,
+        "rebar_main": {
+          "grade": "SD30",
+          "diameter_mm": 16,
+          "quantity": 4
+        },
+        "rebar_stirrups": {
+          "diameter_mm": 6,
+          "spacing_mm": 200
+        },
+        "notes": "Smaller section than perimeter columns",
+        "confidence": 0.94,
+        "verified": true
+      },
+      {
+        "id": "B1",
+        "type": "beam",
+        "location": "1-2",
+        "dimensions": {
+          "width_mm": 300,
+          "height_mm": 600
+        },
+        "concrete_grade_ksc": 240,
+        "rebar_top": {
+          "grade": "SD30",
+          "diameter_mm": 16,
+          "quantity": 3
+        },
+        "rebar_bottom": {
+          "grade": "SD30",
+          "diameter_mm": 16,
+          "quantity": 2
+        },
+        "rebar_stirrups": {
+          "diameter_mm": 8,
+          "spacing_mm": 150
+        },
+        "notes": "Span = 4000mm from grid 1 to 2",
+        "confidence": 0.96,
+        "verified": true
+      },
+      {
+        "id": "B2",
+        "type": "beam",
+        "location": "2-3",
+        "dimensions": {
+          "width_mm": 300,
+          "height_mm": 600
+        },
+        "concrete_grade_ksc": 240,
+        "rebar_top": {
+          "grade": "SD30",
+          "diameter_mm": 16,
+          "quantity": 3
+        },
+        "rebar_bottom": {
+          "grade": "SD30",
+          "diameter_mm": 16,
+          "quantity": 2
+        },
+        "rebar_stirrups": {
+          "diameter_mm": 8,
+          "spacing_mm": 150
+        },
+        "notes": "Same as B1",
+        "confidence": 0.95,
+        "verified": true
+      },
+      {
+        "id": "S1",
+        "type": "slab",
+        "location": "ground_floor",
+        "dimensions": {
+          "thickness_mm": 150
+        },
+        "concrete_grade_ksc": 240,
+        "rebar_x": {
+          "grade": "SD30",
+          "diameter_mm": 12,
+          "spacing_mm": 150
+        },
+        "rebar_y": {
+          "grade": "SD30",
+          "diameter_mm": 12,
+          "spacing_mm": 150
+        },
+        "notes": "Cover = 40mm, two-way reinforcement",
+        "confidence": 0.92,
+        "verified": true
+      },
+      {
+        "id": "F1",
+        "type": "foundation",
+        "location": "under_grid_A-1",
+        "dimensions": {
+          "length_mm": 1000,
+          "width_mm": 1000,
+          "depth_mm": 500
+        },
+        "concrete_grade_ksc": 240,
+        "rebar": {
+          "grade": "SD30",
+          "diameter_mm": 12,
+          "spacing_mm": 150
+        },
+        "notes": "Spread footing, shown in foundation plan",
+        "confidence": 0.91,
+        "verified": true
+      }
+    ],
+    "page_summary": "Ground floor structural plan showing column/beam grid, slab thickness, rebar details, and foundation plan overlay",
+    "notes": "Multi-view drawing with clear dimensions and schedule. All structural elements clearly identified with Thai standard symbols."
+  },
+  "review_notes": {
+    "overall_quality": "excellent",
+    "confidence_distribution": {
+      "high_0.90_plus": 7,
+      "medium_0.75_0.90": 0,
+      "low_below_0.75": 0
+    },
+    "corrections_made": [
+      "C3 stirrup spacing: confirmed 200mm (Qwen initially read as 220, corrected based on schedule table)"
+    ],
+    "issues_found": [],
+    "ambiguities_noted": [
+      "Foundation F1-F4 spacing: grid shows 5000mm but could verify with construction document"
+    ],
+    "verification_method": "Cross-checked against rebar schedule table on page 3, dimension lines on floor plan",
+    "annotations_by": "your_name",
+    "time_spent_minutes": 15,
+    "ready_for_finetuning": true
+  },
+  "metadata": {
+    "source_pdf_pages_analyzed": 4,
+    "view_types_covered": [
+      "floor_plan",
+      "foundation_plan",
+      "rebar_schedule",
+      "detail_sections"
+    ],
+    "extraction_method": "qwen-vl-max",
+    "extraction_date": "2026-06-27T12:00:00Z",
+    "dataset_version": "v1",
+    "thai_standard_compliance": "yes",
+    "units": "millimeters",
+    "coordinate_system": "Thai construction standard grid (A-1, A-2, B-1, etc.)"
+  }
+}

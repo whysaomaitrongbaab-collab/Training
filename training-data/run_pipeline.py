@@ -1,0 +1,174 @@
+#!/usr/bin/env python3
+"""
+run_pipeline.py — FULL flow ทั้งโฟลเดอร์ (Stage 0 → route ทุกหน้า → Stage B structural)
+
+Step ที่เกิดขึ้นจริง:
+  Step 1  ensure document map (build_document_map.py) — สารบัญ → PDF page → discipline
+  Step 2  ไล่ทุกหน้า → lookup map:
+            structural → Stage B (unified): อ่าน title-block sheet_name → เลือก pattern
+                         (plan/schedule/section/notes) + focus → extract  [qwen-vl-max]
+            อื่นๆ      → skip (log เหตุผล)  — ตาม scope: structural only
+  Step 3  เซฟ JSON ต่อหน้า (ชื่อตรงรูป) + _run_summary.json
+
+Usage:
+  python run_pipeline.py raw/image/บ้าน_เล็ก_1ชั้น_01 --toc 02 --anchors 20,40
+  python run_pipeline.py raw/image/บ้าน_เล็ก_1ชั้น_01 --only 20      # ทดสอบหน้าเดียว
+"""
+import os, re, sys, json, time, base64, pathlib, argparse, subprocess, urllib.request
+
+BASE = pathlib.Path(__file__).resolve().parent
+HERE = pathlib.Path(__file__).resolve().parent
+
+def load_env():
+    env = {}
+    for line in (BASE / '.env.local').read_text(encoding='utf-8').splitlines():
+        m = re.match(r'^([A-Z_]+)=(.*)$', line)
+        if m: env[m.group(1)] = m.group(2).strip()
+    return env
+ENV = load_env(); HOST = ENV['QWEN_API_HOST'].rstrip('/'); KEY = ENV['QWEN_API_KEY']
+MODEL_STRUCT = 'qwen-vl-max'
+DELAY = 0.5
+
+def call(model, system, user, b64, max_tokens):
+    payload = json.dumps({
+        "model": model,
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user", "content": [
+                {"type": "text", "text": user},
+                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}},
+            ]},
+        ],
+        "temperature": 0.1, "max_tokens": max_tokens,
+        "response_format": {"type": "json_object"},
+    }).encode('utf-8')
+    req = urllib.request.Request(HOST + '/chat/completions', data=payload,
+                                 headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + KEY})
+    with urllib.request.urlopen(req, timeout=180) as r:
+        data = json.loads(r.read())
+    content = data['choices'][0]['message']['content']
+    try:
+        return json.loads(content), data.get('usage', {})
+    except json.JSONDecodeError:
+        return {"_parse_error": True, "raw": content}, data.get('usage', {})
+
+def b64file(p): return base64.b64encode(p.read_bytes()).decode()
+
+# ════════════════════════════════════════════════════════════════════
+# Stage B — UNIFIED structural extractor (1 call/หน้า, self-routing 4 patterns)
+# ════════════════════════════════════════════════════════════════════
+STRUCT_SYSTEM = (
+    "You are a licensed Thai structural engineer doing quantity takeoff from ONE structural "
+    "(S-series) sheet of a Thai RC building. First read the title-block sheet name (ช่อง 'แสดงแบบ', "
+    "bottom-right), then extract using the schema for that sheet's pattern. Read only what is "
+    "visible; a null is better than a guess. Every numeric field carries confidence_score 0-1."
+)
+
+STRUCT_USER = """THAI RC NOTATION: "2DB16"=2 deformed bars 16mm (count=2,dia=16,type=DB); "RB6"=round 6mm (stirrup,RB);
+"ค1"=beam, "ต1/C1"=column, "พ1"=slab, "F1/ฐ1"=footing; "@0.10"=100mm; fc' in ksc; grades SR24/SD30/SD40.
+Lengths: section/schedule=mm, span=m.
+
+STEP 1 — read the title block (มุมขวาล่าง): sheet_code (e.g. S-03) and sheet_name (e.g. "ผังคานชั้น 1").
+STEP 2 — decide pattern from the sheet_name + what you see:
+  "plan"     = ผัง* (ผังฐานราก/ผังเสา/ผังคาน/ผังพื้น) — bird's-eye layout with element marks + grid
+  "schedule" = ตาราง* (ตารางเสา/คาน/ฐานราก) — a table of marks with spec columns
+  "section"  = รายละเอียด*/รูปตัด — cross-sections with rebar (DB/RB dots + callouts)
+  "notes"    = หมายเหตุ/ข้อกำหนดโครงสร้าง — text specs (fc', เกรดเหล็ก, ระยะหุ้ม)
+STEP 3 — extract with the matching block. Fill focus by element type the sheet is about.
+
+Return ONLY JSON (fill "pattern" + the matching array; leave others empty):
+{
+ "sheet_code":"S-03","sheet_name":"...","pattern":"plan",
+ "plan": [ {"element_id":"ค1","element_type":"beam","count":6,"grid_refs":["A-1/A-2"],
+           "span_length_m":3.0,"confidence_score":0.7,"confidence_flags":["count_uncertain"]} ],
+ "schedule": [ {"element_id":"ต1","element_type":"column","width_mm":200,"height_mm":200,
+           "main_bar_count":4,"main_bar_dia_mm":16,"main_bar_type":"DB","stirrup_dia_mm":6,
+           "stirrup_type":"RB","stirrup_spacing_mm":200,"concrete_grade":"fc240","steel_grade":"SD40",
+           "confidence_score":0.85,"confidence_flags":[]} ],
+ "section": [ {"element_id":"ค1","element_type":"beam","width_mm":200,"height_mm":400,
+           "main_bar_count":4,"main_bar_dia_mm":16,"main_bar_type":"DB","stirrup_dia_mm":6,
+           "stirrup_type":"RB","stirrup_spacing_mm":150,"stirrup_spacing_dense_mm":100,
+           "stirrup_dense_zone_mm":1000,"concrete_grade":"fc240","steel_grade":"SD40",
+           "confidence_score":0.85,"confidence_flags":[]} ],
+ "notes": {"concrete_strength_ksc":240,"steel_main":"SD40","steel_stirrup":"SR24",
+           "cover_mm":{"beam":25,"column":25,"footing":75},"lap_rule":"40D","design_codes":[],
+           "confidence_score":0.8,"confidence_flags":[]},
+ "warnings": []
+}"""
+
+def extract_structural(img_path):
+    data, usage = call(MODEL_STRUCT, STRUCT_SYSTEM, STRUCT_USER, b64file(img_path), 2048)
+    return data, usage
+
+# ════════════════════════════════════════════════════════════════════
+def ensure_document_map(folder, toc, anchors):
+    house = folder.name
+    mp = BASE / 'qwen-output' / house / '_document_map.json'
+    if not mp.exists():
+        print("Step 1 · สร้าง document map (Stage 0)…")
+        subprocess.run([sys.executable, str(HERE / 'build_document_map.py'), str(folder),
+                        '--toc', toc, '--anchors', anchors], check=True)
+    else:
+        print(f"Step 1 · ใช้ document map เดิม: {mp.relative_to(BASE)}")
+    return json.loads(mp.read_text(encoding='utf-8'))
+
+def count_elements(ext):
+    if not isinstance(ext, dict): return 0
+    return sum(len(ext.get(k, []) or []) for k in ('plan', 'schedule', 'section'))
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('folder'); ap.add_argument('--toc', default='02')
+    ap.add_argument('--anchors', default='20,40'); ap.add_argument('--only', default=None)
+    args = ap.parse_args()
+
+    folder = pathlib.Path(args.folder).resolve()
+    house = folder.name
+    out_dir = BASE / 'qwen-output' / house
+    doc = ensure_document_map(folder, args.toc, args.anchors)
+    page_map = doc['page_map']
+    print(f"\nStep 2 · ไล่ทุกหน้า ({len(page_map)}) — routing ตาม map (offset {doc['offset']:+d})\n")
+
+    imgs = {re.search(r'_หน้า(\d+)\.png$', p.name).group(1): p
+            for p in folder.glob('*.png') if re.search(r'_หน้า(\d+)\.png$', p.name)}
+
+    summary, total_tokens = [], 0
+    keys = sorted(page_map.keys())
+    if args.only:
+        keys = [f"{int(args.only):02d}"]
+
+    for k in keys:
+        info = page_map[k]; disc = info['discipline']
+        row = {"png": k, "doc_page": info['doc_page'], "discipline": disc}
+        if disc == 'structural':
+            print(f"  หน้า{k}  [{disc}] → Stage B (vl-max)…", end=' ')
+            try:
+                ext, usage = extract_structural(imgs[k])
+                total_tokens += usage.get('total_tokens', 0)
+                pat = ext.get('pattern'); nm = ext.get('sheet_name'); ne = count_elements(ext)
+                (out_dir / (imgs[k].stem + '.json')).write_text(
+                    json.dumps({"png": k, **info, "extraction": ext}, ensure_ascii=False, indent=2),
+                    encoding='utf-8')
+                row.update({"action": "extracted", "sheet_name": nm, "pattern": pat, "elements": ne,
+                            "needs_review": True})
+                print(f"'{nm}' pattern={pat} → {ne} elements")
+            except Exception as e:
+                row.update({"action": "error", "error": str(e)[:120]})
+                print(f"❌ {type(e).__name__}: {str(e)[:80]}")
+            time.sleep(DELAY)
+        else:
+            row["action"] = "skip"
+            print(f"  หน้า{k}  [{disc}] → skip")
+        summary.append(row)
+
+    (out_dir / '_run_summary.json').write_text(
+        json.dumps({"house": house, "offset": doc['offset'], "total_tokens": total_tokens,
+                    "pages": summary}, ensure_ascii=False, indent=2), encoding='utf-8')
+
+    extracted = [r for r in summary if r.get('action') == 'extracted']
+    print(f"\nStep 3 · เสร็จ — extract {len(extracted)} หน้า, skip {len(summary)-len(extracted)} หน้า, "
+          f"~{total_tokens} tokens")
+    print(f"💾 {(out_dir/'_run_summary.json').relative_to(BASE)}")
+
+if __name__ == '__main__':
+    main()
