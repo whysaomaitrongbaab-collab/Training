@@ -1,5 +1,7 @@
 # 🚀 Quick Start — 5 Minutes to First Annotation
 
+> ⚠️ อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 ## Step 0: Prerequisites
 ```bash
 # Install Python dependencies (one time)
