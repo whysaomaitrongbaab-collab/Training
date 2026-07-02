@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 """
-run_pipeline.py — FULL flow ทั้งโฟลเดอร์ (Stage 0 → route ทุกหน้า → Stage B structural)
+run_pipeline.py — FULL flow ทั้งโฟลเดอร์ (Stage 0 → route ทุกหน้า → Stage B structural + BOQ)
 
 Step ที่เกิดขึ้นจริง:
   Step 1  ensure document map (build_document_map.py) — สารบัญ → PDF page → discipline
   Step 2  ไล่ทุกหน้า → lookup map:
             structural → Stage B (unified): อ่าน title-block sheet_name → เลือก pattern
                          (plan/schedule/section/notes) + focus → extract  [qwen-vl-max]
-            อื่นๆ      → skip (log เหตุผล)  — ตาม scope: structural only
+            boq        → ตารางปริมาณงาน (หมุน 90° CCW ก่อนส่ง — ต้นฉบับเป็น portrait
+                         ฝังในเล่ม landscape) [qwen-vl-max]
+            อื่นๆ      → skip (log เหตุผล)  — ตาม scope: structural + boq
   Step 3  เซฟ JSON ต่อหน้า (ชื่อตรงรูป) + _run_summary.json
 
 Usage:
   python run_pipeline.py raw/image/บ้าน_เล็ก_1ชั้น_01 --toc 02 --anchors 20,40
   python run_pipeline.py raw/image/บ้าน_เล็ก_1ชั้น_01 --only 20      # ทดสอบหน้าเดียว
 """
-import os, re, sys, json, time, base64, pathlib, argparse, subprocess, urllib.request
+import os, re, sys, io, json, time, base64, pathlib, argparse, subprocess, urllib.request
+from PIL import Image
 
 BASE = pathlib.Path(__file__).resolve().parent
 HERE = pathlib.Path(__file__).resolve().parent
@@ -29,14 +32,22 @@ ENV = load_env(); HOST = ENV['QWEN_API_HOST'].rstrip('/'); KEY = ENV['QWEN_API_K
 MODEL_STRUCT = 'qwen-vl-max'
 DELAY = 0.5
 
-def call(model, system, user, b64, max_tokens):
+def call(model, system, user, b64, max_tokens, pixels=None):
+    # pixels: (width, height) ของภาพที่ส่งจริง — ล็อก min/max_pixels ให้ API ไม่ย่อภาพต่ำกว่า
+    # native resolution เอง (ค่า default ของ Qwen-VL อาจย่อภาพใหญ่ลงจนตัวเลข/ตัวอักษรเล็กอ่านไม่ออก
+    # — ดูบทเรียน CLAUDE.md ข้อ 2 เรื่องอ่านขนาดเหล็กผิด)
+    image_url = {"url": f"data:image/png;base64,{b64}"}
+    if pixels:
+        w, h = pixels
+        image_url["min_pixels"] = w * h
+        image_url["max_pixels"] = w * h
     payload = json.dumps({
         "model": model,
         "messages": [
             {"role": "system", "content": system},
             {"role": "user", "content": [
                 {"type": "text", "text": user},
-                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}},
+                {"type": "image_url", "image_url": image_url},
             ]},
         ],
         "temperature": 0.1, "max_tokens": max_tokens,
@@ -52,7 +63,15 @@ def call(model, system, user, b64, max_tokens):
     except json.JSONDecodeError:
         return {"_parse_error": True, "raw": content}, data.get('usage', {})
 
-def b64file(p): return base64.b64encode(p.read_bytes()).decode()
+def b64file(p):
+    return base64.b64encode(p.read_bytes()).decode(), Image.open(p).size
+
+def b64file_rotated(p, degrees=90):
+    """หมุนภาพก่อนแปลง base64 — ใช้กับหน้า BOQ ที่ต้นฉบับ portrait ถูกฝังใน landscape"""
+    im = Image.open(p).rotate(degrees, expand=True)
+    buf = io.BytesIO()
+    im.save(buf, format='PNG')
+    return base64.b64encode(buf.getvalue()).decode(), im.size
 
 # ════════════════════════════════════════════════════════════════════
 # Stage B — UNIFIED structural extractor (1 call/หน้า, self-routing 4 patterns)
@@ -97,7 +116,62 @@ Return ONLY JSON (fill "pattern" + the matching array; leave others empty):
 }"""
 
 def extract_structural(img_path):
-    data, usage = call(MODEL_STRUCT, STRUCT_SYSTEM, STRUCT_USER, b64file(img_path), 2048)
+    b64, size = b64file(img_path)
+    data, usage = call(MODEL_STRUCT, STRUCT_SYSTEM, STRUCT_USER, b64, 2048, pixels=size)
+    return data, usage
+
+# ════════════════════════════════════════════════════════════════════
+# BOQ extractor — ตารางปริมาณงาน (ปร.4/ปร.5) สำหรับประเมินราคา Constistant
+# หน้า BOQ ในแบบไทยมักกรอก "ปริมาณ+หน่วย" มาแล้ว แต่ช่องราคาเว้นว่าง (template) →
+# ของมีค่าคือ quantity takeoff; ราคาว่างให้คืน null (ห้ามเดา ตามบทเรียนข้อ 2/3)
+# ════════════════════════════════════════════════════════════════════
+MODEL_BOQ = 'qwen-vl-max'  # ตัวเลขในตารางหนาแน่น ต้องแม่น (เหมือน structural)
+BOQ_SYSTEM = (
+    "You are a Thai quantity surveyor (ผู้ประมาณราคา) reading ONE page of a Bill of Quantities "
+    "(บัญชีปริมาณงาน / ปร.4 / ปร.5) from a Thai construction set. Transcribe the table EXACTLY as "
+    "printed, row by row, across ALL work categories on the page. Read only what is visible; empty "
+    "price cells are common (they are filled in later) — return null for any blank cell, NEVER guess "
+    "a number. Every numeric field carries confidence_score 0-1."
+)
+BOQ_USER = """This is a Thai BOQ (บัญชีปริมาณงาน) page. Columns are usually:
+ลำดับที่ | รายการ (description) | จำนวน (quantity) | หน่วย (unit) |
+ราคาวัสดุ[ราคาต่อหน่วย, จำนวนเงิน] | ค่าแรงงาน[ราคาต่อหน่วย, จำนวนเงิน] | รวมค่าวัสดุและค่าแรงงาน (total)
+Units seen: ลบ.ม. (m³), ตร.ม. (m²), กก. (kg), ต้น, ชุด, เมตร, ตร.ม.# (wire mesh). Keep the unit text verbatim.
+Read the sheet number (แผ่นที่ x/y) if printed.
+
+CRITICAL RULES:
+1. TRANSCRIBE, do not paraphrase. Copy the รายการ text character-by-character exactly as printed.
+   Never substitute a material/quantity term you "expect" to see instead of what's actually printed —
+   if a character is genuinely illegible, keep your best-guess char but lower confidence_score and add
+   a confidence_flag; do not silently swap in a different word.
+2. A row with a bold/underlined category label and NO quantity/unit (e.g. "หมวดงานโครงสร้าง",
+   "1. หมวดงานโครงสร้าง", "2.6 งานเครื่องสุขภัณฑ์และอุปกรณ์" when it's a section header, not a priced
+   line) is a CATEGORY HEADER, not an item. Do NOT emit it as an item row — use it only to set the
+   "category" field for the items printed below it, until the next header appears.
+3. Categories run top-to-bottom in printed order and do NOT interleave — once you see a new category
+   header, every following item belongs to THAT category until the next header. Do not reassign items
+   to a category based on what the item sounds like; use strictly the header printed immediately above it.
+4. Every priced row (has quantity+unit) becomes exactly one item, in printed order, under its category.
+
+Return ONLY JSON. blank price cell → null (do NOT invent numbers):
+{
+ "sheet_no":"2/19",
+ "categories":[
+   {"category":"หมวดงานโครงสร้าง",
+    "items":[
+      {"item_no":"1","description":"คอนกรีตโครงสร้าง 1:2:4","quantity":29,"unit":"ลบ.ม.",
+       "material_unit_price":null,"material_amount":null,
+       "labor_unit_price":null,"labor_amount":null,"total_amount":null,
+       "confidence_score":0.85,"confidence_flags":[]}
+    ]}
+ ],
+ "warnings":[]
+}"""
+
+def extract_boq(img_path):
+    # หมุน 90° CCW ก่อนส่ง — ต้นฉบับ BOQ เป็น portrait ฝังในเล่ม landscape (ยืนยันจากภาพจริงแล้ว)
+    b64, size = b64file_rotated(img_path, 90)
+    data, usage = call(MODEL_BOQ, BOQ_SYSTEM, BOQ_USER, b64, 4096, pixels=size)
     return data, usage
 
 # ════════════════════════════════════════════════════════════════════
@@ -116,6 +190,10 @@ def count_elements(ext):
     if not isinstance(ext, dict): return 0
     return sum(len(ext.get(k, []) or []) for k in ('plan', 'schedule', 'section'))
 
+def count_boq_items(ext):
+    if not isinstance(ext, dict): return 0
+    return sum(len(c.get('items', []) or []) for c in (ext.get('categories') or []))
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('folder'); ap.add_argument('--toc', default='02')
@@ -127,6 +205,8 @@ def main():
     out_dir = BASE / 'raw' / 'image' / house / 'qwen-output'
     doc = ensure_document_map(folder, args.toc, args.anchors)
     page_map = doc['page_map']
+    for w in doc.get('warnings', []):
+        print(f"⚠️  {w}")
     print(f"\nStep 2 · ไล่ทุกหน้า ({len(page_map)}) — routing ตาม map (offset {doc['offset']:+d})\n")
 
     imgs = {re.search(r'_หน้า(\d+)\.png$', p.name).group(1): p
@@ -135,7 +215,8 @@ def main():
     summary, total_tokens = [], 0
     keys = sorted(page_map.keys())
     if args.only:
-        keys = [f"{int(args.only):02d}"]
+        # รับได้ทั้งหน้าเดียว "20" และหลายหน้า "49,50,57" (ใช้นำร่อง BOQ)
+        keys = [f"{int(x):02d}" for x in str(args.only).split(',') if x.strip()]
 
     for k in keys:
         info = page_map[k]; disc = info['discipline']
@@ -156,6 +237,27 @@ def main():
                 row.update({"action": "error", "error": str(e)[:120]})
                 print(f"❌ {type(e).__name__}: {str(e)[:80]}")
             time.sleep(DELAY)
+        elif disc == 'boq':
+            print(f"  หน้า{k}  [{disc}] → BOQ (vl-max)…", end=' ')
+            try:
+                ext, usage = extract_boq(imgs[k])
+                total_tokens += usage.get('total_tokens', 0)
+                sn = ext.get('sheet_no'); ni = count_boq_items(ext)
+                ncat = len(ext.get('categories') or [])
+                (out_dir / (imgs[k].stem + '.json')).write_text(
+                    json.dumps({"png": k, **info, "extraction": ext}, ensure_ascii=False, indent=2),
+                    encoding='utf-8')
+                row.update({"action": "extracted", "sheet_no": sn, "categories": ncat,
+                            "boq_items": ni, "needs_review": True})
+                print(f"แผ่นที่ {sn} → {ncat} หมวด, {ni} รายการ")
+            except Exception as e:
+                row.update({"action": "error", "error": str(e)[:120]})
+                print(f"❌ {type(e).__name__}: {str(e)[:80]}")
+            time.sleep(DELAY)
+        elif disc == 'unknown':
+            # unknown = prefix แปลกที่ map ตัดสินไม่ได้ → skip แต่ flag ให้คนตรวจ (อย่าปล่อยเงียบ)
+            row.update({"action": "skip", "needs_review": True})
+            print(f"  หน้า{k}  [{disc}] → skip ⚠️ (unknown — ตรวจว่าเป็น structural ที่พลาดไหม)")
         else:
             row["action"] = "skip"
             print(f"  หน้า{k}  [{disc}] → skip")
