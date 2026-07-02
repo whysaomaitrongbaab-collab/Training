@@ -1,6 +1,19 @@
 /**
  * Convert a Label Studio export for the Repeater-based "Structural Review" /
- * "BOQ Review" projects back into annotated/<record_id>-annotated.json.
+ * "BOQ Review" projects back into annotated/<record_id>-<type>-annotated.json,
+ * in the SAME shape/types as the original AI extraction schema — this is what
+ * makes the output usable as fine-tuning ground truth later (docs/FINETUNING_FLOW.md
+ * step 5, main Constistant repo), not just a review record.
+ *
+ * label-studio-tasks-perpage.js flattened the original nested schema into a UI-
+ * friendly shape (numbers -> strings so Label Studio would render them, arrays ->
+ * comma-joined strings, plan+section+schedule merged into one items[] list). This
+ * script reverses all three so the output matches what the model should actually
+ * learn to produce:
+ *   - numeric fields  -> Number (or null if blank/unparseable)
+ *   - grid_refs / confidence_flags -> array (split on comma)
+ *   - structural items -> regrouped back into plan[] / section[] / schedule[] by _source
+ *   - boq items        -> regrouped back into categories[].items[] by category
  *
  * CONFIDENCE WARNING: I could not verify Label Studio's exact export JSON shape
  * for Repeater results against live docs (fetch attempts failed while building
@@ -10,8 +23,8 @@
  *
  * BEFORE trusting this at scale: export just 1-2 completed tasks from Label Studio,
  * run this script on that small file, and manually check the output JSON matches
- * what the reviewer actually typed. Adjust FIELD_NAMES / the parsing logic below if
- * the real export shape differs.
+ * what the reviewer actually typed (types included — count should be a number, not
+ * "9" in quotes).
  *
  * Usage:
  *   node label-studio-import-repeater-annotations.js structural <export.json>
@@ -39,6 +52,19 @@ const READONLY_FIELD_NAMES = {
     'concrete_grade', 'steel_grade'],
   boq: ['material_unit_price', 'material_amount', 'labor_unit_price', 'labor_amount', 'total_amount'],
 };
+
+// Fields that must come back out as JS numbers (they were stringified only so
+// Label Studio's "$items[{{idx}}].field" binding would render them — see
+// label-studio-tasks-perpage.js's str() helper).
+const NUMERIC_FIELDS = {
+  structural: ['count', 'span_length_m', 'width_mm', 'height_mm', 'main_bar_count',
+    'main_bar_dia_mm', 'stirrup_dia_mm', 'stirrup_spacing_mm', 'confidence_score'],
+  boq: ['quantity', 'material_unit_price', 'material_amount', 'labor_unit_price',
+    'labor_amount', 'total_amount', 'confidence_score'],
+};
+
+// Fields that were arrays originally, joined with ", " for display — split back.
+const ARRAY_FIELDS = ['grid_refs', 'confidence_flags'];
 
 function resultMap(annotation) {
   // from_name -> result entry, for quick lookup
@@ -68,14 +94,50 @@ function isDeleted(entry) {
   return Array.isArray(entry.value?.choices) && entry.value.choices.includes('delete');
 }
 
+function toNumberOrNull(value, fieldName, recordId) {
+  if (value === '' || value === null || value === undefined) return null;
+  const n = Number(value);
+  if (Number.isNaN(n)) {
+    console.warn(`⚠️  ${recordId}: field "${fieldName}" = "${value}" is not a valid number — set to null, fix by hand`);
+    return null;
+  }
+  return n;
+}
+
+function toArray(value) {
+  if (value === '' || value === null || value === undefined) return [];
+  return String(value).split(',').map((s) => s.trim()).filter(Boolean);
+}
+
+function groupStructural(items) {
+  const grouped = { plan: [], section: [], schedule: [] };
+  for (const item of items) {
+    const { _source, ...rest } = item;
+    (grouped[_source] || grouped.plan).push(rest);
+  }
+  return grouped;
+}
+
+function groupBoq(items) {
+  const byCategory = new Map();
+  for (const item of items) {
+    const { category, ...rest } = item;
+    if (!byCategory.has(category)) byCategory.set(category, []);
+    byCategory.get(category).push(rest);
+  }
+  return [...byCategory.entries()].map(([category, catItems]) => ({ category, items: catItems }));
+}
+
 function convertTask(task, type) {
   const annotation = task.annotations?.[0];
   if (!annotation) return null;
 
+  const recordId = task.data.record_id;
   const map = resultMap(annotation);
   const originalItems = task.data.items || [];
   const editableFields = EDITABLE_FIELD_NAMES[type];
   const readonlyFields = READONLY_FIELD_NAMES[type];
+  const numericFields = new Set(NUMERIC_FIELDS[type]);
 
   const items = [];
   originalItems.forEach((original, idx) => {
@@ -94,25 +156,49 @@ function convertTask(task, type) {
     for (const field of readonlyFields) {
       corrected[field] = original[field];
     }
-    // Confidence fields aren't editable in the config — carry over from source
     corrected.confidence_score = original.confidence_score;
     corrected.confidence_flags = original.confidence_flags;
     if (type === 'structural') corrected._source = original._source;
     if (type === 'boq') corrected.category = original.category;
 
+    // Reverse the stringify-for-display transforms from label-studio-tasks-perpage.js
+    for (const field of Object.keys(corrected)) {
+      if (numericFields.has(field)) {
+        corrected[field] = toNumberOrNull(corrected[field], field, recordId);
+      } else if (ARRAY_FIELDS.includes(field)) {
+        corrected[field] = toArray(corrected[field]);
+      }
+    }
+
     items.push(corrected);
   });
 
   const reviewerNote = textValue(map['reviewer_note']) || '';
-
-  return {
-    record_id: task.data.record_id,
+  const base = {
+    record_id: recordId,
     house: task.data.house,
     page: task.data.page,
     review_status: 'approved',
-    items,
     reviewer_note: reviewerNote,
     annotation_date: new Date().toISOString(),
+  };
+
+  if (type === 'structural') {
+    const grouped = groupStructural(items);
+    return {
+      ...base,
+      sheet_code: task.data.sheet_code,
+      sheet_name: task.data.sheet_name,
+      plan: grouped.plan,
+      section: grouped.section,
+      schedule: grouped.schedule,
+    };
+  }
+
+  return {
+    ...base,
+    sheet_no: task.data.sheet_no,
+    categories: groupBoq(items),
   };
 }
 
@@ -155,7 +241,7 @@ function main() {
   fs.writeFileSync(MANIFEST_FILE, JSON.stringify(manifest, null, 2), 'utf-8');
 
   console.log(`✅ Wrote ${written} annotated file(s), manifest updated`);
-  console.log('⚠️  First run: spot-check the output against what you actually typed in Label Studio.');
+  console.log('⚠️  First run: spot-check the output against what you actually typed in Label Studio (including types — count should be a number, not "9" in quotes).');
 }
 
 main();
