@@ -55,6 +55,14 @@ function textValue(entry) {
   return undefined;
 }
 
+// element_type_{{idx}} is a Choices field (label-studio-structural.xml), not a
+// TextArea like the other fields — reads value.choices instead of value.text.
+function choiceValue(entry) {
+  if (!entry) return undefined;
+  if (entry.value?.choices?.length) return entry.value.choices[0];
+  return undefined;
+}
+
 function isDeleted(entry) {
   if (!entry) return false;
   return Array.isArray(entry.value?.choices) && entry.value.choices.includes('delete');
@@ -76,7 +84,9 @@ function convertTask(task, type) {
     const corrected = {};
     for (const field of editableFields) {
       const entry = map[`${field}_${idx}`];
-      const edited = textValue(entry);
+      // element_type is a Choices field in the structural config; every other
+      // editable field is a TextArea.
+      const edited = field === 'element_type' ? choiceValue(entry) : textValue(entry);
       // Fall back to the original AI value if the reviewer didn't touch this field
       corrected[field] = edited !== undefined && edited !== '' ? edited : original[field];
     }
