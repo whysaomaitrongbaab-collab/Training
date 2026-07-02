@@ -1,5 +1,7 @@
 # Vast.ai template — Constistant fine-tune (Qwen3-VL-8B + Unsloth)
 
+> ⚠️ อ่าน [../rule_of_tune.md](../rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 Instance picked (2026-07-02): **Type #35961802** — RTX 3090, 24GB VRAM, PCIe 4.0 x16,
 AMD EPYC 7532 32-core (16/64 CPU alloc), 32/129 GB RAM alloc, NVMe, verified host,
 ~$0.152/hr + bandwidth, 99.32% reliability, max duration 5 mon.

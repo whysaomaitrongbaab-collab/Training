@@ -9,6 +9,8 @@ input_requires: sheet_type = "general_notes" from Stage A
 output_schema: project-level spec defaults — ใช้เติม field ที่ section/schedule sheet ไม่ได้ระบุ
 ---
 
+> ⚠️ อ่าน [../../rule_of_tune.md](../../rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 # Stage B2 — Spec / Notes Reader
 
 ## วัตถุประสงค์

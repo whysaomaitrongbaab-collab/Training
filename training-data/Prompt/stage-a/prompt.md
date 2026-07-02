@@ -8,6 +8,8 @@ input: batch of 10-12 page images (one PDF segment)
 output: classification JSON — script reads sheet_type and routes to Stage B itself
 ---
 
+> ⚠️ อ่าน [../../rule_of_tune.md](../../rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 # Stage A — Page Classifier
 
 ## หลักการทำงานจริง

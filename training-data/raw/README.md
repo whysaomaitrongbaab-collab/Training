@@ -1,5 +1,7 @@
 # 📥 Raw PDF Upload Folder
 
+> ⚠️ อ่าน [../rule_of_tune.md](../rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 Your friend uploads construction plan PDFs here for processing.
 
 ## How to use
