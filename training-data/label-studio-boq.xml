@@ -1,0 +1,61 @@
+<!--
+  Label Studio — "BOQ Review" project
+  Per-page task from label-studio-tasks-boq.json (via label-studio-tasks-perpage.js)
+
+  v3 (2026-07-02): cut editable fields from 9 to 4 per item (item_no, description,
+  quantity, unit — the fields that actually need review right now). Pricing fields
+  are still mostly null in the current extraction pass (no price data yet), so they
+  render as a read-only reference line instead of empty edit boxes.
+
+  วิธีใช้: Labeling Setup → Code → วาง XML นี้แทนของเดิม → เช็ค Preview → Save & Open
+-->
+
+<View>
+  <Header value="BOQ Review — $house / หน้า $page (sheet $sheet_no)" size="2"/>
+
+  <Image name="page" value="$image" zoom="true" zoomControl="true"/>
+
+  <Header value="รายการ BOQ ที่ AI สกัดได้ — แก้ทีละรายการ" size="3"/>
+
+  <Repeater on="$items" indexFlag="{{idx}}">
+    <View style="border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 8px 0; background: #fafafa;">
+
+      <Text name="cat_{{idx}}" value="หมวด: $items[{{idx}}].category" style="font-weight:600;"/>
+
+      <View style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+        <Text name="lbl_item_no_{{idx}}" value="ลำดับ:" style="min-width:160px;"/>
+        <TextArea name="item_no_{{idx}}" toName="page" value="$items[{{idx}}].item_no" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_description_{{idx}}" value="รายการ:" style="min-width:160px;"/>
+        <TextArea name="description_{{idx}}" toName="page" value="$items[{{idx}}].description" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_quantity_{{idx}}" value="ปริมาณ:" style="min-width:160px;"/>
+        <TextArea name="quantity_{{idx}}" toName="page" value="$items[{{idx}}].quantity" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_unit_{{idx}}" value="หน่วย:" style="min-width:160px;"/>
+        <TextArea name="unit_{{idx}}" toName="page" value="$items[{{idx}}].unit" editable="true" rows="1"/>
+      </View>
+
+      <Text name="ref_{{idx}}"
+        value="ราคา (ยังไม่มีข้อมูล ไม่ต้องแก้ตอนนี้): วัสดุ $items[{{idx}}].material_unit_price / ค่าแรง $items[{{idx}}].labor_unit_price / รวม $items[{{idx}}].total_amount"
+        style="font-size:12px; color:#555; margin-top:6px;"/>
+      <Text name="conf_{{idx}}" value="AI confidence: $items[{{idx}}].confidence_score" style="font-size:12px; color:#555;"/>
+
+      <Choices name="delete_{{idx}}" toName="page" showInLine="true">
+        <Choice value="delete">❌ ลบรายการนี้ (AI มโน)</Choice>
+      </Choices>
+    </View>
+  </Repeater>
+
+  <Header value="หมายเหตุ / รายการที่ AI พลาดไป" size="4"/>
+  <TextArea
+    name="reviewer_note"
+    toName="page"
+    placeholder="พิมพ์อธิบายเป็นคำพูดปกติ เช่น 'มีรายการเทคอนกรีตฐานรากที่ AI ไม่เจอ' — ไม่ต้องพิมพ์ JSON"
+    rows="3"
+    editable="true"
+  />
+</View>

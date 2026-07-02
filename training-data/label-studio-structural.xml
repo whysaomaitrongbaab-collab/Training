@@ -1,0 +1,77 @@
+<!--
+  Label Studio — "Structural Review" project
+  Per-page task from label-studio-tasks-structural.json (via label-studio-tasks-perpage.js)
+
+  v3 (2026-07-02): cut editable fields from 15 to 8 per item. Per the documented
+  lesson in CLAUDE.md ("element_id/มิติหน้าตัด/จำนวนเหล็กหลัก มักถูก แต่ค่า spacing/
+  ขนาดเหล็กปลอกละเอียดต้องให้คนตรวจก่อนเชื่อ"), only the fields the AI actually gets
+  wrong often are editable; the rest render as one read-only reference line.
+
+  วิธีใช้: Labeling Setup → Code → วาง XML นี้แทนของเดิม → เช็ค Preview → Save & Open
+-->
+
+<View>
+  <Header value="Structural Review — $house / หน้า $page ($sheet_code $sheet_name)" size="2"/>
+
+  <Image name="page" value="$image" zoom="true" zoomControl="true"/>
+
+  <Header value="รายการที่ AI สกัดได้ — แก้ทีละรายการ" size="3"/>
+
+  <Repeater on="$items" indexFlag="{{idx}}">
+    <View style="border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 8px 0; background: #fafafa;">
+
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_element_id_{{idx}}" value="รหัส element:" style="min-width:160px; font-weight:600;"/>
+        <TextArea name="element_id_{{idx}}" toName="page" value="$items[{{idx}}].element_id" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_element_type_{{idx}}" value="ประเภท:" style="min-width:160px; font-weight:600;"/>
+        <TextArea name="element_type_{{idx}}" toName="page" value="$items[{{idx}}].element_type" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_count_{{idx}}" value="จำนวน:" style="min-width:160px;"/>
+        <TextArea name="count_{{idx}}" toName="page" value="$items[{{idx}}].count" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_grid_refs_{{idx}}" value="ตำแหน่ง grid:" style="min-width:160px;"/>
+        <TextArea name="grid_refs_{{idx}}" toName="page" value="$items[{{idx}}].grid_refs" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_span_{{idx}}" value="ความยาวช่วง (ม.):" style="min-width:160px;"/>
+        <TextArea name="span_length_m_{{idx}}" toName="page" value="$items[{{idx}}].span_length_m" editable="true" rows="1"/>
+      </View>
+
+      <Text name="hdr_risky_{{idx}}" value="⚠️ จุดที่ AI มักอ่านผิดบ่อย — เช็คให้ดี" style="color:#b45309; font-size:12px; font-weight:600; margin-top:6px;"/>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_main_dia_{{idx}}" value="ขนาดเหล็กหลัก มม.:" style="min-width:160px;"/>
+        <TextArea name="main_bar_dia_mm_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_dia_mm" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_stirrup_dia_{{idx}}" value="ขนาดปลอก มม.:" style="min-width:160px;"/>
+        <TextArea name="stirrup_dia_mm_{{idx}}" toName="page" value="$items[{{idx}}].stirrup_dia_mm" editable="true" rows="1"/>
+      </View>
+      <View style="display:flex; align-items:center; gap:8px;">
+        <Text name="lbl_stirrup_spacing_{{idx}}" value="ระยะห่างปลอก มม.:" style="min-width:160px;"/>
+        <TextArea name="stirrup_spacing_mm_{{idx}}" toName="page" value="$items[{{idx}}].stirrup_spacing_mm" editable="true" rows="1"/>
+      </View>
+
+      <Text name="ref_{{idx}}"
+        value="ข้อมูลอ้างอิง (ไม่ต้องแก้ ปกติ AI ถูก): หน้าตัด $items[{{idx}}].width_mm x $items[{{idx}}].height_mm มม. | เหล็กหลัก $items[{{idx}}].main_bar_count เส้น ชนิด $items[{{idx}}].main_bar_type | ปลอกชนิด $items[{{idx}}].stirrup_type | คอนกรีต $items[{{idx}}].concrete_grade เหล็ก $items[{{idx}}].steel_grade"
+        style="font-size:12px; color:#555; margin-top:6px;"/>
+      <Text name="conf_{{idx}}" value="AI confidence: $items[{{idx}}].confidence_score" style="font-size:12px; color:#555;"/>
+
+      <Choices name="delete_{{idx}}" toName="page" showInLine="true">
+        <Choice value="delete">❌ ลบรายการนี้ (AI มโน)</Choice>
+      </Choices>
+    </View>
+  </Repeater>
+
+  <Header value="หมายเหตุ / รายการที่ AI พลาดไป" size="4"/>
+  <TextArea
+    name="reviewer_note"
+    toName="page"
+    placeholder="พิมพ์อธิบายเป็นคำพูดปกติ เช่น 'มีคาน B6 ที่ AI ไม่เจอ ช่วง grid 3-A ถึง 3-B' — ไม่ต้องพิมพ์ JSON"
+    rows="3"
+    editable="true"
+  />
+</View>
