@@ -1,0 +1,41 @@
+<!--
+  Label Studio — Labeling Interface Config
+  House-level review: engineer looks at every page image of one house
+  and corrects the Qwen extraction JSON directly.
+
+  Field names below MUST match label-studio-tasks-github.js /
+  label-studio-import-annotations.js:
+    - Image tag  name="page"           (list of page URLs, one task = one house)
+    - TextArea   name="corrected_json" toName="page"
+
+  วิธีใช้:
+  1. สร้าง project ใหม่ใน Label Studio Cloud
+  2. Settings > Labeling Interface > Code → วาง XML นี้ → Save
+  3. Import label-studio-tasks-github.json (Project → Import → Upload Files)
+-->
+
+<View>
+  <Header value="Thai RC Drawing — Review &amp; Correct ($record_id)" size="2"/>
+
+  <!-- ทุกหน้าของบ้านหลังนี้ แสดงเป็น gallery เลื่อนดูได้ -->
+  <Image name="page" value="$images" valueType="list" zoom="true" zoomControl="true"/>
+
+  <Header value="Qwen Extraction (JSON) — แก้ไขให้ถูกต้องตามแบบจริง" size="3"/>
+  <TextArea
+    name="corrected_json"
+    toName="page"
+    rows="25"
+    editable="true"
+    maxSubmissions="1"
+    placeholder="{ }  ← ถ้าไม่มี pre-annotation มาก่อน ให้พิมพ์ JSON ตาม schema เอง"
+  />
+
+  <Header value="หมายเหตุผู้ตรวจ" size="4"/>
+  <TextArea
+    name="reviewer_note"
+    toName="page"
+    placeholder="สิ่งที่แก้ / จุดที่ไม่แน่ใจ"
+    rows="2"
+    editable="true"
+  />
+</View>
