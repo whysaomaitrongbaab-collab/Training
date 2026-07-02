@@ -284,7 +284,7 @@ def main():
     folder = pathlib.Path(args.folder).resolve()
     house = folder.name
     pdf_path = find_pdf(folder)
-    out_dir = BASE / 'qwen-output' / house
+    out_dir = BASE / 'raw' / 'image' / house / 'qwen-output'
     print(f"🏠 {house}  | PDF: {pdf_path.name if pdf_path else 'none'}  | out: {out_dir.relative_to(BASE)}")
 
     images = sorted([p for p in folder.glob('*.png')])

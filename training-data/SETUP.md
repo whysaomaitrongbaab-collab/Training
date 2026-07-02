@@ -43,7 +43,7 @@ python run_pipeline.py "raw/image/<ชื่อบ้าน>" --toc 02 --anchors
 python run_pipeline.py "raw/image/<ชื่อบ้าน>" --only 20
 ```
 
-**Output:** `qwen-output/<ชื่อบ้าน>/`
+**Output:** `raw/image/<ชื่อบ้าน>/qwen-output/`
 - `_document_map.json` — routing ทั้งเอกสาร (Stage 0)
 - `_run_summary.json` — สรุปผลรัน (extract/skip กี่หน้า, token รวม)
 - `<ชื่อบ้าน>_หน้าNN.json` — ผล extraction ต่อหน้า (เฉพาะหน้า structural, ชื่อตรงรูป 1:1)

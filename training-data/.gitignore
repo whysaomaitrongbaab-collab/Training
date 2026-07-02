@@ -13,7 +13,10 @@ raw/image/**
 !processing/**/metadata.json
 
 # Qwen outputs are OK to commit (JSON is small)
-# qwen-output/ is tracked
+# qwen-output/ is tracked — including the per-house copies nested under raw/image/<house>/qwen-output/
+!raw/image/*/
+!raw/image/*/qwen-output/
+!raw/image/*/qwen-output/**
 
 # Annotated datasets should be committed (small JSON)
 # annotated/ is tracked

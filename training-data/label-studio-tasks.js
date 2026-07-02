@@ -1,7 +1,7 @@
 /**
  * Generate Label Studio import tasks from rasterized house images.
- * Reads raw/image/<house>/*.png, attaches qwen-output/<house>-qwen.json as
- * a pre-annotation (prediction) when it exists.
+ * Reads raw/image/<house>/*.png, attaches raw/image/<house>/qwen-output/<house>-qwen.json
+ * as a pre-annotation (prediction) when it exists.
  *
  * Usage:
  *   node label-studio-tasks.js                 # all houses in raw/image/
@@ -13,7 +13,6 @@ const path = require('path');
 
 const TRAINING_DATA_DIR = __dirname;
 const IMAGE_DIR = path.join(TRAINING_DATA_DIR, 'raw', 'image');
-const QWEN_OUTPUT_DIR = path.join(TRAINING_DATA_DIR, 'qwen-output');
 const OUTPUT_FILE = path.join(TRAINING_DATA_DIR, 'label-studio-tasks.json');
 // Label Studio's list-type Image tag requires a fully-qualified URL (scheme + host),
 // unlike a single $image binding where the browser resolves a relative path itself.
@@ -46,7 +45,7 @@ function buildTaskForHouse(houseName) {
     data: { record_id: houseName, images },
   };
 
-  const qwenFile = path.join(QWEN_OUTPUT_DIR, `${houseName}-qwen.json`);
+  const qwenFile = path.join(houseDir, 'qwen-output', `${houseName}-qwen.json`);
   if (fs.existsSync(qwenFile)) {
     const qwenJson = fs.readFileSync(qwenFile, 'utf-8');
     task.predictions = [

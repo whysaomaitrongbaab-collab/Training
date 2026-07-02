@@ -103,7 +103,7 @@ def extract_structural(img_path):
 # ════════════════════════════════════════════════════════════════════
 def ensure_document_map(folder, toc, anchors):
     house = folder.name
-    mp = BASE / 'qwen-output' / house / '_document_map.json'
+    mp = BASE / 'raw' / 'image' / house / 'qwen-output' / '_document_map.json'
     if not mp.exists():
         print("Step 1 · สร้าง document map (Stage 0)…")
         subprocess.run([sys.executable, str(HERE / 'build_document_map.py'), str(folder),
@@ -124,7 +124,7 @@ def main():
 
     folder = pathlib.Path(args.folder).resolve()
     house = folder.name
-    out_dir = BASE / 'qwen-output' / house
+    out_dir = BASE / 'raw' / 'image' / house / 'qwen-output'
     doc = ensure_document_map(folder, args.toc, args.anchors)
     page_map = doc['page_map']
     print(f"\nStep 2 · ไล่ทุกหน้า ({len(page_map)}) — routing ตาม map (offset {doc['offset']:+d})\n")

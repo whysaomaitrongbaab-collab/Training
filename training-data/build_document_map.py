@@ -164,7 +164,7 @@ def main():
     result = {"house": house, "toc_png_page": toc_key, "offset": offset,
               "sections": rows, "page_map": page_map,
               "extract_disciplines": sorted(EXTRACT_DISCIPLINES)}
-    out = BASE / 'qwen-output' / house / '_document_map.json'
+    out = BASE / 'raw' / 'image' / house / 'qwen-output' / '_document_map.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
 
