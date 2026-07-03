@@ -17,6 +17,7 @@ Usage:
   python analyze_folder.py <imageFolder>                  # ทั้งโฟลเดอร์
 """
 import os, sys, re, json, time, base64, pathlib, argparse, urllib.request, urllib.error
+from log_utils import log_action
 
 try:
     import fitz  # PyMuPDF
@@ -268,6 +269,8 @@ def process_page(image_path, pdf_path, out_dir):
     out_path = out_dir / (image_path.stem + '.json')
     out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
     print(f"   💾 {out_path.relative_to(BASE)}")
+    log_action(file=out_path.relative_to(BASE), ai_model=stage_b_model or MODEL_CLASSIFY,
+               action='extract' if stage_b_model else 'classify_only', house=out_dir.parent.name)
     return result
 
 # ════════════════════════════════════════════════════════════════════
