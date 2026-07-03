@@ -18,6 +18,7 @@ Usage:
 """
 import os, re, sys, io, json, time, base64, pathlib, argparse, subprocess, urllib.request
 from PIL import Image
+from log_utils import log_action
 
 BASE = pathlib.Path(__file__).resolve().parent
 HERE = pathlib.Path(__file__).resolve().parent
@@ -227,9 +228,12 @@ def main():
                 ext, usage = extract_structural(imgs[k])
                 total_tokens += usage.get('total_tokens', 0)
                 pat = ext.get('pattern'); nm = ext.get('sheet_name'); ne = count_elements(ext)
-                (out_dir / (imgs[k].stem + '.json')).write_text(
+                out_path = out_dir / (imgs[k].stem + '.json')
+                out_path.write_text(
                     json.dumps({"png": k, **info, "extraction": ext}, ensure_ascii=False, indent=2),
                     encoding='utf-8')
+                log_action(file=out_path.relative_to(BASE), ai_model=MODEL_STRUCT,
+                           action='extract_structural', house=house)
                 row.update({"action": "extracted", "sheet_name": nm, "pattern": pat, "elements": ne,
                             "needs_review": True})
                 print(f"'{nm}' pattern={pat} → {ne} elements")
@@ -244,9 +248,12 @@ def main():
                 total_tokens += usage.get('total_tokens', 0)
                 sn = ext.get('sheet_no'); ni = count_boq_items(ext)
                 ncat = len(ext.get('categories') or [])
-                (out_dir / (imgs[k].stem + '.json')).write_text(
+                out_path = out_dir / (imgs[k].stem + '.json')
+                out_path.write_text(
                     json.dumps({"png": k, **info, "extraction": ext}, ensure_ascii=False, indent=2),
                     encoding='utf-8')
+                log_action(file=out_path.relative_to(BASE), ai_model=MODEL_BOQ,
+                           action='extract_boq', house=house)
                 row.update({"action": "extracted", "sheet_no": sn, "categories": ncat,
                             "boq_items": ni, "needs_review": True})
                 print(f"แผ่นที่ {sn} → {ncat} หมวด, {ni} รายการ")
@@ -263,11 +270,14 @@ def main():
             print(f"  หน้า{k}  [{disc}] → skip")
         summary.append(row)
 
-    (out_dir / '_run_summary.json').write_text(
+    summary_path = out_dir / '_run_summary.json'
+    summary_path.write_text(
         json.dumps({"house": house, "offset": doc['offset'], "total_tokens": total_tokens,
                     "pages": summary}, ensure_ascii=False, indent=2), encoding='utf-8')
-
     extracted = [r for r in summary if r.get('action') == 'extracted']
+    log_action(file=summary_path.relative_to(BASE), ai_model=f"{MODEL_STRUCT}/{MODEL_BOQ}",
+               action='run_summary', house=house, pages_extracted=len(extracted))
+
     print(f"\nStep 3 · เสร็จ — extract {len(extracted)} หน้า, skip {len(summary)-len(extracted)} หน้า, "
           f"~{total_tokens} tokens")
     print(f"💾 {(out_dir/'_run_summary.json').relative_to(BASE)}")

@@ -12,6 +12,7 @@ Output: qwen-output/<house>/_document_map.json
 Usage: python build_document_map.py <imageFolder> [--toc 02] [--anchors 20,40]
 """
 import os, re, sys, json, time, base64, pathlib, argparse, urllib.request
+from log_utils import log_action
 
 BASE = pathlib.Path(__file__).resolve().parent
 
@@ -232,6 +233,7 @@ def main():
     out = BASE / 'raw' / 'image' / house / 'qwen-output' / '_document_map.json'
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+    log_action(file=out.relative_to(BASE), ai_model=MODEL, action='document_map', house=house)
 
     # summary
     from collections import Counter
