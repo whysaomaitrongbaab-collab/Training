@@ -1,5 +1,7 @@
 # training-data/ — Portable Setup
 
+> ⚠️ อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 โฟลเดอร์นี้ **self-contained** — copy ทั้งโฟลเดอร์ไปวางใน repo ไหนก็รันได้ทันที
 ไม่ต้องพึ่งไฟล์ใดๆ นอกโฟลเดอร์นี้ (schema.js, supabase.js ของ repo หลัก ฯลฯ ไม่เกี่ยวข้อง)
 

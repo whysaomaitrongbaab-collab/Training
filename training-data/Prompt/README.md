@@ -1,5 +1,7 @@
 # Prompt Library — Thai RC Drawing Pipeline
 
+> ⚠️ อ่าน [../rule_of_tune.md](../rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 โฟลเดอร์นี้เก็บ prompt ทั้งหมดสำหรับ multi-model pipeline อ่านแบบโครงสร้าง RC ไทย
 
 ## โครงสร้าง Pipeline

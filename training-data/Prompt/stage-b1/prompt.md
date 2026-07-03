@@ -9,6 +9,8 @@ input_requires: sheet_type from Stage A (floor_plan | section_detail | schedule_
 output_schema: aligned with js/shared/schema.js → createBeamLibraryEntry() + createDrawingElement()
 ---
 
+> ⚠️ อ่าน [../../rule_of_tune.md](../../rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 # Stage B1 — Element Extractor
 
 ## วัตถุประสงค์

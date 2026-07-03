@@ -1,5 +1,7 @@
 # Structural Plan Training Data Pipeline
 
+> ⚠️ อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
+
 Workspace for building fine-tuning datasets for Qwen vision model. Process: **PDF Upload → PDF Analysis → Rasterization → Qwen Extraction → Human Review & Annotation → Dataset Ready**
 
 ## Folder Structure
