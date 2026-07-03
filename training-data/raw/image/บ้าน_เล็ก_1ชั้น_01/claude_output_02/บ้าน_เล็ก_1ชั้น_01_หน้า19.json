@@ -1,0 +1,147 @@
+{
+  "png": "19",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า19.png",
+  "read_by": "Claude — direct independent read (round 2). Did NOT look at qwen-output or claude_output_01 while reading; only the raw image (plus 2 self-made zoom crops of the same image for small text).",
+  "schema_note": "ทดสอบ schema ใหม่: views[] + grid{x_lines,y_lines} + span_source ตามที่คุยออกแบบไว้ ยังไม่ผ่าน apply_grid_spans() ของ run_pipeline.py (คำนวณ span ด้วยมือ/สายตาเอง ไม่ได้รันโค้ดจริง)",
+  "extraction": {
+    "sheet_code": "S-02",
+    "sheet_name": "แปลนฐานรากแผ่ ,ฐานรากเสาเข็ม / แปลนคาน ,พื้นชั้นล่าง",
+    "views": [
+      {
+        "view_title": "แปลนฐานรากแผ่ และฐานรากเสาเข็ม",
+        "pattern": "plan",
+        "grid": {
+          "x_lines": [
+            {"id": "A", "pos_m": 0.0},
+            {"id": "B", "pos_m": 3.5},
+            {"id": "C", "pos_m": 5.5},
+            {"id": "D", "pos_m": 9.5}
+          ],
+          "y_lines": [
+            {"id": "1", "pos_m": 0.0},
+            {"id": "2", "pos_m": 4.0},
+            {"id": "3", "pos_m": 7.0}
+          ]
+        },
+        "elements": [
+          {
+            "element_id": "F1,C1", "element_type": "footing", "count": 11,
+            "grid_refs": ["A-1","A-2","A-3","B-1","B-2","B-3","C-1","C-3","D-1","D-2","D-3"],
+            "span_length_m": null, "span_source": null,
+            "confidence_score": 0.95, "confidence_flags": []
+          },
+          {
+            "element_id": "F2,C1", "element_type": "footing", "count": 1,
+            "grid_refs": ["C-2"],
+            "span_length_m": null, "span_source": null,
+            "confidence_score": 0.95, "confidence_flags": []
+          }
+        ]
+      },
+      {
+        "view_title": "แปลนคาน, พื้นชั้นล่าง",
+        "pattern": "plan",
+        "grid": {
+          "x_lines": [
+            {"id": "A", "pos_m": 0.0},
+            {"id": "B", "pos_m": 3.5},
+            {"id": "C", "pos_m": 5.5},
+            {"id": "D", "pos_m": 9.5}
+          ],
+          "y_lines": [
+            {"id": "1", "pos_m": 0.0},
+            {"id": "2", "pos_m": 4.0},
+            {"id": "3", "pos_m": 7.0}
+          ]
+        },
+        "elements": [
+          {
+            "element_id": "B2", "element_type": "beam", "count": 2,
+            "grid_refs": ["D-1/D-2","D-2/D-3"],
+            "span_length_m": null, "span_source": "unresolved",
+            "confidence_score": 0.75, "confidence_flags": ["mixed_spans_expected_4.0_and_3.0_under_same_mark_let_code_flag_not_average"]
+          },
+          {
+            "element_id": "B2", "element_type": "beam", "count": 2,
+            "grid_refs": ["?/?","?/?"],
+            "span_length_m": null, "span_source": "unresolved",
+            "confidence_score": 0.3, "confidence_flags": ["intermediate_horizontal_divider_inside_D_C_band_no_named_grid","vertical_divider_inside_B_A_band_no_named_grid","needs_zoom_of_missing_vertical_subdimension"]
+          },
+          {
+            "element_id": "B4", "element_type": "beam", "count": 5,
+            "grid_refs": ["D-1/C-1","C-1/C-2","C-1/B-1","B-1/B-2","B-2/B-3"],
+            "span_length_m": null, "span_source": "unresolved",
+            "confidence_score": 0.75, "confidence_flags": ["mixed_spans_4.0_2.0_3.0_under_same_mark_let_code_flag_not_average"]
+          },
+          {
+            "element_id": "B5", "element_type": "beam", "count": 3,
+            "grid_refs": ["D-2/C-2","C-2/B-2","B-2/A-2"],
+            "span_length_m": null, "span_source": "unresolved",
+            "confidence_score": 0.75, "confidence_flags": ["mixed_spans_4.0_2.0_3.5_under_same_mark_let_code_flag_not_average"]
+          },
+          {
+            "element_id": "B3", "element_type": "beam", "count": 2,
+            "grid_refs": ["C-3/B-3","B-3/A-3"],
+            "span_length_m": null, "span_source": "unresolved",
+            "confidence_score": 0.7, "confidence_flags": ["mixed_spans_2.0_and_3.5_under_same_mark_let_code_flag_not_average"]
+          },
+          {
+            "element_id": "B3", "element_type": "beam", "count": 2,
+            "grid_refs": ["D-3/?","?/?"],
+            "span_length_m": null, "span_source": "unresolved",
+            "confidence_score": 0.3, "confidence_flags": ["upper_D_C_band_segment_ends_at_unlabeled_intermediate_divider","bottom_edge_near_south_extension_position_unclear"]
+          },
+          {
+            "element_id": "B4X", "element_type": "beam", "count": 2,
+            "grid_refs": ["?/?","?/?"],
+            "span_length_m": 1.5, "span_source": "local_dimension",
+            "confidence_score": 0.55, "confidence_flags": ["sits_on_the_1.50m_extension_east_of_grid_3_not_a_named_grid_line","span_read_from_the_1.50_dimension_printed_at_top_of_sheet_for_this_extension_not_a_beam-specific_local_dimension"]
+          },
+          {
+            "element_id": "B5X", "element_type": "beam", "count": 1,
+            "grid_refs": ["?/?"],
+            "span_length_m": 1.5, "span_source": "local_dimension",
+            "confidence_score": 0.5, "confidence_flags": ["in_the_unlabeled_extension_south_of_grid_A","span_read_from_the_1.50_of_the_3.00=1.50+1.50_south_dimension_chain"]
+          },
+          {
+            "element_id": "B3X", "element_type": "beam", "count": 1,
+            "grid_refs": ["?/?"],
+            "span_length_m": 1.5, "span_source": "local_dimension",
+            "confidence_score": 0.5, "confidence_flags": ["in_the_unlabeled_extension_south_of_grid_A","span_read_from_the_1.50_of_the_3.00=1.50+1.50_south_dimension_chain"]
+          },
+          {
+            "element_id": "B1", "element_type": "beam", "count": 1,
+            "grid_refs": ["?/?"],
+            "span_length_m": null, "span_source": "unresolved",
+            "confidence_score": 0.3, "confidence_flags": ["short_label_inside_a_dashed_subdivision_box_in_C_B_band_left_room","exact_boundary_and_length_not_legible_at_available_resolution"]
+          },
+          {
+            "element_id": "SO", "element_type": "slab", "count": 3,
+            "grid_refs": [],
+            "span_length_m": null, "span_source": null,
+            "confidence_score": 0.6, "confidence_flags": ["circled_slab-type_label_seen_3_times_exact_meaning_of_O_suffix_not_confirmed"]
+          },
+          {
+            "element_id": "SI", "element_type": "slab", "count": 4,
+            "grid_refs": [],
+            "span_length_m": null, "span_source": null,
+            "confidence_score": 0.55, "confidence_flags": ["circled_slab-type_label_seen_4_times_could_be_S1_vs_SI_ambiguous_at_this_font"]
+          },
+          {
+            "element_id": "ST", "element_type": "slab", "count": 1,
+            "grid_refs": [],
+            "span_length_m": null, "span_source": null,
+            "confidence_score": 0.6, "confidence_flags": ["circled_slab-type_label_in_the_south_extension_pocket"]
+          }
+        ]
+      }
+    ],
+    "warnings": [
+      "footing plan (view 1) อ่านมั่นใจสูง — grid resolve ครบทุกจุด 3x4=12 จุด (11x F1,C1 + 1x F2,C1 ที่ C-2) ตรงกับที่ qwen-output/claude_output_01 เคยสรุปไว้ (cross-check โดยไม่ได้ดูของเขาเลยระหว่างอ่าน)",
+      "beam plan (view 2) โครงสร้างหลัก (B2/B4/B5/B3 ที่ขอบห้องหลักตาม grid) มั่นใจสูง แต่ 'span_length_m' ของแต่ละ mark ไม่ใช่ค่าเดียวจริง — พบว่า mark เดียวกัน (เช่น B2, B4, B5) ถูกใช้ซ้ำกับ bay ขนาดต่างกันจริงในแบบนี้ (เช่น B4 มีทั้งช่วง 4.0/2.0/3.0m) เป็นข้อจำกัดของ schema เดิมที่ยังไม่ได้แก้ ไม่ใช่ความผิดพลาดจากการอ่าน — ปล่อยให้ apply_grid_spans() ของโค้ด flag 'grid_segments_inconsistent_span' แทนการเดาค่าเฉลี่ย",
+      "พบ off-grid extension จริง 2 จุดตามที่คุยออกแบบไว้: (1) 1.50m ทางทิศตะวันออกของ grid 3 (มีเลขพิมพ์กำกับชัดที่หัวกระดาษ) (2) โซนใต้ grid A ลึกลงไป 3.00m แบ่งเป็น 1.50+1.50 (มีเลขพิมพ์กำกับชัดที่มุมล่างซ้าย ไม่มีตัวอักษร grid กำกับเส้นพวกนี้เลย) — ทั้งสองจุดใช้ span_source='local_dimension' ตามกติกาใหม่ที่ตกลงกันไว้",
+      "จุดที่ยังไม่มั่นใจและต้องซูมเพิ่ม: (a) ตัวคั่นแนวนอนกลาง D-C band ฝั่งขวา (label B2 ซ้ำ) ไม่มีเลขมิติกำกับความสูงจากขอบบน/ล่างเลย (b) กล่องเส้นประ 2 กล่องใน C-B band ฝั่งซ้าย (label B1 + SI ซ้ำ) ไม่มีเลขมิติกำกับเช่นกัน — ทั้งสองจุดนี้อาจต้องดูหน้าอื่น (รายละเอียดคาน S-04) ประกอบ ไม่สามารถอ่านจบจากหน้านี้หน้าเดียว",
+      "ตัวอักษรในวงกลม SO/SI/ST อ่านจากภาพความละเอียดที่มีอยู่ ไม่ได้ zoom เพิ่มเฉพาะจุด — SI อาจจริงๆ เป็น S1 (ตัวเลขหนึ่ง ไม่ใช่ตัว i) ต้อง verify"
+    ]
+  }
+}

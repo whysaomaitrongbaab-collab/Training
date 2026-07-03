@@ -78,46 +78,172 @@ def b64file_rotated(p, degrees=90):
 # ════════════════════════════════════════════════════════════════════
 STRUCT_SYSTEM = (
     "You are a licensed Thai structural engineer doing quantity takeoff from ONE structural "
-    "(S-series) sheet of a Thai RC building. First read the title-block sheet name (ช่อง 'แสดงแบบ', "
-    "bottom-right), then extract using the schema for that sheet's pattern. Read only what is "
-    "visible; a null is better than a guess. Every numeric field carries confidence_score 0-1."
+    "(S-series) sheet of a Thai RC building. A sheet often contains MULTIPLE labeled views on the "
+    "same page (e.g. two plans side by side, or one detail box per beam mark) — you must enumerate "
+    "every one as a separate view, never merge them together. First read the title-block sheet name "
+    "(ช่อง 'แสดงแบบ', bottom-right), then find every underlined/bold heading or caption on the sheet "
+    "and extract each as its own view using the schema for that view's pattern. For 'plan' views, also "
+    "read the printed grid dimension chain so beam spans can be computed later, not guessed. Read only "
+    "what is visible; a null is better than a guess. Every numeric field carries confidence_score 0-1."
 )
 
 STRUCT_USER = """THAI RC NOTATION: "2DB16"=2 deformed bars 16mm (count=2,dia=16,type=DB); "RB6"=round 6mm (stirrup,RB);
 "ค1"=beam, "ต1/C1"=column, "พ1"=slab, "F1/ฐ1"=footing; "@0.10"=100mm; fc' in ksc; grades SR24/SD30/SD40.
 Lengths: section/schedule=mm, span=m.
 
-STEP 1 — read the title block (มุมขวาล่าง): sheet_code (e.g. S-03) and sheet_name (e.g. "ผังคานชั้น 1").
-STEP 2 — decide pattern from the sheet_name + what you see:
-  "plan"     = ผัง* (ผังฐานราก/ผังเสา/ผังคาน/ผังพื้น) — bird's-eye layout with element marks + grid
+STEP 1 — read the title block (มุมขวาล่าง): sheet_code (e.g. S-03) and overall sheet_name (e.g. "ผังคานชั้น 1").
+STEP 2 — INVENTORY FIRST: scan the WHOLE sheet and list every underlined/bold heading or caption you
+  can see — each one becomes a "view". Do this before extracting any element detail. Do not skip a
+  heading because it looks minor; sheets commonly have 2+ views side by side (e.g. "แปลนฐานราก" +
+  "แปลนคาน" on the same page) or one detail box per element mark. Missing a whole view/element is worse
+  than an imprecise number inside one — always err toward listing more views, not fewer.
+STEP 3 — for EACH view in your inventory, decide its pattern from the heading text + what you see:
+  "plan"     = ผัง*/แปลน* (ผังฐานราก/ผังเสา/ผังคาน/ผังพื้น) — bird's-eye layout with element marks + grid
   "schedule" = ตาราง* (ตารางเสา/คาน/ฐานราก) — a table of marks with spec columns
   "section"  = รายละเอียด*/รูปตัด — cross-sections with rebar (DB/RB dots + callouts)
   "notes"    = หมายเหตุ/ข้อกำหนดโครงสร้าง — text specs (fc', เกรดเหล็ก, ระยะหุ้ม)
-STEP 3 — extract with the matching block. Fill focus by element type the sheet is about.
+STEP 4 — for each "plan" view ONLY: read the grid dimension chain (the row of numbers printed along the
+  top/side of the plan giving the spacing between adjacent grid lines, e.g. "4.00 | 3.00 | 4.00"). Build
+  a coordinate table by accumulating these spacings from one reference line (pos_m=0). The grid is
+  normally shared by every plan view on the same sheet — read it once and reuse it.
+STEP 5 — extract each view's elements with the matching block below. Fill focus by element type the view
+  is about. For LINEAR elements (beam) in a "plan" view, grid_refs is a list of "X-Y/X2-Y2" segment
+  strings, one per occurrence (unchanged convention). Span length rules, in order of trust:
+    (a) both ends of a segment are grid intersections → leave span_length_m as your best estimate, it
+        will be recomputed exactly from the grid table afterward — do not agonize over precision here.
+    (b) one or BOTH ends are not grid intersections (cantilever, secondary beam framing between two
+        other beams, ends mid-bay, etc.) but a dimension number is printed directly along/near that
+        specific beam → write the unresolved side(s) as "?" (e.g. "X-Y/?" or, if neither side is a grid
+        point, "?/?"), read the printed number into span_length_m yourself, and set
+        "span_source":"local_dimension" (this value will NOT be overwritten). This is the normal case for
+        any beam whose span isn't a standard grid module — Thai drafting convention always prints an
+        explicit dimension for it, so look for that number before giving up.
+    (c) truly no dimension can be found anywhere near the beam (neither a grid endpoint nor a printed
+        number) → write "?" for the unresolved side(s), set span_length_m:null, "span_source":"unresolved"
+        — do NOT invent an endpoint or a length.
+  POINT-type elements (footing/column marks repeated across a plan) do not have a span — grid_refs just
+  lists every intersection where the mark occurs; leave span_length_m null for these.
 
-Return ONLY JSON (fill "pattern" + the matching array; leave others empty):
+Return ONLY JSON — one entry in "views" per heading found in STEP 2, in the order they appear on the sheet:
 {
- "sheet_code":"S-03","sheet_name":"...","pattern":"plan",
- "plan": [ {"element_id":"ค1","element_type":"beam","count":6,"grid_refs":["A-1/A-2"],
-           "span_length_m":3.0,"confidence_score":0.7,"confidence_flags":["count_uncertain"]} ],
- "schedule": [ {"element_id":"ต1","element_type":"column","width_mm":200,"height_mm":200,
-           "main_bar_count":4,"main_bar_dia_mm":16,"main_bar_type":"DB","stirrup_dia_mm":6,
-           "stirrup_type":"RB","stirrup_spacing_mm":200,"concrete_grade":"fc240","steel_grade":"SD40",
-           "confidence_score":0.85,"confidence_flags":[]} ],
- "section": [ {"element_id":"ค1","element_type":"beam","width_mm":200,"height_mm":400,
-           "main_bar_count":4,"main_bar_dia_mm":16,"main_bar_type":"DB","stirrup_dia_mm":6,
-           "stirrup_type":"RB","stirrup_spacing_mm":150,"stirrup_spacing_dense_mm":100,
-           "stirrup_dense_zone_mm":1000,"concrete_grade":"fc240","steel_grade":"SD40",
-           "confidence_score":0.85,"confidence_flags":[]} ],
- "notes": {"concrete_strength_ksc":240,"steel_main":"SD40","steel_stirrup":"SR24",
-           "cover_mm":{"beam":25,"column":25,"footing":75},"lap_rule":"40D","design_codes":[],
-           "confidence_score":0.8,"confidence_flags":[]},
+ "sheet_code":"S-03","sheet_name":"...",
+ "views": [
+   {
+     "view_title":"ผังคานชั้น 1","pattern":"plan",
+     "grid": {"x_lines":[{"id":"A","pos_m":0.0},{"id":"B","pos_m":4.0},{"id":"C","pos_m":7.0}],
+              "y_lines":[{"id":"1","pos_m":0.0},{"id":"2","pos_m":3.0},{"id":"3","pos_m":6.0}]},
+     "elements": [
+       {"element_id":"ค1","element_type":"beam","count":6,"grid_refs":["A-1/A-2","B-1/B-2"],
+        "span_length_m":3.0,"span_source":"grid_table","confidence_score":0.7,"confidence_flags":["count_uncertain"]},
+       {"element_id":"ค9","element_type":"beam","count":1,"grid_refs":["C-2/?"],
+        "span_length_m":1.5,"span_source":"local_dimension","confidence_score":0.6,"confidence_flags":["cantilever"]},
+       {"element_id":"F1","element_type":"footing","count":3,"grid_refs":["A-1","A-2","A-3"],
+        "span_length_m":null,"confidence_score":0.85,"confidence_flags":[]}
+     ]
+   },
+   {
+     "view_title":"ตารางเสา","pattern":"schedule",
+     "elements": [ {"element_id":"ต1","element_type":"column","width_mm":200,"height_mm":200,
+               "main_bar_count":4,"main_bar_dia_mm":16,"main_bar_type":"DB","stirrup_dia_mm":6,
+               "stirrup_type":"RB","stirrup_spacing_mm":200,"concrete_grade":"fc240","steel_grade":"SD40",
+               "confidence_score":0.85,"confidence_flags":[]} ]
+   },
+   {
+     "view_title":"รายละเอียดคาน ค1","pattern":"section",
+     "elements": [ {"element_id":"ค1","element_type":"beam","width_mm":200,"height_mm":400,
+               "main_bar_count":4,"main_bar_dia_mm":16,"main_bar_type":"DB","stirrup_dia_mm":6,
+               "stirrup_type":"RB","stirrup_spacing_mm":150,"stirrup_spacing_dense_mm":100,
+               "stirrup_dense_zone_mm":1000,"concrete_grade":"fc240","steel_grade":"SD40",
+               "confidence_score":0.85,"confidence_flags":[]} ]
+   },
+   {
+     "view_title":"หมายเหตุโครงสร้าง","pattern":"notes",
+     "notes": {"concrete_strength_ksc":240,"steel_main":"SD40","steel_stirrup":"SR24",
+               "cover_mm":{"beam":25,"column":25,"footing":75},"lap_rule":"40D","design_codes":[],
+               "confidence_score":0.8,"confidence_flags":[]}
+   }
+ ],
  "warnings": []
 }"""
+
+# ── grid-based span resolution — คำนวณด้วยโค้ด ไม่ใช้ตัวเลขที่โมเดลกะเอง ──
+# เหตุผล: sheet_code/ตัวเลขที่พิมพ์ไว้จริงบนแบบ โมเดลอ่านแม่นกว่าประเมินระยะจาก geometry มาก
+# (ดู CLAUDE.md บทเรียนข้อ 1) เลยให้โมเดลแค่ "อ่าน" grid dimension chain ที่พิมพ์ไว้ แล้วคำนวณ span
+# จริงด้วย Python แทนการให้โมเดลกะระยะเอง — ทำเฉพาะกรณี resolve ได้ครบและตรงกันทุก occurrence
+# เท่านั้น ถ้าไม่ชัวร์ (ปลายไม่ resolve / ค่าที่ resolve ได้ไม่ตรงกัน) จะไม่แตะค่าเดิมของโมเดลเลย
+_GRID_PT_RE = re.compile(r'^([A-Za-z]+)-(\d+)$')
+
+def _grid_lookup(grid):
+    lookup = {}
+    if not isinstance(grid, dict):
+        return lookup
+    for axis in ('x_lines', 'y_lines'):
+        for g in (grid.get(axis) or []):
+            if isinstance(g, dict) and g.get('id') is not None and g.get('pos_m') is not None:
+                lookup[str(g['id'])] = g['pos_m']
+    return lookup
+
+def _resolve_grid_point(lookup, label):
+    m = _GRID_PT_RE.match((label or '').strip())
+    if not m:
+        return None
+    x_label, y_label = m.groups()
+    if x_label not in lookup or y_label not in lookup:
+        return None
+    return (lookup[x_label], lookup[y_label])
+
+def _segment_length(lookup, seg):
+    """'A-1/A-2' -> ระยะ (m); None ถ้า resolve ไม่ได้ (รวม 'A-1/?' ที่ปลายไม่รู้ค่าตั้งใจ)"""
+    if not isinstance(seg, str) or '/' not in seg:
+        return None
+    a, b = seg.split('/', 1)
+    if a.strip() == '?' or b.strip() == '?':
+        return None
+    p1, p2 = _resolve_grid_point(lookup, a), _resolve_grid_point(lookup, b)
+    if p1 is None or p2 is None:
+        return None
+    return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
+
+def apply_grid_spans(ext):
+    """เติม/ยืนยัน span_length_m ของ element ที่ grid_refs เป็น segment string โดยคำนวณจาก
+    view['grid'] จริง — ข้าม element ที่ span_source='local_dimension' (โมเดลอ่านตัวเลขพิมพ์จริงมาแล้ว
+    ไม่ทับ) และข้ามกรณี resolve ไม่ครบ/ไม่ตรงกัน (ปล่อยค่าเดิม + ใส่ confidence_flags ให้คนตรวจ)"""
+    if not isinstance(ext, dict):
+        return ext
+    for view in (ext.get('views') or []):
+        if not isinstance(view, dict) or view.get('pattern') != 'plan':
+            continue
+        lookup = _grid_lookup(view.get('grid'))
+        if not lookup:
+            continue
+        for el in (view.get('elements') or []):
+            if not isinstance(el, dict) or el.get('span_source') == 'local_dimension':
+                continue
+            refs = el.get('grid_refs')
+            if not isinstance(refs, list) or not refs:
+                continue
+            seg_refs = [r for r in refs if isinstance(r, str) and '/' in r]
+            if not seg_refs:
+                continue  # point-type element (footing/column) — ไม่มี span
+            lengths = [_segment_length(lookup, r) for r in seg_refs]
+            resolved = [l for l in lengths if l is not None]
+            if not resolved:
+                continue
+            flags = el.setdefault('confidence_flags', [])
+            if any(l is None for l in lengths) and 'contains_unresolved_grid_endpoint' not in flags:
+                flags.append('contains_unresolved_grid_endpoint')
+            if max(resolved) - min(resolved) > 0.15:  # ต่างกันเกิน 15 ซม. = ไม่ uniform พอจะสรุปค่าเดียว
+                if 'grid_segments_inconsistent_span' not in flags:
+                    flags.append('grid_segments_inconsistent_span')
+                continue
+            el['span_length_m'] = round(sum(resolved) / len(resolved), 2)
+            el['span_source'] = 'grid_table'
+    return ext
 
 def extract_structural(img_path):
     b64, size = b64file(img_path)
     data, usage = call(MODEL_STRUCT, STRUCT_SYSTEM, STRUCT_USER, b64, 2048, pixels=size)
+    data = apply_grid_spans(data)
     return data, usage
 
 # ════════════════════════════════════════════════════════════════════
@@ -188,7 +314,7 @@ def ensure_document_map(folder, toc, anchors):
 
 def count_elements(ext):
     if not isinstance(ext, dict): return 0
-    return sum(len(ext.get(k, []) or []) for k in ('plan', 'schedule', 'section'))
+    return sum(len(v.get('elements', []) or []) for v in (ext.get('views') or []) if isinstance(v, dict))
 
 def count_boq_items(ext):
     if not isinstance(ext, dict): return 0
@@ -226,13 +352,15 @@ def main():
             try:
                 ext, usage = extract_structural(imgs[k])
                 total_tokens += usage.get('total_tokens', 0)
-                pat = ext.get('pattern'); nm = ext.get('sheet_name'); ne = count_elements(ext)
+                nm = ext.get('sheet_name'); ne = count_elements(ext)
+                views = ext.get('views') or []
+                pats = [v.get('pattern') for v in views if isinstance(v, dict)]
                 (out_dir / (imgs[k].stem + '.json')).write_text(
                     json.dumps({"png": k, **info, "extraction": ext}, ensure_ascii=False, indent=2),
                     encoding='utf-8')
-                row.update({"action": "extracted", "sheet_name": nm, "pattern": pat, "elements": ne,
-                            "needs_review": True})
-                print(f"'{nm}' pattern={pat} → {ne} elements")
+                row.update({"action": "extracted", "sheet_name": nm, "views": len(views),
+                            "patterns": pats, "elements": ne, "needs_review": True})
+                print(f"'{nm}' views={len(views)} {pats} → {ne} elements")
             except Exception as e:
                 row.update({"action": "error", "error": str(e)[:120]})
                 print(f"❌ {type(e).__name__}: {str(e)[:80]}")
