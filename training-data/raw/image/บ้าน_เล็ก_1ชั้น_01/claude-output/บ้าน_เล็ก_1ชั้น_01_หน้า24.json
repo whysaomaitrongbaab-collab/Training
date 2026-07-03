@@ -1,0 +1,123 @@
+{
+  "png": "24",
+  "doc_page": 22,
+  "discipline": "structural",
+  "extract": true,
+  "extraction": {
+    "sheet_code": "S-07",
+    "sheet_name": "รายละเอียดการวางพื้น",
+    "pattern": "section",
+    "section": [
+      {
+        "element_id": "SP_interior",
+        "element_type": "slab",
+        "width_mm": 1000,
+        "height_mm": 400,
+        "main_bar_count": 2,
+        "main_bar_dia_mm": 9,
+        "main_bar_type": "RB",
+        "stirrup_dia_mm": 6,
+        "stirrup_type": "RB",
+        "stirrup_spacing_mm": 200,
+        "concrete_grade": "fc240",
+        "steel_grade": "SD40",
+        "confidence_score": 0.65,
+        "confidence_flags": [
+          "split_from_qwens_single_SP_element_this_is_the_ลักษณะการวางพื้น_SP_ภายใน_condition_specifically",
+          "corrected_main_bar_dia_20_to_9_no_20mm_callout_exists_anywhere_on_this_sheet_qwen_appears_to_have_invented_it",
+          "corrected_main_bar_type_DB_to_RB_drawing_reads_1+1-O9mm_a_hooked_anchor_bar_tying_the_precast_topping_into_the_supporting_beam_not_a_typical_flexural_main_bar",
+          "corrected_height_mm_40_to_400_unit_conversion_bug_the_drawing_shows_0.40m_which_is_400mm_not_40mm",
+          "schema_mismatch_note_main_bar_stirrup_fields_are_a_forced_fit_for_this_connection-detail_sheet_type_main_bar=the_1+1-O9mm_anchor_bar_tying_into_beam_stirrup=the_O6mm@0.20_เสริมพิเศษ_extra_reinforcement_in_the_topping_recommend_human_reviewer_confirm_this_mapping"
+        ]
+      },
+      {
+        "element_id": "SP_at_S_transition",
+        "element_type": "slab",
+        "width_mm": 1000,
+        "height_mm": 400,
+        "main_bar_count": 2,
+        "main_bar_dia_mm": 9,
+        "main_bar_type": "RB",
+        "stirrup_dia_mm": 6,
+        "stirrup_type": "RB",
+        "stirrup_spacing_mm": 200,
+        "concrete_grade": "fc240",
+        "steel_grade": "SD40",
+        "confidence_score": 0.65,
+        "confidence_flags": [
+          "split_from_qwens_single_S_element_this_is_the_ลักษณะการวางพื้น_SP_บริเวณพื้น_S_transition_condition_specifically",
+          "corrected_main_bar_dia_20_to_9",
+          "corrected_main_bar_type_DB_to_RB",
+          "corrected_height_mm_40_to_400_same_unit_bug_as_SP_interior",
+          "schema_mismatch_note_same_as_SP_interior_see_above"
+        ]
+      },
+      {
+        "element_id": "SP_bathroom",
+        "element_type": "slab",
+        "width_mm": 1000,
+        "height_mm": 400,
+        "main_bar_count": 2,
+        "main_bar_dia_mm": 9,
+        "main_bar_type": "RB",
+        "stirrup_dia_mm": 6,
+        "stirrup_type": "RB",
+        "stirrup_spacing_mm": 200,
+        "concrete_grade": "fc240",
+        "steel_grade": "SD40",
+        "confidence_score": 0.6,
+        "confidence_flags": [
+          "new_element_qwen_never_captured_this_condition_at_all_it_was_merged_away_inside_the_generic_SP_element",
+          "this_condition_has_an_extra_level_offset_note_on_the_drawing_ระดับพื้นห้องน้ำ_0.10m_lower_than_the_main_floor_level_ระดับพื้นห้องน้ำ_not_represented_by_any_field_in_the_current_schema_flagging_for_reviewer_rather_than_inventing_a_field",
+          "rebar_callouts_1+1-O9mm_and_O6mm@0.20_เสริมพิเศษ_look_the_same_as_the_other_SP_conditions_but_worth_reviewer_double-check_since_bathroom_waterproofing_details_often_differ"
+        ]
+      },
+      {
+        "element_id": "SP_at_beam_edge",
+        "element_type": "slab",
+        "width_mm": null,
+        "height_mm": 400,
+        "main_bar_count": 2,
+        "main_bar_dia_mm": 9,
+        "main_bar_type": "RB",
+        "stirrup_dia_mm": null,
+        "stirrup_type": "",
+        "stirrup_spacing_mm": null,
+        "concrete_grade": "fc240",
+        "steel_grade": "SD40",
+        "confidence_score": 0.4,
+        "confidence_flags": [
+          "new_element_qwen_never_captured_this_condition_ลักษณะการวางพื้น_SP_บริเวณริมคาน",
+          "this_detail_drawing_shows_fewer_dimension_callouts_than_the_other_4_details_(no_1.00m_span_label_visible)_left_width_mm_stirrup_fields_null_rather_than_guessing",
+          "needs_zoom_verification_lowest_confidence_of_the_5_SP/S_elements_on_this_sheet"
+        ]
+      },
+      {
+        "element_id": "S_above_beam",
+        "element_type": "slab",
+        "width_mm": null,
+        "height_mm": 400,
+        "main_bar_count": 2,
+        "main_bar_dia_mm": 9,
+        "main_bar_type": "RB",
+        "stirrup_dia_mm": 6,
+        "stirrup_type": "RB",
+        "stirrup_spacing_mm": 200,
+        "concrete_grade": "fc240",
+        "steel_grade": "SD40",
+        "confidence_score": 0.55,
+        "confidence_flags": [
+          "new_element_qwen_never_captured_this_condition_ลักษณะพื้น_S_ระดับสูงกว่าหลังคาน_(floor_level_higher_than_the_beam_top)",
+          "distinct_from_the_other_4_because_the_slab_S_sits_above_the_beam_rather_than_flush_with_or_below_it_this_is_a_level/geometry_distinction_not_a_rebar_distinction",
+          "needs_zoom_verification"
+        ]
+      }
+    ],
+    "warnings": [
+      "This sheet contains 5 distinct connection-detail drawings, each with its own underlined caption naming a different installation condition: SP ภายใน (interior), SP บริเวณพื้น S (transition to S), SP บริเวณพื้นห้องน้ำ (bathroom), SP บริเวณริมคาน (at beam edge), S ระดับสูงกว่าหลังคาน (S above beam level). Previous draft of this file collapsed these into 2 generic elements (SP, S) — per user decision 2026-07-02, now split into 5 separate element_id entries so each installation condition can be reviewed/labeled independently, especially the bathroom condition which likely has different waterproofing requirements not captured by this schema.",
+      "Also fixed a unit-conversion bug carried over from the merged version: height_mm was 40 (should be 400 — the drawing shows a 0.40m dimension, and 0.40m = 400mm not 40mm).",
+      "SP_at_beam_edge and S_above_beam have lower confidence than the other 3 — their detail drawings have fewer visible dimension callouts at the resolution this review was done at; some fields left null rather than guessed.",
+      "Recommend a human reviewer with domain knowledge confirm whether 'main_bar'/'stirrup' is the right field mapping for these precast-plank-to-beam anchor details (the beam/column section schema wasn't designed for this connection-detail sheet type), and whether the bathroom-specific level offset (0.10m) needs its own schema field."
+    ]
+  }
+}

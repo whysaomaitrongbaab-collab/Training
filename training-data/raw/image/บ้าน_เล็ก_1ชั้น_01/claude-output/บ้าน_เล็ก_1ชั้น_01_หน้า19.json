@@ -1,0 +1,115 @@
+{
+  "png": "19",
+  "doc_page": 17,
+  "discipline": "structural",
+  "extract": true,
+  "extraction": {
+    "sheet_code": "S-02",
+    "sheet_name": "แปลนฐานรากและฐานรากเสาเข็ม",
+    "pattern": "plan",
+    "plan": [
+      {
+        "element_id": "F1,C1",
+        "element_type": "footing",
+        "count": 11,
+        "grid_refs": [
+          "D-1", "D-2", "D-3",
+          "C-1", "C-3",
+          "B-1", "B-2", "B-3",
+          "A-1", "A-2", "A-3"
+        ],
+        "span_length_m": null,
+        "confidence_score": 0.85,
+        "confidence_flags": ["qwen_missed_D_row_entirely"]
+      },
+      {
+        "element_id": "F2,C1",
+        "element_type": "footing",
+        "count": 1,
+        "grid_refs": ["C-2"],
+        "span_length_m": null,
+        "confidence_score": 0.85,
+        "confidence_flags": ["qwen_did_not_report_this_element_separately"]
+      },
+      {
+        "element_id": "B2",
+        "element_type": "beam",
+        "count": 2,
+        "grid_refs": ["B-2", "C-2"],
+        "span_length_m": 7.0,
+        "confidence_score": 0.6,
+        "confidence_flags": ["needs_zoom_verification", "beam_plan_overlaps_room_grid_hard_to_read_at_current_resolution"]
+      },
+      {
+        "element_id": "B3",
+        "element_type": "beam",
+        "count": 2,
+        "grid_refs": ["B-3", "C-3"],
+        "span_length_m": 4.0,
+        "confidence_score": 0.6,
+        "confidence_flags": ["needs_zoom_verification"]
+      },
+      {
+        "element_id": "B4",
+        "element_type": "beam",
+        "count": 4,
+        "grid_refs": ["A-2", "B-2", "C-2", "D-2"],
+        "span_length_m": 4.0,
+        "confidence_score": 0.6,
+        "confidence_flags": ["needs_zoom_verification"]
+      },
+      {
+        "element_id": "B5",
+        "element_type": "beam",
+        "count": 2,
+        "grid_refs": ["B-2", "C-2"],
+        "span_length_m": 3.0,
+        "confidence_score": 0.6,
+        "confidence_flags": ["needs_zoom_verification"]
+      },
+      {
+        "element_id": "B4X",
+        "element_type": "beam",
+        "count": 2,
+        "grid_refs": ["B-3", "C-3"],
+        "span_length_m": 3.0,
+        "confidence_score": 0.6,
+        "confidence_flags": ["needs_zoom_verification"]
+      },
+      {
+        "element_id": "B3X",
+        "element_type": "beam",
+        "count": 2,
+        "grid_refs": ["B-3", "C-3"],
+        "span_length_m": 3.0,
+        "confidence_score": 0.6,
+        "confidence_flags": ["needs_zoom_verification"]
+      },
+      {
+        "element_id": "B6",
+        "element_type": "beam",
+        "count": null,
+        "grid_refs": ["A-1", "A-2", "A-3"],
+        "span_length_m": null,
+        "confidence_score": 0.3,
+        "confidence_flags": ["qwen_omitted_this_element_entirely", "visible_at_bottom_of_beam_plan_but_dimensions_unclear_at_current_resolution"]
+      },
+      {
+        "element_id": "S1",
+        "element_type": "slab",
+        "count": null,
+        "grid_refs": [],
+        "span_length_m": null,
+        "confidence_score": 0.2,
+        "confidence_flags": ["qwen_merged_multiple_distinct_slab_labels_SO_SI_ST_into_single_S1_guess", "each_room_cell_has_its_own_circled_slab_label_SO_or_SI_or_ST_not_a_single_uniform_slab", "needs_zoom_verification_before_trusting_any_slab_element_on_this_sheet"]
+      }
+    ],
+    "schedule": [],
+    "section": [],
+    "notes": {},
+    "warnings": [
+      "No explicit rebar details or material specs visible on this sheet; may require cross-reference with other sheets.",
+      "Beam plan (right half of sheet) has small overlapping labels (B2/B3/B4/B5/B4X/B3X/B6 plus circled slab codes SO/SI/ST) that are not reliably legible at the resolution this review was done at. The footing plan (left half) is much clearer and the corrections above for F1,C1/F2,C1 are high-confidence; the beam/slab list above is largely carried over from Qwen's guess with low-confidence flags added, not independently re-verified."
+    ]
+  }
+}
