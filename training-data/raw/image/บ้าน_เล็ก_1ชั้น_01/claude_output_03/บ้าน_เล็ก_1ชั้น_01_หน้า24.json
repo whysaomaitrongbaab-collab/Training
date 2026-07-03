@@ -1,0 +1,107 @@
+{
+  "png": "24",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า24.png",
+  "read_by": "Claude — direct independent read (round 3). อ่านจากภาพต้นฉบับตรงๆ ไม่ได้ดู qwen-output/claude_output_01 ระหว่างอ่าน",
+  "schema_note": "หน้านี้ไม่มี pattern=plan เลย ไม่มี grid_source. หน้านี้คือกรณี 'sub-variant schema question' ที่ _inventory_pass_pilot.md (round 1) เคยถามค้างไว้ — แก้ด้วยการให้แต่ละเงื่อนไขการติดตั้ง (caption ขีดเส้นใต้) เป็นคนละ view ไปเลย (5 views) แทนการยัดรวมเป็น element_id เดียว 'SP'/'S' ตามที่คุยกันไว้ตอนออกแบบ views[]",
+  "extraction": {
+    "sheet_code": "S-07",
+    "sheet_name": "ขยายการวางพื้นสำเร็จรูป SP แผ่นที่ 1/2",
+    "views": [
+      {
+        "view_title": "ลักษณะการวางพื้น SP ภายใน",
+        "pattern": "section",
+        "elements": [
+          {
+            "element_id": "SP_interior", "element_type": "slab",
+            "width_mm": null, "height_mm": null,
+            "main_bar_count": 2, "main_bar_dia_mm": 9, "main_bar_type": "RB",
+            "stirrup_dia_mm": 6, "stirrup_type": "RB", "stirrup_spacing_mm": 200,
+            "concrete_grade": null, "steel_grade": null,
+            "confidence_score": 0.55,
+            "confidence_flags": [
+              "SCHEMA_MISMATCH_WARNING: field เหล่านี้ยืมมาใช้แบบไม่ตรงความหมายเดิม — main_bar_count/dia/type คือเหล็กหนีบ/หมุด hook '1+1Ø9มม.' ที่ลงไปในคาน ไม่ใช่เหล็กหลักตามยาวของคาน; stirrup_dia/spacing คือ 'เสริมพิเศษØ6มม.@0.20ม.' ที่เป็นตะแกรงเหล็กใน topping ไม่ใช่ปลอกคาน",
+              "ระยะซ้อนทับ/ฝัง 'ไม่น้อยกว่า 0.05ม.' (2 จุด ซ้าย-ขวา) และ dimension '1.00' x2 ไม่มี field รองรับ — ดู warnings",
+              "0.40 คือความลึกคานอ้างอิงในภาพ ไม่ใช่มิติของ SP เอง ไม่ได้ใส่ใน width/height_mm"
+            ]
+          }
+        ]
+      },
+      {
+        "view_title": "ลักษณะการวางพื้น SP บริเวณพื้น S",
+        "pattern": "section",
+        "elements": [
+          {
+            "element_id": "SP_at_S_slab_edge", "element_type": "slab",
+            "width_mm": null, "height_mm": null,
+            "main_bar_count": 2, "main_bar_dia_mm": 9, "main_bar_type": "RB",
+            "stirrup_dia_mm": 6, "stirrup_type": "RB", "stirrup_spacing_mm": 200,
+            "concrete_grade": null, "steel_grade": null,
+            "confidence_score": 0.55,
+            "confidence_flags": [
+              "SCHEMA_MISMATCH_WARNING เหมือน view ก่อนหน้า — ดู view 'SP_interior'",
+              "จุดต่อระหว่าง SP (ซ้าย) กับพื้น S (ขวา) — dimension '1.00' + '0.40' แยก 2 ช่วงบนหัวกระดาษ ไม่ชัดว่าหมายถึงอะไรแน่ชัด 100%"
+            ]
+          }
+        ]
+      },
+      {
+        "view_title": "ลักษณะการวางพื้น SP บริเวณพื้นห้องน้ำ",
+        "pattern": "section",
+        "elements": [
+          {
+            "element_id": "SP_bathroom_floor", "element_type": "slab",
+            "width_mm": null, "height_mm": null,
+            "main_bar_count": 2, "main_bar_dia_mm": 9, "main_bar_type": "RB",
+            "stirrup_dia_mm": 6, "stirrup_type": "RB", "stirrup_spacing_mm": 200,
+            "concrete_grade": null, "steel_grade": null,
+            "confidence_score": 0.55,
+            "confidence_flags": [
+              "SCHEMA_MISMATCH_WARNING เหมือน view แรก — ดู view 'SP_interior'",
+              "จุดเด่นของ view นี้: มีระยะ '0.10' เพิ่ม กำกับ 'ระดับพื้นท้องน้ำ' (สามเหลี่ยม) — พื้นห้องน้ำลดระดับลง 0.10ม. จากพื้น SP ปกติ ไม่มี field รองรับ 'ระดับลด/step' ในschema ปัจจุบัน"
+            ]
+          }
+        ]
+      },
+      {
+        "view_title": "ลักษณะการวางพื้น SP บริเวณริมคาน",
+        "pattern": "section",
+        "elements": [
+          {
+            "element_id": "SP_at_beam_edge", "element_type": "slab",
+            "width_mm": null, "height_mm": null,
+            "main_bar_count": null, "main_bar_dia_mm": null, "main_bar_type": null,
+            "stirrup_dia_mm": null, "stirrup_type": null, "stirrup_spacing_mm": null,
+            "concrete_grade": null, "steel_grade": null,
+            "confidence_score": 0.7,
+            "confidence_flags": [
+              "box นี้ไม่มี callout เหล็ก/dimension ใดๆ เลย — มีแค่ label 'SP','SP' และ 'คอนกรีต TOPPING' + เครื่องหมาย '0.05' (ความหนา topping) เท่านั้น เป็นเงื่อนไขที่ง่ายกว่า 4 view อื่นจริงๆ ไม่ใช่ผมพลาด"
+            ]
+          }
+        ]
+      },
+      {
+        "view_title": "ลักษณะพื้น S ระดับสูงกว่าหลังคาน",
+        "pattern": "section",
+        "elements": [
+          {
+            "element_id": "S_elevated_above_beam_back", "element_type": "slab",
+            "width_mm": null, "height_mm": null,
+            "main_bar_count": 2, "main_bar_dia_mm": 9, "main_bar_type": "RB",
+            "stirrup_dia_mm": null, "stirrup_type": null, "stirrup_spacing_mm": null,
+            "concrete_grade": null, "steel_grade": null,
+            "confidence_score": 0.55,
+            "confidence_flags": [
+              "S = พื้นหล่อในที่ (ไม่ใช่ SP สำเร็จรูป) วางสูงกว่าหลังคาน — เหมือน view อื่นมีเหล็กหนีบ '1+1Ø9มม.' แต่ box นี้ไม่มี callout 'เสริมพิเศษ' (ตะแกรง topping) เหมือน 3 view แรก เลยเว้น stirrup fields เป็น null แทนการเดา",
+              "0.40 คือความลึกคานอ้างอิง ไม่ใช่มิติของพื้น S เอง"
+            ]
+          }
+        ]
+      }
+    ],
+    "warnings": [
+      "หน้านี้ทั้งหน้าเป็นรายละเอียดการติดตั้งพื้นสำเร็จรูป (SP) เทียบกับพื้นหล่อในที่ (S) ไม่ใช่ rebar schedule ของ beam/column — schema ปัจจุบัน (width/height/main_bar/stirrup) ออกแบบมาสำหรับคาน/เสาเป็นหลัก ทำให้ field หลายตัวต้อง 'ยืมความหมาย' มาใช้ (ดู confidence_flags ทุก element) ถ้าจะใช้ข้อมูลหน้านี้จริงจังเพื่อ BOQ ควรออกแบบ field ใหม่เฉพาะสำหรับ slab-installation detail (เช่น dowel_bar_count/dia, topping_mesh_dia/spacing, topping_thickness_min_mm, level_step_mm) แยกจาก beam/column schema — ยังไม่ได้ทำตอนนี้ รอ user ตัดสินใจ",
+      "มีหมายเหตุท้ายหน้า (เครื่องหมาย *): 'หรือเป็นไปตามข้อกำหนดการวางพื้นสำเร็จรูปของผู้ผลิตโดยต้องไม่น้อยกว่า 0.05 ม.' — เป็น footnote อธิบายเครื่องหมาย * ที่กำกับ dimension 'ไม่น้อยกว่า 0.05ม.' ใน 3 view แรก ไม่ใช่ 'notes' pattern แบบ concrete_strength/steel_grade เลยไม่ได้สร้าง view แยกให้ (schema notes เดิมไม่ตรงกับเนื้อหานี้)",
+      "เลขแผ่น 'แผนที่ 1/2' — มีหน้าคู่กัน (2/2) ที่ยังไม่ได้อ่าน อาจมีเงื่อนไขการวางพื้นเพิ่มเติมอีก"
+    ]
+  }
+}

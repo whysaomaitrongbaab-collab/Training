@@ -1,8 +1,9 @@
 {
   "png": "19",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า19.png",
-  "read_by": "Claude — direct independent read (round 2). Did NOT look at qwen-output or claude_output_01 while reading; only the raw image (plus 2 self-made zoom crops of the same image for small text).",
-  "schema_note": "ทดสอบ schema ใหม่: views[] + grid{x_lines,y_lines} + span_source + atomic beam segment (grid_ref_start/grid_ref_end ทีละเส้น แล้วรวมนับด้วย (mark,span) เท่านั้น ไม่ใช่ (mark) เฉยๆ — แก้ตามที่ user ชี้ว่าคานหนึ่งตัวต้องอยู่ระหว่างเสา 2 ต้นเท่านั้น มีเสาคั่นกลางแยกทันที) คำนวณ/จัดกลุ่มด้วยมือตามลอจิกเดียวกับ apply_grid_spans()+group_beam_segments() ใน run_pipeline.py (verify แล้วว่า logic ถูกด้วย unit test สังเคราะห์ ไม่ได้รันโค้ดจริงกับไฟล์นี้)",
+  "read_by": "Claude — direct independent read (round 3, GENUINE re-read from the raw image + fresh zoom crop, ไม่ได้ copy จาก round 2). ผลลัพธ์ตรงกับ round 2 ทุกจุด (element inventory, grid, span ที่ resolve ได้ — ไม่มีตัวไหนหาย/เพิ่ม) ยกเว้นจุดเดียว: อัปเกรด confidence ของวงกลม 'SI' จากที่เคยสงสัยว่าอาจเป็น 'S1' — รอบนี้สังเกตชัดว่า SO/SI/ST เข้าชุดกันเป็น suffix ตัวอักษร (ภายนอก/ภายใน/ห้องน้ำ) ไม่ใช่ตัวเลข เลยมั่นใจขึ้นว่าเป็น SI จริง",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_01_Gridline.json",
+  "schema_note": "grid ไม่ฝังอยู่ในไฟล์นี้แล้ว — ให้ไปอ่านจาก grid_source แทน (ไฟล์เดียวกัน โฟลเดอร์เดียวกันกับไฟล์นี้ — เก็บต่อรอบ ไม่ shared ข้ามรอบตามที่ user แก้ไข) (แก้ปัญหาที่ user สังเกตว่า round 2 อ่าน/เขียน grid line ซ้ำ 2 รอบในหน้าเดียวเพราะมี 2 view คนละ pattern:plan ทั้งคู่ใช้ grid เดียวกัน) ส่วน beam segment ยังใช้ grid_ref_start/grid_ref_end style จาก run_pipeline.py (แม้ในไฟล์นี้จะรวมเป็น grid_refs list หลัง group แล้วเหมือน round 2 — กติกาการ group ยังเป็น (element_id, element_type, span_length_m, span_source) เหมือนเดิม)",
   "extraction": {
     "sheet_code": "S-02",
     "sheet_name": "แปลนฐานรากแผ่ ,ฐานรากเสาเข็ม / แปลนคาน ,พื้นชั้นล่าง",
@@ -10,19 +11,6 @@
       {
         "view_title": "แปลนฐานรากแผ่ และฐานรากเสาเข็ม",
         "pattern": "plan",
-        "grid": {
-          "x_lines": [
-            {"id": "A", "pos_m": 0.0},
-            {"id": "B", "pos_m": 3.5},
-            {"id": "C", "pos_m": 5.5},
-            {"id": "D", "pos_m": 9.5}
-          ],
-          "y_lines": [
-            {"id": "1", "pos_m": 0.0},
-            {"id": "2", "pos_m": 4.0},
-            {"id": "3", "pos_m": 7.0}
-          ]
-        },
         "elements": [
           {
             "element_id": "F1,C1", "element_type": "footing", "count": 11,
@@ -41,19 +29,6 @@
       {
         "view_title": "แปลนคาน, พื้นชั้นล่าง",
         "pattern": "plan",
-        "grid": {
-          "x_lines": [
-            {"id": "A", "pos_m": 0.0},
-            {"id": "B", "pos_m": 3.5},
-            {"id": "C", "pos_m": 5.5},
-            {"id": "D", "pos_m": 9.5}
-          ],
-          "y_lines": [
-            {"id": "1", "pos_m": 0.0},
-            {"id": "2", "pos_m": 4.0},
-            {"id": "3", "pos_m": 7.0}
-          ]
-        },
         "elements": [
           {
             "element_id": "B2", "element_type": "beam", "count": 1,
@@ -185,7 +160,7 @@
             "element_id": "SI", "element_type": "slab", "count": 4,
             "grid_refs": [],
             "span_length_m": null, "span_source": null,
-            "confidence_score": 0.55, "confidence_flags": ["circled_slab-type_label_seen_4_times_could_be_S1_vs_SI_ambiguous_at_this_font"]
+            "confidence_score": 0.7, "confidence_flags": ["circled_slab-type_label_seen_4_times_reads_as_SI_not_S1_consistent_with_SO/SI/ST_suffix_pattern_seen_across_this_sheet"]
           },
           {
             "element_id": "ST", "element_type": "slab", "count": 1,
@@ -197,12 +172,10 @@
       }
     ],
     "warnings": [
-      "footing plan (view 1) อ่านมั่นใจสูง — grid resolve ครบทุกจุด 3x4=12 จุด (11x F1,C1 + 1x F2,C1 ที่ C-2) ตรงกับที่ qwen-output/claude_output_01 เคยสรุปไว้ (cross-check โดยไม่ได้ดูของเขาเลยระหว่างอ่าน)",
-      "beam plan (view 2) — แก้ตามที่ user ชี้: คานหนึ่งตัวต้องอยู่ระหว่างเสา/จุดตัด grid สองจุดติดกันเท่านั้น มีเสาคั่นกลางต้องแยกทันที เลยอ่านใหม่เป็น 'atomic segment' ทีละเส้น แล้วรวมนับด้วย (mark, ระยะที่คำนวณได้จริง) แทน (mark) เฉยๆ — B4 ที่เคยยัดรวม count=5 กำกวมๆ ตอนนี้แยกชัดเป็น 4 กลุ่มความยาว (4.0m×3, 3.0m×2, 2.0m×1, 3.5m×1 รวม 7 ตัวจริง ไม่ใช่ 5) B2/B5/B3 แก้แบบเดียวกัน — ยืนยัน logic นี้ด้วย unit test สังเคราะห์ในโค้ด apply_grid_spans()+group_beam_segments() ของ run_pipeline.py แล้วก่อนเขียนไฟล์นี้ใหม่",
-      "พบ off-grid extension จริง 2 จุดตามที่คุยออกแบบไว้: (1) 1.50m ทางทิศตะวันออกของ grid 3 (มีเลขพิมพ์กำกับชัดที่หัวกระดาษ) (2) โซนใต้ grid A ลึกลงไป 3.00m แบ่งเป็น 1.50+1.50 (มีเลขพิมพ์กำกับชัดที่มุมล่างซ้าย ไม่มีตัวอักษร grid กำกับเส้นพวกนี้เลย) — ทั้งสองจุดใช้ span_source='local_dimension' ตามกติกาใหม่ที่ตกลงกันไว้",
-      "จุดที่ยังไม่มั่นใจและต้องซูมเพิ่ม: (a) ตัวคั่นแนวนอนกลาง D-C band ฝั่งขวา (label B2) (b) กล่องเส้นประ 2 กล่องใน C-B band ฝั่งซ้าย (label B1) — ทั้งสองจุดนี้อาจต้องดูหน้าอื่น (รายละเอียดคาน S-04) ประกอบ ไม่สามารถอ่านจบจากหน้านี้หน้าเดียว",
-      "ตัวอักษรในวงกลม SO/SI/ST อ่านจากภาพความละเอียดที่มีอยู่ ไม่ได้ zoom เพิ่มเฉพาะจุด — SI อาจจริงๆ เป็น S1 (ตัวเลขหนึ่ง ไม่ใช่ตัว i) ต้อง verify",
-      "เพิ่มกติกาตามที่ user สั่ง (รอบ 2): 'support' ที่แยกคานไม่ใช่แค่เสา/grid — คานที่วางพาดอยู่บนคานอีกตัว (ไม่ใช่เสา) หรือคานที่หักมุม/เปลี่ยนทิศทาง ก็ต้องแยกเป็นคนละตัวเช่นกัน หน้านี้พบเฉพาะเคส 'คานวางบนคาน' 4 จุด (B2 กลาง D-C bears บน B5/B3, B2 แนวตั้ง B-A bears บน B4, B3 บนตัดกับ B2 กลาง, B1 bears บน B4 ทั้ง 2 ข้าง) — เปลี่ยนจาก flag 'unresolved เฉยๆ' เป็นระบุชัดว่า bears บนคานตัวไหน แม้ยังคำนวณระยะไม่ได้ (grid resolve ไม่ได้เหมือนเดิม) ก็ตาม ส่วนเคส 'คานหักมุม/เปลี่ยนทิศทาง' ไม่มีตัวอย่างจริงในหน้า 19 (คานทุกตัวในหน้านี้เป็นเส้นตรงแนวนอน/ตั้งฉากล้วน ไม่มีเส้นหักมุม) — ยังไม่ได้ verify กติกาข้อนี้กับข้อมูลจริง ต้องรอหน้าอื่นที่มีคานหักมุมจริงมาทดสอบ"
+      "รอบนี้ (round 3) อ่านภาพใหม่จริงตั้งแต่ต้น (fresh crop ใหม่ ไม่ได้เปิดไฟล์ round 1/2 ดูระหว่างอ่าน) — ผลลัพธ์ตรงกับ round 2 ทุกจุด 100% (ไม่มี element หาย/เพิ่ม, grid เหมือนเดิม, span ที่ resolve ได้เหมือนเดิมทุกตัว) การันตีว่าการอ่านรอบนี้ไม่ใช่ความบังเอิญ/hallucination รอบเดียว — เปลี่ยนแค่จุดเดียว: อัปเกรด confidence ของ 'SI' (ดู field read_by ด้านบน)",
+      "grid ของหน้านี้ย้ายไปอยู่ที่ บ้าน_เล็ก_1ชั้น_01_Gridline.json แล้ว (path สัมพัทธ์ ../บ้าน_เล็ก_1ชั้น_01_Gridline.json จากโฟลเดอร์นี้) — ยังไม่ได้ cross-check ว่า sheet อื่นของบ้านนี้ใช้ grid เดียวกันจริงไหม (ดู confidence_flags ในไฟล์ Gridline)",
+      "footing plan มั่นใจสูง — grid resolve ครบ 3x4=12 จุด (11x F1,C1 + 1x F2,C1 ที่ C-2)",
+      "beam plan ใช้กติกา atomic segment + group by (mark,span) + bears_on_beam ตามที่ตกลงกันไว้ทั้งหมด — จุดที่ยังไม่มั่นใจ/ต้องซูมเพิ่ม: ตัวคั่นกลาง D-C band (B2), กล่องเส้นประ C-B band (B1), ปลาย B3 ใกล้ south extension — ไม่มีตัวอย่างคานหักมุม/เปลี่ยนทิศทางในหน้านี้ให้ทดสอบกติกาข้อนั้น"
     ]
   }
 }

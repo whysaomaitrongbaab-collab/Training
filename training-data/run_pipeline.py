@@ -108,22 +108,49 @@ STEP 4 — for each "plan" view ONLY: read the grid dimension chain (the row of 
   a coordinate table by accumulating these spacings from one reference line (pos_m=0). The grid is
   normally shared by every plan view on the same sheet — read it once and reuse it.
 STEP 5 — extract each view's elements with the matching block below. Fill focus by element type the view
-  is about. For LINEAR elements (beam) in a "plan" view, grid_refs is a list of "X-Y/X2-Y2" segment
-  strings, one per occurrence (unchanged convention). Span length rules, in order of trust:
-    (a) both ends of a segment are grid intersections → leave span_length_m as your best estimate, it
-        will be recomputed exactly from the grid table afterward — do not agonize over precision here.
-    (b) one or BOTH ends are not grid intersections (cantilever, secondary beam framing between two
-        other beams, ends mid-bay, etc.) but a dimension number is printed directly along/near that
-        specific beam → write the unresolved side(s) as "?" (e.g. "X-Y/?" or, if neither side is a grid
-        point, "?/?"), read the printed number into span_length_m yourself, and set
-        "span_source":"local_dimension" (this value will NOT be overwritten). This is the normal case for
-        any beam whose span isn't a standard grid module — Thai drafting convention always prints an
+  is about.
+
+  For LINEAR elements (beam) in a "plan" view — READ THIS CAREFULLY, it is the #1 source of mistakes:
+  A physical beam is always ONE STRAIGHT MEMBER running between exactly TWO ADJACENT supports. A
+  "support" is any of the following — not just a column:
+    - a grid intersection / a column
+    - the point where this beam BEARS ON (frames into / rests on top of) ANOTHER BEAM instead of a
+      column — very common for secondary beams; that other beam is still a real support even though it
+      isn't a named grid point
+    - a CHANGE OF DIRECTION — if the drawn line bends or turns a corner, that corner is a break point.
+      A beam cannot be diagonal-then-straight or turn a corner and still be "one" member; the two straight
+      runs on either side of the bend are two separate beams even if they share one mark/label.
+  If a beam mark is drawn/labelled continuously across ANY of the above (an intermediate grid
+  intersection/column, a point where it crosses/lands on another beam, or a corner), that is NOT one
+  beam — it is two (or more) separate physical beams that happen to share a mark name. You MUST split it
+  into separate segment entries at every such point. Never let one "grid_ref_start"/"grid_ref_end" pair
+  skip over a support of any of these three kinds.
+  When an end is NOT a grid intersection because it bears on another beam, still set it to "?" (grid
+  can't resolve it), but add a confidence_flag like "bears_on_beam:B5" naming the beam it rests on — this
+  preserves the structural fact even when the exact coordinate isn't computable from the grid table.
+  Emit ONE array entry PER ATOMIC SEGMENT — do not group same-mark segments together yourself; grouping
+  identical (mark, span) pairs into a count happens automatically afterward, so just list every physical
+  segment you can see, one at a time, even if several end up with the same mark and the same length.
+  Segment entry shape: {"element_id":"ค1","element_type":"beam","grid_ref_start":"A-1","grid_ref_end":"A-2",
+  "span_length_m":4.0,"span_source":"grid_table","confidence_score":0.7,"confidence_flags":[]}
+  Span length rules, in order of trust:
+    (a) both grid_ref_start and grid_ref_end are grid intersections → leave span_length_m as your best
+        estimate, it will be recomputed exactly from the grid table afterward — do not agonize over
+        precision here, just get grid_ref_start/grid_ref_end right (this is the part that must not skip
+        over a support).
+    (b) one or BOTH ends are not grid intersections (cantilever, secondary beam framing between two other
+        beams, ends mid-bay, etc.) but a dimension number is printed directly along/near that specific
+        beam → set the unresolved side(s) to "?", read the printed number into span_length_m yourself, and
+        set "span_source":"local_dimension" (this value will NOT be overwritten). This is the normal case
+        for any beam whose span isn't a standard grid module — Thai drafting convention always prints an
         explicit dimension for it, so look for that number before giving up.
     (c) truly no dimension can be found anywhere near the beam (neither a grid endpoint nor a printed
-        number) → write "?" for the unresolved side(s), set span_length_m:null, "span_source":"unresolved"
-        — do NOT invent an endpoint or a length.
-  POINT-type elements (footing/column marks repeated across a plan) do not have a span — grid_refs just
-  lists every intersection where the mark occurs; leave span_length_m null for these.
+        number) → set the unresolved side(s) to "?", span_length_m:null, "span_source":"unresolved" — do
+        NOT invent an endpoint or a length.
+
+  POINT-type elements (footing/column marks repeated across a plan) do not have a span and are NOT
+  segments — keep the old shape: grid_refs is a list of every intersection where the mark occurs,
+  span_length_m stays null, no grid_ref_start/grid_ref_end.
 
 Return ONLY JSON — one entry in "views" per heading found in STEP 2, in the order they appear on the sheet:
 {
@@ -134,9 +161,13 @@ Return ONLY JSON — one entry in "views" per heading found in STEP 2, in the or
      "grid": {"x_lines":[{"id":"A","pos_m":0.0},{"id":"B","pos_m":4.0},{"id":"C","pos_m":7.0}],
               "y_lines":[{"id":"1","pos_m":0.0},{"id":"2","pos_m":3.0},{"id":"3","pos_m":6.0}]},
      "elements": [
-       {"element_id":"ค1","element_type":"beam","count":6,"grid_refs":["A-1/A-2","B-1/B-2"],
-        "span_length_m":3.0,"span_source":"grid_table","confidence_score":0.7,"confidence_flags":["count_uncertain"]},
-       {"element_id":"ค9","element_type":"beam","count":1,"grid_refs":["C-2/?"],
+       {"element_id":"ค1","element_type":"beam","grid_ref_start":"A-1","grid_ref_end":"A-2",
+        "span_length_m":3.0,"span_source":"grid_table","confidence_score":0.7,"confidence_flags":[]},
+       {"element_id":"ค1","element_type":"beam","grid_ref_start":"B-1","grid_ref_end":"B-2",
+        "span_length_m":3.0,"span_source":"grid_table","confidence_score":0.7,"confidence_flags":[]},
+       {"element_id":"ค1","element_type":"beam","grid_ref_start":"A-2","grid_ref_end":"A-3",
+        "span_length_m":4.0,"span_source":"grid_table","confidence_score":0.7,"confidence_flags":["count_uncertain"]},
+       {"element_id":"ค9","element_type":"beam","grid_ref_start":"C-2","grid_ref_end":"?",
         "span_length_m":1.5,"span_source":"local_dimension","confidence_score":0.6,"confidence_flags":["cantilever"]},
        {"element_id":"F1","element_type":"footing","count":3,"grid_refs":["A-1","A-2","A-3"],
         "span_length_m":null,"confidence_score":0.85,"confidence_flags":[]}
@@ -170,8 +201,13 @@ Return ONLY JSON — one entry in "views" per heading found in STEP 2, in the or
 # ── grid-based span resolution — คำนวณด้วยโค้ด ไม่ใช้ตัวเลขที่โมเดลกะเอง ──
 # เหตุผล: sheet_code/ตัวเลขที่พิมพ์ไว้จริงบนแบบ โมเดลอ่านแม่นกว่าประเมินระยะจาก geometry มาก
 # (ดู CLAUDE.md บทเรียนข้อ 1) เลยให้โมเดลแค่ "อ่าน" grid dimension chain ที่พิมพ์ไว้ แล้วคำนวณ span
-# จริงด้วย Python แทนการให้โมเดลกะระยะเอง — ทำเฉพาะกรณี resolve ได้ครบและตรงกันทุก occurrence
-# เท่านั้น ถ้าไม่ชัวร์ (ปลายไม่ resolve / ค่าที่ resolve ได้ไม่ตรงกัน) จะไม่แตะค่าเดิมของโมเดลเลย
+# จริงด้วย Python แทนการให้โมเดลกะระยะเอง
+#
+# โมเดลต้องส่ง "atomic segment" มาทีละเส้น (คานหนึ่งตัว = อยู่ระหว่างเสา/จุดตัด grid 2 จุดติดกันเท่านั้น
+# ถ้ามีเสาคั่นกลาง ต้องแยกเป็นคนละ segment) ห้ามให้โมเดลรวม/นับเองว่า mark เดียวกันมีกี่ตัว — โค้ดเป็น
+# คนคำนวณระยะจริงต่อ segment แล้วค่อย "รวมนับ" segment ที่ (mark, ระยะ) ตรงกันทีหลัง (group_beam_segments)
+# วิธีนี้แก้ปัญหาที่เจอจริง: mark เดียวกัน (เช่น B4) ยาวไม่เท่ากันหลายจุดในแบบเดียวกัน ถ้าปล่อยให้โมเดล
+# รวมเองจะได้ span ผิดๆ (เฉลี่ย/สับสน) ต้องแยกก่อนคำนวณ แล้วค่อยรวมด้วยเกณฑ์ (mark, ระยะ) ไม่ใช่ (mark) เฉยๆ
 _GRID_PT_RE = re.compile(r'^([A-Za-z]+)-(\d+)$')
 
 def _grid_lookup(grid):
@@ -193,22 +229,10 @@ def _resolve_grid_point(lookup, label):
         return None
     return (lookup[x_label], lookup[y_label])
 
-def _segment_length(lookup, seg):
-    """'A-1/A-2' -> ระยะ (m); None ถ้า resolve ไม่ได้ (รวม 'A-1/?' ที่ปลายไม่รู้ค่าตั้งใจ)"""
-    if not isinstance(seg, str) or '/' not in seg:
-        return None
-    a, b = seg.split('/', 1)
-    if a.strip() == '?' or b.strip() == '?':
-        return None
-    p1, p2 = _resolve_grid_point(lookup, a), _resolve_grid_point(lookup, b)
-    if p1 is None or p2 is None:
-        return None
-    return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
-
 def apply_grid_spans(ext):
-    """เติม/ยืนยัน span_length_m ของ element ที่ grid_refs เป็น segment string โดยคำนวณจาก
-    view['grid'] จริง — ข้าม element ที่ span_source='local_dimension' (โมเดลอ่านตัวเลขพิมพ์จริงมาแล้ว
-    ไม่ทับ) และข้ามกรณี resolve ไม่ครบ/ไม่ตรงกัน (ปล่อยค่าเดิม + ใส่ confidence_flags ให้คนตรวจ)"""
+    """เติม/ยืนยัน span_length_m ของทุก beam segment (grid_ref_start/grid_ref_end) โดยคำนวณจาก
+    view['grid'] จริง ทีละ segment — ข้าม element ที่ span_source='local_dimension' (โมเดลอ่านตัวเลข
+    พิมพ์จริงมาแล้ว ไม่ทับ) และข้ามกรณี resolve ไม่ได้ (ปล่อยค่าเดิม/null ที่โมเดลให้มา ไม่เดา)"""
     if not isinstance(ext, dict):
         return ext
     for view in (ext.get('views') or []):
@@ -218,33 +242,60 @@ def apply_grid_spans(ext):
         if not lookup:
             continue
         for el in (view.get('elements') or []):
-            if not isinstance(el, dict) or el.get('span_source') == 'local_dimension':
+            if not isinstance(el, dict) or 'grid_ref_start' not in el:
+                continue  # ไม่ใช่ beam segment (เช่น footing/column แบบจุด) — ข้าม
+            if el.get('span_source') == 'local_dimension':
                 continue
-            refs = el.get('grid_refs')
-            if not isinstance(refs, list) or not refs:
-                continue
-            seg_refs = [r for r in refs if isinstance(r, str) and '/' in r]
-            if not seg_refs:
-                continue  # point-type element (footing/column) — ไม่มี span
-            lengths = [_segment_length(lookup, r) for r in seg_refs]
-            resolved = [l for l in lengths if l is not None]
-            if not resolved:
-                continue
-            flags = el.setdefault('confidence_flags', [])
-            if any(l is None for l in lengths) and 'contains_unresolved_grid_endpoint' not in flags:
-                flags.append('contains_unresolved_grid_endpoint')
-            if max(resolved) - min(resolved) > 0.15:  # ต่างกันเกิน 15 ซม. = ไม่ uniform พอจะสรุปค่าเดียว
-                if 'grid_segments_inconsistent_span' not in flags:
-                    flags.append('grid_segments_inconsistent_span')
-                continue
-            el['span_length_m'] = round(sum(resolved) / len(resolved), 2)
+            p1 = _resolve_grid_point(lookup, el.get('grid_ref_start'))
+            p2 = _resolve_grid_point(lookup, el.get('grid_ref_end'))
+            if p1 is None or p2 is None:
+                continue  # resolve ไม่ได้ — ปล่อยค่าที่โมเดลให้มา (ควรเป็น null/unresolved ตาม prompt)
+            el['span_length_m'] = round(((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5, 2)
             el['span_source'] = 'grid_table'
+    return ext
+
+def group_beam_segments(ext):
+    """รวม beam segment ที่ element_id + span_length_m (หลังคำนวณจาก grid แล้ว) ตรงกันเป๊ะ เป็น 1
+    รายการ (count + grid_refs list) — รวมด้วย (mark, ระยะ) เท่านั้น ไม่ใช่ (mark) เฉยๆ ตามหลักที่ว่า
+    mark เดียวกันยาวไม่เท่ากันได้ ต้องนับแยกกันคนละความยาว ไม่เฉลี่ย ไม่ปนกัน"""
+    if not isinstance(ext, dict):
+        return ext
+    for view in (ext.get('views') or []):
+        if not isinstance(view, dict) or view.get('pattern') != 'plan':
+            continue
+        elements = view.get('elements') or []
+        segments = [e for e in elements if isinstance(e, dict) and 'grid_ref_start' in e]
+        others = [e for e in elements if not (isinstance(e, dict) and 'grid_ref_start' in e)]
+        groups, order = {}, []
+        for seg in segments:
+            span = seg.get('span_length_m')
+            key = (seg.get('element_id'), seg.get('element_type'),
+                   None if span is None else round(span, 2), seg.get('span_source'))
+            if key not in groups:
+                groups[key] = {
+                    "element_id": seg.get('element_id'), "element_type": seg.get('element_type'),
+                    "count": 0, "grid_refs": [], "span_length_m": span,
+                    "span_source": seg.get('span_source'),
+                    "confidence_score": seg.get('confidence_score'), "confidence_flags": [],
+                }
+                order.append(key)
+            g = groups[key]
+            g["count"] += 1
+            g["grid_refs"].append(f"{seg.get('grid_ref_start')}/{seg.get('grid_ref_end')}")
+            sc = seg.get('confidence_score')
+            if sc is not None:
+                g["confidence_score"] = sc if g["confidence_score"] is None else min(g["confidence_score"], sc)
+            for f in (seg.get('confidence_flags') or []):
+                if f not in g["confidence_flags"]:
+                    g["confidence_flags"].append(f)
+        view['elements'] = others + [groups[k] for k in order]
     return ext
 
 def extract_structural(img_path):
     b64, size = b64file(img_path)
     data, usage = call(MODEL_STRUCT, STRUCT_SYSTEM, STRUCT_USER, b64, 2048, pixels=size)
     data = apply_grid_spans(data)
+    data = group_beam_segments(data)
     return data, usage
 
 # ════════════════════════════════════════════════════════════════════
