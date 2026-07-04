@@ -1,0 +1,61 @@
+{
+  "png": "16",
+  "doc_page": 14,
+  "discipline": "architectural",
+  "sheet_code": "A-14",
+  "sheet_name": "แบบขยายรั้วแบบที่ 1",
+  "pattern": "section",
+  "element": [
+    {
+      "element_id": "FENCE-TYPE1-COLUMN-C1",
+      "element_type": "rc_column",
+      "description": "Fence column C1 — reinforced concrete post between fence bays",
+      "size_mm": "200x200",
+      "main_bar": "4-Ø12",
+      "stirrup": "STR Ø6 @150",
+      "cap": "F (post cap, detail not separately dimensioned)",
+      "max_bay_spacing_mm": 3000,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "FENCE-TYPE1-GROUND-BEAM-GB",
+      "element_type": "rc_ground_beam",
+      "description": "Ground beam (คานคอดิน) tying fence columns together at grade",
+      "reinforcement_top": "2-Ø9",
+      "stirrup": "STR:Ø6@150",
+      "reinforcement_bottom_and_bent": "2-Ø9+1Ø9 BENT L/5",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "FENCE-TYPE1-INFILL",
+      "element_type": "fence_picket_infill",
+      "description": "Steel picket infill between columns",
+      "picket_spec": "เหล็ก Ø3/4\"x3/4\" LG. ปลายตัด 45 องศา @15ซม (3/4in x 3/4in square steel tube pickets, ends cut 45°, spaced @150mm)",
+      "overall_height_mm": 2000,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "FENCE-TYPE1-FOUNDATION",
+      "element_type": "pile_foundation",
+      "description": "Pile foundation under each fence column",
+      "pile_spec": "เสาเข็ม 2-0.15x0.15x4.00ม (2 precast concrete piles, 150x150mm section, 4.00m long, per column)",
+      "dowel": "DOWEL Ø12 ยาว 1.00ม เทคอนกรีตยึดกับเสาเข็ม (12mm dowel bar, 1.00m long, cast to bond pile cap to pile)",
+      "pile_cap_reinforcement": "3Ø9 top and bottom, STR:Ø6@100",
+      "lean_concrete": "คอนกรีตหยาบ (lean/blinding concrete at base)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "Sheet A-14 shows one fence design (Type 1) across plan (แปลน), front elevation (รูปด้านหน้า), column detail (ขยายเสา C1), ground beam detail (ขยายคานคอดิน GB), and section (รูปตัด) — kept as one file since it's a single fence type, not multiple distinct instances.",
+    "Although this is on an architectural sheet (A-08 to A-15 series), the fence contains genuine reinforced-concrete structural elements (column C1, ground beam GB, pile foundation) with legible rebar callouts — these are transcribed directly from clear printed text, so confidence is higher than most other pages in this range.",
+    "The overall vertical dimension chain on the front elevation (left margin: 2.00 / 1.35 / 0.90 / 0.40 / 0.30 / 0.10 / 0.10 / 0.20) was not fully decomposed into a single unambiguous zone-by-zone breakdown — treat the standalone overall_height_mm (2000mm fence height above grade) as the reliable figure and the full stack as needing zoom verification if finer breakdown is required.",
+    "Property-line offset note 'แนวเขตที่ดิน' with a 0.15m dimension appears in the section — the column sits approximately 150mm from the property line, per that callout.",
+    "See sibling file บ้าน_เล็ก_1ชั้น_01_หน้า17.json (A-15, Fence Type 2) for the alternate fence design, which reuses the same column C1 and ground beam GB specs but a different infill (concrete block panel instead of steel pickets)."
+  ]
+}

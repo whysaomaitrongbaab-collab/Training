@@ -1,0 +1,30 @@
+{
+  "png": "37",
+  "doc_page": 35,
+  "discipline": "mechanical",
+  "sheet_code": "M-01",
+  "sheet_name": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "pattern": "plan",
+  "view_title": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "drawing_no": "M 58108",
+  "scale": "1:100",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["A", "B", "C", "D"],
+  "grid_ref_is_free_text_not_grid_notation": true,
+  "rooms_shown": ["นอน 1", "นอน 2", "ซักล้าง", "เตรียมอาหาร", "จอดรถ", "พักผ่อน", "เฉลียง"],
+  "elements": [
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 12,000 BTU", "room": "นอน 1", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 9,000 BTU", "room": "นอน 2", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (40 CFM.)", "room": "corridor/hallway near นอน 1 and near ห้องน้ำ (2 units total)", "quantity": 2, "confidence_score": 0.65, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (120 CFM.)", "room": "ห้องน้ำ and เตรียมอาหาร/ครัว area (2 units total)", "quantity": 2, "confidence_score": 0.65, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 4\"x4\"", "room": "paired with the 40 CFM ceiling fans (2 units total)", "quantity": 2, "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 6\"x6\"", "room": "paired with the 120 CFM ceiling fans (2 units total)", "quantity": 2, "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"]}
+  ],
+  "confidence_score": 0.65,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "This is the only mechanical sheet in the drawing set (M-01 of 1, per title block), covering recommended AC/ceiling-fan/exhaust-grille placement for the ground floor.",
+    "Room-to-equipment pairing for the ceiling fans and exhaust grilles (which of the two 40 CFM units goes with which 4x4 grille, exact bathroom vs hallway placement) is a best-effort reading from overlapping small labels near the ซักล้าง/ห้องน้ำ area; positions are approximate.",
+    "No cost/BTU-sizing calculation basis (e.g. room area used to size 12,000/9,000 BTU) is shown on this sheet -- it only presents the recommended equipment and location, consistent with it being a mechanical layout plan rather than a load-calculation sheet."
+  ]
+}

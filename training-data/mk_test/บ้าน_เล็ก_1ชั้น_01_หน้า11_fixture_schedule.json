@@ -1,0 +1,131 @@
+{
+  "png": "11",
+  "doc_page": 9,
+  "discipline": "architectural",
+  "sheet_code": "A-09",
+  "sheet_name": "รายการประกอบแบบห้องน้ำ / แบบขยายห้องน้ำ WC.1",
+  "pattern": "schedule",
+  "view_title": "มาตรฐานสัญลักษณ์และรายการสุขภัณฑ์ + มาตรฐานระดับการติดตั้งสุขภัณฑ์",
+  "element": [
+    {
+      "element_id": "WC.1",
+      "element_type": "toilet",
+      "description": "โถส้วมแบบนั่งราบ อุปกรณ์ครบชุด",
+      "mount_height_mm": null,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "WC.2",
+      "element_type": "toilet",
+      "description": "โถส้วมแบบนั่งยอง",
+      "mount_height_mm": null,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "LAV.1",
+      "element_type": "washbasin",
+      "description": "อ่างล้างหน้าแบบฝังหรือตั้งบนเคาน์เตอร์ พร้อมอุปกรณ์ครบชุด",
+      "mount_height_mm": 800,
+      "confidence_score": 0.6,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader"]
+    },
+    {
+      "element_id": "LAV.2",
+      "element_type": "washbasin",
+      "description": "อ่างล้างหน้าแบบแขวนผนัง พร้อมอุปกรณ์ครบชุด",
+      "mount_height_mm": 800,
+      "confidence_score": 0.6,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader"]
+    },
+    {
+      "element_id": "F1",
+      "element_type": "faucet",
+      "description": "ก็อกอ่างล้างหน้า",
+      "mount_height_mm": null,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PH.",
+      "element_type": "toilet_paper_holder",
+      "description": "ที่ใส่กระดาษชำระ",
+      "mount_height_mm": 600,
+      "confidence_score": 0.6,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader"]
+    },
+    {
+      "element_id": "UR.",
+      "element_type": "urinal",
+      "description": "โถปัสสาวะชาย",
+      "mount_height_mm": 600,
+      "confidence_score": 0.6,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader"]
+    },
+    {
+      "element_id": "HS.",
+      "element_type": "bidet_spray",
+      "description": "ชุดสายฉีดชำระ",
+      "mount_height_mm": 500,
+      "confidence_score": 0.6,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader"]
+    },
+    {
+      "element_id": "M.",
+      "element_type": "mirror",
+      "description": "กระจกเงาอย่างดี หนา 5 มม",
+      "mount_height_mm": null,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "TR.",
+      "element_type": "towel_rail",
+      "description": "ราวแขวนผ้า",
+      "mount_height_mm": 1600,
+      "confidence_score": 0.6,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader"]
+    },
+    {
+      "element_id": "SP.",
+      "element_type": "soap_dish",
+      "description": "ที่วางสบู่",
+      "mount_height_mm": 1000,
+      "confidence_score": 0.6,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader"]
+    },
+    {
+      "element_id": "SW.",
+      "element_type": "shower_head",
+      "description": "ฝักบัวสายอ่อน อุปกรณ์ครบชุด",
+      "mount_height_mm": 900,
+      "confidence_score": 0.5,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader", "two_stacked_0.90_dimension_marks_near_this_icon_unclear_if_bracket_range_or_duplicate"]
+    },
+    {
+      "element_id": "K.",
+      "element_type": "floor_hose_bib",
+      "description": "ก็อกน้ำล้างพื้น",
+      "mount_height_mm": 500,
+      "confidence_score": 0.6,
+      "confidence_flags": ["height_read_positionally_from_elevation_row_not_a_labeled_leader"]
+    },
+    {
+      "element_id": "FD.",
+      "element_type": "floor_drain",
+      "description": "ฝาปิดรูระบายน้ำทั้งที่พื้น ชนิดมีตะแกรงและที่ดักกลิ่น",
+      "mount_height_mm": null,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.7,
+  "confidence_flags": ["mixed_confidence_see_per_element"],
+  "warnings": [
+    "This file combines two related tables on page 11 into one schedule: the top-left symbol/spec legend table (สัญลักษณ์ + รายการสุขภัณฑ์, text is clearly legible) and the bottom elevation-icon row with mounting-height dimensions (มาตรฐานระดับการติดตั้งสุขภัณฑ์). The legend descriptions are high-confidence direct text reads. The mount_height_mm values were inferred by visually aligning dimension numbers (e.g. 0.80, 0.60, 1.00, 0.50, 1.60, 0.90) with the icon directly above/below them in the bottom row — this positional matching was not zoomed/verified pixel-by-pixel, so treat heights as best-effort, not certain.",
+    "WC.1, WC.2, F1, M., and FD. have no height dimension in the bottom row (they are floor-mounted, wall-embedded, or without a labeled leader) — left as null rather than guessed.",
+    "See sibling file บ้าน_เล็ก_1ชั้น_01_หน้า11_wc1_plan.json for the floor plan (แปลนห้องน้ำ WC.1) that these fixtures are placed in.",
+    "Sheet also contains cross-reference arrows to sheet A-10 (view markers 1 and 2) for the room's interior elevations — see บ้าน_เล็ก_1ชั้น_01_หน้า12.json."
+  ]
+}

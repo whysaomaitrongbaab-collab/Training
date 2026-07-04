@@ -1,0 +1,36 @@
+{
+  "png": "34",
+  "doc_page": 32,
+  "discipline": "electrical",
+  "sheet_code": "EE-02",
+  "sheet_name": "รายละเอียดแผงเมนสวิตช์",
+  "pattern": "schedule",
+  "view_title": "แผนภาพเส้นเดียวแผงเมนสวิตช์ (LP) / Single-line diagram",
+  "element_type": "circuit",
+  "drawing_no": "EE 58077",
+  "incoming_service": {
+    "meter": "kWH METER 15(45)A 1 PHASE",
+    "service_conductor": "2-10 IEC 01 Ø25 mm. uPVC (นอกอาคารเดินลอย - overhead, outside building)",
+    "main_conductor_to_panel": "1-10 IEC 01-20 mm. PVC",
+    "grounding_electrode": "หลักดินแท่งเหล็กทองแดงบอนด์ ขนาด Ø14.2 mm. ยาว 2.40 m."
+  },
+  "panel_name": "LP",
+  "main_breaker": {"rating": "50AT,2P", "ic_rating": "10kA"},
+  "circuits": [
+    {"circuit_no": 1, "breaker": "16AT,1P", "ic_rating": "6kA", "rcbo": false, "description": "แสงสว่าง (lighting)", "wire": "2-2.5/G2.5 IEC 01 Ø15 mm.uPVC"},
+    {"circuit_no": 2, "breaker": "16AT,1P", "ic_rating": "6kA", "rcbo": true, "rcbo_sensitivity": "IΔn 30mA", "description": "เต้ารับ (receptacles)", "wire": "2-2.5/G2.5 IEC 01 Ø15 mm.uPVC"},
+    {"circuit_no": 3, "breaker": "20AT,1P", "ic_rating": "6kA", "rcbo": true, "rcbo_sensitivity": "IΔn 30mA", "description": "กล่องต่อสายเครื่องทำน้ำอุ่น (water heater junction box)", "wire": "2-4/G2.5 IEC 01 Ø15 mm.uPVC"},
+    {"circuit_no": 4, "breaker": null, "description": "ว่าง (spare)"},
+    {"circuit_no": 5, "breaker": null, "description": "ว่าง (spare)"},
+    {"circuit_no": 6, "breaker": null, "description": "ว่าง (spare)"}
+  ],
+  "notes": [
+    "1. RCBO หมายถึง เซอร์กิตเบรกเกอร์ชนิดมีเครื่องตัดไฟรั่วในตัว (RCBO = circuit breaker with built-in residual-current/earth-leakage protection built in)."
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Content is drawn as a single-line (schematic) electrical diagram rather than a printed table, but the circuit breaker ratings, wire sizes, and circuit descriptions are clearly labeled and directly legible, so this was captured in schedule form for consistency/queryability.",
+    "Only 3 of 6 panel positions are used; positions 4-6 are explicitly labeled spare ('ว่าง')."
+  ]
+}

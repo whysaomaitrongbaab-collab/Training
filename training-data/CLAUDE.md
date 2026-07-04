@@ -2,6 +2,8 @@
 
 Context สำหรับ AI agent ที่มาทำงานต่อในโฟลเดอร์นี้ (portable — อาจอยู่ใน repo แยกจาก Constistant หลัก)
 
+> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-05.md](SESSION_HANDOFF_2026-07-05.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า
+
 > ⚠️ **อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น**
 > กฎห้ามแตะ raw JSON ของ raw data ก่อนได้รับอนุญาต + **การกระทำใดๆ ที่ส่งผลต่อการทูนนิ่งต้องมีการเตือนเสมอ** (ไม่ใช่แค่แก้ raw JSON ตรงๆ — รวมถึงแก้ script/schema ที่กระทบข้อมูลปลายทาง) + บันทึก format JSON ที่ใช้ทูนจริงไว้อ้างอิง
 > ทุกครั้งที่แก้ raw JSON จริง (ได้รับอนุญาตแล้ว) ต้องบันทึกใน [raw_json_data_log.md](raw_json_data_log.md) ด้วยเสมอ (ไฟล์ที่แก้ / AI ที่ใช้ / ผู้แก้ไข)

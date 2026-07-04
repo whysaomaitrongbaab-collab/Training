@@ -1,0 +1,27 @@
+{
+  "png": "35",
+  "doc_page": 33,
+  "discipline": "electrical",
+  "sheet_code": "EE-03",
+  "sheet_name": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "pattern": "plan",
+  "view_title": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "drawing_no": "EE 58077",
+  "scale": "1:100",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["A", "B", "C", "D"],
+  "grid_ref_is_free_text_not_grid_notation": true,
+  "rooms_shown": ["นอน 1", "นอน 2", "ซักล้าง", "เตรียมอาหาร", "จอดรถ", "พักผ่อน", "เฉลียง"],
+  "elements": [
+    {"element_type": "lighting_circuit_feed", "description": "สายวงจรแสงสว่างจากแผงเมนสวิตช์ (LP, +1.80M) ผ่านสวิตช์กริ่งกันน้ำ (SB) ไปยังวงจร 1/LP, สาย 2-2.5 NYY-Ø25mm.PVC", "grid_ref": "runs from panel near จอดรถ/เฉลียง corner down through พักผ่อน to เฉลียง entrance", "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "ceiling_light_point", "description": "Multiple ceiling light point symbols (circled-cross downlight/LED-tube markers), individually keyed with lowercase letters (approx. a through k visible) tying each fixture to its switch loop", "grid_ref": "scattered through นอน 1 (2 points), นอน 2 (1-2 points), ซักล้าง (1 point), เตรียมอาหาร (1-2 points), พักผ่อน (2 points), เฉลียง (1 point)", "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "wall_switch", "description": "Single-way switch points (dot symbols) near room entrances, and one water-proof bell switch (SB) near main entrance/เฉลียง", "grid_ref": "near door openings of each room", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]}
+  ],
+  "confidence_score": 0.45,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "This sheet is a symbol-routing plan, not a quantity/fixture-count schedule -- exact letter-to-fixture correspondence (a, b, c, d, e, f, g, h, i, j, k labels linking each light point to its switch) is difficult to resolve precisely at this image resolution and is NOT being asserted as a verified count.",
+    "Do not infer a bill-of-quantities fixture count from this file; if a fixture count is needed, it should be manually verified against this drawing at higher zoom.",
+    "Fixture types themselves (downlight vs LED tube) are defined on EE-01 symbol legend, not repeated here."
+  ]
+}

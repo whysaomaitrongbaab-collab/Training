@@ -1,0 +1,41 @@
+{
+  "png": "36",
+  "doc_page": 34,
+  "discipline": "electrical",
+  "sheet_code": "EE-04",
+  "sheet_name": "แปลนเต้ารับไฟฟ้า ชั้นล่าง",
+  "pattern": "notes",
+  "view_title": "หมายเหตุ (โทรศัพท์ / เสาอากาศทีวี / เครื่องปรับอากาศ)",
+  "drawing_no": "EE 58077",
+  "notes_sections": [
+    {
+      "heading": "1. สายโทรศัพท์",
+      "summary": "กรณีต้องการติดตั้งสายโทรศัพท์ภายใน ให้ใช้สายโทรศัพท์ภายในชนิด TIEV 4C-0.65mm เดินในท่อร้อยสาย uPVC"
+    },
+    {
+      "heading": "2. สายเสาอากาศทีวี",
+      "summary": "กรณีต้องการติดตั้งสายอากาศทีวีและจานดาวเทียม ให้ใช้สายชนิด RG 6 เดินในท่อร้อยสาย uPVC"
+    },
+    {
+      "heading": "3. เครื่องปรับอากาศ",
+      "summary": "กรณีต้องการติดตั้งเครื่องปรับอากาศ ให้ใช้สายไฟฟ้าดังนี้ (ตารางขนาด BTU/hr, เซอร์กิตเบรกเกอร์/สายย่อย, สายไฟฟ้า)"
+    }
+  ],
+  "ac_circuit_table": {
+    "title": "ขนาดเครื่องปรับอากาศและวงจรไฟฟ้าที่ต้องใช้",
+    "columns": ["ขนาด (BTU/hr.)", "เซอร์กิตเบรกเกอร์วงจรย่อย", "สายไฟฟ้า"],
+    "rows": [
+      {"btu_hr": "ไม่เกิน 12,000", "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-15 mm.uPVC"},
+      {"btu_hr": "ไม่เกิน 18,000", "breaker": "20AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-15 mm.uPVC"}
+    ]
+  },
+  "sibling_files": [
+    "บ้าน_เล็ก_1ชั้น_01_หน้า36_outlet_plan.json"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "The AC circuit table lists the same wire size (2-2.5/G2.5 IEC01-15mm.uPVC) for both the 12,000 BTU and 18,000 BTU rows even though the breaker rating changes (16AT vs 20AT); this is transcribed exactly as printed on the sheet and has not been 'corrected' -- flagged for human review in case it is a drafting oversight rather than intentional.",
+    "This notes block is physically on sheet EE-04 alongside the outlet layout plan (see sibling file)."
+  ]
+}

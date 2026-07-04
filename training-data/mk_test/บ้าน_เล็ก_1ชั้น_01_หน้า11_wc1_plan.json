@@ -1,0 +1,104 @@
+{
+  "png": "11",
+  "doc_page": 9,
+  "discipline": "architectural",
+  "sheet_code": "A-09",
+  "sheet_name": "รายการประกอบแบบห้องน้ำ / แบบขยายห้องน้ำ WC.1",
+  "pattern": "plan",
+  "view_title": "แปลนห้องน้ำ WC.1 (มาตราส่วน 1:25)",
+  "element": [
+    {
+      "element_id": "WC.1-ROOM",
+      "element_type": "bathroom_room",
+      "count": 1,
+      "grid_ref": "between gridlines B (bottom/exterior) and C (top/interior)",
+      "width_mm": 2450,
+      "depth_mm": 2000,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "WC.1-ZONE-SHOWER",
+      "element_type": "shower_zone",
+      "description": "โซนอาบน้ำ พื้นระดับ +0.48 (finish code 3/floor, 2/wall per unlabeled legend not on this sheet)",
+      "count": 1,
+      "grid_ref": "left side of room, ~0.90m wide strip",
+      "confidence_score": 0.55,
+      "confidence_flags": ["finish_code_numbers_reference_a_legend_not_shown_on_this_sheet", "sub_zone_width_estimated_from_dimension_chain_not_individually_labeled"]
+    },
+    {
+      "element_id": "WC.1-ZONE-TOILET",
+      "element_type": "toilet_zone",
+      "description": "โซนห้องน้ำ (โถส้วม) พื้นระดับ +0.50",
+      "count": 1,
+      "grid_ref": "center-right of room",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SW.-1",
+      "element_type": "shower_head",
+      "count": 1,
+      "grid_ref": "shower zone, bottom-left corner",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "WC.1-FIXTURE-1",
+      "element_type": "toilet",
+      "count": 1,
+      "grid_ref": "center of room",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PH.-1",
+      "element_type": "toilet_paper_holder",
+      "count": 1,
+      "grid_ref": "beside WC.1 fixture",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "HS.-1",
+      "element_type": "bidet_spray",
+      "count": 1,
+      "grid_ref": "beside WC.1 fixture",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "LAV.2-1",
+      "element_type": "washbasin_wall_hung",
+      "count": 1,
+      "grid_ref": "top-right corner of room",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "M.-1",
+      "element_type": "mirror",
+      "count": 1,
+      "grid_ref": "above/beside LAV.2, top-right corner",
+      "confidence_score": 0.6,
+      "confidence_flags": ["grid_ref_is_free_text_not_grid_notation"]
+    },
+    {
+      "element_id": "FD.-x2",
+      "element_type": "floor_drain",
+      "count": 2,
+      "grid_ref": "one near shower/SW.-K. zone, one near HS. zone at bottom of plan",
+      "confidence_score": 0.6,
+      "confidence_flags": ["grid_ref_is_free_text_not_grid_notation", "count_of_2_is_a_visual_read_of_two_separate_FD_marks_not_a_labeled_quantity"]
+    }
+  ],
+  "confidence_score": 0.65,
+  "confidence_flags": ["dimension_sub_breakdown_partially_uncertain"],
+  "warnings": [
+    "Overall room envelope (2.45m x 2.00m) and the bottom dimension chain (0.80 + 0.10 + 0.40 + 0.70 + 0.45 = 2.45, with a 1.55m sub-bracket over the last three segments) are clearly dimensioned and high confidence. The finer subdivision of which exact wall segment belongs to which named zone, and the left-margin vertical dimension chain (0.10/0.90/2.00/0.90/0.10), were not fully resolved without zooming — flagged low-to-medium confidence.",
+    "A box labeled 'เตรียมอาหาร' (food prep) at level +0.60 appears to the right of the WC.1 room in this plan, which is unusual content for a bathroom detail sheet — likely this is an adjacent kitchen/utility area bleeding into the same drawing extent, not a fixture inside the bathroom itself. Not included as a WC.1 element; flagged for human review.",
+    "Circled callout markers (triangles with '2' and '3') on the walls reference a finish/material legend that is not printed on this sheet — could not determine what material each callout denotes.",
+    "Circled arrow markers '1' and '2' near the top-right, pointing off-sheet toward 'A-10', are cross-references to the interior wall elevations on the next sheet — see บ้าน_เล็ก_1ชั้น_01_หน้า12.json (view ① corresponds to arrow 1, view ② corresponds to arrow 2).",
+    "See sibling file บ้าน_เล็ก_1ชั้น_01_หน้า11_fixture_schedule.json for the fixture symbol legend and mounting-height table also on this page."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "png": "17",
+  "doc_page": 15,
+  "discipline": "architectural",
+  "sheet_code": "A-15",
+  "sheet_name": "แบบขยายรั้วแบบที่ 2",
+  "pattern": "section",
+  "element": [
+    {
+      "element_id": "FENCE-TYPE2-COLUMN-C1",
+      "element_type": "rc_column",
+      "description": "Fence column C1 — reinforced concrete post between fence bays (same spec as Fence Type 1)",
+      "size_mm": "200x200",
+      "main_bar": "4-Ø12",
+      "stirrup": "STR Ø6 @150",
+      "max_bay_spacing_mm": 3000,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "FENCE-TYPE2-GROUND-BEAM-GB",
+      "element_type": "rc_ground_beam",
+      "description": "Ground beam (คานคอดิน) tying fence columns together at grade (same spec as Fence Type 1)",
+      "reinforcement_top": "2-Ø9",
+      "stirrup": "STR:Ø6@150",
+      "reinforcement_bottom_and_bent": "2-Ø9+1Ø9 BENT L/5",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "FENCE-TYPE2-LINTEL-CAP",
+      "element_type": "rc_lintel_cap_beam",
+      "description": "ทับหลัง คสล (RC capping lintel beam on top of the block infill panel, distinct from Fence Type 1 which has no top RC lintel)",
+      "size_mm": "100x200",
+      "reinforcement": "2-Ø6mm main, ป(stirrup)Ø6mm@150mm",
+      "confidence_score": 0.7,
+      "confidence_flags": ["stirrup_notation_'ป' handwritten-style_abbreviation_for_ปลอก(stirrup)_read_with_moderate_confidence"]
+    },
+    {
+      "element_id": "FENCE-TYPE2-INFILL",
+      "element_type": "fence_block_infill",
+      "description": "Precast/concrete block infill panel between columns (replaces the steel pickets used in Fence Type 1)",
+      "block_spec": "คอนกรีตบล็อคทีบ 0.19x0.39 ม หนา 7 ซม (concrete block/panel, 190mm x 390mm, 70mm thick)",
+      "overall_height_mm": 2000,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "FENCE-TYPE2-FOUNDATION",
+      "element_type": "pile_foundation",
+      "description": "Pile foundation under each fence column (same spec as Fence Type 1)",
+      "pile_spec": "เสาเข็ม 2-0.15x0.15x4.00ม (2 precast concrete piles, 150x150mm section, 4.00m long, per column)",
+      "dowel": "DOWEL Ø12 ยาว 1.00ม เทคอนกรีตยึดกับเสาเข็ม (12mm dowel bar, 1.00m long, cast to bond pile cap to pile)",
+      "pile_cap_reinforcement": "3Ø9 top and bottom, STR:Ø6@100",
+      "lean_concrete": "คอนกรีตหยาบ (lean/blinding concrete at base)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "Sheet A-15 shows a second fence design (Type 2) across plan, front elevation, cap-lintel detail (ขยายทับหลัง), column detail (ขยายเสา C1), ground beam detail (ขยายคานคอดิน GB), and section — kept as one file since it's a single fence type.",
+    "Column C1, ground beam GB, and pile foundation specs are identical to Fence Type 1 (บ้าน_เล็ก_1ชั้น_01_หน้า16.json) — the only structural difference is the infill panel (precast concrete block instead of steel pickets) and the addition of a top RC capping lintel over the block panel.",
+    "The lintel reinforcement notation includes a handwritten-looking Thai abbreviation ('ป' for ปลอก/stirrup) next to '6mm@0.15m' — read with moderate confidence; recommend zoom verification.",
+    "See sibling file บ้าน_เล็ก_1ชั้น_01_หน้า16.json (A-14, Fence Type 1) for the alternate fence design."
+  ]
+}

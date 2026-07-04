@@ -1,0 +1,24 @@
+{
+  "png": "10",
+  "doc_page": 8,
+  "discipline": "architectural",
+  "sheet_code": "A-08",
+  "sheet_name": "แบบขยายประตู แบบขยายหน้าต่าง",
+  "pattern": "schedule",
+  "element": [
+    { "element_id": "D1", "element_type": "door", "door_type": "บานเลื่อน, ช่องแสงติดตาย, แบ่ง 4 ช่องเท่ากัน", "width_m": 2.60, "height_m": 2.05, "frame_material": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 6 มม.", "hardware": "มาตรฐานครบชุด", "install_location": "ติดตั้งบริเวณทางเข้า, ระเบียง", "count": null, "confidence_score": 0.85, "confidence_flags": ["count_not_specified_in_schedule_only_type_spec"] },
+    { "element_id": "D2", "element_type": "door", "door_type": "บานเปิดเดี่ยว", "width_m": 0.80, "height_m": 2.00, "frame_material": "ไม้เนื้อแข็ง 2\"x4\"", "leaf_material": "บานประตูสำเร็จรูป HDF.", "hardware": "ลูกบิด, มาตรฐานครบชุด", "install_location": "ติดตั้งบริเวณ ห้องครัว, ห้องนอน", "count": null, "confidence_score": 0.85, "confidence_flags": ["count_not_specified_in_schedule_only_type_spec"] },
+    { "element_id": "D3", "element_type": "door", "door_type": "บานเปิดเดี่ยว", "width_m": 0.70, "height_m": 2.00, "frame_material": "วงกบ PVC.", "leaf_material": "บานประตู PVC.", "hardware": "ลูกบิด, มาตรฐานครบชุด", "install_location": "ติดตั้งบริเวณห้องน้ำ", "count": null, "confidence_score": 0.85, "confidence_flags": ["count_not_specified_in_schedule_only_type_spec"] },
+    { "element_id": "W1", "element_type": "window", "window_type": "บานเลื่อนสลับ", "width_m": 1.40, "height_m": 1.20, "sill_height_m": 0.85, "frame_material": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 6 มม.", "hardware": "มาตรฐานครบชุด", "install_location": null, "count": null, "confidence_score": 0.8, "confidence_flags": ["install_location_blank_in_schedule_not_a_guess"] },
+    { "element_id": "W2", "element_type": "window", "window_type": "บานเปิดเดี่ยว", "width_m": 0.70, "height_m": 2.05, "sill_height_m": 0.85, "frame_material": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 6 มม.", "hardware": "มาตรฐานครบชุด", "install_location": null, "count": null, "confidence_score": 0.75, "confidence_flags": ["install_location_blank_in_schedule_not_a_guess", "needs_human_review_zoom_required"] },
+    { "element_id": "W3", "element_type": "window", "window_type": "บานกระทุ้ง", "width_m": 1.40, "height_m": 2.50, "frame_material": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 6 มม.", "hardware": "มาตรฐานครบชุด", "install_location": null, "count": null, "confidence_score": 0.75, "confidence_flags": ["install_location_blank_in_schedule_not_a_guess"] },
+    { "element_id": "W4", "element_type": "window", "window_type": "บานเลื่อน, แบ่ง 4 ช่องเท่ากัน", "width_m": 2.80, "height_m": 2.05, "sill_height_m": 0.85, "frame_material": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 4 มม.", "hardware": "มาตรฐานครบชุด", "install_location": null, "count": null, "confidence_score": 0.8, "confidence_flags": ["install_location_blank_in_schedule_not_a_guess"] }
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "หน้านี้เป็นตารางเดียว (schedule) รวมทั้งแบบขยายประตูและหน้าต่างในแผ่นเดียวกัน ไม่ได้แยกไฟล์ตาม pattern เพราะทั้งหมดคือ pattern 'schedule' เดียวกัน เพียงแต่แบ่งเป็นหมวดประตู (D1-D3) และหมวดหน้าต่าง (W1-W4)",
+    "field 'count' ปล่อยเป็น null ทั้งหมด เพราะตารางนี้เป็นแบบขยายรายละเอียด (spec) ต่อ 1 ประเภท ไม่ใช่ตารางนับจำนวนจริงที่ติดตั้งในอาคาร — จำนวนจริงต้องอ้างอิงจากแปลนพื้นชั้น 1 (หน้า 06) ซึ่งอ่านสัญลักษณ์ในแปลนได้ไม่ชัดพอที่จะนับแม่นยำ (ดู warning ในไฟล์ _หน้า06_floor_plan.json)",
+    "หมายเหตุ (install_location) ของหน้าต่างทั้ง 4 แบบ (W1-W4) เว้นว่างในตารางต้นฉบับจริง ไม่ใช่การอ่านตกหล่น — ตรวจสอบซ้ำแล้วในภาพว่าช่อง 'หมายเหตุ' ใต้ตารางหน้าต่างไม่มีข้อความ"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "png": "29",
+  "doc_page": 27,
+  "discipline": "sanitary",
+  "sheet_code": "SN-04",
+  "sheet_name": "แปลนระบบสุขาภิบาลพื้น, แบบขยายระบบสุขาภิบาลห้องน้ำ",
+  "pattern": "plan",
+  "view_title": "แปลนระบบสุขาภิบาลพื้น",
+  "drawing_no": "SN-58078",
+  "scale": "1:100",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["A", "B", "C", "D"],
+  "grid_ref_is_free_text_not_grid_notation": true,
+  "rooms_shown": [
+    {"name": "นอน 1", "level_m": "+0.60"},
+    {"name": "นอน 2", "level_m": "+0.60"},
+    {"name": "ซักล้าง", "level_m": "+0.20"},
+    {"name": "ห้องน้ำ", "level_m": "+0.50"},
+    {"name": "เตรียมอาหาร", "level_m": "+0.60"},
+    {"name": "จอดรถ", "level_m": "+0.20"},
+    {"name": "พักผ่อน", "level_m": "+0.60"},
+    {"name": "เฉลียง", "level_m": "+0.50"}
+  ],
+  "elements": [
+    {"element_type": "septic_tank", "description": "ถังบำบัดน้ำเสียสำเร็จรูป", "grid_ref": "left side, adjacent to ห้องน้ำ/จอดรถ near row A-B", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "grease_trap", "description": "ถังดักไขมันสำเร็จรูป", "grid_ref": "between ห้องน้ำ and เตรียมอาหาร, connects to septic tank via pipe run to a floor cleanout box", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "water_meter", "description": "ชุดมาตรวัดน้ำ Ø1/2\" (ค่าใช้จ่ายในการติดตั้งเป็นของผู้รับจ้างทั้งสิ้น)", "grid_ref": "bottom edge of plan, on incoming CW line", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "catch_basin", "description": "บ่อพักท่อระบายน้ำสำเร็จรูป ขนาด 0.40x0.40 ม. พร้อมฝา ส.ล.", "grid_ref": "right side of plan, along perimeter drain run", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "floor_drain", "description": "ท่องอขึ้น / จุดต่อท่อ (X-in-square symbol) marking multiple perimeter floor-drain / cleanout access points", "grid_ref": "multiple points around building perimeter, at corners and mid-span of exterior walls", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "site_drain_pipe", "description": "ท่อคอนกรีตท้องตลาด Ø0.20 ม. ลาด 1:200, จุดต้นท่อลึก 0.60 ม.", "grid_ref": "perimeter drain run along top (north) and connecting to catch basins", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "cold_water_supply_pipe", "description": "ท่อประปา Ø3/4\"CW เดินจากมาตรวัดน้ำ ผ่านถังบำบัด/ถังดักไขมัน ไปยังห้องน้ำ, นอน 1, นอน 2", "grid_ref": "runs along west/interior walls up through ห้องน้ำ and bedrooms", "confidence_score": 0.65, "confidence_flags": []}
+  ],
+  "equipment_specs": {
+    "septic_tank": {
+      "type": "ถังบำบัดน้ำเสียสำเร็จรูปชนิดเกรอะ-กรองไร้อากาศ",
+      "grease_volume_min_cum": 1.0,
+      "filter_volume_min_cum": 0.25,
+      "acceptable_brands": ["AQUA", "PP", "DOS", "SAN-PAC", "HICLEAR", "หรือเทียบเท่า"],
+      "installation_note": "การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต"
+    },
+    "grease_trap": {
+      "type": "ถังดักไขมันสำเร็จรูป",
+      "volume_min_liters": 30,
+      "acceptable_brands": ["AQUA", "PP", "DOS", "SAN-PAC", "HICLEAR", "หรือเทียบเท่า"],
+      "installation_note": "การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต"
+    }
+  },
+  "sibling_files": [
+    "บ้าน_เล็ก_1ชั้น_01_หน้า29_bathroom_plan.json"
+  ],
+  "confidence_score": 0.65,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "This page also contains a smaller inset detail 'แปลนระบบสุขาภิบาลห้องน้ำ' (1:50) plus the septic tank / grease trap spec notes reproduced in equipment_specs above; the inset plan itself is captured separately in the sibling file.",
+    "Exact routing of individual small-diameter branch pipes (Ø3/4\"CW segments into each room) is difficult to trace precisely at this resolution; positions above are best-effort/approximate, not measured coordinates.",
+    "grid_ref values are descriptive/free-text since sanitary plumbing runs do not align to a formal structural grid notation the way footings/beams would."
+  ]
+}

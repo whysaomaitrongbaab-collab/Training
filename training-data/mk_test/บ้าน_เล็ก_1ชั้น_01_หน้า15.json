@@ -1,0 +1,56 @@
+{
+  "png": "15",
+  "doc_page": 13,
+  "discipline": "architectural",
+  "sheet_code": "A-13",
+  "sheet_name": "แบบขยายประตูรั้วบ้าน",
+  "pattern": "section",
+  "element": [
+    {
+      "element_id": "GATE-1",
+      "element_type": "gate",
+      "description": "Sliding steel house gate — front elevation (รูปด้านหน้า, 1:25)",
+      "width_mm": 4000,
+      "height_mm": 2000,
+      "height_dim_breakdown_mm": [200, 500, 200, 200, 500, 200],
+      "frame": "เหล็ก Ø2\"x2\" LG. หนา 3.2มม (2in x 2in square steel tube frame, 3.2mm wall thickness)",
+      "picket": "เหล็ก Ø1\"x1\" LG. ปลายตัด 45 องศา @15ซม (1in x 1in square steel tube pickets, ends cut at 45°, spaced @150mm)",
+      "infill_panel": "แผ่นเหล็กทีบ หนา 4 มม (solid steel infill plate, 4mm thick, at lower panel)",
+      "latch": "กลอนประตู (ดูแบบขยาย) — see GATE-LATCH detail element below",
+      "reference_levels": "ระดับทางเท้า (footpath level) and ระดับถนน (road level) noted either side of gate posts",
+      "main_bar": null,
+      "stirrup": null,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GATE-1-SECTION",
+      "element_type": "gate_section",
+      "description": "รูปตัด (section, 1:25) through gate post/track",
+      "embedded_plate": "เหล็กแผ่น 40x40x9 มม ฝังในคอนกรีต (40x40mm steel plate, 9mm thick, embedded in concrete)",
+      "wheel": "ล้อเหล็ก Ø3\" คู่ (paired 3in diameter steel wheels — confirms this is a sliding gate on a rolling track, not a swing gate)",
+      "post_top_drain": "เหล็กจาก หนา 9 มม เจาะรูระบายน้ำ (9mm steel cap plate at post top, drilled with drainage holes)",
+      "width_mm": 550,
+      "height_mm": 2000,
+      "confidence_score": 0.65,
+      "confidence_flags": ["some_dimension_text_in_section_view_small_and_partially_overlapping_leader_lines"]
+    },
+    {
+      "element_id": "GATE-LATCH",
+      "element_type": "gate_latch_hardware",
+      "description": "แบบขยายกลอนประตู (bolt/latch hardware detail, 1:10)",
+      "components": "เหล็กกลม Ø2ซม เชื่อมกับแผ่นเหล็ก (round steel bar dia 20mm welded to steel plate); แผ่นเหล็ก 9มม เจาะรู Ø2ซม สำหรับคล้องกุญแจ (9mm steel plate with a 20mm drilled hole for a padlock)",
+      "projection_mm": 200,
+      "plate_reveal_mm": 50,
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.7,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet (A-13) is one single gate design shown across multiple sub-views (front elevation, section, latch hardware detail) — kept as one file since all sub-views describe the same single gate, unlike A-11's two distinct stair instances.",
+    "This is an all-steel gate assembly (no reinforced concrete) — main_bar/stirrup fields are null by design, not omission.",
+    "The height dimension breakdown [200,500,200,200,500,200] for the front elevation was read from a stacked dimension chain on the left margin; recommend zoom verification before using in a precise steel-quantity takeoff."
+  ]
+}
