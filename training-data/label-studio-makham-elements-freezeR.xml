@@ -1,0 +1,128 @@
+<View>
+  <!-- Freeze-RIGHT layout: image column pinned on the right, field list scrolls on the
+       left. Mirror of label-studio-makham-elements.xml (freeze-left) — paste
+       whichever you prefer.
+
+       Uses the Style tag (https://labelstud.io/tags/style, officially confirmed to
+       support className on View/Choices) for the repeated row/card/sticky-column
+       wrappers — cuts most of the inline-style repetition. Text/TextArea tags keep
+       plain inline `style="..."` instead of className: Label Studio's docs don't
+       confirm className works directly on Text, and this project's own tested
+       history (label-studio-structural.xml) only ever verified inline style= on
+       Text in the live Cloud UI — safer to stick with what's proven.
+       grid_ref TextArea deliberately stays rows="1" (per Label Studio TextArea docs,
+       rows>1 adds an unwanted "+Add" duplicate-entry button) — widened via CSS
+       width instead. -->
+  <Style>
+    .stickycol { position:sticky; top:0; flex:0 0 460px; max-width:460px; align-self:flex-start; background:white; padding-bottom:8px; overflow-wrap:break-word; word-break:break-word; }
+    .card { border:1px solid #ccc; border-radius:8px; padding:10px; margin:8px 0; background:#fafafa; }
+    .row { display:flex; align-items:center; gap:8px; padding:2px 0; }
+    .row-top { display:flex; align-items:flex-start; gap:8px; padding:2px 0; }
+  </Style>
+
+  <View style="display:flex; gap:16px; align-items:flex-start;">
+
+    <View style="flex:1; min-width:0;">
+      <Header value="รายการที่ AI สกัดได้ — แก้ทีละรายการ" size="3"/>
+
+      <Repeater on="$items" indexFlag="{{idx}}">
+        <View className="card">
+
+          <View className="row">
+            <Text name="lbl_element_id_{{idx}}" value="รหัส element:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="element_id_{{idx}}" toName="page" value="$items[{{idx}}].element_id" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_element_type_{{idx}}" value="ประเภท (element_type):" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="element_type_{{idx}}" toName="page" value="$items[{{idx}}].element_type" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_grid_ref_{{idx}}" value="grid_ref:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="grid_ref_{{idx}}" toName="page" value="$items[{{idx}}].grid_ref" editable="true" rows="1" style="width:100%; min-width:380px; font-size:14px;"/>
+          </View>
+          <View className="row" style="padding:0 0 2px 208px;">
+            <Text name="grid_ref_display_{{idx}}" value="↳ อ่านว่า: $items[{{idx}}].grid_ref_display" style="font-size:12px; color:#0a7a3d; font-style:italic; overflow-wrap:break-word; word-break:break-word;"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_span_source_{{idx}}" value="span_source:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <Choices name="span_source_{{idx}}" toName="page" choice="single" layout="select">
+              <Choice value="grid_table">grid_table (คำนวณจากกริด)</Choice>
+              <Choice value="local_dimension">local_dimension (อ่านเลขพิมพ์ใกล้ๆ)</Choice>
+              <Choice value="unresolved">unresolved (หาไม่เจอ)</Choice>
+              <Choice value="n/a">n/a (ไม่ใช่ beam)</Choice>
+            </Choices>
+            <Text name="span_source_hint_{{idx}}" value="(AI ทายไว้ว่า: $items[{{idx}}].span_source)" style="font-size:12px; color:#888;"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_count_{{idx}}" value="จำนวน (count):" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="count_{{idx}}" toName="page" value="$items[{{idx}}].count" editable="true" rows="1"/>
+          </View>
+
+          <Text name="hdr_risky_{{idx}}" value="⚠️ จุดที่ AI มักอ่านผิดบ่อย — เช็คให้ดี" style="color:#b45309; font-size:12px; font-weight:600; margin-top:8px;"/>
+          <View className="row">
+            <Text name="lbl_width_{{idx}}" value="กว้าง มม. (width_mm):" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="width_mm_{{idx}}" toName="page" value="$items[{{idx}}].width_mm" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_height_{{idx}}" value="สูง มม. (height_mm):" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="height_mm_{{idx}}" toName="page" value="$items[{{idx}}].height_mm" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_main_dia_{{idx}}" value="เหล็กหลัก — จำนวน/ขนาด มม./ชนิด:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="main_bar_count_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_count" editable="true" rows="1"/>
+            <TextArea name="main_bar_dia_mm_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_dia_mm" editable="true" rows="1"/>
+            <TextArea name="main_bar_type_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_type" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_stirrup_{{idx}}" value="ปลอก — ขนาด มม./ชนิด/ระยะห่าง มม.:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="stirrup_dia_mm_{{idx}}" toName="page" value="$items[{{idx}}].stirrup_dia_mm" editable="true" rows="1"/>
+            <TextArea name="stirrup_type_{{idx}}" toName="page" value="$items[{{idx}}].stirrup_type" editable="true" rows="1"/>
+            <TextArea name="stirrup_spacing_mm_{{idx}}" toName="page" value="$items[{{idx}}].stirrup_spacing_mm" editable="true" rows="1"/>
+          </View>
+
+          <Text name="hdr_ref_{{idx}}" value="ℹ️ ข้อมูลอ้างอิง (ไม่มีกรอบแก้ = อ่านอย่างเดียว)" style="color:#888; font-size:12px; font-weight:600; margin-top:8px;"/>
+          <View className="row-top">
+            <Text name="lbl_other_{{idx}}" value="Field อื่นๆ ที่เหลือ (JSON ดิบ — เช่น pile, dowel_bar, topping_mesh, additional_bars, level, spec_source แล้วแต่ element_type):" style="min-width:200px; flex-shrink:0;"/>
+            <Text name="other_fields_{{idx}}" value="$items[{{idx}}].other_fields_json" style="color:#555; font-size:12px; overflow-wrap:break-word; word-break:break-word; min-width:0;"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_conf_score_{{idx}}" value="AI confidence:" style="min-width:200px;"/>
+            <Text name="conf_score_{{idx}}" value="$items[{{idx}}].confidence_score" style="color:#555;"/>
+          </View>
+          <View className="row-top">
+            <Text name="lbl_conf_flags_{{idx}}" value="Confidence flags:" style="min-width:200px; flex-shrink:0;"/>
+            <Text name="conf_flags_{{idx}}" value="$items[{{idx}}].confidence_flags" style="color:#555; overflow-wrap:break-word; word-break:break-word; min-width:0;"/>
+          </View>
+
+          <View className="row" style="margin-top:8px;">
+            <Text name="lbl_delete_{{idx}}" value="สถานะรายการนี้:" style="min-width:200px; font-weight:600;"/>
+            <Choices name="delete_{{idx}}" toName="page" showInLine="true">
+              <Choice value="delete">❌ ลบรายการนี้ (AI มโน)</Choice>
+            </Choices>
+          </View>
+        </View>
+      </Repeater>
+
+      <Header value="หมายเหตุจากไฟล์ (warnings ที่ AI เขียนไว้ตอน extract)" size="4"/>
+      <Text name="file_warnings_display" value="$file_warnings" style="font-size:12px; color:#555; overflow-wrap:break-word; word-break:break-word; display:block;"/>
+
+      <Header value="หมายเหตุ / รายการที่ AI พลาดไป" size="4"/>
+      <TextArea
+        name="reviewer_note"
+        toName="page"
+        placeholder="พิมพ์อธิบายเป็นคำพูดปกติ เช่น 'มีคาน B6 ที่ AI ไม่เจอ ช่วง grid 3-A ถึง 3-B' — ไม่ต้องพิมพ์ JSON"
+        rows="3"
+        editable="true"
+      />
+    </View>
+
+    <View className="stickycol">
+      <Header value="$house / หน้า $png" size="3"/>
+      <Text name="sheet_hdr" value="$sheet_code $sheet_name — $pattern: $view_title" style="font-weight:600; font-size:13px; margin-bottom:6px; overflow-wrap:break-word; word-break:break-word;"/>
+      <Image name="page" value="$image" zoom="true" zoomControl="true" maxHeight="75vh"/>
+      <Text name="file_conf" value="File confidence: $file_confidence_score | flags: $file_confidence_flags" style="font-size:12px; color:#888; overflow-wrap:break-word; word-break:break-word; display:block;"/>
+    </View>
+
+
+  </View>
+</View>

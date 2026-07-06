@@ -1,0 +1,56 @@
+<View>
+  <!--
+    Freeze-RIGHT layout: image column pinned on the right, content scrolls on the left.
+    Mirror of label-studio-makham-single.xml (freeze-left) — paste whichever you prefer.
+  -->
+  <Style>
+    .stickycol { position:sticky; top:0; flex:0 0 460px; max-width:460px; align-self:flex-start; background:white; padding-bottom:8px; overflow-wrap:break-word; word-break:break-word; }
+    .row-top { display:flex; align-items:flex-start; gap:8px; padding:4px 0; }
+  </Style>
+
+  <View style="display:flex; gap:16px; align-items:flex-start;">
+
+    <View style="flex:1; min-width:0;">
+      <Header value="เนื้อหาที่ AI สกัดได้ (แก้ JSON ทับได้เลยถ้าจำเป็น)" size="3"/>
+      <TextArea
+        name="corrected_json"
+        toName="page"
+        value="$review_json"
+        editable="true"
+        rows="16"
+      />
+
+      <View className="row-top">
+        <Text name="lbl_conf" value="File confidence / flags:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+        <Text name="conf_display" value="$file_confidence_score | $file_confidence_flags" style="color:#555; overflow-wrap:break-word; word-break:break-word; min-width:0;"/>
+      </View>
+      <View className="row-top">
+        <Text name="lbl_warn" value="Warnings ที่ AI เขียนไว้:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+        <Text name="warn_display" value="$file_warnings" style="color:#555; font-size:12px; overflow-wrap:break-word; word-break:break-word; min-width:0;"/>
+      </View>
+
+      <Header value="สถานะการรีวิว" size="4"/>
+      <Choices name="review_status" toName="page" choice="single" layout="select">
+        <Choice value="approved">✅ ถูกต้อง ไม่ต้องแก้</Choice>
+        <Choice value="corrected">✏️ แก้ไขแล้ว (ดู JSON ด้านบน)</Choice>
+        <Choice value="reject">❌ ผิดทั้งหมด / ใช้ไม่ได้</Choice>
+      </Choices>
+
+      <Header value="หมายเหตุผู้ตรวจ" size="4"/>
+      <TextArea
+        name="reviewer_note"
+        toName="page"
+        placeholder="พิมพ์อธิบายเป็นคำพูดปกติ"
+        rows="3"
+        editable="true"
+      />
+    </View>
+
+    <View className="stickycol">
+      <Header value="$house / หน้า $png" size="3"/>
+      <Text name="sheet_hdr" value="$sheet_code $sheet_name — pattern: $pattern" style="font-weight:600; font-size:13px; margin-bottom:6px; overflow-wrap:break-word; word-break:break-word;"/>
+      <Image name="page" value="$image" zoom="true" zoomControl="true" maxHeight="75vh"/>
+    </View>
+
+  </View>
+</View>
