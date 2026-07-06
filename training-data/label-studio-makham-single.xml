@@ -18,8 +18,11 @@
   <View style="display:flex; gap:16px; align-items:flex-start;">
 
     <View className="stickycol">
-      <Header value="$house / หน้า $png" size="3"/>
-      <Text name="sheet_hdr" value="$sheet_code $sheet_name — pattern: $pattern" style="font-weight:600; font-size:13px; margin-bottom:6px; overflow-wrap:break-word; word-break:break-word;"/>
+      <Header value="$house" size="3"/>
+      <Text name="hdr_png" value="หน้า $png" style="font-weight:600; font-size:13px;"/>
+      <Text name="hdr_sheet_code" value="Sheet: $sheet_code" style="font-size:13px; overflow-wrap:break-word; word-break:break-word;"/>
+      <Text name="hdr_sheet_name" value="$sheet_name" style="font-size:13px; overflow-wrap:break-word; word-break:break-word;"/>
+      <Text name="hdr_pattern" value="Pattern: $pattern" style="font-size:13px; margin-bottom:6px;"/>
       <Image name="page" value="$image" zoom="true" zoomControl="true" maxHeight="75vh"/>
     </View>
 
@@ -34,8 +37,12 @@
       />
 
       <View className="row-top">
-        <Text name="lbl_conf" value="File confidence / flags:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
-        <Text name="conf_display" value="$file_confidence_score | $file_confidence_flags" style="color:#555; overflow-wrap:break-word; word-break:break-word; min-width:0;"/>
+        <Text name="lbl_conf" value="File confidence:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+        <Text name="conf_score_display" value="$file_confidence_score" style="color:#555;"/>
+      </View>
+      <View className="row-top">
+        <Text name="lbl_conf_flags" value="Confidence flags:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+        <Text name="conf_flags_display" value="$file_confidence_flags" style="color:#555; overflow-wrap:break-word; word-break:break-word; min-width:0;"/>
       </View>
       <View className="row-top">
         <Text name="lbl_warn" value="Warnings ที่ AI เขียนไว้:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
