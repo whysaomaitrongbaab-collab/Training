@@ -1,0 +1,35 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid line master (สังเคราะห์เอง — ไม่ใช่หน้าจริงในเอกสาร ใช้ 'หน้า 0' เป็น convention สำหรับไฟล์ grid กลางของทั้งบ้าน)",
+  "pattern": "gridline",
+  "note": "ไฟล์นี้คือ grid line master ของ บ้าน_เล็ก_1ชั้น_01 ทั้งหลัง — รวมกริดหลัก (ยืนยันตรงกัน 3 ทาง: อ่านเองจากหน้า 19/S-02, agent อ่านจากหน้า 06/A-04, และ claude_output_03/Gen2 อ่านอิสระ) เข้ากับ 'dummy grid' (กริดเสมือนที่ตั้งชื่อเองด้วย prime notation A'/B'/1' ฯลฯ สำหรับเส้นโครงสร้าง/คานที่ไม่ได้อยู่บนกริดหลักที่มีอยู่จริงในแบบ) ต้องอัปเดตไฟล์นี้ก่อนเสมอเมื่อพบ element ใหม่ที่ไม่อยู่บนกริดหลัก แล้วให้หน้า plan/section อื่นๆ ของบ้านนี้ reference กริด (รวม dummy) จากไฟล์นี้แทนการเขียน grid ซ้ำ/บรรยายเป็นข้อความอิสระในแต่ละไฟล์",
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.0, "type": "named", "source": "printed on S-02/A-04" },
+      { "id": "1'", "pos_m": 2.55, "type": "dummy", "source": "หน้า06 (A-04 แปลนพื้นชั้น1) — เส้นผนัง/แนวคานเต็มความสูงอาคาร (D ถึงใต้ A) ไม่มีวงกลมกำกับกริดในแบบต้นฉบับเลย ตรงกับตำแหน่งของคาน B1 ที่หน้า 19/S-02 และ Gen 2 (claude_output_03) เคยบันทึกไว้ว่า 'interior position between grid 1 and 2, not legible' — หน้า 06 ให้ตำแหน่งชัดเจนกว่า", "confidence_score": 0.85, "confidence_flags": ["dummy_grid_position_confirmed_by_full_height_wall_alignment_on_architectural_floor_plan"] },
+      { "id": "2", "pos_m": 4.0, "type": "named", "source": "printed on S-02/A-04" },
+      { "id": "3", "pos_m": 7.0, "type": "named", "source": "printed on S-02/A-04" },
+      { "id": "3'", "pos_m": 8.5, "type": "dummy", "source": "หน้า06 — ผนังริมนอกสุดของห้อง 'ซักล้าง' ส่วนต่อขยายทางตะวันออกของกริด 3 (รวม 0.60+0.90=1.50ม.) ตรงกับที่ Gen 2 Gridline.json (claude_output_03) บันทึกเป็น 'unnamed_extension attached_to y_line 3 offset_m 1.5' และตรงกับคาน B4X ที่หน้า 19", "confidence_score": 0.6, "confidence_flags": ["tentative_outer_edge_not_confirmed_which_beam_sits_exactly_here_vs_at_0.60_sub_line", "sub_division_at_+0.60_from_grid_3_seen_on_หน้า06_may_be_a_separate_dummy_grid_not_yet_named_needs_zoom_to_confirm_if_a_beam_runs_there"] }
+    ],
+    "y_lines": [
+      { "id": "D", "pos_m": 0.0, "type": "named", "source": "printed on S-02/A-04" },
+      { "id": "C", "pos_m": 4.0, "type": "named", "source": "printed on S-02/A-04" },
+      { "id": "B", "pos_m": 6.0, "type": "named", "source": "printed on S-02/A-04" },
+      { "id": "A", "pos_m": 9.5, "type": "named", "source": "printed on S-02/A-04" },
+      { "id": "A'", "pos_m": 11.0, "type": "dummy", "source": "หน้า06 — ผนัง/แนวคานส่วนต่อขยายใต้กริด A ช่วงแรก (1.50ม. จาก A) บริเวณจอดรถ/เฉลียง ตรงกับที่ Gen 2 Gridline.json บันทึกเป็น 'unnamed_extension attached_to x_line A offset_m [1.5,1.5]' และตรงกับคานที่หน้า 19 (เช่น B3X/B5X ในโซน 'แถวล่างสุด นอกแกน A')", "confidence_score": 0.55, "confidence_flags": ["tentative_exact_beam_to_subline_mapping_not_confirmed_needs_zoom"] },
+      { "id": "A''", "pos_m": 12.5, "type": "dummy", "source": "หน้า06 — ขอบนอกสุดของส่วนต่อขยายใต้กริด A (1.50+1.50=3.00ม. จาก A) เป็นผนังภายนอกอาคาร", "confidence_score": 0.5, "confidence_flags": ["tentative_may_just_be_building_edge_not_a_beam_line_needs_verification"] }
+    ]
+  },
+  "confidence_score": 0.75,
+  "confidence_flags": ["named_grid_cross_validated_3_independent_reads", "dummy_grid_1_prime_high_confidence_others_tentative"],
+  "warnings": [
+    "กริดหลัก (1,2,3,D,C,B,A) ยืนยันตรงกัน 3 ทางอิสระ: อ่านเอง (หน้า 19/S-02), agent อ่านแยก (หน้า 06/A-04), และ Gen 2/claude_output_03 (ตำแหน่งตัวเลขตรงกันหมด แค่ label แกน x/y สลับกัน — ดู Makham's Pattern doc หัวข้อ 'Generation 3.1' ข้อ 9 เรื่อง grid axis convention)",
+    "dummy grid '1'' มั่นใจสูง (เห็นเส้นเต็มความสูงอาคารชัดเจนในแบบสถาปัตยกรรมหน้า 06) ส่วน '3'', 'A'', 'A''' ยังเป็น tentative — ตำแหน่งเลขมิติถูกต้องแน่นอน (พิมพ์ในแบบ) แต่ยังไม่ 100% ยืนยันว่ามีคานจริงวิ่งตรงตำแหน่งนั้นเป๊ะ (ต้องเทียบกับหน้า 19/20 beam plan อีกครั้งตอน redo)",
+    "ไฟล์นี้ควรใช้แทน _หน้า19_gridline.json และ _หน้า06_gridline.json เดิม (ยังเก็บไว้ไม่ลบ เพื่อ traceability ว่าที่มาของกริดหลักมาจากไหน) — หน้า plan/section อื่นๆ ของบ้านนี้ที่จะทำต่อไปให้ reference ไฟล์นี้แทน"
+  ],
+  "last_updated_from_page": "06",
+  "last_updated_date": "2026-07-06"
+}

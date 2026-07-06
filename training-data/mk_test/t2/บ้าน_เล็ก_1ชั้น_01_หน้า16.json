@@ -1,0 +1,26 @@
+{
+  "png": "16",
+  "doc_page": 14,
+  "discipline": "architectural",
+  "sheet_code": "A-14",
+  "sheet_name": "แบบขยายรั้วแบบที่ 1",
+  "pattern": "section",
+  "element": [
+    { "element_id": "เสา_C1", "element_type": "concrete_column", "count": 1, "dimension_m": "0.20 x 0.20 (fence post)", "rebar": "4-ø12 main bars, STR ø6mm @150mm ties", "spacing_note": "post spacing ไม่เกิน 3.00 ม.", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "คานคอดิน_GB", "element_type": "tie_beam", "count": 1, "dimension_m": "0.20 wide x approx 0.30 deep (0.10+0.20 shown)", "rebar": "2-ø9 top with STR ø6mm @150mm stirrups; 2-ø9 + 1-ø9 bent bar at L/5 bottom reinforcement", "confidence_score": 0.65, "confidence_flags": ["needs_human_review_zoom_required", "exact_beam_depth_breakdown_and_bent_bar_layout_small_text"] },
+    { "element_id": "fence_infill", "element_type": "steel_picket_fence", "material": "เหล็ก ⌀3/4\"x3/4\" LG ปลายตัดมุม 45 องศา @ 15 ซม. (vertical steel angle pickets)", "count": 1, "dimension_m": "height approx 2.00 (1.35+0.10+0.55 breakdown from footing to top)", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "footing_F", "element_type": "footing", "count": 1, "description": "F = isolated footing under each C1 post (referenced simply as 'F' on plan/elevation, no dimensions given on this sheet)", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "pile_foundation", "element_type": "pile", "count": 2, "dimension_m": "0.15 x 0.15 x 4.00 (per pile), 2 piles per footing", "material": "เสาเข็มคอนกรีต 2-0.15x0.15x4.00ม.", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "dowel_bars", "element_type": "rebar_detail", "description": "DOWEL ⌀12 มม. ยาว 1.00 ม. เทคอนกรีตยึดกับเสาเข็ม (dowel bars tying the pile to the concrete footing)", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "lean_concrete", "element_type": "material_note", "description": "คอนกรีตหยาบ (lean/blinding concrete) under the footing", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "overall_depth", "element_type": "dimension", "description": "Foundation depth dimension chain: 0.90 total, sub-split approx 0.40/0.30/0.20 to footing base and pile top.", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"] }
+  ],
+  "confidence_score": 0.68,
+  "confidence_flags": [],
+  "warnings": [
+    "This 'architectural' fence sheet (A-14) actually carries small structural rebar/pile-foundation detail for the property boundary fence (column C1, tie beam GB, piles) rather than pure finishes — captured with whatever material/rebar fields the actual detail calls for, per the schema's 'section' pattern guidance for non-primary-structure details.",
+    "Tie-beam rebar callout ('2-ø9 STR:ø6@150' plus '2-ø9+1ø9 BENT L/5') and the foundation depth breakdown are small, dense text; read with medium confidence and flagged for zoom review rather than treated as certain.",
+    "This fence structure (posts + tie beam + piles) is a separate, independent foundation system from the main house and is NOT tied to the main building's grid (1,2,3/A,B,C,D) — no grid_source reference included.",
+    "Sibling fence type (แบบขยายรั้วแบบที่ 2) is on the next page — see _หน้า17.json."
+  ]
+}

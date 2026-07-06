@@ -3,11 +3,11 @@
   "doc_page": 21,
   "discipline": "structural",
   "sheet_code": "S-06",
-  "sheet_name": "ขยายพื้น SO,S1,SX,ST, ครีบคสล. และขยาย 1",
+  "sheet_name": "ขยายพื้น SO,SI,SX,ST, ครีบคสล. และขยาย 1",
   "pattern": "section",
   "element": [
     { "element_id": "S0", "element_type": "slab_edge", "width_mm": 100, "height_mm": 100, "main_bar": { "count": null, "dia_mm": 9, "type": "RB", "spacing_note": "@0.20 ม." }, "stirrup": { "dia_mm": null, "type": null, "spacing_mm": null }, "concrete_grade": null, "steel_grade": "SR24", "confidence_score": 0.7, "confidence_flags": ["main_bar_type_inferred", "reuses_grid_ref_field_omitted_this_is_a_section_not_plan"] },
-    { "element_id": "S1", "element_type": "slab_edge", "width_mm": 2000, "height_mm": 100, "main_bar": { "count": 2, "dia_mm": 9, "type": "RB", "spacing_note": "@0.20 ม. บน+ล่าง" }, "stirrup": { "dia_mm": null, "type": null, "spacing_mm": null }, "concrete_grade": null, "steel_grade": "SR24", "confidence_score": 0.7, "confidence_flags": ["main_bar_type_inferred"] },
+    { "element_id": "SI", "element_type": "slab_edge", "width_mm": 2000, "height_mm": 100, "main_bar": { "count": 2, "dia_mm": 9, "type": "RB", "spacing_note": "@0.20 ม. บน+ล่าง" }, "stirrup": { "dia_mm": null, "type": null, "spacing_mm": null }, "concrete_grade": null, "steel_grade": "SR24", "confidence_score": 0.85, "confidence_flags": ["corrected_2026-07-06_from_S1_to_SI_per_claude_output_03_gen2_3x_verified_read_suffix_letters_not_numbers"] },
     { "element_id": "SX", "element_type": "slab_edge", "width_mm": null, "height_mm": 300, "main_bar": { "count": null, "dia_mm": 9, "type": "RB", "spacing_note": "@0.10 ม. และ @0.25 ม. (2 โซนระยะห่างต่างกัน)" }, "stirrup": { "dia_mm": null, "type": null, "spacing_mm": null }, "concrete_grade": null, "steel_grade": "SR24", "confidence_score": 0.65, "confidence_flags": ["main_bar_type_inferred", "length_limit_note", "max_length_1.00m_per_drawing_note"] },
     { "element_id": "ST", "element_type": "slab_edge", "width_mm": 550, "height_mm": null, "main_bar": { "count": null, "dia_mm": 6, "type": "RB", "spacing_note": "@0.20 ม." }, "stirrup": { "dia_mm": null, "type": null, "spacing_mm": null }, "concrete_grade": null, "steel_grade": "SR24", "confidence_score": 0.65, "confidence_flags": ["main_bar_type_inferred"] },
     { "element_id": "ครีบ_คสล", "element_type": "parapet", "width_mm": 250, "height_mm": 400, "main_bar": { "count": null, "dia_mm": 9, "type": "RB", "spacing_note": "@0.25 ม." }, "stirrup": { "dia_mm": null, "type": null, "spacing_mm": null }, "concrete_grade": null, "steel_grade": "SR24", "dowel": { "count": 1, "dia_mm": 12, "type": "DB" }, "confidence_score": 0.65, "confidence_flags": ["main_bar_type_inferred", "element_id_translated_from_thai_label_ครีบ_คสล_รอบอาคาร"] }
@@ -16,6 +16,7 @@
   "confidence_flags": ["element_type_slab_edge_and_parapet_newly_introduced_not_in_original_9_pattern_spec"],
   "warnings": [
     "หน้านี้เป็นรายละเอียดขยายพื้น/ครีบคอนกรีตรอบอาคาร ไม่ใช่ plan จึงไม่มี grid_ref/count แบบ pattern plan",
+    "แก้ไข 2026-07-06: element_id 'S1' เดิมแก้เป็น 'SI' (ตัว I ไม่ใช่เลข 1) ตามหลักฐานจาก claude_output_03 (Gen 2, อ่านซ้ำอิสระ 3 รอบยืนยันจุดนี้โดยเฉพาะ) — สัญลักษณ์ชุดนี้เป็น suffix ตัวอักษร SO/SI/SX/ST ทั้งหมด ตรงกับที่ปรากฏในแปลนหน้า 19 ด้วย (ดู mk_test/บ้าน_เล็ก_1ชั้น_01_หน้า19_view2_beam_plan.json element SI)",
     "มีรายละเอียดจุดต่อ 'ขยาย1' เพิ่มเติม (เหล็กหางปลาขนาด 50x300x6มม. ฝังในเสาคอนกรีต, จันทันเหล็กเชื่อมติดกับเหล็กหางปลาตลอดแนวลิ้มผลั) — เป็นรายละเอียดจุดต่อ (connection detail) ไม่ใช่ element ที่มีสเปคหน้าตัดชัดเจน จึงไม่ได้ใส่เป็น element แยก บันทึกไว้ใน warning นี้แทน",
     "element_type 'slab_edge'/'parapet' เป็นการเพิ่มชนิดใหม่ (ไม่มีใน footing/beam/slab/column เดิม) ตามความจำเป็นจากเนื้อหาจริงในแบบ"
   ]

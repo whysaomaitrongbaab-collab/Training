@@ -1,0 +1,100 @@
+{
+  "png": "05",
+  "doc_page": 3,
+  "discipline": "architectural",
+  "sheet_code": "A-03",
+  "sheet_name": "ผังบริเวณ",
+  "pattern": "site_plan",
+  "grid_source": "mk_test/t2/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    {
+      "element_id": "building_footprint",
+      "element_type": "building_footprint",
+      "description": "House footprint outline shown within the lot: overall building envelope along x-grids 1-2-3 (7.00 m: 4.00+3.00) plus a small extension beyond grid 3, and along y-grids A-B-C-D (9.50 m: per later floor plan) plus extensions below grid A. Rooms visible in outline only (labels: ดินถม, นอน1, นอน2, ห้องน้ำ, เตรียมอาหาร, พักผ่อน, จอดรถ, ระเบียง).",
+      "dimension_m": "7.00 (x, grid1-3) x approx. 9.50-14.60 (y, includes extensions)",
+      "grid_ref": "1,2,3 / D,C,B,A",
+      "confidence_score": 0.7,
+      "confidence_flags": ["footprint_shown_only_as_outline_on_this_sheet_full_room_dims_read_from_หน้า06_floor_plan_instead"]
+    },
+    {
+      "element_id": "boundary_line_north",
+      "element_type": "boundary_line",
+      "description": "<<แนวเขตที่ดิน>> (property boundary line) along the top (north) edge of the lot, at the ดินถม (fill) area beyond the building.",
+      "dimension_m": "11.70 (required minimum lot width, labeled ต้องการที่ดินกว้างอย่างน้อย = 11.70 ม.)",
+      "grid_ref": "top edge, beyond grid D",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "boundary_line_left",
+      "element_type": "boundary_line",
+      "description": "<<แนวเขตที่ดิน>> along the left (west) edge of the lot.",
+      "dimension_m": "14.60 (required minimum lot depth, labeled ต้องการที่ดินกว้างอย่างน้อย = 14.60 ม.)",
+      "grid_ref": "left edge",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "boundary_line_right",
+      "element_type": "boundary_line",
+      "description": "<<แนวเขตที่ดิน>> along the right (east) edge of the lot, beyond grid 3.",
+      "dimension_m": null,
+      "grid_ref": "right edge, beyond grid 3",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "setback_A",
+      "element_type": "setback",
+      "description": "Setback dimension 'A' — per the notes: ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 2 ม. หรือตามที่กฎหมายกำหนด (adjustable per actual lot size, minimum 2 m or per building-control law). Appears at top of plan near grid 1/A intersection.",
+      "dimension_m": ">= 2.0 (minimum, adjustable)",
+      "grid_ref": "near grid 1 / row A (top-left)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "setback_B",
+      "element_type": "setback",
+      "description": "Setback dimension 'B' — per the notes: ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 3 ม. หรือตามที่กฎหมายกำหนด (adjustable per actual lot size, minimum 3 m or per building-control law). Appears at bottom-left of plan below the building footprint, near the road.",
+      "dimension_m": ">= 3.0 (minimum, adjustable)",
+      "grid_ref": "bottom edge, below the building, adjacent to ถนนสาธารณะ",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "road",
+      "element_type": "road",
+      "description": "ถนนสาธารณะ (public road) at the bottom (south) edge of the lot, reference level ±0.00.",
+      "dimension_m": null,
+      "grid_ref": "bottom edge",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "fill_areas",
+      "element_type": "other",
+      "description": "ดินถม (fill soil) areas noted at top (±0.00) and right side (±0.00) of the plan, and a hatched 'ปรับระดับดินถม' (grade-adjust fill) zone at bottom-left near the road.",
+      "dimension_m": null,
+      "grid_ref": "top, right, bottom-left of plan",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    }
+  ],
+  "notes_on_sheet": [
+    "ผังบริเวณนี้เป็นเพียงตัวอย่างเพื่อประมาณราคาค่าก่อสร้างส่วนประกอบอาคารเท่านั้น ส่วนรายละเอียดของสถานที่จริงให้กำหนดรายละเอียดขณะก่อสร้าง",
+    "สายเมนไฟฟ้าให้เข้าทางด้านหน้า",
+    "A = ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 2 ม. หรือตามที่กฎหมายกำหนด",
+    "B = ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 3 ม. หรือตามที่กฎหมายกำหนด",
+    "รางระบายน้ำให้ต่อลงบ่อพักภายนอก หรือที่กำหนดให้",
+    "ตำแหน่งถังบำบัดน้ำเสีย บ่อพักน้ำทิ้ง บ่อดักไขมัน แนวท่อน้ำดี น้ำเสีย และท่อโสโครก ให้ดูแบบสุขาภิบาล"
+  ],
+  "north_arrow_present": false,
+  "confidence_score": 0.75,
+  "confidence_flags": ["site_specific_boundary_geometry_is_generic_per_sheet_note_not_a_real_surveyed_lot"],
+  "warnings": [
+    "This sheet explicitly states it is only an example/estimate layout (ตัวอย่างเพื่อประมาณราคา), not a real surveyed site plan — the boundary/setback geometry is generic, not tied to an actual parcel.",
+    "No north arrow is printed on this specific page (the legend defining the north-arrow symbol appears on page 03/A-01, but the symbol itself is not drawn on this site-plan sheet).",
+    "Grid labels 1/2/3 (x) and A/B/C/D (y) on this sheet match the building's main grid in the master gridline file exactly.",
+    "Detailed room dimensions are deferred to หน้า06 (A-04, แปลนพื้นชั้น 1) which shows the same footprint at higher resolution with per-room dimensions."
+  ]
+}

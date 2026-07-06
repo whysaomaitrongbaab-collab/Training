@@ -1,0 +1,58 @@
+{
+  "png": "29",
+  "doc_page": 27,
+  "discipline": "sanitary",
+  "sheet_code": "SN-04",
+  "sheet_name": "แปลนระบบสุขาภิบาลพื้นชั้นล่าง, แบบขยายระบบสุขาภิบาลห้องน้ำ",
+  "pattern": "plan",
+  "view_title": "แปลนระบบสุขาภิบาลพื้น",
+  "drawing_no": "SN-58078",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["D", "C", "B", "A", "A'", "A''"],
+  "rooms_shown": [
+    {"name": "นอน 1", "level_m": "+0.60"},
+    {"name": "นอน 2", "level_m": "+0.60"},
+    {"name": "ซักล้าง", "level_m": "+0.20"},
+    {"name": "ห้องน้ำ", "level_m": "+0.50"},
+    {"name": "เตรียมอาหาร", "level_m": "+0.60"},
+    {"name": "จอดรถ", "level_m": "+0.20"},
+    {"name": "พักผ่อน", "level_m": "+0.60"},
+    {"name": "เฉลียง", "level_m": "+0.50"}
+  ],
+  "elements": [
+    {"element_type": "septic_tank", "description": "ถังบำบัดน้ำเสียสำเร็จรูป", "grid_ref": "west side, adjacent to ห้องน้ำ/จอดรถ, roughly at row B", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "grease_trap", "description": "ถังดักไขมันสำเร็จรูป", "grid_ref": "between ห้องน้ำ and เตรียมอาหาร, piped onward to a floor cleanout box near row B", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "water_meter", "description": "ชุดมาตรวัดน้ำ Ø1/2\" (ค่าใช้จ่ายในการติดตั้งเป็นของผู้รับจ้างทั้งสิ้น), fed by CW main from below the plan", "grid_ref": "bottom edge of plan, below row A''", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "catch_basin", "description": "บ่อพักท่อระบายน้ำสำเร็จรูป ขนาด 0.40x0.40 ม. พร้อมฝา ค.ส.ล.", "grid_ref": "east side of plan, along perimeter storm drain run near row C", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "floor_cleanout_or_manhole", "description": "X-in-square symbols marking multiple perimeter access points on the concrete storm-drain run (likely cleanouts/junction boxes on ท่อคอนกรีตท้องตลาด)", "grid_ref": "multiple points around building perimeter (dashed line), at corners near rows D, C, B, A and grid 1/3", "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required", "symbol_meaning_inferred_from_legend_not_individually_labeled"]},
+    {"element_type": "site_storm_drain_pipe", "description": "ท่อคอนกรีตท้องตลาด Ø0.20ม. ลาด 1:200, จุดต้นท่อลึก 0.60ม. -- runs along the perimeter (north/top edge near row D and around the building) connecting the catch basins", "grid_ref": "perimeter, following the dashed line around the building footprint", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "cold_water_supply_pipe", "description": "ท่อประปา Ø3/4\"CW เดินจากมาตรวัดน้ำผ่านถังบำบัด/ถังดักไขมัน ไปยังห้องน้ำ, นอน 1, นอน 2", "grid_ref": "runs along interior/west walls up through ห้องน้ำ and the bedrooms", "confidence_score": 0.65, "confidence_flags": []}
+  ],
+  "equipment_specs": {
+    "septic_tank": {
+      "type": "ถังบำบัดน้ำเสียสำเร็จรูปชนิดเกรอะ-กรองไร้อากาศ",
+      "grease_volume_min_cum": 1.0,
+      "filter_volume_min_cum": 0.25,
+      "acceptable_brands": ["AQUA", "PP", "DOS", "SAN-PAC", "HICLEAR", "หรือเทียบเท่า"],
+      "installation_note": "การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต"
+    },
+    "grease_trap": {
+      "type": "ถังดักไขมันสำเร็จรูป",
+      "volume_min_liters": 30,
+      "acceptable_brands": ["AQUA", "PP", "DOS", "SAN-PAC", "HICLEAR", "หรือเทียบเท่า"],
+      "installation_note": "การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต"
+    }
+  },
+  "sibling_files": [
+    "บ้าน_เล็ก_1ชั้น_01_หน้า29_bathroom_plan.json"
+  ],
+  "confidence_score": 0.68,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID DISAGREEMENT WITH t1: t1's independent read of this same page (บ้าน_เล็ก_1ชั้น_01_หน้า29_floor_plan.json) set grid_ref_is_free_text_not_grid_notation: true, treating the circled 1/2/3 and A/B/C/D labels as generic non-structural reference marks. My independent re-read finds the printed dimension strings on this page match the real building grid master (หน้า00_gridline.json) exactly: horizontal 1.30+4.00+3.00+1.30 = grid1(0.0)-grid2(4.0)-grid3(7.0) with 1.30m eaves overhang each side; vertical 1.50+4.00+2.00+3.50+1.50+1.50 = D(0.0)-C(4.0, matches 'D to C'=4.0)-B(6.0, 'C to B'=2.0)-A(9.5, 'B to A'=3.5)-then a further 1.50+1.50=3.00 extension below A that matches the master's dummy grid lines A'(11.0) and A''(12.5) almost exactly (offsets +1.5 and +3.0 from A), which the master file itself sourced from page 06's architectural floor plan. This is a real, load-bearing structural grid reference, not free text -- recommend treating grid_columns/grid_rows here as grid_source-linked, not free-text position labels.",
+    "This page also contains a smaller inset detail 'แปลนระบบสุขาภิบาลห้องน้ำ' (1:50) captured in the sibling file, plus the septic tank / grease trap spec notes reproduced above in equipment_specs.",
+    "Exact routing of individual small-diameter branch pipes (Ø3/4\"CW segments into each room) and the precise identity of every perimeter X-in-square symbol is difficult to trace precisely at this resolution; positions are best-effort/approximate, not measured coordinates."
+  ]
+}

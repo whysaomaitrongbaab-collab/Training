@@ -1,0 +1,24 @@
+{
+  "png": "09",
+  "doc_page": 7,
+  "discipline": "architectural",
+  "sheet_code": "A-07",
+  "sheet_name": "รูปตัด 1",
+  "pattern": "section",
+  "view_title": "รูปตัด 1",
+  "grid_source": "mk_test/t2/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "roof_structure_ref", "element_type": "roof_frame_reference", "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)", "description": "โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง (roof framing detailed on structural drawings, not shown here)", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "เตรียมอาหาร_cut", "element_type": "room_cut", "count": 1, "grid_ref": "grid3 - grid2 (approx)", "level_m": 0.60, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "ห้องน้ำ_cut", "element_type": "room_cut", "count": 1, "grid_ref": "near grid1-2", "level_m": 0.50, "description": "Bathroom cut showing fixture heights (approx 2.70/2.80 ceiling-related dims) and door/window callouts 1, 2, 3.", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "levels", "element_type": "datum", "description": "ระดับหลังคาน +3.75, ระดับพื้นชั้น 1 +0.60, ระดับอ้างอิง ±0.00", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "overall_width", "element_type": "dimension", "description": "Bottom dimension chain: 1.30 / 3.00 / (1.55+2.45=4.00) / 1.30, overall 7.00 across grid 3-2-1, matching plan grid spans.", "confidence_score": 0.75, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "This building cross-section (รูปตัด 1) cuts through the kitchen-prep (เตรียมอาหาร) and bathroom (ห้องน้ำ) area along grid row 1-2-3; roof framing itself is deferred to the structural drawings (S-01~S-08, outside this extraction's page range).",
+    "Sibling section รูปตัด 2 is in _หน้า09_section2.json.",
+    "Interior ceiling/fixture sub-dimensions (2.70, 2.80) are small print and read with medium confidence only."
+  ]
+}

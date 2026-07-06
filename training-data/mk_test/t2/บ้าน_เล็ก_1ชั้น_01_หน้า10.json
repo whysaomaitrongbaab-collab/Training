@@ -1,0 +1,24 @@
+{
+  "png": "10",
+  "doc_page": 8,
+  "discipline": "architectural",
+  "sheet_code": "A-08",
+  "sheet_name": "แบบขยายประตู แบบขยายหน้าต่าง",
+  "pattern": "schedule",
+  "element": [
+    { "element_id": "ประตู_1", "element_type": "door", "width_mm": 2600, "height_mm": 2050, "material": "บานเลื่อน ช่องแสงติดตาย, วงกบ/กรอบบานอลูมิเนียมอบสีขาว, บานกระจกใส หนา 6มม.", "count": null, "location_note": "ติดตั้งบริเวณทางเข้า, ระเบียง", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "ประตู_2", "element_type": "door", "width_mm": 800, "height_mm": 2000, "material": "บานเปิดเดี่ยว, วงกบไม้เนื้อแข็ง 2\"x4\", บานประตูสำเร็จรูป HDF", "count": null, "location_note": "ติดตั้งบริเวณห้องครัว, ห้องนอน", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "ประตู_3", "element_type": "door", "width_mm": 700, "height_mm": 2000, "material": "บานเปิดเดี่ยว, วงกบ PVC., บานประตู PVC.", "count": null, "location_note": "ติดตั้งบริเวณห้องน้ำ", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "หน้าต่าง_1", "element_type": "window", "width_mm": 1400, "height_mm": 2050, "material": "บานเลื่อนสลับ, วงกบ/กรอบบานอลูมิเนียมอบสีขาว, บานกระจกใส หนา 6มม.", "count": null, "location_note": null, "height_breakdown_m": "1.20 + 0.85", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "หน้าต่าง_2", "element_type": "window", "width_mm": 700, "height_mm": 2050, "material": "บานเปิดเดี่ยว, วงกบ/กรอบบานอลูมิเนียมอบสีขาว, บานกระจกใส หนา 6มม.", "count": null, "location_note": null, "height_breakdown_m": "1.20 + 0.85", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "หน้าต่าง_3", "element_type": "window", "width_mm": 1400, "height_mm": 2500, "material": "บานกระทุ้ง (EQ.+EQ. panels), วงกบ/กรอบบานอลูมิเนียมอบสีขาว, บานกระจกใส หนา 6มม.", "count": null, "location_note": null, "height_breakdown_m": "2.00 + 0.50", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "หน้าต่าง_4", "element_type": "window", "width_mm": 2800, "height_mm": 2050, "material": "บานเลื่อน (แบ่ง 4 ช่องเท่ากัน), วงกบ/กรอบบานอลูมิเนียมอบสีขาว, บานกระจกใส หนา 4มม.", "count": null, "location_note": null, "height_breakdown_m": "1.20 + 0.85", "confidence_score": 0.8, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": ["no_quantity_on_this_sheet_counts_are_on_floor_plan_not_here"],
+  "warnings": [
+    "This sheet (A-08) is a type schedule only — it defines door/window types 1-3 (doors) and 1-4 (windows) with dimensions/materials/hardware, but does NOT give quantities/counts; counts must be taken from the floor plan (หน้า06) callout tags, which I was only able to read with medium confidence (see หน้า06_floor_plan.json warnings).",
+    "Door 1 and Window 1 both happen to be labeled with the numeral '1' in their respective symbol shapes (square-ish box for doors vs. hexagon for windows per the A-01 legend) — I've disambiguated them as ประตู_1 and หน้าต่าง_1 rather than treating them as the same element.",
+    "Hardware/accessory notes ('อุปกรณ์: มาตรฐานครบชุด' / 'ลูกบิด, มาตรฐานครบชุด') were consistent across all types and are summarized in the material field rather than repeated verbatim for each."
+  ]
+}

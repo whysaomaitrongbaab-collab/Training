@@ -1,0 +1,29 @@
+{
+  "png": "35",
+  "doc_page": 33,
+  "discipline": "electrical",
+  "sheet_code": "EE-03",
+  "sheet_name": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "pattern": "plan",
+  "view_title": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "drawing_no": "EE-58077",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["D", "C", "B", "A"],
+  "rooms_shown": ["นอน 1", "นอน 2", "ซักล้าง", "เตรียมอาหาร", "จอดรถ", "พักผ่อน", "เฉลียง"],
+  "elements": [
+    {"element_type": "distribution_panel", "description": "แผงเมนสวิตช์ (LP), +1.80M, located near the จอดรถ/พักผ่อน boundary wall", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "lighting_circuit_feed", "description": "Feed 2-2.5 NYY-Ø25mm.PVC from LP panel down through the slab/wall to a weatherproof bell switch (SB) near the เฉลียง entrance, feeding circuit 1/LP", "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "ceiling_downlight_point", "description": "Circled-cross downlight symbols scattered through the plan, individually lettered (letters observed include g, h in นอน 1; f, d near นอน 2/ซักล้าง; k in ซักล้าง; c, d, e cluster near เตรียมอาหาร; b, b in พักผ่อน; d near เฉลียง) tying each fixture to a switch loop", "grid_ref": "นอน 1 (~2 points), นอน 2 (~1-2 points), ซักล้าง (1 point), เตรียมอาหาร (1-2 points), พักผ่อน (2 points), เฉลียง (1 point)", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "wall_light_fixture", "description": "A short bold linear (LED-tube-style) symbol near เตรียมอาหาร/จอดรถ, distinct from the circled downlight points", "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "switch_point", "description": "Small dot symbols near room entrances presumed to be one-way wall switches, plus the SB weatherproof bell switch near เฉลียง/main entrance", "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required"]}
+  ],
+  "confidence_score": 0.5,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID DISAGREEMENT WITH t1: t1's independent read set grid_ref_is_free_text_not_grid_notation: true for this page. My independent read finds the printed dimension string (1.30+7.00(4.00+3.00)+1.30 horizontally; 1.50+4.00+9.50-bracket(2.00+3.50)+1.50+3.00-bracket(1.50+1.50) vertically) matches the real building grid master (หน้า00_gridline.json) exactly, including the dummy grid extensions A'/A'' below grid A -- same evidence and conclusion as noted on หน้า29_floor_plan.json. Recommend grid_source-linked treatment rather than free-text.",
+    "This sheet is a symbol-routing plan, not a quantity/fixture-count schedule -- the exact letter-to-fixture correspondence (which lowercase letter switch loop controls which downlight) is difficult to resolve precisely at this image resolution and is not being asserted as a verified count. Do not infer a bill-of-quantities fixture count from this file without zooming in on the source drawing.",
+    "Fixture types themselves (downlight vs LED tube spec) are defined on the EE-01 symbol legend, not repeated here."
+  ]
+}
