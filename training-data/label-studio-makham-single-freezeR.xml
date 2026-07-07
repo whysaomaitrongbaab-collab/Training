@@ -6,6 +6,7 @@
   <Style>
     .stickycol { position:sticky; top:0; flex:0 0 460px; max-width:460px; align-self:flex-start; background:white; padding-bottom:8px; overflow-wrap:break-word; word-break:break-word; }
     .row-top { display:flex; align-items:flex-start; gap:8px; padding:4px 0; }
+    .row { display:flex; align-items:center; gap:8px; padding:2px 0; }
   </Style>
 
   <View style="display:flex; gap:16px; align-items:flex-start;">
@@ -51,11 +52,26 @@
     </View>
 
     <View className="stickycol">
-      <Header value="$house" size="3"/>
-      <Text name="hdr_png" value="หน้า $png" style="font-weight:600; font-size:13px;"/>
-      <Text name="hdr_sheet_code" value="Sheet: $sheet_code" style="font-size:13px; overflow-wrap:break-word; word-break:break-word;"/>
-      <Text name="hdr_sheet_name" value="$sheet_name" style="font-size:13px; overflow-wrap:break-word; word-break:break-word;"/>
-      <Text name="hdr_pattern" value="Pattern: $pattern" style="font-size:13px; margin-bottom:6px;"/>
+      <View className="row">
+        <Text name="lbl_house" value="บ้าน:" style="font-weight:700; font-size:15px; flex-shrink:0; min-width:60px;"/>
+        <TextArea name="hdr_house" toName="page" value="$house" editable="true" rows="1" style="font-weight:700; font-size:15px; width:100%;"/>
+      </View>
+      <View className="row">
+        <Text name="lbl_png" value="หน้า:" style="font-weight:600; font-size:13px; flex-shrink:0; min-width:60px;"/>
+        <TextArea name="hdr_png" toName="page" value="$png" editable="true" rows="1" style="font-weight:600; font-size:13px; width:100%;"/>
+      </View>
+      <View className="row">
+        <Text name="lbl_sheet_code" value="Sheet:" style="font-size:13px; flex-shrink:0; min-width:60px;"/>
+        <TextArea name="hdr_sheet_code" toName="page" value="$sheet_code" editable="true" rows="1" style="font-size:13px; width:100%;"/>
+      </View>
+      <View className="row">
+        <Text name="lbl_sheet_name" value="ชื่อแผ่น:" style="font-size:13px; flex-shrink:0; min-width:60px;"/>
+        <TextArea name="hdr_sheet_name" toName="page" value="$sheet_name" editable="true" rows="1" style="font-size:13px; width:100%;"/>
+      </View>
+      <View className="row" style="margin-bottom:6px;">
+        <Text name="lbl_pattern" value="Pattern:" style="font-size:13px; flex-shrink:0; min-width:60px;"/>
+        <TextArea name="hdr_pattern" toName="page" value="$pattern" editable="true" rows="1" style="font-size:13px; width:100%;"/>
+      </View>
       <Image name="page" value="$image" zoom="true" zoomControl="true" maxHeight="75vh"/>
     </View>
 

@@ -256,14 +256,28 @@ function main() {
   const elementsFile = `label-studio-tasks-makham-elements${suffix}.json`;
   const materialListFile = `label-studio-tasks-makham-material_list${suffix}.json`;
   const singleFile = `label-studio-tasks-makham-single${suffix}.json`;
+  const allFile = `label-studio-tasks-makham-all${suffix}.json`;
 
   fs.writeFileSync(path.join(__dirname, elementsFile), JSON.stringify(elementsTasks, null, 2), 'utf-8');
   fs.writeFileSync(path.join(__dirname, materialListFile), JSON.stringify(materialListTasks, null, 2), 'utf-8');
   fs.writeFileSync(path.join(__dirname, singleFile), JSON.stringify(singleTasks, null, 2), 'utf-8');
 
+  // Reference/archive copy only — NOT for importing into Label Studio directly. Each
+  // group still needs its own project + matching Labeling Interface config (elements/
+  // material_list/single have different field shapes), so real imports use the 3 files
+  // above. This one just groups them for browsing/backup in one place.
+  const allTasks = {
+    _readme: 'Reference/archive copy only — for actually importing into Label Studio Cloud, use the 3 separate files (elements/material_list/single) into their matching project. This file just groups all 3 together for browsing/backup.',
+    elements: elementsTasks,
+    material_list: materialListTasks,
+    single: singleTasks,
+  };
+  fs.writeFileSync(path.join(__dirname, allFile), JSON.stringify(allTasks, null, 2), 'utf-8');
+
   console.log(`✅ Elements tasks (plan/section/schedule/site_plan/...): ${elementsTasks.length} → ${elementsFile}`);
   console.log(`✅ Material list tasks: ${materialListTasks.length} → ${materialListFile}`);
   console.log(`✅ Single-record tasks (notes/gridline/unknown/index): ${singleTasks.length} → ${singleFile}`);
+  console.log(`✅ Combined reference copy (not for import): ${elementsTasks.length + materialListTasks.length + singleTasks.length} → ${allFile}`);
   console.log(`ℹ️  Skipped ${skippedGridMaster} grid-master file(s) (png:"00", reviewed separately)`);
   if (disciplineFilter) console.log(`ℹ️  Filtered to discipline="${disciplineFilter}" only`);
 }
