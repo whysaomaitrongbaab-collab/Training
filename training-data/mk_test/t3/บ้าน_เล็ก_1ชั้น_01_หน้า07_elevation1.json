@@ -1,0 +1,20 @@
+{
+  "png": "07",
+  "doc_page": 5,
+  "discipline": "architectural",
+  "sheet_code": "A-05",
+  "sheet_name": "รูปด้าน 1",
+  "pattern": "unknown",
+  "view_title": "รูปด้าน 1",
+  "grid_source": "mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "raw_text": "ระดับหลังคาน +3.75, ระดับพื้นชั้น 1 +0.60, ระดับอ้างอิง ±0.00. บัวปูนปั้น กว้าง 0.10 ม. ลึก 0.10 ม. กันสาด ค.ส.ล. เซาะร่อง หรือ ฝังเส้น PVC. Grid callouts along the bottom, left to right: 1, 2, 3, with dimension chain 1.30 | 4.00 | 3.00 | 0.60 | 0.70, bracketed as 1.30 (left overhang) | 7.00 (grid1-grid3) | 1.30 (right overhang, = 0.60+0.70). Door/window callouts 2 and 1 visible on the facade (referencing A-08).",
+  "description": "Front elevation (รูปด้าน 1) of the house, spanning grid 1 to grid 3. Shows a flat-topped fascia/eave band at the top with a plaster cornice (บัวปูนปั้น) detail, a concrete canopy/eave (กันสาด ค.ส.ล.) over the entry, a sliding glass door (door type 1) plus a hinged door (type 2) opening, brick-veneer wainscot at the base, and a control-joint/PVC-strip reveal (เซาะร่อง/ฝังเส้น PVC) on the wall face. Level datum: ±0.00 (reference) to +0.60 (ground floor) to +3.75 (roof-beam level). Roofline reads flat/parapet-like in this view (the monopitch slope is edge-on here, not visible as a diagonal).",
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "Classified 'unknown' per the schema's own guidance that elevations with no schedule/quantity data are an expected unknown-pattern outcome; level datums and grid dimension chain were still transcribed since clearly legible.",
+    "GRID-RELEVANT FOR หน้า00 MASTER (reporting only, master file not edited): the sub-division beyond grid 3 on THIS sheet reads 0.60 + 0.70 = 1.30, which is the ROOF-OVERHANG dimension breakdown (matches the roof plan's roof_overhang_east=1.30 exactly). This is a DIFFERENT quantity from หน้า06_floor_plan's wall/room extension breakdown (0.60 + 0.90 = 1.50, dummy grid '3''). Both happen to start with an identical first sub-segment '0.60', which could easily be conflated when merging grid data across sheets into the master file — flagging explicitly so whoever updates the master's '3'' entry does not accidentally average/merge the roof-overhang 1.30 figure with the wall-extension 1.50 figure.",
+    "This page (A-05) contains two elevations; the second (รูปด้าน 2) is in sibling file _หน้า07_elevation2.json.",
+    "Independent read done first, then cross-checked against t2's หน้า07_elevation1.json — same level datums and grid spans; t2 did not record the 0.60/0.70 sub-breakdown explicitly (only the outer 1.30 total), so this sub-breakdown detail is new in this round, not a disagreement."
+  ]
+}

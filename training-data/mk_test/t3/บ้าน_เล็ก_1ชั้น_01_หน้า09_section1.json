@@ -1,0 +1,26 @@
+{
+  "png": "09",
+  "doc_page": 7,
+  "discipline": "architectural",
+  "sheet_code": "A-07",
+  "sheet_name": "รูปตัด 1",
+  "pattern": "section",
+  "view_title": "รูปตัด 1",
+  "grid_source": "mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "roof_structure_ref", "element_type": "roof_frame_reference", "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)", "description": "โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง (roof framing detailed on structural drawings, not shown here)", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "เตรียมอาหาร_cut", "element_type": "room_cut", "count": 1, "grid_ref": "grid3 - grid2 (approx)", "level_m": 0.60, "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "ห้องน้ำ_cut", "element_type": "room_cut", "count": 1, "grid_ref": "near grid1-2", "level_m": 0.50, "description": "Bathroom cut showing fixture heights (approx 2.80/2.70 ceiling-related dims) and door/window callouts 1, 2, 3.", "confidence_score": 0.72, "confidence_flags": [] },
+    { "element_id": "levels", "element_type": "datum", "description": "ระดับหลังคาน +3.75, ระดับพื้นชั้น 1 +0.60, ระดับอ้างอิง ±0.00", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "overall_width", "element_type": "dimension", "description": "Bottom dimension chain (left to right, grid3 to grid1): 0.70 | 0.60 | 3.00 | 1.55 | 2.45, bracketed as 1.30 (left overhang) | 7.00 (grid3-grid2-grid1) | 1.30 (right overhang). Matches plan grid spans exactly.", "confidence_score": 0.8, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.77,
+  "confidence_flags": [],
+  "warnings": [
+    "This building cross-section (รูปตัด 1) cuts through the kitchen-prep (เตรียมอาหาร) and bathroom (ห้องน้ำ) area along grid row 3-2-1; roof framing itself is deferred to the structural drawings (S-01~S-08, outside this extraction's page range).",
+    "GRID-RELEVANT: this section's overhang breakdown beyond grid 3 (0.70 then 0.60, read right-to-left = same 1.30 total as รูปด้าน1/3) again confirms the roof-overhang figure is 1.30, distinct from the floor plan's 1.50 wall/room extension — see หน้า06_floor_plan.json and หน้า07_elevation1.json warnings for the full explanation of why these differ.",
+    "Sibling section รูปตัด 2 is in _หน้า09_section2.json.",
+    "Interior ceiling/fixture sub-dimensions (2.70/2.80) are small print, read with medium confidence only.",
+    "Independent read done first, then cross-checked against t2's หน้า09_section1.json — same content and level datums, no disagreement."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "png": "14",
+  "doc_page": 12,
+  "discipline": "architectural",
+  "sheet_code": "A-12",
+  "sheet_name": "แบบขยาย เชิงชาย",
+  "pattern": "section",
+  "view_title": "แบบขยาย เชิงชาย 2 (R2)",
+  "element": [
+    { "element_id": "เชิงชายไม้ไฟเบอร์ซีเมนต์", "element_type": "fascia_board", "material": "เชิงชายไม้ไฟเบอร์ซีเมนต์ ขนาด 8\"+8\" หนา 12 มม ทาสี", "count": 1, "dimension_m": "overhang 1.50 from the wall/post reference line E", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "หลังคาเหล็กรีดลอน", "element_type": "roof_sheet", "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet roofing)", "count": 1, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "flashing", "element_type": "flashing", "material": "FLASHING ใช้วัสดุเดียวกันกับหลังคา", "count": 1, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "post_marker_4", "element_type": "reference_marker", "description": "Circled numeral '4' marking a vertical post/member at the eave edge, same convention as R1", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"] },
+    { "element_id": "post_offset_dim", "element_type": "dimension_note", "description": "Small '0.30' dimension near the post, marking a horizontal offset (left of the sloped roof line, above the post)", "value_m": 0.30, "confidence_score": 0.65, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.68,
+  "confidence_flags": [],
+  "warnings": [
+    "This is eave/fascia detail R2, sibling to R1 on the same sheet A-12.",
+    "The circled letter 'E' at the bottom of this detail does NOT match any letter in the building's main gridline set (D, C, B, A) or the dummy-grid set in the master gridline file (mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json) — this strongly suggests 'E' is a generic local reference/section letter for this detail drawing only, not a proposal for a new building gridline. Not added to the grid master; flagged instead, matching t2's same conclusion independently.",
+    "Independent re-read for Gen 4/t3: matches t2's prior extraction on all material callouts, the 1.50 m overhang, and the 'E is not a real grid letter' conclusion. My read of the small dimension near the post came out as a single '0.30' offset value rather than t2's ambiguous 'position/meaning not fully certain' note — kept at moderate rather than low confidence since the number itself (0.30) is legible even though its exact geometric meaning (offset from what reference) is not fully certain.",
+    "Sibling detail R1 is in _หน้า14_eave_r1.json."
+  ]
+}

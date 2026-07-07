@@ -1,0 +1,31 @@
+{
+  "png": "12",
+  "doc_page": 10,
+  "discipline": "architectural",
+  "sheet_code": "A-10",
+  "sheet_name": "แบบขยายห้องน้ำ WC.1",
+  "pattern": "section",
+  "view_title": "รูปตัดห้องน้ำ WC.1 (มุม 2)",
+  "grid_source": "mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "wall_section_2", "element_type": "interior_elevation", "description": "Interior wall elevation showing full-height ceramic tile with a two-panel window near the top-center and a mirror strip on the left; overall wall height 2.70 m, tile/fixture zone height 2.00 m (same 0.60+0.20+0.20+1.00 breakdown pattern as view 1)", "height_m": 2.70, "height_breakdown_m": [0.60, 0.20, 0.20, 1.00], "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"] },
+    { "element_id": "window_pair", "element_type": "window_reference", "description": "Two-panel window (hexagon callout '3', matching W3 'บานกระทุ้ง' on the door/window schedule หน้า10) set into the top-center of the wall, above the mirror/basin zone", "count": 1, "confidence_score": 0.65, "confidence_flags": ["cross-reference_to_W3_on_หน้า10_is_my_own_inference_not_an_explicit_callout_on_this_sheet"] },
+    { "element_id": "M._mirror", "element_type": "sanitary_fixture", "description": "Mirror (M.), left side of elevation", "count": 1, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "LAV.2_fixture", "element_type": "sanitary_fixture", "description": "Wall-hung wash basin below the mirror", "count": 1, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "PH._fitting", "element_type": "accessory", "description": "Paper holder (PH.), right of LAV.2", "count": 1, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "WC.1_fixture", "element_type": "sanitary_fixture", "description": "Toilet (WC.1), lower right of elevation, labeled 'ห้องน้ำ 1'", "count": 1, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "TR._fitting", "element_type": "accessory", "description": "Towel rail (TR.), upper right of elevation", "count": 1, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "level_marker_ห้องน้ำ1", "element_type": "level_note", "description": "Floor-level box marker '[3]+0.50[2]' under this elevation (ห้องน้ำ 1 zone)", "level_m": 0.50, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "width_dimension_chain", "element_type": "dimension_note", "description": "Bottom horizontal dimension chain: 0.10 + 0.90 + 0.90 + 0.10 = 2.00 m total", "value_m": 2.00, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "grid_ref_B", "element_type": "grid_reference", "description": "Circled 'B' grid marker below the left edge of this elevation", "grid_id": "B", "confidence_score": 0.6, "confidence_flags": ["single_axis_letter_only_could_be_the_main_building_gridline_B_or_a_local_section_reference_-_position_is_plausible_for_the_real_gridB_given_WC.1's_location_between_gridB_and_gridC_on_the_floor_plan_but_not_fully_confirmed_here"] },
+    { "element_id": "grid_ref_C", "element_type": "grid_reference", "description": "Circled 'C' grid marker below the right edge of this elevation", "grid_id": "C", "confidence_score": 0.6, "confidence_flags": ["same_caveat_as_grid_ref_B"] }
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [],
+  "warnings": [
+    "Sibling view to _หน้า12_wc1_section1.json — this file covers the right-hand elevation ('2') of the same A-10 sheet, showing the window wall of WC.1.",
+    "Unlike the R1/R2 eave details on หน้า14 (where the axis letters turned out to be local/non-grid), the 'B' and 'C' letters here plausibly ARE the real building gridlines B and C, since the WC.1 room was already noted as sitting between gridB and gridC on the floor plan sheet (หน้า11/หน้า06) — kept at moderate confidence rather than high because this sheet alone doesn't prove it, and this reviewer did not cross-check against a structural S-series sheet in this pass.",
+    "The 0.10+0.90+0.90+0.10=2.00 m width chain matches the WC.1 room's 2.00 m depth dimension read independently on the plan sheet (หน้า11) — cross-consistent.",
+    "First-time read of this sheet (A-10) — not present in mk_test/t1 or t2."
+  ]
+}

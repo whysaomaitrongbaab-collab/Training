@@ -1,0 +1,46 @@
+{
+  "png": "18",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "รายการประกอบแบบ, สารบัญแบบ",
+  "pattern": "notes",
+  "schema_generation": "Merged Pattern Gen 4",
+  "view_title": "รายการประกอบแบบ",
+  "reference_standard": "มยผ. 1101-52 ถึง 1106-52",
+  "concrete_strength": {
+    "grade_label": "ค.3",
+    "fc_ksc": 210,
+    "curing_days": 28,
+    "confidence_score": 0.98,
+    "confidence_flags": [
+      "RESOLVES_PRIOR_CONFLICT: independent fresh read of this exact page in mk_test/t1 (2026-07-05) and again here in t3 (2026-07-07) both read fc'=210 ksc clearly printed as '2.1.คอนกรีต ให้ใช้ ค.3 / Fc' = 210 กก./ตร.ซม. (ทรงกระบอกที่ 28 วัน)'. The original Gen-1 qwen-output extraction for this page recorded 240 ksc instead. Two independent human/Claude reads now agree on 210 ksc against Gen-1's single automated read of 240 ksc -- treat 210 ksc as the confirmed correct value going forward, Gen-1's 240 should be treated as the erroneous one, not the other way around."
+    ]
+  },
+  "steel_grade": {
+    "round_bar": { "notation": "RB", "grade": "SR-24", "fy_ksc": 2400, "applies_to_dia_mm": [6, 9], "note": "spec book default for these diameters -- does NOT override the Gen-4 rule that the printed symbol (Ø circle = RB) governs on any individual bar-spec page even if a larger-diameter bar is drawn with a plain Ø circle" },
+    "deformed_bar": { "notation": "DB", "grade": "SD-40", "fy_ksc": 4000, "applies_to_dia_mm": ">=12", "note": "spec book default for 12mm and up" },
+    "confidence_score": 0.95,
+    "confidence_flags": []
+  },
+  "precast_plank_spec": {
+    "type": "Solid Plank",
+    "plank_thickness_mm": 50,
+    "topping_thickness_mm": 50,
+    "topping_mesh": { "dia_mm": 4.0, "spacing_mm": 200 },
+    "min_capacity_kg_per_sqm": 300,
+    "confidence_score": 0.9,
+    "confidence_flags": ["small_print_verify_topping_mesh_spacing_if_used_as_ground_truth_for_precast_plank_detail_elements"]
+  },
+  "footing_bearing_notes": [
+    { "condition": "soil bearing < 10 ton/sqm", "requirement": "ใช้ฐานรากเสาเข็มเหลี่ยมกลวง ขนาด Ø0.15 ม. ยาว 6.00 ม. รับน้ำหนักปลอดภัย 1.7 ตัน/ต้น ใช้ฐานรากเสาเข็มตามแบบ" },
+    { "condition": "soil bearing > 10 ton/sqm", "requirement": "ใช้ฐานรากแผ่โดยไม่ต้องมีเสาเข็ม" }
+  ],
+  "general_requirements": [
+    "เหล็กรูปพรรณ: fy >= 2400 ksc, ทาสีกันสนิม Lead Oxide 2 ครั้งก่อนทาลิจริง, เชื่อมด้วยไฟฟ้า (Arc Welding), เหล็กต้องปราศจากสนิมขุม ไม่คดงอหรือบิดเสียรูป",
+    "รายละเอียด/คุณสมบัติวัสดุที่ไม่ได้ระบุในแบบ ให้เป็นไปตามมาตรฐานผลิตภัณฑ์อุตสาหกรรม (มอก.)"
+  ],
+  "confidence_score": 0.95,
+  "confidence_flags": [],
+  "warnings": []
+}

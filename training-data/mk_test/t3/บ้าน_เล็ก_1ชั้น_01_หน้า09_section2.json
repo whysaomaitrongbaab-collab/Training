@@ -1,0 +1,30 @@
+{
+  "png": "09",
+  "doc_page": 7,
+  "discipline": "architectural",
+  "sheet_code": "A-07",
+  "sheet_name": "รูปตัด 2",
+  "pattern": "section",
+  "view_title": "รูปตัด 2",
+  "grid_source": "mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "roof_structure_ref", "element_type": "roof_frame_reference", "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)", "description": "โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง (roof framing per structural drawings)", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "eave_R1_ref", "element_type": "eave_detail_reference", "description": "เชิงชาย 1 (R1) callout, ดูแบบขยาย A-12 — see หน้า14_eave_r1.json", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "eave_R2_ref", "element_type": "eave_detail_reference", "description": "เชิงชาย 2 (R2) callout, ดูแบบขยาย A-12 — see หน้า14_eave_r2.json", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "นอน2_cut", "element_type": "room_cut", "count": 1, "grid_ref": "gridD-gridC (approx)", "level_m": 0.60, "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "เตรียมอาหาร_cut", "element_type": "room_cut", "count": 1, "grid_ref": "gridC-gridB (approx)", "level_m": 0.60, "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "พักผ่อน_cut", "element_type": "room_cut", "count": 1, "grid_ref": "gridB-gridA (approx)", "level_m": 0.60, "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "เฉลียง_cut", "element_type": "room_cut", "count": 1, "grid_ref": "beyond gridA", "level_m": 0.50, "confidence_score": 0.72, "confidence_flags": [] },
+    { "element_id": "levels", "element_type": "datum", "description": "ระดับหลังเสาบน +5.05, ระดับหลังเสาล่าง +4.05, ระดับหลังคาน +3.75, ระดับพื้นชั้น 1 +0.60, ระดับอ้างอิง ±0.00", "confidence_score": 0.8, "confidence_flags": ["small_stacked_level_labels_at_top_of_roof_may_be_slightly_misread"] },
+    { "element_id": "overall_depth", "element_type": "dimension", "description": "Bottom dimension chain (D to A, left to right): 2.90 | 1.10 (=4.00, gridD-gridC) | 2.00 (gridC-gridB) | 3.50 (gridB-gridA) | 1.00 | 0.50 (=1.50, beyond gridA), bracketed overall as 1.50 (left, beyond D) | 9.50 (gridD-A) | 1.50 (right, beyond A).", "confidence_score": 0.78, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.77,
+  "confidence_flags": [],
+  "warnings": [
+    "This cross-section (รูปตัด 2) cuts through the D-C-B-A row (bedroom 2, kitchen-prep, living/relax, porch), showing the roof's high/low bearing levels (+5.05/+4.05/+3.75) and referencing the eave details R1/R2 on sheet A-12 (page 14 in this extraction).",
+    "GRID-RELEVANT FOR หน้า00 MASTER (reporting only, master file not edited): the built roof/wall structure in this section extends only 1.50 m beyond grid A (matching dummy grid 'A'' at pos_m 11.0) — there is no second roof/wall line visible at 3.00 m beyond A (i.e. no structure at the master's tentative 'A''' pos_m 12.5). This independently supports the master file's own existing doubt on 'A''' ('tentative_may_just_be_building_edge_not_a_beam_line_needs_verification') — my read suggests 'A''' more likely represents a site/road-grading boundary from หน้า05 (ผังบริเวณ), not a second built support line, and its confidence_score in the master should probably stay low or be re-labeled rather than raised.",
+    "Sibling section รูปตัด 1 is in _หน้า09_section1.json.",
+    "The three stacked roof-level labels (+5.05, +4.05, +3.75) are small text stacked close together — read with medium-high confidence but worth a zoom check.",
+    "Independent read done first, then cross-checked against t2's หน้า09_section2.json — same content and dimension chain, no disagreement on the base numbers; the A'' interpretation note above is new analysis, not a correction of t2."
+  ]
+}

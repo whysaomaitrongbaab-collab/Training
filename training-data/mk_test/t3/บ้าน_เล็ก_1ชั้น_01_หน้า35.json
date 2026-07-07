@@ -1,0 +1,30 @@
+{
+  "png": "35",
+  "doc_page": 33,
+  "discipline": "electrical",
+  "sheet_code": "EE-03",
+  "sheet_name": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "pattern": "plan",
+  "view_title": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "drawing_no": "EE-58077",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["D", "C", "B", "A"],
+  "rooms_shown": ["นอน 1", "นอน 2", "ซักล้าง", "เตรียมอาหาร", "จอดรถ", "พักผ่อน", "เฉลียง"],
+  "elements": [
+    {"element_type": "distribution_panel", "description": "แผงเมนสวิตช์ (LP), +1.80M, located at the จอดรถ/พักผ่อน boundary wall, feeding circuit '1/LP' onward (arrow shown)", "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "lighting_circuit_feed", "description": "Feed 2-2.5 NYY-Ø25mm.PVC from LP panel down through the slab/wall to a weatherproof bell switch (SB, circled) near the bottom edge of the plan below เฉลียง", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "ceiling_downlight_point", "description": "Circled-cross (⊕) downlight symbols scattered through the plan, individually lettered: two labeled 'h' side-by-side in the upper part of นอน 1, two labeled 'g' lower in นอน 1 (with a 'g,h' tag at their shared wiring junction near the นอน1/corridor wall), one point near the top of นอน 2 and one labeled 'd' lower in that same area, one labeled 'k' in ซักล้าง, a small cluster labeled 'c,d,e' plus separate 'c'/'f' points near the room with the sink/counter icon (likely ห้องน้ำ or a wash area) and เตรียมอาหาร, two labeled 'b' side-by-side in พักผ่อน", "grid_ref": "นอน 1 (2x 'h' + 2x 'g'), นอน 2 (~2 points incl. 'd'), ซักล้าง (1x 'k'), เตรียมอาหาร/wash-area cluster (~3 points 'c,d,e'/'f'), พักผ่อน (2x 'b')", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "wall_light_fixture", "description": "Short bold linear (LED-tube-style) symbols: one labeled 'e' near จอดรถ, one labeled 'd' near เฉลียง entrance -- distinct from the circled downlight points", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "switch_point", "description": "Small unfilled square symbol near the bottom-left corner of the plan (below row A, near the 'ขึ้น' stair-up arrow), presumed a wall switch; a 'j,k' tag with a left-right arrow also appears near the ซักล้าง/นอน2 stair area, plus the SB weatherproof bell switch near เฉลียง/the property-line entrance", "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required"]}
+  ],
+  "confidence_score": 0.55,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID CONFIRMATION (independent, matches t2's revised read, disagrees with t1): the printed dimension chain on this page is identical to หน้า29 (horizontal 1.30+4.00+3.00+1.30 under grid 1/2/3; vertical 1.50+4.00+bracket(2.00+3.50)+1.50+1.50 below grid A) and matches the building grid master (หน้า00_gridline.json) exactly, including the position of the A'/A'' dummy-grid extension (this page itself does not print A'/A'' labels, same caveat as noted on หน้า29_floor_plan.json). This is my own independent read of the raw numbers, confirming t2's conclusion over t1's free-text treatment.",
+    "This sheet is a symbol-routing plan, not a quantity/fixture-count schedule -- the exact letter-to-fixture correspondence (which lowercase letter switch loop controls which downlight) is difficult to resolve precisely at this image resolution and is not being asserted as a verified count. Do not infer a bill-of-quantities fixture count from this file without zooming in on the source drawing.",
+    "Fixture types themselves (downlight vs LED tube spec) are defined on the EE-01 symbol legend, not repeated here.",
+    "The room containing the sink/counter icon near the 'c,d,e' cluster is not clearly text-labeled on this sheet (partially obscured by the fixture symbols); inferred as a wash/prep area adjacent to เตรียมอาหาร based on position, not a confirmed room name -- flagged for zoom-review."
+  ]
+}

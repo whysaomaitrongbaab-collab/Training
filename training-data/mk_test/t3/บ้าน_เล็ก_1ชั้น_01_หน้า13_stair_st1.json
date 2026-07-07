@@ -1,0 +1,22 @@
+{
+  "png": "13",
+  "doc_page": 11,
+  "discipline": "architectural",
+  "sheet_code": "A-11",
+  "sheet_name": "แบบขยายบันได ST.1 แบบขยายบันได ST.2",
+  "pattern": "plan",
+  "view_title": "แปลนบันได ST.1 + รูปตัดบันได ST.1",
+  "grid_source": "mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "บันได_ST1", "element_type": "stair", "count": 1, "grid_ref": "between จอดรถ (+0.20) and พักผ่อน/เฉลียง (+0.60/+0.50), near grid2-3 x gridA", "material": "ลูกตั้ง/ลูกนอนบันได ผิวปูกระเบื้องเซรามิค 8\"x8\", จมูกบันได อลูมิเนียมสีเงิน ร่อง PVC ขนาด 2 นิ้ว", "dimension_m": "plan run 3.65 total (0.45+3.20), width 3.00 (with an additional short return leg)", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "steps_ST1", "element_type": "stair_step", "count": null, "description": "Section view shows the stair rising from จอดรถ (+0.20) up through intermediate steps to เฉลียง/พักผ่อน (+0.50/+0.60); individual riser count is not enumerated with tick marks on this plan/section, only the overall run/landing dimensions (0.45, 3.20 in plan; small vertical step marks visible in section but not individually dimensioned).", "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required", "individual_step_count_not_confidently_countable"] }
+  ],
+  "confidence_score": 0.7,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet A-11 combines a plan view (แปลนบันได ST.1) and a section view (รูปตัดบันได ST.1) of the same stair connecting the carport (จอดรถ, +0.20) to the living/porch area (เฉลียง/พักผ่อน, +0.50/+0.60) — kept as one file since both views describe the single stair element ST.1.",
+    "Independent re-read for Gen 4/t3: matches t2's prior read closely (same location, same level callouts, same finish material text); I read the grid position as 'near grid2-3 x gridA' rather than t2's 'grid1-2 x gridA' — both are approximate free-text estimates since no grid line is drawn directly through this detail box, flagging the discrepancy rather than silently picking one. This is a genuinely low-confidence field either way and needs zoom/cross-reference against the architectural floor plan (หน้า06) to resolve.",
+    "Exact individual step count/riser heights remain not confidently countable at this resolution — same conclusion as t2, still flagged for zoom review.",
+    "ST.1 location referenced against the main building grid is approximate free-text, not a precise grid intersection."
+  ]
+}

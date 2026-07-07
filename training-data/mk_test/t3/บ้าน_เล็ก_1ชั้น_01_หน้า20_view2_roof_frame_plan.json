@@ -1,0 +1,50 @@
+{
+  "png": "20",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนอะเส, แปลนโครงหลังคา",
+  "pattern": "plan",
+  "schema_generation": "Merged Pattern Gen 4",
+  "view_title": "แปลนโครงหลังคา",
+  "grid_source": "mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "schema_note": "Steel roof truss members (purlin/rafter), not RC beams -- element_type 'purlin'/'rafter' used per the gap Makham's Pattern doc flagged (no footing/beam/slab/column type fits light-gauge steel roof framing). This view shows a NEW dimension chain: 1.30 m overhang beyond grid 1 (west) and beyond grid 3 (east), different again from the 0.60/1.10 seen on this same sheet's tie-beam view and the 1.50 seen on page 19's beam plan -- three different overhang values for three different structural systems at three different levels (roof eave / tie-beam corner / ground floor room extension). Not proposing these as dummy grid points on the shared page00 master since roof overhang is a cladding/eave dimension, not a load-bearing grid line other floors would reference.",
+  "elements": [
+    {
+      "element_id": "purlin_C100x50x20", "element_type": "purlin",
+      "steel_section": "C100x50x20mm", "thickness_mm": 3.2, "unit_weight_kg_m": 5.50,
+      "spacing_m": 1.5, "orientation": "horizontal, spans full roof width between rafters",
+      "count": null,
+      "confidence_score": 0.85,
+      "confidence_flags": ["count_not_individually_tallied_spacing_note_used_instead_row_count_would_need_roof_slope_length_not_given_on_this_plan_view"]
+    },
+    {
+      "element_id": "rafter_C150x75x25", "element_type": "rafter",
+      "steel_section": "C150x75x25mm", "thickness_mm": 3.2, "unit_weight_kg_m": 8.27,
+      "grid_refs": ["D-1", "C-1", "B-1", "A-1", "D-2", "C-2", "B-2", "A-2", "D-3", "C-3", "B-3", "A-3"],
+      "count": 12,
+      "confidence_score": 0.75,
+      "confidence_flags": ["rafters_shown_at_every_named_grid_column_intersection_plus_2_overhang_positions_below"]
+    },
+    {
+      "element_id": "rafter_C150x75x25_overhang_west", "element_type": "rafter",
+      "steel_section": "C150x75x25mm", "thickness_mm": 3.2, "unit_weight_kg_m": 8.27,
+      "grid_ref_start": "?", "grid_ref_end": "1", "span_length_m": 1.3, "span_source": "local_dimension",
+      "note": "แนวจันทันยื่นเลยกริด 1 ไปทางตะวันตก 1.30 ม. (ระยะยื่นชายคา)",
+      "confidence_score": 0.7, "confidence_flags": ["eave_overhang_not_a_grid_intersection"]
+    },
+    {
+      "element_id": "rafter_C150x75x25_overhang_east", "element_type": "rafter",
+      "steel_section": "C150x75x25mm", "thickness_mm": 3.2, "unit_weight_kg_m": 8.27,
+      "grid_ref_start": "3", "grid_ref_end": "?", "span_length_m": 1.3, "span_source": "local_dimension",
+      "note": "แนวจันทันยื่นเลยกริด 3 ไปทางตะวันออก 1.30 ม. (ระยะยื่นชายคา)",
+      "confidence_score": 0.7, "confidence_flags": ["eave_overhang_not_a_grid_intersection"]
+    }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": ["independent_read_element_type_purlin_rafter_not_formally_ratified_in_schema_yet_per_Makham_Pattern_open_item"],
+  "warnings": [
+    "ยังไม่มี element_type 'purlin'/'rafter' อย่างเป็นทางการใน schema — ใช้ตามที่ Makham's Pattern เปิดคำถามไว้ (ยังไม่ยืนยัน)",
+    "ไม่นับจำนวนแปเหล็กที่แน่นอน (ใช้ spacing_m แทน) เพราะไม่มีความยาวลาดหลังคาที่ชัดเจนในมุมมองนี้ (ต้องดูหน้าตัด/รูปด้านประกอบ)"
+  ]
+}

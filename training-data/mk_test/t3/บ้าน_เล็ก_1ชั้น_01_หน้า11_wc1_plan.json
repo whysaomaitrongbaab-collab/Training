@@ -1,0 +1,30 @@
+{
+  "png": "11",
+  "doc_page": 9,
+  "discipline": "architectural",
+  "sheet_code": "A-09",
+  "sheet_name": "แปลนห้องน้ำ WC.1",
+  "pattern": "plan",
+  "view_title": "แปลนห้องน้ำ WC.1",
+  "grid_source": "mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "ห้องน้ำ_WC1", "element_type": "room", "count": 1, "grid_ref": "between gridB and gridC (same room noted on the architectural floor plan หน้า06)", "level_m": 0.50, "dimension_m": "2.45 x 2.00", "dimension_breakdown_width_m": [0.80, 0.10, 0.40, 0.70, 0.45], "dimension_breakdown_depth_m": [0.90, 0.90, 0.10, 0.10], "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "อาบน้ำ_zone", "element_type": "shower_zone", "count": 1, "grid_ref": "within ห้องน้ำ_WC1, along gridC side", "level_m": 0.48, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "WC.1_fixture", "element_type": "sanitary_fixture", "count": 1, "grid_ref": "within ห้องน้ำ_WC1, center-right of the room", "level_m": 0.50, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "LAV.2_fixture", "element_type": "sanitary_fixture", "count": 1, "grid_ref": "within ห้องน้ำ_WC1, adjacent to WC.1_fixture", "level_m": 0.50, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "FD_floor_drains", "element_type": "fitting", "count": 2, "grid_ref": "one near the อาบน้ำ shower zone, one near the WC.1/SW. area", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required", "exact_floor_drain_positions_are_small_symbols_at_this_resolution"] },
+    { "element_id": "floor_slope", "element_type": "note", "description": "Two 'ลาดเอียง 1:200' (1:200 floor slope) arrows shown, directing floor drainage toward the floor drains.", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "door_1", "element_type": "door_reference", "description": "Door callout '1' near top-right of the room, referencing detail A-10 (diamond icon '1/A-10')", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "window_2", "element_type": "window_reference", "description": "Window callout '2' at the top wall, referencing detail A-10 (diamond icon '2/A-10')", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "wall_finish_callout_3", "element_type": "note", "description": "Triangle callout '3' appears twice on interior walls (ceramic tile finish reference, matches level markers '[3]+0.50[2]' / '[3]+0.48[2]' box notation seen at both fixture zones)", "confidence_score": 0.6, "confidence_flags": ["callout_meaning_inferred_from_repeated_box_notation_not_a_legible_legend_on_this_sheet"] }
+  ],
+  "confidence_score": 0.73,
+  "confidence_flags": [],
+  "warnings": [
+    "This 1:25 detail plan of the WC.1 bathroom shares sheet A-09 with the fixture symbol schedule — see sibling file _หน้า11_fixture_schedule.json.",
+    "Overall dimensions 2.45 m (width) and 2.00 m (depth) are legible at the top/side dimension chains, along with their sub-splits (0.80+0.10+0.40+0.70+0.45=2.45; 0.90+0.90+0.10+0.10 approx.=2.00) — captured directly, not estimated.",
+    "This room corresponds to ห้องน้ำ_WC1 on the architectural floor plan (หน้า06); this sheet is the scaled 1:25 detail superseding that floor-plan-level box.",
+    "Detail callouts '1' (door) and '2' (window) both reference sheet A-10 (หน้า12 in this extraction — the WC.1 section/elevation sheet); see _หน้า12_wc1_section1.json / _หน้า12_wc1_section2.json.",
+    "Independent re-read for Gen 4/t3; matches my own understanding of the room layout from t2's prior pass with no numeric disagreement, but I additionally logged the '3' triangle wall callout (t2 did not name it) — flagged as inferred rather than confidently identified."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "png": "10",
+  "doc_page": 8,
+  "discipline": "architectural",
+  "sheet_code": "A-08",
+  "sheet_name": "แบบขยายประตู แบบขยายหน้าต่าง",
+  "pattern": "schedule",
+  "view_title": "แบบขยายประตู + แบบขยายหน้าต่าง (รวม 7 แบบ)",
+  "element": [
+    { "element_id": "D1", "element_type": "door", "opening_type": "บานเลื่อน, ช่องแสงติดตาย", "frame": "อลูมิเนียมอบสีขาว", "sash": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 6มม", "hardware": "มาตรฐานครบชุด", "width_m": 2.60, "height_m": 2.05, "panel_note": "แบ่ง 4 ช่อง เท่าๆกัน", "location_note": "ติดตั้งบริเวณทางเข้า, ระเบียง", "count": null, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "D2", "element_type": "door", "opening_type": "บานเปิดเดี่ยว", "frame": "ไม้เนื้อแข็ง 2\"x4\"", "sash": "–", "leaf_material": "บานประตูสำเร็จรูป HDF.", "hardware": "ลูกบิด, มาตรฐานครบชุด", "width_m": 0.80, "height_m": 2.00, "location_note": "ติดตั้งบริเวณ ห้องครัว, ห้องนอน", "count": null, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "D3", "element_type": "door", "opening_type": "บานเปิดเดี่ยว", "frame": "PVC.", "sash": "–", "leaf_material": "บานประตู PVC.", "hardware": "ลูกบิด, มาตรฐานครบชุด", "width_m": 0.70, "height_m": 2.00, "location_note": "ติดตั้งบริเวณห้องน้ำ", "count": null, "confidence_score": 0.8, "confidence_flags": ["door_leaf_shows_a_lower_louvre/vent_panel_in_the_elevation_icon_not_fully_described_in_table_text"] },
+    { "element_id": "W1", "element_type": "window", "opening_type": "บานเลื่อนสลับ", "frame": "อลูมิเนียมอบสีขาว", "sash": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 6มม", "hardware": "มาตรฐานครบชุด", "width_m": 1.40, "height_m": 2.05, "height_breakdown_m": [1.20, 0.85], "location_note": "", "count": null, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "W2", "element_type": "window", "opening_type": "บานเปิดเดี่ยว", "frame": "อลูมิเนียมอบสีขาว", "sash": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 6มม", "hardware": "มาตรฐานครบชุด", "width_m": 0.70, "height_m": 2.05, "height_breakdown_m": [1.20, 0.85], "location_note": "", "count": null, "confidence_score": 0.65, "confidence_flags": ["classified_as_window_not_door_because_no_ลูกบิด(door-knob)_listed_and_material_matches_the_other_aluminum/glass_windows_on_this_sheet_but_the_elevation_icon_style_looks_similar_to_the_door_swing_symbols_above_it_-_needs_zoom_review_to_confirm_it_is_not_a_4th_door"] },
+    { "element_id": "W3", "element_type": "window", "opening_type": "บานกระทุ้ง", "frame": "อลูมิเนียมอบสีขาว", "sash": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 6มม", "hardware": "มาตรฐานครบชุด", "width_m": 1.40, "width_breakdown": "EQ. + EQ.", "height_m": 2.50, "height_breakdown_m": [2.00, 0.50], "location_note": "", "count": null, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "W4", "element_type": "window", "opening_type": "บานเลื่อน", "frame": "อลูมิเนียมอบสีขาว", "sash": "อลูมิเนียมอบสีขาว", "leaf_material": "กระจกใส หนา 4มม", "hardware": "มาตรฐานครบชุด", "width_m": 2.80, "panel_note": "แบ่ง 4 ช่อง เท่าๆกัน", "height_m": 2.05, "height_breakdown_m": [1.20, 0.85], "location_note": "", "count": null, "confidence_score": 0.8, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": ["door_vs_window_split_inferred_not_explicitly_labeled", "this_is_a_TYPE_schedule_not_an_as-built_count_-_count_left_null_deliberately_actual_quantities_come_from_the_floor_plan_sheets"],
+  "warnings": [
+    "The sheet groups 7 opening types across two rows (4 in row 1, 3 in row 2). Each item has its own circled/hex reference number printed on the sheet (1,2,3 then a second 1 in row 1; 2,3,4 in row 2) — the numbering visibly RESTARTS for windows vs doors (both a door and a window are labeled '1', '2', '3'), consistent with the sheet title covering two separate schedules (ประตู/หน้าต่าง) on one page. I re-labeled them D1-D3 / W1-W4 in extraction order (not the raw printed digit) to keep element_id unique within this file — the raw printed digit is preserved in the description above per item.",
+    "No explicit 'ประตู'/'หน้าต่าง' heading text was legible directly above each row to confirm the split with certainty; the door/window classification is inferred from hardware text (ลูกบิด present => door) and cross-checked against material consistency (aluminum+glass items grouped as windows). W2 in particular (row 2, item 1) is the most uncertain of the 7 and is flagged for zoom review.",
+    "This sheet was never extracted in mk_test/t1 or t2 (those rounds only covered pages 11/13/14 of this architectural section) — this is a first-time read.",
+    "Height breakdowns (e.g. 1.20+0.85) are read directly off the printed dimension sub-splits and are legible at this resolution; width breakdown for W3 is printed as 'EQ.'/'EQ.' (equal split) rather than a number, so no numeric width_breakdown could be extracted for it."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "png": "06",
+  "doc_page": 4,
+  "discipline": "architectural",
+  "sheet_code": "A-04",
+  "sheet_name": "แปลนหลังคา",
+  "pattern": "plan",
+  "view_title": "แปลนหลังคา",
+  "grid_source": "mk_test/t3/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "roof_covering", "element_type": "roof", "count": 1, "grid_ref": "covers grid1-3 x gridA-D plus overhangs", "description": "หลังคาเหล็กรีดลอน (corrugated metal sheet roofing) shown hatched over the whole plan; two 'SLOPE 6°' labels printed vertically on the two roof faces indicating fall direction/pitch (approx. 6 degrees).", "confidence_score": 0.7, "confidence_flags": ["slope_value_small_stylized_text_treat_as_approximate"] },
+    { "element_id": "roof_overhang_west", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond grid1, dimension 1.30 m", "dimension_m": 1.30, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "roof_overhang_east", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond grid3, dimension 1.30 m", "dimension_m": 1.30, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "roof_overhang_north", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond gridD, dimension 1.50 m", "dimension_m": 1.50, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "roof_overhang_south", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond gridA, dimension 1.50 m", "dimension_m": 1.50, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "กันสาด_คสล_type5_north", "element_type": "concrete_canopy", "count": 1, "grid_ref": "near grid2, north side, level +3.75", "level_m": 3.75, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "กันสาด_คสล_type5_south", "element_type": "concrete_canopy", "count": 1, "grid_ref": "south side near gridA, level +3.75", "level_m": 3.75, "confidence_score": 0.75, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [],
+  "warnings": [
+    "This is the roof-plan half of sheet A-04; the floor-plan half is in sibling file _หน้า06_floor_plan.json.",
+    "The 'SLOPE 6°' labels are more legible in this read than a hand-annotated guess would suggest — printed as 'SLOPE 6*' twice on the two roof faces, read with medium-high confidence.",
+    "Actual roof framing (purlins, rafters/trusses) is not detailed on this sheet — it references 'โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง' consistent with the S-01~S-08 sheets (pages 16-23), outside this extraction's page range.",
+    "Independent read done first, then cross-checked against t2's หน้า06_roof_plan.json — same overhang dimensions and slope reading, no disagreement found."
+  ]
+}

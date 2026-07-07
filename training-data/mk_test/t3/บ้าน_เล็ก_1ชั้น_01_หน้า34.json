@@ -1,0 +1,34 @@
+{
+  "png": "34",
+  "doc_page": 32,
+  "discipline": "electrical",
+  "sheet_code": "EE-02",
+  "sheet_name": "รายละเอียดแผงเมนสวิตช์",
+  "pattern": "schedule",
+  "view_title": "รายละเอียดแผงเมนสวิตช์ (LP) - single-line diagram",
+  "drawing_no": "EE-58077",
+  "service": {
+    "meter": "kWH METER 15(45)A 1 PHASE",
+    "service_conductor": "2-10 IEC 01 Ø25mm. uPVC (นอกอาคารเดินลอย -- exposed exterior run)",
+    "grounding": "หลักดินแท่งเหล็กทองแดงบอนด์ ขนาด Ø14.2 mm. ยาว 2.40 m.",
+    "ground_conductor": "1-10 IEC 01-20 mm. PVC",
+    "main_breaker": "50AT, 2P, IC 10kA"
+  },
+  "panel_id": "LP",
+  "circuits": [
+    {"circuit_no": 1, "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-Ø15mm.uPVC", "description": "แสงสว่าง (lighting)"},
+    {"circuit_no": 2, "breaker": "RCBO 16AT,1P IC 6kA, I∆n 30mA", "wire": "2-2.5/G2.5 IEC 01-Ø15mm.uPVC", "description": "เต้ารับ (receptacle outlets)"},
+    {"circuit_no": 3, "breaker": "RCBO 20AT,1P IC 6kA, I∆n 30mA", "wire": "2-4/G2.5 IEC 01-Ø15mm.uPVC", "description": "กล่องต่อสายเครื่องทำน้ำอุ่น (water-heater junction box)"},
+    {"circuit_no": 4, "breaker": null, "wire": null, "description": "ว่าง (spare)"},
+    {"circuit_no": 5, "breaker": null, "wire": null, "description": "ว่าง (spare)"},
+    {"circuit_no": 6, "breaker": null, "wire": null, "description": "ว่าง (spare)"}
+  ],
+  "notes": ["1. RCBO หมายถึง เซอร์กิตเบรกเกอร์ชนิดมีเครื่องตัดไฟรั่วในตัว"],
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "This is a single-line/panel schedule diagram rather than a tabular schedule -- circuit_no/breaker/wire/description fields were used to fit the data cleanly since no concrete-structural schema fields apply here, consistent with t2's approach.",
+    "Load wattage (load_watts) is not printed anywhere on this sheet, so it is omitted rather than estimated/fabricated.",
+    "Independent re-read (t3) matches t2's content verbatim (service specs, panel_id, all 6 circuit rows, note); confidence raised slightly (0.92 vs 0.85) as the single-line diagram is fully legible at this resolution."
+  ]
+}
