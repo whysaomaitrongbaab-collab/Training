@@ -5,7 +5,7 @@
  * and only handled the Gen 1 flat schema: plan[]/section[]/schedule[] + categories[].items[]),
  * this script reads training-data/mk_test/<subfolder>/*.json — the new Gen 3 fresh-extraction
  * output, one file per pattern/view (mixed-pattern pages already split at extraction time,
- * see "Makham's Pattern" doc, Constistant repo, mk's stuff/).
+ * see "Makham's Pattern" doc, this folder: Makham's patter of rawjson20260705.md).
  *
  * Gen 3 has 9 pattern types (plan/section/schedule/notes/index/material_list/site_plan/
  * site_profile/gridline) plus a 10th ("unknown") added during real extraction for content
