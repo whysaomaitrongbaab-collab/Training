@@ -2,7 +2,7 @@
 
 Context สำหรับ AI agent ที่มาทำงานต่อในโฟลเดอร์นี้ (portable — อาจอยู่ใน repo แยกจาก Constistant หลัก)
 
-> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (ไฟล์ `SESSION_HANDOFF_2026-07-05.md` เดิมไม่มีอยู่ที่ path นี้แล้ว — schema doc เต็มย้ายไปอยู่ repo Constistant ตั้งแต่ 5 ก.ค. ดู pointer ในไฟล์ 07-06)
+> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`training-data/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม)
 
 > ⚠️ **อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น**
 > กฎห้ามแตะ raw JSON ของ raw data ก่อนได้รับอนุญาต + **การกระทำใดๆ ที่ส่งผลต่อการทูนนิ่งต้องมีการเตือนเสมอ** (ไม่ใช่แค่แก้ raw JSON ตรงๆ — รวมถึงแก้ script/schema ที่กระทบข้อมูลปลายทาง) + บันทึก format JSON ที่ใช้ทูนจริงไว้อ้างอิง
@@ -167,7 +167,7 @@ node label-studio-tasks-perpage.js
 
 ## Label Studio Cloud — Makham's Pattern (Gen 3) review flow (2026-07-06)
 
-**ต่างจาก 2 flow ด้านบน:** ทั้งคู่ยังอิง Gen 1 schema (`plan[]/section[]/schedule[]` flat, หรือ `categories[].items[]`) อ่านจาก `raw/image/<house>/qwen-output/`. Flow นี้อิง **Gen 3 ("Makham's Pattern", เอกสารเต็มอยู่ที่ repo Constistant, `mk's stuff/Makham's patter of rawjson20260705.md`)** อ่านจาก `training-data/mk_test/<subfolder>/*.json` — ผลลัพธ์ fresh-extraction ทดสอบจริงของบ้าน_เล็ก_1ชั้น_01 หน้า 1-40+48-60 (`mk_test/t1/` = รอบแรก) และหน้า 1-37 (`mk_test/t2/` = รอบสอง หลังปรับ schema)
+**ต่างจาก 2 flow ด้านบน:** ทั้งคู่ยังอิง Gen 1 schema (`plan[]/section[]/schedule[]` flat, หรือ `categories[].items[]`) อ่านจาก `raw/image/<house>/qwen-output/`. Flow นี้อิง **Gen 3 ("Makham's Pattern", เอกสารเต็มอยู่ที่ [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ในโฟลเดอร์นี้เอง)** อ่านจาก `training-data/mk_test/<subfolder>/*.json` — ผลลัพธ์ fresh-extraction ทดสอบจริงของบ้าน_เล็ก_1ชั้น_01 หน้า 1-40+48-60 (`mk_test/t1/` = รอบแรก) และหน้า 1-37 (`mk_test/t2/` = รอบสอง หลังปรับ schema)
 
 **จุดต่างสำคัญจาก Gen 1:** หน้าที่มีหลาย pattern ปนกันถูกแยกเป็นคนละไฟล์ตั้งแต่ตอน extract แล้ว (ไม่ต้องรวม `plan+section+schedule` ในหน้าเดียวแบบเดิม) — 1 ไฟล์ = 1 pattern/view เสมอ ทำให้ task generator ง่ายขึ้น (ไม่ต้อง merge หลาย array ต่อหน้า)
 
