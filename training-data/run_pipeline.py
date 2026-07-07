@@ -106,7 +106,15 @@ STEP 3 — for EACH view in your inventory, decide its pattern from the heading 
 STEP 4 — for each "plan" view ONLY: read the grid dimension chain (the row of numbers printed along the
   top/side of the plan giving the spacing between adjacent grid lines, e.g. "4.00 | 3.00 | 4.00"). Build
   a coordinate table by accumulating these spacings from one reference line (pos_m=0). The grid is
-  normally shared by every plan view on the same sheet — read it once and reuse it.
+  normally shared by every plan view on the same sheet — read it once and reuse it. Convention:
+  "x_lines" = the grid running horizontally along the TOP edge of the sheet (usually numbers 1,2,3...),
+  "y_lines" = the grid running vertically along the SIDE edge (usually letters A,B,C...).
+  DUMMY GRID: if you see a load-bearing line (wall/beam) that clearly needs a grid reference but has NO
+  printed grid label at all, do not silently drop it — name it with prime notation relative to the
+  nearest named grid line (e.g. "1'" for an unlabeled line between grid "1" and "2"; "1''" for a second
+  one in the same gap) and estimate its pos_m from whatever dimension IS printed near it. Add
+  confidence_flag "dummy_grid_tentative_single_sheet_only" — full confirmation normally requires
+  cross-referencing the architectural plan of the same house, which this single-sheet pass cannot do.
 STEP 5 — extract each view's elements with the matching block below. Fill focus by element type the view
   is about.
 
@@ -152,14 +160,39 @@ STEP 5 — extract each view's elements with the matching block below. Fill focu
   segments — keep the old shape: grid_refs is a list of every intersection where the mark occurs,
   span_length_m stays null, no grid_ref_start/grid_ref_end.
 
+STEP 6 — for "schedule"/"section" views (rebar spec of a beam/column mark), read this carefully:
+  - main_bar is ALWAYS split into "top" and "bottom" — {"top":{count,dia_mm,type},"bottom":{count,dia_mm,type}}.
+    Never collapse into one combined count: many marks have asymmetric reinforcement (e.g. 2 bars on top,
+    3 on the bottom) and merging them into a single total silently destroys real design information. For
+    the common symmetric case, top and bottom will simply have equal values — that's fine, still fill both.
+  - "type" (main_bar AND stirrup) is read from the PRINTED SYMBOL ONLY, never inferred from bar diameter:
+    "Ø" (a plain circle) = "RB" (round bar), a bar drawn with hatch/ridge marks = "DB" (deformed). A 16mm
+    or 20mm bar drawn as a plain "Ø" circle is STILL "RB" — do not assume large diameter implies DB.
+  - additional_bars: extra reinforcement that is NOT part of the continuous top/bottom main bars — most
+    commonly a bar that stops partway (curtailment), e.g. "1-Ø16mm หยุด L/8" (stops at L/8 from the
+    column face). One array entry per such note: {"count":1,"dia_mm":16,"position":"...","note":"..."}.
+    Leave as [] if the mark has no such extra bars.
+  - If a schedule table has multiple rows for the SAME mark at different building levels (e.g. a column
+    schedule with one row for "โครงหลังคา" and another for "พื้นชั้น1, ตอม่อ, ฐานราก" at a different size),
+    keep element_id identical across those rows and add a "level" field to distinguish them — do not
+    invent a compound element_id like "C1_roof". element_id must always match the mark exactly as printed.
+
+STEP 7 — precast/typical INSTALLATION DETAIL views (e.g. "ลักษณะการวางพื้นสำเร็จรูป SP..." sheets) are
+  NOT beam/column rebar — do not force them into the section schema above. Use
+  "element_type":"precast_plank_detail" instead, with its own field set: dowel_bar {count,dia_mm,type}
+  (the hook/dowel bars into the supporting beam — NOT main_bar), topping_mesh {dia_mm,spacing_mm} (the
+  reinforcement mesh cast into the concrete topping — NOT stirrup), topping_thickness_min_mm, and
+  level_step_mm (fill only when this specific detail shows a level drop vs the normal floor, e.g. a
+  bathroom floor recessed 100mm — otherwise null).
+
 Return ONLY JSON — one entry in "views" per heading found in STEP 2, in the order they appear on the sheet:
 {
  "sheet_code":"S-03","sheet_name":"...",
  "views": [
    {
      "view_title":"ผังคานชั้น 1","pattern":"plan",
-     "grid": {"x_lines":[{"id":"A","pos_m":0.0},{"id":"B","pos_m":4.0},{"id":"C","pos_m":7.0}],
-              "y_lines":[{"id":"1","pos_m":0.0},{"id":"2","pos_m":3.0},{"id":"3","pos_m":6.0}]},
+     "grid": {"x_lines":[{"id":"1","pos_m":0.0},{"id":"2","pos_m":3.0},{"id":"3","pos_m":6.0}],
+              "y_lines":[{"id":"A","pos_m":0.0},{"id":"B","pos_m":4.0},{"id":"C","pos_m":7.0}]},
      "elements": [
        {"element_id":"ค1","element_type":"beam","grid_ref_start":"A-1","grid_ref_end":"A-2",
         "span_length_m":3.0,"span_source":"grid_table","confidence_score":0.7,"confidence_flags":[]},
@@ -175,18 +208,32 @@ Return ONLY JSON — one entry in "views" per heading found in STEP 2, in the or
    },
    {
      "view_title":"ตารางเสา","pattern":"schedule",
-     "elements": [ {"element_id":"ต1","element_type":"column","width_mm":200,"height_mm":200,
-               "main_bar_count":4,"main_bar_dia_mm":16,"main_bar_type":"DB","stirrup_dia_mm":6,
-               "stirrup_type":"RB","stirrup_spacing_mm":200,"concrete_grade":"fc240","steel_grade":"SD40",
-               "confidence_score":0.85,"confidence_flags":[]} ]
+     "elements": [
+       {"element_id":"ต1","element_type":"column","level":"โครงหลังคา","width_mm":150,"height_mm":150,
+        "main_bar":{"top":{"count":4,"dia_mm":12,"type":"RB"},"bottom":{"count":4,"dia_mm":12,"type":"RB"}},
+        "stirrup":{"dia_mm":6,"type":"RB","spacing_mm":200},"additional_bars":[],
+        "concrete_grade":"fc240","steel_grade":"SD40","confidence_score":0.85,"confidence_flags":[]},
+       {"element_id":"ต1","element_type":"column","level":"พื้นชั้น1, ตอม่อ, ฐานราก","width_mm":200,"height_mm":200,
+        "main_bar":{"top":{"count":4,"dia_mm":12,"type":"RB"},"bottom":{"count":4,"dia_mm":12,"type":"RB"}},
+        "stirrup":{"dia_mm":6,"type":"RB","spacing_mm":200},"additional_bars":[],
+        "concrete_grade":"fc240","steel_grade":"SD40","confidence_score":0.85,"confidence_flags":[]}
+     ]
    },
    {
      "view_title":"รายละเอียดคาน ค1","pattern":"section",
      "elements": [ {"element_id":"ค1","element_type":"beam","width_mm":200,"height_mm":400,
-               "main_bar_count":4,"main_bar_dia_mm":16,"main_bar_type":"DB","stirrup_dia_mm":6,
-               "stirrup_type":"RB","stirrup_spacing_mm":150,"stirrup_spacing_dense_mm":100,
-               "stirrup_dense_zone_mm":1000,"concrete_grade":"fc240","steel_grade":"SD40",
+               "main_bar":{"top":{"count":2,"dia_mm":16,"type":"RB"},"bottom":{"count":3,"dia_mm":16,"type":"RB"}},
+               "stirrup":{"dia_mm":6,"type":"RB","spacing_mm":150},
+               "additional_bars":[{"count":1,"dia_mm":16,"position":"บนคาน หยุดที่ L/8 จากหน้าเสา","note":"1-Ø16mm หยุด L/8"}],
+               "concrete_grade":"fc240","steel_grade":"SD40",
                "confidence_score":0.85,"confidence_flags":[]} ]
+   },
+   {
+     "view_title":"ลักษณะการวางพื้น SP ภายใน","pattern":"section",
+     "elements": [ {"element_id":"SP_interior","element_type":"precast_plank_detail",
+               "dowel_bar":{"count":2,"dia_mm":9,"type":"RB"},
+               "topping_mesh":{"dia_mm":6,"spacing_mm":200},"topping_thickness_min_mm":50,"level_step_mm":null,
+               "confidence_score":0.7,"confidence_flags":[]} ]
    },
    {
      "view_title":"หมายเหตุโครงสร้าง","pattern":"notes",
@@ -346,11 +393,30 @@ Return ONLY JSON. blank price cell → null (do NOT invent numbers):
  "warnings":[]
 }"""
 
+def b64_halves_rotated(p, degrees=90):
+    """หมุนภาพก่อน แล้วแบ่งครึ่งบน-ล่าง — 1 PNG BOQ landscape มักมี 2 แผ่น portrait จริงซ้อนกัน
+    (ยืนยันร่วมกันอิสระ 2 ทาง: อ่านมือหน้า 40 และการ fresh-extract หน้า 48-57 — ดู
+    merged_pattern_gen4_20260706.md ข้อ 11) หลังหมุน 90° แผ่นเลขน้อยกว่าจะอยู่ครึ่งบน แผ่นเลขมากกว่า
+    อยู่ครึ่งล่างเสมอ (ยืนยันจากภาพจริงหน้า 40: 5/19 บน, 6/19 ล่าง) คืน [(b64_top,size), (b64_bottom,size)]"""
+    im = Image.open(p).rotate(degrees, expand=True)
+    w, h = im.size
+    halves = []
+    for box in [(0, 0, w, h // 2), (0, h // 2, w, h)]:
+        half = im.crop(box)
+        buf = io.BytesIO()
+        half.save(buf, format='PNG')
+        halves.append((base64.b64encode(buf.getvalue()).decode(), half.size))
+    return halves
+
 def extract_boq(img_path):
-    # หมุน 90° CCW ก่อนส่ง — ต้นฉบับ BOQ เป็น portrait ฝังในเล่ม landscape (ยืนยันจากภาพจริงแล้ว)
-    b64, size = b64file_rotated(img_path, 90)
-    data, usage = call(MODEL_BOQ, BOQ_SYSTEM, BOQ_USER, b64, 4096, pixels=size)
-    return data, usage
+    """คืน list ของ (extraction, usage) — 2 รายการเสมอ (บน/ล่างหลังหมุน) เพราะ 1 PNG = 2 แผ่น BOQ จริง
+    ในบ้านที่เจอมาทุกหน้า (ดู b64_halves_rotated) — ถ้าหน้าไหนจริงๆ มีแผ่นเดียว (เช่นหน้าแรก/หน้าสุดท้าย
+    ของเล่ม BOQ) อีกครึ่งจะได้ extraction ว่าง/สั้นผิดปกติ ให้คนตรวจสังเกตเอง ไม่ auto-detect ทิ้ง"""
+    results = []
+    for b64, size in b64_halves_rotated(img_path, 90):
+        data, usage = call(MODEL_BOQ, BOQ_SYSTEM, BOQ_USER, b64, 4096, pixels=size)
+        results.append((data, usage))
+    return results
 
 # ════════════════════════════════════════════════════════════════════
 def ensure_document_map(folder, toc, anchors):
@@ -418,21 +484,24 @@ def main():
                 print(f"❌ {type(e).__name__}: {str(e)[:80]}")
             time.sleep(DELAY)
         elif disc == 'boq':
-            print(f"  หน้า{k}  [{disc}] → BOQ (vl-max)…", end=' ')
+            print(f"  หน้า{k}  [{disc}] → BOQ (vl-max, 2 แผ่น/หน้า)…", end=' ')
             try:
-                ext, usage = extract_boq(imgs[k])
-                total_tokens += usage.get('total_tokens', 0)
-                sn = ext.get('sheet_no'); ni = count_boq_items(ext)
-                ncat = len(ext.get('categories') or [])
-                out_path = out_dir / (imgs[k].stem + '.json')
-                out_path.write_text(
-                    json.dumps({"png": k, **info, "extraction": ext}, ensure_ascii=False, indent=2),
-                    encoding='utf-8')
-                log_action(file=out_path.relative_to(BASE), ai_model=MODEL_BOQ,
-                           action='extract_boq', house=house)
-                row.update({"action": "extracted", "sheet_no": sn, "categories": ncat,
-                            "boq_items": ni, "needs_review": True})
-                print(f"แผ่นที่ {sn} → {ncat} หมวด, {ni} รายการ")
+                results = extract_boq(imgs[k])
+                sheet_summaries = []
+                for idx, (ext, usage) in enumerate(results, start=1):
+                    total_tokens += usage.get('total_tokens', 0)
+                    sn = ext.get('sheet_no'); ni = count_boq_items(ext)
+                    ncat = len(ext.get('categories') or [])
+                    out_path = out_dir / f"{imgs[k].stem}_{idx}.json"
+                    out_path.write_text(
+                        json.dumps({"png": k, **info, "extraction": ext}, ensure_ascii=False, indent=2),
+                        encoding='utf-8')
+                    log_action(file=out_path.relative_to(BASE), ai_model=MODEL_BOQ,
+                               action='extract_boq', house=house)
+                    sheet_summaries.append({"sheet_no": sn, "categories": ncat, "boq_items": ni})
+                row.update({"action": "extracted", "sheets": sheet_summaries, "needs_review": True})
+                print(", ".join(f"แผ่นที่ {s['sheet_no']} → {s['categories']} หมวด, {s['boq_items']} รายการ"
+                                 for s in sheet_summaries))
             except Exception as e:
                 row.update({"action": "error", "error": str(e)[:120]})
                 print(f"❌ {type(e).__name__}: {str(e)[:80]}")
