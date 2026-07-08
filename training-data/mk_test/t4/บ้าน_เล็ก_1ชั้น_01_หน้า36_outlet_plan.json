@@ -1,0 +1,34 @@
+{
+  "png": "36",
+  "doc_page": 34,
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า36.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-04",
+  "sheet_name": "แปลนเต้ารับไฟฟ้า ชั้นล่าง",
+  "pattern": "plan",
+  "view_title": "แปลนเต้ารับไฟฟ้า ชั้นล่าง",
+  "drawing_no": "EE-58077",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["D", "C", "B", "A"],
+  "rooms_shown": ["นอน 1", "นอน 2", "ซักล้าง", "เตรียมอาหาร", "จอดรถ", "พักผ่อน", "เฉลียง"],
+  "elements": [
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet symbols, each labeled '+1.20M' mounting height -- counted approximately 7 across the plan: 1 in นอน 1 (top wall), 2 close together at the top of นอน 2, 1 in ซักล้าง, 1 near the เตรียมอาหาร/พักผ่อน boundary, 1 on the west wall of จอดรถ, 1 in พักผ่อน near the LP panel", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required", "count_approximate"]},
+    {"element_type": "water_heater_junction_box", "description": "WH junction box (circled 'WH') near the จอดรถ/เตรียมอาหาร boundary, adjacent to an outlet symbol (⊖) and a '3/LP' circuit tag, fed by 2-4/G2.5 IEC 01-Ø15mm. wiring from the LP panel", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "distribution_panel", "description": "แผงเมนสวิตช์ (LP), +1.80M, at the จอดรถ/พักผ่อน boundary wall (same location as shown on EE-03), feeding circuit '2/LP' onward toward เฉลียง via 2-2.5 NYY-Ø25mm.PVC", "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "service_entrance", "description": "Incoming service run: หลักดิน (ground rod, ขนาด Ø14.2mm. ยาว 2.40m.), 1-10 IEC 01-20mm.PVC ground conductor running to the LP panel area, 2-10 IEC 01 Ø25mm.uPVC exterior exposed run (นอกอาคารเดินลอย) from a weatherproof bell switch (SB, +1.50M) near the bottom-left exterior wall/carport onward to an arrow labeled 'TO kWH METER' at the bottom of the sheet", "confidence_score": 0.8, "confidence_flags": []}
+  ],
+  "sibling_files": [
+    "บ้าน_เล็ก_1ชั้น_01_หน้า36_ac_notes.json"
+  ],
+  "confidence_score": 0.68,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID CONFIRMATION (independent re-read, t4): the printed dimension chain on this page (1.30+4.00+3.00+1.30 horizontal under grid 1/2/3; 1.50+4.00+bracket(2.00+3.50)+1.50+1.50 vertical below grid A) is identical to หน้า29/35 and matches the building grid master (หน้า00_gridline.json) exactly, including the A'/A'' dummy-grid extension position (unlabeled on this sheet itself, same caveat as หน้า29/35). Confirms t3's conclusion.",
+    "Exact count and room-by-room placement of duplex outlets is only partially legible (several '+1.20M' labels are clustered close together, especially the pair at the top of นอน 2); the count of 7 is best-effort, not a verified quantity -- flagged for zoom-review before using as a bill-of-quantities input.",
+    "This page also contains AC-circuit and telephone/antenna wiring notes, captured in the sibling file.",
+    "The service-entrance run (ground rod, kWh meter feed) is more fully legible on this sheet than on EE-02's single-line diagram -- both are consistent with each other (same conductor sizes, same ground-rod spec).",
+    "Independent re-read (t4) matches t3's element list verbatim; no content disagreement. Pattern 'plan' unaffected by 2026-07-08 taxonomy update. Only wrapper-level addition vs t3 is the new mandatory source_image field."
+  ]
+}

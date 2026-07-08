@@ -1,0 +1,35 @@
+{
+  "png": "06",
+  "doc_page": 4,
+  "discipline": "architectural",
+  "sheet_code": "A-04",
+  "sheet_name": "แปลนพื้นชั้น 1",
+  "pattern": "plan",
+  "view_title": "แปลนพื้นชั้น 1",
+  "schema_generation": "20260708draft of prime rawjson.md",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า06.png",
+  "grid_source": "mk_test/t4/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "นอน1", "element_type": "room", "count": 1, "grid_ref": "grid1 - dummy1' x gridD - gridC", "confidence_score": 0.9, "confidence_flags": [], "level_m": 0.60 },
+    { "element_id": "นอน2", "element_type": "room", "count": 1, "grid_ref": "dummy1' - grid2 x gridD - gridC", "confidence_score": 0.9, "confidence_flags": [], "level_m": 0.60 },
+    { "element_id": "ห้องน้ำ_WC1", "element_type": "room", "count": 1, "grid_ref": "near grid1 x gridC - gridB, see detail A-09/A-10", "confidence_score": 0.8, "confidence_flags": [], "level_m": "0.50 (with a small sub-area at +0.40)" },
+    { "element_id": "เตรียมอาหาร", "element_type": "room", "count": 1, "grid_ref": "grid1'/2 - grid3 x gridC - gridB (approx)", "confidence_score": 0.75, "confidence_flags": ["exact_left_boundary_of_room_vs_wc1_partition_not_fully_legible"], "level_m": 0.60 },
+    { "element_id": "ซักล้าง", "element_type": "room", "count": 1, "grid_ref": "beyond grid3 to dummy3' x gridD - gridC (open utility extension)", "confidence_score": 0.75, "confidence_flags": ["grid_ref_is_free_text_not_grid_notation"], "level_m": 0.20 },
+    { "element_id": "จอดรถ", "element_type": "room", "count": 1, "grid_ref": "grid1 - approx mid x gridB - gridA (carport, open on one side)", "confidence_score": 0.8, "confidence_flags": [], "level_m": 0.20 },
+    { "element_id": "พักผ่อน", "element_type": "room", "count": 1, "grid_ref": "approx mid - grid3 x gridB - gridA", "confidence_score": 0.8, "confidence_flags": [], "level_m": 0.60 },
+    { "element_id": "เฉลียง", "element_type": "room", "count": 1, "grid_ref": "grid2-3 area, below gridA (into dummy A' zone)", "confidence_score": 0.7, "confidence_flags": ["grid_ref_is_free_text_not_grid_notation"], "level_m": 0.50 },
+    { "element_id": "บันได_ST1", "element_type": "stair", "count": 1, "grid_ref": "near grid1, between จอดรถ and เฉลียง — see detail A-11", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "บันได_ST2", "element_type": "stair", "count": 1, "grid_ref": "near grid3/C row, between เตรียมอาหาร and ซักล้าง — see detail A-11", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "doors_and_windows_summary", "element_type": "door_window_reference", "count": null, "grid_ref": null, "description": "Boxed-square and circled numeral callouts (1, 2, 3) are printed at each opening around the plan, referencing the A-08 door/window schedule (see หน้า10) and the symbol legend on หน้า03 (circle=door number, square=window number per the legend text — but the printed glyphs at this resolution are ambiguous between the two shapes at several openings). Legible tag clusters: [2]+0.60(1) at นอน1, [2]+0.60(1) at นอน2, (3)+0.20 at ซักล้าง, [3]+0.40(2)/[3]+0.50(2) near ห้องน้ำ, [1]+0.60(1) at เตรียมอาหาร, [4]+0.20(3) at จอดรถ, (1)0.60(1) at พักผ่อน, [3]+0.50(3) at เฉลียง.", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required", "circle_vs_square_glyph_not_reliably_distinguishable_at_this_resolution", "precise_per_room_door_window_counts_not_reliably_countable"] }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "PATTERN UNCHANGED for this view: 'plan' matches new taxonomy definition (#1, ผัง/แปลน มีตำแหน่ง grid_ref). The sibling roof view on this same sheet IS reclassified — see _หน้า06_roof_plan.json.",
+    "GRID-RELEVANT FOR หน้า00 MASTER (reporting only, master file not edited): the top dimension chain on this sheet reads, left to right: 1.30 (roof overhang) | 2.55 | 1.45 (=4.00, grid1-grid2) | 3.00 (grid2-grid3) | 0.60 | 0.90 (=1.50 beyond grid3) | then a further 1.30 roof overhang. This independently confirms dummy grid '1'' at exactly 2.55 m from grid 1 (the full-height wall between นอน1/นอน2) — HIGH CONFIDENCE, matches the t4 master file's value exactly. It also confirms a two-step sub-division beyond grid 3 (+0.60 then +0.90, totaling +1.50 = dummy grid '3'' at pos_m 8.5) matching the master file's value, BUT see หน้า07_elevation1.json/หน้า09_section1.json — those sheets show a DIFFERENT sub-division beyond grid 3 (+0.60 then +0.70, totaling +1.30) for the roof-overhang dimension specifically, a separate building element (roof edge) from this floor plan's wall/room extension (+1.50). Both happen to start with an identical '0.60' first segment — flagging so the master file's '3'' entry is never accidentally conflated with the 1.30 roof-overhang figure.",
+    "Left dimension chain (D-C-B-A + south extension) matches the 4.00/2.00/3.50/[1.50] pattern used to derive dummy grids A'/A'' in the master file.",
+    "Individual door/window counts and the circle-vs-square (door-vs-window) glyph distinction per room were not confidently resolvable at this image resolution — flagged for zoom review rather than guessed.",
+    "This page also contains a second view (แปลนหลังคา, roof plan) on the same sheet A-04, now under the new pattern 'roof_plan' — see sibling file _หน้า06_roof_plan.json.",
+    "Independent read done first, then cross-checked against t3's หน้า06_floor_plan.json — same room layout and same grid dummy readings; t3's own warnings already flagged the same 3'/0.60-sub-line ambiguity, corroborated further here."
+  ]
+}

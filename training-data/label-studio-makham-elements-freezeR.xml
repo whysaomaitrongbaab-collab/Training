@@ -37,8 +37,14 @@
             <TextArea name="element_type_{{idx}}" toName="page" value="$items[{{idx}}].element_type" editable="true" rows="1"/>
           </View>
           <View className="row">
-            <Text name="lbl_grid_ref_{{idx}}" value="grid_ref:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <Text name="lbl_grid_ref_{{idx}}" value="grid_ref (จุด — ฐานราก/เสา):" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
             <TextArea name="grid_ref_{{idx}}" toName="page" value="$items[{{idx}}].grid_ref" editable="true" rows="1" style="width:100%; min-width:380px; font-size:14px;"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_grid_ref_start_{{idx}}" value="grid_ref_start → end (คาน):" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="grid_ref_start_{{idx}}" toName="page" value="$items[{{idx}}].grid_ref_start" editable="true" rows="1" style="width:100%; font-size:14px;"/>
+            <TextArea name="grid_ref_end_{{idx}}" toName="page" value="$items[{{idx}}].grid_ref_end" editable="true" rows="1" style="width:100%; font-size:14px;"/>
+            <TextArea name="span_length_m_{{idx}}" toName="page" value="$items[{{idx}}].span_length_m" editable="true" rows="1" style="width:100%; font-size:14px;"/>
           </View>
           <View className="row" style="padding:0 0 2px 208px;">
             <Text name="grid_ref_display_{{idx}}" value="↳ อ่านว่า: $items[{{idx}}].grid_ref_display" style="font-size:12px; color:#0a7a3d; font-style:italic; overflow-wrap:break-word; word-break:break-word;"/>
@@ -68,10 +74,16 @@
             <TextArea name="height_mm_{{idx}}" toName="page" value="$items[{{idx}}].height_mm" editable="true" rows="1"/>
           </View>
           <View className="row">
-            <Text name="lbl_main_dia_{{idx}}" value="เหล็กหลัก — จำนวน/ขนาด มม./ชนิด:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
-            <TextArea name="main_bar_count_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_count" editable="true" rows="1"/>
-            <TextArea name="main_bar_dia_mm_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_dia_mm" editable="true" rows="1"/>
-            <TextArea name="main_bar_type_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_type" editable="true" rows="1"/>
+            <Text name="lbl_main_top_{{idx}}" value="เหล็กหลัก บน — จำนวน/ขนาด มม./ชนิด:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="main_bar_top_count_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_top_count" editable="true" rows="1"/>
+            <TextArea name="main_bar_top_dia_mm_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_top_dia_mm" editable="true" rows="1"/>
+            <TextArea name="main_bar_top_type_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_top_type" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_main_bottom_{{idx}}" value="เหล็กหลัก ล่าง — จำนวน/ขนาด มม./ชนิด:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>
+            <TextArea name="main_bar_bottom_count_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_bottom_count" editable="true" rows="1"/>
+            <TextArea name="main_bar_bottom_dia_mm_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_bottom_dia_mm" editable="true" rows="1"/>
+            <TextArea name="main_bar_bottom_type_{{idx}}" toName="page" value="$items[{{idx}}].main_bar_bottom_type" editable="true" rows="1"/>
           </View>
           <View className="row">
             <Text name="lbl_stirrup_{{idx}}" value="ปลอก — ขนาด มม./ชนิด/ระยะห่าง มม.:" style="min-width:200px; font-weight:600; flex-shrink:0;"/>

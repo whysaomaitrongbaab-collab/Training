@@ -1,0 +1,34 @@
+{
+  "png": "37",
+  "doc_page": 35,
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า37.png",
+  "discipline": "mechanical",
+  "sheet_code": "M-01",
+  "sheet_name": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "pattern": "plan",
+  "view_title": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "drawing_no": "M-58108",
+  "sheet_total": 1,
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["D", "C", "B", "A"],
+  "rooms_shown": ["นอน 1", "นอน 2", "ซักล้าง", "เตรียมอาหาร", "จอดรถ", "พักผ่อน", "เฉลียง"],
+  "elements": [
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 12,000 BTU.", "room": "นอน 1", "quantity": 1, "confidence_score": 0.9, "confidence_flags": []},
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 9,000 BTU.", "room": "นอน 2", "quantity": 1, "confidence_score": 0.9, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (40 CFM.), unit 1 at the top wall near the นอน 1/นอน 2/ซักล้าง corner (paired with the first 4\"x4\" exhaust grille); unit 2 lower, near row C at the boundary between นอน 1 and the small ห้องน้ำ (paired with the second 4\"x4\" exhaust grille)", "room": "นอน1/นอน2/ซักล้าง corridor corner; นอน1/ห้องน้ำ boundary near row C", "quantity": 2, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (120 CFM.), unit 1 inside the small ห้องน้ำ (bathroom, identified by the toilet-fixture icon) near row B; unit 2 in/near เตรียมอาหาร on the east side of the plan, adjacent to the ซักล้าง stairs ('ขึ้น') area", "room": "ห้องน้ำ (near row B); เตรียมอาหาร", "quantity": 2, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 4\"x4\", paired 1-to-1 with each of the two 40 CFM ceiling fans", "quantity": 2, "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 6\"x6\", paired 1-to-1 with each of the two 120 CFM ceiling fans", "quantity": 2, "confidence_score": 0.75, "confidence_flags": []}
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "GRID CONFIRMATION (independent re-read, t4): the printed dimension chain on this page (1.30+4.00+3.00+1.30 horizontal under grid 1/2/3; 1.50+4.00+bracket(2.00+3.50)+1.50+1.50 vertical below grid A) is identical to หน้า29/35/36 and matches the building grid master (หน้า00_gridline.json) exactly, including the A'/A'' dummy-grid extension position (unlabeled on this sheet itself, same caveat noted on the other plan pages).",
+    "This is the only mechanical sheet in the drawing set (M-01 of 1, per title block 'M-58108'), covering recommended AC/ceiling-fan/exhaust-grille placement for the ground floor.",
+    "Independent re-read (t4) confirms t3's equipment counts and BTU/CFM/size values, all clearly legible at this resolution. Room-to-equipment pairing for the two 40 CFM units and two 120 CFM units is a best-effort reading based on physical proximity on the drawing (not an explicit leader-line-to-room confirmation for every unit) -- the precise room boundary for each fan (e.g. whether the 2nd 40 CFM fan serves นอน 1 or the ห้องน้ำ) still carries residual ambiguity.",
+    "No cost/BTU-sizing calculation basis (e.g. room area used to size 12,000/9,000 BTU) is shown on this sheet -- it only presents the recommended equipment and location, consistent with it being a mechanical layout plan rather than a load-calculation sheet.",
+    "No content or pattern change from t3; only wrapper-level addition is source_image. This is the last page of the assigned range (26-37)."
+  ]
+}

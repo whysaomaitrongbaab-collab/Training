@@ -88,13 +88,33 @@ function formatGridRefDisplay(raw) {
   return String(raw);
 }
 
+// Gen 4 (2026-07-08 schema) atomic beam segments use separate grid_ref_start/
+// grid_ref_end/span_length_m fields instead of Makham's original packed
+// "{head+tail,span}" string. This was NOT handled by the original flattenElementItem
+// below -- grid_ref_start/end silently fell into other_fields_json (read-only) and
+// grid_ref/grid_ref_display came out blank for every beam. Fixed 2026-07-08.
+function formatGridStartEndDisplay(start, end, span) {
+  if (!start && !end) return '(ไม่มี — เช่น element ที่เป็น slab marker ไม่ใช่เส้น)';
+  const spanText = span === null || span === undefined || span === '' ? 'ระยะไม่ทราบ' : `ยาว ${span} ม.`;
+  return `${start || '?'} → ${end || '?'} (${spanText})`;
+}
+
 const ELEMENT_CORE_FIELDS = [
   'element_id', 'element_type', 'count', 'grid_ref', 'grid_refs', 'span_source',
+  'grid_ref_start', 'grid_ref_end', 'span_length_m',
   'width_mm', 'height_mm', 'level', 'view_title',
 ];
 
 function flattenElementItem(el) {
   const mainBar = el.main_bar || {};
+  // Gen 4 mandates main_bar.top/main_bar.bottom (nested) instead of Makham's
+  // original flat main_bar.count/dia_mm/type. Same bug as grid_ref above: the old
+  // flat lookup (mainBar.count) silently returned undefined for every beam/column
+  // once the schema switched to nested top/bottom. Fixed 2026-07-08 -- now surfaces
+  // both, falling back to the flat legacy shape only if top/bottom aren't present.
+  const hasTopBottom = mainBar.top || mainBar.bottom;
+  const mainBarTop = hasTopBottom ? (mainBar.top || {}) : mainBar;
+  const mainBarBottom = hasTopBottom ? (mainBar.bottom || {}) : mainBar;
   const stirrup = el.stirrup || {};
   const rest = {};
   for (const [k, v] of Object.entries(el)) {
@@ -107,19 +127,34 @@ function flattenElementItem(el) {
     }
     rest[k] = v;
   }
+
+  const hasStartEnd = el.grid_ref_start !== undefined || el.grid_ref_end !== undefined;
   const gridRefRaw = str(el.grid_ref ?? el.grid_refs);
+  const gridRefStart = str(el.grid_ref_start);
+  const gridRefEnd = str(el.grid_ref_end);
+  const spanLengthM = str(el.span_length_m);
+  const gridRefDisplay = hasStartEnd
+    ? formatGridStartEndDisplay(gridRefStart, gridRefEnd, spanLengthM)
+    : formatGridRefDisplay(gridRefRaw);
+
   return {
     element_id: str(el.element_id),
     element_type: str(el.element_type),
     count: str(el.count),
-    grid_ref: gridRefRaw,
-    grid_ref_display: formatGridRefDisplay(gridRefRaw),
+    grid_ref: hasStartEnd ? '' : gridRefRaw,
+    grid_ref_start: gridRefStart,
+    grid_ref_end: gridRefEnd,
+    span_length_m: spanLengthM,
+    grid_ref_display: gridRefDisplay,
     span_source: str(el.span_source),
     width_mm: str(el.width_mm),
     height_mm: str(el.height_mm),
-    main_bar_count: str(mainBar.count),
-    main_bar_dia_mm: str(mainBar.dia_mm),
-    main_bar_type: str(mainBar.type),
+    main_bar_top_count: str(mainBarTop.count),
+    main_bar_top_dia_mm: str(mainBarTop.dia_mm),
+    main_bar_top_type: str(mainBarTop.type),
+    main_bar_bottom_count: str(mainBarBottom.count),
+    main_bar_bottom_dia_mm: str(mainBarBottom.dia_mm),
+    main_bar_bottom_type: str(mainBarBottom.type),
     stirrup_dia_mm: str(stirrup.dia_mm),
     stirrup_type: str(stirrup.type),
     stirrup_spacing_mm: str(stirrup.spacing_mm),

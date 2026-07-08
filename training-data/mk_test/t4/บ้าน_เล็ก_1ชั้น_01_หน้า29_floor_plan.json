@@ -1,0 +1,60 @@
+{
+  "png": "29",
+  "doc_page": 27,
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า29.png",
+  "discipline": "sanitary",
+  "sheet_code": "SN-04",
+  "sheet_name": "แปลนระบบสุขาภิบาลพื้นชั้นล่าง, แบบขยายระบบสุขาภิบาลห้องน้ำ",
+  "pattern": "plan",
+  "view_title": "แปลนระบบสุขาภิบาลพื้น",
+  "drawing_no": "SN-58078",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["D", "C", "B", "A", "A'", "A''"],
+  "rooms_shown": [
+    {"name": "นอน 1", "level_m": "+0.60"},
+    {"name": "นอน 2", "level_m": "+0.60"},
+    {"name": "ซักล้าง", "level_m": "+0.20"},
+    {"name": "ห้องน้ำ", "level_m": "+0.50"},
+    {"name": "เตรียมอาหาร", "level_m": "+0.60"},
+    {"name": "จอดรถ", "level_m": "+0.20"},
+    {"name": "พักผ่อน", "level_m": "+0.60"},
+    {"name": "เฉลียง", "level_m": "+0.50"}
+  ],
+  "elements": [
+    {"element_type": "septic_tank", "description": "ถังบำบัดน้ำเสียสำเร็จรูป (hatched circle symbol)", "grid_ref": "west side, between ห้องน้ำ and จอดรถ, roughly at row B level", "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "grease_trap", "description": "ถังดักไขมันสำเร็จรูป (hatched square symbol)", "grid_ref": "between ห้องน้ำ and เตรียมอาหาร, piped onward through a round fitting to a floor cleanout box near row B", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "water_meter", "description": "ชุดมาตรวัดน้ำ Ø1/2\" (ค่าใช้จ่ายในการติดตั้งเป็นของผู้รับจ้างทั้งสิ้น), fed by CW main, connects onward to a storm-drain catch point", "grid_ref": "outside building envelope, bottom-left corner below row A''", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "catch_basin", "description": "บ่อพักท่อระบายน้ำสำเร็จรูป ขนาด 0.40x0.40 ม. พร้อมฝา ค.ส.ล.", "grid_ref": "bottom-right corner of plan, at the end of the perimeter storm-drain run near grid 3 / row A''", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "floor_cleanout_or_manhole", "description": "X-in-square symbols marking access points along the dashed perimeter storm-drain run -- counted 8 around the building envelope (2 along the top/D edge, 1 on the left/west edge near row C, 1 lower on the west edge, 2 at the bottom-left area near row A/A', 1 at bottom-right, 1 near the water-meter connection at bottom-left corner)", "grid_ref": "perimeter, following the dashed line around the building footprint (rows D through A/A'/A'', grid 1 through 3)", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required", "symbol_count_approximate"]},
+    {"element_type": "site_storm_drain_pipe", "description": "ท่อคอนกรีตท้องตลาด Ø0.20ม. ลาด 1:200, จุดต้นท่อลึก 0.60ม. -- runs along the top/north perimeter (near row D, grid 3 corner) and continues around the building connecting the catch points", "grid_ref": "perimeter, dashed line around the building footprint", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "cold_water_supply_pipe", "description": "ท่อประปา Ø3/4\"CW เดินใต้พื้น จากมาตรวัดน้ำ ผ่านแนวผนังด้านตะวันตกขึ้นไปยังห้องน้ำ, นอน 1, นอน 2 (label 'Ø3/4\"CW' printed twice: once along the top wall of นอน 1, once near the bottom-left entry point)", "grid_ref": "runs along interior/west wall from bottom-left entry up through ห้องน้ำ and the bedrooms", "confidence_score": 0.7, "confidence_flags": []}
+  ],
+  "equipment_specs": {
+    "septic_tank": {
+      "type": "ถังบำบัดน้ำเสียสำเร็จรูปชนิดเกรอะ-กรองไร้อากาศ",
+      "grease_volume_min_cum": 1.0,
+      "filter_volume_min_cum": 0.25,
+      "acceptable_brands": ["AQUA", "PP", "DOS", "SAN-PAC", "HICLEAR", "หรือเทียบเท่า"],
+      "installation_note": "การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต"
+    },
+    "grease_trap": {
+      "type": "ถังดักไขมันสำเร็จรูป",
+      "volume_min_liters": 30,
+      "acceptable_brands": ["AQUA", "PP", "DOS", "SAN-PAC", "HICLEAR", "หรือเทียบเท่า"],
+      "installation_note": "การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต"
+    }
+  },
+  "sibling_files": [
+    "บ้าน_เล็ก_1ชั้น_01_หน้า29_bathroom_plan.json"
+  ],
+  "confidence_score": 0.7,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID CONFIRMATION (independent re-read, t4): the printed dimension chain on this page (horizontal 1.30+4.00+3.00+1.30 under circled grid labels 1/2/3; vertical 1.50+4.00+bracket(2.00+3.50)+then a further unlabeled 1.50+1.50=3.00 extension below circled letter A) exactly matches the building grid master (หน้า00_gridline.json): grid1(0.0)-grid2(4.0)-grid3(7.0), and D(0.0)-C(4.0)-B(6.0)-A(9.5)-A'(11.0)-A''(12.5). This confirms t3's conclusion that this is a real structural-grid-linked plan, not free text. Note: this specific page does NOT print circled 'A'' / 'A''' labels itself -- those dummy-grid names only appear in the master file (sourced from page 06); here I only observe the raw unlabeled dimension segments, consistent with the master's own sourcing note.",
+    "This page also contains a smaller inset detail 'แปลนระบบสุขาภิบาลห้องน้ำ' (1:50), captured in the sibling file, plus the septic tank / grease trap spec notes reproduced above in equipment_specs.",
+    "Exact routing of individual small-diameter branch CW pipes into each room and the precise identity/count of every perimeter X-in-square symbol is difficult to trace precisely at this resolution; positions and the count of 8 are best-effort/approximate, not measured coordinates -- flagged for zoom-review.",
+    "No content change from t3; only wrapper-level addition is source_image. Pattern 'plan' unaffected by 2026-07-08 taxonomy update."
+  ]
+}
