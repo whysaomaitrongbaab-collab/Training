@@ -1,0 +1,28 @@
+{
+  "png": "14",
+  "doc_page": 12,
+  "discipline": "architectural",
+  "sheet_code": "A-12",
+  "sheet_name": "แบบขยาย เชิงชาย",
+  "pattern": "side_profile",
+  "schema_generation": "20260708draft of prime rawjson.md",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า14.png",
+  "view_title": "แบบขยาย เชิงชาย 1 (R1)",
+  "grid_source": "mk_test/t4/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "เชิงชายไม้ไฟเบอร์ซีเมนต์", "element_type": "fascia_board", "material": "เชิงชายไม้ไฟเบอร์ซีเมนต์ ขนาด 8\"+8\" หนา 12 มม ทาสี", "count": 1, "dimension_m": "overhang 1.50 from the wall/post reference line B", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "หลังคาเหล็กรีดลอน", "element_type": "roof_sheet", "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet roofing)", "count": 1, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "flashing", "element_type": "flashing", "material": "FLASHING ใช้วัสดุเดียวกันกับหลังคา", "count": 1, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "post_marker_4", "element_type": "reference_marker", "description": "Circled numeral '4' marking a vertical post/member at the eave edge, below the roof slope", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"] },
+    { "element_id": "vertical_dim_note", "element_type": "dimension_note", "description": "Vertical dimension line labeled 'ระยะตามแบบแปลนสถาปัตย์ ประมาณ ±1.30 ม.' (approximate, per architectural plan) running down beside the post, from roof edge to a lower reference point", "confidence_score": 0.5, "confidence_flags": ["small_vertical_text_partially_legible"] }
+  ],
+  "confidence_score": 0.68,
+  "confidence_flags": ["no_rebar/steel_spec_present_only_material/dimension_callouts_of_a_roof-edge_assembly"],
+  "warnings": [
+    "PATTERN RECLASSIFIED (t4, 2026-07-08 taxonomy): t3 classified this view as 'section'. This detail has no rebar/steel spec (only roof sheet, fascia board, and flashing material callouts with dimensions) -- under the new taxonomy's explicit definition of 'section' as steel-spec/dimension detail, this does not qualify. It IS a genuine cross-section cut through the roof edge assembly, which fits 'side_profile' ('มุมมองที่ไม่ใช่ top view เน้นมุมมองด้านข้าง เช่น รูปด้าน/รูปตัดอาคาร'). Reclassified accordingly; element content unchanged from t3.",
+    "This is eave/fascia detail R1, referenced elsewhere as 'เชิงชาย 1 (R1)'.",
+    "The vertical circled letter 'B' at the bottom of this detail matches the main building gridline B per the master grid file -- but only ONE axis letter appears on this local detail box, so this sheet alone cannot confirm whether it is being used as a true structural gridline tie or just a local section-reference letter; treated as plausible-but-unconfirmed.",
+    "Independent read done first, then cross-checked against t3's หน้า14_eave_r1.json: matches on all material callouts and the 1.50 m overhang. The small vertical annotation text remained only partially legible on this independent read too, consistent with t3's low-confidence flag on that field.",
+    "Sibling detail R2 is in _หน้า14_eave_r2.json."
+  ]
+}
