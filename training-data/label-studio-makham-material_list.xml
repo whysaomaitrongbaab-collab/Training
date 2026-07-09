@@ -1,81 +1,96 @@
 <View>
-  <View style="position: sticky; top: 0; background: white; z-index: 100; padding-bottom: 8px; border-bottom: 2px solid #ccc;">
-    <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-      <Text name="lbl_house" value="บ้าน:" style="font-weight:700; font-size:15px; flex-shrink:0; min-width:60px;"/>
-      <TextArea name="hdr_house" toName="page" value="$house" editable="true" rows="1" style="font-weight:700; font-size:15px; width:100%;"/>
+  <!-- Freeze-LEFT layout: image column pinned on the left, stays in view while the
+       item list on the right scrolls. Matches label-studio-makham-elements.xml's layout
+       for visual consistency across the 3 projects (Elements/Material List/Single). -->
+  <Style>
+    .stickycol { position:sticky; top:0; flex:1 1 0%; max-width:50%; max-height:96vh; overflow-y:auto; align-self:flex-start; background:white; padding-bottom:8px; padding-right:6px; overflow-wrap:break-word; word-break:break-word; }
+    .row { display:flex; align-items:center; gap:8px; padding:2px 0; }
+  </Style>
+
+  <View style="display:flex; gap:16px; align-items:flex-start;">
+
+    <View className="stickycol">
+      <Image name="page" value="$image" zoom="true" zoomControl="true" maxHeight="94vh"/>
     </View>
-    <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-      <Text name="lbl_png" value="หน้า:" style="font-weight:600; font-size:13px; flex-shrink:0; min-width:60px;"/>
-      <TextArea name="hdr_png" toName="page" value="$png" editable="true" rows="1" style="font-weight:600; font-size:13px; width:100%;"/>
+
+    <View style="flex:1; min-width:0;">
+      <View className="row">
+        <Text name="lbl_house" value="บ้าน:" style="font-weight:700; font-size:15px; flex-shrink:0; min-width:60px;"/>
+        <TextArea name="hdr_house" toName="page" value="$house" editable="true" rows="1" style="font-weight:700; font-size:15px; width:100%;"/>
+      </View>
+      <View className="row">
+        <Text name="lbl_png" value="หน้า:" style="font-weight:600; font-size:13px; flex-shrink:0; min-width:60px;"/>
+        <TextArea name="hdr_png" toName="page" value="$png" editable="true" rows="1" style="font-weight:600; font-size:13px; width:100%;"/>
+      </View>
+      <View className="row" style="margin-bottom:8px;">
+        <Text name="lbl_sheet_name" value="ชื่อแผ่น:" style="font-size:13px; flex-shrink:0; min-width:60px;"/>
+        <TextArea name="hdr_sheet_name" toName="page" value="$sheet_name" editable="true" rows="1" style="font-size:13px; width:100%;"/>
+      </View>
+
+      <Header value="รายการวัสดุที่ AI สกัดได้ — แก้ทีละรายการ" size="3"/>
+
+      <Repeater on="$items" indexFlag="{{idx}}">
+        <View style="border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 8px 0; background: #fafafa;">
+          <View className="row">
+            <Text name="lbl_category_{{idx}}" value="หมวด:" style="min-width:200px; font-weight:600;"/>
+            <TextArea name="category_{{idx}}" toName="page" value="$items[{{idx}}].category" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_item_no_{{idx}}" value="ลำดับ:" style="min-width:200px; font-weight:600;"/>
+            <TextArea name="item_no_{{idx}}" toName="page" value="$items[{{idx}}].item_no" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_description_{{idx}}" value="รายการ:" style="min-width:200px; font-weight:600;"/>
+            <TextArea name="description_{{idx}}" toName="page" value="$items[{{idx}}].description" editable="true" rows="2"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_quantity_{{idx}}" value="ปริมาณ:" style="min-width:200px; font-weight:600;"/>
+            <TextArea name="quantity_{{idx}}" toName="page" value="$items[{{idx}}].quantity" editable="true" rows="1"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_unit_{{idx}}" value="หน่วย:" style="min-width:200px; font-weight:600;"/>
+            <TextArea name="unit_{{idx}}" toName="page" value="$items[{{idx}}].unit" editable="true" rows="1"/>
+          </View>
+
+          <Text name="hdr_price_{{idx}}" value="ℹ️ ราคา (ส่วนใหญ่ยังว่าง — รอบข้อมูลนี้ยังไม่มีราคา)" style="color:#888; font-size:12px; font-weight:600; margin-top:8px;"/>
+          <View className="row">
+            <Text name="lbl_material_price_{{idx}}" value="ราคาวัสดุ/หน่วย, รวม:" style="min-width:200px;"/>
+            <Text name="material_unit_price_{{idx}}" value="$items[{{idx}}].material_unit_price" style="color:#555;"/>
+            <Text name="material_amount_{{idx}}" value="$items[{{idx}}].material_amount" style="color:#555;"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_labor_price_{{idx}}" value="ราคาแรงงาน/หน่วย, รวม:" style="min-width:200px;"/>
+            <Text name="labor_unit_price_{{idx}}" value="$items[{{idx}}].labor_unit_price" style="color:#555;"/>
+            <Text name="labor_amount_{{idx}}" value="$items[{{idx}}].labor_amount" style="color:#555;"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_total_{{idx}}" value="ยอดรวม:" style="min-width:200px;"/>
+            <Text name="total_amount_{{idx}}" value="$items[{{idx}}].total_amount" style="color:#555;"/>
+          </View>
+          <View className="row">
+            <Text name="lbl_conf_{{idx}}" value="AI confidence / flags:" style="min-width:200px;"/>
+            <Text name="conf_score_{{idx}}" value="$items[{{idx}}].confidence_score" style="color:#555;"/>
+            <Text name="conf_flags_{{idx}}" value="$items[{{idx}}].confidence_flags" style="color:#555;"/>
+          </View>
+
+          <View className="row" style="margin-top:8px;">
+            <Text name="lbl_delete_{{idx}}" value="สถานะรายการนี้:" style="min-width:200px; font-weight:600;"/>
+            <Choices name="delete_{{idx}}" toName="page" showInLine="true">
+              <Choice value="delete">❌ ลบรายการนี้ (AI มโน)</Choice>
+            </Choices>
+          </View>
+        </View>
+      </Repeater>
+
+      <Header value="หมายเหตุ / รายการที่ AI พลาดไป" size="4"/>
+      <TextArea
+        name="reviewer_note"
+        toName="page"
+        placeholder="พิมพ์อธิบายเป็นคำพูดปกติ — ไม่ต้องพิมพ์ JSON"
+        rows="3"
+        editable="true"
+      />
     </View>
-    <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-      <Text name="lbl_sheet_name" value="ชื่อแผ่น:" style="font-size:13px; flex-shrink:0; min-width:60px;"/>
-      <TextArea name="hdr_sheet_name" toName="page" value="$sheet_name" editable="true" rows="1" style="font-size:13px; width:100%;"/>
-    </View>
-    <Image name="page" value="$image" zoom="true" zoomControl="true" maxHeight="380px"/>
+
   </View>
-
-  <Header value="รายการวัสดุที่ AI สกัดได้ — แก้ทีละรายการ" size="3"/>
-
-  <Repeater on="$items" indexFlag="{{idx}}">
-    <View style="border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 8px 0; background: #fafafa;">
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_category_{{idx}}" value="หมวด:" style="min-width:200px; font-weight:600;"/>
-        <TextArea name="category_{{idx}}" toName="page" value="$items[{{idx}}].category" editable="true" rows="1"/>
-      </View>
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_item_no_{{idx}}" value="ลำดับ:" style="min-width:200px; font-weight:600;"/>
-        <TextArea name="item_no_{{idx}}" toName="page" value="$items[{{idx}}].item_no" editable="true" rows="1"/>
-      </View>
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_description_{{idx}}" value="รายการ:" style="min-width:200px; font-weight:600;"/>
-        <TextArea name="description_{{idx}}" toName="page" value="$items[{{idx}}].description" editable="true" rows="2"/>
-      </View>
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_quantity_{{idx}}" value="ปริมาณ:" style="min-width:200px; font-weight:600;"/>
-        <TextArea name="quantity_{{idx}}" toName="page" value="$items[{{idx}}].quantity" editable="true" rows="1"/>
-      </View>
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_unit_{{idx}}" value="หน่วย:" style="min-width:200px; font-weight:600;"/>
-        <TextArea name="unit_{{idx}}" toName="page" value="$items[{{idx}}].unit" editable="true" rows="1"/>
-      </View>
-
-      <Text name="hdr_price_{{idx}}" value="ℹ️ ราคา (ส่วนใหญ่ยังว่าง — รอบข้อมูลนี้ยังไม่มีราคา)" style="color:#888; font-size:12px; font-weight:600; margin-top:8px;"/>
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_material_price_{{idx}}" value="ราคาวัสดุ/หน่วย, รวม:" style="min-width:200px;"/>
-        <Text name="material_unit_price_{{idx}}" value="$items[{{idx}}].material_unit_price" style="color:#555;"/>
-        <Text name="material_amount_{{idx}}" value="$items[{{idx}}].material_amount" style="color:#555;"/>
-      </View>
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_labor_price_{{idx}}" value="ราคาแรงงาน/หน่วย, รวม:" style="min-width:200px;"/>
-        <Text name="labor_unit_price_{{idx}}" value="$items[{{idx}}].labor_unit_price" style="color:#555;"/>
-        <Text name="labor_amount_{{idx}}" value="$items[{{idx}}].labor_amount" style="color:#555;"/>
-      </View>
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_total_{{idx}}" value="ยอดรวม:" style="min-width:200px;"/>
-        <Text name="total_amount_{{idx}}" value="$items[{{idx}}].total_amount" style="color:#555;"/>
-      </View>
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0;">
-        <Text name="lbl_conf_{{idx}}" value="AI confidence / flags:" style="min-width:200px;"/>
-        <Text name="conf_score_{{idx}}" value="$items[{{idx}}].confidence_score" style="color:#555;"/>
-        <Text name="conf_flags_{{idx}}" value="$items[{{idx}}].confidence_flags" style="color:#555;"/>
-      </View>
-
-      <View style="display:flex; align-items:center; gap:8px; padding:2px 0; margin-top:8px;">
-        <Text name="lbl_delete_{{idx}}" value="สถานะรายการนี้:" style="min-width:200px; font-weight:600;"/>
-        <Choices name="delete_{{idx}}" toName="page" showInLine="true">
-          <Choice value="delete">❌ ลบรายการนี้ (AI มโน)</Choice>
-        </Choices>
-      </View>
-    </View>
-  </Repeater>
-
-  <Header value="หมายเหตุ / รายการที่ AI พลาดไป" size="4"/>
-  <TextArea
-    name="reviewer_note"
-    toName="page"
-    placeholder="พิมพ์อธิบายเป็นคำพูดปกติ — ไม่ต้องพิมพ์ JSON"
-    rows="3"
-    editable="true"
-  />
 </View>
