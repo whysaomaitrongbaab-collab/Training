@@ -1,0 +1,40 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid line master (สังเคราะห์เอง — ไม่ใช่หน้าจริงในเอกสาร ใช้ 'หน้า 0' เป็น convention สำหรับไฟล์ grid กลางของทั้งบ้าน)",
+  "pattern": "gridline",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า23.png",
+    "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า24.png",
+    "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า25.png",
+    "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า26.png"
+  ],
+  "note": "Grid dimensions read identically and repeated on S-02 (spread footing plan), S-03 (pile footing plan), S-04 (ground floor beam plan), and S-05 (tie-beam plan) -- all 4 sheets print the same '9.60' (3x3.20) x-axis total and '14.55' (4.00+2.00+3.60+1.80+3.15) y-axis total, cross-confirming the grid with no discrepancy. No dummy/prime grid lines were found in any structural sheet read so far (S-01 through S-14) -- the building footprint is simply irregular (rows F/B/A only have columns 2-3 or partial columns, not a full 1-4 span), which does not require a dummy grid, unlike house #1 which had genuine overhang dimensions beyond the named grid. If the architecture-discipline extraction (pages 03-21, being read separately) finds a dimension beyond grid 4/A or before grid 1/F requiring a dummy line, that must be reported back and added here rather than invented independently by whichever pass finds it.",
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "2", "pos_m": 3.2, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "3", "pos_m": 6.4, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "4", "pos_m": 9.6, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" }
+    ],
+    "y_lines": [
+      { "id": "F", "pos_m": 0.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets (topmost row, origin)" },
+      { "id": "E", "pos_m": 4.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "D", "pos_m": 6.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "C", "pos_m": 9.6, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "B", "pos_m": 11.4, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "A", "pos_m": 14.55, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" }
+    ]
+  },
+  "building_footprint_note": "Irregular footprint, not a full rectangle: rows F, B, A only have columns 2-3 (or a subset) present -- e.g. footing plan S-02 has no footing at F-2... actually F row has all 4 (F-1,F-2,F-3,F-4), but B and A rows only have columns 2 and 3 (B-2,B-3,A-2,A-3), consistent with a porch/carport extension south of grid C occupying only the middle bay.",
+  "confidence_score": 0.95,
+  "confidence_flags": ["grid_confirmed_identical_across_4_independent_structural_sheets_S02_S03_S04_S05"],
+  "warnings": [
+    "No dummy grid lines found yet -- architecture-discipline pages (03-21) not yet read at time of this file's creation; if an overhang/extension dimension beyond the named grid turns up there, come back and add a dummy grid entry here."
+  ],
+  "last_updated_from_page": "S-02, S-03, S-04, S-05 (pages 23-26)",
+  "last_updated_date": "2026-07-10"
+}

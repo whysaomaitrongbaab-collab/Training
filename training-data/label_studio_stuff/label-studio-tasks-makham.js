@@ -34,10 +34,12 @@
  *        → auto-finds Training/raw_json_ตัวที่ใช้งานจริง/<NN><house>/ (production data)
  *   e.g. node label-studio-tasks-makham.js บ้าน_เล็ก_1ชั้น_01 t2
  *        → forces the old training-data/mk_test/t2/ test round instead
- * Output (written into this folder's own subfolders — see that folder's README):
- *   element/label-studio-tasks-makham-elements.json
- *   material_list/label-studio-tasks-makham-material_list.json
- *   single/label-studio-tasks-makham-single.json
+ * Output (written into this folder's own subfolders — see that folder's README). Filenames
+ * are namespaced by house (added 2026-07-11) so running this for a 2nd/3rd house never
+ * overwrites an earlier house's task files:
+ *   element/label-studio-tasks-makham-<house>-elements.json
+ *   material_list/label-studio-tasks-makham-<house>-material_list.json
+ *   single/label-studio-tasks-makham-<house>-single.json
  */
 
 const fs = require('fs');
@@ -307,10 +309,11 @@ function main() {
   }
 
   const suffix = disciplineFilter ? `-${disciplineFilter}` : '';
-  const elementsFile = `label-studio-tasks-makham-elements${suffix}.json`;
-  const materialListFile = `label-studio-tasks-makham-material_list${suffix}.json`;
-  const singleFile = `label-studio-tasks-makham-single${suffix}.json`;
-  const allFile = `label-studio-tasks-makham-all${suffix}.json`;
+  // Namespaced by house so a 2nd/3rd house never overwrites an earlier house's output.
+  const elementsFile = `label-studio-tasks-makham-${house}-elements${suffix}.json`;
+  const materialListFile = `label-studio-tasks-makham-${house}-material_list${suffix}.json`;
+  const singleFile = `label-studio-tasks-makham-${house}-single${suffix}.json`;
+  const allFile = `label-studio-tasks-makham-${house}-all${suffix}.json`;
 
   // Outputs are split into per-project subfolders (element/material_list/single) under
   // this script's own folder — each pairs with that folder's Labeling Interface XML.

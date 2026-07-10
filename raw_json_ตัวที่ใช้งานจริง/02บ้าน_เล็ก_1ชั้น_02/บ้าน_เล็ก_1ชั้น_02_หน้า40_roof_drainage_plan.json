@@ -1,0 +1,43 @@
+{
+  "png": "40",
+  "doc_page": 38,
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า40.png",
+  "discipline": "sanitary",
+  "sheet_code": "SN-05",
+  "sheet_name": "แปลนระบบสุขาภิบาลหลังคา",
+  "pattern": "plan",
+  "view_title": "แปลนระบบสุขาภิบาลหลังคา",
+  "drawing_no": "SN-58079",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_02_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3", "4"],
+  "grid_rows": ["F", "E", "D", "C", "B", "A"],
+  "roof_areas": [
+    {"label": "หลังคาเหล็กรีดลอน", "description": "main pitched roof, corrugated/ribbed steel roofing, covering the full building footprint from row F down to roughly row C; two SLOPE arrows printed near grid2 and grid3 vertical lines indicate the roof's fall direction toward the drain point"},
+    {"label": "หลังคา ค.ส.ล. +4.00", "description": "secondary flat RC roof/canopy at level +4.00, smaller footprint (printed width 3.20 m) located below the main roof, roughly centered between grid2-3, extending toward row A -- likely the carport/entrance canopy roof"}
+  ],
+  "dimensions_m": {
+    "x_chain": [1.30, 3.20, 3.20, 3.20, 1.30],
+    "x_total": 9.60,
+    "x_overhang_note": "1.30 m overhang beyond grid1 (west) and beyond grid4 (east) on both sides of the 9.60 m grid span",
+    "y_chain_upper": [1.50, 4.00, 2.00, 3.60],
+    "y_lower_detail": [1.80, 0.30, 1.50],
+    "y_total": 14.55,
+    "y_overhang_note": "1.50 m overhang above row F (north); the lower portion of the chain (below row D) shows a 1.80 m segment further broken down into 0.30 + 1.50 near the roof-step/canopy transition, read with lower confidence -- see warnings",
+    "canopy_width_m": 3.20
+  },
+  "elements": [
+    {"element_type": "roof_drain", "description": "Ø3\"RD (รูระบายน้ำฝนรูปโดม) -- roof drain, circle symbol near the south-east corner of the main roof, at approximately grid3-4/row C", "grid_ref": "near grid3-4, row C", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "rainwater_leader_pipe", "description": "Ø3\"RL (ท่อระบายน้ำฝนแนวดิ่ง) -- vertical rainwater leader pipe, adjacent to the roof drain, carrying runoff down to the site storm drain shown on the floor plan (SN-04)", "grid_ref": "near grid3-4, row C, immediately beside the roof drain symbol", "confidence_score": 0.7, "confidence_flags": []}
+  ],
+  "sibling_files": [],
+  "confidence_score": 0.6,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "PATTERN CLASSIFICATION NOTE: classified this page as 'plan' rather than 'roof_plan' because its actual content is a sanitary/drainage layout (roof drain + rainwater leader sizing and slope direction), not architectural roof geometry (no ridge/hip lines, eave framing, or roofing-material takeoff shown beyond the two area labels) -- consistent with treating it as the sanitary-discipline counterpart to the SN-04 floor plan, on the same confirmed structural grid.",
+    "GRID CONFIRMATION: the printed grid labels (1,2,3,4) and total x-span 9.60 m (3.20+3.20+3.20) plus grid row labels (F,E,D,C,B,A) with total y-span 14.55 m match this house's grid master (หน้า00_gridline.json) exactly for the named grid lines.",
+    "The roof footprint extends beyond the named grid by a 1.30 m overhang on both the west (beyond grid1) and east (beyond grid4) sides at the top/main-roof level -- this overhang is a printed dimension line but does NOT need a dummy grid line per the schema (it is a roof eave overhang relative to the wall grid, the same kind of overhang the grid master's own note anticipates from the architecture-discipline pages, not a new structural support line). Flagging this here per the task's instruction to report anything that might need a shared-grid update, even though no new grid line is being invented.",
+    "The lower portion of the vertical dimension chain (the 1.80 m segment further broken into 0.30 + 1.50 near the transition from the main pitched roof to the smaller RC canopy roof below it) is printed in small text close to the row-C/row-B area and is only partially legible at this resolution -- the exact step/offset geometry between the two roof levels is best-effort, flagged for human zoom-review; this does not affect the two sanitary elements (RD/RL) which are clearly legible and unambiguous.",
+    "This page has no sibling files (single view, no legend/schedule table on this sheet)."
+  ]
+}
