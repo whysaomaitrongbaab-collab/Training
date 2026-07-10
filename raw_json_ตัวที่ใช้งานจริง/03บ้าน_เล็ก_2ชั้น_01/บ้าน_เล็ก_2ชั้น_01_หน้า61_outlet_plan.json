@@ -1,0 +1,45 @@
+{
+  "png": "61",
+  "doc_page": 59,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า61.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-06",
+  "sheet_name": "แปลนเต้ารับไฟฟ้า ชั้นบน",
+  "pattern": "plan",
+  "view_title": "แปลนเต้ารับไฟฟ้า ชั้นบน",
+  "drawing_no": "EE-58079",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1'", "1", "2", "3", "3'"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dims_observed": {
+    "x_chain_m": [1.10, 3.50, 3.00, 0.50],
+    "x_overall_1_to_3_m": 6.50,
+    "y_chain_m": [1.50, 3.00, 2.20, 4.00, 1.50, 2.05],
+    "y_overall_E_to_A_m": 10.70,
+    "note": "Same dimension chain as printed on EE-03/EE-04/EE-05."
+  },
+  "rooms_shown": ["นอน 2", "นอน 3", "ห้องน้ำ", "ช่องท่อ", "โถง", "นอน 1", "ระเบียง"],
+  "elements": [
+    {"element_type": "receptacle_outlet", "description": "Two duplex receptacle outlets (⊖) at +0.30M side by side near the top wall of นอน 2 (note this floor's outlets are mounted much lower than the ground floor's +1.20M -- consistent with bedroom low-level convenience outlets vs. counter-height outlets downstairs)", "room": "นอน 2", "quantity": 2, "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "receptacle_outlet", "description": "Two duplex receptacle outlets (⊖) at +0.30M side by side near the top wall of นอน 3", "room": "นอน 3", "quantity": 2, "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "water_heater_junction_box", "description": "WH junction box (circled 'WH') in the upper-floor ห้องน้ำ, feeding circuit '6/LP' toward the LP panel", "room": "ห้องน้ำ (upper floor)", "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet (⊖) at +0.30M in the upper-floor ห้องน้ำ, same wall run as the WH box", "room": "ห้องน้ำ (upper floor)", "quantity": 1, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "distribution_riser_tag", "description": "'4/LP' circuit tag at the stair landing marking the feed point for the upper-floor receptacle circuit (circuit 4 of panel LP); an 'LP' text label also appears here, most likely marking the conduit riser down to the ground-floor panel", "room": "โถง / staircase landing", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlets (⊖) at +0.30M, two near the top wall and two near the exterior wall of นอน 1", "room": "นอน 1", "quantity": 4, "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "service_entrance", "description": "Incoming service run at the bottom of the sheet: '2-10 IEC 01-25 mm.PVC นอกอาคารเดินลอย' exterior exposed run labeled 'TO kWH METER', shown running down through ระเบียง toward the meter position implied off-sheet", "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "canopy_elevation_marker", "description": "'5/+3.65/3' elevation callout for กันสาด (canopy) at the ระเบียง edge, matching the same marker seen on EE-04's equivalent balcony/canopy area", "room": "ระเบียง", "confidence_score": 0.75, "confidence_flags": []}
+  ],
+  "sibling_files": [
+    "บ้าน_เล็ก_2ชั้น_01_หน้า61_ac_notes.json"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "GRID: same as EE-03/EE-04/EE-05 -- a house-wide grid master (บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json) appeared partway through this extraction batch; this page's independently-read dimension chain matches the master's named+dummy grid exactly.",
+    "Outlet mounting height on this sheet is consistently +0.30M, clearly distinct from the +1.20M height used throughout EE-05 (ground floor) -- transcribed exactly as printed, not assumed to be a labeling error; this is a genuine convention difference between the two floors' receptacle heights (bedrooms at low/skirting height vs. ground-floor kitchen/counter height).",
+    "No boxed/waterproof-cover (⊟) outlet symbol was confidently identified anywhere on this sheet, same observation as EE-05.",
+    "This sheet is markedly higher-confidence than its sibling EE-05/EE-03/EE-04 sheets because the +0.30M outlet symbols and their per-room grouping are visually cleaner/less cluttered on this floor's plan (fewer overlapping wiring lines).",
+    "This sheet also contains a telephone/TV/AC-circuit notes column (general_notes + ac_circuit_table), captured in the sibling file -- this house's EE set puts these notes on the last EE sheet (EE-06) same as house #2 put them on its own last EE sheet (EE-04)."
+  ]
+}

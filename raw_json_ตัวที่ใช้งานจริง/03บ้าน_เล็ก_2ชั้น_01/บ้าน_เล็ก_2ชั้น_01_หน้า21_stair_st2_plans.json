@@ -1,0 +1,25 @@
+{
+  "png": "21",
+  "doc_page": 19,
+  "discipline": "architecture",
+  "sheet_code": "A-19",
+  "sheet_name": "แบบขยายบันได ST.2",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า21.png",
+  "view_title": "แปลนชั้น 1 บันได ST.2 + แปลนชั้น 2 บันได ST.2",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/03บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "บันได_ST2_floor1", "element_type": "stair", "count": 1, "grid_ref": "between grid1 and grid2, at rows D-C — floor 1 flight (โถง +0.60 up to a landing), 9 risers @ 0.25m run each = 2.25m, plan width 3.50m (sub-split 1.10 stair well approach + 2.25 flight + 1.05 landing), stair well overall 4.40m x 2.20m", "step_numbering": "steps 1-9, rising from grid1/gridD corner toward gridC (labeled '9 8 7 6 5 4 3 2 1' right to left in the drawing)", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "บันได_ST2_floor2", "element_type": "stair", "count": 1, "grid_ref": "between grid1 and grid2, at rows D-C — floor 2 (return) flight continuing from the landing up to โถง +3.75, 7 risers @ 0.25m run each = 1.75m, plan width 3.50m (sub-split 1.10 + 1.85 flight + 1.55), stair well overall 4.40m x 2.20m", "step_numbering": "steps 10-17 (labeled '10 9 8 7 6 5 4 3' partial-return then '11 12 13 14 15 16 17' continuing up)", "confidence_score": 0.75, "confidence_flags": ["step_numbering_on_the_floor2_plan_view_appears_to_re-show_some_step_numbers_(3-10)_from_the_lower_flight_for_continuity_reference_alongside_the_new_11-17_upper_flight_numbers_-_exact_boundary_between_the_two_flights_(where_the_intermediate_landing_sits)_not_100%_certain_from_this_view_alone_cross-referenced_against_the_section_on_A-20_which_shows_18_total_risers"] },
+    { "element_id": "เก็บของ_adjacent", "element_type": "room", "count": 1, "grid_ref": "beside the floor1 stair well, near grid1 x gridD, box '4 +0.60 5'", "level_m": 0.60, "confidence_score": 0.75, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.77,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet (A-19) shows BOTH floor plans of the single main inter-floor stair ST.2 (a switchback/dog-leg stair spanning floor 1 +0.60 to floor 2 +3.75): the floor-1-level plan (top half of the sheet, this file's 'บันได_ST2_floor1' element) and the floor-2-level plan (bottom half, 'บันได_ST2_floor2' element), kept in ONE file since both views describe the same physical stair rather than splitting per view.",
+    "Total rise across both flights: 9 risers (floor1 plan) + a landing + additional risers up to floor2 = matches the 18 total risers @ 0.175m shown on the section sheet A-20 (หน้า22) — the two flights' step-run dimensions shown here (0.25m tread run) are plan-view horizontal run, NOT the same number as the section's vertical riser height (0.175m); these are two different dimensions of the same stair, not a discrepancy.",
+    "IMPORTANT: the 2nd-floor plan sheet (หน้า07/A-05) prints a callout reading 'ST.3 A-19' for this same stair (referencing this sheet A-19), while this sheet's own title consistently reads 'บันได ST.2' for both flights. Flagged again here (also flagged in _หน้า07_floor_plan_upper.json) as an unresolved drafting inconsistency — treated as the same physical stair (ST.2) per this sheet's own title block, not as two separate stairs.",
+    "This is a materially different stair design from ST.1 (ceramic tile porch step) and from the 1-story sister houses' ST.1/ST.2 (which were both shallow single-landing porch steps) — ST.2 here is the full switchback stair connecting the two full stories, detailed further with hardware/tread sections on A-20 (_หน้า22_stair_st2_details.json)."
+  ]
+}

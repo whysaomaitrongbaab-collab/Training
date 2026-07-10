@@ -1,0 +1,38 @@
+{
+  "png": "63",
+  "doc_page": 61,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า63.png",
+  "discipline": "mechanical",
+  "sheet_code": "M-02",
+  "sheet_name": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 2",
+  "pattern": "plan",
+  "view_title": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 2",
+  "drawing_no": "M-58110",
+  "sheet_total": 2,
+  "scale": "1:100",
+  "schema_note": "Classified as pattern 'plan' -- spatial equipment-location layout on the floor plan, same convention as the sibling M-01 sheet.",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1'", "1", "2", "3", "3'"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "rooms_shown": ["นอน 2", "นอน 3", "โถง", "ห้องน้ำ", "นอน 1", "ระเบียง", "กันสาด"],
+  "elements": [
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 12,000 BTU.", "room": "นอน 2", "quantity": 1, "confidence_score": 0.9, "confidence_flags": []},
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 12,000 BTU.", "room": "นอน 3", "quantity": 1, "confidence_score": 0.9, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (40 CFM.), 2 units straddling the นอน 2/นอน 3 partition, each paired 1-to-1 with a 4\"x4\" exhaust grille directly beside/above it", "room": "นอน 2/นอน 3 partition wall", "quantity": 2, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 4\"x4\", paired 1-to-1 with each of the two 40 CFM ceiling fans serving นอน 2/นอน 3", "quantity": 2, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (120 CFM.), inside the upper-floor ห้องน้ำ, paired with a 6\"x6\" exhaust grille", "room": "ห้องน้ำ (upper floor)", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 6\"x6\", paired with the upper-floor bathroom's 120 CFM ceiling fan", "room": "ห้องน้ำ (upper floor)", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 24,000 BTU. -- notably larger than the other 2 bedroom units (12,000 BTU each), consistent with นอน 1 being the largest/master bedroom on this floor", "room": "นอน 1", "quantity": 1, "confidence_score": 0.9, "confidence_flags": ["spec_conflict_or_gap_vs_other_sheet"]},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (80 CFM.), near the ระเบียง/กันสาด boundary at the bottom of the plan", "room": "ระเบียง area (adjoining นอน 1)", "quantity": 1, "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 6\"x6\", paired with the 80 CFM ceiling fan near ระเบียง", "room": "ระเบียง area (adjoining นอน 1)", "quantity": 1, "confidence_score": 0.7, "confidence_flags": []}
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": ["spec_conflict_or_gap_vs_other_sheet"],
+  "warnings": [
+    "This upper-floor sheet carries ALL of this house's air-conditioning (3 wall-type units: 2x12,000 BTU + 1x24,000 BTU) -- the ground floor (M-01, page 62) has none, since all 3 bedrooms are upstairs.",
+    "IMPORTANT: the 24,000 BTU unit in นอน 1 exceeds the largest BTU tier (18,000) covered by the AC circuit-sizing table on EE-06 (page 61) -- no breaker/wire spec is printed anywhere in this drawing set for a unit this size. Same gap flagged on the EE-06 ac_notes sibling file; carried here too since this is the sheet that actually specifies the 24,000 BTU unit's existence.",
+    "GRID: a house-wide grid master (บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json) appeared partway through this extraction batch; grid columns/rows read from the same printed dimension chain as the other EE/M sheets for this house match the master exactly.",
+    "The 6th/last ceiling-fan+grille pair (80 CFM / 6x6, near ระเบียง) is positioned at the edge of the plan near the กันสาด (canopy) label and could belong functionally to either นอน 1 or a small ancillary space off the balcony -- room attribution is a best-effort proximity read, not an explicit per-unit label.",
+    "This is the second of 2 mechanical sheets in the drawing set (M-02 of 2) -- together with M-01 (page 62) it covers this 2-story house's full AC/ventilation layout, split by floor the same way the electrical lighting/outlet plans are split (EE-03/04, EE-05/06)."
+  ]
+}

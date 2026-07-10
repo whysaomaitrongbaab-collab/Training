@@ -1,0 +1,36 @@
+{
+  "png": "43",
+  "doc_page": 41,
+  "discipline": "structural",
+  "sheet_code": "S-16",
+  "sheet_name": "ขยาย 2, SO, S1, S2, ขยายรอยต่อเสา CN, ครีบ คสล.",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า43.png",
+  "view_title": "รวมรายละเอียดย่อย: พื้นสำเร็จรูป S1/S2, ขอบพื้น SO, รอยต่อเสา CN, ธรณีประตู (ขยาย2), ครีบ คสล. รอบอาคาร",
+  "elements": [
+    { "element_id": "S1", "element_type": "precast_plank_detail", "description": "precast plank topping mesh, short-direction (ด้านสั้น) section, span 1.50m",
+      "topping_mesh": { "dia_mm": 9, "spacing_mm": 250 },
+      "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "S2", "element_type": "precast_plank_detail", "description": "precast plank topping mesh, short-direction (ด้านสั้น) section, span 2.20m",
+      "topping_mesh": { "dia_mm": 9, "spacing_mm": 150 },
+      "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "SO", "element_type": "precast_plank_detail", "description": "precast plank slab edge condition at building perimeter, joint sealed with asphalt",
+      "topping_mesh": { "dia_mm": 9, "spacing_mm": 250 },
+      "edge_dims_mm": { "top": 100, "bottom": 100 },
+      "note": "รอยต่ออุดด้วยแอสฟัลท์ หนา 1 ซม. / ทรายหยาบบดอัดแน่น",
+      "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "CN_joint_detail", "element_type": "column", "description": "แบบขยายรอยต่อเสา CN -- detail of erecting a CN column directly on top of a concrete beam (การตั้งเสา CN บนคานคอนกรีต), 0.30m tall base condition shown at the beam top",
+      "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "ขยาย2", "element_type": "unknown", "description": "threshold/step-down detail at +0.20m level, dims 0.10/0.15/0.15/0.45, rebar Ø9mm@0.25m -- likely an entrance door threshold or small step condition",
+      "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required", "purpose_of_this_detail_inferred_not_labeled_explicitly_beyond_ขยาย2"] },
+    { "element_id": "ครีบ คสล. รอบอาคาร", "element_type": "beam", "description": "RC fin/edge upstand beam around building perimeter, level +0.50 from reference ±0.00", "width_mm": 250, "height_mm": 400,
+      "rebar": { "dia_mm": 9, "spacing_mm": 250 }, "dowel_bar": { "count": 1, "dia_mm": 12 },
+      "confidence_score": 0.8, "confidence_flags": ["matches_house2s_equivalent_detail_almost_exactly"] }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "'ขยาย2' (detail 2) title only says 'ขยาย2' on this sheet with no further description text captured -- element_type/description here are best-effort inference from the drawn geometry, not a printed label; flagged for human review."
+  ]
+}

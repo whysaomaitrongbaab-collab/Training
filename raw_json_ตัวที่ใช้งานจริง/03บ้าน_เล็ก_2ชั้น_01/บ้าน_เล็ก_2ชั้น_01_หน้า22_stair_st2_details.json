@@ -1,0 +1,26 @@
+{
+  "png": "22",
+  "doc_page": 20,
+  "discipline": "architecture",
+  "sheet_code": "A-20",
+  "sheet_name": "แบบขยายบันได ST.2",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า22.png",
+  "views": ["รูปตัดบันได ST.2 (full section, left half of sheet)", "แบบขยาย 1: handrail post detail", "แบบขยาย 2: baluster/flat-bar connection detail", "แบบขยาย 3: fiber-cement tread/riser detail"],
+  "view_title": "รูปตัดบันได ST.2 + รายละเอียดขยาย 3 จุด",
+  "elements": [
+    { "element_id": "บันได_ST2_section", "element_type": "stair", "count": 1, "grid_ref": "between grid1 and grid2, full section from ระดับพื้นชั้น 1 (+0.60) via ระดับพื้นชานพัก (+2.35 landing) up to ระดับพื้นชั้น 2 (+3.75)", "total_rise_m": 3.15, "riser_count": 18, "riser_height_m": 0.175, "description": "18 risers @ 0.175m = 3.15m total rise (0.60 to 3.75), switchback/dog-leg layout with an intermediate landing at +2.35; steel-framed stair with a wall-mounted diagonal stringer, wood handrail on steel posts", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "handrail_assembly", "element_type": "steel_member", "material": "ราวบันไดไม้เนื้อแข็ง 2\"x4\" วางนอน (horizontal hardwood cap rail) on steel angle posts: เหล็ก ∟1-1/2\"x3\" (0.25m), เหล็ก ∟1\"x2\" (0.15m), เหล็ก ∟1\"x1\" (0.15m), เหล็ก ∟1\"x2\" (0.15m), total post height 0.90m above a 0.20m concrete-embedded base", "detail_ref": "แบบขยาย 1 (1:25)", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "baluster_connection", "element_type": "steel_member", "material": "ราวบันไดไม้เนื้อแข็ง 2\"x4\" วางนอน on a diagonal steel flat bar (FB) 1\" wide x 6mm thick painted with oil paint, connected via steel plate เหล็ก PL-4.5mm + BOLT ø10mm to the stringer/wall", "detail_ref": "แบบขยาย 2 (1:25)", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "tread_riser_detail", "element_type": "stair_step", "material": "ลูกนอนไฟเบอร์ซีเมนต์ ขนาด 1\"x12\" (fiber-cement tread), ลูกตั้งไฟเบอร์ซีเมนต์ หนา 1\" (fiber-cement riser), riser height 0.175m each, tread run sub-split 0.25+0.25+0.25 per printed dimension chain", "detail_ref": "แบบขยาย 3 (1:25)", "riser_height_m": 0.175, "confidence_score": 0.78, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.77,
+  "confidence_flags": ["no_RC_rebar_present_this_is_a_steel-framed/fiber-cement-clad_stair_not_a_concrete_stair_-_kept_in_flexible_architectural_element_shape_rather_than_the_structural_main_bar/stirrup_schema"],
+  "warnings": [
+    "This sheet (A-20) is the section + 3 enlarged hardware/construction details for the main inter-floor stair ST.2, companion to the plan views on A-19 (_หน้า21_stair_st2_plans.json).",
+    "This is a steel-and-fiber-cement stair (steel diagonal stringer/flat-bar balusters + wood cap rail + fiber-cement tread/riser cladding), materially different from ST.1 (solid ceramic-tile-on-concrete step) and from the 1-story sister houses' stairs (which were simple concrete porch steps) — consistent with this being a full 2-story inter-floor stair requiring a lighter engineered structure.",
+    "18 risers @ 0.175m = 3.15m exactly matches the floor1-to-floor2 rise (+0.60 to +3.75) cross-confirmed against the levels printed on every elevation/section sheet in this set.",
+    "The intermediate landing level +2.35 (ระดับพื้นชานพัก) is new information from this sheet, consistent with the floor1 plan's 9-riser flight (9 x 0.175 = 1.575, +0.60+1.575=2.175, close to but not exactly +2.35 — small reconciliation gap of about 0.18m between the plan-view riser count and this section's landing level, not resolved, flagged for human review)."
+  ]
+}

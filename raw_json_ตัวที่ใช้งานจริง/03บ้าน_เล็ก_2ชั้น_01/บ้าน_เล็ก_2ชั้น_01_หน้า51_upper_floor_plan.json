@@ -1,0 +1,48 @@
+{
+  "png": "51",
+  "doc_page": 49,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า51.png",
+  "discipline": "sanitary",
+  "sheet_code": "SN-06",
+  "sheet_name": "แปลนระบบสุขาภิบาลพื้นชั้นบน",
+  "pattern": "plan",
+  "view_title": "แปลนระบบสุขาภิบาลพื้นชั้นบน",
+  "drawing_no": "SN-58080",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1'", "1", "2", "3", "3'"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dimensions_as_printed": {
+    "x_chain_m": [1.10, 3.50, 3.00, 0.50],
+    "x_bracket_m": {"span": "grid1-grid3", "value": 6.50},
+    "y_chain_m_top_to_bottom": [1.50, 3.00, 2.20, 1.50, 1.50],
+    "y_bracket_m": {"span": "gridE-gridA", "value": 10.70},
+    "note": "Same x-chain as the ground-floor plan (SN-05, page50) -- both floors share the same structural grid, as expected. y-chain is only partially re-dimensioned on this sheet: 1.50 (overhang above row E) / 3.00 (E-D) / 2.20 (D-C) are explicitly labeled same as SN-05, but the C-B and B-A segments are not individually re-printed here (only the overall '10.70' E-A bracket is shown again); two additional '1.50'-labeled short dimensions appear near the bottom-left (rainwater leader / roof-drain symbols) which may be a small offset dimension rather than a full row-to-row segment -- read with lower confidence, flagged. CONFIRMED against the grid master (see page50's note): E(0.0)-D(3.0)-C(5.2)-B(9.2)-A(10.7) implies C-B=4.0 and B-A=1.5, matching SN-05's fully-printed y_chain even though this sheet doesn't reprint those two segments individually."
+  },
+  "rooms_shown": [
+    {"name": "นอน 2", "level_m": "+3.75"},
+    {"name": "นอน 3", "level_m": "+3.75"},
+    {"name": "โถง", "level_m": "+3.75", "note": "contains the stairwell (steps numbered 1 through 11, labeled 'ลง' = going down toward the ground floor)"},
+    {"name": "ห้องน้ำ 2", "level_m": "+3.65"},
+    {"name": "นอน 1", "level_m": "+3.75"},
+    {"name": "ระเบียง", "level_m": "+3.65"},
+    {"name": "กันสาด", "level_m": "+3.65"}
+  ],
+  "elements": [
+    {"element_type": "vent_pipe", "description": "small vent/AVC symbol at the corner of ห้องน้ำ 2 near grid3/row D, connecting down through the floor to the SN-04 riser diagram's vertical stack", "grid_ref": "near grid3, row D, corner of ห้องน้ำ 2", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "floor_drain_or_fixture_group", "description": "small circular fixture symbol inside ห้องน้ำ 2 (likely floor drain / WC location) -- not individually labeled with a pipe-size callout on this small-scale (1:100) overview plan", "grid_ref": "inside ห้องน้ำ 2, near grid3, row D-C boundary", "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "rainwater_leader_pipe", "description": "Ø21/2\"RL (i.e. Ø2 1/2\" RL) label at bottom-left near ระเบียง/กันสาด, vertical downpipe symbol", "grid_ref": "near grid1, row A, at ระเบียง", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "roof_floor_drain", "description": "Ø21/2\"RFD (roof/floor drain, รูระบายน้ำฝนแบบเรียบ) label immediately beside the RL symbol at the same location, small circle symbol on the ระเบียง/กันสาด slab", "grid_ref": "near grid1, row A, at ระเบียง/กันสาด, adjacent to the RL symbol", "confidence_score": 0.7, "confidence_flags": []}
+  ],
+  "sibling_files": [],
+  "confidence_score": 0.7,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID MASTER: was not yet available when this page was first read; updated post-hoc to reference หน้า00_gridline.json once a parallel background process built it during this same session -- see page50's equivalent note for the full cross-confirmation detail. Master's dummy grids 1'/3' are flagged there as provisional/not yet cross-checked against architecture, carried over here for awareness only.",
+    "IMPORTANT CROSS-PAGE FINDING: all rooms on this upper-floor plan (นอน1/นอน2/นอน3/โถง) are labeled level +3.75 -- this CONFIRMS that the '+3.75' level referenced on the SN-04 riser diagram (page49) is genuinely the upper floor, even though that page's own printed label there literally reads 'ระดับพื้นชั้นล่าง' (ground floor). See page49's JSON warnings for the full note -- flagging that finding here too since this page is the evidence source for it.",
+    "This upper-floor plan is much sparser in sanitary content than the ground floor (SN-05): only ห้องน้ำ 2 has any fixture/pipe symbols, plus a rainwater leader (RL) + roof/floor drain (RFD) pair at the ระเบียง/กันสาด corner draining the upper-floor balcony/canopy slab. No visible CW supply piping is drawn on this small-scale (1:100) overview -- likely because ห้องน้ำ 2's underfloor supply piping is instead detailed on the dedicated bathroom-expansion sheet SN-07 (page52), consistent with how house #2's equivalent inset detail worked, just moved to its own sheet here.",
+    "The fixture symbol inside ห้องน้ำ 2 is small and only partially legible at this resolution -- described generically as a floor-drain/fixture group, not confidently identified as a specific fixture type (WC/floor drain/etc.); flagged for human zoom-review.",
+    "Stairwell in โถง shows steps numbered 1-11 with 'ลง' (going down) -- combined with the ground floor's โถง stairwell (steps 1-7, 'ขึ้น' going up, see SN-05/page50), this suggests a switchback/dogleg stair with a landing between floors (ground-floor flight covers part of the total rise, upper-floor flight covers the rest) -- described as observed, not further analyzed since stair geometry is outside the sanitary discipline's scope.",
+    "Room level labels (+3.75, +3.65) read with high confidence, all legible."
+  ]
+}

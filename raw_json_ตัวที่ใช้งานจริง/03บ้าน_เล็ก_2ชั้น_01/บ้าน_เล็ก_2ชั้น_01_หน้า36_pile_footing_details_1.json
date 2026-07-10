@@ -1,0 +1,32 @@
+{
+  "png": "36",
+  "doc_page": 34,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "ขยาย F2,F5",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า36.png",
+  "view_title": "ขยาย F2,F5 (2-pile and 5-pile caps)",
+  "table_kind": "pile_footing_sections",
+  "schema_note": "Same custom-field convention as house #2 (element_type:footing with dowel_bar/tie_bar/pile_count). pedestal always 0.20x0.20 in this house per S-08 column schedule.",
+  "elements": [
+    { "element_id": "F2", "element_type": "footing", "footing_size_m": "0.85x0.40", "pile_count": 2,
+      "pedestal_size_mm": { "width": 200, "height": 200 },
+      "dowel_bar": [{ "count": 5, "dia_mm": 9, "type": "RB" }, { "count": 3, "dia_mm": 12, "type": "RB" }],
+      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ" },
+      "cap_thickness_m": 0.2,
+      "confidence_score": 0.8, "confidence_flags": ["dowel_bar_recorded_as_2_separate_groups_5x9mm_and_3x12mm_as_printed_rather_than_merged"] },
+    { "element_id": "F5", "element_type": "footing", "footing_size_m": "1.04x1.04", "pile_count": 5,
+      "pedestal_size_mm": { "width": 200, "height": 200 },
+      "dowel_bar": { "count": 10, "dia_mm": 12, "type": "RB", "note": "5+5Ø12mm printed as two leader lines -- read as top+bottom layer of a 2-layer mat, 10 bars total, same interpretation as house #2's analogous F5/F6 case" },
+      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ" },
+      "cap_thickness_m": 0.25,
+      "confidence_score": 0.7, "confidence_flags": ["needs_human_review_zoom_required", "dowel_bar_count_interpretation_uncertain_same_as_house2_precedent"] }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "F5's dowel bar count (10 vs. possibly 5) needs human zoom review, same open question as house #2's F5/F6 pile caps."
+  ]
+}

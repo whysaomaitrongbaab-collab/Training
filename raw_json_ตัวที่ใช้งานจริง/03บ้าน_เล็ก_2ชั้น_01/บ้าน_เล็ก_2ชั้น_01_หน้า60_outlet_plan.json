@@ -1,0 +1,44 @@
+{
+  "png": "60",
+  "doc_page": 58,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า60.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-05",
+  "sheet_name": "แปลนเต้ารับไฟฟ้า ชั้นล่าง",
+  "pattern": "plan",
+  "view_title": "แปลนเต้ารับไฟฟ้า ชั้นล่าง",
+  "drawing_no": "EE-58079",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1'", "1", "2", "3", "3'"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dims_observed": {
+    "x_chain_m": [1.10, 3.50, 3.00, 0.50],
+    "x_overall_1_to_3_m": 6.50,
+    "y_chain_m": [1.50, 3.00, 2.20, 4.00, 1.50, 2.05],
+    "y_overall_E_to_A_m": 10.70,
+    "note": "Same dimension chain as printed on EE-03/EE-04."
+  },
+  "rooms_shown": ["ซักล้าง", "ครัว", "ทานอาหาร", "ห้องน้ำ", "ช่องท่อ", "เก็บของ", "โถง", "พักผ่อน", "จอดรถ", "เฉลียง"],
+  "elements": [
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet (⊖) at +1.20M near the top-left corner of ทานอาหาร, on the wall shared with ซักล้าง", "room": "ทานอาหาร", "quantity": 1, "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet (⊖) at +1.20M lower in ทานอาหาร, near the ครัว boundary", "room": "ทานอาหาร", "quantity": 1, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet (⊖) at +1.20M on the ครัว/ทานอาหาร partition wall, near the kitchen counter/sink icon", "room": "ครัว", "quantity": 1, "confidence_score": 0.65, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "water_heater_junction_box", "description": "WH junction box (circled 'WH') in the ground-floor ห้องน้ำ, feeding circuit '5/LP' toward the LP panel", "room": "ห้องน้ำ (ground floor)", "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet (⊖) at +1.20M in the ground-floor ห้องน้ำ, same wall run as the WH box", "room": "ห้องน้ำ (ground floor)", "quantity": 1, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "distribution_riser_tag", "description": "'3/LP' circuit tag at the hall/staircase area marking the feed point for the ground-floor receptacle circuit (circuit 3 of panel LP)", "room": "โถง (hall)"},
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet (⊖) at +1.20M in the hall (โถง), near the staircase", "room": "โถง", "quantity": 1, "confidence_score": 0.65, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet (⊖) at +1.20M near the top wall of พักผ่อน", "room": "พักผ่อน", "quantity": 1, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "receptacle_outlet", "description": "Duplex receptacle outlet (⊖, drawn with a small distinguishing mark that could not be fully resolved as a plain vs. waterproof variant) at +1.20M lower in พักผ่อน, near the exterior wall", "room": "พักผ่อน", "quantity": 1, "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required", "unclear_symbol"]},
+    {"element_type": "service_entrance", "description": "Incoming service run at the bottom of the sheet: '2-10 IEC 01-25 mm.PVC นอกอาคารเดินลอย' exterior exposed run down to a weatherproof bell switch (SB, circled) at the bottom edge of the plan, referenced to level ±0.00", "confidence_score": 0.8, "confidence_flags": []}
+  ],
+  "confidence_score": 0.7,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID: same as EE-03/EE-04 -- a house-wide grid master (บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json) appeared partway through this extraction batch; this page's independently-read dimension chain matches the master's named+dummy grid exactly.",
+    "No boxed/waterproof-cover (⊟) outlet symbol was confidently identified anywhere on this sheet -- all outlets, including those in ซักล้าง/ครัว (wet areas), appear to use the plain ⊖ symbol, same pattern flagged as unexpected in the house #2 reference extraction (a waterproof variant would ordinarily be expected in kitchen/laundry areas). Flagged for cross-check rather than asserted.",
+    "จอดรถ (carport) and เฉลียง (porch) show no receptacle outlets on this sheet -- consistent with the equivalent house #2 EE-04 sheet, which also had no outlets in unenclosed/exterior circulation spaces.",
+    "The ซักล้าง room itself shows no distinctly separate outlet mark from the ครัว-boundary outlet at this resolution -- unlike house #2 where a laundry/kitchen-corner outlet cluster was explicitly called out; flagged as a possible undercount rather than asserted as zero.",
+    "This is the ground-floor counterpart to EE-06 (page 61) -- together they cover this 2-story house's full receptacle layout."
+  ]
+}

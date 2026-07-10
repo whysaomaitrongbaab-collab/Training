@@ -1,0 +1,41 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid line master (สังเคราะห์เอง — ไม่ใช่หน้าจริงในเอกสาร ใช้ 'หน้า 0' เป็น convention สำหรับไฟล์ grid กลางของทั้งบ้าน)",
+  "pattern": "gridline",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า29.png",
+    "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า30.png",
+    "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า31.png",
+    "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า32.png"
+  ],
+  "note": "2-story house, much smaller footprint than house #1/#2 (6.50m x 10.70m vs ~9.6x14.5). Named grid confirmed identical on S-02/S-03/S-04/S-05. Unlike house #2, this house DOES have real dummy grid lines -- S-04 (ground floor column+beam plan) and S-05 (2nd floor) both print offset dimensions '1.10' (west of grid 1) and '0.50' (east of grid 3) at row E, with an actual beam (B2) and slab (S0) built in that extended bay -- a genuine structural extension, not just a roof eave overhang (compare house #2's roof overhangs, which were NOT given dummy grids since they had no beam/slab in them).",
+  "grid": {
+    "x_lines": [
+      { "id": "1'", "pos_m": -1.1, "type": "dummy", "source": "S-04/S-05 (แปลนเสา คาน พื้นชั้น 1/2), 1.10m offset dimension west of grid 1 at row E, with a real B2 beam + S0 slab built in that bay -- confidence not yet cross-checked against architecture floor plan, treat as provisional until confirmed", "confidence_score": 0.7, "confidence_flags": ["single_sheet_source_not_yet_cross_confirmed"] },
+      { "id": "1", "pos_m": 0.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4" },
+      { "id": "2", "pos_m": 3.5, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4" },
+      { "id": "3", "pos_m": 6.5, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4" },
+      { "id": "3'", "pos_m": 7.0, "type": "dummy", "source": "S-04/S-05, 0.50m offset dimension east of grid 3 at row E, same extended bay as 1' above", "confidence_score": 0.7, "confidence_flags": ["single_sheet_source_not_yet_cross_confirmed"] }
+    ],
+    "y_lines": [
+      { "id": "E", "pos_m": 0.0, "type": "named", "source": "printed on S-02/S-03, identical on both (topmost row, origin)" },
+      { "id": "D", "pos_m": 3.0, "type": "named", "source": "printed on S-02/S-03, identical on both" },
+      { "id": "C", "pos_m": 5.2, "type": "named", "source": "printed on S-02/S-03, identical on both" },
+      { "id": "B", "pos_m": 9.2, "type": "named", "source": "printed on S-02/S-03, identical on both" },
+      { "id": "A", "pos_m": 10.7, "type": "named", "source": "printed on S-02/S-03, identical on both" }
+    ]
+  },
+  "building_footprint_note": "Irregular footprint: row E has all 3 columns, rows D/C/B have all 3 columns, row A only has columns 1-2 (no A-3) -- consistent with a small corner cut/setback on the ground floor.",
+  "confidence_score": 0.88,
+  "confidence_flags": ["named_grid_confirmed_identical_across_4_independent_structural_sheets_S02_S03_S04_S05", "footprint_smaller_than_prior_houses_since_this_is_2-story", "dummy_grids_1prime_3prime_only_confirmed_on_S04_S05_not_yet_cross_checked_against_architecture_floor_plan"],
+  "warnings": [
+    "Dummy grids 1' and 3' are provisional (0.7 confidence) until cross-checked against the architecture-discipline floor plan (being extracted separately by a background agent) -- if that agent's floor plan shows a different offset or no extension at all, come back and reconcile.",
+    "Not yet cross-checked against S-06 (tie beam plan) or S-07 (roof plan) -- still pending at time of writing."
+  ],
+  "last_updated_from_page": "S-02, S-03, S-04, S-05 (pages 29-32)",
+  "last_updated_date": "2026-07-10"
+}
