@@ -1,0 +1,30 @@
+{
+  "png": "36",
+  "doc_page": 34,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แปลนโครงสร้างหลังคา, ขยาย 1",
+  "pattern": "roof_plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า36.png",
+  "view_title": "แปลนโครงสร้างหลังคา + ขยาย 1 (purlin-rafter hanger detail)",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "schema_note": "roof_plan is a draft pattern per spec section 1 (#12) -- light-gauge cold-formed steel, not rebar. Unlike houses #2/#3, this house uses the SAME steel profile (C-100x50x20x3.2mm, 5.50kg/m) for BOTH rafter (จันทัน) and purlin (แป) -- confirmed by both labels on this sheet printing the identical profile/weight, not a misread duplication.",
+  "steel_members": [
+    { "member_type": "rafter", "thai_name": "จันทัน", "profile": "C 100x50x20 mm", "thickness_mm": 3.2, "unit_weight_kg_per_m": 5.5, "spacing_note": "one rafter at every grid column position (1,2,3), running full length E to A" },
+    { "member_type": "purlin", "thai_name": "แป", "profile": "C 100x50x20 mm", "thickness_mm": 3.2, "unit_weight_kg_per_m": 5.5, "spacing_m": 1.5 },
+    { "member_type": "purlin_support_beam", "thai_name": "ละพานรับจันทันเหล็ก", "profile": "2x C 100x50x20 mm (built-up)", "thickness_mm": 3.2, "unit_weight_kg_per_m": 5.5 }
+  ],
+  "grid_overhangs_m": {
+    "x_beyond_grid_1": 1.3,
+    "x_beyond_grid_3": 1.3
+  },
+  "detail_reference": "ดูขยาย 1 (hanger detail) -- เหล็กหางปลาขนาด 50x300x6.00mm ฝังในเสาคอนกริต, จันทันเหล็กเชื่อมติดกับเหล็กหางปลาตลอดแนวสัมผัส -- same wording as houses #2/#3's equivalent detail",
+  "elements": [],
+  "confidence_score": 0.85,
+  "confidence_flags": ["non_rebar_light_gauge_steel_roof_structure", "rafter_and_purlin_share_identical_profile_unlike_houses_2_3"],
+  "warnings": [
+    "Only x-axis overhangs (1.30m each side) printed on this sheet, no y-axis overhang -- same pattern as house #3.",
+    "A local dimension '2.50m' appears near the top of the plan (between grid1 and grid2) whose purpose isn't fully clear -- possibly related to the floor-1 bay window extension below, not resolved here."
+  ]
+}

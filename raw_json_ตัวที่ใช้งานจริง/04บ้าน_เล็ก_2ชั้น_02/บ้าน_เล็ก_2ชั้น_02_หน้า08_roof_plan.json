@@ -1,0 +1,32 @@
+{
+  "png": "08",
+  "doc_page": 6,
+  "discipline": "architecture",
+  "sheet_code": "A-06",
+  "sheet_name": "แปลนหลังคา",
+  "pattern": "roof_plan",
+  "view_title": "แปลนหลังคา",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า08.png",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "roof_covering", "element_type": "roof", "count": 1, "grid_ref": "covers the full plan grid1-3 x gridE-A plus overhangs — a single unbroken rectangle, NO notch/cutout (unlike house #3's roof plan which had a rectangular notch over an open carport)", "description": "หลังคาเหล็กรีดลอน (corrugated metal sheet roofing), hatched vertically over the whole roofed plan; two 'SLOPE 6°' labels printed vertically down the two roof faces (one each side of a central fold line running roughly north-south near grid2), indicating fall direction/pitch of approximately 6 degrees. Two curved swirl-arrow symbols near mid-plan, likely roof drainage/water-flow direction markers, not confidently classified further.", "ridge_or_valley_lines": "one internal fold line runs roughly north-south near grid2 (between the two 'SLOPE 6°' labels) — not confidently classified as a true ridge vs. valley at this resolution", "eave_overhang_m": null, "confidence_score": 0.68, "confidence_flags": ["slope_value_small_stylized_text_treat_as_approximate", "internal_fold_line_purpose_(ridge_vs_valley)_not_confidently_resolved", "curved_swirl_symbols_near_mid-plan_not_confidently_classified"] },
+    { "element_id": "roof_overhang_west", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond grid1, dimension 1.30 m", "eave_overhang_m": 1.30, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "roof_overhang_east", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond grid3, dimension 1.30 m", "eave_overhang_m": 1.30, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "roof_overhang_north", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond gridE, dimension 1.50 m", "eave_overhang_m": 1.50, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "roof_overhang_south", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond gridA, dimension 1.50 m", "eave_overhang_m": 1.50, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "roof_recess_or_canopy_outline_north", "element_type": "roof_feature_reference", "grid_ref": "dashed rectangle near grid2, close to the north edge (above gridE)", "description": "Dashed rectangular outline visible within the main roof hatch near the north edge — possibly a recess/step in the roof plane above the ห้องน้ำ3/WC3 canopy (กันสาด คสล +3.65 shown on the 2nd floor plan, หน้า07) projecting through the main roof, or a separate lower roof section. Not confidently classified.", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required", "purpose_of_dashed_outline_not_confidently_resolved"] },
+    { "element_id": "roof_recess_or_canopy_outline_south", "element_type": "roof_feature_reference", "grid_ref": "dashed rectangle near grid2, close to the south edge (above gridA)", "description": "Dashed rectangular outline visible within the main roof hatch near the south edge — possibly related to the ระเบียง/กันสาด canopy below. Not confidently classified.", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required", "purpose_of_dashed_outline_not_confidently_resolved"] },
+    { "element_id": "กันสาด_คสล_roof_level", "element_type": "concrete_canopy", "count": 1, "grid_ref": "south-east corner, beyond gridA near grid2-3, level +6.65", "level_m": 6.65, "hatched": true, "description": "'กันสาด ค.ส.ล.' concrete canopy slab, floor-material box '5 +6.65 —' (blank opening ref) printed at the same location — this is a 3rd, roof-level canopy distinct from the two 2nd-floor-level canopies (+3.65/+3.75) already recorded on the floor plan (หน้า07).", "confidence_score": 0.75, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet (A-06) is the roof plan for the whole 2-story building — since the roof sits above the 2nd floor (+6.65 roof beam level, inferred from the same value as house #3's canopy level), its footprint corresponds to the 2nd-floor plan (หน้า07/A-05), not the ground floor.",
+    "Unlike house #3's roof plan (which had a rectangular notch over an open, roofless carport), this house's roof is a single unbroken rectangle over the full grid1-3 x gridE-A footprint plus overhangs — suggesting the ground-floor จอดรถ (carport, see _หน้า06_floor_plan_ground.json) is fully roofed here, not open to the sky. Not independently confirmed against a structural roof-framing sheet (outside this extraction's architecture-only scope).",
+    "The 'SLOPE 6°' labels are printed vertically along both roof faces, same convention and same 6-degree value as houses #2/#3's roof plans.",
+    "Overhang dimensions (1.30m east/west, 1.50m north/south) exactly match houses #2/#3's equivalent overhang figures despite this house having a different footprint size (8.50x10.00m vs house #3's), and are independently corroborated by the top/bottom dimension chains on the floor plan sheets (หน้า06/07) which show the same building-width/depth sub-splits.",
+    "Actual roof framing (purlins/rafters/trusses) is not detailed on this sheet — references to structural engineering drawings would be expected (outside this extraction's architecture-only page range 03-29), consistent with the section sheets to be read later (หน้า13-15).",
+    "Two dashed rectangular outlines near grid2 (north and south edges) and two curved swirl-arrow symbols near mid-plan are visible but not confidently classified at this resolution — flagged rather than guessed; may become clearer when cross-checked against the elevation/section sheets."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "png": "64",
+  "doc_page": 62,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า64.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-06",
+  "sheet_name": "แปลนเต้ารับไฟฟ้า ชั้นบน",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "แปลนเต้ารับไฟฟ้า ชั้นบน",
+  "drawing_no": "EE 58080",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dims_observed": {
+    "x_chain_m": [0.60, 5.00, 3.50, 0.60],
+    "x_overall_1_to_3_m": 8.50,
+    "y_chain_m": [1.10, 2.70, 2.30, 3.50, 1.50],
+    "y_overall_E_to_A_m": 10.00,
+    "note": "Identical grid dimension chain to EE-04 (page 62, upper-floor lighting plan) -- both are the same upper-floor base plan."
+  },
+  "rooms_shown": ["นอน 3", "นอน 2", "นอน 1", "โถง", "แต่งตัว", "ระเบียง", "ห้องน้ำ (ensuite ติด นอน 3)", "ห้องน้ำ (ติด แต่งตัว/นอน 1)"],
+  "elements": [
+    {"element_type": "water_heater_junction_box", "description": "Circled 'WH' box near the top of the ensuite bathroom next to นอน 3, paired with an outlet marked '+0.30M' and a '6/LP' circuit tag -- matching panel LP circuit 6 ('กล่องต่อสายเครื่องทำน้ำอุ่น') recorded on EE-02's schedule (page 60)", "room": "ห้องน้ำ (ensuite ติด นอน 3)", "quantity": 1, "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "electrical_outlet", "description": "Two outlets marked '+0.30M' in นอน 2, one near the top-left corner, one near the top-right corner", "room": "นอน 2", "quantity": 2, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "electrical_outlet", "description": "Outlets marked '+0.30M' (x2) near the LP panel location in โถง, next to a boxed 'LP' glyph and an '/LP' circuit tag", "room": "โถง", "quantity": 2, "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "water_heater_junction_box", "description": "Circled 'WH' box in the bathroom adjacent to แต่งตัว/นอน 1, next to a toilet-fixture icon and a small numbered tag (possibly '5')", "room": "ห้องน้ำ (ติด แต่งตัว/นอน 1)", "quantity": 1, "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "electrical_outlet", "description": "Outlet marked '+0.60M' near the bathroom adjacent to แต่งตัว/นอน 1 -- higher mounting height than the standard '+0.30M', possibly serving the water heater control area", "room": "ห้องน้ำ (ติด แต่งตัว/นอน 1)", "quantity": 1, "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "electrical_outlet", "description": "Outlet marked '+0.90M' in แต่งตัว (dressing room) -- higher mounting height than the standard '+0.30M', possibly for a dressing-table appliance", "room": "แต่งตัว", "quantity": 1, "confidence_score": 0.55, "confidence_flags": []},
+    {"element_type": "electrical_outlet", "description": "Two outlets marked '+0.30M' in นอน 1, one mid-room and one near the bottom close to the ระเบียง boundary", "room": "นอน 1", "quantity": 2, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "service_riser", "description": "Vertical home-run conduit drawn down the middle of the plan from the LP panel through โถง and นอน 1, exiting the bottom of the sheet labeled '2-10 IEC 01-25 mm.PVC นอกอาคารเดินลอย' with an arrow down to 'TO kWH METER' -- this is the meter tail/riser cable from the upstairs panel down to the ground-floor meter, matching the service cable spec on EE-02 (page 60)", "confidence_score": 0.75, "confidence_flags": []}
+  ],
+  "confidence_score": 0.6,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID: dimension chain matches EE-04 (same upper-floor base plan) and the master grid file.",
+    "This is a 2-story house so this sheet only covers the upper floor; the corresponding ground-floor outlet plan is EE-05 (page 63, separate file).",
+    "This page (EE-06) also carries a general-notes/AC-circuit-table block on the right side of the sheet -- captured as a separate sibling file (บ้าน_เล็ก_2ชั้น_02_หน้า64_ac_notes.json), same convention as house #3's equivalent page.",
+    "Two 'WH' water-heater junction boxes are shown on this floor (one per upstairs bathroom), consistent with EE-02's panel schedule showing 2 water-heater circuits (one unlabeled position + position 6).",
+    "The '6/LP' circuit tag near นอน 3's ensuite bathroom cross-validates against EE-02's panel schedule circuit 6 (RCBO 20AT,1P, load 'กล่องต่อสายเครื่องทำน้ำอุ่น').",
+    "Mounting heights vary by fixture ('+0.30M' standard outlets, '+0.60M' and '+0.90M' at specific points) -- transcribed exactly as printed, not normalized or assumed to be typos.",
+    "Sibling files for this page: บ้าน_เล็ก_2ชั้น_02_หน้า64_ac_notes.json"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "png": "39",
+  "doc_page": 37,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "ขยาย ST1,ST2,ครีบ คสล., รอยต่อเสา CN กับคาน ค.ส.ล.",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า39.png",
+  "view_title": "4 detail drawings: ST1 1:20, STX 1:20, รอยต่อเสา CN กับคาน ค.ส.ล. 1:20, แบบขยายครีบ คสล. รอบอาคาร 1:20",
+  "elements": [
+    {
+      "element_id": "ST1",
+      "element_type": "stair_step_detail",
+      "description": "concrete build-up forming stair step (พอกคอนกรีตทำขั้นบันได), sits over slab S2 and connects to beam B2",
+      "scale": "1:20",
+      "dims_m": { "tread_depth": 0.60, "riser_offset": 0.27, "thickness": 0.08 },
+      "levels_m": { "upper": 0.60, "lower": 0.30 },
+      "main_bar": { "count": 1, "dia_mm": 9, "type": "RB", "note": "1-Ø9mm main bar in the built-up step" },
+      "mesh_or_tie": { "dia_mm": 9, "type": "RB", "spacing_mm": 250, "note": "Ø9mm@0.25 -- one instance marked with an asterisk on the drawing, meaning/exception not clarified" },
+      "related_elements": ["B2", "S2"],
+      "confidence_score": 0.7,
+      "confidence_flags": ["asterisk_marked_rebar_note_meaning_unclear"]
+    },
+    {
+      "element_id": "STX",
+      "element_type": "stair_step_detail",
+      "description": "alternate stair step / stringer detail, larger and more heavily reinforced than ST1",
+      "scale": "1:20",
+      "dims_m": { "width_total": 0.60, "sub_dims": [0.25, 0.25], "step_projection": 0.10 },
+      "height_m": 0.50,
+      "height_note": "3@0.166 -- 3 equal sub-divisions of the 0.50m height",
+      "rebar": [
+        { "dia_mm": 6, "type": "RB", "spacing_mm": 200, "location": "primary field" },
+        { "dia_mm": 6, "type": "RB", "spacing_mm": 200, "location": "second face" },
+        { "dia_mm": 6, "type": "RB", "note": "ทุกมุม -- at every corner" },
+        { "dia_mm": 9, "type": "RB", "spacing_mm": 250 }
+      ],
+      "confidence_score": 0.65,
+      "confidence_flags": ["needs_human_review_zoom_required", "complex_folded_stair_stringer_shape_not_fully_captured_by_flat_rebar_list"]
+    },
+    {
+      "element_id": "CN_to_B4X_joint",
+      "element_type": "column_beam_joint_detail",
+      "description": "รอยต่อเสา CN กับคาน ค.ส.ล. -- joint detail where short column CN meets beam B4X",
+      "scale": "1:20",
+      "dims_m": { "column_width": 0.30 },
+      "related_elements": ["CN", "B4X"],
+      "notes_text": "เสา CN ขึ้นจากระดับชั้น 1 ถึงระดับชานพัก",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "concrete_fin_around_building",
+      "element_type": "fin_detail",
+      "description": "แบบขยายครีบ คสล. รอบอาคาร -- RC fin/edge strip detail running around the building perimeter, referenced to a level datum",
+      "scale": "1:20",
+      "levels_m": { "top": 0.50, "reference_datum": 0.00 },
+      "dims_m": { "d1": 0.40, "d2": 0.25, "d3": 0.10, "d4": 0.10, "d5": 0.10 },
+      "main_bar": { "count": 1, "dia_mm": 12, "type": "RB" },
+      "tie_or_mesh": { "dia_mm": 9, "type": "RB", "spacing_mm": 250 },
+      "related_elements": ["คาน คสล."],
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ],
+  "title_block": {
+    "sheet_code": "S-10",
+    "total_sheets": 19,
+    "scale": "1:20",
+    "date": "19/10/59",
+    "drawing_no": "S58115"
+  },
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "ST1's rebar note carries an unexplained asterisk (Ø9มม.@0.25*) -- no footnote visible elsewhere on the sheet clarifying it; recorded as printed."
+  ]
+}

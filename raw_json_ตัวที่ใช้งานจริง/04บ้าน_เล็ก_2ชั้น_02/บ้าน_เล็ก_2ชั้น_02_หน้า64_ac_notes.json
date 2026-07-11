@@ -1,0 +1,35 @@
+{
+  "png": "64",
+  "doc_page": 62,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า64.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-06",
+  "sheet_name": "แปลนเต้ารับไฟฟ้า ชั้นบน",
+  "pattern": "schedule",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "หมายเหตุ -- สายโทรศัพท์/สายอากาศทีวี และวงจรเครื่องปรับอากาศ",
+  "drawing_no": "EE 58080",
+  "general_notes": [
+    "1. กรณีต้องการติดตั้งสายโทรศัพท์ภายใน ให้ใช้สายโทรศัพท์ภายในชนิด TIEV 4C-0.65mm เดินในท่อร้อยสาย uPVC",
+    "2. กรณีต้องการติดตั้งสายอากาศทีวีและจานดาวเทียม ให้ใช้สายชนิด RG 6 เดินในท่อร้อยสาย uPVC",
+    "3. กรณีต้องการติดตั้งเครื่องปรับอากาศ ให้ใช้สายไฟฟ้าดังนี้ดังนี้"
+  ],
+  "ac_circuit_table": {
+    "columns": ["ขนาด (BTU/hr.)", "เซอร์กิตเบรกเกอร์จ่ายวงจรย่อย", "สายไฟฟ้า"],
+    "rows": [
+      {"btu_hr": "ไม่เกิน 12,000", "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-15 mm.uPVC"},
+      {"btu_hr": "ไม่เกิน 18,000", "breaker": "20AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-15 mm.uPVC"}
+    ]
+  },
+  "sibling_files": [
+    "บ้าน_เล็ก_2ชั้น_02_หน้า64_outlet_plan_floor2.json"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Content is verbatim-identical to house #3's EE-06 AC/telephone/TV notes (page 61 there), including the same repeated-wire-callout pattern where both the 12,000 and 18,000 BTU/hr rows print the identical wire spec '2-2.5/G2.5 IEC 01-15 mm.uPVC' despite the higher breaker rating -- transcribed exactly as printed, not corrected/assumed to be a typo.",
+    "Awaiting the mechanical sheets (pages 65-66, M-01/M-02) to check whether any AC unit on this house exceeds the 18,000 BTU/hr tier covered by this table (house #3 had a coverage gap for a 24,000 BTU unit) -- will cross-check once those pages are read.",
+    "No telephone/antenna outlet symbols are drawn on the plan itself (only these general notes), same as house #3.",
+    "Pattern classified as 'schedule' to match the convention used for the equivalent house #3 file, since this view is a notes/table block rather than a spatial layout."
+  ]
+}

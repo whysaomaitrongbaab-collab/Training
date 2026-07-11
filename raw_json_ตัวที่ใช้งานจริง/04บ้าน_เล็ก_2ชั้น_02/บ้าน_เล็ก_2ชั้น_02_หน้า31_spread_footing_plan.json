@@ -1,0 +1,33 @@
+{
+  "png": "31",
+  "doc_page": 29,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานรากแผ่",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า31.png",
+  "view_title": "แปลนฐานรากแผ่",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "schema_note": "Alternate foundation system to S-03 (pile footing). This sheet is the source that established the dummy grid E' in the shared grid master (a 2-footing row 1.90m before named grid E, C0-marked). Same footing/column mark separation convention as houses #2/#3.",
+  "elements": [
+    { "element_id": "F0.60x0.60", "element_type": "footing", "count": 2, "grid_refs": ["E'-1", "E'-2"], "confidence_score": 0.85, "confidence_flags": ["footing_mark_is_the_dimension_notation_itself", "on_dummy_grid_row_E_prime"] },
+    { "element_id": "F1.30x1.30", "element_type": "footing", "count": 1, "grid_refs": ["E-1"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1.60x1.60", "element_type": "footing", "count": 1, "grid_refs": ["E-2"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1.00x1.00", "element_type": "footing", "count": 1, "grid_refs": ["E-3"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1.30x1.30", "element_type": "footing", "count": 6, "grid_refs": ["D-1", "D-3", "C-1", "C-3", "B-2", "B-3"], "confidence_score": 0.85, "confidence_flags": ["combined_across_multiple_rows_same_dimension_mark"] },
+    { "element_id": "F1.60x1.60", "element_type": "footing", "count": 2, "grid_refs": ["D-2", "C-2"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1.00x1.00", "element_type": "footing", "count": 1, "grid_refs": ["B-1"], "confidence_score": 0.85, "confidence_flags": ["same_dimension_mark_as_E-3_different_column_pairing_see_warnings"] },
+    { "element_id": "F0.60x0.60", "element_type": "footing", "count": 2, "grid_refs": ["A-2", "A-3"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "C0", "element_type": "column", "count": 2, "grid_refs": ["E'-1", "E'-2"], "confidence_score": 0.85, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] },
+    { "element_id": "C1A", "element_type": "column", "count": 5, "grid_refs": ["E-1", "E-2", "E-3", "A-2", "A-3"], "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] },
+    { "element_id": "C1", "element_type": "column", "count": 7, "grid_refs": ["D-1", "D-3", "C-1", "C-3", "B-1", "B-2", "B-3"], "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] },
+    { "element_id": "C2", "element_type": "column", "count": 2, "grid_refs": ["D-2", "C-2"], "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] }
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Row A has no footing/column at col1 (only col2/col3 present).",
+    "F1.00x1.00 appears twice as element_id (count1 at E-3 paired with C1A, count1 at B-1 paired with C1) -- kept as 2 separate entries since column pairing differs, same convention as houses #2/#3's analogous duplicate-dimension-mark cases."
+  ]
+}

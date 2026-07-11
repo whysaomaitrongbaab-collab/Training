@@ -1,0 +1,54 @@
+{
+  "png": "54",
+  "doc_page": 52,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า54.png",
+  "discipline": "sanitary",
+  "sheet_code": "SN-06",
+  "sheet_name": "แปลนระบบสุขาภิบาลพื้นชั้นบน",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "แปลนระบบสุขาภิบาลพื้นชั้นบน",
+  "drawing_no": "SN-58081",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dimensions_as_printed": {
+    "x_chain_m": [0.60, 5.00, 3.50, 0.60],
+    "x_bracket_m": {"span": "grid1-grid3", "value": 8.50},
+    "y_chain_m_top_to_bottom": [1.10, 2.70, 2.30, 3.50, 1.50],
+    "y_bracket_m": {"span": "gridE-gridA", "value": 10.00},
+    "note": "Same 1/2/3 x E/D/C/B/A grid as the ground-floor plan (page53) and the structural grid master -- x_chain and the E-D/D-C/C-B/B-A segments (2.70/2.30/3.50/1.50) are identical. The only difference is the top overhang dimension (1.10 here vs 2.00 on the ground-floor plan) -- this is the roof-eave overhang ('แนวหลังคา' roofline reference shown dashed on this sheet), a per-floor architectural value, not a grid-line discrepancy."
+  },
+  "rooms_shown": [
+    {"name": "กันสาด", "level_m": "+3.65", "note": "small canopy/eave area, top-left, outside the main room grid"},
+    {"name": "นอน 3", "level_m": "+3.75"},
+    {"name": "ห้องน้ำ 3", "level_m": "+3.65", "note": "small bathroom adjoining นอน 3, top-right of the plan"},
+    {"name": "นอน 2", "level_m": "+3.75"},
+    {"name": "โถง", "level_m": "+3.75", "note": "hall containing the stairwell, continuing up from the ground-floor stair (steps numbered ~6/7/8/9/10/11, landing at 12, then 13/14/15/16/17, labeled 'ขึ้น' = up)"},
+    {"name": "ห้องน้ำ 2", "level_m": "+3.65", "note": "bathroom near the stairwell, bottom-left area"},
+    {"name": "แต่งตัว", "level_m": "+3.75", "note": "dressing room"},
+    {"name": "นอน 1", "level_m": "+3.75"},
+    {"name": "ระเบียง", "level_m": "+3.65", "note": "balcony, bottom of plan"}
+  ],
+  "elements": [
+    {"element_type": "roof_drain_and_rainwater_leader_combined", "description": "Ø21/2\"RFD+RL combined symbol (circle with cross) at top-left near กันสาด -- roof floor-drain and rainwater-leader connection combined at one point", "grid_ref": "near grid1, row E, at กันสาด", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "unlabeled_vent_stack", "description": "small square symbol on the roofline just above the นอน3/ห้องน้ำ3 partition, possibly a vent stack (AVC) penetrating the roof -- not separately labeled with text at this position", "grid_ref": "near grid2, row E, above ห้องน้ำ 3", "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "bathroom_fixture_group", "description": "ห้องน้ำ 3 -- small cluster of fixture icons (toilet + wash-basin style circles) visible within the room outline; exact fixture symbols (WC/LAV/etc.) not individually legible with confidence at this resolution", "grid_ref": "near grid2, row E, ห้องน้ำ 3", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "vent_pipe", "description": "Ø2\"V+AVC combined vent-pipe-with-cap symbol on the left side near the stairwell/ห้องน้ำ 2", "grid_ref": "near grid1, row C, at ห้องน้ำ 2 / stairwell", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "bathroom_fixture_group", "description": "ห้องน้ำ 2 -- cluster of fixture icons (circle-based symbols suggesting WC/lavatory/floor-drain) within the room outline, adjacent to the Ø2\"V+AVC vent stack; exact fixture symbols not individually legible with confidence", "grid_ref": "near grid1, row C-B boundary, ห้องน้ำ 2", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "roof_drain", "description": "Ø21/2\"RFD circle symbol at the bottom of the plan near ระเบียง", "grid_ref": "near grid2, row A, at ระเบียง", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "rainwater_leader_pipe", "description": "Ø21/2\"RL circle symbol at bottom-right, adjacent to the RFD symbol near ระเบียง", "grid_ref": "near grid2-3, row A, at ระเบียง", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "roofline_reference", "description": "'แนวหลังคา' dashed reference lines shown around the top, left, right, and bottom edges of the plan, indicating the roof edge/eave line overhead -- an architectural reference overlay, not a sanitary pipe/fixture", "grid_ref": "perimeter of the plan", "confidence_score": 0.75, "confidence_flags": []}
+  ],
+  "sibling_files": [],
+  "confidence_score": 0.68,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "LEVEL LABEL CROSS-CHECK CONFIRMED: every room on this upper-floor plan is at +3.75 (or +3.65 for wet areas/balcony) -- this directly confirms that the riser diagram on page52 (SN-04), which printed 'ระดับพื้นชั้นล่าง +3.75' (labeling +3.75 as if it were the ground floor), is very likely a mislabeled/boilerplate-reused level tag on that sheet: +3.75 is actually the upper floor ('ชั้นบน'), matching this house's own SN-06 plan. This is the same finding pattern already documented for house #3's equivalent riser diagram (page49) via its own upper-floor plan (page51). Flagged for human review; not corrected on the riser diagram file itself per extraction rules (transcribe literally, flag discrepancy).",
+    "Stair-step numbering is a continuation from the ground-floor plan's steps (which ended at step 6, labeled 'ขึ้น'): this sheet shows steps continuing as roughly 7 through 17 with a mid-landing around 12, labeled 'ขึ้น' again at the top of this flight -- consistent with a switchback (dog-leg) staircase connecting the two floors. Exact per-step numbering hard to fully verify pixel-by-pixel at this resolution; overall sequence transcribed as a range (6/7-11, landing 12, 13-17), not a guaranteed exact digit-by-digit read.",
+    "The two small bathrooms (ห้องน้ำ 2, ห้องน้ำ 3) contain fixture icon clusters that are visually present but not individually identifiable with confidence (WC vs LAV vs floor drain) at this image resolution -- flagged for zoom-review rather than guessed.",
+    "The small square symbol on the roofline above ห้องน้ำ 3 is ambiguous (possible AVC vent-stack roof penetration, consistent with the vent pipes seen running to roof level on the riser diagram) but not labeled with text at this position -- flagged for zoom-review.",
+    "Grid confirmed identical to the ground-floor plan (page53) and the structural grid master; only the top overhang dimension differs (1.10 vs 2.00), which is an architectural roofline value, not a grid discrepancy."
+  ]
+}
