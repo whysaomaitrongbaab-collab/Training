@@ -40,6 +40,7 @@ A page may contain multiple views/patterns — **inventory every view first with
 
 - **Axis:** `x_lines` = horizontal along the top edge (usually numbers 1,2,3...) · `y_lines` = vertical along the side edge (usually letters A,B,C...)
 - **grid_ref format:** `"A-1/A-2"` (dash+slash) — point-type elements (footing/column) store position as an **array**, e.g. `grid_refs:["A-1","A-2"]`, never a comma-string
+- **Axis order rule:** always read/write the **vertical axis (y_lines, row letters) first**, then the horizontal axis (x_lines, column numbers) — matches the existing `"A-1"` convention (row before column) and must also apply to any combined-range free-text `grid_ref` on `plan` elements, e.g. write `"D-C x 1-1'"` (row range first, `x`, then column range), not `"1-1' x D-C"` (บทเรียนจาก 2026-07-13: ตอนย่อ `grid_ref` ในบ้าน 1 หน้า06_floor_plan.json ให้สั้นลง เขียนแกน x ก่อนโดยไม่ตั้งใจ ต้องกลับมาแก้)
 - **Span:** calculated by code from the grid only — never let the model estimate distance
 - **`span_source` enum:** `grid_table` / `local_dimension` / `unresolved` / `n/a`
 
@@ -54,6 +55,14 @@ Create/update `<house>_หน้า00_gridline.json` **before** extracting any o
 
 ### Atomic segments
 Report each beam span as **one atomic entry per grid-to-grid segment** — don't pre-group multiple spans of the same mark into a single `count`. Grouping identical segments into `count` + list, keyed by `(element_id, span, span_source)`, is handled automatically downstream — sending atomic data in keeps that grouping accurate.
+
+### Element ordering within `elements[]`
+Order grid-positioned elements (beams, footings, columns, etc.) in **reading order**, not grouped by `element_id`/mark:
+1. **Top to bottom** (row order: first main grid row → last, e.g. D → C → B → A)
+2. **Left to right** within each row (column order: first main grid column → last, e.g. 1 → 1' → 2 → 3 → 3'')
+3. **Horizontal before vertical** when two elements share the same starting point (e.g. at D1, a beam running D1→D2 horizontally is listed before a beam running D1→C1 vertically)
+
+Elements with no `grid_ref` (marker-only symbols like slab tags `SO`/`SI`/`ST`) can't be positionally sorted — leave them at the end of the array, unordered.
 
 ## 5. Beam segment splitting
 
@@ -92,6 +101,8 @@ concrete_grade, steel_grade, spec_source, spec_confidence_score
 
 **Conflict rule:** if the same `element_id` has mismatched specs in both `section` and `schedule` → **`section` always wins**, and must be flagged with `confidence_flag: "spec_conflict_section_vs_schedule"` every time — never silently pick one without recording it. *(Not yet tested against real data.)*
 
+**Don't inline the joined spec into every atomic segment.** Once a mark's spec is confirmed identical across all its occurrences (verify this first — don't assume), store it **once** in a top-level `specs` object keyed by `element_id`, e.g. `specs.B4 = {width_mm, height_mm, main_bar, stirrup, additional_bars, concrete_grade, steel_grade, spec_source, spec_confidence_score}`. Each entry in `elements[]` then only carries position (`grid_ref_start`/`grid_ref_end`, `span_length_m`, `span_source`) and its own per-occurrence `confidence_score`/`confidence_flags` — never repeat the full spec block on every segment (บทเรียนจาก 2026-07-14: บ้าน 1 หน้า19 beam plan เคยพิมพ์ spec ซ้ำทุกช่วงของคานมาร์คเดียวกัน กลายเป็น god-object-in-a-row-per-mark ทั้งที่ spec เหมือนกันทุกตัวอักษร). A spec-level observation that applies to every occurrence of a mark (e.g. an asymmetric top/bottom rebar count) belongs in that mark's `specs` entry as `spec_confidence_flags`, not repeated on each `elements[]` occurrence — but a note about something specific to one particular occurrence (e.g. a stray arrow symbol printed only near one segment) stays on that occurrence's own `confidence_flags`.
+
 ## 8. `level` field (multi-level schedules)
 
 When a schedule has multiple levels (e.g. same column mark with different specs per floor), use a separate `level` field — **never embed the level into `element_id`**. `element_id` must match the printed mark exactly so cross-page joins stay reliable.
@@ -119,6 +130,10 @@ When a schedule has multiple levels (e.g. same column mark with different specs 
 
 `SO`/`SI`/`SX`/`ST` → `element_type: "slab"` (not `"unknown_symbol"`) — cross-references across pages the same way as beams. **Watch for `"SI"` (letter I) vs `"S1"` (digit 1) confusion** — double-check this specific point every time.
 
+## 10a. Stairs (`element_type: "stair"`) — `grid_ref`
+
+Don't describe a stair's position with verbose free text (which rooms it sits between, cross-references to a detail sheet, etc.) — just give the **single nearest grid point, approximate**, e.g. `"~A-1"`. A stair's exact footprint is already fully documented on its own detail sheet (`A-11` or equivalent); `grid_ref` on the floor-plan-level element only needs to be enough to locate it roughly on the main grid.
+
 ## 11. BOQ
 
 - **One PNG may contain 2 real sheets** (2 portrait pages laid out as one landscape image) → rotate 90° then split left/right halves into separate files (`_1.json`/`_2.json`)
@@ -131,3 +146,13 @@ When a schedule has multiple levels (e.g. same column mark with different specs 
 - `source_image` field — older files in `mk_test/t1-t3` don't have it
 - "section wins over schedule" conflict rule (section 7) — not yet tested against real data
 - Same `element_id` appearing in more than one `section` file (e.g. B2 in both S-04 and S-05) — no resolved precedence rule yet; open question
+
+## 13. `site_plan` — `element_type` not standardized across houses
+
+Checked all 5 houses' `site_plan` pattern files (2026-07-13). `element_type` values found: `boundary_line`, `building_footprint`, `building_outline`, `grading_note`, `grading_note_or_slab`, `lot_boundary`, `other`, `road`, `room`, `setback` — 10 distinct strings, but several pairs describe the same real-world thing under different names per house:
+
+- `building_footprint` / `building_outline` — both mean the building's outline within the lot
+- `boundary_line` / `lot_boundary` — both mean the property boundary line
+- `grading_note` / `grading_note_or_slab` — both mean the ground-fill/grading annotation
+
+No fixed enum has ever been given for `site_plan`'s `element_type` — each house's extraction picked its own naming independently. Not merged/standardized yet; flagged here so a future pass can decide on one canonical name per concept before this pattern is used for any downstream automation.

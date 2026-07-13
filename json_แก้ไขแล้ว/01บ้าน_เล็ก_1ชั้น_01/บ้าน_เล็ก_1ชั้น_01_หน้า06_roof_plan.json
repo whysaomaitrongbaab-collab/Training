@@ -1,0 +1,30 @@
+{
+  "png": "06",
+  "doc_page": 4,
+  "discipline": "architectural",
+  "sheet_code": "A-04",
+  "sheet_name": "แปลนหลังคา",
+  "pattern": "roof_plan",
+  "view_title": "แปลนหลังคา",
+  "schema_generation": "20260708draft of prime rawjson.md",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า06.png",
+  "grid_source": "mk_test/t4/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "element": [
+    { "element_id": "roof_covering", "element_type": "roof", "count": 1, "grid_ref": "D-A x 1-3 plus overhangs", "description": "หลังคาเหล็กรีดลอน (corrugated metal sheet roofing) shown hatched over the whole plan; two 'SLOPE 6°' labels printed vertically on the two roof faces indicating fall direction/pitch (approx. 6 degrees).", "ridge_or_valley_lines": null, "eave_overhang_m": null, "confidence_score": 0.7, "confidence_flags": ["slope_value_small_stylized_text_treat_as_approximate", "ridge_valley_lines_not_distinctly_drawn_on_this_simple_single-slope_roof", "CORRECTED_2026-07-13_grid_ref_axis_order_row_before_column"] },
+    { "element_id": "roof_overhang_west", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond 1, dimension 1.30 m", "eave_overhang_m": 1.30, "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-07-13_grid_ref_notation_shortened"] },
+    { "element_id": "roof_overhang_east", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond 3, dimension 1.30 m", "eave_overhang_m": 1.30, "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-07-13_grid_ref_notation_shortened"] },
+    { "element_id": "roof_overhang_north", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond D, dimension 1.50 m", "eave_overhang_m": 1.50, "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-07-13_grid_ref_notation_shortened"] },
+    { "element_id": "roof_overhang_south", "element_type": "roof_overhang", "count": 1, "grid_ref": "beyond A, dimension 1.50 m", "eave_overhang_m": 1.50, "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-07-13_grid_ref_notation_shortened"] },
+    { "element_id": "กันสาด_คสล_type5_north", "element_type": "concrete_canopy", "count": 1, "grid_ref": "near 2, north side, level +3.75", "level_m": 3.75, "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-07-13_grid_ref_notation_shortened"] },
+    { "element_id": "กันสาด_คสล_type5_south", "element_type": "concrete_canopy", "count": 1, "grid_ref": "south side near A, level +3.75", "level_m": 3.75, "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-07-13_grid_ref_notation_shortened"] }
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [],
+  "warnings": [
+    "PATTERN RECLASSIFIED (t4, 2026-07-08 taxonomy): t3 classified this view as generic 'plan'. Under the new taxonomy this is now the dedicated pattern 'roof_plan' (#12) since it's a roof-framing plan with eave/overhang elements rather than room/grid_ref elements. Added two roof_plan-specific fields (ridge_or_valley_lines, eave_overhang_m) per the draft schema note that field-set for this pattern is still tentative/untested — flagged accordingly.",
+    "This is the roof-plan half of sheet A-04; the floor-plan half (pattern 'plan', unchanged) is in sibling file _หน้า06_floor_plan.json.",
+    "The 'SLOPE 6°' labels are printed clearly as 'SLOPE 6*' twice on the two roof faces — read with medium-high confidence. Cross-reference: this 6° reading should be treated as the authoritative roof-pitch figure over the small stylized slope-angle triangles seen on หน้า07/หน้า08 elevations (one of which was read as approx. '9' there, likely a misread of a similar-looking '6' at very small scale — see หน้า07_elevation2.json warning).",
+    "Actual roof framing (purlins, rafters/trusses) is not detailed on this sheet — it references 'โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง' consistent with the S-01~S-08 sheets (pages 16-23), outside this extraction's page range. No ridge/valley lines are separately drawn since this is a simple single-slope (monopitch) roof, not a hip/gable roof — hence ridge_or_valley_lines is null rather than an empty array.",
+    "Independent read done first, then cross-checked against t3's หน้า06_roof_plan.json — same overhang dimensions and slope reading, no disagreement found; field-set for the 'roof_plan' pattern label is new in t4 (first real test of it) though the underlying content is unchanged from t3."
+  ]
+}

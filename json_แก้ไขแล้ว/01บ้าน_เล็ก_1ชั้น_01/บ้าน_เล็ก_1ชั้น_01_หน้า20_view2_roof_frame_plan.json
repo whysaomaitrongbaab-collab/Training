@@ -1,0 +1,50 @@
+{
+  "png": "20",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนอะเส, แปลนโครงหลังคา",
+  "pattern": "roof_plan",
+  "schema_generation": "20260708draft of prime rawjson.md",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า20.png",
+  "view_title": "แปลนโครงหลังคา",
+  "grid_source": "mk_test/t4/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
+  "schema_note": "t4: pattern reclassified from 'plan' (t3) to the new 'roof_plan' type (2026-07-08 taxonomy) -- this is the first real extraction using this pattern, field shape below is carried over from t3's content since it was never formally defined for this pattern, still a draft field-set per the schema doc's own caveat.",
+  "elements": [
+    {
+      "element_id": "purlin_C100x50x20", "element_type": "purlin",
+      "steel_section": "C100x50x20mm", "thickness_mm": 3.2, "unit_weight_kg_m": 5.50,
+      "spacing_m": 1.5, "orientation": "horizontal, spans full roof width between rafters",
+      "count": null,
+      "confidence_score": 0.85,
+      "confidence_flags": ["t4_independent_reread_matches_t3_exactly", "count_not_individually_tallied_spacing_note_used_instead"]
+    },
+    {
+      "element_id": "rafter_C150x75x25", "element_type": "rafter",
+      "steel_section": "C150x75x25mm", "thickness_mm": 3.2, "unit_weight_kg_m": 8.27,
+      "grid_refs": ["D-1", "C-1", "B-1", "A-1", "D-2", "C-2", "B-2", "A-2", "D-3", "C-3", "B-3", "A-3"],
+      "count": 12,
+      "confidence_score": 0.75,
+      "confidence_flags": ["rafters_shown_at_every_named_grid_column_intersection_plus_2_overhang_positions_below"]
+    },
+    {
+      "element_id": "rafter_C150x75x25_overhang_west", "element_type": "rafter",
+      "steel_section": "C150x75x25mm", "thickness_mm": 3.2, "unit_weight_kg_m": 8.27,
+      "grid_ref_start": "?", "grid_ref_end": "1", "span_length_m": 1.3, "span_source": "local_dimension",
+      "note": "แนวจันทันยื่นเลยกริด 1 ไปทางตะวันตก 1.30 ม. (ระยะยื่นชายคา)",
+      "confidence_score": 0.7, "confidence_flags": ["eave_overhang_not_a_grid_intersection"]
+    },
+    {
+      "element_id": "rafter_C150x75x25_overhang_east", "element_type": "rafter",
+      "steel_section": "C150x75x25mm", "thickness_mm": 3.2, "unit_weight_kg_m": 8.27,
+      "grid_ref_start": "3", "grid_ref_end": "?", "span_length_m": 1.3, "span_source": "local_dimension",
+      "note": "แนวจันทันยื่นเลยกริด 3 ไปทางตะวันออก 1.30 ม. (ระยะยื่นชายคา)",
+      "confidence_score": 0.7, "confidence_flags": ["eave_overhang_not_a_grid_intersection"]
+    }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": ["t4_independent_reread_matches_t3_exactly", "pattern_type_roof_plan_is_new_2026-07-08_field_shape_still_draft"],
+  "warnings": [
+    "1.30m overhang independently confirmed twice now (t3 own read + separate t3 agent reading pages 07-09 found the same value from a different sheet set)"
+  ]
+}
