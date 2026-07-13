@@ -1,0 +1,41 @@
+{
+  "png": "54",
+  "doc_page": 52,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า54.png",
+  "discipline": "sanitary",
+  "sheet_code": "SN-07",
+  "sheet_name": "แปลนระบบสุขาภิบาลพื้นชั้นหลังคา",
+  "pattern": "roof_plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "แปลนระบบสุขาภิบาลชั้นหลังคา",
+  "drawing_no": "SN-58082",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_03_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3", "4"],
+  "grid_rows": ["F", "E", "D", "C", "B", "A"],
+  "grid_dimensions_as_printed": {
+    "x_chain_m": [0.60, 4.00, 2.00, 3.00, 0.50],
+    "x_bracket_m": {"span": "grid1-grid4", "value": 9.00},
+    "y_chain_m_top_to_bottom": [1.00, 2.00, 3.70, 2.20, 3.70, 1.80],
+    "y_bracket_m": {"span": "gridF-gridA", "value": 13.40},
+    "roof_eave_overhang_m": {"horizontal_each_side": 1.30, "vertical_each_end": 1.50, "note": "additional dimension callouts printed inside the main grid dimension chain -- '1.30' measured horizontally near the top (grid1-side and grid4-side) and '1.50' measured vertically near the left margin (F-side and A-side) appear to describe the hatched roof rectangle's eave overhang relative to the grid1/grid4 and gridF/gridA lines respectively, but the exact reference points (measured from the grid line itself vs. from the wall line) are not fully unambiguous at this resolution -- flagged for zoom-review rather than asserted with certainty."
+  },
+  "roof_material": "หลังคาเหล็กรีดลอน (corrugated steel roof sheeting), hatched with vertical rib lines across the whole roof plan",
+  "elements": [
+    {"element_type": "roof_drain_and_rainwater_leader_combined", "description": "Ø21/2\"RD+RL combined symbol (circled dot) at the bottom edge of the roof plan, near grid2, at a gutter/valley downspout point", "grid_ref": "near grid2, row A (bottom edge of roof)", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "roof_slope_label", "description": "'SLOPE 6°' vertical text label between grid1-grid2, indicating roof pitch/slope direction toward a valley or eave", "grid_ref": "near grid1-2, spanning rows E through B", "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "roof_slope_label", "description": "second 'SLOPE 6°' vertical text label between grid2-grid3, mirroring the first", "grid_ref": "near grid2-3, spanning rows E through B", "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "roof_fold_direction_arrow", "description": "two curved arrow symbols (one near grid1-2, one near grid3) flanking the 'หลังคาเหล็กรีดลอน' label, likely indicating the corrugated sheet-metal fold/lay direction rather than a sanitary pipe", "grid_ref": "near grid1-3, row C-D area, at the roof label", "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required", "possibly_not_a_sanitary_element"]},
+    {"element_type": "structural_reference_cross", "description": "4 rows of small cross ('+') marks aligned under grid columns 1/2/3/4, at rows E, D, C, and B -- appear to be background structural/purlin reference points carried onto this sanitary sheet rather than plumbing fixtures; not separately labeled with any pipe size or fixture symbol", "grid_ref": "grid1-4 x rows E/D/C/B", "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required", "possibly_not_a_sanitary_element"]}
+  ],
+  "sibling_files": [],
+  "confidence_score": 0.6,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "This is a new sheet type not present in houses #3/#4's 10-sheet sanitary sets (which went straight from the upper-floor plan to the bathroom-detail sheet) -- pattern 'roof_plan' is still draft per schema doc section 1/12, so the field-set here is a best-effort adaptation of the 'plan' pattern's fields (grid, elements) plus roof-specific additions (roof_material, roof slope labels), not a previously-verified template.",
+    "This sheet shows only ONE roof drain/rainwater-leader point (Ø21/2\"RD+RL) despite the upper-floor plan (page53) showing 2 separate Ø21/2\"RFD+RL points on its own small 'หลังคา ค.ส.ล.' (RC roof canopy) area -- those two RC-canopy drains are a distinct, smaller architectural feature from this main corrugated-steel roof plan and are not expected to coincide 1:1; not treated as a discrepancy, just noted for cross-reference.",
+    "The exact reference points for the '1.30' (horizontal) and '1.50' (vertical) eave-overhang-style dimensions relative to the main grid1/grid4/gridF/gridA lines are ambiguous at this resolution -- described descriptively rather than asserted as precise offsets; flagged for zoom-review.",
+    "The two curved 'fold direction' arrows and the 4 rows of small cross marks at grid intersections are likely roofing/structural reference marks rather than sanitary fixtures (no pipe size, no fixture symbol, no legend match on this house's SN-01 symbol legend) -- included for completeness per the 'inventory every element' rule but flagged as possibly outside the sanitary discipline's own scope.",
+    "Overall grid (1,2,3,4 x F,E,D,C,B,A) and dimension chain confirmed identical to the ground-floor (page52) and upper-floor (page53) plans and the structural grid master."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "png": "22",
+  "doc_page": 20,
+  "discipline": "architecture",
+  "sheet_code": "A-20",
+  "sheet_name": "แบบขยายบันได ST.2",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า22.png",
+  "views": ["view1_st2_arch_plan (this file)", "view2_st2_arch_section (_view2_st2_arch_section.json)"],
+  "view_title": "แปลนบันได ST.2 (architecture service-stair sheet, distinct from structural stair ST2)",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "st2arch_maebaan_room", "element_type": "room", "description": "แม่บ้าน (maid's room), floor level box '1 +0.60 1'", "level_m": 0.60, "floor_material_no": 1, "opening_ref": "1", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "st2arch_krua_room", "element_type": "room", "description": "ครัว (kitchen), floor level box '1 +0.60 1'", "level_m": 0.60, "floor_material_no": 1, "opening_ref": "1", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "st2arch_saklang_room", "element_type": "room", "description": "ซักล้าง (laundry/wash area), floor level box '3 +0.50 -' (dash symbol in opening-ref position, possibly an open-air/no-opening void)", "level_m": 0.50, "floor_material_no": 3, "opening_ref": "-", "confidence_score": 0.7, "confidence_flags": ["dash_opening_ref_meaning_unclear"] },
+    { "element_id": "st2arch_nosing", "element_type": "finish_detail", "description": "จมูกบันได อลูมิเนียมสีเงิน ร่อง PVC ขนาด 2\"", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "st2arch_tread_finish", "element_type": "finish_detail", "description": "ลูกนอนบันได ผิวปูกระเบื้องเซรามิค 8\"x8\"", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "plan_dim_top_chain", "element_type": "dimension", "values_m": [0.60, 5.00], "sub_values_m": [0.50, 5.20], "sub_sub_values_m": [0.25, 0.25], "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "plan_dim_left_chain", "element_type": "dimension", "values_m": [2.00, 1.90, 0.10], "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "grid_refs", "element_type": "grid_marker", "grid_ref": ["gridE", "grid1", "grid2"], "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "section_cutline_1_st2arch", "element_type": "section_marker", "description": "circled '1' section-cut marker, right side, referencing รูปตัดบันได ST.2", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "door_1_refs", "element_type": "door_reference", "count": 3, "description": "triangle callouts '1' at multiple positions along the E grid wall", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "window_2_3_refs", "element_type": "window_reference", "description": "circle/hexagon callouts '2' and '3' near the curved wall section (โค้ง, likely a bay/curved kitchen counter or window)", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"] }
+  ],
+  "confidence_score": 0.73,
+  "confidence_flags": [],
+  "warnings": [
+    "IMPORTANT naming collision: this architecture sheet is titled 'บันได ST.2' but is a SEPARATE, SHORT SERVICE STAIR near the kitchen/laundry/maid's room (small step, ~0.5m rise) -- NOT the same as the structural 'ST2' interior main stair (floor1-to-landing-to-floor2, structural sheets S-11/S-12, ~3.15m total rise). Do not merge these two distinctly different stairs under one element_id in any downstream processing; they share a label by coincidence of the design office's naming convention but are physically different elements serving different purposes.",
+    "One of 2 views on this page; sibling is the section view _view2_st2_arch_section.json.",
+    "The curved wall element near ซักล้าง (labeled '2'/'3') isn't clearly identified -- possibly a rounded kitchen counter or bay opening; flagged rather than guessed."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "png": "53",
+  "doc_page": 51,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า53.png",
+  "discipline": "sanitary",
+  "sheet_code": "SN-06",
+  "sheet_name": "แปลนระบบสุขาภิบาลพื้นชั้นบน",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "แปลนระบบสุขาภิบาลพื้นชั้นบน",
+  "drawing_no": "SN-58082",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_03_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3", "4"],
+  "grid_rows": ["F", "E", "D", "C", "B", "A"],
+  "grid_dimensions_as_printed": {
+    "x_chain_m": [0.60, 4.00, 2.00, 3.00, 0.50],
+    "x_bracket_m": {"span": "grid1-grid4", "value": 9.00},
+    "y_chain_m_top_to_bottom": [1.00, 2.00, 3.70, 2.20, 3.70, 1.80],
+    "y_bracket_m": {"span": "gridF-gridA", "value": 13.40},
+    "note": "Same 1/2/3/4 x F/E/D/C/B/A grid as the ground-floor plan (page52) and the structural grid master -- x_chain and the F-E/E-D/D-C/C-B/B-A segments (2.00/3.70/2.20/3.70/1.80) are identical and sum to 13.40, matching the printed bracket exactly. Unlike the ground-floor plan, this sheet shows NO additional overhang dimension below row A -- this floor's footprint (ระเบียง balcony) does not extend south of grid A, consistent with the grid master's note that the dummy grid line south of A ('Aprime') is a ground-floor-only feature (carport/terrace)."
+  },
+  "rooms_shown": [
+    {"name": "หลังคา ค.ส.ล.", "level_m": "+4.00", "note": "small RC roof/canopy area at the top of the plan, north of grid E-F, outside the main upper-floor room envelope -- two diagonal arrows suggest roof-slope direction"},
+    {"name": "นอน 3", "level_m": "+4.10"},
+    {"name": "ห้องน้ำ 3", "level_m": "+4.00"},
+    {"name": "นอน 4", "level_m": "+4.10"},
+    {"name": "ห้องน้ำ 2", "level_m": "+4.00"},
+    {"name": "โถง", "level_m": "+4.10", "note": "hall containing the stairwell, steps numbered 1-2-3-4-5-6-7-8-9-10 on the upper flight then 17-16-15-14-13-12-11 on the lower flight (printed in descending order toward the landing), labeled 'ลง' (down) toward the ground floor"},
+    {"name": "นอน 1", "level_m": "+4.10"},
+    {"name": "นอน 2", "level_m": "+4.10"},
+    {"name": "ระเบียง", "level_m": "+4.00", "note": "balcony, bottom of plan"}
+  ],
+  "elements": [
+    {"element_type": "roof_drain_and_rainwater_leader_combined", "description": "Ø21/2\"RFD+RL combined symbol (circle with cross) at top-left of the 'หลังคา ค.ส.ล.' canopy area", "grid_ref": "near grid2, row F, at หลังคา ค.ส.ล.", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "roof_drain_and_rainwater_leader_combined", "description": "second Ø21/2\"RFD+RL combined symbol at top-right of the same canopy area, symmetric to the first", "grid_ref": "near grid3-4, row F, at หลังคา ค.ส.ล.", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "unlabeled_reference_point", "description": "circled 'P / 2' marker inside/near ห้องน้ำ 3 -- matches the 'P/2' marker seen at the same relative position on the ground-floor plan (page52, near เตรียมอาหาร) and on the riser diagram (page51/SN-04, middle stack), confirming vertical alignment of that stack through this floor", "grid_ref": "near grid2, row E, at ห้องน้ำ 3", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "unlabeled_reference_point", "description": "circled 'P / 1' marker near ห้องน้ำ 2 -- matches the 'P/1' marker seen on the ground-floor plan (page52, near โถง/stairwell) and the riser diagram's left stack, confirming vertical alignment", "grid_ref": "near grid1, row D, at ห้องน้ำ 2", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "bathroom_fixture_group", "description": "ห้องน้ำ 3 -- small cluster of fixture icons (toilet + wash-basin style circles) visible within the room outline; exact fixture symbols not individually legible with confidence at this resolution", "grid_ref": "near grid2, row E, ห้องน้ำ 3", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "bathroom_fixture_group", "description": "ห้องน้ำ 2 -- cluster of fixture icons within the room outline, adjacent to the 'P/1' marker; exact fixture symbols not individually legible with confidence", "grid_ref": "near grid1, row D-C boundary, ห้องน้ำ 2", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "vent_pipe", "description": "Ø2\"AVC vent-pipe-with-cap symbol at the top of the stairwell enclosure, penetrating up through the roof", "grid_ref": "near grid4, row D, at the stairwell", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "roof_drain", "description": "Ø21/2\"RFD circle symbol at the bottom-left of the plan near ระเบียง", "grid_ref": "near grid1, row A, at ระเบียง", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "rainwater_leader_pipe", "description": "Ø21/2\"RL label at the very bottom of the plan, rainwater downpipe from the ระเบียง roof drain running down to ground level", "grid_ref": "near grid1, below row A, at ระเบียง", "confidence_score": 0.7, "confidence_flags": []}
+  ],
+  "sibling_files": [],
+  "confidence_score": 0.68,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "LEVEL LABEL CROSS-CHECK: every room on this upper-floor plan is at +4.10 (or +4.00 for wet areas/balcony/roof-canopy) -- this house's riser diagram (SN-04, page51) printed 'ระดับพื้นชั้นล่าง +3.75' at its top level and left the two lower level lines unlabeled numerically. +4.10/+4.00 here (upper floor) do not match the riser diagram's '+3.75' value at all, so unlike houses #3/#4 (where the riser's top level exactly matched the upper floor's level), this house's riser diagram's '+3.75' does not cleanly cross-reference either this upper floor (+4.10) or the ground floor (+0.20 to +0.60, per page52) -- flagged as an unresolved discrepancy for human review, not corrected.",
+    "The stairwell shows steps 1-10 ascending then a second sequence printed 17-16-15-14-13-12-11 (descending order as printed, positioned below/after the landing) labeled 'ลง' (down) -- a 17-step switchback (dog-leg) staircase down to the ground floor, one more total step than houses #3/#4's equivalent stairs (which topped out around 16-17 with a landing near step 12) but structurally the same pattern. Transcribed as printed, not renumbered.",
+    "The two small bathrooms (ห้องน้ำ 2, ห้องน้ำ 3) contain fixture icon clusters that are visually present but not individually identifiable with confidence (WC vs LAV vs floor drain) at this image resolution -- flagged for zoom-review rather than guessed.",
+    "Grid confirmed identical to the ground-floor plan (page52) and the structural grid master; this sheet has no overhang dimension south of row A (unlike the ground-floor plan's 2.05m carport/terrace extension), consistent with the grid master's note that the dummy grid line there is a ground-floor-only feature.",
+    "This house's index (page48) lists an additional 'แปลนระบบสุขาภิบาลพื้นชั้นหลังคา' (roof-floor sanitary plan) as the next sheet, SN-07 -- a sheet type not present in houses #3/#4's 10-sheet sanitary sets."
+  ]
+}
