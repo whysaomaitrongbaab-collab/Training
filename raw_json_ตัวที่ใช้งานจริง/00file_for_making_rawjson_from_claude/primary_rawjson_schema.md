@@ -2,7 +2,7 @@
 
 > Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../training-data/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
 
-## 1. Pattern taxonomy — 13 types
+## 1. Pattern taxonomy — 14 types
 
 | # | pattern | description |
 |---|---|---|
@@ -18,9 +18,10 @@
 | 10 | `title` | cover page *(draft — no field-set verified yet)* |
 | 11 | `symbol` | symbol/legend page *(draft)* |
 | 12 | `roof_plan` | roof plan, separated from `plan` because it has ridge/hip lines and eave overhangs *(draft)* |
-| 13 | `unknown` | doesn't fit any of the 12 above |
+| 13 | `misc` | เบ็ดเตล็ด — whole-series catalog/promotional/reference pages that aren't about this house's own construction (e.g. a back-cover price-comparison table across all 10 designs in the series, or a cover collage of every design's render) — added 2026-07-14, previously misclassified as `title` |
+| 14 | `unknown` | doesn't fit any of the 13 above |
 
-**Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 7 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
+**Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 8 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
 
 ## 2. Required fields on every file (wrapper level)
 
@@ -60,7 +61,7 @@ Report each beam span as **one atomic entry per grid-to-grid segment** — don't
 Order grid-positioned elements (beams, footings, columns, etc.) in **reading order**, not grouped by `element_id`/mark:
 1. **Top to bottom** (row order: first main grid row → last, e.g. D → C → B → A)
 2. **Left to right** within each row (column order: first main grid column → last, e.g. 1 → 1' → 2 → 3 → 3'')
-3. **Horizontal before vertical** when two elements share the same starting point (e.g. at D1, a beam running D1→D2 horizontally is listed before a beam running D1→C1 vertically)
+3. **Vertical before horizontal** when two elements share the same starting point (e.g. at D1, a beam running D1→C1 vertically is listed before a beam running D1→D2 horizontally) — corrected 2026-07-14, was stated backwards originally
 
 Elements with no `grid_ref` (marker-only symbols like slab tags `SO`/`SI`/`ST`) can't be positionally sorted — leave them at the end of the array, unordered.
 
@@ -102,6 +103,12 @@ concrete_grade, steel_grade, spec_source, spec_confidence_score
 **Conflict rule:** if the same `element_id` has mismatched specs in both `section` and `schedule` → **`section` always wins**, and must be flagged with `confidence_flag: "spec_conflict_section_vs_schedule"` every time — never silently pick one without recording it. *(Not yet tested against real data.)*
 
 **Don't inline the joined spec into every atomic segment.** Once a mark's spec is confirmed identical across all its occurrences (verify this first — don't assume), store it **once** in a top-level `specs` object keyed by `element_id`, e.g. `specs.B4 = {width_mm, height_mm, main_bar, stirrup, additional_bars, concrete_grade, steel_grade, spec_source, spec_confidence_score}`. Each entry in `elements[]` then only carries position (`grid_ref_start`/`grid_ref_end`, `span_length_m`, `span_source`) and its own per-occurrence `confidence_score`/`confidence_flags` — never repeat the full spec block on every segment (บทเรียนจาก 2026-07-14: บ้าน 1 หน้า19 beam plan เคยพิมพ์ spec ซ้ำทุกช่วงของคานมาร์คเดียวกัน กลายเป็น god-object-in-a-row-per-mark ทั้งที่ spec เหมือนกันทุกตัวอักษร). A spec-level observation that applies to every occurrence of a mark (e.g. an asymmetric top/bottom rebar count) belongs in that mark's `specs` entry as `spec_confidence_flags`, not repeated on each `elements[]` occurrence — but a note about something specific to one particular occurrence (e.g. a stray arrow symbol printed only near one segment) stays on that occurrence's own `confidence_flags`.
+
+**Verify `additional_bars[].position` against the actual leader line in the section drawing — never trust the printed label text alone, and never assume top vs. bottom from how a similar-looking mark resolved.** Two real cases from the same house, same-looking label pattern, opposite answers:
+- **B2/B4/B5/B3**: label read "บนคาน" (top) but the leader line actually pointed to a bottom-corner bar (curtailed at L/8, alongside the other bottom main bars) → merged into `main_bar.bottom.count` (e.g. `count: 2` + 1 curtailed bar → `count: 3`).
+- **B3X**: a bar labeled "ล้วงเข้า B3 1.5 ม." (lap-splices into the adjacent beam B3) — sounds like it should be a separate cross-beam detail, but per B3X's own section the label order top-to-bottom was *top-continuing / lap-splice bar / stirrup / bottom-continuing*, meaning the lap-splice bar is actually B3X's own **top** reinforcement (anchored by extending into B3), not a bottom bar and not something to leave out — merged into `main_bar.top.count` (`count: 2` → `4`) instead.
+
+So: **"lap-splices into an adjacent beam" is not on its own a reason to keep a bar in `additional_bars`** — it can still belong to that mark's own `main_bar.top` or `.bottom`, exactly like a same-beam curtailed bar. Check the printed label *order* (top-to-bottom in the section) or the leader line position for **every mark independently** — don't reuse the previous mark's answer. Always add a `note` on the affected `main_bar` side (e.g. "2 เส้นต่อเนื่องจาก B3 + 2 เส้นล้วงเข้า B3 1.5 ม.") so the splice/curtailment detail isn't lost after merging. Only keep a bar in `additional_bars` when it genuinely isn't part of either main_bar side at all (e.g. a standalone stirrup-adjacent reinforcement with no top/bottom association).
 
 ## 8. `level` field (multi-level schedules)
 
