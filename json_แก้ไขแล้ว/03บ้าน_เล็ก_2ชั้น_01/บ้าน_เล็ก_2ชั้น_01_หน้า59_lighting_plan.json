@@ -1,0 +1,42 @@
+{
+  "png": "59",
+  "doc_page": 57,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า59.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-04",
+  "sheet_name": "แปลนไฟฟ้าแสงสว่าง ชั้นบน",
+  "pattern": "plan",
+  "view_title": "แปลนไฟฟ้าแสงสว่าง ชั้นบน",
+  "drawing_no": "EE-58079",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1'", "1", "2", "3", "3'"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dims_observed": {
+    "x_chain_m": [1.10, 3.50, 3.00, 0.50],
+    "x_overall_1_to_3_m": 6.50,
+    "y_chain_m": [1.50, 3.00, 2.20, 4.00, 1.50, 2.05],
+    "y_overall_E_to_A_m": 10.70,
+    "note": "Same grid dimension chain as printed on EE-03 (page58) -- upper floor plan is drawn with a dashed outline extending slightly beyond the ground-floor footprint on the ระเบียง/กันสาด side, but the structural 1/2/3 x-grid and E/D/C/B/A y-grid columns line up identically."
+  },
+  "rooms_shown": ["นอน 2", "นอน 3", "ห้องน้ำ", "ช่องท่อ", "นอน 1", "ระเบียง"],
+  "elements": [
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) near the top wall of นอน 2, labeled 'g' and 'f'; a 'g' mark repeats lower in the room near the doorway", "room": "นอน 2", "quantity": 2, "confidence_score": 0.65, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) labeled 'h' near the top wall of นอน 3", "room": "นอน 3", "quantity": 2, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "combo_switch", "description": "2-gang switch mark labeled 'f,g' at the doorway shared between นอน 2 and the hall/stair landing", "room": "นอน 2 doorway", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "combo_switch_or_downlight", "description": "Marks labeled 'd,e' clustered near the stair landing/hall, close to the '2/LP' circuit tag and an 'e' mark just above them near the 'ลง' (down/stairs) arrow", "room": "hall (โถง) / staircase landing", "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required", "label_illegible"]},
+    {"element_type": "ceiling_downlight_point", "description": "Downlight(s) labeled 'h'/'i' near the upstairs ห้องน้ำ, with a switch point at the doorway", "room": "ห้องน้ำ (upper floor)", "quantity": 1, "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "ceiling_downlight_point", "description": "Four downlights (⊕) labeled 'a' in นอน 1 (2 near the top wall, 2 lower near the exterior wall), plus one 'b' mark near the lower exterior corner; a 2-gang switch labeled 'a,b' sits at the room's doorway", "room": "นอน 1", "quantity": 4, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "wall_switch", "description": "Switch mark labeled 'c' near the ระเบียง (balcony) entrance at the bottom of the plan, on the same wall run as the stair landing", "room": "ระเบียง", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "distribution_riser_tag", "description": "'2/LP' circuit tag near the stair landing marking the feed point for the upper-floor lighting circuit (circuit 2 of panel LP, per EE-02); an 'LP' text label also appears at the stair landing, most likely marking the vertical conduit riser location down to the ground-floor panel rather than a second physical panel", "room": "hall (โถง) / staircase landing", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]}
+  ],
+  "confidence_score": 0.6,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID: same as EE-03 (page58) -- a house-wide grid master (บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json) appeared partway through this extraction batch (produced by a separate concurrent pass over this house's structural pages); this page's independently-read dimension chain matches the master's named grid (1,2,3 / E,D,C,B,A) and dummy grid (1' at -1.1m, 3' at 7.0m) exactly.",
+    "This sheet's dashed outer boundary line (slightly larger than the solid wall outline) represents the upper-floor overhang/eave line extending past the ground-floor footprint on the ระเบียง/กันสาด side -- labeled with an elevation callout '5/+3.65/3' (กันสาด, canopy) matching the same balcony/canopy elevation marker seen at the equivalent spot on the outlet plan (EE-06, page 61).",
+    "Room count matches the 3-bedroom-plus-bathroom upper floor confirmed on the mechanical M-02 sheet (page 63) and the structural room layout implied by the outlet plan EE-06 (page 60/61) -- นอน 1, นอน 2, นอน 3, and one shared ห้องน้ำ.",
+    "As with EE-03, individual single-letter switch-loop labels are genuinely difficult to resolve with full confidence at the available image resolution; several elements are flagged needs_human_review_zoom_required rather than asserted as certain.",
+    "This is the upper-floor counterpart to EE-03 (page58) -- together they cover this 2-story house's full lighting layout, unlike house #2's single-floor set which needed only one lighting-plan sheet."
+  ]
+}

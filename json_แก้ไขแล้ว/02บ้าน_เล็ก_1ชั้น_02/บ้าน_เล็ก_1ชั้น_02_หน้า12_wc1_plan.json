@@ -1,0 +1,32 @@
+{
+  "png": "12",
+  "doc_page": 10,
+  "discipline": "architecture",
+  "sheet_code": "A-10",
+  "sheet_name": "แปลนห้องน้ำ WC.1",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า12.png",
+  "view_title": "แปลนห้องน้ำ WC.1",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/02บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "ห้องน้ำ_WC1", "element_type": "room", "count": 1, "grid_ref": "E-D x 1'-1'' (matches ห้องน้ำ1 on floor plan หน้า06)", "dimension_m": "2.70 (E-D span) x 1.80/1.00 (width, sub-split 0.90+0.10+0.80+0.50+0.40=2.70 depth-wise)", "dimension_breakdown_width_m": [1.00, 1.80], "dimension_breakdown_depth_m": [0.90, 0.10, 0.80, 0.40, 0.50], "confidence_score": 1, "confidence_flags": ["CORRECTED_2026-07-16_by_user_the_1.00/1.80_width_sub-split_is_the_direct_source_of_new_dummy_grids_1'(x=-1.0,_i.e._1'_to_grid1=1.00)_and_1''(x=1.8,_grid1_to_1''=1.80)_added_to_หน้า00_gridline.json", "PRE-EXISTING_QUESTION_NOT_YET_RESOLVED_this_round_the_dimension_m_field's_'2.70_(E-D_span)'_label_conflicts_with_the_grid_master's_actual_E-D_distance_of_2.0m_(E=4.0,D=6.0)_-_the_2.70_figure_may_actually_be_a_second_width_reading_from_a_different_reference_point_rather_than_true_depth_flagging_for_human_review_rather_than_silently_reinterpreting"] },
+    { "element_id": "อาบน้ำ_zone", "element_type": "shower_zone", "count": 1, "grid_ref": "within ห้องน้ำ_WC1, left side (toward grid1)", "level_m": 0.48, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "ห้องน้ำ1_zone", "element_type": "room_zone", "count": 1, "grid_ref": "within ห้องน้ำ_WC1, right side", "level_m": 0.50, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "WC.1_fixture", "element_type": "sanitary_fixture", "count": 1, "grid_ref": "within ห้องน้ำ_WC1, center-right of the room", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "LAV.2_fixture", "element_type": "sanitary_fixture", "count": 1, "grid_ref": "within ห้องน้ำ_WC1, far right, ~E", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "FD_floor_drains", "element_type": "fitting", "count": 2, "grid_ref": "one near the shower/SW. zone, one near the WC.1 zone", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required", "exact_floor_drain_positions_are_small_symbols_at_this_resolution"] },
+    { "element_id": "floor_slope", "element_type": "note", "description": "Two 'ลาดเอียง 1:200' (1:200 floor slope) arrows shown, directing floor drainage toward the floor drains.", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "door_1", "element_type": "door_reference", "description": "Door callout '1' near bottom-right of the room (diamond icon '1/A-08' style callout referencing the section sheet)", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "window_2", "element_type": "window_reference", "description": "Window callout '2' at the top wall, near gridF/room corner", "confidence_score": 0.7, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "This 1:25 detail plan of the WC.1 bathroom shares sheet A-10 with the fixture symbol legend (_หน้า12_symbol_legend.json) and the fixture mounting-height elevation strip (_หน้า12_fixture_height_schedule.json).",
+    "This room corresponds to ห้องน้ำ1 on the architectural floor plan (หน้า06); this sheet is the scaled 1:25 detail superseding that floor-plan-level box.",
+    "Section cut arrows '1' and '2' printed on this plan reference the section views on A-11 (หน้า13) — see _หน้า13_wc1_side_profile1.json / _หน้า13_wc1_side_profile2.json.",
+    "Overall room span (2.70m between gridE-D) matches the master grid exactly; the internal width sub-split (1.00/1.80, further broken into 0.90+0.10+0.80+0.40+0.50 style dimension chains) is read at medium confidence given the small print at this detail scale.",
+    "FLAGGED_2026-07-16: while cascading the new dummy grids 1'/1'' into this file, noticed the '2.70 (E-D span)' claim in the room's dimension_m field does not actually match the grid master's real E-D distance (2.0m, E=4.0 to D=6.0). The 1.00/1.80 width sub-split cleanly matches the new dummy grids 1'/1'' (2.80 total, close to 2.70), so '2.70' may in fact be a second width reading, not depth -- not resolved this round, left as pre-existing data for human review rather than silently reinterpreted."
+  ]
+}

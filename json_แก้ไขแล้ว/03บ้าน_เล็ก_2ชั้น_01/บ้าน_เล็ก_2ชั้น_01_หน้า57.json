@@ -1,0 +1,42 @@
+{
+  "png": "57",
+  "doc_page": 55,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า57.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-02",
+  "sheet_name": "รายละเอียดแผงเมนสวิตช์",
+  "pattern": "schedule",
+  "view_title": "รายละเอียดแผงเมนสวิตช์ (LP) - single-line diagram",
+  "drawing_no": "EE-58079",
+  "service": {
+    "meter": "kWH METER 15(45)A 1 PHASE",
+    "service_conductor": "2-10 IEC 01 Ø25mm. uPVC (นอกอาคารเดินลอย -- exposed exterior run)",
+    "grounding": "หลักดินแท่งเหล็กทองแดงบอนด์ ขนาด Ø14.2 mm. ยาว 2.40 m.",
+    "ground_conductor": "1-10 IEC 01-20 mm. PVC",
+    "main_breaker": "50AT, 2P, IC 10kA"
+  },
+  "panel_id": "LP",
+  "circuits": [
+    {"circuit_no": 1, "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-Ø15mm.uPVC", "description": "แสงสว่าง (lighting)", "cross_ref_note": "matches '1/LP' tag on EE-03 (ground-floor lighting plan)"},
+    {"circuit_no": 2, "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-Ø15mm.uPVC", "description": "แสงสว่าง (lighting)", "cross_ref_note": "matches '2/LP' tag on EE-04 (upper-floor lighting plan)"},
+    {"circuit_no": 3, "breaker": "RCBO 16AT,1P IC 6kA, IΔn 30mA", "wire": "2-2.5/G2.5 IEC 01-Ø15mm.uPVC", "description": "เต้ารับ (receptacle outlets)", "cross_ref_note": "matches '3/LP' tag on EE-05 (ground-floor outlet plan)"},
+    {"circuit_no": 4, "breaker": "RCBO 16AT,1P IC 6kA, IΔn 30mA", "wire": "2-2.5/G2.5 IEC 01-Ø15mm.uPVC", "description": "เต้ารับ (receptacle outlets)", "cross_ref_note": "matches '4/LP' tag on EE-06 (upper-floor outlet plan)"},
+    {"circuit_no": 5, "breaker": "RCBO 20AT,1P IC 6kA, IΔn 30mA", "wire": "2-4/G2.5 IEC 01-Ø15mm.uPVC", "description": "กล่องต่อสายเครื่องทำน้ำอุ่น (water-heater junction box)", "cross_ref_note": "matches '5/LP' tag on EE-05 (ground-floor bathroom WH box)"},
+    {"circuit_no": 6, "breaker": "RCBO 20AT,1P IC 6kA, IΔn 30mA", "wire": "2-4/G2.5 IEC 01-Ø15mm.uPVC", "description": "กล่องต่อสายเครื่องทำน้ำอุ่น (water-heater junction box)", "cross_ref_note": "matches '6/LP' tag on EE-06 (upper-floor bathroom WH box)"},
+    {"circuit_no": 7, "breaker": null, "wire": null, "description": "ว่าง (spare)"},
+    {"circuit_no": 8, "breaker": null, "wire": null, "description": "ว่าง (spare)"},
+    {"circuit_no": 9, "breaker": null, "wire": null, "description": "ว่าง (spare)"},
+    {"circuit_no": 10, "breaker": null, "wire": null, "description": "ว่าง (spare)"}
+  ],
+  "notes": ["1. RCBO หมายถึง เซอร์กิตเบรกเกอร์ชนิดมีเครื่องตัดไฟรั่วในตัว"],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "This is a single-line/panel schedule diagram rather than a tabular schedule -- circuit_no/breaker/wire/description fields used to fit the data cleanly, same convention as house #1/#2's equivalent sheet.",
+    "This panel design differs from house #1/#2's (which served a single-story house with 1 lighting + 1 receptacle + 1 WH circuit, 6 active positions total including main): this is a 6-circuit-active 10-way panel with the lighting/receptacle/WH circuits doubled -- one of each pair per floor (odd numbers 1/3/5 = ground floor, even numbers 2/4/6 = upper floor), which was confirmed by cross-referencing each circuit's wire spec and description against the '/LP' circuit tags actually printed on EE-03 through EE-06.",
+    "The printed circuit-number row under the breakers reads '1 2 3 4 [gap] 6 7 8 9 10' -- the numeral '5' itself is faint/not clearly legible in the source image (likely obscured near the WH graphic), but a 6th active breaker position clearly exists between position 4 and the visible '6' (matching the 6th wire-drop/description label '2-4/G2.5...' + 'กล่องต่อสายเครื่องทำน้ำอุ่น'), so it has been read as circuit 5 by position and by matching against the '5/LP' tag seen on EE-05. Flagged as the single lowest-confidence read on this sheet.",
+    "Load wattage (load_watts) is not printed anywhere on this sheet, so it is omitted rather than estimated/fabricated.",
+    "Service/panel spec (kWh meter rating, main breaker 50AT 2P IC10kA, ground rod size ø14.2mm/2.40m, RCBO note) is verbatim-identical to house #1/#2's EE-02 -- same standard 1-phase residential LP panel design reused across the drawing family, just with more active circuits here to serve 2 floors.",
+    "No grid/floor-plan content on this sheet -- it is purely the panel single-line diagram."
+  ]
+}

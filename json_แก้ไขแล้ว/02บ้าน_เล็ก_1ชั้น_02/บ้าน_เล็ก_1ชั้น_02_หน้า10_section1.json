@@ -1,0 +1,29 @@
+{
+  "png": "10",
+  "doc_page": 8,
+  "discipline": "architecture",
+  "sheet_code": "A-08",
+  "sheet_name": "รูปตัด 1",
+  "pattern": "side_profile",
+  "view_title": "รูปตัด 1",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า10.png",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/02บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "roof_structure_ref", "element_type": "roof_frame_reference", "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)", "description": "โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง (roof framing detailed on structural drawings, not shown here)", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "ห้องน้ำ1_cut", "element_type": "room_cut", "count": 1, "grid_ref": "~1", "level_m": 0.50, "description": "Bathroom cut showing WC.1/LAV.2 fixture heights (2.70m wall height dim), door/window callouts 1, 2", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "พักผ่อน_cut", "element_type": "room_cut", "count": 1, "grid_ref": "2-3", "level_m": 0.60, "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "ห้องน้ำ2_cut", "element_type": "room_cut", "count": 1, "grid_ref": "~4", "level_m": 0.50, "description": "Bathroom cut mirroring ห้องน้ำ1, same 2.70m wall height", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "levels", "element_type": "datum", "description": "ระดับหลังเสาบน +5.05, ระดับหลังเสาล่าง +4.05, ระดับหลังคาน +3.75, ระดับพื้นชั้น 1 +0.60, ระดับอ้างอิง ±0.00", "confidence_score": 0.85, "confidence_flags": ["the_+5.05_and_+4.05_purlin/post-top_levels_are_new_relative_to_the_roof_plan_(which_only_showed_+3.75_and_+3.65_eave_levels)_-_read_as_internal_roof_structure_reference_levels_above_the_wall-top_+3.75_beam_line_not_independently_reconciled_against_the_roof_slope_geometry"] },
+    { "element_id": "หลังคา_คสล_canopy_ends", "element_type": "concrete_canopy", "count": 2, "grid_ref": "~1, ~4, level +3.75", "level_m": 3.75, "material_no": 5, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "overall_width", "element_type": "dimension", "description": "Bottom dimension chain (right to left, grid4 to grid1): 1.30 | 3.20 | 3.20 | 3.20 | 1.30, matching elevation 3/4's grid span reading", "confidence_score": 0.8, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.77,
+  "confidence_flags": [],
+  "warnings": [
+    "This building cross-section (รูปตัด 1) cuts through ห้องน้ำ1, พักผ่อน, and ห้องน้ำ2 along the grid row (roughly parallel to D-E), in the 4-3-2-1 direction; roof framing itself is deferred to the structural drawings (outside this extraction's architecture-only page range).",
+    "Sibling section รูปตัด 2 is in _หน้า10_section2.json.",
+    "New level datums +5.05 (ระดับหลังเสาบน) and +4.05 (ระดับหลังเสาล่าง) appear on this sheet for the first time in the extraction — not seen on the roof plan (A-05) or elevations (A-06/A-07), which only referenced +3.75/+3.65. Read faithfully as printed but not reconciled against roof slope geometry; likely internal roof-post/purlin top levels above the +3.75 wall-beam line, flagged for human review if precise roof-height coordination is needed.",
+    "Interior fixture wall-height dims (2.70m) match exactly what is independently confirmed on the WC.1/WC.2 detail sheets (A-10/A-11/A-12/A-13)."
+  ]
+}

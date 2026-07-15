@@ -1,0 +1,40 @@
+{
+  "png": "48",
+  "doc_page": 46,
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า48.png",
+  "discipline": "mechanical",
+  "sheet_code": "M-01",
+  "sheet_name": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "pattern": "plan",
+  "view_title": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "drawing_no": "M-58109",
+  "sheet_total": 1,
+  "scale": "1:100",
+  "schema_note": "Classified as pattern 'plan' rather than 'schedule' -- this sheet is a spatial equipment-location layout (each AC/fan/grille placed on the floor plan at its actual room position), not a tabular schedule of specs. Matches the pattern choice used for house #1's equivalent M-01 sheet (บ้าน_เล็ก_1ชั้น_01_หน้า37.json), which is the only other mechanical-discipline reference available.",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_02_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3", "4"],
+  "grid_rows": ["F", "E", "D", "C", "B", "A"],
+  "rooms_shown": ["ซักล้าง", "ห้องครัว", "ห้องนอน 2", "ห้องนอน 1", "ห้องน้ำ (x2)", "ทานอาหาร", "พักผ่อน", "ห้องนอน 3", "เฉลียง", "จอดรถ"],
+  "elements": [
+    {"element_type": "propeller_ventilation_fan", "description": "PROPELLER FAN TYPE (400 CFM.)", "room": "ซักล้าง", "quantity": 1, "confidence_score": 0.9, "confidence_flags": []},
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 12,000 BTU.", "room": "ห้องนอน 2", "quantity": 1, "confidence_score": 0.9, "confidence_flags": []},
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 12,000 BTU.", "room": "ห้องนอน 1", "quantity": 1, "confidence_score": 0.9, "confidence_flags": []},
+    {"element_type": "wall_type_air_conditioner", "description": "WALL TYPE, ขนาด 12,000 BTU.", "room": "ห้องนอน 3", "quantity": 1, "confidence_score": 0.9, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (40 CFM.), 2 units near the top of the plan straddling the ซักล้าง/ห้องครัว and ห้องนอน 2/ห้องนอน 1 corridor area, each paired 1-to-1 with a 4\"x4\" exhaust grille directly above it", "room": "ซักล้าง/ห้องครัว/ห้องนอน 2/ห้องนอน 1 corridor area (near row F/E)", "quantity": 2, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (40 CFM.), 1 unit near the wall between พักผ่อน and ห้องนอน 3, paired with a 4\"x4\" exhaust grille (same location as the WALL TYPE AC serving ห้องนอน 3)", "room": "พักผ่อน/ห้องนอน 3 boundary", "quantity": 1, "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (120 CFM.), inside the bathroom adjoining ซักล้าง/ห้องครัว, paired with a 6\"x6\" exhaust grille", "room": "ห้องน้ำ (adjoining ซักล้าง/ห้องครัว side)", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (120 CFM.), inside the bathroom adjoining ห้องนอน 1, paired with a 6\"x6\" exhaust grille", "room": "ห้องน้ำ (adjoining ห้องนอน 1 side)", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 4\"x4\", paired 1-to-1 with each of the three 40 CFM ceiling fans", "quantity": 3, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 6\"x6\", paired 1-to-1 with each of the two 120 CFM ceiling fans", "quantity": 2, "confidence_score": 0.85, "confidence_flags": []}
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "GRID CONFIRMATION: the printed dimension chain on this page (3.20x3=9.60 horizontal; 4.00+2.00+3.60+1.80+3.15=14.55 vertical) matches the building grid master exactly, same as EE-03/EE-04.",
+    "This house has 3 bedrooms (vs house #1's 2), so this sheet has one more wall-type AC unit (3x 12,000 BTU here, vs house #1's 12,000+9,000 BTU pair) and one more 40 CFM ceiling fan/4x4 grille pair to serve the third bedroom.",
+    "This is the only mechanical sheet in the drawing set (M-01 of 1, per title block drawing no. 'M-58109'), covering recommended AC/ceiling-fan/exhaust-grille placement for the ground floor -- same scope as house #1's M-01.",
+    "Room-to-equipment pairing for the two 40 CFM units near the top of the plan is a best-effort reading based on physical proximity/leader-line position on the drawing, not an explicit per-room label on every unit -- flagged as moderate rather than full confidence.",
+    "No cost/BTU-sizing calculation basis (e.g. room area used to size the 12,000 BTU units) is shown on this sheet -- it only presents the recommended equipment and location, consistent with it being a mechanical layout plan rather than a load-calculation sheet.",
+    "This is the last page of the assigned range (44-48)."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "png": "62",
+  "doc_page": 60,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า62.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-04",
+  "sheet_name": "แปลนไฟฟ้าแสงสว่าง ชั้นบน",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "แปลนไฟฟ้าแสงสว่าง ชั้นบน",
+  "drawing_no": "EE 58080",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dims_observed": {
+    "x_chain_m": [0.60, 5.00, 3.50, 0.60],
+    "x_overall_1_to_3_m": 8.50,
+    "y_chain_m": [1.10, 2.70, 2.30, 3.50, 1.50],
+    "y_overall_E_to_A_m": 10.00,
+    "note": "Same named grid as EE-03 (1/2/3 horizontal at 0/5.0/8.5, E/D/C/B/A vertical at 0/2.7/5.0/8.5/10.0), cross-validated again here. Only the leading eave dimension above E differs (1.10m here vs 2.00m on EE-03 ground floor) since the 2nd-floor roof overhang differs from the ground-floor eave -- expected, not a discrepancy."
+  },
+  "rooms_shown": ["นอน 3", "นอน 2", "นอน 1", "โถง", "แต่งตัว", "ระเบียง", "ห้องน้ำ (ensuite ติด นอน 3)", "ห้องน้ำ (ติด แต่งตัว/นอน 1)"],
+  "elements": [
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) labeled 'j' in นอน 3, one near the door/window side, one lower near the partition wall shared with the ensuite bathroom", "room": "นอน 3", "quantity": 2, "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "ceiling_downlight_point", "description": "Downlight labeled 'i' inside the small ensuite bathroom between นอน 3 and นอน 2, next to an architectural toilet-fixture icon (plumbing symbol, not itself electrical)", "room": "ห้องน้ำ (ensuite ติด นอน 3)", "quantity": 1, "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "switch_cluster", "description": "A cluster labeled 'e,f' at the partition wall between the ensuite bathroom and นอน 2 -- read as a 2-gang switch controlling loop e (นอน 2 fixtures) and loop f (นอน 2 fixtures)", "room": "นอน 2 partition wall", "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) labeled 'e' near the top of นอน 2", "room": "นอน 2", "quantity": 2, "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "ceiling_downlight_point", "description": "Downlights (⊕) labeled 'f' in นอน 2 -- one mid-room, two more toward the bottom of the room", "room": "นอน 2", "quantity": 3, "confidence_score": 0.6, "confidence_flags": ["count_approximate"]},
+    {"element_type": "switch_cluster", "description": "A cluster labeled 'g,h' near the top of the staircase ('ขึ้น') in โถง -- read as a 2-gang switch for hall/stair lighting circuits", "room": "โถง / staircase", "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "ceiling_downlight_point", "description": "Symbol labeled 'g' near the staircase with a '2/LP' circuit tag printed immediately beside it, marking this as the feed point for the upper-floor lighting circuit (panel LP, circuit 2)", "room": "โถง / staircase", "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "wall_switch_or_downlight", "description": "Symbol labeled 'dh' near the bottom of the stair landing in โถง -- combined label unclear, possibly two adjacent marks 'd' and 'h' merged at this resolution", "room": "โถง / staircase landing", "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required", "label_illegible"]},
+    {"element_type": "distribution_panel", "description": "A boxed 'LP' panel glyph drawn near the โถง/นอน 1 boundary -- likely the physical mounting location of the same LP panel detailed on EE-02, placed on this upper floor near the hall", "room": "โถง / นอน 1 boundary", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) labeled 'c' inside the bathroom adjacent to แต่งตัว/นอน 1, next to an architectural toilet-fixture icon", "room": "ห้องน้ำ (ติด แต่งตัว/นอน 1)", "quantity": 2, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "ceiling_downlight_point", "description": "Downlight labeled 'd' in แต่งตัว (dressing room)", "room": "แต่งตัว", "quantity": 1, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) labeled 'a' near the แต่งตัว/นอน 1 boundary", "room": "นอน 1", "quantity": 2, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "ceiling_downlight_point", "description": "Four downlights (⊕) labeled 'b' in นอน 1, two mid-room and two near the exterior window wall", "room": "นอน 1", "quantity": 4, "confidence_score": 0.6, "confidence_flags": ["count_approximate"]},
+    {"element_type": "unknown_symbol", "description": "Two marks labeled 'k' near the นอน 1 / ระเบียง boundary, at the bottom of the plan -- glyph not confidently matched to any symbol on the EE-01 legend; may relate to a ceiling fan or AC-adjacent fixture rather than a lighting point", "room": "นอน 1 / ระเบียง boundary", "quantity": 2, "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required", "unclear_symbol", "cross_check_against_mechanical_sheet"]}
+  ],
+  "confidence_score": 0.58,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID: named grid columns/rows match the master file and EE-03 exactly (see grid_dims_observed note).",
+    "This is a 2-story house so this sheet only covers the upper floor; the corresponding ground-floor lighting plan is EE-03 (page 61, separate file).",
+    "Several background roofline/level annotations are printed on this sheet but are architectural/structural, not electrical, so were excluded from 'elements': dashed 'แนวหลังคา' (roof edge line, appears ~4 times around the plan perimeter) and 'หลังคา ค.ส.ล.' (RC roof slab) level markers boxed as '5 +3.65 ⊖' (top-left, กันสาด/canopy) and '5 +3.75 ⊖' (x2, left and right sides) -- these are carried over from the architectural/roof base drawing this electrical plan was traced onto.",
+    "The 'k' symbol (x2, near นอน 1/ระเบียง boundary) does not match any entry on the EE-01 symbol legend read on page 59 -- flagged for cross-check against the mechanical sheets (pages 65-66) in case it denotes an AC or ventilation-related point rather than a lighting fixture.",
+    "A second 'LP' panel glyph appears on this floor plan in addition to the panel schedule already detailed on EE-02 (page 60) -- read as the same physical panel's mounted location rather than a second panel, but not cross-confirmed against EE-02's title block (which doesn't specify a floor).",
+    "Single-letter room-fixture labels are legible as symbols but fine switch-loop wiring/label text is hard to resolve at the available image resolution -- several elements flagged needs_human_review_zoom_required, consistent with the EE-03 (page 61) extraction for this house."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "png": "24",
+  "doc_page": 22,
+  "discipline": "architecture",
+  "sheet_code": "A-22",
+  "sheet_name": "แบบขยายบันได ST.3",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า24.png",
+  "views": ["view1_st3_section (this file)", "view2_st3_railing_detail (_view2_st3_railing_detail.json)", "view3_st3_tread_riser_detail (_view3_st3_tread_riser_detail.json)"],
+  "view_title": "รูปตัดบันได ST.3 (main interior stair full section)",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "st3_levels", "element_type": "level_reference", "levels_m": { "reference_datum": 0.00, "floor1": 0.60, "landing": 2.35, "floor2": 3.75 }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "st3_lower_flight", "element_type": "stair_flight", "description": "lower flight, floor1 to landing", "step_count": 12, "riser_height_m": 0.175, "total_rise_m": 2.10, "confidence_score": 0.88, "confidence_flags": [] },
+    { "element_id": "st3_upper_flight", "element_type": "stair_flight", "description": "upper flight, landing to floor2", "step_count": 6, "riser_height_m": 0.175, "total_rise_m": 1.05, "confidence_score": 0.88, "confidence_flags": [] },
+    { "element_id": "st3_run_dims", "element_type": "dimension", "values_m": [0.25, 0.25, 0.25, 0.25, 0.25, 0.25], "run_note": "11@0.25=2.75", "plan_width_dims_m": [1.20, 2.75, 1.05], "total_width_m": 5.00, "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "st3_hall_floor1", "element_type": "room", "description": "ห้องน้ำ under-stair, box '3 +0.20 2'", "level_m": 0.20, "floor_material_no": 3, "opening_ref": "2", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "st3_hall_floor1_lobby", "element_type": "room", "description": "โถง, box '1 +0.60 1'", "level_m": 0.60, "floor_material_no": 1, "opening_ref": "1", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "st3_hall_floor2_lobby", "element_type": "room", "description": "โถง, box '2 +3.75 1'", "level_m": 3.75, "floor_material_no": 2, "opening_ref": "1", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "detail_callout_1", "element_type": "detail_reference", "description": "'ดูแบบขยาย 1' pointing to the railing-top detail (view2, expansion 1) at the upper landing newel post", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "detail_callout_2", "element_type": "detail_reference", "description": "'ดูแบบขยาย 2' pointing to a second detail (not on this page -- likely a subsequent sheet)", "confidence_score": 0.65, "confidence_flags": ["referenced_detail_2_not_found_on_this_page"] },
+    { "element_id": "detail_callout_3", "element_type": "detail_reference", "description": "circled '3' at the base of the lower flight, referencing the tread/riser detail (view3, expansion 3) on this same page", "confidence_score": 0.72, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "CONFIRMS the ST.3/ST2 naming cross-reference flagged on A-21 (หน้า23): this section's rise breakdown (12 steps @0.175=2.10m floor1-to-landing, 6 steps @0.175=1.05m landing-to-floor2, total 3.15m) is an EXACT match to structural sheets S-11 and S-12's ST2 stair (same step counts, same riser height, same total rise). This is conclusive confirmation that architecture's 'ST.3' and structural's 'ST2' are the same physical stair, just named differently between the two drawing disciplines in this document set.",
+    "One of 3 views on this page; siblings are the railing detail (_view2_st3_railing_detail.json) and tread/riser detail (_view3_st3_tread_riser_detail.json).",
+    "'ดูแบบขยาย 2' (see expansion detail 2) is referenced but no matching detail view is visible on this page -- may appear on a later architecture sheet not yet reviewed; flagged rather than assumed missing."
+  ]
+}

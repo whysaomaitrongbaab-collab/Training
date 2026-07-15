@@ -1,0 +1,44 @@
+{
+  "png": "05",
+  "doc_page": 3,
+  "discipline": "architecture",
+  "sheet_code": "A-03",
+  "sheet_name": "ผังบริเวณ",
+  "pattern": "site_plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า05.png",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/02บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า00_gridline.json",
+  "lot_dimensions": {
+    "min_lot_width_m": 15.60,
+    "min_lot_width_breakdown_m": [1.00, 3.20, 3.20, 3.20, 1.00],
+    "min_lot_width_note": "ต้องการที่ดินกว้างอย่างน้อย = 15.60 ม. — matches grid 1-4 (9.60m, same as building master grid) plus a 1.00m setback strip labeled 'A' on each side",
+    "min_lot_depth_m": 19.65,
+    "building_footprint_depth_m": 14.55,
+    "min_lot_depth_note": "ต้องการที่ดินลึกอย่างน้อย = 19.65 ม. printed alongside the 14.55m building-footprint depth (F-A, matches master grid exactly: 4.00+2.00+3.60+1.80+3.15). The extra 5.10m between 19.65 and 14.55 is not broken down by an explicit dimension chain on this sheet — inferred to cover the front setback strip 'A' plus rear/road-side clearance 'B' referenced in the notes below, but the exact split is not printed.",
+    "confidence_score": 0.65,
+    "confidence_flags": ["19.65m_total_depth_breakdown_beyond_the_14.55m_building_footprint_not_explicitly_dimensioned_on_this_sheet_needs_human_review"]
+  },
+  "elements": [
+    { "element_id": "building_footprint", "element_type": "building_outline", "description": "Same room layout as the floor plan (หน้า06/A-04): ซักล้าง, ครัว, นอน1, นอน2, นอน3, ห้องน้ำ1, ห้องน้ำ2, ทานอาหาร, พักผ่อน, เฉลียง, จอดรถ — reproduced here at the site-plan scale (1:100) seated within the lot boundary, not re-itemized in this file (see _หน้า06_floor_plan.json for the authoritative room list/levels).", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "ดินถม_north", "element_type": "grading_note", "description": "'ดินถม ±0.00' hatched/labeled zone at the north edge (top) of the site, behind the ซักล้าง/ครัว wing", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "ปรับระดับดินถม_south", "element_type": "grading_note", "description": "'ปรับระดับดินถม ±0.00' zone at the south end near grid A, adjacent to a hatched triangular grading wedge before the road", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "ปรับระดับ_east", "element_type": "grading_note", "description": "'ปรับระดับดินถม' small zone at the east edge near จอดรถ/grid4-B corner", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "ถนนสาธารณะ", "element_type": "road", "description": "Public road (ถนนสาธารณะ ±0.00) running along the south edge of the lot, below grid A", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "แนวเขตที่ดิน", "element_type": "lot_boundary", "description": "Dash-dot lot boundary line ('<<แนวเขตที่ดิน>>') drawn around the full 15.60 x 19.65 lot, offset from the building footprint on all 4 sides", "confidence_score": 0.85, "confidence_flags": [] }
+  ],
+  "notes": [
+    "ผังบริเวณนี้เป็นเพียงตัวอย่างเพื่อประมาณราคาก่อสร้างส่วนประกอบอาคารเท่านั้น ส่วนรายละเอียดของสถานที่จริง ให้กำหนดรายละเอียดขณะก่อสร้าง",
+    "สายเมนไฟฟ้าให้เข้าทางด้านหน้า",
+    "A = ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 2 ม. หรือตามที่กฎหมายกำหนด",
+    "B = ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 3 ม. หรือตามที่กฎหมายกำหนด",
+    "รางระบายน้ำให้ต่อลงบ่อพักภายนอก หรือที่กำหนดให้",
+    "ตำแหน่ง ถังบำบัดน้ำเสีย บ่อพักน้ำทิ้ง บ่อดักไขมัน แนวท่อ น้ำดี น้ำเสีย และท่อโสโครก ให้ดูแบบสุขาภิบาล"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet (A-03) is the site-placement plan, distinct from the room-level floor plan (A-04, หน้า06) — same building outline shown at 1:100, but this sheet's own content is the lot boundary, setback labels A/B, grading notes, and road, hence room-level detail is deliberately not repeated here.",
+    "Content and notes wording matches house 1's equivalent A-03 sheet almost exactly (same government program template, same setback rule text) aside from house-specific lot dimensions (15.60 x 19.65 here vs house 1's different footprint).",
+    "The 19.65m total lot depth vs 14.55m building footprint depth gap (5.10m) is not broken into an explicit printed dimension chain on this sheet — flagged for human review rather than guessed; likely covers a front road-side setback plus a rear clearance per the A/B notes, but the exact split between them is not confirmed."
+  ]
+}

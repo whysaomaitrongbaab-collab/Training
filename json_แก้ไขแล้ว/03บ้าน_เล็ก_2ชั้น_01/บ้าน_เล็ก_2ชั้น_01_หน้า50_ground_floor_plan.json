@@ -1,0 +1,74 @@
+{
+  "png": "50",
+  "doc_page": 48,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า50.png",
+  "discipline": "sanitary",
+  "sheet_code": "SN-05",
+  "sheet_name": "แปลนระบบสุขาภิบาลพื้นชั้นล่าง",
+  "pattern": "plan",
+  "view_title": "แปลนระบบสุขาภิบาลพื้นชั้นล่าง",
+  "drawing_no": "SN-58080",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1'", "1", "2", "3", "3'"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dimensions_as_printed": {
+    "x_chain_m": [1.10, 3.50, 3.00, 0.50],
+    "x_bracket_m": {"span": "grid1-grid3", "value": 6.50},
+    "y_chain_m_top_to_bottom": [1.50, 3.00, 2.20, 4.00, 1.50, 2.05],
+    "y_bracket_m": {"span": "gridE-gridA", "value": 10.70},
+    "note": "y_chain_m read top-to-bottom as: 1.50 (overhang above row E) / 3.00 (E-D) / 2.20 (D-C) / 4.00 (C-B) / 1.50 (B-A) / 2.05 (overhang below row A). 3.00+2.20+4.00+1.50=10.70 matches the printed E-A bracket exactly. CONFIRMED against the grid master (built by a parallel process during this same extraction session, after this page was first read): master has 1(0.0)-2(3.5)-3(6.5) and dummy 1'(-1.1)/3'(7.0) matching the 1.10/0.50 overhang dimensions exactly; and E(0.0)-D(3.0)-C(5.2)-B(9.2)-A(10.7), whose consecutive differences (3.0, 2.2, 4.0, 1.5) match this page's y_chain_m segments exactly. grid_source updated post-hoc once the master became available."
+  },
+  "rooms_shown": [
+    {"name": "ซักล้าง", "level_m": "+0.20"},
+    {"name": "ห้องครัว", "level_m": "+0.60"},
+    {"name": "ทานอาหาร", "level_m": "+0.60"},
+    {"name": "เก็บของ", "level_m": "+0.60"},
+    {"name": "โถง", "level_m": "+0.60", "note": "contains the stairwell (steps numbered 7-6-5-4-3-2-1, labeled 'ขึ้น' = going up toward the upper floor)"},
+    {"name": "ห้องน้ำ 1", "level_m": "+0.50"},
+    {"name": "พักผ่อน", "level_m": "+0.60"},
+    {"name": "จอดรถ", "level_m": "+0.20"},
+    {"name": "เฉลียง", "level_m": "+0.50"},
+    {"name": "ขึ้น", "level_m": "+0.20", "note": "small entry step-up area at bottom-left, separate from the main stairwell in โถง"},
+    {"name": "(unlabeled hatched area)", "level_m": "±0.00", "note": "hatched apron/driveway area at bottom-right of plan near จอดรถ, no room name printed besides the ±0.00 level mark"}
+  ],
+  "elements": [
+    {"element_type": "water_storage_tank", "description": "ถังเก็บน้ำสำเร็จรูปแสตนเลส ขนาดจุ 1 ลบ.ม. มาตรฐาน มอก.989 พร้อมขาตั้งครบชุด วางบนพื้นคอนกรีตเสริมเหล็กหนา 0.10ม. เสริมเหล็ก Ø9มม. @0.20ม., with FLOAT VALVE Ø1/2\" at inlet", "grid_ref": "above E x 2-3 (north of building envelope)", "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "booster_pump", "description": "เครื่องสูบน้ำเพิ่มแรงดัน (BOOSTER PUMP, BP) ชนิดอัตโนมัติ ขนาดไม่น้อยกว่า 200 วัตต์ อัตราการสูบน้ำไม่น้อยกว่า 28 ลิตร/นาที ที่ความสูง 12 เมตร ผลิตภัณฑ์ MITSUBISHI, HITACHI, FUJIKA หรือเทียบเท่า", "grid_ref": "E x ~3, adjacent to ห้องครัว", "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "grease_trap", "description": "ถังดักไขมันสำเร็จรูป: ขนาดจุไม่น้อยกว่า 30 ลิตร, ผลิตภัณฑ์ AQUA, PP, DOS, SAN-PAC, HICLEAR หรือเทียบเท่า, การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต -- small circle symbol adjacent to ห้องครัว", "grid_ref": "E-D x ~3, next to ห้องครัว", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "septic_tank", "description": "ถังบำบัดน้ำเสียสำเร็จรูปชนิดเกรอะ-กรองไร้อากาศ (large hatched circle): ปริมาตรส่วนเกรอะไม่น้อยกว่า 1.0 ลบ.ม., ปริมาตรส่วนกรอง ไม่น้อยกว่า 0.25 ลบ.ม., ผลิตภัณฑ์ AQUA, PP, DOS, SAN-PAC, HICLEAR หรือเทียบเท่า", "grid_ref": "C-B x ~3, east side of building envelope", "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "catch_basin_or_manhole", "description": "X-in-square symbols (บ่อพักท่อระบายน้ำสำเร็จรูป ขนาด 0.40x0.40 ม. พร้อมฝา ค.ส.ล.) marking access points along the dashed perimeter storm-drain run -- counted approximately 8 around the building envelope: 2 along the top/north edge (near grid1 and grid2, one labeled 'จุดต้นท่อลึก 0.60 ม.'), 2 down the west edge (near row D and row B), 1 near the bottom-left corner (row A, near the Ø21/2\"RL rainwater-leader connection), 2 along the bottom/south edge (near grid1-2 and near grid3), and 1 near the water-meter connection bottom-right", "grid_ref": "perimeter, following the dashed storm-drain line around the building footprint (rows E-A, 1-3)", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required", "symbol_count_approximate"]},
+    {"element_type": "site_storm_drain_pipe", "description": "ท่อคอนกรีตท้องตลาด Ø0.20ม. ลาด 1:200 -- runs along the perimeter (top/north edge, west edge, and bottom/south edge), connecting the catch basins", "grid_ref": "perimeter, dashed line around the building footprint", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "cold_water_supply_pipe", "description": "Ø1/2\"CW label near ซักล้าง, short branch with a ก๊อกน้ำ (C.) tap symbol just above it", "grid_ref": "E x ~2, at ซักล้าง", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "cold_water_supply_pipe", "description": "second Ø1/2\"CW label near เฉลียง/จอดรถ boundary at bottom, short branch with a C. tap symbol", "grid_ref": "B-A x 2-3", "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "cold_water_riser", "description": "Ø3/4\"CW main riser running the full height of the plan along the east side (grid3 area), from the water meter at the bottom up through the booster pump to the water storage tank at top", "grid_ref": "along ~3, E-A and beyond (south of A)", "confidence_score": 0.75, "confidence_flags": []},
+    {"element_type": "rainwater_leader_pipe", "description": "Ø21/2\"RL (i.e. Ø2 1/2\" RL) label at bottom-left near เฉลียง, rainwater downpipe connecting to the perimeter storm drain, arrow pointing up", "grid_ref": "A x ~1, at เฉลียง", "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "water_meter", "description": "ชุดมาตรวัดน้ำ Ø1/2\" ( ค่าใช้จ่ายในการติดตั้งเป็นของผู้รับจ้างทั้งสิ้น ), at the very bottom of the plan feeding the Ø3/4\"CW riser", "grid_ref": "below A x ~3", "confidence_score": 0.7, "confidence_flags": []}
+  ],
+  "equipment_specs": {
+    "septic_tank": {
+      "type": "ถังบำบัดน้ำเสียสำเร็จรูปชนิดเกรอะ-กรองไร้อากาศ",
+      "grease_volume_min_cum": 1.0,
+      "filter_volume_min_cum": 0.25,
+      "acceptable_brands": ["AQUA", "PP", "DOS", "SAN-PAC", "HICLEAR", "หรือเทียบเท่า"],
+      "installation_note": "การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต"
+    },
+    "grease_trap": {
+      "type": "ถังดักไขมันสำเร็จรูป",
+      "volume_min_liters": 30,
+      "acceptable_brands": ["AQUA", "PP", "DOS", "SAN-PAC", "HICLEAR", "หรือเทียบเท่า"],
+      "installation_note": "การติดตั้งให้เป็นไปตามมาตรฐานผู้ผลิต"
+    }
+  },
+  "sibling_files": [],
+  "confidence_score": 0.75,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID MASTER: was not yet available when this page was first read (folder was empty at that point in the extraction session), so grid_source was initially set to null. A parallel background process built หน้า00_gridline.json (structural discipline, from S-02/S-03/S-04/S-05) during this same session; this page's grid info was updated post-hoc to reference it once confirmed consistent (see grid_dimensions_as_printed.note above). The X-1/X-3 dummy grids (1', 3') noted in the master are flagged there as provisional/not yet cross-checked against the architecture floor plan -- carried over here for awareness, not independently re-verified by this sanitary extraction.",
+    "This house's sanitary grid is only 3 columns (1,2,3) x 5 rows (E,D,C,B,A) -- smaller footprint than house #2's 4 columns x 6 rows, consistent with being a different house design (though also 2-story).",
+    "This sheet (SN-05) has NO sibling bathroom-detail inset (unlike house #2's SN-04, which combined the floor plan with a small-scale bathroom underfloor-piping inset) -- this house's index (page46) lists the bathroom detail as its own dedicated sheet, SN-07 (page52), confirmed by there being no second view/inset visible on this page.",
+    "Exact routing of individual small-diameter branch CW pipes into each room is difficult to trace precisely at this resolution; the count and exact position of every perimeter X-in-square catch-basin/access symbol (~8 counted) is best-effort/approximate, not measured coordinates -- flagged for zoom-review, consistent with how house #2's equivalent floor-plan page was handled.",
+    "Room level labels (+0.60, +0.50, +0.20, ±0.00) read with high confidence, all legible.",
+    "This ground-floor plan pairs with the upper-floor plan on the next sheet (SN-06, page51) -- see that file's own warnings for a level-label cross-check finding relevant to the SN-04 riser diagram (page49)."
+  ]
+}

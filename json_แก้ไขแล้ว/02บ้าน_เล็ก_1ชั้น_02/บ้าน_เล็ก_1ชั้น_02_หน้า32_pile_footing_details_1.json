@@ -1,0 +1,32 @@
+{
+  "png": "32",
+  "doc_page": 30,
+  "discipline": "structural",
+  "sheet_code": "S-11",
+  "sheet_name": "ขยายฐานราก F4,F6",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า32.png",
+  "view_title": "ขยายฐานราก F4,F6 (4-pile and 6-pile caps)",
+  "table_kind": "pile_footing_sections",
+  "schema_note": "Same custom-field convention as S-09 -- element_type:footing with dowel_bar/tie_bar/mat_bar. pile_count field added for pile-cap-specific data.",
+  "elements": [
+    { "element_id": "F4", "element_type": "footing", "footing_size_m": "0.85x0.85", "pile_count": 4,
+      "pedestal_size_mm": { "width": 200, "height": 200 },
+      "dowel_bar": { "count": 8, "dia_mm": 12, "type": "RB", "note": "4+4 Ø12mm" },
+      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ (single wrap tie)" },
+      "cap_thickness_m": 0.25,
+      "confidence_score": 0.85, "confidence_flags": ["footing_size_derived_from_printed_dims_0.20+0.225+0.225+0.20=0.85"] },
+    { "element_id": "F6", "element_type": "footing", "footing_size_m": "1.30x0.85", "pile_count": 6,
+      "pedestal_size_mm": { "width": 200, "height": 200 },
+      "dowel_bar": { "count": 10, "dia_mm": 12, "type": "RB", "note": "5Ø12mm + 5Ø12mm printed as two separate lines -- read as top and bottom layer of a 2-layer mat, 10 bars total" },
+      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ (single wrap tie)" },
+      "cap_thickness_m": 0.25,
+      "confidence_score": 0.7, "confidence_flags": ["needs_human_review_zoom_required", "dowel_bar_count_interpretation_uncertain_two_5Ø12mm_labels_could_mean_10_total_or_a_duplicate_label_for_the_same_5_bars"] }
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "F6's dowel bar count (10 vs. possibly just 5) needs human zoom review -- the drawing shows '5Ø12มม.' printed twice with separate leader lines, which could denote a top layer of 5 and a bottom layer of 5 (10 total, consistent with a 6-pile cap needing more reinforcement than the 4-pile F4's 8 bars), or could be two leaders pointing to the same single layer of 5 bars from different angles. Recorded as 10 with a confidence flag rather than guessing silently."
+  ]
+}

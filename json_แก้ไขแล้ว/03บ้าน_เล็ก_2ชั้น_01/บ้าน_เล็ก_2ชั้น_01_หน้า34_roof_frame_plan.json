@@ -1,0 +1,29 @@
+{
+  "png": "34",
+  "doc_page": 32,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แปลนโครงสร้างหลังคา, ขยาย 1",
+  "pattern": "roof_plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า34.png",
+  "view_title": "แปลนโครงสร้างหลังคา + ขยาย 1 (purlin-rafter hanger detail)",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/03บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "schema_note": "roof_plan is a draft pattern per spec section 1 (#12) -- light-gauge cold-formed steel purlins/rafters, not rebar. Roof frame covers the full grid span 1-3 with rafters at every named grid column (no rafter shown in the row-E dummy extension bay, consistent with S-06's absence there too).",
+  "steel_members": [
+    { "member_type": "purlin", "thai_name": "แป", "profile": "C 100x50x20 mm", "thickness_mm": 3.2, "unit_weight_kg_per_m": 5.5, "spacing_m": 1.5 },
+    { "member_type": "rafter", "thai_name": "จันทัน", "profile": "C 150x50x20 mm", "thickness_mm": 3.2, "unit_weight_kg_per_m": 6.76, "spacing_note": "one rafter at every grid column position (1,2,3), running full length E to A" }
+  ],
+  "grid_overhangs_m": {
+    "x_beyond_grid_1": 1.3,
+    "x_beyond_grid_3": 1.3
+  },
+  "detail_reference": "ดูแบบขยาย 1 (hanger detail, circled at roughly B3) -- purlin-to-rafter hanger connection: เหล็กหางปลาขนาด 50x300x6.00mm ฝังในเสาคอนกริต (fishtail steel plate embedded in concrete column), จันทันเหล็กเชื่อมติดกับเหล็กหางปลาตลอดแนวสัมผัส (rafter welded to the fishtail plate along the full contact line) -- same wording as house #2's equivalent detail.",
+  "elements": [],
+  "confidence_score": 0.85,
+  "confidence_flags": ["non_rebar_light_gauge_steel_roof_structure"],
+  "warnings": [
+    "Unlike house #2, this roof only has x-axis overhangs (1.30m each side beyond grid 1/3) with no printed y-axis (E/A direction) overhang dimension on this sheet -- flagged since it's a genuine difference from house #2's pattern (which had both x and y overhangs), not an oversight.",
+    "The 1.30m eave overhangs are dimensional notes for the roof only, not structural grid/beam lines -- not added as dummy grid lines to the shared grid master."
+  ]
+}

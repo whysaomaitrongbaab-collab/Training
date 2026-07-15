@@ -1,0 +1,31 @@
+{
+  "png": "62",
+  "doc_page": 60,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า62.png",
+  "discipline": "mechanical",
+  "sheet_code": "M-01",
+  "sheet_name": "ตำแหน่งติดตั้งพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "pattern": "plan",
+  "view_title": "ตำแหน่งติดตั้งพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "drawing_no": "M-58110",
+  "sheet_total": 2,
+  "scale": "1:100",
+  "schema_note": "Classified as pattern 'plan' -- spatial equipment-location layout on the floor plan, same convention as house #1/#2's M-01 sheet.",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
+  "grid_columns": ["1'", "1", "2", "3", "3'"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "rooms_shown": ["ซักล้าง", "ทานอาหาร", "ครัว", "เก็บของ", "โถง", "ห้องน้ำ", "พักผ่อน", "จอดรถ", "เฉลียง"],
+  "elements": [
+    {"element_type": "propeller_ventilation_fan", "description": "PROPELLER FAN TYPE (400 CFM.), mounted at the top wall of ซักล้าง with a dashed leader line to an exterior louvre", "room": "ซักล้าง", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (120 CFM.), inside the ground-floor ห้องน้ำ, paired with a 6\"x6\" exhaust grille", "room": "ห้องน้ำ (ground floor)", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 6\"x6\", paired 1-to-1 with the ground-floor bathroom's 120 CFM ceiling fan", "room": "ห้องน้ำ (ground floor)", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []}
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "This ground-floor mechanical sheet has NO air-conditioning units at all -- only a laundry propeller fan and a bathroom ceiling-fan/exhaust-grille pair. This is a genuine and notable difference from house #2's single M-01 sheet, which combined AC (for bedrooms) and ventilation fans on one sheet for a 1-story house. Here, because this is a 2-story house, all 3 bedrooms and their AC units are on the upper floor (M-02, page 63) -- the ground floor only has common/wet-area rooms (dining, kitchen, laundry, carport, storage, living/relax) that don't call for AC per this design.",
+    "GRID: a house-wide grid master (บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json) appeared partway through this extraction batch; grid columns/rows read from the same printed dimension chain as the electrical EE-03..EE-06 sheets (1/2/3 x, E/D/C/B/A y plus dummy 1'/3') match the master exactly.",
+    "A small numbered staircase-tread sequence ('7 6 5 4 3 2 1') is visible inside the stairwell glyph -- this is a standard architectural stair-tread count annotation, not a mechanical equipment item, and is excluded from the elements list.",
+    "This is the first of 2 mechanical sheets in the drawing set (M-01 of 2, per title block drawing no. 'M-58110') -- unlike house #2's single M-01-of-1 sheet, this house splits AC/ventilation across 2 sheets by floor, matching the same 2-floor split pattern already seen on the electrical EE-03/EE-04 and EE-05/EE-06 sheet pairs."
+  ]
+}

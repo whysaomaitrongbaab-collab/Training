@@ -1,0 +1,30 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แปลนโครงหลังคา",
+  "pattern": "roof_plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า27.png",
+  "view_title": "แปลนโครงหลังคา",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/02บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า00_gridline.json",
+  "schema_note": "roof_plan is a draft pattern per spec section 1 (#12, no confirmed field-set yet) -- light-gauge cold-formed steel purlins/rafters, not rebar, so no main_bar/stirrup fields apply here. Roof frame only covers the main F-C block (grid span 9.60m x 9.60m), not the porch/carport extension south of grid C -- consistent with S-04/S-05 where the extension's roof isn't detailed on this sheet.",
+  "steel_members": [
+    { "member_type": "purlin", "thai_name": "แป", "profile": "C 100x50x20 mm", "thickness_mm": 3.2, "unit_weight_kg_per_m": 5.5, "spacing_m": 1.5 },
+    { "member_type": "rafter", "thai_name": "จันทัน", "profile": "C 150x75x25 mm", "thickness_mm": 3.2, "unit_weight_kg_per_m": 8.27, "spacing_note": "one rafter at every grid column position (1,2,3,4), running full length F to C" }
+  ],
+  "grid_overhangs_m": {
+    "x_beyond_grid_1": 1.3,
+    "x_beyond_grid_4": 1.3,
+    "y_beyond_grid_F": 1.5,
+    "y_beyond_grid_C": 1.5
+  },
+  "detail_reference": "ดูขยาย① (see hanger detail 'ขยาย 1' on S-08) at the C4 corner -- purlin-to-rafter hanger connection",
+  "elements": [],
+  "confidence_score": 0.85,
+  "confidence_flags": ["non_rebar_light_gauge_steel_roof_structure"],
+  "warnings": [
+    "The 1.30m/1.50m roof eave overhangs beyond the named grid are dimensional notes for the roof only, not structural grid/beam lines -- not added as dummy grid lines to the shared grid master. If a later architecture-discipline read finds a WALL or BEAM at this same offset (not just a roof eave), that would need a real dummy grid line and should be flagged separately."
+  ]
+}

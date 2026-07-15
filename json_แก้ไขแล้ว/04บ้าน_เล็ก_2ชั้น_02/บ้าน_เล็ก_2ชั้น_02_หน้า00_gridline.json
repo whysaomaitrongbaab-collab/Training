@@ -1,0 +1,38 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid line master (สังเคราะห์เอง — ไม่ใช่หน้าจริงในเอกสาร ใช้ 'หน้า 0' เป็น convention สำหรับไฟล์ grid กลางของทั้งบ้าน)",
+  "pattern": "gridline",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า31.png",
+    "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า32.png"
+  ],
+  "note": "2-story house, small footprint similar to house #3 (8.50m x 10.00m). Grid confirmed identical on S-02 (spread footing plan) and S-03 (pile footing plan). Both sheets show a genuine dummy grid: a row of C0-marked footings (col1/col2 only) sitting 1.90m before/above the named grid E -- confirmed on both S-02 and S-03 independently (same offset, same C0 column mark), same kind of finding as house #3's bay-window dummy grid. Named grid E is the topmost/origin row per spec convention, so this extra row before it takes a NEGATIVE pos_m.",
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.0, "type": "named", "source": "printed on S-02/S-03, identical on both" },
+      { "id": "2", "pos_m": 5.0, "type": "named", "source": "printed on S-02/S-03, identical on both" },
+      { "id": "3", "pos_m": 8.5, "type": "named", "source": "printed on S-02/S-03, identical on both" }
+    ],
+    "y_lines": [
+      { "id": "E'", "pos_m": -1.9, "type": "dummy", "source": "S-02 and S-03, C0-marked footing/column row at col1 and col2 only (no col3), 1.90m before named grid E on both sheets. CONFIRMED_2026-07-16: column schedule S-09 (หน้า38_column_schedule.json) independently confirms C0 as a real short column (200x200 at ตอม่อ, terminating at ระดับพื้นชั้น 1 -- does not rise to floor 2 or roof), a 3rd independent structural sheet agreeing. The architecture floor plan (หน้า06) does NOT show a matching dimensioned zone at this exact 1.9m offset -- its own ~2.00m zone above gridE is explicitly noted as a different feature, not confirming or contradicting this dummy grid.", "confidence_score": 0.85, "confidence_flags": ["confirmed_on_3_independent_structural_sheets_S02_S03_S09", "architecture_floor_plan_neither_confirms_nor_contradicts_-_different_feature_at_a_different_offset"] },
+      { "id": "E", "pos_m": 0.0, "type": "named", "source": "printed on S-02/S-03, identical on both (topmost named row, origin)" },
+      { "id": "D", "pos_m": 2.7, "type": "named", "source": "printed on S-02/S-03, identical on both" },
+      { "id": "C", "pos_m": 5.0, "type": "named", "source": "printed on S-02/S-03, identical on both" },
+      { "id": "B", "pos_m": 8.5, "type": "named", "source": "printed on S-02/S-03, identical on both" },
+      { "id": "A", "pos_m": 10.0, "type": "named", "source": "printed on S-02/S-03, identical on both" }
+    ]
+  },
+  "building_footprint_note": "Full 3x5 grid of footings/columns present at every intersection (1-2-3 x E-D-C-B-A) on both S-02 and S-03, plus the E' dummy row (col1/col2 only, no col3), and row A is missing col1 (only col2/col3 present at row A). Column marks: C0 (dummy row E' only), C1A (perimeter corners), C1 (main grid), C2 (interior, col2 at rows D/C).",
+  "confidence_score": 0.87,
+  "confidence_flags": ["named_grid_confirmed_identical_across_2_independent_structural_sheets_S02_S03", "dummy_grid_E_prime_confirmed_on_both_sheets_but_not_yet_cross_checked_against_architecture"],
+  "warnings": [
+    "Not yet cross-checked against S-04/S-05 (column+beam plans) or the architecture floor plans -- come back and verify/extend once those are read.",
+    "Dummy grid E' is provisional pending architecture cross-check -- if the background architecture agent's floor plan shows no matching wall/room extension there, reconcile."
+  ],
+  "last_updated_from_page": "S-02, S-03 (pages 31-32)",
+  "last_updated_date": "2026-07-11"
+}

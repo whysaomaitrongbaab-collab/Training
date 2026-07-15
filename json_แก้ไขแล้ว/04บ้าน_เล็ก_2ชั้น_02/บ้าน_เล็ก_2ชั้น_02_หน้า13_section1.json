@@ -1,0 +1,33 @@
+{
+  "png": "13",
+  "doc_page": 11,
+  "discipline": "architecture",
+  "sheet_code": "A-11",
+  "sheet_name": "รูปตัด 1",
+  "pattern": "side_profile",
+  "view_title": "รูปตัด 1",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า13.png",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "levels", "element_type": "datum", "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับพื้นชั้น 2 +3.75, ระดับคานหลังคา +6.65 (height chain 0.60 + 3.15 + 2.90 = 6.65)", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "roof_structure_ref", "element_type": "roof_frame_reference", "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)", "description": "โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง (roof framing detailed on structural drawings, not shown here); small circled '4' markers with square blocks at the roof edges/ridge, and tick marks along the roof line (schematic purlins, not itemized)", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "โถง_ground_cut", "element_type": "room_cut", "count": 1, "grid_ref": "grid2-3(approx), ground floor, box '1 +0.60 1'", "level_m": 0.60, "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "ห้องน้ำ_ground_cut", "element_type": "room_cut", "count": 1, "grid_ref": "near grid1, ground floor, box '3 +0.20 5', toilet fixture drawn in section", "level_m": 0.20, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "stair_cut", "element_type": "stair", "count": 1, "grid_ref": "center, grid1-2(approx), cut showing the stair flight rising from ground floor toward the landing/upper floor, with several small circled reference numbers (3, 5, 2) beside the flight not individually resolved", "confidence_score": 0.68, "confidence_flags": ["needs_human_review_zoom_required", "individual_circled_reference_numbers_beside_the_stair_flight_not_confidently_tied_to_a_specific_meaning"] },
+    { "element_id": "โถง_upper_cut", "element_type": "room_cut", "count": 1, "grid_ref": "center, grid1-2(approx), upper floor, box '2 +4.10 1'", "level_m": 4.10, "confidence_score": 0.6, "confidence_flags": ["level_value_+4.10_printed_here_is_HIGHER_than_the_general_2nd-floor_datum_+3.75_shown_in_the_level_chain_on_this_same_sheet_-_not_reconciled;_could_be_a_genuine_raised_sub-landing/threshold_within_โถง_near_the_stair_top_or_a_misread_digit,_flagged_rather_than_corrected"] },
+    { "element_id": "นอน2_cut", "element_type": "room_cut", "count": 1, "grid_ref": "grid2-3(approx), upper floor, box '2 +3.75 1', wall height 2.60m", "level_m": 3.75, "wall_height_m": 2.60, "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "โถง_ground_right_cut", "element_type": "room_cut", "count": 1, "grid_ref": "grid2-3(approx), ground floor, box '1 +0.60 1', wall height 2.70m", "level_m": 0.60, "wall_height_m": 2.70, "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "overall_width", "element_type": "dimension", "description": "Bottom dimension chain: 0.70+0.60 (west overhang) | 1.10+3.90 (grid1-2, sub-split) | 3.50 (grid2-3) | 0.60+0.70 (east overhang), bracket 1.30 | 8.50 | 1.30", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "hatched_ground_zone", "element_type": "grading_note", "description": "Hatched earth/fill zone below ±0.00 at the base of the section, consistent with the grading notes on the site plan (หน้า05)", "confidence_score": 0.7, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.74,
+  "confidence_flags": [],
+  "warnings": [
+    "This building cross-section (รูปตัด 1) cuts along the width direction (parallel to grid1/grid2/grid3), through the stair/hall/bathroom sequence — โถง+ห้องน้ำ(ground)/โถง+นอน2(upper), with the stair flight visible rising through the center of the section.",
+    "Sibling sections รูปตัด 2 and รูปตัด 3 are in _หน้า14_section2.json and _หน้า15_section3.json (not yet read at time of writing this file).",
+    "The upper 'โถง' room box reads '2 +4.10 1' — the +4.10 level is higher than this same sheet's own printed 2nd-floor datum (+3.75, in the ระดับพื้นชั้น 2 label at left). Not reconciled: could be a genuine raised threshold/sub-landing at the top of the stair within โถง, or a misread digit (4.10 vs a possible 3.10/3.75) — flagged for human review rather than silently corrected to match the datum.",
+    "Roof framing itself is deferred to the structural drawings (outside this extraction's architecture-only page range 03-29), consistent with the 'โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง' note.",
+    "Two small circled '1' cutting-plane markers appear beside the 'รูปตัด 1' title at the bottom of the sheet — standard section-identification symbol, not treated as a separate building element."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "png": "65",
+  "doc_page": 63,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า65.png",
+  "discipline": "mechanical",
+  "sheet_code": "M-01",
+  "sheet_name": "ตำแหน่งติดตั้งพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "ตำแหน่งติดตั้งพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "drawing_no": "M 58111",
+  "sheet_total": 2,
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dims_observed": {
+    "x_chain_m": [0.60, 5.00, 3.50, 0.60],
+    "x_overall_1_to_3_m": 8.50,
+    "y_chain_m": [2.00, 2.70, 2.30, 3.50, 1.50],
+    "y_overall_E_to_A_m": 10.00,
+    "note": "Identical grid dimension chain to EE-03/EE-05 (ground-floor sheets) and the master grid file."
+  },
+  "rooms_shown": ["ซักล้าง", "เก็บของ", "ครัว", "ทานอาหาร", "โถง", "ห้องน้ำ (ground floor, near staircase)", "ทางเดิน", "จอดรถ", "พักผ่อน", "เฉลียง"],
+  "elements": [
+    {"element_type": "propeller_exhaust_fan", "description": "PROPELLER FAN TYPE (400 CFM.), mounted at the top wall of ครัว near the boundary with เก็บของ, wired down through the kitchen toward the counter/sink area", "room": "ครัว", "quantity": 1, "confidence_score": 0.8, "confidence_flags": []},
+    {"element_type": "ceiling_fan", "description": "CEILING FAN (120 CFM.), inside the ground-floor bathroom near the staircase, paired with a 6\"x6\" exhaust grille", "room": "ห้องน้ำ (ground floor, near staircase)", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []},
+    {"element_type": "exhaust_air_grille", "description": "EXHAUST AIR GRILL W/INS, ขนาด 6\"x6\", paired with the ground-floor bathroom's 120 CFM ceiling fan", "room": "ห้องน้ำ (ground floor, near staircase)", "quantity": 1, "confidence_score": 0.85, "confidence_flags": []}
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "This is the first of 2 mechanical sheets in the drawing set (M-01 of 2) -- together with M-02 (page 66) it covers this 2-story house's full ventilation-fan / AC layout, split by floor the same way the electrical lighting/outlet plans are split (EE-03/04, EE-05/06). Note: unlike house #3's M-01/M-02, this sheet title only mentions 'พัดลมระบายอากาศ' (ventilation fans), not air conditioners -- confirm on M-02 whether AC units appear only on that sheet.",
+    "GRID: dimension chain matches the ground-floor electrical sheets and the master grid file exactly.",
+    "Small stair-tread numbers ('6 5 4 3 2 1') printed near the 'ขึ้น' arrow at the staircase are structural/architectural (tread count), not a mechanical element -- excluded from 'elements'.",
+    "This ground floor only has 2 ventilation devices total (1 kitchen propeller fan + 1 bathroom ceiling-fan/grille pair) -- no AC units are shown here, consistent with a small ground floor with no bedrooms.",
+    "Room labeling on this sheet ('ทางเดิน' for the carport walkway area, distinct from 'จอดรถ' further down) differs slightly from EE-03/EE-05's simpler 'จอดรถ' label for the same general area -- both sheets appear to be describing the same carport/walkway space, just with different label granularity; not treated as a discrepancy."
+  ]
+}

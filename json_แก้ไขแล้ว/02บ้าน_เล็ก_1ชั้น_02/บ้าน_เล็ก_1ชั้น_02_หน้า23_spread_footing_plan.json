@@ -1,0 +1,35 @@
+{
+  "png": "23",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานรากแผ่",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า23.png",
+  "view_title": "แปลนฐานรากแผ่",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/02บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า00_gridline.json",
+  "schema_note": "Alternate foundation system to S-03 (pile footing) -- used if soil bearing capacity > 10 ton/sqm per S-01 notes. This house has no letter+number footing mark like house #1's 'F1'/'F2' -- the printed mark IS the dimension notation itself (e.g. '(F0.8x0.8)'), confirmed by detail sheets S-09/S-10 which title themselves by the same dimension notation (e.g. 'ขยายฐานราก F0.60x0.60'). Following house #1's convention, footing and column marks are recorded as SEPARATE elements (not combined into one element_id) even though the plan prints them as a combined label at each point, e.g. '(F0.8x0.8),C1A'.",
+  "elements": [
+    { "element_id": "F0.80x0.80", "element_type": "footing", "count": 4,
+      "grid_refs": ["F1", "F4", "C1", "C4"],
+      "span_length_m": null, "confidence_score": 0.9, "confidence_flags": ["footing_mark_is_the_dimension_notation_itself_not_a_letter_number_mark"] },
+    { "element_id": "F1.00x1.00", "element_type": "footing", "count": 12,
+      "grid_refs": ["F2", "F3", "E1", "E2", "E3", "E4", "D1", "D2", "D3", "D4", "C2", "C3"],
+      "span_length_m": null, "confidence_score": 0.9, "confidence_flags": ["footing_mark_is_the_dimension_notation_itself_not_a_letter_number_mark"] },
+    { "element_id": "F0.60x0.60", "element_type": "footing", "count": 4,
+      "grid_refs": ["B2", "B3", "A2", "A3"],
+      "span_length_m": null, "confidence_score": 0.9, "confidence_flags": ["footing_mark_is_the_dimension_notation_itself_not_a_letter_number_mark"] },
+    { "element_id": "C1A", "element_type": "column", "count": 8,
+      "grid_refs": ["F1", "F2", "F3", "F4", "B2", "B3", "A2", "A3"],
+      "span_length_m": null, "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label_e.g._(F0.8x0.8),C1A"] },
+    { "element_id": "C1", "element_type": "column", "count": 12,
+      "grid_refs": ["E1", "E2", "E3", "E4", "D1", "D2", "D3", "D4", "C1", "C2", "C3", "C4"],
+      "span_length_m": null, "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label_e.g._(F1.0x1.0),C1"] }
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": ["grid_cross_confirmed_against_S03_S04_S05"],
+  "warnings": [
+    "Building footprint is irregular -- row F has all 4 columns, rows E/D have all 4, row C has all 4, but rows B and A only have columns 2-3 (a porch/carport extension south of grid C occupying only the middle bay). No footing/column at B-1, B-4, A-1, A-4."
+  ]
+}

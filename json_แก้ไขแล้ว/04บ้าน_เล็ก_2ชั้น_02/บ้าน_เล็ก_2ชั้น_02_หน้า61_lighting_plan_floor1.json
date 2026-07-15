@@ -1,0 +1,47 @@
+{
+  "png": "61",
+  "doc_page": 59,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า61.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-03",
+  "sheet_name": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "drawing_no": "EE 58080",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dims_observed": {
+    "x_chain_m": [0.60, 5.00, 3.50, 0.60],
+    "x_overall_1_to_3_m": 8.50,
+    "y_chain_m": [2.00, 2.70, 2.30, 3.50, 1.50],
+    "y_overall_E_to_A_m": 10.00,
+    "note": "x_chain's inner span [5.00, 3.50] sums to 8.50 = master grid's 1(0.0)-to-3(8.5); the leading/trailing 0.60 segments are eave overhangs outside the 1-3 structural span, same convention as house #3's equivalent electrical sheet. y_chain reads [2.70, 2.30, 3.50, 1.50] = E-D, D-C, C-B, B-A giving E(0.0)/D(2.70)/C(5.00)/B(8.50)/A(10.00), matching the master grid exactly; the leading 2.00 above E is a roof/eave dimension outside the E-A structural span, not a grid line. The master's dummy row E' (-1.90, from the structural foundation pages) is not depicted on this architecture/electrical sheet -- it falls outside the building envelope shown here (likely an isolated exterior footing row), consistent with it not appearing on floor-plan-scoped sheets."
+  },
+  "rooms_shown": ["ซักล้าง", "เก็บของ", "ครัว", "ทานอาหาร", "โถง", "ห้องน้ำ 1", "พักผ่อน", "เฉลียง", "จอดรถ"],
+  "elements": [
+    {"element_type": "ceiling_downlight_point", "description": "Downlight(s) labeled 'i' in เก็บของ (storage) -- one mark near the top of the room, a second mark lower near the ครัว boundary with what appears to be an adjacent switch dot", "room": "เก็บของ", "quantity": 2, "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) labeled 'e' in ครัว, one near the top wall shared with ซักล้าง, one lower near the stair/landing boundary", "room": "ครัว", "quantity": 2, "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "wall_switch_or_downlight", "description": "Symbol labeled 'f' at the top wall boundary between ซักล้าง and ครัว, near a door opening", "room": "ซักล้าง/ครัว boundary", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required", "label_illegible"]},
+    {"element_type": "wall_switch_or_downlight", "description": "Symbol(s) labeled 'g' near the ครัว/staircase boundary, next to a 'ลง' (down) arrow marking a half-level stair down toward the kitchen/back area; appears twice (once near 'e', once lower near the ห้องน้ำ 1/staircase landing)", "room": "ครัว / staircase landing", "quantity": 2, "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "wall_light_fixture_or_exhaust", "description": "Symbol labeled 'h' near ห้องน้ำ 1, drawn with a circled icon distinct from the standard ⊕ downlight glyph -- possibly a ceiling fixture or exhaust point over the bathroom", "room": "ห้องน้ำ 1", "confidence_score": 0.5, "confidence_flags": ["needs_human_review_zoom_required", "unclear_symbol"]},
+    {"element_type": "ceiling_downlight_point", "description": "Downlights (⊕) labeled 'd', four marks total: two near the top wall shared with ซักล้าง/เก็บของ, one near the ครัว/ทานอาหาร partition beside a small built-in unit symbol, and one near the ทานอาหาร/โถง boundary", "room": "ทานอาหาร / โถง boundary", "quantity": 4, "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required", "count_approximate"]},
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) labeled 'c' in โถง (hall), with a '1/LP' circuit tag printed immediately to the left of the first mark -- marking this as the feed point from panel LP circuit 1", "room": "โถง", "quantity": 2, "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "switch_cluster", "description": "A boxed cluster labeled 'a,b,c' near the staircase 'ขึ้น' (up) arrow -- read as a multi-gang switch plate at the stair landing controlling circuits a (พักผ่อน), b (เฉลียง), and c (โถง)", "room": "staircase landing", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"]},
+    {"element_type": "ceiling_downlight_point", "description": "Downlights (⊕) labeled 'a' in พักผ่อน (living/relax room), arranged roughly 2 near the staircase/door side, 2 mid-room, and 2 near the เฉลียง boundary", "room": "พักผ่อน", "quantity": 6, "confidence_score": 0.65, "confidence_flags": ["count_approximate"]},
+    {"element_type": "ceiling_downlight_point", "description": "Two downlights (⊕) labeled 'b' in เฉลียง (porch), near the bottom edge close to 'ม้านั่ง คสล.' (concrete bench)", "room": "เฉลียง", "quantity": 2, "confidence_score": 0.65, "confidence_flags": []},
+    {"element_type": "service_entrance", "description": "Incoming service run at the bottom of the sheet: '2-2.5 NYY-25 mm.PVC' wire down to a weatherproof bell switch (SB, circled) near the entrance stairs ('ขึ้น')", "confidence_score": 0.8, "confidence_flags": []}
+  ],
+  "confidence_score": 0.6,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID: this sheet's independently-read grid (named columns 1/2/3, named rows E/D/C/B/A, spacing 5.00+3.50 horizontal and 2.70+2.30+3.50+1.50 vertical) matches the master grid file (บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json) exactly, cross-validating both extractions. The master's E' dummy row (structural, -1.90m) is outside this sheet's building-envelope crop and is not expected to appear here.",
+    "Single-letter room-fixture labels (i, e, f, g, h, d, c, a, b) are legible as symbols but the fine switch-loop wiring/label text is genuinely hard to resolve at the available image resolution -- several elements above are flagged needs_human_review_zoom_required rather than asserted with full confidence, following the same honesty standard used in house #3's equivalent EE-03 extraction (page 58 there).",
+    "This is a 2-story house so this sheet only covers the ground floor; the corresponding upper-floor lighting plan is EE-04 (page 62, separate file).",
+    "No fixture symbol was confidently identified inside จอดรถ (carport) on this crop -- possibly an unlit/unlabeled space, or a fixture too faint to resolve; flagged rather than invented.",
+    "A small boxed label '3 | +0.20 | 5' appears near ห้องน้ำ 1 -- reads as a floor-level/elevation marker (+0.20m) rather than an electrical symbol; left out of the electrical elements list as out-of-discipline annotation carried over from the architectural base drawing.",
+    "The ⊕ downlight count summed from this best-effort element list is approximately 2 (เก็บของ) + 2 (ครัว) + 4 (ทานอาหาร/โถง boundary) + 2 (โถง) + 6 (พักผ่อน) + 2 (เฉลียง) = 18, plus assorted switch/wall-fixture symbols (f, g, h) -- lower confidence than a fully zoomed re-read would give."
+  ]
+}

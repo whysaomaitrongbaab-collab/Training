@@ -1,0 +1,29 @@
+{
+  "png": "19",
+  "doc_page": 17,
+  "discipline": "architecture",
+  "sheet_code": "A-17",
+  "sheet_name": "แบบขยายประตูรั้วบ้าน",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า19.png",
+  "view_title": "รูปด้านหน้า + รูปตัด + แบบขยายกลอนประตู (ประตูรั้วบ้าน)",
+  "elements": [
+    { "element_id": "gate_frame_vertical_bars", "element_type": "steel_member", "material": "เหล็ก ⊐1\"x1\" LG ปลายตัด 45 องศา @ 15 ซม", "description": "Vertical picket bars of the swing/sliding gate, spaced 150mm on center, ends cut at 45 degrees", "count": null, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "gate_frame_perimeter", "element_type": "steel_member", "material": "เหล็ก ⊐2\"x2\" LG หนา 3.2 มม", "description": "Perimeter/main frame tube of the gate leaf", "count": null, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "gate_base_panel", "element_type": "steel_member", "material": "แผ่นเหล็กทึบ หนา 4 มม", "description": "Solid steel infill panel at the base of the gate (7 panels shown along the bottom rail)", "count": null, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "gate_overall", "element_type": "gate", "description": "Sliding gate elevation ('รูปด้านหน้า'), between two posts, sitting on ระดับทางเท้า/ระดับถนน (sidewalk/road level)", "width_m": 4.00, "height_m": 2.00, "height_breakdown_m": [0.20, 0.50, 0.20, 0.50, 0.20, 0.20, 0.20], "confidence_score": 0.7, "confidence_flags": ["height_breakdown_read_as_a_repeating_0.20/0.50_band_pattern_down_the_gate_-_exact_grouping_of_the_sub-dimensions_into_the_2.00_total_needs_zoom_confirmation"] },
+    { "element_id": "gate_post_dowel", "element_type": "steel_member", "material": "เหล็กแผ่น 40x40x9 มม ฝังในคอนกรีต", "description": "Steel angle/plate anchor cast into the gate post concrete, shown in รูปตัด (section)", "count": null, "confidence_score": 0.65, "confidence_flags": ["needs_human_review_zoom_required"] },
+    { "element_id": "gate_wheel", "element_type": "hardware", "description": "ล้อเหล็ก Ø3\" คู่ (paired steel wheels), for the sliding gate bottom rail", "count": 2, "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "door_lock_detail", "element_type": "hardware_detail", "description": "แบบขยายกลอนประตู (1:10) — round steel bar Ø2cm ('เหล็กกลม Ø2 ซม เชื่อมกับแผ่นเหล็ก') welded to a 9mm steel plate ('แผ่นเหล็ก 9 มม เจาะรู Ø2 ซม สำหรับคล้องกุญแจ') mounted between the gate leaf ('ประตู') and post ('เสา'); a 0.05 offset dimension and a 0.20 plan-depth dimension are shown", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "drain_hole_detail", "element_type": "detail_note", "description": "'เหล็กจาก หนา 9 มม เจาะรูระบายน้ำ' — 9mm steel plate with drilled drainage holes, shown at the bottom-left of the รูปตัด view", "confidence_score": 0.65, "confidence_flags": ["needs_human_review_zoom_required"] }
+  ],
+  "confidence_score": 0.73,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet (A-17) is a wrought-iron/steel perimeter gate detail (แบบขยายประตูรั้วบ้าน), not part of the main house structure — no grid_source applies and no grid_ref is claimed for any element here; standalone site/boundary element.",
+    "Contains steel member callouts (bar sizes, plate thickness) but is architectural fabrication detail, not RC rebar in the beam/column/footing sense — kept in the flexible architectural element shape (material/description) rather than forced into the structural main_bar/stirrup schema, same convention as house 1's equivalent sheet.",
+    "Content, dimensions, and hardware specs (1\"x1\" pickets @15cm, 2\"x2\" frame 3.2mm, 4mm base panel, 40x40x9mm post anchor plate, Ø3\" wheels, Ø2cm lock bar + 9mm plate) match house 1's equivalent A-13 gate sheet very closely — same government-program standard gate design, cross-confirms the reading.",
+    "The 4.00m overall gate width and the steel member sizes/plate thicknesses are all clearly legible and high confidence; only the exact height sub-breakdown and the anchor-plate/drain-hole section details are lower confidence and flagged for zoom review."
+  ]
+}

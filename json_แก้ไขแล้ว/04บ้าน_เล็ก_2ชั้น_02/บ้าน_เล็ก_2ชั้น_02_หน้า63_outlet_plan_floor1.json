@@ -1,0 +1,43 @@
+{
+  "png": "63",
+  "doc_page": 61,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า63.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-05",
+  "sheet_name": "แปลนเต้ารับไฟฟ้า ชั้นล่าง",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "แปลนเต้ารับไฟฟ้า ชั้นล่าง",
+  "drawing_no": "EE 58080",
+  "scale": "1:100",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "grid_columns": ["1", "2", "3"],
+  "grid_rows": ["E", "D", "C", "B", "A"],
+  "grid_dims_observed": {
+    "x_chain_m": [0.60, 5.00, 3.50, 0.60],
+    "x_overall_1_to_3_m": 8.50,
+    "y_chain_m": [2.00, 2.70, 2.30, 3.50, 1.50],
+    "y_overall_E_to_A_m": 10.00,
+    "note": "Identical grid dimension chain to EE-03 (page 61, ground-floor lighting plan) -- both are the same ground-floor base plan, cross-validating each other and the master grid file."
+  },
+  "rooms_shown": ["ซักล้าง", "เก็บของ", "ครัว", "ทานอาหาร", "โถง", "ห้องน้ำ 1", "พักผ่อน", "จอดรถ", "เฉลียง"],
+  "elements": [
+    {"element_type": "electrical_outlet", "description": "Outlet(s) marked '+1.20M' (mounting height) at the ครัว/ทานอาหาร partition wall, near the top -- two adjacent tags close together, read as 2 separate outlets rather than one duplicated label", "room": "ครัว/ทานอาหาร boundary", "quantity": 2, "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required", "count_approximate"]},
+    {"element_type": "electrical_outlet", "description": "Outlet marked '+1.20M' near the top-right corner of ทานอาหาร", "room": "ทานอาหาร", "quantity": 1, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "electrical_outlet", "description": "Outlet marked '+1.20M' near the door of เก็บของ", "room": "เก็บของ", "quantity": 1, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "electrical_outlet", "description": "Outlet marked '+1.20M' near the sink/counter area of ครัว", "room": "ครัว", "quantity": 1, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "electrical_outlet", "description": "Outlet marked '+1.20M' near the staircase in โถง, with a '3/LP' circuit tag printed immediately beside it -- marking this as the feed point from panel LP circuit 3, matching the 'เต้ารับ' load label recorded on EE-02's panel schedule (page 60)", "room": "โถง / staircase", "quantity": 1, "confidence_score": 0.7, "confidence_flags": []},
+    {"element_type": "electrical_outlet", "description": "Outlet marked '+1.20M' near the left wall of พักผ่อน", "room": "พักผ่อน", "quantity": 1, "confidence_score": 0.6, "confidence_flags": []},
+    {"element_type": "electrical_outlet", "description": "Outlet marked '+1.20M' near the bottom of พักผ่อน close to the เฉลียง boundary", "room": "พักผ่อน", "quantity": 1, "confidence_score": 0.6, "confidence_flags": []}
+  ],
+  "confidence_score": 0.62,
+  "confidence_flags": ["needs_human_review_zoom_required"],
+  "warnings": [
+    "GRID: dimension chain matches EE-03 (same ground-floor base plan) and the master grid file exactly.",
+    "This is a 2-story house so this sheet only covers the ground floor; the corresponding upper-floor outlet plan is EE-06 (page 64, separate file).",
+    "No outlet symbol was confidently identified in ซักล้าง, ห้องน้ำ 1, จอดรถ, or เฉลียง on this crop -- consistent with the same rooms lacking clearly-attributed lighting fixtures on EE-03, may simply be genuinely unequipped rooms (laundry/carport/porch commonly rely on adjacent-room circuits) or symbols too faint to resolve; flagged rather than invented.",
+    "Total outlet count summed from this best-effort element list is approximately 7 -- all appear to share the same '+1.20M' standard mounting height and, per EE-01's legend, are likely the plain duplex ⊖ type (not the waterproof ⊟ type) since none are in wet areas on this floor; not independently confirmed which glyph variant each uses at this resolution.",
+    "The '3/LP' circuit tag near the staircase cross-validates against EE-02's panel schedule circuit position 3 (RCBO 16AT,1P, load 'เต้ารับ') -- consistent with this being the ground-floor outlet circuit.",
+    "A small boxed label '3 | +0.20 | 5' near ห้องน้ำ 1 is an architectural floor-level marker, not an electrical symbol -- excluded from elements, same as noted on EE-03 (page 61)."
+  ]
+}

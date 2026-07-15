@@ -1,0 +1,45 @@
+{
+  "png": "60",
+  "doc_page": 58,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า60.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-02",
+  "sheet_name": "รายละเอียดแผงเมนสวิตช์",
+  "pattern": "schedule",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "รายละเอียดแผงเมนสวิตช์ (single-line diagram, panel LP)",
+  "drawing_no": "EE 58080",
+  "service_entrance": {
+    "meter": "kWH METER 15(45)A 1 PHASE",
+    "service_cable": "2-10 IEC 01-ø25 mm. (นอกอาคารเดินลอย)",
+    "home_run_to_ground": "1-10 IEC 01-20 mm. PVC",
+    "ground_rod": "หลักดินแท่งเหล็กทองแดงบอนด์ ขนาด ø14.2 mm. ยาว 2.40 m."
+  },
+  "panel": {
+    "panel_id": "LP",
+    "main_breaker": {"rating": "50AT,2P IC 10kA"}
+  },
+  "circuits": [
+    {"position": "1", "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-ø15 mm.uPVC", "load": "แสงสว่าง"},
+    {"position": "2", "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-ø15 mm.uPVC", "load": "แสงสว่าง"},
+    {"position": "3", "breaker": "RCBO 16AT,1P IC 6kA IΔn30mA", "wire": "2-2.5/G2.5 IEC 01-ø15 mm.uPVC", "load": "เต้ารับ"},
+    {"position": "4", "breaker": "RCBO 16AT,1P IC 6kA IΔn30mA", "wire": "2-2.5/G2.5 IEC 01-ø15 mm.uPVC", "load": "เต้ารับ"},
+    {"position": null, "breaker": "RCBO 20AT,1P IC 6kA IΔn30mA", "wire": "2-4/G2.5 IEC 01-ø15 mm.uPVC", "load": "กล่องต่อสายเครื่องทำน้ำอุ่น", "confidence_flags": ["position_number_not_legible_between_4_and_6"]},
+    {"position": "6", "breaker": "RCBO 20AT,1P IC 6kA IΔn30mA", "wire": "2-4/G2.5 IEC 01-ø15 mm.uPVC", "load": "กล่องต่อสายเครื่องทำน้ำอุ่น"},
+    {"position": "7", "breaker": null, "wire": null, "load": "ว่าง"},
+    {"position": "8", "breaker": null, "wire": null, "load": "ว่าง"},
+    {"position": "9", "breaker": null, "wire": null, "load": "ว่าง"},
+    {"position": "10", "breaker": null, "wire": null, "load": "ว่าง"}
+  ],
+  "notes": [
+    "1. RCBO หมายถึง เซอร์กิตเบรกเกอร์ชนิดมีเครื่องตัดไฟรั่วในตัว"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": ["position_number_not_legible_between_4_and_6"],
+  "warnings": [
+    "The single-line diagram shows 6 populated breaker positions (main 50AT,2P + six branch breakers) but the printed position numbers read 1,2,3,4,(unlabeled),6 -- position 5's number is not legibly printed above its breaker in the source image; not invented, flagged instead per protection-rule guidance. It is very likely simply '5' given the sequence, but left as position:null with a confidence flag rather than assumed.",
+    "This EE-02 sheet (main distribution panel one-line diagram) has no equivalent extracted file in house #3's already-completed set (house #3's batch jumped straight from page 56 (EE-01 index/symbol) to page 58 (EE-03 lighting plan), skipping its own EE-02 page 57) -- so this file has no direct sibling-house reference to calibrate the exact field shape against; structured using the general 'schedule' pattern conventions from primary_rawjson_schema.md instead.",
+    "Two water-heater junction-box circuits (RCBO 20AT) are provided even though only one water heater circuit note appeared on EE-01's symbol legend (WH box) -- likely one per bathroom (this house's floor plans show 2 ห้องน้ำ per the structural/site pages), not cross-verified against a bathroom count on this page alone.",
+    "4 spare (ว่าง) breaker positions (7-10) are drawn as bare vertical lines with no breaker glyph, consistent with reserved future-expansion slots on the panel."
+  ]
+}
