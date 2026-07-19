@@ -1,0 +1,32 @@
+{
+  "png": "35",
+  "doc_page": 33,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แปลนโครงสร้างหลังคา, ขยาย 1",
+  "pattern": "roof_plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า35.png",
+  "view_title": "แปลนโครงสร้างหลังคา 1:100 + ขยาย 1 (hanger detail) 1:20",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/05บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า00_gridline.json",
+  "schema_note": "roof_plan is a draft pattern per spec section 1 (#12) -- light-gauge cold-formed steel, not rebar.",
+  "steel_members": [
+    { "member_type": "rafter", "thai_name": "จันทัน", "profile": "C 125x50x20 mm", "thickness_mm": 4.0, "unit_weight_kg_per_m": 7.50, "spacing_note": "one rafter at every grid column position (1,2,3,4), running full length E to B" },
+    { "member_type": "purlin", "thai_name": "แป", "profile": "C 100x50x20 mm", "thickness_mm": 3.2, "unit_weight_kg_per_m": 5.50 },
+    { "member_type": "rafter_support_beam", "thai_name": "ละพานรับจันทันเหล็ก", "profile": "2x C 125x60x6x8mm (built-up)", "unit_weight_kg_per_m": 13.4, "grid_ref": ["1-2 @ D", "2-3 @ C", "2-4 @ B"], "confidence_score": 0.7, "confidence_flags": ["needs_human_review_zoom_required", "exact_grid_extent_of_each_support_beam_segment_approximate"] }
+  ],
+  "grid_overhangs_m": {
+    "x_beyond_grid_1": 1.30,
+    "x_beyond_grid_4": 1.30
+  },
+  "roof_plan_extent": "grid E to grid B only (does not extend to F or A) -- matches S-06's tie-beam plan which also only spans E-A, further confirming grid F and the area south of grid A are single-story/non-roofed extensions of the main 2-story block",
+  "detail_reference": "ขยาย 1 (hanger detail, referenced via 'ดูขยาย1' callout at B4) -- เหล็กหางปลาขนาด 50x300x6.00mm ฝังในเสาคอนกรีต, จันทันเหล็กเชื่อมติดกับเหล็กหางปลาตลอดแนวสัมผัส -- same wording as houses #2-#4's equivalent detail",
+  "elements": [],
+  "confidence_score": 0.78,
+  "confidence_flags": ["non_rebar_light_gauge_steel_roof_structure"],
+  "warnings": [
+    "IMPORTANT finding: unlike house #4 (which used the SAME profile for both rafter and purlin, C-100x50x20x3.2mm/5.5kg/m for both), this house uses DIFFERENT profiles: rafter is the larger C-125x50x20x4.0mm (7.50kg/m) while purlin is the smaller C-100x50x20x3.2mm (5.50kg/m) -- matching houses #2/#3's convention of distinct rafter vs purlin sizing, not house #4's unusual shared-profile design. Confirms house #4's shared-profile roof was a house-specific design choice, not a project-wide convention.",
+    "Only x-axis overhangs (1.30m each side) printed on this sheet, no y-axis overhang -- same pattern as houses #3/#4.",
+    "Roof plan's y-extent (E to B, 9.60m) matches S-06's tie-beam plan extent exactly (also E to B) -- both confirm grid F and the area south of grid A are outside the main 2-story roofed volume (likely a single-story carport/utility extension, consistent with the dummy-grid discrepancy flagged on S-04/S-05/S-06)."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized cross-page reference)",
+  "pattern": "gridline",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า30.png",
+    "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า31.png",
+    "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า32.png",
+    "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า33.png"
+  ],
+  "view_title": "Column grid master for บ้านครอบครัวไทยร่วมสมัย 5 -- derived from S-02 (แปลนฐานรากแผ่) and S-03 (แปลนฐานรากเสาเข็ม), cross-confirmed identical between both sheets; dummy grids from S-04/S-05 beam plans",
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.0, "type": "named", "source": "S-02/S-03" },
+      { "id": "2", "pos_m": 4.0, "type": "named", "source": "S-02/S-03" },
+      { "id": "3", "pos_m": 6.0, "type": "named", "source": "S-02/S-03" },
+      { "id": "3'", "pos_m": 8.35, "type": "dummy", "source": "A-20 (หน้า22 ST.3 stair plans) + S-11 (หน้า39): stair-landing west edge beam -- A-20's top chain reads 0.10 (wall at grid3) + 2.25 (flight, 9@0.25) = grid3+2.35 = 8.35, and S-11 independently gives landing_extension 0.65 west of grid4 = 9.0-0.65 = 8.35, exact agreement. This is the off-grid vertical B2 seen in S-04's stairwell zone (per Makham's beam-endpoint rule); the landing itself continues past grid4 to grid4+0.40 (wall to the 0.50 line) -- that far edge is NOT separately named pending confirmation it is beam-bearing.", "confidence_score": 0.85, "confidence_flags": ["added_2026-07-19_per_beam-endpoint_rule", "two_independent_sheets_A-20_S-11_agree_on_8.35"] },
+      { "id": "4", "pos_m": 9.0, "type": "named", "source": "S-02/S-03" },
+      { "id": "4'", "pos_m": 9.6, "type": "dummy", "source": "S-04 (หน้า32): BX1 beam stub at row B extends 0.60m east of grid4 (printed '0.60' dimension, SX marker attached) -- per Makham's rule (beam whose start/end is not on a main grid line implies a dummy grid) its east endpoint gets a named line", "confidence_score": 0.75, "confidence_flags": ["added_2026-07-19_per_beam-endpoint_rule", "stub_is_small_(0.60x0.60)_its_y-extent_also_looks_off-grid_but_anchor/orientation_not_fully_resolved_-_zoom_review_pending", "NOT_confirmed_on_S-05_(floor2_has_no_stub_here)"] }
+    ],
+    "y_lines": [
+      { "id": "A'", "pos_m": -2.05, "type": "dummy", "source": "S-04", "confidence_score": 0.85, "confidence_flags": ["ground_floor_only_confirmed", "renamed_2026-07-19_from_'Aprime'_to_standard_prime_notation"], "note": "Ground-floor-only extension south of grid A (real beams: B1 grid1 A->A' + B2 along A' spanning 1-2, both dashed, 'ดูขยาย2' callouts; left chain prints 2.05). Floor-2 (S-05) shows only a 0.40m slab-edge overhang here, NOT this bay. RESOLVED (2026-07-13): M-01 confirms this area is จอดรถ/เฉลียง/ทางเดิน (single-story, at grade) -- explains why S-02/S-03 have no footing line here. 2026-07-19 zoom re-check: the right-hand SO carport slab's own south edge is at A-1.50 (printed '1.50') with NO beam on it -- slab-on-grade edge, deliberately NOT made a dummy grid per Makham's beam-endpoint rule; only the beam-bearing A'(-2.05) line is named." },
+      { "id": "A", "pos_m": 0.0, "type": "named", "source": "S-02/S-03" },
+      { "id": "B", "pos_m": 1.80, "type": "named", "source": "S-02/S-03" },
+      { "id": "C", "pos_m": 5.50, "type": "named", "source": "S-02/S-03" },
+      { "id": "D'", "pos_m": 6.60, "type": "dummy", "source": "A-20 (หน้า22 ST.3 stair plans): right chain D-to-C reads 0.10 wall + 0.90 lane + 0.20 (double stringer/divider strip) + 0.90 lane + 0.10 wall = 2.20 -- the stair lane-divider beam (the off-grid horizontal B1 between S-04's 'two stacked rooms' = the two switchback flights) is centered in the 0.20 strip at D-1.10 = 6.60 (also exactly C+1.10, midway). Landing-level beams per S-05's 'ที่ระดับชานพัก' callouts.", "confidence_score": 0.85, "confidence_flags": ["added_2026-07-19_per_beam-endpoint_rule", "position_from_A-20_printed_chain_0.90/0.20/0.90"] },
+      { "id": "D", "pos_m": 7.70, "type": "named", "source": "S-02/S-03" },
+      { "id": "E", "pos_m": 11.40, "type": "named", "source": "S-02/S-03" },
+      { "id": "F", "pos_m": 13.40, "type": "named", "source": "S-02/S-03" },
+      { "id": "F'", "pos_m": 14.40, "type": "dummy", "source": "S-04 AND S-05 (หน้า32/33): both left chains print '1.00' above row F, and both sheets draw a real beam along this line spanning grids 2-4 (B3 on floor-1, B2 on floor-2) with short vertical extension segments (B2X) at grids 2 and 4 connecting F to F' -- same 'X-mark = extension segment beyond the main grid' pattern as house #2's B2X. The earlier extraction misread this block as a 'notch between F and E'; corrected 2026-07-19.", "confidence_score": 0.9, "confidence_flags": ["added_2026-07-19_per_beam-endpoint_rule", "confirmed_on_2_independent_sheets_S04_S05_with_printed_1.00_dimension"] }
+    ]
+  },
+  "building_footprint_note": "4x6 grid of footings/columns on S-02/S-03 with gaps (per หน้า30's own element list: no footing at F1, F3, D2, C3, B3, A3, A4 -- irregular L-shaped footprint), plus dummy rows: F' (north extension bay 2-4, both floors), A' (ground-floor-only south extension 1-2). Column marks: C0 (row F, F2/F4 only), C1/C1A/C2/C2A (main grid), CN (short columns at stairwell corners 4-D/4-C per S-04).",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "AXIS-ORIGIN CONVENTION DEVIATION (flagged 2026-07-19, not changed): this master anchors y at row A = 0.0 with pos growing northward (F=13.40 top), whereas houses #2/#3/#4 anchor the TOPMOST row as origin with pos growing southward. Internally consistent and all sheet files reference rows by letter (not pos), so left as-is -- but flag for Makham to decide whether to renumber for cross-house consistency (would become F=0, E=2.0, D=5.7, C=7.9, B=11.6, A=13.4, A'=15.45, F'=-1.0).",
+    "STAIRWELL DUMMIES RESOLVED (2026-07-19, later same day): the stairwell-zone off-grid beams flagged earlier now have printed positions from A-20 (หน้า22) cross-checked against S-11 (หน้า39) -- added as 3'(8.35, landing west edge) and D'(6.60, lane-divider beam); the earlier pixel estimates (~7.75 / ~D-0.75) were off by ~0.4-0.6m, printed chains win. STILL PENDING: S-04's top-left SOA block west wall (~1.5m east of grid1, between F' and E) -- solid edge drawn but no beam label confirmed, zoom review pending; and the landing far edge at grid4+0.40 (named line not assigned, see 3' source note).",
+    "The 0.60m/0.50m x-overhangs beyond grid1/grid4 printed on S-04/S-05's TOP chains are eave/slab-edge dimensions with no beam beyond those points at row F -- NOT dummy grids (consistent with the beam-endpoint rule). Note the separate BX1 stub at row B east of grid4 IS beam-bearing and got dummy 4' (9.6).",
+    "Slab-on-grade edges with no beam are NOT given dummy grids per the beam-endpoint rule: carport SO south edge at A-1.50 (S-04, printed 1.50), floor-2 balcony edge at A-0.40 (S-05, printed 0.40)."
+  ],
+  "last_updated_from_page": "S-02, S-03 (pages 30-31); dummy A' from S-04 (M-01 resolution 2026-07-13); F'/4' added + A' renamed from 'Aprime' + structure nested under grid{} 2026-07-19 (zoom re-read of S-04/S-05 per Makham's beam-endpoint rule)",
+  "last_updated_date": "2026-07-19"
+}
