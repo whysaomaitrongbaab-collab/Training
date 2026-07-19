@@ -11,8 +11,8 @@
   "grid_source": "raw_json_ตัวที่ใช้งานจริง/03บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า00_gridline.json",
   "schema_note": "Alternate foundation system to S-02 (spread footing). Footing marks here are pile-cap numbers (F2/F5/F6/F9/F10/F12), confirmed by detail sheets S-09 ('ขยาย F2,F5'), S-10 ('ขยาย F6,F9'), S-11 ('ขยาย F10,F12'). F10 at D-2 is drawn with a hexagonal outline (not rectangular like the others) -- flagged, likely a different pile-cap shape for a heavier/differently-arranged pile group.",
   "elements": [
-    { "element_id": "F5", "element_type": "footing", "count": 2,
-      "grid_refs": ["E1", "E3"],
+    { "element_id": "F5", "element_type": "footing", "count": 3,
+      "grid_refs": ["E1", "E3", "B3"],
       "span_length_m": null, "confidence_score": 0.9, "confidence_flags": [] },
     { "element_id": "F6", "element_type": "footing", "count": 1,
       "grid_refs": ["E2"],
@@ -26,9 +26,6 @@
     { "element_id": "F12", "element_type": "footing", "count": 1,
       "grid_refs": ["C2"],
       "span_length_m": null, "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F5", "element_type": "footing", "count": 1,
-      "grid_refs": ["B3"],
-      "span_length_m": null, "confidence_score": 0.85, "confidence_flags": ["same_mark_as_E-1/E-3_but_different_column_pairing_C1_not_C1A_see_S-02_analogous_note"] },
     { "element_id": "F2", "element_type": "footing", "count": 2,
       "grid_refs": ["A1", "A2"],
       "span_length_m": null, "confidence_score": 0.9, "confidence_flags": [] },
@@ -39,10 +36,11 @@
       "grid_refs": ["D1", "D2", "D3", "C1", "C2", "C3", "B1", "B2", "B3", "A1", "A2"],
       "span_length_m": null, "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] }
   ],
-  "confidence_score": 0.88,
+  "confidence_score": 1,
   "confidence_flags": ["grid_cross_confirmed_against_S02", "footing_layout_identical_position_pattern_to_S02_only_marks_differ"],
   "warnings": [
     "Same irregular footprint as S-02 -- row A only has columns 1-2.",
-    "F10's hexagonal cap shape needs confirmation from the S-11 detail sheet before treating the pile-count/arrangement as final."
+    "F10's hexagonal cap shape needs confirmation from the S-11 detail sheet before treating the pile-count/arrangement as final.",
+    "REMOVED_2026-07-20_by_user: a duplicate F5 entry (count 1 at B3) was deleted -- B3 was already included in the main F5 entry above (count 3, grid_refs E1/E3/B3); same double-count found and fixed on the analogous S-02 spread-footing plan (หน้า29)."
   ]
 }
