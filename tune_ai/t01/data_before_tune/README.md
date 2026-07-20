@@ -3,75 +3,94 @@
 สร้าง 2026-07-20 · ต้นทาง `json_แก้ไขแล้ว/` 4 หลัง (บ้าน 01-04)
 
 > ⚠️ **[rule_of_tune.md](../../../training-data/docs/rule_of_tune.md) ข้อ 2 ส่วนขยาย** — ทุกไฟล์ในโฟลเดอร์นี้กำหนดว่าอะไรจะกลายเป็น "ตัวอย่าง training"
-> แก้ `CFG` ใน `build_dataset.js` หรือ `CONFIG` ใน `train_qwen3vl.py` = เปลี่ยนสิ่งที่โมเดลจะเรียน ต้องเตือน/ขออนุญาตก่อนเสมอ
+> แก้ `CFG` ใน `build_dataset.js` หรือ `CONFIG`/`PRESETS` ในสคริปต์เทรน = เปลี่ยนสิ่งที่โมเดลจะเรียน ต้องเตือน/ขออนุญาตก่อนเสมอ
 > โฟลเดอร์นี้ไม่แตะ `raw_json_ตัวที่ใช้งานจริง/` เลย (ไม่เข้ากฎข้อ 1)
 
 ---
 
 ## ① ใช้ Qwen ไหม? ตัวไหน?
 
-**ใช่ — `Qwen3-VL-8B-Instruct`**
+**🎯 ตัดสินใจสุดท้าย (2026-07-20) — `Qwen3.6-35B-A3B`** (สคริปต์: `train_qwen36.py`) — ไม่สนงบ เลือกไปทาง MoE 35B/active 3B แทน dense 32B/122B
 
-| ทำไม Qwen | |
-|---|---|
-| pipeline ที่มีอยู่ยิง Qwen-VL-Max อยู่แล้ว | prompt/schema/บทเรียนทั้งหมดผูกกับมันมา 3 อาทิตย์ |
-| open-weight เทรนเองได้ | ไม่ต้องส่งแบบก่อสร้างลูกค้าขึ้น API เจ้าอื่น |
-| Unsloth รองรับเต็ม | เทรนเร็วขึ้น 1.7× ใช้ VRAM น้อยลง 60% |
+**ทำไมไม่ใช่ Qwen3.5-122B-A10B (ตัวใหญ่กว่า):**
 
-**ทำไม 8B ไม่ใช่ 4B / 32B:**
-
-| ขนาด | VRAM (4-bit) | เหมาะกับ |
+| | Qwen3.6-35B-A3B ✅ | Qwen3.5-122B-A10B |
 |---|---|---|
-| 2B / 4B | 4-8 GB | caption/tag ง่าย ๆ — **อ่านเอกสารหนาแน่นสู้ 8B ไม่ได้** |
-| **8B** ✅ | **~6 GB weights** | เอกสารหนาแน่น + ตาราง + structured extraction — ตรงงานเรา |
-| 32B | ~21 GB | แม่นกว่า แต่ 24GB เทรนไม่ไหว ต้อง A100 80GB ค่าเช่า 5-10× |
+| OmniDocBench (document, ตั้งต้นก่อนทูน) | 89.9 | 89.8 — **แพ้ด้วยซ้ำ** |
+| bf16 LoRA VRAM | 74GB (การ์ดเดียว) | 256GB (**multi-GPU ขั้นต่ำ 4 ใบ**) |
+| **fine-tuning บน dataset เล็ก (226 ตัวอย่าง)** | — | งานวิจัยพบโมเดลใหญ่ลืมความรู้เดิมหนักกว่า ไม่ใช่เบากว่า |
+| **MoE + domain แคบ** | — | 256 experts ส่วนใหญ่จะไม่ถูก routing ไปใช้เลย เพราะ dataset แคบเกินกว่าจะกระจายงานได้ทั่ว |
 
-งานเรา = อ่านตัวเลขเล็กในแบบก่อสร้าง + คืน JSON โครงสร้างซับซ้อน → 8B คือจุดคุ้มสุด
+เบนช์มาร์คตั้งต้นเท่ากันหรือแพ้ด้วยซ้ำ + เสี่ยงลืมความรู้เดิมมากกว่าตอนทูน + ต้นทุน/ความซับซ้อน multi-GPU สูงกว่ามาก → ไม่คุ้ม
+
+**🔴 ทำไมไม่ 4-bit/QLoRA:** Unsloth เตือนเองว่าตระกูล Qwen3.5/3.6 (ทั้ง dense/MoE) quantize แล้วคุณภาพตกผิดปกติ ("BitsandBytes limitation") ต้องใช้ **bf16 LoRA เท่านั้น** (`train_qwen36.py` ตั้ง `LOAD_IN_4BIT=False` ไว้แล้ว) — ต้องเช่า **A100/H100 80GB ใบเดียว**
+
+**เก็บ `train_qwen3vl.py` (Qwen3-VL 8B/32B) ไว้เป็นทางเลือกสำรอง** — ผ่านการยืนยันจาก Unsloth ว่ามี notebook อ้างอิงจริงมากกว่า (Qwen3.6 ใหม่กว่า community/เอกสารน้อยกว่า) ถ้า `train_qwen36.py` รันไม่ผ่านให้กลับมาใช้ตัวนี้แทน:
+
+```bash
+MODEL_SIZE=8B python train_qwen3vl.py    # 4090 24GB, 4-bit QLoRA ใช้ได้ปกติ (ตระกูล Qwen3-VL ไม่ติดข้อจำกัดเดียวกัน)
+```
 
 ---
 
 ## ② เช่าเครื่องไหน
 
-**RTX 4090 24GB บน Vast.ai — ~$0.35/hr** (interruptible ~$0.29)
+**A100 80GB บน Vast.ai — ~$0.85-1.50/hr** (จำเป็นเพราะ bf16 LoRA ของ Qwen3.6-35B-A3B กิน ~74GB — 4090/3090 24GB ไม่พอ)
 
 | ตัวเลือก | ราคา/ชม. | ความเห็น |
 |---|---|---|
-| **RTX 4090 24GB (Vast.ai)** ✅ | **$0.29-0.50** | เร็วกว่า 3090 ~1.5× ราคาพอกัน — **เอาตัวนี้** |
-| RTX 3090 24GB (Vast.ai) | $0.15-0.25 | ถูกสุด ใช้ได้ แต่ช้ากว่า คุ้มถ้าเน้นประหยัด |
-| RTX 4090 (RunPod) | $0.34 community / $0.59 secure | สะดวกกว่า แพงกว่านิดหน่อย |
-| A100 40GB | $0.52-1.64 | **ไม่ต้อง** — 24GB พอแล้ว จ่ายเกิน 3-5× ฟรี ๆ |
+| **A100 80GB (Vast.ai)** ✅ | **$0.85-1.50** | ขั้นต่ำที่ bf16 LoRA 74GB จะพอ — **เอาตัวนี้** |
+| H100 80GB | $2.01+ | เร็วกว่า A100 แต่ไม่จำเป็น (VRAM เท่ากัน ไม่ใช่คอขวด) |
+| RTX 4090/3090 24GB | $0.29-0.50 | **ใช้ไม่ได้กับ Qwen3.6** (VRAM ไม่พอ) — ใช้ได้เฉพาะทางเลือกสำรอง Qwen3-VL 8B เท่านั้น |
+| A100/H100 ×2+ | — | **ไม่ต้อง** — เลือก 35B-A3B มาเพื่อเลี่ยง multi-GPU ของ 122B อยู่แล้ว อย่าไปเช่าหลายใบ |
 
-**สเปคขั้นต่ำที่ต้องกด:** VRAM ≥ 24GB · **Disk ≥ 80GB** (weights ~16GB + checkpoint + ภาพ) · CUDA 12.x
+**สเปคขั้นต่ำที่ต้องกด:** VRAM ≥ 80GB (**ใบเดียว**) · **Disk ≥ 150GB** (bf16 weights ตัวเต็ม ~70GB + checkpoint + ภาพ) · CUDA 12.4+
 
-**ค่าใช้จ่ายที่คาด:** 221 examples × 3 epochs ≈ 663 steps @ ~8-12 วิ/step ≈ **1.5-2.5 ชม.** → **ประมาณ $1-2 ต่อรอบเทรน**
-เผื่อ setup/ดาวน์โหลด/ลองผิดลองถูก → **$5-10 ก็พอทั้งโปรเจกต์**
+**ค่าใช้จ่ายที่คาด:** 226 examples × 3 epochs ≈ 678 steps — โมเดลใหญ่กว่าเดิมมาก (35B activation) เวลา/step ไม่เคยวัดจริง คาดคร่าว ๆ **3-6 ชม.** → **$3-9 ต่อรอบเทรน** เผื่อลองผิดลองถูก **$15-30 ทั้งโปรเจกต์** (ตัวเลขนี้ไม่แม่น เพราะยังไม่เคยรันจริง — ดูจริงจาก log รอบแรกแล้วปรับประมาณการ)
 
 ---
 
 ## ③ ต้องทำยังไง (ทำตามนี้ทีละข้อ)
 
-```bash
-# 1) เช่าเครื่อง Vast.ai — เลือก image ที่มี PyTorch + CUDA 12.x, disk 80GB, เปิด Jupyter หรือ SSH
+**ตอนสร้าง instance บน Vast.ai (ก่อนกด Rent):**
+1. **เลือก Template** = PyTorch + CUDA ธรรมดา (**ไม่ใช่** "Unsloth Studio" template — เราใช้สคริปต์ของเราเอง ไม่ใช่ UI ของเขา ยังไม่ยืนยันว่า Studio รันสคริปต์กำหนดเองได้)
+2. **Disk (Container Size)** ต้องเพิ่มเป็น **≥150GB** (default ของ Vast.ai มักตั้ง 16GB — ไม่พอ bf16 weight ~70GB)
+3. **On-start script** = วางเนื้อหาทั้งไฟล์ [onstart.sh](onstart.sh) ลงในช่องนี้ — ติดตั้ง Unsloth/Triton/env var ของ Blackwell ให้อัตโนมัติตอนเปิดเครื่อง
+4. **เลือก GPU** — **RTX PRO 6000 96GB (Blackwell)** ยืนยันแล้วว่า Unsloth รองรับ ([Unsloth Blackwell docs](https://unsloth.ai/docs/blog/fine-tuning-llms-with-blackwell-rtx-50-series-and-unsloth)) VRAM เกิน 74GB ที่ต้องใช้สบาย ๆ เช็ค reliability ≥95% ก่อนกด Rent (A100/H100 80GB ก็ใช้ได้เหมือนกันถ้าหาไม่เจอ RTX PRO 6000)
 
-# 2) อัปโหลดโฟลเดอร์นี้ทั้งก้อน (~240 MB) ขึ้น /workspace/
+**หลังเช่าได้เครื่อง (onstart.sh รันติดตั้งเสร็จอัตโนมัติแล้ว):**
+```bash
+# 1) เช็คสภาพแวดล้อมก่อน — ทำก่อนอัปโหลดอะไรทั้งนั้น (ไม่แตะ dataset เลย)
+python verify_env.py
+# ต้องเห็น ✓ ครบทุกบรรทัด ถ้ามี ✗ แก้ตามที่มันบอกก่อน อย่าเพิ่งไปต่อ
+
+# 2) อัปโหลดโฟลเดอร์นี้ทั้งก้อน (~240 MB) ขึ้น /workspace/tune/
 #    ถ้าเน็ตช้า: zip ก่อนแล้วค่อยอัป หรือ scp -r
 
-# 3) ติดตั้ง (ครั้งเดียว)
-pip install unsloth trl peft accelerate bitsandbytes
-pip install qwen-vl-utils pillow
-
-# 4) วัด baseline ก่อน! (โมเดลยังไม่ทูน เก่งแค่ไหน — ไม่มีตัวเลขนี้จะไม่รู้ว่าเทรนแล้วดีขึ้นจริงไหม)
+# 3) วัด baseline ก่อน! (โมเดลยังไม่ทูน เก่งแค่ไหน — ไม่มีตัวเลขนี้จะไม่รู้ว่าเทรนแล้วดีขึ้นจริงไหม)
 python eval_fields.py --base --limit 20
 
-# 5) เทรน (~1.5-2.5 ชม.)
-python train_qwen3vl.py
+# 4) ⚠️ ทดสอบ 5 step ก่อนเสมอ (train_qwen36.py ยังไม่เคยรันจริง) — แก้ SFTConfig ชั่วคราว
+#    เพิ่ม max_steps=5 (คอมเมนต์ num_train_epochs ออก) แล้วรันดูว่าผ่าน step แรกไหมก่อน
+python train_qwen36.py
 
-# 6) วัดผลหลังเทรน แล้วเทียบกับข้อ 4
-python eval_fields.py
+# 5) รันเต็มถ้า step 5 ผ่าน (เอา max_steps=5 ออก คืน num_train_epochs=3)
+python train_qwen36.py
+
+# 6) วัดผลหลังเทรน แล้วเทียบกับข้อ 3
+python eval_fields.py --adapter outputs_qwen36/lora
 ```
 
-**ดูอะไรตอนเทรน:** ถ้า VRAM เต็ม (OOM) → ลด `MAX_PIXELS` ใน `train_qwen3vl.py` เป็น `4096*32*32` ก่อน
-อย่าลด `BATCH` (เป็น 1 อยู่แล้ว) และอย่าปิด `finetune_vision_layers`
+**ถ้า `train_qwen36.py` รันไม่ผ่าน (import พัง / processor attribute ไม่มี)** — กลับไปใช้ทางเลือกสำรองที่ยืนยันแนวทางแล้ว (ใช้ได้บนการ์ดที่เล็กกว่ามากด้วย ไม่ต้อง Blackwell):
+```bash
+MODEL_SIZE=8B python train_qwen3vl.py    # 4090 24GB พอ, ผ่านการยืนยัน pattern การใช้ API ชัดเจนกว่า
+```
+
+**ดูอะไรตอนเทรน:** ถ้า VRAM เต็ม (OOM) → ลด `MAX_PIXELS` ใน `train_qwen36.py` เป็น `4096*1024` ก่อน
+อย่าลด `BATCH` (เป็น 1 อยู่แล้ว) · **ห้ามเปลี่ยน `LOAD_IN_4BIT` เป็น `True`** — Unsloth เตือนเองว่าตระกูลนี้ quantize แล้วคุณภาพตกผิดปกติ
+
+**vision layers freeze อยู่ (default `FINETUNE_VISION=0`)** — dataset เล็ก การเทรน vision encoder เสี่ยงทำ visual features พัง
+ปัญหา text เล็กแก้ด้วยความละเอียดภาพ (`MAX_PIXELS`) ไม่ใช่รื้อ encoder · อยากลองเทรน vision เทียบ: `FINETUNE_VISION=1 python train_qwen36.py` (ทำหลังได้ baseline frozen แล้ว)
 
 **ตัวเลขที่ควรได้:** ยังไม่มีใครวัด — ข้อ 4 คือ baseline ตัวแรกของโปรเจกต์นี้
 ที่ต้องดูคือ **element recall** (โมเดลมองข้ามคานไหม) ไม่ใช่ eval loss
@@ -82,29 +101,34 @@ python eval_fields.py
 
 ```
 data_before_tune/
-├── train.jsonl          221 examples (บ้าน 01 + 02 + 03)
-├── val.jsonl             93 examples (บ้าน 04)
+├── train.jsonl          226 examples (บ้าน 01 + 02 + 04)
+├── val.jsonl             88 examples (บ้าน 03)
 ├── images/              310 ไฟล์ PNG (3309×2339)
 ├── build_dataset.js     สคริปต์ประกอบ dataset — รันซ้ำได้ ผลเหมือนเดิมทุกครั้ง
-├── train_qwen3vl.py     สคริปต์เทรน
-├── eval_fields.py       วัดผลระดับ field
+├── onstart.sh           วางในช่อง "On-start script" ตอนสร้าง instance บน Vast.ai — ติดตั้ง Unsloth/Triton/Blackwell env อัตโนมัติ
+├── verify_env.py        เช็คสภาพแวดล้อม (GPU/CUDA/Unsloth/Triton) ก่อนอัปโหลด dataset จริง
+├── train_qwen36.py      สคริปต์เทรน — ตัวที่ใช้จริง (Qwen3.6-35B-A3B, bf16 LoRA)
+├── train_qwen3vl.py     สคริปต์เทรนสำรอง (Qwen3-VL 8B/32B, 4-bit QLoRA)
+├── eval_fields.py       วัดผลระดับ field — รองรับทั้ง 2 เส้นทาง (MODEL_SIZE=QWEN36/8B/32B)
 └── stats.json           สถิติ + config ที่ใช้ build
 ```
 
 **รูปแบบ 1 บรรทัด:**
 ```json
-{"id":"04บ้าน...::...หน้า33","house":"...","messages":[
+{"id":"03บ้าน...::...หน้า31","house":"...","messages":[
   {"role":"user","content":[{"type":"image","image":"images/....png"},{"type":"text","text":"<instruction>"}]},
-  {"role":"assistant","content":[{"type":"text","text":"{\"png\":\"33\",\"views\":[...]}"}]}]}
+  {"role":"assistant","content":[{"type":"text","text":"{\"png\":\"31\",\"views\":[...]}"}]}]}
 ```
 
 | | train | val |
 |---|---|---|
-| examples | 221 | 93 |
-| output median | 1,127 tok | 1,269 tok |
-| output ยาวสุด | 2,641 tok | 2,748 tok |
+| examples | 226 (บ้าน 01+02+04) | 88 (บ้าน 03) |
+| output median | 1,226 tok | 1,017 tok |
+| output ยาวสุด | 2,748 tok | 2,641 tok |
 
-instruction 284 tok · ภาพ 5,120 tok → seq ยาวสุด ~8,200 tok
+instruction ~1,020 tok (ถ่วงน้ำหนักตามความถี่ error จริง — ดูหัวข้อด้านล่าง) · ภาพ 5,120 tok → seq ยาวสุด ~8,900 tok
+
+**ทำไม val = บ้าน 03 ไม่ใช่ 04:** มะขามสั่งตรง (2026-07-20) — เปลี่ยนจาก val=04 เดิม
 
 ---
 
@@ -134,8 +158,19 @@ instruction 284 tok · ภาพ 5,120 tok → seq ยาวสุด ~8,200 tok
 ไม่งั้นโมเดลจะเรียน**แต่งวันที่กับชื่อคนมั่ว** · `build_dataset.js` มีตัวตรวจรั่วยิงทุกครั้งที่ build
 ปิดได้ที่ `CFG.STRIP_WORKLOG = false`
 
-### instruction สั้น (284 tok) ไม่ยัดสเปคเต็ม
-fine-tune คือการฝัง format ลงน้ำหนักโมเดล ถ้ายัดสเปค 6,000 tok ทุก example = เปลืองฟรี
+### instruction ~1,020 tok — ความยาวถ่วงน้ำหนักตามความถี่ที่เคยผิดจริง
+ไม่ยัดสเปคเต็ม (6,000 tok) และไม่ใช้ตัวสั้นแบบสรุปเท่ากันทุกกฎ — วัดจาก `workmen's_diary/` จริง (grep-count 2026-07-20)
+ว่าแต่ละหัวข้อถูกแก้/พูดถึงกี่ครั้งใน 3 อาทิตย์ แล้วให้พื้นที่ตามนั้น:
+
+| หัวข้อ | พูดถึงใน diary | พื้นที่ใน prompt |
+|---|---|---|
+| dummy grid + beam-endpoint rule | 48 ครั้ง | **ยาวสุด** — 3 anti-pattern + ข้อยกเว้น |
+| grid_ref format/convention | 39 | สูง |
+| main_bar (top/bottom/middle) | 23+15+12 | สูง |
+| confidence/price-table/specs join | ≤16 | **0** — specs join ตัดทิ้งเลย เพราะ dataset ไม่มี cross-page spec ให้ตอบอยู่แล้ว (`DROP_CROSS_PAGE_SPECS`); price-table digit error เป็นปัญหา cross-page ไม่ใช่สิ่งแก้ได้จาก prompt หน้าเดียว |
+| element merge rule / column single-count / element order | ≤6 | สั้น 1 บรรทัด — กฎ format ชัดเจนไม่กำกวมอยู่แล้ว |
+
+เหตุผล: เวลาในการรีวิวที่เราลงจริงคือสัญญาณตรงที่สุดว่าอะไรคือจุดที่โมเดล (และคนสกัดเดิม) พลาดบ่อย — ใช้ prompt เตือนเรื่องนั้นหนักกว่าเรื่องที่ไม่ค่อยผิด
 **ต้องใช้ instruction ตัวเดียวกันเป๊ะตอน inference** (อยู่ใน `PROMPT_SHORT` ของ `build_dataset.js`)
 สลับเป็นสเปคเต็มได้ที่ `CFG.PROMPT_MODE = 'full_schema'`
 

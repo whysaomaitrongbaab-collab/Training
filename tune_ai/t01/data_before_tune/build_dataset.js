@@ -24,7 +24,8 @@ const CFG = {
   OUT: __dirname,
 
   // หลังไหนเป็น val (แบ่งตาม "หลัง" ไม่ใช่สุ่มตามหน้า — กันข้อมูลรั่ว)
-  VAL_HOUSES: ['04บ้าน_เล็ก_2ชั้น_02'],
+  // เปลี่ยน 2026-07-20 (มะขามสั่ง): train = 01+02+04, val = 03
+  VAL_HOUSES: ['03บ้าน_เล็ก_2ชั้น_01'],
 
   // 'short'       = instruction สั้น ให้ format ฝังในน้ำหนักโมเดล (แนะนำ / default)
   // 'full_schema' = ยัด primary_rawjson_schema.md ทั้งไฟล์เป็น system prompt (~6k tok/example)
@@ -69,19 +70,62 @@ const FLAG_KEY_RE = /(^|_)(confidence_)?flags$/;    // confidence_flags, spec_co
 const PAGE_LEVEL = ['png', 'doc_page', 'discipline', 'sheet_code', 'sheet_name',
   'drawing_no', 'sheet_no', 'sheet_total', 'scale'];
 
+// Section length below is deliberately proportional to how often each rule was
+// actually gotten wrong across 3 weeks of review (workmen's_diary/, grep-counted
+// 2026-07-20): dummy grid (48 mentions) > grid_ref format (39) > main_bar incl.
+// top/bottom/middle (23+15+12) > everything else (≤14, mostly one-line rules that
+// are unambiguous once stated). spec_source/join is omitted entirely — this
+// dataset drops cross-page specs (see DROP_CROSS_PAGE_SPECS), so the model is
+// never asked to answer anything that lives on a different page than the one shown.
 const PROMPT_SHORT = [
   'You are reading one page of a Thai reinforced-concrete (RC) construction drawing set.',
   'Extract everything on the page into JSON following the primary_rawjson_schema.',
   '',
-  'Rules:',
-  '- Inventory EVERY view/box on the page first, then emit one entry per view in "views".',
-  '  A page with a single view still uses "views" with one entry. Never drop a view.',
-  '- Each view carries its own "pattern", one of: plan, section, schedule, notes, index,',
-  '  material_list, site_plan, side_profile, gridline, title, symbol, roof_plan, misc, unknown.',
-  '- Beams: one atomic entry per grid-to-grid segment. main_bar always splits top/bottom',
-  '  (and middle when a distinct mid-depth row exists). A circle symbol (Ø) always means RB.',
-  '- grid_ref reads row-letter first then column ("A-1"); point elements use a grid_refs array.',
-  '- Use null for anything you cannot read clearly. Do not guess.',
+  'Inventory EVERY view/box on the page first, then emit one entry per view in "views"',
+  '(a single-view page still uses a one-entry array — never drop a view). Each view',
+  'carries its own "pattern": plan, section, schedule, notes, index, material_list,',
+  'site_plan, side_profile, gridline, title, symbol, roof_plan, misc, or unknown.',
+  '',
+  'GRID AND DUMMY GRID — the single most error-prone part of this task, read carefully:',
+  '- grid_ref reads row-letter first, then column ("A-1", not "1-A"). Point-type elements',
+  '  (footing/column) use a grid_refs array instead of start/end.',
+  '- A structural line not on a named/printed grid still needs a name: append a prime to',
+  '  the nearest named grid ("1\'", "A\'"). If more than one dummy line falls in the same',
+  '  gap, number them in reading order (left→right / top→bottom): 1st gets one prime,',
+  '  2nd gets two.',
+  '- THE KEY RULE: if a beam\'s start or end point does not sit on any grid line you can',
+  '  see, that point still needs a grid line — it does NOT mean the beam should be',
+  '  dropped. Trace every beam segment, including short stubs near stairs/closets. For',
+  '  each endpoint: use the existing named/dummy grid if one is there; if not, read its',
+  '  position off a printed dimension chain and record a new dummy grid, then reference',
+  '  the beam against it. Never: (a) drop the beam because it "isn\'t on the grid",',
+  '  (b) write a prose description instead of grid_ref_start/grid_ref_end, (c) set',
+  '  start=end with a null span. Exception: a slab/eave edge with no beam label and no',
+  '  corner columns is not structural and needs no dummy grid.',
+  '- Span length comes from the grid table, not your own visual estimate.',
+  '',
+  'REBAR (main_bar):',
+  '- Always split top/bottom, even when the counts are equal — never collapse into one.',
+  '- If a section shows a clearly distinct row of bars at mid-depth (own leader line,',
+  '  sitting between the top and bottom rows, usually a deep beam), record it as a third',
+  '  face, main_bar.middle. Do not fold it into additional_bars, and do not invent one by',
+  '  splitting a top/bottom cluster.',
+  '- A circle symbol (Ø) always means round bar (RB); visible ribs mean deformed bar (DB)',
+  '  — read the symbol, never infer type from diameter.',
+  '- Columns use a single main_bar.count for the 4 corner bars — do not split top/bottom.',
+  '- Before assigning an "additional" bar to top or bottom, check the leader line itself,',
+  '  not just the label wording — the same-looking label has resolved to opposite sides',
+  '  on different marks in this series.',
+  '',
+  'OUTPUT DISCIPLINE:',
+  '- Same element_id appearing more than once on this page with non-overlapping',
+  '  positions → merge into one entry (sum count, concatenate grid_refs). Exception: a',
+  '  multi-level schedule keeps the same element_id per level as separate entries, using',
+  '  a "level" field — never embed the level into element_id.',
+  '- One atomic entry per grid-to-grid beam segment; do not pre-group same-mark spans.',
+  '- Reading order: top-to-bottom by row, left-to-right by column, vertical before',
+  '  horizontal at a shared start point.',
+  '- Use null for anything unclear. Do not guess or invent a value.',
   '',
   'Reply with JSON only. No markdown fence, no commentary.',
 ].join('\n');
