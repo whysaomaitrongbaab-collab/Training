@@ -51,6 +51,24 @@ A page may contain multiple views/patterns — **inventory every view first with
 - **Origin (0,0)** must always be the leftmost/topmost main grid (`type:"named"`) — a dummy grid must never take over the origin position. If a dummy grid falls before the origin (further left/up than the first main grid), use a **negative** `pos_m` instead, e.g. `{"id":"1'","pos_m":-0.80,"type":"dummy"}`
 - `pos_m` is always read from an actually-printed dimension line — never guessed
 
+#### 🔎 How to FIND dummy grids: the beam-endpoint rule (Makham, 2026-07-19)
+
+**If a beam's start or end point does not sit on any grid line in the drawing, that point needs a dummy grid.** A beam always lands on something — if the extraction has nowhere to name that landing point, the grid master is incomplete, not the beam.
+
+Work the plan sheet this way:
+1. Trace **every** beam segment on the sheet, including short stubs and the ones in dense stair/closet clusters.
+2. For each endpoint, ask: is there a named or already-known dummy line there? If yes, use it.
+3. If not → **a dummy grid belongs at that point.** Read its `pos_m` off the printed dimension chain (per the rule above — never estimate), add it to `หน้า00_gridline.json`, then record the beam against it.
+
+**Never do these instead** (all three are real failure modes seen in houses #3/#4, and each one silently loses a real beam):
+- ❌ dropping the beam because it "isn't on the grid"
+- ❌ recording it with a prose `description` and no `grid_ref_start`/`grid_ref_end` (e.g. `"small beam marker near col1, exact segment uncertain"`)
+- ❌ setting `grid_ref_start` = `grid_ref_end` with a `null` span
+
+Real cases: house #04's S-04 (หน้า33) was missing **8** beams and had 2 position-less placeholder entries; its S-05 (หน้า34) was missing **12** more, including a whole bay window recorded only as `"1.75m wide, not clearly grid-aligned"`. Every one of them sat on a line the grid master didn't have yet (`1'`, `1''`, `1'''`, `1''''`, `3'`, `E''`). Once those dummy lines existed, all 20 beams had exact grid refs.
+
+**Conversely — do NOT invent a dummy for a slab-only edge.** A dashed slab/room boundary, a roof-overhang line, or an eave edge with **no beam label and no columns at its corners** is not a structural line and gets no dummy grid (house #3's `E'` at the S0 bay-window box is exactly this case — slab edge only, no beam, so nothing was added). The trigger is a **beam endpoint**, not any line on the drawing.
+
 ### Master file
 Create/update `<house>_หน้า00_gridline.json` **before** extracting any other page — it holds every main grid + dummy grid for the whole house in one place. Other plan/section pages reference it via the `grid_source` field instead of re-writing the grid. Keep this as a separate companion file — never re-embed the full grid inline inside every view.
 
@@ -82,11 +100,24 @@ One beam = between two adjacent supports only. Split immediately when:
 ```
 **Always split `top`/`bottom`, even when equal (symmetric case)** — never collapse into one count. Genuine top≠bottom cases have been found (e.g. top 2, bottom 3); merging loses real data.
 
+**`middle` — third main_bar face (added 2026-07-20 by Makham).** When a section drawing shows a **clearly distinct mid-depth bar row** — its own leader line, its own dot row sitting between the top and bottom clusters, typically on a deep beam — record it as a third `main_bar` face, **not** as `additional_bars`:
+```json
+"main_bar": {
+  "top":    { "count": 2, "dia_mm": 16, "type": "RB" },
+  "middle": { "count": 2, "dia_mm": 9,  "type": "RB" },
+  "bottom": { "count": 4, "dia_mm": 16, "type": "RB", "note": "2 เส้นเต็มความยาว + 2 เส้นหยุดที่ L/8" }
+}
+```
+Real case: house #04's B4A/B4X (200x700 deep beams) print `2Ø9มม.` on a leader pointing to a distinct dot row at mid-depth, between the `2-Ø16มม.` top row and the `2-Ø16มม.` + `2-Ø16มม.(หยุดที่ L/8)` bottom rows. These are skin/waist bars — real longitudinal main reinforcement on their own face, so they belong in `main_bar.middle`.
+
+`middle` is **optional** — emit it only when such a row genuinely exists; most beams have only `top`/`bottom`. Do not invent a `middle` by splitting a top or bottom cluster, and do not use it for a bar that is merely *drawn* between the two clusters but whose leader ties it to the top or bottom face (that case still merges into `top`/`bottom` per §7).
+
 ```json
 "additional_bars": [
   { "count": 1, "dia_mm": 16, "position": "on top of beam, cut off at L/8 from column face", "note": "..." }
 ]
 ```
+With `middle` available, `additional_bars` is now only for bars that belong to **no** longitudinal face at all (e.g. a standalone tie/dowel). A mid-depth longitudinal row is `main_bar.middle`, not an additional bar.
 
 **Ø (circle symbol) always = RB** — never infer from bar diameter; go by the printed symbol only (deformed bar with visible ribs = DB).
 
@@ -108,7 +139,7 @@ concrete_grade, steel_grade, spec_source, spec_confidence_score
 - **B2/B4/B5/B3**: label read "บนคาน" (top) but the leader line actually pointed to a bottom-corner bar (curtailed at L/8, alongside the other bottom main bars) → merged into `main_bar.bottom.count` (e.g. `count: 2` + 1 curtailed bar → `count: 3`).
 - **B3X**: a bar labeled "ล้วงเข้า B3 1.5 ม." (lap-splices into the adjacent beam B3) — sounds like it should be a separate cross-beam detail, but per B3X's own section the label order top-to-bottom was *top-continuing / lap-splice bar / stirrup / bottom-continuing*, meaning the lap-splice bar is actually B3X's own **top** reinforcement (anchored by extending into B3), not a bottom bar and not something to leave out — merged into `main_bar.top.count` (`count: 2` → `4`) instead.
 
-So: **"lap-splices into an adjacent beam" is not on its own a reason to keep a bar in `additional_bars`** — it can still belong to that mark's own `main_bar.top` or `.bottom`, exactly like a same-beam curtailed bar. Check the printed label *order* (top-to-bottom in the section) or the leader line position for **every mark independently** — don't reuse the previous mark's answer. Always add a `note` on the affected `main_bar` side (e.g. "2 เส้นต่อเนื่องจาก B3 + 2 เส้นล้วงเข้า B3 1.5 ม.") so the splice/curtailment detail isn't lost after merging. Only keep a bar in `additional_bars` when it genuinely isn't part of either main_bar side at all (e.g. a standalone stirrup-adjacent reinforcement with no top/bottom association).
+So: **"lap-splices into an adjacent beam" is not on its own a reason to keep a bar in `additional_bars`** — it can still belong to that mark's own `main_bar.top` or `.bottom`, exactly like a same-beam curtailed bar. Check the printed label *order* (top-to-bottom in the section) or the leader line position for **every mark independently** — don't reuse the previous mark's answer. Always add a `note` on the affected `main_bar` side (e.g. "2 เส้นต่อเนื่องจาก B3 + 2 เส้นล้วงเข้า B3 1.5 ม.") so the splice/curtailment detail isn't lost after merging. Only keep a bar in `additional_bars` when it genuinely isn't part of any main_bar face at all — and note that a **mid-depth longitudinal row now has its own face, `main_bar.middle` (§6)**, so "it's not top and not bottom" is no longer a reason to leave it in `additional_bars`.
 
 ## 8. `level` field (multi-level schedules)
 

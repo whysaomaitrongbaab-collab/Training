@@ -11,14 +11,10 @@
   "grid_source": "raw_json_ตัวที่ใช้งานจริง/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
   "schema_note": "Alternate foundation system to S-03 (pile footing). This sheet is the source that established the dummy grid E' in the shared grid master (a 2-footing row 1.90m before named grid E, C0-marked). Same footing/column mark separation convention as houses #2/#3.",
   "elements": [
-    { "element_id": "F0.60x0.60", "element_type": "footing", "count": 2, "grid_refs": ["E'1", "E'2"], "confidence_score": 0.85, "confidence_flags": ["footing_mark_is_the_dimension_notation_itself", "on_dummy_grid_row_E_prime"] },
-    { "element_id": "F1.30x1.30", "element_type": "footing", "count": 1, "grid_refs": ["E1"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F1.60x1.60", "element_type": "footing", "count": 1, "grid_refs": ["E2"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F1.00x1.00", "element_type": "footing", "count": 1, "grid_refs": ["E3"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F1.30x1.30", "element_type": "footing", "count": 6, "grid_refs": ["D1", "D3", "C1", "C3", "B2", "B3"], "confidence_score": 0.85, "confidence_flags": ["combined_across_multiple_rows_same_dimension_mark"] },
-    { "element_id": "F1.60x1.60", "element_type": "footing", "count": 2, "grid_refs": ["D2", "C2"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F1.00x1.00", "element_type": "footing", "count": 1, "grid_refs": ["B1"], "confidence_score": 0.85, "confidence_flags": ["same_dimension_mark_as_E-3_different_column_pairing_see_warnings"] },
-    { "element_id": "F0.60x0.60", "element_type": "footing", "count": 2, "grid_refs": ["A2", "A3"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F0.60x0.60", "element_type": "footing", "count": 4, "grid_refs": ["E'1", "E'2", "A2", "A3"], "confidence_score": 0.85, "confidence_flags": ["footing_mark_is_the_dimension_notation_itself", "includes_the_dummy_grid_row_E_prime_pair", "MERGED_2026-07-20_by_user_rule -- was_2_separate_entries_(E'1/E'2_count_2_+_A2/A3_count_2);_same_element_id_in_one_sheet_must_be_ONE_entry,_counts_summed_and_grid_refs_concatenated_(no_grid_ref_overlap_so_this_is_a_merge_not_a_double-count_removal)"] },
+    { "element_id": "F1.30x1.30", "element_type": "footing", "count": 7, "grid_refs": ["E1", "D1", "D3", "C1", "C3", "B2", "B3"], "confidence_score": 0.85, "confidence_flags": ["MERGED_2026-07-20_by_user_rule -- was_2_separate_entries_(E1_count_1_+_the_6-position_row_group)"] },
+    { "element_id": "F1.60x1.60", "element_type": "footing", "count": 3, "grid_refs": ["E2", "D2", "C2"], "confidence_score": 0.9, "confidence_flags": ["MERGED_2026-07-20_by_user_rule -- was_2_separate_entries_(E2_count_1_+_D2/C2_count_2)"] },
+    { "element_id": "F1.00x1.00", "element_type": "footing", "count": 2, "grid_refs": ["E3", "B1"], "confidence_score": 0.85, "confidence_flags": ["MERGED_2026-07-20_by_user_rule -- was_2_separate_entries_kept_apart_only_because_the_paired_column_mark_differs_(C1A_at_E3_vs_C1_at_B1);_that_is_no_longer_a_reason_to_split_since_elements[]_is_positional-only_and_column_marks_are_recorded_as_their_own_entries"] },
     { "element_id": "C0", "element_type": "column", "count": 2, "grid_refs": ["E'1", "E'2"], "confidence_score": 0.85, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] },
     { "element_id": "C1A", "element_type": "column", "count": 5, "grid_refs": ["E1", "E2", "E3", "A2", "A3"], "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] },
     { "element_id": "C1", "element_type": "column", "count": 7, "grid_refs": ["D1", "D3", "C1", "C3", "B1", "B2", "B3"], "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] },
@@ -28,6 +24,7 @@
   "confidence_flags": [],
   "warnings": [
     "Row A has no footing/column at col1 (only col2/col3 present).",
-    "F1.00x1.00 appears twice as element_id (count1 at E3 paired with C1A, count1 at B1 paired with C1) -- kept as 2 separate entries since column pairing differs, same convention as houses #2/#3's analogous duplicate-dimension-mark cases."
+    "MERGED_2026-07-20 per user rule: all 4 footing marks (F0.60x0.60, F1.30x1.30, F1.60x1.60, F1.00x1.00) were each split across 2 entries; each is now ONE entry with summed count and concatenated grid_refs (12 elements -> 8). No grid_ref appeared in more than one entry, so this is a pure merge with no change to the total footing count (16 footings before and after, and each entry's count now equals the length of its grid_refs array). This SUPERSEDES the previous warning here, which had justified keeping F1.00x1.00 split because its paired column mark differs (C1A at E3 vs C1 at B1) -- elements[] is positional-only, so the column pairing lives in its own C1A/C1 entries and is not a reason to split a footing entry.",
+    "CAUTION for anyone applying this rule elsewhere: merging is correct only when the entries' grid_refs do NOT overlap. Where the same grid_ref appears in two entries of the same mark (as found on house #3's หน้า29/หน้า30 at B3) that is a genuine double-count bug and the duplicate must be DELETED, not summed."
   ]
 }
