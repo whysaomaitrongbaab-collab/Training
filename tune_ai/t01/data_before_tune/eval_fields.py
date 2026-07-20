@@ -38,10 +38,12 @@ except ImportError:
     from unsloth import FastModel as UnslothModel
 
 model, tokenizer = UnslothModel.from_pretrained(src, load_in_4bit=P["load_in_4bit"])
+# ip.size เป็นคลาส SizeDict ไม่ใช่ dict subclass จริง (isinstance(ip.size, dict) เป็น False
+# เสมอ) แต่รองรับ ip.size["key"]=value ตรงๆ — ห้ามเช็ค isinstance ก่อน (ยืนยันจริงบนเครื่องเช่า 2026-07-21)
 ip = getattr(tokenizer, "image_processor", None)
 if ip is not None:
-    ip.max_pixels = P["max_pixels"]
-    ip.min_pixels = 256 * 1024
+    ip.size["longest_edge"] = P["max_pixels"]
+    ip.size["shortest_edge"] = 256 * 1024
 else:
     print("⚠️  tokenizer.image_processor ไม่มี — ความละเอียดภาพอาจไม่ถูกบังคับตามที่ตั้งใจ")
 UnslothModel.for_inference(model)

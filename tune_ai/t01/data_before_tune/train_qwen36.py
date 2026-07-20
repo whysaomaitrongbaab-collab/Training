@@ -29,6 +29,10 @@ train_qwen36.py — fine-tune Qwen3.6-35B-A3B on Thai RC drawing pages (Unsloth 
 import json, os, gc, sys
 from pathlib import Path
 
+# ต้องตั้งก่อน import torch — ลด CUDA memory fragmentation (PyTorch เองแนะนำ flag นี้ตรงๆ
+# ใน error message ตอน OOM ที่เจอจริงบนเครื่องเช่า 2026-07-21 ขาดแค่ ~100MiB จาก 95GB)
+os.environ.setdefault("PYTORCH_ALLOC_CONF", "expandable_segments:True")
+
 # ─────────────────────────────────────────────────────────────
 MODEL_ID = "unsloth/Qwen3.6-35B-A3B"   # bare repo = bf16 full weights, ไม่ใช่ -GGUF/-NVFP4/-MLX (พวกนั้นรันได้ ไม่ใช่ทูนได้)
 
@@ -48,7 +52,8 @@ EPOCHS = 3
 LR = 1e-4              # LoRA (ไม่ใช่ full fine-tune ซึ่งต้องต่ำกว่านี้มาก 5e-6..1e-5)
 BATCH = 1
 GRAD_ACCUM = 8
-MAX_LENGTH = 10240      # instruction ~1,020 + ภาพ 5,120 + output ยาวสุด ~2,750 + หัวท้าย
+MAX_LENGTH = 9216       # instruction 1,022 + ภาพ 5,120 + output ยาวสุดจริง 2,748 (stats.json) + กันชน ~330
+                        # ลดจาก 10240 เดิม (เผื่อเกินจริง) — ช่วยลด activation memory ตอน OOM ขาด 100MiB
 OUT_DIR = "outputs_qwen36"
 
 # freeze vision — เหตุผลเดียวกับ train_qwen3vl.py: dataset เล็ก (226 ตัวอย่าง) เทรน vision
@@ -56,7 +61,12 @@ OUT_DIR = "outputs_qwen36"
 # ทดลองเทียบได้: FINETUNE_VISION=1 python train_qwen36.py
 FINETUNE_VISION = os.environ.get("FINETUNE_VISION", "0") == "1"
 
-LORA_R, LORA_ALPHA = 64, 128   # MoE + งานยาก (อ่านเอกสารก่อสร้าง) — rank สูงกว่า preset 8B ของ Qwen3-VL
+# ทดสอบก่อนรันเต็มเสมอ: TEST_STEPS=5 python3 train_qwen36.py (ผ่าน step แรกไม่ error/OOM ค่อยรันเต็ม)
+TEST_STEPS = int(os.environ.get("TEST_STEPS", "0"))
+
+LORA_R, LORA_ALPHA = 32, 64    # ลดจาก 64/128 เดิม — OOM จริงตอน backward ที่ lora_delta buffer ของ MoE
+                               # experts (95GB ขาดแค่ ~100MB) มะขามเลือกทางนี้เอง 2026-07-21 (rank ต่ำกว่า
+                               # ก็เข้ากับ dataset เล็ก 226 ตัวอย่างมากกว่าด้วย กัน overfitting/forgetting)
 # ─────────────────────────────────────────────────────────────
 
 import torch
@@ -112,15 +122,14 @@ model, tokenizer = UnslothModel.from_pretrained(
     max_seq_length=MAX_LENGTH,
 )
 
-# บังคับความละเอียดภาพ — ชื่อ attribute อาจต่างจาก Qwen3-VL (ตรงนี้คือจุดเสี่ยง #2 ที่บอกไว้ข้างบน)
+# บังคับความละเอียดภาพ — ip.size เป็นคลาส SizeDict (ไม่ใช่ dict subclass จริง ดังนั้น
+# isinstance(ip.size, dict) เป็น False เสมอ แต่รองรับ ip.size["key"]=value ปกติ — ยืนยันด้วย
+# python -c บนเครื่องเช่าจริงแล้ว 2026-07-21) ห้ามเช็ค isinstance ก่อน ต้อง assign ตรงๆ
 ip = getattr(tokenizer, "image_processor", None)
 if ip is not None:
-    ip.max_pixels = MAX_PIXELS
-    ip.min_pixels = MIN_PIXELS
-    if isinstance(getattr(ip, "size", None), dict):
-        ip.size["longest_edge"] = MAX_PIXELS
-        ip.size["shortest_edge"] = MIN_PIXELS
-    print(f"image processor: max={ip.max_pixels} px (≈{ip.max_pixels // 1024} visual tokens/ภาพ)")
+    ip.size["longest_edge"] = MAX_PIXELS
+    ip.size["shortest_edge"] = MIN_PIXELS
+    print(f"image processor: max={ip.size['longest_edge']} px (≈{ip.size['longest_edge'] // 1024} visual tokens/ภาพ)")
 else:
     print("⚠️  tokenizer.image_processor ไม่มี — เช็คโครงสร้าง processor จริงด้วย "
           "print(tokenizer) / dir(tokenizer) ก่อนเทรนต่อ ความละเอียดภาพอาจไม่ถูกบังคับตามที่ตั้งใจ")
@@ -131,7 +140,7 @@ model = UnslothModel.get_peft_model(
     finetune_language_layers=True,
     finetune_attention_modules=True,
     finetune_mlp_modules=True,
-    r=LORA_R, lora_alpha=LORA_ALPHA, lora_dropout=0.05,
+    r=LORA_R, lora_alpha=LORA_ALPHA, lora_dropout=0,   # ต้องเป็น 0 — MoE ParamWrapper ของโมเดลนี้ไม่รองรับ dropout!=0 (ยืนยันจาก error จริง)
     bias="none", random_state=3407, use_rslora=False, loftq_config=None,
 )
 
@@ -151,9 +160,10 @@ trainer = SFTTrainer(
         gradient_accumulation_steps=GRAD_ACCUM,
         warmup_ratio=0.05,
         num_train_epochs=EPOCHS,
+        max_steps=TEST_STEPS if TEST_STEPS > 0 else -1,   # >0 จะ override num_train_epochs อัตโนมัติ (พฤติกรรม HF Trainer)
         learning_rate=LR,
         logging_steps=5,
-        optim="adamw_8bit",
+        optim="paged_adamw_8bit",   # paged กัน memory spike ตอน optimizer step (เดิม adamw_8bit เจอ OOM)
         weight_decay=0.01,
         lr_scheduler_type="cosine",
         seed=3407,
@@ -201,7 +211,6 @@ for i, sample in enumerate(val_ds[:3]):
 print(f"\nขั้นต่อไป: MODEL=qwen36 python eval_fields.py --adapter {OUT_DIR}/lora")
 
 # ─────────────────────────────────────────────────────────────
-# ก่อนรันเต็ม 3 epoch จริง แนะนำทดสอบ 5 step ก่อนเสมอ (โมเดล/สคริปต์นี้ยังไม่เคยรัน):
-#   แก้ SFTConfig ชั่วคราวเพิ่ม max_steps=5 (ลบ num_train_epochs ออกชั่วคราว) แล้วดูว่า
-#   ผ่าน step แรกได้ไหมก่อน ไม่งั้นถ้า OOM หรือ error ตอน step 200/663 จะเสียเวลา/เงินเปล่า
+# ก่อนรันเต็ม 3 epoch จริง แนะนำทดสอบก่อนเสมอ:  TEST_STEPS=5 python3 train_qwen36.py
+# ผ่าน step แรกได้ไหมก่อน ไม่งั้นถ้า OOM หรือ error ตอน step 200/663 จะเสียเวลา/เงินเปล่า
 # ─────────────────────────────────────────────────────────────
