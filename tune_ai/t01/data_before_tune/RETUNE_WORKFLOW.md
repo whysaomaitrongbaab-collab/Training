@@ -25,6 +25,16 @@ and a verified backup on HuggingFace before the rented instance is ever destroye
 4. `export_gguf.py` verifies the HuggingFace upload landed (checks file existence via the
    API, not just "the command didn't error") before printing anything resembling
    "safe to destroy the instance."
+5. **A second silent-failure risk was found and closed while reviewing this plan (2026-07-21,
+   same day, before ever renting):** the first draft of `export_gguf.py` called
+   `save_pretrained_gguf()` directly on the adapter-attached model without an explicit
+   merge step. Real GitHub issue reports on `unslothai/unsloth` show this can silently
+   export the untuned BASE model — no error, no warning, upload "succeeds," verification
+   passes, and the file is just wrong. Fixed by adding an explicit `merge_and_unload()`
+   call plus a cheap post-merge sanity generation (checks the merged model actually
+   produces valid JSON on a val example, i.e. behaves like the tuned model, not the ~0%
+   baseline) — this runs BEFORE the 20-40 min quantization step, so a bad merge is caught
+   in seconds, not after wasting rental time on a useless export.
 
 ---
 
@@ -61,8 +71,12 @@ This is the step that would have caught the mmproj problem for free, before ever
 a GPU. Do this now:
 
 1. Download a **small** quant of the same base model + the official mmproj (no fine-tune
-   needed yet, just proving the runtime works):
+   needed yet, just proving the runtime works). Storage location:
+   **`D:\00mk\ai-models\qwen36-thai-rc\`** (created now, kept outside every git repo —
+   `Training` has no `.gitignore`, so a repo folder is the wrong place for multi-GB
+   binaries — this is also where the real fine-tuned files land later in Phase 9):
    ```bash
+   cd "D:\00mk\ai-models\qwen36-thai-rc"
    curl -L -o mmproj-F16.gguf "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/mmproj-F16.gguf"
    curl -L -o test-model.gguf "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-IQ2_XXS.gguf"
    ```
@@ -96,7 +110,7 @@ a GPU. Do this now:
 | Setting | Value | Why |
 |---|---|---|
 | GPU | RTX PRO 6000 96GB (Blackwell) or A100/H100 80GB | Confirmed working 2026-07-21. VRAM ≥80GB required for bf16 LoRA (~74GB). |
-| Disk | **≥200GB** (raised from 150GB last time) | Last run hit 100%-full disk multiple times even after cleanup. Peak usage this round: base HF cache (~70GB) + merged/export intermediate (Unsloth manages this internally, but budget generously) + final GGUF (~22GB). 200GB gives real headroom. |
+| Disk | **≥300GB** (raised twice now — 150GB last time, then 200GB, now corrected after actually doing the math) | Last run hit 100%-full disk multiple times even after cleanup. Realistic peak this round, all potentially coexisting at once: base model HF cache (~70GB, already on disk from training) + merged 16-bit intermediate Unsloth writes internally (~66GB) + GGUF f16 intermediate before quantizing (~66GB) + final Q4_K_M (~22GB) ≈ **~225GB just for those**, before any breathing room. 200GB would likely repeat the disk-full saga; 300GB gives actual margin. If you see disk filling up mid-`export_gguf.py` anyway: the safe thing to delete is the HF hub cache (`~/.cache/huggingface`, already loaded into GPU memory by then) — never delete anything under `outputs_qwen36/`. |
 | Template | Plain PyTorch + CUDA | NOT "Unsloth Studio" — we run our own scripts via SSH, not their UI. |
 | On-start script | Paste `onstart.sh` contents into the instance creation form | Installs Unsloth/Triton/Blackwell env vars automatically on boot. |
 | Reliability | ≥95% | Check before renting — avoid flaky hosts. |
@@ -186,14 +200,22 @@ python3 export_gguf.py 2>&1 | tee export.log
 
 This single script (see file for full comments):
 1. Loads base model + your LoRA adapter
-2. Calls `model.save_pretrained_gguf(..., quantization_method="q4_k_m")` — merge + GGUF
-   convert + quantize in one Unsloth call (no manual `llama-quantize` CLI, no
+2. Calls `model.merge_and_unload()` explicitly, then runs a cheap sanity generation on a
+   val example to confirm the merge actually applied the tuning (catches a known
+   silent-failure mode where calling `save_pretrained_gguf` directly on an unmerged
+   adapter can silently export the untuned base model instead — found while reviewing
+   this plan, fixed before ever renting)
+3. Calls `model.save_pretrained_gguf(..., quantization_method="q4_k_m")` — GGUF convert +
+   quantize in one Unsloth call (no manual `llama-quantize` CLI, no
    q8_0-then-can't-requantize trap from last time)
-3. Downloads the official `mmproj-F16.gguf` from `unsloth/Qwen3.6-35B-A3B-GGUF` (899MB,
+4. Checks the resulting GGUF file size is in the expected ~20-24GB range (catches a
+   truncated/crashed write — e.g. disk filled mid-export — that would otherwise still
+   leave a file on disk looking "done")
+5. Downloads the official `mmproj-F16.gguf` from `unsloth/Qwen3.6-35B-A3B-GGUF` (899MB,
    unchanged by our LoRA — see the "what changed" section above for why this is valid)
-4. Uploads the LLM GGUF (~22GB) + mmproj (0.9GB) + LoRA adapter backup (7.5GB) to your
+6. Uploads the LLM GGUF (~22GB) + mmproj (0.9GB) + LoRA adapter backup (7.5GB) to your
    HuggingFace repo
-5. **Verifies the upload via the HF API** (checks the files actually exist remotely) and
+7. **Verifies the upload via the HF API** (checks the files actually exist remotely) and
    only then prints a success banner
 
 Expect this to take 20-40 minutes total (export + upload, depends on your instance's
@@ -211,9 +233,14 @@ Confirm you can see and the file sizes look right:
 - `mmproj-F16.gguf` around 0.9GB
 - `lora-adapter/` folder
 
-**Only after seeing this in the browser**, download the two files you need to your own PC:
+**Only after seeing this in the browser**, download the two files you need to your own PC.
+**Storage location: `D:\00mk\ai-models\qwen36-thai-rc\`** (already created, sits outside
+every git repo on purpose — the `Training` repo has no `.gitignore` at all, so a 22GB
+file dropped inside a repo folder risks accidentally being `git add`-ed and bogging down
+git locally, even though the push itself would fail on GitHub's file-size limit anyway):
 ```bash
 # From your PC:
+cd "D:\00mk\ai-models\qwen36-thai-rc"
 curl -L -H "Authorization: Bearer hf_YOUR_TOKEN" \
   -o qwen36-thai-rc-Q4_K_M.gguf \
   "https://huggingface.co/yourusername/qwen36-thai-rc/resolve/main/<exact-filename>.gguf"
@@ -221,15 +248,16 @@ curl -L -H "Authorization: Bearer hf_YOUR_TOKEN" \
   -o mmproj-F16.gguf \
   "https://huggingface.co/yourusername/qwen36-thai-rc/resolve/main/mmproj-F16.gguf"
 ```
-(You likely already have `mmproj-F16.gguf` locally from Phase 0.3 — same file, no need
-to redownload if so.)
+(You likely already have `mmproj-F16.gguf` from Phase 0.3's dry run — move that copy
+into this same folder instead of redownloading, it's the identical file.)
 
-Confirm both files exist on your PC and match the expected sizes **before** going to
-Vast.ai's dashboard.
+Confirm both files exist in `D:\00mk\ai-models\qwen36-thai-rc\` and match the expected
+sizes **before** going to Vast.ai's dashboard.
 
 ## Phase 10 — Local run (this is "done" — no more GPU rental from here)
 
 ```bash
+cd "D:\00mk\ai-models\qwen36-thai-rc"
 llama-cli --model qwen36-thai-rc-Q4_K_M.gguf --mmproj mmproj-F16.gguf \
   --image "path/to/a/real/drawing.png" -p "<the exact instruction prompt from build_dataset.js's PROMPT_SHORT>"
 ```

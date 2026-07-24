@@ -16,9 +16,19 @@ via the HuggingFace API on 2026-07-21 (repo tree: mmproj-BF16.gguf / mmproj-F16.
 mmproj-F32.gguf all present). No llama.cpp vision-surgery script, no risk of it silently
 not supporting this architecture.
 
-Unsloth's model.save_pretrained_gguf() does the merge + convert + quantize in one call
-(no separate PeftModel.merge_and_unload() step, no manual llama.cpp CLI commands, no
-q8_0-vs-f16 requantize trap). It calls llama.cpp's own conversion scripts internally.
+Unsloth's model.save_pretrained_gguf() does the convert + quantize in one call (no manual
+llama.cpp CLI commands, no q8_0-vs-f16 requantize trap). It calls llama.cpp's own
+conversion scripts internally.
+
+⚠️ 2026-07-21 correction: an earlier version of this script called save_pretrained_gguf()
+directly on the PeftModel (adapter attached, not merged) — checked against real GitHub
+issue reports on unslothai/unsloth afterward and found this is a KNOWN silent-failure
+mode: it can export the untrained BASE model with the adapter weights simply not applied,
+with no error and no warning. The script would still "succeed," still upload, still pass
+the HF-existence check below — and the GGUF would just be the untuned model. This script
+now explicitly calls model.merge_and_unload() first (the documented-safe pattern) AND
+runs a cheap post-merge sanity generation (see Step 0 below) to catch this class of
+failure BEFORE spending 20-40 minutes on quantization + upload of a useless file.
 
 Usage (run right after train_qwen36.py finishes, same instance):
     HF_TOKEN=hf_xxx HF_REPO=your-username/qwen36-thai-rc python export_gguf.py
@@ -55,8 +65,43 @@ from peft import PeftModel
 model = PeftModel.from_pretrained(model, ADAPTER_DIR)
 print("✓ Adapter attached")
 
-# ── Step 1: merge + convert + quantize in one call (Unsloth handles llama.cpp internally)
+# ── Step 0: MERGE explicitly, then SANITY-CHECK the merge actually applied our tuning —
+# do this BEFORE the 20-40 min quantization step, so a silent no-op merge is caught cheap.
+print("Merging LoRA into base weights (merge_and_unload) ...")
+model = model.merge_and_unload()
+assert not hasattr(model, "peft_config"), "❌ Model still looks like a PeftModel after merge_and_unload() — merge did not complete. STOP, do not export."
+print("✓ Merged — model is now a plain model, no adapter wrapper left")
+
+print("Sanity-checking the merge actually changed behavior vs. the untuned base model ...")
+import json as _json
+FastVisionModel.for_inference(model)
+with open(HERE_VAL := Path("val.jsonl"), encoding="utf-8") as f:
+    _sample = _json.loads(f.readline())
+_msgs = [_sample["messages"][0]]
+_text = tokenizer.apply_chat_template(_msgs, add_generation_prompt=True)
+from PIL import Image as _Image
+_imgs = [_Image.open(c["image"]).convert("RGB") for c in _msgs[0]["content"] if c["type"] == "image"]
+_inputs = tokenizer(_imgs, _text, add_special_tokens=False, return_tensors="pt").to("cuda")
+_out = model.generate(**_inputs, max_new_tokens=500, do_sample=False)
+_pred = tokenizer.decode(_out[0][_inputs["input_ids"].shape[1]:], skip_special_tokens=True)
+try:
+    _json.loads(_pred)
+    print(f"✓ Sanity check passed — merged model produces valid JSON (matches the ~90% post-tune rate, not the ~0% pre-tune baseline)")
+except Exception:
+    print(f"❌ SANITY CHECK FAILED — merged model's output is NOT valid JSON:")
+    print(f"   {_pred[:300]}")
+    print("🔴 This matches the known silent-merge-failure pattern (adapter not actually")
+    print("   applied). STOP. Do not spend time quantizing/uploading this. Investigate")
+    print("   before continuing — check merge_and_unload() output and adapter path.")
+    sys.exit(1)
+del _inputs, _out
+import torch as _torch, gc as _gc
+_gc.collect(); _torch.cuda.empty_cache()
+
+# ── Step 1: convert + quantize (Unsloth calls llama.cpp's conversion internally)
 print(f"Exporting merged model to GGUF ({QUANT_METHOD}) — this can take 20-40 min, be patient, do NOT interrupt ...")
+print("(If disk space runs low mid-export: safe to delete is the HF hub cache — ~/.cache/huggingface —")
+print(" since the model is already loaded in GPU memory. Do NOT delete anything in outputs_qwen36/.)")
 Path(LOCAL_GGUF_DIR).mkdir(parents=True, exist_ok=True)
 model.save_pretrained_gguf(LOCAL_GGUF_DIR, tokenizer, quantization_method=QUANT_METHOD)
 print(f"✓ GGUF export done — check {LOCAL_GGUF_DIR}/ for the .gguf file")
@@ -74,7 +119,17 @@ if not gguf_files:
     print(f"❌ No .gguf file found in {LOCAL_GGUF_DIR}/ — export_gguf step above may have failed silently. STOP. Do not destroy the instance. Investigate first.")
     sys.exit(1)
 llm_gguf = gguf_files[0]
-print(f"Found LLM GGUF: {llm_gguf} ({llm_gguf.stat().st_size / 1e9:.1f} GB)")
+llm_gguf_size_gb = llm_gguf.stat().st_size / 1e9
+print(f"Found LLM GGUF: {llm_gguf} ({llm_gguf_size_gb:.1f} GB)")
+
+# Sanity check on size — a q4_k_m of this 35B-A3B MoE model should land ~20-24GB.
+# Catches a crashed/truncated write (e.g. disk ran out mid-write) that still leaves a
+# file on disk, which would otherwise look "done" by mere existence.
+if llm_gguf_size_gb < 15 or llm_gguf_size_gb > 30:
+    print(f"❌ GGUF size ({llm_gguf_size_gb:.1f} GB) is outside the expected ~20-24GB range for q4_k_m.")
+    print("🔴 This suggests a truncated/incomplete write (disk full mid-export?) or wrong quant method.")
+    print("   STOP. Do not upload or destroy the instance. Check disk space (df -h) and re-run export.")
+    sys.exit(1)
 
 # ── Step 4: upload everything to HuggingFace — LLM gguf + mmproj copy + adapter (small, for safety)
 api = HfApi(token=HF_TOKEN)

@@ -1,0 +1,30 @@
+{
+  "png": "20",
+  "doc_page": 18,
+  "discipline": "architecture",
+  "sheet_code": "A-18",
+  "sheet_name": "แบบขยายบันได ST.1",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า20.png",
+  "views": ["view1_st1_plan (_view1_st1_plan.json)", "view2_st1_section (this file)"],
+  "view_title": "รูปตัดบันได ST.1",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/05บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "ทางเดิน_cut", "element_type": "room_cut", "grid_ref": "south of gridA, box '4 +0.20 —'", "level_m": 0.20, "floor_material_no": 4, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "step_risers", "element_type": "stair", "count": 2, "description": "Two risers of 0.15m each ('0.15' and '0.15' stacked), covering the 0.30m level change from ทางเดิน (+0.20) to เฉลียง (+0.50); tread depth 0.30m noted separately", "riser_height_m": 0.15, "tread_depth_m": 0.30, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "เฉลียง_cut", "element_type": "room_cut", "grid_ref": "between gridA and gridB, box '3 +0.50 3'", "level_m": 0.50, "floor_material_no": 3, "opening_ref": "3", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "threshold_step_to_พักผ่อน", "element_type": "stair", "count": 1, "description": "A further small level change (0.10m) from เฉลียง (+0.50) to พักผ่อน (+0.60), shown as a single low step/threshold rather than a full stair run", "confidence_score": 0.6, "confidence_flags": ["needs_human_review_zoom_required"] },
+    { "element_id": "พักผ่อน_cut", "element_type": "room_cut", "grid_ref": "north of gridB, box '1 +0.60 1'", "level_m": 0.60, "floor_material_no": 1, "opening_ref": "1", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "stair_finish_note", "element_type": "note", "description": "'ลูกตั้ง,ลูกนอน บันไดผิวปูกระเบื้องเซรามิค 8\"x8\"' (riser+tread, 8x8in ceramic tile) and 'จมูกบันได อลูมิเนียมสีเงิน ร่อง PVC. ขนาด 2\"' (nosing, silver aluminum, 2in PVC groove) -- matches the plan view's material note exactly", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "hatched_ground_below", "element_type": "grading_note", "description": "Hatched earth/fill zone below the ทางเดิน level, consistent with grade-level fill shown on the site plan (หน้า05)", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "bottom_dimension_chain", "element_type": "dimension", "values_m": [0.55, 1.80], "grid_ref": "gridA (left) to gridB (right)", "confidence_score": 0.78, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.76,
+  "confidence_flags": [],
+  "warnings": [
+    "Second of 2 views on this page; sibling is the plan view _view1_st1_plan.json.",
+    "This section provides the clearest confirmation yet that ST.1 is a shallow 2-riser entrance step sequence (total rise 0.30m from ทางเดิน to เฉลียง, plus a further 0.10m threshold to พักผ่อน) rather than a full switchback stair -- consistent with it serving the south-of-grid-A entrance area (the 'Aprime' dummy-grid zone) identified on the ground floor plan (หน้า06).",
+    "Grid labels 'A' and 'B' at the bottom of this section confirm the cut runs along the gridA-gridB interval, corroborating the plan view's dimension chain."
+  ]
+}

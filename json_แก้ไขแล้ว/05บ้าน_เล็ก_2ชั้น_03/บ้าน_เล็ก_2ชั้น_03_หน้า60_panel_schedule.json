@@ -1,0 +1,47 @@
+{
+  "png": "60",
+  "doc_page": 58,
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า60.png",
+  "discipline": "electrical",
+  "sheet_code": "EE-02",
+  "sheet_name": "รายละเอียดแผงเมนสวิตช์",
+  "pattern": "schedule",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "view_title": "รายละเอียดแผงเมนสวิตช์ (single-line diagram, panel LP)",
+  "drawing_no": "EE 58081",
+  "service_entrance": {
+    "meter": "kWH METER 30(100)A 1 PHASE",
+    "service_cable": "2-35 IEC 01-ø32mm.uPVC (นอกอาคารเดินลอย)",
+    "home_run_to_ground": "1-10 IEC 01-ø20mm.PVC",
+    "ground_rod": "หลักดินแท่งเหล็กทองแดงบอนด์ ขนาด ø14.2 mm. ยาว 2.40 m."
+  },
+  "panel": {
+    "panel_id": "LP",
+    "main_breaker": {"rating": "80AT,2P IC 10kA"}
+  },
+  "circuits": [
+    {"position": "1", "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-ø15 mm.uPVC", "load": "แสงสว่าง"},
+    {"position": "2", "breaker": "16AT,1P IC 6kA", "wire": "2-2.5/G2.5 IEC 01-ø15 mm.uPVC", "load": "แสงสว่าง"},
+    {"position": "3", "breaker": "RCBO 16AT,1P IC 6kA IΔn30mA", "wire": "2-2.5/G2.5 IEC 01-ø15 mm.uPVC", "load": "เต้ารับ"},
+    {"position": "4", "breaker": "RCBO 16AT,1P IC 6kA IΔn30mA", "wire": "2-2.5/G2.5 IEC 01-ø15 mm.uPVC", "load": "เต้ารับ"},
+    {"position": "5", "breaker": "RCBO 20AT,1P IC 6kA IΔn30mA", "wire": "2-4/G2.5 IEC 01-ø15 mm.uPVC", "load": "กล่องต่อสายเครื่องทำน้ำอุ่น"},
+    {"position": "6", "breaker": "RCBO 20AT,1P IC 6kA IΔn30mA", "wire": "2-4/G2.5 IEC 01-ø15 mm.uPVC", "load": "กล่องต่อสายเครื่องทำน้ำอุ่น"},
+    {"position": "7", "breaker": null, "wire": null, "load": "ว่าง"},
+    {"position": "8", "breaker": null, "wire": null, "load": "ว่าง"},
+    {"position": "9", "breaker": null, "wire": null, "load": "ว่าง"},
+    {"position": "10", "breaker": null, "wire": null, "load": "ว่าง"},
+    {"position": "11", "breaker": null, "wire": null, "load": "ว่าง"},
+    {"position": "12", "breaker": null, "wire": null, "load": "ว่าง"}
+  ],
+  "notes": [
+    "1. RCBO หมายถึง เซอร์กิตเบรกเกอร์ชนิดมีเครื่องตัดไฟรั่วในตัว"
+  ],
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet's single-line diagram is fully legible with all 12 positions clearly labeled (6 populated + 6 spare 'ว่าง') -- unlike house #4's equivalent EE-02 sheet, which had one illegible position number between 4 and 6; no such gap here.",
+    "Main breaker (80AT,2P IC10kA) and meter (30(100)A) are larger-rated than house #4's equivalent sheet (50AT,2P / 15(45)A) -- consistent with this being a larger house (per the grid master file, this house's footprint/floor area is larger than houses #2-#4).",
+    "Panel has 6 spare positions (7-12) vs house #4's 4 spare positions (7-10) -- this panel has 12 total slots vs house #4's 10.",
+    "Two water-heater junction-box circuits (positions 5-6, RCBO 20AT) match the pattern seen in house #4's equivalent sheet -- likely one per bathroom, not independently cross-verified against a bathroom count on this page alone."
+  ]
+}

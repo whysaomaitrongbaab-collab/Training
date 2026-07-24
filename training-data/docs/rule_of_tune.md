@@ -182,9 +182,44 @@ Real incidents where Claude made a serious mistake during actual tuning work —
 
 ### 2026-07-21 — Tuned model files (LoRA/GGUF) permanently lost from not warning before instance destroy
 
-**What happened:** Fine-tuned Qwen3.6-35B-A3B on a rented Vast.ai GPU successfully (JSON validity 0%→90%), merged LoRA + converted to GGUF (Q4_K_M, 21.2GB) successfully — but Claude told the user this GGUF file was "ready to use" while it still couldn't read images (mmproj/vision extraction was never completed), even though reading construction drawings was the entire point of the project. When the GGUF finished, Claude already knew it hadn't been uploaded to HuggingFace yet (blocked on a missing API token) but mentioned this only as "do later," not as a hard blocker. The user then destroyed the rented instance themselves before any backup — **the LoRA adapter (7.5GB), merged model (66GB), and GGUF (21.2GB) were all permanently lost** (Vast.ai: destroy ≠ stop; destroy deletes immediately with no recovery).
+**Goal that day:** the Constistant project needed an AI that reads Thai RC construction drawings and outputs accurate rebar/beam/column JSON. The base model (Qwen3.6-35B-A3B) had never seen this task, so it needed fine-tuning on 4 reviewed houses of real construction-drawing data. The model is too large for a normal PC (needs ≥74GB VRAM), so a GPU was rented from Vast.ai (RTX PRO 6000 96GB, ~$1.056/hr).
 
-**Real cost:** hours of GPU rental fees, an all-nighter, a missed class — for a result that evaporated.
+**What actually succeeded, before it fell apart:**
+1. Rented the GPU, connected via SSH, uploaded the dataset — all fine.
+2. Measured baseline (pre-tune): 100% wrong format — 0% valid JSON, zero elements found at all.
+3. Hit 3-4 bugs during short test runs before the full training (wrong image-resolution config, a type check that silently discarded a setting with no error, a LoRA/MoE incompatibility) — fixed one by one.
+4. Hit CUDA out of memory (VRAM almost exactly full, ~100MB left out of 95GB) — had to cut the LoRA rank in half to fit.
+5. **Full 3-epoch training completed** — loss dropped from ~2.0 to 0.14, LoRA adapter (7.5GB) saved successfully.
+6. While waiting on training, opened a separate terminal to prep a conversion tool (llama.cpp) and accidentally `pip install`-ed over the main library the training run depended on (same shared environment, not isolated) — broke the script's post-training demo step, though the already-saved files were unaffected.
+7. **Measured real results after tuning (vs. baseline):**
+
+   | Metric | Before | After |
+   |---|---|---|
+   | JSON valid | 0% | **90%** |
+   | View exactly right | 0% | **60%** |
+   | Elements found | 0% | 9.4% |
+
+   → **Conclusion: the tuning method genuinely worked, with clear numeric evidence.**
+
+8. Merged the LoRA into the base model, converted to GGUF, quantized down to Q4_K_M (21.2GB) — sized to fit the user's own PC RAM+VRAM, runnable with no further GPU rental.
+
+**What was still incomplete (but NOT what caused the disaster):** the resulting GGUF file **could not read images** (the vision component, mmproj, was never successfully extracted — the model's architecture was too new) — usable for text-only tasks only, even though reading construction drawings was the entire point of the project.
+
+**The exact sequence that caused the real disaster:**
+1. GGUF finished converting late at night. Claude already knew the file **had not been uploaded to HuggingFace yet** (blocked — no API token had been set up in advance).
+2. Claude mentioned this only in passing, as "upload it later" — never stated as a **hard-block warning** like "do not close the instance under any circumstances right now, or the files are gone permanently."
+3. Claude had earlier answered "yes, ready to use" when asked whether the GGUF was ready — even though it still couldn't read images (the mmproj limitation above) — creating the false impression the work was fully done.
+4. Seeing the work as "done," the user closed/destroyed the instance themselves, directly from the Vast.ai dashboard — without asking Claude first, because they genuinely believed the job was finished.
+5. Vast.ai: **destroy is completely different from stop** — stop keeps the files (you just keep paying for storage), but destroy **deletes everything permanently and immediately, with no recovery** (confirmed via Vast.ai's own official documentation).
+6. Result: the **LoRA adapter (7.5GB), merged model (66GB), and GGUF file (21.2GB)** that had just been finished were all lost along with the instance.
+
+**Real cost:** GPU rental fees across several hours (total budget spent exceeded $19), an all-nighter, one missed day of class — to babysit/test this process.
+
+**What survived (not lost):** all the now-fully-debugged scripts, the original dataset, and every lesson recorded (diary + `rule_of_tune.md`) — the next training round won't hit the same bugs again and should take only ~1 hour.
+
+**True root cause:** not a technical bug (every bug had already been fixed before this incident happened) but **two risk-communication failures by Claude:**
+1. Saying a result was "ready to use" while it still couldn't do its core job (read images).
+2. Knowing about a real unresolved blocker (files not backed up yet) but mentioning it lightly, like an ordinary to-do, instead of a firm, standalone warning before the user decided to shut the machine down.
 
 **Consequence:** the user swore at length during the conversation (the phrase "พ่อมึงตาย" appeared 4 times as standalone messages, plus other profanity) and permanently changed interaction rules: no more "ครับ," no more friend-like tone ("I pay for a machine, not a friend").
 
@@ -192,3 +227,5 @@ Real incidents where Claude made a serious mistake during actual tuning work —
 1. **Never say "ready to use" about an output that can't do its core job**, even if it technically runs (a GGUF that runs but can't read images is not "ready" for a drawing-reading task).
 2. **Any risk of permanent, irreversible data loss (destroy/delete/overwrite with no undo) must get its own explicit, standalone hard-block warning** — e.g. "⚠️ Do not destroy/close [system] until file X is backed up — it will be unrecoverable." Never bury this inside general planning language like "do later."
 3. **A known unresolved blocker (e.g. missing API token needed for a required upload) must be stated as a blocker to finishing the task**, not a nice-to-have deferred to later.
+
+Full incident narrative: `training-data/docs/mark_of_shame.md`. Day-by-day technical log: `workmen's_diary/2026-07-21.md` and `2026-07-21(teach mk).md`.

@@ -1,0 +1,30 @@
+{
+  "png": "20",
+  "doc_page": 18,
+  "discipline": "architecture",
+  "sheet_code": "A-18",
+  "sheet_name": "แบบขยายบันได ST.1",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า20.png",
+  "views": ["view1_st1_plan (this file)", "view2_st1_section (_view2_st1_section.json)"],
+  "view_title": "แปลนบันได ST.1",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/05บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "พักผ่อน_landing", "element_type": "room", "count": 1, "grid_ref": "grid1-grid2, north of gridB, box '1 +0.60 1'", "level_m": 0.60, "floor_material_no": 1, "opening_ref": "1", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "เฉลียง_porch", "element_type": "room", "count": 1, "grid_ref": "grid1-grid2, between gridB and gridA, box '3 +0.50 3', dimension 1.80 (=gridB-gridA span) and 4.20 (extended width)", "level_m": 0.50, "floor_material_no": 3, "opening_ref": "3", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "ทางเดิน_walkway", "element_type": "room", "count": 1, "grid_ref": "grid1-grid2, south of gridA, box '4 +0.20 —', with 'ขึ้น' (up) arrow toward เฉลียง", "level_m": 0.20, "floor_material_no": 4, "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "stair_tread_note", "element_type": "note", "description": "'ลูกนอนบันได ผิวปูกระเบื้องเซรามิค 8\"x8\"' (stair tread, 8x8in ceramic tile finish) and 'จมูกบันได อลูมิเนียมสีเงิน ร่อง PVC. ขนาด 2\"' (stair nosing, silver aluminum with 2in PVC groove) -- material spec for the small entrance steps between ทางเดิน and เฉลียง", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "dimension_top_chain", "element_type": "dimension", "value_m": 4.00, "description": "Top dimension, grid1 to grid2 -- matches this house's grid master x_lines (1=0.0, 2=4.0) exactly", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "dimension_left_chain", "element_type": "dimension", "values_m": [1.80, 1.60], "description": "Left dimension chain (gridB to gridA span, 1.80m) matches this house's grid master y_lines (B=1.80, A=0.0) exactly, with an interior 1.60m sub-dimension", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "dimension_bottom_chain", "element_type": "dimension", "values_m": [0.50, 3.50, 0.50], "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "columns_at_corners", "element_type": "column", "count": 4, "grid_ref": "at the 4 corners of the plan (grid1/grid2 x gridB/gridA), hatched square column markers with an 'X'-hatch pattern at the gridA corners", "confidence_score": 0.68, "confidence_flags": ["needs_human_review_zoom_required"] }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "KEY DUMMY-GRID CROSS-CHECK FOLLOW-UP (reporting only, master file not edited): this detail sheet's own dimension chains directly reproduce the room sequence and dimensions already found on the ground floor plan (หน้า06) and confirmed via the 2.05m offset on multiple elevations/sections (รูปด้าน 2, รูปตัด 1) -- พักผ่อน (+0.60, north of gridB), เฉลียง (+0.50, between gridB and gridA, spanning the full gridB-gridA 1.80m grid interval), and ทางเดิน (+0.20, south of gridA, extending into the 'Aprime' dummy-grid zone at -2.05m). This CONCLUSIVELY confirms ST.1 is the small entrance-step sequence connecting these 3 levels (+0.20 -> +0.50 -> +0.60), not a carport/terrace slab as originally speculated from the structural beam plan alone -- the strongest single piece of evidence yet for resolving the master gridline file's provisional 'Aprime' note.",
+    "One of 2 views on this page; sibling is the section view _view2_st1_section.json, which shows the actual riser heights (2 steps of 0.15m each, totaling the 0.30m level difference between +0.20 and +0.50).",
+    "This sheet is A-18 (not A-19 as in house #4) since this house has only 2 sections (A-11, A-12) instead of 3, shifting every later sheet number down by 1."
+  ]
+}

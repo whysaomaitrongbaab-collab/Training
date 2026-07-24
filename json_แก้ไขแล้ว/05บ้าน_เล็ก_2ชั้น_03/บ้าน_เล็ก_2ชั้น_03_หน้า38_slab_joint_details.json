@@ -1,0 +1,35 @@
+{
+  "png": "38",
+  "doc_page": 36,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "S0,S0A,S1,SX,ขยาย2,ครีบ คสล.,รอยต่อเสา CN กับคาน ค.ส.ล.",
+  "pattern": "section",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า38.png",
+  "view_title": "8 slab-edge / joint / fin detail drawings, all 1:20",
+  "elements": [
+    { "element_id": "S0", "element_type": "precast_plank_detail", "description": "precast plank edge joint, sealed with asphalt (รอยต่ออุดด้วยแอสฟัลท์ หนา 1.00ซม.)", "mesh": { "dia_mm": 9, "type": "RB", "spacing_mm": 200 }, "base_fill": "ทรายหยาบบดอัดแน่น", "edge_dims_m": [0.10, 0.10], "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "S0A", "element_type": "precast_plank_detail", "description": "precast plank edge condition, wider variant with stepped profile", "mesh": { "dia_mm": 9, "type": "RB", "spacing_mm": 200 }, "additional_bar": { "dia_mm": 9, "type": "RB", "note": "Ø9มม ทุกมุม -- at every corner" }, "base_fill": ["ทรายอัดแน่นซุ่มน้ำ", "ดินถมอัดแน่น"], "dims_m": { "width": 2.00, "sub": [0.25, 0.25], "step_heights": [0.166, 0.166, 0.166] }, "confidence_score": 0.7, "confidence_flags": ["needs_human_review_zoom_required"] },
+    { "element_id": "S1", "element_type": "reinforcement_detail", "description": "S1 slab edge reinforcement, (ด้านสั้น) short-side condition", "rebar": { "dia_mm": 9, "type": "RB", "spacing_mm": 200, "note": "Ø9มม.@0.20* both top and bottom, asterisk footnote" }, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "SX", "element_type": "reinforcement_detail", "description": "SX T-shaped joint detail", "rebar": [{ "dia_mm": 9, "type": "RB", "spacing_mm": 250 }, { "dia_mm": 9, "type": "RB", "spacing_mm": null, "note": "Ø9มม.ตามแบบ -- as per drawing" }], "dims_m": [0.25, 0.25], "confidence_score": 0.72, "confidence_flags": [] },
+    { "element_id": "SY", "element_type": "reinforcement_detail", "description": "SY L-shaped bracket detail", "rebar": { "dia_mm": 9, "type": "RB", "spacing_mm": 200 }, "max_span_note": "ไม่เกิน 0.60 -- max 0.60m span", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "CN_to_B4X_joint", "element_type": "column_beam_joint_detail", "description": "รอยต่อเสา CN กับคาน ค.ส.ล. -- joint detail where short column CN meets beam B4X", "dims_m": { "width": 0.30 }, "related_elements": ["CN", "B4X"], "notes_text": "เลา CN ขึ้นจากระดับชั้น 1 ถึงระดับชานพัก", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "expansion_2_ขยาย2", "element_type": "foundation_curb_detail", "description": "ขยาย2 -- referenced by 'ดูขยาย2' callouts on S-04/S-05/S-06 beam plans (the southern extension near grid A)", "level_m": { "top": 0.20 }, "dims_m": [0.15, 0.15, 0.10], "width_m": 0.45, "rebar": { "dia_mm": 9, "type": "RB", "spacing_mm": 250, "note": "Ø9มม.@0.25ม.*" }, "base": "compacted soil/sand", "confidence_score": 0.68, "confidence_flags": ["needs_human_review_zoom_required", "this_is_the_expansion_detail_referenced_by_the_southern_extension_discrepancy_flagged_on_S-04/S-05/S-06"] },
+    { "element_id": "concrete_fin_around_building", "element_type": "fin_detail", "description": "แบบขยายครีบ คสล. รอบอาคาร -- RC fin/edge strip detail around building perimeter", "levels_m": { "top": 0.50, "reference_datum": 0.00 }, "dims_m": [0.40, 0.25, 0.10, 0.10], "main_bar": { "count": 1, "dia_mm": 12, "type": "RB" }, "tie_or_mesh": { "dia_mm": 9, "type": "RB", "spacing_mm": 250 }, "related_elements": ["คาน คสล."], "confidence_score": 0.75, "confidence_flags": [] }
+  ],
+  "title_block": {
+    "sheet_code": "S-10",
+    "total_sheets": 19,
+    "scale": "1:20",
+    "date": "19/10/59",
+    "drawing_no": "S58136"
+  },
+  "confidence_score": 0.74,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet's content (S0/S0A/S1/SX/SY details, CN-to-beam joint, ขยาย2 expansion, and perimeter fin detail) matches house #4's equivalent S-10 sheet almost exactly in structure -- this design office's standard detail-sheet template.",
+    "The 'ขยาย2' (expansion detail 2) element on this sheet is the actual detail referenced by the 'ดูขยาย2' callouts seen on S-04 (floor-1 beam plan), S-05 (floor-2 beam plan), and S-06 (tie-beam plan) for the southern extension near grid A -- but this detail's own content (a small curb/foundation strip at level +0.20m) does not by itself resolve the conflicting extension depths (2.05m/0.40m/0.70m+0.50m) found across those 3 sheets. Still flagged as unresolved pending human review.",
+    "S0A's asterisk-marked rebar note (Ø9มม.@0.20ม.*) has no visible footnote elsewhere on this sheet clarifying the asterisk -- consistent with the same unexplained-asterisk pattern seen in house #4's equivalent stair/precast details."
+  ]
+}
