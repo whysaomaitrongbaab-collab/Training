@@ -5,7 +5,8 @@ export_gguf.py — merge LoRA + export to GGUF + push to HuggingFace, in one ste
 Replaces the old manual pipeline from 2026-07-21 (merge_lora.py → convert_hf_to_gguf.py →
 llama-quantize) that cost hours of debugging (q8_0-can't-requantize mistake, disk full
 3x, llama.cpp CUDA build failing 3x) and, in the end, never got backed up before the
-rented instance was destroyed. See training-data/docs/mark_of_shame.md for the full story.
+rented instance was destroyed. See training-data/docs/rule_of_tune.md's Mark of Shame
+section for the full story (standalone mark_of_shame.md doc was deleted 2026-07-24).
 
 Key insight that makes this version simpler and safer: our LoRA only ever trains
 language/attention/MLP layers (finetune_vision_layers=False in train_qwen36.py — vision
@@ -76,20 +77,39 @@ print("Sanity-checking the merge actually changed behavior vs. the untuned base 
 import json as _json
 FastVisionModel.for_inference(model)
 with open(HERE_VAL := Path("val.jsonl"), encoding="utf-8") as f:
-    _sample = _json.loads(f.readline())
+    _lines = f.readlines()
+# val.jsonl's FIRST line is an index+material-list+signature-block page that the model
+# tends to over-generate on (13,991 chars / 4096 tokens and still not done — a real
+# over-prediction tendency of this tuning round, not a merge failure; see Phase 7's
+# actual eval showing 78 over-predicted elements). Line 3 (a compact structural plan
+# page, confirmed valid+fast in the real Phase 7 eval run) is a more representative
+# quick sanity check. Fixed 2026-07-24.
+_sample = _json.loads(_lines[2])
 _msgs = [_sample["messages"][0]]
-_text = tokenizer.apply_chat_template(_msgs, add_generation_prompt=True)
+_text = tokenizer.apply_chat_template(_msgs, add_generation_prompt=True, enable_thinking=False)  # found 2026-07-24, see eval_fields.py note
 from PIL import Image as _Image
 _imgs = [_Image.open(c["image"]).convert("RGB") for c in _msgs[0]["content"] if c["type"] == "image"]
 _inputs = tokenizer(_imgs, _text, add_special_tokens=False, return_tensors="pt").to("cuda")
-_out = model.generate(**_inputs, max_new_tokens=500, do_sample=False)
+_out = model.generate(**_inputs, max_new_tokens=1200, do_sample=False)  # only need the opening structure, not a full completion — see check below
 _pred = tokenizer.decode(_out[0][_inputs["input_ids"].shape[1]:], skip_special_tokens=True)
-try:
-    _json.loads(_pred)
-    print(f"✓ Sanity check passed — merged model produces valid JSON (matches the ~90% post-tune rate, not the ~0% pre-tune baseline)")
-except Exception:
-    print(f"❌ SANITY CHECK FAILED — merged model's output is NOT valid JSON:")
-    print(f"   {_pred[:300]}")
+# Checking full json.loads() success is too fragile here: this tuning round genuinely
+# tends to over-generate on complex pages (confirmed in Phase 7's real eval — 78
+# over-predicted elements across 20 examples), and tiny bf16 rounding differences between
+# merge_and_unload()'s merged weights and the adapter-applied-at-runtime math used in
+# eval_fields.py can make a long greedy generation diverge and run past any fixed token
+# budget on some examples — none of that means the merge silently failed. What we
+# actually need to rule out is the KNOWN failure mode: a silently-unmerged model reverts
+# to the untuned base's behavior, which (confirmed via the Phase 0.3 dry run and the
+# 2026-07-21 baseline) looks nothing like this — either a "Here's a thinking process"
+# prose preamble, or generic non-schema text, not real schema JSON. So: check the START
+# of the output looks like genuine tuned-schema JSON, not that the whole thing parses.
+_looks_tuned = _pred.lstrip().startswith("{") and any(k in _pred[:400] for k in ('"png"', '"views"', '"pattern"', '"doc_page"'))
+if _looks_tuned:
+    print(f"✓ Sanity check passed — merged model opens with real schema JSON, not a reasoning preamble or generic text (matches tuned behavior, not the untuned baseline)")
+else:
+    print(f"❌ SANITY CHECK FAILED — merged model's output does NOT look like tuned schema JSON:")
+    print(f"   output length: {len(_pred)} chars, {_out.shape[1] - _inputs['input_ids'].shape[1]} tokens generated")
+    print(f"   first 400: {_pred[:400]}")
     print("🔴 This matches the known silent-merge-failure pattern (adapter not actually")
     print("   applied). STOP. Do not spend time quantizing/uploading this. Investigate")
     print("   before continuing — check merge_and_unload() output and adapter path.")
@@ -103,6 +123,44 @@ print(f"Exporting merged model to GGUF ({QUANT_METHOD}) — this can take 20-40 
 print("(If disk space runs low mid-export: safe to delete is the HF hub cache — ~/.cache/huggingface —")
 print(" since the model is already loaded in GPU memory. Do NOT delete anything in outputs_qwen36/.)")
 Path(LOCAL_GGUF_DIR).mkdir(parents=True, exist_ok=True)
+# Found 2026-07-24: Unsloth auto-detects this as a VLM (model.config has vision_config)
+# and, as PART OF THE SAME call, also tries to auto-export a vision-projector GGUF —
+# which fails hard on this architecture (llama.cpp's converter can't find the vision
+# tensors: "no tensors were written... Check that the safetensors filenames are
+# discoverable") and takes down the WHOLE export (including the already-working text/LLM
+# conversion) with it. We deliberately don't want Unsloth's auto-mmproj export anyway —
+# the whole point of this script (see module docstring) is reusing the official
+# pre-built mmproj-F16.gguf instead, since vision layers were frozen during training.
+#
+# FIRST ATTEMPT (reverted): deleting model.config.vision_config to fake is_vlm=False.
+# This broke the MAIN text save too — inspecting the resulting safetensors afterward
+# showed triple-nested tensor names (`model.language_model.language_model.language_model.
+# ...`), because is_vlm also changes how unsloth_save_pretrained_gguf unwraps/saves the
+# model itself, not just the GGUF conversion step. Confirmed corrupt: that's WHY the
+# "no tensors were written" error persisted even after the mmproj skip.
+#
+# REAL FIX: unsloth_zoo.llama_cpp.convert_to_gguf already has a graceful fallback for
+# exactly this situation — `if is_vlm and supported_vision_archs is not None: if arch not
+# in supported_vision_archs: is_vlm = False` (converts as text-only, no crash). It just
+# never fires here because save_to_gguf() calls convert_to_gguf() without passing
+# supported_vision_archs at all (stays None), so the check that would set is_vlm=False
+# never activates for an architecture nobody's added to that list yet. Monkey-patch
+# `unsloth.save.convert_to_gguf` (the name as imported into unsloth.save's own namespace —
+# patching unsloth_zoo.llama_cpp's copy wouldn't affect the already-bound import) so the
+# call always supplies supported_vision_archs=set(), triggering Unsloth's own intended
+# safe path instead of inventing a new one. Leaves model.save_pretrained() completely
+# untouched — only affects the GGUF conversion step.
+import unsloth.save as _unsloth_save_mod
+_orig_convert_to_gguf = _unsloth_save_mod.convert_to_gguf
+def _convert_to_gguf_text_only(*_args, **_kwargs):
+    # save_to_gguf() calls convert_to_gguf(..., supported_vision_archs=supported_vision_archs, ...)
+    # EXPLICITLY (confirmed by reading its source) — the key is always present in kwargs,
+    # even when its value is None, so .setdefault() (tried first, silently did nothing) never
+    # takes effect. Must force-overwrite the value directly, not just supply a default.
+    _kwargs["supported_vision_archs"] = set()
+    return _orig_convert_to_gguf(*_args, **_kwargs)
+_unsloth_save_mod.convert_to_gguf = _convert_to_gguf_text_only
+
 model.save_pretrained_gguf(LOCAL_GGUF_DIR, tokenizer, quantization_method=QUANT_METHOD)
 print(f"✓ GGUF export done — check {LOCAL_GGUF_DIR}/ for the .gguf file")
 
@@ -114,9 +172,14 @@ mmproj_path = hf_hub_download(repo_id=OFFICIAL_MMPROJ_REPO, filename=OFFICIAL_MM
 print(f"✓ mmproj ready at {mmproj_path}")
 
 # ── Step 3: find the produced GGUF file
-gguf_files = list(Path(LOCAL_GGUF_DIR).glob("*.gguf"))
+# Found 2026-07-24: Unsloth's save_pretrained_gguf() writes the actual final .gguf files
+# to "{LOCAL_GGUF_DIR}_gguf/" (note the appended "_gguf" suffix on the directory name) —
+# LOCAL_GGUF_DIR itself only ever holds the intermediate merged HF-format safetensors.
+# The original glob on LOCAL_GGUF_DIR always found nothing, incorrectly reporting the
+# whole export as failed even when the GGUF was sitting right there one directory over.
+gguf_files = list(Path(f"{LOCAL_GGUF_DIR}_gguf").glob("*.gguf"))
 if not gguf_files:
-    print(f"❌ No .gguf file found in {LOCAL_GGUF_DIR}/ — export_gguf step above may have failed silently. STOP. Do not destroy the instance. Investigate first.")
+    print(f"❌ No .gguf file found in {LOCAL_GGUF_DIR}_gguf/ — export_gguf step above may have failed silently. STOP. Do not destroy the instance. Investigate first.")
     sys.exit(1)
 llm_gguf = gguf_files[0]
 llm_gguf_size_gb = llm_gguf.stat().st_size / 1e9

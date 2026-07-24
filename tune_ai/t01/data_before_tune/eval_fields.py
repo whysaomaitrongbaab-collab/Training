@@ -78,7 +78,12 @@ for i, r in enumerate(rows):
         ({"type": "image", "image": Image.open(HERE / c["image"]).convert("RGB")}
          if c["type"] == "image" else {"type": "text", "text": c["text"]})
         for c in r["messages"][0]["content"]]}]
-    text = tokenizer.apply_chat_template(msgs, add_generation_prompt=True)
+    # enable_thinking=False required: default template leaves a bare open <think>\n tag
+    # after add_generation_prompt=True, and this reasoning-native base model then writes
+    # verbose chain-of-thought instead of jumping to JSON (found 2026-07-24 — training
+    # itself is unaffected, since add_generation_prompt=False during training never
+    # inserts a think tag at all; this is purely an inference-time prompt mismatch).
+    text = tokenizer.apply_chat_template(msgs, add_generation_prompt=True, enable_thinking=False)
     imgs = [c["image"] for c in msgs[0]["content"] if c["type"] == "image"]
     inputs = tokenizer(imgs, text, add_special_tokens=False, return_tensors="pt").to("cuda")
     out = model.generate(**inputs, max_new_tokens=3000, do_sample=False)

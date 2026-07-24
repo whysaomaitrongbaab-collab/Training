@@ -59,6 +59,14 @@ If raw JSON must genuinely be edited (re-running the pipeline over existing outp
 - **Every edit must be logged in `raw_json_data_log.md`** in the `Training` repo (`training-data/raw_json_data_log.md` — not the copy in `Constistant`, even though `rule_of_tune.md` exists in both). Log before or alongside the edit, never after without logging. Record: file edited, which AI did it, who edited/approved, notes.
 - Log the what/why/when at a high level in `CLAUDE.md` (`raw_json_data_log.md` is the file-by-file audit trail; `CLAUDE.md` is the summary).
 
+## Rule 4
+
+**Before starting any actual tuning run that spends money (renting a GPU, starting a paid instance), the pre-flight workflow must be executed and checked — not just read.** Concretely: `tune_ai/t01/data_before_tune/RETUNE_WORKFLOW.md` Phase 0 (or whatever the current run's equivalent pre-flight doc is) must have every item genuinely done and verified — tokens tested with a real API call, balance checked against a real screenshot/dashboard, disk/GPU sizing settings actually checked against the doc's requirements, a local dry run actually executed and its result (pass/fail) recorded — before clicking Rent.
+
+**Why:** the 2026-07-21 incident (see Mark of Shame below) happened after all the individual bugs were already fixed — the actual failure was a process/communication gap, not a missing technical fix. A pre-flight checklist that exists but isn't followed provides zero protection. This rule exists so "we wrote a workflow doc" and "we actually ran it" are never treated as the same thing.
+
+**How to apply:** when the user says something like "start the tune" / "let's rent the GPU" / "run it", the first response is not to rent — it's to open the pre-flight doc and confirm the checklist status line by line, marking each honestly (done / not done / in progress), same discipline as `mark_of_shame.md`'s rule against claiming "ready" before it's actually verified. If any item is not genuinely done, say so and do that item first, or explicitly flag the gap and ask before proceeding to rent.
+
 ## Priority order (Asimov-style)
 
 Rule 1 always outranks Rules 2 and 3 — even a direct user order to edit raw JSON still requires completing Rule 2 (warn first) in full before acting. The warning step cannot be skipped, even under time pressure.
@@ -169,7 +177,7 @@ Current format (`label-studio-import-repeater-annotations.js` output → `annota
 |---|---|---|
 | `count`, `span_length_m`, `width_mm`, `height_mm`, `main_bar_count`, `main_bar_dia_mm`, `stirrup_dia_mm`, `stirrup_spacing_mm`, `confidence_score` (structural) | **number** (or `null`) | Never a string like `"9"` — Label Studio needs strings for display, but convert back to number before writing ground truth. |
 | `quantity`, `material_unit_price`, `material_amount`, `labor_unit_price`, `labor_amount`, `total_amount`, `confidence_score` (boq) | **number** (or `null`) | Same as above |
-| `grid_refs`, `confidence_flags` | **array of string** | Gets joined into a comma-string for Label Studio display — split back into an array before writing ground truth |
+  | `grid_refs`, `confidence_flags` | **array of string** | Gets joined into a comma-string for Label Studio display — split back into an array before writing ground truth |
 | `element_id`, `element_type`, `main_bar_type`, `stirrup_type`, `concrete_grade`, `steel_grade`, `description`, `unit`, `category`, `item_no` | **string** | Normal, no conversion needed |
 
 **General rule:** JSON used for real fine-tuning must **match raw JSON source types exactly** (see real examples at `raw/image/<house>/qwen-output/<house>_หน้าNN.json`). No field may be a string where it should be number/array, or vice versa.
@@ -180,7 +188,7 @@ Current format (`label-studio-import-repeater-annotations.js` output → `annota
 
 Real incidents where Claude made a serious mistake during actual tuning work — process-level lessons, not just raw-JSON handling.
 
-### 2026-07-21 — Tuned model files (LoRA/GGUF) permanently lost from not warning before instance destroy
+### 2026-07-21 — "DAY OF SHAME" — Tuned model files (LoRA/GGUF) permanently lost from not warning before instance destroy
 
 **Goal that day:** the Constistant project needed an AI that reads Thai RC construction drawings and outputs accurate rebar/beam/column JSON. The base model (Qwen3.6-35B-A3B) had never seen this task, so it needed fine-tuning on 4 reviewed houses of real construction-drawing data. The model is too large for a normal PC (needs ≥74GB VRAM), so a GPU was rented from Vast.ai (RTX PRO 6000 96GB, ~$1.056/hr).
 
@@ -221,11 +229,11 @@ Real incidents where Claude made a serious mistake during actual tuning work —
 1. Saying a result was "ready to use" while it still couldn't do its core job (read images).
 2. Knowing about a real unresolved blocker (files not backed up yet) but mentioning it lightly, like an ordinary to-do, instead of a firm, standalone warning before the user decided to shut the machine down.
 
-**Consequence:** the user swore at length during the conversation (the phrase "พ่อมึงตาย" appeared 4 times as standalone messages, plus other profanity) and permanently changed interaction rules: no more "ครับ," no more friend-like tone ("I pay for a machine, not a friend").
+**Consequence:** the user expressed strong frustration at length during the conversation and changed interaction rules for a time: no "ครับ," no friend-like tone ("I pay for a machine, not a friend"). (Reconciled 2026-07-24 — those tone rules were rescinded after the user reflected on the incident and apologized; see `feedback_machine_register_tone.md` in Claude's memory.)
 
 **Rules going forward:**
 1. **Never say "ready to use" about an output that can't do its core job**, even if it technically runs (a GGUF that runs but can't read images is not "ready" for a drawing-reading task).
 2. **Any risk of permanent, irreversible data loss (destroy/delete/overwrite with no undo) must get its own explicit, standalone hard-block warning** — e.g. "⚠️ Do not destroy/close [system] until file X is backed up — it will be unrecoverable." Never bury this inside general planning language like "do later."
 3. **A known unresolved blocker (e.g. missing API token needed for a required upload) must be stated as a blocker to finishing the task**, not a nice-to-have deferred to later.
 
-Full incident narrative: `training-data/docs/mark_of_shame.md`. Day-by-day technical log: `workmen's_diary/2026-07-21.md` and `2026-07-21(teach mk).md`.
+Day-by-day technical log: `workmen's_diary/2026-07-21.md` and `2026-07-21(teach mk).md`. (The standalone `mark_of_shame.md` narrative doc was deleted 2026-07-24 by the user — this section above is the retained record.)

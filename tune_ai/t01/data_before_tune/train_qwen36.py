@@ -52,8 +52,17 @@ EPOCHS = 3
 LR = 1e-4              # LoRA (ไม่ใช่ full fine-tune ซึ่งต้องต่ำกว่านี้มาก 5e-6..1e-5)
 BATCH = 1
 GRAD_ACCUM = 8
-MAX_LENGTH = 9216       # instruction 1,022 + ภาพ 5,120 + output ยาวสุดจริง 2,748 (stats.json) + กันชน ~330
-                        # ลดจาก 10240 เดิม (เผื่อเกินจริง) — ช่วยลด activation memory ตอน OOM ขาด 100MiB
+MAX_LENGTH = 24576     # แก้ 2026-07-24 (มะขามเลือกเอง หลัง re-check 0.4 เจอบั๊กจริง): 9216 เดิมคิดจาก
+                        # ภาพใบเดียวเท่านั้น (instruction 1,022 + ภาพ 5,120 + output 2,748 + กันชน 330)
+                        # แต่ 5 ตัวอย่าง gridmaster (คนละ 1 ต่อบ้าน) มัดภาพ 2-4 ใบ/ตัวอย่าง จริง ๆ ต้องการ
+                        # สูงสุด ~22,067 token (บ้าน03/05, 4 ภาพ) — เกิน 9216 ถึง 2.4 เท่า ถ้าไม่แก้ trainer
+                        # จะตัดท้าย sequence ทิ้ง ซึ่งตัด JSON label ของ dummy-grid ทั้งหมดที่มีในชุดข้อมูล
+                        # ตั้งไว้ที่ 24576 ให้มีกันชนเหนือ ~22,067 จริง (buffer ครอบคลุมความคลาดเคลื่อนของ
+                        # การประมาณ token จากความยาวตัวอักษร)
+                        # ⚠️ TRADE-OFF ที่มะขามรับทราบแล้ว: ค่าที่สูงขึ้นนี้เพิ่มความเสี่ยง OOM เฉพาะตอน
+                        # forward pass ของ 5 ตัวอย่าง gridmaster (รอบก่อนขาดแค่ ~100MiB จาก 95GB ตอน
+                        # MAX_LENGTH=9216) — ถ้า OOM เกิดเฉพาะตรงนี้ ให้ลด LORA_R ลงอีกหรือลด MAX_PIXELS
+                        # เฉพาะภาพที่ใช้ในตัวอย่าง gridmaster ก่อน ไม่ใช่ลด MAX_LENGTH กลับไปที่เดิม
 OUT_DIR = "outputs_qwen36"
 
 # freeze vision — เหตุผลเดียวกับ train_qwen3vl.py: dataset เล็ก (226 ตัวอย่าง) เทรน vision
@@ -195,7 +204,11 @@ print(f"✓ เซฟ LoRA adapter ที่ {OUT_DIR}/lora")
 UnslothModel.for_inference(model)
 for i, sample in enumerate(val_ds[:3]):
     msgs = [sample["messages"][0]]
-    text = tokenizer.apply_chat_template(msgs, add_generation_prompt=True)
+    # enable_thinking=False required (found 2026-07-24, see eval_fields.py for full note) —
+    # otherwise this demo loop burns its whole token budget on chain-of-thought reasoning
+    # instead of JSON, which is why this exact loop appeared to "hang" for a long time
+    # during both the 2026-07-24 TEST_STEPS=5 run and the full run afterward.
+    text = tokenizer.apply_chat_template(msgs, add_generation_prompt=True, enable_thinking=False)
     imgs = [c["image"] for c in msgs[0]["content"] if c["type"] == "image"]
     inputs = tokenizer(imgs, text, add_special_tokens=False, return_tensors="pt").to("cuda")
     out = model.generate(**inputs, max_new_tokens=3000, do_sample=False)
