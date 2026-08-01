@@ -114,7 +114,10 @@ Expected output: `resolve_grid.py self-check: all assertions passed`
 Add this line to `training-data/requirements.txt` (which already lists other pipeline deps):
 
 ```
-google-genai>=0.3.0  # Gemini API client — used by tools/gemini_overlay_prototype/extract_gemini.py
+google-genai>=2.16.0  # Gemini API client — used by tools/gemini_overlay_prototype/extract_gemini.py
+                       # (floor set to the version actually verified to have the
+                       # client.interactions.create() + ImageContentParam shape this
+                       # prototype depends on — see Task 2)
 ```
 
 - [ ] **Step 5: Commit**
@@ -135,9 +138,12 @@ git commit -m "Add grid_ref resolution module for overlay prototype"
 - Consumes: nothing from Task 1 directly (this script only produces the raw elements JSON; grid resolution happens in Task 3).
 - Produces: writes `tools/gemini_overlay_prototype/output/<house>_หน้า<page>_gemini.json` with the shape `{"elements": [{"element_id": str, "element_type": str, "count": int, "grid_refs": [str, ...]}]}`. This exact shape and these exact keys are what Task 3's diff logic consumes.
 
-- [ ] **Step 1: Write the extraction prompt as a module-level constant**
-
-This is a trimmed version of the extraction prompt already used for Qwen fine-tuning (`tune_ai/t01/data_before_tune/train.jsonl`, `training-data/Prompt/stage-a/prompt.md`), scoped to only footing/column point-type elements — no rebar, no beams, no other view types.
+**Verified API shape (do not guess — this was confirmed by installing `google-genai==2.16.0` locally and reading its type definitions, since this SDK/model is newer than general model knowledge):**
+- Model id: `models/gemini-3.1-pro-preview` (confirmed from the user's AI Studio "Get code" export).
+- The API surface is `client.interactions.create(...)`, not `client.models.generate_content(...)` — this SDK version's older content-generation method is not what AI Studio generates for this model.
+- `input` is a list of content-block dicts. A text block is `{"type": "text", "text": "..."}`. An image block is `{"type": "image", "data": <value>, "mime_type": "image/png"}` — confirmed from `ImageContentParam` in `google/genai/_gaos/types/interactions/imagecontent.py`. `data` accepts a `pathlib.Path` directly (or a file object opened in binary mode, or an already-base64-encoded string) — the SDK's `encode_base64_file_input` validator (`google/genai/_gaos/types/base64fileinput.py`) reads and base64-encodes it automatically. Do not manually base64-encode a `Path` — passing a raw path is correct and simpler.
+- To force JSON output, set `generation_config["response_format"] = {"type": "text", "mime_type": "application/json"}` — confirmed from `TextResponseFormatParam` in `google/genai/_gaos/types/interactions/textresponseformat.py` (`mime_type` accepts `"application/json"` or `"text/plain"`).
+- The call is synchronous/non-streaming by default and returns a completed `Interaction` object directly (confirmed by the user's working AI Studio sample, which loops `interaction.steps` immediately with no polling). Iterate `interaction.steps`, keep steps where `step.type == "model_output"`, and within `step.content` keep parts where `part.type == "text"`, concatenating `part.text`.
 
 ```python
 """Send one construction-drawing page image to Gemini and extract
@@ -149,6 +155,7 @@ import json
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
 from google import genai
 
 EXTRACTION_PROMPT = """You are reading one page of a Thai reinforced-concrete (RC) \
@@ -175,25 +182,43 @@ Return ONLY valid JSON, no explanation, in exactly this shape:
 ]}
 """
 
+GENERATION_CONFIG = {
+    "temperature": 1,
+    "max_output_tokens": 65536,
+    "top_p": 0.95,
+    "thinking_level": "high",
+    "response_format": {"type": "text", "mime_type": "application/json"},
+}
 
-def extract(image_path, model="gemini-2.5-flash"):
+
+def extract(image_path, model="models/gemini-3.1-pro-preview"):
+    load_dotenv()  # repo root .env holds GEMINI_API_KEY
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise RuntimeError(
-            "GEMINI_API_KEY is not set. Get a key from https://aistudio.google.com/ "
-            "and export it: export GEMINI_API_KEY=your-key-here"
+            "GEMINI_API_KEY is not set (checked process env and .env). Get a key from "
+            "https://aistudio.google.com/ and add it to the repo root .env file."
         )
     client = genai.Client(api_key=api_key)
-    image_bytes = Path(image_path).read_bytes()
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model=model,
-        contents=[
-            {"text": EXTRACTION_PROMPT},
-            {"inline_data": {"mime_type": "image/png", "data": image_bytes}},
+        input=[
+            {"type": "text", "text": EXTRACTION_PROMPT},
+            {"type": "image", "data": Path(image_path), "mime_type": "image/png"},
         ],
-        config={"response_mime_type": "application/json"},
+        generation_config=GENERATION_CONFIG,
     )
-    return json.loads(response.text)
+
+    text_output = ""
+    for step in interaction.steps:
+        if step.type == "model_output" and step.content:
+            for part in step.content:
+                if part.type == "text":
+                    text_output += part.text
+
+    if not text_output:
+        raise RuntimeError("Gemini returned no text output — check interaction.steps for an error step.")
+    return json.loads(text_output)
 
 
 def main():
@@ -224,16 +249,21 @@ if __name__ == "__main__":
 
 - [ ] **Step 2: Verify the script runs against the real test case**
 
-Run (from repo root, with `GEMINI_API_KEY` exported in your shell):
+Run (from repo root — `GEMINI_API_KEY` is read from the repo root `.env` automatically via `load_dotenv()`, no need to export it manually):
 ```bash
 python tools/gemini_overlay_prototype/extract_gemini.py --house บ้าน_เล็ก_1ชั้น_01 --page 19
 ```
-Expected: prints a JSON object with an `"elements"` array containing at least one `element_type: "column"` entry, and writes `tools/gemini_overlay_prototype/output/บ้าน_เล็ก_1ชั้น_01_หน้า19_gemini.json`. Inspect the printed JSON by eye — confirm `grid_refs` look like `["D1", "D2", ...]` (letter-then-number, no dashes).
+Expected: prints a JSON object with an `"elements"` array containing at least one `element_type: "column"` entry, and writes `tools/gemini_overlay_prototype/output/บ้าน_เล็ก_1ชั้น_01_หน้า19_gemini.json`. Inspect the printed JSON by eye — confirm `grid_refs` look like `["D1", "D2", ...]` (letter-then-number, no dashes). If it raises a validation error about the `input` or `generation_config` shape, re-check the field names against the installed SDK's own type files under `site-packages/google/genai/_gaos/types/interactions/` (`imagecontent.py`, `textresponseformat.py`) before changing anything else — this is a preview API surface and Google can adjust field names between SDK releases.
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 3: Add `python-dotenv` to requirements and commit**
+
+Add this line to `training-data/requirements.txt` alongside the `google-genai` line from Task 1:
+```
+python-dotenv>=1.0.0  # loads GEMINI_API_KEY from repo root .env — used by extract_gemini.py
+```
 
 ```bash
-git add tools/gemini_overlay_prototype/extract_gemini.py
+git add tools/gemini_overlay_prototype/extract_gemini.py training-data/requirements.txt
 git commit -m "Add Gemini extraction script for overlay prototype"
 ```
 
