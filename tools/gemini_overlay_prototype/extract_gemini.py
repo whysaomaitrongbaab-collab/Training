@@ -70,13 +70,30 @@ def extract(image_path, model="models/gemini-3.1-pro-preview"):
 
     if not text_output:
         raise RuntimeError("Gemini returned no text output — check interaction.steps for an error step.")
-    return json.loads(text_output)
+    return json.loads(_strip_markdown_fence(text_output))
+
+
+def _strip_markdown_fence(text):
+    """Some models wrap JSON output in a ```json ... ``` fence even when
+    response_format asks for raw application/json. Strip it if present.
+    """
+    stripped = text.strip()
+    if stripped.startswith("```"):
+        stripped = stripped.split("\n", 1)[1] if "\n" in stripped else stripped[3:]
+        if stripped.rstrip().endswith("```"):
+            stripped = stripped.rstrip()[: -3]
+    return stripped.strip()
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--house", required=True, help='e.g. "บ้าน_เล็ก_1ชั้น_01"')
     parser.add_argument("--page", required=True, help='page number, e.g. "19"')
+    parser.add_argument(
+        "--model",
+        default="models/gemini-3.1-pro-preview",
+        help='Gemini model id, e.g. "models/gemini-2.5-flash" for a free-tier fallback',
+    )
     args = parser.parse_args()
 
     page_padded = args.page.zfill(2)
@@ -84,7 +101,7 @@ def main():
     if not image_path.exists():
         raise FileNotFoundError(f"Page image not found: {image_path}")
 
-    result = extract(image_path)
+    result = extract(image_path, model=args.model)
 
     output_dir = Path("tools/gemini_overlay_prototype/output")
     output_dir.mkdir(parents=True, exist_ok=True)
