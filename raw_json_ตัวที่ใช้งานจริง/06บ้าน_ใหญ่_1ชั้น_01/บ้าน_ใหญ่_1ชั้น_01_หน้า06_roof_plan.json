@@ -1,0 +1,89 @@
+{
+ "png": "06",
+ "doc_page": 6,
+ "discipline": "architectural",
+ "sheet_code": "A-05",
+ "sheet_name": "แปลนหลังคา",
+ "pattern": "roof_plan",
+ "building": "อาคารหลัก",
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §11a multi-building)",
+ "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า06.png",
+ "view_title": "แปลนหลังคา 1:100",
+ "grid_source": "raw_json_ตัวที่ใช้งานจริง/06บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า00_gridline.json",
+ "grid_dims_note": {
+  "x_axis_m": {
+   "1": 0.0,
+   "2": 3.6,
+   "3": 7.2,
+   "4": 10.8,
+   "5": 14.4,
+   "6": 18.0,
+   "7": 21.6,
+   "8": 25.2,
+   "11": null
+  },
+  "y_axis_m": {
+   "ก": 0.0,
+   "ข": 3.6,
+   "ค": 7.2
+  }
+ },
+ "elements": [
+  {
+   "element_id": "หลังคา",
+   "element_type": "roof_slope",
+   "slope_side": "ค",
+   "grid_ref": "ข-ค x 1-11",
+   "material": "กระเบื้องลูกฟูกลอนเล็ก สีขาว",
+   "confidence_score": 0.86,
+   "confidence_flags": [],
+   "note": "Rear slope, falling from the ridge on grid ข out to grid ค and on past it to the 1.20 m eave. SLOPE arrow printed on the sheet; no pitch value is given here (S-07 gives the truss slope as 25 degrees)."
+  },
+  {
+   "element_id": "หลังคา",
+   "element_type": "roof_slope",
+   "slope_side": "ก",
+   "grid_ref": "ก-ข x 1-11",
+   "material": "กระเบื้องลูกฟูกลอนเล็ก สีขาว",
+   "confidence_score": 0.86,
+   "confidence_flags": [],
+   "note": "Front slope, falling from the ridge on grid ข out over the ระเบียง to the 1.20 m eave."
+  },
+  {
+   "element_id": "สันหลังคา",
+   "element_type": "ridge",
+   "grid_ref": "ข x 1-11",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "note": "Ridge line runs the full length of the building along grid ข, i.e. the roof is a symmetric gable centred on the middle column line -- consistent with the T1 truss on S-07."
+  },
+  {
+   "element_id": "ชายคา",
+   "element_type": "eave",
+   "grid_ref": null,
+   "overhang_m": 1.2,
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "note": "1.20 m overhang beyond grids ค and ก on both long sides, matching S-02's left dimension chain."
+  },
+  {
+   "element_id": "หลังคาบันได",
+   "element_type": "roof_canopy",
+   "grid_ref": null,
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "extent_not_dimensioned"
+   ],
+   "note": "Separate low canopy over the central entrance stair, drawn projecting from the ก side below the main roof. No dimensions are given for it on this sheet."
+  }
+ ],
+ "confidence_score": 0.83,
+ "confidence_flags": [],
+ "warnings": [
+  "Axis reads 1..8 at 3.60 m then jumps to 11, with no grid ⑨ and no ⑩ -- the same as A-04 and the structural sheets, and against A-03. Third independent confirmation of the axis decision recorded on หน้า00_gridline.json.",
+  "MATERIAL CONFLICT with A-02. This sheet labels the roof 'หลังคากระเบื้องลูกฟูกลอนเล็ก สีขาว' (WHITE) in both slope callouts, while A-02's รายการประกอบแบบ item 2.3.ง specifies 'กระเบื้องลูกฟูกลอนเล็ก สีซีเมนต์' (CEMENT colour). Profile agrees, colour does not. Both are recorded as printed on their own sheets; neither was overwritten. A-02 also states materials may be varied to suit the client ('วัสดุต่างๆดังกล่าวข้างต้น สามารถเปลี่ยนแปลงได้ตามความเหมาะสม'), which likely explains the difference.",
+  "The roof is a plain symmetric gable: ridge along grid ข, two slopes to ค and ก, 1.20 m eaves. No hips, valleys, dormers or roof penetrations are drawn, and no gutters or downpipes appear on this sheet (A-03's หมายเหตุ defers drainage to site conditions).",
+  "No pitch value is printed here -- only SLOPE direction arrows. The 25-degree pitch comes from S-07's T1 truss elevation (หน้า20) and is NOT repeated on this sheet, so it is not restated in these elements.",
+  "Section callouts 1/A-07 and 2/A-07 and the four-way elevation rose to 1-4/A-06 appear here exactly as on A-04."
+ ]
+}

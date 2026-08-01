@@ -1,0 +1,32 @@
+{
+ "png": "32",
+ "doc_page": 30,
+ "printed_page": 30,
+ "discipline": "structural",
+ "sheet_code": "S-11",
+ "sheet_name": "แบบขยายคาน B1-B3A",
+ "pattern": "section",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า32.png",
+ "beams": [
+  { "mark": "B1", "size_m": "0.20x0.40", "main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom", "stirrup": "Ø6มม.@0.20ม. mid-span, close-spaced ends (per B2's section 2-2 pattern)" },
+  { "mark": "B2", "size_m": "0.20x0.40", "span_m": [2.20, 3.60, 4.00], "main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom, +2-Ø12มม. bottom mid-span reinforcement", "stirrup": "Ø6มม.@0.075ม. ends, @0.15ม. mid-span" },
+  { "mark": "B2A", "size_m": "0.20x0.40", "span_m": 2.20, "main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom", "stirrup": "Ø6มม.@0.075ม." },
+  { "mark": "B2X", "size_m": "0.20x0.40", "main_bar": "2-Ø16มม. + 1-Ø16มม.(ล้วงเข้า B2 ยาวไม่น้อยกว่า 1.00ม.) top, 2-Ø16มม.(ต่อเนื่องจาก B2) bottom", "stirrup": "Ø6มม.@0.20ม.", "note": "1.00m cantilever/extension beam splicing into B2, lap-splice bar merges per spec §7 convention" },
+  { "mark": "B3", "size_m": "0.30x0.40", "span_m": [3.60, 4.00], "main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom", "stirrup": "Ø6มม.@0.075ม. ends, @0.15ม. mid-span" },
+  { "mark": "B3A", "size_m": "0.30x0.40", "span_m": [1.80, 2.00], "main_bar": "2-Ø16มม. top + 4-Ø16มม. bottom", "stirrup": "Ø6มม.@0.075ม." }
+ ],
+ "column_sections": [
+  { "cut_ref": "2-2 (B1/B2)", "size_m": "0.20x0.40", "top": "2-Ø16มม.", "bottom": "2-Ø16มม.", "stirrup": "Ø6มม.@0.20ม." },
+  { "cut_ref": "2A-2A (B2A)", "size_m": "0.20x0.40", "top": "4-Ø16มม.", "bottom": "2-Ø16มม.", "stirrup": "Ø6มม.@0.075ม." },
+  { "cut_ref": "3-3 (B3)", "size_m": "0.30x0.40", "top": "2-Ø16มม.", "bottom": "4-Ø16มม.", "stirrup": "Ø6มม.@0.15ม." },
+  { "cut_ref": "3A-3A (B3A)", "size_m": "0.30x0.40", "top": "2-Ø16มม.", "bottom": "4-Ø16มม.", "stirrup": "Ø6มม.@0.075ม." }
+ ],
+ "confidence_score": 0.8,
+ "confidence_flags": [],
+ "warnings": [
+  "op1 direct read (house 10). B2X's extra top bar reads '1-Ø16มม. (ล้วงเข้า B2 ยาวไม่น้อยกว่า 1.00ม.)' — a lap-splice bar per spec §7, merges into B2's top count at the joint, recorded here per-beam as printed rather than pre-merged.",
+  "Stirrup spacing tightens near supports (0.075m) and relaxes at mid-span (0.15-0.20m) on every multi-span beam here — standard capacity design / ductile detailing, consistent with S-10's seismic column note."
+ ]
+}

@@ -1,0 +1,30 @@
+[2026-07-29 00:53:22] === เริ่มรัน extract_house01_local.py ===
+[2026-07-29 00:53:22] llama-server started, pid=33576, waiting for /health ...
+[2026-07-29 00:54:23] llama-server ready.
+[2026-07-29 00:54:23] หน้า01: already done, skip
+[2026-07-29 00:54:23] หน้า02: already done, skip
+[2026-07-29 01:14:23] หน้า03: request error attempt 1/3: HTTPConnectionPool(host='127.0.0.1', port=8090): Read timed out. (read timeout=1200)
+[2026-07-29 01:15:24] === เริ่มรัน extract_house01_local.py ===
+[2026-07-29 01:15:24] llama-server started, pid=39420, waiting for /health ...
+[2026-07-29 01:16:25] llama-server ready.
+[2026-07-29 01:16:25] หน้า01: already done, skip
+[2026-07-29 01:16:25] หน้า02: already done, skip
+[2026-07-29 01:37:21] หน้า03: OK (1256s, finish=stop, attempt 1)
+[2026-07-29 01:50:17] หน้า04: OK (776s, finish=stop, attempt 1)
+[2026-07-29 02:06:37] หน้า05: OK (980s, finish=stop, attempt 1)
+[2026-07-29 02:27:29] หน้า06: OK (1252s, finish=stop, attempt 1)
+[2026-07-29 02:46:18] === เริ่มรัน extract_house01_local.py (2-phase: classify -> extract เฉพาะ pattern ที่ต้องการ) ===
+[2026-07-29 02:46:18] llama-server started, pid=41296, waiting for /health ...
+[2026-07-29 02:47:14] llama-server ready.
+[2026-07-29 02:47:14] --- Phase A: classify ทุกหน้า (เก็บที่ _classify.json) ---
+[2026-07-29 02:47:14] [classify] หน้า01: ดึงจาก _ai.json เดิม -> ['site_plan']
+[2026-07-29 02:47:14] [classify] หน้า02: ดึงจาก _ai.json เดิม -> ['index']
+[2026-07-29 02:47:14] [classify] หน้า03: ดึงจาก _ai.json เดิม -> ['schedule', 'material_list', 'symbol', 'symbol', 'title']
+[2026-07-29 02:47:14] [classify] หน้า04: ดึงจาก _ai.json เดิม -> ['notes', 'title']
+[2026-07-29 02:47:14] [classify] หน้า05: ดึงจาก _ai.json เดิม -> ['site_plan', 'notes', 'title']
+[2026-07-29 02:47:14] [classify] หน้า06: ดึงจาก _ai.json เดิม -> ['plan', 'roof_plan']
+[2026-07-29 02:49:43] [classify] หน้า07: OK (149s) -> ['section', 'section', 'title', 'gridline', 'notes']
+[2026-07-29 02:52:04] [classify] หน้า08: OK (141s) -> ['section', 'section', 'title', 'gridline', 'notes']
+[2026-07-29 02:54:22] [classify] หน้า09: OK (138s) -> ['section', 'section', 'gridline', 'title', 'notes']
+[2026-07-29 02:56:50] [classify] หน้า10: OK (148s) -> ['plan', 'plan', 'plan', 'plan', 'schedule', 'schedule', 'schedule', 'schedule', 'plan', 'plan', 'plan', 'schedule', 'schedule', 'schedule', 'title', 'index']
+[2026-07-29 02:59:10] [classify] หน้า11: OK (140s) -> ['schedule', 'plan', 'title', 'notes', 'material_list']

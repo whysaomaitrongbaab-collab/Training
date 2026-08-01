@@ -1,0 +1,36 @@
+{
+ "png": "37",
+ "doc_page": 35,
+ "printed_page": 35,
+ "discipline": "sanitary",
+ "sheet_code": "SN-04",
+ "sheet_name": "แปลนระบบสุขาภิบาลพื้น",
+ "pattern": "plan",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า37.png",
+ "grid_source": "raw_json_ตัวที่ใช้งานจริง/11บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า00_gridline.json",
+ "equipment": [
+  { "type": "ถังบำบัดน้ำเสีย", "count": 1, "spec": "ดูรายการประกอบแบบ", "grid_ref": "north of row A, near grid 1-2 (off main grid, matching the general vicinity of the north C0 footings)" },
+  { "type": "ถังดักไขมันสำเร็จรูป ชนิดฝังดิน", "count": 1, "spec": "ปริมาตรไม่น้อยกว่า 30 ลิตร, ผลิตภัณฑ์ DOS/BIOTECH/PP/WATER TREAT หรือเทียบเท่า", "grid_ref": "east of grid 3, near row B (ครัว corner)" },
+  { "type": "ถังเก็บน้ำสำเร็จรูป ชนิดวางบนพื้น", "count": 1, "spec": "ขนาดจุถังละ 1 ลบ.ม. ตามมาตรฐาน มอก.1379, ผลิตภัณฑ์ DOS/BIOTECH/PP/WATER TREAT หรือเทียบเท่า", "grid_ref": "west of grid 1, near row A-B (ห้องน้ำ corner)" },
+  { "type": "เครื่องสูบน้ำ (BP, BOOSTER PUMP)", "count": 1, "grid_ref": "west of grid 1, adjacent to ถังเก็บน้ำ", "spec": "BY-PASS Ø3/4\", FLOAT VALVE Ø3/4\"" },
+  { "type": "บ่อพักท่อระบายน้ำ คสล. สำเร็จรูป", "count": 3, "size_m": "0.40x0.40", "note": "ฝา คสล., placed at grid corners 1/2/3 along row A" },
+  { "type": "ชุดมาตรวัดน้ำ", "size": "Ø1/2\"", "grid_ref": "SW corner, near row D grid 1" },
+  { "type": "จุดเริ่มต้นท่อลึก", "depth_m": 0.70, "grid_ref": "near the ซักล้าง/FCO cluster" }
+ ],
+ "pipe_runs": [
+  { "type": "V+AVC", "size": "Ø2\"", "height_m": 3.00, "note": "vent stack near ซักล้าง" },
+  { "type": "K", "size": "Ø2\"", "note": "kitchen drain to grease trap" },
+  { "type": "W", "size": "Ø2\"", "note": "waste to storm drain manhole" },
+  { "type": "CW", "size": ["Ø3/4\"", "Ø1/2\""], "note": "supply loop around perimeter, from water meter at SW corner" },
+  { "type": "ท่อระบายน้ำ คสล.", "size_m": 0.30, "slope": "1:200", "note": "storm drain along the west perimeter" }
+ ],
+ "confidence_score": 0.78,
+ "confidence_flags": [],
+ "warnings": [
+  "op1 direct read (house 11). Septic tank (ถังบำบัดน้ำเสีย) sits north of row A near grid 1-2 — roughly the same area as the two unresolved C0/F1 footings flagged since S-02/S-03. Septic tanks are normally buried and don't need column footings, so this is likely NOT the explanation (a buried tank has no need for a 0.80x0.80 spread footing or a 1-pile foundation) — but flagged as a plausible proximity coincidence for a human to check against the actual site layout, since the exact tank footprint/support method isn't detailed on this sheet.",
+  "Water tank + booster pump cluster sits west of grid 1 near row A-B — also outside the main structural grid, on the same side as the ramp (A-13/A-14) — this equipment likely sits on its own small slab-on-grade, not requiring the isolated C1-type footings either.",
+  "3 storm drain manholes placed along row A at grid 1/2/3 — outside the building envelope to the north, consistent overall with utility/equipment being clustered on the north and west sides of the house."
+ ]
+}

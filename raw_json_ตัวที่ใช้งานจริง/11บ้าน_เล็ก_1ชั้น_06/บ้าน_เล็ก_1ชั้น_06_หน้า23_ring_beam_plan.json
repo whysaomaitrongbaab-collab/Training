@@ -1,0 +1,42 @@
+{
+ "png": "23",
+ "doc_page": 21,
+ "printed_page": 21,
+ "discipline": "structural",
+ "sheet_code": "S-05",
+ "sheet_name": "แปลนคานระดับอะเส, ขยายรอยต่อเสา CS กับคาน คสล",
+ "pattern": "plan",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า23.png",
+ "view_title": "แปลนคานระดับอะเส 1:75",
+ "grid_source": "raw_json_ตัวที่ใช้งานจริง/11บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า00_gridline.json",
+ "elements": [
+  { "element_id": "B5", "element_type": "beam", "grid_ref_start": "A-1", "grid_ref_end": "A-2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+  { "element_id": "B5", "element_type": "beam", "grid_ref_start": "A-2", "grid_ref_end": "A-3", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+  { "element_id": "B6", "element_type": "beam", "grid_ref_start": "A-1", "grid_ref_end": "B-1(partial, ~3.00 south)", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+  { "element_id": "B6", "element_type": "beam", "grid_ref_start": "A-2", "grid_ref_end": "B-2", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+  { "element_id": "B6", "element_type": "beam", "grid_ref_start": "A-3", "grid_ref_end": "B-3", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+  { "element_id": "B5", "element_type": "beam", "grid_ref_start": "B-1", "grid_ref_end": "B-2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+  { "element_id": "CS", "element_type": "column", "grid_ref": "B-2", "confidence_score": 0.75, "confidence_flags": [], "note": "Steel column mark CS at the ring-beam/roof-frame junction, positioned mid-line between B5 segments." },
+  { "element_id": "B5", "element_type": "beam", "grid_ref_start": "B-2", "grid_ref_end": "B-3", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+  { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B-1", "grid_ref_end": "C-1(partial, ~2.00 south)", "span_length_m": 2.0, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+  { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B-2", "grid_ref_end": "C-2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+  { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B-3", "grid_ref_end": "C-3", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+  { "element_id": "B5", "element_type": "beam", "grid_ref_start": "C-1", "grid_ref_end": "CS(~C-2)", "span_length_m": null, "span_source": "unresolved", "confidence_score": 0.6, "confidence_flags": ["short_segment_terminates_at_a_CS_steel_column_not_a_grid_point"] },
+  { "element_id": "CS", "element_type": "column", "grid_ref": "~C-2", "confidence_score": 0.7, "confidence_flags": [], "note": "Second CS steel column, at row C near grid 2." },
+  { "element_id": "B5", "element_type": "beam", "grid_ref_start": "CS(~C-2)", "grid_ref_end": "C-3", "span_length_m": null, "span_source": "unresolved", "confidence_score": 0.6, "confidence_flags": [] },
+  { "element_id": "B6X", "element_type": "beam", "grid_ref": "west of grid 1, at row C (small offset 1.11/1.50 printed)", "span_length_m": null, "span_source": "unresolved", "confidence_score": 0.55, "confidence_flags": ["off_main_grid_short_stub_beam_position_only_roughly_located"], "note": "Small 'B6X' stub beam printed west of grid 1 near row C — likely relates to the small room appendage flagged on S-04, still not fully resolved." }
+ ],
+ "cs_column_detail": {
+  "designation": "เสาเหล็ก CS = C -150x100x3.2มม.",
+  "base_connection": "PL-150x150 หนา 6มม. เชื่อมต่อกับแผ่นเหล็ก, 4-Ø16มม. ฝังในเสาคอนกรีต, บนคาน คสล."
+ },
+ "confidence_score": 0.72,
+ "confidence_flags": [],
+ "warnings": [
+  "op1 direct read (house 11). NEW ELEMENT TYPE this sheet: CS = steel column (C-150x100x3.2mm channel), 2 confirmed at grid-2 line (B-2 and ~C-2), base-plated onto the RC ring beam via a welded PL-150x150x6mm plate + 4-Ø16mm anchor bolts. Likely supports the roof valley/ridge post system at the twin-gable meeting line (grid 2) — matches the CX-post pattern from houses 08-10 but here as a steel section, not a concrete post.",
+  "B6X stub beam (west of grid 1) and the earlier-flagged small room appendage on S-04 are STILL NOT fully resolved by this sheet — the 1.11/1.50 offsets here don't obviously connect to the ramp geometry (A-13/A-14) or to the north/south C0 footings either. This open question is carried forward, not fabricated an answer for.",
+  "The C0 footings north of A / south of D remain UNEXPLAINED after S-02 through S-05 — no beam on this ring-beam sheet reaches the A' or D' dummy grid lines. Will check S-06 (roof frame) and S-07 (fascia detail) next."
+ ]
+}

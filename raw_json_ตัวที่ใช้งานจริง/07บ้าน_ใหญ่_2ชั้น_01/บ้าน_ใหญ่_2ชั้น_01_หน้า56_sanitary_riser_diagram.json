@@ -1,0 +1,159 @@
+{
+ "png": "56",
+ "doc_page": 56,
+ "printed_page": 54,
+ "discipline": "sanitary",
+ "sheet_code": "SN-06",
+ "sheet_name": "ไดอะแกรมระบบสุขาภิบาลแนวดิ่ง",
+ "pattern": "diagram",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า56.png",
+ "view_title": "ไดอะแกรมระบบสุขาภิบาลแนวดิ่ง",
+ "grid_source": null,
+ "title_block": {
+  "drawing_no": "SN 62034",
+  "date": "ม.ค. 2562",
+  "scale": "-"
+ },
+ "elements": [
+  {
+   "element_id": "ไดอะแกรมระบบสุขาภิบาลแนวดิ่ง",
+   "element_type": "riser_diagram",
+   "levels_m": {
+    "ระดับพื้นถนน": 0.0,
+    "ระดับพื้นชั้น 1": 0.4,
+    "ระดับพื้นชั้น 2": 3.4
+   },
+   "confidence_score": 0.9,
+   "confidence_flags": [],
+   "note": "Single-line vertical schematic across the whole house, drawn against the three floor levels from the architectural elevations."
+  },
+  {
+   "element_id": "ø2\"AVC",
+   "element_type": "vent_terminal",
+   "printed_as": "ø2\"AVC ( ชนิดต่อออกด้านข้างผนัง )",
+   "size_in": 2,
+   "type": "ชนิดต่อออกด้านข้างผนัง (side-wall type)",
+   "confidence_score": 0.92,
+   "confidence_flags": [],
+   "note": "*** THIS SHEET SETTLES WHICH AVC TYPE IS USED. *** SN-01's legend lists two, a top cap and a side-outlet cap, distinguishable only by drawn symbol; here it is spelled out as the SIDE-WALL type. SN-05 tagged it 'ø2\"AVC' with no type."
+  },
+  {
+   "element_id": "ท่อในแนวดิ่ง",
+   "element_type": "pipe_schedule",
+   "runs": [
+    {
+     "symbol": "V",
+     "size_in": 2,
+     "printed_as": "ø2\"V",
+     "extent": "จากใต้พื้นชั้น 1 ขึ้นทะลุเหนือหลังคาไปออก AVC ด้านข้างผนัง"
+    },
+    {
+     "symbol": "W",
+     "size_in": 2,
+     "printed_as": "ø2\"W",
+     "extent": "จากชั้น 2 ลงถึงใต้พื้นชั้น 1"
+    },
+    {
+     "symbol": "S",
+     "size_in": 4,
+     "printed_as": "ø4\"S",
+     "extent": "จากชั้น 2 ลงถึงใต้พื้นชั้น 1 แล้วออกไปบ่อบำบัด"
+    },
+    {
+     "symbol": "CW",
+     "size_in": 1,
+     "printed_as": "ø1\"CW",
+     "extent": "จากถังเก็บน้ำ/ปั๊ม ขึ้นถึงชั้น 2"
+    },
+    {
+     "symbol": "CW",
+     "size_in": 0.75,
+     "printed_as": "ø3/4\"CW",
+     "extent": "ท่อเมน มาตรวัดน้ำ -> ถังเก็บน้ำ -> ปั๊ม -> ท่อแยก"
+    }
+   ],
+   "confidence_score": 0.9,
+   "confidence_flags": [],
+   "note": "Cold water rises as ø1\" and is fed and distributed at ø3/4\"; drainage falls as ø4\" soil and ø2\" waste with a ø2\" vent."
+  },
+  {
+   "element_id": "ชุดเครื่องสูบน้ำเพิ่มแรงดัน",
+   "element_type": "equipment",
+   "mark": "BP",
+   "confidence_score": 0.9,
+   "confidence_flags": [],
+   "note": "Booster pump set, drawn between the storage tank and the house branch. Sized on SN-04 (min 200 W, min 28 l/min at 12 m)."
+  },
+  {
+   "element_id": "ø3/4\" BY PASS",
+   "element_type": "pipe_run",
+   "size_in": 0.75,
+   "printed_as": "ø3/4\"BY PASS",
+   "confidence_score": 0.9,
+   "confidence_flags": [],
+   "note": "Drawn round the pump with a valve each side -- the schematic makes the bypass arrangement explicit in a way the SN-04 plan does not."
+  },
+  {
+   "element_id": "ถังเก็บน้ำสำเร็จรูป",
+   "element_type": "equipment",
+   "printed_as": "ถังเก็บน้ำสำเร็จรูปแสตนเลส ขนาด 1 ลบ ม มาตราฐาน มอก.989 พร้อมขาตั้งครบชุด วางบนพื้นคอนกรีตเสริมเหล็กหนา 0.10 ม เสริมเหล็ก ø9มม.@0.20ม.#",
+   "material": "สแตนเลส",
+   "capacity_m3": 1,
+   "standard_printed": "มอก.989",
+   "base_slab": {
+    "thickness_m": 0.1,
+    "rebar": "ø9 มม.@0.20 ม. ตะแกรงสองทาง (#)"
+   },
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "standard_number_disagrees_with_SN-04"
+   ],
+   "note": "*** THE STANDARD NUMBER IS PRINTED DIFFERENTLY ON THE TWO SHEETS: 'มอก.1989' on SN-04 and 'มอก.989' here. *** Same tank, same 1 m³, same stand, same base slab. One of the two is a typo; neither is corrected, both are recorded as printed and flagged."
+  },
+  {
+   "element_id": "FLOAT VALVE",
+   "element_type": "valve",
+   "size_in": 0.5,
+   "printed_as": "FLOAT VALVE ø1/2\"",
+   "confidence_score": 0.9,
+   "confidence_flags": [],
+   "note": "In the top of the storage tank."
+  },
+  {
+   "element_id": "ชุดมาตรวัดน้ำ",
+   "element_type": "equipment",
+   "size_in": 0.5,
+   "printed_as": "ชุดมาตรวัดน้ำø1/2\"",
+   "confidence_score": 0.9,
+   "confidence_flags": [],
+   "note": "At the incoming main, with a valve each side."
+  },
+  {
+   "element_id": "C (จุดเปิดล้างท่อ)",
+   "element_type": "cleanout",
+   "count": 2,
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "note": "Two cleanouts at the foot of the stacks, below the ground-floor slab."
+  },
+  {
+   "element_id": "ต่อเข้าบ่อบำบัดน้ำเสีย",
+   "element_type": "connection_note",
+   "confidence_score": 0.9,
+   "confidence_flags": [],
+   "note": "The ø4\"S soil line and ø2\"V leave to the left into the septic unit sized on SN-04 (≥1 m³/day)."
+  }
+ ],
+ "confidence_score": 0.89,
+ "confidence_flags": [],
+ "warnings": [
+  "Vertical riser schematic -- the one sheet that shows the whole water and drainage system as a single system rather than floor by floor. Drawn against the three architectural levels (+0.00 / +0.40 / +3.40).",
+  "*** IT RESOLVES THE AVC AMBIGUITY LEFT BY SN-01 AND SN-05: the vent terminal is the SIDE-WALL type ('ชนิดต่อออกด้านข้างผนัง'). *** SN-01 lists two AVC variants distinguishable only by drawn symbol and SN-05 tags the size without the type.",
+  "*** BUT IT INTRODUCES A NEW CONFLICT: the water tank's standard is printed 'มอก.989' here and 'มอก.1989' on SN-04. *** Everything else about the tank matches exactly -- stainless, 1 m³, complete stand, 0.10 m base slab with ø9@0.20 mesh. One of the two is a typo. Neither sheet is overridden; both are recorded as printed and flagged.",
+  "THE WATER SIZING LOGIC IS ONLY LEGIBLE HERE: the incoming main, the meter, the tank feed, the pump and the distribution are all ø3/4\", and only the riser to the second floor steps up to ø1\". A floor-by-floor plan cannot show that.",
+  "The bypass round the booster pump is drawn with a valve each side, which the SN-04 plan does not make clear.",
+  "Two cleanouts sit at the foot of the stacks below the ground slab -- the only place in the set they are located vertically."
+ ]
+}

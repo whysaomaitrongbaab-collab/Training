@@ -1,0 +1,234 @@
+{
+ "png": "20",
+ "doc_page": 20,
+ "discipline": "structural",
+ "sheet_code": "S-07",
+ "sheet_name": "ขยายโครงหลังคา T1",
+ "pattern": "section",
+ "building": "อาคารหลัก",
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า20.png",
+ "view_title": "แบบขยายโครงหลังคา T1 1:50 พร้อมแบบขยายจุดต่อ 1-4 และแบบขยาย (ก) 1:10",
+ "grid_source": null,
+ "elements": [
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "scale": "1:50",
+   "description": "แบบขยาย T1 -- โครงหลังคาจั่วเหล็กรูปพรรณของอาคารหลัก ตั้งบนเสาเหล็ก WF400x200x8x13",
+   "roof_slope_deg": 25,
+   "rise_m": {
+    "upper": 1.65,
+    "lower": 0.6,
+    "note": "1.65 is marked '~' (approximate) on the sheet; both are measured from the same datum line at the right-hand end"
+   },
+   "span_m": null,
+   "span_source": "unresolved",
+   "members": [
+    {
+     "role": "จันทัน (rafter)",
+     "material": "steel",
+     "steel_section": {
+      "designation": "C",
+      "d_mm": 150,
+      "b_mm": 75,
+      "tw_mm": 9,
+      "tf_mm": 12.5,
+      "printed_as": "C 150x75x9x12.5 มม."
+     }
+    },
+    {
+     "role": "ท่อนยึด/ค้ำยัน (web tie)",
+     "material": "steel",
+     "steel_section": {
+      "designation": "L",
+      "leg1_mm": 70,
+      "leg2_mm": 70,
+      "t_mm": 6,
+      "printed_as": "L 70x70x6 มม."
+     },
+     "count_callouts": 2
+    },
+    {
+     "role": "แป (purlin)",
+     "material": "steel",
+     "steel_section": {
+      "designation": "C",
+      "d_mm": 100,
+      "b_mm": 50,
+      "lip_mm": 20,
+      "tw_mm": 3.2,
+      "printed_as": "C100x50x20x3.2 มม. @1.00 ม."
+     },
+     "spacing_mm": 1000
+    },
+    {
+     "role": "เหล็กยึดแป (purlin cleat)",
+     "material": "steel",
+     "plate_thickness_mm": 9,
+     "count_callouts": 2
+    },
+    {
+     "role": "เสา (column)",
+     "material": "steel",
+     "steel_section": {
+      "designation": "WF",
+      "d_mm": 400,
+      "b_mm": 200,
+      "tw_mm": 8,
+      "tf_mm": 13,
+      "printed_as": "WF 400x200x8x13 มม."
+     }
+    }
+   ],
+   "joint_refs": [
+    "จุดต่อ 1",
+    "จุดต่อ 2",
+    "จุดต่อ 3",
+    "จุดต่อ 4",
+    "แบบขยาย ก"
+   ],
+   "confidence_score": 0.87,
+   "confidence_flags": [
+    "span_not_dimensioned"
+   ]
+  },
+  {
+   "element_id": "ก",
+   "element_type": "connection_detail",
+   "scale": "1:10",
+   "description": "แบบขยาย (ก) -- รอยต่อเสา: หัวเสาเหล็ก WF ต่อขึ้นรับโครงหลังคา ผ่านแผ่นเหล็กประกบ",
+   "members": [
+    "เสาเหล็ก WF 400x200x8x13 มม.",
+    "เหล็ก ⌷ 9 มม. ขนาด 0.20x0.40 ม.",
+    "เหล็ก ⌷ 6 มม. ขนาด 0.20x0.35 ม."
+   ],
+   "fasteners": [
+    {
+     "type": "BOLT",
+     "count": 4,
+     "dia_mm": 12,
+     "note": "พร้อมเกลียว"
+    }
+   ],
+   "welding": "เชื่อมโดยรอบตลอดแนว",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "จุดต่อ 2",
+   "element_type": "connection_detail",
+   "scale": "1:10",
+   "description": "แบบขยายจุดต่อ ② -- รอยต่อกลางจันทัน ประกบด้วยแผ่นเหล็กสองขนาด",
+   "members": [
+    "เหล็ก ⌷ 9 มม. ขนาด 0.20x0.40 ม.",
+    "เหล็ก ⌷ 6 มม. ขนาด 0.20x0.35 ม."
+   ],
+   "fasteners": [
+    {
+     "type": "BOLT",
+     "count": 4,
+     "dia_mm": 12,
+     "note": "พร้อมเกลียว"
+    }
+   ],
+   "welding": "เชื่อมโดยรอบตลอดแนว",
+   "dims_m": {
+    "plate_length": 0.4,
+    "bolt_gauge_long": [
+     0.1,
+     0.2,
+     0.1
+    ],
+    "plate_width": 0.2,
+    "bolt_gauge_short": [
+     0.05,
+     0.1,
+     0.05
+    ]
+   },
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "จุดต่อ 3",
+   "element_type": "connection_detail",
+   "scale": "1:10",
+   "description": "แบบขยายจุดต่อ ③ -- จุดต่อจันทันกับท่อนยึด L ที่ช่วงล่างของโครง",
+   "members": [
+    "จันทันเหล็ก C 150x75x9x12.5 มม.",
+    "เหล็ก ⌷ หนา 6 มม.",
+    "เหล็ก L 70x70x6 มม."
+   ],
+   "fasteners": [
+    {
+     "type": "BOLT",
+     "dia_mm": 20,
+     "note": "พร้อมเกลียว -- ปรากฏ 2 ตำแหน่งในรายละเอียดนี้"
+    }
+   ],
+   "confidence_score": 0.83,
+   "confidence_flags": [
+    "bolt_count_not_stated"
+   ]
+  },
+  {
+   "element_id": "จุดต่อ 1",
+   "element_type": "connection_detail",
+   "scale": "1:10",
+   "description": "แบบขยายจุดต่อ ① -- จุดต่ออกไก่ (ridge) ที่ยอดจั่ว จันทันสองข้างประกบแผ่นเหล็ก",
+   "members": [
+    "จันทันเหล็ก C 150x75x9x12.5 มม.",
+    "เหล็ก ⌷ หนา 6 มม.",
+    "เหล็ก L 70x70x6 มม."
+   ],
+   "fasteners": [
+    {
+     "type": "BOLT",
+     "count": 2,
+     "dia_mm": 20,
+     "note": "พร้อมเกลียว"
+    },
+    {
+     "type": "BOLT",
+     "dia_mm": 20,
+     "note": "พร้อมเกลียว -- ตัวเพิ่มเติมที่ท่อนยึด"
+    }
+   ],
+   "confidence_score": 0.83,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "จุดต่อ 4",
+   "element_type": "connection_detail",
+   "scale": "1:10",
+   "description": "แบบขยายจุดต่อ ④ -- จุดต่อกลางท้องโครง ระหว่างท่อนยึด L กับเหล็กเสาค้ำกลาง",
+   "members": [
+    "เหล็ก L 70x70x6 มม."
+   ],
+   "fasteners": [
+    {
+     "type": "BOLT",
+     "dia_mm": 20,
+     "note": "พร้อมเกลียว / พร้อมสลักเกลียว"
+    }
+   ],
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "bolt_count_not_stated"
+   ]
+  }
+ ],
+ "confidence_score": 0.85,
+ "confidence_flags": [
+  "span_not_dimensioned"
+ ],
+ "warnings": [
+  "RESOLVES the T1 member sizes left null on หน้า16 (S-03): จันทัน (rafter) = C 150x75x9x12.5 มม., web ties = L 70x70x6 มม., purlins = C100x50x20x3.2 @1.00 ม., supporting column = WF 400x200x8x13 มม. (the CX mark). Roof slope is 25 degrees.",
+  "RESOLVES the missing 'แบบขยาย (ก)' flagged on หน้า19 (S-06). It is on THIS sheet, not S-06: a column-splice detail joining the WF400x200 column head to the roof frame through a 9 mm plate (0.20x0.40 m) and a 6 mm plate (0.20x0.35 m) with 4-ø12 bolts, welded all round. That is what S-03's two 'รอยต่อเสา ดูแบบขยาย (ก)' callouts point to.",
+  "T1's SPAN IS NOT DIMENSIONED. Every horizontal dimension on the T1 elevation reads 'ระยะตามแบบสถาปัตย์' (per the architectural drawings) instead of a number -- half-span, half-span and overall are all deferred. span_length_m is therefore null with span_source 'unresolved'; the 7.20 m ค-ก grid spacing is NOT stated here to be the truss span and was not assumed.",
+  "The two vertical dimensions (~1.65 and 0.60) are the only numeric heights given, and 1.65 is explicitly marked approximate ('~') on the sheet -- transcribed with that qualifier rather than as an exact value.",
+  "L-section members are recorded with leg1_mm/leg2_mm/t_mm rather than the d/b/tw/tf keys of §6a. The spec (§12) lists 'L' as a family whose key mapping is unverified; this is the first real L-section in the corpus and the key names are this file's proposal, not an established convention.",
+  "Bolt COUNTS are missing from จุดต่อ 3 and จุดต่อ 4 -- the sheet prints 'BOLT ø20 มม. พร้อมเกลียว' with no quantity at those joints, so count is omitted and flagged rather than inferred from how many bolt symbols appear on the drawing."
+ ]
+}

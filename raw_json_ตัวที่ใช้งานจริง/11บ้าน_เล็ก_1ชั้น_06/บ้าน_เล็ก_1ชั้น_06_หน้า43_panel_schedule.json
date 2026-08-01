@@ -1,0 +1,39 @@
+{
+ "png": "43",
+ "doc_page": 41,
+ "printed_page": 41,
+ "discipline": "electrical",
+ "sheet_code": "EE-03",
+ "sheet_name": "รายละเอียดแผงสวิทช์อัตโนมัติ CU, MATV RISER DIAGRAM, DIAGRAM FOR EMERGENCY CALL SYSTEM IN TOILET",
+ "pattern": "schedule",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า43.png",
+ "panel": {
+  "name": "CU", "meter": "kWh METER 15(45)A 1P 2W (BY MEA/PEA)",
+  "main_breaker": "50AT,2P IC≥10kA", "spd": "SPD In≥10kA",
+  "circuits": [
+   { "no": 1, "breaker": "16AT,1P IC≥6kA", "load": "แสงสว่าง", "wire": "2-2.5/G2.5 IEC01-Ø15mm.EMT", "dest": "2/CU" },
+   { "no": 2, "breaker": "RCBO 16AT,1P IC≥6kA", "load": "เต้ารับไฟฟ้า", "wire": "2-2.5/G2.5 IEC01-Ø15mm.EMT", "dest": "3/CU" },
+   { "no": 3, "breaker": "RCBO 16AT,1P IC≥6kA", "load": "เต้ารับไฟฟ้า", "wire": "2-2.5/G2.5 IEC01-Ø15mm.EMT", "dest": "4/CU" },
+   { "no": 4, "breaker": "20AT,1P IC≥6kA", "load": "เครื่องปรับอากาศ (18,000 BTU)", "wire": "2-4/G2.5 IEC01-Ø15mm.EMT", "dest": "5/CU" },
+   { "no": 5, "breaker": "32AT,1P IC≥6kA", "load": "เครื่องทำน้ำอุ่น (4,500 วัตต์)", "wire": "2-6/G4 IEC01-Ø15mm.EMT", "dest": "6/CU" },
+   { "no": 6, "breaker": "RCBO 16AT,1P IC≥6kA", "load": "เครื่องดูดควัน (Hood)", "wire": "2-2.5/G2.5 IEC01-Ø15mm.EMT", "dest": "7/CU" },
+   { "no": 7, "breaker": "16AT,1P IC≥6kA", "load": "น้ำ (Pump)", "wire": "2-2.5/G2.5 IEC01-Ø15mm.EMT", "dest": "8/CU" },
+   { "no": 8, "breaker": null, "load": "สำรอง", "wire": null },
+   { "no": 9, "breaker": null, "load": "ว่าง", "wire": null },
+   { "no": 10, "breaker": null, "load": "ว่าง", "wire": null }
+  ],
+  "ground_rod": "หลักดินแท่งเหล็กหุ้มด้วยทองแดง Ø14.20มม. ยาว 2.40ม.",
+  "main_feed": "2-10 IEC01-Ø20mm.IMC (นอกอาคารเดินลอย, ทิ้งปลายสายไว้สำหรับเชื่อมต่อกับการไฟฟ้าระยะทางประมาณ 20เมตร), 1-10 IEC01-Ø15mm.PVC (ground)",
+  "notes": ["สายเมน (สายประธาน) กรณีเดินใต้ดินให้ใช้สาย 2-1C-10 Sq.mm. NYY Ø40mm. HDPE PN6", "RCBO = เครื่องตัดไฟรั่ว (ขนาด 30mA) มีการป้องกันกระแสเกิน"]
+ },
+ "matv_riser": "Yagi-Uda Antenna หรือแบบก้างปลา (Digital TV) -> 230V Digital TV Booster -> 2S splitter -> 1-RG6 to outlet",
+ "emergency_call_diagram": "12VDC power supply -> E (bathroom call button with pull cord) + R (call reset button), เชื่อมต่อไปยังวงจรแสงสว่าง -> corridor light with buzzer",
+ "confidence_score": 0.85,
+ "confidence_flags": [],
+ "warnings": [
+  "op1 direct read (house 11). Only 7 active circuits (lighting, 2x outlets, AC, water heater, hood, pump) + 3 spare — much simpler panel than the electrical symbol variety on EE-01 suggested, reflecting the small single-room house.",
+  "MATV and emergency-call system riser diagrams both confirmed as real installed systems (not just symbols), matching EE-04's floor plan which shows both wired."
+ ]
+}

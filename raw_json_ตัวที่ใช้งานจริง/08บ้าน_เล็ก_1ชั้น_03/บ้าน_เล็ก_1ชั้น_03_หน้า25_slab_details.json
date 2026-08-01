@@ -1,0 +1,30 @@
+{
+ "png": "25",
+ "doc_page": 23,
+ "printed_page": 23,
+ "discipline": "structural",
+ "sheet_code": "S-08",
+ "sheet_name": "ขยายพื้น S0,S1,SX,ST, ครีบ ค.ส.ล. ขยาย 1, รอยต่อเสา CN",
+ "pattern": "section",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า25.png",
+ "grid_source": null,
+ "specs": {
+  "S0": { "element_type": "slab", "thickness_mm": 100, "main_bar": { "count": null, "dia_mm": 9, "type": "RB", "spacing_mm": 200, "note": "ø9มม.@0.20ม. — slab-on-grade edge detail, joint sealed with asphalt (รอยต่ออุดด้วยแอสฟัลท์ หนา 1ซม.), on compacted coarse sand (ทรายหยาบบดอัดแน่น). Used for จอดรถ/ซักล้าง slab-on-grade per floor plan." }, "concrete_grade": "fc210", "spec_source": "section", "spec_confidence_score": 0.8, "spec_confidence_flags": [] },
+  "S1": { "element_type": "slab", "thickness_mm": 100, "span_m": 2.00, "main_bar": { "top": { "count": null, "dia_mm": 9, "type": "RB", "spacing_mm": 200 }, "bottom": { "count": null, "dia_mm": 9, "type": "RB", "spacing_mm": 200 } }, "concrete_grade": "fc210", "note": "Suspended slab strip, top+bottom mat both ø9mm@0.20m, U-shaped section spanning 2.00m between supports.", "spec_source": "section", "spec_confidence_score": 0.78, "spec_confidence_flags": [] },
+  "SX": { "element_type": "slab", "thickness_mm": 100, "max_span_m": 1.10, "main_bar": { "count": null, "dia_mm": 9, "type": "RB", "spacing_mm": [100, 250], "note": "ø9มม.@0.10ม. (near support) และ ø9มม.@0.25ม. (mid-span) — varying spacing along the strip, tighter near supports." }, "concrete_grade": "fc210", "spec_source": "section", "spec_confidence_score": 0.75, "spec_confidence_flags": ["dual_spacing_recorded_as_array_not_averaged"] },
+  "ST": { "element_type": "slab", "description": "Stair-landing slab detail, level ±0.20, rebar ø6mm@0.20m, stepped profile 0.15/0.15/0.10 dims, 0.55m width — used at ST1/ST2 stair landings per หน้า06/หน้า13.", "main_bar": { "count": null, "dia_mm": 6, "type": "RB", "spacing_mm": 200 }, "concrete_grade": "fc210", "spec_source": "section", "spec_confidence_score": 0.72, "spec_confidence_flags": [] },
+  "ครีบ_คสล_รอบอาคาร": { "element_type": "concrete_fin_drip_edge", "width_mm": 100, "depth_range_m": [0.0, 0.5], "main_bar": { "count": 1, "dia_mm": 12, "type": "DB", "position": "bottom edge" }, "stirrup": { "dia_mm": 9, "type": "RB", "spacing_mm": 250 }, "description": "Decorative/drip concrete fin around the building perimeter, attached below the ground beam (คาน ค.ส.ล.), from ระดับอ้างอิง ±0.00 up to +0.50.", "concrete_grade": "fc210", "spec_source": "section", "spec_confidence_score": 0.75, "spec_confidence_flags": [] }
+ },
+ "elements": [
+  { "element_id": "CN_joint_detail", "element_type": "column_beam_joint_reference", "description": "รอยต่อเสา CN 1:20 — CN column meeting the ground beam (คาน ค.ส.ล.), 0.30m dimension. หมายเหตุ printed here: 'เสา CN ขึ้นจากระดับชั้น 1 ถึงระดับชานพัก' (CN rises from floor-1 level to the landing level).", "confidence_score": 0.65, "confidence_flags": ["CN_rise_range_conflicts_with_S-07"] },
+  { "element_id": "purlin_rafter_connection", "element_type": "steel_connection_detail", "description": "ขยาย1 1:20 — จันทันเหล็ก (steel rafter) welded (เชื่อมติด...ตลอดแนวสัมผัส) to a 'fishtail' steel plate เหล็กหางปลา ขนาด 50x300x6.00มม. ฝังในเสาคอนกริต (embedded in the concrete column) — steel-to-concrete roof connection, no rebar of its own.", "confidence_score": 0.78, "confidence_flags": [] }
+ ],
+ "confidence_score": 0.75,
+ "confidence_flags": [],
+ "warnings": [
+  "op1 direct read (house 08). CONTRADICTION FLAGGED, NOT SILENTLY RESOLVED: this sheet's 'รอยต่อเสา CN' note reads 'เสา CN ขึ้นจากระดับชั้น 1 ถึงระดับชานพัก' (floor-1 to LANDING level), while S-07 (หน้า24)'s own ตารางเสา note reads 'เสา CN ขึ้นจากระดับพื้นชั้น1-ระดับ+3.75ม.' (floor-1 to +3.75, the RING-BEAM level). These are two different heights (a stair landing is much lower than +3.75). Per spec §12's open question ('same element_id appearing in more than one section file — no resolved precedence rule yet'), this is recorded as a genuine unresolved discrepancy rather than picking one silently — both readings kept, S-07's is the one used for the column's actual rebar/height spec since it's the dedicated column-table sheet.",
+  "S1/SX bar counts left null (spacing-based reinforcement, no discrete count printed) — consistent with how spacing-based members are recorded elsewhere in this house's extraction (see หน้a14 eave detail's roof purlins)."
+ ]
+}
