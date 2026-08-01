@@ -4,13 +4,16 @@ positions (no pixel/bbox data anywhere in this file).
 """
 import argparse
 import json
+import sys
 from pathlib import Path
 
-from diff_elements import diff_columns
+from diff_elements import diff_elements
 from resolve_grid import load_gridline_master
 
 SCALE_PX_PER_M = 40  # fixed scale factor: 1 meter of drawing = 40px on screen
 MARGIN_PX = 40
+
+ELEMENT_TYPES = ("footing", "column")
 
 
 def _to_px(x_m, y_m, min_x, min_y):
@@ -55,20 +58,97 @@ def _marker_svg(entry, min_x, min_y, color, dashed, label_suffix=""):
     )
 
 
-def _summary_table_html(diff):
+def _wrong_id_marker_svg(entry, min_x, min_y):
+    label_suffix = f": expected {entry['expected_id']}, got {entry['got_id']}"
+    return _marker_svg(entry, min_x, min_y, "#9b59b6", dashed=False, label_suffix=label_suffix)
+
+
+def _merge_element_refs(gemini_elements, truth_elements, element_type):
+    """Union grid_refs per element_id for one element_type, combining the
+    Gemini and ground-truth versions of that element_id so the summary
+    table shows every ref either side reports for it, even when they
+    disagree. Returns (ordered element_ids, {element_id: set(grid_refs)}).
+    """
+    refs_by_id = {}
+    order = []
+    for elements in (truth_elements, gemini_elements):
+        for el in elements:
+            if el.get("element_type") != element_type:
+                continue
+            eid = el.get("element_id")
+            if eid not in refs_by_id:
+                refs_by_id[eid] = set()
+                order.append(eid)
+            refs_by_id[eid].update(el.get("grid_refs", []))
+    return order, refs_by_id
+
+
+def _ref_status_map(diff):
+    """Flatten one element_type's diff_elements() result into a single
+    {grid_ref: (status, detail_text)} lookup, so table rows and markers are
+    always built from the same diff result.
+    """
+    status = {}
+    for e in diff["matched"]:
+        status[e["grid_ref"]] = ("matched", e["element_id"])
+    for e in diff["wrong_id"]:
+        status[e["grid_ref"]] = (
+            "wrong_id", f'expected {e["expected_id"]}, got {e["got_id"]}'
+        )
+    for e in diff["missed"]:
+        status[e["grid_ref"]] = ("missed", f'missing (ground truth: {e["element_id"]})')
+    for e in diff["hallucinated"]:
+        status[e["grid_ref"]] = ("hallucinated", f'extra (Gemini only: {e["element_id"]})')
+    return status
+
+
+def _element_rows_html(gemini_elements, truth_elements, diff, element_type):
+    """Build <tr> rows for the summary table for one element_type, iterating
+    the actual elements lists (not the flattened diff buckets) so `count`
+    and `grid_refs` reflect what each element record actually said -- but
+    color/flag each row's match status using the diff computed for the same
+    element_type, so the table and the SVG overlay never disagree.
+    """
+    order, refs_by_id = _merge_element_refs(gemini_elements, truth_elements, element_type)
+    status_map = _ref_status_map(diff)
     rows = []
-    for entry in diff["matched"]:
-        rows.append(f'<tr><td>{entry["grid_ref"]}</td><td>matched</td></tr>')
-    for entry in diff["missed"]:
-        rows.append(f'<tr><td>{entry["grid_ref"]}</td><td class="missed">missing (in ground truth, not detected)</td></tr>')
-    for entry in diff["hallucinated"]:
-        rows.append(f'<tr><td>{entry["grid_ref"]}</td><td class="hallucinated">extra (detected, not in ground truth)</td></tr>')
-    for ref in diff["unresolved"]:
-        rows.append(f'<tr><td>{ref}</td><td class="unresolved">unresolved grid ref (not in gridline master)</td></tr>')
-    total_truth = len(diff["matched"]) + len(diff["missed"])
+    for eid in order:
+        refs = sorted(refs_by_id[eid])
+        matched_count = 0
+        detail_notes = []
+        for ref in refs:
+            status, detail = status_map.get(ref, ("unresolved", "unresolved grid ref"))
+            if status == "matched":
+                matched_count += 1
+            else:
+                detail_notes.append(f"{ref}: {detail}")
+        total = len(refs)
+        summary = f"{matched_count}/{total} matched"
+        if detail_notes:
+            summary += " (" + "; ".join(detail_notes) + ")"
+        row_class = "matched" if matched_count == total else "mismatch"
+        rows.append(
+            f'<tr class="{row_class}"><td>{eid}</td><td>{element_type}</td>'
+            f'<td>{total}</td><td>{", ".join(refs)}</td><td>{summary}</td></tr>'
+        )
+    return rows
+
+
+def _summary_table_html(gemini_elements, truth_elements, footing_diff, column_diff):
+    rows = (
+        _element_rows_html(gemini_elements, truth_elements, footing_diff, "footing")
+        + _element_rows_html(gemini_elements, truth_elements, column_diff, "column")
+    )
+    all_matched = len(footing_diff["matched"]) + len(column_diff["matched"])
+    all_wrong_id = len(footing_diff["wrong_id"]) + len(column_diff["wrong_id"])
+    all_missed = len(footing_diff["missed"]) + len(column_diff["missed"])
+    total_truth = all_matched + all_wrong_id + all_missed
     return (
-        f'<p>{len(diff["matched"])}/{total_truth} columns matched ground truth.</p>'
-        f'<table border="1" cellpadding="4"><tr><th>grid_ref</th><th>status</th></tr>'
+        f'<p>{all_matched}/{total_truth} elements matched ground truth '
+        f'({all_wrong_id} wrong id, {all_missed} missed).</p>'
+        f'<table border="1" cellpadding="4">'
+        f'<tr><th>element_id</th><th>type</th><th>count</th><th>grid_refs</th>'
+        f'<th>match vs ground truth</th></tr>'
         f'{"".join(rows)}</table>'
     )
 
@@ -88,7 +168,13 @@ def render(house, page):
     grid_path = base / "json_แก้ไขแล้ว" / f"01{house}" / f"{house}_หน้า00_gridline.json"
     grid = load_gridline_master(grid_path)
 
-    diff = diff_columns(gemini_data["elements"], truth_data["elements"], grid)
+    footing_diff = diff_elements(gemini_data["elements"], truth_data["elements"], grid, "footing")
+    column_diff = diff_elements(gemini_data["elements"], truth_data["elements"], grid, "column")
+
+    all_matched = footing_diff["matched"] + column_diff["matched"]
+    all_wrong_id = footing_diff["wrong_id"] + column_diff["wrong_id"]
+    all_missed = footing_diff["missed"] + column_diff["missed"]
+    all_hallucinated = footing_diff["hallucinated"] + column_diff["hallucinated"]
 
     all_x = list(grid["x"].values())
     all_y = list(grid["y"].values())
@@ -96,9 +182,10 @@ def render(house, page):
 
     grid_svg, width_px, height_px = _grid_svg(grid, min_x, max_x, min_y, max_y)
     markers_svg = "\n".join(
-        [_marker_svg(e, min_x, min_y, "#2ecc71", dashed=False) for e in diff["matched"]]
-        + [_marker_svg(e, min_x, min_y, "#e74c3c", dashed=True) for e in diff["missed"]]
-        + [_marker_svg(e, min_x, min_y, "#e67e22", dashed=False) for e in diff["hallucinated"]]
+        [_marker_svg(e, min_x, min_y, "#2ecc71", dashed=False) for e in all_matched]
+        + [_wrong_id_marker_svg(e, min_x, min_y) for e in all_wrong_id]
+        + [_marker_svg(e, min_x, min_y, "#e74c3c", dashed=True) for e in all_missed]
+        + [_marker_svg(e, min_x, min_y, "#e67e22", dashed=False) for e in all_hallucinated]
     )
 
     html = f"""<!doctype html>
@@ -107,15 +194,16 @@ def render(house, page):
   .missed {{ color: #e74c3c; }}
   .hallucinated {{ color: #e67e22; }}
   .unresolved {{ color: #999; }}
+  .mismatch {{ background: #fdf2ff; }}
   .marker circle {{ cursor: pointer; }}
 </style></head>
 <body>
-<h1>{house} หน้า{page_padded} — column overlay</h1>
+<h1>{house} หน้า{page_padded} — footing/column overlay</h1>
 <svg width="{width_px}" height="{height_px}">
 {grid_svg}
 {markers_svg}
 </svg>
-{_summary_table_html(diff)}
+{_summary_table_html(gemini_data["elements"], truth_data["elements"], footing_diff, column_diff)}
 <script>
 function toggleMarker(circle) {{
   const isGreen = circle.getAttribute('fill') === '#2ecc71';
@@ -126,10 +214,15 @@ function toggleMarker(circle) {{
 </script>
 </body></html>"""
 
-    output_path = Path(__file__).parent / "output" / f"{house}_หน้า{page_padded}_overlay.html"
+    output_dir = Path(__file__).parent / "output"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"{house}_หน้า{page_padded}_overlay.html"
     output_path.write_text(html, encoding="utf-8")
     print(f"Wrote {output_path}")
-    return diff
+    return {
+        "footing": footing_diff,
+        "column": column_diff,
+    }
 
 
 def main():
@@ -140,5 +233,77 @@ def main():
     render(args.house, args.page)
 
 
+def _self_check():
+    # Inline synthetic grid + gemini/ground-truth elements covering all 5
+    # diff_elements() categories, exercised directly against the internal
+    # rendering helpers (not render()/main(), which need real files on disk).
+    grid = {
+        "x": {"1": 0.0, "2": 4.0, "3": 7.0},
+        "y": {"D": 0.0, "C": 4.0, "B": 6.0},
+    }
+    truth_elements = [
+        {"element_id": "F1", "element_type": "footing", "grid_refs": ["D1", "D2", "C1"]},
+        {"element_id": "F2", "element_type": "footing", "grid_refs": ["C2"]},
+        {"element_id": "C1", "element_type": "column", "grid_refs": ["D1", "D2", "C1", "C2"]},
+    ]
+    gemini_elements = [
+        # D1 matched, D2 missed (Gemini didn't report it), C1 wrong_id
+        # (reported as "F2" instead of "F1"), plus a hallucinated extra
+        # ref "B1" (resolves against the inline grid above, but isn't in
+        # ground truth at all).
+        {"element_id": "F1", "element_type": "footing", "grid_refs": ["D1"]},
+        {"element_id": "F2", "element_type": "footing", "grid_refs": ["C1", "C2", "B1"]},
+        {"element_id": "C1", "element_type": "column", "grid_refs": ["D1", "D2", "C1", "C2"]},
+    ]
+
+    footing_diff = diff_elements(gemini_elements, truth_elements, grid, "footing")
+    column_diff = diff_elements(gemini_elements, truth_elements, grid, "column")
+
+    assert footing_diff["matched"] == [
+        {"grid_ref": "C2", "xy": (4.0, 4.0), "element_id": "F2"},
+        {"grid_ref": "D1", "xy": (0.0, 0.0), "element_id": "F1"},
+    ]
+    assert footing_diff["wrong_id"] == [
+        {"grid_ref": "C1", "xy": (0.0, 4.0), "expected_id": "F1", "got_id": "F2"}
+    ]
+    assert footing_diff["missed"] == [{"grid_ref": "D2", "xy": (4.0, 0.0), "element_id": "F1"}]
+    assert footing_diff["hallucinated"] == [
+        {"grid_ref": "B1", "xy": (0.0, 6.0), "element_id": "F2"}
+    ]
+    assert footing_diff["unresolved"] == []
+    assert len(column_diff["matched"]) == 4
+
+    all_matched = footing_diff["matched"] + column_diff["matched"]
+    all_wrong_id = footing_diff["wrong_id"] + column_diff["wrong_id"]
+    all_missed = footing_diff["missed"] + column_diff["missed"]
+    all_hallucinated = footing_diff["hallucinated"] + column_diff["hallucinated"]
+
+    markers_svg = "\n".join(
+        [_marker_svg(e, 0.0, 0.0, "#2ecc71", dashed=False) for e in all_matched]
+        + [_wrong_id_marker_svg(e, 0.0, 0.0) for e in all_wrong_id]
+        + [_marker_svg(e, 0.0, 0.0, "#e74c3c", dashed=True) for e in all_missed]
+        + [_marker_svg(e, 0.0, 0.0, "#e67e22", dashed=False) for e in all_hallucinated]
+    )
+    table_html = _summary_table_html(gemini_elements, truth_elements, footing_diff, column_diff)
+    html = f"<html><body><svg>{markers_svg}</svg>{table_html}</body></html>"
+
+    assert 'fill="#2ecc71"' in html  # matched marker
+    assert 'stroke="#e74c3c"' in html and 'stroke-dasharray="4,3"' in html  # missed marker
+    assert 'fill="#e67e22"' in html  # hallucinated marker
+    assert 'fill="#9b59b6"' in html  # wrong_id marker
+    assert "expected F1, got F2" in html  # wrong_id label on the marker
+    assert "<th>element_id</th>" in html
+    assert "<th>type</th>" in html
+    assert "<th>count</th>" in html
+    assert "<th>grid_refs</th>" in html
+    assert "<th>match vs ground truth</th>" in html
+    assert "<td>footing</td>" in html
+    assert "<td>column</td>" in html
+    print("render_overlay.py self-check: all assertions passed")
+
+
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 1:
+        main()
+    else:
+        _self_check()
