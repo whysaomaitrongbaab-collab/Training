@@ -33,6 +33,26 @@ source_image, confidence_score, confidence_flags, warnings
 **`source_image`** = full path of the source image, e.g. `"image/<house>/<house>_หน้า19.png"` — every file coming from the same page (e.g. `_view1_...`/`_view2_...`) must have the exact same value.
 **Exception:** the grid-master file `<house>_หน้า00_gridline.json` uses `source_pages` (array of every `source_image` used to confirm the grid) instead.
 
+## 2a. `phase_note` — staged-extraction scratch field (added 2026-07-27)
+
+Optional wrapper-level field, **only** used by a staged `op2` run (see the README). It is orchestration scratch, **not training data**.
+
+```json
+"phase_note": [
+  "Stage 2: A-07 confirms the S-06 roof ridge position traced from line weights. Stage 3 please cross-check and fold into warnings[].",
+  "Stage 2: จันทัน section on this sheet differs from S-05's. Not resolvable without both sheets side by side."
+]
+```
+
+Purpose: let a stage that **cannot** resolve something — because it does not hold the sheet that settles it, or because it is forbidden to touch the grid — hand the question forward without polluting `warnings[]`.
+
+Hard rules:
+
+- **`warnings[]` is append-or-rewrite only. NEVER delete a warning.** When a later stage overturns an earlier reading, **rewrite** the warning so it records the reversal: what was believed, what overturned it, and how many sheets agreed. That reversal narrative is the single most valuable training signal in the file (precedent: the house-06 grid reversal, and house-07's `F16` vs `F18`, where three marks on the drawing beat one in the title block).
+- **`phase_note` must be ABSENT from every finished file.** Stage 3 folds each note into `warnings[]` (or discards it as resolved) and then deletes the field. A file still carrying a `phase_note` is by definition unfinished.
+- A `phase_note` is never a substitute for a decision. If the stage that holds the evidence *can* decide, it decides and writes a `warnings[]` entry — same standing order as `op1`.
+- Never put a `phase_note` on the grid master. A grid problem is escalated by re-running Stage 1, not annotated (see the README's `op2` escalation rule).
+
 ## 3. Multi-view pages
 
 A page may contain multiple views/patterns — **inventory every view first with `views[]`** (prevents losing one), then write each out as a separate file per view (`_view1_footing_plan.json`, `_view2_beam_plan.json`, etc.).
@@ -121,6 +141,30 @@ With `middle` available, `additional_bars` is now only for bars that belong to *
 
 **Ø (circle symbol) always = RB** — never infer from bar diameter; go by the printed symbol only (deformed bar with visible ribs = DB).
 
+## 6a. Steel members — `steel_section` (added 2026-07-25)
+
+Not every house is reinforced concrete. When a member is **structural steel** (hot-rolled section), it has no `main_bar`/`stirrup` at all — record its printed section designation instead:
+
+```json
+"steel_section": {
+  "designation": "WF",
+  "d_mm": 400, "b_mm": 200, "tw_mm": 8, "tf_mm": 13,
+  "printed_as": "WF 400x200x8x13 มม."
+}
+```
+
+- **`designation`** = the printed profile family exactly as drawn — `WF` (wide flange), `C` (channel/light-lip channel), `L`, `RHS`, `SHS`, `Pipe`. Don't translate or normalize to a foreign standard (no `H-beam`, no `W14x…`).
+- **Dimension keys follow the printed order of that family.** For the two seen so far:
+  - `WF d×b×tw×tf` → `d_mm` (depth), `b_mm` (flange width), `tw_mm` (web thickness), `tf_mm` (flange thickness)
+  - `C d×b×tw×tf` → same four keys (e.g. `C 125x65x6x8`)
+  - A lipped channel printed with five numbers (e.g. `C100x50x20x3.2`) adds `lip_mm` before the thickness.
+- **`printed_as`** always keeps the raw printed string verbatim, including the Thai unit — it's the audit trail when the key mapping above is ambiguous for a family not yet seen.
+- **`element_type` stays semantic** (`beam` / `column` / `purlin` / `truss`), not `steel_beam` — the material is carried by `steel_section` being present instead of `main_bar`.
+- Add `"material": "steel"` on the spec entry so a consumer never has to infer material from which key exists.
+- Spacing-based repeated members (purlins/joists, e.g. `C100x50x20x3.2 มม. @0.40 ม.`) put the spacing in `spacing_mm` (400), same field name the rebar side uses.
+
+**A member has either `main_bar`/`stirrup` or `steel_section` — never both.** A hybrid building (steel superstructure on RC footings/pedestals, as in `บ้าน_ใหญ่_1ชั้น_01`) is normal: the RC footings/pedestals/slabs keep the rebar fields, the steel frame above uses `steel_section`, and both live in the same `specs{}` object keyed by `element_id`.
+
 ## 7. Spec join (plan + section/schedule)
 
 A `plan` element (has `grid_ref`) + a `section` **or** `schedule` element (has width/height/main_bar/stirrup) for the same mark join together via `element_id` — **`section` and `schedule` are equally valid spec sources**, not limited to `section` only.
@@ -128,8 +172,10 @@ A `plan` element (has `grid_ref`) + a `section` **or** `schedule` element (has w
 Fields joined in:
 ```
 width_mm, height_mm, main_bar{}, stirrup{}, additional_bars[],
+steel_section{}, material, spacing_mm,
 concrete_grade, steel_grade, spec_source, spec_confidence_score
 ```
+(`steel_section{}`/`material` per §6a — a steel member joins exactly the same way, it just carries a section designation instead of rebar.)
 
 **Conflict rule:** if the same `element_id` has mismatched specs in both `section` and `schedule` → **`section` always wins**, and must be flagged with `confidence_flag: "spec_conflict_section_vs_schedule"` every time — never silently pick one without recording it. *(Not yet tested against real data.)*
 
@@ -177,9 +223,21 @@ Don't describe a stair's position with verbose free text (which rooms it sits be
 - **One PNG may contain 2 real sheets** (2 portrait pages laid out as one landscape image) → rotate 90° then split left/right halves into separate files (`_1.json`/`_2.json`)
 - **Continuation rows** with no item_no/qty of their own must still be a separate item, never merged into the previous row's description
 
+## 11a. Multi-building drawing sets (added 2026-07-25)
+
+A single drawing set can cover **more than one physically separate building** (e.g. `บ้าน_ใหญ่_1ชั้น_01` = the main row building + a detached shared-toilet block, `อาคารสุขารวม`). Both buildings reuse the same grid names (`ก`/`ข`/`ค`, `1`/`2`) at **different spacings** — so a single grid master cannot hold them.
+
+- **One grid-master file per building.** Main building keeps `<house>_หน้า00_gridline.json`; each additional building gets `<house>_หน้า00<letter>_gridline_<building>.json`, e.g. `..._หน้า00b_gridline_สุขา.json`.
+- Each building's grid has **its own origin** — never offset one building's grid into the other's coordinate space.
+- Every page/view file points at the one it uses via `grid_source` (the filename), so a `grid_ref` is only ever read against the right grid.
+- When a single sheet draws both buildings (S-01/S-02 here do), split it into one view file per building rather than mixing two coordinate systems in one `elements[]`.
+- Record the building name on the wrapper as `building` (e.g. `"อาคารหลัก"` / `"อาคารสุขารวม"`) so downstream consumers don't have to infer it from the filename.
+
 ## 12. Rules still in draft / not yet verified against real data
 
 - `title` / `symbol` / `roof_plan` — no confirmed field-set from real extraction yet
+- `steel_section` (§6a) — key mapping confirmed only for `WF` and `C` so far; other families (`L`, `RHS`, `Pipe`) unseen
+- Multi-building grid masters (§11a) — first use is `บ้าน_ใหญ่_1ชั้น_01`; no second example yet
 - Dummy grid prime ordering + negative `pos_m` (section 4) — no real case yet with ≥2 dummy lines in the same gap, or one before the origin
 - `source_image` field — older files in `mk_test/t1-t3` don't have it
 - "section wins over schedule" conflict rule (section 7) — not yet tested against real data
