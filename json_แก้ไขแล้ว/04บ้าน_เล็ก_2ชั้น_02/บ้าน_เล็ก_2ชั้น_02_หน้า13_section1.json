@@ -29,7 +29,7 @@
       "element_id": "โถง_ground_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "grid2-3(approx), ground floor, box '1 +0.60 1'",
+      "grid_ref": "2-3(approx), ground floor, box '1 +0.60 1'",
       "level_m": 0.6,
       "confidence_score": 0.78,
       "confidence_flags": []
@@ -38,7 +38,7 @@
       "element_id": "ห้องน้ำ_ground_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "near grid1, ground floor, box '3 +0.20 5', toilet fixture drawn in section",
+      "grid_ref": "near 1, ground floor, box '3 +0.20 5', toilet fixture drawn in section",
       "level_m": 0.2,
       "confidence_score": 0.75,
       "confidence_flags": []
@@ -47,7 +47,7 @@
       "element_id": "stair_cut",
       "element_type": "stair",
       "count": 1,
-      "grid_ref": "center, grid1-2(approx), cut showing the stair flight rising from ground floor toward the landing/upper floor, with several small circled reference numbers (3, 5, 2) beside the flight not individually resolved",
+      "grid_ref": "center, 1-2(approx), cut showing the stair flight rising from ground floor toward the landing/upper floor, with several small circled reference numbers (3, 5, 2) beside the flight not individually resolved",
       "confidence_score": 0.68,
       "confidence_flags": [
         "needs_human_review_zoom_required",
@@ -58,7 +58,7 @@
       "element_id": "โถง_upper_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "center, grid1-2(approx), upper floor, box '2 +4.10 1'",
+      "grid_ref": "center, 1-2(approx), upper floor, box '2 +4.10 1'",
       "level_m": 4.1,
       "confidence_score": 0.6,
       "confidence_flags": [
@@ -69,7 +69,7 @@
       "element_id": "นอน2_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "grid2-3(approx), upper floor, box '2 +3.75 1', wall height 2.60m",
+      "grid_ref": "2-3(approx), upper floor, box '2 +3.75 1', wall height 2.60m",
       "level_m": 3.75,
       "wall_height_m": 2.6,
       "confidence_score": 0.78,
@@ -79,7 +79,7 @@
       "element_id": "โถง_ground_right_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "grid2-3(approx), ground floor, box '1 +0.60 1', wall height 2.70m",
+      "grid_ref": "2-3(approx), ground floor, box '1 +0.60 1', wall height 2.70m",
       "level_m": 0.6,
       "wall_height_m": 2.7,
       "confidence_score": 0.78,
@@ -107,6 +107,7 @@
     "Sibling sections รูปตัด 2 and รูปตัด 3 are in _หน้า14_section2.json and _หน้า15_section3.json (not yet read at time of writing this file).",
     "The upper 'โถง' room box reads '2 +4.10 1' — the +4.10 level is higher than this same sheet's own printed 2nd-floor datum (+3.75, in the ระดับพื้นชั้น 2 label at left). Not reconciled: could be a genuine raised threshold/sub-landing at the top of the stair within โถง, or a misread digit (4.10 vs a possible 3.10/3.75) — flagged for human review rather than silently corrected to match the datum.",
     "Roof framing itself is deferred to the structural drawings (outside this extraction's architecture-only page range 03-29), consistent with the 'โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง' note.",
-    "Two small circled '1' cutting-plane markers appear beside the 'รูปตัด 1' title at the bottom of the sheet — standard section-identification symbol, not treated as a separate building element."
+    "Two small circled '1' cutting-plane markers appear beside the 'รูปตัด 1' title at the bottom of the sheet — standard section-identification symbol, not treated as a separate building element.",
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
   ]
 }

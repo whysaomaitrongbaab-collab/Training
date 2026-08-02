@@ -137,8 +137,8 @@
       "element_id": "GB1",
       "element_type": "beam",
       "level_m": -0.5,
-      "grid_ref_start": "B-3",
-      "grid_ref_end": "B-4",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "confidence_score": 0.85,
@@ -149,8 +149,8 @@
       "element_id": "GB1",
       "element_type": "beam",
       "level_m": -0.5,
-      "grid_ref_start": "C-4",
-      "grid_ref_end": "B-4",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "B4",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "confidence_score": 0.9,
@@ -161,7 +161,7 @@
       "element_id": "GB1X",
       "element_type": "beam",
       "level_m": -0.5,
-      "grid_ref_start": "B-4",
+      "grid_ref_start": "B4",
       "grid_ref_end": "~A-4",
       "span_length_m": 1.6,
       "span_source": "printed_dim",
@@ -181,6 +181,7 @@
     "Column (ตอม่อ) marks are C1, C2 and C3 -- three sizes, with C3 only under the F16 footing at C-2. The column schedule is on S-11 (PNG 44).",
     "Ground beams GB1 and GB1X are both set at -0.50 m. REWRITTEN 2026-07-27 (recording a reversal): the earlier version said 'only two are drawn' and labelled the vertical C-4 to B-4 run as GB1X. High-zoom re-read shows THREE segments in the bottom-right corner: GB1 horizontal B-3 to B-4, GB1 vertical C-4 to B-4 (its rotated label clearly reads GB1, not GB1X), and GB1X as a short 1.60 m stub continuing south of B-4 to the free end the 1.60 dimension locates. The main ground-floor beam layout is on S-03.",
     "No break lines anywhere on this sheet -- the full 13.00 x 11.00 m building fits at 1:100.",
-    "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 18 entries -> 11. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched."
+    "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 18 entries -> 11. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched.",
+    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit."
   ]
 }

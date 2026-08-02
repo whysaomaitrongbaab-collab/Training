@@ -16,14 +16,16 @@
       "dimension_m": "7.00+0.60 (x) x 9.50+1.50+1.50 (y, including south extension)",
       "grid_ref": "1,2,3 / A,B,C,D",
       "confidence_score": 0.7,
-      "confidence_flags": ["footprint_shown_only_as_outline_full_room_dims_read_from_หน้า06_floor_plan_instead"]
+      "confidence_flags": [
+        "footprint_shown_only_as_outline_full_room_dims_read_from_หน้า06_floor_plan_instead"
+      ]
     },
     {
       "element_id": "boundary_line_north",
       "element_type": "boundary_line",
       "description": "<<แนวเขตที่ดิน>> (property boundary line) along the top (north) edge of the lot, at the ดินถม (fill) area beyond the building, printed overall width label above it.",
       "dimension_m": "11.70 (ต้องการที่ดินกว้างอย่างน้อย = 11.70 ม.)",
-      "grid_ref": "top edge, beyond grid D",
+      "grid_ref": "top edge, beyond D",
       "confidence_score": 0.8,
       "confidence_flags": []
     },
@@ -41,16 +43,18 @@
       "element_type": "boundary_line",
       "description": "<<แนวเขตที่ดิน>> along the right (east) edge of the lot, beyond grid 3.",
       "dimension_m": 14.6,
-      "grid_ref": "right edge, beyond grid 3",
+      "grid_ref": "right edge, beyond 3",
       "confidence_score": 1,
-      "confidence_flags": ["CORRECTED_2026-07-13_by_user_mirrored_from_boundary_line_left_14.60_confidence_set_to_1_per_user_verification"]
+      "confidence_flags": [
+        "CORRECTED_2026-07-13_by_user_mirrored_from_boundary_line_left_14.60_confidence_set_to_1_per_user_verification"
+      ]
     },
     {
       "element_id": "setback_A",
       "element_type": "setback",
       "description": "Setback dimension 'A' near the top-left (grid1/row D corner): ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 2 ม. หรือตามที่กฎหมายกำหนด.",
       "dimension_m": ">= 2.0 (minimum, adjustable)",
-      "grid_ref": "near grid 1, row D (top-left)",
+      "grid_ref": "near 1, row D (top-left)",
       "confidence_score": 0.75,
       "confidence_flags": []
     },
@@ -92,12 +96,15 @@
   ],
   "north_arrow_present": false,
   "confidence_score": 0.75,
-  "confidence_flags": ["site_specific_boundary_geometry_is_generic_per_sheet_note_not_a_real_surveyed_lot"],
+  "confidence_flags": [
+    "site_specific_boundary_geometry_is_generic_per_sheet_note_not_a_real_surveyed_lot"
+  ],
   "warnings": [
     "PATTERN UNCHANGED: 'site_plan' matches new taxonomy definition exactly (#7, ผังบริเวณ).",
     "This sheet explicitly states it is only an example/estimate layout (ตัวอย่างเพื่อประมาณราคา), not a real surveyed site plan — boundary/setback geometry is generic, not tied to an actual parcel.",
     "No north arrow is drawn on this specific sheet (the legend defining the north-arrow symbol is on หน้า03/A-01, now reclassified pattern 'symbol' — see _หน้า03_symbol_legend.json).",
     "GRID-RELEVANT FOR หน้า00 MASTER (reporting only, master file not edited): the left-edge dimension chain on this sheet reads 4.00 (D-C) / 2.00 (C-B) / 3.50 (B-A) = 9.50 to grid A, then a further 1.50 + 1.50 = 3.00 south of grid A down to the road. This independently confirms the master's dummy grid A' at pos_m 11.0 (9.5+1.5) and is consistent with A'' at 12.5 (9.5+1.5+1.5) purely as a DIMENSION — but see หน้า09's warning below: the building/roof cross-section itself only extends 1.50 m south of grid A (to A'), not the full 3.00 m, so the second 1.50 m segment down to A'' on this site-plan sheet appears to be site-grading/road-verge distance rather than a second built structural line, consistent with the t4 master file's existing low-confidence (0.35) treatment of A''.",
-    "Independent read done first, then cross-checked against t3's หน้า05.json — same boundary/setback/fill-area content and grid readings, no disagreement on the base facts."
+    "Independent read done first, then cross-checked against t3's หน้า05.json — same boundary/setback/fill-area content and grid readings, no disagreement on the base facts.",
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
   ]
 }

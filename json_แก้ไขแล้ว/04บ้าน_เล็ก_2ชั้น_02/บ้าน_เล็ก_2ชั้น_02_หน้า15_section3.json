@@ -51,7 +51,7 @@
       "element_id": "จอดรถ_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "west end of this section (leftmost, toward gridA/B), ground floor, box '4 +0.20 3'",
+      "grid_ref": "west end of this section (leftmost, toward A/B), ground floor, box '4 +0.20 3'",
       "level_m": 0.2,
       "confidence_score": 0.78,
       "confidence_flags": []
@@ -101,7 +101,7 @@
       "element_id": "ห้องน้ำ_4_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "upper floor, east end (toward gridE), box '3 +3.65 2', room label printed as 'ห้องน้ำ 4'",
+      "grid_ref": "upper floor, east end (toward E), box '3 +3.65 2', room label printed as 'ห้องน้ำ 4'",
       "level_m": 3.65,
       "confidence_score": 0.55,
       "confidence_flags": [
@@ -126,6 +126,7 @@
     "Sibling sections รูปตัด 1 (_หน้า13_section1.json) and รูปตัด 2 (_หน้า14_section2.json) already extracted.",
     "MOST NOTABLE DISCREPANCY ON THIS PAGE: a room labeled 'ห้องน้ำ 4' appears at upper-floor level +3.65 — this bathroom number does not appear anywhere else in this extraction pass (the A-01 index only lists WC.1/WC.2/WC.3 detail sheets A-16/A-17/A-18, and the 2nd-floor plan หน้า07 only shows ห้องน้ำ2/ห้องน้ำ3). Flagged prominently for human review rather than silently relabeled to ห้องน้ำ2 or ห้องน้ำ3 — could be a drafting error on this section sheet, or evidence of a 4th bathroom not otherwise documented in this extraction's page range.",
     "Roof levels/framing notes and eave-detail callouts (R1/R2, both on A-24) match รูปตัด 2 (หน้า14) exactly, cross-consistent.",
-    "NORMALIZED_2026-08-02: element_id reduced to the mark printed on the drawing; the original is kept in element_id_printed_as on each entry. Position belongs in grid_refs, not in the id (it broke cross-page joins)."
+    "NORMALIZED_2026-08-02: element_id reduced to the mark printed on the drawing; the original is kept in element_id_printed_as on each entry. Position belongs in grid_refs, not in the id (it broke cross-page joins).",
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
   ]
 }

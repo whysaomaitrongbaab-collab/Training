@@ -21,7 +21,7 @@
       "element_id": "ห้องน้ำ2_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "near grid1, upper floor, box '3 +3.65 2'",
+      "grid_ref": "near 1, upper floor, box '3 +3.65 2'",
       "level_m": 3.65,
       "floor_material_no": 3,
       "opening_ref": "2",
@@ -32,7 +32,7 @@
       "element_id": "นอน1_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "near grid2, upper floor, box '2 +3.75 1', wall height 2.60",
+      "grid_ref": "near 2, upper floor, box '2 +3.75 1', wall height 2.60",
       "level_m": 3.75,
       "wall_height_m": 2.6,
       "floor_material_no": 2,
@@ -44,7 +44,7 @@
       "element_id": "โถง_upper_cut_with_stair",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "near grid3, upper floor, box '2 +3.75 1'",
+      "grid_ref": "near 3, upper floor, box '2 +3.75 1'",
       "level_m": 3.75,
       "floor_material_no": 2,
       "opening_ref": "1",
@@ -56,7 +56,7 @@
       "element_id": "ทานอาหาร_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "near grid1-2, ground floor, box '1 +0.60 1', wall heights 2.70 (both sides of a window bay)",
+      "grid_ref": "near 1-2, ground floor, box '1 +0.60 1', wall heights 2.70 (both sides of a window bay)",
       "level_m": 0.6,
       "wall_height_m": 2.7,
       "floor_material_no": 1,
@@ -68,7 +68,7 @@
       "element_id": "เก็บของ_cut",
       "element_type": "room_cut",
       "count": 1,
-      "grid_ref": "near grid3-4, ground floor, box '4 +0.60 5'",
+      "grid_ref": "near 3-4, ground floor, box '4 +0.60 5'",
       "level_m": 0.6,
       "floor_material_no": 4,
       "opening_ref": "5",
@@ -78,7 +78,7 @@
     {
       "element_id": "กันสาด_คสล_west_cut",
       "element_type": "concrete_canopy",
-      "grid_ref": "near grid1, roof level, box '5 +6.65 4'",
+      "grid_ref": "near 1, roof level, box '5 +6.65 4'",
       "level_m": 6.65,
       "floor_material_no": 5,
       "confidence_score": 0.78,
@@ -87,7 +87,7 @@
     {
       "element_id": "กันสาด_คสล_east_cut",
       "element_type": "concrete_canopy",
-      "grid_ref": "near grid4, roof level, box '5 +6.65 4'",
+      "grid_ref": "near 4, roof level, box '5 +6.65 4'",
       "level_m": 6.65,
       "floor_material_no": 5,
       "confidence_score": 0.78,
@@ -109,6 +109,7 @@
     "The stair shown here in profile (rising from ground floor +0.60 to upper floor +3.75, with a visible handrail) is the ST3 main stair -- this is the clearest cross-sectional view of its actual geometry found in this extraction pass, useful for corroborating the step-count/rise-run details noted on the floor plans (หน้า06/07) and to be detailed further on sheet A-20 (ST.3, หน้า22 per this house's index).",
     "Level chain (+8.05/+6.95/+6.65 roof-post levels) matches รูปตัด 1 exactly -- cross-consistent within this sheet pair.",
     "Bottom dimension chain (0.70+0.60 | 4.00 | 2.00 | 3.00 | 0.50+0.80, bracket 1.30|9.00|1.30) matches รูปด้าน 1's (หน้า09) equivalent chain exactly -- both are views along the same grid1-4 width axis.",
-    "No dummy-grid-relevant feature applies to this sheet (it cuts along the 1-2-3-4 axis, not the F-E-D-C-B-A axis where the ST1/Aprime dummy grid sits)."
+    "No dummy-grid-relevant feature applies to this sheet (it cuts along the 1-2-3-4 axis, not the F-E-D-C-B-A axis where the ST1/Aprime dummy grid sits).",
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
   ]
 }
