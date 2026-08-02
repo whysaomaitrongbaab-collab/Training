@@ -60,13 +60,19 @@ A page may contain multiple views/patterns — **inventory every view first with
 ## 4. Grid
 
 - **Axis:** `x_lines` = horizontal along the top edge (usually numbers 1,2,3...) · `y_lines` = vertical along the side edge (usually letters A,B,C...)
-- **grid_ref format:** `"A-1/A-2"` (dash+slash) — point-type elements (footing/column) store position as an **array**, e.g. `grid_refs:["A-1","A-2"]`, never a comma-string
-- **Axis order rule:** always read/write the **vertical axis (y_lines, row letters) first**, then the horizontal axis (x_lines, column numbers) — matches the existing `"A-1"` convention (row before column) and must also apply to any combined-range free-text `grid_ref` on `plan` elements, e.g. write `"D-C x 1-1'"` (row range first, `x`, then column range), not `"1-1' x D-C"` (บทเรียนจาก 2026-07-13: ตอนย่อ `grid_ref` ในบ้าน 1 หน้า06_floor_plan.json ให้สั้นลง เขียนแกน x ก่อนโดยไม่ตั้งใจ ต้องกลับมาแก้)
+- **grid_ref format — a dash means a RANGE, never a point** (confirmed project-wide 2026-07-13, applied to houses 01-05):
+  - **Point** (a footing, a column, one end of a beam) = row letter + column number with **no dash**: `"C2"`, `"E'1"`, `"C3''"`. A prime on either part stays attached (`C1'`, `A''3`).
+  - **Range/line/area** = dash between the two positions **on the same axis**: `"D-C"` (row range), `"1-2"` (column range). Two axes combine with `x`, vertical axis first: `"D-C x 1-2"`.
+  - Point-type elements (footing/column) store position as an **array**, e.g. `grid_refs:["A1","A2"]`, never a comma-string.
+  - Makham's reasoning: "it's just a point, not a line — only a line or area needs a dash." A beam's own line is already expressed by having separate `grid_ref_start`/`grid_ref_end`, so each endpoint is a point and takes no dash.
+  - ⚠️ **After any bulk regex that strips these dashes, re-check `sheet_code`** — a value like `"S-04"` matches the same letter-dash-digit shape and gets corrupted to `"S04"`. This has happened on three separate houses (สิ่งที่ต้องแก้ items 26, 31).
+- **Axis order rule:** always read/write the **vertical axis (y_lines, row letters) first**, then the horizontal axis (x_lines, column numbers) — the same row-before-column order a point ref uses (`"A1"`), and it must also apply to any combined-range free-text `grid_ref` on `plan` elements, e.g. write `"D-C x 1-1'"` (row range first, `x`, then column range), not `"1-1' x D-C"` (บทเรียนจาก 2026-07-13: ตอนย่อ `grid_ref` ในบ้าน 1 หน้า06_floor_plan.json ให้สั้นลง เขียนแกน x ก่อนโดยไม่ตั้งใจ ต้องกลับมาแก้)
 - **Span:** calculated by code from the grid only — never let the model estimate distance
 - **`span_source` enum:** `grid_table` / `local_dimension` / `unresolved` / `n/a`
 
 ### Dummy grid
-- A structural line not on a named/printed main grid → name it with a **prime** appended to the nearest main grid, e.g. `1'`, `A'`
+- A structural line not on a named/printed main grid → name it with a **prime** appended to the main grid **above it (y-axis) / to its left (x-axis)** — **not** the nearest one (corrected by Makham 2026-07-24, สิ่งที่ต้องแก้ item 51; the earlier wording here said "nearest" and was wrong). E.g. a line at 5.2 between named `2`(5.0) and `3`(8.5) is `2'`, even though it is far closer to `2` than to `3` — the rule is direction, not distance, so it stays stable when a grid is later re-based.
+- **Exception — a label the user supplies by hand is recorded exactly as given, never normalized.** House #04's master carries `A'`(1.6) and `E'''`(4.2) both sitting in the E-to-C range, matching neither the above/left rule nor the nearest rule. They are kept verbatim and flagged, on the standing "record as given, don't guess" rule — do not silently rename a user-supplied label to satisfy this section.
 - **Prime ordering when more than one dummy line falls in the same gap:** scan in standard reading direction — x-axis left→right, y-axis top→bottom. First line found = 1 prime (`A'`), next one = 2 primes (`A''`), and so on (`A'` must always sit left of/above `A''`)
 - **Origin (0,0)** must always be the leftmost/topmost main grid (`type:"named"`) — a dummy grid must never take over the origin position. If a dummy grid falls before the origin (further left/up than the first main grid), use a **negative** `pos_m` instead, e.g. `{"id":"1'","pos_m":-0.80,"type":"dummy"}`
 - `pos_m` is always read from an actually-printed dimension line — never guessed
@@ -92,8 +98,28 @@ Real cases: house #04's S-04 (หน้า33) was missing **8** beams and had 2 
 ### Master file
 Create/update `<house>_หน้า00_gridline.json` **before** extracting any other page — it holds every main grid + dummy grid for the whole house in one place. Other plan/section pages reference it via the `grid_source` field instead of re-writing the grid. Keep this as a separate companion file — never re-embed the full grid inline inside every view.
 
-### Atomic segments
-Report each beam span as **one atomic entry per grid-to-grid segment** — don't pre-group multiple spans of the same mark into a single `count`. Grouping identical segments into `count` + list, keyed by `(element_id, span, span_source)`, is handled automatically downstream — sending atomic data in keeps that grouping accurate.
+### Atomic segments (span elements) vs merged entries (point elements)
+
+These are two opposite rules and the dividing line is **whether the element has a span or a position**:
+
+**Beams and other span elements → atomic, one entry per grid-to-grid segment.** Don't pre-group multiple spans of the same mark into a single `count`. Grouping identical segments into `count` + list, keyed by `(element_id, span, span_source)`, is handled automatically downstream — sending atomic data in keeps that grouping accurate.
+
+**Footings, columns and other point elements → the opposite: one `element_id` appears exactly ONCE per file**, merged into a single entry carrying `count` + a `grid_refs` array (Makham, 2026-07-20, สิ่งที่ต้องแก้ item 48):
+```json
+// ❌ wrong — same mark split across 2 entries
+{ "element_id": "F0.60x0.60", "count": 2, "grid_refs": ["E'1", "E'2"] },
+{ "element_id": "F0.60x0.60", "count": 2, "grid_refs": ["A2", "A3"] }
+
+// ✅ right — one entry
+{ "element_id": "F0.60x0.60", "count": 4, "grid_refs": ["E'1", "E'2", "A2", "A3"] }
+```
+This holds **even when the adjacent column marks differ** — a point element carries position only (its spec lives in `specs{}`), so a neighbouring column's mark is not a reason to split the footing entry.
+
+**⚠️ Merging vs de-duplicating — check `grid_refs` overlap before you touch anything:**
+- grid_refs **do not overlap** → genuine merge, add the counts.
+- grid_refs **overlap** (the same point appears in both entries) → that is a real double-count bug: **delete** the duplicate, the count must NOT increase.
+
+**⚠️ Exception — multi-level schedule tables.** This merge rule applies only to elements with a **position on a plan**. A column schedule listing the same mark once per level (§8) **must** repeat `element_id`, one entry per `level` — never merge those.
 
 ### Element ordering within `elements[]`
 Order grid-positioned elements (beams, footings, columns, etc.) in **reading order**, not grouped by `element_id`/mark:
@@ -119,6 +145,14 @@ One beam = between two adjacent supports only. Split immediately when:
 }
 ```
 **Always split `top`/`bottom`, even when equal (symmetric case)** — never collapse into one count. Genuine top≠bottom cases have been found (e.g. top 2, bottom 3); merging loses real data.
+
+**⚠️ Columns are the exception — a column NEVER uses `top`/`bottom`, only a single `count`** (confirmed project-wide by Makham, สิ่งที่ต้องแก้ items 21/46):
+```json
+"main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners" }
+```
+A column has no beam-style top face and bottom face — it has bars around its corners, printed as a single figure (`4-Ø12มม.`). Recording it as `top:4/bottom:4` silently doubles the real count to 8. This has been swept across the whole project and every `element_type: "column"` now uses a single `count`; do not reintroduce the split. Applies to structural columns, pedestals (ตอม่อ), short columns (`C0`/`CN`) and fence columns alike.
+
+The `top`/`bottom` split rule above is for **beams** (and any member genuinely detailed with two longitudinal faces).
 
 **`middle` — third main_bar face (added 2026-07-20 by Makham).** When a section drawing shows a **clearly distinct mid-depth bar row** — its own leader line, its own dot row sitting between the top and bottom clusters, typically on a deep beam — record it as a third `main_bar` face, **not** as `additional_bars`:
 ```json
@@ -238,7 +272,7 @@ A single drawing set can cover **more than one physically separate building** (e
 - `title` / `symbol` / `roof_plan` — no confirmed field-set from real extraction yet
 - `steel_section` (§6a) — key mapping confirmed only for `WF` and `C` so far; other families (`L`, `RHS`, `Pipe`) unseen
 - Multi-building grid masters (§11a) — first use is `บ้าน_ใหญ่_1ชั้น_01`; no second example yet
-- Dummy grid prime ordering + negative `pos_m` (section 4) — no real case yet with ≥2 dummy lines in the same gap, or one before the origin
+- ~~Dummy grid prime ordering + negative `pos_m` (section 4) — no real case yet with ≥2 dummy lines in the same gap, or one before the origin~~ **CONFIRMED against real data 2026-08-02** — house #04's master carries four dummies in the single grid-1-to-grid-2 gap (`1'`/`1''`/`1'''`/`1''''`, ordered left→right exactly as the rule requires) and a negative `pos_m` before the origin (`1'` at -0.6); house #05 has the same negative case (`1'` at -0.6). Both halves of the rule now have real precedent
 - `source_image` field — older files in `mk_test/t1-t3` don't have it
 - "section wins over schedule" conflict rule (section 7) — not yet tested against real data
 - Same `element_id` appearing in more than one `section` file (e.g. B2 in both S-04 and S-05) — no resolved precedence rule yet; open question

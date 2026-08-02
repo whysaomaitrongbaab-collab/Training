@@ -1,0 +1,78 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized cross-page reference)",
+  "pattern": "gridline",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า35.png"
+  ],
+  "view_title": "Column grid master for บ้านอารยสถาปัตย์ 3 -- derived from S-02 (แปลนฐานรากเสาเข็ม เสาตอม่อ, PNG 35 / printed 33). 4 x 4 grid, 13.00 m x 11.00 m overall.",
+  "grid": {
+    "x_lines": [
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named",
+        "source": "S-02"
+      },
+      {
+        "id": "2",
+        "pos_m": 4.0,
+        "type": "named",
+        "source": "S-02"
+      },
+      {
+        "id": "3",
+        "pos_m": 9.0,
+        "type": "named",
+        "source": "S-02"
+      },
+      {
+        "id": "4",
+        "pos_m": 13.0,
+        "type": "named",
+        "source": "S-02"
+      }
+    ],
+    "y_lines": [
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named",
+        "source": "S-02"
+      },
+      {
+        "id": "B",
+        "pos_m": 2.0,
+        "type": "named",
+        "source": "S-02"
+      },
+      {
+        "id": "C",
+        "pos_m": 6.0,
+        "type": "named",
+        "source": "S-02"
+      },
+      {
+        "id": "D",
+        "pos_m": 11.0,
+        "type": "named",
+        "source": "S-02"
+      }
+    ]
+  },
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Simple rectangular 4 x 4 grid, no dummy grids needed at foundation level. x spacings 4.00 / 5.00 / 4.00 sum to the printed 13.00 m; y spacings 2.00 / 4.00 / 5.00 sum to the printed 11.00 m -- both chains close exactly against their printed overall dimension.",
+    "This drawing set is CAD-drawn (2562/2019) and far cleaner than house 06's 2546 scan. NO break lines are used on S-02 -- the whole building fits at 1:100. That was the trap that caused a wrong grid decision on house 06, so it was checked for explicitly here and is absent.",
+    "Grid A is the SOUTH/bottom edge and carries only a partial row of footings; the building footprint is not a full 4 x 4 rectangle of columns (see the S-02 plan file).",
+    "The 1.20 / 0.80 sub-chain printed between grids A and B on the left, and the 1.60 dimension at the bottom right, locate off-grid footings F1 rather than defining new grid lines -- they are dimensions to isolated pad centres, not column lines, so no dummy grid was created for them.",
+    "Only ONE building in this set (unlike house 06's main block plus toilet block), so a single grid master covers everything.",
+    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+ "png": "38",
+ "doc_page": 36,
+ "printed_page": 36,
+ "discipline": "sanitary",
+ "sheet_code": "SN-05",
+ "sheet_name": "แปลนและไอโซเมตริกระบบสุขาภิบาลห้องน้ำ",
+ "pattern": "plan",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า38.png",
+ "wc_pipe_plan": {
+  "scale": "1:50", "footprint_m": "2.30x3.00",
+  "pipes": ["Ø2\"W", "Ø4\"S", "Ø3/4\"CW x3", "Ø1/2\"CW", "Ø2\"W", "Ø1 1/2\"V", "Ø2\"V", "Ø2\"AVC ชนิดด้านข้าง x2"]
+ },
+ "fixture_pipe_size_table": [
+  { "fixture": "โถส้วม (FT.)", "symbol": "WC.", "CW": "3/4", "S": "4", "V": "2", "W": "-" },
+  { "fixture": "อ่างล้างหน้า", "symbol": "LAV.", "CW": "3/4", "S": "-", "V": "1 1/2", "W": "2" },
+  { "fixture": "ฝักบัว", "symbol": "SH.", "CW": "3/4", "S": "-", "V": "-", "W": "-" },
+  { "fixture": "ก๊อกน้ำ", "symbol": "C.", "CW": "1/2", "S": "-", "V": "-", "W": "-" },
+  { "fixture": "อ่างล้าง", "symbol": "SINK.", "CW": "3/4", "S": "-", "V": "-", "W": "2" },
+  { "fixture": "ช่องระบายน้ำทิ้งที่พื้น", "symbol": "FD.", "CW": "-", "S": "-", "V": "-", "W": "2" }
+ ],
+ "septic_tank": {
+  "type": "ถังบำบัดน้ำเสียสำเร็จรูป ชนิดเกรอะ-กรอง ไร้อากาศ", "count": 1,
+  "volume_m3": { "settling": 1.0, "total": 1.3 },
+  "brands": ["PP รุ่น EC-5E", "DOS รุ่น DC-1.6Q", "BIOTECH รุ่น BT-1200", "WATER TREAT รุ่น WT-TAF-1.2Q (FRD)"]
+ },
+ "booster_pump": {
+  "type": "เครื่องสูบน้ำเพิ่มแรงดัน (BP.) ชนิด HOME PUMP", "power_watts": 200,
+  "control": "อัตโนมัติ ควบคุมด้วย PRESSURE SWITCH",
+  "brands": ["MITSUBISHI รุ่น WP-255", "HITACHI รุ่น WT-P250XX", "FUJIKA รุ่น FCP-250"]
+ },
+ "confidence_score": 0.82,
+ "confidence_flags": [],
+ "warnings": [
+  "op1 direct read (house 11). Septic tank volume here (1.0/1.3 m3) is much smaller than houses 08-10's septic tanks (typically 1.0/1.25 m3 minimum per unit but usually 2 tanks) — consistent with this being a single-occupant accessible house, only 1 septic tank needed for 1 bathroom.",
+  "Booster pump spec (200W, automatic pressure-switch HOME PUMP) matches the BP. equipment symbol seen on SN-04's floor plan west of grid 1."
+ ]
+}

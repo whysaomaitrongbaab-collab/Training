@@ -1,0 +1,143 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "printed_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานรากแผ่",
+  "pattern": "plan",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า23.png",
+  "view_title": "แปลนฐานรากแผ่ 1:100",
+  "grid_source": "raw_json_ตัวที่ใช้งานจริง/10บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า00_gridline.json",
+  "grid_dims_note": {
+    "x_axis_m": {
+      "1": 0.0,
+      "2": 3.2,
+      "3": 6.4,
+      "4": 9.6
+    },
+    "y_axis_m": {
+      "A": 0.0,
+      "B": 3.15,
+      "C": 4.95,
+      "D": 8.55,
+      "E": 10.55,
+      "F": 14.55
+    }
+  },
+  "elements": [
+    {
+      "element_id": "F0.80x0.80",
+      "element_type": "footing",
+      "column_mark": "C1A",
+      "printed_as": "(F0.80x0.80),C1A",
+      "footing_size_m": [
+        0.8,
+        0.8
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "count": 2,
+      "grid_refs": [
+        "F1",
+        "F4"
+      ]
+    },
+    {
+      "element_id": "F1.00x1.00",
+      "element_type": "footing",
+      "column_mark": "C1A",
+      "printed_as": "(F1.00x1.00),C1A",
+      "footing_size_m": [
+        1.0,
+        1.0
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "count": 2,
+      "grid_refs": [
+        "F2",
+        "F3"
+      ]
+    },
+    {
+      "element_id": "F1.00x1.00",
+      "element_type": "footing",
+      "column_mark": "C1",
+      "printed_as": "(F1.00x1.00),C1",
+      "footing_size_m": [
+        1.0,
+        1.0
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "count": 10,
+      "grid_refs": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "element_id": "F0.80x0.80",
+      "element_type": "footing",
+      "column_mark": "C1",
+      "printed_as": "(F0.80x0.80),C1",
+      "footing_size_m": [
+        0.8,
+        0.8
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "column_mark_conflicts_with_S-03"
+      ],
+      "note": "S-02 prints C1 here but S-03 (pile alternative) prints C1A at the same position -- see warnings.",
+      "count": 2,
+      "grid_refs": [
+        "C1",
+        "C4"
+      ]
+    },
+    {
+      "element_id": "F0.60x0.60",
+      "element_type": "footing",
+      "column_mark": "C1A",
+      "printed_as": "(F0.60x0.60),C1A",
+      "footing_size_m": [
+        0.6,
+        0.6
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "count": 4,
+      "grid_refs": [
+        "B2",
+        "B3",
+        "A3",
+        "A4"
+      ]
+    }
+  ],
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "FOOTING MARKS ARE SIZE-BASED, NOT NUMBERED. This sheet has no F1/F2-style marks: every footing is labelled '(F<width>x<length>),<column mark>', e.g. (F0.80x0.80),C1A. element_id therefore carries the printed size mark verbatim (F0.60x0.60 / F0.80x0.80 / F1.00x1.00) and the column mark is kept in column_mark. 3 footing sizes x 2 column marks appear; 20 footings total.",
+    "LAYOUT IS NOT A FULL 4 x 6 GRID. Rows F, E, D, C carry 4 footings each (grids 1-4); row B has only B-2 and B-3 (เฉลียง porch columns); row A has only A-3 and A-4 (carport columns). Verified at 3x zoom -- the row-A pair sits on grids 3 and 4, not 2 and 3 (a low-zoom first read got this wrong and was corrected against the grid-line overlay).",
+    "COLUMN MARK CONFLICT WITH S-03 AT C-1 AND C-4: this sheet prints (F0.80x0.80),C1 at both, but S-03's pile-footing alternative prints F4,C1A at the same two positions (re-verified at ~5x on both sheets). The other 18 positions carry identical column marks on both sheets (C1A on rows F/B/A, C1 on rows E/D and C-2/C-3). The column above a given position should not depend on which foundation alternative is built, so one sheet carries a misprint -- undecidable 1-vs-1 at Stage 1; recorded as printed here, flagged on the two elements, and handed to Stage 2 via phase_note (S-10/S-07 hold the evidence).",
+    "This sheet and S-03 are ALTERNATIVE foundation schemes for the same house (ฐานรากแผ่ spread vs ฐานรากตอกเข็ม driven-pile) -- the BOQ section of this set is split into the same two groups (แบบฐานรากแผ่ PNG52-61, แบบฐานรากเสาเข็ม PNG62-71 per the Stage-0 manifest). Both plans place footings at the identical 20 grid positions.",
+    "All 20 footings sit exactly ON named grid intersections -- no dummy grids are used at foundation level (the 5 dummy lines in the grid master exist for superstructure beams on S-04/S-05 only). No drawing break lines on this sheet (checked at ~4.5x, see grid master).",
+    "Both dimension chains on this sheet close: 3.20+3.20+3.20 = 9.60 printed, 3.15+1.80+3.60+2.00+4.00 = 14.55 printed (bottom-to-top). This sheet is the grid master's primary source.",
+    "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 20 entries -> 5. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched.",
+    "[from phase_note, folded 2026-08-02 per schema section 2a] Stage 1: column mark at C-1 and C-4 is C1 on this sheet but C1A on S-03 (both re-read at ~5x zoom; every other position agrees between the two sheets). 1 sheet vs 1 sheet -- not resolvable from the two footing plans alone. Stage 2: check S-10 (แบบขยายการเสริมเหล็กเสา) and S-07 (แบบขยายฐานรากแผ่) for which mark actually exists at those positions, then rewrite the warning in both footing files.",
+    "NORMALIZED_2026-08-02: phase_note folded into warnings[] and the field removed - section 2a says a file still carrying phase_note is by definition unfinished. The questions inside were NOT resolved (that needs the sheets open); they are preserved verbatim above so the next reader still sees them."
+  ]
+}

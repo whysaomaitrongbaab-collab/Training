@@ -1,0 +1,83 @@
+{
+  "png": "30",
+  "doc_page": 28,
+  "printed_page": 28,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "แบบขยายฐานรากแบบตอกเข็ม 2/2",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า30.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 10). Completes the pile-footing detail series with S-08 (F3) — F4 and F6 shown here. Pile counts per mark (3/4/6) match the standard F<n>=n-piles convention noted in houses 07's diary entry, confirmed independently here.",
+    "NORMALIZED_2026-08-02: main_bar/stirrup were stored as free-text strings in this house (only houses 10 and 11 did this; the other 9 use nested objects). Converted to the schema section 6 object form. The exact original string is preserved verbatim in printed_as on every converted field, so nothing was lost and the parse can be re-checked against the drawing. 'Ø' was read as type RB per schema section 6. Thai annotations in parentheses (lap-splice/continuation notes) were carried into note. A 'tie'/'tie_bar' key was renamed to 'stirrup' to match the other houses. ⚠️ Bars printed with a mid-span/L-8 qualifier were NOT merged into a face count — that needs the section-7 leader-line check against the drawing image, which has not been done for this house yet.",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (footing_types) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "F4",
+      "element_type": "footing",
+      "scale": "1:20",
+      "pile_count": 4,
+      "size_printed_as": "0.85 (0.20+0.225+0.225+0.20) square, 2x2 pile grid",
+      "column_width_mm": 200,
+      "column_height_mm": 200,
+      "column_size_printed_as": "0.20x0.20",
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "5-Ø9มม.+3-Ø12มม. (⌐ bent)",
+        "mixed_dia_mm": [
+          9,
+          12
+        ],
+        "face": "bottom"
+      },
+      "pile_head_dowel": "1-Ø12มม. ยาว 1.00ม. กรอกคอนกรีตลึก 0.50ม.",
+      "pile_spec": "เสาเข็มจำนวน 4 ต้น",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "รัดโดยรอบ",
+        "printed_as": "Ø9มม. รัดโดยรอบ"
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_footing_types_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "F6",
+      "element_type": "footing",
+      "scale": "1:20",
+      "pile_count": 6,
+      "size_printed_as": "1.30 (0.20+0.45+0.45+0.20) x 0.85, 2x3 pile grid",
+      "column_width_mm": 300,
+      "column_height_mm": 300,
+      "column_size_printed_as": "0.30x0.30",
+      "main_bar": {
+        "count": 12,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "7-Ø12มม.+5-Ø12มม. (⌐ bent)",
+        "face": "bottom"
+      },
+      "pile_head_dowel": "1-Ø12มม. ยาว 1.00ม. กรอกคอนกรีตลึก 0.50ม.",
+      "pile_spec": "เสาเข็มจำนวน 6 ต้น",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "รัดโดยรอบ",
+        "printed_as": "Ø9มม. รัดโดยรอบ"
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_footing_types_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
+}

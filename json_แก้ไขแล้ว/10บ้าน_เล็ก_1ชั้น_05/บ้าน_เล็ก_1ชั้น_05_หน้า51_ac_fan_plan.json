@@ -1,0 +1,34 @@
+{
+ "png": "51",
+ "doc_page": 49,
+ "printed_page": 49,
+ "discipline": "mechanical",
+ "sheet_code": "M-01",
+ "sheet_name": "ตำแหน่งติดตั้งเครื่องปรับอากาศและพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+ "pattern": "plan",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า51.png",
+ "grid_source": "raw_json_ตัวที่ใช้งานจริง/10บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า00_gridline.json",
+ "equipment": [
+  { "type": "WALL TYPE AC", "capacity_btu": 12000, "room": "นอน 2" },
+  { "type": "WALL TYPE AC", "capacity_btu": 12000, "room": "นอน 1" },
+  { "type": "WALL TYPE AC", "capacity_btu": 12000, "room": "นอน 3" },
+  { "type": "CEILING FAN", "capacity_cfm": 40, "room": "นอน 2 (ceiling exhaust vent above unit)" },
+  { "type": "CEILING FAN", "capacity_cfm": 40, "room": "นอน 1" },
+  { "type": "CEILING FAN", "capacity_cfm": 120, "room": "ห้องน้ำ (ซ้าย, ติดครัว)" },
+  { "type": "CEILING FAN", "capacity_cfm": 120, "room": "ห้องน้ำ (ขวา, ติดนอน1)" },
+  { "type": "CEILING FAN", "capacity_cfm": 40, "room": "นอน 3" },
+  { "type": "PROPELLER FAN TYPE", "capacity_cfm": 400, "room": "ห้องครัว" },
+  { "type": "EXHAUST AIR GRILL W/INS", "size_in": "4x4", "count": 2, "room": "roof vent above นอน1/นอน2 shared wall" },
+  { "type": "EXHAUST AIR GRILL W/INS", "size_in": "6x6", "count": 2, "room": ["ห้องน้ำ ซ้าย", "ห้องน้ำ ขวา"] },
+  { "type": "EXHAUST AIR GRILL W/INS", "size_in": "4x4", "count": 1, "room": "นอน 3 (near WALL TYPE AC)" }
+ ],
+ "confidence_score": 0.8,
+ "confidence_flags": [],
+ "warnings": [
+  "op1 direct read (house 10). LAST SHEET of mechanical section (M-01, 1/1) — MECHANICAL DISCIPLINE (M) COMPLETE for this house.",
+  "3 AC units all 12,000 BTU, matching EE-04's 'ไม่เกิน 12,000' breaker/wire row exactly — no 18,000 BTU unit actually used despite EE-04 defining that spec too (kept as a general provision, not this house's actual equipment).",
+  "Only bedrooms get wall-type AC; living/dining (ทานอาหาร/พักผ่อน) and ครัว/ซักล้าง rely on ceiling fans + exhaust only — no AC in common areas, consistent with a budget disaster-relief house design."
+ ]
+}

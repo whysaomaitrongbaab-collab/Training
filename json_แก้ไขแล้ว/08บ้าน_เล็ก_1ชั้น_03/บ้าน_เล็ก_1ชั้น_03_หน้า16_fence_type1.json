@@ -1,0 +1,94 @@
+{
+  "png": "16",
+  "doc_page": 14,
+  "printed_page": 14,
+  "discipline": "architectural",
+  "sheet_code": "A-14",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 1",
+  "pattern": "section",
+  "building": null,
+  "view_title": "แบบขยายรั้วแบบที่ 1 (แปลน + รูปด้านหน้า + รูปตัด + รายละเอียดเสริมเหล็ก)",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า16.png",
+  "grid_source": null,
+  "specs": {
+    "C1": {
+      "element_type": "column",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "concrete_grade": "fc210",
+      "note": "เสารั้ว C1 0.20x0.20 ม., ระยะเสาไม่เกิน 3.00 ม.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    "GB": {
+      "element_type": "ground_beam",
+      "width_mm": 200,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 1,
+          "dia_mm": 9,
+          "position": "bent L/5",
+          "note": "1ø9 BENT L/5"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "concrete_grade": "fc210",
+      "note": "คานคอดินรั้ว GB",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  },
+  "elements": [
+    {
+      "element_id": "fence_panel_steel",
+      "element_type": "fence_infill",
+      "material": "steel",
+      "description": "ซี่กรงเหล็ก ⌀3/4\"x3/4\" LG. ปลายตัด45องศา @15ซม. ระหว่างเสา C1, สูง 2.00 ม.",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "pile_F",
+      "element_type": "footing",
+      "description": "เสาเข็ม ⌀2-0.15x0.15x4.00ม., DOWEL ⌀12 ยาว 1.00ม., เทคอนกรีตยึดกับเสาเข็ม, ฐาน F 0.75x(0.10+0.55+0.10)",
+      "depth_m": 0.9,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 08). All-steel-picket fence type 1 (no cement-block infill, contrast รั้วแบบที่ 2). Rebar specs for C1 (column) and GB (ground beam) confirmed identical to รั้วแบบที่ 2's own C1/GB callouts on the sibling sheet A-15 — both fence types share the same post/beam structural spec, only the infill panel differs.",
+    "Section+plan+elevation all on one sheet with no separate main-house grid — classified 'section' (has rebar spec) per spec's precedence over 'plan' for a sheet whose primary content is member spec, not floor layout; grid_source left null (freestanding fence, not tied to the house grid).",
+    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: pile_F. Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the drawing never marked it)."
+  ]
+}

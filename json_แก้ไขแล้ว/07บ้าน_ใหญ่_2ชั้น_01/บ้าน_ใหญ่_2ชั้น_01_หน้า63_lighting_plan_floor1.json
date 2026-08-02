@@ -1,0 +1,261 @@
+{
+ "png": "63",
+ "doc_page": 63,
+ "printed_page": 61,
+ "discipline": "electrical",
+ "sheet_code": "EE-03",
+ "sheet_name": "ผังระบบไฟฟ้าแสงสว่างชั้น 1",
+ "pattern": "plan",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า63.png",
+ "view_title": "ผังระบบไฟฟ้าแสงสว่างชั้น 1  1:100",
+ "grid_source": "raw_json_ตัวที่ใช้งานจริง/07บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า00_gridline.json",
+ "grid_dims_note": {
+  "x_axis_m": {
+   "1": 0.0,
+   "2": 4.0,
+   "3": 9.0,
+   "4": 13.0
+  },
+  "y_axis_m": {
+   "A": 0.0,
+   "B": 2.0,
+   "C": 6.0,
+   "D": 11.0
+  }
+ },
+ "title_block": {
+  "drawing_no": "EE 62062",
+  "date": "ม.ค. 2562",
+  "scale": "1:100"
+ },
+ "elements": [
+  {
+   "element_id": "CU",
+   "element_type": "consumer_unit",
+   "grid_ref": "~B-C x 3 (ผนังข้างทานอาหาร ติดกับจอดรถ)",
+   "circuit_ref": "1/CU",
+   "confidence_score": 0.88,
+   "confidence_flags": [],
+   "note": "Consumer unit position, tagged 'CU' with the home-run marked '1/CU'. EE-01 sets it at 1.80 m to the top of the panel."
+  },
+  {
+   "element_id": "วงจรแสงสว่างชั้น 1",
+   "element_type": "lighting_circuit_set",
+   "switch_groups": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m"
+   ],
+   "home_run": "1/CU",
+   "confidence_score": 0.82,
+   "confidence_flags": [
+    "group_membership_read_at_page_scale"
+   ],
+   "note": "Lighting on this floor is organised into lettered switch groups a-m, each letter appearing on both the switch and the luminaires it controls. Group 'a' is the largest -- it runs right round the outside of the house."
+  },
+  {
+   "element_id": "ตำแหน่งสวิตซ์รวม (a,b,c / d,e,f)",
+   "element_type": "switch_bank",
+   "grid_ref": "~B x 2 (ข้างทางเข้าเฉลียง)",
+   "groups": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f"
+   ],
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "note": "A six-gang bank by the terrace entrance, drawn as two stacks tagged 'a,b,c' and 'd,e,f' -- the main entrance switching point."
+  },
+  {
+   "element_id": "ตำแหน่งสวิตซ์ (g,h)",
+   "element_type": "switch_bank",
+   "grid_ref": "~C x 1-2",
+   "groups": [
+    "g",
+    "h"
+   ],
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ดวงโคมภายนอก (กลุ่ม a)",
+   "element_type": "luminaire_group",
+   "group": "a",
+   "count": 6,
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "count_read_from_symbols"
+   ],
+   "note": "Wall lights round the perimeter -- at the north-west corner, both front corners, the east side and the car port. EE-01 sets wall lights at 2.30 m."
+  },
+  {
+   "element_id": "ดวงโคมห้องนอน 1 (กลุ่ม g, h)",
+   "element_type": "luminaire_group",
+   "groups": [
+    "g",
+    "h"
+   ],
+   "room": "ห้องนอน 1",
+   "count": 4,
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "count_read_from_symbols"
+   ]
+  },
+  {
+   "element_id": "ดวงโคมห้องน้ำ (กลุ่ม i)",
+   "element_type": "luminaire_group",
+   "group": "i",
+   "room": "ห้องน้ำ",
+   "count": 2,
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "count_read_from_symbols"
+   ],
+   "note": "TWO crossed-circle fittings in the bathroom; the solid 'i' dot outside the door is the switch. Re-counted at high zoom 2026-07-28 (recording a reversal): the first pass counted the group's solid-dot SWITCH as a luminaire. Fitting symbols are crossed-circles/battens; solid dots are switches."
+  },
+  {
+   "element_id": "ดวงโคมบันได (กลุ่ม j)",
+   "element_type": "luminaire_group",
+   "group": "j",
+   "room": "บันได ST-1",
+   "count": 1,
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "count_read_from_symbols"
+   ],
+   "note": "ONE batten fitting at the head of the stair on this floor; the solid 'j' dot at the stair foot is this floor's end of the two-way (สวิตซ์ 3 ทาง) pair. Re-counted at high zoom 2026-07-28 (recording a reversal): the first pass counted the group's solid-dot SWITCH as a luminaire. Fitting symbols are crossed-circles/battens; solid dots are switches."
+  },
+  {
+   "element_id": "ดวงโคมห้องครัว/ซักล้าง (กลุ่ม k, m)",
+   "element_type": "luminaire_group",
+   "groups": [
+    "k",
+    "m"
+   ],
+   "rooms": [
+    "ห้องครัว",
+    "ซักล้าง"
+   ],
+   "count": 3,
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "count_read_from_symbols"
+   ],
+   "note": "k = TWO vertical battens in the kitchen; m = ONE batten on the laundry wall (the +2.30 fitting). The solid k and m dots by the doors are switches. Re-counted at high zoom 2026-07-28 (recording a reversal): the first pass counted the group's solid-dot SWITCH as a luminaire. Fitting symbols are crossed-circles/battens; solid dots are switches."
+  },
+  {
+   "element_id": "ดวงโคมจอดรถ (กลุ่ม l)",
+   "element_type": "luminaire_group",
+   "group": "l",
+   "room": "จอดรถ",
+   "count": 2,
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "count_read_from_symbols"
+   ],
+   "note": "TWO battens on the car-port centre line; the solid 'l' dot by the kitchen door (stacked under the k dot) is the switch. Re-counted at high zoom 2026-07-28 (recording a reversal): the first pass counted the group's solid-dot SWITCH as a luminaire. Fitting symbols are crossed-circles/battens; solid dots are switches."
+  },
+  {
+   "element_id": "ดวงโคมพักผ่อน/ทานอาหาร (กลุ่ม c, d, e, f)",
+   "element_type": "luminaire_group",
+   "groups": [
+    "c",
+    "d",
+    "e",
+    "f"
+   ],
+   "rooms": [
+    "พักผ่อน",
+    "ทานอาหาร"
+   ],
+   "count": 10,
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "count_read_from_symbols"
+   ],
+   "note": "Re-counted at high zoom 2026-07-28 (recording a reversal; first pass said 7): c = 2, d = 2 (พักผ่อน), e = 3, f = 3 (ทานอาหาร/โถง -- one e and one f sit in the โถง strip just south of row C). Total TEN crossed-circle fittings; the c-f switches live in the six-gang entrance bank already recorded separately."
+  },
+  {
+   "element_id": "ระดับติดตั้ง +2.30",
+   "element_type": "level_reference",
+   "level_m": 2.3,
+   "grid_ref": "~D x 3-4 (ซักล้าง)",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "note": "The only mounting level printed on this plan -- +2.30 by the laundry, matching EE-01's wall-light height."
+  },
+  {
+   "element_id": "ระยะในแนวตัวเลข",
+   "element_type": "dimension_chain",
+   "chain_m": [
+    4.0,
+    5.0,
+    4.0
+   ],
+   "total_m": 13.0,
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ระยะในแนวตัวอักษร",
+   "element_type": "dimension_chain",
+   "chain_m": [
+    5.0,
+    4.0,
+    2.0
+   ],
+   "total_m": 11.0,
+   "extra_m": {
+    "below_A": [
+     1.6,
+     1.2,
+     0.4
+    ]
+   },
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ดวงโคมเฉลียง (กลุ่ม b)",
+   "element_type": "luminaire_group",
+   "group": "b",
+   "room": "เฉลียง",
+   "count": 1,
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "count_read_from_symbols"
+   ],
+   "note": "ADDED on high-zoom re-count 2026-07-28 -- missed entirely by the first pass: ONE batten fitting at the เฉลียง (terrace), controlled from the 'b' gang of the six-gang entrance bank. With this, every lettered group a-m has at least one recorded fitting."
+  }
+ ],
+ "confidence_score": 0.82,
+ "confidence_flags": [
+  "luminaire_counts_read_from_symbols"
+ ],
+ "warnings": [
+  "Ground-floor lighting plan. Luminaires and switches are tied together by LETTERED SWITCH GROUPS (a to m) -- each letter appears on the switch and again on every luminaire it controls, with a curved line drawn between them.",
+  "*** LUMINAIRE COUNTS ON THIS SHEET ARE READ FROM THE DRAWN SYMBOLS, NOT FROM ANY SCHEDULE. *** RE-COUNTED AT HIGH ZOOM 2026-07-28, recording several reversals: the first pass systematically counted each group's solid-dot SWITCH as one of its luminaires and also under-counted the living zone. Corrected counts: a=6 (unchanged), b=1 (previously missed entirely), c-f=10 (was 7: c2/d2/e3/f3), g-h=4 (unchanged), i=2 (was 3), j=1 (was 2), k+m=3 (was 5), l=2 (was 3) -- TOTAL 29 fittings on this floor. Symbol key that resolves it: crossed-circle or batten-bar = fitting; small solid dot = switch. There is still no lighting schedule anywhere in the electrical set (EE-01 gives types only), so these counts remain the only quantity source and carry count_read_from_symbols.",
+  "The group letters are legible but which luminaire belongs to which group is read at 1:100 and is the least certain part -- flagged group_membership_read_at_page_scale.",
+  "THE ENTRANCE SWITCH BANK IS SIX GANGS (a,b,c and d,e,f in two stacks) by the terrace door -- the main switching point for the living areas and the exterior.",
+  "GROUP 'a' IS THE EXTERIOR CIRCUIT and it wraps the whole house: north-west corner, both front corners, the east side and the car port. Those are the 2.30 m wall lights from EE-01.",
+  "The stair group (j) is switched at top and bottom, which is what EE-01's สวิตซ์ 3 ทาง (two-way switch) entry is for.",
+  "Only one mounting level is printed on the plan, +2.30 at the laundry -- everything else relies on EE-01's legend heights.",
+  "The consumer unit sits on the wall between ทานอาหาร and จอดรถ, with the home run tagged 1/CU."
+ ]
+}

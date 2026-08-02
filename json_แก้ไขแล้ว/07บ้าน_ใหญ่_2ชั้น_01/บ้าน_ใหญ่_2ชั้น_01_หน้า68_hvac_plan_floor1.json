@@ -1,0 +1,196 @@
+{
+ "png": "68",
+ "doc_page": 68,
+ "printed_page": 66,
+ "discipline": "mechanical",
+ "sheet_code": "M-02",
+ "sheet_name": "แปลนระบบปรับอากาศและระบายอากาศชั้น 1",
+ "pattern": "plan",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า68.png",
+ "view_title": "แปลนระบบปรับอากาศและระบายอากาศชั้น 1  1:100",
+ "grid_source": "raw_json_ตัวที่ใช้งานจริง/07บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า00_gridline.json",
+ "grid_dims_note": {
+  "x_axis_m": {
+   "1": 0.0,
+   "2": 4.0,
+   "3": 9.0,
+   "4": 13.0
+  },
+  "y_axis_m": {
+   "A": 0.0,
+   "B": 2.0,
+   "C": 6.0,
+   "D": 11.0
+  }
+ },
+ "title_block": {
+  "drawing_no": "M 62028",
+  "date": "ม.ค. 2562",
+  "scale": "1:100"
+ },
+ "elements": [
+  {
+   "element_id": "FCS-1/01",
+   "element_type": "fan_coil_unit",
+   "fan_coil_type": "CASSETTE TYPE",
+   "capacity_mbh": 24.0,
+   "capacity_btu_hr": 24000,
+   "room": "พักผ่อน",
+   "grid_ref": "~B-C x 1-2",
+   "paired_with": "CU-1/01",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "FCS-1/02",
+   "element_type": "fan_coil_unit",
+   "fan_coil_type": "CASSETTE TYPE",
+   "capacity_mbh": 24.0,
+   "capacity_btu_hr": 24000,
+   "room": "ทานอาหาร",
+   "grid_ref": "~B-C x 2-3",
+   "paired_with": "CU-1/02",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "FCW-1/03",
+   "element_type": "fan_coil_unit",
+   "fan_coil_type": "WALL TYPE",
+   "capacity_mbh": 18.0,
+   "capacity_btu_hr": 18000,
+   "room": "ห้องนอน 1",
+   "grid_ref": "~C-D x 1-2",
+   "paired_with": "CU-1/03",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "CU-1/01",
+   "element_type": "condensing_unit",
+   "grid_ref": "~C x 1 (ผนังนอกด้านตะวันตก)",
+   "serves": "FCS-1/01",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "CU-1/02",
+   "element_type": "condensing_unit",
+   "grid_ref": "~C x 1 (ผนังนอกด้านตะวันตก)",
+   "serves": "FCS-1/02",
+   "confidence_score": 0.88,
+   "confidence_flags": [],
+   "note": "CORRECTED on high-zoom re-read 2026-07-28 (was: 'stacked one above the other'): CU-1/01 and CU-1/02 are drawn as two separate twin-fan units SIDE BY SIDE ALONG the west wall in plan -- CU-1/02 the northern one, CU-1/01 the southern -- not physically stacked. Nothing on this sheet says ซ้อน; the stacking reading came from misreading plan-view adjacency. Each still needs its own M-04 steel frame with vibration pads."
+  },
+  {
+   "element_id": "CU-1/03",
+   "element_type": "condensing_unit",
+   "grid_ref": "~D x 2 (ผนังนอกด้านเหนือ)",
+   "serves": "FCW-1/03",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "CEF-1",
+   "element_type": "exhaust_fan",
+   "capacity_cfm": 50,
+   "room": "ห้องน้ำ ชั้น 1",
+   "grid_ref": "~C-D x 2 (แถบตู้/ทางเข้าห้องน้ำ ฝั่งห้องนอน 1)",
+   "duct": {
+    "grille": "EAG 6\"x4\"",
+    "flex_dia_in": 6,
+    "printed_as": "EAG 6\"x4\" w/ins FLEX-ø6\""
+   },
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "room_attribution_ambiguous_at_1to100"
+   ],
+   "note": "Position clarified at high zoom 2026-07-28: the CEF-1 fan symbol sits in the NARROW STRIP just WEST of the bathroom's west wall -- the ห้องนอน 1 closet/vestibule strip at the bathroom entrance -- not inside the bathroom proper (CEF-3 is the fan inside the room). Its ø6\" flex rises to the EAG 6\"x4\" grille on the north wall beside CU-1/03. Whether that strip counts as bathroom or bedroom space is not resolvable at 1:100, so the room attribution is flagged. M-01 schedules CEF-1 quantity 3; the other two are upstairs."
+  },
+  {
+   "element_id": "CEF-2",
+   "element_type": "exhaust_fan",
+   "capacity_cfm": 80,
+   "grid_ref": "~B x 2-3 (ใต้ฝ้าเฉลียง/ทางเข้า)",
+   "duct": {
+    "grille": "EAG 6\"x6\"",
+    "flex_dia_in": 6,
+    "printed_as": "EAG 6\"x6\" w/ins FLEX-ø6\""
+   },
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "CEF-3",
+   "element_type": "exhaust_fan",
+   "capacity_cfm": 230,
+   "grid_ref": "~C-D x 2 (ในห้องน้ำ ระหว่างอ่างล้างหน้ากับโถส้วม)",
+   "duct": {
+    "grille": "EAG 10\"x8\"",
+    "flex_dia_in": 10,
+    "printed_as": "EAG 10\"x8\" w/ins FLEX-ø10\""
+   },
+   "confidence_score": 0.88,
+   "confidence_flags": [],
+   "note": "REWRITTEN on high-zoom re-read 2026-07-28 (recording a reversal; was: 'ช่องบันได/โถง -- exhausts the stair/hall zone'). The CEF-3 fan symbol sits INSIDE the ground-floor bathroom, between the basin and the WC, with its ø10\" insulated flex rising through the bathroom to the EAG 10\"x8\" grille on the north exterior wall. It is the bathroom's main extract (230 CFM), not a stair/hall fan. M-01's schedule has CEF-3 quantity 2 -- this is one of the pair, the other is upstairs on M-03."
+  },
+  {
+   "element_id": "EF-1",
+   "element_type": "exhaust_fan",
+   "capacity_cfm": 520,
+   "fan_type": "PROPELLER FAN (WALL MOUNT TYPE)",
+   "room": "ห้องครัว",
+   "grid_ref": "~D x 3-4",
+   "confidence_score": 0.9,
+   "confidence_flags": [],
+   "note": "The kitchen wall fan -- the only propeller fan in the house, and by far the largest at 520 CFM."
+  },
+  {
+   "element_id": "CU By.EE",
+   "element_type": "connection_note",
+   "grid_ref": "~C x 3",
+   "confidence_score": 0.88,
+   "confidence_flags": [],
+   "note": "Points at the electrical consumer unit with 'By.EE' -- the mechanical set takes its supply from there, matching M-01's note 4 and EE-02's 'BY ME' bracket. The two disciplines each defer to the other, and between them the arrangement is fully defined."
+  },
+  {
+   "element_id": "ระยะในแนวตัวเลข",
+   "element_type": "dimension_chain",
+   "chain_m": [
+    4.0,
+    5.0,
+    4.0
+   ],
+   "total_m": 13.0,
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ระยะในแนวตัวอักษร",
+   "element_type": "dimension_chain",
+   "chain_m": [
+    5.0,
+    4.0,
+    2.0
+   ],
+   "total_m": 11.0,
+   "extra_m": {
+    "below_A": 1.6
+   },
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  }
+ ],
+ "confidence_score": 0.89,
+ "confidence_flags": [],
+ "warnings": [
+  "Ground-floor HVAC plan. Three fan coils (two 24,000 BTU/Hr cassettes over the living/dining space and one 18,000 BTU/Hr wall unit in ห้องนอน 1) with their three condensing units, plus four exhaust fans.",
+  "*** THE CONDENSING UNITS ARE ALL ON EXTERNAL WALLS -- REWRITTEN 2026-07-28 (recording a reversal): CU-1/01 and CU-1/02 sit SIDE BY SIDE along the west wall (02 north of 01), not stacked as first written; CU-1/03 is on the north wall. *** M-01 note 4 requires a steel frame and vibration pads under every one, and M-04 details it at 15 cm high on angle steel with 1\" isolators -- a real item that no structural or architectural sheet shows.",
+  "DUCT SIZES ARE TAGGED ON THE PLAN AND ONLY HERE: EAG 6\"x4\" with ø6\" insulated flex for the 50 CFM fan, 6\"x6\"/ø6\" for the 80 CFM, 10\"x8\"/ø10\" for the 230 CFM. M-01's fan schedule gives capacity but no duct.",
+  "The 520 CFM EF-1 propeller fan is in the KITCHEN and is the only wall-mounted fan in the house -- ten times the capacity of the bathroom fans.",
+  "'CU By.EE' on this plan and 'BY ME' on EE-02 are the two halves of the same handover: the mechanical engineer sizes the equipment and its breaker, the electrical engineer provides the board. Read together the arrangement is complete; read separately each sheet looks incomplete.",
+  "Cassette units are drawn in the CEILING of the living and dining areas, which matters against A-12's 2.50 m ground-floor ceiling -- a cassette needs plenum depth above it that the architectural section does not show."
+ ]
+}

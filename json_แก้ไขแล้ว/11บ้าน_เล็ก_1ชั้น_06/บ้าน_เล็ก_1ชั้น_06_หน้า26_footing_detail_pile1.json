@@ -1,0 +1,109 @@
+{
+  "png": "26",
+  "doc_page": 24,
+  "printed_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "ขยายฐานรากเสาเข็ม F1, F2, F3, F4",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า26.png",
+  "column_dowel": "เสาเข็มจำนวน 1/2/3/4 ต้น ตามมาร์ค แต่ละต้น dowel เชื่อมกับตะแกรงฐานราก",
+  "confidence_score": 0.75,
+  "confidence_flags": [
+    "dense_scan_moderate_confidence_on_exact_rebar_counts"
+  ],
+  "warnings": [
+    "op1 direct read (house 11). Pile footing sizes: F1=0.45x0.45 (1 pile), F2=0.45x0.90 (2 piles), F3=triangular 0.90 base (3 piles), F4=0.90x0.90 (4 piles) — matches S-03's plan marks. Continues on S-09 (F5, F7, F11).",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (footing_types) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "scale": "1:25",
+      "pile_count": 1,
+      "width_mm": 450,
+      "height_mm": 450,
+      "size_printed_as": "0.45x0.45",
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "8-Ø9มม. ตะแกรง 2 ทาง, ปลอก Ø9มม.@0.10ม."
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_footing_types_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "scale": "1:25",
+      "pile_count": 2,
+      "width_mm": 450,
+      "height_mm": 900,
+      "size_printed_as": "0.45x0.90",
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "5-Ø9มม. + 3-Ø12มม., ปลอก Ø9มม.@0.10ม.",
+        "mixed_dia_mm": [
+          9,
+          12
+        ]
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_footing_types_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "scale": "1:25",
+      "pile_count": 3,
+      "size_printed_as": "0.90 (triangular arrangement)",
+      "main_bar": {
+        "count": 10,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "5-Ø9มม. + 5-Ø12มม., ปลอก Ø9มม.@0.10ม.",
+        "mixed_dia_mm": [
+          9,
+          12
+        ]
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_footing_types_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "F4",
+      "element_type": "footing",
+      "scale": "1:25",
+      "pile_count": 4,
+      "width_mm": 900,
+      "height_mm": 900,
+      "size_printed_as": "0.90x0.90",
+      "main_bar": {
+        "count": 11,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "5-Ø9มม. + 6-Ø12มม. (2x2 pile grid), ปลอก Ø9มม.@0.10ม.",
+        "mixed_dia_mm": [
+          9,
+          12
+        ]
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_footing_types_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
+}

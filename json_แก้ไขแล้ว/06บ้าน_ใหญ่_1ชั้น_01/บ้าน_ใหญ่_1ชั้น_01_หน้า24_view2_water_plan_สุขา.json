@@ -1,0 +1,91 @@
+{
+ "png": "24",
+ "doc_page": 24,
+ "discipline": "sanitary",
+ "sheet_code": "SN-01",
+ "sheet_name": "แปลนสุขาภิบาล, สัญลักษณ์",
+ "pattern": "plan",
+ "building": "อาคารสุขารวม",
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §11a multi-building)",
+ "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า24.png",
+ "view_title": "แปลนท่อน้ำดี (อาคารสุขา) 1:75",
+ "grid_source": "raw_json_ตัวที่ใช้งานจริง/06บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า00b_gridline_สุขา.json",
+ "grid_dims_note": {
+  "x_axis_m": {
+   "1": 0.0,
+   "2": 6.0
+  },
+  "y_axis_m": {
+   "ก": 0.0,
+   "ข": 4.5,
+   "ค": 9.0
+  }
+ },
+ "elements": [
+  {
+   "element_id": "ท่อประปาเข้าอาคาร",
+   "element_type": "pipe",
+   "service": "CW",
+   "dia_in": 1.0,
+   "grid_ref": null,
+   "confidence_score": 0.86,
+   "confidence_flags": [],
+   "note": "printed 'ø1\" CW', running along the ค and ก sides from the incoming connection ('ต่อจากท่อประปาใกล้เคียง')."
+  },
+  {
+   "element_id": "ท่อประปาแยกเข้าห้อง",
+   "element_type": "pipe",
+   "service": "CW",
+   "dia_in": 0.75,
+   "count": 4,
+   "grid_ref": null,
+   "confidence_score": 0.84,
+   "confidence_flags": [],
+   "note": "printed 'ø3/4\" CW' -- four branch runs feeding the cubicle rows."
+  },
+  {
+   "element_id": "มาตรวัดน้ำ",
+   "element_type": "water_meter",
+   "dia_in": 0.5,
+   "grid_ref": null,
+   "confidence_score": 0.84,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ประตูน้ำ",
+   "element_type": "valve",
+   "dia_in": 0.5,
+   "grid_ref": null,
+   "confidence_score": 0.82,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ก๊อกน้ำ",
+   "element_type": "tap",
+   "count": 12,
+   "grid_ref": null,
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "count_read_at_page_resolution"
+   ],
+   "note": "One tap per cubicle, matching the twelve cubicles and the ① fixture tag on A-12."
+  },
+  {
+   "element_id": "ท่อ AC ø8\"",
+   "element_type": "drain_pipe",
+   "dia_in": 8.0,
+   "slope": "1:200",
+   "grid_ref": null,
+   "confidence_score": 0.86,
+   "confidence_flags": [],
+   "note": "Same ø8\" AC drain at 1:200 that A-03's site plan shows leaving the block."
+  }
+ ],
+ "confidence_score": 0.86,
+ "confidence_flags": [],
+ "warnings": [
+  "Cold-water plan for the toilet block. Incoming ø1\" main ('ต่อจากท่อประปาใกล้เคียง') rings the building, with ø3/4\" branches to the cubicle rows and a tap in each cubicle.",
+  "Meter and gate valve are both ø1/2\" per the legend -- smaller than the ø1\" main they sit on, which is unusual but is what is printed; transcribed rather than corrected.",
+  "Only the toilet block has a water plan. No plumbing is drawn for the main housing block anywhere in this set."
+ ]
+}

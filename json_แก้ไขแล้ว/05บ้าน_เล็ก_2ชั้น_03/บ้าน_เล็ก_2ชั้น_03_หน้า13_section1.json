@@ -10,19 +10,130 @@
   "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า13.png",
   "grid_source": "raw_json_ตัวที่ใช้งานจริง/05บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า00_gridline.json",
   "elements": [
-    { "element_id": "levels", "element_type": "datum", "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับพื้นชั้น 2 +3.75, ระดับคานหลังคา +6.65, ระดับหลังเสาล่าง +6.95, ระดับหลังเสาบน +8.05 (height chain above roof beam: 6.65 +0.30= 6.95, +1.10= 8.05)", "confidence_score": 0.82, "confidence_flags": [] },
-    { "element_id": "roof_structure_ref", "element_type": "roof_frame_reference", "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)", "description": "'โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง' (roof framing detailed on structural drawings, not shown here); two roof-detail callouts 'หลังคา ดูแบบขยาย R2 A-23' (left, near gridF) and 'หลังคา ดูแบบขยาย R1 A-23' (right, near gridB) both point to sheet A-23 (เชิงชาย/eave expansion detail) -- R1 and R2 likely denote two distinct eave-detail conditions (e.g. gable end vs eave side) on that one detail sheet. Small angle label '9°' (rotated text) near the roof ridge.", "confidence_score": 0.7, "confidence_flags": ["R1_vs_R2_distinction_not_confidently_resolved_pending_A-23_(หน้า24_per_index)", "9_degree_angle_label_may_be_a_different_value_than_the_roof_plan's_6_degree_slope_-_not_reconciled"] },
-    { "element_id": "ซักล้าง_cut", "element_type": "room_cut", "count": 1, "grid_ref": "near gridF, ground floor, box '3 +0.50 —'", "level_m": 0.50, "confidence_score": 0.78, "confidence_flags": [] },
-    { "element_id": "ทานอาหาร_cut", "element_type": "room_cut", "count": 1, "grid_ref": "gridF-gridE(approx), ground floor, box '1 +0.60 1', wall height 2.70", "level_m": 0.60, "wall_height_m": 2.70, "confidence_score": 0.78, "confidence_flags": [] },
-    { "element_id": "โถง_ground_cut", "element_type": "room_cut", "count": 1, "grid_ref": "gridD-gridC(approx), ground floor, box '1 +0.60', stair icon (hatched steps) visible", "level_m": 0.60, "confidence_score": 0.72, "confidence_flags": [] },
-    { "element_id": "พักผ่อน_cut", "element_type": "room_cut", "count": 1, "grid_ref": "gridC-gridB(approx), ground floor, box '1 +0.60 1', wall height 2.70", "level_m": 0.60, "wall_height_m": 2.70, "confidence_score": 0.78, "confidence_flags": [] },
-    { "element_id": "เฉลียง_ground_cut_stair", "element_type": "room_cut", "count": 1, "grid_ref": "near gridB-gridA, ground floor, box '3 +0.50 3', diagonal 'X' hatch with step lines, height 2.65", "level_m": 0.50, "wall_height_m": 2.65, "description": "This 'X'-hatched cut area with visible step/stair lines directly matches the ST1 entrance-stair feature confirmed on multiple other sheets (ground floor plan, รูปด้าน 2, this sheet's own bottom dimension chain -- see grid-relevant warning below).", "confidence_score": 0.68, "confidence_flags": ["needs_human_review_zoom_required"] },
-    { "element_id": "ทางเดิน_cut", "element_type": "room_cut", "count": 1, "grid_ref": "south of gridA, box '4 +0.20 —'", "level_m": 0.20, "confidence_score": 0.72, "confidence_flags": [] },
-    { "element_id": "นอน3_cut", "element_type": "room_cut", "count": 1, "grid_ref": "near gridF-gridE, upper floor, box '2 +3.75 1', wall height 2.60", "level_m": 3.75, "wall_height_m": 2.60, "confidence_score": 0.78, "confidence_flags": [] },
-    { "element_id": "นอน1_cut", "element_type": "room_cut", "count": 1, "grid_ref": "near gridC-gridB, upper floor, box '2 +3.75 1', wall height 2.60", "level_m": 3.75, "wall_height_m": 2.60, "confidence_score": 0.78, "confidence_flags": [] },
-    { "element_id": "ระเบียง_cut", "element_type": "room_cut", "count": 1, "grid_ref": "near gridB-gridA, upper floor, box '3 +3.65 3', 'ราวกันตก R1 ดูแบบขยาย' callout", "level_m": 3.65, "detail_ref": "A-23", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "กันสาด_คสล_cut", "element_type": "concrete_canopy", "grid_ref": "near gridA, roof level, box '5 +6.55 4'", "level_m": 6.55, "floor_material_no": 5, "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "overall_width", "element_type": "dimension", "description": "Bottom dimension chain: 1.00(north overhang) | 2.00(F-E) | 3.70(E-D) | 2.20(D-C) | 3.70(C-B) | 1.80(B-A) | 0.55 | 1.50, bracket '13.40' (gridF-gridA) then a separate '2.05' beyond grid A", "confidence_score": 0.8, "confidence_flags": [] }
+    {
+      "element_id": "levels",
+      "element_type": "datum",
+      "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับพื้นชั้น 2 +3.75, ระดับคานหลังคา +6.65, ระดับหลังเสาล่าง +6.95, ระดับหลังเสาบน +8.05 (height chain above roof beam: 6.65 +0.30= 6.95, +1.10= 8.05)",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "roof_structure_ref",
+      "element_type": "roof_frame_reference",
+      "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)",
+      "description": "'โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง' (roof framing detailed on structural drawings, not shown here); two roof-detail callouts 'หลังคา ดูแบบขยาย R2 A-23' (left, near gridF) and 'หลังคา ดูแบบขยาย R1 A-23' (right, near gridB) both point to sheet A-23 (เชิงชาย/eave expansion detail) -- R1 and R2 likely denote two distinct eave-detail conditions (e.g. gable end vs eave side) on that one detail sheet. Small angle label '9°' (rotated text) near the roof ridge.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "R1_vs_R2_distinction_not_confidently_resolved_pending_A-23_(หน้า24_per_index)",
+        "9_degree_angle_label_may_be_a_different_value_than_the_roof_plan's_6_degree_slope_-_not_reconciled"
+      ]
+    },
+    {
+      "element_id": "ซักล้าง_cut",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "near gridF, ground floor, box '3 +0.50 —'",
+      "level_m": 0.5,
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ทานอาหาร_cut",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "gridF-gridE(approx), ground floor, box '1 +0.60 1', wall height 2.70",
+      "level_m": 0.6,
+      "wall_height_m": 2.7,
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "โถง_ground_cut",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "gridD-gridC(approx), ground floor, box '1 +0.60', stair icon (hatched steps) visible",
+      "level_m": 0.6,
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "พักผ่อน_cut",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "gridC-gridB(approx), ground floor, box '1 +0.60 1', wall height 2.70",
+      "level_m": 0.6,
+      "wall_height_m": 2.7,
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "เฉลียง_ground_cut_stair",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "near gridB-gridA, ground floor, box '3 +0.50 3', diagonal 'X' hatch with step lines, height 2.65",
+      "level_m": 0.5,
+      "wall_height_m": 2.65,
+      "description": "This 'X'-hatched cut area with visible step/stair lines directly matches the ST1 entrance-stair feature confirmed on multiple other sheets (ground floor plan, รูปด้าน 2, this sheet's own bottom dimension chain -- see grid-relevant warning below).",
+      "confidence_score": 0.68,
+      "confidence_flags": [
+        "needs_human_review_zoom_required"
+      ]
+    },
+    {
+      "element_id": "ทางเดิน_cut",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "south of gridA, box '4 +0.20 —'",
+      "level_m": 0.2,
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "นอน3_cut",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "near gridF-gridE, upper floor, box '2 +3.75 1', wall height 2.60",
+      "level_m": 3.75,
+      "wall_height_m": 2.6,
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "นอน1_cut",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "near gridC-gridB, upper floor, box '2 +3.75 1', wall height 2.60",
+      "level_m": 3.75,
+      "wall_height_m": 2.6,
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ระเบียง_cut",
+      "element_type": "room_cut",
+      "count": 1,
+      "grid_ref": "near gridB-gridA, upper floor, box '3 +3.65 3', 'ราวกันตก R1 ดูแบบขยาย' callout",
+      "level_m": 3.65,
+      "detail_ref": "A-23",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "กันสาด_คสล_cut",
+      "element_type": "concrete_canopy",
+      "grid_ref": "near gridA, roof level, box '5 +6.55 4'",
+      "level_m": 6.55,
+      "floor_material_no": 5,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "overall_width",
+      "element_type": "dimension",
+      "description": "Bottom dimension chain: 1.00(north overhang) | 2.00(F-E) | 3.70(E-D) | 2.20(D-C) | 3.70(C-B) | 1.80(B-A) | 0.55 | 1.50, bracket '13.40' (gridF-gridA) then a separate '2.05' beyond grid A",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
   ],
   "confidence_score": 0.75,
   "confidence_flags": [],

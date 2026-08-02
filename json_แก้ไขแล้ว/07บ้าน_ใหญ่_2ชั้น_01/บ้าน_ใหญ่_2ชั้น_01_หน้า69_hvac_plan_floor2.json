@@ -1,0 +1,160 @@
+{
+ "png": "69",
+ "doc_page": 69,
+ "printed_page": 67,
+ "discipline": "mechanical",
+ "sheet_code": "M-03",
+ "sheet_name": "แปลนระบบปรับอากาศและระบายอากาศชั้น 2",
+ "pattern": "plan",
+ "building": null,
+ "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า69.png",
+ "view_title": "แปลนระบบปรับอากาศและระบายอากาศชั้น 2  1:100",
+ "grid_source": "raw_json_ตัวที่ใช้งานจริง/07บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า00_gridline.json",
+ "grid_dims_note": {
+  "x_axis_m": {
+   "1": 0.0,
+   "2": 4.0,
+   "3": 9.0,
+   "4": 13.0
+  },
+  "y_axis_m": {
+   "A": 0.0,
+   "B": 2.0,
+   "C": 6.0,
+   "D": 11.0
+  }
+ },
+ "title_block": {
+  "drawing_no": "M 62028",
+  "date": "ม.ค. 2562",
+  "scale": "1:100"
+ },
+ "elements": [
+  {
+   "element_id": "FCW-2/01",
+   "element_type": "fan_coil_unit",
+   "fan_coil_type": "WALL TYPE",
+   "capacity_mbh": 18.0,
+   "capacity_btu_hr": 18000,
+   "room": "ห้องนอน 2",
+   "grid_ref": "~B-C x 2-3",
+   "paired_with": "CU-2/01",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "FCW-2/02",
+   "element_type": "fan_coil_unit",
+   "fan_coil_type": "WALL TYPE",
+   "capacity_mbh": 24.0,
+   "capacity_btu_hr": 24000,
+   "room": "ห้องนอน 3",
+   "grid_ref": "~B-C x 1-2",
+   "paired_with": "CU-2/02",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "CU-2/01",
+   "element_type": "condensing_unit",
+   "grid_ref": "~(B+1.9) x 3+0.5 (บนหลังคา METAL SHEET เหนือจอดรถ/ระเบียง)",
+   "serves": "FCW-2/01",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "note": "REWRITTEN on high-zoom re-read 2026-07-28 (recording a reversal; was: 'sits on the single-storey wing's roof ... framed by S-05'). The unit sits on the dash-lined METAL SHEET roof area just east of grid 3, BELOW the tile/metal boundary line -- i.e. on the low terrace roof framed by S-04's steel (จันทัน C-150x75x9x12.5 @1.00 with C-100x50x20x3.2 purlins), NOT on the S-05 tiled wing. The M-04 steel support frame therefore lands on the S-04 terrace steel."
+  },
+  {
+   "element_id": "CU-2/02",
+   "element_type": "condensing_unit",
+   "grid_ref": "~B x 2 (ข้างเฉลียงชั้น 2)",
+   "serves": "FCW-2/02",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "CEF-1",
+   "element_type": "exhaust_fan",
+   "capacity_cfm": 50,
+   "room": "แต่งตัว",
+   "grid_ref": "~D x 1-2",
+   "duct": {
+    "grille": "EAG 6\"x4\"",
+    "flex_dia_in": 6,
+    "printed_as": "EAG 6\"x4\" w/ins FLEX-ø6\""
+   },
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "CEF-1",
+   "element_type": "exhaust_fan",
+   "capacity_cfm": 50,
+   "room": "ห้องนอน 2 (ผนังด้านใต้)",
+   "grid_ref": "~B x 2-3",
+   "duct": {
+    "grille": "EAG 6\"x4\"",
+    "flex_dia_in": 6,
+    "printed_as": "EAG 6\"x4\" w/ins FLEX-ø6\""
+   },
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "note": "Second CEF-1 on this floor -- with the one on M-02 that makes three, matching M-01's quantity of 3."
+  },
+  {
+   "element_id": "CEF-3",
+   "element_type": "exhaust_fan",
+   "capacity_cfm": 230,
+   "room": "ห้องน้ำ ชั้น 2",
+   "grid_ref": "~D x 2",
+   "duct": {
+    "grille": "EAG 10\"x8\"",
+    "flex_dia_in": 10,
+    "printed_as": "EAG 10\"x8\" w/ins FLEX-ø10\""
+   },
+   "confidence_score": 0.88,
+   "confidence_flags": [],
+   "note": "Second CEF-3, matching M-01's quantity of 2."
+  },
+  {
+   "element_id": "หลังคา (อ้างอิง)",
+   "element_type": "roof_area_reference",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ระยะในแนวตัวเลข",
+   "element_type": "dimension_chain",
+   "chain_m": [
+    4.0,
+    5.0,
+    4.0
+   ],
+   "total_m": 13.0,
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ระยะในแนวตัวอักษร",
+   "element_type": "dimension_chain",
+   "chain_m": [
+    5.0,
+    4.0,
+    2.0
+   ],
+   "total_m": 11.0,
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  }
+ ],
+ "confidence_score": 0.88,
+ "confidence_flags": [],
+ "warnings": [
+  "Second-floor HVAC plan: two wall fan coils (18,000 in ห้องนอน 2, 24,000 in ห้องนอน 3) with their condensing units, plus three exhaust fans.",
+  "*** THE FAN COUNTS NOW RECONCILE EXACTLY WITH M-01's SCHEDULE ACROSS THE TWO PLANS: CEF-1 x3 (one on M-02, two here), CEF-2 x1 (M-02), CEF-3 x2 (one each sheet), EF-1 x1 (M-02). *** Seven fans, and every scheduled quantity is accounted for on a plan. That is a clean cross-check and it is worth noting because the electrical set has no fan schedule at all.",
+  "The five fan coils likewise reconcile: FCS-1/01, FCS-1/02, FCW-1/03 on M-02 and FCW-2/01, FCW-2/02 here -- five units, matching M-01's schedule and EE-02's five 'BY ME' ways.",
+  "*** CU-2/01 SITS ON THE METAL-SHEET TERRACE ROOF, NOT THE TILED WING -- REWRITTEN 2026-07-28 (recording a reversal): high zoom shows the unit on the dash-lined metal-sheet area east of grid 3, south of the tile/metal boundary, so its M-04 steel support frame lands on the terrace steel framed by S-04 (จันทัน C-150x75x9x12.5, แป C-100x50x20x3.2 @1.00), not on S-05's wing. *** The structural concern stands either way and is arguably worse: a condensing unit plus frame is a point load on light C-section purlins sized for roof sheeting, and no structural sheet allows for it. Worth flagging to the structural engineer.",
+  "*** ห้องนอน 3 GETS A LARGER UNIT (24,000) THAN ห้องนอน 2 (18,000) even though A-31's furniture layout gives ห้องนอน 2 the double bed. *** The two sheets rank the bedrooms differently; neither is wrong, but a reviewer should know they disagree on which room is the main one.",
+  "Duct sizes are again tagged on the plan only."
+ ]
+}

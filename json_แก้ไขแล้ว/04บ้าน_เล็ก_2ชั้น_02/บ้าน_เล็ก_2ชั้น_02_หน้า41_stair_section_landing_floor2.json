@@ -10,26 +10,80 @@
   "view_title": "ST2 (ระดับชานพัก - พื้นชั้น 2) 1:20 -- stair section from landing up to floor-2 level",
   "elements": [
     {
-      "element_id": "ST2_upper_flight",
+      "element_id": "ST2",
       "element_type": "stair_flight",
       "description": "reinforced concrete stair flight rising from ระดับชานพัก (landing) to ระดับพื้นชั้น 2, connecting to beam B2 at both ends and column CN at the landing corner",
       "scale": "1:20",
-      "rise": { "step_count": 6, "riser_height_m": 0.175, "total_rise_m": 1.05 },
-      "run_m": { "d1": 0.20, "d2_approx": 0.48, "tread_run_note": "5@0.25=1.25", "landing_depth": 1.20, "extension_beyond_landing": 0.60, "total_horizontal_m": 3.73 },
+      "rise": {
+        "step_count": 6,
+        "riser_height_m": 0.175,
+        "total_rise_m": 1.05
+      },
+      "run_m": {
+        "d1": 0.2,
+        "d2_approx": 0.48,
+        "tread_run_note": "5@0.25=1.25",
+        "landing_depth": 1.2,
+        "extension_beyond_landing": 0.6,
+        "total_horizontal_m": 3.73
+      },
       "slab_thickness_m": 0.15,
       "rebar": {
-        "main_bottom_following_stair_profile": { "dia_mm": 9, "type": "RB", "spacing_mm": 250 },
-        "main_bottom_as_drawing": { "dia_mm": 9, "type": "RB", "spacing_mm": null, "note": "Ø9มม.@ตามแบบ -- as per drawing" },
-        "corner_bar": { "count": 1, "dia_mm": 9, "type": "RB", "note": "1-Ø9มม. ทุกมุม -- at every corner" },
-        "diagonal_additional_bar": { "dia_mm": 16, "type": "RB", "spacing_mm": 150, "note": "Ø16มม.@0.15 -- larger-diameter additional diagonal bar not seen on the lower flight (S-11's ST2 floor1-landing section); possibly a mid-flight strengthening bar" },
-        "landing_top": { "dia_mm": 12, "type": "RB", "spacing_mm": 100 },
-        "landing_bottom": { "dia_mm": 9, "type": "RB", "spacing_mm": 250 },
-        "floor2_top": { "dia_mm": 12, "type": "RB", "spacing_mm": 100 }
+        "main_bottom_following_stair_profile": {
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250
+        },
+        "main_bottom_as_drawing": {
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": null,
+          "note": "Ø9มม.@ตามแบบ -- as per drawing"
+        },
+        "corner_bar": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "note": "1-Ø9มม. ทุกมุม -- at every corner"
+        },
+        "diagonal_additional_bar": {
+          "dia_mm": 16,
+          "type": "RB",
+          "spacing_mm": 150,
+          "note": "Ø16มม.@0.15 -- larger-diameter additional diagonal bar not seen on the lower flight (S-11's ST2 floor1-landing section); possibly a mid-flight strengthening bar"
+        },
+        "landing_top": {
+          "dia_mm": 12,
+          "type": "RB",
+          "spacing_mm": 100
+        },
+        "landing_bottom": {
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250
+        },
+        "floor2_top": {
+          "dia_mm": 12,
+          "type": "RB",
+          "spacing_mm": 100
+        }
       },
-      "column_note": { "height_m": 1.05, "sub_division": "6@0.175=1.05", "location": "CN column alongside the landing-to-floor2 riser height" },
-      "related_elements": ["B2", "CN"],
+      "column_note": {
+        "height_m": 1.05,
+        "sub_division": "6@0.175=1.05",
+        "location": "CN column alongside the landing-to-floor2 riser height"
+      },
+      "related_elements": [
+        "B2",
+        "CN"
+      ],
       "confidence_score": 0.65,
-      "confidence_flags": ["needs_human_review_zoom_required", "Ø16mm_diagonal_bar_not_present_on_lower_flight_S-11_worth_confirming_not_a_misread_of_Ø12mm_or_Ø9mm"]
+      "confidence_flags": [
+        "needs_human_review_zoom_required",
+        "Ø16mm_diagonal_bar_not_present_on_lower_flight_S-11_worth_confirming_not_a_misread_of_Ø12mm_or_Ø9mm",
+        "element_id normalized 2026-08-02: ST2_upper_flight -> ST2 (kept the printed mark, dropped the position/detail suffix)"
+      ],
+      "element_id_printed_as": "ST2_upper_flight"
     }
   ],
   "title_block": {
@@ -43,6 +97,7 @@
   "confidence_score": 0.65,
   "confidence_flags": [],
   "warnings": [
-    "This flight's rebar spec includes a Ø16mm@0.15 diagonal bar not present on the lower flight (S-11, ระดับชั้น1-ชานพัก) -- flagged for human confirmation since it's an easy digit to misread (12 vs 16) but recorded as printed since it was legible on direct inspection."
+    "This flight's rebar spec includes a Ø16mm@0.15 diagonal bar not present on the lower flight (S-11, ระดับชั้น1-ชานพัก) -- flagged for human confirmation since it's an easy digit to misread (12 vs 16) but recorded as printed since it was legible on direct inspection.",
+    "NORMALIZED_2026-08-02: element_id reduced to the mark printed on the drawing; the original is kept in element_id_printed_as on each entry. Position belongs in grid_refs, not in the id (it broke cross-page joins)."
   ]
 }

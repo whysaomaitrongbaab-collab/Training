@@ -1,0 +1,102 @@
+{
+  "png": "34",
+  "doc_page": 32,
+  "printed_page": 32,
+  "discipline": "structural",
+  "sheet_code": "S-13",
+  "sheet_name": "S0,S1,RS1,RS2, แบบขยาย 1, แบบขยาย ST1, ST2, แบบขยายครีบ คสล.รอบอาคาร",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า34.png",
+  "confidence_score": 0.72,
+  "confidence_flags": [
+    "dense_small_text_multiple_detail_callouts"
+  ],
+  "warnings": [
+    "op1 direct read (house 10). This sheet consolidates 7 small details onto one page — ST1/ST2 here are the SAME entry-step structures shown architecturally on A-14/A-15, just with structural rebar added.",
+    "'แบบขยาย 1' (jack-rafter-to-column steel flashing/fishplate connection) confirms the roof structure is genuinely mixed คสล.+steel (RC columns/beams, steel roof rafters bolted via embedded 50x300x6mm steel plate) — matching S-06's roof frame plan description.",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (slabs, details) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "type": "ground-bearing slab-on-grade (มีขาปีกยื่นลงดิน)",
+      "main_bar": {
+        "printed_as": "Ø9มม.@0.20"
+      },
+      "thickness_mm": 100,
+      "thickness_printed_as": 0.1,
+      "note": "ทรายอัดแน่นชุ่มน้ำใต้พื้น",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slabs_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "S1, RS1",
+      "element_type": "slab",
+      "type": "elevated slab (คาน-หนุน)",
+      "main_bar": {
+        "printed_as": "Ø9มม.@0.25 both ways"
+      },
+      "thickness_mm": 100,
+      "thickness_printed_as": 0.1,
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slabs_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "RS2",
+      "element_type": "slab",
+      "type": "elevated slab (คาน-หนุน)",
+      "main_bar": {
+        "printed_as": "Ø9มม.@0.175 both ways"
+      },
+      "thickness_mm": 100,
+      "thickness_printed_as": 0.1,
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slabs_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยายครีบ คสล. รอบอาคาร",
+      "element_type": "detail_view",
+      "spec": "ครีบ คสล. 0.10x0.25ม. ยื่นจากคาน ที่ระดับอ้างอิง +0.50, เหล็ก Ø9มม.@0.25 + 1-Ø12มม. dowel",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยาย 1 (จันทันเหล็กเชื่อมติดกับเหล็กหางปลา)",
+      "element_type": "detail_view",
+      "spec": "เหล็กหางปลาขนาด 50x300x6.00มม. ฝังในเสาคอนกรีต, จันทันเหล็กเชื่อมติดกับเหล็กหางปลาตลอดแนวสัมผัส",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยาย ST1",
+      "element_type": "detail_view",
+      "spec": "small terrace step detail, Ø9มม.@0.25 + Ø9มม. ทุกมุม, dims 0.10/0.15/0.40/0.60",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยาย ST2",
+      "element_type": "detail_view",
+      "spec": "small terrace/ramp step detail, Ø6มม.@0.20 + Ø6มม.ทุกมุม + Ø9มม.@0.25 + 3-Ø0.166 (rebar count unclear), dims 0.50/0.60",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
+}

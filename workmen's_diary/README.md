@@ -1,49 +1,52 @@
 # Workmen's Diary
 
-ไดอารี่บันทึกการเปลี่ยนแปลงงาน — ครอบคลุมทั้ง repo `Training` (ที่ไดอารี่นี้อยู่) และ repo `Constistant` เพราะงานส่วนใหญ่เกี่ยวข้องกันข้าม repo — ใช้บันทึกว่าใครทำอะไร เปลี่ยนแปลงอะไร เมื่อไหร่ เพื่อให้คนที่มาทำงานต่อ (หรือ Claude session ใหม่) อ่านแล้วเข้าใจความเป็นมาได้ทันทีโดยไม่ต้องไล่ git log หรือถามซ้ำ
+A diary logging work changes — covering both the `Training` repo (where this diary lives) and the `Constistant` repo, since most work spans both repos — used to record who did what, what changed, and when, so that whoever picks up the work next (or a new Claude session) can read it and immediately understand the background without having to trawl through `git log` or ask again.
 
-> ย้ายมาที่ root ของ repo `Training` เมื่อ 2026-07-07 (เดิมอยู่ที่ repo `Constistant`) — ดู entry วันที่ 7 ก.ค. สำหรับเหตุผล
+> Moved to the root of the `Training` repo on 2026-07-07 (previously lived in the `Constistant` repo) — see the July 7 entry for the reason.
 
-## กติกาการเขียน
+## Writing rules
 
-1. **ชื่อไฟล์ = วันที่ รูปแบบ `ปี-เดือน-วัน.md`** เช่น `2026-07-05.md`
-2. **1 วัน = 1 ไฟล์** — ถ้าวันนั้นมีคนทำงานมากกว่า 1 คน หรือทำงานหลายรอบ ให้ **เปิดไฟล์เดิมของวันนั้นแล้วเขียนต่อท้าย** (เพิ่ม entry ใหม่ในไฟล์เดียวกัน) **ห้ามสร้างไฟล์ใหม่ซ้ำวันเดิม**
-3. แต่ละ entry ในไฟล์ต้องมีข้อมูลครบ:
-   - **ชื่อคน** (หรือชื่อ AI/session ที่ทำงานแทน เช่น "Claude — session กับมะขาม")
-   - **วันที่** (ซ้ำกับชื่อไฟล์ได้ ใส่ไว้เพื่อความชัดเจนเวลาอ่านแยกไฟล์)
-   - **เวลา** (เวลาที่เริ่ม/จบงาน หรือช่วงเวลาที่ทำ ตามจริง)
-   - **งานที่เปลี่ยนแบบละเอียดยิบ** — ไม่ใช่แค่หัวข้อกว้างๆ ต้องระบุ:
-     - ไฟล์/โฟลเดอร์ไหนถูกแก้/สร้าง/ย้าย/ลบ (ระบุ path เต็ม)
-     - เปลี่ยนอะไรจากอะไรเป็นอะไร (ถ้าเป็นการแก้ค่า)
-     - เหตุผลที่ทำ (ทำไมถึงเปลี่ยน)
-     - ผลกระทบ/สิ่งที่ต้องระวังต่อ (ถ้ามี)
-     - งานที่ยังค้าง/ยังไม่เสร็จ (ถ้ามี ระบุไว้ให้คนต่อไปอ่านแล้วสานต่อได้)
+1. **Write in English.** Every entry in this diary is written in English — the diary was fully converted from Thai to English on 2026-08-02, and the parallel `en/` translation folder that used to sit alongside it was deleted at the same time (it had fallen out of date after 2026-07-21, so one English source of truth beats two folders that disagree). Do not start a Thai entry and translate it later; write it in English the first time.
+   - **Keep verbatim, do not translate:** Thai filenames and paths (`หน้า25_beam_plan.json`, `สิ่งที่ต้องแก้.md`, `json_แก้ไขแล้ว/`, `raw_json_ตัวที่ใช้งานจริง/`, house folder names like `บ้าน_เล็ก_2ชั้น_03`), and Thai text quoted **from a drawing or from JSON data** (`"ป.Ø6มม.@0.20"`, `"หยุดที่ L/8"`, `ตอม่อ/ฐานราก`). Those are identifiers and data values — translating them breaks the link back to the real file or the real drawing.
+   - Only the surrounding prose is English.
+2. **Filename = date, format `year-month-day.md`**, e.g. `2026-07-05.md`
+3. **1 day = 1 file** — if more than one person works on that day, or work happens in multiple sessions, **open that day's existing file and append to it** (add a new entry to the same file). **Do not create a new file for a date that already has one.**
+4. Each entry in the file must have complete information:
+   - **Person's name** (or the name of the AI/session standing in for them, e.g. "Claude — session with Makham")
+   - **Date** (can repeat the filename's date, included for clarity when reading files individually)
+   - **Time** (actual start/end time, or the time range worked)
+   - **Detailed account of what changed** — not just a broad heading; must specify:
+     - Which file/folder was edited/created/moved/deleted (give the full path)
+     - What changed from what to what (if a value was changed)
+     - The reason for the change (why it was done)
+     - Impact/things to watch out for going forward (if any)
+     - Work still pending/unfinished (if any — note it so the next person can read it and continue)
 
-## Template สำหรับ entry ใหม่
+## Template for a new entry
 
 ```markdown
-## [เวลา] ชื่อคน
+## [time] Person's name
 
-**งานที่ทำ:**
+**Work done:**
 - ...
 
-**ไฟล์ที่เปลี่ยน:**
-- `path/to/file` — เปลี่ยนอะไร ทำไม
+**Files changed:**
+- `path/to/file` — what changed, why
 
-**ผลกระทบ/ข้อควรระวัง:**
+**Impact/precautions:**
 - ...
 
-**ค้างไว้ / ทำต่อ:**
+**Left pending / to continue:**
 - ...
 
 ---
 ```
 
-## ตัวอย่างการใช้งาน
+## Usage example
 
-- วันที่ 2026-07-05 มะขามทำงานตอนเช้า แล้วมีเพื่อนมาทำต่อตอนบ่ายวันเดียวกัน → ทั้งสองคนเขียนลงไฟล์ `2026-07-05.md` ไฟล์เดียวกัน คนละ entry (คั่นด้วย `---`)
-- วันรุ่งขึ้น (2026-07-06) มีคนมาทำงานต่อ → สร้างไฟล์ใหม่ `2026-07-06.md`
+- On 2026-07-05 Makham worked in the morning, then a friend continued in the afternoon of the same day → both write into the same `2026-07-05.md` file, as separate entries (separated by `---`)
+- The next day (2026-07-06) someone continues the work → create a new file `2026-07-06.md`
 
-## ทำไมต้องมีไดอารี่นี้
+## Why this diary exists
 
-git commit message สั้นเกินไปที่จะอธิบายบริบท/เหตุผลเบื้องหลังการเปลี่ยนแปลงแต่ละครั้ง โดยเฉพาะงานที่เกี่ยวข้องกับหลายคน/หลาย repo (เช่น Constistant กับ Training) — ไดอารี่นี้เก็บ "ทำไม" และ "ระวังอะไรต่อ" ที่ git log บอกไม่ได้
+Git commit messages are too short to explain the context/reasoning behind each change, especially work that spans multiple people/repos (e.g. Constistant and Training) — this diary keeps the "why" and "what to watch out for next" that `git log` can't tell you.

@@ -1,0 +1,118 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized cross-page reference)",
+  "pattern": "gridline",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า20.png",
+    "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า21.png",
+    "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า22.png",
+    "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า06.png"
+  ],
+  "view_title": "Column grid master for บ้านผู้สูงวัย (ขนาดกลาง) -- STD-S-65022, กรมโยธาธิการและผังเมือง 130th-anniversary elderly-accessible house program. Named grid from S-02 (แปลนฐานรากแผ่, PNG 20 / printed 18) and S-03 (แปลนฐานรากเสาเข็ม, PNG 21 / printed 19), re-confirmed on S-04 (แปลนเสา คาน พื้น ชั้นที่ 1, PNG 22) and A-04 (แปลนพื้น, PNG 06). 3 x 4 named grid, 7.00 m x 9.00 m overall.",
+  "grid": {
+    "x_lines": [
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named",
+        "source": "S-02/S-03/S-04/A-04 (printed on all four)"
+      },
+      {
+        "id": "2",
+        "pos_m": 4.0,
+        "type": "named",
+        "source": "S-02/S-03/S-04/A-04"
+      },
+      {
+        "id": "3",
+        "pos_m": 7.0,
+        "type": "named",
+        "source": "S-02/S-03/S-04/A-04"
+      }
+    ],
+    "y_lines": [
+      {
+        "id": "A'",
+        "pos_m": -2.1,
+        "type": "dummy",
+        "source": "S-02/S-03 both print a '2.10' dimension immediately north of row A, carrying two small footings marked F(0.80x0.80),C0 (S-02) / F1,C0 (S-03).",
+        "confidence_score": 0.6,
+        "confidence_flags": [
+          "unidentified_superstructure_not_yet_matched_to_a_beam_or_column_schedule_page",
+          "x_positions_of_the_two_C0_footings_visually_align_with_grid_2_and_grid_3_but_no_printed_dimension_confirms_this_flagged_pending_S-05/S-06/A-05_review"
+        ]
+      },
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named",
+        "source": "S-02/S-03/S-04/A-04"
+      },
+      {
+        "id": "B",
+        "pos_m": 3.0,
+        "type": "named",
+        "source": "S-02/S-03/S-04/A-04",
+        "confidence_score": 0.85,
+        "confidence_flags": [
+          "printed_digit_at_this_position_reads_ambiguously_as_3.00_or_3.03_on_S-02_taken_as_3.00_since_the_overall_9.00_chain_only_closes_with_3.00+4.00+2.00"
+        ]
+      },
+      {
+        "id": "C",
+        "pos_m": 7.0,
+        "type": "named",
+        "source": "S-02/S-03/S-04/A-04"
+      },
+      {
+        "id": "D",
+        "pos_m": 9.0,
+        "type": "named",
+        "source": "S-02/S-03/S-04/A-04"
+      },
+      {
+        "id": "D'",
+        "pos_m": 10.3,
+        "type": "dummy",
+        "source": "S-02/S-03 both print a '1.30' dimension south of row D, carrying two more small footings marked F(0.80x0.80),C0 (S-02) / F1,C0 (S-03), spaced 1.65 m apart (printed).",
+        "confidence_score": 0.6,
+        "confidence_flags": [
+          "unidentified_superstructure_not_yet_matched_to_a_beam_or_column_schedule_page",
+          "x_positions_of_the_two_C0_footings_not_confirmed_against_a_printed_x-dimension_the_1.65m_spacing_between_them_does_not_evenly_divide_the_3.00/4.00_x-grid_spacing_flagged_pending_further_sheets"
+        ]
+      }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "prime_ordering": "Only one dummy line per gap (A' north of A, D' south of D) -- no same-gap collision case here.",
+    "negative_pos_m": "TRIGGERED for A' (pos_m = -2.10) -- the two north C0 footings sit further north than the origin (row A), so per spec §4 a negative pos_m is used rather than displacing the origin."
+  },
+  "non_grid_dimensions_do_not_confuse": [
+    {
+      "location": "west of grid 1, ramp/landing zone (A-04 left-side chain: 0.65 nib, then 1.50/1.70/1.90/2.30/1.80/1.50 for the ชานพัก + ทางลาดคนพิการ accessibility ramp)",
+      "value_m": null,
+      "meaning": "The wheelchair ramp (ทางลาด, detail R.1/A-13) and its landing (ชานพัก +0.14) sit entirely on a slab south-west of grid 1/row C, with no beam or column found there on S-02/S-03/S-04 -- slab-only per spec §4, no dummy grid created. Its exact geometry belongs to A-13's own detail (Stage 2)."
+    },
+    {
+      "location": "A-03 ผังบริเวณ site plan, '2.10' and '2.00' setback margins either side of the building",
+      "value_m": 2.1,
+      "meaning": "COINCIDENTAL VALUE MATCH, NOT THE SAME FEATURE as the S-02/S-03 '2.10' north of row A -- A-03 self-declares 'ผังบริเวณนี้เป็นเพียงตัวอย่างเพื่อประมาณราคา...' (site plan is a costing example only) and its own note defines 'A = ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 2ม.' (adjustable lot setback, not a building dimension). Per the op1 precedence rules, a self-declared example/costing sheet never overrides the structural grid -- not used for grid geometry."
+    }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "named_grid_confirmed_on_4_sheets",
+    "two_dummy_lines_carry_isolated_C0_footings_whose_superstructure_is_not_yet_identified_in_this_extraction_pass"
+  ],
+  "warnings": [
+    "BOTH MAIN DIMENSION CHAINS CLOSE: x: 4.00 + 3.00 = 7.00 (printed overall). y: 3.00 + 4.00 + 2.00 = 9.00 (printed overall, taking the ambiguous top-segment digit as 3.00 -- see the B-line confidence_flag). Verified on S-02, S-03, S-04, and A-04 all four printing the same chain.",
+    "OPEN QUESTION, not yet resolved in this pass: what do the four small F(0.80x0.80)/F1,C0 footings (two north of A at A', two south of D at D') actually support? No beam plan read so far (S-04 covers only the main 3x4 box) shows a beam reaching either dummy line. Likely candidates based on the floor plan and BOQ index (A-13/A-14 'แบบขยายทางลาดเอียง', A-16 'ข้อแนะนำการออกแบบบ้านผู้สูงอายุ'): entrance gate/canopy posts, a carport, or free-standing ramp handrail posts -- NOT confirmed by direct read yet. This warning should be updated (append-or-rewrite, per spec §2a) once S-05/S-06 (คานระดับดิน/รายละเอียด) or A-05/A-06 (แปลนหลังคา/รูปด้าน) are read.",
+    "Small mark-type inconsistency carried over as printed, not resolved: S-02 labels the four small footings 'F(0.80x0.80)' (dimension-based mark), S-03 labels the same four positions 'F1' (index-based mark) -- both spread and pile variants of this same footing group, consistent with the two sheets being alternate foundation systems for the same building (per the index, this house's BOQ covers both ฐานรากแผ่ and ฐานรากเสาเข็ม as full alternates).",
+    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed."
+  ]
+}
