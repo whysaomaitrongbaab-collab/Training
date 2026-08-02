@@ -17,4 +17,4 @@ any live workflow anymore — `op1`/`op2` no longer generate Label Studio task f
 Delete the whole folder whenever Makham confirms — everything is recoverable from git history
 (moved in the same commit that created this README).
 
-Ground truth now lives solely in `raw_json_ตัวที่ใช้งานจริง/0N<house>/`, gated by `tools/check_format.py`.
+Ground truth now lives solely in `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/`, gated by `tools/check_format.py`.

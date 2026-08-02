@@ -2,7 +2,7 @@
 """Format checker for primary_rawjson_schema.md section 0 (FORMAT LOCK).
 
 Usage:
-    python tools/check_format.py                       # every house under raw_json_ตัวที่ใช้งานจริง/
+    python tools/check_format.py                       # every house under rawjson_ยังไม่ได้แก้ไขโดนคน/
     python tools/check_format.py <folder> [<folder>..] # specific house folder(s)
 
 Exits 1 if any check fails, so it can gate an op1 run. Written 2026-08-02 after
@@ -148,7 +148,7 @@ def check_house(house_dir):
 def main(argv):
     targets = argv[1:]
     if not targets:
-        base = 'raw_json_ตัวที่ใช้งานจริง'
+        base = 'rawjson_ยังไม่ได้แก้ไขโดนคน'
         # house folders only: they start with the 2-digit house number (00file_... is the spec dir)
         targets = sorted(d for d in glob.glob(os.path.join(base, '*'))
                          if os.path.isdir(d) and os.path.basename(d)[:2].isdigit()

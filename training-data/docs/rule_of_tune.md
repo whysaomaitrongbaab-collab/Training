@@ -1,6 +1,6 @@
 # Rules for Touching Raw Training JSON
 
-**Read this file before any work** in `training-data/` and `raw_json_ตัวที่ใช้งานจริง/` (repo root). No exceptions.
+**Read this file before any work** in `training-data/` and `rawjson_ยังไม่ได้แก้ไขโดนคน/` (repo root). No exceptions.
 
 ## Rule 1 (highest priority)
 
@@ -10,7 +10,7 @@
 - `raw/image/<house>/qwen-output/<house>_หน้าNN.json` — real AI extraction output (source ground truth)
 - `raw/image/<house>/qwen-output/_document_map.json`, `_run_summary.json`
 - Any direct output of `run_pipeline.py` / `build_document_map.py` / `analyze_folder.py`
-- `raw_json_ตัวที่ใช้งานจริง/0N<house>/*.json` (repo root) — raw JSON hand-transcribed directly from drawings by Claude (ground truth for patterns `run_pipeline.py` automation doesn't cover yet: `index`/`site_plan`/`side_profile`/`title`/`symbol`/`roof_plan`/`unknown`; spec at `raw_json_ตัวที่ใช้งานจริง/00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`). Protected identically to Qwen-sourced raw JSON.
+- `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/*.json` (repo root) — raw JSON hand-transcribed directly from drawings by Claude (ground truth for patterns `run_pipeline.py` automation doesn't cover yet: `index`/`site_plan`/`side_profile`/`title`/`symbol`/`roof_plan`/`unknown`; spec at `rawjson_ยังไม่ได้แก้ไขโดนคน/00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`). Protected identically to Qwen-sourced raw JSON.
 
 **Not protected** (editable freely, no special permission needed):
 - Files generated fresh from raw data (e.g. `label-studio-tasks-*.json`) — regenerable, doesn't touch the source
@@ -47,7 +47,7 @@ If even one condition fails, **the full Rule 2 applies again** (warn every time)
 4. **Never state confidence you haven't verified** (e.g. unconfirmed external-tool syntax) — state real confidence level and propose a verification step instead of guessing silently.
 5. **Numeric/array fields must match raw-data types exactly** before being written to a file used for real — never let a number become a string or an array become a string by accident.
 6. **Rule 2 (warn first) also covers external system state**, not just local files — e.g. deleting all tasks in Label Studio Cloud's Data Manager. Always ask whether real review data exists there before proposing deletion.
-7. **Even files exempt from Rule 1 (e.g. `.md` docs like `primary_rawjson_schema.md`) require stating out loud why the exemption applies**, before or during the edit — never edit silently. Every edit to `primary_rawjson_schema.md` must be logged in `raw_json_ตัวที่ใช้งานจริง/primary_rawjson_schema_edit_log.md` immediately.
+7. **Even files exempt from Rule 1 (e.g. `.md` docs like `primary_rawjson_schema.md`) require stating out loud why the exemption applies**, before or during the edit — never edit silently. Every edit to `primary_rawjson_schema.md` must be logged in `rawjson_ยังไม่ได้แก้ไขโดนคน/primary_rawjson_schema_edit_log.md` immediately.
 8. **Don't duplicate project rules into private AI memory** — if a lesson belongs in this file (the single source of truth), keep it here only, not in a side memory file too.
 9. **Citing a rule must be followed by an actual stop-and-wait for the user's answer** — not cited-then-immediately-acted-on in the same message.
 10. **Never interpret a short/ambiguous follow-up message as a yes/no answer to a pending question** — re-ask explicitly and wait for a clear answer before proceeding.
@@ -81,7 +81,7 @@ Rule 1 always outranks Rules 2 and 3 — even a direct user order to edit raw JS
 
 ## Ground Truth JSON Format (reference)
 
-> **2026-08-02 — Label Studio cancelled (Makham's order).** The annotated/-via-Label-Studio flow described in this section no longer runs; its tooling sits in `wait_for_ทิ้ง/` pending deletion. **Ground truth is now solely the raw JSON in `raw_json_ตัวที่ใช้งานจริง/0N<house>/`** (format-gated by `tools/check_format.py`). The section below is kept as the historical record of the format used for tuning rounds t01/t02, and the type rules at its end still apply to any future dataset assembly.
+> **2026-08-02 — Label Studio cancelled (Makham's order).** The annotated/-via-Label-Studio flow described in this section no longer runs; its tooling sits in `wait_for_ทิ้ง/` pending deletion. **Ground truth is now solely the raw JSON in `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/`** (format-gated by `tools/check_format.py`). The section below is kept as the historical record of the format used for tuning rounds t01/t02, and the type rules at its end still apply to any future dataset assembly.
 
 Historical format (`label-studio-import-repeater-annotations.js` output → `annotated/<record_id>-<type>-annotated.json`), round-trip verified against source raw JSON types. Changing this schema requires following Rule 2 above (warn before editing).
 

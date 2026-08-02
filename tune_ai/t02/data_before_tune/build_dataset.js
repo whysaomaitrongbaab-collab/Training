@@ -247,7 +247,7 @@ for (const house of houses) {
 // ─────────────────────────────────────────────────────────────
 let instruction = PROMPT_SHORT;
 if (CFG.PROMPT_MODE === 'full_schema') {
-  const spec = fromRoot('raw_json_ตัวที่ใช้งานจริง/00file_for_making_rawjson_from_claude/primary_rawjson_schema.md');
+  const spec = fromRoot('rawjson_ยังไม่ได้แก้ไขโดนคน/00file_for_making_rawjson_from_claude/primary_rawjson_schema.md');
   instruction = fs.readFileSync(spec, 'utf8') + '\n\n' + PROMPT_SHORT;
 }
 const GRID_SUFFIX = '\n\nThese images are every page of one house that shows grid lines. '

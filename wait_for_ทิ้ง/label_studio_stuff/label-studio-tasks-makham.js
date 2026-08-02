@@ -31,7 +31,7 @@
  * Usage:
  *   node label-studio-tasks-makham.js <house> [mk_test-subfolder]
  *   e.g. node label-studio-tasks-makham.js บ้าน_เล็ก_1ชั้น_01
- *        → auto-finds Training/raw_json_ตัวที่ใช้งานจริง/<NN><house>/ (production data)
+ *        → auto-finds Training/rawjson_ยังไม่ได้แก้ไขโดนคน/<NN><house>/ (production data)
  *   e.g. node label-studio-tasks-makham.js บ้าน_เล็ก_1ชั้น_01 t2
  *        → forces the old training-data/mk_test/t2/ test round instead
  * Output (written into this folder's own subfolders — see that folder's README). Filenames
@@ -194,11 +194,11 @@ function flattenMaterialList(fileData) {
   return items;
 }
 
-// Production houses live in Training/raw_json_ตัวที่ใช้งานจริง/<NN><house>/ (see that folder's
+// Production houses live in Training/rawjson_ยังไม่ได้แก้ไขโดนคน/<NN><house>/ (see that folder's
 // README.md) — folder name is a 2-digit sequence number glued directly onto the house name,
 // e.g. "01บ้าน_เล็ก_1ชั้น_01". Look up by suffix match so callers don't need to know/type the number.
 function findProductionDir(house) {
-  const root = path.join(__dirname, '..', '..', 'raw_json_ตัวที่ใช้งานจริง');
+  const root = path.join(__dirname, '..', '..', 'rawjson_ยังไม่ได้แก้ไขโดนคน');
   if (!fs.existsSync(root)) return null;
   const match = fs.readdirSync(root, { withFileTypes: true })
     .find((e) => e.isDirectory() && /^\d\d/.test(e.name) && e.name.endsWith(house));
@@ -211,7 +211,7 @@ function main() {
   const disciplineFilter = process.argv[4] || null; // e.g. "structural" — omit for all disciplines
   if (!house) {
     console.error('Usage: node label-studio-tasks-makham.js <house> [mk_test-subfolder] [discipline]');
-    console.error('  Looks up Training/raw_json_ตัวที่ใช้งานจริง/<NN><house>/ first (production data).');
+    console.error('  Looks up Training/rawjson_ยังไม่ได้แก้ไขโดนคน/<NN><house>/ first (production data).');
     console.error('  Pass [mk_test-subfolder] (e.g. t1/t2/t3) to force an old test round instead.');
     process.exit(1);
   }

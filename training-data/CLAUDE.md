@@ -4,7 +4,7 @@ Context สำหรับ AI agent ที่มาทำงานต่อใ�
 
 > ## ⚠️ 2026-08-02 — Label Studio ถูกยกเลิกทั้งหมด (คำสั่งมะขาม)
 > **ไม่เก็บข้อมูลผ่าน Label Studio อีกต่อไป และ `op1`/`op2` ห้ามสร้างไฟล์ task ของ Label Studio อีก** — ทุกไฟล์ที่เกี่ยวกับ Label Studio โดยตรง (`label_studio_stuff/` ทั้งโฟลเดอร์, mindmap PDF, `label-studio-config.xml`, `manifest.json`, `review.html`, `annotated/`, `upload-to-supabase-storage.js`) ย้ายไปพักที่ **`wait_for_ทิ้ง/`** ที่ root repo รอลบจริง (กู้คืนได้จาก git ทุกเมื่อ)
-> Ground truth ปัจจุบัน = raw JSON ใน `raw_json_ตัวที่ใช้งานจริง/0N<house>/` ตรวจด้วย `tools/check_format.py` เท่านั้น
+> Ground truth ปัจจุบัน = raw JSON ใน `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/` ตรวจด้วย `tools/check_format.py` เท่านั้น
 > **ทุก section ในไฟล์นี้ที่พูดถึง Label Studio review flow (3 sections ด้านล่าง) = ประวัติศาสตร์ อ่านเพื่อเข้าใจที่มาได้ แต่ห้ามทำตาม**
 
 > 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`training-data/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม)
@@ -94,7 +94,7 @@ Per-page classify (Stage A) → route → extract (Stage B1/B2 แยกตา�
 
 ## 2026-08-02 — sync `json_แก้ไขแล้ว/` กลับเข้า raw ครั้งแรกของโปรเจกต์ (362 ไฟล์)
 
-**ทำอะไร:** เขียนทับ `raw_json_ตัวที่ใช้งานจริง/0N<house>/*.json` **362 ไฟล์ ครบทั้ง 11 บ้าน** ด้วยเนื้อหาจาก `json_แก้ไขแล้ว/` (อีก 821 ไฟล์เหมือนเดิม ไม่ถูกแตะ) — งานนี้ค้างมาตั้งแต่บ้าน 1 ทุก entry ใน `สิ่งที่ต้องแก้.md` เคยเขียนว่า "sync ยังไม่เริ่ม"
+**ทำอะไร:** เขียนทับ `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/*.json` **362 ไฟล์ ครบทั้ง 11 บ้าน** ด้วยเนื้อหาจาก `json_แก้ไขแล้ว/` (อีก 821 ไฟล์เหมือนเดิม ไม่ถูกแตะ) — งานนี้ค้างมาตั้งแต่บ้าน 1 ทุก entry ใน `สิ่งที่ต้องแก้.md` เคยเขียนว่า "sync ยังไม่เริ่ม"
 
 **ทำไม:** มะขามสั่งให้บ้าน 01-11 มี format JSON เดียวกัน ("ไม่เอาเดี๋ยว C1 เดี๋ยว c-1") — งานรีวิว/ปรับรูปแบบทั้งหมดอยู่ใน `json_แก้ไขแล้ว/` ซึ่งเป็นสำเนา ถ้าไม่ sync กลับ ตัว ground truth ที่เอาไปเทรนจริงก็ยังเป็นของเดิม
 
