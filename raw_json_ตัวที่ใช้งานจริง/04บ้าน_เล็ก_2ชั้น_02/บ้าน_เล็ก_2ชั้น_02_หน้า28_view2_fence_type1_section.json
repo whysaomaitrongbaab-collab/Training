@@ -75,10 +75,12 @@
       "element_type": "pile",
       "description": "เสาเข็ม 2-0.15x0.15x4.00ม -- 2 mini-piles per fence footing, 0.15x0.15m section, 4.00m length",
       "count": 2,
-      "section_mm": "150x150",
       "length_m": 4.0,
       "confidence_score": 0.82,
-      "confidence_flags": []
+      "confidence_flags": [],
+      "width_mm": 150,
+      "height_mm": 150,
+      "section_mm_printed_as": "150x150"
     },
     {
       "element_id": "fence1_dowel",
@@ -127,6 +129,7 @@
     "Second of 3 views on this page; siblings are the plan/elevation (_view1_fence_type1_plan_elevation.json) and column/beam details (_view3_fence_type1_column_beam_details.json).",
     "This fence uses mini-piles (2-0.15x0.15x4.00m per footing) -- a more substantial foundation than a typical light fence, worth noting for BOQ purposes.",
     "NORMALIZED_2026-08-02: element_id reduced to the mark printed on the drawing; the original is kept in element_id_printed_as on each entry. Position belongs in grid_refs, not in the id (it broke cross-page joins).",
-    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: fence1_footing_F_section, fence1_ground_beam_GB_section, fence1_pile. Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the drawing never marked it)."
+    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: fence1_footing_F_section, fence1_ground_beam_GB_section, fence1_pile. Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the drawing never marked it).",
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
   ]
 }

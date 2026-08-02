@@ -540,10 +540,12 @@
       "element_id": "หลังคาปั้นหยาปีกขวา",
       "element_type": "roof_area",
       "grid_ref": "3 to 4+1.20 x C-1.20 to D+1.20",
-      "plan_size_m": "5.20 x 7.40",
       "confidence_score": 0.8,
       "confidence_flags": [],
-      "note": "The framed right-wing roof: west edge on grid 3, and 1.20 m oversail on the north, east and south sides (the 1.20 figures are printed top-right and mid-right)."
+      "note": "The framed right-wing roof: west edge on grid 3, and 1.20 m oversail on the north, east and south sides (the 1.20 figures are printed top-right and mid-right).",
+      "width_mm": 5200,
+      "height_mm": 7400,
+      "plan_size_m_printed_as": "5.20 x 7.40"
     }
   ],
   "confidence_score": 0.8,
@@ -558,6 +560,7 @@
     "The intermediate BS1 in the 1-2 bay between rows C and B, and the CS1 that props it, have NO locating dimension. REWRITTEN 2026-07-27 (recording a reversal): the first pass scaled its position as 'roughly 1.1 m below grid C'; a pixel-measured re-read puts it at approx 2.1 m below C -- essentially the C-B bay's MID-LINE. Both members stay flagged off_grid_member_no_printed_dimension because the drawing itself still prints nothing.",
     "The circled 'ดูขยาย 1' at grid A-1 is captioned 'แสดงการยึดเสา ค.ส.ล.กับคานเหล็กและจันทัน' -- the sheet's own confirmation that the frame is HYBRID, RC columns below carrying a steel roof above. The enlargement itself is on S-15 (PNG 48): a 200x200x9 base plate on the column head with two Ø9 anchors 0.15 m deep, and the rafter cleated to BS1 with a 100x100x9 plate.",
     "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
-    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
   ]
 }

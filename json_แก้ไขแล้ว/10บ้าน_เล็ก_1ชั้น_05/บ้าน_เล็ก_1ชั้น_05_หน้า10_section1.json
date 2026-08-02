@@ -1,37 +1,85 @@
 {
- "png": "10",
- "doc_page": 8,
- "printed_page": 8,
- "discipline": "architectural",
- "sheet_code": "A-08",
- "sheet_name": "รูปตัด 1, รูปตัด 2",
- "pattern": "side_profile",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า10.png",
- "sections": [
-  {
-   "name": "รูปตัด 1",
-   "cut_along": "grid 1-4 (through ห้องน้ำ 1, พักผ่อน, ห้องน้ำ 1)",
-   "levels_m": { "roof_apex_high": 5.05, "roof_apex_low": 4.05, "roof_beam": 3.75, "floor": 0.60, "reference": 0.00 },
-   "rooms_cut": ["ห้องน้ำ 1 (+0.50)", "พักผ่อน (+0.60)", "ห้องน้ำ 1 (+0.50)"],
-   "ceiling_height_m": 2.70,
-   "grid_x_chain_m": [1.00, 3.20, 3.20, 3.20, 1.00]
-  },
-  {
-   "name": "รูปตัด 2",
-   "cut_along": "grid A-F (through จอดรถ, ห้องนอน 3, ห้องน้ำ, ห้องนอน 1)",
-   "levels_m": { "roof_apex_high": 5.05, "roof_apex_low": 4.05, "roof_beam_carport": 3.65, "roof_beam_main": 3.75, "floor": 0.60, "carport_floor": 0.20, "reference": 0.00 },
-   "rooms_cut": ["จอดรถ (+0.20)", "ห้องนอน 3 (+0.60)", "ห้องน้ำ (+0.50)", "ห้องนอน 1 (+0.60)"],
-   "ceiling_height_m": 2.70,
-   "grid_y_chain_m": [1.60, 3.15, 1.80, 3.60, 2.00, 4.00, 1.50],
-   "roof_slope_note": "6° pitch symbol shown on this section, matching A-05/A-07"
-  }
- ],
- "scale": "1:100",
- "confidence_score": 0.8,
- "confidence_flags": [],
- "warnings": [
-  "op1 direct read (house 10). Both sections reference the same 'แบบขยาย' expansion detail callouts (A-16 for ระแนงบังแดดเหล็ก/เชิงชาย, A-08 self-referencing section markers on A-05/A-06/A-07)."
- ]
+  "png": "10",
+  "doc_page": 8,
+  "printed_page": 8,
+  "discipline": "architectural",
+  "sheet_code": "A-08",
+  "sheet_name": "รูปตัด 1, รูปตัด 2",
+  "pattern": "side_profile",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า10.png",
+  "scale": "1:100",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 10). Both sections reference the same 'แบบขยาย' expansion detail callouts (A-16 for ระแนงบังแดดเหล็ก/เชิงชาย, A-08 self-referencing section markers on A-05/A-06/A-07).",
+    "NORMALIZED_2026-08-02: a 'sections' array holding real drawing cross-sections was folded into elements[] as element_type 'section_view' (schema 0.1). Document-structure 'sections' arrays in index/notes files are a different thing and were left alone."
+  ],
+  "elements": [
+    {
+      "element_id": "รูปตัด 1",
+      "element_type": "section_view",
+      "cut_along": "grid 1-4 (through ห้องน้ำ 1, พักผ่อน, ห้องน้ำ 1)",
+      "levels_m": {
+        "roof_apex_high": 5.05,
+        "roof_apex_low": 4.05,
+        "roof_beam": 3.75,
+        "floor": 0.6,
+        "reference": 0.0
+      },
+      "rooms_cut": [
+        "ห้องน้ำ 1 (+0.50)",
+        "พักผ่อน (+0.60)",
+        "ห้องน้ำ 1 (+0.50)"
+      ],
+      "ceiling_height_m": 2.7,
+      "grid_x_chain_m": [
+        1.0,
+        3.2,
+        3.2,
+        3.2,
+        1.0
+      ],
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_sections_array (schema 0.1)"
+      ]
+    },
+    {
+      "element_id": "รูปตัด 2",
+      "element_type": "section_view",
+      "cut_along": "grid A-F (through จอดรถ, ห้องนอน 3, ห้องน้ำ, ห้องนอน 1)",
+      "levels_m": {
+        "roof_apex_high": 5.05,
+        "roof_apex_low": 4.05,
+        "roof_beam_carport": 3.65,
+        "roof_beam_main": 3.75,
+        "floor": 0.6,
+        "carport_floor": 0.2,
+        "reference": 0.0
+      },
+      "rooms_cut": [
+        "จอดรถ (+0.20)",
+        "ห้องนอน 3 (+0.60)",
+        "ห้องน้ำ (+0.50)",
+        "ห้องนอน 1 (+0.60)"
+      ],
+      "ceiling_height_m": 2.7,
+      "grid_y_chain_m": [
+        1.6,
+        3.15,
+        1.8,
+        3.6,
+        2.0,
+        4.0,
+        1.5
+      ],
+      "roof_slope_note": "6° pitch symbol shown on this section, matching A-05/A-07",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_sections_array (schema 0.1)"
+      ]
+    }
+  ]
 }

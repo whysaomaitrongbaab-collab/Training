@@ -276,16 +276,16 @@
         "type": "RB",
         "note": "เหล็กยืน 4 มุมเสา (คอลัมน์ใช้ count เดียว ไม่ใช่ top/bottom ตาม item 46)"
       },
-      "tie": {
-        "dia_mm": 6,
-        "type": "RB",
-        "spacing_mm": 200
-      },
       "spec_source": "raw_json_ตัวที่ใช้งานจริง/05บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า37_column_schedule.json",
       "spec_confidence_score": 0.8,
       "confidence_flags": [
         "ADDED_2026-07-24 -- CN was used in elements[] with no spec; joined from the column schedule (หน้า37) per house-04/house-03 item-46 precedent. Short column, floor-1 to stair-landing level."
-      ]
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200
+      }
     }
   },
   "elements": [
@@ -795,6 +795,7 @@
     "DUMMY GRID A' (re-resolved 2026-07-24, 2nd pass): this sheet does NOT put a beam 2.05 m south of grid A. That offset is a printed dimension (also on A-04/รูปด้าน 2/รูปตัด 1/EE-03/EE-05) and it is the ทางเดิน / ST.1 entrance-step strip, drawn here as a single slab-edge line -- not the paired lines every real beam on this sheet uses, and with no beam mark and no columns. The two beams previously recorded at A'1-A'2 were removed. A' stays in the grid master as a printed building line with no beam on it.",
     "A dashed linestyle is used for several beams in the southern half of the plan (B2 at grid A, B1/B2 in the extension zone) -- dashed usually means 'beam below current floor / not visible at this cut level' in these drawing sets, but this hasn't been cross-confirmed against the legend on S-01; recorded as printed.",
     "The 0.60m/0.50m overhangs beyond grid1/grid4 at the top dimension chain (gridF row) appear to be eave/slab-edge dimensions rather than a beam-bearing dummy grid, since no beam is drawn beyond those points at the F line itself -- unlike the southern extension which does show real beams. Flagged as a lower-priority discrepancy vs. the southern extension.",
-    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
+    "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed."
   ]
 }

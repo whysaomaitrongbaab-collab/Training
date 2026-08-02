@@ -11,28 +11,87 @@
   "table_kind": "footing_sections",
   "schema_note": "Same custom-field convention as S-09 (element_type:footing with dowel_bar/tie_bar).",
   "elements": [
-    { "element_id": "F0.60x0.60", "element_type": "footing", "footing_size_m": "0.60x0.60",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 8, "dia_mm": 9, "type": "RB", "note": "4+4 Ø9mm" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ" },
+    {
+      "element_id": "F0.60x0.60",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 8,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "4+4 Ø9mm"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F0.80x0.80", "element_type": "footing", "footing_size_m": "0.80x0.80",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 8, "dia_mm": 12, "type": "RB", "note": "4+4 Ø12mm" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ" },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 600,
+      "height_mm": 600,
+      "footing_size_m_printed_as": "0.60x0.60",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ"
+      }
+    },
+    {
+      "element_id": "F0.80x0.80",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 8,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "4+4 Ø12mm"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1.00x1.00", "element_type": "footing", "footing_size_m": "1.00x1.00",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 10, "dia_mm": 12, "type": "RB", "note": "5+5 Ø12mm" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ" },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 800,
+      "height_mm": 800,
+      "footing_size_m_printed_as": "0.80x0.80",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ"
+      }
+    },
+    {
+      "element_id": "F1.00x1.00",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 10,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "5+5 Ø12mm"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] }
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 1000,
+      "height_mm": 1000,
+      "footing_size_m_printed_as": "1.00x1.00",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ"
+      }
+    }
   ],
   "confidence_score": 0.85,
   "confidence_flags": [],
   "warnings": [
-    "Unlike house #2 (which used single-count dowel notes like '4 Ø12mm' for F0.80x0.80/F1.00x1.00), this house consistently uses paired '+' notation (e.g. '4+4') for all 3 spread footings, doubling the effective count -- confirmed a real difference, not a misread, since it's consistent across this sheet."
+    "Unlike house #2 (which used single-count dowel notes like '4 Ø12mm' for F0.80x0.80/F1.00x1.00), this house consistently uses paired '+' notation (e.g. '4+4') for all 3 spread footings, doubling the effective count -- confirmed a real difference, not a misread, since it's consistent across this sheet.",
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed."
   ]
 }

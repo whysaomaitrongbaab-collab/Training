@@ -11,14 +11,42 @@
   "table_kind": "pile_footing_sections",
   "schema_note": "Same custom-field convention as S-09/S-11. F3 is a trapezoid-shaped cap (not rectangular like F4/F6), matching its use at B-2/B-3/A-2/A-3 on the pile footing plan S-03.",
   "elements": [
-    { "element_id": "F3", "element_type": "footing", "footing_shape": "trapezoid", "footing_size_m": "0.85(top)x0.80(height)", "pile_count": 3,
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 4, "dia_mm": 12, "type": "RB" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "spacing_mm": 100, "note": "ป Ø9mm@0.10 รัดรอบ (tie hoops, not just a single wrap)" },
-      "mat_bar": { "count": 4, "dia_mm": 12, "type": "RB", "tie_dia_mm": 9, "tie_spacing_mm": 100, "note": "cap mat reinforcement, both directions, 4-Ø12mm each way with ป Ø9mm@0.10 ties" },
-      "confidence_score": 0.8, "confidence_flags": [] }
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "footing_shape": "trapezoid",
+      "footing_size_m": "0.85(top)x0.80(height)",
+      "pile_count": 3,
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB"
+      },
+      "mat_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "tie_dia_mm": 9,
+        "tie_spacing_mm": 100,
+        "note": "cap mat reinforcement, both directions, 4-Ø12mm each way with ป Ø9mm@0.10 ties"
+      },
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 100,
+        "note": "ป Ø9mm@0.10 รัดรอบ (tie hoops, not just a single wrap)"
+      }
+    }
   ],
   "confidence_score": 0.8,
   "confidence_flags": [],
-  "warnings": []
+  "warnings": [
+    "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed."
+  ]
 }

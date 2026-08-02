@@ -18,7 +18,6 @@
       "element_id": "C1",
       "element_type": "column",
       "description": "ขยายเสา C1 -- 0.20x0.20m column, main bar 4-Ø12mm, stirrup STR:Ø6mm@150mm",
-      "section_mm": "200x200",
       "main_bar": {
         "count": 4,
         "dia_mm": 12,
@@ -33,13 +32,15 @@
       "confidence_flags": [
         "element_id normalized 2026-08-02: fence1_C1_rebar_detail -> C1 (kept the printed mark, dropped the position/detail suffix)"
       ],
-      "element_id_printed_as": "fence1_C1_rebar_detail"
+      "element_id_printed_as": "fence1_C1_rebar_detail",
+      "width_mm": 200,
+      "height_mm": 200,
+      "section_mm_printed_as": "200x200"
     },
     {
       "element_id": "fence1_GB_rebar_detail",
       "element_type": "beam",
       "description": "ขยายคานคอดิน GB -- 0.20x0.30m ground beam, top bar 2-Ø9mm, bottom bar 2-Ø9mm+1-Ø9mm bent L/5, stirrup STR:Ø6mm@150mm",
-      "section_mm": "200x300",
       "main_bar": {
         "top": {
           "count": 2,
@@ -64,7 +65,10 @@
         "spacing_mm": 150
       },
       "confidence_score": 0.85,
-      "confidence_flags": []
+      "confidence_flags": [],
+      "width_mm": 200,
+      "height_mm": 300,
+      "section_mm_printed_as": "200x300"
     }
   ],
   "confidence_score": 0.85,
@@ -72,6 +76,7 @@
   "warnings": [
     "Third of 3 views on this page; siblings are the plan/elevation (_view1_fence_type1_plan_elevation.json) and fence section (_view2_fence_type1_section.json). Identical rebar spec to house #4's fence column/beam.",
     "NORMALIZED_2026-08-02: element_id reduced to the mark printed on the drawing; the original is kept in element_id_printed_as on each entry. Position belongs in grid_refs, not in the id (it broke cross-page joins).",
-    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: fence1_GB_rebar_detail. Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the drawing never marked it)."
+    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: fence1_GB_rebar_detail. Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the drawing never marked it).",
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
   ]
 }

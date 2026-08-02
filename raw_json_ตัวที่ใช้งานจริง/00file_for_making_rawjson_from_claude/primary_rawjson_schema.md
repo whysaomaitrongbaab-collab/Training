@@ -2,6 +2,114 @@
 
 > Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../training-data/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
 
+## 0. FORMAT LOCK — read this before anything else (added 2026-08-02)
+
+**Two files with the same `pattern` must have the same shape. House #1000 must come out looking exactly like house #1.** Everything below is mandatory, not a preference. It exists because houses 01-11 drifted apart badly and had to be repaired in bulk — the repair is described in `json_แก้ไขแล้ว/สิ่งที่ต้องแก้.md` items 59-62, and these rules are what stops it happening again.
+
+### 0.1 The container — never invent an array name
+
+Every file puts its content in **`elements[]`**. Three documented exceptions, and no others:
+
+| pattern | container |
+|---|---|
+| `gridline` | `grid{ x_lines[], y_lines[] }` — **nested under `grid`**, never `x_lines` at the top level |
+| `material_list` (BOQ) | `categories[].items[]` |
+| everything else | **`elements[]`** |
+
+❌ **Never name an array after the kind of drawing element it holds.** `beams[]`, `columns[]`, `slabs[]`, `footing_types[]`, `column_sections[]`, `structural_elements[]`, and `details[]`/`sections[]` *when they hold drawing elements*, are all forbidden. Houses 10 and 11 did this and needed 30 files rebuilt. The kind belongs in `element_type`, not in the array name.
+
+**The test is what the array holds, not what it is called.** These are legitimate and must NOT be folded into `elements[]`:
+
+| array | where | holds |
+|---|---|---|
+| `sections[]` | `index` | document sections — `{title: "แบบสถาปัตยกรรม", sheet_range: "A-01 ถึง A-15"}` |
+| `sections[]` | `notes` | numbered note headings — `{heading: "1. ข้อกำหนดทั่วไป", items: [...]}` |
+| `columns[]` | `schedule`, `material_list` | table column headers — plain strings like `"ลำดับที่"` |
+| `fixture_symbol_legend[]`, `fixture_install_height_standard[]` | any | pure reference tables |
+
+If the entries have (or should have) an `element_id` and an `element_type`, it is drawing content → it belongs in `elements[]`. If they are document structure, table headers, or a reference table, leave them where they are.
+
+### 0.2 Every element carries these four
+
+```json
+{ "element_id": "...", "element_type": "...", "confidence_score": 0.9, "confidence_flags": [] }
+```
+`confidence_score` is `null` when the sheet genuinely gave you nothing to judge by. **Never invent a number to fill the field** — a made-up confidence is worse than an honest `null`.
+
+### 0.3 `element_id` = the mark printed on the drawing, nothing else
+
+- `"B1"`, `"F1.30x1.30"`, `"C1A"` — exactly as printed.
+- ❌ **No position suffix**: `"F1.30x1.30_E1"` is wrong, position lives in `grid_refs`. Embedding it breaks every cross-page spec join.
+- ❌ **No level suffix**: see §8 — the level goes in its own `level` field.
+- ❌ **No detail/section suffix**: `"B0_section_0-0"` → `"B0"`, put the cut label in `section_ref`.
+- If the drawing never marked the thing, a descriptive id is fine (`"ครีบ_คสล_รอบอาคาร"`) — just don't dress it up to look like a mark.
+- **Two different members must never end up with the same `element_id` on one sheet.** A landing beam and an ordinary beam of the same mark, a stair and its steps, three eave materials at one R-mark — these are genuinely different and keep whatever suffix distinguishes them. When shortening an id would collide, don't shorten it.
+
+### 0.4 `element_type` — reuse, don't invent
+
+Across houses 01-11 this field grew to **359 distinct values over 4,507 elements**. That is drift, not richness. Use one of these established values whenever it fits:
+
+`beam` · `column` · `footing` · `pile` · `pile_cap` · `pedestal` · `slab` · `tie_beam` · `rafter` · `stair` · `room` · `room_cut` · `door` · `window` · `wall` · `dimension` · `dimension_chain` · `dimension_note` · `level` · `datum` · `note` · `symbol` · `symbol_legend_entry` · `sheet_index_entry` · `detail_view` · `section_view` · `plan_view` · `precast_plank_detail` · `sanitary_fixture` · `vent_pipe` · `fitting` · `accessory` · `furniture` · `gate_component` · `railing_component` · `electrical_outlet` · `ceiling_downlight_point` · `ceiling_fan` · `design_criterion` · `steel_member` · `connection_detail` · `installation_detail`
+
+Only add a new value when **none** of the above genuinely fits, and when you do, say so in `warnings[]` so the next house can reuse it instead of inventing a third spelling of the same idea.
+
+### 0.5 Dimensions are integer millimetres
+
+- Member size → **`width_mm`, `height_mm`, `thickness_mm`, `depth_mm`** as numbers.
+- ❌ Never a packed string: `"size_m": "0.20x0.40"` is wrong → `width_mm: 200, height_mm: 400`.
+- ❌ Never a metre variant of a member dimension (`width_m`, `height_m`, `depth_m`, `section_mm: "200x200"`).
+- Levels, spans, grid positions and site distances stay in metres (`level_m`, `span_length_m`, `pos_m`) — those are *positions*, not member sizes.
+- When the drawing prints metres, convert **and** keep the printed text (§0.7).
+
+### 0.6 Rebar is always an object, never a string
+
+❌ `"main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom"` · ❌ `"stirrup": "Ø6มม.@0.20ม."`
+
+✅ the §6 object form. Also:
+- **`stirrup` is the only name** — `tie`, `tie_bar`, `stirrup_or_tie`, `tie_or_mesh` are all forbidden spellings of it.
+- Spacing is `spacing_mm` (an integer), not `@0.20ม.` inside a string.
+- `Ø` → `type: "RB"` always (§6).
+
+### 0.7 `printed_as` — keep the drawing's own words
+
+Whenever you convert something the drawing printed (a size string, a rebar callout, a section designation), keep the original verbatim in a sibling `*_printed_as` / `printed_as` field. It costs nothing, it is the audit trail back to the sheet, and it is what lets a later pass re-check a parse without reopening the drawing.
+
+### 0.8 `grid_ref` notation — one way only
+
+| meaning | write it | never |
+|---|---|---|
+| a point (footing, column, beam end) | `"C1"`, `"ค1"`, `"E'1"`, `"C3''"` | `"C-1"`, `"c-1"`, `"1-C"` |
+| a range on one axis | `"D-C"`, `"1-2"` | — |
+| a 2-axis area, **vertical first** | `"D-C x 1-2"` | `"1-2 x D-C"` |
+| approximate | `"~A1"` | `"near grid A1"` |
+
+- **The word `grid`/`dummy` never appears inside a `grid_ref` value.** Write `"D-C"`, not `"gridD-gridC"`; `"beyond 3"`, not `"beyond grid 3"`.
+- Row letters keep the drawing's own alphabet — Thai `ก`/`ข`/`ค` stays Thai, it is what is printed.
+- Every point ref must resolve against that house's `หน้า00_gridline.json`. If it doesn't, the grid master is missing a line (§4 beam-endpoint rule) — fix the master, don't invent a ref.
+
+### 0.9 `pattern` must be one of the 14 in §1
+
+Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and needed 21 files remapped. A detail sheet is `section`; an elevation is `side_profile`; a schematic diagram is `side_profile`; a site plan is `site_plan`, not `plan`.
+
+### 0.10 Before you call a house finished
+
+**Run `python tools/check_format.py <house-folder>` — it checks every item below and exits non-zero on failure.** Do not hand-audit; a 1000-house set cannot be eyeballed.
+
+- [ ] every file parses as JSON
+- [ ] every file has the §2 wrapper fields
+- [ ] `pattern` is one of the 14 (§1)
+- [ ] no file carries `phase_note` (§2a)
+- [ ] no array named after a kind of drawing element (§0.1)
+- [ ] grid master nests `x_lines`/`y_lines` under `grid{}` (§0.1)
+- [ ] no rebar left as a string (§0.6)
+- [ ] no packed size string (§0.5)
+- [ ] `grid_ref` notation: no dashed point, no `grid`/`dummy` word (§0.8)
+- [ ] every point `grid_ref` resolves against `หน้า00_gridline.json` (§0.8)
+- [ ] no `element_id` collides with a different member on the same sheet (§0.3)
+- [ ] point elements merged to one entry per mark (§4), span elements left atomic (§4)
+
+**The one allowed exception to the merge check:** two entries of the same point mark may stay separate when they carry genuinely different `confidence_score` or a different per-position `note` — merging would erase which positions were read off the drawing and which were inferred. The checker reports these; keep them, and say why in `warnings[]`. Anything else that trips the checker is a real defect.
+
 ## 1. Pattern taxonomy — 14 types
 
 | # | pattern | description |

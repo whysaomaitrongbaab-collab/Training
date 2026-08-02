@@ -18,12 +18,14 @@
       "element_id": "C1",
       "element_type": "column",
       "description": "C1 fence column, RC, 0.20x0.20m (เสา คสล. 0.20x0.20ม.)",
-      "section_mm": "200x200",
       "confidence_score": 0.82,
       "confidence_flags": [
         "element_id normalized 2026-08-02: fence1_column_C1 -> C1 (kept the printed mark, dropped the position/detail suffix)"
       ],
-      "element_id_printed_as": "fence1_column_C1"
+      "element_id_printed_as": "fence1_column_C1",
+      "width_mm": 200,
+      "height_mm": 200,
+      "section_mm_printed_as": "200x200"
     },
     {
       "element_id": "fence1_ground_beam_GB",
@@ -118,6 +120,7 @@
   "warnings": [
     "One of 3 views on this page; siblings are the fence section (_view2_fence_type1_section.json) and column/beam expansion details (_view3_fence_type1_column_beam_details.json).",
     "NORMALIZED_2026-08-02: element_id reduced to the mark printed on the drawing; the original is kept in element_id_printed_as on each entry. Position belongs in grid_refs, not in the id (it broke cross-page joins).",
-    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: fence1_footing_F, fence1_ground_beam_GB. Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the drawing never marked it)."
+    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: fence1_footing_F, fence1_ground_beam_GB. Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the drawing never marked it).",
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
   ]
 }

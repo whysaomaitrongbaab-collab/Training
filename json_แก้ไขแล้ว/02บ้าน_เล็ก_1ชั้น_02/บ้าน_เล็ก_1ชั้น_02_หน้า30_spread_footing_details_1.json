@@ -11,20 +11,60 @@
   "table_kind": "footing_sections",
   "schema_note": "No dedicated schema field-set exists yet for spread-footing dowel/tie details (spec section 9's precast_plank_detail is a different context) -- using element_type:footing with dowel_bar/tie_bar custom fields, mirroring the precast_plank_detail convention of surfacing custom fields with a schema_note. pedestal (ตอม่อ) continues up to the column, spec on S-08.",
   "elements": [
-    { "element_id": "F0.60x0.60", "element_type": "footing", "footing_size_m": "0.60x0.60",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 8, "dia_mm": 9, "type": "RB", "note": "4+4 Ø9mm" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ (single wrap tie)" },
+    {
+      "element_id": "F0.60x0.60",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 8,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "4+4 Ø9mm"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F0.80x0.80", "element_type": "footing", "footing_size_m": "0.80x0.80",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 4, "dia_mm": 12, "type": "RB" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ (single wrap tie)" },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 600,
+      "height_mm": 600,
+      "footing_size_m_printed_as": "0.60x0.60",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ (single wrap tie)"
+      }
+    },
+    {
+      "element_id": "F0.80x0.80",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] }
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 800,
+      "height_mm": 800,
+      "footing_size_m_printed_as": "0.80x0.80",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ (single wrap tie)"
+      }
+    }
   ],
   "confidence_score": 0.85,
   "confidence_flags": [],
-  "warnings": []
+  "warnings": [
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed."
+  ]
 }

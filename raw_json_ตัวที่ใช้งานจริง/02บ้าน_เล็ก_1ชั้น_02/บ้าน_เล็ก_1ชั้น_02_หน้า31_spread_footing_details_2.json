@@ -11,14 +11,35 @@
   "table_kind": "footing_sections",
   "schema_note": "Same custom-field convention as S-09 (element_type:footing with dowel_bar/tie_bar) -- see that file's schema_note.",
   "elements": [
-    { "element_id": "F1.00x1.00", "element_type": "footing", "footing_size_m": "1.00x1.00",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 5, "dia_mm": 12, "type": "RB" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ (single wrap tie)" },
+    {
+      "element_id": "F1.00x1.00",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 5,
+        "dia_mm": 12,
+        "type": "RB"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] }
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 1000,
+      "height_mm": 1000,
+      "footing_size_m_printed_as": "1.00x1.00",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ (single wrap tie)"
+      }
+    }
   ],
   "confidence_score": 0.85,
   "confidence_flags": [],
-  "warnings": []
+  "warnings": [
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed."
+  ]
 }

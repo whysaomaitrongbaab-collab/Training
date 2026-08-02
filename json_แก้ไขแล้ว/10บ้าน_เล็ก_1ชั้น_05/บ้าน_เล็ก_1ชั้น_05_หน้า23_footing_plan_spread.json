@@ -46,48 +46,6 @@
       ]
     },
     {
-      "element_id": "F1.00x1.00",
-      "element_type": "footing",
-      "column_mark": "C1A",
-      "printed_as": "(F1.00x1.00),C1A",
-      "footing_size_m": [
-        1.0,
-        1.0
-      ],
-      "confidence_score": 0.95,
-      "confidence_flags": [],
-      "count": 2,
-      "grid_refs": [
-        "F2",
-        "F3"
-      ]
-    },
-    {
-      "element_id": "F1.00x1.00",
-      "element_type": "footing",
-      "column_mark": "C1",
-      "printed_as": "(F1.00x1.00),C1",
-      "footing_size_m": [
-        1.0,
-        1.0
-      ],
-      "confidence_score": 0.95,
-      "confidence_flags": [],
-      "count": 10,
-      "grid_refs": [
-        "E1",
-        "E2",
-        "E3",
-        "E4",
-        "D1",
-        "D2",
-        "D3",
-        "D4",
-        "C2",
-        "C3"
-      ]
-    },
-    {
       "element_id": "F0.80x0.80",
       "element_type": "footing",
       "column_mark": "C1",
@@ -108,10 +66,33 @@
       ]
     },
     {
+      "element_id": "F1.00x1.00",
+      "element_type": "footing",
+      "footing_size_m": [
+        1.0,
+        1.0
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "count": 12,
+      "grid_refs": [
+        "F2",
+        "F3",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "C2",
+        "C3"
+      ]
+    },
+    {
       "element_id": "F0.60x0.60",
       "element_type": "footing",
-      "column_mark": "C1A",
-      "printed_as": "(F0.60x0.60),C1A",
       "footing_size_m": [
         0.6,
         0.6
@@ -124,6 +105,48 @@
         "B3",
         "A3",
         "A4"
+      ]
+    },
+    {
+      "element_id": "C1A",
+      "element_type": "column",
+      "count": 8,
+      "grid_refs": [
+        "F1",
+        "F4",
+        "F2",
+        "F3",
+        "B2",
+        "B3",
+        "A3",
+        "A4"
+      ],
+      "confidence_score": null,
+      "confidence_flags": [
+        "split_out_2026-08-02 from the footing entries column_mark field (สิ่งที่ต้องแก้ item 53 pattern) - the column position data is preserved here, not lost when the footing entries merged"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 12,
+      "grid_refs": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "C2",
+        "C3",
+        "C1",
+        "C4"
+      ],
+      "confidence_score": null,
+      "confidence_flags": [
+        "split_out_2026-08-02 from the footing entries column_mark field (สิ่งที่ต้องแก้ item 53 pattern) - the column position data is preserved here, not lost when the footing entries merged"
       ]
     }
   ],
@@ -138,6 +161,7 @@
     "Both dimension chains on this sheet close: 3.20+3.20+3.20 = 9.60 printed, 3.15+1.80+3.60+2.00+4.00 = 14.55 printed (bottom-to-top). This sheet is the grid master's primary source.",
     "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 20 entries -> 5. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched.",
     "[from phase_note, folded 2026-08-02 per schema section 2a] Stage 1: column mark at C-1 and C-4 is C1 on this sheet but C1A on S-03 (both re-read at ~5x zoom; every other position agrees between the two sheets). 1 sheet vs 1 sheet -- not resolvable from the two footing plans alone. Stage 2: check S-10 (แบบขยายการเสริมเหล็กเสา) and S-07 (แบบขยายฐานรากแผ่) for which mark actually exists at those positions, then rewrite the warning in both footing files.",
-    "NORMALIZED_2026-08-02: phase_note folded into warnings[] and the field removed - section 2a says a file still carrying phase_note is by definition unfinished. The questions inside were NOT resolved (that needs the sheets open); they are preserved verbatim above so the next reader still sees them."
+    "NORMALIZED_2026-08-02: phase_note folded into warnings[] and the field removed - section 2a says a file still carrying phase_note is by definition unfinished. The questions inside were NOT resolved (that needs the sheets open); they are preserved verbatim above so the next reader still sees them.",
+    "NORMALIZED_2026-08-02: footing entries of the same mark were merged per item 48 (a differing column_mark is explicitly NOT a reason to keep them apart). To avoid losing that column data, each column mark became its own element_type 'column' entry with its own grid_refs - the same split houses 05's footing plans use (item 53). Groups whose entries differ by real confidence/note were left split."
   ]
 }

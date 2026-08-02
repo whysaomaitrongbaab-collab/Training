@@ -11,26 +11,86 @@
   "table_kind": "footing_sections",
   "schema_note": "Same custom-field convention as S-12.",
   "elements": [
-    { "element_id": "F1.30x1.30", "element_type": "footing", "footing_size_m": "1.30x1.30",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 14, "dia_mm": 12, "type": "RB", "note": "7+7 Ø12mm" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ" },
+    {
+      "element_id": "F1.30x1.30",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 14,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "7+7 Ø12mm"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1.40x1.40", "element_type": "footing", "footing_size_m": "1.40x1.40",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 12, "dia_mm": 16, "type": "RB", "note": "6+6 Ø16mm" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ" },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 1300,
+      "height_mm": 1300,
+      "footing_size_m_printed_as": "1.30x1.30",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ"
+      }
+    },
+    {
+      "element_id": "F1.40x1.40",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 12,
+        "dia_mm": 16,
+        "type": "RB",
+        "note": "6+6 Ø16mm"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1.50x1.50", "element_type": "footing", "footing_size_m": "1.50x1.50",
-      "pedestal_size_mm": { "width": 200, "height": 200 },
-      "dowel_bar": { "count": 14, "dia_mm": 16, "type": "RB", "note": "7+7 Ø16mm" },
-      "tie_bar": { "dia_mm": 9, "type": "RB", "note": "1Ø9mm รัดรอบ" },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 1400,
+      "height_mm": 1400,
+      "footing_size_m_printed_as": "1.40x1.40",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ"
+      }
+    },
+    {
+      "element_id": "F1.50x1.50",
+      "element_type": "footing",
+      "pedestal_size_mm": {
+        "width": 200,
+        "height": 200
+      },
+      "dowel_bar": {
+        "count": 14,
+        "dia_mm": 16,
+        "type": "RB",
+        "note": "7+7 Ø16mm"
+      },
       "depth_m": 1.5,
-      "confidence_score": 0.85, "confidence_flags": [] }
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "width_mm": 1500,
+      "height_mm": 1500,
+      "footing_size_m_printed_as": "1.50x1.50",
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9mm รัดรอบ"
+      }
+    }
   ],
   "confidence_score": 0.85,
   "confidence_flags": [],
-  "warnings": []
+  "warnings": [
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed."
+  ]
 }
