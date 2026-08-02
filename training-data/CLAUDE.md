@@ -2,6 +2,11 @@
 
 Context สำหรับ AI agent ที่มาทำงานต่อในโฟลเดอร์นี้ (portable — อาจอยู่ใน repo แยกจาก Constistant หลัก)
 
+> ## ⚠️ 2026-08-02 — Label Studio ถูกยกเลิกทั้งหมด (คำสั่งมะขาม)
+> **ไม่เก็บข้อมูลผ่าน Label Studio อีกต่อไป และ `op1`/`op2` ห้ามสร้างไฟล์ task ของ Label Studio อีก** — ทุกไฟล์ที่เกี่ยวกับ Label Studio โดยตรง (`label_studio_stuff/` ทั้งโฟลเดอร์, mindmap PDF, `label-studio-config.xml`, `manifest.json`, `review.html`, `annotated/`, `upload-to-supabase-storage.js`) ย้ายไปพักที่ **`wait_for_ทิ้ง/`** ที่ root repo รอลบจริง (กู้คืนได้จาก git ทุกเมื่อ)
+> Ground truth ปัจจุบัน = raw JSON ใน `raw_json_ตัวที่ใช้งานจริง/0N<house>/` ตรวจด้วย `tools/check_format.py` เท่านั้น
+> **ทุก section ในไฟล์นี้ที่พูดถึง Label Studio review flow (3 sections ด้านล่าง) = ประวัติศาสตร์ อ่านเพื่อเข้าใจที่มาได้ แต่ห้ามทำตาม**
+
 > 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`training-data/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม)
 
 > ⚠️ **อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น**

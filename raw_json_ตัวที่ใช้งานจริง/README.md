@@ -27,9 +27,11 @@ If the user (Makham) types **`op1 <house_name>`** (e.g. `op1 บ้านเอ�
 2. Determine the next sequence number `N` (2 digits) by checking the highest existing `0N<house>/` folder in this directory and incrementing — don't ask the user to supply it.
 3. Actually read every page image in `image/<house_name>/*.png` (never guess, never copy another house's data) and extract per the spec — grid master first (`<house>_หน้า00_gridline.json`), then page-by-page/view-by-view. This is real vision extraction work done in-session; there is no script that does this part automatically.
 4. Save every file into the new `0N<house_name>/` folder.
-5. Run `node label-studio-tasks-makham.js <house_name>` (from `training-data/label_studio_stuff/`) to generate the 3 Label Studio task files, now namespaced per house (see Step 2 below) so this is always safe to re-run for any house without overwriting another house's output.
-6. Report back: files created, page count, any low-confidence flags or open questions (e.g. duplicate `element_id` across sections) — then remind the user that the 3 task files still need to be **manually uploaded** into their matching Label Studio projects (this step is never automatic).
+5. Run `python tools/check_format.py 0N<house_name>` (repo root) — every check must PASS before the house counts as finished (schema §0.10).
+6. Report back: files created, page count, any low-confidence flags or open questions (e.g. duplicate `element_id` across sections).
 7. Add a row to `training-data/docs/raw_json_data_log.md` per `rule_of_tune.md` rule #3 — every new house extraction is a real-data event that must be logged.
+
+> **Label Studio steps removed 2026-08-02 by Makham's order** — Label Studio is cancelled; `op1`/`op2` must NOT generate Label Studio task files anymore. The old step 5 (`node label-studio-tasks-makham.js`) and the upload reminder are gone; the tooling now sits in `wait_for_ทิ้ง/` pending deletion. Ground truth is the raw JSON in this folder itself.
 
 ### `op1` is a standing order — decide, don't ask
 
@@ -91,7 +93,7 @@ Switch models with the `Agent` tool's `model` parameter (`sonnet` / `opus` / `fa
 
 ### Handoff contract between stages
 
-- **Stage 0 → 1.** Output is `0N<house>/_stage0_manifest.json`. The leading `_` matters: `label-studio-tasks-makham.js` filters with `f.startsWith(house)`, so a file named this way is never picked up as a training task. It is orchestration metadata, not house data.
+- **Stage 0 → 1.** Output is `0N<house>/_stage0_manifest.json`. The leading `_` matters: downstream tooling (incl. `tools/check_format.py`) skips files named `_*`, so it is never picked up as house data. It is orchestration metadata only. *(The original reason for this convention was the Label Studio task generator's filter; Label Studio is cancelled as of 2026-08-02, but the `_` convention stays.)*
 - **Stage 1 → 2.** The grid master must be complete: every `x_lines`/`y_lines` entry carries `pos_m` (or an explicit `null` for a dummy grid whose position the drawing genuinely does not give), and **both dimension chains must be shown to close against the printed overall dimension** in a `warnings[]` entry. Stage 1 must also state explicitly whether the set uses **drawing break lines** — checking for them is mandatory, not optional (house-06 lesson: zooming to 6× was not enough; the zigzag symbol sits mid-line and needs ~4.5× on a tight crop of the middle of the double line).
 - **Stage 2 → 3.** Stage 2 **never edits the grid master or any `plan` file.** If it finds evidence bearing on the grid — e.g. house 07's A-07 architectural roof plan independently confirming the S-06 ridge position that had to be traced from line weights — it writes a `phase_note` and moves on.
 - **Stage 3.** Folds every `phase_note` into `warnings[]`, then deletes the field. Per spec §2a, a finished file has no `phase_note`.
@@ -124,26 +126,9 @@ Use plain `op1` when a single model is doing the whole house anyway, or when the
 5. Every file needs `source_image` (full path of the source image) except the `หน้า00` file, which uses `source_pages` instead.
 6. Save everything into a new folder `0N<house_name>/` (next number after the last house).
 
-## Step 2 — Prepare data for Label Studio (3 files: element / material_list / single)
+## Step 2 — ~~Prepare data for Label Studio~~ CANCELLED 2026-08-02
 
-Label Studio needs 3 separate task JSON files by data shape (see `training-data/label_studio_stuff/` for why) — one generator script produces all 3:
-
-```bash
-cd training-data/label_studio_stuff
-node label-studio-tasks-makham.js <house>
-# e.g.: node label-studio-tasks-makham.js บ้าน_เล็ก_1ชั้น_01
-```
-
-This auto-finds `raw_json_ตัวที่ใช้งานจริง/<NN><house>/` — no need to pass a folder number. (Pass an old `mk_test` round name, e.g. `t2`, as a second argument to force reading that instead.)
-
-Output is written into per-project subfolders automatically, filenames namespaced by house so running this for a new house never overwrites an earlier house's files:
-```
-label_studio_stuff/element/label-studio-tasks-makham-<house>-elements.json
-label_studio_stuff/material_list/label-studio-tasks-makham-<house>-material_list.json
-label_studio_stuff/single/label-studio-tasks-makham-<house>-single.json
-```
-
-Then **Upload Files** each one into its matching Label Studio project (Elements / Material List / Single — separate projects, never combined; see `label_studio_stuff/` for why, re: Label Studio's `visibleWhen` bug). Always finish **Labeling Setup → Code** (paste the matching `.xml`) before **Data Import**.
+**Label Studio is cancelled by Makham's order (2026-08-02). This step no longer exists.** Do not generate task files, do not import anything anywhere. The generator (`label-studio-tasks-makham.js`), the 3 project XMLs, all task JSONs and the import scripts were moved to `wait_for_ทิ้ง/label_studio_stuff/` pending deletion. The raw JSON in `0N<house>/` **is** the ground truth — the only quality gate after extraction is `python tools/check_format.py`.
 
 ## Full workflow summary
 
@@ -152,9 +137,8 @@ Then **Upload Files** each one into its matching Label Studio project (Elements 
         ↓
 2. Extract from real images → save into 0N<house_name>/
         ↓
-3. Run label-studio-tasks-makham.js → get 3 task JSON files
+3. python tools/check_format.py 0N<house_name> → ALL CHECKS PASS
         ↓
-4. Import into 3 Label Studio projects (Elements / Material List / Single)
-        ↓
-5. Review/correct in Label Studio → export back as ground truth for fine-tuning
+4. Log the extraction in training-data/docs/raw_json_data_log.md
 ```
+*(Steps 3-5 used to be the Label Studio task-generation/import/review loop — cancelled 2026-08-02; the raw JSON itself is the ground truth.)*
