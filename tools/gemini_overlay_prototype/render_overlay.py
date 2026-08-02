@@ -4,6 +4,7 @@ positions (no pixel/bbox data anywhere in this file).
 """
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -42,10 +43,10 @@ def _grid_svg(grid, min_x, max_x, min_y, max_y):
     return "\n".join(lines), width_px, height_px
 
 
-def _marker_svg(entry, min_x, min_y, color, dashed, label_suffix=""):
+def _marker_svg(entry, to_px, color, dashed, label_suffix=""):
     if entry["xy"] is None:
         return ""
-    x_px, y_px = _to_px(entry["xy"][0], entry["xy"][1], min_x, min_y)
+    x_px, y_px = to_px(entry["xy"][0], entry["xy"][1])
     dash_attr = ' stroke-dasharray="4,3"' if dashed else ""
     fill = "none" if dashed else color
     return (
@@ -58,9 +59,18 @@ def _marker_svg(entry, min_x, min_y, color, dashed, label_suffix=""):
     )
 
 
-def _wrong_id_marker_svg(entry, min_x, min_y):
+def _wrong_id_marker_svg(entry, to_px):
     label_suffix = f": expected {entry['expected_id']}, got {entry['got_id']}"
-    return _marker_svg(entry, min_x, min_y, "#9b59b6", dashed=False, label_suffix=label_suffix)
+    return _marker_svg(entry, to_px, "#9b59b6", dashed=False, label_suffix=label_suffix)
+
+
+def _markers_svg(to_px, all_matched, all_wrong_id, all_missed, all_hallucinated):
+    return "\n".join(
+        [_marker_svg(e, to_px, "#2ecc71", dashed=False) for e in all_matched]
+        + [_wrong_id_marker_svg(e, to_px) for e in all_wrong_id]
+        + [_marker_svg(e, to_px, "#e74c3c", dashed=True) for e in all_missed]
+        + [_marker_svg(e, to_px, "#e67e22", dashed=False) for e in all_hallucinated]
+    )
 
 
 def _merge_element_refs(gemini_elements, truth_elements, element_type):
@@ -155,21 +165,7 @@ def _summary_table_html(gemini_elements, truth_elements, footing_diff, column_di
 
 def render(house, page):
     page_padded = page.zfill(2)
-    base = Path(__file__).parent.parent.parent  # repo root, from tools/gemini_overlay_prototype/render_overlay.py
-
-    gemini_path = Path(__file__).parent / "output" / f"{house}_หน้า{page_padded}_gemini.json"
-    gemini_data = json.loads(gemini_path.read_text(encoding="utf-8"))
-
-    truth_path = (
-        base / "json_แก้ไขแล้ว" / f"01{house}" / f"{house}_หน้า{page_padded}_view1_footing_plan.json"
-    )
-    truth_data = json.loads(truth_path.read_text(encoding="utf-8"))
-
-    grid_path = base / "json_แก้ไขแล้ว" / f"01{house}" / f"{house}_หน้า00_gridline.json"
-    grid = load_gridline_master(grid_path)
-
-    footing_diff = diff_elements(gemini_data["elements"], truth_data["elements"], grid, "footing")
-    column_diff = diff_elements(gemini_data["elements"], truth_data["elements"], grid, "column")
+    gemini_data, truth_data, grid, footing_diff, column_diff = _load_diff_inputs(house, page_padded)
 
     all_matched = footing_diff["matched"] + column_diff["matched"]
     all_wrong_id = footing_diff["wrong_id"] + column_diff["wrong_id"]
@@ -181,12 +177,8 @@ def render(house, page):
     min_x, max_x, min_y, max_y = min(all_x), max(all_x), min(all_y), max(all_y)
 
     grid_svg, width_px, height_px = _grid_svg(grid, min_x, max_x, min_y, max_y)
-    markers_svg = "\n".join(
-        [_marker_svg(e, min_x, min_y, "#2ecc71", dashed=False) for e in all_matched]
-        + [_wrong_id_marker_svg(e, min_x, min_y) for e in all_wrong_id]
-        + [_marker_svg(e, min_x, min_y, "#e74c3c", dashed=True) for e in all_missed]
-        + [_marker_svg(e, min_x, min_y, "#e67e22", dashed=False) for e in all_hallucinated]
-    )
+    to_px = lambda x_m, y_m: _to_px(x_m, y_m, min_x, min_y)
+    markers_svg = _markers_svg(to_px, all_matched, all_wrong_id, all_missed, all_hallucinated)
 
     html = f"""<!doctype html>
 <html><head><meta charset="utf-8"><title>{house} หน้า{page_padded} overlay</title>
@@ -225,12 +217,116 @@ function toggleMarker(circle) {{
     }
 
 
+def _load_diff_inputs(house, page_padded):
+    """Shared by render() and render_on_image(): loads the Gemini output,
+    ground truth, and gridline master, and computes both element-type
+    diffs. Returns (gemini_data, truth_data, grid, footing_diff, column_diff).
+    """
+    base = Path(__file__).parent.parent.parent  # repo root
+
+    gemini_path = Path(__file__).parent / "output" / f"{house}_หน้า{page_padded}_gemini.json"
+    gemini_data = json.loads(gemini_path.read_text(encoding="utf-8"))
+
+    truth_path = (
+        base / "json_แก้ไขแล้ว" / f"01{house}" / f"{house}_หน้า{page_padded}_view1_footing_plan.json"
+    )
+    truth_data = json.loads(truth_path.read_text(encoding="utf-8"))
+
+    grid_path = base / "json_แก้ไขแล้ว" / f"01{house}" / f"{house}_หน้า00_gridline.json"
+    grid = load_gridline_master(grid_path)
+
+    footing_diff = diff_elements(gemini_data["elements"], truth_data["elements"], grid, "footing")
+    column_diff = diff_elements(gemini_data["elements"], truth_data["elements"], grid, "column")
+    return gemini_data, truth_data, grid, footing_diff, column_diff
+
+
+def render_on_image(house, page, refs=None, model="models/gemini-2.5-flash", calibration_attempts=3):
+    """Same diff as render(), but drawn on top of the actual scanned page
+    PNG instead of a schematic grid diagram. Positions still come entirely
+    from grid pos_m -- the only new input is a one-time pixel calibration
+    (Gemini-read reference points, each read `calibration_attempts` times
+    and median-combined since single-call reads have been observed to
+    vary, then averaged by least squares across points -- see
+    pixel_calibration.py) used to convert those meter positions to pixel
+    positions on this one image.
+    """
+    from PIL import Image
+    from pixel_calibration import DEFAULT_CALIBRATION_REFS, calibrate, meter_to_pixel
+
+    refs = refs or DEFAULT_CALIBRATION_REFS
+    page_padded = page.zfill(2)
+    base = Path(__file__).parent.parent.parent
+    gemini_data, truth_data, grid, footing_diff, column_diff = _load_diff_inputs(house, page_padded)
+
+    image_path = base / "image" / house / f"{house}_หน้า{page_padded}.png"
+    with Image.open(image_path) as im:
+        img_w, img_h = im.size
+
+    transform = calibrate(image_path, img_w, img_h, grid, refs=refs, model=model, attempts=calibration_attempts)
+    to_px = lambda x_m, y_m: meter_to_pixel(x_m, y_m, transform)
+
+    all_matched = footing_diff["matched"] + column_diff["matched"]
+    all_wrong_id = footing_diff["wrong_id"] + column_diff["wrong_id"]
+    all_missed = footing_diff["missed"] + column_diff["missed"]
+    all_hallucinated = footing_diff["hallucinated"] + column_diff["hallucinated"]
+    markers_svg = _markers_svg(to_px, all_matched, all_wrong_id, all_missed, all_hallucinated)
+
+    output_dir = Path(__file__).parent / "output"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"{house}_หน้า{page_padded}_overlay_on_image.html"
+    image_href = os.path.relpath(image_path, output_dir).replace(os.sep, "/")
+
+    html = f"""<!doctype html>
+<html><head><meta charset="utf-8"><title>{house} หน้า{page_padded} overlay on image</title>
+<style>
+  .missed {{ color: #e74c3c; }}
+  .hallucinated {{ color: #e67e22; }}
+  .unresolved {{ color: #999; }}
+  .mismatch {{ background: #fdf2ff; }}
+  .marker circle {{ cursor: pointer; }}
+</style></head>
+<body>
+<h1>{house} หน้า{page_padded} — footing/column overlay on real drawing</h1>
+<p>Calibrated from {", ".join(refs)} (model: {model}).</p>
+<svg width="{img_w}" height="{img_h}">
+<image href="{image_href}" x="0" y="0" width="{img_w}" height="{img_h}"/>
+{markers_svg}
+</svg>
+{_summary_table_html(gemini_data["elements"], truth_data["elements"], footing_diff, column_diff)}
+<script>
+function toggleMarker(circle) {{
+  const isGreen = circle.getAttribute('fill') === '#2ecc71';
+  circle.setAttribute('fill', isGreen ? 'none' : '#2ecc71');
+  circle.setAttribute('stroke', '#2ecc71');
+  console.log('toggled', circle.parentElement.dataset.ref);
+}}
+</script>
+</body></html>"""
+
+    output_path.write_text(html, encoding="utf-8")
+    print(f"Wrote {output_path}")
+    return {"footing": footing_diff, "column": column_diff, "transform": transform}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--house", required=True)
     parser.add_argument("--page", required=True)
+    parser.add_argument(
+        "--on-image", action="store_true",
+        help="Draw markers on the real scanned page PNG instead of a schematic grid diagram",
+    )
+    parser.add_argument(
+        "--refs", default=None,
+        help='Comma-separated pixel-calibration grid_refs, e.g. "D1,D3,A1,A3" (--on-image only; default: 4 grid corners)',
+    )
+    parser.add_argument("--model", default="models/gemini-2.5-flash", help="Gemini model for pixel calibration (--on-image only)")
     args = parser.parse_args()
-    render(args.house, args.page)
+    if args.on_image:
+        refs = args.refs.split(",") if args.refs else None
+        render_on_image(args.house, args.page, refs=refs, model=args.model)
+    else:
+        render(args.house, args.page)
 
 
 def _self_check():
@@ -278,12 +374,8 @@ def _self_check():
     all_missed = footing_diff["missed"] + column_diff["missed"]
     all_hallucinated = footing_diff["hallucinated"] + column_diff["hallucinated"]
 
-    markers_svg = "\n".join(
-        [_marker_svg(e, 0.0, 0.0, "#2ecc71", dashed=False) for e in all_matched]
-        + [_wrong_id_marker_svg(e, 0.0, 0.0) for e in all_wrong_id]
-        + [_marker_svg(e, 0.0, 0.0, "#e74c3c", dashed=True) for e in all_missed]
-        + [_marker_svg(e, 0.0, 0.0, "#e67e22", dashed=False) for e in all_hallucinated]
-    )
+    identity_to_px = lambda x_m, y_m: (x_m, y_m)
+    markers_svg = _markers_svg(identity_to_px, all_matched, all_wrong_id, all_missed, all_hallucinated)
     table_html = _summary_table_html(gemini_elements, truth_elements, footing_diff, column_diff)
     html = f"<html><body><svg>{markers_svg}</svg>{table_html}</body></html>"
 
