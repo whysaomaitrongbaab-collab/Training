@@ -17,7 +17,11 @@ WRAPPER = ['png', 'doc_page', 'discipline', 'sheet_code', 'sheet_name', 'pattern
 # arrays named after a KIND of drawing element (section 0.1). 'sections'/'columns'/'details' are
 # deliberately absent: they legitimately mean document sections / table headers / detail callouts.
 ELEMENT_KIND_ARRAYS = {'beams', 'columns_structural', 'slabs', 'footing_types',
-                       'column_sections', 'structural_elements'}
+                       'column_sections', 'structural_elements',
+                       'slab_markers', 'reference_markers', 'door_window_schedule'}
+# element_types that are annotation clusters; their auto ids are fine, but they still need ids
+NUMERIC_KEYS = ('count', 'dia_mm', 'spacing_mm', 'level_m', 'span_m', 'width_mm', 'height_mm', 'thickness_mm')
+OBJECT_KEYS = ('main_bar', 'stirrup', 'rebar', 'steel_section')
 POINT_TYPES = {'footing', 'column', 'pile', 'pile_cap', 'pedestal'}
 PACKED_SIZE_KEYS = ('size_m', 'section_mm', 'footing_size_m', 'plan_size_m', 'cap_plan_dims_m')
 
@@ -82,6 +86,12 @@ def check_house(house_dir):
                 fails['rebar is a string'].append(f'{name}: {k}={v[:40]!r}')
             if k in ('tie', 'tie_bar'):
                 fails['stirrup misnamed'].append(f'{name}: {k}')
+            if k in OBJECT_KEYS and isinstance(v, list):
+                fails['rebar/steel as array (use bar_layers/spans_m)'].append(f'{name}: {k}')
+            if k in NUMERIC_KEYS and isinstance(v, (str, list)):
+                fails['numeric field wrong type'].append(f'{name}: {k}={str(v)[:35]!r}')
+            if k == 'grid_ref' and isinstance(v, list):
+                fails['grid_ref is an array'].append(f'{name}')
             if k in PACKED_SIZE_KEYS and isinstance(v, str) and PACKED.match(v):
                 fails['packed size string'].append(f'{name}: {k}={v!r}')
             if k in REF_KEYS:
@@ -101,6 +111,13 @@ def check_house(house_dir):
         elements = doc.get('elements') or []
         by_id = collections.defaultdict(set)
         for e in elements:
+            if isinstance(e, dict):
+                # section 0.2: identity required on every top-level elements[] entry
+                # (nested cross-ref sub-lists inside an element are exempt)
+                if 'element_id' not in e:
+                    fails['element missing element_id'].append(f'{name}')
+                if 'element_type' not in e:
+                    fails['element missing element_type'].append(f'{name}')
             if isinstance(e, dict) and e.get('element_id'):
                 by_id[e['element_id']].add(e.get('element_id_printed_as') or e['element_id'])
         for eid, originals in by_id.items():
@@ -146,8 +163,10 @@ def main(argv):
 
     print(f'checked {len(targets)} house folder(s)\n')
     order = ['parse', 'wrapper fields', 'pattern in 14', 'phase_note left', 'element-kind array',
-             'grid not nested', 'rebar is a string', 'stirrup misnamed', 'packed size string',
-             'dashed point ref', "'grid' word in ref", 'ref not in grid master',
+             'grid not nested', 'rebar is a string', 'stirrup misnamed',
+             'rebar/steel as array (use bar_layers/spans_m)', 'numeric field wrong type',
+             'grid_ref is an array', 'element missing element_id', 'element missing element_type',
+             'packed size string', 'dashed point ref', "'grid' word in ref", 'ref not in grid master',
              'element_id collision', 'footing not merged']
     for k in order:
         v = total.get(k, [])

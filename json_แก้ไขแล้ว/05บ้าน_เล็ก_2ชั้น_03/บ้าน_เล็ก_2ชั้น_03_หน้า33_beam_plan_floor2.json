@@ -433,27 +433,45 @@
       "description": "stairwell floor opening (ST mark), down-direction arrow (ลง) -- floor-2 side of the main interior stair",
       "confidence_score": 0.75,
       "confidence_flags": []
-    }
-  ],
-  "slab_markers": [
+    },
     {
-      "mark": "S1",
+      "element_id": "S1",
+      "element_type": "slab",
       "grid_ref": "2-4 area near F, dashed room outline",
-      "count": 2
+      "count": 2,
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     },
     {
-      "mark": "S1",
-      "grid_ref": "2-3 area near E-D"
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "2-3 area near E-D",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     },
     {
-      "mark": "S1",
+      "element_id": "S1",
+      "element_type": "slab",
       "grid_ref": "1-2 area near D-C",
-      "count": 2
+      "count": 2,
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     },
     {
-      "mark": "S1",
+      "element_id": "S1",
+      "element_type": "slab",
       "grid_ref": "1-2 area near B-A",
-      "count": 2
+      "count": 2,
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     }
   ],
   "overhang_dims_m": {
@@ -469,6 +487,7 @@
     "IMPORTANT cross-check vs floor 1 (S-04): floor 2's overhang south of grid A is only 0.40m (small eave/balcony edge, matching the y_beyond_gridA convention seen elsewhere), NOT the ~2.05m deep structural extension seen on floor 1's beam plan. This confirms floor 1's southern extension (dummy grid 'A'' at pos_m 15.45 = 2.05m south of grid A, added to the grid master 2026-07-24; formerly called 'gridAprime') is a GROUND-FLOOR-ONLY feature (e.g. an open carport/terrace with no room above) -- floor 2 does not extend that far south. The grid master's A' dummy is therefore ground-floor-only, not a full-height column line (recorded in A''s note on หน้า00).",
     "Several beam segments near the stairwell (grid2-gridD to grid2-gridC, and grid3-4 near gridD-gridC) carry explicit callout notes ('B1 ที่ระดับชานพัก', 'B1/B2ที่ระดับชานพัก', 'B4X/B1ที่ระดับชานพัก') indicating the true beam mark at those positions is different at the STAIR LANDING level vs the main floor-2 level printed on this sheet -- recorded both marks where legible, flagged for structural-detail cross-check against S-11/S-12 (stair sheets) once read.",
     "This floor 2 layout confirms a single main interior stair (ST marker, floor opening + ลง/down arrow) positioned at grid3-grid4/gridD-gridC -- expect matching S-11/S-12 stair section sheets to reference this same position.",
-    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
+    "NORMALIZED_2026-08-02(r5): slab_markers[]/reference_markers[] arrays folded into elements[] - schema section 10 already says SO/SI/SX/ST markers are element_type 'slab' cross-referencing like beams, and houses 02-04 keep them in elements[]; a separate array was a house-05-only shape. mark -> element_id, nothing dropped."
   ]
 }

@@ -4,24 +4,117 @@
   "discipline": "boq",
   "sheet_code": "17/23",
   "sheet_name": "รายการประมาณราคาค่าก่อสร้าง บ้านครอบครัวไทยร่วมสมัย แบบที่ 4 (ฐานรากเสาเข็ม ไม่รวมระบบปรับอากาศ) - หมวดไฟฟ้า ทั่วไป",
-  "pattern": "unknown",
+  "pattern": "material_list",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า75.png",
   "split_note": "This source PNG is a landscape sheet containing 2 rotated portrait BOQ pages side by side (scanning artifact). This file covers the RIGHT half, printed page 17/23.",
   "view_title": "หมวด 3.2 (งานระบบไฟฟ้าแสงสว่าง, tail end) + หมวด 3.3 (งานระบบปลั๊กไฟฟ้ากำลังไฟฟ้าภายในอาคาร)",
   "drawing_no": "S58115, AR58004, SN58081, EE58080",
-  "elements": [
-    { "item_no": "3.2.14", "description": "เครื่องสูบน้ำอัตโนมัติ ขนาด 200 W อัตราการจ่ายน้ำ 28 ลิตร/นาที ที่ความสูง 12 เมตร", "qty": 1, "unit": "เครื่อง", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required", "rotated_small_text_low_confidence_transcription"] },
-    { "item_no": "รวมข้อ 3.2", "description": "รวมข้อ 3.2 งานระบบไฟฟ้าแสงสว่าง", "row_type": "subtotal_label", "confidence_score": 0.6, "confidence_flags": [] },
-    { "item_no": "3.3", "description": "งานระบบปลั๊กไฟฟ้ากำลังไฟฟ้าภายในอาคาร", "row_type": "section_header", "confidence_score": 0.55, "confidence_flags": ["needs_human_review_zoom_required"] },
-    { "item_no": "3.3.1", "description": "ปลั๊กไฟฟ้า/เต้ารับไฟฟ้า ชนิดกันน้ำ-กันไฟดูด ขนาดตัวนำไม่น้อยกว่า 1.0 ตร.มม.", "qty": 1, "unit": "ชุด", "confidence_score": 0.4, "confidence_flags": ["needs_human_review_zoom_required", "rotated_small_text_low_confidence_transcription"] },
-    { "item_no": "3.3.2", "description": "สวิทซ์ไฟฟ้า ขนาด 30 แอมป์", "qty": 1, "unit": "ชุด", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"] },
-    { "item_no": "รวมข้อ 3.3", "description": "รวมข้อ 3.3 งานระบบปลั๊กไฟกำลังไฟฟ้าภายในอาคาร", "row_type": "subtotal_label", "confidence_score": 0.6, "confidence_flags": [] }
-  ],
   "confidence_score": 0.45,
-  "confidence_flags": ["needs_human_review_zoom_required"],
+  "confidence_flags": [
+    "needs_human_review_zoom_required"
+  ],
   "warnings": [
     "This sheet's item descriptions are printed in a very small rotated font at this image resolution -- transcription of items 3.2.14, 3.3.1, 3.3.2 is LOW CONFIDENCE and should be treated as a best-effort reading, not a verified transcription. Item numbers and column structure (จำนวน/หน่วย/ราคาต่อหน่วย/ราคารวม/ค่าแรงงาน/หมายเหตุ) are clear; the item text itself needs human re-verification against a higher-resolution source or the original PDF.",
-    "Quantity/unit columns appear entirely blank (unfilled) on this template sheet except the qty=1 values noted -- consistent with this being a per-unit-house cost estimate template rather than a filled ledger; recorded as printed."
+    "Quantity/unit columns appear entirely blank (unfilled) on this template sheet except the qty=1 values noted -- consistent with this being a per-unit-house cost estimate template rather than a filled ledger; recorded as printed.",
+    "NORMALIZED_2026-08-02(r5): pattern 'unknown' -> 'material_list' and elements[] rows -> categories[].items[] to match how every other house stores BOQ sheets (schema section 11). qty renamed quantity; price columns null-filled to the standard item shape; row_type kept; no row dropped or merged (continuation-row rule)."
+  ],
+  "categories": [
+    {
+      "category": "งานระบบปลั๊กไฟฟ้ากำลังไฟฟ้าภายในอาคาร",
+      "items": [
+        {
+          "item_no": "3.2.14",
+          "description": "เครื่องสูบน้ำอัตโนมัติ ขนาด 200 W อัตราการจ่ายน้ำ 28 ลิตร/นาที ที่ความสูง 12 เมตร",
+          "quantity": 1,
+          "unit": "เครื่อง",
+          "material_unit_price": null,
+          "material_amount": null,
+          "labor_unit_price": null,
+          "labor_amount": null,
+          "total_amount": null,
+          "confidence_score": 0.45,
+          "confidence_flags": [
+            "needs_human_review_zoom_required",
+            "rotated_small_text_low_confidence_transcription"
+          ]
+        },
+        {
+          "item_no": "รวมข้อ 3.2",
+          "description": "รวมข้อ 3.2 งานระบบไฟฟ้าแสงสว่าง",
+          "quantity": null,
+          "unit": null,
+          "material_unit_price": null,
+          "material_amount": null,
+          "labor_unit_price": null,
+          "labor_amount": null,
+          "total_amount": null,
+          "row_type": "subtotal_label",
+          "confidence_score": 0.6,
+          "confidence_flags": []
+        },
+        {
+          "item_no": "3.3",
+          "description": "งานระบบปลั๊กไฟฟ้ากำลังไฟฟ้าภายในอาคาร",
+          "quantity": null,
+          "unit": null,
+          "material_unit_price": null,
+          "material_amount": null,
+          "labor_unit_price": null,
+          "labor_amount": null,
+          "total_amount": null,
+          "row_type": "section_header",
+          "confidence_score": 0.55,
+          "confidence_flags": [
+            "needs_human_review_zoom_required"
+          ]
+        },
+        {
+          "item_no": "3.3.1",
+          "description": "ปลั๊กไฟฟ้า/เต้ารับไฟฟ้า ชนิดกันน้ำ-กันไฟดูด ขนาดตัวนำไม่น้อยกว่า 1.0 ตร.มม.",
+          "quantity": 1,
+          "unit": "ชุด",
+          "material_unit_price": null,
+          "material_amount": null,
+          "labor_unit_price": null,
+          "labor_amount": null,
+          "total_amount": null,
+          "confidence_score": 0.4,
+          "confidence_flags": [
+            "needs_human_review_zoom_required",
+            "rotated_small_text_low_confidence_transcription"
+          ]
+        },
+        {
+          "item_no": "3.3.2",
+          "description": "สวิทซ์ไฟฟ้า ขนาด 30 แอมป์",
+          "quantity": 1,
+          "unit": "ชุด",
+          "material_unit_price": null,
+          "material_amount": null,
+          "labor_unit_price": null,
+          "labor_amount": null,
+          "total_amount": null,
+          "confidence_score": 0.45,
+          "confidence_flags": [
+            "needs_human_review_zoom_required"
+          ]
+        },
+        {
+          "item_no": "รวมข้อ 3.3",
+          "description": "รวมข้อ 3.3 งานระบบปลั๊กไฟกำลังไฟฟ้าภายในอาคาร",
+          "quantity": null,
+          "unit": null,
+          "material_unit_price": null,
+          "material_amount": null,
+          "labor_unit_price": null,
+          "labor_amount": null,
+          "total_amount": null,
+          "row_type": "subtotal_label",
+          "confidence_score": 0.6,
+          "confidence_flags": []
+        }
+      ]
+    }
   ]
 }

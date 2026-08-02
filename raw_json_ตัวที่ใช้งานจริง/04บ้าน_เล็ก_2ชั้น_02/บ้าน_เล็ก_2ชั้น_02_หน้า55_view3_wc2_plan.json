@@ -12,15 +12,75 @@
   "scale": "1:50",
   "grid_ref_is_free_text_not_grid_notation": true,
   "room": "ห้องน้ำ 2 (+3.65)",
-  "overall_dims_m": {"width": 2.60, "height": 1.50},
+  "overall_dims_m": {
+    "width": 2.6,
+    "height": 1.5
+  },
   "elements": [
-    {"element_type": "vent_pipe", "description": "Ø2\"AVC vent-pipe-with-cap symbol at top-left", "confidence_score": 0.7, "confidence_flags": []},
-    {"element_type": "cold_water_pipe", "description": "Ø3/4\"CW pipe near the top, feeding the fixture cluster", "confidence_score": 0.65, "confidence_flags": []},
-    {"element_type": "floor_drain", "description": "Ø2\"FD floor drain symbol near the fixture cluster", "confidence_score": 0.6, "confidence_flags": []},
-    {"element_type": "floor_cleanout", "description": "circular cleanout-style symbol (labeled with a short abbreviation, possibly 'FCO' or 'ECO') adjacent to the WC fixture icon -- exact abbreviation not fully legible at this resolution", "confidence_score": 0.45, "confidence_flags": ["needs_human_review_zoom_required"]},
-    {"element_type": "bathroom_fixture_group", "description": "WC/toilet fixture icon and an additional fixture icon (likely a lavatory/wash basin) within the room outline", "confidence_score": 0.55, "confidence_flags": []},
-    {"element_type": "waste_pipe", "description": "Ø21/2\"W waste pipe running along the bottom of the plan", "confidence_score": 0.65, "confidence_flags": []},
-    {"element_type": "cleanout", "description": "CO (cleanout) label at the bottom-right corner of the plan", "confidence_score": 0.6, "confidence_flags": []}
+    {
+      "element_type": "vent_pipe",
+      "description": "Ø2\"AVC vent-pipe-with-cap symbol at top-left",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "auto_id_2026-08-02: no printed mark on the drawing for this entry; descriptive id generated (type + room/running number) matching the id style houses 08-11 already use"
+      ],
+      "element_id": "vent_pipe_1"
+    },
+    {
+      "element_type": "cold_water_pipe",
+      "description": "Ø3/4\"CW pipe near the top, feeding the fixture cluster",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "auto_id_2026-08-02: no printed mark on the drawing for this entry; descriptive id generated (type + room/running number) matching the id style houses 08-11 already use"
+      ],
+      "element_id": "cold_water_pipe_1"
+    },
+    {
+      "element_type": "floor_drain",
+      "description": "Ø2\"FD floor drain symbol near the fixture cluster",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "auto_id_2026-08-02: no printed mark on the drawing for this entry; descriptive id generated (type + room/running number) matching the id style houses 08-11 already use"
+      ],
+      "element_id": "floor_drain_1"
+    },
+    {
+      "element_type": "floor_cleanout",
+      "description": "circular cleanout-style symbol (labeled with a short abbreviation, possibly 'FCO' or 'ECO') adjacent to the WC fixture icon -- exact abbreviation not fully legible at this resolution",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "needs_human_review_zoom_required",
+        "auto_id_2026-08-02: no printed mark on the drawing for this entry; descriptive id generated (type + room/running number) matching the id style houses 08-11 already use"
+      ],
+      "element_id": "floor_cleanout_1"
+    },
+    {
+      "element_type": "bathroom_fixture_group",
+      "description": "WC/toilet fixture icon and an additional fixture icon (likely a lavatory/wash basin) within the room outline",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "auto_id_2026-08-02: no printed mark on the drawing for this entry; descriptive id generated (type + room/running number) matching the id style houses 08-11 already use"
+      ],
+      "element_id": "bathroom_fixture_group_1"
+    },
+    {
+      "element_type": "waste_pipe",
+      "description": "Ø21/2\"W waste pipe running along the bottom of the plan",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "auto_id_2026-08-02: no printed mark on the drawing for this entry; descriptive id generated (type + room/running number) matching the id style houses 08-11 already use"
+      ],
+      "element_id": "waste_pipe_1"
+    },
+    {
+      "element_type": "cleanout",
+      "description": "CO (cleanout) label at the bottom-right corner of the plan",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "auto_id_2026-08-02: no printed mark on the drawing for this entry; descriptive id generated (type + room/running number) matching the id style houses 08-11 already use"
+      ],
+      "element_id": "cleanout_1"
+    }
   ],
   "sibling_files": [
     "บ้าน_เล็ก_2ชั้น_02_หน้า55_view1_wc1_plan.json",
@@ -28,11 +88,14 @@
     "บ้าน_เล็ก_2ชั้น_02_หน้า55_view4_fixture_pipe_size_schedule.json"
   ],
   "confidence_score": 0.6,
-  "confidence_flags": ["needs_human_review_zoom_required"],
+  "confidence_flags": [
+    "needs_human_review_zoom_required"
+  ],
   "warnings": [
     "See the sibling 'wc3_plan' file's warning re: an in-plan room-label digit ambiguity between 'ห้องน้ำ 2' and 'ห้องน้ำ 3' on that other view -- this view's own caption ('ห้องน้ำ 2') is used as printed and is the clearer of the two captions to read, but flagged together for a combined human review since a mislabel on either view would mean the two are swapped.",
     "This is a small-scale (1:50) schematic underfloor-piping detail, explicitly noted '( ท่อประปาเดินใต้พื้น )'.",
     "Exact fixture layout and precise pipe routing paths are only partially legible at this resolution -- positions and pipe-size callouts are best-effort, not measured coordinates; flagged for zoom-review.",
-    "grid_ref_is_free_text_not_grid_notation is correctly true -- this is not on the building's structural plan grid."
+    "grid_ref_is_free_text_not_grid_notation is correctly true -- this is not on the building's structural plan grid.",
+    "NORMALIZED_2026-08-02(r5): element entries without element_id were given one - from the printed mark/item_no when one exists, otherwise a descriptive auto id (flagged per entry). Houses 08-11 already id every entry; 01-07 did not."
   ]
 }

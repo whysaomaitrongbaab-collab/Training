@@ -747,39 +747,61 @@
       "confidence_flags": [
         "needs_human_review_zoom_required"
       ]
-    }
-  ],
-  "slab_markers": [
+    },
     {
-      "mark": "S1",
+      "element_id": "S1",
+      "element_type": "slab",
       "grid_ref": "2-3 area near D-C, dashed outline",
-      "confidence_score": 0.6
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     },
     {
-      "mark": "S1",
+      "element_id": "S1",
+      "element_type": "slab",
       "grid_ref": "1-2 area near B-A, dashed outline",
-      "confidence_score": 0.6
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     },
     {
-      "mark": "SO",
+      "element_id": "SO",
+      "element_type": "slab",
       "grid_ref": "2-3 area near C-B",
-      "confidence_score": 0.6
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     },
     {
-      "mark": "SO",
+      "element_id": "SO",
+      "element_type": "slab",
       "grid_ref": "1 area near A-A' extension",
-      "confidence_score": 0.55
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     },
     {
-      "mark": "SOA",
+      "element_id": "SOA",
+      "element_type": "slab",
       "grid_ref": "1-2 area near F, small shaft/stair area with diagonal hatching",
       "confidence_score": 0.5,
-      "note": "diagonal hatch pattern suggests a stair-up symbol or duct shaft, not confirmed"
+      "note": "diagonal hatch pattern suggests a stair-up symbol or duct shaft, not confirmed",
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     },
     {
-      "mark": "SX",
+      "element_id": "SX",
+      "element_type": "slab",
       "grid_ref": "near 4-B and 1-A",
-      "confidence_score": 0.5
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "converted_2026-08-02_from_slab_markers_array (schema section 10/0.1)"
+      ]
     }
   ],
   "overhang_dims_m": {
@@ -796,6 +818,7 @@
     "A dashed linestyle is used for several beams in the southern half of the plan (B2 at grid A, B1/B2 in the extension zone) -- dashed usually means 'beam below current floor / not visible at this cut level' in these drawing sets, but this hasn't been cross-confirmed against the legend on S-01; recorded as printed.",
     "The 0.60m/0.50m overhangs beyond grid1/grid4 at the top dimension chain (gridF row) appear to be eave/slab-edge dimensions rather than a beam-bearing dummy grid, since no beam is drawn beyond those points at the F line itself -- unlike the southern extension which does show real beams. Flagged as a lower-priority discrepancy vs. the southern extension.",
     "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
-    "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed."
+    "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed.",
+    "NORMALIZED_2026-08-02(r5): slab_markers[]/reference_markers[] arrays folded into elements[] - schema section 10 already says SO/SI/SX/ST markers are element_type 'slab' cross-referencing like beams, and houses 02-04 keep them in elements[]; a separate array was a house-05-only shape. mark -> element_id, nothing dropped."
   ]
 }

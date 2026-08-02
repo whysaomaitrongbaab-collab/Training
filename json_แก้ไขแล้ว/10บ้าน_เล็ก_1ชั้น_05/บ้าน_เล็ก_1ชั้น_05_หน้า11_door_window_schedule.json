@@ -9,61 +9,106 @@
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า11.png",
-  "door_window_schedule": [
-    {
-      "mark": "1 (window, top-left)",
-      "type": "บานเลื่อน, ช่องแสงติดตาย",
-      "size_m": "2.60 (แบ่ง 4 ช่องเท่ากัน) x 2.05",
-      "frame": "อลูมิเนียมอบสีขาว",
-      "leaf": "กระจกใส หนา 6มม.",
-      "hardware": "มาตรฐานครบชุด",
-      "location": "ติดตั้งบริเวณทางเข้า, ระเบียง"
-    },
-    {
-      "mark": "2 (door)",
-      "type": "บานเปิดเดี่ยว",
-      "frame": "ไม้เนื้อแข็ง 2\"x4\"",
-      "leaf": "บานประตูสำเร็จรูป HDF.",
-      "hardware": "ลูกบิด, มาตรฐานครบชุด",
-      "location": "ติดตั้งบริเวณ ห้องครัว, ห้องนอน",
-      "width_mm": 800,
-      "height_mm": 2000,
-      "size_m_printed_as": "0.80 x 2.00"
-    },
-    {
-      "mark": "3 (door)",
-      "type": "บานเปิดเดี่ยว",
-      "size_m": "0.70 x 2.00 (บานล่างทึบ 0.85 + บานบานเกล็ด 1.20)",
-      "frame": "วงกบ PVC.",
-      "leaf": "บานประตู PVC.",
-      "hardware": "ลูกบิด, มาตรฐานครบชุด",
-      "location": "ติดตั้งบริเวณห้องน้ำ"
-    },
-    {
-      "mark": "1 (window, top-right variant)",
-      "type": "บานเลื่อนสลับ",
-      "size_m": "1.40 x 2.05 (1.20 + 0.85)",
-      "frame": "อลูมิเนียมอบสีขาว",
-      "leaf": "กระจกใส หนา 6มม.",
-      "hardware": "มาตรฐานครบชุด",
-      "location": null
-    },
-    {
-      "mark": "2 (window, bottom)",
-      "type": "บานกระทุ้ง",
-      "size_m": "1.40 (EQ+EQ) x 0.50, sill height 2.00-2.50",
-      "frame": "อลูมิเนียมอบสีขาว",
-      "leaf": "กระจกใส หนา 6มม.",
-      "hardware": "มาตรฐานครบชุด",
-      "location": null
-    }
-  ],
   "scale": "as marked per detail",
   "confidence_score": 0.82,
   "confidence_flags": [],
   "warnings": [
     "op1 direct read (house 10). 5 detail cells on this sheet (4 top row + 1 bottom row); the bottom-row cell shares mark '2' with a different window type/size than any top-row window, distinguished by position on sheet — recorded as printed, not renumbered.",
     "Mark '1' appears twice with different dimensions (2.60x2.05 4-panel sliding vs 1.40x2.05 2-panel staggered sliding) — both use the same frame/leaf spec (aluminium, 6mm clear glass), recorded as-is per spec's no-guessing rule; likely differentiated by location in the room-by-room elevations, not resolved here.",
-    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "NORMALIZED_2026-08-02(r5): the door_window_schedule[] array was folded into elements[] using the field names houses 01-05 use (element_id/element_type/opening_type/leaf_material, width_mm/height_mm). Original mark text kept in element_id_printed_as, original size string in size_printed_as."
+  ],
+  "elements": [
+    {
+      "element_id": "W1",
+      "element_type": "window",
+      "element_id_printed_as": "1 (window, top-left)",
+      "opening_type": "บานเลื่อน, ช่องแสงติดตาย",
+      "width_mm": 2600,
+      "height_mm": 2050,
+      "size_printed_as": "2.60 (แบ่ง 4 ช่องเท่ากัน) x 2.05",
+      "frame": "อลูมิเนียมอบสีขาว",
+      "leaf_material": "กระจกใส หนา 6มม.",
+      "hardware": "มาตรฐานครบชุด",
+      "location": "ติดตั้งบริเวณทางเข้า, ระเบียง",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "D2",
+      "element_type": "door",
+      "element_id_printed_as": "2 (door)",
+      "opening_type": "บานเปิดเดี่ยว",
+      "frame": "ไม้เนื้อแข็ง 2\"x4\"",
+      "leaf_material": "บานประตูสำเร็จรูป HDF.",
+      "hardware": "ลูกบิด, มาตรฐานครบชุด",
+      "location": "ติดตั้งบริเวณ ห้องครัว, ห้องนอน",
+      "width_mm": 800,
+      "height_mm": 2000,
+      "size_m_printed_as": "0.80 x 2.00",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "D3",
+      "element_type": "door",
+      "element_id_printed_as": "3 (door)",
+      "opening_type": "บานเปิดเดี่ยว",
+      "width_mm": 700,
+      "height_mm": 2000,
+      "size_printed_as": "0.70 x 2.00 (บานล่างทึบ 0.85 + บานบานเกล็ด 1.20)",
+      "frame": "วงกบ PVC.",
+      "leaf_material": "บานประตู PVC.",
+      "hardware": "ลูกบิด, มาตรฐานครบชุด",
+      "location": "ติดตั้งบริเวณห้องน้ำ",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "W1_variant",
+      "element_type": "window",
+      "element_id_printed_as": "1 (window, top-right variant)",
+      "opening_type": "บานเลื่อนสลับ",
+      "width_mm": 1400,
+      "height_mm": 2050,
+      "size_printed_as": "1.40 x 2.05 (1.20 + 0.85)",
+      "frame": "อลูมิเนียมอบสีขาว",
+      "leaf_material": "กระจกใส หนา 6มม.",
+      "hardware": "มาตรฐานครบชุด",
+      "location": null,
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision",
+        "element_id_2026-08-02_kept_variant_suffix - the sheet genuinely prints mark 1 on two different windows (a variant unit); collapsing them would merge two real members (schema section 0.3)"
+      ]
+    },
+    {
+      "element_id": "W2",
+      "element_type": "window",
+      "element_id_printed_as": "2 (window, bottom)",
+      "opening_type": "บานกระทุ้ง",
+      "width_mm": 1400,
+      "height_mm": 500,
+      "size_printed_as": "1.40 (EQ+EQ) x 0.50, sill height 2.00-2.50",
+      "frame": "อลูมิเนียมอบสีขาว",
+      "leaf_material": "กระจกใส หนา 6มม.",
+      "hardware": "มาตรฐานครบชุด",
+      "location": null,
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    }
   ]
 }

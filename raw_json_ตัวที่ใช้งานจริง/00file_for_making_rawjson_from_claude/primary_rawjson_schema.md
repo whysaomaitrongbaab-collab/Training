@@ -29,12 +29,18 @@ Every file puts its content in **`elements[]`**. Three documented exceptions, an
 
 If the entries have (or should have) an `element_id` and an `element_type`, it is drawing content → it belongs in `elements[]`. If they are document structure, table headers, or a reference table, leave them where they are.
 
+Also forbidden as separate arrays (found and repaired 2026-08-02): `slab_markers[]` (§10 already says SO/SI/SX/ST are `element_type: "slab"` in `elements[]`), `reference_markers[]` (→ `element_type: "symbol"`), `door_window_schedule[]` (→ `elements[]` with `element_id` `D1`/`W1`, `element_type` door/window, `opening_type`, `leaf_material` — the field names houses 01-05 use).
+
+**The 10-design series price table** (printed identically in every house of the series) is a reference table and always uses the same shape: `series_price_table[]` with `{design, name, size_sqm, price_pile_baht, price_spread_baht}` under `pattern: misc`. It was once stored five different ways (`house_catalog`/`house_series`/`elements` rows/`material_list` categories/raw text) — never invent a new shape for it.
+
 ### 0.2 Every element carries these four
 
 ```json
 { "element_id": "...", "element_type": "...", "confidence_score": 0.9, "confidence_flags": [] }
 ```
 `confidence_score` is `null` when the sheet genuinely gave you nothing to judge by. **Never invent a number to fill the field** — a made-up confidence is worse than an honest `null`.
+
+This applies to **top-level `elements[]` entries**. A cross-reference sub-list nested *inside* an element (e.g. a section-callout element listing its cut marks as `sections[{mark: "A-A", sheet: "A-12"}]`) is exempt — those are attributes of the element, not elements themselves. An entry with no printed mark takes a descriptive id (`ceiling_fan_นอน1`, `vent_pipe_2` — type + room/running number, the style houses 08-11 established); never leave `element_id` absent.
 
 ### 0.3 `element_id` = the mark printed on the drawing, nothing else
 
@@ -59,6 +65,9 @@ Only add a new value when **none** of the above genuinely fits, and when you do,
 - ❌ Never a packed string: `"size_m": "0.20x0.40"` is wrong → `width_mm: 200, height_mm: 400`.
 - ❌ Never a metre variant of a member dimension (`width_m`, `height_m`, `depth_m`, `section_mm: "200x200"`).
 - Levels, spans, grid positions and site distances stay in metres (`level_m`, `span_length_m`, `pos_m`) — those are *positions*, not member sizes.
+- **Metre fields are numbers, never strings.** `"+0.60"`/`"±0.00"` → `level_m: 0.6`/`0.0`; an annotated value (`"0.50 (sub-area at +0.40)"`) → the leading number, full text in `level_m_printed_as`.
+- A **multi-span member** puts its list in `spans_m[]` (plural); `span_m`/`span_length_m` is always a single number.
+- A printed **two-way count** (`4+4` on a footing mat) → `count` = the sum, printed text in `count_printed_as`. **Mixed diameters** (`16+12`) → `dia_mm` = first, `mixed_dia_mm` = the list, printed text in `dia_mm_printed_as`. Variable stirrup spacing (`@0.10 ends, @0.25 mid`) → `spacing_mm` = the smallest + `variable_spacing: true`, detail in `note`.
 - When the drawing prints metres, convert **and** keep the printed text (§0.7).
 
 ### 0.6 Rebar is always an object, never a string
@@ -69,6 +78,7 @@ Only add a new value when **none** of the above genuinely fits, and when you do,
 - **`stirrup` is the only name** — `tie`, `tie_bar`, `stirrup_or_tie`, `tie_or_mesh` are all forbidden spellings of it.
 - Spacing is `spacing_mm` (an integer), not `@0.20ม.` inside a string.
 - `Ø` → `type: "RB"` always (§6).
+- **`main_bar`/`stirrup`/`rebar`/`steel_section` are always single objects, never arrays.** Multi-layer reinforcement (a stair waist slab's main + distribution layers) goes in **`bar_layers[]`** — an array of layer objects each carrying its own `location` — so the object keys stay type-pure.
 
 ### 0.7 `printed_as` — keep the drawing's own words
 

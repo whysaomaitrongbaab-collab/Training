@@ -9,84 +9,142 @@
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า11.png",
-  "door_window_schedule": [
-    {
-      "mark": "1 (door, top row)",
-      "type": "บานเลื่อนสลับ",
-      "frame": "อลูมิเนียมอบสีขาว",
-      "leaf": "กระจกใส หนา 6มม.",
-      "hardware": "อุปกรณ์ประตูบานเลื่อนครบชุด",
-      "location": "ห้องนั่งเล่น, ติดตั้งบานมุ้งลวด",
-      "width_mm": 2050,
-      "height_mm": 2000,
-      "size_m_printed_as": "2.05 x 2.00"
-    },
-    {
-      "mark": "2 (door)",
-      "type": "บานเลื่อนเดี่ยว",
-      "frame": "ไม้เนื้อแข็ง 2\"x4\" ทาสี",
-      "leaf": "บานประตูสำเร็จรูป uPVC",
-      "hardware": "อุปกรณ์ประตูบานเลื่อนครบชุด, กล่องรางประตูกรุด้วยอลูมิเนียมอบสี + DOOR STOPPER",
-      "location": "ห้องนอน, หลังบ้าน",
-      "width_mm": 1000,
-      "height_mm": 2000,
-      "size_m_printed_as": "1.00 x 2.00"
-    },
-    {
-      "mark": "3 (door)",
-      "type": "บานเลื่อนเดี่ยว",
-      "frame": "ไม้เนื้อแข็ง 2\"x4\" ทาสี",
-      "leaf": "บานประตู uPVC ลูกฟักกระจก",
-      "hardware": "อุปกรณ์ประตูบานเลื่อนครบชุด, กล่องรางประตูกรุด้วยอลูมิเนียมอบสี, ลูกฟักกระจกทางเลือกแนะนำเพื่อความปลอดภัย",
-      "location": "ห้องน้ำ",
-      "width_mm": 1000,
-      "height_mm": 2000,
-      "size_m_printed_as": "1.00 x 2.00"
-    },
-    {
-      "mark": "1 (window, top-right)",
-      "type": "บานเลื่อนสลับ",
-      "size_m": "1.85 x 1.15 (sill 0.90)",
-      "frame": "อลูมิเนียมอบสีขาว",
-      "leaf": "กระจกใส หนา 6มม.",
-      "hardware": "มาตรฐานครบชุด",
-      "location": "ติดตั้งบานมุ้งลวด"
-    },
-    {
-      "mark": "2 (window)",
-      "type": "บานเปิดเดี่ยว",
-      "size_m": "0.70 x 1.15 (sill 0.90)",
-      "frame": "อลูมิเนียมอบสีขาว",
-      "leaf": "กระจกใส หนา 6มม.",
-      "hardware": "มาตรฐานครบชุด"
-    },
-    {
-      "mark": "3 (window)",
-      "type": "บานเหลื่อมสลับติดตาย",
-      "size_m": "1.75 x 0.50 (sill 2.00)",
-      "frame": "อลูมิเนียมอบสีขาว",
-      "leaf": "กระจกฝ้า หนา 5มม.",
-      "hardware": "มาตรฐานครบชุด",
-      "location": "พร้อมติดตั้งตาข่ายกันแมลง",
-      "note": "high sill vent window, likely bathroom"
-    },
-    {
-      "mark": "4 (window, breeze vent)",
-      "type": "บานเกล็ดติดตาย",
-      "size_m": "0.85 x 1.10 (sill 0.50, trapezoidal)",
-      "frame": "อลูมิเนียมอบสีขาว",
-      "leaf": "เกล็ดอลูมิเนียมอบสี สีขาว (หน้าตัดชนิดกันน้ำย้อน)",
-      "hardware": "มาตรฐานครบชุด",
-      "location": "พร้อมติดตั้งตาข่ายกันแมลง",
-      "note": "trapezoidal gable-peak vent, matches the mark-4 vent shown on A-06/A-07 elevations near the ridge"
-    }
-  ],
   "scale": "as marked per detail",
   "confidence_score": 0.82,
   "confidence_flags": [],
   "warnings": [
     "op1 direct read (house 11). Only 3 door types + 4 window types for this whole small house — consistent with its compact 1-bedroom/1-bathroom accessible design.",
     "Door mark 1 (2.05x2.00 sliding, living room) and window mark 1 (1.85x1.15) share the same numeral by coincidence — recorded distinctly by row position (top row = door set, second row references differ) per the printed layout, not renumbered.",
-    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "NORMALIZED_2026-08-02(r5): the door_window_schedule[] array was folded into elements[] using the field names houses 01-05 use (element_id/element_type/opening_type/leaf_material, width_mm/height_mm). Original mark text kept in element_id_printed_as, original size string in size_printed_as."
+  ],
+  "elements": [
+    {
+      "element_id": "D1",
+      "element_type": "door",
+      "element_id_printed_as": "1 (door, top row)",
+      "opening_type": "บานเลื่อนสลับ",
+      "frame": "อลูมิเนียมอบสีขาว",
+      "leaf_material": "กระจกใส หนา 6มม.",
+      "hardware": "อุปกรณ์ประตูบานเลื่อนครบชุด",
+      "location": "ห้องนั่งเล่น, ติดตั้งบานมุ้งลวด",
+      "width_mm": 2050,
+      "height_mm": 2000,
+      "size_m_printed_as": "2.05 x 2.00",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "D2",
+      "element_type": "door",
+      "element_id_printed_as": "2 (door)",
+      "opening_type": "บานเลื่อนเดี่ยว",
+      "frame": "ไม้เนื้อแข็ง 2\"x4\" ทาสี",
+      "leaf_material": "บานประตูสำเร็จรูป uPVC",
+      "hardware": "อุปกรณ์ประตูบานเลื่อนครบชุด, กล่องรางประตูกรุด้วยอลูมิเนียมอบสี + DOOR STOPPER",
+      "location": "ห้องนอน, หลังบ้าน",
+      "width_mm": 1000,
+      "height_mm": 2000,
+      "size_m_printed_as": "1.00 x 2.00",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "D3",
+      "element_type": "door",
+      "element_id_printed_as": "3 (door)",
+      "opening_type": "บานเลื่อนเดี่ยว",
+      "frame": "ไม้เนื้อแข็ง 2\"x4\" ทาสี",
+      "leaf_material": "บานประตู uPVC ลูกฟักกระจก",
+      "hardware": "อุปกรณ์ประตูบานเลื่อนครบชุด, กล่องรางประตูกรุด้วยอลูมิเนียมอบสี, ลูกฟักกระจกทางเลือกแนะนำเพื่อความปลอดภัย",
+      "location": "ห้องน้ำ",
+      "width_mm": 1000,
+      "height_mm": 2000,
+      "size_m_printed_as": "1.00 x 2.00",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "W1",
+      "element_type": "window",
+      "element_id_printed_as": "1 (window, top-right)",
+      "opening_type": "บานเลื่อนสลับ",
+      "width_mm": 1850,
+      "height_mm": 1150,
+      "size_printed_as": "1.85 x 1.15 (sill 0.90)",
+      "frame": "อลูมิเนียมอบสีขาว",
+      "leaf_material": "กระจกใส หนา 6มม.",
+      "hardware": "มาตรฐานครบชุด",
+      "location": "ติดตั้งบานมุ้งลวด",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "W2",
+      "element_type": "window",
+      "element_id_printed_as": "2 (window)",
+      "opening_type": "บานเปิดเดี่ยว",
+      "width_mm": 700,
+      "height_mm": 1150,
+      "size_printed_as": "0.70 x 1.15 (sill 0.90)",
+      "frame": "อลูมิเนียมอบสีขาว",
+      "leaf_material": "กระจกใส หนา 6มม.",
+      "hardware": "มาตรฐานครบชุด",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "W3",
+      "element_type": "window",
+      "element_id_printed_as": "3 (window)",
+      "opening_type": "บานเหลื่อมสลับติดตาย",
+      "width_mm": 1750,
+      "height_mm": 500,
+      "size_printed_as": "1.75 x 0.50 (sill 2.00)",
+      "frame": "อลูมิเนียมอบสีขาว",
+      "leaf_material": "กระจกฝ้า หนา 5มม.",
+      "hardware": "มาตรฐานครบชุด",
+      "location": "พร้อมติดตั้งตาข่ายกันแมลง",
+      "note": "high sill vent window, likely bathroom",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    },
+    {
+      "element_id": "W4",
+      "element_type": "window",
+      "element_id_printed_as": "4 (window, breeze vent)",
+      "opening_type": "บานเกล็ดติดตาย",
+      "width_mm": 850,
+      "height_mm": 1100,
+      "size_printed_as": "0.85 x 1.10 (sill 0.50, trapezoidal)",
+      "frame": "อลูมิเนียมอบสีขาว",
+      "leaf_material": "เกล็ดอลูมิเนียมอบสี สีขาว (หน้าตัดชนิดกันน้ำย้อน)",
+      "hardware": "มาตรฐานครบชุด",
+      "location": "พร้อมติดตั้งตาข่ายกันแมลง",
+      "note": "trapezoidal gable-peak vent, matches the mark-4 vent shown on A-06/A-07 elevations near the ridge",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_door_window_schedule_array",
+        "element_id_2026-08-02_prefixed_D/W_matching_houses_01-05_style_to_avoid_door-window_collision"
+      ]
+    }
   ]
 }
