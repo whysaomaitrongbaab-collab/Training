@@ -1,44 +1,107 @@
 {
- "png": "14",
- "doc_page": 12,
- "printed_page": 12,
- "discipline": "architectural",
- "sheet_code": "A-12",
- "sheet_name": "มาตรฐานการติดตั้งราวทรงตัวในห้องน้ำคนพิการ",
- "pattern": "section",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า14.png",
- "details": [
-  {
-   "name": "แบบขยายราวจับอ่างล้างหน้าคนพิการ",
-   "scale": "1:25",
-   "spec": "ราวจับสเตนเลส Ø1 1/2\" แบบพับได้ x2, ทั้งสองข้างของอ่างล้างหน้าชนิดแขวน",
-   "dims_m": { "rail_length": 1.00, "rail_height_top": 0.90, "rail_height_bottom": 0.80, "width_span": 0.80, "sink_offsets": [0.40, 0.40] }
-  },
-  {
-   "name": "แบบขยายราวจับเพื่อนำไปสู่สุขภัณฑ์ (approach wall rail)",
-   "scale": "1:25",
-   "spec": "ราวจับสเตนเลส Ø12มม. @0.60-1.00ม. (บันไดมือ/handrail แนวราบ) ยื่นจากผนัง 0.10ม., ราวจับ Ø1 1/2\" แนวตั้ง",
-   "dims_m": { "height_range": [0.60, 1.00], "wall_offset": 0.10, "top_height": 0.90 }
-  },
-  {
-   "name": "แบบขยายราวจับโถส้วมคนพิการ",
-   "scale": "1:25",
-   "spec": "ราวจับสเตนเลส Ø1 1/2\" ติดผนัง (fixed, front) + ราวจับ Ø1 1/2\" แบบพับได้ (folding, side)",
-   "dims_m": { "front_rail_height_range": [0.70, 1.30], "side_rail_offset": 0.70, "wall_projection": [0.45, 0.40, 0.10] }
-  },
-  {
-   "name": "แบบขยายราวจับข้างโถส้วม (side view)",
-   "scale": "1:25",
-   "spec": "ราวจับติดผนัง (fixed) + ราวจับพับได้ (folding) ทั้งสองข้าง",
-   "dims_m": { "height_range": [0.70, 1.30], "seat_offset_range": [0.25, 0.30], "depth": [0.70, 0.60] }
-  }
- ],
- "notes": ["หมายเหตุ — ราวจับห้องน้ำคนพิการทั้งหมดสามารถใช้ชนิดสำเร็จรูปได้ โดยขนาดต้องไม่น้อยกว่าที่ระบุในแบบ"],
- "confidence_score": 0.82,
- "confidence_flags": [],
- "warnings": [
-  "op1 direct read (house 11). A dedicated standards sheet for grab-rail installation (4 details: sink, approach-wall, toilet-front, toilet-side) — matches Thai universal-design/accessibility code dimensions (rail height 0.70-1.30m at seat height range for toilets, per standard accessibility guidelines). This sheet has no house-specific quantities, it's a reference standard reused wherever grab rails appear on A-06/A-07/A-10/A-11."
- ]
+  "png": "14",
+  "doc_page": 12,
+  "printed_page": 12,
+  "discipline": "architectural",
+  "sheet_code": "A-12",
+  "sheet_name": "มาตรฐานการติดตั้งราวทรงตัวในห้องน้ำคนพิการ",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า14.png",
+  "notes": [
+    "หมายเหตุ — ราวจับห้องน้ำคนพิการทั้งหมดสามารถใช้ชนิดสำเร็จรูปได้ โดยขนาดต้องไม่น้อยกว่าที่ระบุในแบบ"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 11). A dedicated standards sheet for grab-rail installation (4 details: sink, approach-wall, toilet-front, toilet-side) — matches Thai universal-design/accessibility code dimensions (rail height 0.70-1.30m at seat height range for toilets, per standard accessibility guidelines). This sheet has no house-specific quantities, it's a reference standard reused wherever grab rails appear on A-06/A-07/A-10/A-11.",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (details) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "แบบขยายราวจับอ่างล้างหน้าคนพิการ",
+      "element_type": "detail_view",
+      "scale": "1:25",
+      "spec": "ราวจับสเตนเลส Ø1 1/2\" แบบพับได้ x2, ทั้งสองข้างของอ่างล้างหน้าชนิดแขวน",
+      "dims_m": {
+        "rail_length": 1.0,
+        "rail_height_top": 0.9,
+        "rail_height_bottom": 0.8,
+        "width_span": 0.8,
+        "sink_offsets": [
+          0.4,
+          0.4
+        ]
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยายราวจับเพื่อนำไปสู่สุขภัณฑ์ (approach wall rail)",
+      "element_type": "detail_view",
+      "scale": "1:25",
+      "spec": "ราวจับสเตนเลส Ø12มม. @0.60-1.00ม. (บันไดมือ/handrail แนวราบ) ยื่นจากผนัง 0.10ม., ราวจับ Ø1 1/2\" แนวตั้ง",
+      "dims_m": {
+        "height_range": [
+          0.6,
+          1.0
+        ],
+        "wall_offset": 0.1,
+        "top_height": 0.9
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยายราวจับโถส้วมคนพิการ",
+      "element_type": "detail_view",
+      "scale": "1:25",
+      "spec": "ราวจับสเตนเลส Ø1 1/2\" ติดผนัง (fixed, front) + ราวจับ Ø1 1/2\" แบบพับได้ (folding, side)",
+      "dims_m": {
+        "front_rail_height_range": [
+          0.7,
+          1.3
+        ],
+        "side_rail_offset": 0.7,
+        "wall_projection": [
+          0.45,
+          0.4,
+          0.1
+        ]
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยายราวจับข้างโถส้วม (side view)",
+      "element_type": "detail_view",
+      "scale": "1:25",
+      "spec": "ราวจับติดผนัง (fixed) + ราวจับพับได้ (folding) ทั้งสองข้าง",
+      "dims_m": {
+        "height_range": [
+          0.7,
+          1.3
+        ],
+        "seat_offset_range": [
+          0.25,
+          0.3
+        ],
+        "depth": [
+          0.7,
+          0.6
+        ]
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
 }

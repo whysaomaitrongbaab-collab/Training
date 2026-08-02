@@ -1,32 +1,355 @@
 {
- "png": "32",
- "doc_page": 30,
- "printed_page": 30,
- "discipline": "structural",
- "sheet_code": "S-11",
- "sheet_name": "แบบขยายคาน B1-B3A",
- "pattern": "section",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า32.png",
- "beams": [
-  { "mark": "B1", "size_m": "0.20x0.40", "main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom", "stirrup": "Ø6มม.@0.20ม. mid-span, close-spaced ends (per B2's section 2-2 pattern)" },
-  { "mark": "B2", "size_m": "0.20x0.40", "span_m": [2.20, 3.60, 4.00], "main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom, +2-Ø12มม. bottom mid-span reinforcement", "stirrup": "Ø6มม.@0.075ม. ends, @0.15ม. mid-span" },
-  { "mark": "B2A", "size_m": "0.20x0.40", "span_m": 2.20, "main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom", "stirrup": "Ø6มม.@0.075ม." },
-  { "mark": "B2X", "size_m": "0.20x0.40", "main_bar": "2-Ø16มม. + 1-Ø16มม.(ล้วงเข้า B2 ยาวไม่น้อยกว่า 1.00ม.) top, 2-Ø16มม.(ต่อเนื่องจาก B2) bottom", "stirrup": "Ø6มม.@0.20ม.", "note": "1.00m cantilever/extension beam splicing into B2, lap-splice bar merges per spec §7 convention" },
-  { "mark": "B3", "size_m": "0.30x0.40", "span_m": [3.60, 4.00], "main_bar": "2-Ø16มม. top + 2-Ø16มม. bottom", "stirrup": "Ø6มม.@0.075ม. ends, @0.15ม. mid-span" },
-  { "mark": "B3A", "size_m": "0.30x0.40", "span_m": [1.80, 2.00], "main_bar": "2-Ø16มม. top + 4-Ø16มม. bottom", "stirrup": "Ø6มม.@0.075ม." }
- ],
- "column_sections": [
-  { "cut_ref": "2-2 (B1/B2)", "size_m": "0.20x0.40", "top": "2-Ø16มม.", "bottom": "2-Ø16มม.", "stirrup": "Ø6มม.@0.20ม." },
-  { "cut_ref": "2A-2A (B2A)", "size_m": "0.20x0.40", "top": "4-Ø16มม.", "bottom": "2-Ø16มม.", "stirrup": "Ø6มม.@0.075ม." },
-  { "cut_ref": "3-3 (B3)", "size_m": "0.30x0.40", "top": "2-Ø16มม.", "bottom": "4-Ø16มม.", "stirrup": "Ø6มม.@0.15ม." },
-  { "cut_ref": "3A-3A (B3A)", "size_m": "0.30x0.40", "top": "2-Ø16มม.", "bottom": "4-Ø16มม.", "stirrup": "Ø6มม.@0.075ม." }
- ],
- "confidence_score": 0.8,
- "confidence_flags": [],
- "warnings": [
-  "op1 direct read (house 10). B2X's extra top bar reads '1-Ø16มม. (ล้วงเข้า B2 ยาวไม่น้อยกว่า 1.00ม.)' — a lap-splice bar per spec §7, merges into B2's top count at the joint, recorded here per-beam as printed rather than pre-merged.",
-  "Stirrup spacing tightens near supports (0.075m) and relaxes at mid-span (0.15-0.20m) on every multi-span beam here — standard capacity design / ductile detailing, consistent with S-10's seismic column note."
- ]
+  "png": "32",
+  "doc_page": 30,
+  "printed_page": 30,
+  "discipline": "structural",
+  "sheet_code": "S-11",
+  "sheet_name": "แบบขยายคาน B1-B3A",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า32.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 10). B2X's extra top bar reads '1-Ø16มม. (ล้วงเข้า B2 ยาวไม่น้อยกว่า 1.00ม.)' — a lap-splice bar per spec §7, merges into B2's top count at the joint, recorded here per-beam as printed rather than pre-merged.",
+    "Stirrup spacing tightens near supports (0.075m) and relaxes at mid-span (0.15-0.20m) on every multi-span beam here — standard capacity design / ductile detailing, consistent with S-10's seismic column note.",
+    "NORMALIZED_2026-08-02: main_bar/stirrup were stored as free-text strings in this house (only houses 10 and 11 did this; the other 9 use nested objects). Converted to the schema section 6 object form. The exact original string is preserved verbatim in printed_as on every converted field, so nothing was lost and the parse can be re-checked against the drawing. 'Ø' was read as type RB per schema section 6. Thai annotations in parentheses (lap-splice/continuation notes) were carried into note. A 'tie'/'tie_bar' key was renamed to 'stirrup' to match the other houses. ⚠️ Bars printed with a mid-span/L-8 qualifier were NOT merged into a face count — that needs the section-7 leader-line check against the drawing image, which has not been done for this house yet.",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (beams, column_sections) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 2-Ø16มม. bottom"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 2-Ø16มม. bottom"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "Ø6มม.@0.20ม. mid-span, close-spaced ends (per B2's section 2-2 pattern)"
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_beams_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20x0.40",
+      "span_m": [
+        2.2,
+        3.6,
+        4.0
+      ],
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 2-Ø16มม. bottom, +2-Ø12มม. bottom mid-span reinforcement"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 2-Ø16มม. bottom, +2-Ø12มม. bottom mid-span reinforcement"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 75,
+        "variable_spacing": true,
+        "printed_as": "Ø6มม.@0.075ม. ends, @0.15ม. mid-span"
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_beams_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B2A",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20x0.40",
+      "span_m": 2.2,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 2-Ø16มม. bottom"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 2-Ø16มม. bottom"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 75,
+        "printed_as": "Ø6มม.@0.075ม."
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_beams_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B2X",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "RB",
+          "note": "ล้วงเข้า B2 ยาวไม่น้อยกว่า 1.00ม.",
+          "printed_as": "2-Ø16มม. + 1-Ø16มม.(ล้วงเข้า B2 ยาวไม่น้อยกว่า 1.00ม.) top, 2-Ø16มม.(ต่อเนื่องจาก B2) bottom"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "note": "ต่อเนื่องจาก B2",
+          "printed_as": "2-Ø16มม. + 1-Ø16มม.(ล้วงเข้า B2 ยาวไม่น้อยกว่า 1.00ม.) top, 2-Ø16มม.(ต่อเนื่องจาก B2) bottom"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "Ø6มม.@0.20ม."
+      },
+      "note": "1.00m cantilever/extension beam splicing into B2, lap-splice bar merges per spec §7 convention",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_beams_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 400,
+      "size_printed_as": "0.30x0.40",
+      "span_m": [
+        3.6,
+        4.0
+      ],
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 2-Ø16มม. bottom"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 2-Ø16มม. bottom"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 75,
+        "variable_spacing": true,
+        "printed_as": "Ø6มม.@0.075ม. ends, @0.15ม. mid-span"
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_beams_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 400,
+      "size_printed_as": "0.30x0.40",
+      "span_m": [
+        1.8,
+        2.0
+      ],
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 4-Ø16มม. bottom"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม. top + 4-Ø16มม. bottom"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 75,
+        "printed_as": "Ø6มม.@0.075ม."
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_beams_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B1/B2",
+      "section_ref": "2-2 (B1/B2)",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "Ø6มม.@0.20ม."
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_column_sections_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B2A",
+      "section_ref": "2A-2A (B2A)",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "4-Ø16มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 75,
+        "printed_as": "Ø6มม.@0.075ม."
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_column_sections_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "section_ref": "3-3 (B3)",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 400,
+      "size_printed_as": "0.30x0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "4-Ø16มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "Ø6มม.@0.15ม."
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_column_sections_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "B3A",
+      "section_ref": "3A-3A (B3A)",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 400,
+      "size_printed_as": "0.30x0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "2-Ø16มม."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "RB",
+          "printed_as": "4-Ø16มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 75,
+        "printed_as": "Ø6มม.@0.075ม."
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_column_sections_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
 }

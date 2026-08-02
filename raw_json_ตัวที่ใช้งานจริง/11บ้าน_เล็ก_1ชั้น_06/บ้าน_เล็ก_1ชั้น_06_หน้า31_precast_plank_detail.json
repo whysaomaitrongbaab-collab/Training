@@ -1,28 +1,103 @@
 {
- "png": "31",
- "doc_page": 29,
- "printed_page": 29,
- "discipline": "structural",
- "sheet_code": "S-13",
- "sheet_name": "รายละเอียดการวางพื้นสำเร็จรูป",
- "pattern": "section",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า31.png",
- "details": [
-  { "name": "ลักษณะการวางพื้น SP ภายใน", "spec": "คอนกรีต TOPPING หนา 0.05ม., เสริมพิเศษ Ø6มม.@0.20ม., เหล็กหนุน 2-Ø9มม." },
-  { "name": "ลักษณะการวางพื้น SP บริเวณพื้น S", "spec": "same topping/dowel spec, transition to cast slab S" },
-  { "name": "ลักษณะการวางพื้น SP บริเวณพื้นห้องน้ำ", "spec": "same spec, drops to จมูกพื้นห้องน้ำ (bathroom floor nose) level, 0.10m step" },
-  { "name": "ลักษณะการวางพื้น SP บริเวณคานริม", "spec": "edge-beam termination, no dowel, topping only" },
-  { "name": "ลักษณะพื้น S ระดับสูงกว่าหลังคาน", "spec": "cast slab S stepped above the ring beam, 2-Ø9มม. dowel" },
-  { "name": "กรณียกระดับพื้นสำเร็จต่างระดับกัน", "spec": "SP-to-SP step joint (0.20-0.50 level range), Ø9มม.@0.20ม." },
-  { "name": "ลักษณะการหล่อพื้นเสริมกรณีพิเศษช่องว่างที่คานริม", "spec": "cast-in-place infill at edge beam with no support, Ø9มม.@0.20ม." },
-  { "name": "ลักษณะการวางพื้น SP บริเวณสานหรือคานที่ไม่มีที่รองรับ", "spec": "SP over an unsupported beam/wall line, 2-Ø12มม. dowel + Ø12มม.@0.20ม." },
-  { "name": "ขยายยกขอบคาน", "spec": "raised beam-edge upstand, Ø9มม.@0.25ม." }
- ],
- "confidence_score": 0.75,
- "confidence_flags": ["dense_scan_9_details_on_one_sheet"],
- "warnings": [
-  "op1 direct read (house 11). Same SP (Solid Plank) precast floor joint-catalogue pattern as houses 08-10's equivalent sheets — 9 joint conditions here vs their 3-4, more thoroughly documented in this national-standard drawing set."
- ]
+  "png": "31",
+  "doc_page": 29,
+  "printed_page": 29,
+  "discipline": "structural",
+  "sheet_code": "S-13",
+  "sheet_name": "รายละเอียดการวางพื้นสำเร็จรูป",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า31.png",
+  "confidence_score": 0.75,
+  "confidence_flags": [
+    "dense_scan_9_details_on_one_sheet"
+  ],
+  "warnings": [
+    "op1 direct read (house 11). Same SP (Solid Plank) precast floor joint-catalogue pattern as houses 08-10's equivalent sheets — 9 joint conditions here vs their 3-4, more thoroughly documented in this national-standard drawing set.",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (details) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "ลักษณะการวางพื้น SP ภายใน",
+      "element_type": "detail_view",
+      "spec": "คอนกรีต TOPPING หนา 0.05ม., เสริมพิเศษ Ø6มม.@0.20ม., เหล็กหนุน 2-Ø9มม.",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ลักษณะการวางพื้น SP บริเวณพื้น S",
+      "element_type": "detail_view",
+      "spec": "same topping/dowel spec, transition to cast slab S",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ลักษณะการวางพื้น SP บริเวณพื้นห้องน้ำ",
+      "element_type": "detail_view",
+      "spec": "same spec, drops to จมูกพื้นห้องน้ำ (bathroom floor nose) level, 0.10m step",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ลักษณะการวางพื้น SP บริเวณคานริม",
+      "element_type": "detail_view",
+      "spec": "edge-beam termination, no dowel, topping only",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ลักษณะพื้น S ระดับสูงกว่าหลังคาน",
+      "element_type": "detail_view",
+      "spec": "cast slab S stepped above the ring beam, 2-Ø9มม. dowel",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "กรณียกระดับพื้นสำเร็จต่างระดับกัน",
+      "element_type": "detail_view",
+      "spec": "SP-to-SP step joint (0.20-0.50 level range), Ø9มม.@0.20ม.",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ลักษณะการหล่อพื้นเสริมกรณีพิเศษช่องว่างที่คานริม",
+      "element_type": "detail_view",
+      "spec": "cast-in-place infill at edge beam with no support, Ø9มม.@0.20ม.",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ลักษณะการวางพื้น SP บริเวณสานหรือคานที่ไม่มีที่รองรับ",
+      "element_type": "detail_view",
+      "spec": "SP over an unsupported beam/wall line, 2-Ø12มม. dowel + Ø12มม.@0.20ม.",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ขยายยกขอบคาน",
+      "element_type": "detail_view",
+      "spec": "raised beam-edge upstand, Ø9มม.@0.25ม.",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
 }

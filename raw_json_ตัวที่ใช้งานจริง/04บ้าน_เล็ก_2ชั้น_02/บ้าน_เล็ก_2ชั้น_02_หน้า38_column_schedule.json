@@ -7,73 +7,77 @@
   "pattern": "schedule",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า38.png",
-  "view_title": "ตารางเสา (column schedule, C0/C1A/C1/C2 across 4 levels) + ขยาย CN 1:20",
+  "view_title": "ตารางเสา (column schedule, C0/C1A/C1/C2 across 5 levels) + ขยาย CN 1:20",
   "table_kind": "column_schedule",
   "grid_source": "raw_json_ตัวที่ใช้งานจริง/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
+  "schema_note": "Column schedule read top-to-bottom (หลังคา→อะเส→พื้นชั้น2→พื้นชั้น1→ตอม่อ). An up-arrow (↑) cell means 'no separate spec at this level, the bar from the level below continues through'; a plain line means the column does not exist at that level at all. Both are recorded as elements with null section/rebar plus a flag saying which of the two it is -- the distinction matters (continuous vs terminated) and is lost if the rows are simply omitted. RESTRUCTURED 2026-07-20: this file previously used a non-canonical nested `levels[]` array inside one element per mark; per primary_rawjson_schema.md §8 a multi-level schedule must instead emit one element per (element_id, level) with a flat `level` field, which is also what house #3's equivalent sheet (หน้า35) does. Also converted `section_mm: \"200x200\"` strings into numeric `width_mm`/`height_mm`, and renamed `tie` to `stirrup` to match the field name used everywhere else in the project.",
   "elements": [
-    {
-      "element_id": "C0",
-      "element_type": "column",
-      "levels": [
-        { "level": "ตอม่อ", "section_mm": "200x200", "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "tie": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 } },
-        { "level": "ระดับพื้นชั้น 1", "continues": false, "note": "line only -- column terminates at floor-1 slab level, does not rise further" },
-        { "level": "ระดับพื้นชั้น 2", "continues": false, "note": "line only -- no column section shown" },
-        { "level": "ระดับอะเส", "continues": false, "note": "line only" },
-        { "level": "หลังคา", "continues": false, "note": "line only" }
-      ],
-      "confidence_score": 0.85,
-      "confidence_flags": ["short_column_terminating_at_floor1_matches_E'_dummy_grid_row_short_column_note_from_S-04"]
-    },
-    {
-      "element_id": "C1A",
-      "element_type": "column",
-      "levels": [
-        { "level": "ตอม่อ", "section_mm": "200x200", "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "tie": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 } },
-        { "level": "ระดับพื้นชั้น 1", "continues": true, "note": "arrow -- continues up" },
-        { "level": "ระดับพื้นชั้น 2", "section_mm": "150x150", "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "tie": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 } },
-        { "level": "ระดับอะเส", "continues": false, "note": "line only" },
-        { "level": "หลังคา", "continues": false, "note": "line only -- terminates at roof/tie-beam level" }
-      ],
-      "confidence_score": 0.85,
-      "confidence_flags": []
-    },
-    {
-      "element_id": "C1",
-      "element_type": "column",
-      "levels": [
-        { "level": "ตอม่อ", "section_mm": "200x200", "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "tie": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 } },
-        { "level": "ระดับพื้นชั้น 1", "continues": true, "note": "arrow -- continues up" },
-        { "level": "ระดับพื้นชั้น 2", "section_mm": "150x150", "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "tie": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 } },
-        { "level": "ระดับอะเส", "continues": true, "note": "arrow -- continues up" },
-        { "level": "หลังคา", "continues": true, "note": "arrow -- continues above roof level (e.g. to parapet or tank support)" }
-      ],
-      "confidence_score": 0.85,
-      "confidence_flags": []
-    },
-    {
-      "element_id": "C2",
-      "element_type": "column",
-      "levels": [
-        { "level": "ตอม่อ", "section_mm": "200x200", "main_bar": { "count": 6, "dia_mm": 12, "type": "RB" }, "tie": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 }, "note": "6-Ø12mm at pedestal, more bars than C0/C1A/C1's 4-Ø12mm" },
-        { "level": "ระดับพื้นชั้น 1", "continues": true, "note": "arrow -- continues up" },
-        { "level": "ระดับพื้นชั้น 2", "section_mm": "150x150", "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "tie": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 } },
-        { "level": "ระดับอะเส", "continues": true, "note": "arrow -- continues up" },
-        { "level": "หลังคา", "continues": true, "note": "arrow -- continues above roof level" }
-      ],
-      "confidence_score": 0.85,
-      "confidence_flags": ["asymmetric_pedestal_bar_count_6_vs_4_for_other_marks"]
-    },
-    {
-      "element_id": "CN",
-      "element_type": "column",
-      "description": "generic short-column detail (separate from the 4 numbered column schedule marks) -- rises from ระดับพื้นชั้น 1 to ระดับชานพัก (stair landing level) per the sheet note",
-      "section_mm": "150x150",
-      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" },
-      "tie": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+    { "element_id": "C0", "element_type": "column", "level": "หลังคา", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_a_plain_line_not_an_arrow_-_C0_does_not_exist_at_this_level"] },
+    { "element_id": "C1A", "element_type": "column", "level": "หลังคา", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_a_plain_line_-_C1A_terminates_at_roof/tie-beam_level_and_does_not_rise_above_it"] },
+    { "element_id": "C1", "element_type": "column", "level": "หลังคา", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_an_up-arrow_-_bar_continues_above_roof_level_(e.g._to_a_parapet_or_tank_support),_not_a_termination"] },
+    { "element_id": "C2", "element_type": "column", "level": "หลังคา", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_an_up-arrow_-_bar_continues_above_roof_level"] },
+
+    { "element_id": "C0", "element_type": "column", "level": "ระดับอะเส", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_a_plain_line_-_C0_does_not_exist_at_this_level"] },
+    { "element_id": "C1A", "element_type": "column", "level": "ระดับอะเส", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_a_plain_line"] },
+    { "element_id": "C1", "element_type": "column", "level": "ระดับอะเส", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_an_up-arrow_-_same_bar_as_the_level_below_continues_through,_no_separate_spec"] },
+    { "element_id": "C2", "element_type": "column", "level": "ระดับอะเส", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_an_up-arrow_-_same_bar_as_the_level_below_continues_through"] },
+
+    { "element_id": "C0", "element_type": "column", "level": "ระดับพื้นชั้น 2", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_a_plain_line_-_C0_does_not_exist_at_this_level"] },
+    { "element_id": "C1A", "element_type": "column", "level": "ระดับพื้นชั้น 2", "width_mm": 150, "height_mm": 150,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+      "confidence_score": 0.85, "confidence_flags": ["section_reduces_from_200x200_at_ตอม่อ_to_150x150_here"] },
+    { "element_id": "C1", "element_type": "column", "level": "ระดับพื้นชั้น 2", "width_mm": 150, "height_mm": 150,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+      "confidence_score": 0.85, "confidence_flags": ["section_reduces_from_200x200_at_ตอม่อ_to_150x150_here"] },
+    { "element_id": "C2", "element_type": "column", "level": "ระดับพื้นชั้น 2", "width_mm": 150, "height_mm": 150,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+      "confidence_score": 0.85, "confidence_flags": ["bar_count_drops_from_6_at_ตอม่อ_to_4_here_-_C2_is_the_only_mark_that_does_this"] },
+
+    { "element_id": "C0", "element_type": "column", "level": "ระดับพื้นชั้น 1", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_a_plain_line_-_C0_TERMINATES_at_the_floor-1_slab_and_does_not_rise_further"] },
+    { "element_id": "C1A", "element_type": "column", "level": "ระดับพื้นชั้น 1", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_an_up-arrow_-_same_bar_as_ตอม่อ_continues_through"] },
+    { "element_id": "C1", "element_type": "column", "level": "ระดับพื้นชั้น 1", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_an_up-arrow_-_same_bar_as_ตอม่อ_continues_through"] },
+    { "element_id": "C2", "element_type": "column", "level": "ระดับพื้นชั้น 1", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null,
+      "confidence_score": 0.85, "confidence_flags": ["cell_shows_an_up-arrow_-_same_bar_as_ตอม่อ_continues_through"] },
+
+    { "element_id": "C0", "element_type": "column", "level": "ตอม่อ", "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+      "confidence_score": 0.85, "confidence_flags": ["C0's_only_level_-_a_short_column_confined_to_the_pedestal-to-floor1_range,_matching_the_E'_dummy_grid_row"] },
+    { "element_id": "C1A", "element_type": "column", "level": "ตอม่อ", "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+      "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "C1", "element_type": "column", "level": "ตอม่อ", "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+      "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "C2", "element_type": "column", "level": "ตอม่อ", "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 6, "dia_mm": 12, "type": "RB", "note": "6-Ø12mm around the perimeter -- more bars than C0/C1A/C1's 4" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+      "confidence_score": 0.85, "confidence_flags": ["asymmetric_pedestal_bar_count_6_vs_4_for_the_other_three_marks"] },
+
+    { "element_id": "CN", "element_type": "column",
+      "description": "generic short-column detail drawn at 1:20 beside the schedule (not one of the 4 numbered schedule marks) -- rises from ระดับพื้นชั้น 1 to ระดับชานพัก (stair landing level) per the sheet note",
+      "width_mm": 150, "height_mm": 150,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
       "scale": "1:20",
-      "confidence_score": 0.8,
-      "confidence_flags": []
-    }
+      "confidence_score": 0.8, "confidence_flags": ["standalone_detail_no_level_column_in_the_schedule_grid_-_its_extent_is_given_by_the_sheet_note_instead"] }
   ],
   "notes_text": "เสา CN ขึ้นจากระดับชั้น 1 ถึงระดับชานพัก",
   "title_block": {
@@ -84,8 +88,11 @@
     "drawing_no": "S58115"
   },
   "confidence_score": 0.85,
-  "confidence_flags": [],
+  "confidence_flags": ["columns_use_single_main_bar.count_not_top/bottom_-_already_correct_before_this_pass", "restructured_2026-07-20_to_the_canonical_flat_level_form_per_schema_section_8"],
   "warnings": [
-    "C0 is confirmed here as a short column only rising from ตอม่อ to ระดับพื้นชั้น 1 (does not appear at floor-2 or roof level) -- consistent with the E' dummy-grid row being a partial/short-column bay, matching what was inferred from S-04's beam plan."
+    "RESTRUCTURED_2026-07-20 per primary_rawjson_schema.md §8: was 5 elements each holding a nested `levels[]` array; now 21 elements (4 marks x 5 levels, plus the standalone CN detail), one per (element_id, level) with a flat `level` field -- matching house #3's หน้า35 and the schema's own worked example. No rebar values changed. `section_mm` strings were split into numeric `width_mm`/`height_mm`, and `tie` was renamed `stirrup` for consistency with every other file in the project.",
+    "NOTE on the repeated element_id rule (สิ่งที่ต้องแก้.md item 48): that rule -- same element_id in one sheet must be ONE entry -- applies to POSITIONAL elements on a plan (footings, beams). It does NOT apply here: a multi-level schedule legitimately repeats a mark once per level, distinguished by the `level` field, exactly as schema §8 prescribes. Do not 'merge' these.",
+    "C0 is confirmed here as a short column rising only from ตอม่อ to ระดับพื้นชั้น 1 (a plain line, not an arrow, at every level above) -- consistent with the E' dummy-grid row being a partial/short-column bay, matching what was inferred from S-04's beam plan.",
+    "The distinction between an up-arrow cell (bar continues from below, no separate spec) and a plain-line cell (column absent/terminated at that level) is preserved in each element's confidence_flags. C1A terminates at หลังคา while C1 and C2 continue above it."
   ]
 }

@@ -1,106 +1,107 @@
 {
- "png": "70",
- "doc_page": 70,
- "printed_page": 68,
- "discipline": "mechanical",
- "sheet_code": "M-04",
- "sheet_name": "รายละเอียดการติดตั้ง",
- "pattern": "detail",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า70.png",
- "view_title": "รายละเอียดการติดตั้ง -- ระบบปรับอากาศ",
- "grid_source": null,
- "title_block": {
-  "drawing_no": "M 62028",
-  "date": "ม.ค. 2562",
-  "scale": "-"
- },
- "elements": [
-  {
-   "element_id": "INSTALLATION OF AIR CONDITIONER (WALL MOUNTED TYPE)",
-   "element_type": "installation_detail",
-   "components": [
-    "FAN COIL UNIT",
-    "CONDENSING UNIT",
-    "SUCTION & LIQUID PIPE",
-    "SLEEVE (2 จุด)",
-    "SERVICE VALVE",
-    "VIBRATION ISOLATOR",
-    "SUPPORT",
-    "TO MAIN DRAIN"
-   ],
-   "airflow": [
-    "RETURN AIR",
-    "SUPPLY AIR"
-   ],
-   "confidence_score": 0.88,
-   "confidence_flags": [],
-   "note": "The wall-split arrangement: fan coil under the ceiling, refrigerant pair and drain through SLEEVES in the wall, condensing unit outside on a support with vibration isolators, drain to the main."
+  "png": "70",
+  "doc_page": 70,
+  "printed_page": 68,
+  "discipline": "mechanical",
+  "sheet_code": "M-04",
+  "sheet_name": "รายละเอียดการติดตั้ง",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า70.png",
+  "view_title": "รายละเอียดการติดตั้ง -- ระบบปรับอากาศ",
+  "grid_source": null,
+  "title_block": {
+    "drawing_no": "M 62028",
+    "date": "ม.ค. 2562",
+    "scale": "-"
   },
-  {
-   "element_id": "PIPE SUPPORT",
-   "element_type": "installation_detail",
-   "components": [
-    "PVC. PIPE COVER"
-   ],
-   "confidence_score": 0.88,
-   "confidence_flags": [],
-   "note": "The vertical refrigerant run is boxed in a PVC PIPE COVER with its own clips, elbows and end caps -- M-01 note 2 requires it on every vertical run. It is a proprietary trunking system, a real quantity, and it appears on no other sheet."
-  },
-  {
-   "element_id": "CONDENSING UNIT (แท่นรองรับ)",
-   "element_type": "installation_detail",
-   "components": [
-    "ANGLE STEEL",
-    "SERVICE VALVE",
-    "SUPPORT VIBRATION ISOLATOR 1\" THKS."
-   ],
-   "dims": {
-    "stand_height_cm": 15,
-    "isolator_thickness_in": 1
-   },
-   "confidence_score": 0.9,
-   "confidence_flags": [],
-   "note": "*** THE CONDENSING-UNIT STAND IS FULLY SPECIFIED HERE AND NOWHERE ELSE: angle-steel frame 15 cm high on four feet with 1\"-thick vibration isolators under the unit. *** Five of them are needed, one per condensing unit."
-  },
-  {
-   "element_id": "WIRING POWER SUPPLY DIAGRAM",
-   "element_type": "diagram",
-   "components": [
-    "CB. (SEE SCHEDULE)",
-    "WIRE (SEE SCHEDULE)",
-    "FAN COIL UNIT (INDOOR)",
-    "SAFETY SWITCH (20A.-40A.)",
-    "CONDENSING UNIT (OUTDOOR)"
-   ],
-   "supply": "220/1/50",
-   "wiring": "2-2.5, G-2.5 sqmm. IEC 01 - ø1/2\" EMT",
-   "safety_switch_rating": "20A. - 40A.",
-   "confidence_score": 0.9,
-   "confidence_flags": [],
-   "note": "Supply comes in at 220/1/50 through a breaker and cable 'SEE SCHEDULE' (M-01), reaches the indoor fan coil, then passes through a SAFETY SWITCH rated 20-40 A on the outdoor side before the condensing unit."
-  },
-  {
-   "element_id": "SAFETY SWITCH",
-   "element_type": "equipment",
-   "rating": "20A. - 40A.",
-   "count": 5,
-   "confidence_score": 0.85,
-   "confidence_flags": [
-    "count_inferred_from_unit_count"
-   ],
-   "note": "M-01 note 2 requires a weatherproof disconnecting switch beside EVERY condensing unit, so five are needed. The count is inferred from the unit count, not printed."
-  }
- ],
- "confidence_score": 0.89,
- "confidence_flags": [],
- "warnings": [
-  "*** LAST SHEET OF THE WHOLE 68-SHEET DRAWING SET (M-04 of 4, after A-01..A-31, S-01..S-17, SN-01..SN-10, EE-01..EE-06). *** Four installation details for the air-conditioning system.",
-  "*** THREE COUNTABLE ITEMS ARE SPECIFIED ONLY HERE and would be missed by anyone taking off from the plans and schedules alone: the angle-steel condensing-unit stand (15 cm high with 1\"-thick vibration isolators), the PVC PIPE COVER trunking on every vertical refrigerant run, and the 20-40 A weatherproof safety switch beside each condensing unit. Five of each are needed. ***",
-  "The safety-switch count is INFERRED from the five condensing units via M-01 note 2 ('ติดตั้งสวิตช์ตัดตอนชนิดกันน้ำ ... แต่ละเครื่อง'), not printed anywhere; flagged count_inferred_from_unit_count.",
-  "THE WIRING DIAGRAM DEFERS ITS TWO KEY VALUES BACK TO M-01 ('CB. SEE SCHEDULE', 'WIRE SEE SCHEDULE'), so the sheet cannot be priced on its own -- but it does print the general case, 2-2.5 + G-2.5 IEC 01 in ø1/2\" EMT at 220/1/50.",
-  "NOTE THE CONDUIT MATERIAL AGAIN: EMT here and on M-01's fan note, PVC on every electrical sheet. The two disciplines specify different conduit for work that meets at the same consumer unit. Recorded as printed on each; not reconciled by either.",
-  "SLEEVES through the wall for the refrigerant pair and drain are drawn but not sized."
- ]
+  "elements": [
+    {
+      "element_id": "INSTALLATION OF AIR CONDITIONER (WALL MOUNTED TYPE)",
+      "element_type": "installation_detail",
+      "components": [
+        "FAN COIL UNIT",
+        "CONDENSING UNIT",
+        "SUCTION & LIQUID PIPE",
+        "SLEEVE (2 จุด)",
+        "SERVICE VALVE",
+        "VIBRATION ISOLATOR",
+        "SUPPORT",
+        "TO MAIN DRAIN"
+      ],
+      "airflow": [
+        "RETURN AIR",
+        "SUPPLY AIR"
+      ],
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "note": "The wall-split arrangement: fan coil under the ceiling, refrigerant pair and drain through SLEEVES in the wall, condensing unit outside on a support with vibration isolators, drain to the main."
+    },
+    {
+      "element_id": "PIPE SUPPORT",
+      "element_type": "installation_detail",
+      "components": [
+        "PVC. PIPE COVER"
+      ],
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "note": "The vertical refrigerant run is boxed in a PVC PIPE COVER with its own clips, elbows and end caps -- M-01 note 2 requires it on every vertical run. It is a proprietary trunking system, a real quantity, and it appears on no other sheet."
+    },
+    {
+      "element_id": "CONDENSING UNIT (แท่นรองรับ)",
+      "element_type": "installation_detail",
+      "components": [
+        "ANGLE STEEL",
+        "SERVICE VALVE",
+        "SUPPORT VIBRATION ISOLATOR 1\" THKS."
+      ],
+      "dims": {
+        "stand_height_cm": 15,
+        "isolator_thickness_in": 1
+      },
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "note": "*** THE CONDENSING-UNIT STAND IS FULLY SPECIFIED HERE AND NOWHERE ELSE: angle-steel frame 15 cm high on four feet with 1\"-thick vibration isolators under the unit. *** Five of them are needed, one per condensing unit."
+    },
+    {
+      "element_id": "WIRING POWER SUPPLY DIAGRAM",
+      "element_type": "diagram",
+      "components": [
+        "CB. (SEE SCHEDULE)",
+        "WIRE (SEE SCHEDULE)",
+        "FAN COIL UNIT (INDOOR)",
+        "SAFETY SWITCH (20A.-40A.)",
+        "CONDENSING UNIT (OUTDOOR)"
+      ],
+      "supply": "220/1/50",
+      "wiring": "2-2.5, G-2.5 sqmm. IEC 01 - ø1/2\" EMT",
+      "safety_switch_rating": "20A. - 40A.",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "note": "Supply comes in at 220/1/50 through a breaker and cable 'SEE SCHEDULE' (M-01), reaches the indoor fan coil, then passes through a SAFETY SWITCH rated 20-40 A on the outdoor side before the condensing unit."
+    },
+    {
+      "element_id": "SAFETY SWITCH",
+      "element_type": "equipment",
+      "rating": "20A. - 40A.",
+      "count": 5,
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "count_inferred_from_unit_count"
+      ],
+      "note": "M-01 note 2 requires a weatherproof disconnecting switch beside EVERY condensing unit, so five are needed. The count is inferred from the unit count, not printed."
+    }
+  ],
+  "confidence_score": 0.89,
+  "confidence_flags": [],
+  "warnings": [
+    "*** LAST SHEET OF THE WHOLE 68-SHEET DRAWING SET (M-04 of 4, after A-01..A-31, S-01..S-17, SN-01..SN-10, EE-01..EE-06). *** Four installation details for the air-conditioning system.",
+    "*** THREE COUNTABLE ITEMS ARE SPECIFIED ONLY HERE and would be missed by anyone taking off from the plans and schedules alone: the angle-steel condensing-unit stand (15 cm high with 1\"-thick vibration isolators), the PVC PIPE COVER trunking on every vertical refrigerant run, and the 20-40 A weatherproof safety switch beside each condensing unit. Five of each are needed. ***",
+    "The safety-switch count is INFERRED from the five condensing units via M-01 note 2 ('ติดตั้งสวิตช์ตัดตอนชนิดกันน้ำ ... แต่ละเครื่อง'), not printed anywhere; flagged count_inferred_from_unit_count.",
+    "THE WIRING DIAGRAM DEFERS ITS TWO KEY VALUES BACK TO M-01 ('CB. SEE SCHEDULE', 'WIRE SEE SCHEDULE'), so the sheet cannot be priced on its own -- but it does print the general case, 2-2.5 + G-2.5 IEC 01 in ø1/2\" EMT at 220/1/50.",
+    "NOTE THE CONDUIT MATERIAL AGAIN: EMT here and on M-01's fan note, PVC on every electrical sheet. The two disciplines specify different conduit for work that meets at the same consumer unit. Recorded as printed on each; not reconciled by either.",
+    "SLEEVES through the wall for the refrigerant pair and drain are drawn but not sized.",
+    "NORMALIZED_2026-08-02: pattern 'detail' -> 'section'. 'detail' is not one of the 14 patterns in primary_rawjson_schema.md section 1; house 07 was the only house of 11 using it. Mapped to the value the other 10 houses use for this same kind of sheet. Original value recorded here, nothing else in the file changed."
+  ]
 }

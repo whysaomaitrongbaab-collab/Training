@@ -15,18 +15,45 @@
       "element_type": "stair_flight",
       "description": "reinforced concrete stair flight rising from landing to ระดับชั้น 2, grid4-grid3 (reversed direction from S-11's lower flight), connecting to beam B2 at both ends",
       "scale": "1:20",
-      "grid_ref": "grid4-grid3",
-      "rise": { "step_count": 8, "riser_height_m": 0.175, "total_rise_m": 1.40 },
-      "run_m": { "landing_extension_1": 0.50, "landing_extension_2": 0.65, "tread_run_note": "7@0.25=1.75", "far_extension": 0.60, "total_horizontal_m": 3.50 },
-      "rebar": {
-        "main_bottom_following_stair_profile": { "dia_mm": 9, "type": "RB", "spacing_mm": 250 },
-        "landing_top_both_ends": { "dia_mm": 12, "type": "RB", "spacing_mm": 125 },
-        "landing_bottom_both_ends": { "dia_mm": 9, "type": "RB", "spacing_mm": 250 }
+      "grid_ref": "4-3",
+      "rise": {
+        "step_count": 8,
+        "riser_height_m": 0.175,
+        "total_rise_m": 1.4
       },
-      "related_elements": ["B2"],
+      "run_m": {
+        "landing_extension_1": 0.5,
+        "landing_extension_2": 0.65,
+        "tread_run_note": "7@0.25=1.75",
+        "far_extension": 0.6,
+        "total_horizontal_m": 3.5
+      },
+      "rebar": {
+        "main_bottom_following_stair_profile": {
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250
+        },
+        "landing_top_both_ends": {
+          "dia_mm": 12,
+          "type": "RB",
+          "spacing_mm": 125
+        },
+        "landing_bottom_both_ends": {
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250
+        }
+      },
+      "related_elements": [
+        "B2"
+      ],
       "combined_total_rise_with_S11_m": 3.15,
       "confidence_score": 0.75,
-      "confidence_flags": ["needs_human_review_zoom_required", "dense_diagonal_stair_rebar_annotations_partially_overlapping"]
+      "confidence_flags": [
+        "needs_human_review_zoom_required",
+        "dense_diagonal_stair_rebar_annotations_partially_overlapping"
+      ]
     }
   ],
   "title_block": {
@@ -41,6 +68,7 @@
   "confidence_flags": [],
   "warnings": [
     "Combined total rise across S-11 (1.75m) + S-12 (1.40m) = 3.15m -- matches this project's typical floor-to-floor height convention seen in houses #3/#4 (also 3.15m), a good cross-check confirmation.",
-    "This flight runs grid4 to grid3 (opposite direction to S-11's grid3-to-grid4), consistent with a standard switchback/dog-leg stair layout around a landing."
+    "This flight runs grid4 to grid3 (opposite direction to S-11's grid3-to-grid4), consistent with a standard switchback/dog-leg stair layout around a landing.",
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
   ]
 }

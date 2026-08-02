@@ -1,82 +1,85 @@
 {
- "png": "00b",
- "doc_page": null,
- "discipline": "structural",
- "sheet_code": null,
- "sheet_name": "Grid master (synthesized cross-page reference) -- อาคารสุขารวม",
- "pattern": "gridline",
- "building": "อาคารสุขารวม",
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_pages": [
-  "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า14.png",
-  "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า15.png"
- ],
- "view_title": "Column grid master for the detached shared-toilet block (อาคารสุขารวม) of บ้านผู้ประสบภัย 3 ห้องสุขารวม -- derived from the separate small plan drawn at the top-right of S-01 (แปลนฐานราก, หน้า14) and S-02 (แปลน เสา คานและพื้น, หน้า15)",
- "x_lines": [
-  {
-   "id": "1",
-   "pos_m": 0.0,
-   "type": "named",
-   "source": "S-01/S-02"
+  "png": "00b",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized cross-page reference) -- อาคารสุขารวม",
+  "pattern": "gridline",
+  "building": "อาคารสุขารวม",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า14.png",
+    "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า15.png"
+  ],
+  "view_title": "Column grid master for the detached shared-toilet block (อาคารสุขารวม) of บ้านผู้ประสบภัย 3 ห้องสุขารวม -- derived from the separate small plan drawn at the top-right of S-01 (แปลนฐานราก, หน้า14) and S-02 (แปลน เสา คานและพื้น, หน้า15)",
+  "grid": {
+    "x_lines": [
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named",
+        "source": "S-01/S-02"
+      },
+      {
+        "id": "2",
+        "pos_m": 6.0,
+        "type": "named",
+        "source": "S-01/S-02"
+      }
+    ],
+    "y_lines": [
+      {
+        "id": "ก",
+        "pos_m": 0.0,
+        "type": "named",
+        "source": "S-01/S-02"
+      },
+      {
+        "id": "ข'",
+        "pos_m": null,
+        "type": "dummy",
+        "source": "S-02",
+        "confidence_score": 0.6,
+        "confidence_flags": [
+          "pos_undimensioned"
+        ],
+        "note": "Intermediate line carrying a horizontal B5 beam between grids ก and ข, found by the beam-endpoint rule (spec §4): that B5 lands on no named grid, so the grid master was incomplete without it. It sits roughly mid-way (visually ~2.25 m) but NO dimension is printed for it anywhere on S-02, so pos_m is left null rather than assumed to be exactly half of 4.50."
+      },
+      {
+        "id": "ข",
+        "pos_m": 4.5,
+        "type": "named",
+        "source": "S-01/S-02"
+      },
+      {
+        "id": "ค'",
+        "pos_m": null,
+        "type": "dummy",
+        "source": "S-02",
+        "confidence_score": 0.6,
+        "confidence_flags": [
+          "pos_undimensioned"
+        ],
+        "note": "Same as the ข' line but in the upper half: an intermediate line carrying a horizontal B5 beam between grids ข and ค. Named off ค per the reading-direction rule (y-axis scans top to bottom). pos_m undimensioned, left null."
+      },
+      {
+        "id": "ค",
+        "pos_m": 9.0,
+        "type": "named",
+        "source": "S-01/S-02"
+      }
+    ]
   },
-  {
-   "id": "2",
-   "pos_m": 6.0,
-   "type": "named",
-   "source": "S-01/S-02"
-  }
- ],
- "y_lines": [
-  {
-   "id": "ก",
-   "pos_m": 0.0,
-   "type": "named",
-   "source": "S-01/S-02"
-  },
-  {
-   "id": "ข'",
-   "pos_m": null,
-   "type": "dummy",
-   "source": "S-02",
-   "confidence_score": 0.6,
-   "confidence_flags": [
-    "pos_undimensioned"
-   ],
-   "note": "Intermediate line carrying a horizontal B5 beam between grids ก and ข, found by the beam-endpoint rule (spec §4): that B5 lands on no named grid, so the grid master was incomplete without it. It sits roughly mid-way (visually ~2.25 m) but NO dimension is printed for it anywhere on S-02, so pos_m is left null rather than assumed to be exactly half of 4.50."
-  },
-  {
-   "id": "ข",
-   "pos_m": 4.5,
-   "type": "named",
-   "source": "S-01/S-02"
-  },
-  {
-   "id": "ค'",
-   "pos_m": null,
-   "type": "dummy",
-   "source": "S-02",
-   "confidence_score": 0.6,
-   "confidence_flags": [
-    "pos_undimensioned"
-   ],
-   "note": "Same as the ข' line but in the upper half: an intermediate line carrying a horizontal B5 beam between grids ข and ค. Named off ค per the reading-direction rule (y-axis scans top to bottom). pos_m undimensioned, left null."
-  },
-  {
-   "id": "ค",
-   "pos_m": 9.0,
-   "type": "named",
-   "source": "S-01/S-02"
-  }
- ],
- "confidence_score": 0.8,
- "confidence_flags": [
-  "dummy_pos_undimensioned"
- ],
- "warnings": [
-  "SEPARATE BUILDING -- do not mix with the main row building's grid. Both buildings use the identical grid names ก/ข/ค and 1/2, but at completely different spacings: this block is 4.50 m between letter lines and 6.00 m between number lines, while the main building is 3.60 m in both directions. A grid_ref such as \"ก-1\" is ambiguous unless the file states which grid_source it belongs to (spec §11a).",
-  "This block has its own origin. Its grid bubbles ① and ② are ALSO drawn on the main building's top axis row on S-02 (between main grids 7 and 11) to show roughly where the toilet block sits relative to the main building, but no dimension ties the two coordinate systems together, so the offset between the two grids is unresolved and must not be inferred from bubble positions on the sheet.",
-  "Footprint is a full 2 x 3 grid (6 columns): footings read off S-01 are C2/F3 at ค-1, ค-2, C2/F4 at ข-1, ข-2, and C2/F3 at ก-1, ก-2 -- i.e. pedestal C2 throughout, footing F4 on the middle row and F3 on the two outer rows.",
-  "TWO DUMMY GRIDS added 2026-07-25 after applying the beam-endpoint rule (spec §4) to S-02: the toilet block has a horizontal B5 beam in the middle of each 4.50 m half (between ก-ข and between ข-ค) landing on no named grid line. Per the rule these are real structural lines and get dummy grids, rather than being dropped or recorded as a prose description. pos_m is null because no dimension is printed for either -- do NOT assume 2.25 m, the four S1 slab panels are not visibly equal in depth.",
-  "Beam layout confirmed at high magnification on S-02: B4 on the two outer named rows (ค and ก), B6 on the middle named row (ข), B5 on the two dummy rows AND as the vertical edge beams on grid lines 1 and 2. Four S1 slab panels, one per bay. C2 columns sit at the six NAMED grid intersections only -- the dummy rows carry a beam but no column."
- ]
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "dummy_pos_undimensioned"
+  ],
+  "warnings": [
+    "SEPARATE BUILDING -- do not mix with the main row building's grid. Both buildings use the identical grid names ก/ข/ค and 1/2, but at completely different spacings: this block is 4.50 m between letter lines and 6.00 m between number lines, while the main building is 3.60 m in both directions. A grid_ref such as \"ก-1\" is ambiguous unless the file states which grid_source it belongs to (spec §11a).",
+    "This block has its own origin. Its grid bubbles ① and ② are ALSO drawn on the main building's top axis row on S-02 (between main grids 7 and 11) to show roughly where the toilet block sits relative to the main building, but no dimension ties the two coordinate systems together, so the offset between the two grids is unresolved and must not be inferred from bubble positions on the sheet.",
+    "Footprint is a full 2 x 3 grid (6 columns): footings read off S-01 are C2/F3 at ค-1, ค-2, C2/F4 at ข-1, ข-2, and C2/F3 at ก-1, ก-2 -- i.e. pedestal C2 throughout, footing F4 on the middle row and F3 on the two outer rows.",
+    "TWO DUMMY GRIDS added 2026-07-25 after applying the beam-endpoint rule (spec §4) to S-02: the toilet block has a horizontal B5 beam in the middle of each 4.50 m half (between ก-ข and between ข-ค) landing on no named grid line. Per the rule these are real structural lines and get dummy grids, rather than being dropped or recorded as a prose description. pos_m is null because no dimension is printed for either -- do NOT assume 2.25 m, the four S1 slab panels are not visibly equal in depth.",
+    "Beam layout confirmed at high magnification on S-02: B4 on the two outer named rows (ค and ก), B6 on the middle named row (ข), B5 on the two dummy rows AND as the vertical edge beams on grid lines 1 and 2. Four S1 slab panels, one per bay. C2 columns sit at the six NAMED grid intersections only -- the dummy rows carry a beam but no column.",
+    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed."
+  ]
 }

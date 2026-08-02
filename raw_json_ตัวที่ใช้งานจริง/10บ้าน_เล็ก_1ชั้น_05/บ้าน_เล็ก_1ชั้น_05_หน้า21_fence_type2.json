@@ -1,26 +1,98 @@
 {
- "png": "21",
- "doc_page": 19,
- "printed_page": 19,
- "discipline": "architectural",
- "sheet_code": "A-19",
- "sheet_name": "แบบขยาย รั้วแบบที่ 2",
- "pattern": "section",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า21.png",
- "fence_type": "concrete block-fill fence on RC posts (คอนกรีตบล็อคทึบ ระหว่างเสา คสล.)",
- "structural_elements": [
-  { "mark": "C1", "type": "เสา คสล.", "size_m": "0.20x0.20", "rebar": "4-Ø12, ปลอก Ø6@150" },
-  { "mark": "GB", "type": "คานคอดิน", "size_m": "0.20x0.30", "rebar": "2-Ø9 บน + 1-Ø9 บน(bent L/5) + 2-Ø9 ล่าง, ปลอก Ø6@150" },
-  { "mark": "ทับหลัง", "type": "ทับหลัง คสล.", "size_m": "0.10x0.20", "rebar": "2-Ø6, ปลอก Ø6@0.15" },
-  { "mark": "F", "type": "ฐานราก", "size_m": "0.90x0.90x0.40 (ฐานราก), เสาเข็ม Ø0.15x0.15x4.00ม. 2 ต้น/ฐาน", "rebar": "3-Ø9 ตะแกรง 2 ทาง, STR:Ø6@100", "dowel": "DOWEL Ø12 ยาว 1.00ม. เทคอนกรีตยึดกับเสาเข็ม" }
- ],
- "infill_spec": "คอนกรีตบล็อคทึบ ขนาด 0.19x0.39ม. หนา 7ซม. ระหว่างเสา คสล.",
- "dims_m": { "fence_height_total": 2.00, "infill_height": 1.80, "base_wall_height": 0.90 },
- "confidence_score": 0.75,
- "confidence_flags": [],
- "warnings": [
-  "op1 direct read (house 10). Same post/beam/footing spec as รั้วแบบที่ 1 (_หน้า20_fence_type1.json) — only the infill panel differs (solid concrete block vs steel picket). Design likely offers both as owner's choice, per house 10's A-02 note allowing material substitution per owner's preference."
- ]
+  "png": "21",
+  "doc_page": 19,
+  "printed_page": 19,
+  "discipline": "architectural",
+  "sheet_code": "A-19",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 2",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า21.png",
+  "fence_type": "concrete block-fill fence on RC posts (คอนกรีตบล็อคทึบ ระหว่างเสา คสล.)",
+  "infill_spec": "คอนกรีตบล็อคทึบ ขนาด 0.19x0.39ม. หนา 7ซม. ระหว่างเสา คสล.",
+  "dims_m": {
+    "fence_height_total": 2.0,
+    "infill_height": 1.8,
+    "base_wall_height": 0.9
+  },
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 10). Same post/beam/footing spec as รั้วแบบที่ 1 (_หน้า20_fence_type1.json) — only the infill panel differs (solid concrete block vs steel picket). Design likely offers both as owner's choice, per house 10's A-02 note allowing material substitution per owner's preference.",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (structural_elements) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "type_printed_as": "เสา คสล.",
+      "width_mm": 200,
+      "height_mm": 200,
+      "size_printed_as": "0.20x0.20",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "4-Ø12, ปลอก Ø6@150"
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_structural_elements_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "GB",
+      "element_type": "beam",
+      "type_printed_as": "คานคอดิน",
+      "width_mm": 200,
+      "height_mm": 300,
+      "size_printed_as": "0.20x0.30",
+      "main_bar": {
+        "count": 5,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "2-Ø9 บน + 1-Ø9 บน(bent L/5) + 2-Ø9 ล่าง, ปลอก Ø6@150"
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_structural_elements_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ทับหลัง",
+      "element_type": "unknown",
+      "type_printed_as": "ทับหลัง คสล.",
+      "width_mm": 100,
+      "height_mm": 200,
+      "size_printed_as": "0.10x0.20",
+      "main_bar": {
+        "count": 2,
+        "dia_mm": 6,
+        "type": "RB",
+        "printed_as": "2-Ø6, ปลอก Ø6@0.15"
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_structural_elements_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "F",
+      "element_type": "footing",
+      "type_printed_as": "ฐานราก",
+      "size_printed_as": "0.90x0.90x0.40 (ฐานราก), เสาเข็ม Ø0.15x0.15x4.00ม. 2 ต้น/ฐาน",
+      "main_bar": {
+        "count": 3,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "3-Ø9 ตะแกรง 2 ทาง, STR:Ø6@100"
+      },
+      "dowel": "DOWEL Ø12 ยาว 1.00ม. เทคอนกรีตยึดกับเสาเข็ม",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_structural_elements_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
 }

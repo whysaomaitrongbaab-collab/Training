@@ -1,23 +1,56 @@
 {
- "png": "36",
- "doc_page": 34,
- "printed_page": 34,
- "discipline": "structural",
- "sheet_code": "S-15",
- "sheet_name": "แบบขยายการวางพื้นสำเร็จรูป 2/3",
- "pattern": "section",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า36.png",
- "details": [
-  { "name": "ลักษณะการวางพื้น SP บริเวณรอยตัดขาด", "spec": "SP cut-joint with SILICONE BUILDING SEALANTS at the 15mm gap, เสริมพิเศษ Ø6มม.@0.20 both sides, dowel 1-Ø9มม. each" },
-  { "name": "ลักษณะการหล่อพื้นเสริมกรณีเศษช่องว่างที่คานริม", "spec": "cast-in-place infill strip (≤0.60m + 0.40m) at beam edge where SP can't span, Ø9มม.@0.20 top+bottom" },
-  { "name": "ลักษณะพื้น S ระดับสูงกว่าหลังคาน", "spec": "cast slab (S) stepped up above the ring-beam level, joint dowel 1+1-Ø9มม. + Ø9มม.@0.20" },
-  { "name": "กรณียกระดับพื้นสำเร็จต่างระดับกัน", "spec": "SP-to-SP step joint (5-20cm level difference), คอนกรีตปรับระดับ fill wedge + คอนกรีต TOPPING, dowel 1+1-Ø9มม. + Ø9มม.@0.20" }
- ],
- "confidence_score": 0.8,
- "confidence_flags": [],
- "warnings": [
-  "op1 direct read (house 10). Continues S-14's joint-condition catalogue: cut-edge sealant joint, cast-in-place infill, cast-slab step-up, and SP level-difference joint. Sheet 3/3 (S-16) covers unsupported-edge SP."
- ]
+  "png": "36",
+  "doc_page": 34,
+  "printed_page": 34,
+  "discipline": "structural",
+  "sheet_code": "S-15",
+  "sheet_name": "แบบขยายการวางพื้นสำเร็จรูป 2/3",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า36.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 10). Continues S-14's joint-condition catalogue: cut-edge sealant joint, cast-in-place infill, cast-slab step-up, and SP level-difference joint. Sheet 3/3 (S-16) covers unsupported-edge SP.",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (details) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "ลักษณะการวางพื้น SP บริเวณรอยตัดขาด",
+      "element_type": "detail_view",
+      "spec": "SP cut-joint with SILICONE BUILDING SEALANTS at the 15mm gap, เสริมพิเศษ Ø6มม.@0.20 both sides, dowel 1-Ø9มม. each",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ลักษณะการหล่อพื้นเสริมกรณีเศษช่องว่างที่คานริม",
+      "element_type": "detail_view",
+      "spec": "cast-in-place infill strip (≤0.60m + 0.40m) at beam edge where SP can't span, Ø9มม.@0.20 top+bottom",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "ลักษณะพื้น S ระดับสูงกว่าหลังคาน",
+      "element_type": "detail_view",
+      "spec": "cast slab (S) stepped up above the ring-beam level, joint dowel 1+1-Ø9มม. + Ø9มม.@0.20",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "กรณียกระดับพื้นสำเร็จต่างระดับกัน",
+      "element_type": "detail_view",
+      "spec": "SP-to-SP step joint (5-20cm level difference), คอนกรีตปรับระดับ fill wedge + คอนกรีต TOPPING, dowel 1+1-Ø9มม. + Ø9มม.@0.20",
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
 }

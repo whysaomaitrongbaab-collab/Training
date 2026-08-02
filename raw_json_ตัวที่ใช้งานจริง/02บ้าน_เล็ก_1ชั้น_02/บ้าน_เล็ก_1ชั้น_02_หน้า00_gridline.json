@@ -15,17 +15,24 @@
   "note": "Grid dimensions read identically and repeated on S-02 (spread footing plan), S-03 (pile footing plan), S-04 (ground floor beam plan), and S-05 (tie-beam plan) -- all 4 sheets print the same '9.60' (3x3.20) x-axis total and '14.55' (4.00+2.00+3.60+1.80+3.15) y-axis total, cross-confirming the grid with no discrepancy. No dummy/prime grid lines were found in any structural sheet read so far (S-01 through S-14) -- the building footprint is simply irregular (rows F/B/A only have columns 2-3 or partial columns, not a full 1-4 span), which does not require a dummy grid, unlike house #1 which had genuine overhang dimensions beyond the named grid. If the architecture-discipline extraction (pages 03-21, being read separately) finds a dimension beyond grid 4/A or before grid 1/F requiring a dummy line, that must be reported back and added here rather than invented independently by whichever pass finds it.",
   "grid": {
     "x_lines": [
+      { "id": "1'", "pos_m": -1, "type": "dummy", "confidence_score": 1, "confidence_flags": ["added_2026-07-16_by_user_from_page12"] },
       { "id": "1", "pos_m": 0.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "1''", "pos_m": 1.8, "type": "dummy", "confidence_score": 1, "confidence_flags": ["added_2026-07-16_by_user_from_page12"] },
       { "id": "2", "pos_m": 3.2, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
       { "id": "3", "pos_m": 6.4, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
-      { "id": "4", "pos_m": 9.6, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" }
+      { "id": "3'", "pos_m": 7.7, "type": "dummy", "confidence_score": 1, "confidence_flags": ["added_2026-07-16_by_user_from_page06"] },
+      { "id": "4", "pos_m": 9.6, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "4'", "pos_m": 10.6, "type": "dummy", "confidence_score": 1, "confidence_flags": ["added_2026-07-16_by_user_from_page06"] }
     ],
     "y_lines": [
+      { "id": "F'", "pos_m": -0.6, "type": "dummy", "confidence_score": 1, "confidence_flags": ["added_2026-07-16_by_user_from_page06"] },
       { "id": "F", "pos_m": 0.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets (topmost row, origin)" },
+      { "id": "F''", "pos_m": 0.9, "type": "dummy", "confidence_score": 1, "confidence_flags": ["added_2026-07-16_by_user_from_page06"] },
       { "id": "E", "pos_m": 4.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
       { "id": "D", "pos_m": 6.0, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
       { "id": "C", "pos_m": 9.6, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
       { "id": "B", "pos_m": 11.4, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" },
+      { "id": "B'", "pos_m": 12.05, "type": "dummy", "confidence_score": 1, "confidence_flags": ["added_2026-07-19_by_user"] },
       { "id": "A", "pos_m": 14.55, "type": "named", "source": "printed on S-02/S-03/S-04/S-05, identical on all 4 sheets" }
     ]
   },
@@ -33,8 +40,9 @@
   "confidence_score": 0.95,
   "confidence_flags": ["grid_confirmed_identical_across_4_independent_structural_sheets_S02_S03_S04_S05"],
   "warnings": [
-    "No dummy grid lines found yet -- architecture-discipline pages (03-21) not yet read at time of this file's creation; if an overhang/extension dimension beyond the named grid turns up there, come back and add a dummy grid entry here."
+    "Dummy grid lines 1'/1''/3'/4'/F'/F'' added 2026-07-16 by user, from page12 and page06 respectively -- see confidence_flags on each entry.",
+    "2026-07-19: STRUCTURAL confirmation of the dummy lines -- a zoom re-read of S-04 (หน้า25 beam plan) found real beams landing exactly on them: B1 edge/divider beams at 1'(-1.0), 1''(1.8) and 4'(10.6) in the E-D band, B2X 1.00m cantilever extension segments along the E and D rows from grid1 to 1' and grid4 to 4', and a B1 edge beam at F''(0.9) under the ซักล้าง slab strip. So although no prime grid bubbles are printed on any structural sheet (the note above still holds), the structure itself confirms 1'/1''/4'/F'' cross-discipline. 3' is present within measurement tolerance only (divider beam measured ~7.7m, but A-12 implies ~7.8 -- 0.1m discrepancy unresolved, see หน้า25/หน้า06 flags). F' is NOT structurally confirmed: the only candidate is the ST2 stair landing edge (~0.5-0.6m beyond F, undimensioned) -- flagged on หน้า25, not resolved."
   ],
-  "last_updated_from_page": "S-02, S-03, S-04, S-05 (pages 23-26)",
-  "last_updated_date": "2026-07-10"
+  "last_updated_from_page": "S-02, S-03, S-04, S-05 (pages 23-26); dummy lines from page06, page12; structural confirmation from page25 zoom; B' added by user 2026-07-19",
+  "last_updated_date": "2026-07-19"
 }

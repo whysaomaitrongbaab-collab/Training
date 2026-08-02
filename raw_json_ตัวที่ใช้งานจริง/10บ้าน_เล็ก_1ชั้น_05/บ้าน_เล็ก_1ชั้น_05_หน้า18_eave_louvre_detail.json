@@ -1,37 +1,61 @@
 {
- "png": "18",
- "doc_page": 16,
- "printed_page": 16,
- "discipline": "architectural",
- "sheet_code": "A-16",
- "sheet_name": "แบบขยาย เชิงชาย, แบบขยาย ระแนงบังแดดเหล็ก",
- "pattern": "section",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า18.png",
- "details": [
-  {
-   "name": "แบบขยายเชิงชาย 1 (R1)",
-   "scale": "1:25",
-   "spec": "เชิงชายไม้ไฟเบอร์ซีเมนต์ ขนาด 8\"หนา 12มม. ทาสี, FLASHING ใช้วัสดุเดียวกันกับหลังคา, หลังคาเหล็กรีดลอน",
-   "dims_m": { "overhang": 1.50, "fascia_depth": 1.30 }
-  },
-  {
-   "name": "แบบขยายเชิงชาย 2 (R2)",
-   "scale": "1:25",
-   "spec": "เชิงชายไม้ไฟเบอร์ซีเมนต์ ขนาด 8\"หนา 12มม. ทาสี, FLASHING ใช้วัสดุเดียวกันกับหลังคา, หลังคาเหล็กรีดลอน",
-   "dims_m": { "overhang": 1.50, "fascia_depth": 0.30 }
-  },
-  {
-   "name": "แบบขยาย ระแนงบังแดดเหล็ก",
-   "scale": "1:25",
-   "spec": "ระแนงเหล็กกล่อง ขนาด 50x50มม. @0.05ม. หนา 2.3มม. ทาสีกันสนิม, ยึดบนเสา คสล.",
-   "dims_m": { "height": 0.55 }
-  }
- ],
- "confidence_score": 0.8,
- "confidence_flags": [],
- "warnings": [
-  "op1 direct read (house 10). R1/R2 callout codes match the ones referenced on A-06/A-07's elevations (เชิงชาย 1/เชิงชาย 2 ดูแบบขยาย)."
- ]
+  "png": "18",
+  "doc_page": 16,
+  "printed_page": 16,
+  "discipline": "architectural",
+  "sheet_code": "A-16",
+  "sheet_name": "แบบขยาย เชิงชาย, แบบขยาย ระแนงบังแดดเหล็ก",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_05/บ้าน_เล็ก_1ชั้น_05_หน้า18.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 10). R1/R2 callout codes match the ones referenced on A-06/A-07's elevations (เชิงชาย 1/เชิงชาย 2 ดูแบบขยาย).",
+    "NORMALIZED_2026-08-02: this house stored section data in per-file ad-hoc arrays (details) instead of the elements[] that houses 01-09 use. Folded into elements[] with element_id/element_type, and mark->element_id, size_m -> width_mm/height_mm, thickness_m -> thickness_mm, rebar/top/bottom strings -> objects. Every original string is kept in a *_printed_as field. NOTE: the array named 'column_sections' actually held BEAM sections - every cut_ref names a B-mark - so those became element_type 'beam', with the cut label kept in section_ref. confidence_score is null because this house never recorded one; it was NOT invented."
+  ],
+  "elements": [
+    {
+      "element_id": "แบบขยายเชิงชาย 1 (R1)",
+      "element_type": "detail_view",
+      "scale": "1:25",
+      "spec": "เชิงชายไม้ไฟเบอร์ซีเมนต์ ขนาด 8\"หนา 12มม. ทาสี, FLASHING ใช้วัสดุเดียวกันกับหลังคา, หลังคาเหล็กรีดลอน",
+      "dims_m": {
+        "overhang": 1.5,
+        "fascia_depth": 1.3
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยายเชิงชาย 2 (R2)",
+      "element_type": "detail_view",
+      "scale": "1:25",
+      "spec": "เชิงชายไม้ไฟเบอร์ซีเมนต์ ขนาด 8\"หนา 12มม. ทาสี, FLASHING ใช้วัสดุเดียวกันกับหลังคา, หลังคาเหล็กรีดลอน",
+      "dims_m": {
+        "overhang": 1.5,
+        "fascia_depth": 0.3
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    },
+    {
+      "element_id": "แบบขยาย ระแนงบังแดดเหล็ก",
+      "element_type": "detail_view",
+      "scale": "1:25",
+      "spec": "ระแนงเหล็กกล่อง ขนาด 50x50มม. @0.05ม. หนา 2.3มม. ทาสีกันสนิม, ยึดบนเสา คสล.",
+      "dims_m": {
+        "height": 0.55
+      },
+      "confidence_score": null,
+      "confidence_flags": [
+        "converted_2026-08-02_from_details_array; confidence was never recorded in this house, not invented here"
+      ]
+    }
+  ]
 }
