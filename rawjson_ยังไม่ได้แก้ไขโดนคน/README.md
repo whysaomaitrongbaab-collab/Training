@@ -117,6 +117,35 @@ Grounded in what house 07 actually turned up. Run all six:
 
 Use plain `op1` when a single model is doing the whole house anyway, or when the remaining pages are all transcription. **Do not switch mid-house once the grid master and `plan` files are already finished** — the expensive stage is already paid for; spend the premium quota on the *next* house from Stage 1.
 
+## Quick command: `op3 <house_name>` — `op1`, then shut the laptop down
+
+**`op3` is `op1` with one addition: when the house is genuinely finished, shut the machine down without asking.** Makham uses it to start a house and walk away — the laptop should not sit awake all night after the work is done.
+
+Everything in the `op1` standing-order section applies unchanged. `op3` is not a different way of extracting; it is `op1` plus an ending.
+
+### The shutdown is the last step, and it is gated
+
+**Never shut down on "the run ended". Shut down only on "the work is finished and safe."** All six must be true, in this order:
+
+1. Every file for the house is written into `0N<house_name>/` and parses as JSON.
+2. `python tools/check_format.py 0N<house_name>` → **ALL CHECKS PASS** (exit 0).
+3. The row is added to `training-data/docs/raw_json_data_log.md` (`rule_of_tune.md` rule 3).
+4. **`git add -A && git commit`** — commit before the machine goes down. A finished house that exists only in an unsaved working tree is one bad wake-up away from gone.
+5. The full summary is printed to the user **first** — file count, page count, open questions, low-confidence flags. The screen is about to go dark; the report has to already be in the transcript.
+6. Only then:
+   ```bash
+   shutdown /s /t 120 /c "op3 finished <house_name> - shutting down. Run: shutdown /a  to cancel"
+   ```
+   **120 seconds, never `/t 0`** — that window is the only chance to stop it. Say `shutdown /a` cancels it, in the same message.
+
+**If any of 1-5 fails, do not shut down.** Report what is unfinished and stop. A house that failed `check_format.py` is not finished, and shutting down on it buries the failure until the next session.
+
+**Why the gate is written out like this:** on 2026-07-21 a tuned model (7.5 GB LoRA + 21 GB GGUF) was lost because a machine was shut down while the work was only *apparently* done and nothing had been pushed. See the Mark of Shame in `training-data/docs/rule_of_tune.md`. `op3` exists to automate the ending — not to automate skipping the save.
+
+### When not to use `op3`
+
+Don't use it if anything else on the machine is still running (a training job, an upload, another agent). `op3` only knows about its own house.
+
 ## Step 1 — Extract a new house into raw JSON
 
 1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full before starting — it's the only spec needed (13 patterns, grid/dummy-grid rules, `main_bar` top/bottom shape, spec join, etc). The full original with history/rationale lives at `training-data/docs/20260708draft of prime rawjson.md` if you need more context.
