@@ -3,7 +3,8 @@
 Context สำหรับ AI agent ที่มาทำงานต่อในโฟลเดอร์นี้ (portable — อาจอยู่ใน repo แยกจาก Constistant หลัก)
 
 > ## ⚠️ 2026-08-02 — Label Studio ถูกยกเลิกทั้งหมด (คำสั่งมะขาม)
-> **ไม่เก็บข้อมูลผ่าน Label Studio อีกต่อไป และ `op1`/`op2` ห้ามสร้างไฟล์ task ของ Label Studio อีก** — ทุกไฟล์ที่เกี่ยวกับ Label Studio โดยตรง (`label_studio_stuff/` ทั้งโฟลเดอร์, mindmap PDF, `label-studio-config.xml`, `manifest.json`, `review.html`, `annotated/`, `upload-to-supabase-storage.js`) ย้ายไปพักที่ **`wait_for_ทิ้ง/`** ที่ root repo รอลบจริง (กู้คืนได้จาก git ทุกเมื่อ)
+> **ไม่เก็บข้อมูลผ่าน Label Studio อีกต่อไป และ `op1`/`op2` ห้ามสร้างไฟล์ task ของ Label Studio อีก** — ทุกไฟล์ที่เกี่ยวกับ Label Studio **ถูกลบจริงแล้ว 2026-08-02** (`label_studio_stuff/` ทั้งโฟลเดอร์ = generator + import scripts + XML + task JSON 10 บ้าน 21MB, mindmap PDF, `label-studio-config.xml`, `annotated/`, `upload-to-supabase-storage.js` — รวม 51 ไฟล์) กู้คืนได้จาก git history ถ้าจำเป็น
+> **`manifest.json` กับ `review.html` ไม่ใช่ของ Label Studio** — เป็นของ pipeline รุ่น `pdf-processor.py`/`qwen-processor.js` ที่อ่านไฟล์นี้ตรงๆ เคยย้ายออกไปผิดแล้วเอากลับคืนแล้ว
 > Ground truth ปัจจุบัน = raw JSON ใน `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/` ตรวจด้วย `tools/check_format.py` เท่านั้น
 > **ทุก section ในไฟล์นี้ที่พูดถึง Label Studio review flow (3 sections ด้านล่าง) = ประวัติศาสตร์ อ่านเพื่อเข้าใจที่มาได้ แต่ห้ามทำตาม**
 
@@ -126,15 +127,6 @@ Per-page classify (Stage A) → route → extract (Stage B1/B2 แยกตา�
 | `raw/image/<house>/qwen-output/` | ผลลัพธ์ — `_document_map.json`, `_run_summary.json`, `<house>_หน้าNN.json` (อยู่ใต้โฟลเดอร์รูปของบ้านนั้นๆ เลย ดึงไป assign Label Studio ต่อบ้านได้ง่าย) |
 | `SETUP.md` | วิธี setup ครั้งแรกใน repo ใหม่ |
 | `log_utils.py` / `log_claude_analysis.py` / `pipeline_activity_log.json` | Activity log อัตโนมัติ (ดูหัวข้อ "Activity log อัตโนมัติ" ด้านบน) — แยกจาก `raw_json_data_log.md` |
-| `label-studio-tasks-github.js` | สร้าง Label Studio import tasks จากรูปที่ root `image/<house>/` โดยอ้างเป็น GitHub raw URL ตรงๆ (ดูหัวข้อ Label Studio Cloud ด้านล่าง) |
-| `label-studio-config-review.xml` | Labeling Interface config ที่ใช้จริงกับ project บน Label Studio Cloud ตอนนี้ (field ตรงกับ `label-studio-tasks-github.js`) |
-| `label-studio-tasks.js` / `Prompt/stage-a/label-studio-config.xml` | **เวอร์ชันเก่า/เลิกใช้** — ชี้ path ผิด (`raw/image/` มีแค่ 1 บ้าน) และ config field ไม่ตรงกับ script ที่ generate task เก็บไว้อ้างอิงเฉยๆ |
-| `label-studio-import-annotations.js` | แปลง export JSON จาก Label Studio → `annotated/<record_id>-annotated.json` + อัปเดต `manifest.json` (คู่กับ `label-studio-tasks-github.js` — whole-JSON flow) |
-| `label-studio-tasks-perpage.js` | สร้าง task **ต่อหน้า** (ไม่ใช่ต่อบ้าน) แยก 2 ไฟล์ output: `label-studio-tasks-structural.json` / `label-studio-tasks-boq.json` — flatten `plan[]+section[]+schedule[]` (structural) หรือ `categories[].items[]` (boq) เป็น array เดียว ข้าม pattern `notes` (เป็น object เดี่ยว ไม่ใช่ list) — ⚠️ **เขียนไว้ก่อน schema เปลี่ยนเป็น `views[]` (ดูหัวข้อ "Multi-view extraction" ด้านบน) ยังไม่ได้ปรับให้ flatten จาก `views[].elements` — ถ้าจะรันกับ output ใหม่ (หน้าที่ extract หลัง 2026-07-03) ต้องแก้ script นี้ก่อน** |
-| `label-studio-structural.xml` / `label-studio-boq.xml` | Labeling Interface แบบ Repeater ต่อรายการ — ใช้กับ project "Structural Review" / "BOQ Review" (แผน King) |
-| `label-studio-import-repeater-annotations.js` | แปลงผล export จาก 2 project ข้างบน → `annotated/<record_id>-<type>-annotated.json` (คู่กับ `label-studio-tasks-perpage.js`) |
-| `label-studio-tasks-makham.js` | **Gen 3 ("Makham's Pattern")** — อ่าน `mk_test/<subfolder>/*.json` แทน `qwen-output/` เดิม, จัดกลุ่มตามโครงสร้างจริง (element/elements array, categories[].items[], หรืออื่นๆ) → 3 ไฟล์ task (ดูหัวข้อ "Label Studio Cloud — Makham's Pattern" ด้านล่าง) |
-| `label-studio-makham-elements.xml` / `label-studio-makham-material_list.xml` / `label-studio-makham-single.xml` | Labeling Interface คู่กับ `label-studio-tasks-makham.js` — 3 แบบตามกลุ่มข้างบน |
 
 ## Label Studio Cloud — review flow (เริ่มใช้จริง 2026-07-02)
 

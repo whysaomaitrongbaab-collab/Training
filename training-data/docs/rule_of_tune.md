@@ -14,7 +14,7 @@
 
 **Not protected** (editable freely, no special permission needed):
 - Files generated fresh from raw data (e.g. `label-studio-tasks-*.json`) — regenerable, doesn't touch the source
-- Human-reviewed output (`annotated/*.json`) — meant to be edited/overwritten by the review process
+- ~~Human-reviewed output (`annotated/*.json`)~~ — the `annotated/` folder was deleted 2026-08-02 with the rest of the Label Studio flow
 - Scripts, config, XML, `.md` docs
 
 ## Rule 2
@@ -81,7 +81,7 @@ Rule 1 always outranks Rules 2 and 3 — even a direct user order to edit raw JS
 
 ## Ground Truth JSON Format (reference)
 
-> **2026-08-02 — Label Studio cancelled (Makham's order).** The annotated/-via-Label-Studio flow described in this section no longer runs; its tooling sits in `wait_for_ทิ้ง/` pending deletion. **Ground truth is now solely the raw JSON in `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/`** (format-gated by `tools/check_format.py`). The section below is kept as the historical record of the format used for tuning rounds t01/t02, and the type rules at its end still apply to any future dataset assembly.
+> **2026-08-02 — Label Studio cancelled (Makham's order).** The annotated/-via-Label-Studio flow described in this section no longer runs; its tooling was deleted 2026-08-02 (recoverable from git history). **Ground truth is now solely the raw JSON in `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/`** (format-gated by `tools/check_format.py`). The section below is kept as the historical record of the format used for tuning rounds t01/t02, and the type rules at its end still apply to any future dataset assembly.
 
 Historical format (`label-studio-import-repeater-annotations.js` output → `annotated/<record_id>-<type>-annotated.json`), round-trip verified against source raw JSON types. Changing this schema requires following Rule 2 above (warn before editing).
 
