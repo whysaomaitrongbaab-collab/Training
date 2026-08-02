@@ -46,7 +46,7 @@ def _grid_svg(grid, min_x, max_x, min_y, max_y):
 def _marker_svg(entry, to_px, color, dashed, label_suffix=""):
     if entry["xy"] is None:
         return ""
-    x_px, y_px = to_px(entry["xy"][0], entry["xy"][1])
+    x_px, y_px = to_px(entry)
     dash_attr = ' stroke-dasharray="4,3"' if dashed else ""
     fill = "none" if dashed else color
     return (
@@ -177,7 +177,7 @@ def render(house, page):
     min_x, max_x, min_y, max_y = min(all_x), max(all_x), min(all_y), max(all_y)
 
     grid_svg, width_px, height_px = _grid_svg(grid, min_x, max_x, min_y, max_y)
-    to_px = lambda x_m, y_m: _to_px(x_m, y_m, min_x, min_y)
+    to_px = lambda e: _to_px(e["xy"][0], e["xy"][1], min_x, min_y)
     markers_svg = _markers_svg(to_px, all_matched, all_wrong_id, all_missed, all_hallucinated)
 
     html = f"""<!doctype html>
@@ -240,18 +240,21 @@ def _load_diff_inputs(house, page_padded):
     return gemini_data, truth_data, grid, footing_diff, column_diff
 
 
-def render_on_image(house, page, refs=None, model="models/gemini-2.5-flash", calibration_attempts=3):
+def render_on_image(house, page, refs=None, model="models/gemini-2.5-flash", calibration_attempts=3, cv_refine=True):
     """Same diff as render(), but drawn on top of the actual scanned page
-    PNG instead of a schematic grid diagram. Positions still come entirely
-    from grid pos_m -- the only new input is a one-time pixel calibration
-    (Gemini-read reference points, each read `calibration_attempts` times
-    and median-combined since single-call reads have been observed to
-    vary, then averaged by least squares across points -- see
-    pixel_calibration.py) used to convert those meter positions to pixel
-    positions on this one image.
+    PNG instead of a schematic grid diagram. Positions come from grid
+    pos_m via a two-stage pipeline: (1) a Gemini-calibrated affine
+    transform gives a ROUGH pixel guess for every point (see
+    pixel_calibration.py), then (2) classical CV (symbol_template_match.py)
+    snaps each rough guess to the actual printed symbol's own bounding-box
+    center nearby -- each point corrected independently from its own true
+    image content, which is far more precise than trusting the VLM's raw
+    pixel reads directly. Pass cv_refine=False to skip step 2 and use the
+    rough Gemini-calibrated positions as-is (useful for comparison/debugging).
     """
     from PIL import Image
     from pixel_calibration import DEFAULT_CALIBRATION_REFS, calibrate, meter_to_pixel
+    from symbol_template_match import refine_positions
 
     refs = refs or DEFAULT_CALIBRATION_REFS
     page_padded = page.zfill(2)
@@ -263,12 +266,33 @@ def render_on_image(house, page, refs=None, model="models/gemini-2.5-flash", cal
         img_w, img_h = im.size
 
     transform = calibrate(image_path, img_w, img_h, grid, refs=refs, model=model, attempts=calibration_attempts)
-    to_px = lambda x_m, y_m: meter_to_pixel(x_m, y_m, transform)
 
     all_matched = footing_diff["matched"] + column_diff["matched"]
     all_wrong_id = footing_diff["wrong_id"] + column_diff["wrong_id"]
     all_missed = footing_diff["missed"] + column_diff["missed"]
     all_hallucinated = footing_diff["hallucinated"] + column_diff["hallucinated"]
+    all_entries = all_matched + all_wrong_id + all_missed + all_hallucinated
+
+    unrefined_refs = []
+    if cv_refine:
+        rough_by_ref = {
+            e["grid_ref"]: meter_to_pixel(e["xy"][0], e["xy"][1], transform)
+            for e in all_entries if e["xy"] is not None
+        }
+        import cv2
+        image_gray = cv2.imread(str(image_path), cv2.IMREAD_GRAYSCALE)
+        refined_by_ref, unrefined_refs = refine_positions(image_gray, rough_by_ref)
+        # hallucinated refs are EXPECTED to sometimes fail to refine (there's
+        # no real symbol there to find) -- only warn about the others, where
+        # a real printed symbol should exist and CV couldn't locate it.
+        hallucinated_refs = {e["grid_ref"] for e in all_hallucinated}
+        unexpected_unrefined = [r for r in unrefined_refs if r not in hallucinated_refs]
+        if unexpected_unrefined:
+            print(f"WARNING: CV refinement found no symbol near the calibrated position for {unexpected_unrefined} -- using the rough Gemini-calibrated position instead.")
+        to_px = lambda e: refined_by_ref.get(e["grid_ref"], meter_to_pixel(e["xy"][0], e["xy"][1], transform))
+    else:
+        to_px = lambda e: meter_to_pixel(e["xy"][0], e["xy"][1], transform)
+
     markers_svg = _markers_svg(to_px, all_matched, all_wrong_id, all_missed, all_hallucinated)
 
     output_dir = Path(__file__).parent / "output"
@@ -276,6 +300,7 @@ def render_on_image(house, page, refs=None, model="models/gemini-2.5-flash", cal
     output_path = output_dir / f"{house}_หน้า{page_padded}_overlay_on_image.html"
     image_href = os.path.relpath(image_path, output_dir).replace(os.sep, "/")
 
+    refine_note = " + CV symbol-snap" if cv_refine else " (CV refinement disabled)"
     html = f"""<!doctype html>
 <html><head><meta charset="utf-8"><title>{house} หน้า{page_padded} overlay on image</title>
 <style>
@@ -287,7 +312,7 @@ def render_on_image(house, page, refs=None, model="models/gemini-2.5-flash", cal
 </style></head>
 <body>
 <h1>{house} หน้า{page_padded} — footing/column overlay on real drawing</h1>
-<p>Calibrated from {", ".join(refs)} (model: {model}).</p>
+<p>Calibrated from {", ".join(refs)} (model: {model}){refine_note}.</p>
 <svg width="{img_w}" height="{img_h}">
 <image href="{image_href}" x="0" y="0" width="{img_w}" height="{img_h}"/>
 {markers_svg}
@@ -374,7 +399,7 @@ def _self_check():
     all_missed = footing_diff["missed"] + column_diff["missed"]
     all_hallucinated = footing_diff["hallucinated"] + column_diff["hallucinated"]
 
-    identity_to_px = lambda x_m, y_m: (x_m, y_m)
+    identity_to_px = lambda e: e["xy"]
     markers_svg = _markers_svg(identity_to_px, all_matched, all_wrong_id, all_missed, all_hallucinated)
     table_html = _summary_table_html(gemini_elements, truth_elements, footing_diff, column_diff)
     html = f"<html><body><svg>{markers_svg}</svg>{table_html}</body></html>"
