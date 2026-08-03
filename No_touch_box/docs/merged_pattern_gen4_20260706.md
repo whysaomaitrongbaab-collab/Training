@@ -2,7 +2,7 @@
 
 รวม 2 สาย schema ที่วิวัฒนาการคู่ขนานกันอย่างอิสระเข้าเป็นสเปคเดียว:
 - **Gen 2** — Claude (บทสนทนานี้), `raw/image/บ้าน_เล็ก_1ชั้น_01/claude_output_01/02/03/`, ซูมภาพจริงทุกรอบ, 4 หน้าตัวอย่าง (19,21,24,40)
-- **Gen 3.1-3.3 (Makham's Pattern)** — มะขาม, `training-data/mk_test/t1/t2/`, เอกสารต้นทาง [`Makham's patter of rawjson20260705.md`](../Constistant/mk's%20stuff/Makham's%20patter%20of%20rawjson20260705.md) (repo `Constistant`), ครอบคลุมหน้า 1-60 ทุก discipline
+- **Gen 3.1-3.3 (Makham's Pattern)** — มะขาม, `No_touch_box/mk_test/t1/t2/`, เอกสารต้นทาง [`Makham's patter of rawjson20260705.md`](../Constistant/mk's%20stuff/Makham's%20patter%20of%20rawjson20260705.md) (repo `Constistant`), ครอบคลุมหน้า 1-60 ทุก discipline
 
 **กติกาการ merge:** ห้ามตัดฟีเจอร์ของฝั่งใดทิ้ง — ทุกจุดที่ทั้งสองฝั่งต่างกันจะแก้ไว้ชัดว่า **เลือกอะไร + ทำไม + อีกฝั่งเสียอะไรไปไหม** (ถ้าไม่เสีย ให้บอกว่า "แค่คนละ serialization ข้อมูลเดียวกัน")
 

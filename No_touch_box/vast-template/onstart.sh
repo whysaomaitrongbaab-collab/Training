@@ -34,7 +34,7 @@ cat <<'MSG'
 
 Next steps (manual, not automated by this script):
 1. Upload dataset.jsonl into ./data
-   (assembled from training-data/annotated/*.json — see docs/FINETUNING_FLOW.md step 5
+   (assembled from No_touch_box/annotated/*.json — see docs/FINETUNING_FLOW.md step 5
    in the main Constistant repo for the exact format)
 2. Confirm the base model repo id on the Unsloth / Hugging Face model hub before
    downloading (search "Qwen3-VL-8B" under the unsloth org) — do not hardcode a guess.

@@ -1,4 +1,4 @@
-# CLAUDE.md — training-data/
+# CLAUDE.md — No_touch_box/
 
 Context สำหรับ AI agent ที่มาทำงานต่อในโฟลเดอร์นี้ (portable — อาจอยู่ใน repo แยกจาก Constistant หลัก)
 
@@ -8,7 +8,7 @@ Context สำหรับ AI agent ที่มาทำงานต่อใ�
 > Ground truth ปัจจุบัน = raw JSON ใน `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/` ตรวจด้วย `tools/check_format.py` เท่านั้น
 > **ทุก section ในไฟล์นี้ที่พูดถึง Label Studio review flow (3 sections ด้านล่าง) = ประวัติศาสตร์ อ่านเพื่อเข้าใจที่มาได้ แต่ห้ามทำตาม**
 
-> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`training-data/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม)
+> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`No_touch_box/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม)
 
 > ⚠️ **อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น**
 > กฎห้ามแตะ raw JSON ของ raw data ก่อนได้รับอนุญาต + **การกระทำใดๆ ที่ส่งผลต่อการทูนนิ่งต้องมีการเตือนเสมอ** (ไม่ใช่แค่แก้ raw JSON ตรงๆ — รวมถึงแก้ script/schema ที่กระทบข้อมูลปลายทาง) + บันทึก format JSON ที่ใช้ทูนจริงไว้อ้างอิง
@@ -101,7 +101,7 @@ Per-page classify (Stage A) → route → extract (Stage B1/B2 แยกตา�
 
 **สิ่งที่ไหลกลับเข้า raw:** งานรีวิวสะสมของบ้าน 01-05 ที่เทียบภาพแบบจริงแล้ว (คานที่หาย, `additional_bars` ผิดหน้า, ตารางราคาซีรีส์ 5 สำเนา, dummy grid) + งานปรับรูปแบบทั้ง 11 บ้านของวันนั้น (pattern นอกสเปคบ้าน 07, grid master nest เข้า `grid{}`, footing merge ตามข้อ 48, บ้าน 10/11 พับ array เฉพาะกิจเข้า `elements[]` + rebar string→object, บ้าน 05 แตก `levels[]` ตาม §8, `phase_note`→`warnings[]`, **`grid_ref` สัญกรณ์เดียวกันทุกบ้าน 1,075 ค่า**)
 
-**กระบวนการตามกฎ:** เตือน Rule 2 เต็มรูปแบบแล้ว**หยุดรอ**ก่อน มะขามอนุญาตชัดเจน · git commit `0029264` ไว้ก่อน sync (revert ได้) · เทียบรายชื่อไฟล์ก่อนเขียน (1,183 = 1,183 ไม่มีเกิน/ขาด) · สคริปต์ `json.loads()` ทุกไฟล์ก่อน copy · หลัง sync: raw parse ผ่าน **1,183/1,183**, ต่างจาก fix **0 ไฟล์**, point ref **2,007 ตัว resolve กับ grid master ครบ dangling 0** · log เต็มใน `training-data/docs/raw_json_data_log.md`
+**กระบวนการตามกฎ:** เตือน Rule 2 เต็มรูปแบบแล้ว**หยุดรอ**ก่อน มะขามอนุญาตชัดเจน · git commit `0029264` ไว้ก่อน sync (revert ได้) · เทียบรายชื่อไฟล์ก่อนเขียน (1,183 = 1,183 ไม่มีเกิน/ขาด) · สคริปต์ `json.loads()` ทุกไฟล์ก่อน copy · หลัง sync: raw parse ผ่าน **1,183/1,183**, ต่างจาก fix **0 ไฟล์**, point ref **2,007 ตัว resolve กับ grid master ครบ dangling 0** · log เต็มใน `No_touch_box/docs/raw_json_data_log.md`
 
 **⚠️ ข้อจำกัดที่ต้องรู้ก่อนเอาไปเทรน:** บ้าน 06-11 ที่ sync เข้าไป**ผ่านเฉพาะการปรับรูปแบบ ยังไม่เคยตรวจกับภาพแบบต้นฉบับสักหน้า** — ที่ยังค้าง: `specs{}` มีแค่ 24/1,183 ไฟล์, **คานที่อาจหายในบ้าน 06-11** (บ้าน 01-05 ตอนตรวจเจอคานหายทุกหลัง 20→27/22→36/30→38/5→21), เหล็ก `หยุดที่ L/8` ในบ้าน 10/11 ที่ยังไม่ merge เข้า face ตาม §7 · รายละเอียดเต็ม `json_แก้ไขแล้ว/สิ่งที่ต้องแก้.md` ข้อ 59-62
 
@@ -132,7 +132,7 @@ Per-page classify (Stage A) → route → extract (Stage B1/B2 แยกตา�
 
 **Hosting:** ใช้ **Label Studio Cloud** (`app.heartex.com`, Starter Cloud trial) ไม่ใช่ self-host — เพื่อนทีมเข้าออนไลน์ได้ทันทีไม่ต้อง tunnel/deploy เอง
 
-**Image hosting:** repo `Training` (github.com/whysaomaitrongbaab-collab/Training) เป็น **public** → ใช้ **`raw.githubusercontent.com` URL ตรงๆ** เป็น image source ของ Label Studio ได้เลย ไม่ต้องอัปโหลดรูปเข้า Supabase Storage หรือที่อื่น (ทดสอบแล้ว: URL ที่ generate resolve ได้ HTTP 200 จริง) — รูปอยู่ที่ root-level `image/<house>/*.png` (ไม่ใช่ `training-data/raw/image/` ซึ่งมีแค่ 1 บ้านและเป็น path เก่าที่ scripts รุ่นก่อนอ้างผิด)
+**Image hosting:** repo `Training` (github.com/whysaomaitrongbaab-collab/Training) เป็น **public** → ใช้ **`raw.githubusercontent.com` URL ตรงๆ** เป็น image source ของ Label Studio ได้เลย ไม่ต้องอัปโหลดรูปเข้า Supabase Storage หรือที่อื่น (ทดสอบแล้ว: URL ที่ generate resolve ได้ HTTP 200 จริง) — รูปอยู่ที่ root-level `image/<house>/*.png` (ไม่ใช่ `No_touch_box/raw/image/` ซึ่งมีแค่ 1 บ้านและเป็น path เก่าที่ scripts รุ่นก่อนอ้างผิด)
 
 **Task/config ที่ใช้จริง:**
 - `node label-studio-tasks-github.js` → อ่านทุกโฟลเดอร์ใน root `image/` → 1 task ต่อ 1 บ้าน, `data.images` = list ของ GitHub raw URL (encode ชื่อไทย/เว้นวรรคให้ถูกต้องแล้ว), แนบ `predictions` จาก `qwen-output/<house>-qwen.json` ถ้ามีไฟล์นั้นอยู่ (ตอนนี้ยังไม่มีเลยสักบ้าน → ทุก task ยังไม่มี pre-annotation)
@@ -176,7 +176,7 @@ node label-studio-tasks-perpage.js
 
 ## Label Studio Cloud — Makham's Pattern (Gen 3) review flow (2026-07-06)
 
-**ต่างจาก 2 flow ด้านบน:** ทั้งคู่ยังอิง Gen 1 schema (`plan[]/section[]/schedule[]` flat, หรือ `categories[].items[]`) อ่านจาก `raw/image/<house>/qwen-output/`. Flow นี้อิง **Gen 3 ("Makham's Pattern", เอกสารเต็มอยู่ที่ [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ในโฟลเดอร์นี้เอง)** อ่านจาก `training-data/mk_test/<subfolder>/*.json` — ผลลัพธ์ fresh-extraction ทดสอบจริงของบ้าน_เล็ก_1ชั้น_01 หน้า 1-40+48-60 (`mk_test/t1/` = รอบแรก) และหน้า 1-37 (`mk_test/t2/` = รอบสอง หลังปรับ schema)
+**ต่างจาก 2 flow ด้านบน:** ทั้งคู่ยังอิง Gen 1 schema (`plan[]/section[]/schedule[]` flat, หรือ `categories[].items[]`) อ่านจาก `raw/image/<house>/qwen-output/`. Flow นี้อิง **Gen 3 ("Makham's Pattern", เอกสารเต็มอยู่ที่ [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ในโฟลเดอร์นี้เอง)** อ่านจาก `No_touch_box/mk_test/<subfolder>/*.json` — ผลลัพธ์ fresh-extraction ทดสอบจริงของบ้าน_เล็ก_1ชั้น_01 หน้า 1-40+48-60 (`mk_test/t1/` = รอบแรก) และหน้า 1-37 (`mk_test/t2/` = รอบสอง หลังปรับ schema)
 
 **จุดต่างสำคัญจาก Gen 1:** หน้าที่มีหลาย pattern ปนกันถูกแยกเป็นคนละไฟล์ตั้งแต่ตอน extract แล้ว (ไม่ต้องรวม `plan+section+schedule` ในหน้าเดียวแบบเดิม) — 1 ไฟล์ = 1 pattern/view เสมอ ทำให้ task generator ง่ายขึ้น (ไม่ต้อง merge หลาย array ต่อหน้า)
 

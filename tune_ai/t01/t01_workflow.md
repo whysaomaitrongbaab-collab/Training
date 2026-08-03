@@ -20,7 +20,7 @@
 
 Written 2026-07-21, after the previous attempt lost all output files (LoRA adapter, merged
 model, GGUF) because the rented instance was destroyed before backup. Full incident:
-`training-data/docs/rule_of_tune.md`'s Mark of Shame section (the standalone
+`No_touch_box/docs/rule_of_tune.md`'s Mark of Shame section (the standalone
 `mark_of_shame.md` narrative doc was deleted 2026-07-24 by the user).
 
 **Goal:** end this run with a vision-capable GGUF file running on your own PC (RTX 5060,

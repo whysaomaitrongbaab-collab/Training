@@ -1,6 +1,6 @@
 # Rules for Touching Raw Training JSON
 
-**Read this file before any work** in `training-data/` and `rawjson_ยังไม่ได้แก้ไขโดนคน/` (repo root). No exceptions.
+**Read this file before any work** in `No_touch_box/` and `rawjson_ยังไม่ได้แก้ไขโดนคน/` (repo root). No exceptions.
 
 ## Rule 1 (highest priority)
 
@@ -58,7 +58,7 @@ If even one condition fails, **the full Rule 2 applies again** (warn every time)
 
 If raw JSON must genuinely be edited (re-running the pipeline over existing output, fixing a manual error, re-extracting with a different AI) and permission has been granted:
 - Always check `git status` / back up first (so mistakes are recoverable)
-- **Every edit must be logged in `raw_json_data_log.md`** in the `Training` repo (`training-data/raw_json_data_log.md` — not the copy in `Constistant`, even though `rule_of_tune.md` exists in both). Log before or alongside the edit, never after without logging. Record: file edited, which AI did it, who edited/approved, notes.
+- **Every edit must be logged in `raw_json_data_log.md`** in the `Training` repo (`No_touch_box/raw_json_data_log.md` — not the copy in `Constistant`, even though `rule_of_tune.md` exists in both). Log before or alongside the edit, never after without logging. Record: file edited, which AI did it, who edited/approved, notes.
 - Log the what/why/when at a high level in `CLAUDE.md` (`raw_json_data_log.md` is the file-by-file audit trail; `CLAUDE.md` is the summary).
 
 ## Rule 4

@@ -16,14 +16,14 @@ pip install pdfplumber pdf2image
 ## Step 1: Get PDFs Ready
 Your friend uploads PDF files here:
 ```
-training-data/raw/
+No_touch_box/raw/
 ├── 1floor-project-001.pdf
 ├── 1floor-project-002.pdf
 └── 2floor-project-001.pdf
 ```
 
 ## Step 2: Rasterize (1 minute)
-Open PowerShell in `training-data/` folder:
+Open PowerShell in `No_touch_box/` folder:
 ```powershell
 python pdf-processor.py
 ```
@@ -86,12 +86,12 @@ python -m http.server 8000
 
 ```powershell
 # Terminal 1: Process PDFs
-cd C:\Users\taddy\OneDrive\work\Stecon\constistant\Constistant\training-data
+cd C:\Users\taddy\OneDrive\work\Stecon\constistant\Constistant\No_touch_box
 python pdf-processor.py
 node qwen-processor.js
 
 # Terminal 2: Start web server
-cd C:\Users\taddy\OneDrive\work\Stecon\constistant\Constistant\training-data
+cd C:\Users\taddy\OneDrive\work\Stecon\constistant\Constistant\No_touch_box
 python -m http.server 8000
 ```
 
@@ -153,7 +153,7 @@ python -m http.server 8000
 ## File Organization
 
 ```
-training-data/
+No_touch_box/
 ├── raw/                    ← Friend uploads here
 │   └── *.pdf               (PDFs you process)
 │

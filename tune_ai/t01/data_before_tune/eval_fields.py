@@ -2,7 +2,7 @@
 """
 eval_fields.py — วัดผลจริงระดับ field ไม่ใช่แค่ eval loss
 
-eval loss ต่ำไม่ได้แปลว่าอ่านเลขเหล็กถูก — บทเรียนข้อ 3 ใน training-data/CLAUDE.md
+eval loss ต่ำไม่ได้แปลว่าอ่านเลขเหล็กถูก — บทเรียนข้อ 3 ใน No_touch_box/CLAUDE.md
 บอกไว้แล้วว่า confidence/loss ของโมเดลใช้ตัดสินเดี่ยว ๆ ไม่ได้ ต้องนับ field ที่ตรงจริง
 
     python eval_fields.py [--adapter outputs/lora] [--limit N]

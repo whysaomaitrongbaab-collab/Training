@@ -1,4 +1,4 @@
-# training-data/ — Portable Setup
+# No_touch_box/ — Portable Setup
 
 > ⚠️ อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
 
@@ -8,7 +8,7 @@
 ## Setup ครั้งแรก (repo ใหม่)
 
 ```bash
-cd training-data
+cd No_touch_box
 pip install -r requirements.txt
 
 cp .env.local.example .env.local
@@ -19,7 +19,7 @@ cp .env.local.example .env.local
 ## โครงสร้างที่ต้องมีคู่กันเสมอ
 
 ```
-training-data/
+No_touch_box/
 ├── .env.local.example      ← template (commit ได้)
 ├── .env.local               ← key จริง (สร้างเอง, gitignored, ห้าม commit)
 ├── requirements.txt

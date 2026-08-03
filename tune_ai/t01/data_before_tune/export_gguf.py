@@ -5,7 +5,7 @@ export_gguf.py — merge LoRA + export to GGUF + push to HuggingFace, in one ste
 Replaces the old manual pipeline from 2026-07-21 (merge_lora.py → convert_hf_to_gguf.py →
 llama-quantize) that cost hours of debugging (q8_0-can't-requantize mistake, disk full
 3x, llama.cpp CUDA build failing 3x) and, in the end, never got backed up before the
-rented instance was destroyed. See training-data/docs/rule_of_tune.md's Mark of Shame
+rented instance was destroyed. See No_touch_box/docs/rule_of_tune.md's Mark of Shame
 section for the full story (standalone mark_of_shame.md doc was deleted 2026-07-24).
 
 Key insight that makes this version simpler and safer: our LoRA only ever trains

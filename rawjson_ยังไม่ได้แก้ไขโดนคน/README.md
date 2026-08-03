@@ -2,7 +2,7 @@
 
 This folder holds **actual finished raw JSON extractions** (not test rounds) — one set per house, plus the spec file used to prompt the extraction.
 
-> ⚠️ **Read [`training-data/docs/rule_of_tune.md`](../training-data/docs/rule_of_tune.md) before touching anything in here.** Every `0N<house>/*.json` file in this folder is protected ground-truth data under that rule — no exceptions. It covers what counts as raw JSON, when you must warn before editing, and the required audit-log entry for any real change.
+> ⚠️ **Read [`No_touch_box/docs/rule_of_tune.md`](../No_touch_box/docs/rule_of_tune.md) before touching anything in here.** Every `0N<house>/*.json` file in this folder is protected ground-truth data under that rule — no exceptions. It covers what counts as raw JSON, when you must warn before editing, and the required audit-log entry for any real change.
 
 ## Folder structure + naming convention
 
@@ -29,7 +29,7 @@ If the user (Makham) types **`op1 <house_name>`** (e.g. `op1 บ้านเอ�
 4. Save every file into the new `0N<house_name>/` folder.
 5. Run `python tools/check_format.py 0N<house_name>` (repo root) — every check must PASS before the house counts as finished (schema §0.10).
 6. Report back: files created, page count, any low-confidence flags or open questions (e.g. duplicate `element_id` across sections).
-7. Add a row to `training-data/docs/raw_json_data_log.md` per `rule_of_tune.md` rule #3 — every new house extraction is a real-data event that must be logged.
+7. Add a row to `No_touch_box/docs/raw_json_data_log.md` per `rule_of_tune.md` rule #3 — every new house extraction is a real-data event that must be logged.
 
 > **Label Studio steps removed 2026-08-02 by Makham's order** — Label Studio is cancelled; `op1`/`op2` must NOT generate Label Studio task files anymore. The old step 5 (`node label-studio-tasks-makham.js`) and the upload reminder are gone; the tooling now sits in `wait_for_ทิ้ง/` pending deletion. Ground truth is the raw JSON in this folder itself.
 
@@ -129,7 +129,7 @@ Everything in the `op1` standing-order section applies unchanged. `op3` is not a
 
 1. Every file for the house is written into `0N<house_name>/` and parses as JSON.
 2. `python tools/check_format.py 0N<house_name>` → **ALL CHECKS PASS** (exit 0).
-3. The row is added to `training-data/docs/raw_json_data_log.md` (`rule_of_tune.md` rule 3).
+3. The row is added to `No_touch_box/docs/raw_json_data_log.md` (`rule_of_tune.md` rule 3).
 4. **`git add -A && git commit`** — commit before the machine goes down. A finished house that exists only in an unsaved working tree is one bad wake-up away from gone.
 5. The full summary is printed to the user **first** — file count, page count, open questions, low-confidence flags. The screen is about to go dark; the report has to already be in the transcript.
 6. Only then:
@@ -140,7 +140,7 @@ Everything in the `op1` standing-order section applies unchanged. `op3` is not a
 
 **If any of 1-5 fails, do not shut down.** Report what is unfinished and stop. A house that failed `check_format.py` is not finished, and shutting down on it buries the failure until the next session.
 
-**Why the gate is written out like this:** on 2026-07-21 a tuned model (7.5 GB LoRA + 21 GB GGUF) was lost because a machine was shut down while the work was only *apparently* done and nothing had been pushed. See the Mark of Shame in `training-data/docs/rule_of_tune.md`. `op3` exists to automate the ending — not to automate skipping the save.
+**Why the gate is written out like this:** on 2026-07-21 a tuned model (7.5 GB LoRA + 21 GB GGUF) was lost because a machine was shut down while the work was only *apparently* done and nothing had been pushed. See the Mark of Shame in `No_touch_box/docs/rule_of_tune.md`. `op3` exists to automate the ending — not to automate skipping the save.
 
 ### When not to use `op3`
 
@@ -148,7 +148,7 @@ Don't use it if anything else on the machine is still running (a training job, a
 
 ## Step 1 — Extract a new house into raw JSON
 
-1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full before starting — it's the only spec needed (13 patterns, grid/dummy-grid rules, `main_bar` top/bottom shape, spec join, etc). The full original with history/rationale lives at `training-data/docs/20260708draft of prime rawjson.md` if you need more context.
+1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full before starting — it's the only spec needed (13 patterns, grid/dummy-grid rules, `main_bar` top/bottom shape, spec join, etc). The full original with history/rationale lives at `No_touch_box/docs/20260708draft of prime rawjson.md` if you need more context.
 2. Actually read every page image of that house (`image/<house>/*.png`) — **never guess, never copy from another house** even if it looks similar (see `rule_of_tune.md`).
 3. Build the grid master before anything else: `<house>_หน้า00_gridline.json` (all main grids + dummy grids for the whole house).
 4. Extract page by page / view by view per the spec — a page with multiple views gets a separate file per view (`_view1_...`, `_view2_...`).
@@ -168,6 +168,6 @@ Don't use it if anything else on the machine is still running (a training job, a
         ↓
 3. python tools/check_format.py 0N<house_name> → ALL CHECKS PASS
         ↓
-4. Log the extraction in training-data/docs/raw_json_data_log.md
+4. Log the extraction in No_touch_box/docs/raw_json_data_log.md
 ```
 *(Steps 3-5 used to be the Label Studio task-generation/import/review loop — cancelled 2026-08-02; the raw JSON itself is the ground truth.)*

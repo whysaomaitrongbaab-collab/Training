@@ -252,9 +252,9 @@
           <div class="info">
             <strong>⚠️ Setup Instructions:</strong>
             <ol style="margin-top: 10px; padding-left: 20px;">
-              <li>Upload PDF files to: <code>training-data/raw/</code></li>
-              <li>Run: <code>python training-data/pdf-processor.py</code></li>
-              <li>Run: <code>node training-data/qwen-processor.js</code></li>
+              <li>Upload PDF files to: <code>No_touch_box/raw/</code></li>
+              <li>Run: <code>python No_touch_box/pdf-processor.py</code></li>
+              <li>Run: <code>node No_touch_box/qwen-processor.js</code></li>
               <li>Refresh this page to load records</li>
             </ol>
           </div>
@@ -391,7 +391,7 @@
         a.download = `${currentRecord.id}-annotated.json`;
         a.click();
 
-        showSuccess(`Annotation saved! File: ${currentRecord.id}-annotated.json\nMove to: training-data/annotated/`);
+        showSuccess(`Annotation saved! File: ${currentRecord.id}-annotated.json\nMove to: No_touch_box/annotated/`);
       } catch (error) {
         showError(`Error saving annotation: ${error.message}`);
       }

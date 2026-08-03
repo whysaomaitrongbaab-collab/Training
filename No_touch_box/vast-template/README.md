@@ -38,7 +38,7 @@ In the Vast.ai console (Templates → New Template):
 ## What it does NOT do (still manual)
 
 - Does not download the base model or dataset — no `dataset.jsonl` exists yet
-  (see `training-data/CLAUDE.md` "สิ่งที่ยังไม่ได้ทำ" — extraction is only done for
+  (see `No_touch_box/CLAUDE.md` "สิ่งที่ยังไม่ได้ทำ" — extraction is only done for
   1 of 9 houses, no annotated pairs exist yet, no assembly script has been run)
 - Does not run the actual training loop — that's the Unsloth Qwen3-VL fine-tuning
   notebook (linked in onstart.sh's output), adapted once real data exists

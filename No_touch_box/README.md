@@ -1,5 +1,8 @@
 # Structural Plan Training Data Pipeline
 
+> 📁 **เปลี่ยนชื่อโฟลเดอร์ 2026-08-03: `training-data/` → `No_touch_box/`** — เอกสาร/ไดอารี่/สคริปต์ทุกไฟล์ในรีโปนี้ตามแก้ path ให้แล้ว
+> ยกเว้น raw JSON ที่ถูกคุ้มครองด้วย `rule_of_tune.md` ข้อ 1 (6 ไฟล์ใน `json_แก้ไขแล้ว/` + `rawjson_ยังไม่ได้แก้ไขโดนคน/` ที่อ้าง path เก่าใน note ของ reviewer — ไม่แตะ)
+
 > ⚠️ อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น
 
 Workspace for building fine-tuning datasets for Qwen vision model. Process: **PDF Upload → PDF Analysis → Rasterization → Qwen Extraction → Human Review & Annotation → Dataset Ready**
@@ -7,7 +10,7 @@ Workspace for building fine-tuning datasets for Qwen vision model. Process: **PD
 ## Folder Structure
 
 ```
-training-data/
+No_touch_box/
 ├── raw/                      # 📥 Friend uploads PDF files here
 ├── processing/               # 🔄 Intermediate: analyzed PDFs + rasterized images
 ├── qwen-output/              # 🧠 Qwen's JSON extractions (raw)
@@ -24,7 +27,7 @@ training-data/
 ### Step 1: Upload PDF Files
 Your friend uploads construction plan PDFs to:
 ```
-training-data/raw/
+No_touch_box/raw/
 ```
 
 File naming convention (optional but recommended):
@@ -40,7 +43,7 @@ Run the Python script to:
 3. Save processing metadata
 
 ```bash
-cd training-data
+cd No_touch_box
 python pdf-processor.py
 ```
 
@@ -63,7 +66,7 @@ python pdf-processor.py list
 Run the Node.js script to send images to Qwen:
 
 ```bash
-cd training-data
+cd No_touch_box
 node qwen-processor.js
 ```
 
@@ -90,7 +93,7 @@ Open the review UI in a web browser:
 
 ```bash
 # Start a local server (Python):
-cd training-data
+cd No_touch_box
 python -m http.server 8000
 
 # Or use Live Server (VS Code)
@@ -199,10 +202,10 @@ After human review, save in this format:
 
 ```bash
 # 1. Upload PDFs
-# → Your friend puts PDFs in training-data/raw/
+# → Your friend puts PDFs in No_touch_box/raw/
 
 # 2. Process PDFs
-cd training-data
+cd No_touch_box
 python pdf-processor.py
 
 # 3. Call Qwen

@@ -1,6 +1,6 @@
 # Primary Raw JSON Schema
 
-> Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../training-data/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
+> Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../No_touch_box/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
 
 ## 0. FORMAT LOCK — read this before anything else (added 2026-08-02)
 

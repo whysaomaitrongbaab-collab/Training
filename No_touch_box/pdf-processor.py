@@ -168,7 +168,7 @@ def process_batch():
     pdfs = list_uploaded_pdfs()
 
     if not pdfs:
-        print("❌ No PDFs found in training-data/raw/")
+        print("❌ No PDFs found in No_touch_box/raw/")
         return
 
     print(f"Found {len(pdfs)} PDFs to process:")
