@@ -1,25 +1,25 @@
 # Primary Raw JSON Schema
 
-> Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../training-data/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
+> Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](<../../training-data/docs/20260708draft%20of%20prime%20rawjson.md>) (original kept untouched) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
 
 ## 1. Pattern taxonomy — 14 types
 
-| # | pattern | description |
-|---|---|---|
-| 1 | `plan` | floor plan / layout, has `grid_ref` |
-| 2 | `section` | detail section — rebar spec/dimensions for beam, column, footing |
-| 3 | `schedule` | summary table of any element/material type (column, beam, door, window, fence, etc. — not limited to column/beam) |
-| 4 | `notes` | project-level requirements/specs |
-| 5 | `index` | drawing set table of contents |
-| 6 | `material_list` | bill of quantities (BOQ) |
-| 7 | `site_plan` | site layout |
-| 8 | `side_profile` | non-top-down view, e.g. elevation/building section (not site/terrain info, no rebar) — formerly named `site_profile` |
-| 9 | `gridline` | grid reference file (per-page companion + `หน้า00` master) |
-| 10 | `title` | cover page *(draft — no field-set verified yet)* |
-| 11 | `symbol` | symbol/legend page *(draft)* |
-| 12 | `roof_plan` | roof plan, separated from `plan` because it has ridge/hip lines and eave overhangs *(draft)* |
-| 13 | `misc` | เบ็ดเตล็ด — whole-series catalog/promotional/reference pages that aren't about this house's own construction (e.g. a back-cover price-comparison table across all 10 designs in the series, or a cover collage of every design's render) — added 2026-07-14, previously misclassified as `title` |
-| 14 | `unknown` | doesn't fit any of the 13 above |
+| #  | pattern           | description                                                                                                                                                                                                                                                                                                  |
+| -- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1  | `plan`          | floor plan / layout, has`grid_ref`                                                                                                                                                                                                                                                                         |
+| 2  | `section`       | detail section — rebar spec/dimensions for beam, column, footing                                                                                                                                                                                                                                            |
+| 3  | `schedule`      | summary table of any element/material type (column, beam, door, window, fence, etc. — not limited to column/beam)                                                                                                                                                                                           |
+| 4  | `notes`         | project-level requirements/specs                                                                                                                                                                                                                                                                             |
+| 5  | `index`         | drawing set table of contents                                                                                                                                                                                                                                                                                |
+| 6  | `material_list` | bill of quantities (BOQ)                                                                                                                                                                                                                                                                                     |
+| 7  | `site_plan`     | site layout                                                                                                                                                                                                                                                                                                  |
+| 8  | `side_profile`  | non-top-down view, e.g. elevation/building section (not site/terrain info, no rebar) — formerly named`site_profile`                                                                                                                                                                                       |
+| 9  | `gridline`      | grid reference file (per-page companion +`หน้า00` master)                                                                                                                                                                                                                                              |
+| 10 | `title`         | cover page*(draft — no field-set verified yet)*                                                                                                                                                                                                                                                           |
+| 11 | `symbol`        | symbol/legend page*(draft)*                                                                                                                                                                                                                                                                                |
+| 12 | `roof_plan`     | roof plan, separated from`plan` because it has ridge/hip lines and eave overhangs *(draft)*                                                                                                                                                                                                              |
+| 13 | `misc`          | เบ็ดเตล็ด — whole-series catalog/promotional/reference pages that aren't about this house's own construction (e.g. a back-cover price-comparison table across all 10 designs in the series, or a cover collage of every design's render) — added 2026-07-14, previously misclassified as`title` |
+| 14 | `unknown`       | doesn't fit any of the 13 above                                                                                                                                                                                                                                                                              |
 
 **Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 8 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
 
@@ -46,6 +46,7 @@ A page may contain multiple views/patterns — **inventory every view first with
 - **`span_source` enum:** `grid_table` / `local_dimension` / `unresolved` / `n/a`
 
 ### Dummy grid
+
 - A structural line not on a named/printed main grid → name it with a **prime** appended to the nearest main grid, e.g. `1'`, `A'`
 - **Prime ordering when more than one dummy line falls in the same gap:** scan in standard reading direction — x-axis left→right, y-axis top→bottom. First line found = 1 prime (`A'`), next one = 2 primes (`A''`), and so on (`A'` must always sit left of/above `A''`)
 - **Origin (0,0)** must always be the leftmost/topmost main grid (`type:"named"`) — a dummy grid must never take over the origin position. If a dummy grid falls before the origin (further left/up than the first main grid), use a **negative** `pos_m` instead, e.g. `{"id":"1'","pos_m":-0.80,"type":"dummy"}`
@@ -56,11 +57,13 @@ A page may contain multiple views/patterns — **inventory every view first with
 **If a beam's start or end point does not sit on any grid line in the drawing, that point needs a dummy grid.** A beam always lands on something — if the extraction has nowhere to name that landing point, the grid master is incomplete, not the beam.
 
 Work the plan sheet this way:
+
 1. Trace **every** beam segment on the sheet, including short stubs and the ones in dense stair/closet clusters.
 2. For each endpoint, ask: is there a named or already-known dummy line there? If yes, use it.
 3. If not → **a dummy grid belongs at that point.** Read its `pos_m` off the printed dimension chain (per the rule above — never estimate), add it to `หน้า00_gridline.json`, then record the beam against it.
 
 **Never do these instead** (all three are real failure modes seen in houses #3/#4, and each one silently loses a real beam):
+
 - ❌ dropping the beam because it "isn't on the grid"
 - ❌ recording it with a prose `description` and no `grid_ref_start`/`grid_ref_end` (e.g. `"small beam marker near col1, exact segment uncertain"`)
 - ❌ setting `grid_ref_start` = `grid_ref_end` with a `null` span
@@ -70,13 +73,17 @@ Real cases: house #04's S-04 (หน้า33) was missing **8** beams and had 2 
 **Conversely — do NOT invent a dummy for a slab-only edge.** A dashed slab/room boundary, a roof-overhang line, or an eave edge with **no beam label and no columns at its corners** is not a structural line and gets no dummy grid (house #3's `E'` at the S0 bay-window box is exactly this case — slab edge only, no beam, so nothing was added). The trigger is a **beam endpoint**, not any line on the drawing.
 
 ### Master file
+
 Create/update `<house>_หน้า00_gridline.json` **before** extracting any other page — it holds every main grid + dummy grid for the whole house in one place. Other plan/section pages reference it via the `grid_source` field instead of re-writing the grid. Keep this as a separate companion file — never re-embed the full grid inline inside every view.
 
 ### Atomic segments
+
 Report each beam span as **one atomic entry per grid-to-grid segment** — don't pre-group multiple spans of the same mark into a single `count`. Grouping identical segments into `count` + list, keyed by `(element_id, span, span_source)`, is handled automatically downstream — sending atomic data in keeps that grouping accurate.
 
 ### Element ordering within `elements[]`
+
 Order grid-positioned elements (beams, footings, columns, etc.) in **reading order**, not grouped by `element_id`/mark:
+
 1. **Top to bottom** (row order: first main grid row → last, e.g. D → C → B → A)
 2. **Left to right** within each row (column order: first main grid column → last, e.g. 1 → 1' → 2 → 3 → 3'')
 3. **Vertical before horizontal** when two elements share the same starting point (e.g. at D1, a beam running D1→C1 vertically is listed before a beam running D1→D2 horizontally) — corrected 2026-07-14, was stated backwards originally
@@ -86,6 +93,7 @@ Elements with no `grid_ref` (marker-only symbols like slab tags `SO`/`SI`/`ST`) 
 ## 5. Beam segment splitting
 
 One beam = between two adjacent supports only. Split immediately when:
+
 1. A column/grid intersection sits in between
 2. The beam bears on another beam (not a column) → add `confidence_flags: ["bears_on_beam:<mark>(<end>)"]`
 3. The beam changes direction/turns a corner
@@ -98,9 +106,11 @@ One beam = between two adjacent supports only. Split immediately when:
   "bottom": { "count": 3, "dia_mm": 16, "type": "RB" }
 }
 ```
+
 **Always split `top`/`bottom`, even when equal (symmetric case)** — never collapse into one count. Genuine top≠bottom cases have been found (e.g. top 2, bottom 3); merging loses real data.
 
 **`middle` — third main_bar face (added 2026-07-20 by Makham).** When a section drawing shows a **clearly distinct mid-depth bar row** — its own leader line, its own dot row sitting between the top and bottom clusters, typically on a deep beam — record it as a third `main_bar` face, **not** as `additional_bars`:
+
 ```json
 "main_bar": {
   "top":    { "count": 2, "dia_mm": 16, "type": "RB" },
@@ -108,6 +118,7 @@ One beam = between two adjacent supports only. Split immediately when:
   "bottom": { "count": 4, "dia_mm": 16, "type": "RB", "note": "2 เส้นเต็มความยาว + 2 เส้นหยุดที่ L/8" }
 }
 ```
+
 Real case: house #04's B4A/B4X (200x700 deep beams) print `2Ø9มม.` on a leader pointing to a distinct dot row at mid-depth, between the `2-Ø16มม.` top row and the `2-Ø16มม.` + `2-Ø16มม.(หยุดที่ L/8)` bottom rows. These are skin/waist bars — real longitudinal main reinforcement on their own face, so they belong in `main_bar.middle`.
 
 `middle` is **optional** — emit it only when such a row genuinely exists; most beams have only `top`/`bottom`. Do not invent a `middle` by splitting a top or bottom cluster, and do not use it for a bar that is merely *drawn* between the two clusters but whose leader ties it to the top or bottom face (that case still merges into `top`/`bottom` per §7).
@@ -117,6 +128,7 @@ Real case: house #04's B4A/B4X (200x700 deep beams) print `2Ø9มม.` on a lea
   { "count": 1, "dia_mm": 16, "position": "on top of beam, cut off at L/8 from column face", "note": "..." }
 ]
 ```
+
 With `middle` available, `additional_bars` is now only for bars that belong to **no** longitudinal face at all (e.g. a standalone tie/dowel). A mid-depth longitudinal row is `main_bar.middle`, not an additional bar.
 
 **Ø (circle symbol) always = RB** — never infer from bar diameter; go by the printed symbol only (deformed bar with visible ribs = DB).
@@ -126,6 +138,7 @@ With `middle` available, `additional_bars` is now only for bars that belong to *
 A `plan` element (has `grid_ref`) + a `section` **or** `schedule` element (has width/height/main_bar/stirrup) for the same mark join together via `element_id` — **`section` and `schedule` are equally valid spec sources**, not limited to `section` only.
 
 Fields joined in:
+
 ```
 width_mm, height_mm, main_bar{}, stirrup{}, additional_bars[],
 concrete_grade, steel_grade, spec_source, spec_confidence_score
@@ -136,6 +149,7 @@ concrete_grade, steel_grade, spec_source, spec_confidence_score
 **Don't inline the joined spec into every atomic segment.** Once a mark's spec is confirmed identical across all its occurrences (verify this first — don't assume), store it **once** in a top-level `specs` object keyed by `element_id`, e.g. `specs.B4 = {width_mm, height_mm, main_bar, stirrup, additional_bars, concrete_grade, steel_grade, spec_source, spec_confidence_score}`. Each entry in `elements[]` then only carries position (`grid_ref_start`/`grid_ref_end`, `span_length_m`, `span_source`) and its own per-occurrence `confidence_score`/`confidence_flags` — never repeat the full spec block on every segment (บทเรียนจาก 2026-07-14: บ้าน 1 หน้า19 beam plan เคยพิมพ์ spec ซ้ำทุกช่วงของคานมาร์คเดียวกัน กลายเป็น god-object-in-a-row-per-mark ทั้งที่ spec เหมือนกันทุกตัวอักษร). A spec-level observation that applies to every occurrence of a mark (e.g. an asymmetric top/bottom rebar count) belongs in that mark's `specs` entry as `spec_confidence_flags`, not repeated on each `elements[]` occurrence — but a note about something specific to one particular occurrence (e.g. a stray arrow symbol printed only near one segment) stays on that occurrence's own `confidence_flags`.
 
 **Verify `additional_bars[].position` against the actual leader line in the section drawing — never trust the printed label text alone, and never assume top vs. bottom from how a similar-looking mark resolved.** Two real cases from the same house, same-looking label pattern, opposite answers:
+
 - **B2/B4/B5/B3**: label read "บนคาน" (top) but the leader line actually pointed to a bottom-corner bar (curtailed at L/8, alongside the other bottom main bars) → merged into `main_bar.bottom.count` (e.g. `count: 2` + 1 curtailed bar → `count: 3`).
 - **B3X**: a bar labeled "ล้วงเข้า B3 1.5 ม." (lap-splices into the adjacent beam B3) — sounds like it should be a separate cross-beam detail, but per B3X's own section the label order top-to-bottom was *top-continuing / lap-splice bar / stirrup / bottom-continuing*, meaning the lap-splice bar is actually B3X's own **top** reinforcement (anchored by extending into B3), not a bottom bar and not something to leave out — merged into `main_bar.top.count` (`count: 2` → `4`) instead.
 
@@ -144,6 +158,7 @@ So: **"lap-splices into an adjacent beam" is not on its own a reason to keep a b
 ## 8. `level` field (multi-level schedules)
 
 When a schedule has multiple levels (e.g. same column mark with different specs per floor), use a separate `level` field — **never embed the level into `element_id`**. `element_id` must match the printed mark exactly so cross-page joins stay reliable.
+
 ```json
 { "element_id": "C1", "level": "roof frame", "width_mm": 150, ... }
 { "element_id": "C1", "level": "ground floor, pedestal, footing", "width_mm": 200, ... }
@@ -162,6 +177,7 @@ When a schedule has multiple levels (e.g. same column mark with different specs 
   "confidence_score": 0.7, "confidence_flags": []
 }
 ```
+
 `level_step_mm` is used when the floor level differs from the norm (e.g. bathroom floor stepped down).
 
 ## 10. Slab marker
