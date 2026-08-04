@@ -8,7 +8,7 @@ Context สำหรับ AI agent ที่มาทำงานต่อใ�
 > Ground truth ปัจจุบัน = raw JSON ใน `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/` ตรวจด้วย `tools/check_format.py` เท่านั้น
 > **ทุก section ในไฟล์นี้ที่พูดถึง Label Studio review flow (3 sections ด้านล่าง) = ประวัติศาสตร์ อ่านเพื่อเข้าใจที่มาได้ แต่ห้ามทำตาม**
 
-> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`No_touch_box/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม)
+> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](../wait_for_ทิ้ง/No_touch_box/docs/Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`No_touch_box/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม — **เอกสารนี้ถูกย้ายเข้า `wait_for_ทิ้ง/` เมื่อ 2026-08-04** เป็นประวัติศาสตร์ ไม่ใช่สเปคที่ใช้จริงอีกต่อไป ดู `docs/ARCHIVE.md`)
 
 > ⚠️ **อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น**
 > กฎห้ามแตะ raw JSON ของ raw data ก่อนได้รับอนุญาต + **การกระทำใดๆ ที่ส่งผลต่อการทูนนิ่งต้องมีการเตือนเสมอ** (ไม่ใช่แค่แก้ raw JSON ตรงๆ — รวมถึงแก้ script/schema ที่กระทบข้อมูลปลายทาง) + บันทึก format JSON ที่ใช้ทูนจริงไว้อ้างอิง
@@ -77,7 +77,7 @@ Per-page classify (Stage A) → route → extract (Stage B1/B2 แยกตา�
 
 5. **Model เลือกตาม task**: `qwen-vl-plus` ถูกกว่า ใช้กับ classify/สารบัญ/notes (ข้อความล้วน); `qwen-vl-max` แม่นกว่า ใช้เฉพาะ extraction ที่ต้องอ่าน geometry/ตัวเลขละเอียด (structural elements)
 
-6. **`main_bar_type` ผิดทั้งหน้าได้แบบเป็นระบบ แม้ symbol เดียวกันที่จุดอื่นอ่านถูก** — pilot เทียบ Claude vs Qwen 4 หน้า (`raw/image/บ้าน_เล็ก_1ชั้น_01/claude_output_01/_pilot_comparison_summary.md`, 2026-07-02, draft ยังไม่ผ่านคนตรวจ) พบหน้า 21: Qwen จัดทุก main bar เป็น "DB" หมดทั้งที่สัญลักษณ์เป็นวงกลมเปล่า (RB) — แต่ **stirrup ที่ใช้สัญลักษณ์เดียวกัน Qwen อ่านเป็น RB ถูกทุกจุดในหน้าเดียวกัน** แปลว่าไม่ใช่ปัญหาอ่าน symbol ไม่ออก แต่เป็น bug เฉพาะจุดตรงตำแหน่ง mapping field `main_bar_type` — เป็นหลักฐานเพิ่มเติมว่า field เดียวกันอาจหลอนไม่เท่ากันในหน้าเดียวกัน ต้องเช็ค cross-consistency ในหน้าเดียวกันด้วย ไม่ใช่แค่ข้ามหน้า
+6. **`main_bar_type` ผิดทั้งหน้าได้แบบเป็นระบบ แม้ symbol เดียวกันที่จุดอื่นอ่านถูก** — pilot เทียบ Claude vs Qwen 4 หน้า (`wait_for_ทิ้ง/No_touch_box/raw/image/บ้าน_เล็ก_1ชั้น_01/claude_output_01/_pilot_comparison_summary.md`, 2026-07-02, draft ยังไม่ผ่านคนตรวจ, ย้ายเข้า `wait_for_ทิ้ง/` เมื่อ 2026-08-04) พบหน้า 21: Qwen จัดทุก main bar เป็น "DB" หมดทั้งที่สัญลักษณ์เป็นวงกลมเปล่า (RB) — แต่ **stirrup ที่ใช้สัญลักษณ์เดียวกัน Qwen อ่านเป็น RB ถูกทุกจุดในหน้าเดียวกัน** แปลว่าไม่ใช่ปัญหาอ่าน symbol ไม่ออก แต่เป็น bug เฉพาะจุดตรงตำแหน่ง mapping field `main_bar_type` — เป็นหลักฐานเพิ่มเติมว่า field เดียวกันอาจหลอนไม่เท่ากันในหน้าเดียวกัน ต้องเช็ค cross-consistency ในหน้าเดียวกันด้วย ไม่ใช่แค่ข้ามหน้า
 7. **หน้าเดียวมีหลาย view ปนกันบ่อย** — เคยพลาดเพราะบังคับเลือก `pattern` เดียวต่อหน้า ทำให้ view ที่ 2 (เช่น "แปลนฐานราก" คนละกล่องกับ "แปลนคาน" บนหน้าเดียวกัน) หายไปเงียบๆ ไม่มี warning → แก้เป็น inventory ทุก heading ก่อนเสมอ (ดูหัวข้อ "Multi-view extraction" ด้านบน)
 
 8. **⚠️ ห้ามยัดตัวแปร `$field` มากกว่า 1 ตัวไว้ใน `value=` ของ Text/Header tag เดียวกันใน Label Studio config — พลาดซ้ำมาแล้ว 2 ครั้ง:**
@@ -176,7 +176,7 @@ node label-studio-tasks-perpage.js
 
 ## Label Studio Cloud — Makham's Pattern (Gen 3) review flow (2026-07-06)
 
-**ต่างจาก 2 flow ด้านบน:** ทั้งคู่ยังอิง Gen 1 schema (`plan[]/section[]/schedule[]` flat, หรือ `categories[].items[]`) อ่านจาก `raw/image/<house>/qwen-output/`. Flow นี้อิง **Gen 3 ("Makham's Pattern", เอกสารเต็มอยู่ที่ [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ในโฟลเดอร์นี้เอง)** อ่านจาก `No_touch_box/mk_test/<subfolder>/*.json` — ผลลัพธ์ fresh-extraction ทดสอบจริงของบ้าน_เล็ก_1ชั้น_01 หน้า 1-40+48-60 (`mk_test/t1/` = รอบแรก) และหน้า 1-37 (`mk_test/t2/` = รอบสอง หลังปรับ schema)
+**ต่างจาก 2 flow ด้านบน:** ทั้งคู่ยังอิง Gen 1 schema (`plan[]/section[]/schedule[]` flat, หรือ `categories[].items[]`) อ่านจาก `raw/image/<house>/qwen-output/`. Flow นี้อิง **Gen 3 ("Makham's Pattern", เอกสารเต็มอยู่ที่ [`Makham's patter of rawjson20260705.md`](../wait_for_ทิ้ง/No_touch_box/docs/Makham's%20patter%20of%20rawjson20260705.md), ย้ายเข้า `wait_for_ทิ้ง/` เมื่อ 2026-08-04)** อ่านจาก `No_touch_box/mk_test/<subfolder>/*.json` — ผลลัพธ์ fresh-extraction ทดสอบจริงของบ้าน_เล็ก_1ชั้น_01 หน้า 1-40+48-60 (`mk_test/t1/` = รอบแรก) และหน้า 1-37 (`mk_test/t2/` = รอบสอง หลังปรับ schema)
 
 **จุดต่างสำคัญจาก Gen 1:** หน้าที่มีหลาย pattern ปนกันถูกแยกเป็นคนละไฟล์ตั้งแต่ตอน extract แล้ว (ไม่ต้องรวม `plan+section+schedule` ในหน้าเดียวแบบเดิม) — 1 ไฟล์ = 1 pattern/view เสมอ ทำให้ task generator ง่ายขึ้น (ไม่ต้อง merge หลาย array ต่อหน้า)
 

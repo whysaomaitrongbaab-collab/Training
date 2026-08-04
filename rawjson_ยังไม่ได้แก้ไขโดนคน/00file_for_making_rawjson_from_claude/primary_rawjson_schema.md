@@ -1,6 +1,6 @@
 # Primary Raw JSON Schema
 
-> Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../No_touch_box/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
+> Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../wait_for_ทิ้ง/No_touch_box/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched, moved into `wait_for_ทิ้ง/` 2026-08-04 as historical — see `No_touch_box/docs/ARCHIVE.md`) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
 
 ## 0. FORMAT LOCK — read this before anything else (added 2026-08-02)
 
@@ -97,9 +97,11 @@ Whenever you convert something the drawing printed (a size string, a rebar callo
 - Row letters keep the drawing's own alphabet — Thai `ก`/`ข`/`ค` stays Thai, it is what is printed.
 - Every point ref must resolve against that house's `หน้า00_gridline.json`. If it doesn't, the grid master is missing a line (§4 beam-endpoint rule) — fix the master, don't invent a ref.
 
-### 0.9 `pattern` must be one of the 14 in §1
+### 0.9 `pattern` must be one of the 16 in §1
 
 Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and needed 21 files remapped. A detail sheet is `section`; an elevation is `side_profile`; a schematic diagram is `side_profile`; a site plan is `site_plan`, not `plan`.
+
+**A summary table is `schedule`; a bar-bending (cut-list) table is `bbs_schedule`** — the test is whether a row describes a *member* or a single *bar* (§1 #14). A soil borehole log is `soil_boring_log`, never `schedule` or `notes` (§1 #15).
 
 ### 0.10 Before you call a house finished
 
@@ -107,7 +109,7 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 
 - [ ] every file parses as JSON
 - [ ] every file has the §2 wrapper fields
-- [ ] `pattern` is one of the 14 (§1)
+- [ ] `pattern` is one of the 16 (§1)
 - [ ] no file carries `phase_note` (§2a)
 - [ ] no array named after a kind of drawing element (§0.1)
 - [ ] grid master nests `x_lines`/`y_lines` under `grid{}` (§0.1)
@@ -120,7 +122,7 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 
 **The one allowed exception to the merge check:** two entries of the same point mark may stay separate when they carry genuinely different `confidence_score` or a different per-position `note` — merging would erase which positions were read off the drawing and which were inferred. The checker reports these; keep them, and say why in `warnings[]`. Anything else that trips the checker is a real defect.
 
-## 1. Pattern taxonomy — 14 types
+## 1. Pattern taxonomy — 16 types
 
 | # | pattern | description |
 |---|---|---|
@@ -137,9 +139,11 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 | 11 | `symbol` | symbol/legend page *(draft)* |
 | 12 | `roof_plan` | roof plan, separated from `plan` because it has ridge/hip lines and eave overhangs *(draft)* |
 | 13 | `misc` | เบ็ดเตล็ด — whole-series catalog/promotional/reference pages that aren't about this house's own construction (e.g. a back-cover price-comparison table across all 10 designs in the series, or a cover collage of every design's render) — added 2026-07-14, previously misclassified as `title` |
-| 14 | `unknown` | doesn't fit any of the 13 above |
+| 14 | `bbs_schedule` | **bar bending schedule (ตารางตัดเหล็ก)** — one row per individual BAR, not per element: `bar_mark`, `shape_code`, bend dimensions `len_A`/`len_B`/`len_C`, `qty`, `grade`. **Split from `schedule` 2026-08-04 because the granularity is genuinely different** — a `schedule` row describes one member (`C1`: 200×200, 4-Ø12), a `bbs_schedule` row describes one cut bar (`C1`/`T1`: Ø12, shape 00, 4.5 m, ×2). Putting both under `schedule` forced two incompatible row shapes into one pattern *(draft — no field-set verified against a real extraction yet)* |
+| 15 | `soil_boring_log` | **soil investigation / borehole log (รายงานเจาะสำรวจดิน)** — SPT blow counts, stratum table, lab results, groundwater level. Not a drawing of the building at all: it carries no `grid_ref`, no element marks, no rebar. Container is `elements[]` per §0.1 with `element_type: "soil_layer"`, plus wrapper-level `borehole_id` and `groundwater_level_m`. Added 2026-08-04 — Constistant already reads these live (`QT_PROMPT_SOIL_BORING_LOG` → `js/site/site-index.js`, feeding Foundation Design's bearing-capacity calc) and had no pattern to record them under *(draft — no field-set verified against a real extraction yet)* |
+| 16 | `unknown` | doesn't fit any of the 15 above |
 
-**Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 8 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
+**Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 10 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`, `soil_boring_log`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
 
 ## 2. Required fields on every file (wrapper level)
 

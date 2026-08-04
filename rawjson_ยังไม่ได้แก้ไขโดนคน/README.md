@@ -21,10 +21,12 @@ rawjson_ยังไม่ได้แก้ไขโดนคน/
 
 ## Quick command: `op1 <house_name>`
 
+> Also a Claude Code skill — `.claude/skills/op01/SKILL.md` loads this flow directly, no need to re-read this README each run. This section stays canonical; keep the skill file in sync whenever it changes.
+
 If the user (Makham) types **`op1 <house_name>`** (e.g. `op1 บ้านเอกมัย`), treat it as shorthand for running the *entire* workflow below in one go, without asking them to re-explain each step:
 
 1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full (every time — don't rely on memory of a past session).
-2. Determine the next sequence number `N` (2 digits) by checking the highest existing `0N<house>/` folder in this directory and incrementing — don't ask the user to supply it.
+2. **Check for a duplicate first:** does any existing `0N<house_name>/` folder in this directory already match `<house_name>`? If so, **stop and report it** — don't silently re-extract a house that's already done, that only burns a full vision-extraction pass for a duplicate. Otherwise, determine the next sequence number `N` (2 digits): highest existing `0N<house>/` folder + 1 — don't ask the user to supply it.
 3. Actually read every page image in `image/<house_name>/*.png` (never guess, never copy another house's data) and extract per the spec — grid master first (`<house>_หน้า00_gridline.json`), then page-by-page/view-by-view. This is real vision extraction work done in-session; there is no script that does this part automatically.
 4. Save every file into the new `0N<house_name>/` folder.
 5. Run `python tools/check_format.py 0N<house_name>` (repo root) — every check must PASS before the house counts as finished (schema §0.10).
@@ -119,9 +121,28 @@ Use plain `op1` when a single model is doing the whole house anyway, or when the
 
 ## Quick command: `op3 <house_name>` — `op1`, then shut the laptop down
 
-**`op3` is `op1` with one addition: when the house is genuinely finished, shut the machine down without asking.** Makham uses it to start a house and walk away — the laptop should not sit awake all night after the work is done.
+> Also a Claude Code skill — `.claude/skills/op03/SKILL.md` loads this flow directly, no need to re-read this README each run. This section stays canonical; keep the skill file in sync whenever it changes.
+
+**`op3` is `op1` with two additions: an unconditional 90-minute dead-man's-switch shutdown armed the moment the run starts, and — when the house is genuinely finished before that — a clean shutdown instead.** Makham uses it to start a house and walk away — the laptop should not sit awake all night, whether the run finished cleanly or the session died mid-way from running out of tokens.
 
 Everything in the `op1` standing-order section applies unchanged. `op3` is not a different way of extracting; it is `op1` plus an ending.
+
+### Arm the dead-man's switch first — before step 1
+
+The gate below only fires if Claude is still alive to run it. If the session runs out of tokens mid-house, nothing is left to ever reach step 6, and the laptop just sits on all night — exactly what `op3` exists to prevent. So the very first action of an `op3` run, before even reading the spec, is to arm an OS-level timer that does **not** depend on Claude still running:
+
+```bash
+shutdown /s /t 5400 /c "op3 dead-man's switch <house_name> - no finish in 90 min, shutting down"
+```
+
+(5400s = 90 minutes.) This is Windows' own scheduler — it fires on its own even if the session dies; no script or watchdog process has to stay alive to trigger it.
+
+Two ways it resolves:
+
+- **Gate 1-5 all pass before 90 minutes are up:** cancel the dead-man's switch and run step 6 below immediately — don't just let the 90-minute timer run out on its own even if time remains, a genuinely finished run always goes through its own fresh 120s cancel window.
+- **Tokens run out, or anything else stalls the run, before 90 minutes:** nobody is left to cancel it, so it fires on its own at the 90-minute mark. This only ever discards *uncommitted* progress from the current run — step 4 (`git commit`) never ran either, so nothing that was actually finished is at risk, same as any other unplanned power loss.
+
+**90 minutes is a fixed ceiling for one house, not a per-house estimate** — if a house is genuinely expected to run long, don't leave `op3` unwatched for it.
 
 ### The shutdown is the last step, and it is gated
 
@@ -132,8 +153,9 @@ Everything in the `op1` standing-order section applies unchanged. `op3` is not a
 3. The row is added to `No_touch_box/docs/raw_json_data_log.md` (`rule_of_tune.md` rule 3).
 4. **`git add -A && git commit`** — commit before the machine goes down. A finished house that exists only in an unsaved working tree is one bad wake-up away from gone.
 5. The full summary is printed to the user **first** — file count, page count, open questions, low-confidence flags. The screen is about to go dark; the report has to already be in the transcript.
-6. Only then:
+6. Cancel the dead-man's switch armed at the start, then shut down for real:
    ```bash
+   shutdown /a
    shutdown /s /t 120 /c "op3 finished <house_name> - shutting down. Run: shutdown /a  to cancel"
    ```
    **120 seconds, never `/t 0`** — that window is the only chance to stop it. Say `shutdown /a` cancels it, in the same message.
@@ -144,11 +166,11 @@ Everything in the `op1` standing-order section applies unchanged. `op3` is not a
 
 ### When not to use `op3`
 
-Don't use it if anything else on the machine is still running (a training job, an upload, another agent). `op3` only knows about its own house.
+Don't use it if anything else on the machine is still running (a training job, an upload, another agent) — the dead-man's switch arms unconditionally at the very start on the same 90-minute clock, with no awareness that anything else is running, and will kill that other work too. `op3` only knows about its own house.
 
 ## Step 1 — Extract a new house into raw JSON
 
-1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full before starting — it's the only spec needed (13 patterns, grid/dummy-grid rules, `main_bar` top/bottom shape, spec join, etc). The full original with history/rationale lives at `No_touch_box/docs/20260708draft of prime rawjson.md` if you need more context.
+1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full before starting — it's the only spec needed (13 patterns, grid/dummy-grid rules, `main_bar` top/bottom shape, spec join, etc). The full original with history/rationale lives at `wait_for_ทิ้ง/No_touch_box/docs/20260708draft of prime rawjson.md` (moved to archive 2026-08-04, still readable) if you need more context.
 2. Actually read every page image of that house (`image/<house>/*.png`) — **never guess, never copy from another house** even if it looks similar (see `rule_of_tune.md`).
 3. Build the grid master before anything else: `<house>_หน้า00_gridline.json` (all main grids + dummy grids for the whole house).
 4. Extract page by page / view by view per the spec — a page with multiple views gets a separate file per view (`_view1_...`, `_view2_...`).
