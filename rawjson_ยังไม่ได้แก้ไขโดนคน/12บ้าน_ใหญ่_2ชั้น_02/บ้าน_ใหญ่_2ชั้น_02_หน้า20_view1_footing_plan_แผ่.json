@@ -1,0 +1,75 @@
+{
+  "png": "20",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-01/1",
+  "sheet_name": "แปลนฐานรากแผ่",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_02/บ้าน_ใหญ่_2ชั้น_02_หน้า20.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_02_หน้า00_gridline.json",
+  "view_title": "แปลนฐานรากแผ่ (มาตราส่วน 1:100) - spread-footing alternative to the pile foundation on S-01, same 16 column positions",
+  "scale": "1:100",
+  "foundation_system": "spread_footing",
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 3,
+      "grid_refs": ["ข4", "ก1", "ก2"],
+      "description": "ฐานรากแผ่ขนาด 1.0 x 1.0 ม. หนา 0.20 ม. เขียนคู่กับเสาตอม่อ C1",
+      "printed_as": "F 1",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "note": "ตำแหน่งเล็กที่สุดในแบบ อยู่ที่มุมหลังบ้านและด้านหน้าซ้าย"
+    },
+    {
+      "element_id": "F1.5",
+      "element_type": "footing",
+      "count": 9,
+      "grid_refs": ["ง'2", "ง'4", "ง1", "ง4", "ค'1", "ค4", "ข1", "ข2", "ข3"],
+      "description": "ฐานรากแผ่ขนาด 1.5 x 1.5 ม. หนา 0.25 ม. เขียนคู่กับเสาตอม่อ C1",
+      "printed_as": "F 1.5",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1.8",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": ["ง2", "ง3", "ค2", "ค3"],
+      "description": "ฐานรากแผ่ขนาด 1.8 x 1.8 ม. หนา 0.30 ม. เขียนคู่กับเสาตอม่อ C2",
+      "printed_as": "F 1.8",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "pedestal",
+      "count": 12,
+      "grid_refs": ["ง'2", "ง'4", "ง1", "ง4", "ค'1", "ค4", "ข1", "ข2", "ข3", "ข4", "ก1", "ก2"],
+      "description": "เสาตอม่อบนฐานรากแผ่ F1 และ F1.5",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "pedestal",
+      "count": 4,
+      "grid_refs": ["ง2", "ง3", "ค2", "ค3"],
+      "description": "เสาตอม่อบนฐานรากแผ่ F1.8",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "F1_vs_F1.5_assignment_on_the_ข_and_ก_rows_read_from_small_reduced_labels"
+  ],
+  "warnings": [
+    "THIS SHEET IS AN ALTERNATIVE, NOT A CONFLICT WITH S-01. The printed condition is explicit at the bottom of the sheet: หากดินมีกำลังแบกทาน (BEARING CAPACITY) ไม่น้อยกว่า 8 ตัน/ตร.ม. ให้ใช้ฐานรากตามแบบรายละเอียดโดยไม่ต้องใช้เสาเข็มได้. So S-01's pile foundation (F1/F2 on เสาเข็ม 0.18x0.18) and this sheet's spread footings (F1/F1.5/F1.8) are two designs for the same house, chosen by soil test. The mark F1 exists on BOTH sheets meaning different things - a 1.0x1.0 spread footing here, a pile cap on S-01 - which is why each sheet is kept in its own file rather than merged.",
+    "COLUMN POSITIONS ARE IDENTICAL TO S-01, position for position: 16 columns, C2 at ง2/ง3/ค2/ค3 and C1 everywhere else. Cross-checked one by one against both S-01 views. That agreement is what makes the size mapping below trustworthy even though the footing outlines here are drawn as light dashed squares.",
+    "F1 vs F1.5 ON THE BOTTOM TWO ROWS IS THE LEAST CERTAIN READING ON THIS SHEET. The labels on the ข and ก rows are printed small and overlap the C1 tags. Read as: ข1/ข2/ข3 = F1.5, ข4 = F1, ก1/ก2 = F1. That gives 3 + 9 + 4 = 16, matching the column count exactly, which is the strongest check available. Flagged rather than stated as certain; a later pass on the full-size sheet should confirm the four smallest squares.",
+    "The three footing sizes and their reinforcement are printed on the same sheet in the ฐานรากแผ่ section detail (see the separate _view2 file): F 1.0 = 6+6 Ø12#, F 1.5 = 8+8 Ø16 มม.#, F 1.8 = 10+10 Ø16 มม.#, with thicknesses 0.20 / 0.25 / 0.30 m and a 1.20 m founding depth below ±0.00.",
+    "POINT ELEMENTS MERGED PER §4: one entry per mark with count + grid_refs. The three footing marks' grid_refs do not overlap, so 3 + 9 + 4 is a genuine total and not a double count."
+  ]
+}
