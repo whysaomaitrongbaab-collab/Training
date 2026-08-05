@@ -1,0 +1,30 @@
+{
+  "png": "25",
+  "doc_page": 23,
+  "discipline": "architecture",
+  "sheet_code": "A-23",
+  "sheet_name": "แบบขยายประตูรั้วบ้าน",
+  "pattern": "section",
+  "view_title": "รูปตัด -- gate section, 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า25.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": ["view1_gate_elevation (_view1_gate_elevation.json)", "view2_gate_section (this file)", "view3_gate_latch_detail (_view3_gate_latch_detail.json)"],
+  "elements": [
+    { "element_id": "gate_picket_section", "element_type": "gate_component", "printed_as": "เหล็ก ⌀ 1\"x1\" LG. ปลายตัด45 องศา @ 15 ซม.", "description": "same picket spec as view1, shown in section", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "gate_frame_section", "element_type": "gate_component", "printed_as": "เหล็ก ⌀ 2\"x2\" LG. หนา 3.2 มม.", "description": "same frame spec as view1, appears twice in this section (top rail and mid rail)", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "gate_base_panel_section", "element_type": "gate_component", "printed_as": "แผ่นเหล็กทึบ หนา 4 มม.", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "gate_wheel", "element_type": "gate_component", "printed_as": "ล้อเหล็ก ⌀3\" คู่", "description": "steel roller wheel, 3 inch diameter, paired -- confirms this is a ROLLING/sliding gate, not hinged", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "wheel_track_anchor", "element_type": "gate_component", "printed_as": "เหล็กแผ่น 40x40x9 มม. ฝังในคอนกรีต", "description": "steel plate, 40x40x9mm, embedded in concrete -- the wheel track/rail anchor", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "drainage_plate", "element_type": "gate_component", "printed_as": "เหล็กจาก หนา 9 มม. เจาะรูระบายน้ำ", "description": "steel plate (reading 'เหล็กจาก' possibly a mis-OCR of 'เหล็กแผ่น'/'เหล็กจาน'), 9mm thick, drilled with drainage holes", "confidence_score": 0.55, "confidence_flags": ["printed_word_เหล็กจาก_uncertain_OCR_recorded_verbatim"] },
+    { "element_id": "gate_section_height_dims", "element_type": "dimension", "values_m": [0.20, 0.50, 0.60, 0.20, 0.50], "total_m": 2.00, "description": "identical height ladder to view1", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "gate_embed_depth", "element_type": "dimension", "value_m": 0.30, "description": "wheel-track embedment depth below ระดับถนน (road level)", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "level_references_gate_section", "element_type": "datum", "description": "ระดับทางเท้า (footpath level), ระดับถนน (road level)", "confidence_score": 0.8, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 3 views on this sheet; siblings are the gate elevation (_view1_gate_elevation.json) and latch detail (_view3_gate_latch_detail.json).",
+    "This section reveals the gate is a ROLLING/sliding gate (steel roller wheels running on an embedded steel track), a detail not visible from the front elevation alone.",
+    "'เหล็กจาก หนา 9 มม เจาะรูระบายน้ำ' -- the word 'เหล็กจาก' is an uncertain OCR read (possibly 'เหล็กแผ่น' or another term meaning a steel plate); recorded verbatim as printed rather than silently normalized to a guessed spelling."
+  ]
+}

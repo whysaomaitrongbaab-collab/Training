@@ -1,0 +1,85 @@
+{
+  "png": "22",
+  "doc_page": 20,
+  "discipline": "architecture",
+  "sheet_code": "A-20",
+  "sheet_name": "แบบขยายบันได ST.2",
+  "pattern": "section",
+  "view_title": "รูปตัดบันได ST.2 (main interior stair full section), 1:50",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า22.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": [
+    "view1_st2_section (this file)",
+    "view2_st2_railing_detail (_view2_st2_railing_detail.json)",
+    "view3_st2_handrail_bracket_detail (_view3_st2_handrail_bracket_detail.json)",
+    "view4_st2_tread_riser_detail (_view4_st2_tread_riser_detail.json)"
+  ],
+  "elements": [
+    {
+      "element_id": "st2_levels",
+      "element_type": "datum",
+      "levels_m": { "reference_datum": 0.00, "floor1": 0.60, "landing": 2.35, "floor2": 3.75 },
+      "description": "±0.00 ระดับอ้างอิง, +0.60 ระดับพื้นชั้น 1, +2.35 ระดับพื้นชานพัก, +3.75 ระดับพื้นชั้น 2",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST.2_full_flight",
+      "element_type": "stair",
+      "description": "combined flight, ground floor to upper floor via a switchback landing",
+      "step_count": 18,
+      "riser_height_m": 0.175,
+      "total_rise_m": 3.15,
+      "landing_rise_m": 1.75,
+      "run_note": "9 @ 0.25 = 2.25 (first flight tread run, matches หน้า21's floor1 plan exactly)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "โถง_st2_section_floor1",
+      "element_type": "room",
+      "level_m": 0.60,
+      "printed_as": "1 +0.60 1",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "โถง_st2_section_floor2",
+      "element_type": "room",
+      "level_m": 3.75,
+      "printed_as": "2 +3.75 1",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "เก็บของ_st2_section",
+      "element_type": "room",
+      "level_m": 0.60,
+      "printed_as": "4 +0.60 5",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    { "element_id": "detail_callout_1", "element_type": "note", "description": "'ดูแบบขยาย 1' at the upper landing newel post, referencing view2 (railing/baluster detail) on this same page", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "detail_callout_2", "element_type": "note", "description": "'ดูแบบขยาย 2' at mid-stringer, referencing view3 (handrail bracket detail) on this same page", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "detail_callout_3", "element_type": "note", "description": "'ดูแบบขยาย 3' at the base of the stair, referencing view4 (tread/riser detail) on this same page", "confidence_score": 0.8, "confidence_flags": [] },
+    {
+      "element_id": "st2_section_bottom_dims",
+      "element_type": "dimension_chain",
+      "segments_m": [0.10, 4.40, 0.10],
+      "segments_alt_m": [1.10, 3.50],
+      "grid_refs": ["1", "2"],
+      "description": "0.10+4.40+0.10 flanking the tread-run zone; grid1 sits 1.10 from the left edge, grid1-to-grid2=3.50 (matches master)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.87,
+  "confidence_flags": [],
+  "warnings": [
+    "CONFIRMS the structural stair rise, and closely mirrors a sister house's identically-numbered equivalent sheet (18 steps @0.175m=3.15m total rise, landing at +2.35, same room boxes) — strong cross-house AND cross-page confirmation of this design-office's standard interior stair.",
+    "18 total risers reconciles หน้า21's plan-view tread NUMBERING (which only went up to 17): 17 numbered tread surfaces + 1 final riser stepping onto the upper floor itself (not separately numbered as a 'tread' in plan) = 18 risers. Recorded as a resolution of that page's own flagged uncertainty about the total count.",
+    "One of 4 views on this page; siblings are the railing detail (_view2_st2_railing_detail.json), handrail bracket detail (_view3_st2_handrail_bracket_detail.json), and tread/riser finish detail (_view4_st2_tread_riser_detail.json) — all 3 detail callouts (1, 2, 3) on this section have matching detail views actually present on this same page, no missing cross-reference.",
+    "GRID CONFIRMATION (positive): grid1-to-grid2 = 3.50m again matches the master exactly.",
+    "Hexagon '5' (W5 window reference) appears again at the top of this section near the landing, consistent with หน้า21's identification of W5 as this stairwell's landing window."
+  ]
+}

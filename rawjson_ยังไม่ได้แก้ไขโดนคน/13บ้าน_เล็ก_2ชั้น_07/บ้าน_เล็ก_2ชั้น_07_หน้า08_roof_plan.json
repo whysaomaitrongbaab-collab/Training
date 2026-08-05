@@ -1,0 +1,78 @@
+{
+  "png": "08",
+  "doc_page": 6,
+  "discipline": "architecture",
+  "sheet_code": "A-06",
+  "sheet_name": "แปลนหลังคา",
+  "pattern": "roof_plan",
+  "view_title": "แปลนหลังคา",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า08.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "roof_covering",
+      "element_type": "roof",
+      "count": 1,
+      "grid_ref": "covers the full plan 1-3 x E-A plus overhangs — a single unbroken rectangle, NO notch/cutout",
+      "description": "หลังคาเหล็กรีดลอน (corrugated metal sheet roofing), hatched vertically (parallel to the y/E-A axis) over the whole roofed plan; two 'SLOPE 6°' labels printed vertically down the two roof faces (one between grid1-2, one between grid2-3). CORRECTED THREE TIMES 2026-08 while extracting the elevations and sections (see warnings[] for all 3 reversals — this description is the final, current-best state): the roof is most likely a single, UNIFORM slope direction across the whole building width — LOW near gridA, HIGH near gridE, at ~6° pitch (possibly still built as two parallel mono-pitch planes over grid1-2 and grid2-3 respectively, per the roof plan's own two separate 'SLOPE 6°' labels and the fold line near grid2, but both sloping the SAME y-direction, not opposite as the 2nd correction guessed). This reading is supported by 3 sheets (_หน้า12_elevation4.json, _หน้า13_section1.json, _หน้า14_section2.json), against 1 outlier sheet (_หน้า10_elevation2.json/A-08, showing the opposite LOW-gridE/HIGH-gridA) that was re-verified 3 times and genuinely prints that way — most likely a real drafting inconsistency on sheet A-08 itself, not a misreading. Two curved swirl-arrow symbols near mid-plan (roughly grid1.5 and grid2.5, C-B row), likely roof drainage/water-flow direction markers, not confidently classified further.",
+      "ridge_or_valley_lines": "the line near grid2 is most likely a step/seam between two mono-pitch planes sloping the SAME y-direction (not a true ridge, and — per the 3rd correction — not a valley between opposite-sloping planes either; see warnings[])",
+      "eave_overhang_m": null,
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "slope_value_small_stylized_text_treat_as_approximate",
+        "curved_swirl_symbols_near_mid-plan_not_confidently_classified_beyond_'likely_drainage_direction'",
+        "roof_geometry_inferred_from_4_architecture_sheets_(1_roof_plan_+_3_agreeing_elevations/sections_+_1_outlier_elevation),_not_confirmed_against_a_structural_roof-framing_sheet_(outside_this_extraction's_scope)",
+        "sheet_A-08_(_หน้า10_elevation2.json)_disagrees_with_the_3-sheet_majority_on_slope_direction_-_treated_as_that_sheet's_own_drafting_error_per_the_standing_precedence_rule,_not_independently_resolvable_by_this_agent"
+      ]
+    },
+    {
+      "element_id": "roof_overhang_west",
+      "element_type": "roof_overhang",
+      "count": 1,
+      "grid_ref": "beyond 1, dimension 1.30 m",
+      "eave_overhang_m": 1.3,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "roof_overhang_east",
+      "element_type": "roof_overhang",
+      "count": 1,
+      "grid_ref": "beyond 3, dimension 1.30 m",
+      "eave_overhang_m": 1.3,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "roof_overhang_north",
+      "element_type": "roof_overhang",
+      "count": 1,
+      "grid_ref": "beyond E, dimension 1.50 m",
+      "eave_overhang_m": 1.5,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "roof_overhang_south",
+      "element_type": "roof_overhang",
+      "count": 1,
+      "grid_ref": "beyond A, dimension 1.50 m",
+      "eave_overhang_m": 1.5,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [],
+  "warnings": [
+    "3rd and FINAL REVERSAL, recorded 2026-08 while extracting _หน้า14_section2.json (rewriting rather than deleting, same standing rule as the 2 reversals below): the 2nd reversal's 'twin OPPOSITE-sloping planes meeting at a true valley' reading is itself overturned. _หน้า13_section1.json and _หน้า14_section2.json (both re-verified with full-context crops — grid letters + R1/R2 fascia-detail callouts + the roofline all visible together in one frame, specifically because of the elevation2-vs-elevation4 discrepancy) BOTH independently show LOW-gridA/HIGH-gridE at their respective cut positions (x=1-2 and x=2-3) — i.e. the SAME direction as _หน้า12_elevation4.json, not opposite directions at each x-position as the 2nd reversal guessed. This makes it 3 sheets (elevation4, section1, section2) agreeing on LOW-gridA/HIGH-gridE, against the 1 outlier (_หน้า10_elevation2.json/A-08, LOW-gridE/HIGH-gridA) — elevation2 was re-verified 3 separate times with the same full-context method and genuinely, unambiguously prints the opposite direction; not a misread on this agent's part, most likely a real drafting inconsistency on that one sheet. FINAL READING: the roof slopes uniformly LOW near gridA, HIGH near gridE (both grid1-2 and grid2-3 planes, if still physically separate, slope the SAME y-direction). See _หน้า14_section2.json's own warnings[] for the full reasoning chain, and _หน้า10_elevation2.json for the outlier note added there.",
+    "2nd REVERSAL, recorded 2026-08 while extracting _หน้า12_elevation4.json (rewriting rather than deleting, same standing rule as the 1st reversal below): the 1st reversal's 'current best reading' (both mono-pitch planes sloping the SAME direction, low-gridE to high-gridA) is itself overturned. _หน้า12_elevation4.json (A-10, viewed from the opposite x-side of _หน้า10_elevation2.json/A-08) shows the roof LOW at gridA / HIGH at gridE — the OPPOSITE assignment from elevation2's LOW-gridE/HIGH-gridA. Both readings were independently re-verified at zoom specifically because of this discrepancy (not a casual misread). 2 elevation sheets, each internally clear but mutually contradictory under a same-direction assumption — reconciled by inferring the two mono-pitch planes (grid1-2 and grid2-3) slope in OPPOSITE y-directions, each elevation showing whichever plane is nearer that viewing side, meeting at a true valley near grid2. This is a 3-sheet-total picture now (roof plan + 2 elevations), still not confirmed against a structural roof-framing sheet (outside this extraction's scope) — see _หน้า12_elevation4.json's own warnings[] for the full reasoning chain.",
+    "1st REVERSAL, recorded 2026-08 while extracting _หน้า10_elevation2.json (per the standing rule: rewrite rather than delete a warning when a later reading overturns an earlier one): this file originally described the roof (based on the roof plan sheet alone) as a symmetric gable with a ridge running north-south near grid2, both faces sloping down from it. That reading is OVERTURNED by direct evidence from 2 elevation sheets read afterward, both in this same agent's page range: _หน้า10_elevation2.json (A-08, viewed along the x-axis, so a y-direction slope is fully visible edge-on) shows the roof edge as ONE continuous straight diagonal from low(gridE) to high(gridA), not a peaked silhouette; _หน้า09_elevation1.json (A-07, viewed along the y-axis, so a y-direction slope would appear edge-on/invisible) independently shows a flat, parapet-like roofline with no visible peak — both sheets agree with each other and both contradict a symmetric x-direction-sloping gable. 2 elevation sheets vs the roof plan's own hatch/label pattern (which is ambiguous, not a direct contradiction — 2 SLOPE labels at 2 different x-positions is equally consistent with either reading) — the elevations are the deciding evidence since they show the roof's actual silhouette directly. Current best reading: twin parallel mono-pitch (shed) planes over grid1-2 and grid2-3, both sloping low-gridE to high-gridA. See the roof_covering element's description/ridge_or_valley_lines/confidence_flags above for the corrected reading, and _หน้า10_elevation2.json's own warnings[] for the full reasoning chain.",
+    "This sheet (A-06) is the roof plan for the whole 2-story building; a single unbroken rectangle over the full grid1-3 x gridE-A footprint plus overhangs, no notch — consistent with the ground-floor's จอดรถ (carport, C-B x 2-3, entirely within the E-A footprint) being fully roofed, not open to the sky.",
+    "FORMAT NOTE: sister house #2's (บ้าน_เล็ก_2ชั้น_02) equivalent roof_plan file uses a wrapper key named 'element' (singular) instead of 'elements' (plural) — that is a pre-FORMAT-LOCK-era inconsistency in that file, not something to replicate; spec §0.1 requires 'elements[]' for every pattern except the 3 documented exceptions (gridline/material_list), and roof_plan is not one of them. This file correctly uses 'elements' (plural).",
+    "GRID-RELEVANT (reporting only, master file NOT edited): roof eave overhangs (1.30m west/east, 1.50m north/south) are each 0.20m MORE than the corresponding structural dummy-grid offsets (1' /3' at 1.10m, matching the grid master) on the west/east sides, and exactly match the floor plans' own 1.50m north-of-gridE dimension on the north side — a normal eave-past-wall-face offset, not a discrepancy. The south overhang (1.50m past gridA, reaching y=12.20) is short of dummy grid A' (12.75, the ground-floor carport/entry slab extension) — consistent with A' being a ground-floor-only feature the roof does not need to cover, matching the finding already flagged on _หน้า07_floor_plan_upper.json.",
+    "Actual roof framing (purlins/rafters/trusses) is not detailed on this architecture sheet — would be on structural engineering drawings, outside this extraction's assigned page range (หน้า03-14 = A-01..A-12 only; the structural S-sheets are หน้า29-33 per the grid master's source_pages).",
+    "Unlike sister house #2's (บ้าน_เล็ก_2ชั้น_02) equivalent roof plan, this sheet shows no dashed recess/canopy outlines near grid2 — simpler, single clean rectangle."
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "png": "43",
+  "doc_page": 41,
+  "discipline": "structural",
+  "sheet_code": "S-16",
+  "sheet_name": "BX, BY, B1-B3X",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า43.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "view_title": "แบบขยายคาน B1, B2 (พร้อมหน้าตัด 2-2), แถวรูปด้านต่อเนื่อง B3X-B3A-B3 พร้อมหน้าตัดขยาย 3X-3X/3A-3A/3-3, และคานเล็ก BX/BY",
+  "elements": [
+    {
+      "element_id": "B1", "element_type": "beam",
+      "width_mm": 200, "height_mm": 400, "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 12, "type": "RB" },
+        "bottom": { "count": 2, "dia_mm": 12, "type": "RB" }
+      },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "1-ป้อ6มม.@0.15ม." },
+      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "spec_source": "section", "spec_confidence_score": 0.9,
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "B2", "element_type": "beam", "section_ref": "2-2",
+      "width_mm": 200, "height_mm": 400, "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 16, "type": "RB" },
+        "bottom": { "count": 2, "dia_mm": 16, "type": "RB" }
+      },
+      "stirrup": {
+        "dia_mm": 6, "type": "RB", "spacing_mm": 75, "variable_spacing": true,
+        "printed_as": "รูปด้าน: 1-ป้อ6มม.@0.075ม. ยาว 0.90ม. จากปลายซ้าย (ระยะพิเศษ) ต่อด้วย 1-ป้อ6มม.@0.15ม.; หน้าตัดขยาย 2-2 (กึ่งกลางช่วง): 1-ป้อ6มม.@0.15ม.",
+        "note": "เหล็กปลอกถี่ขึ้นใกล้ปลายคาน (confinement zone ยาว 0.90ม. ที่ปลายซ้าย) ตามหลักการต้านแผ่นดินไหว; ฝั่งขวาไม่มีมิติกำกับชัดเจนแต่คาดว่าสมมาตร (ยังไม่ยืนยัน)"
+      },
+      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8,
+      "confidence_flags": ["right_end_confinement_zone_assumed_symmetric_not_explicitly_dimensioned"]
+    },
+    {
+      "element_id": "B3X", "element_type": "beam", "section_ref": "3X-3X",
+      "span_m": 1.10, "span_source": "local_dimension",
+      "width_mm": 200, "height_mm": 400, "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": { "count": 3, "dia_mm": 16, "type": "RB", "note": "3-Ø16มม. ยืนยันตรงกันทั้งรูปด้าน (2 leader ที่ปลายทั้งสองข้างของช่วง B3X) และหน้าตัดขยาย 3X-3X" },
+        "bottom": { "count": 2, "dia_mm": 16, "type": "RB" }
+      },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 75, "printed_as": "1-ป้อ6มม.@0.075ม. (สม่ำเสมอตลอดช่วงสั้น 1.10ม., ยืนยันตรงกันทั้งรูปด้านและหน้าตัด 3X-3X)" },
+      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "spec_source": "section", "spec_confidence_score": 0.85,
+      "confidence_score": 0.85,
+      "confidence_flags": ["ASYMMETRIC_main_bar_top3_bottom2", "short_1.10m_span_top-heavy_pattern_consistent_with_cantilever_or_overhang_end_segment"],
+      "note": "ช่วงปลายสุดด้านซ้ายของแนวคาน B3X-B3A-B3 ต่อเนื่อง เหล็กบนมากกว่าล่าง (3 ต่อ 2) สอดคล้องกับพฤติกรรมคานยื่น/ปลายอิสระ"
+    },
+    {
+      "element_id": "B3A", "element_type": "beam", "section_ref": "3A-3A",
+      "span_m": 3.50, "span_source": "local_dimension",
+      "width_mm": 200, "height_mm": 400, "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 16, "type": "RB" },
+        "bottom": { "count": 3, "dia_mm": 16, "type": "RB", "note": "3-Ø16มม. ยืนยันตรงกันทั้งรูปด้าน (leader ใกล้วง 3A) และหน้าตัดขยาย 3A-3A" }
+      },
+      "stirrup": {
+        "dia_mm": 6, "type": "RB", "spacing_mm": 75, "variable_spacing": true,
+        "printed_as": "หน้าตัดขยาย 3A-3A (กึ่งกลางช่วง): 1-ป้อ6มม.@0.175ม.; รูปด้านแสดงค่า 0.075ม. ใกล้รอยต่อ (break) ทั้งสองด้าน ระยะโซนถี่ประมาณ 0.40ม. ตามมิติที่กำกับใกล้รอยต่อ",
+        "note": "เหล็กปลอกถี่ขึ้นใกล้ปลายช่วง (confinement zone ~0.40ม.) ตามหลักการต้านแผ่นดินไหว; ขอบเขตช่วงที่แน่นอนอ่านจากภาพได้ไม่ชัดเจนระดับพิกเซล"
+      },
+      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8,
+      "confidence_flags": ["ASYMMETRIC_main_bar_top2_bottom3", "variable_stirrup_spacing_exact_zone_boundary_approximate"]
+    },
+    {
+      "element_id": "B3", "element_type": "beam", "section_ref": "3-3",
+      "span_m": 3.50, "span_source": "local_dimension",
+      "width_mm": 200, "height_mm": 400, "size_printed_as": "0.20x0.40",
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 16, "type": "RB" },
+        "bottom": { "count": 2, "dia_mm": 16, "type": "RB" }
+      },
+      "stirrup": {
+        "dia_mm": 6, "type": "RB", "spacing_mm": 75, "variable_spacing": true,
+        "printed_as": "หน้าตัดขยาย 3-3 (กึ่งกลางช่วง): 1-ป้อ6มม.@0.175ม.; รูปด้านแสดงค่า 0.075ม. ใกล้รอยต่อ (break) ด้านซ้าย (ติดกับ B3A)",
+        "note": "เหล็กปลอกถี่ขึ้นใกล้ปลายช่วงที่ติดรอยต่อกับ B3A ตามหลักการต้านแผ่นดินไหว; ปลายขวา (ใกล้วง 3) ไม่มีมิติกำกับชัดเจน"
+      },
+      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8,
+      "confidence_flags": ["variable_stirrup_spacing_exact_zone_boundary_approximate"]
+    },
+    {
+      "element_id": "BX", "element_type": "beam",
+      "description": "คานเล็กทั่วไป (generic/typical minor beam detail, no grid position printed on this sheet)",
+      "width_mm": 150, "height_mm": 300, "size_printed_as": "0.15x0.30",
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 12, "type": "RB" },
+        "bottom": { "count": 2, "dia_mm": 12, "type": "RB" }
+      },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125, "printed_as": "1-ป้อ6มม.@0.125ม." },
+      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8,
+      "confidence_flags": ["BX_grid_position_not_confirmable_from_this_sheet_alone"]
+    },
+    {
+      "element_id": "BY", "element_type": "beam",
+      "description": "คานเล็กทั่วไป (generic/typical minor beam detail, no grid position printed on this sheet)",
+      "width_mm": 150, "height_mm": 300, "size_printed_as": "0.15x0.30",
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 12, "type": "RB", "note": "ล้วงเข้า B1 ยาวไม่น้อยกว่า 0.40ม." },
+        "bottom": { "count": 2, "dia_mm": 12, "type": "RB", "note": "ล้วงเข้า B1 ยาวไม่น้อยกว่า 0.40ม." }
+      },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125, "printed_as": "1-ป้อ6มม.@0.125ม." },
+      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8,
+      "confidence_flags": ["BY_grid_position_not_confirmable_from_this_sheet_alone", "lap_splice_bar_merged_into_main_bar_per_spec_section_7_not_kept_as_additional_bars"],
+      "note": "เหล็กยืนทั้งบนและล่างของ BY ระบุ 'ล้วงเข้า B1 ยาวไม่น้อยกว่า 0.40ม.' ทั้งคู่ (ต่อ/ยึดเหนี่ยวเข้ากับคาน B1 ที่อยู่ติดกัน) — ตีความเป็นเหล็กยืนหลักของ BY เองที่ฝังยึดเข้า B1 (ไม่ใช่เหล็กเสริมพิเศษแยกต่างหาก) ตามแนวทาง spec ข้อ 7 เรื่องเหล็กที่ล้วงเข้าคานข้างเคียง"
+    }
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "แถว B3X-B3A-B3 เป็นรูปด้านต่อเนื่องเส้นเดียวมีจุดหักมุม (break) 2 จุด แบ่งเป็น 3 ช่วง (1.10ม./3.50ม./3.50ม. อ่านจากมิติที่กำกับไว้บนแผ่นนี้เอง ไม่ใช่จากกริดมาสเตอร์ — บันทึกเป็น span_m + span_source:'local_dimension' ไม่ใช่ span_length_m แบบที่คำนวณจากกริด) — ยืนยันจำนวนเหล็กบน/ล่างแต่ละช่วง (3-2 / 2-3 / 2-2) โดยตรวจสอบไขว้ระหว่างรูปด้านกับหน้าตัดขยายเฉพาะ (3X-3X, 3A-3A, 3-3) ที่วาดแยกไว้ด้านล่างแล้ว ทั้งสามชุดตรงกัน ความเชื่อมั่นสูงสำหรับจำนวนเหล็กหลัก แต่ระยะขอบเขตช่วงเหล็กปลอกถี่ (confinement zone) ตามความสูง/ความยาวจริงยังอ่านไม่ชัดระดับพิกเซล",
+    "B2 มีระยะเหล็กปลอกแบบแปรผัน (0.075ม. ยาว 0.90ม. จากปลายซ้าย ต่อด้วย 0.15ม.) — ฝั่งขวาของช่วงไม่มีการกำกับมิติซ้ำ จึงสันนิษฐานว่าสมมาตรตามหลักการออกแบบทั่วไป แต่ไม่ได้ยืนยันจากภาพโดยตรง",
+    "BX และ BY ไม่มีตำแหน่งกริดหรือมาร์คอ้างอิงบนผังที่ยืนยันจากแผ่นนี้ (สันนิษฐานเป็นคานเล็กทั่วไป/รอง จาก suffix 'X'/'Y' รูปแบบเดียวกับ CX บนหน้า S-15) — หากมีการอ้างอิงบนผังคาน S-06/S-04/S-05 (นอกขอบเขตงานที่ได้รับมอบหมายให้ agent นี้) ผู้ประสานงานควรเชื่อมโยงกลับมาที่นี่ โดยเฉพาะ BY ที่ระบุว่าล้วงเข้า B1 — ควรตรวจสอบว่า B1 ที่ BY ล้วงเข้าคือ B1 ตัวเดียวกับที่บันทึกไว้ในไฟล์นี้หรือไม่",
+    "เส้นผ่านศูนย์กลางเหล็กทุกจุดบนแผ่นนี้พิมพ์ด้วยสัญลักษณ์ Ø (วงกลม) รวมถึงเหล็กยืนหลัก 16มม. — ตาม §6 บันทึกเป็น RB/SR24 ทั้งหมดตามสัญลักษณ์ที่พิมพ์จริง ไม่ใช้เกณฑ์ขนาดเส้นผ่านศูนย์กลางจากโน้ตทั่วไป S-01 (เช่นเดียวกับที่บันทึกไว้ในไฟล์ หน้า42.json)"
+  ]
+}

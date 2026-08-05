@@ -1,0 +1,81 @@
+{
+  "png": "62",
+  "doc_page": 60,
+  "printed_page": 60,
+  "discipline": "electrical",
+  "sheet_code": "EE-04",
+  "sheet_name": "แปลนไฟฟ้าแสงสว่าง ชั้นบน",
+  "pattern": "plan",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-08-02 FORMAT LOCK revision)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า62.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "scale": "1:100",
+  "level": "ชั้นบน",
+  "circuit_start": "2/LP (from panel LP circuit 2, home-run tag drawn near stairwell/โถง)",
+  "elements": [
+    {
+      "element_id": "downlight_นอน2",
+      "element_type": "ceiling_downlight_point",
+      "room": "นอน 2",
+      "count": 2,
+      "switch_tags": ["f"],
+      "grid_ref": "~E-D x 1-2",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "downlight_นอน3",
+      "element_type": "ceiling_downlight_point",
+      "room": "นอน 3",
+      "count": 2,
+      "switch_tags": ["g"],
+      "grid_ref": "~E-D x 2-3",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "downlight_โถง_บน",
+      "element_type": "ceiling_downlight_point",
+      "description": "จุดดวงโคมบริเวณโถงชั้นบนใกล้บันไดลง มีจุดเบรกวงจร 2/LP อยู่ในกลุ่มเดียวกัน",
+      "room": "โถง",
+      "count": 2,
+      "switch_tags": ["c", "d"],
+      "grid_ref": "~D-C x 1-2",
+      "confidence_score": 0.6,
+      "confidence_flags": ["symbol_count_at_this_resolution_best_effort"]
+    },
+    {
+      "element_id": "downlight_ห้องน้ำ_บน",
+      "element_type": "ceiling_downlight_point",
+      "room": "ห้องน้ำ",
+      "count": 2,
+      "switch_tags": ["e"],
+      "grid_ref": "~D-C x 2-3",
+      "confidence_score": 0.6,
+      "confidence_flags": ["symbol_count_at_this_resolution_best_effort"]
+    },
+    {
+      "element_id": "downlight_นอน1",
+      "element_type": "ceiling_downlight_point",
+      "description": "จุดดวงโคมนอน 1 จัดเป็นแถว 2 แถว x 3 จุด (แท็ก a,a,b แถวบน และ a,a,b แถวล่าง) -- ห้องนอนใหญ่ที่สุดของบ้าน",
+      "room": "นอน 1",
+      "count": 6,
+      "switch_tags": ["a", "b"],
+      "grid_ref": "~C-A x 1-3",
+      "confidence_score": 0.55,
+      "confidence_flags": ["symbol_count_at_this_resolution_best_effort"]
+    }
+  ],
+  "confidence_score": 0.63,
+  "confidence_flags": [
+    "switch_letter_lowercase_tags_a-g_summarized_by_room_not_individually_traced_wire_by_wire",
+    "downlight_counts_are_best_effort_reads_of_small_repeated_symbols_at_available_image_resolution"
+  ],
+  "warnings": [
+    "op1 direct read (house 13, Stage-2 SN-EE-M agent). Lighting circuit 2/LP confirmed on plan near the stair/โถง boundary -- matches EE-02's circuit 2 (แสงสว่าง, upper floor). Switch-to-fixture wiring shown by lowercase letter tags reused across rooms -- summarized per room, not traced wire-by-wire, same convention as EE-03 (page 61).",
+    "นอน 1's 6-downlight count is the least certain reading on this sheet (confidence 0.55) -- the room is drawn as a 2x3 grid of downlight symbols but individual switch-tag letters (a vs b) at this resolution could plausibly be a 2x2 (4-downlight) layout with the outer column read in error; recorded as observed rather than rounded down, since the room's floor area (~7m x 4m, the largest single room in the house per SN-05's grid) is large enough to plausibly need 6 fixtures.",
+    "A small 'ช่องท่อ' (pipe/service shaft) label appears near the นอน3/ห้องน้ำ boundary -- excluded from elements[] as a non-electrical architectural/mechanical service-shaft callout, not a lighting fixture.",
+    "No 'ต้องการที่ดินกว้าง' minimum-lot-size note repeated on this upper-floor sheet (only appears on the ground-floor sheets, same pattern already noted on SN-05/EE-03)."
+  ]
+}

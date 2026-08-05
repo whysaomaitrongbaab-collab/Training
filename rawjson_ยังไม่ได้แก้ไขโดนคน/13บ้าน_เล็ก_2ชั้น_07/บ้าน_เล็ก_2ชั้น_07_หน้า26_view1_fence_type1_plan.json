@@ -1,0 +1,32 @@
+{
+  "png": "26",
+  "doc_page": 24,
+  "discipline": "architecture",
+  "sheet_code": "A-24",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 1",
+  "pattern": "plan",
+  "view_title": "แปลน -- fence type 1 plan, 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า26.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": [
+    "view1_fence_type1_plan (this file)",
+    "view2_fence_type1_column_c1_detail (_view2_fence_type1_column_c1_detail.json)",
+    "view3_fence_type1_tie_beam_gb_detail (_view3_fence_type1_tie_beam_gb_detail.json)",
+    "view4_fence_type1_front_elevation (_view4_fence_type1_front_elevation.json)",
+    "view5_fence_type1_section (_view5_fence_type1_section.json)"
+  ],
+  "elements": [
+    { "element_id": "C1_plan_ref", "element_type": "column", "grid_ref": "n/a", "description": "fence column C1, spaced at 'ระยะไม่เกิน 3.00 ม.' (spacing not to exceed 3.00m), shown twice in this plan bay with a bolted base plate 'F' connection to the ground beam 'GB'. Not on the building's own structural grid (see wrapper-level warnings).", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "GB_plan_ref", "element_type": "tie_beam", "grid_ref": "n/a", "description": "คานคอดิน GB (ground-level tie beam) running continuously between fence columns. Not on the building's own structural grid (see wrapper-level warnings).", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "base_plate_F_bolt", "element_type": "connection_detail", "description": "bolted base-plate connection 'F' at each column-to-GB junction (hex-bolt symbol shown twice per column)", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "column_spacing_note", "element_type": "dimension_note", "printed_as": "ระยะไม่เกิน 3.00 ม.", "value_m": 3.00, "description": "maximum column spacing note, printed at both the plan and (repeated) the front elevation", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "gap_dims_plan", "element_type": "dimension", "values_m": [0.30, 0.15, 0.15, 0.30], "description": "0.30/0.15/0.15 sub-dimensions at each end of the plan bay, around the base-plate bolt positions", "confidence_score": 0.75, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "This is 'รั้วแบบที่ 1' (Fence Type 1) -- a structural boundary/perimeter fence with real RC column (C1) and ground-beam (GB) reinforcement, genuinely different in kind from หน้า25's house entrance gate (steel picket gate, no concrete structure) and หน้า23's balcony guardrail (no concrete structure either). This sheet carries real rebar specs; see view2/view3 for the C1/GB reinforcement detail.",
+    "One of 5 distinct titled/scaled views on this sheet: plan (this file, 1:25), column C1 expansion (1:20), tie-beam GB expansion (1:20), front elevation (1:25), and section (1:25). Inventoried per spec §3 before splitting.",
+    "No grid_ref applies to any element on this sheet -- this fence runs along the property boundary (แนวเขตที่ดิน, named explicitly on view5's section), independent of the building's own structural grid."
+  ]
+}

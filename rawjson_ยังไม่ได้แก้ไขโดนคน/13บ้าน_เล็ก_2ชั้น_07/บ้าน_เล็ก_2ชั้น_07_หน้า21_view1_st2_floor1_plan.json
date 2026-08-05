@@ -1,0 +1,76 @@
+{
+  "png": "21",
+  "doc_page": 19,
+  "discipline": "architecture",
+  "sheet_code": "A-19",
+  "sheet_name": "แบบขยายบันได ST.2",
+  "pattern": "plan",
+  "view_title": "แปลนชั้นล่าง บันได ST.2",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า21.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": ["view1_st2_floor1_plan (this file)", "view2_st2_floor2_plan (_view2_st2_floor2_plan.json)"],
+  "elements": [
+    {
+      "element_id": "ST.2",
+      "element_type": "stair",
+      "count": 1,
+      "grid_ref": "D-C x 1-2",
+      "description": "แปลนชั้นล่าง บันได ST.2 — THIS is the main interior stair connecting ground floor (+0.60) to upper floor (+3.75), matching the switchback stair drawn in section on หน้า15's รูปตัด 3. Ground-floor-plan cut shows the first flight, treads 1-9 (numbered right-to-left, 'ขึ้น' up-arrow pointing left), with a diagonal winder/turn line near tread 9 marking where the flight turns at the landing toward the return flight (continues on the upper-floor-plan view).",
+      "tread_count_this_flight": 9,
+      "tread_depth_m": 0.25,
+      "run_dimension_printed_as": "9 @ 0.25 = 2.25",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "เก็บของ_st2_ref",
+      "element_type": "room",
+      "level_m": 0.60,
+      "level_m_printed_as": "+0.60",
+      "floor_material_no": 4,
+      "ceiling_material_no": 5,
+      "printed_as": "4 +0.60 5",
+      "grid_ref": "~D",
+      "description": "เก็บของ (storage under/beside the stair) — exact match to หน้า15's เก็บของ_cut (same printed_as '4 +0.60 5')",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "โถง_st2_floor1_ref",
+      "element_type": "room",
+      "level_m": 0.60,
+      "level_m_printed_as": "+0.60",
+      "floor_material_no": 1,
+      "ceiling_material_no": 1,
+      "printed_as": "1 +0.60 1",
+      "grid_ref": "~2",
+      "description": "โถง (ground-floor hall) at the foot of the stair — matches หน้า15/18/19's โถง_ชั้น1_cut exactly",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "st2_floor1_dims",
+      "element_type": "dimension_chain",
+      "description": "Two independent chains from the same left wall, not required to reconcile with each other (different purposes): (a) overall enclosure — 1.10 + 2.35 + 1.15 = 4.60 (wall-to-wall incl. เก็บของ/door zone); (b) stair-tread-focused — 1.10 + 2.25 + 1.05 = 4.40 (tread run zone only, 9 treads @ 0.25m). Both start flush at the same left wall (offset 1.10 from it to grid '1').",
+      "segments_m": [1.10, 2.35, 1.15, 2.25, 1.05],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "wall_finish_triangle_codes_st2_floor1",
+      "element_type": "symbol",
+      "description": "Multiple small hollow-triangle callouts, all reading '1' — same unresolved wall-finish code family as elsewhere in this house's architecture set",
+      "confidence_score": 0.55,
+      "confidence_flags": ["legend_key_not_available_within_assigned_pages"]
+    }
+  ],
+  "confidence_score": 0.83,
+  "confidence_flags": [],
+  "warnings": [
+    "GRID CONFIRMATION (positive, no conflict): grid D-to-C = 2.20m and grid1-to-2 = 3.50m both match the grid master exactly — same bay pattern as หน้า20's ST.1 sheet, further reinforcing the master's reliability on this house.",
+    "This is the MAIN INTERIOR STAIR (previously only seen unmarked in section on หน้า15's รูปตัด 3, which itself flagged 'no printed mark ST# on this sheet' — this page (A-19) supplies that mark: ST.2). Distinct from หน้า20's ST.1, which is a short exterior entrance stair in a completely different location (grid A-B, not D-C).",
+    "One of 2 views on this sheet; sibling is the upper-floor plan _view2_st2_floor2_plan.json — no section view is included on THIS sheet (unlike ST.1's combined plan+section sheet); a dedicated ST.2 section, if one exists, was not found within this assignment's page range and may be on a page outside it.",
+    "เก็บของ and โถง room-label boxes both exactly match their respective หน้า15 room_cut entries — strong cross-page confirmation, no new conflicts.",
+    "The two independent dimension chains (4.60 overall vs 4.40 tread-focused) are NOT a conflict — they measure different extents from the same reference wall, a normal stair-drawing convention (overall enclosure vs. the tread run itself, which stops short of the far wall at a landing)."
+  ]
+}
