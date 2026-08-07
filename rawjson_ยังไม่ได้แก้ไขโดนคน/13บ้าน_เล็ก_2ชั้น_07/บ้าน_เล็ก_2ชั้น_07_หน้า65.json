@@ -1,0 +1,59 @@
+{
+  "png": "65",
+  "doc_page": 63,
+  "printed_page": 63,
+  "discipline": "mechanical",
+  "sheet_code": "M-01",
+  "sheet_name": "ตำแหน่งติดตั้งพัดลมระบายอากาศที่แนะนำ ชั้นที่ 1",
+  "pattern": "plan",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-08-02 FORMAT LOCK revision)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า65.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "scale": "1:100",
+  "level": "ชั้นที่ 1",
+  "drawing_no": "M 58107",
+  "sheet_total": 2,
+  "elements": [
+    {
+      "element_id": "propeller_fan_ครัว",
+      "element_type": "accessory",
+      "description": "PROPELLER FAN TYPE (400 CFM.) ติดตั้งที่ผนังระหว่างครัวกับซักล้าง เดินท่อลมเส้นประไปทางซักล้าง",
+      "room": "ครัว",
+      "count": 1,
+      "grid_ref": "~E3",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "exhaust_grille_ห้องน้ำ_ล่าง",
+      "element_type": "accessory",
+      "description": "EXHAUST AIR GRILL W/INS ขนาด 6\"x6\" คู่กับ CEILING FAN (120 CFM.) ในห้องน้ำชั้นล่าง ใกล้บันได",
+      "room": "ห้องน้ำ",
+      "count": 1,
+      "grid_ref": "~D-C x 2-3",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ceiling_fan_ห้องน้ำ_ล่าง",
+      "element_type": "ceiling_fan",
+      "description": "CEILING FAN (120 CFM.) คู่กับ EXHAUST AIR GRILL W/INS 6\"x6\" ในห้องน้ำชั้นล่าง",
+      "room": "ห้องน้ำ",
+      "count": 1,
+      "capacity_cfm": 120,
+      "grid_ref": "~D-C x 2-3",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 13, Stage-2 SN-EE-M agent). First of 2 mechanical sheets (M-01 of 2) -- together with M-02 (page 66) covers this house's full ventilation-fan/AC layout, split by floor same as the electrical lighting/outlet plans. Sheet title only mentions 'พัดลมระบายอากาศ' (ventilation fans), no AC units on this floor -- matches houses 04/10's equivalent M-01 (ground floor has no bedrooms, so no wall-type AC here; AC units are all on M-02's upper floor).",
+    "Only 2 ventilation devices total on this floor (1 kitchen propeller fan + 1 ground-floor bathroom ceiling-fan/grille pair) -- same count and layout as house #4's/#10's equivalent M-01 sheet for this house series, consistent with a small ground floor with no bedrooms.",
+    "Underlying room/grid drawing on this sheet is printed in a faint/light line weight (a 'recommended position' overlay on top of the architectural floor plan, per the sheet's own 'ที่แนะนำ' (recommended) title) while only the 2 mechanical fixtures and their callout boxes are printed bold -- room names/grid transcribed from the faint layer with slightly lower confidence than a normal plan sheet.",
+    "GRID CAVEAT: the printed dimension chain on this faint overlay reads '1.10 / 3.50 / 3.00' with a partially-cropped final tick near the right edge, and a separate '6.50' overall figure -- this does not cleanly resolve against the authoritative grid master (x: 1'=-1.10, 1=0, 2=3.50, 3=7.00, 3'=8.10, confirmed from the S-04/S-05 structural beam plans). Since this M-sheet is an explicitly non-binding 'แนะนำ' (recommended) overlay and the fixtures shown are not themselves dimensioned to any grid line, grid_ref values here are approximate room-based (~) reads against the master, and the sheet's own printed dimension chain is not used for span/position math -- consistent with the standing rule that structural S-sheets, not M/E overlays, govern grid geometry.",
+    "element_type 'accessory' used for the propeller fan and exhaust grille (neither is a ceiling fan) since no more specific canonical §0.4 value fits a wall/duct-mounted ventilation fan or grille; 'ceiling_fan' (core list) used only for the actual ceiling-mounted fan unit."
+  ]
+}

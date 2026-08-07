@@ -1,0 +1,42 @@
+{
+  "png": "26",
+  "doc_page": 24,
+  "discipline": "architecture",
+  "sheet_code": "A-24",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 1",
+  "pattern": "section",
+  "view_title": "ขยายคานคอดิน GB, 1:20",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า26.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": [
+    "view1_fence_type1_plan (_view1_fence_type1_plan.json)",
+    "view2_fence_type1_column_c1_detail (_view2_fence_type1_column_c1_detail.json)",
+    "view3_fence_type1_tie_beam_gb_detail (this file)",
+    "view4_fence_type1_front_elevation (_view4_fence_type1_front_elevation.json)",
+    "view5_fence_type1_section (_view5_fence_type1_section.json)"
+  ],
+  "elements": [
+    {
+      "element_id": "GB",
+      "element_type": "tie_beam",
+      "width_mm": 200,
+      "height_mm": 300,
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 9, "type": "RB" },
+        "bottom": { "count": 3, "dia_mm": 9, "type": "RB", "note": "2 เส้นตรง + 1 เส้นดัด (2 straight + 1 bent bar, BENT at L/5 from support -- shown at the bottom face in this typical cross-section; the bent bar rises to become a top bar elsewhere along the beam length near supports, per standard practice, not shown in this section itself)" }
+      },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" },
+      "printed_as": "2-Ø9 (top), 2-Ø9+1Ø9 BENT L/5 (bottom), STR:Ø6@150",
+      "material": "concrete (RC ground-level tie beam, คานคอดิน)",
+      "confidence_score": 0.82,
+      "confidence_flags": ["bent-bar_L/5_notation_interpreted_per_standard_RC_detailing_practice_not_independently_confirmed_by_an_elevation_view_of_GB_on_this_sheet"]
+    }
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 5 views on this sheet; siblings are the plan (_view1_fence_type1_plan.json), column C1 detail (_view2_fence_type1_column_c1_detail.json), front elevation (_view4_fence_type1_front_elevation.json), and section (_view5_fence_type1_section.json).",
+    "GB (a beam-type member, not a column) correctly uses the top/bottom main_bar split per spec §6/§7, unlike C1 which correctly uses the column single-count exception -- both conventions applied deliberately, not interchangeably.",
+    "This 200x300mm GB size, combined with view5's 'รูปตัด' section, resolves against หน้า26's own front-elevation height ladder: the ladder's 0.10+0.10+0.10=0.30 sub-segment near ground level matches GB's own 300mm depth exactly (see view4's warnings)."
+  ]
+}

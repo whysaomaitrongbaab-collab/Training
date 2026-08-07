@@ -1,0 +1,80 @@
+{
+  "png": "11",
+  "doc_page": 9,
+  "discipline": "architecture",
+  "sheet_code": "A-09",
+  "sheet_name": "รูปด้าน 3",
+  "pattern": "side_profile",
+  "view_title": "รูปด้าน 3",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า11.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "levels",
+      "element_type": "datum",
+      "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับพื้นชั้น 2 +3.15 (as printed — see confidence_flags/warnings, this almost certainly should read +3.75), ระดับคานหลังคา +6.65. Height chain segments printed: 0.60, 3.15 (floor1-to-floor2 rise), 2.90 (floor2-to-roof-beam rise) — these segment heights sum correctly (0.60+3.15+2.90=6.65) regardless of the cumulative-label typo below.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "LEVEL_LABEL_TYPO: this sheet prints the floor-2 cumulative level as '+3.15', but every other sheet in this agent's page range that carries the same datum (site plan _หน้า05, both floor plans _หน้า06/_หน้า07, elevation1 _หน้า09, elevation2 _หน้า10) consistently prints '+3.75'. '3.15' is exactly the segment height (floor1 +0.60 to floor2, a rise of 3.15m) printed immediately below on this same sheet's own dimension chain — almost certainly a drafting copy-paste error (grabbed the segment-rise number instead of the cumulative level) rather than a genuine design difference. Recorded as printed per the 'record as given, don't silently correct' rule, with this flag; 5 independent sheets vs 1 favor +3.75 as the true value."
+      ]
+    },
+    {
+      "element_id": "roof_profile",
+      "element_type": "roof_frame_reference",
+      "description": "Flat, parapet-topped roofline with a plain fascia/cornice band — no visible slope in this view, consistent with _หน้า09_elevation1.json (both are y-axis views, grid1/2/3 at the bottom, so an x-perpendicular/y-direction roof slope would appear edge-on/flat here per the corrected roof interpretation in _หน้า08_roof_plan.json).",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "control_joint_pvc_strip",
+      "element_type": "control_joint",
+      "count": 2,
+      "description": "'เซาะร่อง หรือ ฝังเส้น PVC' reveal lines — one below the roof-beam level line, one below the floor-2 level line, both right side",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "windows_upper_floor",
+      "element_type": "window",
+      "count": 2,
+      "description": "Two hexagon-tagged '1' windows side by side, upper floor",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "door_lower_floor",
+      "element_type": "door",
+      "count": 1,
+      "description": "Circle-tagged '2' door, ground floor, with a small step/threshold drawn below it",
+      "confidence_score": 0.68,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "window_lower_floor",
+      "element_type": "window",
+      "count": 1,
+      "description": "Hexagon-tagged '1' window, ground floor, right of the door",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "triangle_marker_symbols",
+      "element_type": "reference_marker",
+      "count": 4,
+      "description": "Small triangle '1' symbols near each window/door, same recurring undocumented convention as every other sheet",
+      "confidence_score": 0.4,
+      "confidence_flags": ["needs_human_review_zoom_required", "triangle_symbol_meaning_not_identified_in_the_symbol_legend_(หน้า03)"]
+    }
+  ],
+  "confidence_score": 0.66,
+  "confidence_flags": [
+    "compass_direction_(N/S/E/W)_of_this_elevation_not_independently_verified_-_only_the_sheet-to-slot_mapping_(3=A-09,_top_of_the_floor-plan_callout_bubble)_is_used"
+  ],
+  "warnings": [
+    "GRID-RELEVANT (reporting only, master file NOT edited): bottom dimension chain reads '0.80 | 0.50 | 3.00 | 3.50 | 1.10 | 0.20' (brackets '1.30 | 6.50 | 1.30') with grid markers '3, 2, 1' printed LEFT TO RIGHT — i.e. mirrored/reversed compared to _หน้า09_elevation1.json's '1, 2, 3' left-to-right. This is the exact mirror image of elevation1's own chain (which read 0.20|1.10|3.50|3.00|0.50|0.80 with grids 1,2,3) — consistent with A-09 being the opposite-facing (back) elevation of the same building face pattern seen from A-07 (front). grid1 (relative 0) and grid3 (relative 7.00) both reconcile against the master by the same reasoning already detailed in _หน้า09_elevation1.json's warnings (3.50+3.00+0.50=7.00); the same asymmetric implied-overhang finding (1.30 one side, 0.80 the other, within this specific fine chain vs the roof plan's symmetric 1.30/1.30) applies here too, mirrored, not treated as a new/separate discrepancy.",
+    "MOST NOTABLE FINDING ON THIS SHEET: the floor-2 level label reads '+3.15' where every other sheet in range says '+3.75' — see the 'levels' element above for full detail. Flagged prominently per the task's standing instruction to surface anything contradicting other sheets.",
+    "This elevation corresponds to compass-slot '3' (top) on the floor plan's 4-way elevation callout bubble — cardinal direction not independently confirmed from this sheet alone.",
+    "Individual door/window opening-number-to-schedule cross-match not confidently resolvable at this resolution — the door/window schedule sheet (A-14) is outside this agent's assigned page range."
+  ]
+}

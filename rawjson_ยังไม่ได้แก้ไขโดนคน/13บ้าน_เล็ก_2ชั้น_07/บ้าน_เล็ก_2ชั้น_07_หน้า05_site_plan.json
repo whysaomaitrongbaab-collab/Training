@@ -1,0 +1,86 @@
+{
+  "png": "05",
+  "doc_page": 3,
+  "discipline": "architecture",
+  "sheet_code": "A-03",
+  "sheet_name": "ผังบริเวณ",
+  "pattern": "site_plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า05.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "lot_dimensions": {
+    "min_lot_width_m": 12.2,
+    "min_lot_width_breakdown_m": [3.5, 3.5],
+    "min_lot_width_note": "ต้องการที่ดินกว้างอย่างน้อย = 12.20 ม. Top dimension chain (verified at 2x-3x zoom): 'A' (undimensioned setback, แนวเสา/setback-letter zone) | 7.00 bracket over grid1-grid3, sub-split 3.50+3.50 | 1.10 (grid3 to building's east edge) | 'A' (undimensioned setback) = 12.20 total. The 7.00 bracket (3.50+3.50) exactly matches the grid master's x_lines (1=0.00, 2=3.50, 3=7.00). The 1.10 segment beyond grid3 independently confirms the grid master's dummy grid 3' (pos_m 8.10 = 7.00+1.10) from a completely independent (architecture, not structural) sheet. If both 'A' zones are equal, 2xA = 12.20-7.00-1.10 = 4.10, i.e. A ≈ 2.05m each side — not independently printed as a number, inferred by subtraction only.",
+    "min_lot_depth_m": 15.9,
+    "building_footprint_depth_m": 10.7,
+    "min_lot_depth_note": "ต้องการที่ดินกว้างอย่างน้อย = 15.90 ม. (label reads 'กว้าง' even though this is the vertical/depth-axis chain — same wording ambiguity as sister houses' equivalent sheet; likely means 'ลึก' (depth), transcribed as printed rather than silently corrected). Left dimension chain (verified at 3x zoom), top to bottom: 'A' (undimensioned setback, no number, terminates right above gridE) | 10.70 bracket gridE-gridA, sub-split 3.00(E-D)+2.20(D-C)+4.00(C-B)+1.50(B-A), exactly matching the grid master's y_lines (E=0.00,D=3.00,C=5.20,B=9.20,A=10.70) | 2.05 (gridA to the south property line) | 'B' (a second, wider bracket spanning from gridA down to/through the same property-line point as the 2.05 tick — 'B' and '2.05' terminate at the same point in this house, unlike sister house #1 (บ้าน_เล็ก_2ชั้น_01) whose equivalent sheet showed a further distinct 0.95m segment beyond its own 2.05 leading to a second dummy grid A''; no such further segment is visible here). 15.90 - 10.70 - 2.05 = 3.15m computed (not printed) for the undimensioned north-of-E 'A' zone.",
+    "confidence_score": 0.85,
+    "confidence_flags": [
+      "GRID_MASTER_CORROBORATION: the 2.05m dimension from gridA to the south property line, read independently on this architecture sheet, exactly matches the grid master's dummy grid A' offset (10.70+2.05=12.75) — see warnings[] for full detail; this is a second, independent confirmation of a grid line the master itself flagged at reduced confidence (0.7) since it had only one structural source (S-04) referencing an unopened detail sheet.",
+      "min_lot_width/depth vertical-axis label wording ('กว้าง' vs likely-intended 'ลึก') read at medium confidence due to 90°-rotated small print, matching the same ambiguity flagged on sister houses' equivalent sheet"
+    ]
+  },
+  "elements": [
+    {
+      "element_id": "building_footprint",
+      "element_type": "building_outline",
+      "description": "Ground-floor footprint reproduced at site-plan scale (1:100), matching the floor plan (A-04, หน้า06): ปรับระดับดินถม (NW corner, north of gridE), ซักล้าง (+0.20, adjoins ปรับระดับดินถม, north of gridE), ทานอาหาร (+0.60), ครัว (+0.60, sink fixture icon shown), เก็บของ (+0.60, small 1.00m-wide nook dimension shown), โถง (+0.60, contains the main stair, steps numbered with 'ขึ้น'/up arrow), ห้องน้ำ (+0.50, toilet fixture drawn), พักผ่อน (+0.60), จอดรถ (+0.20, open carport), เฉลียง (+0.50, box-tag '3 +0.50 (3)', entry step 'ขึ้น' with door/opening tag '4 +0.20') — not re-itemized room-by-room in this file, see the sibling floor-plan file for the authoritative ground-floor room list/levels once written. Room layout, names and level values are near-identical to sister house #1 (บ้าน_เล็ก_2ชั้น_01, same government program series) whose site plan lists the same 10 room names in nearly the same arrangement — flagged as a notable resemblance, not assumed to be structurally identical given this house is a different named design (บ้านต้านภัยพิบัติแผ่นดินไหว 2, earthquake-resistant variant).",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ปรับระดับดินถม_northwest",
+      "element_type": "grading_note",
+      "description": "'ปรับระดับดินถม ±0.00' zone at the north-west corner of the site, west of/beside ซักล้าง, north of gridE (in the undimensioned 'A' setback zone)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ปรับระดับดินถม_east",
+      "element_type": "grading_note",
+      "description": "'ปรับระดับดินถม ±0.00' zone at the east edge, beside จอดรถ (carport), roughly gridB-gridA",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ปรับระดับดินถม_southwest",
+      "element_type": "grading_note",
+      "description": "'ปรับระดับดินถม ±0.00' zone south-west, beside เฉลียง's entry step ('ขึ้น', door/opening tag '4 +0.20'), between gridA and the south property line",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ถนนสาธารณะ",
+      "element_type": "road",
+      "description": "Public road (ถนนสาธารณะ ±0.00) running along the south edge of the lot, below the building footprint",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แนวเขตที่ดิน",
+      "element_type": "lot_boundary",
+      "description": "Dash-dot lot boundary line ('<<แนวเขตที่ดิน>>') drawn around the full 12.20 x 15.90 lot, offset from the building footprint on all 4 sides, with small circle markers at its 4 corners",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "notes": [
+    "ผังบริเวณนี้เป็นเพียงตัวอย่างเพื่อประมาณราคาก่อสร้างส่วนประกอบอาคารเท่านั้น ส่วนรายละเอียดของสถานที่จริง ให้กำหนดรายละเอียดขณะก่อสร้าง",
+    "สายเมนไฟฟ้าให้เข้าทางด้านหน้า",
+    "A = ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 2 ม. หรือตามที่กฎหมายกำหนด",
+    "B = ระยะปรับตามขนาดที่ดิน แต่ไม่น้อยกว่า 3 ม. หรือตามที่กฎหมายกำหนด",
+    "รางระบายน้ำให้ต่อลงบ่อพักภายนอก หรือที่กำหนดให้",
+    "ตำแหน่ง ถังบำบัดน้ำเสีย บ่อพักน้ำทิ้ง บ่อดักไขมัน แนวท่อ น้ำดี น้ำเสีย และท่อโสโครก ให้ดูแบบสุขาภิบาล"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet (A-03) is the site-placement plan, distinct from the room-level floor plan (A-04, หน้า06) — same ground-floor building outline shown at 1:100, but this sheet's own content is the lot boundary, setback labels A/B, grading notes, and road. Only the ground floor is shown (site plans conventionally only show the footprint/roof outline, not the upper floor).",
+    "GRID-RELEVANT, HIGH VALUE FINDING FOR THE COORDINATING SESSION (reporting only, master file NOT edited by this agent — read-only per task instructions): this site plan's own dimension chain independently reproduces almost the entire main structural grid — x_lines 1(0.00)/2(3.50)/3(7.00) via the printed 3.50+3.50 sub-split, and y_lines E(0.00)/D(3.00)/C(5.20)/B(9.20)/A(10.70) via the printed 3.00+2.20+4.00+1.50 sub-split — both exactly matching หน้า00_gridline.json with zero discrepancy. It ALSO independently confirms dummy grid 3' (x=8.10) via an explicit printed '1.10' beyond grid3. MOST NOTABLY, it independently confirms dummy grid A' (y=12.75) via an explicit printed '2.05' beyond gridA on the south side — the grid master's own note flags A' at reduced confidence_score 0.7 specifically because it previously had only ONE source (S-04, a structural sheet, referencing an unopened 'แบบขยาย 2' detail). This architecture site plan is a SECOND, fully independent source (different discipline, different sheet, drawn for a different purpose) for the identical 2.05m offset — the coordinating session should consider raising A''s confidence_score in the master given this corroboration, though this agent has not edited that file.",
+    "Unlike sister house #1 (บ้าน_เล็ก_2ชั้น_01), whose y-axis grid values (E=0,D=3.0,C=5.2,B=9.2,A=10.7) are IDENTICAL to this house's, and whose equivalent site-plan sheet shows a further distinct 0.95m segment beyond its own 2.05m (leading to a second dummy grid A'' at 13.7), THIS house's site plan shows no such further segment — the '2.05' and the 'B' setback-formula bracket both terminate at the same south property-line point here. This house's grid master (already built) has only one south-side y-dummy (A', not A''), consistent with what this sheet shows — flagged as a genuine difference between the two sister houses, not something to assume carries over.",
+    "The x-axis does NOT show an explicit dimension confirming or contradicting dummy grid 1' (x=-1.10, west overhang) — the zone west of grid1 is folded into the generic undimensioned 'A' setback label on this sheet, same as the zone north of gridE. Neither confirms nor contradicts the grid master's dummy grid 1' (which the master itself sources from the structural S-04/S-05 sheets, outside this agent's assigned page range).",
+    "Room layout/names/levels closely resemble sister house #1's (บ้าน_เล็ก_2ชั้น_01) equivalent A-03 sheet (same 10 room names: ปรับระดับดินถม, ซักล้าง, ทานอาหาร, ครัว, เก็บของ, โถง, ห้องน้ำ, พักผ่อน, จอดรถ, เฉลียง) — this house's y-axis grid is identical to house #1's, though its x-axis grid is 0.50m wider (7.00m vs house #1's 6.50m for the 1-3 span) and this is a differently-named design (บ้านต้านภัยพิบัติแผ่นดินไหว 2 vs house #1's design), so treated as a strong resemblance worth noting, not assumed identical.",
+    "Notes wording (setback rule text, A/B definitions) matches houses #1/#3/#4's equivalent A-03 sheet almost exactly (same government program template) aside from house-specific lot dimensions."
+  ]
+}

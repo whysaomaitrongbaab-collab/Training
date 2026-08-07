@@ -1,0 +1,69 @@
+{
+  "png": "10",
+  "doc_page": 8,
+  "discipline": "architecture",
+  "sheet_code": "A-08",
+  "sheet_name": "รูปด้าน 2",
+  "pattern": "side_profile",
+  "view_title": "รูปด้าน 2",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า10.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "levels",
+      "element_type": "datum",
+      "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับพื้นชั้น 2 +3.75, ระดับคานหลังคา +6.65 (height chain 0.60 + 3.15 + 2.90 = 6.65) — identical to _หน้า09_elevation1.json",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "roof_profile",
+      "element_type": "roof_frame_reference",
+      "description": "This is the SIDE elevation (grid E/D/C/B/A along the bottom, i.e. viewed along the x/1-2-3 axis) and shows the roof edge as ONE continuous straight diagonal line rising from low near gridE to high near gridA, with a small '6°' slope-angle marker at the low (gridE) end — NOT a symmetric peaked/gabled silhouette. RE-VERIFIED 3 SEPARATE TIMES with full-context crops (grid letters + roofline + level labels together) specifically because this reading disagrees with 3 other sheets — see warnings[]: this sheet is now identified as the likely-erroneous OUTLIER (3 sheets vs 1), not this agent's misreading.",
+      "confidence_score": 0.72,
+      "confidence_flags": ["slope_direction_(rising_toward_A_vs_toward_E)_read_from_the_drawing's_own_up-right_diagonal,_re-verified_3_times,_but_disagrees_with_3_other_sheets_(_หน้า12_elevation4.json,_หน้า13_section1.json,_หน้า14_section2.json)_-_flagged_as_this_sheet's_own_likely_drafting_error_per_the_standing_precedence_rule"]
+    },
+    {
+      "element_id": "control_joint_pvc_strip",
+      "element_type": "control_joint",
+      "count": 3,
+      "description": "'เซาะร่อง หรือ ฝังเส้น PVC' reveal lines — one upper-right near the roof-beam level line, one at the floor-2 level line (left side), one at the floor-1 level line (left side)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "windows_upper_floor",
+      "element_type": "window",
+      "count": null,
+      "description": "Upper floor shows a cluster of hexagon-tagged '2' windows (at least 3: two on the right/นอน3-ห้องน้ำ2 side, one on the left/นอน2 side) flanking a central double-leaf glazed door with a small fanlight tagged '5' above it (matching the hexagon '5' window-reference already seen on the floor plan near ห้องน้ำ2/ช่องท่อ)",
+      "confidence_score": 0.68,
+      "confidence_flags": ["needs_human_review_zoom_required", "exact window-to-room match not independently confirmed"]
+    },
+    {
+      "element_id": "windows_lower_floor",
+      "element_type": "window",
+      "count": null,
+      "description": "Ground floor shows hexagon-tagged '1' and '2' windows flanking the same central double-leaf door position as the floor above (continuing down)",
+      "confidence_score": 0.65,
+      "confidence_flags": ["needs_human_review_zoom_required"]
+    },
+    {
+      "element_id": "triangle_marker_symbols",
+      "element_type": "reference_marker",
+      "count": 5,
+      "description": "Small triangle '1' symbols scattered at various heights across the facade, same recurring undocumented convention as every other sheet in this set",
+      "confidence_score": 0.4,
+      "confidence_flags": ["needs_human_review_zoom_required", "triangle_symbol_meaning_not_identified_in_the_symbol_legend_(หน้า03)"]
+    }
+  ],
+  "confidence_score": 0.71,
+  "confidence_flags": [
+    "compass_direction_(N/S/E/W)_of_this_elevation_not_independently_verified_-_only_the_sheet-to-slot_mapping_(2=A-08,_left_of_the_floor-plan_callout_bubble)_is_used"
+  ],
+  "warnings": [
+    "GRID-RELEVANT (reporting only, master file NOT edited): bottom dimension chain reads '1.50 | 3.00 | 2.20 | 4.00 | 1.50 | 2.05' with bracket '10.70' spanning gridE-gridA (sub-split 3.00+2.20+4.00+1.50, exactly matching the grid master's y_lines E/D/C/B/A) plus a further separate '1.50' bracket drawn near a small step/notch in the building outline just right of the '2.05'. This is a strong THREE-WAY cross-check: the grid master + both floor plan sheets (_หน้า06/_หน้า07) + this elevation all agree exactly on E/D/C/B/A. The 2.05 (ground floor's south extent, matching dummy grid A' at 12.75) and the separate 1.50 (upper floor's shorter south extent per _หน้า07) both appear here too, drawn as a literal visible STEP in the building profile where the ground-floor entry/carport apron projects further south than the upper floor's balcony above it — a physical, visual confirmation of the two-floors-different-south-extent finding already flagged on _หน้า07_floor_plan_upper.json, not a new contradiction.",
+    "CORRECTION TO _หน้า08... (this house's) ROOF PLAN FILE, made while writing this file: _หน้า08_roof_plan.json's 'roof_covering' element originally described the roof plan's two 'SLOPE 6°' labels as indicating 'a central ridge running roughly north-south near grid2 with both faces sloping down' (i.e. a symmetric gable, ridge parallel to the y/E-A axis). THIS elevation (viewed along the x-axis, so any slope in the y-direction is fully visible edge-on) shows the roof edge as ONE continuous straight diagonal from low(E) to high(A) — not a peaked gable silhouette at all. Cross-checked against _หน้า09_elevation1.json (viewed along the y-axis, so a y-direction slope would be invisible/edge-on in orthographic projection) which independently shows a flat, parapet-like roofline with no visible peak — consistent with a slope that runs in the y-direction, not the x-direction. CORRECTED INTERPRETATION: the roof is most likely a pair of parallel MONO-PITCH (shed) planes, one over roughly grid1-2 and one over roughly grid2-3 (explaining the roof plan's two separate 'SLOPE 6°' labels at two different x-positions and the 'fold line' near grid2, which is a valley/step between the two shed sections, not a ridge), both sloping the same direction in y (low near gridE, high near gridA) at the same ~6° pitch, appearing to merge into one visible diagonal edge in this x-axis side view since both sections share the same y-extent and slope. This reading is more consistent with the actual elevation evidence than a symmetric gable — not independently confirmed against a structural roof-framing sheet (outside this extraction's architecture-only scope), so flagged at moderate confidence rather than treated as certain. SUPERSEDED IN PART, recorded while extracting _หน้า12_elevation4.json: the 'both sloping the same direction (low-E-high-A)' conclusion above is overturned — elevation4 (the opposite x-side view) shows the OPPOSITE assignment (low-A-high-E). This sheet's own direct reading (this elevation's diagonal is low-gridE/high-gridA) stays accurate and unchanged as a transcription of what THIS sheet prints. FINAL RESOLUTION, recorded while extracting _หน้า14_section2.json: with _หน้า13_section1.json and _หน้า14_section2.json ALSO read (both re-verified with full-context crops), the 3-sheet majority (elevation4 + section1 + section2) all agree on LOW-gridA/HIGH-gridE — the opposite of what this sheet (A-08) shows. This sheet is therefore the outlier; most likely a real drafting inconsistency on A-08 itself. _หน้า08_roof_plan.json carries the final synthesis of all 5 sheets (roof plan + 4 elevations/sections).",
+    "Individual window-to-room cross-match not confidently resolvable at this resolution — the door/window schedule sheet (A-14) is outside this agent's assigned page range."
+  ]
+}

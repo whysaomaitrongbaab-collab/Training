@@ -1,0 +1,51 @@
+{
+  "png": "23",
+  "doc_page": 21,
+  "discipline": "architecture",
+  "sheet_code": "A-21",
+  "sheet_name": "แบบขยายราวกันตก",
+  "pattern": "section",
+  "view_title": "แบบขยาย รูปตัดราวกันตก (R1), 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า23.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": ["view1_balcony_plan (_view1_balcony_plan.json)", "view2_guardrail_elevation (_view2_guardrail_elevation.json)", "view3_guardrail_section (this file)"],
+  "elements": [
+    {
+      "element_id": "นอน1_ref",
+      "element_type": "room",
+      "level_m": 3.75,
+      "level_m_printed_as": "+3.75",
+      "floor_material_no": 2,
+      "ceiling_material_no": 1,
+      "printed_as": "2 +3.75 1",
+      "grid_ref": "~B",
+      "description": "นอน 1 (Bedroom 1) — a room name not seen elsewhere within this assignment's page range, adjacent to this balcony",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ระเบียง_section",
+      "element_type": "room_cut",
+      "level_m": 3.65,
+      "level_m_printed_as": "+3.65",
+      "floor_material_no": 3,
+      "ceiling_material_no": 3,
+      "printed_as": "3 +3.65 3",
+      "step_down_from_นอน1_m": 0.10,
+      "grid_ref": "B-A",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    { "element_id": "guardrail_section_rails", "element_type": "railing_component", "description": "ราวระเบียงเหล็กกล่อง 1\"x2\" (top), 1\"x1\" (lower), เหล็กแบน(FB) 1\"x6มม -- same three components as view2, shown in profile", "height_breakdown_m": [0.20, 0.20, 0.20, 0.20], "total_height_m": 0.80, "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "parapet_upstand", "element_type": "wall", "description": "small concrete upstand/curb at the balcony slab edge below the guardrail posts", "height_breakdown_m": [0.20, 0.15], "confidence_score": 0.65, "confidence_flags": ["exact_purpose_(waterproofing_upstand_vs_structural_curb)_not_labeled"] },
+    { "element_id": "guardrail_section_width_dim", "element_type": "dimension_chain", "segments_m": [1.50, 0.25], "grid_refs": ["B", "A"], "description": "1.50 from grid B to grid A (matches master), plus 0.25 cantilever beyond A to the balcony's outer guardrail line", "confidence_score": 0.85, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.83,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 3 views on this sheet; siblings are the balcony plan (_view1_balcony_plan.json) and guardrail front elevation (_view2_guardrail_elevation.json).",
+    "GRID CONFIRMATION (positive, no conflict): grid B-to-A = 1.50m matches the master exactly; the balcony guardrail line sits 0.25m beyond grid A (a cantilever), consistent with view1's plan.",
+    "นอน 1 (Bedroom 1) is a new room name for this house, first seen on this sheet — not present on any of หน้า15/18/19/21/22's room-label boxes read so far in this assignment. Its own floor plan is outside this assignment's page range.",
+    "0.10m step-down from นอน1 (+3.75) to ระเบียง (+3.65) confirmed exactly by both the printed levels and the printed '0.10' dimension — internally consistent, a threshold step at the bedroom-to-balcony door."
+  ]
+}

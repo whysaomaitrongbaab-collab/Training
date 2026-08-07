@@ -1,0 +1,29 @@
+{
+  "png": "25",
+  "doc_page": 23,
+  "discipline": "architecture",
+  "sheet_code": "A-23",
+  "sheet_name": "แบบขยายประตูรั้วบ้าน",
+  "pattern": "section",
+  "view_title": "รูปด้านหน้า -- front gate elevation, 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า25.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": ["view1_gate_elevation (this file)", "view2_gate_section (_view2_gate_section.json)", "view3_gate_latch_detail (_view3_gate_latch_detail.json)"],
+  "elements": [
+    { "element_id": "gate_picket", "element_type": "gate_component", "printed_as": "เหล็ก ⌀ 1\"x1\" LG. ปลายตัด45 องศา @ 15 ซม.", "description": "steel square-tube picket, 1x1 inch, LG (light-gauge), ends cut at 45°, spaced @15cm -- the symbol before the dimension prints as a small square/diamond glyph, likely denoting a square tube section, recorded verbatim", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "gate_frame", "element_type": "gate_component", "printed_as": "เหล็ก ⌀ 2\"x2\" LG. หนา 3.2 มม.", "description": "steel square-tube frame member, 2x2 inch, 3.2mm thick", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "gate_base_panel", "element_type": "gate_component", "printed_as": "แผ่นเหล็กทึบ หนา 4 มม.", "description": "solid steel base kick-panel, 4mm thick", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "gate_lock_reference", "element_type": "gate_component", "printed_as": "กลอนประตู (ดูแบบขยาย)", "description": "door latch/bolt -- cross-references view3 (แบบขยายกลอนประตู) on this same page", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "gate_height_dims", "element_type": "dimension", "values_m": [0.20, 0.50, 0.60, 0.20, 0.50], "total_m": 2.00, "description": "5-segment height ladder within the '2.00' bracket (0.20+0.50+0.60+0.20+0.50=2.00 exactly); re-verified by close crop", "confidence_score": 0.88, "confidence_flags": [] },
+    { "element_id": "gate_below_footpath_dim", "element_type": "dimension", "value_m": 0.20, "description": "a further 0.20m segment BELOW the main 2.00m bracket, between ระดับทางเท้า (footpath level) and ระดับถนน (road level) -- not part of the gate's own 2.00m height", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "gate_width_dim", "element_type": "dimension", "value_m": 4.00, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "level_references_gate", "element_type": "datum", "description": "ระดับทางเท้า (footpath level), ระดับถนน (road level) -- site levels, not tied to the building's own grid/datum system", "confidence_score": 0.8, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.83,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 3 views on this sheet; siblings are the gate section (_view2_gate_section.json) and latch detail (_view3_gate_latch_detail.json). No grid_ref applies -- this is a standalone hardware/construction detail, not tied to the building's structural grid.",
+    "Dimensions (4.00m wide, height bands 0.20/0.50/0.60/0.20/0.50=2.00) match a sister house's equivalent gate-elevation sheet closely, confirming shared design-office boilerplate. NOTE: that sister house's own recorded height-dimension array (7 values: [0.2,0.5,0.2,0.6,0.2,0.5,0.2]) does not actually sum to its own stated total_m of 2.0 (it sums to 2.4) -- almost certainly a transcription slip in that other house's file (likely double-counting the separate below-footpath 0.20m segment at both ends), not re-verified or corrected here since that file is outside this assignment and is someone else's protected ground truth; this house's own 5-segment reading was independently re-verified by close crop and is internally exact.",
+    "This sheet does not print a grid-position for the gate itself -- its location within the site plan is not determinable from this detail-only sheet."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "png": "21",
+  "doc_page": 19,
+  "discipline": "architecture",
+  "sheet_code": "A-19",
+  "sheet_name": "แบบขยายบันได ST.2",
+  "pattern": "plan",
+  "view_title": "แปลนชั้นบน บันได ST.2",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า21.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": ["view1_st2_floor1_plan (_view1_st2_floor1_plan.json)", "view2_st2_floor2_plan (this file)"],
+  "elements": [
+    {
+      "element_id": "ST.2_upper",
+      "element_type": "stair",
+      "count": 1,
+      "grid_ref": "D-C x 1-2",
+      "description": "แปลนชั้นบน บันได ST.2 — upper-floor-level plan cut of the same stairwell, looking down through the stair opening. Treads 3-10 are shown again (lighter/nested outline, visible below through the stairwell void — the tail end of the lower flight) plus treads 11-17 (the return flight actually arriving at this floor, 'ลง' down-arrow marks the top). Total 17 treads for the full ground-to-upper-floor rise.",
+      "tread_count_upper_flight": 7,
+      "tread_depth_m": 0.25,
+      "run_dimension_printed_as": "7 @ 0.25 = 1.75",
+      "total_tread_count_both_flights": 17,
+      "rise_check_note": "17 treads over a 3.15m floor-to-floor rise (+0.60 to +3.75 per หน้า15) implies ~0.185m/riser, a plausible standard riser height — consistency check only, riser height is not itself printed on this sheet",
+      "confidence_score": 0.82,
+      "confidence_flags": ["tread_numbering_overlap_(3-10_shown_on_both_this_and_the_floor1_plan)_interpreted_as_the_stairwell-void_view_convention_not_independently_confirmed_against_a_third_source"]
+    },
+    {
+      "element_id": "W5_window_ref",
+      "element_type": "window",
+      "count": 1,
+      "position_note": "left wall, at the stairwell landing height",
+      "description": "Hexagon '5' callout on the left (grid-D-side) wall — matches หน้า16's W5 spec exactly ('▼ ระดับชานพักบันได', stair-landing-level window) — this sheet is the definitive confirmation of WHICH stairwell W5 lights: ST.2's landing.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "โถง_st2_floor2_ref",
+      "element_type": "room",
+      "level_m": 3.75,
+      "level_m_printed_as": "+3.75",
+      "floor_material_no": 2,
+      "ceiling_material_no": 1,
+      "printed_as": "2 +3.75 1",
+      "grid_ref": "~2",
+      "description": "โถง (upper-floor hall) at the top of the stair — exact match to หน้า15's โถง_ชั้น2_cut (same printed_as '2 +3.75 1')",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "door_ref_upper",
+      "element_type": "door",
+      "count": 1,
+      "grid_ref": "~2",
+      "description": "swing-door symbol drawn at the top-right of this plan, opening into/from โถง — no circled door-type number visible at this position",
+      "confidence_score": 0.55,
+      "confidence_flags": ["door_type_not_marked_on_this_sheet"]
+    },
+    {
+      "element_id": "st2_floor2_dims",
+      "element_type": "dimension_chain",
+      "description": "1.10 (to grid1) + 3.50 (grid1-to-grid2, matches master) at the top; sub-dimension 1.85 from grid1 partway across (landing/turn-post reference, not independently labeled). Bottom: 1.10 + 1.75(=7@0.25, upper flight run) + 1.55 = 4.40 total, same left-wall reference as view1's 4.40 chain.",
+      "segments_m": [1.10, 3.50, 1.85, 1.10, 1.75, 1.55],
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "wall_finish_triangle_codes_st2_floor2",
+      "element_type": "symbol",
+      "description": "Multiple small hollow-triangle callouts, all reading '1' — same unresolved wall-finish code family as elsewhere in this house's architecture set",
+      "confidence_score": 0.55,
+      "confidence_flags": ["legend_key_not_available_within_assigned_pages"]
+    }
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "GRID CONFIRMATION (positive, no conflict): grid D-to-C = 2.20m and grid1-to-2 = 3.50m again match the grid master exactly on this second view of the same sheet.",
+    "This view resolves W5's location definitively — see element W5_window_ref. Cross-referenced against หน้า16 (door/window schedule, within this assignment).",
+    "The bottom dimension chain here (1.10+1.75+1.55=4.40) totals the same 4.40 as view1's tread-focused chain, but its middle segment (1.75, for 7 treads) differs from view1's (2.25, for 9 treads) — expected, since this view's flight has fewer treads (the upper/return flight) than view1's first flight (9 treads) — not a conflict, a different flight of the same switchback stair.",
+    "โถง box '2 +3.75 1' exactly matches หน้า15's โถง_ชั้น2_cut — strong cross-page confirmation.",
+    "No circled door-type number is visible at the door opening near grid 2 on this sheet, same gap as noted on หน้า18."
+  ]
+}
