@@ -56,6 +56,8 @@ This command does **not** skip any `rule_of_tune.md` protections — the output 
 
 Everything in the `op1` standing-order section above — the authority of `primary_rawjson_schema.md`, the conflict-precedence list, "every decision written into `warnings[]`", "never leave a field blank because a choice was hard" — applies unchanged to every stage of `op2`. Do not re-derive those rules; they are one ruleset, not two.
 
+**Before Stage 0 ever runs: the duplicate check (`op1` step 2) still applies, first.** Does any existing `0N<house_name>/` folder already match `<house_name>`? If so, stop and report it before spending a single model call.
+
 ### Why stage it at all — the measured split
 
 From house 07 (`บ้าน_ใหญ่_2ชั้น_01`), after 48 of 108 pages:
@@ -127,6 +129,16 @@ Use plain `op1` when a single model is doing the whole house anyway, or when the
 
 Everything in the `op1` standing-order section applies unchanged. `op3` is not a different way of extracting; it is `op1` plus an ending.
 
+### Two checks first — before arming anything
+
+Run both before Step 0 below. Arming a 90-minute shutdown timer for a house that's already done, or that already spent its one shutdown, is wasted at best and wrong at worst.
+
+1. **Duplicate check (`op1` step 2, done early):** does any existing `0N<house_name>/` folder already match `<house_name>`? If so, **stop and report it — do not arm the dead-man's switch at all.**
+2. **Resume check:** is this a continuation of a house whose dead-man's switch already fired once — Makham says to continue/resume a house that already shut the machine down before, or `0N<house_name>/` already holds a partial set with no matching row in `raw_json_data_log.md` and no commit for it? If either is true, this run is a **continuation**, not a fresh `op3`:
+   - Say so up front, explicitly: *"รอบนี้จะไม่ปิดเครื่องให้ตอนจบงานนะ เพราะบ้านนี้เคยปิดเครื่องไปแล้วรอบหนึ่ง"* — this round will not shut down at the end, because this house already used its shutdown once.
+   - Still arm the 90-minute safety net in Step 0 below — a second interruption deserves the same protection.
+   - But at the finishing gate, skip the clean shutdown (step 6's `shutdown /s /t 120`): cancel the armed timer and stop there, same as plain `op01`. See the exception noted under step 6 below.
+
 ### Arm the dead-man's switch first — before step 1
 
 The gate below only fires if Claude is still alive to run it. If the session runs out of tokens mid-house, nothing is left to ever reach step 6, and the laptop just sits on all night — exactly what `op3` exists to prevent. So the very first action of an `op3` run, before even reading the spec, is to arm an OS-level timer that does **not** depend on Claude still running:
@@ -159,6 +171,8 @@ Two ways it resolves:
    shutdown /s /t 120 /c "op3 finished <house_name> - shutting down. Run: shutdown /a  to cancel"
    ```
    **120 seconds, never `/t 0`** — that window is the only chance to stop it. Say `shutdown /a` cancels it, in the same message.
+
+   **Exception — continuation runs (the resume check above matched):** cancel the timer (`shutdown /a`) and stop there. Do not issue the clean `shutdown /s /t 120` — this house already used its one shutdown. Restate that explicitly in the final report.
 
 **If any of 1-5 fails, do not shut down.** Report what is unfinished and stop. A house that failed `check_format.py` is not finished, and shutting down on it buries the failure until the next session.
 

@@ -1,6 +1,6 @@
 ---
 name: op03
-description: Run op01's full house extraction, then shut the laptop down automatically once — and only once — the house is genuinely finished and safe. Triggers on "op03 <house_name>" or "op3 <house_name>" (Makham's shorthand), e.g. "op03 บ้านเอกมัย". Arms a 90-minute dead-man's-switch shutdown at the very start so the laptop shuts down even if the session runs out of tokens mid-run and nobody is left to finish the gate. Use when Makham wants to start a house and walk away. Source of truth is `rawjson_ยังไม่ได้แก้ไขโดนคน/README.md`'s `op3` section — keep this file in sync with it whenever that section changes.
+description: Run op01's full house extraction, then shut the laptop down automatically once — and only once — the house is genuinely finished and safe. Triggers on "op03 <house_name>" or "op3 <house_name>" (Makham's shorthand), e.g. "op03 บ้านเอกมัย". Checks for a duplicate house and for a resumed (already-shut-down-once) house before arming anything. Arms a 90-minute dead-man's-switch shutdown at the very start so the laptop shuts down even if the session runs out of tokens mid-run and nobody is left to finish the gate. On a resumed house, finishes normally but skips the final clean shutdown and says so explicitly, since that house already used its one shutdown. Use when Makham wants to start a house and walk away. Source of truth is `rawjson_ยังไม่ได้แก้ไขโดนคน/README.md`'s `op3` section — keep this file in sync with it whenever that section changes.
 ---
 
 # op03 — op01, then shut the laptop down
@@ -8,6 +8,16 @@ description: Run op01's full house extraction, then shut the laptop down automat
 Argument: `<house_name>`. `op03` is `op01` with two additions: an unconditional 90-minute dead-man's-switch shutdown armed the moment the run starts, and — when the house is genuinely finished before that — a clean shutdown instead of just stopping.
 
 **Don't use this if anything else on the machine is still running** (a training job, an upload, another agent) — the dead-man's switch arms unconditionally on its own 90-minute clock, with no awareness of what else is running, and will kill that other work too.
+
+## Two checks first — before arming anything
+
+Run both before Step 0 below. Arming a 90-minute shutdown timer for a house that's already done, or that already spent its one shutdown, is wasted at best and wrong at worst.
+
+1. **Duplicate check (`op01` step 2, done early):** does any existing `0N<house_name>/` folder already match `<house_name>`? If so, **stop and report it — do not arm the dead-man's switch at all.**
+2. **Resume check:** is this a continuation of a house whose dead-man's switch already fired once — Makham says to continue/resume a house that already shut the machine down before, or `0N<house_name>/` already holds a partial set with no matching row in `raw_json_data_log.md` and no commit for it? If either is true, this run is a **continuation**, not a fresh `op03`:
+   - Say so up front, explicitly: *"รอบนี้จะไม่ปิดเครื่องให้ตอนจบงานนะ เพราะบ้านนี้เคยปิดเครื่องไปแล้วรอบหนึ่ง"* — this round will not shut down at the end, because this house already used its shutdown once.
+   - Still arm the 90-minute safety net in Step 0 below — a second interruption deserves the same protection.
+   - But at the finishing gate, skip the clean shutdown (step 6's `shutdown /s /t 120`): cancel the armed timer and stop there, same as plain `op01`. See the exception under step 6 below.
 
 ## Step 0 — arm the dead-man's switch, before anything else
 
@@ -40,6 +50,8 @@ Invoke the `op01` skill for `<house_name>` and follow it through all 7 steps. Ev
    shutdown /s /t 120 /c "op3 finished <house_name> - shutting down. Run: shutdown /a  to cancel"
    ```
    **120 seconds, never `/t 0`** — that window is the only chance to stop it. Say `shutdown /a` cancels it, in the same message.
+
+   **Exception — continuation runs (the resume check above matched):** cancel the timer (`shutdown /a`) and stop there. Do not issue the clean `shutdown /s /t 120` — this house already used its one shutdown. Restate that explicitly in the final report.
 
 **If any of 1-5 fails, do not shut down.** Report what is unfinished and stop. A house that failed `check_format.py` is not finished, and shutting down on it buries the failure until the next session.
 
