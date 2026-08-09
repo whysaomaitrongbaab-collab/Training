@@ -107,8 +107,18 @@ def check_house(house_dir):
                     if GRID_WORD.search(t):
                         fails["'grid' word in ref"].append(f'{name}: {t[:45]!r}')
                     m = POINT_REF.match(t)
-                    if m and rows and (m.group(1) not in rows or m.group(2) not in cols):
-                        fails['ref not in grid master'].append(f'{name}: {t!r}')
+                    if m and rows:
+                        g1, g2 = m.group(1), m.group(2)
+                        # Usually rows (y_lines) are letters and cols (x_lines) are digits, so
+                        # g1-in-rows/g2-in-cols is the common case. But the spec only says
+                        # "usually" (section 4) — a house can letter its x_lines and number its
+                        # y_lines instead (confirmed for real on house 19, cross-checked against
+                        # both the architecture and structural sheets). Accept either axis
+                        # assignment rather than hardcoding which one carries letters.
+                        matches_usual = g1 in rows and g2 in cols
+                        matches_swapped = g1 in cols and g2 in rows
+                        if not (matches_usual or matches_swapped):
+                            fails['ref not in grid master'].append(f'{name}: {t!r}')
         walk(doc, scan)
 
         elements = doc.get('elements') or []
