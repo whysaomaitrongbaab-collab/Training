@@ -155,6 +155,8 @@ source_image, confidence_score, confidence_flags, warnings
 **`source_image`** = full path of the source image, e.g. `"image/<house>/<house>_หน้า19.png"` — every file coming from the same page (e.g. `_view1_...`/`_view2_...`) must have the exact same value.
 **Exception:** the grid-master file `<house>_หน้า00_gridline.json` uses `source_pages` (array of every `source_image` used to confirm the grid) instead.
 
+**Grid-master `png`/`doc_page` convention (pinned 2026-08-09 after houses 14-18 drifted to the opposite encoding):** `png: "00"` (or `"00b"`, `"00c"`… for additional buildings per §11a), `doc_page: null` — never the reverse (`png: null, doc_page: 0`). It is a synthesized file with no real printed page, so `doc_page` (which means "position in the real document") stays `null`; `"00"` is just the file's own conventional tag, matching how every other page's `png` field already holds its page-number string.
+
 ## 2a. `phase_note` — staged-extraction scratch field (added 2026-07-27)
 
 Optional wrapper-level field, **only** used by a staged `op2` run (see the README). It is orchestration scratch, **not training data**.
@@ -198,6 +200,14 @@ A page may contain multiple views/patterns — **inventory every view first with
 - **Prime ordering when more than one dummy line falls in the same gap:** scan in standard reading direction — x-axis left→right, y-axis top→bottom. First line found = 1 prime (`A'`), next one = 2 primes (`A''`), and so on (`A'` must always sit left of/above `A''`)
 - **Origin (0,0)** must always be the leftmost/topmost main grid (`type:"named"`) — a dummy grid must never take over the origin position. If a dummy grid falls before the origin (further left/up than the first main grid), use a **negative** `pos_m` instead, e.g. `{"id":"1'","pos_m":-0.80,"type":"dummy"}`
 - `pos_m` is always read from an actually-printed dimension line — never guessed
+
+### Documenting genuine ambiguity in the grid master (optional, added 2026-08-09)
+
+These three fields exist for the case where a grid master genuinely can't be read with full confidence — do **not** add them to a clean file just for consistency; a house whose chains close and whose dummies are unambiguous (e.g. house #04) needs none of them.
+
+- **Per-line `confidence_score` / `confidence_flags`** on an individual `x_lines[]`/`y_lines[]` entry (same meaning as the element-level fields in §0.2) — use when one specific line is less certain than the rest of the file, instead of dragging the whole file's top-level `confidence_score` down uniformly. Precedent: house #06's `A'`/`D'` dummy lines (carry unidentified superstructure) and its `B` line (ambiguous printed digit, `3.00` vs `3.03`) each got their own score while the other, unambiguous lines stayed unscored.
+- **`dummy_grid_rule_check`** (wrapper-level object, sibling of `grid`) — when applying the naming/prime-ordering/negative-`pos_m` rules above was non-trivial, record which rule fired and why in one short sentence per rule, e.g. `{"prime_ordering": "...", "negative_pos_m": "..."}`. Skip entirely when no rule above needed a judgment call.
+- **`non_grid_dimensions_do_not_confuse`** (wrapper-level array of `{location, value_m, meaning}`) — when a dimension elsewhere in the set (another sheet, a costing-example site plan, a non-structural chain) coincidentally matches a grid value or could be mistaken for one, record it so a later reader doesn't re-derive the same false lead. `value_m` is `null` when the entry documents a non-numeric mix-up (e.g. a whole ramp/landing chain), not a single coincidental figure.
 
 #### 🔎 How to FIND dummy grids: the beam-endpoint rule (Makham, 2026-07-19)
 

@@ -156,6 +156,20 @@ def main(argv):
         targets = sorted(d for d in glob.glob(os.path.join(base, '*'))
                          if os.path.isdir(d) and os.path.basename(d)[:2].isdigit()
                          and not os.path.basename(d).startswith('00'))
+    else:
+        # A target that doesn't exist, or exists but has no .json files (e.g. the caller
+        # forgot the 'rawjson_ยังไม่ได้แก้ไขโดนคน/' prefix), used to silently check 0 files
+        # and still print "ALL CHECKS PASS" -- a false pass. Found 2026-08-09: houses
+        # 12-18's logged verification commands all used a bare folder name and were
+        # vacuous; house 15's real pattern:'detail_view' / tie_bar defects went uncaught
+        # as a direct result. Fail loudly instead of silently checking nothing.
+        bad_targets = [t for t in targets if not glob.glob(os.path.join(t, '*.json'))]
+        if bad_targets:
+            for t in bad_targets:
+                reason = 'no such directory' if not os.path.isdir(t) else 'no .json files in it'
+                print(f'ERROR: target {t!r} has {reason} -- did you forget the '
+                      f"'rawjson_ยังไม่ได้แก้ไขโดนคน/' prefix?", file=sys.stderr)
+            return 1
     total = collections.defaultdict(list)
     soft_all = []
     for t in targets:
