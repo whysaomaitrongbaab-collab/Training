@@ -1,0 +1,78 @@
+{
+  "png": "12",
+  "doc_page": 10,
+  "discipline": "architecture",
+  "sheet_code": "A-10",
+  "sheet_name": "รูปด้าน 4",
+  "pattern": "side_profile",
+  "view_title": "รูปด้าน 4",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า12.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "levels",
+      "element_type": "datum",
+      "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับพื้นชั้น 2 +3.75, ระดับคานหลังคา +6.65 — this sheet correctly prints +3.75 (matching the majority reading; confirms _หน้า11_elevation3.json's '+3.15' is that ONE sheet's own isolated typo, not a second data point for a different value).",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "roof_profile",
+      "element_type": "roof_frame_reference",
+      "description": "This is the OTHER x-axis (side) view — grid A,B,C,D,E printed LEFT TO RIGHT (mirror of _หน้า10_elevation2.json's E,D,C,B,A). Shows the roof edge as one continuous diagonal line, LOW near gridA (left) rising to HIGH near gridE (right), with a '6°' angle marker near the peak. Verified at 1.3-1.6x crop zoom, twice, specifically to check this against elevation2.",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "control_joint_pvc_strip",
+      "element_type": "control_joint",
+      "count": 2,
+      "description": "'เซาะร่อง หรือ ฝังเส้น PVC' reveal lines at the floor-2 and roof-beam level lines, right side — same convention as every other elevation",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "windows_upper_floor",
+      "element_type": "window",
+      "count": null,
+      "description": "Upper floor shows hexagon-tagged windows '2' (twice, left cluster), '3' (a double window, center — first appearance of tag '3' in this agent's page range) and '2' (right side)",
+      "confidence_score": 0.65,
+      "confidence_flags": ["needs_human_review_zoom_required"]
+    },
+    {
+      "element_id": "opening_lower_floor_left",
+      "element_type": "door_or_window",
+      "count": 1,
+      "description": "hexagon-tagged '1' opening, ground floor, left bay, set within a panel with the same diagonal cross (X) infill pattern seen on _หน้า09_elevation1.json's ground-floor openings — this bay corresponds to roughly gridA-B (ground floor, near เฉลียง/entry per the floor plan), consistent with the X-pattern motif recurring near entry areas rather than at a fixed grid position",
+      "confidence_score": 0.55,
+      "confidence_flags": ["needs_human_review_zoom_required", "X-pattern infill purpose still not confidently resolved, same as flagged on elevation1"]
+    },
+    {
+      "element_id": "windows_lower_floor_other",
+      "element_type": "window",
+      "count": null,
+      "description": "Ground floor also shows a hexagon '3' double window (center) and a hexagon '1' window (right)",
+      "confidence_score": 0.6,
+      "confidence_flags": ["needs_human_review_zoom_required"]
+    },
+    {
+      "element_id": "triangle_marker_symbols",
+      "element_type": "reference_marker",
+      "count": 8,
+      "description": "Small triangle '1' symbols scattered throughout, same recurring undocumented convention as every other sheet in this set",
+      "confidence_score": 0.4,
+      "confidence_flags": ["needs_human_review_zoom_required", "triangle_symbol_meaning_not_identified_in_the_symbol_legend_(หน้า03)"]
+    }
+  ],
+  "confidence_score": 0.68,
+  "confidence_flags": [
+    "compass_direction_(N/S/E/W)_of_this_elevation_not_independently_verified_-_only_the_sheet-to-slot_mapping_(4=A-10,_right_of_the_floor-plan_callout_bubble)_is_used"
+  ],
+  "warnings": [
+    "MOST IMPORTANT FINDING ON THIS SHEET, a genuine cross-sheet roof-geometry discrepancy, confirmed by careful re-zoom (not a casual read): this elevation (A-10, viewed from the grid-A/E side) shows the roof LOW at gridA, HIGH at gridE. _หน้า10_elevation2.json (A-08, viewed from the opposite/other side) shows the roof LOW at gridE, HIGH at gridA — i.e. the OPPOSITE assignment. Both readings were independently re-verified at zoom specifically because of this discrepancy. FINAL RESOLUTION, recorded while extracting _หน้า13_section1.json and _หน้า14_section2.json afterward: both of those sections (re-verified with full-context crops showing grid letters + R1/R2 fascia callouts + roofline together) independently agree with THIS sheet (LOW-gridA/HIGH-gridE), making it a 3-sheet majority (elevation4 + section1 + section2) against the 1 outlier (_หน้า10_elevation2.json/A-08). This sheet's own reading is therefore CONFIRMED, not just asserted — _หน้า08_roof_plan.json carries the final synthesis and _หน้า10_elevation2.json now carries an outlier note.",
+    "This elevation corresponds to compass-slot '4' (right) on the floor plan's 4-way elevation callout bubble — cardinal direction not independently confirmed from this sheet alone.",
+    "Bottom dimension chain '2.05 | 1.50 | 4.00 | 2.20 | 3.00 | 1.50' (bracket 10.70 for gridA-gridE, sub-split matching the grid master exactly in reverse order) is the mirror of _หน้า10_elevation2.json's own chain — same 2.05/1.50 ground-floor-vs-upper-floor south-extent finding already flagged there and on the floor plans, not repeated in full detail here.",
+    "Individual window opening-number-to-schedule cross-match not confidently resolvable at this resolution — the door/window schedule sheet (A-14) is outside this agent's assigned page range. Tag '3' appears here for the first time in this agent's extraction — likely a legitimate window reference number beyond the 1/2/4/5 seen on earlier sheets, not cross-verified against a schedule."
+  ]
+}

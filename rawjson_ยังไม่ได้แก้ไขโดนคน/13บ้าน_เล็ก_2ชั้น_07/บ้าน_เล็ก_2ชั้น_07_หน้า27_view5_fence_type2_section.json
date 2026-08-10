@@ -1,0 +1,68 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "architecture",
+  "sheet_code": "A-25",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 2",
+  "pattern": "section",
+  "view_title": "รูปตัด -- fence type 2 section, 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า27.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": [
+    "view1_fence_type2_plan (_view1_fence_type2_plan.json)",
+    "view2_fence_type2_lintel_detail (_view2_fence_type2_lintel_detail.json)",
+    "view3_fence_type2_column_beam_details (_view3_fence_type2_column_beam_details.json)",
+    "view4_fence_type2_front_elevation (_view4_fence_type2_front_elevation.json)",
+    "view5_fence_type2_section (this file)"
+  ],
+  "elements": [
+    { "element_id": "property_line_note_t2", "element_type": "note", "printed_as": "แนวเขตที่ดิน", "description": "property boundary line, marked directly on this section, same convention as รั้วแบบที่ 1", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "tabhlang_section_ref", "element_type": "beam", "printed_as": "ทับหลัง คสล 0.10x0.20 ม.", "description": "lintel/coping beam in section, 0.10x0.20m -- NOTE: this printed size (0.10 wide x 0.20 deep) reads with width/depth swapped relative to view2's detail (which dimensioned it 0.20 wide x 0.10 deep) -- likely the same member described from two different orientations (plan-width vs section-callout ordering) rather than a genuine conflict; recorded as printed on each view without forcing one to match the other", "confidence_score": 0.65, "confidence_flags": ["width/depth_ordering_differs_from_view2s_own_dimensioned_drawing_flagged_not_silently_reconciled"] },
+    { "element_id": "infill_panel_section_ref", "element_type": "wall", "printed_as": "คอนกรีตบล็อคทีบ 0.19x0.39 ม. หนา 7 ซม.", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "C1_section_ref_t2", "element_type": "column", "description": "C1 in section, same position/spec as รั้วแบบที่ 1's section", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "GB_section_ref_t2", "element_type": "tie_beam", "description": "GB at ±0.000 (reference level explicitly marked on this section)", "confidence_score": 0.82, "confidence_flags": [] },
+    {
+      "element_id": "F_pile_cap_t2",
+      "element_type": "pile_cap",
+      "width_mm": 750,
+      "width_breakdown_mm": [100, 550, 100],
+      "main_bar": {
+        "top": { "count": 3, "dia_mm": 9, "type": "RB" },
+        "bottom": { "count": 3, "dia_mm": 9, "type": "RB" }
+      },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 100, "type": "RB" },
+      "printed_as": "3Ø9 (top), STR:Ø6@100, 3Ø9 (bottom)",
+      "material": "concrete, on คอนกรีตหยาบ (lean concrete) base",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "pile_2no_t2",
+      "element_type": "pile",
+      "count": 2,
+      "width_mm": 150,
+      "depth_mm": 150,
+      "length_m": 4.00,
+      "printed_as": "เสาเข็ม⌀2-0.15X0.15X4.00ม.",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "pile_dowel_t2",
+      "element_type": "connection_detail",
+      "printed_as": "DOWEL Ø12 ยาว 1.00 ม. เทคอนกรีตยึดกับเสาเข็ม",
+      "dia_mm": 12,
+      "length_m": 1.00,
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 5 views on this sheet; siblings are the plan (_view1_fence_type2_plan.json), lintel detail (_view2_fence_type2_lintel_detail.json), column+tie-beam details (_view3_fence_type2_column_beam_details.json), and front elevation (_view4_fence_type2_front_elevation.json). This is the LAST page of this assignment (หน้า15-27).",
+    "F pile cap, pile, and dowel specs are IDENTICAL to รั้วแบบที่ 1's หน้า26 section in every dimension and bar count -- confirms, as noted on view1, that both fence types share one common structural/foundation design.",
+    "±0.000 reference level explicitly marked at GB on this section -- this is the fence's OWN local reference datum, not necessarily the same physical elevation as the main building's ±0.00 ระดับอ้างอิง (หน้า15/22) -- not stated to be tied together on this sheet, so not assumed to be.",
+    "See the 'tabhlang_section_ref' element for a width/depth ordering discrepancy against view2's own dimensioned lintel drawing (0.10x0.20 here vs 0.20 wide x 0.10 deep there) -- flagged, not silently resolved."
+  ]
+}

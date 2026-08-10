@@ -8,7 +8,7 @@ Context สำหรับ AI agent ที่มาทำงานต่อใ�
 > Ground truth ปัจจุบัน = raw JSON ใน `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/` ตรวจด้วย `tools/check_format.py` เท่านั้น
 > **ทุก section ในไฟล์นี้ที่พูดถึง Label Studio review flow (3 sections ด้านล่าง) = ประวัติศาสตร์ อ่านเพื่อเข้าใจที่มาได้ แต่ห้ามทำตาม**
 
-> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`No_touch_box/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม)
+> 📋 **Session ใหม่เริ่มจากอ่าน [SESSION_HANDOFF_2026-07-06.md](SESSION_HANDOFF_2026-07-06.md) ก่อน** — สรุปงานล่าสุดทั้งหมด (Label Studio, Makham's Pattern schema Gen 3.1-3.3, คำถามเปิดที่ค้างอยู่) ไม่ต้องไล่ chat history เก่า (schema doc เต็ม [`Makham's patter of rawjson20260705.md`](../wait_for_ทิ้ง/No_touch_box/docs/Makham's%20patter%20of%20rawjson20260705.md) ย้ายไปอยู่ repo Constistant ชั่วคราวตั้งแต่ 5 ก.ค. แล้วย้ายกลับมาที่นี่ (`No_touch_box/`) วันที่ 7 ก.ค. — ดู `workmen's_diary/` ที่ root repo Training สำหรับประวัติการย้ายเต็ม — **เอกสารนี้ถูกย้ายเข้า `wait_for_ทิ้ง/` เมื่อ 2026-08-04** เป็นประวัติศาสตร์ ไม่ใช่สเปคที่ใช้จริงอีกต่อไป ดู `docs/ARCHIVE.md`)
 
 > ⚠️ **อ่าน [rule_of_tune.md](rule_of_tune.md) ก่อนเริ่มงานทุกครั้ง — ไม่มีข้อยกเว้น**
 > กฎห้ามแตะ raw JSON ของ raw data ก่อนได้รับอนุญาต + **การกระทำใดๆ ที่ส่งผลต่อการทูนนิ่งต้องมีการเตือนเสมอ** (ไม่ใช่แค่แก้ raw JSON ตรงๆ — รวมถึงแก้ script/schema ที่กระทบข้อมูลปลายทาง) + บันทึก format JSON ที่ใช้ทูนจริงไว้อ้างอิง
@@ -77,7 +77,7 @@ Per-page classify (Stage A) → route → extract (Stage B1/B2 แยกตา�
 
 5. **Model เลือกตาม task**: `qwen-vl-plus` ถูกกว่า ใช้กับ classify/สารบัญ/notes (ข้อความล้วน); `qwen-vl-max` แม่นกว่า ใช้เฉพาะ extraction ที่ต้องอ่าน geometry/ตัวเลขละเอียด (structural elements)
 
-6. **`main_bar_type` ผิดทั้งหน้าได้แบบเป็นระบบ แม้ symbol เดียวกันที่จุดอื่นอ่านถูก** — pilot เทียบ Claude vs Qwen 4 หน้า (`raw/image/บ้าน_เล็ก_1ชั้น_01/claude_output_01/_pilot_comparison_summary.md`, 2026-07-02, draft ยังไม่ผ่านคนตรวจ) พบหน้า 21: Qwen จัดทุก main bar เป็น "DB" หมดทั้งที่สัญลักษณ์เป็นวงกลมเปล่า (RB) — แต่ **stirrup ที่ใช้สัญลักษณ์เดียวกัน Qwen อ่านเป็น RB ถูกทุกจุดในหน้าเดียวกัน** แปลว่าไม่ใช่ปัญหาอ่าน symbol ไม่ออก แต่เป็น bug เฉพาะจุดตรงตำแหน่ง mapping field `main_bar_type` — เป็นหลักฐานเพิ่มเติมว่า field เดียวกันอาจหลอนไม่เท่ากันในหน้าเดียวกัน ต้องเช็ค cross-consistency ในหน้าเดียวกันด้วย ไม่ใช่แค่ข้ามหน้า
+6. **`main_bar_type` ผิดทั้งหน้าได้แบบเป็นระบบ แม้ symbol เดียวกันที่จุดอื่นอ่านถูก** — pilot เทียบ Claude vs Qwen 4 หน้า (`wait_for_ทิ้ง/No_touch_box/raw/image/บ้าน_เล็ก_1ชั้น_01/claude_output_01/_pilot_comparison_summary.md`, 2026-07-02, draft ยังไม่ผ่านคนตรวจ, ย้ายเข้า `wait_for_ทิ้ง/` เมื่อ 2026-08-04) พบหน้า 21: Qwen จัดทุก main bar เป็น "DB" หมดทั้งที่สัญลักษณ์เป็นวงกลมเปล่า (RB) — แต่ **stirrup ที่ใช้สัญลักษณ์เดียวกัน Qwen อ่านเป็น RB ถูกทุกจุดในหน้าเดียวกัน** แปลว่าไม่ใช่ปัญหาอ่าน symbol ไม่ออก แต่เป็น bug เฉพาะจุดตรงตำแหน่ง mapping field `main_bar_type` — เป็นหลักฐานเพิ่มเติมว่า field เดียวกันอาจหลอนไม่เท่ากันในหน้าเดียวกัน ต้องเช็ค cross-consistency ในหน้าเดียวกันด้วย ไม่ใช่แค่ข้ามหน้า
 7. **หน้าเดียวมีหลาย view ปนกันบ่อย** — เคยพลาดเพราะบังคับเลือก `pattern` เดียวต่อหน้า ทำให้ view ที่ 2 (เช่น "แปลนฐานราก" คนละกล่องกับ "แปลนคาน" บนหน้าเดียวกัน) หายไปเงียบๆ ไม่มี warning → แก้เป็น inventory ทุก heading ก่อนเสมอ (ดูหัวข้อ "Multi-view extraction" ด้านบน)
 
 8. **⚠️ ห้ามยัดตัวแปร `$field` มากกว่า 1 ตัวไว้ใน `value=` ของ Text/Header tag เดียวกันใน Label Studio config — พลาดซ้ำมาแล้ว 2 ครั้ง:**
@@ -104,6 +104,28 @@ Per-page classify (Stage A) → route → extract (Stage B1/B2 แยกตา�
 **กระบวนการตามกฎ:** เตือน Rule 2 เต็มรูปแบบแล้ว**หยุดรอ**ก่อน มะขามอนุญาตชัดเจน · git commit `0029264` ไว้ก่อน sync (revert ได้) · เทียบรายชื่อไฟล์ก่อนเขียน (1,183 = 1,183 ไม่มีเกิน/ขาด) · สคริปต์ `json.loads()` ทุกไฟล์ก่อน copy · หลัง sync: raw parse ผ่าน **1,183/1,183**, ต่างจาก fix **0 ไฟล์**, point ref **2,007 ตัว resolve กับ grid master ครบ dangling 0** · log เต็มใน `No_touch_box/docs/raw_json_data_log.md`
 
 **⚠️ ข้อจำกัดที่ต้องรู้ก่อนเอาไปเทรน:** บ้าน 06-11 ที่ sync เข้าไป**ผ่านเฉพาะการปรับรูปแบบ ยังไม่เคยตรวจกับภาพแบบต้นฉบับสักหน้า** — ที่ยังค้าง: `specs{}` มีแค่ 24/1,183 ไฟล์, **คานที่อาจหายในบ้าน 06-11** (บ้าน 01-05 ตอนตรวจเจอคานหายทุกหลัง 20→27/22→36/30→38/5→21), เหล็ก `หยุดที่ L/8` ในบ้าน 10/11 ที่ยังไม่ merge เข้า face ตาม §7 · รายละเอียดเต็ม `json_แก้ไขแล้ว/สิ่งที่ต้องแก้.md` ข้อ 59-62
+
+## 2026-08-09 — แก้ `png`/`doc_page` สลับขั้วในกริดมาสเตอร์บ้าน 14-18 (5 ไฟล์)
+
+**ทำอะไร:** แก้ 2 คีย์ `png`/`doc_page` ใน `<house>_หน้า00_gridline.json` ของบ้าน 14/15/16/17/18 จาก `png:null, doc_page:0` เป็น `png:"00", doc_page:null` — ไม่แตะ `grid{}`/`warnings[]`/field อื่นเลย
+
+**ทำไม:** มะขามถามเปรียบเทียบบ้าน09 vs บ้าน18 ว่าทำไมรูปแบบหน้า00 ต่างกัน ตรวจทั้ง 19 ไฟล์กริดมาสเตอร์ในโปรเจกต์พบว่าบ้าน 01-13 ทั้งหมดใช้ `png:"00", doc_page:null` ตรงกัน (ตรงกับบ้าน01 ไฟล์ต้นฉบับสุดจาก 2026-07-10) แต่บ้าน 14-18 ใช้ค่าสลับขั้วกันทั้ง batch — ไม่มีใครผิดกฎเดิม เพราะ `primary_rawjson_schema.md` §2/§0.10 และ `tools/check_format.py`'s `WRAPPER` list เช็คแค่ว่าคีย์มีอยู่ ไม่เคยเช็คค่า จึงผ่าน ALL CHECKS ทั้งที่ขัดกันเอง
+
+**ทำพร้อมกัน:** ปักค่า canonical ไว้ใน `primary_rawjson_schema.md` §2 (ย่อหน้าใหม่ "Grid-master `png`/`doc_page` convention") กันบ้านหลังถัดไป drift ซ้ำ — log ใน `primary_rawjson_schema_edit_log.md` และ `raw_json_data_log.md` (แถว 2026-08-09 (2)/(3)) ตามกฎข้อ 3/7
+
+**กระบวนการตามกฎ:** เตือน Rule 2 ก่อนถามมะขาม (บอกผลกระทบ fine-tuning) → มะขามอนุมัติ "แก้เลย แต่ให้ยึดรูปแบบตามบ้าน01เป็นหลักได้ไหม" → เช็ค `git status` ก่อนแก้ไม่มีงานค้างอื่น → แก้ 5 ไฟล์ + ปักสเปค + log ครบ 3 จุด
+
+**ตามด้วยรอบที่ 2 วันเดียวกัน — บ้าน 01-05 เปลี่ยน `note`→`view_title` + เพิ่ม `building:null`:** มะขามสั่งให้ตรวจบ้าน 01-11 ทั้งชุดให้ "รูปแบบเดียวกัน" ต่อ — พบว่า `png`/`doc_page` ตรงกันอยู่แล้ว (ไม่ต้องแก้) แต่บ้าน 01-05 ยังใช้คีย์ `note` (ไม่มี `building`) ขณะที่บ้าน 06-11 ใช้ `view_title` + มี `building` — **ต่างจากเคส png/doc_page ตรงที่นี่คือวิวัฒนาการสเปคจริงตามเวลา** (`building` เพิ่มเข้าสเปคจริงวันที่ 2026-07-25 รองรับบ้าน06 ที่มี 2 อาคาร บ้าน 01-05 ทำก่อนหน้านั้นจึงไม่มี field นี้โดยธรรมชาติ ไม่ใช่ทำตกหล่น) — หยุดถามมะขามก่อนแก้ด้วย `AskUserQuestion` แทนที่จะเดาเอง เพราะเปลี่ยนแล้วเท่ากับเขียนประวัติศาสตร์ไฟล์เก่าให้ดูเหมือนทำด้วยสเปคที่ตอนนั้นยังไม่มีจริง — มะขามเลือกให้เปลี่ยนตาม (consistency เหนือ historical accuracy สำหรับ 2 field นี้) ขอบเขตจำกัดเฉพาะ `note`→`view_title` + `building:null` เท่านั้น ไม่แตะ `sheet_name`/`schema_generation`/`dummy_grid_rule_check_2026-07-08` ที่ยังต่างกันอยู่ · `python tools/check_format.py` ทั้ง 5 บ้าน = ALL CHECKS PASS · log เต็มใน `raw_json_data_log.md` แถว 2026-08-09 (4)
+
+## 2026-08-09 (2) — สาเหตุจริงของ pattern ไม่ตรงกัน: `check_format.py` เช็คลมเงียบๆ เมื่อได้ path ผิด (แก้แล้ว)
+
+**อาการที่พบ:** `python tools/check_format.py` (สแกนทั้งโปรเจกต์) เจอ 13 จุดที่ผิดสเปคจริง — บ้าน 15 มี `pattern: "detail_view"` 7 ไฟล์ (หน้า11-16, 18 — ควรเป็น `section` ตาม §0.9 "a detail sheet is section") + `tie_bar` (ควรเป็น `stirrup`) 2 ไฟล์ (หน้า19, 23); บ้าน 18 มี `pattern: "elevation"` 4 ไฟล์ (หน้า09-12 — ควรเป็น `side_profile`) แต่ log ของทั้ง 2 บ้านตอนทำเสร็จกลับบันทึกไว้ว่า "ALL CHECKS PASS" ทั้งคู่
+
+**สาเหตุจริง (สืบจนเจอ ไม่ใช่เดา):** `tools/check_format.py`'s `main()` รับ path จาก `argv[1:]` ตรงๆ ไม่เช็คว่า path นั้นมีอยู่จริงหรือมีไฟล์ `.json` อยู่ข้างในไหม — log ของบ้าน 12/13/14/15/16/17/18 **ทุกบ้านบันทึกคำสั่งแบบเดียวกัน**: `python tools/check_format.py 15บ้าน_ใหญ่_2ชั้น_03` (ชื่อโฟลเดอร์เปล่าๆ ไม่มี prefix `rawjson_ยังไม่ได้แก้ไขโดนคน/`) — path นี้ไม่มีอยู่จริงจาก repo root, `glob.glob()` จึงคืน list ว่าง, loop ไม่ทำงานเลย, ไม่มี fail ไหนถูกบันทึก → พิมพ์ "ALL CHECKS PASS" ทั้งที่**ไม่ได้เช็คไฟล์แม้แต่ไฟล์เดียว** — reproduce ได้จริง (`python tools/check_format.py 15บ้าน_ใหญ่_2ชั้น_03` จาก repo root ให้ "checked 1 house folder(s)" + "ALL CHECKS PASS" แม้โฟลเดอร์นั้นไม่มีอยู่จริงที่ path นั้น) เทียบกับรันด้วย path เต็มที่ถูกต้องซึ่งเจอ 9 จุดผิดในบ้าน 15 ทันที **`pattern:'elevation'` คือความผิดพลาดเดิมที่บ้าน 07 เคยทำมาก่อนแล้ว** (สเปค §0.9 บันทึกไว้เป็นตัวอย่างเตือนอยู่แล้ว: "House 07 invented detail, diagram and elevation and needed 21 files remapped") — เกิดซ้ำเพราะตัวเช็คที่ควรจับได้ไม่เคยรันจริง ไม่ใช่เพราะสเปคไม่ได้เตือน
+
+**แก้แล้ว (root-cause fix ที่ตัว checker ไม่ใช่แค่สอนคนพิมพ์ path ให้ถูก):** `main()` ตอนนี้เช็คว่าทุก target ที่รับมาจาก argv มีอยู่จริงและมีไฟล์ `.json` อยู่ข้างในก่อนเริ่มเช็ค — ถ้าไม่ใช่ พิมพ์ error ชัดเจนพร้อมคำใบ้เรื่อง prefix ที่ขาด แล้ว exit 1 ทันที (ไม่ใช่ exit 0 เงียบๆ) verify แล้วว่า reproduce บั๊กเดิมไม่ได้อีกต่อไป (คำสั่งเดียวกับที่เคยให้ false pass ตอนนี้ error ชัดเจน) และคำสั่งที่ถูกต้อง (มี prefix / ไม่ใส่ argument เลย) ยังทำงานปกติเหมือนเดิม
+
+**ยังไม่ได้แก้ (แยกเป็นคนละงาน เพราะเป็นการแก้ raw JSON จริง ต้องขออนุญาตตามกฎข้อ 1 ก่อน):** 13 จุดที่ผิดจริงในบ้าน 15/18 (11 pattern + 2 tie_bar) ยังคงอยู่ในไฟล์ ยังไม่ถูกแก้
 
 ## สิ่งที่ยังไม่ได้ทำ (ทำต่อได้)
 
@@ -176,7 +198,7 @@ node label-studio-tasks-perpage.js
 
 ## Label Studio Cloud — Makham's Pattern (Gen 3) review flow (2026-07-06)
 
-**ต่างจาก 2 flow ด้านบน:** ทั้งคู่ยังอิง Gen 1 schema (`plan[]/section[]/schedule[]` flat, หรือ `categories[].items[]`) อ่านจาก `raw/image/<house>/qwen-output/`. Flow นี้อิง **Gen 3 ("Makham's Pattern", เอกสารเต็มอยู่ที่ [`Makham's patter of rawjson20260705.md`](Makham's%20patter%20of%20rawjson20260705.md) ในโฟลเดอร์นี้เอง)** อ่านจาก `No_touch_box/mk_test/<subfolder>/*.json` — ผลลัพธ์ fresh-extraction ทดสอบจริงของบ้าน_เล็ก_1ชั้น_01 หน้า 1-40+48-60 (`mk_test/t1/` = รอบแรก) และหน้า 1-37 (`mk_test/t2/` = รอบสอง หลังปรับ schema)
+**ต่างจาก 2 flow ด้านบน:** ทั้งคู่ยังอิง Gen 1 schema (`plan[]/section[]/schedule[]` flat, หรือ `categories[].items[]`) อ่านจาก `raw/image/<house>/qwen-output/`. Flow นี้อิง **Gen 3 ("Makham's Pattern", เอกสารเต็มอยู่ที่ [`Makham's patter of rawjson20260705.md`](../wait_for_ทิ้ง/No_touch_box/docs/Makham's%20patter%20of%20rawjson20260705.md), ย้ายเข้า `wait_for_ทิ้ง/` เมื่อ 2026-08-04)** อ่านจาก `No_touch_box/mk_test/<subfolder>/*.json` — ผลลัพธ์ fresh-extraction ทดสอบจริงของบ้าน_เล็ก_1ชั้น_01 หน้า 1-40+48-60 (`mk_test/t1/` = รอบแรก) และหน้า 1-37 (`mk_test/t2/` = รอบสอง หลังปรับ schema)
 
 **จุดต่างสำคัญจาก Gen 1:** หน้าที่มีหลาย pattern ปนกันถูกแยกเป็นคนละไฟล์ตั้งแต่ตอน extract แล้ว (ไม่ต้องรวม `plan+section+schedule` ในหน้าเดียวแบบเดิม) — 1 ไฟล์ = 1 pattern/view เสมอ ทำให้ task generator ง่ายขึ้น (ไม่ต้อง merge หลาย array ต่อหน้า)
 

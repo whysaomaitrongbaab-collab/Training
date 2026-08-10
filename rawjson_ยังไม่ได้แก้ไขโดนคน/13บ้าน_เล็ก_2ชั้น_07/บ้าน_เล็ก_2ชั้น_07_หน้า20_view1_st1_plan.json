@@ -1,0 +1,103 @@
+{
+  "png": "20",
+  "doc_page": 18,
+  "discipline": "architecture",
+  "sheet_code": "A-18",
+  "sheet_name": "แบบขยายบันได ST.1",
+  "pattern": "plan",
+  "view_title": "แปลนบันได ST.1",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า20.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": ["view1_st1_plan (this file)", "view2_st1_section (_view2_st1_section.json)"],
+  "elements": [
+    {
+      "element_id": "ST.1",
+      "element_type": "stair",
+      "count": 1,
+      "grid_ref": "A-B x 1-2",
+      "description": "แปลนบันได ST.1 — a short entrance/entry stair (NOT the main interior stair to the 2nd floor; that one is shown running in section on หน้า15's รูปตัด 3), running from ทางเดิน/จอดรถ (walkway/parking, +0.20) up through เฉลียง (porch, +0.50) into พักผ่อน (+0.60)",
+      "run_dimension_m": 3.30,
+      "run_dimension_printed_as": "3.30 (ผิวปูกระเบื้องเซรามิค 8\"x8\" tread run)",
+      "nosing_spec": "จมูกบันได อลูมิเนียมสีเงิน ร่อง PVC. ขนาด 2\"",
+      "tread_finish": "ผิวปูกระเบื้องเซรามิค 8\"x8\"",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "พักผ่อน_st1_ref",
+      "element_type": "room",
+      "level_m": 0.60,
+      "level_m_printed_as": "+0.60",
+      "floor_material_no": 1,
+      "ceiling_material_no": 1,
+      "printed_as": "1 +0.60 1",
+      "grid_ref": "~B",
+      "description": "พักผ่อน (relax/sitting room) — the room this stair leads up into, at the top of the stair within the grid1-2 bay",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "เฉลียง_st1_ref",
+      "element_type": "room",
+      "level_m": 0.50,
+      "level_m_printed_as": "+0.50",
+      "floor_material_no": 3,
+      "ceiling_material_no": 3,
+      "printed_as": "3 +0.50 3",
+      "position_note": "mid-landing of the stair run",
+      "description": "เฉลียง (porch/veranda) — intermediate landing level",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ทางเดิน_st1_ref",
+      "element_type": "room",
+      "level_m": 0.20,
+      "level_m_printed_as": "+0.20",
+      "floor_material_no": 4,
+      "ceiling_material_no": null,
+      "printed_as": "4 +0.20 —",
+      "position_note": "bottom of the stair run, exterior",
+      "description": "ทางเดิน (walkway), ceiling code printed as a dash '—' (exterior, no ceiling)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จอดรถ_st1_ref",
+      "element_type": "room",
+      "level_m": 0.20,
+      "level_m_printed_as": "+0.20",
+      "floor_material_no": 4,
+      "ceiling_material_no": 3,
+      "printed_as": "4 +0.20 ③",
+      "position_note": "beyond the right edge of this sheet's main plan, callout only",
+      "description": "จอดรถ (parking) — referenced by a label box only, its own layout is not drawn on this sheet",
+      "confidence_score": 0.6,
+      "confidence_flags": ["position_beyond_this_sheet's_drawn_extent_label_only"]
+    },
+    {
+      "element_id": "st1_plan_outer_dims",
+      "element_type": "dimension_chain",
+      "description": "top chain: grid1-to-grid2 = 3.50m (matches grid master exactly). Left chain: grid B-to-A = 1.50m (matches grid master exactly), continuing 0.55m past grid A (sub-dimension 0.25m nested within it, at a small pier/block), then a separate lower chain for the walkway zone beyond: 1.50m width + 0.20m edge offset.",
+      "segments_m": [3.50, 1.50, 0.55, 0.25],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "wall_finish_triangle_codes_st1",
+      "element_type": "symbol",
+      "description": "Multiple small hollow-triangle callouts, all reading '1' (no '2' on this sheet, unlike the WC sheets) — same unresolved wall-finish code family seen throughout this house's architecture set",
+      "confidence_score": 0.55,
+      "confidence_flags": ["legend_key_not_available_within_assigned_pages"]
+    }
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "GRID CONFIRMATION (positive, no conflict): both axes on this sheet match the grid master exactly — grid1-to-grid2 = 3.50m (master: 0.00 to 3.50), grid B-to-A = 1.50m (master: 9.20 to 10.70). This is the strongest cross-check yet against the master, using a dedicated detail sheet rather than an incidental section/plan dimension.",
+    "One of 2 views on this sheet; sibling is the section view _view2_st1_section.json. Both share the sheet's own single self-referential section-cut stamp '①' (a circle-with-triangle-flag icon appearing on both the plan, next to 'ขึ้น' up-arrow, and the section's own title) — this is NOT a forward/cross-page reference like หน้า18's markers, it resolves entirely within this one sheet.",
+    "This ST.1 stair is a SHORT EXTERIOR ENTRY STAIR (walkway/parking at +0.20 up to the house's raised ground floor at +0.60 via a porch landing at +0.50), not the main interior stair connecting the two floors — that one appears in section on หน้า15 (รูปตัด 3) and is unmarked there. Flagging this distinction clearly since both are 'a stair in this house' and could otherwise be conflated.",
+    "จอดรถ (parking) is referenced only by its label box, positioned beyond this sheet's drawn plan extent — its own footprint/dimensions are not on this sheet.",
+    "The 0.55m zone south of grid A (with a nested 0.25m sub-dimension at a small hatched pier/block) is drawn but not textually explained on the plan; the section view (_view2_st1_section.json) resolves what it physically is."
+  ]
+}

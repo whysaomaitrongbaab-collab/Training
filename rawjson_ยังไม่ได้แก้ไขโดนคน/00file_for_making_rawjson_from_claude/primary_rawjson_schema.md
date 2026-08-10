@@ -1,6 +1,6 @@
 # Primary Raw JSON Schema
 
-> Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../No_touch_box/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
+> Compiled 2026-07-10 from [`20260708draft of prime rawjson.md`](../../wait_for_ทิ้ง/No_touch_box/docs/20260708draft%20of%20prime%20rawjson.md) (original kept untouched, moved into `wait_for_ทิ้ง/` 2026-08-04 as historical — see `No_touch_box/docs/ARCHIVE.md`) — this is the spec actually used when prompting the model to extract raw JSON for other houses. History/rationale stripped out; only actionable rules remain.
 
 ## 0. FORMAT LOCK — read this before anything else (added 2026-08-02)
 
@@ -97,9 +97,11 @@ Whenever you convert something the drawing printed (a size string, a rebar callo
 - Row letters keep the drawing's own alphabet — Thai `ก`/`ข`/`ค` stays Thai, it is what is printed.
 - Every point ref must resolve against that house's `หน้า00_gridline.json`. If it doesn't, the grid master is missing a line (§4 beam-endpoint rule) — fix the master, don't invent a ref.
 
-### 0.9 `pattern` must be one of the 14 in §1
+### 0.9 `pattern` must be one of the 16 in §1
 
 Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and needed 21 files remapped. A detail sheet is `section`; an elevation is `side_profile`; a schematic diagram is `side_profile`; a site plan is `site_plan`, not `plan`.
+
+**A summary table is `schedule`; a bar-bending (cut-list) table is `bbs_schedule`** — the test is whether a row describes a *member* or a single *bar* (§1 #14). A soil borehole log is `soil_boring_log`, never `schedule` or `notes` (§1 #15).
 
 ### 0.10 Before you call a house finished
 
@@ -107,7 +109,7 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 
 - [ ] every file parses as JSON
 - [ ] every file has the §2 wrapper fields
-- [ ] `pattern` is one of the 14 (§1)
+- [ ] `pattern` is one of the 16 (§1)
 - [ ] no file carries `phase_note` (§2a)
 - [ ] no array named after a kind of drawing element (§0.1)
 - [ ] grid master nests `x_lines`/`y_lines` under `grid{}` (§0.1)
@@ -120,7 +122,7 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 
 **The one allowed exception to the merge check:** two entries of the same point mark may stay separate when they carry genuinely different `confidence_score` or a different per-position `note` — merging would erase which positions were read off the drawing and which were inferred. The checker reports these; keep them, and say why in `warnings[]`. Anything else that trips the checker is a real defect.
 
-## 1. Pattern taxonomy — 14 types
+## 1. Pattern taxonomy — 16 types
 
 | # | pattern | description |
 |---|---|---|
@@ -137,9 +139,11 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 | 11 | `symbol` | symbol/legend page *(draft)* |
 | 12 | `roof_plan` | roof plan, separated from `plan` because it has ridge/hip lines and eave overhangs *(draft)* |
 | 13 | `misc` | เบ็ดเตล็ด — whole-series catalog/promotional/reference pages that aren't about this house's own construction (e.g. a back-cover price-comparison table across all 10 designs in the series, or a cover collage of every design's render) — added 2026-07-14, previously misclassified as `title` |
-| 14 | `unknown` | doesn't fit any of the 13 above |
+| 14 | `bbs_schedule` | **bar bending schedule (ตารางตัดเหล็ก)** — one row per individual BAR, not per element: `bar_mark`, `shape_code`, bend dimensions `len_A`/`len_B`/`len_C`, `qty`, `grade`. **Split from `schedule` 2026-08-04 because the granularity is genuinely different** — a `schedule` row describes one member (`C1`: 200×200, 4-Ø12), a `bbs_schedule` row describes one cut bar (`C1`/`T1`: Ø12, shape 00, 4.5 m, ×2). Putting both under `schedule` forced two incompatible row shapes into one pattern *(draft — no field-set verified against a real extraction yet)* |
+| 15 | `soil_boring_log` | **soil investigation / borehole log (รายงานเจาะสำรวจดิน)** — SPT blow counts, stratum table, lab results, groundwater level. Not a drawing of the building at all: it carries no `grid_ref`, no element marks, no rebar. Container is `elements[]` per §0.1 with `element_type: "soil_layer"`, plus wrapper-level `borehole_id` and `groundwater_level_m`. Added 2026-08-04 — Constistant already reads these live (`QT_PROMPT_SOIL_BORING_LOG` → `js/site/site-index.js`, feeding Foundation Design's bearing-capacity calc) and had no pattern to record them under *(draft — no field-set verified against a real extraction yet)* |
+| 16 | `unknown` | doesn't fit any of the 15 above |
 
-**Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 8 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
+**Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 10 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`, `soil_boring_log`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
 
 ## 2. Required fields on every file (wrapper level)
 
@@ -150,6 +154,8 @@ source_image, confidence_score, confidence_flags, warnings
 
 **`source_image`** = full path of the source image, e.g. `"image/<house>/<house>_หน้า19.png"` — every file coming from the same page (e.g. `_view1_...`/`_view2_...`) must have the exact same value.
 **Exception:** the grid-master file `<house>_หน้า00_gridline.json` uses `source_pages` (array of every `source_image` used to confirm the grid) instead.
+
+**Grid-master `png`/`doc_page` convention (pinned 2026-08-09 after houses 14-18 drifted to the opposite encoding):** `png: "00"` (or `"00b"`, `"00c"`… for additional buildings per §11a), `doc_page: null` — never the reverse (`png: null, doc_page: 0`). It is a synthesized file with no real printed page, so `doc_page` (which means "position in the real document") stays `null`; `"00"` is just the file's own conventional tag, matching how every other page's `png` field already holds its page-number string.
 
 ## 2a. `phase_note` — staged-extraction scratch field (added 2026-07-27)
 
@@ -194,6 +200,14 @@ A page may contain multiple views/patterns — **inventory every view first with
 - **Prime ordering when more than one dummy line falls in the same gap:** scan in standard reading direction — x-axis left→right, y-axis top→bottom. First line found = 1 prime (`A'`), next one = 2 primes (`A''`), and so on (`A'` must always sit left of/above `A''`)
 - **Origin (0,0)** must always be the leftmost/topmost main grid (`type:"named"`) — a dummy grid must never take over the origin position. If a dummy grid falls before the origin (further left/up than the first main grid), use a **negative** `pos_m` instead, e.g. `{"id":"1'","pos_m":-0.80,"type":"dummy"}`
 - `pos_m` is always read from an actually-printed dimension line — never guessed
+
+### Documenting genuine ambiguity in the grid master (optional, added 2026-08-09)
+
+These three fields exist for the case where a grid master genuinely can't be read with full confidence — do **not** add them to a clean file just for consistency; a house whose chains close and whose dummies are unambiguous (e.g. house #04) needs none of them.
+
+- **Per-line `confidence_score` / `confidence_flags`** on an individual `x_lines[]`/`y_lines[]` entry (same meaning as the element-level fields in §0.2) — use when one specific line is less certain than the rest of the file, instead of dragging the whole file's top-level `confidence_score` down uniformly. Precedent: house #06's `A'`/`D'` dummy lines (carry unidentified superstructure) and its `B` line (ambiguous printed digit, `3.00` vs `3.03`) each got their own score while the other, unambiguous lines stayed unscored.
+- **`dummy_grid_rule_check`** (wrapper-level object, sibling of `grid`) — when applying the naming/prime-ordering/negative-`pos_m` rules above was non-trivial, record which rule fired and why in one short sentence per rule, e.g. `{"prime_ordering": "...", "negative_pos_m": "..."}`. Skip entirely when no rule above needed a judgment call.
+- **`non_grid_dimensions_do_not_confuse`** (wrapper-level array of `{location, value_m, meaning}`) — when a dimension elsewhere in the set (another sheet, a costing-example site plan, a non-structural chain) coincidentally matches a grid value or could be mistaken for one, record it so a later reader doesn't re-derive the same false lead. `value_m` is `null` when the entry documents a non-numeric mix-up (e.g. a whole ramp/landing chain), not a single coincidental figure.
 
 #### 🔎 How to FIND dummy grids: the beam-endpoint rule (Makham, 2026-07-19)
 

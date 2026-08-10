@@ -10,8 +10,11 @@ houses 01-11 drifted apart and had to be repaired in bulk (สิ่งที่
 """
 import json, sys, os, re, glob, collections
 
-PATTERNS_14 = {'plan', 'section', 'schedule', 'notes', 'index', 'material_list', 'site_plan',
-               'side_profile', 'gridline', 'title', 'symbol', 'roof_plan', 'misc', 'unknown'}
+# section 1 of primary_rawjson_schema.md. 'bbs_schedule' and 'soil_boring_log' added 2026-08-04
+# (14 -> 16); keep this set and that table in step, the checker is what actually enforces it.
+PATTERNS = {'plan', 'section', 'schedule', 'notes', 'index', 'material_list', 'site_plan',
+            'side_profile', 'gridline', 'title', 'symbol', 'roof_plan', 'misc',
+            'bbs_schedule', 'soil_boring_log', 'unknown'}
 WRAPPER = ['png', 'doc_page', 'discipline', 'sheet_code', 'sheet_name', 'pattern',
            'confidence_score', 'confidence_flags', 'warnings']
 # arrays named after a KIND of drawing element (section 0.1). 'sections'/'columns'/'details' are
@@ -71,8 +74,8 @@ def check_house(house_dir):
         for k in WRAPPER:
             if k not in doc:
                 fails['wrapper fields'].append(f'{name}: missing {k}')
-        if doc.get('pattern') not in PATTERNS_14:
-            fails['pattern in 14'].append(f'{name}: {doc.get("pattern")!r}')
+        if doc.get('pattern') not in PATTERNS:
+            fails['pattern in 16'].append(f'{name}: {doc.get("pattern")!r}')
         if 'phase_note' in doc:
             fails['phase_note left'].append(name)
         for k in doc:
@@ -153,6 +156,20 @@ def main(argv):
         targets = sorted(d for d in glob.glob(os.path.join(base, '*'))
                          if os.path.isdir(d) and os.path.basename(d)[:2].isdigit()
                          and not os.path.basename(d).startswith('00'))
+    else:
+        # A target that doesn't exist, or exists but has no .json files (e.g. the caller
+        # forgot the 'rawjson_ยังไม่ได้แก้ไขโดนคน/' prefix), used to silently check 0 files
+        # and still print "ALL CHECKS PASS" -- a false pass. Found 2026-08-09: houses
+        # 12-18's logged verification commands all used a bare folder name and were
+        # vacuous; house 15's real pattern:'detail_view' / tie_bar defects went uncaught
+        # as a direct result. Fail loudly instead of silently checking nothing.
+        bad_targets = [t for t in targets if not glob.glob(os.path.join(t, '*.json'))]
+        if bad_targets:
+            for t in bad_targets:
+                reason = 'no such directory' if not os.path.isdir(t) else 'no .json files in it'
+                print(f'ERROR: target {t!r} has {reason} -- did you forget the '
+                      f"'rawjson_ยังไม่ได้แก้ไขโดนคน/' prefix?", file=sys.stderr)
+            return 1
     total = collections.defaultdict(list)
     soft_all = []
     for t in targets:
@@ -162,7 +179,7 @@ def main(argv):
         soft_all.extend(s)
 
     print(f'checked {len(targets)} house folder(s)\n')
-    order = ['parse', 'wrapper fields', 'pattern in 14', 'phase_note left', 'element-kind array',
+    order = ['parse', 'wrapper fields', 'pattern in 16', 'phase_note left', 'element-kind array',
              'grid not nested', 'rebar is a string', 'stirrup misnamed',
              'rebar/steel as array (use bar_layers/spans_m)', 'numeric field wrong type',
              'grid_ref is an array', 'element missing element_id', 'element missing element_type',
