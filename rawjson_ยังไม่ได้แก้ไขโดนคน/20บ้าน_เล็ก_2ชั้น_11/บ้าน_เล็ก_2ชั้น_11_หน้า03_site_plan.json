@@ -1,0 +1,62 @@
+{
+  "png": "03",
+  "doc_page": 3,
+  "discipline": "architectural",
+  "sheet_code": "A-02",
+  "sheet_name": "ผังบริเวณ และแผนที่สังเขป",
+  "pattern": "site_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_11/บ้าน_เล็ก_2ชั้น_11_หน้า03.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "แผ่นนี้แบ่งเป็น 2 ช่อง: ช่องขวาเป็น 'ผังบริเวณ' มาตราส่วน 1:125 (มีเนื้อหา) ช่องซ้ายเป็น 'แผนที่สังเขป' ซึ่ง **ว่างเปล่า** ไม่มีการเขียนแผนที่ใด ๆ — เว้นไว้ให้ผู้ใช้แบบกรอกเอง จึงไม่สร้างไฟล์ view แยกสำหรับช่องนั้น บันทึกไว้ใน views[] แทน",
+    "ผังบริเวณเป็นแปลนพื้นชั้นล่างย่อส่วน ไม่มีเส้นเขตที่ดิน ระยะร่น หรือถนนกำกับ — จึงมีเฉพาะสัญลักษณ์งานระบบระบายน้ำ 3 รายการเป็นเนื้อหาใหม่ที่ไม่ซ้ำกับ A-03",
+    "element_type ของ pattern site_plan ยังไม่มี enum กลางในโครงการ (§13) — ไฟล์นี้ใช้ 'symbol_legend_entry' สำหรับรายการในคำอธิบายสัญลักษณ์ และ 'fitting' สำหรับตัวอุปกรณ์ เพื่อให้อยู่ในชุดค่าที่ §0.4 กำหนดไว้แล้ว"
+  ],
+  "grid_source": "บ้าน_เล็ก_2ชั้น_11_หน้า00_gridline.json",
+  "scale": "1:125",
+  "views": [
+    {
+      "view": 1,
+      "title": "ผังบริเวณ",
+      "pattern": "site_plan",
+      "scale": "1:125"
+    },
+    {
+      "view": 2,
+      "title": "แผนที่สังเขป",
+      "pattern": "site_plan",
+      "note": "ช่องว่างเปล่า ไม่มีเนื้อหาบนแบบ"
+    }
+  ],
+  "elements": [
+    {
+      "element_id": "ถังบำบัดน้ำเสีย",
+      "element_type": "fitting",
+      "description": "ถังไบโอเทล รุ่น BT-24E ของบริษัท พรีเมียร์ โพรดักส์ จำกัด หรือเทียบเท่า ดูแบบขยาย",
+      "detail_ref": "A-16",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "บ่อพัก",
+      "element_type": "fitting",
+      "description": "บ่อพักขนาด 0.40x0.40 m. (ดูแบบขยาย) ระยะห่างไม่เกิน 6.00 m.",
+      "width_mm": 400,
+      "depth_mm": 400,
+      "max_spacing_m": 6.0,
+      "detail_ref": "A-17",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ท่อระบายน้ำ",
+      "element_type": "fitting",
+      "description": "ท่อระบายน้ำ ขนาด Ø0.20 m. SLOPE 1:200",
+      "dia_mm": 200,
+      "slope": "1:200",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}

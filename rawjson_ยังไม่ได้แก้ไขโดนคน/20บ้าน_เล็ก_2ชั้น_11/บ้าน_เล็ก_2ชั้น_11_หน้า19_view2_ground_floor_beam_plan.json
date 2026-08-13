@@ -1,0 +1,441 @@
+{
+  "png": "19",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนคานพื้นชั้นล่าง (view 2 จาก 2 views บนแผ่นเดียวกัน)",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_11/บ้าน_เล็ก_2ชั้น_11_หน้า19.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "ช่วง C-D ฝั่งกริด 1 (C1→D1) และแนวกริด D ช่วง 1-2 ไม่มีคานติดป้ายและเส้นที่วาดเป็นเส้นเดี่ยวไม่ใช่เส้นคู่แบบคานอื่นบนแผ่นเดียวกัน — ตีความว่าเป็นขอบพื้นวางบนดิน S0 ของที่จอดรถ ไม่ใช่คาน จึงไม่บันทึกเป็น beam; เสา C1/ฐานราก F1 ที่ D1 ยังมีอยู่จริงตาม view 1",
+    "คาน B1 ช่วง B'2'-B'3 ปลายทั้งสองข้างไม่ตกบนกริดหลัก — ตั้งกริดสมมติ B' (4.20) ตามกฎ beam-endpoint §4 โดยอ่านระยะ 1.20 ม. ที่พิมพ์บน A-03 (ความกว้างห้องน้ำชั้นล่าง) ไม่ได้ประมาณจากภาพ",
+    "ช่องพื้นที่ทำเครื่องหมายด้วยลูกศรแต่ไม่มีตัวอักษรมาร์ค ตีความเป็น SP (แผ่นพื้นสำเร็จรูป) ตาม REMARK บนแผ่นเดียวกัน และให้ element_id เชิงบรรยายพร้อมตำแหน่ง เพราะแบบไม่ได้พิมพ์มาร์คไว้จริง (§0.3)",
+    "แผ่นพื้น S1 ปรากฏ 2 ช่องบนแผ่นนี้ (ชานพัก และใต้บันได) เป็นคนละช่องพื้นที่กัน จึงเก็บแยกรายการ ไม่ใช่การนับซ้ำ (slab เป็น element ที่มี grid_ref แบบพื้นที่ ไม่ใช่ point element ที่ต้องรวมตาม §4)",
+    "เช็ค SI vs S1 ตาม §10 แล้ว: ตัวอักษรบนแผ่นเป็นเลข 1 (S1) ไม่ใช่ตัว I — ยืนยันจากแบบขยายพื้นบน S-04 ที่มี S0/S1/S2/SP ครบชุดเป็นตัวเลขทั้งหมด",
+    "สเปกคาน B1/B2/B3/B5 join มาจาก S-04 และ S-05 (§7) เก็บครั้งเดียวใน specs{} ไม่ทำซ้ำในทุก segment"
+  ],
+  "views": [
+    {
+      "view": 1,
+      "title": "แปลนเสา , ฐานราก",
+      "pattern": "plan",
+      "scale": "1:75"
+    },
+    {
+      "view": 2,
+      "title": "แปลนคานพื้นชั้นล่าง",
+      "pattern": "plan",
+      "scale": "1:75"
+    }
+  ],
+  "grid_source": "บ้าน_เล็ก_2ชั้น_11_หน้า00_gridline.json",
+  "scale": "1:75",
+  "level": "พื้นชั้นล่าง (+0.35)",
+  "specs": {
+    "B1": {
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "printed_as": "B1  0.15x0.30  2 Ø12mm. บน / 2 Ø12mm. ล่าง / |6mm.@0.15",
+      "spec_sheet": "S-04"
+    },
+    "B2": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "printed_as": "B2  0.15x0.40  2 Ø12mm. บน / 2 Ø12mm. ล่าง / |6mm.@0.15",
+      "spec_sheet": "S-04"
+    },
+    "B3": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "spec_confidence_flags": [
+        "asymmetric_top_bottom:2_top_3_bottom"
+      ],
+      "printed_as": "B3  0.15x0.40  2 Ø12mm. บน / 3 Ø12mm. ล่าง / |6mm.@0.15",
+      "spec_sheet": "S-04"
+    },
+    "B5": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "top, over each support, curtailed at L/4 from support face",
+          "printed_as": "(4+4) Ø12 mm.",
+          "note": "SECTION 3 (ตัดที่เสา) จึงนับเหล็กบนได้ 8 Ø12mm."
+        },
+        {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "bottom, at midspan, curtailed at L/5 from support face",
+          "printed_as": "(4+4) Ø12 mm.",
+          "note": "SECTION 4 (ตัดกลางช่วง) จึงนับเหล็กล่างได้ 8 Ø12mm."
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10",
+        "variable_spacing": true,
+        "note": "|6mm.@0.10 ช่วงปลายคาน (ระยะ L/4) และ |6mm.@0.20 ช่วงกลาง"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "printed_as": "B5 คานต่อเนื่อง 2 ช่วง 0.15x0.40 — SECTION 3 บน 8 Ø12mm./ล่าง 4 Ø12mm., SECTION 4 บน 4 Ø12mm./ล่าง 8 Ø12mm.",
+      "spec_sheet": "S-05"
+    }
+  },
+  "elements": [
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2'",
+      "grid_ref_end": "C2'",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "dummy_grid_endpoint:2'"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B'2'",
+      "grid_ref_end": "B'3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "bears_on_beam:B2(start)",
+        "bears_on_beam:B2(end)",
+        "dummy_grid_endpoint:B'"
+      ],
+      "note": "คานขอบล่างของแผ่นพื้น S1 (ชานพัก/ห้องน้ำชั้นล่าง) ปลายทั้งสองข้างไม่อยู่บนกริดหลัก ใช้กริดสมมติ B' (4.20) ตามกฎ beam-endpoint §4"
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "grid_ref": "A-B x 1-2",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "B-B' x 2'-3",
+      "note": "แผ่นพื้นชานพัก/ห้องน้ำชั้นล่าง",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dummy_grid_area:B'"
+      ]
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "B'-C x 2'-3",
+      "note": "แผ่นพื้นใต้บันไดขึ้นชั้น 2",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dummy_grid_area:B'"
+      ]
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "C-D x 1-2",
+      "note": "พื้นวางบนดินบริเวณที่จอดรถ",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP_A-B_2-3",
+      "element_type": "slab",
+      "grid_ref": "A-B x 2-3",
+      "slab_type": "SP",
+      "span_direction": "vertical (แนวกริด A-B)",
+      "note": "ลูกศรแสดงทิศทางวางแผ่นพื้นสำเร็จรูป ตาม REMARK '↔ (SP) SLAB' ไม่มีตัวอักษรมาร์คในช่องนี้",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "mark_inferred_from_remark_legend"
+      ]
+    },
+    {
+      "element_id": "SP_B-C_1-2",
+      "element_type": "slab",
+      "grid_ref": "B-C x 1-2",
+      "slab_type": "SP",
+      "span_direction": "vertical (แนวกริด B-C)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "mark_inferred_from_remark_legend"
+      ]
+    },
+    {
+      "element_id": "SP_B-C_2-2'",
+      "element_type": "slab",
+      "grid_ref": "B-C x 2-2'",
+      "slab_type": "SP",
+      "span_direction": "vertical (แนวกริด B-C)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "mark_inferred_from_remark_legend"
+      ]
+    },
+    {
+      "element_id": "SP_C-D_2-3",
+      "element_type": "slab",
+      "grid_ref": "C-D x 2-3",
+      "slab_type": "SP",
+      "span_direction": "horizontal (แนวกริด 2-3)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "mark_inferred_from_remark_legend"
+      ]
+    },
+    {
+      "element_id": "REMARK_SP_slab",
+      "element_type": "symbol_legend_entry",
+      "description": "↔ (SP) SLAB — ลูกศรสองหัวคู่กับวงกลม SP ใช้บอกทิศทางวางแผ่นพื้นสำเร็จรูป",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}
