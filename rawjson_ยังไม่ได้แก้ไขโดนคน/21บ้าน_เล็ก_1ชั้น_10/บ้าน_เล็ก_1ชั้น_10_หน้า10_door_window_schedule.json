@@ -1,0 +1,148 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "architectural",
+  "sheet_code": "A-09",
+  "sheet_name": "แบบขยายประตู , หน้าต่าง",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_10/บ้าน_เล็ก_1ชั้น_10_หน้า10.png",
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "**ชุดแบบนี้ตั้งมาร์คช่องเปิดเป็นรหัสไทย-อังกฤษปนกัน: ประตูใช้ ป1/ป2/ป3 หน้าต่างใช้ w1/w2/w3/w4** (ต่างจากแบบบ้านหลังอื่นในซีรีส์เดียวกันที่ใช้ตัวเลขในกรอบวงกลม/หกเหลี่ยม) — ใช้มาร์คตามที่พิมพ์ตรง ๆ ตาม §0.3 ไม่แปลงเป็น D1/W1 เพราะ ป และ w คือสิ่งที่พิมพ์อยู่บนแบบจริง และไม่ชนกันอยู่แล้ว",
+    "**ทุกช่องเปิดพิมพ์ระยะเป็นคู่ (เช่น 700 กับ 800, 2.05 กับ 2.00)** ซึ่งคือขนาดวงกบภายนอกกับขนาดบานภายใน แบบไม่ได้ระบุว่าตัวไหนเป็นตัวไหน — บันทึก width_mm/height_mm เป็นค่านอกสุดที่พิมพ์ และเก็บคู่ระยะทั้งหมดไว้ใน note พร้อม flag 'dimension_pair_printed_outer_and_leaf' ทุกรายการ",
+    "ตารางใต้แต่ละรูประบุ 5 หัวข้อ (ลักษณะบาน / วงกบ / กรอบบาน / ลูกฟัก / อุปกรณ์) บันทึกลงฟิลด์ leaf_type / frame_material / sash_frame_material / leaf_material / hardware ตามลำดับ; ช่องที่พิมพ์ '-' (ไม่มีกรอบบาน) เว้นฟิลด์นั้นไว้ไม่ใส่ ไม่เดาแทน",
+    "ช่องที่ 8 ของตารางบนแผ่นนี้ว่างเปล่าทั้งช่อง (ไม่มีรูป ไม่มีมาร์ค ไม่มีรายการ) — เป็นช่องเผื่อไว้ ไม่ใช่ข้อมูลที่หายไป จึงไม่บันทึกเป็น element",
+    "จัดเป็น pattern 'schedule' ตาม §1 #3 เพราะแต่ละแถวบรรยาย 'ชิ้นส่วน' (บานประตู/หน้าต่าง 1 แบบ) ไม่ใช่ 'เหล็กเส้นเดี่ยว' จึงไม่ใช่ bbs_schedule"
+  ],
+  "scale": "1:50",
+  "elements": [
+    {
+      "element_id": "ป1",
+      "element_type": "door",
+      "width_mm": 1700,
+      "height_mm": 2050,
+      "opening_type": "ประตู",
+      "leaf_type": "บานเปิดคู่",
+      "frame_material": "ไม้เนื้อแข็ง 2\"x4\"",
+      "leaf_material": "ไม้เนื้อแข็ง",
+      "hardware": "บานพับ ลูกบิด กลอน ครบชุด",
+      "printed_as": "ป1",
+      "note": "ช่องบาน 1.70 (0.80+0.80) บานจริง 0.90 (0.80+0.80) สูง 2.05 / 2.00",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dimension_pair_printed_outer_and_leaf"
+      ],
+      "sash_frame_material": "ไม้เนื้อแข็ง"
+    },
+    {
+      "element_id": "ป2",
+      "element_type": "door",
+      "width_mm": 900,
+      "height_mm": 2050,
+      "opening_type": "ประตู",
+      "leaf_type": "บานเปิดเดี่ยว",
+      "frame_material": "ไม้เนื้อแข็ง 2\"x4\"",
+      "leaf_material": "ไม้เนื้อแข็ง",
+      "hardware": "บานพับ ลูกบิด กลอน ครบชุด",
+      "printed_as": "ป2",
+      "note": "ช่องบาน 700/800 บานจริง 0.90/0.80 สูง 2.05 / 2.00",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dimension_pair_printed_outer_and_leaf"
+      ],
+      "sash_frame_material": "ไม้เนื้อแข็ง"
+    },
+    {
+      "element_id": "ป3",
+      "element_type": "door",
+      "width_mm": 800,
+      "height_mm": 2050,
+      "opening_type": "ประตู",
+      "leaf_type": "บานเปิดเดี่ยว",
+      "frame_material": "ไม้เนื้อแข็ง 2\"x4\"",
+      "leaf_material": "ไม้เนื้อแข็ง",
+      "hardware": "บานพับ ลูกบิด กลอน ครบชุด",
+      "printed_as": "ป3",
+      "note": "ช่องบาน 700/800 สูง 2.05 / 2.00 มีเกล็ดระบายอากาศด้านล่าง",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dimension_pair_printed_outer_and_leaf"
+      ],
+      "sash_frame_material": "ไม้เนื้อแข็ง"
+    },
+    {
+      "element_id": "w1",
+      "element_type": "window",
+      "width_mm": 1300,
+      "height_mm": 1100,
+      "opening_type": "หน้าต่าง",
+      "leaf_type": "บานเปิดคู่",
+      "frame_material": "ไม้เนื้อแข็ง 2\"x4\" ทาสีน้ำมัน",
+      "leaf_material": "กระจกฝ้าหนา 4 มม.",
+      "hardware": "ครบชุด",
+      "printed_as": "w1",
+      "note": "บานคู่ 0.60+0.60 = 1.30 สูง 1.10/1.00 ระดับขอบล่าง 0.85",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dimension_pair_printed_outer_and_leaf"
+      ],
+      "sash_frame_material": "ไม้เนื้อแข็ง 1\"x3\" ทาสีน้ำมัน",
+      "sill_height_mm": 850
+    },
+    {
+      "element_id": "w2",
+      "element_type": "window",
+      "width_mm": 500,
+      "height_mm": 1500,
+      "opening_type": "หน้าต่าง",
+      "leaf_type": "บานกระจกติดตาย และบานเปิด",
+      "frame_material": "ไม้เนื้อแข็ง 2\"x4\"",
+      "leaf_material": "กระจกฝ้าหนา 4 มม.",
+      "hardware": "ครบชุด",
+      "printed_as": "w2",
+      "note": "0.40/0.50 กว้าง ช่องบน 0.50 + ช่องล่าง 1.00 ระดับขอบล่าง 0.45 รวมสูงถึง 2.05",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dimension_pair_printed_outer_and_leaf"
+      ],
+      "sill_height_mm": 450
+    },
+    {
+      "element_id": "w3",
+      "element_type": "window",
+      "width_mm": 400,
+      "height_mm": 1500,
+      "opening_type": "หน้าต่าง",
+      "leaf_type": "บานกระจกติดตาย",
+      "frame_material": "ไม้เนื้อแข็ง 2\"x4\"",
+      "leaf_material": "กระจกฝ้าหนา 4 มม.",
+      "hardware": "ครบชุด",
+      "printed_as": "w3",
+      "note": "0.30/0.40 กว้าง ช่องบน 0.50 + ช่องล่าง 1.00 ระดับขอบล่าง 0.45 รวมสูงถึง 2.05",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dimension_pair_printed_outer_and_leaf"
+      ],
+      "sill_height_mm": 450
+    },
+    {
+      "element_id": "w4",
+      "element_type": "window",
+      "width_mm": 550,
+      "height_mm": 450,
+      "opening_type": "หน้าต่าง",
+      "leaf_type": "บานเกล็ดกระจก",
+      "frame_material": "ไม้เนื้อแข็ง 2\"x4\" ทาสีน้ำมัน",
+      "leaf_material": "กระจกฝ้าหนา 4 มม.",
+      "hardware": "ครบชุด",
+      "printed_as": "w4",
+      "note": "0.45/0.55 กว้าง สูง 0.45 ระดับขอบล่าง 1.60 รวมสูงถึง 2.05",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dimension_pair_printed_outer_and_leaf"
+      ],
+      "sill_height_mm": 1600
+    }
+  ]
+}

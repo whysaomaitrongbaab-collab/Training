@@ -1,0 +1,252 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "architectural",
+  "sheet_code": "A-03",
+  "sheet_name": "แปลนพื้น",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_10/บ้าน_เล็ก_1ชั้น_10_หน้า04.png",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "บ้านชั้นเดียวผังรูปตัว L — ช่วงกริด C-B เต็มความกว้าง 1-3 (ห้องนอน/ห้องน้ำ/โถง/เตรียมอาหาร) ส่วนช่วง B-A มีเฉพาะฝั่งกริด 2-3 เป็นห้องอาหาร/รับแขก ส่วนฝั่ง 1-2 เป็นที่จอดรถระดับ +0.00 (พื้นวางบนดิน)",
+    "โซ่ระยะแนวตั้งบนแผ่นนี้ (3.00 | 2.00 = 5.00) เป็นที่มาของกริดสมมติ C' (3.00) ในกริดมาสเตอร์ — แผ่นโครงสร้าง S-01 ไม่ได้พิมพ์โซ่ย่อยนี้ไว้ มีแต่ค่ารวม 5.00",
+    "ห้องอาหารและห้องรับแขกอยู่ในช่องกริดเดียวกัน (B-A x 2-3) แบ่งด้วยผนังภายในที่ไม่ตรงกับเส้นกริดใดและไม่มีเส้นบอกระยะกำกับ — บันทึกเป็น 2 ห้องด้วย grid_ref เดียวกันพร้อมหมายเหตุ ไม่ตั้งกริดสมมติเพราะไม่มีระยะพิมพ์ไว้",
+    "ตำแหน่งประตู/หน้าต่างบันทึกเป็นระดับช่อง (bay) ไม่ใช่พิกัดจริง เพราะแบบไม่ได้ให้เส้นบอกระยะตำแหน่งช่องเปิด — ทุกตัวติด flag 'position_approximate_bay_level' และจำนวนที่นับได้ติด flag ว่าอาจไม่ครบ",
+    "**มาร์คประตู/หน้าต่างชุดแบบนี้ใช้รหัสไทย-อังกฤษปนกัน คือ ป1/ป2/ป3 สำหรับประตู และ w1/w2/w3/w4 สำหรับหน้าต่าง** (ต่างจากบ้านหลังอื่นในซีรีส์ที่ใช้ตัวเลขในกรอบวงกลม/หกเหลี่ยม) — ใช้มาร์คตามที่พิมพ์ตรง ๆ ตาม §0.3 ไม่แปลงเป็น D1/W1",
+    "ห้องซักล้างอยู่นอกกริด 3 ออกไปถึงกริดสมมติ 3' (7.00) ซึ่งได้ระยะจากเส้นบอกระยะ 1.00 บน S-01"
+  ],
+  "grid_source": "บ้าน_เล็ก_1ชั้น_10_หน้า00_gridline.json",
+  "scale": "1:75",
+  "level": "ชั้นเดียว (+0.20)",
+  "elements": [
+    {
+      "element_id": "นอน 1",
+      "element_type": "room",
+      "grid_ref": "C-C' x 1-2",
+      "level_m": 0.2,
+      "level_m_printed_as": "+0.20",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "นอน 2",
+      "element_type": "room",
+      "grid_ref": "C-C' x 2-3",
+      "level_m": 0.2,
+      "level_m_printed_as": "+0.20",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ห้องน้ำ",
+      "element_type": "room",
+      "grid_ref": "C'-B x 1-1''",
+      "level_m": 0.1,
+      "level_m_printed_as": "+0.10",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "detail_ref": "A-10"
+    },
+    {
+      "element_id": "โถง",
+      "element_type": "room",
+      "grid_ref": "C'-B x 1''-2",
+      "level_m": 0.2,
+      "level_m_printed_as": "+0.20",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "เตรียมอาหาร",
+      "element_type": "room",
+      "grid_ref": "C'-B x 2-3",
+      "level_m": 0.2,
+      "level_m_printed_as": "+0.20",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ซักล้าง",
+      "element_type": "room",
+      "grid_ref": "C'-B x 3-3'",
+      "level_m": 0.1,
+      "level_m_printed_as": "+0.10",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "อาหาร",
+      "element_type": "room",
+      "grid_ref": "B-A x 2-3",
+      "level_m": 0.2,
+      "level_m_printed_as": "+0.20",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "note": "ส่วนอาหารและรับแขกอยู่ในช่องกริดเดียวกัน (B-A x 2-3) แบ่งด้วยผนังภายในที่ไม่ตรงกับเส้นกริดใด"
+    },
+    {
+      "element_id": "รับแขก",
+      "element_type": "room",
+      "grid_ref": "B-A x 2-3",
+      "level_m": 0.2,
+      "level_m_printed_as": "+0.20",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "note": "ดูหมายเหตุที่ห้องอาหาร — สองห้องนี้อยู่ช่องกริดเดียวกัน"
+    },
+    {
+      "element_id": "จอดรถ",
+      "element_type": "room",
+      "grid_ref": "B-A x 1-2",
+      "level_m": 0.0,
+      "level_m_printed_as": "+0.00",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ระเบียง",
+      "element_type": "room",
+      "grid_ref": "A-A' x 2-3",
+      "level_m": 0.1,
+      "level_m_printed_as": "+0.10",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ป1",
+      "element_type": "door",
+      "count": 1,
+      "grid_refs": [
+        "A x 2-3"
+      ],
+      "printed_as": "ป1",
+      "detail_ref": "A-09",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "position_approximate_bay_level",
+        "count_from_visual_scan_may_be_incomplete"
+      ]
+    },
+    {
+      "element_id": "ป2",
+      "element_type": "door",
+      "count": 5,
+      "grid_refs": [
+        "C x 1-2",
+        "C x 2-3",
+        "C'-B x 1''-2",
+        "B-A x 2-3"
+      ],
+      "printed_as": "ป2",
+      "detail_ref": "A-09",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "position_approximate_bay_level",
+        "count_from_visual_scan_may_be_incomplete"
+      ]
+    },
+    {
+      "element_id": "ป3",
+      "element_type": "door",
+      "count": 1,
+      "grid_refs": [
+        "C'-B x 1-1''"
+      ],
+      "printed_as": "ป3",
+      "detail_ref": "A-09",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "position_approximate_bay_level",
+        "count_from_visual_scan_may_be_incomplete"
+      ]
+    },
+    {
+      "element_id": "w1",
+      "element_type": "window",
+      "count": 5,
+      "grid_refs": [
+        "C-C' x 1",
+        "C-C' x 3",
+        "B-A x 3"
+      ],
+      "printed_as": "w1",
+      "detail_ref": "A-09",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "position_approximate_bay_level",
+        "count_from_visual_scan_may_be_incomplete"
+      ]
+    },
+    {
+      "element_id": "w2",
+      "element_type": "window",
+      "count": 2,
+      "grid_refs": [
+        "C'-B x 3-3'"
+      ],
+      "printed_as": "w2",
+      "detail_ref": "A-09",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "position_approximate_bay_level",
+        "count_from_visual_scan_may_be_incomplete"
+      ]
+    },
+    {
+      "element_id": "w3",
+      "element_type": "window",
+      "count": 1,
+      "grid_refs": [
+        "C'-B x 1"
+      ],
+      "printed_as": "w3",
+      "detail_ref": "A-09",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "position_approximate_bay_level",
+        "count_from_visual_scan_may_be_incomplete"
+      ]
+    },
+    {
+      "element_id": "w4",
+      "element_type": "window",
+      "count": 1,
+      "grid_refs": [
+        "C'-B x 1"
+      ],
+      "printed_as": "w4",
+      "detail_ref": "A-09",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "position_approximate_bay_level",
+        "count_from_visual_scan_may_be_incomplete"
+      ]
+    },
+    {
+      "element_id": "SECTION A",
+      "element_type": "section_view",
+      "grid_ref": "~C'3",
+      "description": "ลูกศรตัดรูปตัด A มองไปทางซ้าย (แสดงบน A-07)",
+      "detail_ref": "A-07",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SECTION B",
+      "element_type": "section_view",
+      "grid_ref": "~A2",
+      "description": "ลูกศรตัดรูปตัด B มองขึ้น (แสดงบน A-08)",
+      "detail_ref": "A-08",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "DIRECTION OF ELEVATION",
+      "element_type": "symbol_legend_entry",
+      "description": "สัญลักษณ์บอกทิศมองรูปด้าน 4 ทิศ: 1 (A-05), 2 (A-05), 3 (A-06), 4 (A-06)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}
