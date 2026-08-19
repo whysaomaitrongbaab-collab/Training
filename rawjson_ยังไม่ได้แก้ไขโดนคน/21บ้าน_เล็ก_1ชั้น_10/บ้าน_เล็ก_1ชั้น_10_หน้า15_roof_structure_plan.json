@@ -1,0 +1,125 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนโครงหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_10/บ้าน_เล็ก_1ชั้น_10_หน้า15.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "โครงหลังคาเป็นเหล็กทั้งหมด ใช้หน้าตัดเดียวกันทุกชิ้นส่วนคือ C 100X50X20X2.30 มม. ต่างกันแค่จำนวนที่ประกบ (2 ตัวสำหรับอกไก่/ตะเข้สัน/แนวตั้ง, ตัวเดียวสำหรับจันทันและแป) — ไม่มีชิ้นส่วนคอนกรีตในผังนี้เลย",
+    "หน้าตัดพิมพ์เป็นตัวเลข 4 ตัว (100X50X20X2.30) ซึ่งเป็นรางน้ำมีปีกพับ (lipped channel) แบบ d x b x lip x t — §6a ยังไม่ได้นิยาม key mapping สำหรับรูปแบบนี้ (นิยามไว้เฉพาะ 4 ตัวเลขแบบ d x b x tw x tf และ 5 ตัวเลขที่มี lip) จึงใช้ d_mm/b_mm/lip_mm/thickness_mm และเก็บ printed_as ไว้ครบทุกรายการ",
+    "**ระยะยื่นชายคาไม่ได้กำกับไว้บนแผ่นนี้เลย** — มีเพียงเส้นบอกระยะ 0.60 ที่วัดจากกริด A ขึ้นไป ซึ่งเป็นตำแหน่งแปเส้นหนึ่ง ไม่ใช่ระยะยื่น จึงไม่ตั้งกริดสมมติให้ขอบหลังคา และไม่ให้ grid_ref กับชิ้นส่วนที่อยู่นอกกริดหลัก",
+    "จันทันและแปเป็นชิ้นส่วนซ้ำตามระยะ บันทึกเป็นรายการเดียวพร้อม spacing_mm ตาม §6a ไม่แตกเป็นเส้นต่อเส้น",
+    "อกไก่วางตามแนวกริด 2 ตลอดความยาว C→A จึงให้ grid_ref ได้; ส่วนตะเข้สัน/จันทัน/แป กระจายทั้งผังและบางส่วนอยู่นอกกริด จึงไม่ให้ grid_ref (§0.2 อนุญาตให้ element ที่ไม่มีตำแหน่งบนกริดอยู่ท้าย array)"
+  ],
+  "grid_source": "บ้าน_เล็ก_1ชั้น_10_หน้า00_gridline.json",
+  "scale": "1:75",
+  "level": "โครงหลังคา (+3.20 ถึง +4.95)",
+  "elements": [
+    {
+      "element_id": "อกไก่",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "thickness_mm": 2.3,
+        "printed_as": "C 100X50X20X2.30 มม.",
+        "built_up_count": 2
+      },
+      "count": 2,
+      "grid_ref": "C-A x 2",
+      "printed_as": "อกไก่เหล็ก 2 - C 100X50X20X2.30 มม.",
+      "note": "สันหลังคาวางตามแนวกริด 2 ตลอดความยาวอาคาร ประกบเหล็กรางน้ำ 2 ตัว",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ตะเข้สัน",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "thickness_mm": 2.3,
+        "printed_as": "C 100X50X20X2.30 มม.",
+        "built_up_count": 2
+      },
+      "count": 2,
+      "printed_as": "ตะเข้สันเหล็ก 2 - C 100X50X20X2.30 มม.",
+      "note": "เส้นทแยง 4 แนวจากมุมผังหลังคาเข้าหาปลายสันทั้งสองด้าน; ตัวเลข 2 คือจำนวนเหล็กที่ประกบกันต่อ 1 แนว ไม่ใช่จำนวนแนว",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "count_means_built_up_pair_not_number_of_lines"
+      ]
+    },
+    {
+      "element_id": "แนวตั้ง",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "thickness_mm": 2.3,
+        "printed_as": "C 100X50X20X2.30 มม.",
+        "built_up_count": 2
+      },
+      "count": 2,
+      "printed_as": "แนวตั้งเหล็ก 2 - C 100X50X20X2.30 มม.",
+      "note": "เสาตั้งรับอกไก่ (ดั้ง) ปรากฏเป็นวงกลมทึบ 2 จุดบนแนวกริด 2 ใกล้กริด C และกริด A",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทัน",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "thickness_mm": 2.3,
+        "printed_as": "C 100X50X20X2.30 มม."
+      },
+      "spacing_mm": 2000,
+      "printed_as": "จันทันเหล็ก C 100X50X20X2.30 มม. @ 2.00 ม.",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แป",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "thickness_mm": 2.3,
+        "printed_as": "C 100X50X20X2.30 มม."
+      },
+      "spacing_mm": 1000,
+      "printed_as": "แปเหล็ก C 100X50X20X2.30 มม. @ 1.00 ม.",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แนวเชิงชายและปีดลอน",
+      "element_type": "installation_detail",
+      "printed_as": "แนวเชิงชายและปีดลอน",
+      "description": "แนวไม้เชิงชายและแผ่นปิดลอนตามขอบชายคาโดยรอบ",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}
