@@ -9,6 +9,14 @@ run_house_batch.py — รัน t02 (LoRA: Sicilian44/qwen3vl-30b-thai-rc) ท�
 resume-safe: ข้ามหน้าที่มีไฟล์ผลลัพธ์อยู่แล้ว — ถ้า process ตายกลางทาง รันซ้ำได้โดยไม่เสียเวลา/เงิน
 ที่ทำไปแล้ว (บทเรียนจาก DAY OF SHAME — งานที่ทำแล้วต้องไม่หายเมื่อมีปัญหากลางทาง)
 
+2026-08-21: เพิ่ม grammar-constrained decoding (--grammar-backend auto|xgr|lmfe|none,
+default auto = xgrammar ก่อน ตกมา lm-format-enforcer) + regex ลบ trailing comma ก่อน parse
+- lmfe: พิสูจน์บนเครื่องเช่าแล้วผ่าน infer_t02_grammar.py / xgr: probe ผ่านบนเครื่อง local
+  (compile grammar + LogitsProcessor init ด้วย tokenizer จริงของ Qwen) แต่ยังไม่เคยรันบน GPU
+- **เส้นทาง batch นี้ทั้งเส้นยังไม่เคยรันบน GPU จริง** — รอบหน้าที่เช่า ให้ลอง --limit 2
+  ก่อนปล่อยเต็มเสมอ (ธรรมเนียมเดิมของไฟล์นี้อยู่แล้ว) และถ้า xgr มีปัญหา:
+  --grammar-backend lmfe คือตัวที่พิสูจน์แล้ว
+
     python3 run_house_batch.py --images-root /workspace/tune/image --out-root /workspace/tune/ผล
     python3 run_house_batch.py --houses 01 03          # รันแค่บางบ้าน
     python3 run_house_batch.py --limit 5                # ทดสอบสั้นก่อนรันเต็ม (แนะนำก่อนรันจริง)
@@ -51,7 +59,15 @@ ap.add_argument("--subfolder", default="lora-adapter",
 ap.add_argument("--prompt-file", default=None, help="default: ดึงจาก val.jsonl แถวแรก")
 ap.add_argument("--max-new-tokens", type=int, default=3000)
 ap.add_argument("--limit", type=int, default=0, help="จำกัดจำนวนหน้า/บ้าน (0 = ทุกหน้า)")
+ap.add_argument("--grammar-backend", choices=["auto", "xgr", "lmfe", "none"], default="auto",
+                help="auto = ลอง xgrammar ก่อน (ดีสุด — trailing comma เป็นไปไม่ได้ที่ระดับ grammar) "
+                     "ตกมา lm-format-enforcer (พิสูจน์บน GPU แล้ว) ตกมารันปกติ; "
+                     "บังคับตัวใดตัวหนึ่งได้เพื่อ A/B")
+ap.add_argument("--no-grammar", action="store_true",
+                help="(ทางลัดเดิม) เท่ากับ --grammar-backend none")
 args = ap.parse_args()
+if args.no_grammar:
+    args.grammar_backend = "none"
 
 import torch
 from PIL import Image
@@ -81,6 +97,53 @@ else:
     print("⚠️  tokenizer.image_processor ไม่มี — ความละเอียดภาพอาจไม่ถูกบังคับตามที่ตั้งใจ")
 UnslothModel.for_inference(model)
 
+# grammar-constrained decoding (สรุปผลสืบ 2026-08-21, ดู rule_of_tune.md ข้อ 13):
+#   xgr  = xgrammar: trailing comma เป็นไปไม่ได้ที่ระดับ grammar, มี LogitsProcessor สำเร็จรูป
+#          — ดีสุดแต่ยังไม่เคยรันบน GPU จริง (probe บนเครื่อง local ผ่าน)
+#   lmfe = lm-format-enforcer: พิสูจน์บน GPU แล้ว แต่ยอม trailing comma (regex ด้านล่างเก็บ)
+#          และใช้ได้แค่ schema {"type":"object"} เปล่า (ปิด key set ถ้าประกาศ properties)
+# ทั้งคู่: tokenizer จริงต้องแกะจาก processor wrapper (.tokenizer)
+# grammar_setup() → dict ของ kwargs ที่จะรวมเข้า generate (สร้างใหม่ต่อหน้า — state ต่อ sequence)
+grammar_setup = None
+grammar_name = "none"
+
+if args.grammar_backend in ("auto", "xgr"):
+    try:
+        import xgrammar as xgr
+        cfg = model.config
+        _vocab = getattr(cfg, "vocab_size", None) or cfg.text_config.vocab_size
+        _tok_info = xgr.TokenizerInfo.from_huggingface(tokenizer.tokenizer, vocab_size=_vocab)
+        _compiled = xgr.GrammarCompiler(_tok_info).compile_builtin_json_grammar()
+        def grammar_setup():
+            # LogitsProcessor ของ xgrammar เป็น stateful — ตัวใหม่ทุก generate
+            return {"logits_processor": [xgr.contrib.hf.LogitsProcessor(_compiled)]}
+        grammar_name = "xgrammar"
+    except Exception as e:
+        print(f"⚠️  xgrammar ใช้ไม่ได้ ({e})" + (" — ลอง lm-format-enforcer" if args.grammar_backend == "auto" else ""))
+        if args.grammar_backend == "xgr":
+            raise      # ผู้ใช้บังคับ xgr เอง — พังดังๆ ดีกว่ารันผิดตัวเงียบๆ
+
+if grammar_setup is None and args.grammar_backend in ("auto", "lmfe"):
+    try:
+        import transformers.tokenization_utils as _tu
+        if not hasattr(_tu, "PreTrainedTokenizerBase"):   # transformers 5.x ย้าย class นี้
+            import transformers as _tf
+            _tu.PreTrainedTokenizerBase = _tf.PreTrainedTokenizerBase
+        from lmformatenforcer import JsonSchemaParser
+        from lmformatenforcer.integrations.transformers import (
+            build_token_enforcer_tokenizer_data, build_transformers_prefix_allowed_tokens_fn)
+        _tok_data = build_token_enforcer_tokenizer_data(tokenizer.tokenizer)
+        def grammar_setup():
+            return {"prefix_allowed_tokens_fn":
+                    build_transformers_prefix_allowed_tokens_fn(_tok_data, JsonSchemaParser({"type": "object"}))}
+        grammar_name = "lm-format-enforcer"
+    except Exception as e:
+        print(f"⚠️  lm-format-enforcer ใช้ไม่ได้ ({e}) — รันต่อแบบไม่ constrain")
+        if args.grammar_backend == "lmfe":
+            raise
+
+print(f"grammar-constrained: {grammar_name}")
+
 if args.prompt_file:
     prompt_text = Path(args.prompt_file).read_text(encoding="utf-8")
 else:
@@ -95,14 +158,24 @@ def run_one(img_path: Path):
     msgs = [{"role": "user", "content": [{"type": "image", "image": img}, {"type": "text", "text": prompt_text}]}]
     text = tokenizer.apply_chat_template(msgs, add_generation_prompt=True, enable_thinking=False)
     inputs = tokenizer([img], text, add_special_tokens=False, return_tensors="pt").to("cuda")
-    out = model.generate(**inputs, max_new_tokens=args.max_new_tokens, do_sample=False)
+    gen_kwargs = dict(max_new_tokens=args.max_new_tokens, do_sample=False,
+                      repetition_penalty=1.15, no_repeat_ngram_size=8)
+    if grammar_setup is not None:
+        gen_kwargs.update(grammar_setup())      # ตัวใหม่ต่อหน้า — state ไม่ปนกัน
+    out = model.generate(**inputs, **gen_kwargs)
     pred_txt = tokenizer.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
     del inputs, out
     import gc; gc.collect(); torch.cuda.empty_cache()
+    # enforcer ยอม trailing comma โดย design แต่ json.loads ไม่ยอม — ลบก่อน parse
+    # (ponytail: regex ไม่รู้จัก string boundary, ",}" ในเนื้อ string โดนด้วย — โอกาสน้อยมาก)
+    import re
+    cleaned = re.sub(r",(\s*[}\]])", r"\1", pred_txt)
     try:
-        return {"ok": True, "parsed": json.loads(pred_txt), "raw_text": pred_txt}
+        return {"ok": True, "parsed": json.loads(cleaned), "raw_text": pred_txt,
+                "grammar": grammar_name}
     except Exception:
-        return {"ok": False, "parsed": None, "raw_text": pred_txt}
+        return {"ok": False, "parsed": None, "raw_text": pred_txt,
+                "grammar": grammar_name}
 
 for code in args.houses:
     img_folder, out_folder = HOUSES[code]

@@ -9,189 +9,79 @@
     "views": [
       {
         "pattern": "side_profile",
-        "view_title": "รูปด้าน 3",
+        "view_title": "รูปด้าน ๓ + รูปด้าน ๔",
         "elements": [
           {
             "element_id": "levels",
             "element_type": "datum",
-            "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับหลังคาหลังคา +3.75, ระดับหลังคาหลังคาหลังคา +4.55, ระดับหลังคาลูกกา +5.55, ระดับหลังคาลูกกา +7.15 (roof peak)",
-            "confidence_score": 0.85,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "roof_slope_35deg",
-            "element_type": "roof_detail",
-            "description": "หลังคากระเบื้อง คอนกรีต, 35° roof slope angle printed at the eave",
-            "confidence_score": 0.85,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "window_1",
-            "element_type": "window",
-            "count": 2,
-            "description": "Window type '1' (small square window, 1st floor, left side of the elevation)",
-            "confidence_score": 0.75,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "window_2",
-            "element_type": "window",
-            "count": 2,
-            "description": "Window type '2' (tall narrow window, 1st floor, right side of the elevation)",
-            "confidence_score": 0.75,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "vent_panel_triangle",
-            "element_type": "vent_panel",
-            "count": 2,
-            "description": "Vent panel (triangle symbol) between the windows",
-            "confidence_score": 0.7,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "eave_overhang",
-            "element_type": "detail",
-            "description": "บัวปูนปั้น กว้าง 0.10 ม. ลึก 0.10 ม. (stucco cornice trim, 0.10m wide x 0.10m deep) at the eave edge",
-            "confidence_score": 0.8,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "window_sill_pvc",
-            "element_type": "detail",
-            "description": "เซาะร่อง หรือฝังเส้น PVC (PVC groove or strip recessed at the window sill level)",
-            "confidence_score": 0.8,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "grid_3-2-1",
-            "element_type": "grid_marker",
-            "grid_ref": "3-2-1 (bottom of the elevation, left to right)",
-            "confidence_score": 0.85,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "width_dim_chain",
-            "element_type": "dimension",
-            "description": "Width dimension chain: 1.00 | 3.00 | 4.00 → total 7.00m (grid3-grid1 span), with 1.00m overhangs on each side",
-            "value_m": 7,
-            "confidence_score": 0.85,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "height_dim_chain",
-            "element_type": "dimension",
-            "description": "Height dimension chain: 0.60 (grade to floor) | 3.15 (floor to roof peak) → total 3.75m, plus 0.60m (grade to roof peak) and 2.60m (roof peak to roof peak) printed at the top",
-            "value_m": 3.75,
-            "confidence_score": 0.75,
+            "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับหลังคานหลังคา +3.75, ระดับหลังคาหน้าหลังคา +4.55, ระดับหลักล่องอกໄก่ +7.15 -- all consistent across both elevation views.",
+            "confidence_score": 0.9,
             "confidence_flags": [
-              "needs_human_review_zoom_required"
+              "consistent_with_roof_plan"
             ]
           },
           {
-            "element_id": "scale",
-            "element_type": "meta",
-            "description": "มาตราส่วน 1:100",
-            "confidence_score": 0.9,
+            "element_id": "elevation_3_roof_slope_degrees",
+            "element_type": "dimension",
+            "value": 35,
+            "unit": "degrees",
+            "confidence_score": 0.85,
             "confidence_flags": []
-          }
+          },
+          {
+            "element_id": "elevation_4_roof_slope_degrees",
+            "element_TYPE": "dimension",
+            "value": 35
+          },
+          "unit_of_measure_not_repeated_on_this_line_in_the_same_way_as_elevation_3,_but_it_is_a_duplicate_of_the_same_value"
         ],
-        "confidence_score": 0.8,
+        "_same_pattern_appears_again_below_each_house_number_marker_at_the_bottom_of_the_sheet_(the_second_instance_has_no_separate_dimension_line_labeled'_35°',_just_the_angle_symbol_only)_--_this_makes_it_highly_unlikely_to_be_an_error_and_consistent_with_the_roof_plan's_two_equal_slopes._re-use_the_same_value_rather_than_guessing_a_different_one_for_the_second_instance.": ""
+      },
+      {
+        "element_id": "屋根材質_hlang_karap_beng_conkrit",
+        "element_type": "material_note",
+        "description": "'หลังคากระเบื้อง คอนกรีต' = concrete tile roofing, repeated identically on both elevations.",
+        "confidence_score": 0.95,
         "confidence_flags": []
       },
       {
-        "pattern": "side_profile",
-        "view_title": "รูปด้าน 4",
-        "elements": [
-          {
-            "element_id": "levels",
-            "element_type": "datum",
-            "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับหลังคาหลังคา +3.75, ระดับหลังคาหลังคาหลังคา +4.55, ระดับหลังคาลูกกา +5.55, ระดับหลังคาลูกกา +7.15 (roof peak)",
-            "confidence_score": 0.85,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "roof_slope_35deg",
-            "element_type": "roof_detail",
-            "description": "หลังคากระเบื้อง คอนกรีต, 35° roof slope angle printed at the eave",
-            "confidence_score": 0.85,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "window_2",
-            "element_type": "window",
-            "count": 4,
-            "description": "Window type '2' (tall narrow window, 1st floor, left side of the elevation)",
-            "confidence_score": 0.75,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "window_1",
-            "element_type": "window",
-            "count": 2,
-            "description": "Window type '1' (small square window, 1st floor, right side of the elevation)",
-            "confidence_score": 0.75,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "vent_panel_triangle",
-            "element_type": "vent_panel",
-            "count": 2,
-            "description": "Vent panel (triangle symbol) between the windows",
-            "confidence_score": 0.7,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "eave_overhang",
-            "element_type": "detail",
-            "description": "บัวปูนปั้น กว้าง 0.10 ม. ลึก 0.10 ม. (stucco cornice trim, 0.10m wide x 0.10m deep) at the eave edge",
-            "confidence_score": 0.8,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "window_sill_pvc",
-            "element_type": "detail",
-            "description": "เซาะร่อง หรือฝังเส้น PVC (PVC groove or strip recessed at the window sill level)",
-            "confidence_score": 0.8,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "grid_A-B-C-D",
-            "element_type": "grid_marker",
-            "grid_ref": "A-B-C-D (bottom of the elevation, left to right)",
-            "confidence_score": 0.85,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "width_dim_chain",
-            "element_type": "dimension",
-            "description": "Width dimension chain: 1.50 | 3.50 | 2.00 | 4.00 → total 9.50m (gridA-gridD span), with 1.50m overhang on the left and 1.00m on the right",
-            "value_m": 9.5,
-            "confidence_score": 0.8,
-            "confidence_flags": []
-          },
-          {
-            "element_id": "height_dim_chain",
-            "element_type": "dimension",
-            "description": "Height dimension chain: 0.60 (grade to floor) | 3.15 (floor to roof peak) → total 3.75m, plus 0.60m (grade to roof peak) and 2.60m (roof peak to roof peak) printed at the top",
-            "value_m": 3.75,
-            "confidence_score": 0.75,
-            "confidence_flags": [
-              "needs_human_review_zoom_required"
-            ]
-          },
-          {
-            "element_id": "scale",
-            "element_type": "meta",
-            "description": "มาตราส่วน 1:100",
-            "confidence_score": 0.9,
-            "confidence_flags": []
-          }
-        ],
-        "confidence_score": 0.8,
-        "confidence_flags": []
+        "grid_ref": "not_applicable_to_this_view",
+        "element_id": "window_group_1",
+        "element_type": "window",
+        "count": 1,
+        "floor_level_m": null,
+        "opening_width_mm": null,
+        "opening_height_mm": null,
+        "frame_material": "ไม้ (wood)",
+        "glass_style": "บานเลื่อนสองบาน (double sliding sash), upper half fixed, lower half operable",
+        "ventilation_opening_size_mm": {
+          "width": null,
+          "height": null
+        },
+        "confidence_score": 0.7,
+        "confidence_flags": [
+          "needs_human_review_zoom_required",
+          "exact_dimensions_not_legible_from_this_resolution_-_only_count_and_general_description_recorded"
+        ]
+      },
+      {
+        "grid_ref": "not_applicable",
+        "element_id": "window_group_2",
+        "element_type": "window",
+        "count_per_floor": 2,
+        "total_count": 4,
+        "floor_level_m": null,
+        "confidence_score": 0.75,
+        "confidence_flags": [
+          "needs_human_review Zoom required - exact dimensions not legible"
+        ]
       }
+    ],
+    "confidence_score": 0.78,
+    "confidence_flags": [
+      "two_distinct_house_numbers_(3_and_4)_are_shown_top-and-bottom_on_this_single_sheet_-_they_are_treated_as_two_entries_within_one_combined_view_entry_rather_than_splitting_into_two_disjoint_views"
     ]
   },
-  "raw_text": "{\"png\":\"08\",\"doc_page\":6,\"discipline\":\"architecture\",\"sheet_code\":\"A-06\",\"sheet_name\":\"รูปด้าน 3, รูปด้าน 4\",\"views\":[{\"pattern\":\"side_profile\",\"view_title\":\"รูปด้าน 3\",\"elements\":[{\"element_id\":\"levels\",\"element_type\":\"datum\",\"description\":\"ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับหลังคาหลังคา +3.75, ระดับหลังคาหลังคาหลังคา +4.55, ระดับหลังคาลูกกา +5.55, ระดับหลังคาลูกกา +7.15 (roof peak)\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"roof_slope_35deg\",\"element_type\":\"roof_detail\",\"description\":\"หลังคากระเบื้อง คอนกรีต, 35° roof slope angle printed at the eave\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"window_1\",\"element_type\":\"window\",\"count\":2,\"description\":\"Window type '1' (small square window, 1st floor, left side of the elevation)\",\"confidence_score\":0.75,\"confidence_flags\":[]},{\"element_id\":\"window_2\",\"element_type\":\"window\",\"count\":2,\"description\":\"Window type '2' (tall narrow window, 1st floor, right side of the elevation)\",\"confidence_score\":0.75,\"confidence_flags\":[]},{\"element_id\":\"vent_panel_triangle\",\"element_type\":\"vent_panel\",\"count\":2,\"description\":\"Vent panel (triangle symbol) between the windows\",\"confidence_score\":0.7,\"confidence_flags\":[]},{\"element_id\":\"eave_overhang\",\"element_type\":\"detail\",\"description\":\"บัวปูนปั้น กว้าง 0.10 ม. ลึก 0.10 ม. (stucco cornice trim, 0.10m wide x 0.10m deep) at the eave edge\",\"confidence_score\":0.8,\"confidence_flags\":[]},{\"element_id\":\"window_sill_pvc\",\"element_type\":\"detail\",\"description\":\"เซาะร่อง หรือฝังเส้น PVC (PVC groove or strip recessed at the window sill level)\",\"confidence_score\":0.8,\"confidence_flags\":[]},{\"element_id\":\"grid_3-2-1\",\"element_type\":\"grid_marker\",\"grid_ref\":\"3-2-1 (bottom of the elevation, left to right)\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"width_dim_chain\",\"element_type\":\"dimension\",\"description\":\"Width dimension chain: 1.00 | 3.00 | 4.00 → total 7.00m (grid3-grid1 span), with 1.00m overhangs on each side\",\"value_m\":7,\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"height_dim_chain\",\"element_type\":\"dimension\",\"description\":\"Height dimension chain: 0.60 (grade to floor) | 3.15 (floor to roof peak) → total 3.75m, plus 0.60m (grade to roof peak) and 2.60m (roof peak to roof peak) printed at the top\",\"value_m\":3.75,\"confidence_score\":0.75,\"confidence_flags\":[\"needs_human_review_zoom_required\"]},{\"element_id\":\"scale\",\"element_type\":\"meta\",\"description\":\"มาตราส่วน 1:100\",\"confidence_score\":0.9,\"confidence_flags\":[]}],\"confidence_score\":0.8,\"confidence_flags\":[]},{\"pattern\":\"side_profile\",\"view_title\":\"รูปด้าน 4\",\"elements\":[{\"element_id\":\"levels\",\"element_type\":\"datum\",\"description\":\"ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับหลังคาหลังคา +3.75, ระดับหลังคาหลังคาหลังคา +4.55, ระดับหลังคาลูกกา +5.55, ระดับหลังคาลูกกา +7.15 (roof peak)\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"roof_slope_35deg\",\"element_type\":\"roof_detail\",\"description\":\"หลังคากระเบื้อง คอนกรีต, 35° roof slope angle printed at the eave\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"window_2\",\"element_type\":\"window\",\"count\":4,\"description\":\"Window type '2' (tall narrow window, 1st floor, left side of the elevation)\",\"confidence_score\":0.75,\"confidence_flags\":[]},{\"element_id\":\"window_1\",\"element_type\":\"window\",\"count\":2,\"description\":\"Window type '1' (small square window, 1st floor, right side of the elevation)\",\"confidence_score\":0.75,\"confidence_flags\":[]},{\"element_id\":\"vent_panel_triangle\",\"element_type\":\"vent_panel\",\"count\":2,\"description\":\"Vent panel (triangle symbol) between the windows\",\"confidence_score\":0.7,\"confidence_flags\":[]},{\"element_id\":\"eave_overhang\",\"element_type\":\"detail\",\"description\":\"บัวปูนปั้น กว้าง 0.10 ม. ลึก 0.10 ม. (stucco cornice trim, 0.10m wide x 0.10m deep) at the eave edge\",\"confidence_score\":0.8,\"confidence_flags\":[]},{\"element_id\":\"window_sill_pvc\",\"element_type\":\"detail\",\"description\":\"เซาะร่อง หรือฝังเส้น PVC (PVC groove or strip recessed at the window sill level)\",\"confidence_score\":0.8,\"confidence_flags\":[]},{\"element_id\":\"grid_A-B-C-D\",\"element_type\":\"grid_marker\",\"grid_ref\":\"A-B-C-D (bottom of the elevation, left to right)\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"width_dim_chain\",\"element_type\":\"dimension\",\"description\":\"Width dimension chain: 1.50 | 3.50 | 2.00 | 4.00 → total 9.50m (gridA-gridD span), with 1.50m overhang on the left and 1.00m on the right\",\"value_m\":9.5,\"confidence_score\":0.8,\"confidence_flags\":[]},{\"element_id\":\"height_dim_chain\",\"element_type\":\"dimension\",\"description\":\"Height dimension chain: 0.60 (grade to floor) | 3.15 (floor to roof peak) → total 3.75m, plus 0.60m (grade to roof peak) and 2.60m (roof peak to roof peak) printed at the top\",\"value_m\":3.75,\"confidence_score\":0.75,\"confidence_flags\":[\"needs_human_review_zoom_required\"]},{\"element_id\":\"scale\",\"element_type\":\"meta\",\"description\":\"มาตราส่วน 1:100\",\"confidence_score\":0.9,\"confidence_flags\":[]}],\"confidence_score\":0.8,\"confidence_flags\":[]}]}"
+  "raw_text": "{\"png\":\"08\",\"doc_page\":6,\"discipline\":\"architecture\",\"sheet_code\":\"A-06\",\"sheet_name\":\"รูปด้าน 3, รูปด้าน 4\",\"views\":[{\"pattern\":\"side_profile\",\"view_title\":\"รูปด้าน ๓ + รูปด้าน ๔\",\"elements\":[{\"element_id\":\"levels\",\"element_type\":\"datum\",\"description\":\"ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับหลังคานหลังคา +3.75, ระดับหลังคาหน้าหลังคา +4.55, ระดับหลักล่องอกໄก่ +7.15 -- all consistent across both elevation views.\",\"confidence_score\":0.9,\"confidence_flags\":[\"consistent_with_roof_plan\"]},{\"element_id\":\"elevation_3_roof_slope_degrees\",\"element_type\":\"dimension\",\"value\":35,\"unit\":\"degrees\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"elevation_4_roof_slope_degrees\",\"element_TYPE\":\"dimension\",\"value\":35},\"unit_of_measure_not_repeated_on_this_line_in_the_same_way_as_elevation_3,_but_it_is_a_duplicate_of_the_same_value\"],\"_same_pattern_appears_again_below_each_house_number_marker_at_the_bottom_of_the_sheet_(the_second_instance_has_no_separate_dimension_line_labeled'_35°',_just_the_angle_symbol_only)_--_this_makes_it_highly_unlikely_to_be_an_error_and_consistent_with_the_roof_plan's_two_equal_slopes._re-use_the_same_value_rather_than_guessing_a_different_one_for_the_second_instance.\":\"\"},{\"element_id\":\"屋根材質_hlang_karap_beng_conkrit\",\"element_type\":\"material_note\",\"description\":\"'หลังคากระเบื้อง คอนกรีต' = concrete tile roofing, repeated identically on both elevations.\",\"confidence_score\":0.95,\"confidence_flags\":[]},{\"grid_ref\":\"not_applicable_to_this_view\",\"element_id\":\"window_group_1\",\"element_type\":\"window\",\"count\":1,\"floor_level_m\":null,\"opening_width_mm\":null,\"opening_height_mm\":null,\"frame_material\":\"ไม้ (wood)\",\"glass_style\":\"บานเลื่อนสองบาน (double sliding sash), upper half fixed, lower half operable\",\"ventilation_opening_size_mm\":{\"width\":null,\"height\":null},\"confidence_score\":0.7,\"confidence_flags\":[\"needs_human_review_zoom_required\",\"exact_dimensions_not_legible_from_this_resolution_-_only_count_and_general_description_recorded\"]},{\"grid_ref\":\"not_applicable\",\"element_id\":\"window_group_2\",\"element_type\":\"window\",\"count_per_floor\":2,\"total_count\":4,\"floor_level_m\":null,\"confidence_score\":0.75,\"confidence_flags\":[\"needs_human_review Zoom required - exact dimensions not legible\"]}],\"confidence_score\":0.78,\"confidence_flags\":[\"two_distinct_house_numbers_(3_and_4)_are_shown_top-and-bottom_on_this_single_sheet_-_they_are_treated_as_two_entries_within_one_combined_view_entry_rather_than_splitting_into_two_disjoint_views\"]}",
+  "grammar": "xgrammar"
 }

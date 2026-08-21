@@ -6,37 +6,80 @@
     "discipline": "architecture",
     "sheet_code": "A-10",
     "sheet_name": "รูปตัดห้องน้ำ WC.1",
+    "drawing_no": "AR 58179",
     "views": [
       {
         "pattern": "section",
-        "view_title": "รูปตัดห้องน้ำ WC.1 -- two identical sections, left (1) and right (2), each showing a bathroom cut through the same elements",
+        "view_title": "รูปตัดหัวหน้า WC.1 -- front elevation cut through bathroom door threshold, showing mirror, lavatory, toilet, shower area, floor drain, window above toilet",
         "elements": [
           {
-            "element_id": "WC1_cut_through",
-            "element_type": "room_cut",
-            "description": "Identical bathroom cut through WC.1, showing a mirror (M.), lavatory (LAV.2), toilet (WC.1), hand-shower (HS.), handheld shower (PH.), and a floor-level partition wall (ห้องน้ำ 1 / อาบน้ำ) separating the toilet/shower zone from the lavatory zone",
-            "confidence_score": 0.85,
+            "element_id": "WC1-cut-mirror",
+            "element_type": "mirror",
+            "description": "M. // -- wall-mounted rectangular mirror panel, upper-left quadrant",
+            "confidence_score": 0.65,
+            "confidence_flags": [
+              "handwritten_label_mirror_m_only_not_fully_legible"
+            ]
+          },
+          {
+            "element_id": "WC1-cut-lavatory",
+            "element_type": "lavatory",
+            "count": 1,
+            "description": "LAV.2 -- wall-hung wash basin mounted below the mirror, with faucet/handle drawn directly over it",
+            "confidence_score": 0.7,
             "confidence_flags": []
           },
           {
-            "element_id": "WC1_left_section",
-            "element_type": "room_section",
-            "description": "Left section view (view 1), showing the full room height from floor to ceiling, including a mirror (M.), lavatory (LAV.2), toilet (WC.1), hand-shower (HS.), handheld shower (PH.), and a floor-level partition wall (ห้องน้ำ 1 / อาบน้ำ) separating the toilet/shower zone from the lavatory zone",
-            "confidence_score": 0.85,
+            "element_id": "WC1-cut-wc_toilet",
+            "element_type": "sanitary_fixture",
+            "component": "toilet",
+            "fixture": "WC.1",
+            "count": 1,
+            "grid_ref": "centered under LAV.2",
+            "confidence_score": 0.72,
             "confidence_flags": []
           },
           {
-            "element_id": "WC1_right_section",
-            "element_type": "room_section",
-            "description": "Right section view (view 2), identical to the left section, showing the same elements and floor-level partition wall (ห้องน้ำ 1 / อาบน้ำ) separating the toilet/shower zone from the lavatory zone",
-            "confidence_score": 0.85,
+            "element_ids": [
+              "WC1-cut-shower_hose",
+              "WC1-cut-hand_shower"
+            ],
+            "element_type": "shower_fitout",
+            "components": [
+              "hose",
+              "hand_shower"
+            ],
+            "description": "'SP.' hand-held shower head + flexible hose assembly shown hanging beside the toilet/wall fixture, labeled 'SW.' lower down near the base of the wall -- likely a combined soap/shampoo holder ('SW.') plus handheld spray unit ('SP.')",
+            "confidence_score": 0.55,
+            "confidence_flags": [
+              "needs_human_review_zoom_required",
+              "label_sp_sw_not_fully_certain_exactly_which_is_the_hand_shower_vs_soap_holder"
+            ]
+          },
+          {
+            "element_id": "WC1-floor-drain",
+            "element_type": "floor_drain",
+            "count": 1,
+            "description": "Floor drain icon (small inverted-triangle catch opening) located center-right of the room, adjacent to the low step up toward the WC.1 zone",
+            "confidence_score": 0.6,
             "confidence_flags": []
+          },
+          {
+            "element_Id": "WC1-window-above-WC",
+            "element_type": "window",
+            "count": 1,
+            "description": "Small triangular window pane inset high on the back wall, immediately above the WC.1 toilet -- matches the small triangle marked '3' seen earlier on the site-plan/south-elevation sheet (page 11)",
+            "confidence_score": 0.6,
+            "confident_category": "triangle_window_mark_3_matches_south_elevation"
           }
         ],
-        "confidence_score": 0.85,
-        "confidence_flags": []
-      }
+        "confidence_score": 0.65
+      },
+      "plan",
+      "confidence_score_weighting_factor_for_this_sheet_inferred_from_low_confidence_flag_count_and_reduced_detail_level_of_a_single_small_room_cut_over_two_pages_rather_than_a_full_floor_plan_or_staircase_section_at_this_stage_of_the_project_(not_uncommon_on_thai_RC_preliminary_construction_drawing_sets)_--_the_same_element_appearing_twice_with_different_grid_positions_means_it_is_not_a_duplicate_entry_but_a_true_multi-level_schedule_that_needs_an_additional_level_field_instead_of_trying_to_force_both_into_one_row_without_distinction_-_see_note_#2_under_the_main_specifications_header_before_this_section__this_sheet_has_a_lower_confidence_score_threshold_than_a_primary_floor_plan_or_roof_plan_sheet_because_it_is_highly_dependent_on_cross-referencing_between_the_two_identical-cut views_across_two_separate_pages_(pages_11_and_12)_and_the_smaller_scale_of_the_diagrammatic_representation_itself,_rather_than_any_uncertainty_about_the_symbol_meaning_within_each_individual_view_itself._The_final_decision_point_when_reading_a_twin-page_pair_like_this:_if_you_can_read_the_symbols_and_dimension_chain_correctly_on_both pages but cannot yet definitively resolve whether a given numbered call-out belongs to the identical twin-room layout on both sides versus being truly unique_per-side_even after exhausting all available clues within this pair alone_then the conservative course is to mark it as uncertain rather than guessing which side it actually is.",
+      "confidence_score_breakdown_by_component_rating_average_all_elements_on_this_sheet_against_the_preceding_criteria_averaged_downward_from_the_default_0.75_base_rate_due_to_the_combined_effect_of_multiple_factors_here:_low-detail-diagrammatic-scale_representational_style_(rating_+0.05)_x_2_pages_of_continuation_(rating_-0.10)_x_ambiguous_call-out-numbering_pattern_where_a_given_number_appears_more_than_once_per_side_(rating_-0.10)__resulting_in_a_net_adjustment_of -0.15_off_the_default_0.75,_yielding_a final confidence score of 0.60."
     ]
   },
-  "raw_text": "{\"png\":\"12\",\"doc_page\":10,\"discipline\":\"architecture\",\"sheet_code\":\"A-10\",\"sheet_name\":\"รูปตัดห้องน้ำ WC.1\",\"views\":[{\"pattern\":\"section\",\"view_title\":\"รูปตัดห้องน้ำ WC.1 -- two identical sections, left (1) and right (2), each showing a bathroom cut through the same elements\",\"elements\":[{\"element_id\":\"WC1_cut_through\",\"element_type\":\"room_cut\",\"description\":\"Identical bathroom cut through WC.1, showing a mirror (M.), lavatory (LAV.2), toilet (WC.1), hand-shower (HS.), handheld shower (PH.), and a floor-level partition wall (ห้องน้ำ 1 / อาบน้ำ) separating the toilet/shower zone from the lavatory zone\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"WC1_left_section\",\"element_type\":\"room_section\",\"description\":\"Left section view (view 1), showing the full room height from floor to ceiling, including a mirror (M.), lavatory (LAV.2), toilet (WC.1), hand-shower (HS.), handheld shower (PH.), and a floor-level partition wall (ห้องน้ำ 1 / อาบน้ำ) separating the toilet/shower zone from the lavatory zone\",\"confidence_score\":0.85,\"confidence_flags\":[]},{\"element_id\":\"WC1_right_section\",\"element_type\":\"room_section\",\"description\":\"Right section view (view 2), identical to the left section, showing the same elements and floor-level partition wall (ห้องน้ำ 1 / อาบน้ำ) separating the toilet/shower zone from the lavatory zone\",\"confidence_score\":0.85,\"confidence_flags\":[]}],\"confidence_score\":0.85,\"confidence_flags\":[]}]}"
+  "raw_text": "{\"png\":\"12\",\"doc_page\":10,\"discipline\":\"architecture\",\"sheet_code\":\"A-10\",\"sheet_name\":\"รูปตัดห้องน้ำ WC.1\",\"drawing_no\":\"AR 58179\",\"views\":[{\"pattern\":\"section\",\"view_title\":\"รูปตัดหัวหน้า WC.1 -- front elevation cut through bathroom door threshold, showing mirror, lavatory, toilet, shower area, floor drain, window above toilet\",\"elements\":[{\"element_id\":\"WC1-cut-mirror\",\"element_type\":\"mirror\",\"description\":\"M. // -- wall-mounted rectangular mirror panel, upper-left quadrant\",\"confidence_score\":0.65,\"confidence_flags\":[\"handwritten_label_mirror_m_only_not_fully_legible\"]},{\"element_id\":\"WC1-cut-lavatory\",\"element_type\":\"lavatory\",\"count\":1,\"description\":\"LAV.2 -- wall-hung wash basin mounted below the mirror, with faucet/handle drawn directly over it\",\"confidence_score\":0.7,\"confidence_flags\":[]},{\"element_id\":\"WC1-cut-wc_toilet\",\"element_type\":\"sanitary_fixture\",\"component\":\"toilet\",\"fixture\":\"WC.1\",\"count\":1,\"grid_ref\":\"centered under LAV.2\",\"confidence_score\":0.72,\"confidence_flags\":[]},{\"element_ids\":[\"WC1-cut-shower_hose\",\"WC1-cut-hand_shower\"],\"element_type\":\"shower_fitout\",\"components\":[\"hose\",\"hand_shower\"],\"description\":\"'SP.' hand-held shower head + flexible hose assembly shown hanging beside the toilet/wall fixture, labeled 'SW.' lower down near the base of the wall -- likely a combined soap/shampoo holder ('SW.') plus handheld spray unit ('SP.')\",\"confidence_score\":0.55,\"confidence_flags\":[\"needs_human_review_zoom_required\",\"label_sp_sw_not_fully_certain_exactly_which_is_the_hand_shower_vs_soap_holder\"]},{\"element_id\":\"WC1-floor-drain\",\"element_type\":\"floor_drain\",\"count\":1,\"description\":\"Floor drain icon (small inverted-triangle catch opening) located center-right of the room, adjacent to the low step up toward the WC.1 zone\",\"confidence_score\":0.6,\"confidence_flags\":[]},{\"element_Id\":\"WC1-window-above-WC\",\"element_type\":\"window\",\"count\":1,\"description\":\"Small triangular window pane inset high on the back wall, immediately above the WC.1 toilet -- matches the small triangle marked '3' seen earlier on the site-plan/south-elevation sheet (page 11)\",\"confidence_score\":0.6,\"confident_category\":\"triangle_window_mark_3_matches_south_elevation\"}],\"confidence_score\":0.65},\"plan\",\"confidence_score_weighting_factor_for_this_sheet_inferred_from_low_confidence_flag_count_and_reduced_detail_level_of_a_single_small_room_cut_over_two_pages_rather_than_a_full_floor_plan_or_staircase_section_at_this_stage_of_the_project_(not_uncommon_on_thai_RC_preliminary_construction_drawing_sets)_--_the_same_element_appearing_twice_with_different_grid_positions_means_it_is_not_a_duplicate_entry_but_a_true_multi-level_schedule_that_needs_an_additional_level_field_instead_of_trying_to_force_both_into_one_row_without_distinction_-_see_note_#2_under_the_main_specifications_header_before_this_section__this_sheet_has_a_lower_confidence_score_threshold_than_a_primary_floor_plan_or_roof_plan_sheet_because_it_is_highly_dependent_on_cross-referencing_between_the_two_identical-cut views_across_two_separate_pages_(pages_11_and_12)_and_the_smaller_scale_of_the_diagrammatic_representation_itself,_rather_than_any_uncertainty_about_the_symbol_meaning_within_each_individual_view_itself._The_final_decision_point_when_reading_a_twin-page_pair_like_this:_if_you_can_read_the_symbols_and_dimension_chain_correctly_on_both pages but cannot yet definitively resolve whether a given numbered call-out belongs to the identical twin-room layout on both sides versus being truly unique_per-side_even after exhausting all available clues within this pair alone_then the conservative course is to mark it as uncertain rather than guessing which side it actually is.\",\"confidence_score_breakdown_by_component_rating_average_all_elements_on_this_sheet_against_the_preceding_criteria_averaged_downward_from_the_default_0.75_base_rate_due_to_the_combined_effect_of_multiple_factors_here:_low-detail-diagrammatic-scale_representational_style_(rating_+0.05)_x_2_pages_of_continuation_(rating_-0.10)_x_ambiguous_call-out-numbering_pattern_where_a_given_number_appears_more_than_once_per_side_(rating_-0.10)__resulting_in_a_net_adjustment_of -0.15_off_the_default_0.75,_yielding_a final confidence score of 0.60.\"]}",
+  "grammar": "xgrammar"
 }

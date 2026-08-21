@@ -67,7 +67,8 @@ msgs = [{"role": "user", "content": [{"type": "image", "image": img}, {"type": "
 # chain-of-thought ยาวจนหมด token budget ก่อนถึง JSON (bug 4, t02_workflow.md §0.4)
 text = tokenizer.apply_chat_template(msgs, add_generation_prompt=True, enable_thinking=False)
 inputs = tokenizer([img], text, add_special_tokens=False, return_tensors="pt").to("cuda")
-out = model.generate(**inputs, max_new_tokens=args.max_new_tokens, do_sample=False)
+out = model.generate(**inputs, max_new_tokens=args.max_new_tokens, do_sample=False,
+                      repetition_penalty=1.15, no_repeat_ngram_size=8)
 pred_txt = tokenizer.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
 
 print("\n" + "=" * 58)
