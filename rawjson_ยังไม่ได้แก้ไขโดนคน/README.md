@@ -182,6 +182,47 @@ Two ways it resolves:
 
 Don't use it if anything else on the machine is still running (a training job, an upload, another agent) — the dead-man's switch arms unconditionally at the very start on the same 90-minute clock, with no awareness that anything else is running, and will kill that other work too. `op3` only knows about its own house.
 
+## Quick command: `op4 <house_name>` — Pass 2 subtasks only (~38 pages instead of ~107)
+
+> Also a Claude Code skill — `.claude/skills/op04/SKILL.md` loads this flow directly. This section stays canonical; keep the skill file in sync whenever it changes.
+
+**`op4` is `op1` with one change: scope.** Same standing order, same authority, same conflict precedence, same `warnings[]` discipline, same output folder, same `check_format.py` gate, same log row. It extracts only the subtasks Pass 2 covers — the pages Constistant actually consumes — and skips the rest on purpose.
+
+### Why — the measured reason
+
+Counted 2026-08-22 across the 11 annotated houses ([`tune_ai/t03/dataset_sizing.md`](../tune_ai/t03/dataset_sizing.md)):
+
+| what t02 saw during training | pages | result |
+|---|---|---|
+| door/window schedule | ~24 | reads it at **86%** |
+| **beam plans** | **~13** | **11% element recall** |
+
+Accuracy tracks example count, not page difficulty. And **`material_list` alone is 435 of the 1,180 annotated files — 37% of all annotation effort spent — while yielding `elements: []`** (it is a quantity table; it carries no member positions).
+
+The dataset does not need more pages per house. It needs more **houses**, and the way to afford them is to stop annotating pages nothing reads.
+
+### Scope, in dependency order
+
+1. **`gridline`** (~1 page) — **always first.** Every span downstream is computed from it; a wrong `pos_m` here is a wrong concrete volume and a wrong steel weight everywhere, undetectable later.
+2. `plan_footing` (~1.8) · 3. `plan_column` (~0.2, usually absent — see below) · 4. **`plan_beam`** (~3.2, the point of this command) · 5. `plan_slab` (~1)
+6. `section` (~20) · 7. `schedule` (~6) · 8. `notes` (~5) · 9. `soil_boring_log` (0-1, only if the house has one)
+
+**Skipped by default:** `material_list` (the 435-file finding above — only if Makham asks: `op4 <house> +material_list`, and then last), plus all of Pass 3 (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`).
+
+⚠️ **`roof_plan` is a trap:** structural roof framing is `pattern: "plan"` and belongs to `plan_beam` — **extract it**. Only the architectural roof sheet is Pass 3. Getting this backwards silently drops a house's roof beams from the BOQ, which is the live bug found on 2026-08-21 in 8 of the 11 existing houses.
+
+⚠️ **`plan_column` barely exists** — 2 files across 11 houses. Columns normally appear as markers inside the beam/footing plans and as a column table. If the house has no column sheet, that is expected: record nothing and note it in `_scope.json`. Do not invent one.
+
+### The one extra step `op1` does not have — `_scope.json`
+
+A folder holding 38 of a house's 107 pages looks exactly like a finished house to whoever opens it next. Write `0N<house_name>/_scope.json` **before** running `check_format.py`, recording `subtasks_done`, `subtasks_absent_from_this_house` (the drawing set has no such sheet) and `deliberately_skipped` (it exists, we chose not to) as three separate lists — collapsing the last two loses the only signal that says whether a page is missing or merely unwanted. `check_format.py` skips any filename starting with `_`, so the marker is inert to it (verified in `check_house()`, not assumed).
+
+**The log row in `No_touch_box/docs/raw_json_data_log.md` must say `op04 / pass2-only`.** A partial house logged as complete is worse than an unlogged one — it inflates the apparent dataset size, and the next person sizing a training run will believe it.
+
+### When to use `op1` instead
+
+When the house has to be **whole**: a reference/demo house, or one that will be scored against AI output across all patterns (a partial ground truth would count the missing pages as failures). `op4` grows the training set cheaply; `op1` produces a complete house.
+
 ## Step 1 — Extract a new house into raw JSON
 
 1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full before starting — it's the only spec needed (13 patterns, grid/dummy-grid rules, `main_bar` top/bottom shape, spec join, etc). The full original with history/rationale lives at `wait_for_ทิ้ง/No_touch_box/docs/20260708draft of prime rawjson.md` (moved to archive 2026-08-04, still readable) if you need more context.

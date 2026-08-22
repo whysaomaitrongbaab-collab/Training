@@ -1,0 +1,128 @@
+{
+  "png": "06",
+  "doc_page": 4,
+  "discipline": "architecture",
+  "sheet_code": "A-04",
+  "sheet_name": "แปลนพื้นชั้น 1",
+  "drawing_no": "AR 58180",
+  "scale": "1:100",
+  "pattern": "plan",
+  "confidence_score": null,
+  "confidence_flags": [],
+  "warnings": [
+    "floor_level ไม่มีในผลโมเดล — อ่านจากหัวแบบได้ 'F1'",
+    "โมเดลส่ง element ที่ใช้ไม่ได้ 2 ตัว (ไม่ใช่ object หรือไม่มี element_id): ['dict', 'dict']"
+  ],
+  "view_title": "แปลนพื้น 1",
+  "floor_level": "F1",
+  "elements": [
+    {
+      "element_id": "ซักล้าง",
+      "element_type": "room",
+      "count": 1,
+      "grid_ref": "E-F x 3'-4', box '3 +0.50(3)' -- upper floor utility room, right half of the building's north wing"
+    },
+    {
+      "element_id": "ห้องครัว",
+      "element_type": "room",
+      "count": "2",
+      "grid_ref": "F x E-E' & F x C-C'",
+      "description": "Two kitchen rooms ('ห้องครัว') shown lower-left, both marked '1 +0.60(1)' -- likely small service kitchens, possibly pantry/half-kitchen pair adjacent to dining areas.",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "needs_human_review_small_room_identification"
+      ]
+    },
+    {
+      "element_id": "ห้องนอนอนุ่น 2",
+      "element_type": "bedroom",
+      "count": 2,
+      "grid_ref": "upper-middle block, east of ซักล้าง",
+      "description": "Twin bedroom units labeled 'ห้องนอนอนุ่น' 2, each boxed '2 +0.60(1)', matching the twin-bedroom layout seen on ground-floor sheet A-03 but now re-labeled differently here."
+    },
+    {
+      "element_id": "ห้องนอนอ่อน 1",
+      "element_type": "bedroom",
+      "grid_ref": "eastmost unit of the upper floor's three-bed suite",
+      "description": "'ห้องนอนอ่อน' 1, boxed '2 +0.6(1)' -- second adult-sized bedroom in the trio, paired with ห้องนอนอนุ่น1 and ห้องนอนอนุ่ง3 below on the ground floor.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "needs_human_review_room_label_meaning"
+      ]
+    },
+    {
+      "element_id": "ห้องน้ำ 1",
+      "element_type": "bathroom",
+      "count": 3,
+      "grid_ref": "west wing (near บันได ST2/A-15), middle strip (between ห้องนอนอนุ่ม2 and ห้องนอนอ่อน1), east wing (near บันได)",
+      "description": "Three bathroom pods all tagged '3 +0.50(?)(2)': upper-west near stairwell, central corridor, and upper-east near another stairwell -- consistent with a master-suite-style arrangement plus secondary baths serving the other bedrooms.",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "needs_human_review_water_fixture_count_symbol"
+      ]
+    },
+    {
+      "element_id": "ห้องอ่านหนังสือ",
+      "element_type": "study_room",
+      "count": 1,
+      "grid_ref": "'ห้องอ่านหนังสื่อ' box near บันได ST2/A15, upper-left quadrant",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "needs_human-review_room_label_uncertain"
+      ]
+    },
+    {
+      "element_id": "บันได_ST2",
+      "element_type": "stair",
+      "count": 1,
+      "grid_ref": {
+        "row": "F",
+        "col": "x"
+      },
+      "floor_level_m": "+0.50",
+      "description": "ST2 stair riser callout next to ห้องอ่านหนังสื, connecting down toward the ground floor via landing A-15",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "บันได_A-09",
+      "element_type": "stair",
+      "grid_ref": {
+        "row": "F",
+        "column": "x"
+      },
+      "floor_level_m": null,
+      "description": "Small triangle icon labeled '2'/'A-09' near the center-top of the plan, marking a second internal stair access point within the house core",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "small_icon_needs_human_review_zoom_required"
+      ]
+    },
+    {
+      "element_id": "พักผ่อน",
+      "element_type": "living_area",
+      "count": 1,
+      "grid_ref": [
+        "lower-center"
+      ],
+      "": "boxed '1 +0.60'(1)"
+    },
+    {
+      "element_id": "ทานอาหาร",
+      "element_type": "dining_area",
+      "count": 1,
+      "grid_confidence_score": 0.75,
+      "grid_ref": [
+        "lower-center"
+      ],
+      "}],": "ground_floor_reference_sheet_not_repeated_here",
+      "confidence_score": 0.72
+    }
+  ],
+  "_provenance": {
+    "source": "qwen t02 inference (Sicilian44/qwen3vl-30b-thai-rc)",
+    "source_file": "บ้าน_เล็ก_1ชั้น_04_หน้า06.json",
+    "human_reviewed": false,
+    "note": "ผลดิบจากโมเดล ยังไม่ผ่านคนตรวจ — ห้ามใช้เป็น ground truth"
+  }
+}
