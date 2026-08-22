@@ -2,6 +2,9 @@
 # Vast.ai on-start script — t02: Qwen3-VL-30B-A3B fine-tune env
 # (Blackwell: RTX PRO 6000 / RTX 50-series / B100-B200)
 # วาง script นี้ในช่อง "On-start script" ตอนสร้าง instance บน Vast.ai (ก่อนกด Rent)
+# ⚠️ ไฟล์นี้ต้องเป็น LF เท่านั้น — CRLF ทำให้ `set -euo pipefail` พังทันที
+#    (bash: set: pipefail\r: invalid option — เจอจริง 2026-08-21 ตอน pipe ผ่าน ssh)
+#    ถ้าแก้ไฟล์บน Windows แล้วไม่แน่ใจ: ส่งขึ้นเครื่องด้วย  tr -d '\r' < onstart.sh | ssh ... "bash -s"
 set -euo pipefail
 
 echo "=== Constistant fine-tune setup — t02 Qwen3-VL-30B-A3B + Unsloth (Blackwell) ==="
@@ -23,6 +26,9 @@ pip install --upgrade pip || true
 pip install "triton>=3.3.1"          # Blackwell ต้องการเวอร์ชันนี้ขึ้นไปเท่านั้น
 pip install unsloth trl peft accelerate bitsandbytes
 pip install pillow
+# grammar-constrained JSON decoding สำหรับ infer (run_house_batch.py / infer_t02_grammar.py)
+# — ไม่บังคับ: สคริปต์ fallback เป็นรันปกติเองถ้า lib ไม่มี
+pip install lm-format-enforcer xgrammar
 
 # ไม่ติดตั้ง xformers — บน Blackwell ต้อง compile จากซอร์ส (ช้า/เสี่ยงพังตอน build)
 # Unsloth fallback ไปใช้ PyTorch native SDPA ให้อัตโนมัติถ้าไม่มี xformers

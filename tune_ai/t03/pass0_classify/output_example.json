@@ -1,0 +1,78 @@
+{
+  "_comment": "ตัวอย่าง format ที่ pass 0 ต้องส่งออกมาให้ pass1_organize/organize.py กิน — ยังไม่ใช่ข้อมูลจริง เขียนไว้เป็นสัญญาระหว่าง pass 0 กับ pass 1",
+  "house": "08บ้าน_เล็ก_1ชั้น_03",
+  "pages": [
+    {
+      "png": "15",
+      "image": "บ้าน_เล็ก_1ชั้น_03_หน้า15.png",
+      "sheet_code": "A-05",
+      "sheet_name": "รูปด้าน 1, รูปด้าน 2",
+      "building": "main",
+      "views": [
+        { "subtask": "side_profile", "where": "top", "also_gridline": true },
+        { "subtask": "side_profile", "where": "bottom", "also_gridline": true }
+      ]
+    },
+    {
+      "png": "19",
+      "image": "บ้าน_เล็ก_1ชั้น_03_หน้า19.png",
+      "sheet_code": "S-02",
+      "sheet_name": "แปลนฐานราก",
+      "building": "main",
+      "views": [
+        { "subtask": "plan_footing", "where": "top" },
+        { "subtask": "plan_footing", "where": "bottom" }
+      ]
+    },
+    {
+      "png": "20",
+      "image": "บ้าน_เล็ก_1ชั้น_03_หน้า20.png",
+      "sheet_code": "S-03",
+      "sheet_name": "แปลนคาน, พื้นชั้นล่าง",
+      "building": "main",
+      "views": [
+        { "subtask": "plan_beam", "where": "full", "also_gridline": true }
+      ]
+    },
+    {
+      "png": "21",
+      "image": "บ้าน_เล็ก_1ชั้น_03_หน้า21.png",
+      "sheet_code": "S-04",
+      "sheet_name": "แปลนคานอะเส, แปลนโครงหลังคา",
+      "building": "main",
+      "views": [
+        { "subtask": "plan_beam", "where": "top" },
+        { "subtask": "plan_beam", "where": "bottom" }
+      ]
+    },
+    {
+      "png": "37",
+      "image": "บ้าน_เล็ก_1ชั้น_03_หน้า37.png",
+      "sheet_code": "E-02",
+      "sheet_name": "แปลนไฟฟ้าแสงสว่าง",
+      "building": "main",
+      "views": [
+        { "subtask": "plan_electrical", "where": "full" }
+      ]
+    }
+  ],
+
+  "_field_notes": {
+    "png": "เลขหน้าตามชื่อไฟล์รูป (string)",
+    "image": "ชื่อไฟล์รูป อยู่ใต้ --images-root",
+    "sheet_code / sheet_name": "อ่านจาก title block — จำเป็นเพราะ title block อยู่นอกทุก view หลังตัด crop แล้วจะไม่มีข้อมูลนี้ในรูป pass 1 จึงส่งต่อเป็นข้อความ",
+    "building": "'main' หรือชื่ออาคารรอง (เช่น 'สุขา') — บ้านหลายอาคารมี grid master คนละไฟล์ (สเปก §11a) ห้ามเอากริดบ้านหลักไปคำนวณคานของสุขา",
+    "views": "หนึ่ง entry ต่อหนึ่ง view บนแผ่น — หน่วยของ t03 คือ view ไม่ใช่หน้า",
+    "views[].subtask": "ชื่อ subtask ปลายทางตรง ๆ (ไม่ใช่ pattern) — ดู PASS_OF ใน ../pass1_organize/organize.py",
+    "views[].where": "full | top/middle/bottom (แบ่งแนวนอน) | left/center/right (แบ่งแนวตั้ง) — ห้ามปนสองแบบในหน้าเดียว",
+    "views[].also_gridline": "true ถ้า view นี้พิมพ์เส้นกริด/ระดับไว้ด้วย — pass 1 จะก็อปเข้าโฟลเดอร์ gridline เป็นแหล่งสำรอง (บ้านที่ไม่มีหน้า gridline เฉพาะ ต้องอ่านกริดจากผัง/รูปด้านแทน)"
+  },
+
+  "_traps": [
+    "ผังโครงหลังคา (roof framing) ต้องเป็น subtask 'plan_beam' ไม่ใช่ 'roof_plan' — ข้อมูลเก่า 8 ใน 11 บ้านจัดเป็น roof_plan ทำให้คานหลังคาไม่เคยเข้า BOQ เลย (ดู README.md)",
+    "'roof_plan' สงวนไว้ให้ผังหลังคาสถาปัตย์ (แนวสัน/ชายคา) เท่านั้น",
+    "รูปด้าน/รูปตัด เป็นที่เดียวที่มีระดับ (+3.75 ระดับหลังคาน ฯลฯ) พิมพ์อยู่ — ต้องตั้ง also_gridline: true เสมอถ้าเห็นแถบระดับ",
+    "หน้าที่มี 3 view มีจริง (เช่น fixture_symbol_schedule + counter_detail + mount_height_schedule) อย่า assume ว่ามีได้แค่ 2",
+    "view ในหน้าเดียวกันไปคนละ pass ได้ เช่น wc1_plan (pass 3) + wc1_section (pass 2)"
+  ]
+}

@@ -1,0 +1,38 @@
+# t02 inference results — beam plan pages, ad-hoc read (ไม่ใช่ eval รอบเป็นทางการ)
+
+รันด้วย `infer_t02.py` (greedy decoding, prompt เดียวกับตอนเทรน จาก val.jsonl) บนเครื่อง
+Vast.ai (RTX PRO 6000 96GB) วันที่ 2026-08-21
+
+| ไฟล์ | บ้าน | หน้า | ผลลัพธ์ | หมายเหตุ |
+|---|---|---|---|---|
+| `house08_p21_*` (ลบแล้ว, ดูด้านล่าง) | 24บ้าน_เล็ก_2ชั้น_08 | หน้า21 (beam_plan_ground+upper) | ❌ INVALID (ทั้ง 2 รอบ) | key ซ้ำ, string ไม่ปิด, โมเดล hallucinate เรื่อง "fine print" ทั้งที่แบบจริงชัดเจนปกติ |
+| `house01_p19_beamplan_raw.txt` | 01บ้าน_เล็ก_1ชั้น_01 | หน้า19 (beam_plan) | ❌ INVALID | comma ขาด, มีคำเพี้ยน `footинг` (ปนอักษรรัสเซีย) |
+| `house03_p31_beamplanfloor1_raw.txt` | 03บ้าน_เล็ก_2ชั้น_01 | หน้า31 (beam_plan_floor1) | ✅ valid JSON | แต่ elements แค่ 2 ตัว (B1, B2) — น้อยผิดปกติสำหรับหน้าคานเต็มหน้า |
+| `house04_p33_beamplanfloor1_raw.txt` | 04บ้าน_เล็ก_2ชั้น_02 | หน้า33 (beam_plan_floor1) | ✅ valid JSON | elements 3 ตัว (B1, B2, column_marker) — น้อยผิดปกติเช่นกัน |
+| `house09_p26_beamplan_raw.txt` | 09บ้าน_เล็ก_1ชั้น_04 | หน้า26 (beam_floor_plan) | ✅ valid JSON | elements 5 ตัว แต่ id ซ้ำกันเอง (B1 โผล่ 3 ครั้งคนละ element_type) |
+
+## สรุป
+- **JSON syntax ผ่าน 3/5 หน้า** (03, 04, 09) — พังที่ house08 (2 รอบ) และ house01
+- **แม้ syntax ผ่าน เนื้อหาก็ยังมีปัญหาจริง**: elements น้อยเกินจริง, id ซ้ำ/type สลับ, hallucinate คำอธิบาย
+- ยืนยันสิ่งที่ `t02_workflow.md` บันทึกไว้แล้ว: adapter รอบนี้ยังไม่ผ่านเกณฑ์ใช้งานจริง
+- **grammar-constrained decoding: ใช้งานได้จริง — ข้อสรุปแรก ("constraint ไม่ถูกบังคับใช้ เพราะ Unsloth fast path") ผิด, ถอนแล้ว 2026-08-21 คืนเดียวกัน.** ไล่ source ทุกชั้นยืนยัน: unsloth `unsloth_base_fast_generate` ส่ง `**kwargs` ผ่านครบ, transformers 5.x ยังรองรับ `prefix_allowed_tokens_fn`, และ enforcer ถ้า crash จะ fail-closed (จบ generation + log) ซึ่งไม่เกิด. **ต้นตอจริง: lm-format-enforcer อนุญาต trailing comma ก่อน `}` โดย design** — `ObjectParsingStage.PARSING_KEY_OR_END` ยอม `}` หลัง `,` เสมอเมื่อ schema ไม่มี `required` (เราใช้ `{"type":"object"}` → required ว่าง → ยอมตลอด) แต่ `json.loads` เข้มกว่าเลย reject. พิสูจน์แล้ว: เอา output "พัง" ใน `house08_p21_beamplan_grammarconstrained_INVALID_raw.txt` มาลบ trailing comma (`re.sub(r",(\s*[}\]])", r"\1", txt)`) → **parse ผ่านทันที** (3 views, 6 elements). `infer_t02_grammar.py` ใส่ regex นี้ก่อน parse แล้ว — รอบหน้าที่เช่าเครื่องใช้ได้เลย. หมายเหตุ: syntax ผ่านแล้วแต่คุณภาพเนื้อหายังเป็นปัญหาเดิมของ adapter (element เป็น bare string ปน, id ซ้ำ) — grammar บังคับได้แค่รูปแบบ. บทเรียน API-compat ระหว่างทาง (transformers 5.x ย้าย `PreTrainedTokenizerBase`, tokenizer จริงคือ `Qwen3VLProcessor` wrapper ต้องแกะ `.tokenizer`) อยู่ที่ `No_touch_box/docs/rule_of_tune.md` ข้อ 13, บทเรียนการวินิจฉัยผิดครั้งนี้อยู่ข้อ 14
+
+- **ความพยายามถัดไป (schema เข้มกว่า `{"type":"object"}`) — ตัน, เก็บไว้รอไลบรารีใหม่:** ตั้งใจบังคับ `views[]`/`elements[]` เป็น object + require `element_id`/`element_type` (จะฆ่า bare-string elements กับ `element_id:null` ที่เจอจริง) แต่ probe พบ lm-format-enforcer 0.11.3 ปิด key set ทันทีที่ประกาศ `properties` — ไม่เคารพ `additionalProperties` ทุกรูปแบบ → schema เข้มใช้ไม่ได้กับไลบรารีนี้. Schema เก็บที่ `data_before_tune/rawjson_infer_schema.json` (PARKED), canary test ที่ `data_before_tune/test_infer_schema.py` (exit 1 = ไลบรารีแก้แล้ว ค่อยกลับมา wire), setup ที่ใช้งานจริงตอนนี้ = `{"type":"object"}` + regex ลบ trailing comma ใน `infer_t02_grammar.py`
+
+- **หาในเน็ตต่อ (2026-08-21 คืนเดียวกัน) — เจอ backend ที่ดีกว่า: xgrammar.** Probe จริงบนเครื่องนี้ (xgrammar 0.2.3, compile schema แล้วอ่าน grammar ที่ได้): (1) grammar **ผลิต trailing comma ไม่ได้เลย** — ปัญหาหลักของ lm-format-enforcer หายที่ต้นทาง (2) **รองรับ `additionalProperties` จริง** — เปิด key อิสระคู่กับ properties ได้ แถมกัน key ที่ประกาศแล้วไม่ให้ซ้ำ (3) มี `xgr.contrib.hf.LogitsProcessor` สำเร็จรูป. **กับดักที่ probe เจอ:** key ใน properties ถูกบังคับลำดับตาม schema + ห้ามโผล่ในโซน additional — schema ที่เรียง key ไม่ตรงกับลำดับที่โมเดลพิมพ์จะ deadlock กลาง generate (เช่นโมเดลพิมพ์ `views` ท้ายสุดแต่ slot ถูกข้ามไปแล้ว) → ตัวทดลอง `infer_t02_xgrammar.py` จึง default ใช้ builtin JSON grammar (ไม่มี schema, ปลอด deadlock) และ `--schema-file` เป็น opt-in. llguidance ก็รองรับ additionalProperties เหมือนกัน (มี hf.py/torch.py) แต่ไม่มี LogitsProcessor สำเร็จรูป — ตัดออก. **xgrammar ยังไม่เคยรันบน GPU จริง** — รอบเช่าหน้าลอง `infer_t02_xgrammar.py` เทียบกับ `infer_t02_grammar.py` (lmfe, พิสูจน์แล้ว) ก่อนตัดสินย้าย
+- **เตรียมพร้อมรอบเช่าถัดไป (2026-08-21 คืนเดียวกัน):** `run_house_batch.py` ได้ grammar-constrained ผ่าน `--grammar-backend auto|xgr|lmfe|none` (auto = xgrammar ก่อน ตกมา lm-format-enforcer ตกมารันปกติ; บังคับ backend เองแล้วพังจะ raise ดังๆ ไม่เงียบ) + regex ลบ trailing comma — โหลดโมเดลครั้งเดียว, compile grammar/วิเคราะห์ vocab ครั้งเดียว, processor/fn ตัวใหม่ต่อหน้า. **Offline verification ที่ทำแล้ว (เครื่อง local, ไม่มี GPU):** xgr init path ทั้งเส้นผ่านด้วย tokenizer จริงของ Qwen (Qwen2Tokenizer, config vocab_size 151936 ≠ len(tokenizer) 151669 — ยืนยันว่าต้องใช้ค่าจาก config) และจำลอง greedy decode ด้วย logits ปลอมที่พยายามพิมพ์ขยะ → LogitsProcessor บีบให้อยู่ในโครง JSON จริง. **เส้นทาง batch บน GPU ยังไม่เคยรัน — `--limit 2` ก่อนเสมอ; ถ้า xgr มีปัญหาบนเครื่องเช่า → `--grammar-backend lmfe` คือตัวที่พิสูจน์แล้ว**. `onstart.sh` เพิ่ม `pip install lm-format-enforcer xgrammar` และแปลงเป็น LF ล้วน (CRLF เคยทำ `set -euo pipefail` พังทั้งไฟล์ตอน pipe ผ่าน ssh)
+
+## รอบเช่า 2026-08-21/22 กลางคืน — xgrammar พิสูจน์บน GPU จริงแล้ว ✅
+
+เครื่อง: RTX PRO 6000 Blackwell 96GB (เครื่องใหม่ แต่ HF cache โมเดลติดมา โหลด 4 วิ)
+
+- **`infer_t02_xgrammar.py` + หน้า21 บ้าน08 (หน้าที่เคยพัง 2 รอบ): valid JSON เต็มใบ ไม่ต้องพึ่ง regex** — ประโยคใน entry เก่าข้างบนที่ว่า "xgrammar ยังไม่เคยรันบน GPU" ถือว่าปิดแล้ว
+- **`run_house_batch.py --grammar-backend auto` เส้นทาง batch ผ่านทั้งเส้น**: `--limit 2` ก่อน (2/2) แล้วปล่อยเต็ม — บ้าน08 ครบ 25 หน้า + บ้าน09 (บ้าน_เล็ก_1ชั้น_04) 6 หน้า plan โครงสร้าง ~45-70 วิ/หน้า, auto เลือก xgrammar ถูก, resume-safe ข้ามหน้าที่ทำแล้วจริง
+- **ผลรวม: 30/31 หน้า valid (96.8%) เทียบ 57.9% (11/19) รอบไม่มี grammar** — ตัวเดียวที่พัง: บ้าน08 หน้า07 โมเดลวนลูป `_igh_igh_...` **ข้างใน string literal** จนชน max_new_tokens เลยปิด JSON ไม่ทัน = ช่องโหว่เดียวที่ grammar อุดไม่ได้ (ใน string ทุก token ถูก grammar) และหลบ no_repeat_ngram_size=8 ได้เพราะแทรก token ต่างกันคั่น; ทางแก้ถ้าเจออีก: จับ ok:false แล้ว re-generate หรือ post-process ตัด string ที่ไม่ปิด
+- **Warning ใหม่จาก transformers 5.5.0 ไม่ blocking**: `Kwargs passed to processor.__call__ have to be in processor_kwargs` — โผล่ทุกครั้งแต่ generation ปกติ
+- ผลอยู่ `tune_ai/t02/ผล/08บ้าน_เล็ก_1ชั้น_03/` (ครบ 25) และ `ผล/09บ้าน_เล็ก_1ชั้น_04/` (6 หน้า) — เทียบเครื่องเช่าแล้ว 33/33 ไฟล์ตรงก่อน destroy
+
+**Overlay GT-vs-AI บ้าน09 (`ผล/09บ้าน_เล็ก_1ชั้น_04/_overlay_gt_vs_ai_หน้า24/25/26/27.png`, สคริปต์ `tune_ai/t02/overlay_gt_vs_ai_house09.py`):** วิธีเดียวกับ overlay บ้าน01 เมื่อ 20/8 (HoughCircles หา grid circles → linear fit → grid_ref+pos_m → px; สเกล x/y ต่างกัน 0.1% = สแกนไม่เบี้ยว) แต่แยก 2 ช่อง ซ้าย GT เขียว / ขวา AI ส้ม เพราะ AI มั่วจนวางทับกันอ่านไม่ออก ผล: **GT วางได้ 45/48 (หน้า26), 52/53 (หน้า27) — ยืนยันอีกรอบว่า data+grid master แน่น; ฝั่ง AI หน้า26 ยุบคานทั้งหน้าเหลือ 2 elements เป็น zone notation (`F-F x 1'-2'`) ที่วาดออกมาแล้วไม่เกาะแนวคานจริง, หน้า27 วางไม่ได้เลย 0/4** — ภาพนี้คือหลักฐานตาเปล่าของ element recall 11% : syntax แก้จบแล้วด้วย grammar แต่การแยกคานรายตัวต้องแก้ที่รอบทูน (t03) สถานเดียว หน้า28 (roof frame) ข้าม — วง grid บนแผ่นนั้นพิมพ์ไม่ครบ 6 แถว calibrate ไม่ได้ ไม่เดา
+
+ไฟล์ raw ทุกไฟล์อยู่โฟลเดอร์นี้ (`*_raw.txt`) — ผ่าน `tr -d '\r'` ล้าง progress-bar escape code แล้ว
+เนื้อหาจริงเริ่มหลังบรรทัด `==...==` (58 ตัว `=`)

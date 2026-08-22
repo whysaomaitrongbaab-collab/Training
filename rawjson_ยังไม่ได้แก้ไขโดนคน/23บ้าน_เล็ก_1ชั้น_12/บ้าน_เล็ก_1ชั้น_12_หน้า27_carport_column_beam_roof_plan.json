@@ -1,0 +1,77 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แปลนเสา คานอะเส และโครงหลังคาโรงรถ",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า27.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "grid_source": "บ้าน_เล็ก_1ชั้น_12_หน้า00_gridline.json",
+  "scale": "1:100",
+  "warnings": [
+    "The carport roof frame (RB1/RB2 rafters, P1 post) is dimensioned against the main x-grid (1-2-3-4) but its own y-extent (A-B-C, forming a square X-braced bay) does not correspond 1:1 to the main structural grid rows used elsewhere on this sheet for SB1/SB2 purlins — the rafter bay is drawn from grid A down to grid C (8.00 m, matching A-C), independent of the D/E carport-column rows below it. Recorded as printed.",
+    "SB1/SB1X/SB2 purlins for the carport roof edge are dimensioned 1.00+5.50+1.00=7.50 m, independent of the main grid (these sit on the roof overhang, beyond grid E) — not treated as additional grid lines per the purity rule already stated in the grid master (secondary/overhang members carry no grid endpoint of their own)."
+  ],
+  "specs": {
+    "RB1": {
+      "steel_section": { "designation": "C", "printed_as": "⌐-150x50x20x3.2 มม" },
+      "material": "steel",
+      "spec_source": "plan",
+      "spec_confidence_score": 0.85,
+      "spec_sheet": "S-04"
+    },
+    "RB2": {
+      "steel_section": { "designation": "SHS", "printed_as": "⌐-100x100x6.0 มม" },
+      "material": "steel",
+      "spec_source": "plan",
+      "spec_confidence_score": 0.8,
+      "spec_sheet": "S-04"
+    },
+    "P1": {
+      "steel_section": { "designation": "C", "printed_as": "เสาเหล็ก 2⌐-150x50x20x3.2 มม" },
+      "material": "steel",
+      "note": "เสารับโครงหลังคาโรงรถ ดูแบบขยายฐานรับเสาเหล็ก (P1) บน S-07",
+      "spec_source": "plan",
+      "spec_confidence_score": 0.85,
+      "spec_sheet": "S-04"
+    },
+    "SB1": {
+      "steel_section": { "designation": "C", "printed_as": "2⌐-150x50x20x3.2 มม" },
+      "material": "steel",
+      "spec_source": "plan",
+      "spec_confidence_score": 0.85,
+      "spec_sheet": "S-04"
+    },
+    "SB1X": {
+      "steel_section": { "designation": "C", "printed_as": "2⌐-150x50x20x3.2 มม" },
+      "material": "steel",
+      "spec_source": "plan",
+      "spec_confidence_score": 0.8,
+      "spec_sheet": "S-04"
+    },
+    "SB2": {
+      "steel_section": { "designation": "SHS", "printed_as": "⌐-100x100x6.0 มม" },
+      "material": "steel",
+      "spec_source": "plan",
+      "spec_confidence_score": 0.8,
+      "spec_sheet": "S-04"
+    }
+  },
+  "elements": [
+    { "element_id": "RB1", "element_type": "rafter", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "rafter", "grid_ref_start": "A3", "grid_ref_end": "A4", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "rafter", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "rafter", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "rafter", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "rafter", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "rafter", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "rafter", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "rafter", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "P1", "element_type": "column", "count": 1, "grid_refs": ["B2"], "note": "เสาเหล็กตั้งดิ่งใต้จุดตัดกลางโครงหลังคาโรงรถ", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "SB1", "element_type": "purlin", "spacing_mm": 500, "note": "แปเหล็กสำเร็จรูป @0.50 ม ตามแนวคานอะเส D-E", "confidence_score": 0.75, "confidence_flags": ["marker_only_no_grid_ref"] },
+    { "element_id": "SB1X", "element_type": "purlin", "spacing_mm": 500, "note": "แปเหล็กสำเร็จรูปที่ขอบ D-E", "confidence_score": 0.75, "confidence_flags": ["marker_only_no_grid_ref"] },
+    { "element_id": "SB2", "element_type": "purlin", "note": "จันทันเหล็กแนวยาว D-E, ไม่เกิน 1.10 ม", "confidence_score": 0.75, "confidence_flags": ["marker_only_no_grid_ref"] }
+  ]
+}

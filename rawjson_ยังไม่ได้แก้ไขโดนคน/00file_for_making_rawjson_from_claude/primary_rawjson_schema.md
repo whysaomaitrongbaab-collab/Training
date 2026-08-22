@@ -12,7 +12,7 @@ Every file puts its content in **`elements[]`**. Three documented exceptions, an
 
 | pattern | container |
 |---|---|
-| `gridline` | `grid{ x_lines[], y_lines[] }` — **nested under `grid`**, never `x_lines` at the top level |
+| `gridline` | `grid{ x_lines[], y_lines[], z_levels[], dimension_chains[], unassigned_dimensions[] }` — **nested under `grid`**, never `x_lines` at the top level (the last three added 2026-08-21, see §4) |
 | `material_list` (BOQ) | `categories[].items[]` |
 | everything else | **`elements[]`** |
 
@@ -23,7 +23,7 @@ Every file puts its content in **`elements[]`**. Three documented exceptions, an
 | array | where | holds |
 |---|---|---|
 | `sections[]` | `index` | document sections — `{title: "แบบสถาปัตยกรรม", sheet_range: "A-01 ถึง A-15"}` |
-| `sections[]` | `notes` | numbered note headings — `{heading: "1. ข้อกำหนดทั่วไป", items: [...]}` |
+| `sections[]` | `notes` | numbered note headings — `{heading: "1. ข้อกำหนดทั่วไป", items: [...]}`. A `notes` file also carries a **`notes{}`** object of parsed specification values (§4a) — those two names are the only two allowed on this pattern |
 | `columns[]` | `schedule`, `material_list` | table column headers — plain strings like `"ลำดับที่"` |
 | `fixture_symbol_legend[]`, `fixture_install_height_standard[]` | any | pure reference tables |
 
@@ -113,6 +113,10 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 - [ ] no file carries `phase_note` (§2a)
 - [ ] no array named after a kind of drawing element (§0.1)
 - [ ] grid master nests `x_lines`/`y_lines` under `grid{}` (§0.1)
+- [ ] every sheet that prints a level contributed to `z_levels[]`, and every sheet that prints a dimension row contributed to `dimension_chains[]` (§4) — a sheet with printed numbers and no contribution is an unread sheet, not a clean one
+- [ ] every printed number that landed in neither is in `unassigned_dimensions[]` (§4)
+- [ ] a `notes` file uses only `sections[]` + `notes{}` — no `notes_sections`/`spec_notes`/`raw_text`/per-topic one-off key (§4a)
+- [ ] `notes{}`'s four flat fields match the nested values they alias, and `cover` is in **mm** not metres (§4a, §0.5)
 - [ ] no rebar left as a string (§0.6)
 - [ ] no packed size string (§0.5)
 - [ ] `grid_ref` notation: no dashed point, no `grid`/`dummy` word (§0.8)
@@ -137,11 +141,24 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 | 9 | `gridline` | grid reference file (per-page companion + `หน้า00` master) |
 | 10 | `title` | cover page *(draft — no field-set verified yet)* |
 | 11 | `symbol` | symbol/legend page *(draft)* |
-| 12 | `roof_plan` | roof plan, separated from `plan` because it has ridge/hip lines and eave overhangs *(draft)* |
+| 12 | `roof_plan` | **architectural** roof plan only — ridge/hip lines, eave overhangs, roofing material. **A structural roof-framing plan (แปลนโครงหลังคา — beams/purlins with marks and grid refs) is `plan`, NOT `roof_plan`** (pinned 2026-08-21, see the warning under this table) *(draft)* |
 | 13 | `misc` | เบ็ดเตล็ด — whole-series catalog/promotional/reference pages that aren't about this house's own construction (e.g. a back-cover price-comparison table across all 10 designs in the series, or a cover collage of every design's render) — added 2026-07-14, previously misclassified as `title` |
 | 14 | `bbs_schedule` | **bar bending schedule (ตารางตัดเหล็ก)** — one row per individual BAR, not per element: `bar_mark`, `shape_code`, bend dimensions `len_A`/`len_B`/`len_C`, `qty`, `grade`. **Split from `schedule` 2026-08-04 because the granularity is genuinely different** — a `schedule` row describes one member (`C1`: 200×200, 4-Ø12), a `bbs_schedule` row describes one cut bar (`C1`/`T1`: Ø12, shape 00, 4.5 m, ×2). Putting both under `schedule` forced two incompatible row shapes into one pattern *(draft — no field-set verified against a real extraction yet)* |
 | 15 | `soil_boring_log` | **soil investigation / borehole log (รายงานเจาะสำรวจดิน)** — SPT blow counts, stratum table, lab results, groundwater level. Not a drawing of the building at all: it carries no `grid_ref`, no element marks, no rebar. Container is `elements[]` per §0.1 with `element_type: "soil_layer"`, plus wrapper-level `borehole_id` and `groundwater_level_m`. Added 2026-08-04 — Constistant already reads these live (`QT_PROMPT_SOIL_BORING_LOG` → `js/site/site-index.js`, feeding Foundation Design's bearing-capacity calc) and had no pattern to record them under *(draft — no field-set verified against a real extraction yet)* |
 | 16 | `unknown` | doesn't fit any of the 15 above |
+
+### ⚠️ `roof_plan` vs `plan` — a real, live data-loss bug (found 2026-08-21)
+
+**A roof-framing plan carries real structural beams and must be `pattern: "plan"`.** Audited across all 11 houses: all 12 roof-framing files are `discipline: "structural"`, but **4 were written as `pattern: "plan"` and 8 as `pattern: "roof_plan"`**. Downstream, Constistant's `buildElements()` reads **only** `pattern === 'plan'` — so **the roof beams in those 8 houses have never reached a BOQ at all**, silently.
+
+The test is what the sheet carries, not what it is called:
+
+| The sheet shows | pattern |
+|---|---|
+| Beams/purlins with element marks, grid refs, spans (แปลนโครงหลังคา, roof frame plan, roof beam plan) | `plan` |
+| Ridge/hip lines, eave overhang, roofing material, slope arrows — no structural marks | `roof_plan` |
+
+A sheet showing both is a multi-view page (§3): split it, one file each.
 
 **Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 10 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`, `soil_boring_log`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
 
@@ -151,6 +168,8 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 png, doc_page, discipline, sheet_code, sheet_name, pattern,
 source_image, confidence_score, confidence_flags, warnings
 ```
+
+**`discipline` — closed vocabulary (pinned 2026-08-21 after an audit found two spellings of one value):** `structural` · `architectural` · `sanitary` · `electrical` · `mechanical` · `boq` · `material_list` · `general` · `front_matter` · `regulatory` · `misc`. **`architecture` is wrong — the canonical spelling is `architectural`.** The audit counted 182 files spelling it one way and 157 the other, across the same 11 houses. Nothing consumes `discipline` today so nothing is broken yet, but the first code that filters on it would silently drop roughly half the set. Anything genuinely outside this list goes to `misc`, not to a newly-invented word.
 
 **`source_image`** = full path of the source image, e.g. `"image/<house>/<house>_หน้า19.png"` — every file coming from the same page (e.g. `_view1_...`/`_view2_...`) must have the exact same value.
 **Exception:** the grid-master file `<house>_หน้า00_gridline.json` uses `source_pages` (array of every `source_image` used to confirm the grid) instead.
@@ -201,6 +220,88 @@ A page may contain multiple views/patterns — **inventory every view first with
 - **Origin (0,0)** must always be the leftmost/topmost main grid (`type:"named"`) — a dummy grid must never take over the origin position. If a dummy grid falls before the origin (further left/up than the first main grid), use a **negative** `pos_m` instead, e.g. `{"id":"1'","pos_m":-0.80,"type":"dummy"}`
 - `pos_m` is always read from an actually-printed dimension line — never guessed
 
+### The grid master records EVERY printed dimension in the whole set (added 2026-08-21, Makham)
+
+**The rule: sweep every page in the drawing set, and record every printed dimension value you find. Nothing gets dropped for not fitting a category.**
+
+Before this section the grid master held only `x_lines[]`/`y_lines[]` — the **resolved** position of a named or dummy grid line, and a dummy line only gets created when a beam endpoint needs one (§ beam-endpoint rule above). That threw away most of the real numbers on a sheet:
+
+- Offsets from a building/slab **edge** to the first or last grid (`1.30` before grid `1` on the A-05 elevation) — nothing sits on them, so no dummy grid, so they vanished.
+- **Vertical levels entirely.** `+3.75 ระดับหลังคาน`, `+0.60 ระดับพื้นชั้น 1`, `±0.00 ระดับอ้างอิง` are printed on every elevation and section in the set, and there was **no field anywhere to put them** — `x_lines`/`y_lines` are plan axes only. Elements carry a `level_m`, but nothing registered which levels the building actually has.
+- Anything else with a number next to it: a `0.60` stub past the last grid, `บัวปูนปั้น กว้าง 0.10 ม ลึก 0.10 ม`, an eave overhang.
+
+**Elevations (`side_profile`) and sections are first-class sources, not afterthoughts.** They reprint the column-grid markers (`1`,`2`,`3`… / `A`,`B`,`C`…) along the bottom edge with a full dimension chain exactly like a plan sheet, **and** they are the only place the Z axis is printed at all. Never assume a non-top-down view has no grid data — check the sheet.
+
+`grid` gains three optional sibling arrays. All three are **transcription, not derivation** — write down what is printed, do not compute, collapse, deduplicate, or "tidy" anything.
+
+#### 1. `z_levels[]` — the vertical axis, same role as `x_lines`/`y_lines`
+
+```json
+"z_levels": [
+  {"id": "ระดับอ้างอิง",   "level_m":  0.00, "type": "datum",  "source_image": "..._หน้า15.png"},
+  {"id": "ระดับพื้นชั้น 1", "level_m":  0.60, "type": "named",  "source_image": "..._หน้า15.png"},
+  {"id": "ระดับหลังคาน",   "level_m":  3.75, "type": "named",  "source_image": "..._หน้า15.png"}
+]
+```
+
+- `id` is the **printed Thai label, verbatim** — do not translate, do not normalize to `F1`/`FL1`. If a level is printed with only a number and no label, use `null` and let `level_m` carry it.
+- `type`: `datum` for the ±0.00 reference, `named` for a labelled level, `dummy` for a level implied by a dimension chain but never labelled.
+- `level_m` is signed and relative to the datum, exactly as printed (`-0.30` for a below-datum level).
+- One `z_levels[]` for the whole building, merged across every sheet that prints levels — same "one master per building" rule as the plan axes (§ Master file below).
+
+#### 2. `dimension_chains[]` — every printed dimension row, on any axis
+
+```json
+"dimension_chains": [
+  {
+    "axis": "x",
+    "source_image": "..._หน้า15.png",
+    "segments": [
+      {"from": "edge", "to": "1", "value_m": 1.30},
+      {"from": "1", "to": "2", "value_m": 4.00},
+      {"from": "2", "to": "3", "value_m": 3.00},
+      {"from": "3", "to": "edge", "value_m": 0.60},
+      {"from": "edge", "to": "edge", "value_m": 0.70}
+    ]
+  },
+  {
+    "axis": "z",
+    "source_image": "..._หน้า15.png",
+    "segments": [
+      {"from": "ระดับอ้างอิง", "to": "ระดับพื้นชั้น 1", "value_m": 0.60},
+      {"from": "ระดับพื้นชั้น 1", "to": "ระดับหลังคาน", "value_m": 3.15},
+      {"from": "ระดับอ้างอิง", "to": "ระดับหลังคาน", "value_m": 3.75}
+    ]
+  }
+]
+```
+
+- `axis` is `x`, `y`, or `z`.
+- `from`/`to` reference a grid `id` (or a `z_levels[]` `id` on the z axis) when that end sits on one, or the literal `"edge"` when it's a building/slab edge with no grid — **never invent a grid id just to have something to put here.**
+- Record **every** row actually printed, including the cumulative/total row (the `3.75` above, the `7.00` on the x chain). Redundant arithmetically, but printed — and a mismatch between the detail row and the total row is exactly the extraction error this array exists to catch.
+- One entry per printed row per sheet; the same chain reprinted on three sheets gets three entries with three different `source_image` values. Do not deduplicate across sheets.
+
+#### 3. `unassigned_dimensions[]` — the catch-all, so nothing is ever dropped
+
+Every printed number that did **not** land in a chain or a level goes here, with whatever text was printed next to it:
+
+```json
+"unassigned_dimensions": [
+  {"value_m": 0.10, "label": "บัวปูนปั้น กว้าง 0.10 ม", "source_image": "..._หน้า15.png", "note": "moulding width, not a grid or level"},
+  {"value_m": 0.10, "label": "บัวปูนปั้น ลึก 0.10 ม",  "source_image": "..._หน้า15.png", "note": null}
+]
+```
+
+- `label` is the printed text verbatim (Thai stays Thai). `note` is optional and only for a genuine observation — leave `null` rather than inventing an interpretation.
+- **This array is the reason the rule holds.** If a number doesn't fit anywhere else, it goes here — it never gets skipped. A page with numbers and an empty `unassigned_dimensions[]` means every number found a home, not that the page wasn't read.
+- These are *not* grid data and nothing downstream uses them for span calculation; they exist so a later reader can see the full picture without re-reading the sheet.
+
+#### Relationship to the resolved axes
+
+`x_lines`/`y_lines`/`z_levels` stay the **resolved, deduplicated** registry — that's what the pipeline consumes. The three arrays above are the **raw transcript** proving where each resolved value came from, and holding everything that has no resolved home. Both live in the same master file; neither replaces the other.
+
+All three arrays are optional in the sense that a sheet printing no dimensions contributes nothing — but a sheet that *does* print dimensions and contributes an empty array is an extraction failure, not a clean file.
+
 ### Documenting genuine ambiguity in the grid master (optional, added 2026-08-09)
 
 These three fields exist for the case where a grid master genuinely can't be read with full confidence — do **not** add them to a clean file just for consistency; a house whose chains close and whose dummies are unambiguous (e.g. house #04) needs none of them.
@@ -228,7 +329,7 @@ Real cases: house #04's S-04 (หน้า33) was missing **8** beams and had 2 
 **Conversely — do NOT invent a dummy for a slab-only edge.** A dashed slab/room boundary, a roof-overhang line, or an eave edge with **no beam label and no columns at its corners** is not a structural line and gets no dummy grid (house #3's `E'` at the S0 bay-window box is exactly this case — slab edge only, no beam, so nothing was added). The trigger is a **beam endpoint**, not any line on the drawing.
 
 ### Master file
-Create/update `<house>_หน้า00_gridline.json` **before** extracting any other page — it holds every main grid + dummy grid for the whole house in one place. Other plan/section pages reference it via the `grid_source` field instead of re-writing the grid. Keep this as a separate companion file — never re-embed the full grid inline inside every view.
+Create/update `<house>_หน้า00_gridline.json` **before** extracting any other page — it holds every main grid + dummy grid + every level (`z_levels[]`) + every printed dimension in the set (`dimension_chains[]`, `unassigned_dimensions[]`, §4) for the whole house in one place. Other plan/section pages reference it via the `grid_source` field instead of re-writing the grid. Keep this as a separate companion file — never re-embed the full grid inline inside every view.
 
 ### Atomic segments (span elements) vs merged entries (point elements)
 
@@ -260,6 +361,109 @@ Order grid-positioned elements (beams, footings, columns, etc.) in **reading ord
 3. **Vertical before horizontal** when two elements share the same starting point (e.g. at D1, a beam running D1→C1 vertically is listed before a beam running D1→D2 horizontally) — corrected 2026-07-14, was stated backwards originally
 
 Elements with no `grid_ref` (marker-only symbols like slab tags `SO`/`SI`/`ST`) can't be positionally sorted — leave them at the end of the array, unordered.
+
+## 4a. `notes` pattern — the `notes{}` object (added 2026-08-21)
+
+A `notes` file carries **two things, both required when the sheet prints them**:
+
+1. **`sections[]`** — the verbatim transcript of the printed headings and lines (§0.1). Unchanged
+   from before; this is the audit trail and it is never summarised or translated.
+2. **`notes{}`** — the project-level specification values parsed out of that transcript, defined
+   below.
+
+**Why this section exists.** `notes{}` was being read by a downstream consumer (Constistant's
+`raw-extraction-adapter.js` builds `extractedNotes` from `notes.fc_ksc` / `notes.fy_main_ksc` /
+`notes.fy_stirrup_ksc` / `notes.cover_mm`) while this spec had never defined it. Audited
+2026-08-21: `fc_ksc` appeared in **1 of 55** real notes files, and that one file put it at
+top level under `concrete_strength`, not under `notes` — so the value never reached the consumer
+for **any** house, and the project-wide concrete and steel specification has never entered the
+pipeline. This section closes that.
+
+The same audit found `notes` to be the worst-drifted pattern in the set: 55 files carrying the
+same content under six container keys (`notes` 22, `notes_sections` 9, `sections` 8, `spec_notes`
+3, `notes_text` 1, `raw_text` 1) plus a long tail of one-offs (`reference_standard`,
+`concrete_strength`, `precast_plank_spec`, `general_requirements`, …). **The two names above are
+the only two. Every one-off key is a defect.**
+
+### Shape
+
+```json
+"notes": {
+  "reference_standard": "มยผ. 1101-52 ถึง 1106-52",
+
+  "concrete": {
+    "grade_label": "ค.3",
+    "fc_ksc": 210,
+    "curing_days": 28,
+    "printed_as": "คอนกรีต ค.3 กำลังอัด 210 กก./ตร.ซม. ที่ 28 วัน"
+  },
+
+  "steel": {
+    "round_bar":    { "notation": "RB", "grade": "SR-24", "fy_ksc": 2400, "applies_to_dia_mm": [6, 9] },
+    "deformed_bar": { "notation": "DB", "grade": "SD-40", "fy_ksc": 4000, "applies_to_dia_mm": ">=12" }
+  },
+
+  "cover": {
+    "default_mm": 25,
+    "by_condition": [
+      { "condition": "หล่อติดดิน",                "cover_mm": 75 },
+      { "condition": "สัมผัสดินหรือดินฟ้าอากาศ",  "cover_mm": 50 }
+    ]
+  },
+
+  "fc_ksc": 210,
+  "fy_main_ksc": 4000,
+  "fy_stirrup_ksc": 2400,
+  "cover_mm": 25
+}
+```
+
+### The nested half is what the drawing says
+
+- **`concrete`** — `fc_ksc` is an integer in ksc. A grade printed as a Thai label (`ค.3`) keeps
+  the label in `grade_label`; the label is not a substitute for the number.
+- **`steel` splits by bar notation, not by role.** Thai notes sheets specify steel as
+  "RB = SR-24 = 2400 ksc, DB = SD-40 = 4000 ksc" — **by bar type**. They do not say "main bars are
+  X and stirrups are Y". Record what is printed. `applies_to_dia_mm` is an array of diameters or a
+  printed threshold string (`">=12"`), whichever the sheet gives.
+- **`cover` is in millimetres** — it is a member dimension, so §0.5 applies. ❌ `rebar_cover_m` is
+  wrong and appears in 4 existing files. `by_condition[]` exists because a notes sheet usually
+  prints several covers (cast against earth, exposed to weather, interior); `default_mm` is the
+  unqualified one. A sheet printing only one cover gets `default_mm` and an empty `by_condition`.
+
+### The flat half is a derived alias, never a second reading
+
+`fc_ksc`, `fy_main_ksc`, `fy_stirrup_ksc` and `cover_mm` at the top of `notes{}` are **one-way
+copies** of values already recorded above them, kept flat so existing consumers need no change —
+the same alias pattern `BeamLibraryEntry`'s flat `main_bar_*` fields already use.
+
+Derivation, in order:
+
+| flat field | copy of |
+|---|---|
+| `fc_ksc` | `concrete.fc_ksc` |
+| `fy_main_ksc` | `steel.deformed_bar.fy_ksc` — main bars are deformed unless the sheet says otherwise |
+| `fy_stirrup_ksc` | `steel.round_bar.fy_ksc` — stirrups are round bar unless the sheet says otherwise |
+| `cover_mm` | `cover.default_mm` |
+
+**If the sheet actually states a different pairing, follow the sheet and flag it in `warnings[]`.**
+The two "unless" rules above are the Thai convention, not a law — a house detailing DB stirrups is
+unusual but real, and the flat field must reflect what that house's drawing says, not the
+convention.
+
+A flat field whose source is absent is **`null`**, never a convention-based default. A missing
+value is a real signal that this house's notes sheet did not specify it.
+
+### Rules
+
+- Every value in `notes{}` traces to a line in `sections[]`. **If it is not in the transcript, it
+  does not go in the object** — never carry a value in from another sheet, another house, or a
+  standard you know.
+- The whole `notes{}` object is omitted when the sheet is not a specification sheet (a notes page
+  that is purely procedural, e.g. site-safety requirements, has a `sections[]` transcript and no
+  `notes{}`).
+- Extraction of these values belongs to the `notes` sheet **only**. A section or schedule sheet
+  reprinting `fc = 210` records it as that member's `concrete_grade` per §6, not here.
 
 ## 5. Beam segment splitting
 

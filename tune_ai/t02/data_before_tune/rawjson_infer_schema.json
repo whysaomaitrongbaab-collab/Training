@@ -1,0 +1,39 @@
+{
+  "$comment": "⛔ PARKED 2026-08-21 — ยังไม่ได้ wire เข้า infer_t02_grammar.py: lm-format-enforcer 0.11.3 ปิด key set ทันทีที่ schema ประกาศ properties (ไม่เคารพ additionalProperties ทุกรูปแบบ, probe จริง — ดู test_infer_schema.py) ทำให้ schema นี้บังคับโมเดลพิมพ์ได้เฉพาะ key ที่ enumerate ซึ่งขัดกับ field เปิดกว้างของ rawjson. เก็บไว้รอไลบรารีที่รองรับ (outlines/xgrammar) หรือเวอร์ชันที่แก้แล้ว — รัน test_infer_schema.py เช็คได้. เจตนาเดิมของ schema: บังคับเฉพาะชั้นที่พังจริงจากผลรัน 2026-08-21 (bare string ปนใน elements[], element ไม่มี id/type หรือ id เป็น null, main_bar/stirrup เป็น string) ตาม primary_rawjson_schema.md §0.1/0.2/0.6",
+  "type": "object",
+  "required": ["png", "doc_page", "discipline", "views"],
+  "properties": {
+    "png": {"type": "string"},
+    "discipline": {"type": "string"},
+    "views": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["pattern"],
+        "properties": {
+          "pattern": {
+            "enum": ["plan", "section", "schedule", "notes", "index", "material_list", "site_plan", "side_profile", "gridline", "title", "symbol", "roof_plan", "misc", "bbs_schedule", "soil_boring_log", "unknown"]
+          },
+          "elements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["element_id", "element_type"],
+              "properties": {
+                "element_id": {"type": "string"},
+                "element_type": {"type": "string"},
+                "grid_refs": {"type": "array", "items": {"type": "string"}},
+                "confidence_flags": {"type": "array", "items": {"type": "string"}},
+                "main_bar": {"type": "object"},
+                "stirrup": {"type": "object"},
+                "rebar": {"type": "object"},
+                "steel_section": {"type": "object"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
