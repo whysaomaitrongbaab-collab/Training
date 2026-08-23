@@ -1,0 +1,56 @@
+{
+  "png": "17",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ผังโครงสร้างฐานราก",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_18/บ้าน_เล็ก_2ชั้น_18_หน้า17.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_18_หน้า00_gridline.json",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "This footing plan marks each grid point with a combined footing/column tag ('F1/C1', 'F1A/C1', 'F2/C2') — it is the only sheet in this house showing column positions, there is no separate plan_column sheet (expected per the op04 skill note; recorded here, not invented as a separate file).",
+    "Pile note transcribed from the sheet: 'เข็ม I 0.18x0.18x16.00ม. (2 ต้นต่อปลอก) จำนวน = 14 ต้น / F1 = 10 หลุม = 10 ต้น / F2 = 2 หลุม = 4 ต้น / เข็ม I 0.22x0.22x16.00ม. (2 ต้นต่อปลอก) F1A = 6 หลุม = 6 ต้น'. The totals cross-check exactly against the section sheet (หน้า19): F1 uses 1 pile/footing (10x1=10), F2 uses 2 piles/footing (2x2=4), summing to the printed 14 for the 0.18x0.18 pile; F1A separately totals 6 for the 0.22x0.22 pile. The '(2 ต้นต่อปลอก)' phrase does not resolve against the per-footing pile counts actually shown in the plan/section and is transcribed verbatim without further interpretation.",
+    "Row E has no footing/column markers at columns 3 and 4 — the building footprint narrows at row E (matches the architectural ground-floor plan, which shows a smaller entry-porch bay there, not a missing read)."
+  ],
+  "elements": [
+    { "element_id": "F1", "element_type": "footing", "count": 10, "grid_refs": ["A1", "A2", "A3", "A4", "B1", "B4", "D1", "D4", "E1", "E2"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1A", "element_type": "footing", "count": 6, "grid_refs": ["B2", "B3", "C1", "C4", "D2", "D3"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F2", "element_type": "footing", "count": 2, "grid_refs": ["C2", "C3"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "C1", "element_type": "column", "count": 16, "grid_refs": ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C4", "D1", "D2", "D3", "D4", "E1", "E2"], "confidence_score": 0.9, "confidence_flags": [], "note": "spec shown here is the FOOTING-level spec only; C1 also has separate floor1/floor2 specs, see หน้า23 column schedule (multi-level, §8) for the full per-level breakdown" },
+    { "element_id": "C2", "element_type": "column", "count": 2, "grid_refs": ["C2", "C3"], "confidence_score": 0.9, "confidence_flags": [], "note": "spec shown here is the FOOTING-level spec only; see หน้า23 column schedule for floor1/floor2 specs" }
+  ],
+  "specs": {
+    "F1": {
+      "width_mm": 400, "depth_mm": 400, "thickness_mm": 200,
+      "pedestal_width_mm": 200, "pedestal_depth_mm": 200,
+      "main_bar": { "count": 3, "dia_mm": 12, "type": "DB", "note": "pedestal vertical bars, printed with a '#' leader mark (3-DB12#)" },
+      "stirrup": { "count": 2, "dia_mm": 9, "type": "RB", "note": "รัดรอบ (wrap tie), 2-RB9 (รัดรอบ)" },
+      "pile": { "steel_section": { "designation": "I", "d_mm": 180, "b_mm": 180, "length_m": 16.00, "printed_as": "1-I 0.18x0.18x16.00ม." }, "material": "concrete", "count": 1, "capacity_ton_per_pile": 12, "capacity_printed_as": "รับน.น.ปลอดภัยได้ 12ตัน/ต้น" },
+      "concrete_grade": null, "steel_grade": null,
+      "spec_source": "section", "spec_confidence_score": 0.75,
+      "spec_confidence_flags": ["pile capacity unit scanned ambiguous between 'ตัน' (ton) and 'ต้น' (pile) — read as tons per pile per standard engineering convention, not re-verifiable at this scan quality"]
+    },
+    "F1A": {
+      "width_mm": 400, "depth_mm": 400, "thickness_mm": 200,
+      "pedestal_width_mm": 200, "pedestal_depth_mm": 200,
+      "main_bar": { "count": 3, "dia_mm": 12, "type": "DB", "note": "pedestal vertical bars, 3-DB12#" },
+      "stirrup": { "count": 2, "dia_mm": 9, "type": "RB", "note": "2-RB9 (รัดรอบ)" },
+      "pile": { "steel_section": { "designation": "I", "d_mm": 220, "b_mm": 220, "length_m": 16.00, "printed_as": "1-I 0.22x0.22x16.00ม." }, "material": "concrete", "count": 1, "capacity_ton_per_pile": 20, "capacity_printed_as": "รับน.น.ปลอดภัยได้ 20ตัน/ต้น" },
+      "concrete_grade": null, "steel_grade": null,
+      "spec_source": "section", "spec_confidence_score": 0.75,
+      "spec_confidence_flags": ["same pile-capacity unit ambiguity as F1"]
+    },
+    "F2": {
+      "width_mm": 1000, "depth_mm": 400, "thickness_mm": 400,
+      "main_bar": { "count": 5, "dia_mm": 12, "type": "DB", "note": "pedestal vertical bars, printed as 5-DB12" },
+      "stirrup": { "count": 1, "dia_mm": 9, "type": "RB", "note": "1-RB9 (รัดรอบ)" },
+      "bottom_mesh": { "count": 9, "dia_mm": 12, "type": "DB", "note": "9-DB12 footing-mat bottom bars across the 1.00m width" },
+      "pile": { "steel_section": { "designation": "I", "d_mm": 180, "b_mm": 180, "length_m": 16.00, "printed_as": "2-I 0.18x0.18x16.00ม." }, "material": "concrete", "count": 2, "capacity_ton_per_pile": 12, "capacity_printed_as": "รับน.น.ปลอดภัยได้ 12ตัน/ต้น" },
+      "concrete_grade": null, "steel_grade": null,
+      "spec_source": "section", "spec_confidence_score": 0.65,
+      "spec_confidence_flags": ["F2's 0.40 thickness annotation on the section (หน้า19) was not clearly separable into pedestal-stub vs pad-only components the way F1/F1A's two stacked 0.20 marks were legible — recorded as a single 400mm thickness value with reduced confidence rather than guessing a split"]
+    }
+  }
+}

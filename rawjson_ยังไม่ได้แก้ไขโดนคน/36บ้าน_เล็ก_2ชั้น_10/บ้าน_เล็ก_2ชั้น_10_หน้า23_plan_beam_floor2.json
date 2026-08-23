@@ -1,0 +1,44 @@
+{
+  "png": "23",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แปลน เสา, คาน, พื้นชั้น 2",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า23.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_10_หน้า00_gridline.json",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "'พื้นชั้น 2' is the elevated, enclosed main living floor (bedroom/bathroom); its beams use a plain 'B' prefix, distinct from the ground-level 'GB'-prefixed beams on S-04. Spec confirmed on S-11: B1/B2/B3/B3A/B3B = 150x400mm (B3/B3A/B3B share one section on S-11); B4/BST1 = 150x350mm.",
+    "B3A appears twice at two different physical locations sharing the same mark: once as the row-A beam segment A2-A3, and again as a separate horizontal beam at dummy row A' (y=2.40) spanning grid2-grid3, splitting that bay into an upper slab room (S1) and a lower precast-plank room (SP). Both are genuine distinct beam instances with the same printed mark — kept as two atomic entries, not merged, per the 'reuse the mark, keep the position atomic' convention used throughout this house.",
+    "Beam B3A at row A' bears on the vertical B2 beams at both its grid2 and grid3 ends (a T-junction into a continuous through-beam, not a grid/column intersection) — flagged bears_on_beam at both ends rather than splitting B2.",
+    "'CS' point markers at row C (grid3, grid4) are steel square-tube posts (□-100x100x3.2mm per the legend on S-06/หน้า24, ขนาด confirmed there) — not RC columns; recorded as element_type 'column' with material 'steel' and a steel_section object, since the schema has no dedicated 'post' type and this member functions as a vertical support.",
+    "Grid3's vertical member changes mark from B2 (A-B span) to BST1 (B-C span) at row B — a stair-opening edge beam per S-12 (บันได ST1); BST1's spec (150x350mm) confirmed on S-11.",
+    "The row-C beam (B4, grid3-4) and both CS posts sit directly above the S-04 bay that has no footing/column at C1/C1' — architecturally this is the balcony over the open ground floor below, consistent with the balcony visible in the cover render (p.1)."
+  ],
+  "elements": [
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "A'3", "span_length_m": 1.50, "span_source": "grid_table", "note": "splits the grid2-3 x A-B bay into an upper S1 slab room and a lower SP precast-plank room", "confidence_score": 0.65, "confidence_flags": ["bears_on_beam:B2(start)", "bears_on_beam:B2(end)"] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "BST1", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3B", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "C4", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+
+    { "element_id": "CS", "element_type": "column", "count": 2, "grid_refs": ["C3", "C4"], "material": "steel", "steel_section": { "designation": "SHS", "b_mm": 100, "d_mm": 100, "tw_mm": 3.2, "printed_as": "□-100x100x3.2 มม." }, "note": "square-tube post supporting the row-C balcony beam B4; spec confirmed on S-06 legend", "confidence_score": 0.6, "confidence_flags": ["mark meaning inferred from S-06 legend, not printed on this sheet itself"] },
+
+    { "element_id": "S1", "element_type": "slab", "grid_ref": "A-A' x 2-3", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "grid_ref": "B-C x 3-4", "note": "balcony slab", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "SP", "element_type": "precast_plank_detail", "grid_ref": "A-B x 1-2", "description": "precast plank floor area, span direction marked by arrow", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "SP", "element_type": "precast_plank_detail", "grid_ref": "A'-B x 2-3", "description": "precast plank floor area (small room), span direction marked by arrow", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "SP", "element_type": "precast_plank_detail", "grid_ref": "A-B x 3-4", "description": "precast plank floor area, span direction marked by arrow", "confidence_score": 0.65, "confidence_flags": [] }
+  ]
+}

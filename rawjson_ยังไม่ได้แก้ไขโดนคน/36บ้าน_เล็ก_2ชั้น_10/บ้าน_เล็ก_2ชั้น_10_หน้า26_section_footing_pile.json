@@ -1,0 +1,21 @@
+{
+  "png": "26",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "ขยายฐานรากเสาเข็มตอก F1, F2, F3",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า26.png",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "F1's footing-mat rebar is printed with two separate callouts: '2ป.Ø9มม.@0.10ม.' (a spacing-based layer near the top) and '8-Ø9มม.' (a fixed-count bottom layer, 8 dots visible in the section) — recorded as main_bar.top (spacing-based) and main_bar.bottom (fixed count); the abbreviation 'ป.' is not expanded anywhere in this drawing set (see notes sheet warnings), transcribed verbatim.",
+    "F2 and F3's footing-mat rebar callouts (5-Ø12mm + 3-Ø12mm for F2; 2-Ø12mm + 3-Ø12mm + 3-Ø12mm@0.15m for F3) mirror their spread-footing counterparts (F0.50x0.95 and F0.90x0.90x0.30 on S-07) almost exactly — cross-checked and consistent between the two footing systems for the same footprint size.",
+    "All 3 pile footings use 150x150x6000mm solid precast square piles (เสาเข็มสี่เหลี่ยมตัน ขนาด 0.15x0.15x6.00ม.) — F1 uses 1 pile, F2 uses 2 piles, F3 uses 3 piles."
+  ],
+  "elements": [
+    { "element_id": "F1", "element_type": "pile_cap", "width_mm": 500, "height_mm": 500, "thickness_mm": 300, "main_bar": { "top": { "dia_mm": 9, "spacing_mm": 100, "type": "RB", "printed_as": "2ป.Ø9มม.@0.10ม." }, "bottom": { "count": 8, "dia_mm": 9, "type": "RB", "printed_as": "8-Ø9มม." } }, "pedestal_width_mm": 300, "concrete_grade": "ค.3", "note": "1 driven precast pile 150x150x6000mm; pedestal dowel 3+3-Ø9มม. hooked; pedestal height 1.00m", "confidence_score": 0.65, "confidence_flags": ["'ป.' abbreviation not expanded — see file warnings"] },
+    { "element_id": "F2", "element_type": "pile_cap", "width_mm": 500, "height_mm": 950, "thickness_mm": 200, "main_bar": { "dia_mm": 12, "type": "RB", "printed_as": "5-Ø12มม. + 3-Ø12มม.", "note": "5-Ø12mm along the 950mm axis, 3-Ø12mm along the 500mm axis" }, "pedestal_width_mm": 600, "concrete_grade": "ค.3", "note": "2 driven precast piles 150x150x6000mm; pedestal height 1.00m", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "F3", "element_type": "pile_cap", "width_mm": 900, "height_mm": 900, "thickness_mm": 300, "main_bar": { "dia_mm": 12, "type": "RB", "printed_as": "2-Ø12มม. / 3-Ø12มม. / 3-Ø12มม.+3-Ø12มม.@0.15ม.", "note": "frustum-shaped mat, same layout as spread-footing F0.90x0.90x0.30 on S-07 — see that file's warnings" }, "pedestal_width_mm": 600, "concrete_grade": "ค.3", "note": "3 driven precast piles 150x150x6000mm; pedestal height 1.00m", "confidence_score": 0.6, "confidence_flags": ["footing mat rebar layout only partially resolved, mirrors F0.90x0.90x0.30 — see file warnings"] }
+  ]
+}

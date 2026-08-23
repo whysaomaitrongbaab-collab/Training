@@ -1,0 +1,23 @@
+{
+  "png": "30",
+  "doc_page": 28,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานรากแผ่",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า30.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_05_หน้า00_gridline.json",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "This is one of TWO alternate foundation-type plans in this set (spread footing here on S-02; pile footing on S-03/หน้า31, per the BOQ index also carrying separate 'แบบฐานรากแผ่' and 'แบบฐานรากเสาเข็ม' price sections). Both are legitimate design options, extracted as separate plan_footing files.",
+    "Each footing is printed as '(F<size>),C<n>' — the F-size is the footing's own element_id (the mark also detailed on S-13/S-14); the C<n> suffix names which column TYPE (schedule on S-09) sits on that specific footing, and varies between otherwise-identical footings of the same size. Per §4's point-element merge rule the element_id is the size mark alone (no suffix), so entries are merged by size with a position-parallel 'column_types' array recording which column sits at each grid_refs position — this keeps the required one-entry-per-mark merge while not discarding the printed column-type tag."
+  ],
+  "elements": [
+    { "element_id": "F1.0x1.0", "element_type": "footing", "width_mm": 1000, "height_mm": 1000, "count": 3, "grid_refs": ["F2", "F4", "B4"], "column_types": ["C0", "C0", "C1"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1.30x1.30", "element_type": "footing", "width_mm": 1300, "height_mm": 1300, "count": 4, "grid_refs": ["E1", "E4", "D4", "B1"], "column_types": ["C1", "C1", "C1", "C1"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1.80x1.80", "element_type": "footing", "width_mm": 1800, "height_mm": 1800, "count": 2, "grid_refs": ["E2", "C2"], "column_types": ["C2", "C2"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1.50x1.50", "element_type": "footing", "width_mm": 1500, "height_mm": 1500, "count": 5, "grid_refs": ["E3", "D1", "D3", "C1", "B2"], "column_types": ["C1", "C1", "C2", "C1", "C1"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F0.80x0.80", "element_type": "footing", "width_mm": 800, "height_mm": 800, "count": 2, "grid_refs": ["A1", "A2"], "column_types": ["C1", "C1"], "confidence_score": 0.9, "confidence_flags": [] }
+  ]
+}

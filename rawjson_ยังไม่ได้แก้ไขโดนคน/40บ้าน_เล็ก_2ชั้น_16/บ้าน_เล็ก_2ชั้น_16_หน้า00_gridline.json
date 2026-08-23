@@ -1,0 +1,102 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า15.png",
+    "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า16.png",
+    "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า17.png"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block carries NO sheet_code/sheet_name/design-name/แผ่นที่ box at all (unlike other houses in this batch, e.g. #28's '(024) ธรรมรักษา' with S-01..S-07 codes) — confirmed by inspecting the full right-hand title strip at high zoom on multiple pages. Only the generic 4-row box ('โครงการ แบบบ้านยิ้มเพื่อประชาชน' / 'ตามนโยบาย ม.ร.ว.สุขุมพันธุ์ บริพัตร' / 'โดยสำนักการโยธา กรุงเทพมหานคร' / 'ได้รับความอนุเคราะห์แบบจาก บริษัท แลนดี้ โฮม (ประเทศไทย) จำกัด') is printed. sheet_code is null on every file in this house; sheets are identified by their own drawn Thai title only. Page 2's legend names the design 'บ้าน SMILE HOME V.1 [11/2/45]' and the cover names it 'งามพิศ' — same donor/series as house #29 (บ้านสกาวรัตน์, also no S-code system) but a different individual design.",
+    "House title block: 'งามพิศ' — 'แบบบ้านยิ้มเพื่อประชาชน' program (สำนักการโยธา กรุงเทพมหานคร), donated design ('บ้าน SMILE HOME' V.1) from บริษัท แลนดี้ โฮม (ประเทศไทย) จำกัด. Small 2-story house, single-span structure (2x3 = 6.00x10.50m plan, 3x4 grid), hip roof over an RC frame with a light-gauge steel roof structure (จันทันเหล็ก C100x50x20x2.3mm@1.00m, ตะเข้สัน/อกไก่/อะเส 2C125x50x20x2.3mm). RC footings/columns/beams throughout — not a hybrid steel-frame building, only the roof carpentry is steel.",
+    "No project-wide concrete/steel grade specification ('notes' pattern, §4a) was found anywhere in the 26-page set — swept every page (1-26). Page 2 ('รายการประกอบแบบก่อสร้าง TYPE S') is a general architectural/finishes note (roofing, plaster, paint) with no fc/fy/cover numbers. This matches house #29's finding for the same donor-series template ('genuinely may not exist in this set'), so 'notes' is recorded absent-from-this-house, not missed.",
+    "Dummy-grid naming: two different gaps both anchor to grid A ('above' rule) — (1) a canopy/porch-roof edge BEFORE the origin, at pos_m -0.50 (perpendicular offset dimension printed on both หน้า16 and หน้า17's top margin, tied to real beam 'B2''s two stub ends), and (2) two dummy lines INSIDE the A-B gap on the floor plans. To avoid two different points both being called 'A'' (a would-be id collision), all three dummies referencing grid A were treated as one ordered sequence by pos_m (standing-order judgement call, not explicit in the spec): A'(-0.50) < A''(1.10) < A'''(2.80). This is a deliberate reading of 'scan in reading direction, first found = 1 prime' applied across both gaps rather than restarting the count per gap; flagging here so a later pass can revisit if a stricter per-gap reading is preferred.",
+    "A''' (2.80m from A) is confirmed independently on BOTH หน้า16 (ground floor beam plan, left-margin sub-chain 1.10+1.70+2.20=5.00, giving points at 1.10 and 2.80) and หน้า17 (upper floor/roof plan, left-margin sub-chain 2.80+2.20=5.00, giving one point at 2.80 only) — two sheets agreeing on the 2.80 value, per the op01 precedence rule. It marks the top edge of ground floor's 'S1' slab-type bay and the upper floor's explicitly-labelled 'ช่องบันได' (stair floor opening/void) — the same physical location on both floors, i.e. the stairwell. A'' (1.10m) appears only on หน้า16's sub-chain and is not needed/present on หน้า17, consistent with floor 1 having an extra internal partition (อเนกประสงค์/ครัว split) that floor 2's bedroom layn doesn't have.",
+    "หน้า16's 'S1' bay is drawn with a diagonal X cross-hatch in plan, which could read as either a floor void or a cast-in-place slab symbol. Cross-checked against หน้า22's detail sheet, which shows an actual 'S1' slab SECTION with real top steel (RB9@0.20) spanning ~0.50+0.50m between two beam stubs — a real CIP slab, not a void. หน้า17's equivalent bay is explicitly text-labelled 'ช่องบันได' (stair opening) with no such slab section anywhere in the set, i.e. a genuine floor opening at the upper level only. Both readings are kept, per floor, rather than assuming they mean the same thing on both sheets just because the mark name matches.",
+    "z_levels[] is intentionally empty. The structural sheets (footing/beam plans, sections) only print per-element relative level offsets (e.g. 'B1(+0.40)'), never a named datum/floor-level registry. A named registry (±0.0000 ระดับดินเดิม, +0.500 ระดับพื้นชั้นล่าง, +3.750 ระดับพื้นชั้นบน, +6.750 ระดับหลังคา) IS printed on the architectural building-section sheets (หน้า10 รูปตัด A-A, หน้า11 รูปตัด B-B) but those are pattern 'side_profile', deliberately out of op04 scope — not swept per house #29's precedent for this same donor series. A future op01/full pass on this house should pull z_levels from หน้า10/11.",
+    "Two small local dimension clusters could not be resolved to any beam or dummy grid and are recorded in unassigned_dimensions rather than guessed: a '0.80/0.20' pair and a '1.20' value near row C on both หน้า16 and หน้า17's left margins (does not sum to the 3.00m B-C span; most likely a small step/setback at the ระเบียง (balcony) edge matching the architectural floor plan's own '800/200' balcony-rail note, not a beam line — no beam was seen to terminate there)."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.00, "type": "named" },
+      { "id": "3", "pos_m": 6.00, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "A'", "pos_m": -0.50, "type": "dummy" },
+      { "id": "A''", "pos_m": 1.10, "type": "dummy" },
+      { "id": "A'''", "pos_m": 2.80, "type": "dummy" },
+      { "id": "B", "pos_m": 5.00, "type": "named" },
+      { "id": "C", "pos_m": 8.00, "type": "named" },
+      { "id": "D", "pos_m": 10.50, "type": "named" }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า15.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.00 },
+          { "from": "2", "to": "3", "value_m": 3.00 },
+          { "from": "1", "to": "3", "value_m": 6.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า15.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 5.00 },
+          { "from": "B", "to": "C", "value_m": 3.00 },
+          { "from": "C", "to": "D", "value_m": 2.50 },
+          { "from": "A", "to": "D", "value_m": 10.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า16.png",
+        "segments": [
+          { "from": "A", "to": "A''", "value_m": 1.10 },
+          { "from": "A''", "to": "A'''", "value_m": 1.70 },
+          { "from": "A'''", "to": "B", "value_m": 2.20 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า17.png",
+        "segments": [
+          { "from": "A", "to": "A'''", "value_m": 2.80 },
+          { "from": "A'''", "to": "B", "value_m": 2.20 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า16.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.00 },
+          { "from": "1", "to": "2", "value_m": 3.00 },
+          { "from": "2", "to": "3", "value_m": 3.00 },
+          { "from": "3", "to": "edge", "value_m": 1.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 0.50, "label": "0.50 offset before/after grid 1 and grid 3 on หน้า16 top margin, and again on หน้า17", "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า16.png", "note": "part of the same edge-of-canopy dimension set that fixes A' — kept separate since it is a perpendicular offset (x-direction stub), not itself a y-axis grid position" },
+      { "value_m": 0.80, "label": "0.80 sub-dimension near row C, หน้า16/หน้า17 left margin", "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า16.png", "note": "does not sum to the 3.00m B-C span; likely the ระเบียง balcony rail step also seen on the architectural floor plan (800/200) — no beam confirmed at this line, not promoted to a dummy grid" },
+      { "value_m": 0.20, "label": "0.20 sub-dimension paired with the 0.80 above, near row C", "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า16.png", "note": null },
+      { "value_m": 1.20, "label": "1.20 sub-dimension near row C, หน้า17 left margin", "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า17.png", "note": "same unresolved local cluster as the 0.80/0.20 pair on หน้า16" },
+      { "value_m": 0.70, "label": "roof overhang beyond grid 1 / grid 3 (x) and beyond grid A / grid C (y), printed on หน้า17's outer margin", "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า17.png", "note": "architectural roof footprint overhang, not a structural grid or beam line" },
+      { "value_m": 0.65, "label": "0.65 marker to the right of the col-3 line, หน้า17 (and a similar 0.65/0.40 pair on หน้า16 at the far right beyond col 3)", "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า17.png", "note": "isolated dimension point east of the building footprint, purpose not confirmed (possibly a site/eave reference) — no element traced to it" }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "negative_pos_m": "A' at -0.50 is before the origin grid A (topmost/leftmost main grid) — used a negative pos_m per the rule rather than letting a dummy take over the origin position. Confirmed by a real beam (B2') physically terminating there on both หน้า16 and หน้า17.",
+    "prime_ordering": "Three dummies all reference grid A from two different gaps (before-A, and inside A-B). Ordered by increasing pos_m as one sequence (A' -0.50, A'' 1.10, A''' 2.80) to avoid an id collision — see the warnings entry above for the full reasoning; this is a judgement call, not a directly-stated rule."
+  }
+}

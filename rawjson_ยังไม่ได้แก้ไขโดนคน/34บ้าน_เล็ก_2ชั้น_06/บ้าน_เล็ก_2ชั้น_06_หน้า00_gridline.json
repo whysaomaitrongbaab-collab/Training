@@ -1,0 +1,119 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า29.png",
+    "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า30.png",
+    "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า31.png",
+    "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า32.png",
+    "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า33.png",
+    "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า34.png",
+    "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า40.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: '(024)?' not printed directly — series name printed on cover/title block is 'บ้านครอบครัวไทยร่วมสมัย 8 (ต้านทานแผ่นดินไหว)', เลขที่แบบ AR 60007 / S60164, กรมโยธาธิการและผังเมือง กระทรวงมหาดไทย, ปี 2560. Small 2-storey house, single-bay-and-a-half structure (3x5 column grid, only 2 column lines on the short axis: 1,2,3), full hip roof framed in cold-formed light-gauge steel (จันทันเหล็ก C-100x50x20x3.2mm@1.00m; ตะเข้สัน/อกไก่ 2x C-100x50x5x7.5mm and 2x C-100x50x20x3.2mm variants — see roof plan file for the steel-shape-symbol ambiguity noted there) over an RC frame (footings, columns, floor beams, ring beam, stair, precast-plank floors).",
+    "Dummy grid '1'' at x=-1.10m: primarily justified by an actual BEAM endpoint — S-04/S-05 (floor1 and floor2 plans, หน้า31/32) both print a beam segment marked 'B3X' running from grid D1/C1 west to the building edge, on the same printed 1.10m offset as the x dimension chain's 'edge-1' segment. Also used by the floor-2 tie-column mark 'CN2' at the same offset (D row), supporting the cantilevered 2nd-floor balcony edge. Floor 1's equivalent tie-column ('CN1') sits directly ON grid D1/C1 with no west extension there (only the B3X beam extends west at floor 1). Named '1'' (negative pos_m before the origin) per the house-04/house-05 precedent in the spec (§4).",
+    "Dummy grid '3'' at x=7.00m (0.50m east of grid 3): sourced from the printed edge-offset dimension on S-04/S-05/S-06 (หน้า31/32/33), where a short beam stub marked 'BX' and a small slab pocket marked 'S2' project east past grid 3 by the printed 0.50m. This is a genuine beam endpoint (BX), so per the beam-endpoint rule a dummy grid was added. Same BX stub appears at all three levels (floor1 beam plan, floor2 beam plan, ring-beam plan) at the same position.",
+    "The west overhang (1.10m before grid 1) and the south carport slab (marked 'S0', south of grid A, referenced 'ดูขยาย 2' -> S-18/หน้า45) print NO beam outline around them (thin single-line boundary only, no double-line beam symbol) — per the spec's explicit 'do NOT invent a dummy for a slab-only edge' exception, no dummy grid was added for those; they are recorded as unassigned_dimensions instead. Likewise the roof eave overhangs (1.00m on all 4 sides, from S-07/หน้า34) carry only spacing-based repeated rafters (no discrete beam endpoint), so no dummy grid was added for them either — recorded as unassigned_dimensions.",
+    "z_levels is nearly empty: none of the Pass-2 (structural) sheets in this house print an absolute floor-height table (no '+0.60 ระดับพื้นชั้น1' style callout on any plan/section sheet extracted). The single z-level found anywhere in scope is '+6.65ม.' on S-13/หน้า40 ('เสา CN2 ขึ้นจากขั้น 2 – ถึง+6.65ม.', i.e. the pedestal CN2 rises from floor-2 level up to the ring-beam/eave level at +6.65m). Full floor-height data would require the architectural elevation/section sheets (A-07 to A-13, pattern side_profile), which are Pass-3 and out of op04 scope for this house — documented here rather than guessed."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1'", "pos_m": -1.10, "type": "dummy" },
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.50, "type": "named" },
+      { "id": "3", "pos_m": 6.50, "type": "named" },
+      { "id": "3'", "pos_m": 7.00, "type": "dummy" }
+    ],
+    "y_lines": [
+      { "id": "E", "pos_m": 0.00, "type": "named" },
+      { "id": "D", "pos_m": 3.00, "type": "named" },
+      { "id": "C", "pos_m": 5.20, "type": "named" },
+      { "id": "B", "pos_m": 9.20, "type": "named" },
+      { "id": "A", "pos_m": 10.70, "type": "named" }
+    ],
+    "z_levels": [
+      { "id": "ระดับคานอะเส (หัวเสา CN2)", "level_m": 6.65, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า40.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า29.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 3.00 },
+          { "from": "1", "to": "3", "value_m": 6.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า29.png",
+        "segments": [
+          { "from": "E", "to": "D", "value_m": 3.00 },
+          { "from": "D", "to": "C", "value_m": 2.20 },
+          { "from": "C", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "A", "value_m": 1.50 },
+          { "from": "E", "to": "A", "value_m": 10.70 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า31.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.10 },
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 3.00 },
+          { "from": "3", "to": "edge", "value_m": 0.50 },
+          { "from": "1", "to": "3", "value_m": 6.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า31.png",
+        "segments": [
+          { "from": "E", "to": "D", "value_m": 3.00 },
+          { "from": "D", "to": "C", "value_m": 2.20 },
+          { "from": "C", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "A", "value_m": 1.50 },
+          { "from": "E", "to": "A", "value_m": 10.70 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า34.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.00 },
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 3.00 },
+          { "from": "3", "to": "edge", "value_m": 1.00 },
+          { "from": "1", "to": "3", "value_m": 6.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า34.png",
+        "segments": [
+          { "from": "edge", "to": "E", "value_m": 1.00 },
+          { "from": "E", "to": "D", "value_m": 3.00 },
+          { "from": "D", "to": "C", "value_m": 2.20 },
+          { "from": "C", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "A", "value_m": 1.50 },
+          { "from": "A", "to": "edge", "value_m": 1.00 },
+          { "from": "E", "to": "A", "value_m": 10.70 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.10, "label": "west wall-line overhang before grid 1 (floor plans)", "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า31.png", "note": "duplicated as the x dimension_chain 'edge-1' segment; listed again here because it is the anchor for dummy grid 1'" },
+      { "value_m": 1.00, "label": "roof eave overhang, all 4 sides", "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า34.png", "note": "spacing-based rafter reach, no beam endpoint -> no dummy grid, see file warnings" },
+      { "value_m": 0.45, "label": "S0 carport slab projection south of grid A ('ขยาย 2' detail)", "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า45.png", "note": "slab-edge nib only, no beam outline on S-04 -> no dummy grid" },
+      { "value_m": 1.75, "label": "F10 pile-cap footing width (hexagonal, 9-pile)", "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า38.png", "note": "member dimension, not a grid position" }
+    ]
+  }
+}

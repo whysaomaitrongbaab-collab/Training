@@ -1,0 +1,112 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized) — main building",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png",
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า16.png",
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า22.png",
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า23.png",
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า24.png",
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า25.png"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'สราญจิต 2' (Saranchit 2), TYPE \"S\" — 'แบบบ้านยิ้มเพื่อประชาชน' series, สำนักการโยธา กรุงเทพมหานคร (same series as houses 09/12/14/16/18/19/20 already in the dataset, a different design number). Small 2-story house, single-span structure (3x4=1-4 x A-E grid), all-steel hip roof (จันทัน C100x50x20x2.3mm@1.00m, ตะเข้สัน/ตะเข้ราง/อกไก่/อะเส all 2C125x50x20x2.3mm or 2C150x50x20x2.3mm, มุงกระเบื้อง CPAC MONIER) over an RC frame (precast-pile footings, RC beams/columns/precast-plank floors).",
+    "op04 (Pass-2-only) scope: the grid sweep below draws x/y from the STRUCTURAL footing/beam/roof plans (หน้า22-25, all reprinting the identical 1-2-3-4 / A-B-C-D-E chain) and z_levels/dimension_chains(z) from the two full building sections (หน้า15/16, side_profile pattern, not separately extracted as files under op04 scope). Architectural floor-plan pages (หน้า03/04) and their door/window sub-dimensions were NOT swept for unassigned_dimensions — that finer architectural detail is outside Pass-2 scope (gridline/plan_footing/plan_beam/plan_slab/section/schedule/notes only). This is narrower than a full op01 sweep and is documented here, not silently done.",
+    "Ground-floor beam plan (หน้า23) prints small offset dimensions (1.00/1.40 before+after grid1, 0.60/1.00 around grid3-4) bounding two small entrance-canopy slabs (S0, +0.10) that cantilever past row A. At this scan's resolution it could not be confirmed whether a real column/beam terminus sits at those offset points (which would require dummy grids) or whether these are pure slab-edge dimensions (no dummy grid, per the 'no dummy for a slab-only edge' rule). Treated conservatively as slab-only edges — no dummy grid added — and the beam segments B2(A1-A2)/B3(A2-A3) at row A were read as continuous single segments. See หน้า23 file warnings.",
+    "Column/beam mark consistency (C1/C2, B1-B5) was cross-checked across the footing plan (หน้า22), both beam plans (หน้า23/24), the beam rebar sheet (หน้า31) and the column schedule (หน้า29) — all agree. Confidence on the internal (non-perimeter) beam-to-segment assignment on the two dense beam plans (หน้า23/24) is moderate (~0.6) rather than high; see each file's own warnings."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.00, "type": "named" },
+      { "id": "3", "pos_m": 6.50, "type": "named" },
+      { "id": "4", "pos_m": 9.50, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 2.00, "type": "named" },
+      { "id": "C", "pos_m": 5.50, "type": "named" },
+      { "id": "D", "pos_m": 9.00, "type": "named" },
+      { "id": "E", "pos_m": 11.00, "type": "named" }
+    ],
+    "z_levels": [
+      { "id": "ระดับดินเดิม", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png" },
+      { "id": "ระดับพื้นชั้นล่าง", "level_m": 0.50, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png" },
+      { "id": "ระดับพื้นชานพัก", "level_m": 2.125, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า19.png" },
+      { "id": "ระดับพื้นชั้นบน", "level_m": 3.75, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png" },
+      { "id": "ระดับอะเสเหล็ก บริเวณนอน3", "level_m": 3.60, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า16.png" },
+      { "id": "ระดับหลังอะเสเหล็ก", "level_m": 6.75, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png" },
+      { "id": "ยอดจั่วหน้า (front gable peak, label not clearly legible on scan)", "level_m": 7.789, "type": "dummy", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png", "confidence_score": 0.55, "confidence_flags": ["printed Thai label at this level marker too small/blurry to transcribe confidently; the numeric value +7.789 itself is clear"] },
+      { "id": "ระดับหลังอกไก่เหล็กบนสุด", "level_m": 8.798, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า22.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.00 },
+          { "from": "2", "to": "3", "value_m": 3.50 },
+          { "from": "3", "to": "4", "value_m": 3.00 },
+          { "from": "1", "to": "4", "value_m": 9.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า22.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 2.00 },
+          { "from": "B", "to": "C", "value_m": 3.50 },
+          { "from": "C", "to": "D", "value_m": 3.50 },
+          { "from": "D", "to": "E", "value_m": 2.00 },
+          { "from": "A", "to": "E", "value_m": 11.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า25.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.00 },
+          { "from": "2", "to": "3", "value_m": 3.50 },
+          { "from": "3", "to": "4", "value_m": 3.00 },
+          { "from": "1", "to": "4", "value_m": 9.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า25.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 2.00 },
+          { "from": "B", "to": "C", "value_m": 3.50 },
+          { "from": "C", "to": "D", "value_m": 3.50 },
+          { "from": "A", "to": "D", "value_m": 9.00 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png",
+        "segments": [
+          { "from": "ระดับดินเดิม", "to": "ระดับพื้นชั้นล่าง", "value_m": 0.50 },
+          { "from": "ระดับพื้นชั้นล่าง", "to": "ระดับพื้นชั้นบน", "value_m": 3.25 },
+          { "from": "ระดับพื้นชั้นบน", "to": "ระดับหลังอะเสเหล็ก", "value_m": 3.00 },
+          { "from": "ระดับหลังอะเสเหล็ก", "to": "ระดับหลังอกไก่เหล็กบนสุด", "value_m": 2.048 },
+          { "from": "ระดับดินเดิม", "to": "ระดับหลังอกไก่เหล็กบนสุด", "value_m": 8.798 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.00, "label": "offset before grid1, ground-floor beam plan (หน้า23) — entrance canopy slab edge", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า23.png", "note": "no dummy grid added — see file warnings" },
+      { "value_m": 1.40, "label": "offset after grid1, ground-floor beam plan (หน้า23) — entrance canopy slab edge / B2 beam terminus", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า23.png", "note": "treated as slab edge, not a dummy grid — genuine ambiguity, see file warnings" },
+      { "value_m": 0.60, "label": "offset before grid3, ground-floor beam plan (หน้า23) — second entrance canopy slab edge", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า23.png", "note": "treated as slab edge, not a dummy grid — genuine ambiguity, see file warnings" },
+      { "value_m": 1.00, "label": "offset after grid4, ground-floor beam plan (หน้า23) — building edge overhang", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า23.png", "note": null },
+      { "value_m": 1.30, "label": "offset before grid1 and after grid4, upper-floor structure plan (หน้า24) — roof overhang past the building edge", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า24.png", "note": "roof eave/fascia overhang, no beam — matches หน้า25 roof plan overhangs" },
+      { "value_m": 1.10, "label": "roof-plan overhang, all 4 sides of the main hip roof beyond grid1/4 and A/D", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า25.png", "note": "jantan/fascia reach, spacing-based repeated member, no individual grid_ref — see หน้า25 plan_beam file" },
+      { "value_m": 2.048, "label": "vertical dimension segment, หลังอะเสเหล็ก to หลังอกไก่เหล็กบนสุด (main roof rise above eave)", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า15.png", "note": "redundant with z dimension_chain total row, recorded for completeness" }
+    ]
+  }
+}

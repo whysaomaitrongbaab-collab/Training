@@ -1,0 +1,110 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า27.png",
+    "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า28.png",
+    "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า29.png",
+    "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า30.png",
+    "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า40.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'บ้านอารยสถาปัตย์ 2 (สำหรับผู้สูงอายุหรือคนพิการและคนทุกเพศทุกวัย)' — เลขที่แบบ AR 61141, กรมโยธาธิการและผังเมือง, series 'แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข', ลงวันที่ ม.ค. 2562. Single-story universal-design (accessible/elderly) house, 2 bedroom 1 bath. This is a DIFFERENT design within the same government series as house 27/บ้าน_ใหญ่_1ชั้น_04 ('บ้านครอบครัวไทยเป็นสุข 2', ม.บ.462120) — same cover template, different แบบเลขที่ and different structural system.",
+    "Notable structural feature: hybrid system. Footings/pedestals/pile caps are RC (S-02..S-11), but the wall-plate-level ring beam (S-04, 'แปลนคานระดับอะเส') and the entire roof frame (S-05, 'แปลนโครงหลังคา') are built ENTIRELY from light-gauge steel C-channels (⊏-200x100x4.2, ⊏-200x75x20x3.2 lipped, ⊏-100x50x20x3.2 lipped purlins/sag-rods, ⊏-125x65x6x8 rafters), with diagonal X-bracing and base plates (PL.200x200x6mm + 4-Ø6mm bolts) at each post. This is not a simple 'steel roof over RC beam' design (cf. house 27/04) — the entire superstructure above the RC pedestals is steel, more similar in spirit to บ้าน_ใหญ่_1ชั้น_01's hybrid note in the schema (§6a) though the specific system differs (there it was RC walls + steel roof only; here even the wall-plate ring beam is steel).",
+    "x-axis dummy grids: a local dimension row under grid row E (S-02, หน้า27) reads 1.50 then 3.50 (sum 5.00, matching the coarse 1-2 chain) — this places one dummy line at x=1.50 ('1\\''). A SEPARATE local dimension at row A' (the dummy footing row, same sheet) reads 3.35 from grid 1 to footing C0,F4 — a second, different dummy position in the same 1-2 gap. Per the prime-ordering rule (scan left→right, first found = 1 prime) these are '1\\'' (1.50) and '1\\'\\'' (3.35).",
+    "y-axis dummy grid: footings C0,F3/C0,F4/C0,F2/C0,F2 sit on their own row 1.50m below main grid A (S-02, หน้า27), confirmed by an explicit witness-line dimension distinct from the main E-D-C-B-A chain (4.00+2.50+4.00+2.50=13.00, cross-checked against the printed '13.00' outer bracket total — exact match, no mismatch on this house). Named 'A\\'' per the above/left convention (main grid above it in reading order = A). No beam (B-mark) was found spanning to this row on S-03/S-04 — only footings/pedestals sit there; per §4 this does not disqualify it as a real grid line since footings are point elements that also need a resolvable grid_ref, independent of the beam-endpoint trigger.",
+    "z_levels are sparse for this house: op04 scope excludes the elevation/side_profile sheets (A-07/A-08 etc., architectural) where most level callouts would normally appear. Only two floor levels are printed on the structural sheets actually extracted in this pass, both on S-15 (หน้า40, ramp/stair-nosing detail): '+0.40' (upper ramp landing / main floor) and '+0.10' (lower landing near beam BA/B1). Both are unlabeled numeric levels (no Thai id text next to them) so id=null.",
+    "dimension_chains/unassigned_dimensions below are transcribed from the grid-bearing sheets actually in scope (S-02 plan_footing, S-03 plan_beam+slab, S-04 plan_beam ring-beam, S-05 plan_beam roof-frame) plus S-15's two level callouts — this is not an exhaustive sweep of every printed number across all 17 structural sheets (op04 scope), so section-only dimensions (e.g. individual footing/beam rebar-detail measurements on S-06..S-17) are captured in their own section files' element fields rather than duplicated here."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "1'", "pos_m": 1.50, "type": "dummy" },
+      { "id": "1''", "pos_m": 3.35, "type": "dummy" },
+      { "id": "2", "pos_m": 5.00, "type": "named" },
+      { "id": "3", "pos_m": 9.00, "type": "named" },
+      { "id": "4", "pos_m": 13.00, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "E", "pos_m": 0.00, "type": "named" },
+      { "id": "D", "pos_m": 4.00, "type": "named" },
+      { "id": "C", "pos_m": 6.50, "type": "named" },
+      { "id": "B", "pos_m": 10.50, "type": "named" },
+      { "id": "A", "pos_m": 13.00, "type": "named" },
+      { "id": "A'", "pos_m": 14.50, "type": "dummy" }
+    ],
+    "z_levels": [
+      { "id": null, "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า31.png" },
+      { "id": null, "level_m": 0.40, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า40.png" },
+      { "id": null, "level_m": 0.10, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า40.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า27.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 5.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "4", "value_m": 4.00 },
+          { "from": "1", "to": "4", "value_m": 13.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า27.png",
+        "segments": [
+          { "from": "1", "to": "1'", "value_m": 1.50 },
+          { "from": "1'", "to": "2", "value_m": 3.50 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า27.png",
+        "segments": [
+          { "from": "1", "to": "1''", "value_m": 3.35 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า27.png",
+        "segments": [
+          { "from": "E", "to": "D", "value_m": 4.00 },
+          { "from": "D", "to": "C", "value_m": 2.50 },
+          { "from": "C", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "A", "value_m": 2.50 },
+          { "from": "E", "to": "A", "value_m": 13.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า27.png",
+        "segments": [
+          { "from": "A", "to": "A'", "value_m": 1.50 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า30.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.20 },
+          { "from": "1", "to": "2", "value_m": 5.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "4", "value_m": 4.00 },
+          { "from": "4", "to": "edge", "value_m": 1.20 },
+          { "from": "1", "to": "4", "value_m": 13.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.20, "label": "roof eave overhang beyond grid E (y-axis, top)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า30.png", "note": "roof-plan eave overhang, no beam/column at this line — not a dummy grid per the slab/eave-edge exception" },
+      { "value_m": 1.20, "label": "roof eave overhang beyond grid A (y-axis, bottom)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า30.png", "note": null },
+      { "value_m": 1.10, "label": "roof eave overhang beyond grid 4 (x-axis), printed separately from the 1.20 eave figures", "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า28.png", "note": "S-03 floor/beam plan shows a 1.10 stub past grid 4 at the top chain; S-05 roof plan shows 1.20 in the same location — roof overhang is larger than the floor-level projection, both printed as-is, not reconciled" }
+    ]
+  }
+}

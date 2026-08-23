@@ -1,0 +1,28 @@
+{
+  "png": "25",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานราก เสาตอม่อ",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า25.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_11_หน้า00_gridline.json",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "The two corner positions (A1 and C3) use different footing types (F5 at A1, F8 at C3) despite the building being a simple 8x8m square symmetric about neither diagonal — a real, printed asymmetry (not an extraction error), most likely reflecting different tributary loads at each corner (e.g. the accessible ramp/entry structure and bathroom fixtures load the C3 corner differently than A1). Recorded as printed.",
+    "Column mark 'C1' (the lighter pedestal/column type) coincides in spelling with the grid position label 'C1' (row C, column 1) purely by coincidence of the drawing's own naming — element_id 'C1' here always refers to the COLUMN mark, never a grid position, per the column schedule on S-07."
+  ],
+  "elements": [
+    { "element_id": "F5", "element_type": "footing", "count": 1, "grid_refs": ["A1"], "width_mm": 1200, "length_mm": 1200, "depth_mm": 800, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "F10", "element_type": "footing", "count": 7, "grid_refs": ["A2", "A3", "B1", "B2", "B3", "C1", "C2"], "width_mm": 1650, "length_mm": 1650, "depth_mm": 800, "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F8", "element_type": "footing", "count": 1, "grid_refs": ["C3"], "width_mm": 1500, "length_mm": 1500, "depth_mm": 800, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "C1", "element_type": "column", "count": 2, "grid_refs": ["A1", "C3"], "confidence_score": 0.85, "confidence_flags": ["pedestal/column mark, see spec join with S-07 column schedule for rebar"] },
+    { "element_id": "C2", "element_type": "column", "count": 7, "grid_refs": ["A2", "A3", "B1", "B2", "B3", "C1", "C2"], "confidence_score": 0.9, "confidence_flags": ["pedestal/column mark, see spec join with S-07 column schedule for rebar"] }
+  ],
+  "specs": {
+    "F5": { "width_mm": 1200, "length_mm": 1200, "depth_mm": 800, "pile_count": 5, "pile_type": "เสาเข็มคอนกรีต ⊙-0.15ม.", "main_bar": { "count": 12, "count_printed_as": "6+6", "dia_mm": 12, "type": "RB", "note": "6+6-Ø12mm, both ways (bottom mat)" }, "concrete_grade": "ค.1:3:5 (lean/mat concrete per section note)", "spec_source": "section", "spec_confidence_score": 0.85 },
+    "F10": { "width_mm": 1650, "length_mm": 1650, "depth_mm": 800, "pile_count": 10, "pile_type": "เสาเข็มคอนกรีต ⊙-0.15ม.", "main_bar": { "count": 20, "count_printed_as": "10+10", "dia_mm": 12, "type": "RB", "note": "10+10-Ø12mm, both ways (bottom mat)" }, "concrete_grade": "ค.1:3:5 (lean/mat concrete per section note)", "spec_source": "section", "spec_confidence_score": 0.85 },
+    "F8": { "width_mm": 1500, "length_mm": 1500, "depth_mm": 800, "pile_count": 8, "pile_type": "เสาเข็มคอนกรีต ⊙-0.15ม.", "main_bar": { "count": 20, "count_printed_as": "10+10", "dia_mm": 12, "type": "RB", "note": "10+10-Ø12mm, both ways (bottom mat)" }, "concrete_grade": "ค.1:3:5 (lean/mat concrete per section note)", "spec_source": "section", "spec_confidence_score": 0.85 }
+  }
+}

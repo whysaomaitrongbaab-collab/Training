@@ -1,0 +1,23 @@
+{
+  "png": "21",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบขยายวิศวกรรมโครงสร้าง 2 (column schedule table)",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า21.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet is a multi-view page: stair + F1/F2 footing/pile rebar details (separate file, หน้า21_view1_section_footing_stair.json) + this column schedule table.",
+    "Table columns are 'FLOOR \\ COLUMN' x mark, two rows: 'พื้นชั้น2-หลังคา' (floor2-to-roof segment) and 'ฐานราก-พื้นชั้น2' (footing-to-floor2 segment) — recorded as the 'level' field per §8, one entry per mark per level.",
+    "The roof-level row groups 'C1,CX' under one identical spec cell — kept as two separate elements[] entries (C1 and CX) since they are different member marks, even though their spec is identical at this level. The footing-level row lists only C1 and C2 (no CX row at all), so CX's lower segment (footing-to-floor2) is unspecified by this schedule — not assumed to equal C1, flagged instead (see also the plan-file warning on หน้า18_view1)."
+  ],
+  "elements": [
+    { "element_id": "C1", "element_type": "column", "level": "floor2 to roof (พื้นชั้น2-หลังคา)", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "CX", "element_type": "column", "level": "floor2 to roof (พื้นชั้น2-หลังคา)", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.7, "confidence_flags": ["no separate footing-to-floor2 spec exists for CX in this schedule — see file warnings"] },
+    { "element_id": "C2", "element_type": "column", "level": "floor2 to roof (พื้นชั้น2-หลังคา)", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "C1", "element_type": "column", "level": "footing to floor2 (ฐานราก-พื้นชั้น2)", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "C2", "element_type": "column", "level": "footing to floor2 (ฐานราก-พื้นชั้น2)", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 6, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.85, "confidence_flags": [] }
+  ]
+}

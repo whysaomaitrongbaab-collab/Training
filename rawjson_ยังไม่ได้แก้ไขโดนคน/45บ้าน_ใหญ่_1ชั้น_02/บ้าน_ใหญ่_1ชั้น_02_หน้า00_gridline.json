@@ -1,0 +1,129 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า27.png",
+    "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า28.png",
+    "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า29.png",
+    "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า30.png",
+    "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า31.png",
+    "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'บ้านอารยสถาปัตย์ 1 (บ้านชั้นเดียว, สำหรับผู้สูงอายุหรือคนพิการและคนทุกเพศทุกวัย)' -- กรมโยธาธิการและผังเมือง, เลขที่แบบ AR 61140 (architecture) / S 62076 (structural), ม.ค. 2562. Universal-design single-storey house, 2 bedrooms 1 bathroom. Series title 'แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข' -- a different series from บ้าน_ใหญ่_1ชั้น_01 (folder 06, 'บ้านครอบครัวไทยร่วมสมัย'-style) and บ้าน_ใหญ่_1ชั้น_04 (folder 27, 'บ้านครอบครัวไทยเป็นสุข 2').",
+    "Main grid x_lines (1,2,3) and y_lines (A-E) are independently cross-checked between the structural sheets (S-02 footing plan, S-03 beam/slab plan, S-05/S-06 roof plans, all หน้า27-31) and the architectural furniture-layout plan (A-23, หน้า25) -- both give identical segment values (x: 5.00+4.00=9.00; y bottom-to-top A-B=2.50, B-C=4.00, C-D=2.50, D-E=4.00, total 13.00). No mismatch found; high confidence on the main grid.",
+    "x-axis dummy '3'' at 10.10 (grid 3 + 1.10m) is printed on every structural plan sheet's top dimension row (S-02 lacks it but S-03/S-05/S-06 all show it) and is directly used as a beam endpoint: B7X's own cross-section (S-14, หน้า39) is dimensioned '1.10 / B7X', matching exactly. Confidence high.",
+    "y-axis dummies E' (14.00) and E'' (14.50) cover the small ซักล้าง (laundry) appendage that projects north of row E, at grid columns roughly 1-2: E'' is the laundry room's own beam line (B3X's cross-section on S-11, หน้า36, is dimensioned '1.50 / B3X', matching a wall/beam line 1.50m past E); E' is the separate small lean-to roof canopy 'แปลนหลังคาคลุมซักล้าง' on S-06 (หน้า31), dimensioned '1.00' past E for its own purlin/CX-post line. These are two different structural lines (room beam vs. canopy roof edge) that happen to sit in the same gap beyond the last main grid E, ordered by distance from E per the prime-ordering rule (closer=E', farther=E''). Could not find a printed sub-dimension for the laundry room's WIDTH (x-extent of B3X/B4X within the 1-2 bay) on the structural sheets in scope -- recorded with reduced confidence on the affected elements, not guessed as a new x dummy.",
+    "The x-axis roof overhang (1.20 m beyond grid 1 and beyond grid 3, printed on S-05/S-06 หน้า30-31) is a plain eave overhang with no individual rafter/purlin mark tied specifically to its outer tip (จันทันเหล็ก run continuous from ridge to eave) -- per the beam-endpoint dummy-grid rule's own exception (no beam label at that edge), no dummy grid was created for it; recorded instead in unassigned_dimensions.",
+    "No cover (ระยะหุ้มคอนกรีต) value is printed anywhere on the S-01 general-notes sheet (หน้า26) -- see the notes file's own warning."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 5.00, "type": "named" },
+      { "id": "3", "pos_m": 9.00, "type": "named" },
+      { "id": "3'", "pos_m": 10.10, "type": "dummy" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 2.50, "type": "named" },
+      { "id": "C", "pos_m": 6.50, "type": "named" },
+      { "id": "D", "pos_m": 9.00, "type": "named" },
+      { "id": "E", "pos_m": 13.00, "type": "named" },
+      { "id": "E'", "pos_m": 14.00, "type": "dummy", "confidence_score": 0.6, "confidence_flags": ["canopy roof edge (แปลนหลังคาคลุมซักล้าง, S-06) -- see file warnings on E'/E'' resolution"] },
+      { "id": "E''", "pos_m": 14.50, "type": "dummy", "confidence_score": 0.6, "confidence_flags": ["laundry room (ซักล้าง) beam line, matches B3X's own 1.50m cross-section span -- see file warnings"] }
+    ],
+    "z_levels": [
+      { "id": "ระดับอ้างอิง", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า27.png" },
+      { "id": "ระดับพื้นห้องน้ำ (WC1)", "level_m": 0.38, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า21.png" },
+      { "id": "ระดับพื้นทั่วไป", "level_m": 0.40, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png" },
+      { "id": "ระดับซักล้าง", "level_m": 0.38, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png" },
+      { "id": "ระดับเฉลียง", "level_m": 0.38, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png" },
+      { "id": "ระดับถนนภายใน", "level_m": 0.00, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png" },
+      { "id": "ระดับฐานราก (ตอม่อ ▽)", "level_m": -1.00, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า32.png" },
+      { "id": null, "level_m": -0.40, "type": "dummy", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า40.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า27.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 5.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "1", "to": "3", "value_m": 9.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า28.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 5.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "3'", "value_m": 1.10 },
+          { "from": "1", "to": "3", "value_m": 9.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า30.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.20 },
+          { "from": "1", "to": "2", "value_m": 5.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "edge", "value_m": 1.20 },
+          { "from": "1", "to": "3", "value_m": 9.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า27.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 2.50 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "D", "value_m": 2.50 },
+          { "from": "D", "to": "E", "value_m": 4.00 },
+          { "from": "A", "to": "E", "value_m": 13.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png",
+        "segments": [
+          { "from": "E", "to": "D", "value_m": 4.00 },
+          { "from": "D", "to": "C", "value_m": 2.50 },
+          { "from": "C", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "A", "value_m": 2.50 },
+          { "from": "A", "to": "E", "value_m": 13.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า28.png",
+        "segments": [
+          { "from": "E", "to": "E''", "value_m": 1.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า31.png",
+        "segments": [
+          { "from": "E", "to": "E'", "value_m": 1.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.20, "label": "roof eave overhang beyond grid 1 (x-axis)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า30.png", "note": "continuous จันทันเหล็ก run, no individual rafter mark at the tip -- no dummy grid created per the beam-endpoint rule's own exception" },
+      { "value_m": 1.20, "label": "roof eave overhang beyond grid 3 (x-axis)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า30.png", "note": null },
+      { "value_m": 1.50, "label": "ซักล้าง (laundry) room depth, architectural furniture plan A-23 cross-check of the same E-E'' dimension seen structurally on S-03/S-11", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png", "note": "matches the dimension_chains E-E'' entry; kept as its own unassigned entry because it is the architectural (not structural) source of the same figure" },
+      { "value_m": 0.60, "label": "interior partition offset near grid 2, x-axis (architectural furniture plan)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png", "note": "wall thickness/jog near grid 2; no beam sits exactly on this line so no dummy grid was created" },
+      { "value_m": 0.40, "label": "interior partition offset near grid 2, x-axis (architectural furniture plan), second segment", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า25.png", "note": null },
+      { "value_m": 0.70, "label": "y-axis stub south of grid A (เฉลียง/porch ramp landing edge)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า27.png", "note": "printed on the S-02 footing plan margin; no footing/beam sits beyond A on this stub" }
+    ]
+  }
+}

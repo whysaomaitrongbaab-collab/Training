@@ -1,0 +1,29 @@
+{
+  "png": "28",
+  "doc_page": 26,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แปลนโครงหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า28.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_11_หน้า00_gridline.json",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "This is a STRUCTURAL roof framing plan (steel rafters/purlins/hip rafters with real member callouts over the ring beam) — recorded as pattern 'plan' per the roof_plan-vs-plan rule (a structural roof-framing plan is 'plan', not 'roof_plan'), NOT skipped.",
+    "Members here repeat typically across the whole roof (rafters @1.00m, purlins @0.50m) rather than sitting at individually-marked grid positions, so grid_ref is omitted on these entries and spacing_mm + a descriptive extent is used instead, matching §6a's spacing-based repeated-member convention.",
+    "'purlin' and 'fascia' have no dedicated element_type in the established §0.4 vocabulary — used 'steel_member' (an existing value) for both rather than inventing new ones, with the specific role recorded in each element's note field.",
+    "No dimension/size is printed for the purlin profile itself (แปเหล็กสำเร็จรูป) — only its spacing (@0.50ม) is given; recorded as spacing_mm=500 with no steel_section (member profile genuinely not specified on this sheet)."
+  ],
+  "elements": [
+    { "element_id": "จันทันเหล็ก", "element_type": "rafter", "spacing_mm": 1000, "description": "typical rafter, all 4 sloped roof faces, running from ring beam RB1 up to the ridge/hip lines", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "ตะเข้สันเหล็ก", "element_type": "rafter", "count": 4, "description": "hip rafter, one at each of the 4 corners, from ring beam RB1 corner up to the ridge apex at king post P1 (grid B2)", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "เชิงชายเหล็ก", "element_type": "steel_member", "description": "fascia/eave beam, runs continuously around the full perimeter of ring beam RB1 (โดยรอบ)", "confidence_score": 0.75, "confidence_flags": ["no closer element_type in the established vocabulary; role recorded in this note"] },
+    { "element_id": "แปเหล็กสำเร็จรูป", "element_type": "steel_member", "spacing_mm": 500, "description": "prefab purlin, typical, all roof faces", "confidence_score": 0.65, "confidence_flags": ["no closer element_type in the established vocabulary; profile/size not printed, only spacing"] }
+  ],
+  "specs": {
+    "จันทันเหล็ก": { "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จันทันเหล็ก ⌐-100x50x20x2.3 มม. @1.00 ม. (TYP.)" }, "spec_source": "plan", "spec_confidence_score": 0.75 },
+    "ตะเข้สันเหล็ก": { "material": "steel", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "ตะเข้สันเหล็ก 2⌐-150x50x20x3.2 มม." }, "spec_source": "plan", "spec_confidence_score": 0.75 },
+    "เชิงชายเหล็ก": { "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "เชิงชายเหล็ก ⌐-100x50x20x2.3 มม. (โดยรอบ)" }, "spec_source": "plan", "spec_confidence_score": 0.75 }
+  }
+}

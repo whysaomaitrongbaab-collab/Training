@@ -1,0 +1,28 @@
+{
+  "png": "22",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "SECTION COLUMN",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_20/บ้าน_เล็ก_2ชั้น_20_หน้า22.png",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Sheet's own printed title is 'SECTION COLUMN 1:20', but the content is a level x mark matrix table (FLOOR 2 / FLOOR 1 / FOOTING rows against C1 / C2 / CA columns), each cell a small cross-section drawing with its own rebar callout — exactly the worked example in §8 (a column schedule listing the same mark once per level). Classified as pattern 'schedule' per that content test rather than the printed sheet title, and flagged here per the standing 'record the decision' rule.",
+    "'CA' has no FOOTING-level cell (blank on the sheet) — consistent with หน้า17/18's finding that CA is a beam-supported column with no footing of its own; not fabricated as a 4th level.",
+    "C2 at FOOTING level prints two stacked bar counts in one cell ('4-DB12' then '4-DB16', 8 bars total, mixed diameter) — recorded per §0.5's mixed-diameter convention (dia_mm = first-printed, mixed_dia_mm = full list)."
+  ],
+  "elements": [
+    { "element_id": "C1", "element_type": "column", "level": "FLOOR 2", "width_mm": 150, "height_mm": 150, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "C1", "element_type": "column", "level": "FLOOR 1", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "C1", "element_type": "column", "level": "FOOTING", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.9, "confidence_flags": [] },
+
+    { "element_id": "C2", "element_type": "column", "level": "FLOOR 2", "width_mm": 150, "height_mm": 150, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "C2", "element_type": "column", "level": "FLOOR 1", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 16, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "C2", "element_type": "column", "level": "FOOTING", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 8, "dia_mm": 12, "mixed_dia_mm": [12, 16], "type": "DB", "printed_as": "4-DB12 + 4-DB16" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "CA", "element_type": "column", "level": "FLOOR 2", "width_mm": 150, "height_mm": 150, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "CA", "element_type": "column", "level": "FLOOR 1", "width_mm": 150, "height_mm": 150, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.9, "confidence_flags": [] }
+  ]
+}

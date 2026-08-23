@@ -1,0 +1,22 @@
+{
+  "png": "16",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนเสา, ฐานราก",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_15_หน้า00_gridline.json",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "views[]: this page (หน้า16) carries 2 views — view1 (this file) = column/footing plan; view2 = ground-floor beam plan (separate file, _view2_plan_beam_floor1.json).",
+    "Column mark 'C1' is used at all 8 positions, but is paired with two different footing marks: 'F1' at the 4 corners (A1, A4, B1, B4) and 'F2' at the 4 middle positions (A2, A3, B2, B3). Recorded as two separate footing elements per the point-element merge rule (§4), each carrying its own grid_refs; the column itself (C1) is recorded once as a merged point element with all 8 positions, since only its footing pairing differs, not its own mark.",
+    "S-04 (หน้า19) shows two distinct ตอม่อ (pedestal) rebar patterns — 0.20x0.20m, 8-DB12mm+Tie RB6mm@0.15, and 0.20x0.20m, 4-DB12mm+Tie RB6mm@0.15 — with neither box carrying its own distinguishing mark (both just say 'ตอม่อ'). Inferred the 8-DB12 pedestal belongs under F1 (corner, first drawn) and the 4-DB12 pedestal under F2 (middle, second drawn), by drawing order/position only — not an explicit printed pairing. Flagged as a genuine inference, not a confirmed read."
+  ],
+  "elements": [
+    { "element_id": "C1", "element_type": "column", "count": 8, "grid_refs": ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1", "element_type": "footing", "count": 4, "grid_refs": ["A1", "A4", "B1", "B4"], "width_mm": 500, "height_mm": 500, "note": "pile cap on 2 piles per footing; pedestal above (0.20x0.20, 8-DB12mm, Tie RB6mm@0.15) inferred to pair with F1 — see file warnings", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "F2", "element_type": "footing", "count": 4, "grid_refs": ["A2", "A3", "B2", "B3"], "width_mm": 1000, "height_mm": 1000, "note": "pile cap on 2 piles per footing; pedestal above (0.20x0.20, 4-DB12mm, Tie RB6mm@0.15) inferred to pair with F2 — see file warnings", "confidence_score": 0.75, "confidence_flags": [] }
+  ]
+}

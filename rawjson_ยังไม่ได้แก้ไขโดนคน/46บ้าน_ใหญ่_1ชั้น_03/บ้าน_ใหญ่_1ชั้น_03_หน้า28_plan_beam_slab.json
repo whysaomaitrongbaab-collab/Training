@@ -1,0 +1,72 @@
+{
+  "png": "28",
+  "doc_page": 26,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า28.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_03_หน้า00_gridline.json",
+  "confidence_score": 0.65,
+  "confidence_flags": ["dense_interior_layout_reduced_precision"],
+  "warnings": [
+    "This is the busiest single sheet in the house: an entry vestibule with a stair (ST1, near grid1/E-D), an accessible ramp (SO, below row A between grid1 and grid1'') with 3 short stub beams (B3A) landing on it, and a repeated precast-plank bay pattern (SP/SPA/SP1/SI/S2/SX markers) across all 3 main bays.",
+    "PERIMETER CHORDS and EDGE VERTICALS (rows E/D/C/B, grid columns 1/1'/1''/2/3/4, and the ramp stubs at row A-A') are recorded with full grid_ref_start/grid_ref_end precision, cross-checked pixel-by-pixel against the established grid master.",
+    "INTERIOR PARTITION/SUPPORT BEAMS (marks B2, B2A, B3, B4, B4A, B4B recurring inside each bay, supporting the SP/SPA precast-plank fields) do NOT have their own printed local dimension chain on this sheet — unlike the footing plan (S-02), no witness-line dimension pins their exact x-position inside a bay. Per §4's beam-endpoint rule these are still recorded (never dropped), but with span_source:'unresolved' and a descriptive bay location instead of an invented grid_ref_start/end. This is a deliberate, flagged simplification for a dense room layout, consistent with op04's pass-2 scope — the alternative (guessing sub-bay positions) would violate the 'never estimate pos_m' rule.",
+    "Slab marker 'SI' (letter I) vs 'S1' (digit 1): this sheet uses 'S1' (digit) at the grid3-4 bay per the printed circles — double-checked per §10 since these two are known lookalikes in this dataset.",
+    "Row A between grid1''-grid2 shows a hatched 'stair nosing' pocket (พอกขั้นบันได, detailed on S-15) rather than a clear ground beam mark between footings F5@A2 and F5@A3 — recorded as unresolved rather than assuming a beam mark not clearly legible at this scan resolution."
+  ],
+  "elements": [
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E1'", "span_length_m": 1.50, "span_source": "grid_table", "note": "entry-vestibule roof-edge beam", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E1'", "grid_ref_end": "E2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "E4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+
+    { "element_id": "B2A", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "D1", "span_length_m": 4.00, "span_source": "grid_table", "note": "left edge (grid1), E-D bay", "confidence_score": 0.7, "confidence_flags": [] },
+
+    { "element_id": "B5X", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D1'", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "D1'", "grid_ref_end": "D2", "span_length_m": 3.50, "span_source": "grid_table", "note": "note on sheet: B4B ties into B5 with 2-Ø20mm, lapped 0.40m into B4B and B5", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B5B", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B5A", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "D4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "C1", "span_length_m": 2.50, "span_source": "grid_table", "note": "left edge (grid1), D-C bay", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B5X", "element_type": "beam", "grid_ref_start": "D4", "grid_ref_end": "C4", "span_length_m": 2.50, "span_source": "grid_table", "note": "right edge (grid4), D-C bay", "confidence_score": 0.7, "confidence_flags": [] },
+
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C1''", "span_length_m": 3.35, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B1B", "element_type": "beam", "grid_ref_start": "C1''", "grid_ref_end": "C2", "span_length_m": 1.65, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "note": "left edge (grid1), C-B bay", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B5X", "element_type": "beam", "grid_ref_start": "C4", "grid_ref_end": "B4", "span_length_m": 4.00, "span_source": "grid_table", "note": "right edge (grid4), C-B bay", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C1''", "grid_ref_end": "B1''", "span_length_m": 4.00, "span_source": "grid_table", "note": "interior vertical member landing on the C/B-row grid1'' column line", "confidence_score": 0.55, "confidence_flags": [] },
+
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B1''", "span_length_m": 3.35, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1''", "grid_ref_end": "B2", "span_length_m": 1.65, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "A1", "span_length_m": 2.50, "span_source": "grid_table", "note": "left edge (grid1), B-A bay", "confidence_score": 0.7, "confidence_flags": [] },
+
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A'1", "span_length_m": 1.50, "span_source": "grid_table", "note": "ramp support stub, grid1, lands on the SO sloped ramp slab", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A1''", "grid_ref_end": "A'1''", "span_length_m": 1.50, "span_source": "grid_table", "note": "ramp support stub, grid1'', lands on the SO sloped ramp slab", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A'2", "span_length_m": 1.50, "span_source": "grid_table", "note": "ramp support stub, grid2, lands on the SO sloped ramp slab", "confidence_score": 0.7, "confidence_flags": [] },
+
+    { "element_id": "B1", "element_type": "beam", "grid_ref": "~bay 1''-2, row B-A", "span_length_m": null, "span_source": "unresolved", "note": "interior vertical beam bounding the SP slab bay between B1''-B2/A1''-A2, no printed local dimension for its exact line", "confidence_score": 0.45, "confidence_flags": [] },
+
+    { "element_id": "B3", "element_type": "beam", "count": 2, "grid_ref": "~bay 1-2, rows E-D and D-C", "span_length_m": null, "span_source": "unresolved", "note": "interior partition/support beam under the SPA/SP precast-plank field, exact x-position within the bay not dimensioned on this sheet", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "count": 3, "grid_ref": "~bays 1-2 and 2-3, rows E-D through C-B", "span_length_m": null, "span_source": "unresolved", "note": "interior partition/support beam under the SP precast-plank field, repeats in most bays; exact x-position not dimensioned on this sheet", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "B4A", "element_type": "beam", "count": 2, "grid_ref": "~bay 2-3, rows D-C and C-B", "span_length_m": null, "span_source": "unresolved", "note": "interior partition/support beam, exact position not dimensioned on this sheet", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "B4B", "element_type": "beam", "count": 2, "grid_ref": "~bay 2-3, rows D-C and B-A", "span_length_m": null, "span_source": "unresolved", "note": "interior partition/support beam; per sheet note, B4B ties into beam B5 with 2-Ø20mm bars lapped 0.40m into both B4B and B5", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "B2A", "element_type": "beam", "count": 2, "grid_ref": "~bay 3-4, rows D-C and B-A", "span_length_m": null, "span_source": "unresolved", "note": "interior partition/support beam, exact position not dimensioned on this sheet", "confidence_score": 0.4, "confidence_flags": [] },
+
+    { "element_id": "SP", "element_type": "slab", "count": 14, "grid_refs": ["~bay 1-2 x rows E-A", "~bay 2-3 x rows E-A", "~bay 3-4 x rows E-A"], "confidence_score": 0.5, "confidence_flags": ["SP is the generic precast-plank field marker repeated across nearly every bay on this sheet; count is an estimate from the drawing's density, not an exact tally"] },
+    { "element_id": "SPA", "element_type": "slab", "count": 2, "grid_refs": ["~bay 1-2 row E-D", "~bay 3-4 row E-D"], "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "SP1", "element_type": "slab", "count": 3, "grid_refs": ["~bay 1-2 row D-C", "~bay 1-2 row C-B", "~bay 1-2 row B-A"], "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "count": 2, "grid_refs": ["~bay 3-4 row E-D", "~bay 3-4 row C-B"], "confidence_score": 0.65, "confidence_flags": ["read as 'S1' (digit 1), not 'SI' (letter I) — double-checked per §10"] },
+    { "element_id": "S2", "element_type": "slab", "count": 1, "grid_refs": ["~bay 3-4 row D-C"], "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "SX", "element_type": "slab", "count": 1, "grid_refs": ["~bay 1''-2 row C-B"], "confidence_score": 0.55, "confidence_flags": ["hatched marker near the stair pocket; role (void/stair opening vs slab type) not fully certain from this scan"] },
+    { "element_id": "S0", "element_type": "slab", "count": 1, "grid_refs": ["~bay 1-1'' row A-A'"], "confidence_score": 0.7, "confidence_flags": [], "note": "sloped ramp slab (ทางลาด), detail on S-15/หน้า40" },
+    { "element_id": "ST1", "element_type": "stair", "grid_ref": "~E1", "confidence_score": 0.6, "confidence_flags": [], "note": "entry vestibule stair, detail 'ขยายพอกขั้นบันได' on S-15/หน้า40" }
+  ]
+}

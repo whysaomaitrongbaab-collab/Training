@@ -1,0 +1,59 @@
+{
+  "png": "32",
+  "doc_page": 30,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แปลนเสา คาน พื้นชั้น 2",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า32.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_06_หน้า00_gridline.json",
+  "confidence_score": 0.7,
+  "confidence_flags": [],
+  "warnings": [
+    "Several beam runs near the stair are printed with a compound label, e.g. 'B3X/B1(ชานพัก)' and 'B1/B2(ชานพัก)' — read as: the floor-2-level beam uses the first mark, and a SECOND beam at the stair-landing level (ชานพัก, roughly mid-height between floor1 and floor2) directly below/within the same plan footprint uses the second mark. Only the floor-2-level mark is recorded as the primary element below (matching this sheet's own level); the landing-level companion beam is noted in each affected element's 'note' field rather than duplicated as a second full element, since its own detailed position belongs to the stair sections (S-16/S-17).",
+    "The east 'S1' room (bounds: grid2-3 x row B to row A) has an unresolved SE corner: the vertical beam on its east side is labelled 'B4X' (a variant of B4) and continues to a hatch node at roughly row-A height, but no footing at 'A3' appears on either foundation-alternate plan (S-02/S-03) — meaning this corner may not sit on a named grid column at all. Recorded B4X and the adjoining row-A segment with a '~A3' approximate endpoint and span_source 'unresolved' rather than inventing a resolved position; flagged for a closer look at the original CAD if precision is needed here.",
+    "'CN2' (small 0.20x0.20 tie-column, 4-Ø12mm) sits directly on grid D1/C1 with an X-hatch symbol, same treatment as 'CN1' on the floor-1 plan (S-04) — the same physical column continuing upward from floor2 to +6.65m (per S-13/หน้า40). Not re-listed as a separate plan element; see S-04's identical note.",
+    "'SP' direction-arrow markers again appear per room bay and are not itemized individually — see S-04's warning."
+  ],
+  "elements": [
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "D1", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "D2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+
+    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "1'", "grid_ref_end": "D1", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "printed as 'B3X/B1(ชานพัก)' — a second beam (B1) at stair-landing level occupies the same plan footprint, see file warnings" },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "BX", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "3'", "span_length_m": 0.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["short cantilever stub, free end"] },
+
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "C1", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "printed as 'B1/B2(ชานพัก)' — a second beam (B2) at stair-landing level occupies the same plan footprint" },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "C2", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "~D1-2", "grid_ref_end": "~C1-2", "span_length_m": 2.20, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["position approximate, same caveat as S-04's B6"] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "C3", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+
+    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "1'", "grid_ref_end": "C1", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "printed as 'B3X/B1(ชานพัก)', same landing-level note as the D-row occurrence" },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "A1", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "A2", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "~A3", "span_length_m": 1.50, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["no footing/column found at 'A3' on either foundation plan — endpoint position not confirmed, see file warnings"] },
+
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "~A3", "span_length_m": 3.00, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["closes the east S1 room's south edge, same unresolved endpoint as B4X"] },
+
+    { "element_id": "S0", "element_type": "slab", "grid_ref": "D-E x 2-3", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "S2", "element_type": "slab", "grid_ref": "C-D x 2-3", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "grid_ref": "A-B x 1-2", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "grid_ref": "~A-B x 2-3", "confidence_score": 0.6, "confidence_flags": ["east bay, same unresolved SE corner as B4X"] },
+    { "element_id": "ST", "element_type": "stair", "grid_ref": "~D1", "confidence_score": 0.75, "confidence_flags": [] }
+  ]
+}

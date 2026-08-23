@@ -1,0 +1,42 @@
+{
+  "png": "22",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แปลน เสา, คาน, พื้นชั้น 1",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า22.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_10_หน้า00_gridline.json",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "'พื้นชั้น 1' here is the ground-level structural framing (this is an elevated/stilt house — see the cover render p.1 — so floor 1 is the open ground level, not an enclosed room); its members are marked with a 'GB' (ground beam) prefix, distinct from the 'B'-prefixed beams on the elevated floor-2 plan (S-05).",
+    "GB1/GB2 member sizes and rebar are not printed on this plan — spec confirmed on S-11 (บ้าน_เล็ก_2ชั้น_10_หน้า29_section_beam_slab.json): GB1 = 350x350mm, GB2 = 150x350mm.",
+    "BST2 (grid 1' , B to C) bears on the row-B GB2 beam at its start (a T-junction, not a grid/column intersection) and is not itself supported by a footing/column at its C end (no footing exists at grid intersection C1 on either foundation plan) — flagged bears_on_beam rather than split into the row-B GB2 run, per §5's beam-splitting rule (splitting is for a beam bearing ON this one being folded in, not for the beam that receives the bearing).",
+    "Row-C GB2 (from dummy grid 1' to grid 4) has no support at its own west end beyond BST2's foot — no footing exists at C1' or C1; recorded as printed (grid_ref_start '1'C' — i.e. C1') without inventing a support.",
+    "S0 tags (4 bays) are recorded as element_type 'slab' per §10; their spec (100mm slab-on-grade with Ø6mm@0.20m mesh over compacted sand, expansion joint at panel edges) is confirmed on S-11. SP tag (1 bay) is a precast-plank floor area (element_type 'precast_plank_detail'), see S-13 for the plank-joint spec.",
+    "'GS' or similar overhang markers were not observed on this particular sheet (unlike some other houses in this series) — none omitted."
+  ],
+  "elements": [
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "GB1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "GB1", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "BST2", "element_type": "beam", "grid_ref_start": "B1'", "grid_ref_end": "C1'", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["bears_on_beam:GB2(start)", "no footing/column confirmed at its C1' end — see file warnings"] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "C2", "span_length_m": 1.60, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["west end has no confirmed support beyond BST2's foot — see file warnings"] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "S0", "element_type": "slab", "grid_ref": "A-B x 1-2", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "S0", "element_type": "slab", "grid_ref": "A-B x 2-3", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "S0", "element_type": "slab", "grid_ref": "B-C x 1-1'", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "S0", "element_type": "slab", "grid_ref": "B-C x 1'-2", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "SP", "element_type": "precast_plank_detail", "grid_ref": "A-B x 3-4", "description": "precast plank floor area, span direction marked by arrow", "confidence_score": 0.65, "confidence_flags": [] }
+  ]
+}

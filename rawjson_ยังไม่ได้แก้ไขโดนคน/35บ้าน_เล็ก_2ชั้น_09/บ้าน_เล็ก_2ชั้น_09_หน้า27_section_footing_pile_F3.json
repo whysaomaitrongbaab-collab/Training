@@ -1,0 +1,46 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "ขยายฐานรากเสาเข็ม F3",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า27.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Pedestal tie spacing conflict: this section gives '@0.15ม.' with no diameter printed for the pedestal ties, while the column schedule (S-15/หน้า33) gives 'Ø6มม.@0.20ม.' for the same ฐานราก/ระดับตอม่อ level of column C1. Per the standing precedence rule (section wins over schedule), spacing_mm is taken as 150 here (dia_mm inferred as 6 from the schedule, since this section doesn't print one) — flagged rather than silently picking either value.",
+    "Blinding-layer thicknesses (0.05m lean concrete 1:3:5 + 0.10m compacted sand) and the approximate ~1.00m grade-to-footing-top embedment are printed but not modelled as separate fields — see grid-master unassigned_dimensions and this file's footing note."
+  ],
+  "elements": [
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "width_mm": 900,
+      "height_mm": 900,
+      "thickness_mm": 200,
+      "main_bar": { "count": 3, "dia_mm": 12, "spacing_mm": 150, "type": "RB", "printed_as": "3Ø12มม.@0.15ม." },
+      "additional_bars": [
+        { "count": 2, "dia_mm": 12, "type": "RB", "position": "corner/edge bars, bottom mat", "note": "2Ø12มม. per plan view, bent up into pedestal on section 3-3" }
+      ],
+      "note": "3 precast concrete piles, square solid section 0.15x0.15x6.00m (เสาเข็มสี่เหลี่ยมตัน); blinding: 0.05m lean concrete 1:3:5 over 0.10m compacted sand; ~1.00m embedment from design grade to top of footing",
+      "concrete_grade": "ค.3 (fc 210 ksc)",
+      "spec_source": "section",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "pedestal",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": { "count": 6, "dia_mm": 12, "type": "RB", "note": "printed as '3Ø12มม.+3Ø12มม.' — two groups of 3, opposite faces of the 0.20x0.20m pedestal" },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB", "note": "dia_mm inferred from S-15 column schedule (this section prints only '@0.15ม.', no diameter) — see file warnings" },
+      "level": "ฐานราก, ระดับตอม่อ (footing to pedestal level)",
+      "spec_source": "section",
+      "spec_confidence_score": 0.65,
+      "confidence_score": 0.65,
+      "confidence_flags": ["stirrup spacing conflicts with S-15 schedule (0.15m here vs 0.20m there) — section value kept per precedence rule, see file warnings"]
+    }
+  ]
+}

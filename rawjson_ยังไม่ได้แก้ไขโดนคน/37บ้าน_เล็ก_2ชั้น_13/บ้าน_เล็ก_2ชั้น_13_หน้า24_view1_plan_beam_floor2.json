@@ -1,0 +1,47 @@
+{
+  "png": "24",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนโครงสร้างชั้น 2",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า24.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_13_หน้า00_gridline.json",
+  "confidence_score": 0.62,
+  "confidence_flags": ["read at lower overall confidence than the floor-1 plan (หน้า23) — see file warnings"],
+  "warnings": [
+    "This is view 1 of 2 on this page (หน้า24) — the roof structural framing plan (view 2) is in a separate file, _view2_plan_beam_roof.json.",
+    "The A-B overhang beyond row 4 (balcony, 'ระเบียงชั้น 2' per หน้า21) reuses this house's dummy y-line 4' (pos_m 10.90). The printed dimension chain there actually shows a further split ('1.10' broken into '0.80'+'0.30'), matching the baluster/railing reference lines on the balcony architectural detail (หน้า21, ราวกันตก with steel balusters @0.73-0.85m spacing) rather than a second structural beam break — interpreted as an architectural reference, not a new dummy grid, and NOT added to the grid master. Same reasoning applied to the mirrored '1.50' → '0.90'+'0.60' split beyond row 1.",
+    "A small feature near column C row 3-4 (marked 'SC', a shaft/duct opening matching DETAIL SC on หน้า26) subdivides that short vertical run further; the exact sub-boundary mark (B5 vs B6 vs B3) could not be resolved with confidence at available zoom and is recorded as a single approximate segment.",
+    "A marker printed '0/BC' appears at column A, row 3 — 'BC' is a confirmed real beam mark (SECTION 1-1(BC)/LONG SECTION BC exist on หน้า26, a short ~1.00m beam) but this mark's exact two grid endpoints on this plan could not be located with confidence; not recorded as an element to avoid inventing a grid_ref. Flagged here as an open question rather than guessed.",
+    "Column A's row3-row2 vertical beam label was printed twice as 'B5/B5' — transcribed as printed rather than silently treated as a typo; recorded once as a single B5 segment.",
+    "Slab markers S2 (two instances, B-C bay at row3-4 and row1-2) and 'SC' (small shaft near column C) follow the same reading as floor 1's S2/SC precedent."
+  ],
+  "elements": [
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A4'", "grid_ref_end": "B4'", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["balcony overhang, see file warnings"] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "A4'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "B4'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "C4", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "A3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "B3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "C4", "grid_ref_end": "C3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": ["SC shaft feature subdivides this run further; exact sub-boundary not resolved, see file warnings"] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["label printed twice as 'B5/B5' on this sheet, see file warnings"] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "A1'", "grid_ref_end": "B1'", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["mirrored overhang beyond row 1, see file warnings"] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+
+    { "element_id": "ST-1", "element_type": "stair", "grid_ref": "~A2", "note": "open stairwell void at floor 2, same footprint as ground-floor stair below", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "S2", "element_type": "slab", "count": 2, "grid_refs": ["~3-4 x B-C", "~1-2 x B-C"], "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "SC", "element_type": "slab", "grid_ref": "~C3", "note": "small shaft/duct opening, see DETAIL SC on หน้า26_section.json", "confidence_score": 0.55, "confidence_flags": [] }
+  ]
+}

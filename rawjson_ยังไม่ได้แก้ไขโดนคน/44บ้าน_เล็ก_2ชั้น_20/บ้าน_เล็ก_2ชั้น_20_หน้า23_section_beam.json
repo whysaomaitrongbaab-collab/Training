@@ -1,0 +1,24 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "Beam sections — B1, B2, B5, B3, B4, RB2",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_20/บ้าน_เล็ก_2ชั้น_20_หน้า23.png",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Every beam mark except B1 prints two different rebar cross-sections (SECTION_1-1 near one end, SECTION_2-2 near the other/midspan) with the top and bottom counts swapped between them — standard continuous-beam curtailment, not a transcription conflict. Per §7's curtailed-bar guidance, the LARGER printed count for each face is kept as that face's main_bar count (the real total bar count used), with a note recording which section showed which reading, rather than picking only one section's numbers or averaging.",
+    "B1 prints only one section (symmetric top=bottom=2-DB12) — no SECTION_2-2 on this sheet for that mark.",
+    "RB2 (the roof-overhang ring beam) is 150 mm wide x 300 mm deep with tighter stirrup spacing (@0.15) than every other mark on this sheet (@0.20) — double-checked against the printed dimension brackets, not a copy-paste of the other beams' 150x400."
+  ],
+  "elements": [
+    { "element_id": "B1", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "concrete_grade": null, "steel_grade": null, "spec_source": "section", "spec_confidence_score": 0.9, "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 3, "dia_mm": 12, "type": "DB", "note": "3-DB12 at SECTION_1-1 (near one support); reduces to 2-DB12 at SECTION_2-2 (near the other support/midspan)" }, "bottom": { "count": 3, "dia_mm": 12, "type": "DB", "note": "2-DB12 at SECTION_1-1; increases to 3-DB12 at SECTION_2-2" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "spec_source": "section", "spec_confidence_score": 0.85, "confidence_score": 0.85, "confidence_flags": ["top/bottom counts differ between SECTION_1-1 and SECTION_2-2 — see warnings"] },
+    { "element_id": "B5", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 5, "dia_mm": 12, "mixed_dia_mm": [12, 16], "type": "DB", "printed_as": "3-DB12+2-DB16 at SECTION_1-1", "note": "reduces to 3-DB12 only at SECTION_2-2" }, "bottom": { "count": 5, "dia_mm": 12, "mixed_dia_mm": [12, 16], "type": "DB", "printed_as": "3-DB12+2-DB16 at SECTION_2-2", "note": "3-DB12 only at SECTION_1-1" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "spec_source": "section", "spec_confidence_score": 0.8, "confidence_score": 0.8, "confidence_flags": ["top/bottom counts differ between SECTION_1-1 and SECTION_2-2 — see warnings"] },
+    { "element_id": "B3", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 4, "dia_mm": 12, "type": "DB", "note": "4-DB12 at SECTION_1-1; reduces to 2-DB12 at SECTION_2-2" }, "bottom": { "count": 4, "dia_mm": 12, "type": "DB", "note": "2-DB12 at SECTION_1-1; increases to 4-DB12 at SECTION_2-2" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "spec_source": "section", "spec_confidence_score": 0.85, "confidence_score": 0.85, "confidence_flags": ["top/bottom counts differ between SECTION_1-1 and SECTION_2-2 — see warnings"] },
+    { "element_id": "B4", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 4, "dia_mm": 12, "mixed_dia_mm": [12, 16], "type": "DB", "printed_as": "2-DB12+2-DB16 at SECTION_1-1", "note": "reduces to 2-DB12 only at SECTION_2-2" }, "bottom": { "count": 4, "dia_mm": 12, "mixed_dia_mm": [12, 16], "type": "DB", "printed_as": "2-DB16+2-DB12 at SECTION_2-2", "note": "2-DB12 only at SECTION_1-1" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "spec_source": "section", "spec_confidence_score": 0.8, "confidence_score": 0.8, "confidence_flags": ["top/bottom counts differ between SECTION_1-1 and SECTION_2-2 — see warnings"] },
+    { "element_id": "RB2", "element_type": "beam", "width_mm": 150, "height_mm": 300, "main_bar": { "top": { "count": 3, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "note": "roof-overhang ring beam; only SECTION_1-1 is legible on this sheet, no SECTION_2-2 confirmed for this mark", "spec_source": "section", "spec_confidence_score": 0.75, "confidence_score": 0.75, "confidence_flags": [] }
+  ]
+}

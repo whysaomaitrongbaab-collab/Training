@@ -1,0 +1,123 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า25.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า26.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า27.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า28.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า29.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า33.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "This house's structural footprint is a single 8.00m x 8.00m square (grid 1-3 x A-C, 3x3 column grid, 9 footings). Two DIFFERENT sets of offset/eave lines exist around it at two different elevations, both real but easy to conflate: (1) at ROOF/ring-beam level, S-04 and S-05 print a symmetric 1.50m offset on all 4 sides carrying the real ring beam RB1 (steel-roofed hip structure on an RC ring beam) — these became dummy grids 1'/3'/A'/C'. (2) at FLOOR-PLAN level, S-03 prints a north offset of only 1.10m and east/west offsets of 1.50m, all with NO beam landing on them (just the printed roofline/eave projection 'แนวหลังคา') — recorded in unassigned_dimensions/non_grid_dimensions_do_not_confuse, not as dummy grids, per the 'do not invent a dummy for a slab-only/roofline edge' rule. The x-axis 1.50m floor-level roofline offset happens to numerically match the real roof-level RB1 offset at the same position — a genuine coincidence, flagged in non_grid_dimensions_do_not_confuse so it isn't mistaken for the same structural line.",
+    "South of grid C, the floor plan (S-03) ALSO prints a real beam (B5, and beam ends of B6X/BX) at C+1.50m — this is the same 1.50m offset as the roof ring beam's south run, so dummy grid 'C-prime' (C') serves double duty: it is both S-04's roof-level RB1 south run AND S-03's floor-level ramp/entry-deck beam B5. Both source sheets are listed on this line's usage. Beyond C' by a further 3.50m (to A-to-south-edge = 13.00m total) is an unroofed, unframed slab-on-grade deck (element_type slab, marker 'S0') with no beam at its outer edge — per the beam-endpoint rule, no dummy grid was added there.",
+    "Total-row cross-check (§4): S-03's own outer y-axis dimension bracket reads '13.00' — this LOOKS like it might be a mis-print at first glance (the naive read 'edge-to-C' would be 1.10+4.00+4.00=9.10, not 13.00), but re-tracing the bracket's actual tick marks shows it starts at grid A (not the -1.10 roofline edge) and runs to the south slab edge: 4.00(A-B)+4.00(B-C)+1.50(C-C')+3.50(C'-southedge) = 13.00 exactly. Separately, the architecture floor plan (A-04, out of op04 scope but checked for this cross-check per op01's precedence rules) prints '14.10' for the FULL north-roofline-edge-to-south-slab-edge span: 1.10+13.00=14.10, also exact. Both printed totals are correct; they simply measure from two different start points. No actual transcription error — flagged here only because the two numbers looked contradictory before re-verifying the bracket endpoints against a 2x zoom crop.",
+    "Two interior secondary beams — B1 (splits several rooms into a north/south pair, e.g. inside the 1-2 x B-C bathroom cluster and again inside the 2-3 x A-B bedroom-2/laundry cluster) and B2 (splits the 1-2 x B-C room into east/west halves) — have NO printed dimension anywhere in the structural set (S-02 through S-10) locating their exact offset from the main grid; only their existence, mark, and rebar spec (S-09) are given. The architecture floor plan (A-04, viewed only for context, not extracted) shows a small ห้องน้ำ/bathroom partition roughly in that area but likewise carries no explicit dimension to B1/B2's position. Per '§4 pos_m is always read from an actually-printed dimension line — never guessed', no dummy grid was invented for B1 or B2; their occurrences on the plan_beam file are recorded with span_source:'unresolved' and an approximate/descriptive grid_ref instead, matching the precedent set by house #07's B2 interior beam.",
+    "No soil_boring_log sheet and no dedicated plan_column sheet in this set — columns appear only as marks on the footing plan (S-02) and in the column schedule (S-07), matching op04's own note that this is the expected/common case."
+  ],
+  "dummy_grid_rule_check": {
+    "before_origin_naming": "1' (x=-1.50, west of grid 1) and A' (y=-1.50, north of grid A) both fall before the first main grid line on their axis. Per §4's negative-pos_m exception they are still named after the nearest main grid (1 and A respectively, not left/above-blank), matching the spec's own worked example.",
+    "after_last_naming": "3' (x=9.50, east of grid 3) and C' (y=9.50, south of grid C) are named after the main grid to their left/above (3 and C respectively), per the standard rule."
+  },
+  "grid": {
+    "x_lines": [
+      { "id": "1'", "pos_m": -1.50, "type": "dummy", "confidence_flags": ["roof-level ring beam RB1's west run; no footing/column sits on this line, only the beam"] },
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 4.00, "type": "named" },
+      { "id": "3", "pos_m": 8.00, "type": "named" },
+      { "id": "3'", "pos_m": 9.50, "type": "dummy", "confidence_flags": ["roof-level ring beam RB1's east run; no footing/column sits on this line, only the beam"] }
+    ],
+    "y_lines": [
+      { "id": "A'", "pos_m": -1.50, "type": "dummy", "confidence_flags": ["roof-level ring beam RB1's north run; no footing/column sits on this line, only the beam"] },
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 4.00, "type": "named" },
+      { "id": "C", "pos_m": 8.00, "type": "named" },
+      { "id": "C'", "pos_m": 9.50, "type": "dummy", "confidence_flags": ["double duty: roof-level ring beam RB1's south run (S-04/S-05) AND floor-level ramp/deck beam B5 + ends of B6X/BX (S-03) — see warnings"] }
+    ],
+    "z_levels": [
+      { "id": "ระดับ ±0.00 ม", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า29.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า25.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "1", "to": "3", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า25.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "A", "to": "C", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า27.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.50 },
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "3'", "value_m": 1.50 },
+          { "from": "1", "to": "3", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า27.png",
+        "segments": [
+          { "from": "A'", "to": "A", "value_m": 1.50 },
+          { "from": "A", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "C'", "value_m": 1.50 },
+          { "from": "A", "to": "C", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า26.png",
+        "segments": [
+          { "from": "edge", "to": "A", "value_m": 1.10 },
+          { "from": "A", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "A", "to": "C", "value_m": 8.00 },
+          { "from": "C", "to": "C'", "value_m": 1.50 },
+          { "from": "C'", "to": "edge", "value_m": 3.50 },
+          { "from": "A", "to": "edge", "value_m": 13.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า26.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.50 },
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "edge", "value_m": 1.50 },
+          { "from": "1", "to": "3", "value_m": 8.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.10, "label": "แนวหลังคา (roofline) offset north of grid A, printed on the floor plan S-03", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า26.png", "note": "architectural roof-edge reference only; no beam lands here at floor level (contrast with the real 1.50m roof-level ring-beam offset at the same side, dummy grid A')" },
+      { "value_m": 0.80, "label": "F5/F8/F10 footing depth 'ไม่น้อยกว่า 0.80 ม' (not less than 0.80m below ±0.00)", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า29.png", "note": "recorded as depth_mm on each footing spec instead of here; listed for completeness of the sweep" },
+      { "value_m": 6.00, "label": "เสาเข็ม ... ความยาวในการประมาณราคา 6.00 ม (driven pile length used for cost estimate)", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า24.png", "note": "project-wide pile spec, also carried in the notes file (S-01)" },
+      { "value_m": 0.40, "label": "step between ระดับพื้นภายนอก (exterior floor level) and ระดับพื้นภายใน (interior floor level) at beam BX, the ramp/entry threshold beam", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า33.png", "note": "only the relative 0.40m step is dimensioned, not an absolute level_m for either face relative to the ±0.00 datum, so no z_levels entry was created for these two labels — recording the interior floor as level_m 0.00 would be a reasonable but UNCONFIRMED inference, not something actually printed" }
+    ],
+    "non_grid_dimensions_do_not_confuse": [
+      { "location": "S-03 floor plan (หน้า26), x-axis edge offsets (1.50m west of grid 1, 1.50m east of grid 3)", "value_m": 1.50, "meaning": "architectural roofline reference (แนวหลังคา) at floor-plan level — no beam lands here. Coincidentally identical in value to the REAL structural ring-beam (RB1) offset one level up at roof/eave height (dummy grids 1'/3'). Do not merge these two into one line; they are at different elevations." }
+    ]
+  }
+}

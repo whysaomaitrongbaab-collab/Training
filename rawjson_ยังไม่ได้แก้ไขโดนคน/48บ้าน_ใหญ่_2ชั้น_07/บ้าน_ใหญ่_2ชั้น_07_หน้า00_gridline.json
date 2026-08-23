@@ -1,0 +1,107 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า04.png",
+    "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า13.png",
+    "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า14.png",
+    "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า18.png",
+    "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า19.png",
+    "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า20.png",
+    "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า21.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'นวสถาน 2' (Navasathan 2), 'บ้าน SMILE HOME' TYPE M, V.1 [11/2/45], under the same 'โครงการแบบบ้านยิ้มเพื่อประชาชน' (ตามนโยบาย ม.ร.ว.สุขุมพันธุ์ บริพัตร, กทม., โดยสำนักการโยธา) program as house 05 in this batch ('บ้านสกาวรัตน์') and both are contributed designs from บริษัท แลนดี้ โฮม (ประเทศไทย) จำกัด sharing the same base structural TYPE 'M'. This document ALSO has NO index/TOC page and NO 'S-xx' sheet-code system — pages identified purely by their drawn Thai title (ผังโครงสร้างฐานราก, ผังโครงสร้างชั้นล่าง, etc.), so sheet_code is null throughout. Structural sheets were located by paging through the full 27-page set (pages 18-26).",
+    "Grid axis orientation for THIS house: row letters (A-E) run along the horizontal/top-bottom edge (x_lines) and row numbers (1-7) run along the vertical/side edge (y_lines) — the reverse of the 'usual' letters-on-y convention in §4, but this is what is actually printed and repeated identically on every structural and architectural sheet (footing plan p18, both beam plans p19/p20, roof plan p21, and the architectural floor plans p4/p5). Followed the drawing, not the naming convention.",
+    "x_lines (A-E, total 11.50m) and y_lines (1-7, total 12.00m) were read from the structural footing plan (หน้า18, ผังโครงสร้างฐานราก) — the authoritative source per op01 precedence (structural S-sheet grid wins). The architectural ground/upper floor plans (หน้า04/05) independently print the same two totals (12000mm left edge, 11500mm bottom edge) as a cross-check, though their internal sub-dimensions describe door/window/wall jogs, not the grid itself, and were not transcribed into dimension_chains.",
+    "22 piles/footings total, all type F1 (bored pile Ø0.35x21.00m, note on หน้า18: 'เข็มเจาะ คสล. Ø0.35x21.00ม. F1=22หลุม=22ต้น'), confirmed by counting footing marks on the plan: row7=5 (A-E), row6=1 (A only), row5=4 (B,C,D,E), row4=1 (A only), row3=5 (A-E), row2=4 (A-D), row1=2 (A,B) = 22. This traces the irregular (non-rectangular) L-shaped building footprint already visible on the architectural plans.",
+    "z_levels/dimension_chains (z axis) were read from the two building sections (หน้า13 รูปตัด A-A, หน้า14 รูปตัด B-B), which are 'side_profile' pattern (skipped as Pass-3 elevations) but are first-class sources for levels per §4 — the ±0.000/+0.500/+3.750/+6.750 chain and its labels are shared/identical between both sections; the two sections diverge only above +6.750, where each reaches a different local roof-steel high point at a different plan location (A-A → 'บริเวณท้องพระ' +8.885; B-B → 'บริเวณนอน 2' +8.185) rather than one being an error — recorded as two distinct z_levels entries, not reconciled into one.",
+    "A single higher level (+9.585, 'ระดับหลังอกไก่เหล็กบนสุด' — top-most ridge steel level) is printed identically at the peak of both sections, but the printed dimension segment connecting it down to +8.885/+8.185 fell outside the cropped region actually re-verified at zoom — recorded +9.585 in z_levels (the label and value were clearly legible on both full-page reads) but did NOT fabricate a dimension_chains segment for the untraced final rise, per the 'never estimate' rule.",
+    "Two additional roof/porch eave levels (+3.400 and +3.650) appear repeatedly and unlabelled (bare '▽+3400'/'▽+3650' with no Thai text) across multiple elevation sheets (หน้า07,09,10) locating secondary lower roof sections (front gable over the entry, porch roofs) distinct from the main +6.750 eave — recorded as dummy z_levels since they recur consistently across sheets, but the many other one-off local beam-soffit levels seen stamped on individual beam marks on the plans (e.g. B6(+0.30), B1(+3.60)) were left on those elements' own level_m and not promoted to z_levels."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 3.00, "type": "named" },
+      { "id": "C", "pos_m": 6.00, "type": "named" },
+      { "id": "D", "pos_m": 9.50, "type": "named" },
+      { "id": "E", "pos_m": 11.50, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 2.00, "type": "named" },
+      { "id": "3", "pos_m": 4.00, "type": "named" },
+      { "id": "4", "pos_m": 6.40, "type": "named" },
+      { "id": "5", "pos_m": 8.00, "type": "named" },
+      { "id": "6", "pos_m": 9.60, "type": "named" },
+      { "id": "7", "pos_m": 12.00, "type": "named" }
+    ],
+    "z_levels": [
+      { "id": "ระดับดินเดิม", "level_m": 0.000, "type": "datum", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า13.png" },
+      { "id": "ระดับพื้นชั้นล่าง", "level_m": 0.500, "type": "named", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า13.png" },
+      { "id": "ระดับชานพัก", "level_m": 2.850, "type": "named", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า15.png" },
+      { "id": "ระดับพื้นชั้นบน", "level_m": 3.750, "type": "named", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า13.png" },
+      { "id": null, "level_m": 3.400, "type": "dummy", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า07.png" },
+      { "id": null, "level_m": 3.650, "type": "dummy", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า07.png" },
+      { "id": "ระดับหลังอะเสหล็กชั้นบน", "level_m": 6.750, "type": "named", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า13.png" },
+      { "id": "ระดับหลังอกไก่เหล็กบริเวณนอน 2", "level_m": 8.185, "type": "named", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า14.png" },
+      { "id": "ระดับหลังอกไก่เหล็กบริเวณท้องพระ", "level_m": 8.885, "type": "named", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า13.png" },
+      { "id": "ระดับหลังอกไก่เหล็กบนสุด", "level_m": 9.585, "type": "named", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า13.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า18.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 3.00 },
+          { "from": "C", "to": "D", "value_m": 3.50 },
+          { "from": "D", "to": "E", "value_m": 2.00 },
+          { "from": "A", "to": "E", "value_m": 11.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า18.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 2.00 },
+          { "from": "2", "to": "3", "value_m": 2.00 },
+          { "from": "3", "to": "4", "value_m": 2.40 },
+          { "from": "4", "to": "5", "value_m": 1.60 },
+          { "from": "5", "to": "6", "value_m": 1.60 },
+          { "from": "6", "to": "7", "value_m": 2.40 },
+          { "from": "1", "to": "7", "value_m": 12.00 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า13.png",
+        "segments": [
+          { "from": "ระดับดินเดิม", "to": "ระดับพื้นชั้นล่าง", "value_m": 0.500 },
+          { "from": "ระดับพื้นชั้นล่าง", "to": "ระดับพื้นชั้นบน", "value_m": 3.250 },
+          { "from": "ระดับพื้นชั้นบน", "to": "ระดับหลังอะเสหล็กชั้นบน", "value_m": 3.000 },
+          { "from": "ระดับหลังอะเสหล็กชั้นบน", "to": "ระดับหลังอกไก่เหล็กบริเวณท้องพระ", "value_m": 2.135 },
+          { "from": "ระดับดินเดิม", "to": "ระดับหลังอกไก่เหล็กบริเวณท้องพระ", "value_m": 8.885 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า14.png",
+        "segments": [
+          { "from": "ระดับหลังอะเสหล็กชั้นบน", "to": "ระดับหลังอกไก่เหล็กบริเวณนอน 2", "value_m": 1.435 },
+          { "from": "ระดับดินเดิม", "to": "ระดับหลังอกไก่เหล็กบริเวณนอน 2", "value_m": 8.185 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.20, "label": "eave overhang beyond grid A / grid E on roof plan (แบบขยาย roof, หน้า21)", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า21.png", "note": "overhang is not symmetric — far east overhang is subdivided 0.60+1.10, not resolved further" },
+      { "value_m": 0.35, "label": "ท่อเข็มเจาะ ค.ส.ล. Ø0.35x21.00ม. (bored pile diameter/length)", "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า18.png", "note": "pile geometry, not a grid dimension" }
+    ]
+  }
+}

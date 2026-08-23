@@ -1,0 +1,91 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า19.png",
+    "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า20.png",
+    "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า21.png",
+    "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า22.png",
+    "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "This house's structural footprint is a single small rectangle, grid 1-3 (x) by A-C (y), 6.00m x 5.10m, identical on S-02/S-03/S-04/S-05/S-06 (หน้า19-23). Dimension chain read from S-02 (หน้า19), cross-checked against the identical repeat on S-03/S-04/S-05: x = 1(0.00)-2(2.40)-3(6.00, i.e. 2.40+3.60); y = A(0.00)-B(2.40)-C(5.10, i.e. 2.40+2.70). Not re-verified digit-by-digit on every repeat sheet.",
+    "Dummy x-line 2' at 4.50m (1.05m right of grid 2, inside the 2-3 bay): the WC.1 partition wall/beam 'B1' (floor plan S-04, หน้า21) sits here — per the beam-endpoint rule this needs a resolvable grid_ref. pos_m read from the architectural floor plan A-05 (หน้า07)'s printed sub-chain '2.10 | 1.50' (2.40+2.10=4.50m from grid 1), which is out of op04's own scope but was the only sheet with this offset printed as an explicit dimension — the structural floor plan S-04 shows the same partition graphically but without its own printed dimension. Flagged rather than silently sourced from an in-scope sheet only.",
+    "Dummy y-line C' at 6.10m (1.00m south of grid C): the accessible-ramp-style stair projection (beams 'BX(เอียง)' x2 + stair 'ST1') south of the main rectangle, between grid 1 and grid 2, ends here — per the beam-endpoint rule this needs a resolvable grid_ref. pos_m read directly from S-04's own printed '1.00' dimension (หน้า21), high confidence.",
+    "z_levels[] is empty: no explicit '+X.XX' level value is printed anywhere in the S-01..S-17 structural set actually extracted for op04 — every footing/column section references 'ระดับที่กำหนด' (a site-determined design level) with no number attached, and this house's roof has no printed ridge/eave height either. The architectural floor plan (A-05, out of op04 scope) does print room levels +0.80 (ครัว/นั่งเล่น/ห้องนอน), +0.70 (ห้องน้ำ/เฉลียง), ±0.00 (บันได/ทางขึ้น) — seen incidentally while locating the door/window schedule, but not recorded here as authoritative z_levels since it is outside op04's structural-sheet scope, matching the precedent set by house 07's grid master.",
+    "unassigned_dimensions includes a '1.05' dimension on S-06 (roof frame plan, หน้า23) measured from a point 1.05m left of grid 2 to grid 2 itself. This does NOT mark a separate structural line: the roof ridge (steel beam 'BS1', 125x75x3.2mm) and the CS1 steel columns below it sit exactly on grid 2 (confirmed by S-05's CS1 markers at A2/B2/C2 and by S-16's base-plate connection detail cut along grid 2). The 1.05 dimension appears to be a purlin/reference tick, not a beam endpoint, so no dummy grid was created for it.",
+    "House title block reads 'บ้านสำเร็จรูป 4 (บ้านชั้นเดียว) — ระบบประสานพิกัด' (Prefab House No.4, single storey, modular-coordination system), from the 'แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข' series by กรมโยธาธิการและผังเมือง, เลขที่แบบ S 62088 (structural)/AR 62004 (architectural), dated ก.พ. 2562. Structure is hybrid: RC columns/pedestals C1 (0.20x0.20m, 4-Ø12mm main, RB6@0.15 ties) on either pile (F2/F3/F4/F5/F6, alternate design) or spread (F(0.95x0.50) etc., alternate design) footings, with a full light-gauge steel superstructure above floor level — eave tie beams (BS1 125x75x3.2mm, BS2 100x50x3.2mm C-channels), a steel ridge column (CS1) at grid 2 supporting an asymmetric (mono-pitch-like) roof, and steel roof framing (purlins 25x25x3.2mm @1.00m, rafters/จันทัน C-100x50x20x3.2mm @≤1.00m) — all bolted to the RC columns via 200x200x9mm base/cap plates and 4-Ø12mm L-anchors.",
+    "No soil_boring_log sheet in this set (op04 subtask absent), and no dedicated plan_column sheet (op04 subtask absent) — the single column type C1 appears only as a marker on the footing plans (S-02/S-03) and in its own rebar detail on S-15, matching op04's own note that this is the expected/common case.",
+    "This house prints BOTH a pile-footing design (S-02, S-07..S-10, BOQ page 51) and a spread-footing design (S-03, S-11..S-14, BOQ page 41) for the identical building — two alternate foundation options depending on site soil, not two different buildings. Both are recorded (plan_footing_pile and plan_footing_spread) rather than picking one."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 2.40, "type": "named" },
+      { "id": "2'", "pos_m": 4.50, "type": "dummy", "confidence_score": 0.55, "confidence_flags": ["pos_m sourced from architectural sheet A-05 (out of op04 scope), not from a structural sheet's own printed dimension — see warnings"] },
+      { "id": "3", "pos_m": 6.00, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 2.40, "type": "named" },
+      { "id": "C", "pos_m": 5.10, "type": "named" },
+      { "id": "C'", "pos_m": 6.10, "type": "dummy", "confidence_flags": ["stair/ramp projection south of grid C, beams BX(เอียง) x2 and stair ST1 end here"] }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า19.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 2.40 },
+          { "from": "2", "to": "3", "value_m": 3.60 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า19.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 2.40 },
+          { "from": "B", "to": "C", "value_m": 2.70 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.00 },
+          { "from": "1", "to": "2", "value_m": 2.40 },
+          { "from": "2", "to": "3", "value_m": 3.60 },
+          { "from": "3", "to": "edge", "value_m": 1.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png",
+        "segments": [
+          { "from": "edge", "to": "A", "value_m": 1.20 },
+          { "from": "A", "to": "B", "value_m": 2.40 },
+          { "from": "B", "to": "C", "value_m": 2.70 },
+          { "from": "C", "to": "edge", "value_m": 1.20 },
+          { "from": "edge", "to": "edge", "value_m": 7.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า21.png",
+        "segments": [
+          { "from": "C", "to": "C'", "value_m": 1.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.05, "label": "dimension from a point 1.05m left of grid 2 to grid 2, printed on S-06 roof frame plan (หน้า23)", "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png", "note": "likely a purlin/reference tick near the ridge, not a beam endpoint — ridge (BS1) and CS1 columns already sit on grid 2 itself, see warnings" }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "png": "20",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "ผังโครงสร้างหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_20/บ้าน_เล็ก_2ชั้น_20_หน้า20.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_20_หน้า00_gridline.json",
+  "confidence_score": 0.6,
+  "confidence_flags": ["diagonal hip/valley roof truss geometry does not reduce cleanly to two-point grid_ref_start/end — see warnings"],
+  "warnings": [
+    "This is a STRUCTURAL roof-framing plan (steel members with printed sections and marks) — recorded as pattern 'plan' per the roof_plan vs plan rule (§1), not as 'roof_plan'.",
+    "The roof is a full-hip 'X' plan (matches the architectural roof plan on หน้า04 and the two ridge levels in the grid master's z_levels, 7.789 m over the main volume and 8.654/8.798 m at the secondary ridge/apex). Members run diagonally (hip/valley/ridge) rather than along the main x/y grid, so grid_ref_start/grid_ref_end (which assume a straight grid-to-grid span) do not apply cleanly — each diagonal member is instead given a short descriptive grid_ref (e.g. 'corner A1 to ridge apex') at reduced confidence, consistent with the standing rule against inventing false-precision grid coordinates.",
+    "'จุดติดตั้งเหล็ก PLATE หนา 9 มม.' (9 mm steel connection plates, shown as circled points where hip/valley/ridge members meet) are fabrication/connection details, not separate structural members — not itemised as elements, only noted here.",
+    "Purlin spacing and cross-bracing ('ตะเข้สัน'/'ตะเข้ราง' cross members visible as thin double lines between the main diagonals) are not individually itemised — only the primary named members (จันทัน, ตะเข้สัน, ตะเข้ราง, อกไก่) with their printed steel sections are recorded."
+  ],
+  "elements": [
+    { "element_id": "จันทัน", "element_type": "rafter", "grid_ref": "1-3 x A-E (perimeter, repeating)", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "จันทัน C 100x50x20x2.3mm. @ 1.00m." }, "material": "steel", "spacing_mm": 1000, "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "ตะเข้สัน", "element_type": "rafter", "grid_ref": "corner returns (A1, A3, and the internal valley corner) to ridge apex", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "ตะเข้สัน 2C 125x50x20x2.3mm." }, "material": "steel", "note": "hip rafter, doubled channel back-to-back", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "ตะเข้ราง", "element_type": "rafter", "grid_ref": "internal valley line, ~2 x B-C to ridge", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "ตะเข้ราง 2C 125x50x20x2.3mm." }, "material": "steel", "note": "valley rafter at the internal roof-plan reentrant corner", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "อกไก่", "element_type": "rafter", "grid_ref": "~2 x B-D (ridge line)", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "อกไก่ 2C 125x50x20x2.3mm." }, "material": "steel", "note": "ridge purlin, doubled channel back-to-back", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "แปกัลวาไนซ์", "element_type": "purlin", "grid_ref": "roof slopes, repeating", "material": "steel", "note": "galvanised purlin — section/spacing not printed on this sheet (mentioned only by name in the หน้า19 legend); no steel_section recorded to avoid inventing dimensions", "confidence_score": 0.4, "confidence_flags": ["section dimensions not printed"] }
+  ]
+}

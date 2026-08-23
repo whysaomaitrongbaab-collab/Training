@@ -1,0 +1,124 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png",
+    "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า11.png",
+    "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า12.png",
+    "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า14.png",
+    "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png",
+    "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า16.png",
+    "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า17.png"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'แบบบ้านยิ้มเพื่อประชาชน' (Smile Home project), ตามนโยบาย ม.ร.ว.สุขุมพันธุ์ บริพัตร ผู้ว่าราชการกรุงเทพมหานคร, โดยสำนักการโยธา กรุงเทพมหานคร, แบบได้รับความอนุเคราะห์จากบริษัท แลนดี้ โฮม (ประเทศไทย) จำกัด — design name 'แสงดาว' printed on the page01 series-brochure cover (a generic multi-design cover shared across this BMA 'Smile Home' series; house-specific confirmation is the 'TYPE S' construction-notes page and the 8.20x8.00m 2-story hip-roof plan unique to this file set). Same overall series as houses already in the dataset (e.g. 28บ้าน_เล็ก_2ชั้น_12 '(024) ธรรมรักษา'), but this house has its own distinct grid (8.20x8.00m here vs 6.00x9.10m for house 12) and its own steel-roof design — not a duplicate.",
+    "No sheet_code (no 'S-01' style stamp) and no printed page/sheet number were found anywhere in this drawing set's structural sheets (checked bottom margins and title blocks at 2x zoom on หน้า14 and หน้า20) — unlike some other houses in this batch. sheet_code is recorded as null throughout this house, and doc_page is set equal to the PNG file's own page-sequence number (its filename '_หน้าNN') as the best available proxy for position in the document, since no independent printed numbering exists to cross-check against.",
+    "x_lines (1-2-3-4: 3.00/2.20/3.00=8.20) and y_lines (A-B-C-D: 3.00/3.00/2.00=8.00) are printed identically and repeatedly on the architectural floor plans (หน้า03, หน้า04) and on every structural plan (หน้า14 footing, หน้า15 floor-1 beams, หน้า16 floor-2 beams, หน้า17 roof framing) — cross-checked across all 6 sheets, fully consistent, no discrepancy. dimension_chains below cite หน้า14 as the representative source rather than repeating the identical chain 6 times.",
+    "z_levels and the two z dimension_chains are read from the two building sections (หน้า10 SECTION A-A, หน้า11 SECTION B-B) — the datum label printed next to '±0000' is a short, slightly smudged Thai phrase transcribed here as 'ระดับดินเดิม' (original/existing ground level) at 2x zoom; the first two glyphs are legible but the reading is not 100%-certain at this scan resolution, flagged as a per-line confidence_flag on that z_levels entry rather than lowering the whole file's score.",
+    "Roof levels differ between the west/main ridge line (+8.885, 'ระดับหลังอกไก่เหล็กบนสุด' — top of the steel ridge framing itself, section A-A left side) and the east/south hip ridge tile line (+7.555, 'ระดับหลังอกไก่กระเบื้อง' — top of the ridge roof tile, section A-A right side): this is a real hip-roof geometry difference (two different ridge readings on the same section, not a transcription conflict) — both recorded as separate z_levels entries.",
+    "A ground-floor west/north appendage (carport + kitchen, per architecture หน้า03 'ขัดล้าง'/'ครัว') sits outside the main 1-2x A-B bay at a lower slab level (+0.30~+0.45 vs the main +0.40/+0.50). Its internal split beam B1(+0.35) on หน้า15 lands on a dummy row we name 'A'' (prime appended to grid A, the named row above it) at pos_m=1.60 — read directly off the '1.60' dimension printed in หน้า15's own left margin (independently cross-checked against architecture หน้า03's own '500+1100=1600' sub-chain in the same corner). This is the only dummy grid line this house's beam plans require per the beam-endpoint rule (§4); see หน้า15's own file for the beam that uses it.",
+    "หน้า15 (ground floor beam plan) also carries roughly a dozen small '✕---value' crosshair tick marks scattered along the grid lines' extensions past the building outline (e.g. 0.40/0.60/1.10/0.80/0.55/2.00/1.00 in various margins) that do not align with any beam or column endpoint anywhere in the plan set — these read as site/setback or survey benchmark annotations copied onto the structural sheet rather than structural dimensions, and are recorded in unassigned_dimensions rather than treated as grid data. Genuine ambiguity: their exact purpose could not be determined from this scan.",
+    "No soil boring log, no separate plan_column sheet, and no door/window schedule TABLE (หน้า13 is architectural door/window DETAIL elevations with dimensions, not a schedule list) were found in this 22-page set — see _scope.json."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.00, "type": "named" },
+      { "id": "3", "pos_m": 5.20, "type": "named" },
+      { "id": "4", "pos_m": 8.20, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "A'", "pos_m": 1.60, "type": "dummy" },
+      { "id": "B", "pos_m": 3.00, "type": "named" },
+      { "id": "C", "pos_m": 6.00, "type": "named" },
+      { "id": "D", "pos_m": 8.00, "type": "named" }
+    ],
+    "z_levels": [
+      { "id": "ระดับดินเดิม", "level_m": 0.000, "type": "datum", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png", "confidence_score": 0.6, "confidence_flags": ["Thai label partly smudged at scan resolution, see file warnings"] },
+      { "id": "ระดับพื้นห้องครัว", "level_m": 0.450, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png" },
+      { "id": "ระดับพื้นชั้นล่าง", "level_m": 0.500, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png" },
+      { "id": "ระดับพื้นชานพัก", "level_m": 2.125, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า12.png" },
+      { "id": "ระดับพื้นชั้นบน", "level_m": 3.750, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png" },
+      { "id": "ระดับหลังอะเสเหล็กชั้นบน", "level_m": 6.750, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png" },
+      { "id": "ระดับหลังอกไก่กระเบื้อง", "level_m": 7.555, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png" },
+      { "id": "ระดับหลังอกไก่เหล็กบนสุด", "level_m": 8.885, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า14.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.00 },
+          { "from": "2", "to": "3", "value_m": 2.20 },
+          { "from": "3", "to": "4", "value_m": 3.00 },
+          { "from": "1", "to": "4", "value_m": 8.20 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า14.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 3.00 },
+          { "from": "C", "to": "D", "value_m": 2.00 },
+          { "from": "A", "to": "D", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png",
+        "segments": [
+          { "from": "A", "to": "A'", "value_m": 1.60 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png",
+        "segments": [
+          { "from": "ระดับดินเดิม", "to": "ระดับพื้นชั้นล่าง", "value_m": 0.500 },
+          { "from": "ระดับพื้นชั้นล่าง", "to": "ระดับพื้นชั้นบน", "value_m": 3.250 },
+          { "from": "ระดับพื้นชั้นบน", "to": "ระดับหลังอะเสเหล็กชั้นบน", "value_m": 3.000 },
+          { "from": "ระดับหลังอะเสเหล็กชั้นบน", "to": "ระดับหลังอกไก่เหล็กบนสุด", "value_m": 2.135 },
+          { "from": "ระดับดินเดิม", "to": "ระดับหลังอกไก่เหล็กบนสุด", "value_m": 8.885 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png",
+        "segments": [
+          { "from": "ระดับดินเดิม", "to": "ระดับพื้นห้องครัว", "value_m": 0.450 },
+          { "from": "ระดับพื้นห้องครัว", "to": "ระดับพื้นชั้นบน", "value_m": 3.300 },
+          { "from": "ระดับพื้นชั้นบน", "to": "ระดับหลังอะเสเหล็กชั้นบน", "value_m": 3.000 },
+          { "from": "ระดับหลังอะเสเหล็กชั้นบน", "to": "ระดับหลังอกไก่กระเบื้อง", "value_m": 0.805 },
+          { "from": "ระดับดินเดิม", "to": "ระดับหลังอกไก่กระเบื้อง", "value_m": 7.555 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 0.20, "label": "small offset tick just west of grid 2, top x-chain", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า14.png", "note": "unclear reference, no adjacent beam/column endpoint" },
+      { "value_m": 0.40, "label": "crosshair tick on grid-1 extension, north of row A", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": "possible site/setback benchmark, not a beam or column position" },
+      { "value_m": 2.00, "label": "sub-tick within the A-B y-margin bracket", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": "no matching beam endpoint found; see file warnings" },
+      { "value_m": 1.00, "label": "sub-tick within the A-B y-margin bracket (completes 2.00+1.00=3.00)", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.55, "label": "sub-tick within the B-C y-margin bracket", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.40, "label": "crosshair tick at row C, grid-1 extension", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.40, "label": "crosshair tick at row D, grid-1 extension", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.60, "label": "crosshair tick at row D, grid-1 extension (second mark)", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.60, "label": "crosshair tick east of grid 4, near row A", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 1.10, "label": "crosshair tick east of grid 4, near row A (second mark)", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.80, "label": "crosshair tick east of grid 4, between rows A and B", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.40, "label": "crosshair tick east of grid 4, near row C", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.40, "label": "crosshair tick on bottom margin below grid 1", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.60, "label": "crosshair tick on bottom margin below/near grid 2", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.40, "label": "crosshair tick on bottom margin at grid 2", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.40, "label": "crosshair tick on bottom margin below grid 3", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png", "note": null },
+      { "value_m": 0.805, "label": "ท้องนอนใหญ่ (master-bedroom soffit depth) — right side of section A-A, near ridge", "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า10.png", "note": "coincides numerically with the ridge-to-wallplate z segment on the same side; kept separate since it is explicitly labelled as a soffit depth, not a level chain segment" }
+    ]
+  }
+}

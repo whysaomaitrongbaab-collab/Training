@@ -1,0 +1,46 @@
+{
+  "png": "18",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ผังโครงสร้างฐานราก",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า18.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_07_หน้า00_gridline.json",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Every footing on this sheet is printed with the combined mark 'F1/C1' or 'F1/C2' — a single footing type F1 carrying either column C1 or column C2 above it. Split into two elements below: one merged 'F1' footing entry (all 22 positions) and separate merged 'C1'/'C2' column entries at the same positions, per §0.1 (footing and column are different element_type even when co-marked) and §4 (point elements merge to one entry per mark).",
+    "Note printed on sheet: 'เข็มเจาะ ค.ส.ล. Ø0.35x21.00ม. F1 = 22 หลุม = 22 ต้น' (bored cast-in-place concrete pile, dia 0.35m x 21.00m length; F1 uses 22 boreholes = 22 piles) — one pile per F1 footing, confirmed by counting: 22 footing marks total against 22 piles.",
+    "Column marks C2 (as opposed to the far more common C1) appear at exactly two positions: B5 and C5 — both under the same row of footings, no other C2 anywhere else on the sheet. Double-checked against the column schedule (หน้า23) which lists exactly two column types C1/C2, consistent."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 22,
+      "grid_refs": ["A7","B7","C7","D7","E7","A6","B5","C5","D5","E5","A4","A3","B3","C3","D3","E3","A2","B2","C2","D2","A1","B1"],
+      "note": "footing type F1, 0.70x0.70m (see section หน้า22) on Ø0.35x21.00m bored pile, 1 pile per footing",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 20,
+      "grid_refs": ["A7","C7","D7","E7","A6","D5","E5","A4","A3","B3","C3","D3","E3","A2","B2","C2","D2","A1","B1","B7"],
+      "note": "column marked above footing F1; spec per column schedule หน้า23",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 2,
+      "grid_refs": ["B5","C5"],
+      "note": "column marked above footing F1; spec per column schedule หน้า23",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}
