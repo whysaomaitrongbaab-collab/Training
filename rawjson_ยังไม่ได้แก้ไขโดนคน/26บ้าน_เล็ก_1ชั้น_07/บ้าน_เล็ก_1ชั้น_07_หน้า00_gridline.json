@@ -1,0 +1,69 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า20.png",
+    "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า21.png",
+    "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า22.png",
+    "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า23.png",
+    "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า24.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "This house's structural plan is a single small rectangle (grid 1-3 x A-E) plus one appendage room south of grid E carrying an accessible ramp (per S-01 notes, §3.1 ฐานรากทางลาด คสล.) — dummy line E' and 1' exist to give that ramp's footings/beam (F0.80x0.80 C0 x2, beam B1) a resolvable grid_ref, per the beam-endpoint rule.",
+    "The 7.50m(x)/12.00m(y) dimension chain (1-2:4.00, 2-3:3.50, A-B:3.00, B-C:3.00, C-D:4.00, D-E:2.00) is printed identically on S-02, S-03, S-04, S-05 and S-06 — recorded once here (source S-02/S-03) rather than once per sheet, to keep this file a reasonable size; not re-verified digit-by-digit on every repeat sheet.",
+    "z_levels[] is empty: no explicit '+X.XX' level value was found printed anywhere in the S-01..S-14 structural set actually extracted for op04 (footing sections reference 'ระดับที่กำหนด' — a site-determined design level — with no number attached; the architectural/elevation sheets that would normally carry ±0.00/+0.60 etc. are A-series and out of op04's scope).",
+    "House title block reads 'บ้านผู้สูงวัย (ขนาดใหญ่)' (elderly-accessible house, large) — a different series from the 'บ้านครอบครัวไทยร่วมสมัย' houses 01-05, standard design STD-S-65023 from กรมโยธาธิการและผังเมือง, dated 29 กันยายน 2565. Structure is hybrid: RC columns C0/C1 (0.20x0.20, 4-Ø12mm, per S-07/S-13/S-14 schedules) at floor level, plus light steel columns 'CS' (C-150x100x3.2mm) and a full steel roof frame (ridge/rafters/purlins, per S-06) at eave/roof level.",
+    "TOC (S-01, printed page 17) lists S-10 as beam details B1-B4 and S-11 as B4A-B6X separately, and S-12 as slab details — but the sheets actually printed in the set combine ALL beam details (B1 through B6X) onto one sheet titled 'S-10' (มี 2 บรรทัดชื่อเรื่อง: แบบขยายคาน B1,B2,B3,B4 + แบบขยายคาน B4A,B4B,B5,B6,B6X), and the slab details appear on the sheet titled 'S-11'. Followed the printed sheet_code on each actual sheet (source of truth), not the TOC's outline — flagging the mismatch here rather than guessing which is 'right'.",
+    "No soil_boring_log sheet in this set (op04 subtask absent), and no dedicated plan_column sheet — columns appear only as marks on the footing plans (S-02/S-03) and in the column schedule (S-07), per op04's own note that this is the expected/common case."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "1'", "pos_m": 1.65, "type": "dummy", "confidence_flags": ["interior beam line B4B/B4A boundary, and the ramp-room's east edge; printed as a sub-dimension nested inside the 1-2 chain on S-02/S-03/S-04"] },
+      { "id": "2", "pos_m": 4.00, "type": "named" },
+      { "id": "3", "pos_m": 7.50, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 3.00, "type": "named" },
+      { "id": "C", "pos_m": 6.00, "type": "named" },
+      { "id": "D", "pos_m": 10.00, "type": "named" },
+      { "id": "E", "pos_m": 12.00, "type": "named" },
+      { "id": "E'", "pos_m": 13.30, "type": "dummy", "confidence_flags": ["ramp-room's south edge, beam B1 endpoint and 2 C0 footings sit here; printed 1.30 offset south of grid E on S-02/S-03/S-04"] }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า20.png",
+        "segments": [
+          { "from": "1", "to": "1'", "value_m": 1.65 },
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 3.50 },
+          { "from": "1", "to": "3", "value_m": 7.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า20.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 3.00 },
+          { "from": "C", "to": "D", "value_m": 4.00 },
+          { "from": "D", "to": "E", "value_m": 2.00 },
+          { "from": "E", "to": "E'", "value_m": 1.30 },
+          { "from": "A", "to": "E", "value_m": 12.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.65, "label": "spacing between the 2 ramp footings F0.80x0.80 C0 south of grid E", "source_image": "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า20.png", "note": "same value as, and superseded by, the 1-1' grid dimension above; listed once as a dimension_chains entry, not duplicated here" }
+    ]
+  }
+}

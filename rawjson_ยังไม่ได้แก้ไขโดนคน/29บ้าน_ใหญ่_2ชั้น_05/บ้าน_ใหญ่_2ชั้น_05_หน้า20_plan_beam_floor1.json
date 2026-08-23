@@ -1,0 +1,37 @@
+{
+  "png": "20",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ผังโครงสร้างชั้นล่าง",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า20.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_05_หน้า00_gridline.json",
+  "confidence_score": 0.45,
+  "confidence_flags": [
+    "Dense, irregular L-shaped plan with ~20+ beam segments, each individually printed with its own beam-top level (e.g. 'B6(+0.35)') and several interior sub-bay lines not on the main grid — given the time available for this house, only the clearest perimeter segments were traced to exact grid_ref_start/end; the remaining beam marks and their levels were still transcribed (see the 'other_marks_observed' note) but NOT confidently positioned. This file should be treated as a partial/lower-confidence extraction and re-verified against a higher-resolution source before relying on its grid_refs for BOQ purposes."
+  ],
+  "warnings": [
+    "'B0' marks (4 occurrences, all at level +0.40, near column 2 between rows B-D and at row C/D column 1) appear to be a lighter grade/tie beam distinct from the main B1-B8A family — recorded separately, not merged into B1.",
+    "'S0'/'S1' slab markers with their own level callouts (+0.10, +0.30, +0.40) are recorded as slab elements with approximate room-level grid_refs, mirroring the treatment used for similar markers on other houses in this batch.",
+    "A note on this sheet reads 'มีคานชานพัก +2.10 (คู่ชั้นบน)' (a landing beam at +2.10, shared with the upper floor) near grid 5/D — recorded as its own beam entry rather than folded into the perimeter."
+  ],
+  "elements": [
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A4", "level_m": 0.35, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "A5", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A5", "grid_ref_end": "B5", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B4", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "B5", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C4", "grid_ref_end": "C5", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "D2", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C4", "grid_ref_end": "D4", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D4", "level_m": 0.30, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "E2", "level_m": 0.30, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B0", "element_type": "tie_beam", "count": 4, "grid_refs": ["~B2", "~C1", "~C2", "~D2"], "level_m": 0.40, "confidence_score": 0.45, "confidence_flags": ["positions approximate — see file warnings"] },
+    { "element_id": "landing_beam", "element_type": "beam", "grid_ref": "~D5", "level_m": 2.10, "note": "คานชานพัก, shared with upper-floor stair landing", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "S0", "element_type": "slab", "count": 4, "grid_refs": ["~A3", "~A5", "~C4", "~D2"], "level_m": null, "note": "individual level per occurrence: +0.10 (x2), +0.30, +0.10", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "count": 1, "grid_refs": ["~A4"], "level_m": 0.40, "confidence_score": 0.45, "confidence_flags": [] }
+  ]
+}
