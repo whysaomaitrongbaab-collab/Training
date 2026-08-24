@@ -40,7 +40,34 @@ GT_ROOT = TRAINING / "json_แก้ไขแล้ว"
 IMG_ROOT = TRAINING / "image"
 OUT_IMAGES = HERE / "images"
 
-VAL_HOUSE = "03บ้าน_เล็ก_2ชั้น_01"
+# val = 2 หลัง (มะขามสั่ง 2026-08-24: 10:1 แย่เกินไป เอา ~4:1)
+# เลือก 02+03 จาก 5 หลังที่รีวิวเนื้อหาแล้ว (val ต้องเป็น GT สะอาดเท่านั้น):
+#   - ครอบคลุมทั้ง 1 ชั้น (02) และ 2 ชั้น (03) — คู่ 03+04/03+05 เป็น 2 ชั้นล้วน
+#     จะวัดบ้านชั้นเดียวไม่ได้เลยทั้งที่เป็น 7 ใน 11 หลังของชุดข้อมูล
+#   - เสีย train น้อยสุด (35 ตัวอย่าง) — 04/05 เป็นบ้าน section เยอะ (36-37) เสีย 60
+#   - ผล: train 373 / val 79 = 4.7:1 (val 17.5%) · plan_beam val 4→7 · gridline val 1→2
+VAL_HOUSES = {
+    "01บ้าน_เล็ก_1ชั้น_01", "02บ้าน_เล็ก_1ชั้น_02", "03บ้าน_เล็ก_2ชั้น_01",
+    "04บ้าน_เล็ก_2ชั้น_02", "05บ้าน_เล็ก_2ชั้น_03",
+}
+
+# บ้านทดสอบ — **อยู่นอก dataset ทั้ง train และ val** (มะขามสั่ง 2026-08-24 ดึก:
+# "เอาบ้าน 08 ออกจาก dataset") เขียนออกเป็น test.jsonl ต่างหาก
+# ทำไมต้องอยู่นอกทั้งคู่: บ้าน 08 คือ benchmark ข้ามรอบ — t02 มีผลของบ้านนี้อยู่แล้ว
+# (`tune_ai/t02/ผล/08.../` 25 หน้า, id-recall 3.5%, plan_beam 0%) และ **t02 ไม่เคยเทรนบ้าน 08**
+# ถ้า t03 เทรนมัน ตัวเลขจะสูงเพราะจำได้ ไม่ใช่เพราะอ่านเป็น → เทียบกันไม่ได้เลย
+# อยู่ใน val ก็ยังสื่อผิด (val = ไม้บรรทัดคุณภาพ GT ซึ่งบ้าน 08 ยังไม่ผ่านรีวิวเนื้อหา)
+# แยกเป็น test จึงตรงความจริงที่สุด: train / val (01-05 รีวิวแล้ว) / test (08 benchmark)
+# บ้าน 32 อยู่ใน train ตามปกติอยู่แล้ว (ไม่เคยถูกกันออก)
+TEST_HOUSES = {"08บ้าน_เล็ก_1ชั้น_03"}
+# แก้ 2026-08-24 ค่ำ รอบ 2 — หลัง op04 ส่ง 39 หลังใหม่เข้ามา (452 → 1,116 ตัวอย่าง)
+# val = บ้าน 01-05 ทั้งหมด = "ทุกหลังที่คนรีวิวเนื้อหากับภาพต้นฉบับแล้ว" (229 ตัวอย่าง)
+#   → train 887 / val 229 = 3.9:1 ตรงเป้า 4:1 ที่มะขามสั่ง
+#   → ผลพลอยได้ที่สำคัญกว่าอัตราส่วน: val = GT รีวิวแล้ว 100% / train = op04 ล้วน
+#     ไม้บรรทัดจึงสะอาดทั้งอัน ไม่มีข้อมูลที่ยังไม่ตรวจปนในตัววัด
+#   → plan_beam val 4 → 18 (subtask คอขวด วัดได้จริงเป็นครั้งแรก)
+# ข้อจำกัดที่ยอมรับ: val ไม่มีบ้าน 3 ชั้น/บ้านใหญ่เลย (อยู่ในกลุ่ม op04 ที่ยังไม่รีวิว)
+# และ train เสียบ้านคุณภาพสูงสุด 5 หลังไป — ยอมแลกเพื่อให้ตัววัดเชื่อถือได้
 
 # ---- subtask definitions -------------------------------------------------
 PLAN_SUBTASKS = {
@@ -144,7 +171,8 @@ def find_image(house_dir, d, fname):
 # ---- build ---------------------------------------------------------------
 def main():
     OUT_IMAGES.mkdir(exist_ok=True)
-    rows_train, rows_val = [], []
+    rows_train, rows_val, rows_test = [], [], []
+    broken_files = []
     stats = Counter()
     per_subtask = Counter()
     skipped = defaultdict(list)
@@ -158,9 +186,15 @@ def main():
             gridmaster = json.loads(gm_file[0].read_text(encoding="utf-8"))
 
         for fp in sorted((GT_ROOT / house).glob("*.json")):
-            if "_stage0_manifest" in fp.name:
+            if "_stage0_manifest" in fp.name or fp.name == "_scope.json":
                 continue
-            d = json.loads(fp.read_text(encoding="utf-8"))
+            # op04 batch (2026-08-23) มี agent โดน API session-limit ตัดกลางเขียนไฟล์ →
+            # ไฟล์ truncated. ข้ามพร้อมรายงานชื่อ ห้ามเดาค่าที่ขาดหาย (= ปลอม GT)
+            try:
+                d = json.loads(fp.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as e:
+                broken_files.append(f"{fp.relative_to(GT_ROOT)} — {e}")
+                continue
             pat = d.get("pattern")
             disc = d.get("discipline")
 
@@ -230,7 +264,8 @@ def main():
                                       "text": json.dumps(gt, ensure_ascii=False)}]},
                     ],
                 }
-                (rows_val if house == VAL_HOUSE else rows_train).append(row)
+                (rows_test if house in TEST_HOUSES
+                 else rows_val if house in VAL_HOUSES else rows_train).append(row)
                 per_subtask[sub] += 1
                 stats["examples"] += 1
 
@@ -246,6 +281,9 @@ def main():
     with open(HERE / "val.jsonl", "w", encoding="utf-8") as f:
         for r in rows_val:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    with open(HERE / "test.jsonl", "w", encoding="utf-8") as f:
+        for r in rows_test:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
     with open(HERE / "images_manifest.txt", "w", encoding="utf-8") as f:
         for img in sorted(needed_images):
             f.write(str(img.relative_to(TRAINING)) + "\n")
@@ -254,7 +292,9 @@ def main():
         "built": "2026-08-24",
         "train_examples": len(rows_train),
         "val_examples": len(rows_val),
-        "val_house": VAL_HOUSE,
+        "test_examples": len(rows_test),
+        "val_houses": sorted(VAL_HOUSES),
+        "test_houses": sorted(TEST_HOUSES),
         "per_subtask": dict(per_subtask),
         "images": len(needed_images),
         "stats": dict(stats),
