@@ -119,6 +119,26 @@
         "pos_m": 12.5,
         "type": "dummy"
       }
+    ],
+    "z_levels": [
+      {
+        "id": "ระดับอ้างอิง",
+        "level_m": 0.0,
+        "type": "datum",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า25.png"
+      },
+      {
+        "id": "ระดับ",
+        "level_m": 3.75,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า24.png"
+      },
+      {
+        "id": "ระดับ",
+        "level_m": 4.55,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า24.png"
+      }
     ]
   },
   "dummy_grid_rule_check": {
@@ -172,6 +192,8 @@
     "Stage-0 open question 'S-04 roof 1.00 m eave overhang: dummy-grid-worthy?' -- RESOLVED: no. The 1.00 m lines on S-04 แปลนโครงหลังคา and A-04 แปลนหลังคา are rafter free ends; the roof's bearing lines are the named grids where the B2 อะเส sit. No roof member ends on a line that lacks a grid name (the ridge/CX system is handled by printed 0.50 offsets -- see non_grid_dimensions entry).",
     "Interior dummy lines 1', 1'', D' have their positions printed only on A-04 (architectural), not on S-03 itself. Per the op1 precedence rules the S-sheets win on GRID GEOMETRY, but S-03 prints no number at all for these three lines, so the A-04 dimensions are the only printed source -- used as-is, and each matches the S-03 beam pixel position to within 0.10 m (D' and 1'' exactly; 1' printed 2.55 = beam west face, centre ~2.65, flagged on the line entry).",
     "Only ONE building in this set (Stage 0 confirmed, §11a not applicable) -- this single grid master covers everything; no lettered second grid file exists.",
-    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed."
+    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed.",
+    "2026-08-24 §4-upgrade: z_levels[] derived from this house's human-reviewed per-page extractions (element_type level/datum with level_m), deduplicated by (label, level_m) — not a fresh image sweep; source_image on each entry names the reviewed file's page",
+    "2026-08-24 §4-upgrade: dimension_chains[]/unassigned_dimensions[] deliberately ABSENT — they require a page-by-page image transcription sweep (§4 2026-08-21) that has not been done for this house; absence means not-yet-swept, per spec. Do not backfill them from resolved pos_m values."
   ]
 }

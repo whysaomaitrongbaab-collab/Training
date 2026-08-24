@@ -115,11 +115,10 @@
         "row_covers_combined_พื้นชั้น1_ตอม่อ_ฐานราก_levels_merged_cell",
         "identical_spec_to_C1A_same_row"
       ]
-    }
-  ],
-  "stair_details": [
+    },
     {
-      "detail_id": "ST1",
+      "element_id": "ST1",
+      "element_type": "stair",
       "description": "stair nosing/riser edge detail",
       "rebar": {
         "dia_mm": 9,
@@ -136,7 +135,8 @@
       ]
     },
     {
-      "detail_id": "ST2",
+      "element_id": "ST2",
+      "element_type": "stair",
       "description": "stair stringer/riser rebar detail, 3 steps at 0.166m each",
       "dims_mm": {
         "width": 600,
@@ -162,11 +162,10 @@
           "spacing_mm": 200
         }
       ]
-    }
-  ],
-  "other_details": [
+    },
     {
-      "detail_id": "ครีบ คสล. รอบอาคาร",
+      "element_id": "ครีบ คสล. รอบอาคาร",
+      "element_type": "beam",
       "description": "RC fin/edge upstand beam around building perimeter, level +0.50 from reference ±0.00",
       "width_mm": 250,
       "height_mm": 400,
@@ -179,15 +178,19 @@
         "dia_mm": 12
       },
       "confidence_score": 0.7,
-      "confidence_flags": []
+      "confidence_flags": [
+        "reclassified_from_other_details_container_RC_fin_upstand_judgment_call"
+      ]
     },
     {
-      "detail_id": "ขยาย 1",
+      "element_id": "ขยาย 1",
+      "element_type": "beam",
       "description": "purlin-to-rafter hanger detail (non-rebar, light-gauge steel) -- referenced from S-06 roof plan",
       "hanger": "เหล็กหางปลาขนาด 50x300x6.00 มม. ฝังในเสาคอนกรีต, จันทันเหล็กเชื่อมติดกับเหล็กหางปลาตลอดแนวลังผัส",
       "confidence_score": 0.75,
       "confidence_flags": [
-        "non_rebar_steel_hanger_detail"
+        "non_rebar_steel_hanger_detail",
+        "reclassified_from_other_details_container_RC_fin_upstand_judgment_call"
       ]
     }
   ],
@@ -199,6 +202,8 @@
   ],
   "warnings": [
     "The หลังคา (roof) and อะเส (tie beam) rows of the column schedule appear to be mostly blank cells or upward-arrow symbols (meaning 'same as below') rather than distinct rebar specs -- this needs a human zoom review to confirm, since it directly affects whether C1/C1A columns have any additional reinforcement above the ตอม่อ/ฐานราก level.",
-    "ST1/ST2 stair details and the RC fin detail were read at small scale (1:20) with several overlapping dimension lines -- flagged for human review rather than asserted with high confidence."
+    "ST1/ST2 stair details and the RC fin detail were read at small scale (1:20) with several overlapping dimension lines -- flagged for human review rather than asserted with high confidence.",
+    "2026-08-24 normalize: stair_details[] moved into elements[] as element_type=stair, element_id from detail_id (§0.1)",
+    "2026-08-24 normalize: other_details[] moved into elements[] as element_type=beam (reviewer's own description: RC fin/edge upstand beam) — judgment call, flagged per entry"
   ]
 }

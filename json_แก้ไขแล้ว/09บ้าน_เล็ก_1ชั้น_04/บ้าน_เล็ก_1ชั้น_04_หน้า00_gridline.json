@@ -123,6 +123,41 @@
         "type": "named",
         "source": "printed chain on S-02/S-03/S-04/S-05/A-04"
       }
+    ],
+    "z_levels": [
+      {
+        "id": "level",
+        "level_m": 3.65,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_04/บ้าน_เล็ก_1ชั้น_04_หน้า07.png",
+        "confidence_flags": [
+          "label_is_reviewer_key_not_printed_text"
+        ]
+      },
+      {
+        "id": "ระดับ",
+        "level_m": 3.75,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_04/บ้าน_เล็ก_1ชั้น_04_หน้า30.png"
+      },
+      {
+        "id": "purlin",
+        "level_m": 4.55,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_04/บ้าน_เล็ก_1ชั้น_04_หน้า07.png",
+        "confidence_flags": [
+          "label_is_reviewer_key_not_printed_text"
+        ]
+      },
+      {
+        "id": "ridge",
+        "level_m": 8.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_04/บ้าน_เล็ก_1ชั้น_04_หน้า07.png",
+        "confidence_flags": [
+          "label_is_reviewer_key_not_printed_text"
+        ]
+      }
     ]
   },
   "confidence_score": 0.95,
@@ -136,6 +171,8 @@
     "SLAB-ONLY EDGES DELIBERATELY NOT GIVEN DUMMY GRIDS (schema §4 conversely-rule): (a) the S0 apron/ramp south edge 1.60 m below row A (printed 1.60 on A-04) -- single-line slab-on-ground edge, no beam, no columns; (b) the ซักล้าง laundry slab and ST2 step strip north of row F (locally dimensioned 0.60/0.40/2.70/0.20 on A-04) -- ground-supported, S-04 shows only tread/edge lines there, no beam; (c) the แนวหลังคา roof outline dashed rectangle on A-04 (roof plans A-05/S-06 are Stage 2 scope). The CX column at (x 4.80, 0.80 m below row E, printed '0.80' on S-05) is a point element mid-beam -- recorded on the S-05 plan file with an offset note, no y-dummy warranted since no beam ends at that y.",
     "Row letters run A (south/bottom) to F (north/top); origin (0,0) is set at F-1 (topmost/leftmost main grid per schema §4), pos_m increasing downward/rightward -- same orientation convention as sibling house 02 (บ้าน_เล็ก_1ชั้น_02), whose grid master this house's named grid matches line-for-line (same series template). This master was still derived 100% from house 04's own sheets, not copied.",
     "Main-grid footing coverage is NOT a full 4 x 6: rows F/E/D/C carry footings at all four columns; row B only at B-2/B-3 and row A only at A-3/A-4 (all four = the lighter C1A columns under the porch and carport roofs). Grid intersections B-1, B-4, A-1, A-2 have no structure on any sheet read.",
-    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed."
+    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed.",
+    "2026-08-24 §4-upgrade: z_levels[] derived from this house's human-reviewed per-page extractions (element_type level/datum with level_m), deduplicated by (label, level_m) — not a fresh image sweep; source_image on each entry names the reviewed file's page",
+    "2026-08-24 §4-upgrade: dimension_chains[]/unassigned_dimensions[] deliberately ABSENT — they require a page-by-page image transcription sweep (§4 2026-08-21) that has not been done for this house; absence means not-yet-swept, per spec. Do not backfill them from resolved pos_m values."
   ]
 }

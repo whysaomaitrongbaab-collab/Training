@@ -1,0 +1,79 @@
+{
+  "page_number": 21,
+  "title_block": {
+    "project_name_th": "โครงการวิจัยในโอกาสสถาปนา ครุศาสตร์มหาไทย จสพ ๑๓๐ ปี ในปี พ.ศ.๒๕๖๔",
+    "drawing_title_th": "แปลนคานระดับอะเส",
+    "scale": "1 : 75",
+    "note_text_th": "หมายเหตุ CS = เสาตั้งเหล็ก Ø -150x100x3.7 มม.",
+    "sheet_no": "S-05",
+    "revision": "15",
+    "date": "28 กันยายน 2563"
+  },
+  "views": [
+    {
+      "view_type": "plan",
+      "label": "แปลนคานระดับ อะเส",
+      "grid_lines": {
+        "horizontal": ["A", "B", "C", "D"],
+        "vertical": ["1", "2", "3"]
+      },
+      "dimensions": {
+        "horizontal": [
+          {"start_grid": "1", "end_grid": "2", "value": 4.00},
+          {"start_grid": "2", "end_grid": "3", "value": 3.00}
+        ],
+        "vertical": [
+          {"start_grid_line": "A-B", "value": 3.90},
+          {"start_grid_line": "-/-", "value": 4.10},
+          {"start_grid_point": "C-D", "value": 2.00}
+        ]
+      },
+      "structural_elements": [
+        {
+          "element_id": "CS_1_A_B",
+          "type": "beam",
+          "mark": "CS",
+          "span_direction": "horizontal",
+          "grid_ref_start": "1-A",
+          "grid_ref_end": "2-A",
+          "length_m": 4.00
+        },
+        {
+          "element_mark": "CS",
+          "element_id": "BS_1_A_B",
+          "_comment": "Label 'B5' likely typo for BS given context of C.S. beams",
+          "type": "column_or_beam_stub",
+          "position": "Grid intersection 1-A",
+          "grid_refs": ["1-A"]
+        },
+        {
+            "element_id": "CS_2_A_B",
+            "type": "beam",
+            "mark": "CS",
+            "span_direction": "horizontal", 
+            "grid_ref_start": "2-A",
+            "grid_ref_end": "3-A",
+            "length_m": 3.00
+        },
+         {
+            "element_id": "",
+            "type": "unknown_label",
+            "mark": "B5",
+            "position": "Grid 3-A"
+        }
+      ]
+    },
+    {
+      "view_id": "detail_CS_connection",
+      "view_type": "section",
+      "label": "ขยายรอยต่อเสา CS กับคาน ค.ส.ล.",
+      "scale": "1:25",
+      "notes": [
+        "PL-150x150หนา6มม.",
+        "เชื่อมต่อกับแผ่นเหล็ก",
+        "คอนกรีต"
+      ],
+      "dimensions_mm": [25, 15]
+    }
+  ]
+}

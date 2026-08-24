@@ -34,6 +34,11 @@ t03/
 
 **สถานะ: ยังไม่ได้รันอะไรเลยสักตัว** — ทั้ง prompt และ `organize.py`
 
+> **อัปเดต 2026-08-24:** dataset สร้างแล้ว — `data_before_tune/` (452 ตัวอย่าง 7 subtasks จาก
+> json_แก้ไขแล้ว ทั้ง 11 หลังที่ normalize แล้ววันเดียวกัน) + round doc `t03_workflow.md`
+> (rule_of_tune ข้อ 4) — การตัดสินใจ 4 ข้อรอมะขามทบทวนก่อนเทรน อยู่ในนั้น
+> ตัว prompt/organize.py ยังไม่เคยรันกับโมเดลจริงเหมือนเดิม
+
 t03 replaces t01/t02's single-shot "read the whole page, output everything" extraction with a
 multi-pass pipeline: Pass 0 classifies each page's rawjson `pattern`, **Pass 1 organizes files
 into one folder per subtask** (no AI — each folder ends up holding everything that subtask

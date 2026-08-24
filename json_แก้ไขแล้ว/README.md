@@ -48,4 +48,39 @@
 
 ---
 
+### 2026-08-24 — schema-normalize ทุกหลัง (Claude, ภายใต้ att1235 ระหว่างมะขามออกไปข้างนอก)
+
+ปรับทั้ง 11 หลังให้ตรง `primary_rawjson_schema.md` ปัจจุบัน (**267 จุด / 246 ไฟล์** + gridmaster
+12 ไฟล์) — validate `json.loads` ผ่านครบ 1,180 ไฟล์หลังแก้ สคริปต์+log เต็มอยู่ใน session
+scratchpad (`fix_schema_phaseA.py`/`fix_gridmaster_phaseB2.py`):
+
+- **discipline** `architecture`→`architectural` (157 ไฟล์ บ้าน 02-05), ค่านอก vocab 6 ไฟล์
+  (`site_regulations`→`regulatory`; `credits`/`administrative`/`reference`/`cover`→`misc`)
+- **pattern roof_frame** `roof_plan`→`plan` 8 หลัง (บ้าน 01-05, 08, 09, 11) — ปิดบั๊ก data-loss
+  ที่ t03/README บันทึกไว้ (Constistant `buildElements()` อ่านเฉพาะ `plan` → คานโครงหลังคา 8 หลัง
+  ไม่เคยถึง BOQ) พร้อม warning ในไฟล์
+- **container §0.1**: `element`→`elements` (15), `steel_members`→elements/`steel_member` (4),
+  `void_bays`→elements/`note` (1), `stair_details`→`stair` + `other_details`→`beam`+flag (1),
+  `reinforcement`+`footing_bearing_notes`→`design_criterion` (4), `sheet_index`+
+  `sheet_list_structural`→`sheet_index_entry` (5)
+- **notes §4a**: `notes_sections`/`spec_notes`→`sections[]` (17), `raw_text`/`notes_text`
+  (string)→`sections[]` entry (~20 ไฟล์ รวม elevation/side_profile ที่มี raw_text ด้วย —
+  เกิน scope §4a ที่พูดถึง pattern notes เท่านั้น แต่เลือกให้ container เดียวกันแทนที่จะปล่อย
+  raw_text ที่ไม่มีใน spec เลย)
+- **rebar**: `stirrup_or_tie`→`stirrup` (3), `rebar_cover_m`→`cover_mm` int มม. + printed_as (2)
+- **gridmaster §4 (2026-08-21 revision)**: เพิ่ม `grid.z_levels[]` ทั้ง 12 ไฟล์ — **harvest จาก
+  ข้อมูล level ที่คนรีวิวแล้วในไฟล์ต่อหน้าของบ้านตัวเอง** (4 รูปแบบที่พบจริง: ป้าย Thai เป็น key,
+  prose "ระดับ... +X.XX", `level_labels_as_printed`, `levels_m` dict — แบบสุดท้าย key อังกฤษของ
+  reviewer ติด flag `label_is_reviewer_key_not_printed_text`) **ไม่ใช่การกวาดรูปใหม่** —
+  `dimension_chains[]`/`unassigned_dimensions[]` **จงใจไม่เพิ่ม** (ต้องกวาดรูปทีละหน้า ยังไม่ทำ;
+  การคำนวณย้อนจาก pos_m คือปลอม provenance) — warning ในทุก gridmaster บอกทั้งสองข้อ
+
+**จงใจไม่แตะ (บันทึกไว้ ไม่ใช่ลืม):** container drift ในไฟล์ MEP/สถาปัตย์/index/symbol
+(`rows`/`circuits`/`equipment`/`rooms_shown`/`symbol_entries`/`index_rows`/ฯลฯ ~132 จุด) —
+เป็น pass-3 subtasks ที่ไม่เข้า dataset โครงสร้างคืนนี้; และ `element_type` ที่ reviewer แต่งเอง
+(truss/purlin/roof_overhang/ฯลฯ) — §0.4 อนุญาตการแต่งพร้อม warn, การ remap ของที่คนตัดสินแล้ว
+เสี่ยงกว่าปล่อย
+
+---
+
 สงสัย ให้ถามมะขาม

@@ -1,7 +1,7 @@
 {
   "png": "08",
   "doc_page": 6,
-  "discipline": "architecture",
+  "discipline": "architectural",
   "sheet_code": "A-06",
   "sheet_name": "แปลนหลังคา",
   "pattern": "roof_plan",
@@ -9,7 +9,18 @@
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า08.png",
   "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/04บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า00_gridline.json",
-  "element": [
+  "confidence_score": 0.72,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet (A-06) is the roof plan for the whole 2-story building — since the roof sits above the 2nd floor (+6.65 roof beam level, inferred from the same value as house #3's canopy level), its footprint corresponds to the 2nd-floor plan (หน้า07/A-05), not the ground floor.",
+    "Unlike house #3's roof plan (which had a rectangular notch over an open, roofless carport), this house's roof is a single unbroken rectangle over the full grid1-3 x gridE-A footprint plus overhangs — suggesting the ground-floor จอดรถ (carport, see _หน้า06_floor_plan_ground.json) is fully roofed here, not open to the sky. Not independently confirmed against a structural roof-framing sheet (outside this extraction's architecture-only scope).",
+    "The 'SLOPE 6°' labels are printed vertically along both roof faces, same convention and same 6-degree value as houses #2/#3's roof plans.",
+    "Overhang dimensions (1.30m east/west, 1.50m north/south) exactly match houses #2/#3's equivalent overhang figures despite this house having a different footprint size (8.50x10.00m vs house #3's), and are independently corroborated by the top/bottom dimension chains on the floor plan sheets (หน้า06/07) which show the same building-width/depth sub-splits.",
+    "Actual roof framing (purlins/rafters/trusses) is not detailed on this sheet — references to structural engineering drawings would be expected (outside this extraction's architecture-only page range 03-29), consistent with the section sheets to be read later (หน้า13-15).",
+    "Two dashed rectangular outlines near grid2 (north and south edges) and two curved swirl-arrow symbols near mid-plan are visible but not confidently classified at this resolution — flagged rather than guessed; may become clearer when cross-checked against the elevation/section sheets.",
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
+  ],
+  "elements": [
     {
       "element_id": "roof_covering",
       "element_type": "roof",
@@ -94,16 +105,5 @@
       "confidence_score": 0.75,
       "confidence_flags": []
     }
-  ],
-  "confidence_score": 0.72,
-  "confidence_flags": [],
-  "warnings": [
-    "This sheet (A-06) is the roof plan for the whole 2-story building — since the roof sits above the 2nd floor (+6.65 roof beam level, inferred from the same value as house #3's canopy level), its footprint corresponds to the 2nd-floor plan (หน้า07/A-05), not the ground floor.",
-    "Unlike house #3's roof plan (which had a rectangular notch over an open, roofless carport), this house's roof is a single unbroken rectangle over the full grid1-3 x gridE-A footprint plus overhangs — suggesting the ground-floor จอดรถ (carport, see _หน้า06_floor_plan_ground.json) is fully roofed here, not open to the sky. Not independently confirmed against a structural roof-framing sheet (outside this extraction's architecture-only scope).",
-    "The 'SLOPE 6°' labels are printed vertically along both roof faces, same convention and same 6-degree value as houses #2/#3's roof plans.",
-    "Overhang dimensions (1.30m east/west, 1.50m north/south) exactly match houses #2/#3's equivalent overhang figures despite this house having a different footprint size (8.50x10.00m vs house #3's), and are independently corroborated by the top/bottom dimension chains on the floor plan sheets (หน้า06/07) which show the same building-width/depth sub-splits.",
-    "Actual roof framing (purlins/rafters/trusses) is not detailed on this sheet — references to structural engineering drawings would be expected (outside this extraction's architecture-only page range 03-29), consistent with the section sheets to be read later (หน้า13-15).",
-    "Two dashed rectangular outlines near grid2 (north and south edges) and two curved swirl-arrow symbols near mid-plan are visible but not confidently classified at this resolution — flagged rather than guessed; may become clearer when cross-checked against the elevation/section sheets.",
-    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
   ]
 }

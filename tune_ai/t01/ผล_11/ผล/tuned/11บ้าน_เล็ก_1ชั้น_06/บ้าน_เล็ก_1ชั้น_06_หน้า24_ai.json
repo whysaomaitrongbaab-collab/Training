@@ -1,0 +1,104 @@
+{
+  "png": "24",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แปลนโครงหลังคา, ขยายรอยต่อจันทันเหล็กกับคานอะเส ค.ส.ล.",
+  "views": [
+    {
+      "pattern": "roof_plan",
+      "view_title": "แปลนโครงหลังคา 1:75 + detail ขยายรอยต่อจันทันหลักกับคานอะเส ค.स.l. 1:20",
+      "grid_columns": [
+        "1",
+        "2",
+        "3"
+      ],
+      "grid_rows": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "trusses": [
+        {
+          "truss_id": "T1",
+          "type": "trapezoidal_rafters",
+          "span_m": 7,
+          "rise_m": 2,
+          "pitch_deg_approx": 14,
+          "purlin_count_total": 9,
+          "purlins_on_each_side": [
+            5,
+            4
+          ],
+          "member_labels": {
+            "rafter_top": "角铁(扁钢) 2-125x75x3.2mm",
+            "rafter_bottom": "ช่องทึบเหล็ก 125x75x8.2mm"
+          },
+          "confidence_score": 0.65,
+          "confidence_flags": [
+            "needs_human_review_zoom_required",
+            "thai_transcription_uncertain"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "member_type": "purlin",
+          "count": 9,
+          "spacing_m": 1.5,
+          "description": "Purlins spaced along the truss chord, running perpendicular to the rafters -- runs parallel to the eave line across the full width of the roof plan, connecting both rafter chords together at regular intervals (not individually numbered here)",
+          "confidence_score": 0.6,
+          "confidence_flags": [
+            "needs_human_reviewzoom_required"
+          ]
+        },
+        {
+          "member_type": "tie_beam_or_rafter_segment",
+          "description": "Bottom-chord tie members labeled 'ตงเหล็กรูปตัวที [ ] 125x75×3.2มม.' (T-section steel purlin/member, possibly a mistranscribed shape code -- looks like a T-profile symbol rendered as '[ ]') running horizontally below the truss apex area, plus a smaller adjacent member 'แปเหล็ก [ 75x45x2.3มม Øไม่เกิน 1.00 เมตร' (C-channel purlin, max spacing 1.00m)",
+          "confidence_score": 0.5,
+          "confidence_flags": [
+            "shape_symbol_illegible",
+            "needs_human_review_zoom_required"
+          ]
+        },
+        {
+          "member_type": "rafter_cover_plate",
+          "description": "'อกไก่เหล็ก -125x75x2.2มม' -- flat steel cover plate ('chicken-beak' splice plate) used at the rafter splice joint near the ridge, overlapping the two rafter halves",
+          "confidence_score": 0.6,
+          " confidence_flags": []
+        },
+        {
+          "member_type": "column_stub_at_eave",
+          "description": "At the lower corners of the roof plan (near grid C-D, right side), small square post symbols drawn down past the roof plane toward the ground/foundation -- likely the steel column stubs transferring the truss reaction down to the concrete eave-beam (คานอะเส ค.ส.l.) shown in the detail box above",
+          "confidence_score": 0.55,
+          "confidence_flags": [
+            "needs_humanreview_zoom_required"
+          ]
+        }
+      ],
+      "detail_box": {
+        "title": "ขยายรอยต่อจันทันเหล็กกับคอนกรีต ค.ส.ล.",
+        "scale": "1:20",
+        "elements": [
+          {
+            "element": "เหล็กหางปลาขนาด 50x350x6.00 มม",
+            "description": "Steel fishplate, welded to the steel rafter (จันทันเหล็กเชื่อมติดกับเหล็กหางปลา) and embedded into the concrete eave beam (คานอะเส ค. ส. ล.), extending through the full depth of the beam"
+          },
+          {
+            "element": "ฝังในเสาคอนกรีต",
+            "description": "The fishplate is cast/embedded into the concrete column/beams structure"
+          }
+        ],
+        "confidence_score": 0.7,
+        "confidence_flags": []
+      },
+      "confidence_score": 0.6,
+      "overall_confidence_score": 0.6,
+      "confidence_flagss": [
+        "dense_overlapping_steel_members_near_roof_apex_not_fully_reconciled_to_individual_label_callouts_in_this_single_view",
+        "small_post_symbols_at_lower_right_of_the_roof_plan_(near_grid_C-D)_are_present_but_not_explicitly_labeled_with_a_member_name_-_treated_as_a_possible_column_stub_transfer_point_rather_than_an_unlabeled_slab_edge,_consistent_with_the_detail_showing_the_truss_reaction_being_carried_down_through_a_steel_embed_to_the_concrete_eave_beam"
+      ]
+    }
+  ]
+}

@@ -9,7 +9,18 @@
   "schema_generation": "20260708draft of prime rawjson.md",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า09.png",
   "grid_source": "mk_test/t4/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
-  "element": [
+  "confidence_score": 0.77,
+  "confidence_flags": [],
+  "warnings": [
+    "PATTERN RECLASSIFIED (t4, 2026-07-08 taxonomy): t3 classified this view as 'section'. Under the new taxonomy, 'section' (#2) is explicitly scoped to structural detail-of-rebar/dimensions sections (หน้าตัดคาน เสา ฐานราก), while 'side_profile' (#8) is explicitly defined to cover 'รูปตัดอาคาร' (building cross-sections) — this is an architectural building section (A-07 sheet, no rebar/structural spec, only room levels and roof-frame reference), so it is reclassified from 'section' to 'side_profile'. Content and the element[] array structure are otherwise unchanged from t3 (kept, since the doc does not restrict side_profile to raw_text-only — this is the first real test of an element[]-based side_profile file).",
+    "This building cross-section (รูปตัด 1) cuts through the kitchen-prep (เตรียมอาหาร) and bathroom (ห้องน้ำ) area along grid row 3-2-1; roof framing itself is deferred to the structural drawings (S-01~S-08, outside this extraction's page range).",
+    "GRID-RELEVANT: this section's overhang breakdown beyond grid 3 (0.70 then 0.60, read right-to-left = same 1.30 total as รูปด้าน1/3) again confirms the roof-overhang figure is 1.30, distinct from the floor plan's 1.50 wall/room extension — see หน้า06_floor_plan.json and หน้า07_elevation1.json warnings for the full explanation of why these differ.",
+    "Sibling section รูปตัด 2 is in _หน้า09_section2.json.",
+    "Interior ceiling/fixture sub-dimensions (2.70/2.80) are small print, read with medium confidence only.",
+    "Independent read done first, then cross-checked against t3's หน้า09_section1.json — same content and level datums, no disagreement on the underlying facts (pattern label is the only change).",
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
+  ],
+  "elements": [
     {
       "element_id": "roof_structure_ref",
       "element_type": "roof_frame_reference",
@@ -51,16 +62,5 @@
       "confidence_score": 0.8,
       "confidence_flags": []
     }
-  ],
-  "confidence_score": 0.77,
-  "confidence_flags": [],
-  "warnings": [
-    "PATTERN RECLASSIFIED (t4, 2026-07-08 taxonomy): t3 classified this view as 'section'. Under the new taxonomy, 'section' (#2) is explicitly scoped to structural detail-of-rebar/dimensions sections (หน้าตัดคาน เสา ฐานราก), while 'side_profile' (#8) is explicitly defined to cover 'รูปตัดอาคาร' (building cross-sections) — this is an architectural building section (A-07 sheet, no rebar/structural spec, only room levels and roof-frame reference), so it is reclassified from 'section' to 'side_profile'. Content and the element[] array structure are otherwise unchanged from t3 (kept, since the doc does not restrict side_profile to raw_text-only — this is the first real test of an element[]-based side_profile file).",
-    "This building cross-section (รูปตัด 1) cuts through the kitchen-prep (เตรียมอาหาร) and bathroom (ห้องน้ำ) area along grid row 3-2-1; roof framing itself is deferred to the structural drawings (S-01~S-08, outside this extraction's page range).",
-    "GRID-RELEVANT: this section's overhang breakdown beyond grid 3 (0.70 then 0.60, read right-to-left = same 1.30 total as รูปด้าน1/3) again confirms the roof-overhang figure is 1.30, distinct from the floor plan's 1.50 wall/room extension — see หน้า06_floor_plan.json and หน้า07_elevation1.json warnings for the full explanation of why these differ.",
-    "Sibling section รูปตัด 2 is in _หน้า09_section2.json.",
-    "Interior ceiling/fixture sub-dimensions (2.70/2.80) are small print, read with medium confidence only.",
-    "Independent read done first, then cross-checked against t3's หน้า09_section1.json — same content and level datums, no disagreement on the underlying facts (pattern label is the only change).",
-    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
   ]
 }

@@ -243,36 +243,62 @@
         "approximate_-_ST1_landing_south_of_grid_A_not_a_named_grid_point",
         "converted_2026-08-02_from_reference_markers_array (schema section 10/0.1)"
       ]
-    }
-  ],
-  "void_bays": [
+    },
     {
+      "element_id": "โล่ง",
+      "element_type": "note",
       "grid_ref": "E-D x 1-2",
-      "label": "โล่ง"
+      "label": "โล่ง",
+      "confidence_score": null,
+      "confidence_flags": []
     },
     {
+      "element_id": "โล่ง",
+      "element_type": "note",
       "grid_ref": "E-D x 2-3",
-      "label": "โล่ง"
+      "label": "โล่ง",
+      "confidence_score": null,
+      "confidence_flags": []
     },
     {
+      "element_id": "โล่ง",
+      "element_type": "note",
       "grid_ref": "D-C x 1-2",
-      "label": "โล่ง"
+      "label": "โล่ง",
+      "confidence_score": null,
+      "confidence_flags": []
     },
     {
+      "element_id": "โล่ง",
+      "element_type": "note",
       "grid_ref": "D-C x 2-4",
-      "label": "โล่ง"
+      "label": "โล่ง",
+      "confidence_score": null,
+      "confidence_flags": []
     },
     {
+      "element_id": "โล่ง",
+      "element_type": "note",
       "grid_ref": "C-B x 1-2",
-      "label": "โล่ง"
+      "label": "โล่ง",
+      "confidence_score": null,
+      "confidence_flags": []
     },
     {
+      "element_id": "โล่ง",
+      "element_type": "note",
       "grid_ref": "C-B x 2-4",
-      "label": "โล่ง"
+      "label": "โล่ง",
+      "confidence_score": null,
+      "confidence_flags": []
     },
     {
+      "element_id": "โล่ง",
+      "element_type": "note",
       "grid_ref": "B-A x 1-2",
-      "label": "โล่ง"
+      "label": "โล่ง",
+      "confidence_score": null,
+      "confidence_flags": []
     }
   ],
   "confidence_score": 0.72,
@@ -282,7 +308,8 @@
     "Every interior bay is labeled 'โล่ง' (void/open) -- the tie-beam grid forms only the perimeter + one interior spine (RB3 at grid2) and one cross beam (RB2 at gridC and gridB between grid2-grid4), with the bay interiors left open. This is typical for a tie-beam/grade-beam plan on pile foundations where the ground slab is poured separately or left as crawl space -- not fully explained by this sheet alone, may become clearer from S-08 (beam expansion) rebar specs.",
     "CONFLICTING extension depth south of grid A across 3 different structural sheets: S-04 (floor-1 beam plan) shows a real beam ~2.05m south of grid A; S-05 (floor-2 beam plan) shows only ~0.40m; this sheet (S-06, tie beam) shows dashed dimensions of 0.70m and 0.50m for a small extension in the same area. These are NOT being reconciled into a single number -- each is recorded as printed on its own sheet, flagged here for human structural review. It's plausible these represent different real features at slightly different plan depths (e.g. a covered carport roof overhang at floor 1 vs. a small ground-level utility pad at the tie-beam level), but this needs a human to confirm against the architecture drawings rather than an assumption made here.",
     "RB2/RB3 appear to be heavier-duty tie-beam marks than the standard RB1 perimeter beam -- likely correspond to specific rebar specs on S-08 (ขยายคาน คสล.), not yet read at time of writing this file.",
-    "NORMALIZED_2026-08-02(r5): slab_markers[]/reference_markers[] arrays folded into elements[] - schema section 10 already says SO/SI/SX/ST markers are element_type 'slab' cross-referencing like beams, and houses 02-04 keep them in elements[]; a separate array was a house-05-only shape. mark -> element_id, nothing dropped."
+    "NORMALIZED_2026-08-02(r5): slab_markers[]/reference_markers[] arrays folded into elements[] - schema section 10 already says SO/SI/SX/ST markers are element_type 'slab' cross-referencing like beams, and houses 02-04 keep them in elements[]; a separate array was a house-05-only shape. mark -> element_id, nothing dropped.",
+    "2026-08-24 normalize: void_bays[] moved into elements[] as element_type=note (open-bay annotations, container rule §0.1)"
   ],
   "specs": {
     "RB1": {
