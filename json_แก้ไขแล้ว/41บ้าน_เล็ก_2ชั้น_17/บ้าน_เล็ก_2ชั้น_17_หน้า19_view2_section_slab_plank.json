@@ -1,0 +1,41 @@
+{
+  "png": "19",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ขยายพื้นสำเร็จรูปท้องเรียบ (PLANK) / ตารางแสดงการรับน้ำหนักจร (LIVE LOAD)",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า19.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Second view on the same physical page as the column schedule (หน้า19_view1) — split per §3 multi-view rule.",
+    "The live-load table is a reference capacity chart specific to this house's precast plank spec (thickness 0.05x0.35m), not a drawing element — nested inside the precast_plank_detail element as live_load_table[] rather than a top-level array, per §0.1's exemption for pure reference tables."
+  ],
+  "elements": [
+    {
+      "element_id": "PLANK",
+      "element_type": "precast_plank_detail",
+      "description": "precast hollow-core/solid plank floor slab, ท้องเรียบ (flat-soffit) type, with cast-in-place topping",
+      "topping_thickness_mm": 50,
+      "total_thickness_mm": 100,
+      "safe_load_kg_per_sqm": 150,
+      "topping_mesh": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "plank_reinforcement": { "type": "PC wire", "dia_mm": 4 },
+      "live_load_table": {
+        "unit": "kg/sqm",
+        "plank_size_m": "0.05x0.35",
+        "note": "N = จำนวนลวดอัดแรง ø4mm (wire count), S = ระยะช่วงพาดวัดขอบในถึงขอบในของคาน clear span in metres — มีค้ำยันชั่วคราว (temporary shoring assumed)",
+        "rows": [
+          { "N": 4, "capacities": [ { "S_m": 2.80, "kg_per_sqm": 504 } ] },
+          { "N": 5, "capacities": [ { "S_m": 3.00, "kg_per_sqm": 532 }, { "S_m": 3.20, "kg_per_sqm": 464 }, { "S_m": 3.40, "kg_per_sqm": 400 }, { "S_m": 3.60, "kg_per_sqm": 350 }, { "S_m": 3.80, "kg_per_sqm": 300 } ] },
+          { "N": 6, "capacities": [ { "S_m": 4.00, "kg_per_sqm": 318 }, { "S_m": 4.20, "kg_per_sqm": 274 } ] },
+          { "N": 7, "capacities": [ { "S_m": 4.40, "kg_per_sqm": 305 }, { "S_m": 4.60, "kg_per_sqm": 300 } ] },
+          { "N": 8, "capacities": [ { "S_m": 4.80, "kg_per_sqm": 300 }, { "S_m": 5.00, "kg_per_sqm": 250 } ] }
+        ]
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}

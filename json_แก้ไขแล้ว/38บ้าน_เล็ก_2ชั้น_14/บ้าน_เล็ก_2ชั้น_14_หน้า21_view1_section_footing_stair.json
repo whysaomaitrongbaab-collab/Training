@@ -1,0 +1,31 @@
+{
+  "png": "21",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบขยายวิศวกรรมโครงสร้าง 2",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า21.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet is a multi-view page: stair + F1/F2 footing/pile rebar details (this file) + a column schedule table (separate file, หน้า21_view2_schedule_column.json).",
+    "Pile length printed as '0.18x0.18x16.00m.' (SAFE LOAD 15 T./PILE) identically on both F1 and F2 sections, re-verified at 4x zoom — see grid master warnings.",
+    "F1/F2 pedestal callouts read 'X-DB12mm เหล็กปลอก' (dowel/sleeve bars) and 'X-DB12mm เหล็กยืน' (standing/vertical bars) plus a further '2-DB12mm' — interpreted the 'เหล็กยืน' count as the pedestal's continuing main_bar (matching the column schedule's C1/C2 counts exactly: 4 for F1/C1, 6 for F2/C2), and recorded the 'เหล็กปลอก' pile-splice dowels and the extra 2-DB12 as additional_bars rather than merging counts, since they serve a different structural role (pile-to-footing splice, not the column's own longitudinal steel)."
+  ],
+  "elements": [
+    { "element_id": "ST", "element_type": "stair", "grid_ref": "~1'-A/B", "thickness_mm": 120, "main_bar": { "dia_mm": 12, "type": "DB", "spacing_mm": 180, "note": "main bar along waist slab, both flights" }, "additional_bars": [
+        { "dia_mm": 9, "type": "RB", "spacing_mm": 200, "position": "distribution bar, both flights" },
+        { "count": 1, "dia_mm": 9, "type": "RB", "position": "corner bar at every corner (ทุกมุม)" }
+      ], "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "F1", "element_type": "footing", "width_mm": 400, "height_mm": 400, "pile": { "count": 1, "section": "180x180mm precast, 16.00m long, 15 ton/pile", "printed_as": "1-⊠0.18x0.18x16.00m. SAFE LOAD 15 T./PILE จำนวน 1 ต้น" }, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB", "note": "pedestal standing/vertical bars (เหล็กยืน), matches column schedule C1" }, "additional_bars": [
+        { "count": 4, "dia_mm": 12, "type": "DB", "position": "pile-splice dowel (เหล็กปลอก), min 0.40m into pedestal" },
+        { "count": 2, "dia_mm": 12, "type": "DB", "position": "additional pedestal starter bar" }
+      ], "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "F2", "element_type": "footing", "width_mm": 950, "height_mm": 400, "pile": { "count": 2, "section": "180x180mm precast, 16.00m long, 15 ton/pile", "printed_as": "2-⊠0.18x0.18x16.00m. SAFE LOAD 15 T./PILE จำนวน 2 ต้น" }, "main_bar": { "count": 6, "dia_mm": 12, "type": "DB", "note": "pedestal standing/vertical bars (เหล็กยืน), matches column schedule C2" }, "additional_bars": [
+        { "count": 4, "dia_mm": 12, "type": "DB", "position": "pile-splice dowel (เหล็กปลอก), min 0.40m into pedestal, per pile" },
+        { "count": 2, "dia_mm": 12, "type": "DB", "position": "additional pedestal starter bar" }
+      ], "confidence_score": 0.7, "confidence_flags": ["F2's dowel/additional bar counts read from a section that appears near-identical to F1's — genuine per-pile breakdown not fully distinguishable at available scan resolution"] }
+  ]
+}

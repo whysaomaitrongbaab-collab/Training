@@ -1,0 +1,63 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "y-axis total row prints 14.15 but the 5 printed segments as I first read them (4.00+2.00+3.60+1.80+3.15) sum to 14.55, a 0.40m mismatch. Re-checking against the total row (the exact check §4 exists for): 4.00+2.00+3.20+1.80+3.15=14.15 resolves exactly if the ง-ค segment is 3.20 (not 3.60) — used 3.20 for ค's pos_m. This is a resolved reading, not a guess: the total-row cross-check is decisive, but the ง-ค segment's own digit was genuinely hard to distinguish (3.60 vs 3.20) at this scan's resolution/rotation, so confidence on that one line is lower than the rest.",
+    "Rows ข(11.00m) and ก(14.15m) only carry structure for a small south-projecting carport at grid columns 2-3 (footings C1,F2/CX,F2 at ข, C1,F2/C1,F2 at ก) — the main house footprint only spans ฉ(0.00) to ค(9.20m). Both rows are still real printed main grid lines (circled on the left margin like ฉ/จ/ง/ค), not dummies.",
+    "House title block: 'บ้านครอบครัวไทยเป็นสุข 2' (กรมโยธาธิการและผังเมือง, โครงการแบบอาคารเพื่อประชาชน, เลขที่แบบ ม.บ.462120, 21 พ.ย. 2546) — all-steel roof structure (hip roof, RB1/RB2 rafters + CN/CX king posts) over an RC footing/column/beam/slab substructure; a different series from both บ้าน_เล็ก_1ชั้น_07 (house 26) and the บ้านครอบครัวไทยร่วมสมัย series (houses 01-05)."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.20, "type": "named" },
+      { "id": "3", "pos_m": 6.40, "type": "named" },
+      { "id": "4", "pos_m": 9.60, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "ฉ", "pos_m": 0.00, "type": "named" },
+      { "id": "จ", "pos_m": 4.00, "type": "named" },
+      { "id": "ง", "pos_m": 6.00, "type": "named" },
+      { "id": "ค", "pos_m": 9.20, "type": "named", "confidence_score": 0.6, "confidence_flags": ["ง-ค segment read as 3.20, resolving a 0.40m mismatch against the printed 14.15 total — see file warnings"] },
+      { "id": "ข", "pos_m": 11.00, "type": "named" },
+      { "id": "ก", "pos_m": 14.15, "type": "named" }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.20 },
+          { "from": "2", "to": "3", "value_m": 3.20 },
+          { "from": "3", "to": "4", "value_m": 3.20 },
+          { "from": "1", "to": "4", "value_m": 9.60 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png",
+        "segments": [
+          { "from": "ฉ", "to": "จ", "value_m": 4.00 },
+          { "from": "จ", "to": "ง", "value_m": 2.00 },
+          { "from": "ง", "to": "ค", "value_m": 3.20 },
+          { "from": "ค", "to": "ข", "value_m": 1.80 },
+          { "from": "ข", "to": "ก", "value_m": 3.15 },
+          { "from": "ฉ", "to": "ก", "value_m": 14.15 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 0.70, "label": "corner beam B1A offset from grid column 1/4 at the porch corners (จ1, จ4, ง1, ง4)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png", "note": "local offset for the porch's short return beam, not a new grid line — no other element sits on it" },
+      { "value_m": 1.90, "label": "remainder of the 2.60 corner offset (0.70+1.90) at the same porch corners", "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png", "note": null }
+    ]
+  }
+}

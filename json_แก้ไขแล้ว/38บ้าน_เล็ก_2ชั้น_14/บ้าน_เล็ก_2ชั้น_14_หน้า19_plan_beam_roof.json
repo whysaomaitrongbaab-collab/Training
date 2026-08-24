@@ -1,0 +1,31 @@
+{
+  "png": "19",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนคานและโครงหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า19.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_14_หน้า00_gridline.json",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "This is a STRUCTURAL roof framing plan (beams/rafters with marks and grid refs) — extracted as pattern 'plan' per the roof_plan-vs-plan rule, not as pattern 'roof_plan' (that pattern is reserved for the architectural-only roof sheet, A-05/หน้า06, which is out of op04 scope).",
+    "B9/B1 marks and their rebar are RC beams (per DETAIL B9/B1 on S-04); the actual roof cover framing (จันทัน rafters, ระแนงสำเร็จรูป battens, ตะเข้สัน/สัน hip+ridge) is steel, all spacing-based repeated members with no individual grid_ref — recorded once each with their printed section/spacing, not as per-segment elements[].",
+    "1.30m eave overhang on all 4 sides is a rafter cantilever reach, not a discrete beam endpoint — no dummy grid created for it (see grid master warnings); recorded in the grid master's unassigned_dimensions instead.",
+    "No discrete beam mark was legible along the grid-1 and grid-3 roof-level edges (west/east perimeter) — only the diagonal hip lines and dashed purlin/rafter lines cross there. Not recorded as elements[] to avoid inventing marks that aren't printed."
+  ],
+  "elements": [
+    { "element_id": "B9", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.90, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B9", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 3.90, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.90, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["center ridge-line RC tie beam, distinct from the ground/floor2 'B1' interior partition mark of the same name reused elsewhere in this house"] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 3.90, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B9", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.90, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B9", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 3.90, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "จันทัน", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จันทัน ⊏-100x50x20x2.3mm.@1.00m." }, "spacing_mm": 1000, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "ระแนงสำเร็จรูป", "element_type": "purlin", "material": "precast", "spacing_mm": 330, "note": "printed spacing range 0.32-0.34m, no section dimensions given — likely a prefab fiber-cement/precast batten product, not steel", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "ตะเข้สัน", "element_type": "beam", "material": "steel", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "ตะเข้สัน 2⊏-150x50x20x3.2mm." }, "note": "hip rafter, built-up double channel, back-to-back", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "สัน", "element_type": "beam", "material": "steel", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "สัน 2⊏-150x50x20x3.2mm." }, "note": "ridge beam, built-up double channel, back-to-back", "confidence_score": 0.7, "confidence_flags": [] }
+  ]
+}

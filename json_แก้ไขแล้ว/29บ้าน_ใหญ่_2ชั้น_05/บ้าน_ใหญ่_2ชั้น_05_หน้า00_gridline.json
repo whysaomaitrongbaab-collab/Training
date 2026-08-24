@@ -1,0 +1,67 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า19.png",
+    "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า20.png",
+    "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า21.png",
+    "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า22.png"
+  ],
+  "confidence_score": 0.7,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'บ้านสกาวรัตน์', 'SMILE HOME' TYPE M, V.1 [11/2/45], donated design from บริษัท แลนดี้ โฮม (ประเทศไทย) จำกัด, under the same 'แบบบ้านยิ้มเพื่อประชาชน' program as houses 09/14/16/18/19/20/28 but a contributed design, not the ธรรมรักษา series — noticeably lower scan quality (visible handwritten annotations, uneven contrast) than the other houses in this batch. This document has NO index/TOC page and NO 'S-xx' sheet-code system at all — pages are identified purely by their drawn title ('ผังโครงสร้างฐานราก', 'ผังโครงสร้างชั้นล่าง', etc.), so sheet_code is null throughout this house's files.",
+    "Building footprint is irregular (an L-shape / notched rectangle, not a simple box) — grid columns 2-5 and rows A-E are the FULL bounding grid, but not every grid point is inside the building (e.g. no footing at A1/B1/E1, per the footing plan). Did not force a rectangular reading.",
+    "A secondary sub-dimension chain on the floor-beam plans (0.50/3.60/0.90/0.50/0.50 along x, various small clusters along y) locates interior beam lines (B1'/B3'/C2) more precisely than the main grid — did not fully re-derive exact pos_m for these interior points from that chain given time constraints on this house; C2's x-position is approximated at grid 4 (see plan_beam files) rather than a separately resolved dummy line. Flagged as a known gap, not silently resolved.",
+    "Beam-top levels vary per beam (printed directly on each beam mark as e.g. 'B6(+0.35)', 'B1(+3.65)') rather than a single project-wide floor level — this is real per-beam data, not a transcription artefact, and is recorded on each beam element's own 'level_m' below."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.00, "type": "named" },
+      { "id": "3", "pos_m": 7.00, "type": "named" },
+      { "id": "4", "pos_m": 7.50, "type": "named" },
+      { "id": "5", "pos_m": 10.50, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 3.00, "type": "named" },
+      { "id": "C", "pos_m": 5.20, "type": "named" },
+      { "id": "D", "pos_m": 8.20, "type": "named" },
+      { "id": "E", "pos_m": 10.70, "type": "named" }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า19.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "4", "value_m": 0.50 },
+          { "from": "4", "to": "5", "value_m": 3.00 },
+          { "from": "1", "to": "5", "value_m": 10.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า19.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 2.20 },
+          { "from": "C", "to": "D", "value_m": 3.00 },
+          { "from": "D", "to": "E", "value_m": 2.50 },
+          { "from": "A", "to": "E", "value_m": 10.70 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 3.60, "label": "sub-bay offset locating interior beam line B1'/B3', x-axis, near grid 2-3", "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า20.png", "note": "not resolved to a named dummy grid — see grid master warnings" },
+      { "value_m": 0.90, "label": "sub-bay offset, x-axis, near grid 3", "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า20.png", "note": null }
+    ]
+  }
+}

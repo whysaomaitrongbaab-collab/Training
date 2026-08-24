@@ -1,0 +1,22 @@
+{
+  "png": "20",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานรากแผ่ เสาตอม่อ",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_13_หน้า00_gridline.json",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet is one of two alternate foundation-type plans on S-02 (spread footing, used when soil bearing >= 8 t/m2 per S-01 note 3.1) — the pile-footing alternative is the companion file _view2_plan_footing_pile.json. Both share the same grid positions; only the footing type/size differs per S-01's design intent.",
+    "element_id uses the printed size string (this sheet prints no F-number, unlike the pile-footing view) — 'F1.00x1.00' etc. Genuinely different structural positions can print the same size string: F0.80x0.80 covers the (D,2) position (marked 3-pile F3 on the companion pile view), the accessible-bathroom appendage north-west position C1' (marked 2-pile F2 there), and the two D'-row appendage positions (marked 1-pile F1 there). Merged under one element_id per the spec's point-element merge rule since that is what this sheet itself prints, but flagging that this masks a real capacity difference visible only on the pile-footing companion view.",
+    "Pedestal (เสาตอม่อ) marks C0/C1 printed alongside each footing size are recorded per-position in each element's note field, not split into separate pedestal elements — full rebar/size spec for C0 vs C1 lives in the column schedule (S-05/S-10/S-11, schedule pattern)."
+  ],
+  "elements": [
+    { "element_id": "F1.00x1.00", "element_type": "footing", "width_mm": 1000, "height_mm": 1000, "count": 6, "grid_refs": ["A1", "A1\"", "A2", "B1\"", "C1\"", "D1"], "note": "pedestal marks: C1 at A1, A2, D1; C0 at A1\", B1\", C1\"", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "F1.20x1.20", "element_type": "footing", "width_mm": 1200, "height_mm": 1200, "count": 4, "grid_refs": ["B1", "B2", "C1", "C2"], "note": "pedestal marks: C1 at all four positions", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "F0.80x0.80", "element_type": "footing", "width_mm": 800, "height_mm": 800, "count": 4, "grid_refs": ["C1'", "D2", "D'1'", "D'1"], "note": "pedestal marks: C1 at D2; C0 at C1', D'1', D'1. C1' is the accessible-bathroom appendage north-west footing, centerline printed 0.175m south of grid C; D'1' and D'1 are the appendage south-edge footings. See file warnings — this size string covers three structurally different positions (pile view marks them F3 / F2 / F1).", "confidence_score": 0.8, "confidence_flags": ["merged-but-mixed: see file warnings on F0.80x0.80 masking a pile-count difference on the companion pile view", "0.175m pedestal offset from grid C at C1' — treated as footing eccentricity, not a separate grid line"] }
+  ]
+}

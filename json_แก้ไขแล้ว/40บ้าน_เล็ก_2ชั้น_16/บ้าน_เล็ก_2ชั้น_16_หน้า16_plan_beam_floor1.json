@@ -1,0 +1,47 @@
+{
+  "png": "16",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ผังโครงสร้างชั้นล่าง",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_16_หน้า00_gridline.json",
+  "confidence_score": 0.55,
+  "confidence_flags": [
+    "Dense plan with several sub-grid beam lines (A', A'', A''' — see grid master). The two front-bay rooms (col1-2 and col2-3, between A and A'') and the B-to-C zone along column 1 are the lowest-confidence parts of this file; several small stub beams ('B1'' near row C/col1 and near row B/col3, both carrying an unexplained '⊠' symbol) could only be positioned approximately."
+  ],
+  "warnings": [
+    "'◁1'-style small triangle markers and plain arrows (e.g. '↙+0.50') scattered across the plan are the sheet's own PLANK-laying-direction indicators (per หน้า19's legend '→ แสดงทิศทางการวางพื้นสำเร็จรูป PLANK') paired with that bay's floor level — not beam or slab elements, not recorded as elements[] entries.",
+    "The 'S1' bay (diagonal cross-hatch, col1-2, A''-to-B) was initially read as a stairwell VOID by analogy with the identically-drawn 'ช่องบันได' bay on หน้า17 (upper floor). Cross-checked against หน้า22's detail sheet, which shows an 'S1' slab SECTION with real top steel (RB9@0.20) — a real cast-in-place slab, not a void, on this (ground) floor. Recorded as element_type 'slab'. The upper floor's matching bay IS a genuine void (explicitly labelled) — see that file.",
+    "Note on this sheet: 'มีคานชานพัก +2.40 (ดูชั้นบน)' ('there is a stair-landing beam at +2.40, see upper floor') with an arrow pointing into the S1 bay near grid 1 — the landing beam itself is not detailed on this sheet (deferred to หน้า17/upper floor per the note) and is not recorded as its own element here to avoid inventing a position; its approximate y-position (2.80m from A) is documented in the grid master's dimension_chains instead.",
+    "Two short beams both marked 'B1'' carry an unexplained small '⊠' (cross-in-box) symbol next to them (one near grid ~C1/col1, one near grid ~B3/col3) with no legend entry found for that symbol on this or any other sheet in the set — recorded with approximate grid_ref and low confidence rather than guessing its meaning.",
+    "Column 1's run between row B and row D is sparsely marked compared to columns 2/3 — only one 'B1(+0.40)' was legible immediately below row B, and no beam could be confirmed bounding the col1-2 bay between row C and row D (architecturally this is 'รับแขก' living room, so a boundary beam likely exists but its mark was not confidently read). Not inventing one; flagged as a known gap rather than silently completed.",
+    "Two 'SO' slab-type circles appear on this sheet at different levels (+0.10 in the canopy, +0.30 in the col1-2 bay between row B and row C) — both are the same mark 'SO' per the drawing; kept as two separate elements (not merged) because they sit at clearly different positions/levels, per the point-element merge exception for genuinely different per-position data (§0.10)."
+  ],
+  "elements": [
+    { "element_id": "SO", "element_type": "slab", "level_m": 0.10, "grid_ref": "A'-A x 1-3", "note": "canopy/entrance slab over the front porch", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B2'", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A'1", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "level_m": 0.35, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B2'", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A'3", "level_m": 0.35, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A''1", "grid_ref_end": "A''2", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A''2", "grid_ref_end": "A''3", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B16A", "element_type": "beam", "grid_ref_start": "A''1", "grid_ref_end": "B1", "level_m": 0.35, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B15", "element_type": "beam", "grid_ref_start": "A''2", "grid_ref_end": "B2", "level_m": 0.35, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "level_m": 0.40, "grid_ref": "A''-B x 1-2", "note": "cast-in-place slab bay at the stair; carries a stair-landing beam at +2.40 detailed on the upper floor sheet only, see warnings", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "CA", "element_type": "column", "grid_ref": "B1", "count": 1, "note": "short column bearing ON a beam, not on a footing — 'เสา CA เสริมพิเศษบนคาน' per this sheet's legend; spec on หน้า19 has no FOOTING row for CA, consistent", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B1'", "element_type": "beam", "grid_ref": "~B3", "level_m": 0.40, "note": "short stub near grid B3, carries an unexplained '⊠' symbol — see warnings", "confidence_score": 0.35, "confidence_flags": ["approximate position"] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": ["position tentative — see file warnings"] },
+    { "element_id": "B6A", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "level_m": 0.35, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "level_m": 0.40, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "SO", "element_type": "slab", "level_m": 0.30, "grid_ref": "~B-C x 1-2", "confidence_score": 0.45, "confidence_flags": ["approximate position"] },
+    { "element_id": "B1'", "element_type": "beam", "grid_ref": "~C1", "level_m": 0.10, "note": "short stub near grid C1, carries an unexplained '⊠' symbol — see warnings", "confidence_score": 0.35, "confidence_flags": ["approximate position"] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "level_m": 0.30, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "D2", "level_m": 0.25, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "D3", "level_m": 0.30, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "level_m": 0.30, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] }
+  ]
+}

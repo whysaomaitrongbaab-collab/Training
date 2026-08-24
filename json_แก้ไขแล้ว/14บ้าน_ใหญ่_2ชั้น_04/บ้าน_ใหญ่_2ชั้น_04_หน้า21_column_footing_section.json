@@ -1,0 +1,125 @@
+{
+  "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า21.png",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "SECTION COLUMN 1:20 + PLAN/SECTION F1A 1:20",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า21.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "ชุดแบบนี้ไม่พิมพ์รหัสแผ่น (A-xx/S-xx) ที่ใดเลยทั้งเล่ม และไม่มีหน้าสารบัญ — sheet_code เป็น null ทุกไฟล์ ระบุแผ่นด้วยชื่อแบบที่พิมพ์ใต้รูปแทน",
+    "เสา C1 ใช้ฟิลด์ level แยกตามกฎ §8 (ไม่ฝังระดับใน element_id) และใช้ count เดี่ยวตามกฎ §6 ที่ห้ามเสาแยก top/bottom — 4-DB12 คือเหล็กยืน 4 มุมเสา ไม่ใช่ 4 บน + 4 ล่าง",
+    "ขนาดเสาเปลี่ยนตามชั้นจริง: FLOOR 2 = 0.15x0.15, FLOOR 1 = 0.20x0.20, FOOTING (ตอม่อ) = 0.20x0.20 แต่เหล็กเสริมเหมือนกันทั้ง 3 ระดับ (4-DB12, ป RB6@0.15)",
+    "กำลังรับน้ำหนักเข็มที่พิมพ์บนแผ่นนี้คือ 20 ตัน/ต้น ('1-I 0.22x0.22x18.00m. รับ น.น.ปลอดภัยได้ 20ตัน/ต้น') — หน้า17 ไม่ได้ระบุค่ารับน้ำหนัก ระบุแต่ขนาดและจำนวน ทั้งสองแผ่นจึงเสริมกัน ไม่ขัดกัน",
+    "F1A เป็นฐานรากเข็มเดี่ยว: PLAN F1A ขนาด 0.40x0.40 ม. (0.20+0.20 ทั้งสองแกน) มีเข็ม I ต้นเดียวตรงกลาง สอดคล้องกับหมายเหตุหน้า17 ที่ว่า 22 หลุม = 22 ต้น"
+  ],
+  "views": [
+    "SECTION COLUMN 1:20 (ตาราง C1 3 ระดับ)",
+    "PLAN F1A",
+    "SECTION F1A 1:20"
+  ],
+  "elements": [
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "floor 2",
+      "width_mm": 150,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "เหล็กยืน 4 มุมเสา"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "0.15 x 0.15 / 4-DB12 / ป RB6@0.15",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "floor 1",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "เหล็กยืน 4 มุมเสา"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "0.20 x 0.20 / 4-DB12 / ป RB6@0.15",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "footing (ตอม่อ)",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "เหล็กยืน 4 มุมเสา"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "0.20 x 0.20 / 4-DB12 / ป RB6@0.15",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1A",
+      "element_type": "footing",
+      "width_mm": 400,
+      "depth_mm": 400,
+      "main_bar": {
+        "count": 3,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "3-DB12 ในตัวฐานราก ตามที่พิมพ์บน SECTION F1A"
+      },
+      "stirrup": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "2-RB9 รัดรอบ"
+      },
+      "printed_as": "PLAN F1A 0.40 (0.20+0.20) x 0.40 (0.20+0.20) / 3-DB12 / 2-RB9 (รัดรอบ)",
+      "lean_concrete_mm": 50,
+      "sand_bedding_mm": 100,
+      "note": "คอนกรีตหยาบ 1:3:5 หนา 0.05 ม. บนทรายหยาบบดอัด 0.10 ม.; ระดับดินเดิมหรือใต้ท้องคาน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "เข็ม_I_22x22",
+      "element_type": "pile",
+      "count": 1,
+      "width_mm": 220,
+      "height_mm": 220,
+      "length_m": 18.0,
+      "safe_capacity_ton": 20,
+      "printed_as": "1-I 0.22x0.22x18.00m. (รับ น.น.ปลอดภัยได้ 20ตัน/ต้น)",
+      "note": "ต่อ 1 ต้นต่อ 1 ฐานราก F1A",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}

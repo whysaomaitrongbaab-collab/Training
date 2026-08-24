@@ -1,0 +1,44 @@
+{
+  "png": "24",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนโครงสร้างหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า24.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_13_หน้า00_gridline.json",
+  "confidence_score": 0.65,
+  "confidence_flags": [],
+  "warnings": [
+    "This is view 2 of 2 on this page (หน้า24) — the floor-2 beam plan (view 1) is in a separate file, _view1_plan_beam_floor2.json.",
+    "This IS a structural roof-framing plan (member marks, grid refs, real steel sections printed) and is correctly classified pattern:'plan', not 'roof_plan' — per the op04 SKILL.md roof_plan trap.",
+    "The RC ring/tie beam grid (mark 'B3', full spec on หน้า25_section.json — 150x350mm, 2-DB12mm top/bottom, stirrup Ø6@0.15m) is printed on every grid line (A/B/C verticals, 1/2/3/4 horizontals) at the wall-plate level — extracted as a full beam grid identical in layout to the floor plans, using the same 12-point main grid (this sheet does not show the small overhangs/bay-windows of the floor plans, so no dummy grids beyond the main 12 points are used here).",
+    "The steel roof structure above the tie-beam grid (จันทัน/ตะเข้สัน/อกไก่/ดั้ง/ระแนง) is a hip roof converging on two ridge/king-post points along the column-B centerline. Individual purlins (@0.32-0.34m) and jack rafters (@1.00m) are recorded as ONE aggregated element each with spacing_mm, per §6a/§0.5 (spacing-based repeated members), not enumerated one-by-one. The two hip-rafter sets (4 diagonals total, one per corner) and the ridge/king-post members are recorded as aggregated type-level entries with an approximate grid_ref rather than precise coordinates for the two ridge peak points, which are not dimensioned on this sheet.",
+    "The printed section string 'ø25x25x1.6mm' for the purlin (ระแนง) uses the ø (diameter) symbol ahead of two equal numbers, which is unusual — most likely a 25x25mm light steel SQUARE tube, 1.6mm thick, with 'ø' used loosely rather than meaning a round pipe. Recorded designation as best-effort 'SHS' with the raw printed_as string kept verbatim; flagged rather than silently assumed round."
+  ],
+  "elements": [
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "B4", "grid_ref_end": "C4", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "A4", "grid_ref_end": "A3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "B4", "grid_ref_end": "B3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "C4", "grid_ref_end": "C3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "A3", "grid_ref_end": "A2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "B3", "grid_ref_end": "B2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "C3", "grid_ref_end": "C2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "A2", "grid_ref_end": "A1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "B2", "grid_ref_end": "B1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "C2", "grid_ref_end": "C1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "tie_beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "ตะเข้สัน", "element_type": "rafter", "count": 4, "grid_ref": "~corners A1/A4/C1/C4 to the two ridge peaks", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 3.2, "printed_as": "2⊏-125x50x20x3.2mm." }, "note": "hip rafters, double-channel back-to-back, one per building corner, running diagonally to the nearest ridge peak", "confidence_score": 0.55, "confidence_flags": ["aggregated; exact peak coordinates not dimensioned on this sheet"] },
+    { "element_id": "อกไก่", "element_type": "steel_member", "grid_ref": "~B, between the two ridge peaks", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 3.2, "printed_as": "2⊏-125x50x20x3.2mm." }, "note": "ridge beam", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "ดั้ง", "element_type": "steel_member", "count": 2, "grid_ref": "~B, at the two ridge peak points", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 3.2, "printed_as": "2⊏-125x50x20x3.2mm." }, "note": "king/queen posts under the two ridge peaks", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "จันทัน", "element_type": "rafter", "material": "steel", "spacing_mm": 1000, "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "tw_mm": 20, "tf_mm": 3.2, "printed_as": "⊏-100x50x20x3.2mm.@1.00m." }, "note": "common/jack rafters spanning from the wall-plate (B3 tie-beam grid) up to the hip/ridge, spaced @1.00m", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "ระแนง", "element_type": "steel_member", "material": "steel", "spacing_mm": 330, "steel_section": { "designation": "SHS", "printed_as": "ø25x25x1.6mm.@0.32-0.34m." }, "note": "roof purlins/battens for roof-sheet fixing; spacing varies 0.32-0.34m — recorded the midpoint with variable_spacing behavior described in note; designation uncertain, see file warnings", "variable_spacing": true, "confidence_score": 0.5, "confidence_flags": ["section family (round vs square tube) uncertain, see file warnings"] }
+  ]
+}

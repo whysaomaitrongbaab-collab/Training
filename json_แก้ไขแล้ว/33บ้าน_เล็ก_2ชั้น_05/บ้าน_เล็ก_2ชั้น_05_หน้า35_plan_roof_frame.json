@@ -1,0 +1,27 @@
+{
+  "png": "35",
+  "doc_page": 33,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แปลนโครงสร้างหลังคา, ขยาย1",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า35.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_05_หน้า00_gridline.json",
+  "confidence_score": 0.55,
+  "confidence_flags": ["structural steel hip-roof framing — recorded as pattern 'plan' per the op04 roof_plan/plan distinction (this sheet shows structural members with marks/callouts, not just architectural roof edges). Member SIZES/SPACING are read with high confidence from the printed leader-line callouts; exact ridge/hip endpoint grid positions are approximate — this is a diagonal roof-framing sheet with no dimension chain locating the ridge/hip intersection points, only the plan-axis eave dimensions"],
+  "warnings": [
+    "The whole roof is structural steel (no RC roof beam) — every member below uses 'steel_section' per §6a, no rebar. Grid/eave dimensions (1.00m overhang each side, x and y) recorded in the grid master.",
+    "Ridge ('อกไก่') and hip ('ตะเข้สัน') endpoints are read approximately off the drawn diagonal lines against the background grid — the sheet gives no printed dimension for exactly where the ridge sits (only the two small square node markers on the drawing, roughly between rows D-C near grid2-3). This is a genuine sheet limitation, not a reading shortcut: there is nothing else printed to resolve it more precisely.",
+    "A 'ตะเข้รางเหล็ก' (valley rafter) callout is printed alongside the hip callouts even though the plan footprint here is a simple rectangle (no re-entrant corner that would need a true valley) — most likely this spec is a shared boilerplate callout also used on other houses in this series with an L-shaped footprint, and does not correspond to a distinct visible valley line on this house's roof. Recorded the spec (in case a valley condition exists that this reading missed) but flagged low confidence on its applicability.",
+    "Common rafters ('จันทัน', @1.00m) and purlins ('แปสำเร็จรูป', spacing per manufacturer standard — no numeric spacing printed) are spacing-based repeated members per §6a, recorded once each rather than individually gridded, consistent with how purlins are handled project-wide.",
+    "'เหล็กหางปลา' (fishtail anchor plate, 50x300x6mm, embedded in the RC ring beam) is the rafter-to-ring-beam connection detail shown in the 'ขยาย1' (detail 1) inset at 1:20 — recorded as a connection_detail, not a framing member."
+  ],
+  "elements": [
+    { "element_id": "อกไก่", "element_type": "beam", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 65, "tw_mm": 6, "tf_mm": 8, "printed_as": "อกไก่เหล็ก 2⊏-125x65x6x8มม. (นน.13.4 กก./ม.)" }, "material": "steel", "grid_ref": "~D2-C3", "confidence_score": 0.45, "confidence_flags": ["ridge position approximate, no printed dimension — see file warnings"] },
+    { "element_id": "ตะเข้สัน", "element_type": "beam", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 65, "tw_mm": 6, "tf_mm": 8, "printed_as": "ตะเข้สันเหล็ก 2⊏-125x65x6x8มม. (นน.13.4 กก./ม.)" }, "material": "steel", "count": 4, "grid_refs": ["~E1", "~E4", "~A1", "~A4"], "confidence_score": 0.45, "confidence_flags": ["hip rafters, one per building corner, running to the ridge — endpoint positions approximate"] },
+    { "element_id": "ตะเข้ราง", "element_type": "beam", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "ตะเข้รางเหล็ก2⊏-125x50x20x3.2มม. (นน.6.13 กก./ม.)" }, "material": "steel", "confidence_score": 0.3, "confidence_flags": ["callout printed but no distinct valley condition visible on this house's rectangular footprint — see file warnings, applicability uncertain"] },
+    { "element_id": "จันทัน", "element_type": "rafter", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "จันทันเหล็ก ⊏-125x50x20x3.2มม. (นน.6.13 กก./ม.)@1.00ม." }, "material": "steel", "spacing_mm": 1000, "confidence_score": 0.65, "confidence_flags": ["spacing-based repeated member, not individually gridded"] },
+    { "element_id": "แป", "element_type": "purlin", "steel_section": { "designation": "hat", "printed_as": "แปสำเร็จรูป⊓@ตามมาตรฐานผู้ผลิต" }, "material": "steel", "spacing_mm": null, "confidence_score": 0.5, "confidence_flags": ["spacing per manufacturer standard, no numeric value printed"] },
+    { "element_id": "เหล็กหางปลา", "element_type": "connection_detail", "description": "fishtail anchor plate, rafter-to-ring-beam connection, embedded in RC ring beam", "width_mm": 50, "height_mm": 300, "thickness_mm": 6, "material": "steel", "confidence_score": 0.7, "confidence_flags": [] }
+  ]
+}

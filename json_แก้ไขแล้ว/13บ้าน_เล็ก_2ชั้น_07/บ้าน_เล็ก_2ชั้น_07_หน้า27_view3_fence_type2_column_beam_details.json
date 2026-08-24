@@ -1,0 +1,53 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "architecture",
+  "sheet_code": "A-25",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 2",
+  "pattern": "section",
+  "view_title": "ขยายเสา C1 (1:20) + ขยายคานคอดิน GB (1:20)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า27.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": [
+    "view1_fence_type2_plan (_view1_fence_type2_plan.json)",
+    "view2_fence_type2_lintel_detail (_view2_fence_type2_lintel_detail.json)",
+    "view3_fence_type2_column_beam_details (this file)",
+    "view4_fence_type2_front_elevation (_view4_fence_type2_front_elevation.json)",
+    "view5_fence_type2_section (_view5_fence_type2_section.json)"
+  ],
+  "elements": [
+    {
+      "element_id": "C1_t2",
+      "element_type": "column",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "main rebar around the 4 column corners -- column exception per spec §6" },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" },
+      "printed_as": "4-Ø12, STRØ6@150",
+      "material": "concrete",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB_t2",
+      "element_type": "tie_beam",
+      "width_mm": 200,
+      "height_mm": 300,
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 9, "type": "RB" },
+        "bottom": { "count": 3, "dia_mm": 9, "type": "RB", "note": "2 เส้นตรง + 1 เส้นดัด (2 straight + 1 bent bar, BENT at L/5)" }
+      },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" },
+      "printed_as": "2-Ø9 (top), 2-Ø9+1Ø9 BENT L/5 (bottom), STR:Ø6@150",
+      "material": "concrete",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 5 views on this sheet; siblings are the plan (_view1_fence_type2_plan.json), lintel detail (_view2_fence_type2_lintel_detail.json), front elevation (_view4_fence_type2_front_elevation.json), and section (_view5_fence_type2_section.json). Combined into ONE file here (unlike รั้วแบบที่ 1's หน้า26, which split C1 and GB into two separate files) because both boxes on this sheet are BYTE-IDENTICAL repeats of หน้า26's C1/GB specs (same dimensions, same bar counts, same diameters, same spacing, same bent-bar note) -- re-verified by direct comparison, not assumed. Splitting two files that carry zero new information into two separate files would add nothing; this deliberate simplification is noted explicitly rather than silently done.",
+    "This exact repetition (C1 and GB identical between the two fence types) confirms the design office's standard: only the infill/capping system changes between รั้วแบบที่ 1 and 2, the structural frame is one shared design."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "png": "31",
+  "doc_page": 29,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานรากแผ่",
+  "pattern": "plan",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า31.png",
+  "view_title": "แปลนฐานรากแผ่",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/22บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า00_gridline.json",
+  "schema_note": "Alternate foundation system to S-03 (pile footing). This sheet, together with S-03, is the source that established dummy grid E' (1.90m before named grid E) in the shared grid master. Footing element_id = the printed size string; the column mark seated on each footing is recorded as its own element (element_type: column), same separation convention as houses #2-#4.",
+  "elements": [
+    { "element_id": "F0.60x0.60", "element_type": "footing", "count": 4, "grid_refs": ["E''1", "E''2", "A2", "A3"], "confidence_score": 0.85, "confidence_flags": ["includes_the_dummy_grid_row_E_prime_pair"] },
+    { "element_id": "F1.30x1.30", "element_type": "footing", "count": 7, "grid_refs": ["E1", "D1", "D3", "C1", "C3", "B2", "B3"], "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "F1.60x1.60", "element_type": "footing", "count": 3, "grid_refs": ["E2", "D2", "C2"], "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "F1.00x1.00", "element_type": "footing", "count": 2, "grid_refs": ["E3", "B1"], "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "C0", "element_type": "column", "count": 2, "grid_refs": ["E''1", "E''2"], "confidence_score": 0.85, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] },
+    { "element_id": "C1", "element_type": "column", "count": 12, "grid_refs": ["E1", "E2", "E3", "D1", "D3", "C1", "C3", "B1", "B2", "B3", "A2", "A3"], "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label"] },
+    { "element_id": "C2", "element_type": "column", "count": 2, "grid_refs": ["D2", "C2"], "confidence_score": 0.9, "confidence_flags": ["column_mark_paired_with_footing_at_every_point_printed_as_combined_label", "grid_ref_C2_(row_C_col_2)_and_element_id_C2_(column_mark)_are_different_namespaces_that_happen_to_share_the_letter_C"] }
+  ],
+  "confidence_score": 0.87,
+  "confidence_flags": [],
+  "warnings": [
+    "Row A has no footing/column at col1 (only col2/col3 present) -- matches the carport area shown open (no enclosing wall) on the ground-floor architectural plan (A-04).",
+    "Total footing count 16 (4+7+3+2) matches the 16 footing squares drawn on the sheet.",
+    "This sheet prints '1.90' for the gap from the C0-marked row up to named grid E; S-04 (floor-1 beam plan) prints '2.00' for what appears to be the same real edge -- resolved in the grid master as dummy grid E' at -1.90 (2 sheets, S-02+S-03, agree on 1.90 vs. S-04's single 2.00 reading)."
+  ]
+}

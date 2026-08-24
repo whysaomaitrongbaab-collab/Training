@@ -1,0 +1,21 @@
+{
+  "png": "35",
+  "doc_page": 33,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "ตารางเสา",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า35.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Only one column mark (C1) is tabulated. Table has 3 level rows (ระดับหลังคา / ระดับพื้นชั้นที่ 1 / ระดับฐานราก) but only the top two carry a drawn box+spec -- the ระดับฐานราก row is printed with no box/spec (blank), presumably because the pedestal/footing rebar is already fully specified per-footing on S-07 to S-10 (starter/dowel bars there) rather than duplicated here. Recorded as a genuinely blank row, not guessed.",
+    "This house has no separate CX (steel post) row in this table -- CX's own size/connection is fully specified structurally by its steel_section on S-04/S-05/S-17 instead of a column-table row; consistent with the sheet only tabulating the RC column C1.",
+    "'schedule' pattern used per primary_rawjson_schema.md §0.9/§1 (a titled table with its own 'แสดงแบบ: ...ตารางเสา' entry on the same physical sheet as the F15 section, hence the multi-view split from _view1)."
+  ],
+  "elements": [
+    { "element_id": "C1", "element_type": "column", "level": "ระดับหลังคา", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 }, "concrete_grade": "fc210", "spec_source": "schedule", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "C1", "element_type": "column", "level": "ระดับพื้นชั้นที่ 1", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 }, "concrete_grade": "fc210", "spec_source": "schedule", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "C1", "element_type": "column", "level": "ระดับฐานราก", "width_mm": null, "height_mm": null, "main_bar": null, "stirrup": null, "note": "table row printed with no box/spec drawn -- pedestal rebar is specified per-footing on S-07 to S-10 instead", "spec_source": "schedule", "confidence_score": 0.5, "confidence_flags": ["blank table cell, not a missing read"] }
+  ]
+}

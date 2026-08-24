@@ -1,0 +1,112 @@
+{
+  "png": "60",
+  "doc_page": 58,
+  "printed_page": 58,
+  "discipline": "electrical",
+  "sheet_code": "EE-02",
+  "sheet_name": "รายละเอียดแผงเมนสวิตช์",
+  "pattern": "schedule",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-08-02 FORMAT LOCK revision)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า60.png",
+  "drawing_no": "EE 58195",
+  "elements": [
+    {
+      "element_id": "kwh_meter",
+      "element_type": "electrical_service",
+      "description": "kWH METER 15(45)A 1 PHASE, สายเข้ามิเตอร์ 2-10 IEC 01-25mm.uPVC (นอกอาคารเดินลอย), สายเมนเข้าแผง 1-10 IEC 01-20mm.PVC",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "main_breaker",
+      "element_type": "circuit_breaker",
+      "rating": "50AT, 2P, IC 10kA",
+      "description": "เมนเบรกเกอร์แผง LP",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "branch_1_lighting",
+      "element_type": "circuit_breaker",
+      "rating": "16AT, 1P, IC 6kA",
+      "circuit": 1,
+      "load": "แสงสว่าง",
+      "wire": "2-2.5/G2.5 IEC 01-15mm.uPVC",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "branch_2_lighting",
+      "element_type": "circuit_breaker",
+      "rating": "16AT, 1P, IC 6kA",
+      "circuit": 2,
+      "load": "แสงสว่าง",
+      "wire": "2-2.5/G2.5 IEC 01-15mm.uPVC",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "branch_3_outlet",
+      "element_type": "circuit_breaker",
+      "rating": "RCBO 16AT, 1P, IC 6kA, IΔn30mA",
+      "circuit": 3,
+      "load": "เต้ารับ",
+      "wire": "2-2.5/G2.5 IEC 01-15mm.uPVC",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "branch_4_outlet",
+      "element_type": "circuit_breaker",
+      "rating": "RCBO 16AT, 1P, IC 6kA, IΔn30mA",
+      "circuit": 4,
+      "load": "เต้ารับ",
+      "wire": "2-2.5/G2.5 IEC 01-15mm.uPVC",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "branch_5_water_heater",
+      "element_type": "circuit_breaker",
+      "rating": "RCBO 20AT, 1P, IC 6kA, IΔn30mA",
+      "circuit": 5,
+      "load": "กล่องต่อสายเครื่องทำน้ำอุ่น",
+      "wire": "2-4/G2.5 IEC 01-15mm.uPVC",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "branch_6_water_heater",
+      "element_type": "circuit_breaker",
+      "rating": "RCBO 20AT, 1P, IC 6kA, IΔn30mA",
+      "circuit": 6,
+      "load": "กล่องต่อสายเครื่องทำน้ำอุ่น",
+      "wire": "2-4/G2.5 IEC 01-15mm.uPVC",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "branch_7_10_spare",
+      "element_type": "circuit_breaker",
+      "description": "ว่าง (spare, circuits 7-10, no breaker installed)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ground_rod",
+      "element_type": "grounding",
+      "description": "หลักดินแท่งเหล็กทองแดงบอนด์ ขนาด ø14.2มม. ยาว 2.40ม.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "note": "RCBO หมายถึง เซอร์กิตเบรกเกอร์ชนิดมีเครื่องตัดไฟรั่วในตัว",
+  "confidence_score": 0.87,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 13, Stage-2 SN-EE-M agent). Panel LP is single-phase, 10-way, 6 of 10 ways used: circuits 1-2 = lighting (confirmed on EE-03/EE-04 as '1/LP' ground-floor and '2/LP' upper-floor lighting home-run tags), 3-4 = outlets ('3/LP' ground floor on EE-05, '4/LP' upper floor on EE-06), 5-6 = water-heater junction boxes ('5/LP' ground floor on EE-05, '6/LP' upper floor on EE-06) -- i.e. each floor gets its own lighting/outlet/water-heater circuit, unlike house #10's smaller single-story 6-way panel which had only one of each. Circuits 7-10 spare.",
+    "element_type values 'circuit_breaker'/'electrical_service'/'grounding' are not in schema §0.4's core reuse list -- reused from houses 08/09's precedent (both already use this exact vocabulary for panel-schedule sheets) rather than inventing a third spelling, flagged per §0.4's instruction to note when a new-to-the-core-list value is introduced.",
+    "Main breaker 50AT,2P matches this house's larger 6-active-circuit load (vs house #10's 50AT single-story 3-circuit panel) despite the same main-breaker rating -- sized for the panel's 2-floor circuit count, not just present load."
+  ]
+}

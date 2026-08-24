@@ -1,0 +1,117 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า17.png",
+    "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า18.png",
+    "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า19.png",
+    "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า21.png",
+    "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า04.png",
+    "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า15.png"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: '(026) บ้านพู่ระหง' — 'แบบบ้านยิ้มเพื่อประชาชน' series, สำนักการโยธา กรุงเทพมหานคร (same series/program as houses already in the dataset e.g. 024/028 ธรรมรักษา). Small 2-story house, single-span 3x3 column grid (7.80x7.80m main bay), all-steel hip roof (จันทัน C-100x50x20x2.3mm@1.00m, ระแนงสำเร็จรูป@0.32-0.34m, ตะเข้สัน/สัน 2C-150x50x20x3.2mm) over an RC frame.",
+    "Dummy row A' (0.50m north of grid A) is required by a real beam endpoint: beams B2 and CB3 on the ground-floor beam plan (S-02/หน้า18) form a small kitchen bump-out that projects north of the main A-B-C bay. Position 0.50m is printed identically on both the structural sheet (S-02) and the architectural ground-floor plan (A-03/หน้า04).",
+    "Dummy column 1' (~2.25m east of grid 1) is required by a real beam endpoint: an interior 'B1' beam on both S-02 floor plans (หน้า18) separates the stairwell/duct void from the adjacent room, and does not sit on any main grid line. NO sheet in this house's structural set prints a horizontal dimension for this interior line. Position 2.25m is carried over from the architectural stair detail (A-14/หน้า15, ground-floor stair-expansion plan), which prints '9 ลูกนอนๆ@0.25=2.25ม.' as the stair run starting at grid 1 — the best available evidence, but it is a cross-sheet inference, not a value printed on any structural sheet itself. Recorded with a lowered per-line confidence_score (0.35) and flagged here rather than silently guessing or dropping the beam (per the beam-endpoint rule).",
+    "S-02 (หน้า18) prints a second, unrelated horizontal dimension west of grid 1: '0.50' then a separate parallel '1.50' (not additive/chained — confirmed two independent dimension lines by comparing tick-mark pairs). The architectural ground-floor plan (A-03/หน้า04) prints the same '0.50' but its second dimension reads '1.80', not '1.50' — a genuine discrepancy between the structural and architectural sheets for what appears to be the same ซักล้าง (wash area) extension west of grid 1. Neither figure lands on a beam endpoint (the ซักล้าง/ที่จอดรถ appendage west of grid 1 is a slab-on-grade 'GS' area per DETAIL GS on S-04, with only minor B0 tie-beams of unresolved exact position around door openings) so no dummy grid was created for either reading; both numbers are recorded in unassigned_dimensions and this conflict is flagged per the standing precedence rule (never silently pick one) rather than resolved, since the appendage is architectural, not part of the main structural bay.",
+    "Roof-frame plan (S-03/หน้า19) prints a full-perimeter 1.30m eave overhang beyond all four sides of the main 7.80x7.80 grid box (จันทัน rafters cantilever past grid 1/3/A/C). No discrete beam mark terminates at the overhang edge (B9/B1 roof-level ties all land on the main grid or on dummy A'); rafters/purlins are spacing-based repeated members with no individual grid_ref, matching the established precedent (house 12/024) of not inventing a dummy grid for a repeating member's reach. Recorded as 4 unassigned_dimensions entries instead.",
+    "op04 scope note: z_levels is sparse (only the ±0.00 site datum from the F1/F2 pile sections on S-05/หน้า21) because op04 does not extract elevation/section (side_profile) sheets, which is where this house's full floor-level chain (+0.50 ground floor, +3.70 upper floor per the A-14 stair section) is actually printed. This is a known, deliberate scope limitation, not a missed read — see _scope.json.",
+    "Pile length is printed as '0.18x0.18x16.00m.' (SAFE LOAD 15 T./PILE) identically on both the F1 and F2 detail sections (S-05/หน้า21), re-verified at 4x zoom on the digit string. 16.00m is unusually long for a 180x180mm precast pile on a small 2-story house but is legible and consistent across both callouts, so it is transcribed as printed rather than 'corrected' to a more typical 6.00m."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "1'", "pos_m": 2.25, "type": "dummy", "confidence_score": 0.35, "confidence_flags": ["position not printed on any structural sheet; carried over from architectural stair-run dimension on A-14/หน้า15 — see file warnings"] },
+      { "id": "2", "pos_m": 3.90, "type": "named" },
+      { "id": "3", "pos_m": 7.80, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A'", "pos_m": -0.50, "type": "dummy" },
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 3.90, "type": "named" },
+      { "id": "B'", "pos_m": 5.85, "type": "dummy", "confidence_score": 0.3, "confidence_flags": ["position estimated as the visual B-C midpoint; not printed on any sheet — introduced only because beam CB5 (S-02/หน้า18) T-intersects the interior 1' partition line and, per the beam-endpoint/beam-bears-on-beam split rule, that intersection needs a name. See file warnings on หน้า18_view1_plan_beam_floor1.json"] },
+      { "id": "C", "pos_m": 7.80, "type": "named" }
+    ],
+    "z_levels": [
+      { "id": "ระดับดินเดิม", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า21.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า17.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.90 },
+          { "from": "2", "to": "3", "value_m": 3.90 },
+          { "from": "1", "to": "3", "value_m": 7.80 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า17.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.90 },
+          { "from": "B", "to": "C", "value_m": 3.90 },
+          { "from": "A", "to": "C", "value_m": 7.80 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า18.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.90 },
+          { "from": "2", "to": "3", "value_m": 3.90 },
+          { "from": "1", "to": "3", "value_m": 7.80 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า18.png",
+        "segments": [
+          { "from": "A'", "to": "A", "value_m": 0.50 },
+          { "from": "A", "to": "B", "value_m": 3.90 },
+          { "from": "B", "to": "C", "value_m": 3.90 },
+          { "from": "A", "to": "C", "value_m": 7.80 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า19.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.30 },
+          { "from": "1", "to": "2", "value_m": 3.90 },
+          { "from": "2", "to": "3", "value_m": 3.90 },
+          { "from": "1", "to": "3", "value_m": 7.80 },
+          { "from": "3", "to": "edge", "value_m": 1.30 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า19.png",
+        "segments": [
+          { "from": "edge", "to": "A", "value_m": 1.30 },
+          { "from": "A", "to": "B", "value_m": 3.90 },
+          { "from": "B", "to": "C", "value_m": 3.90 },
+          { "from": "A", "to": "C", "value_m": 7.80 },
+          { "from": "C", "to": "edge", "value_m": 1.30 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 0.50, "label": "wall/eave face offset west of grid 1 (ground floor beam plan)", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า18.png", "note": "no beam lands here; GS slab-on-grade appendage only" },
+      { "value_m": 1.50, "label": "second, non-additive dimension further west of grid 1 (structural sheet reading)", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า18.png", "note": "architectural sheet (A-03/หน้า04) prints 1.80 for what appears to be the same feature — genuine cross-sheet discrepancy, see file warnings; not used for any grid_ref" },
+      { "value_m": 1.80, "label": "ซักล้าง (wash area) extension west of grid 1, per architectural ground-floor plan", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า04.png", "note": "conflicts with structural sheet's 1.50 reading for the apparently-same feature — see file warnings" },
+      { "value_m": 0.50, "label": "wall/eave face offset east of grid 3 (ground floor beam plan)", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า18.png", "note": "no beam lands here" },
+      { "value_m": 0.50, "label": "wall/eave face offset south of grid C (ground floor beam plan)", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า18.png", "note": "no beam lands here" },
+      { "value_m": 1.30, "label": "roof eave overhang west of grid 1", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า19.png", "note": "rafter cantilever, spacing-based member — no dummy grid, see file warnings" },
+      { "value_m": 1.30, "label": "roof eave overhang east of grid 3", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า19.png", "note": null },
+      { "value_m": 1.30, "label": "roof eave overhang north of grid A", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า19.png", "note": null },
+      { "value_m": 1.30, "label": "roof eave overhang south of grid C", "source_image": "image/บ้าน_เล็ก_2ชั้น_14/บ้าน_เล็ก_2ชั้น_14_หน้า19.png", "note": null }
+    ]
+  }
+}

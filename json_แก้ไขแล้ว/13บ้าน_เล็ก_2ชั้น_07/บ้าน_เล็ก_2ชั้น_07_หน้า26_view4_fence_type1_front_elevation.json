@@ -1,0 +1,44 @@
+{
+  "png": "26",
+  "doc_page": 24,
+  "discipline": "architecture",
+  "sheet_code": "A-24",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 1",
+  "pattern": "section",
+  "view_title": "รูปด้านหน้า -- fence type 1 front elevation, 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า26.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": [
+    "view1_fence_type1_plan (_view1_fence_type1_plan.json)",
+    "view2_fence_type1_column_c1_detail (_view2_fence_type1_column_c1_detail.json)",
+    "view3_fence_type1_tie_beam_gb_detail (_view3_fence_type1_tie_beam_gb_detail.json)",
+    "view4_fence_type1_front_elevation (this file)",
+    "view5_fence_type1_section (_view5_fence_type1_section.json)"
+  ],
+  "elements": [
+    { "element_id": "fence_picket", "element_type": "railing_component", "printed_as": "เหล็ก ⌀ 3/4\"x3/4\" LG. ปลายตัด 45 องศา @ 15 ซม.", "description": "steel square-tube picket, 3/4x3/4 inch, ends cut 45°, spaced @15cm", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "fence_top_rail", "element_type": "railing_component", "printed_as": "เหล็ก ⌀ 3/4\"x3/4\" LG.", "description": "steel square-tube top rail, same 3/4x3/4 inch section", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "C1_elevation_ref", "element_type": "column", "count": 2, "description": "two C1 columns shown, spaced 'ระยะไม่เกิน 3.00 ม.' apart, cap detail 0.40 wide tapering to 0.30", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "GB_elevation_ref", "element_type": "tie_beam", "description": "GB shown running between columns at grade", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "base_plate_F_elevation", "element_type": "connection_detail", "description": "base plate 'F' at the foot of each column, matching view1's plan callout", "confidence_score": 0.75, "confidence_flags": [] },
+    {
+      "element_id": "fence_height_dims",
+      "element_type": "dimension_chain",
+      "segments_m": [0.15, 1.35, 0.10, 0.10, 0.10, 0.20],
+      "total_m": 2.00,
+      "grouped_segments_m": [0.20, 0.40, 0.30],
+      "grouped_total_m": 0.90,
+      "printed_as": "2.00 (=0.15+1.35+[GB zone]+0.20); 0.90 (=0.20+0.40+0.30, sharing the 0.20 tick with the chain above)",
+      "description": "Total height above grade 2.00m (cap 0.15 + exposed column shaft 1.35 + a 3-part 0.10/0.10/0.10 sub-breakdown of the GB zone + 0.20 down to footing top). Below-grade: 0.90m (0.20 shared riser + 0.40 + 0.30).",
+      "confidence_score": 0.7,
+      "confidence_flags": ["the_three_0.10_sub-segments_were_visually_overlapping_in_the_source_scan_-_resolved_by_arithmetic_(0.15+1.35+0.30+0.20=2.00_exact,_and_0.30_independently_matches_view3's_own_GB_depth_of_300mm)_rather_than_a_fully_clean_visual_read_of_each_individual_tick;_flagged_honestly_rather_than_presented_as_a_certain_read"]
+    }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 5 views on this sheet; siblings are the plan (_view1_fence_type1_plan.json), column C1 detail (_view2_fence_type1_column_c1_detail.json), tie-beam GB detail (_view3_fence_type1_tie_beam_gb_detail.json), and section (_view5_fence_type1_section.json).",
+    "The height-ladder's GB-zone sub-breakdown (read as three 0.10m segments totalling 0.30m) independently matches view3's GB cross-section depth (300mm) exactly -- a strong consistency check that resolved an otherwise ambiguous close-up read (see the dimension element's own confidence_flags for the honest account of how this was resolved).",
+    "This fence's picket spec (3/4\"x3/4\" LG, 45° cut, @15cm) uses a SMALLER picket than หน้า25's house gate (1\"x1\") -- a genuine, deliberate difference between the two components, not a transcription inconsistency."
+  ]
+}

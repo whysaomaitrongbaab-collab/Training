@@ -1,0 +1,81 @@
+{
+  "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า24.png",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "แบบขยายพื้น S1 / S0 + จุดต่อ",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า24.png",
+  "confidence_score": 0.7,
+  "confidence_flags": [],
+  "warnings": [
+    "ชุดแบบนี้ไม่พิมพ์รหัสแผ่น (A-xx/S-xx) ที่ใดเลยทั้งเล่ม และไม่มีหน้าสารบัญ — sheet_code เป็น null ทุกไฟล์ ระบุแผ่นด้วยชื่อแบบที่พิมพ์ใต้รูปแทน",
+    "S1 เป็นพื้นหล่อกับที่หนา 0.10 ม. เหล็ก RB9@0.20 มีคานซอย (rib) ระยะประมาณ 0.50 ม. — แบบพิมพ์ ≈0.50 (มีสัญลักษณ์ประมาณ) จึงบันทึกเป็นค่าประมาณและปักธง ไม่ใช่ค่าแน่นอน",
+    "S0 เป็นพื้นวางบนดิน 0.10 + 0.10 (สองชั้นระยะ) บนทรายหยาบบดอัดแน่น เหล็ก RB9@0.20",
+    "แบบขยายรอยต่อพื้นกับระเบียง ยืนยันว่าพื้นภายในเป็น 'พื้นสำเร็จรูป' ส่วนพื้นระเบียงเป็น S1 หล่อกับที่ — สอดคล้องกับลูกศร 'แสดงทิศทางการวางพื้นสำเร็จรูป PLANK' บนหน้า18/หน้า19",
+    "แบบขยายจุดที่มีหลังคาคลุมล่างติดผนังใช้เหล็กรูปพรรณ (ตัว C) เชื่อมกับเหล็กเดือย DB12 มม.@1.50 ม. และ DB12 มม.@1.00 ม. — เป็นจุดต่อเหล็กกับคาน คสล."
+  ],
+  "views": [
+    "SECTION S1",
+    "SECTION S0",
+    "SECTION-1 (ตามแบบโครงสร้างชั้นล่าง)",
+    "แบบขยายจุดที่มีหลังคาคลุมล่างติดผนัง",
+    "แบบขยายรอยต่อพื้นกับระเบียง"
+  ],
+  "elements": [
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 200,
+        "note": "RB9@0.20 พิมพ์ 3 จุดบนหน้าตัด"
+      },
+      "rib_spacing_m": 0.5,
+      "rib_spacing_printed_as": "≈0.50",
+      "printed_as": "0.10 หนา / RB9@0.20 / คานซอย ≈0.50",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "rib_spacing_printed_as_approximate"
+      ]
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 200
+      },
+      "printed_as": "0.10 + 0.10 / RB9@0.20 / ทรายหยาบบดอัดแน่น",
+      "note": "พื้นวางบนดิน",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SECTION-1_ขอบพื้นคาน",
+      "element_type": "connection_detail",
+      "printed_as": "RB9@0.10 / RB6@0.20 / 0.10 (ตามแบบโครงสร้างชั้นล่าง)",
+      "note": "จุดต่อขอบพื้นกับคาน อ้างอิงหมายเลขวงสามเหลี่ยม ① บนหน้า18",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จุดหลังคาคลุมล่างติดผนัง",
+      "element_type": "connection_detail",
+      "printed_as": "DB12 มม.@1.50 ม. / DB12 มม.@1.00 ม. / รอยเชื่อมเหล็กรูปพรรณ (ตัว C) / คาน 0.30",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "รอยต่อพื้นกับระเบียง",
+      "element_type": "connection_detail",
+      "printed_as": "ผิวพื้น / พื้นสำเร็จรูป / พื้นระเบียง S1 / เหล็กพื้นเสียบไว้ก่อนเทพื้น / คาน",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    }
+  ]
+}

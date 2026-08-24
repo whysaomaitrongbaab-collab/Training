@@ -1,0 +1,91 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
+    "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า21.png",
+    "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า22.png"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block reads 'บ้านวิถีใหม่สำหรับผู้สูงวัย บ้านผู้สูงวัย (ขนาดเล็ก)' (New Normal elderly house, SMALL size), standard design STD-S-65021 from กรมโยธาธิการและผังเมือง, dated 29 กันยายน 2565. This is the small sibling of the design series already in the dataset as house 26 (บ้าน_เล็ก_1ชั้น_07 = STD-S-65023, 'ขนาดใหญ่'/large) — same series, different size code, 11 structural sheets (S-01..S-11) instead of 14.",
+    "Main footprint is a single rectangle grid 1-2 (x, 4.50m) x A-D (y, 8.50m), with a dummy column at x=2.375 (named '1\"' below) carrying a mid-span footing/beam split confirmed on both the footing plan (S-02) and the floor beam plan (S-03, beam B2 visibly splits into two segments at this line on every row A/B/C).",
+    "A small accessible-bathroom appendage (element_type 'slab' markers SR x3, S2, SX; beam marks BR1/BR2) projects west of grid 1 and south of grid D, per S-02 (footing plan) and S-03 (floor beam plan). Its west wall sits 1.725m west of grid 1 (named \"1'\" below, negative pos_m per the origin rule) and its south wall sits 1.725m south of grid D (named \"D'\" below). Both offsets are cross-confirmed twice: once via the F1/F1 footing spacing + F2 footing's own offset from grid1 on S-02, and independently via the BR2 ring-beam elevation on S-08 which draws ONE continuous 3.225m beam split '1.50 + 1.725' — exactly C-to-D (1.50) plus D-to-D' (1.725). High confidence.",
+    "Dummy-grid naming judgment call: per §4's origin rule a dummy line west of the leftmost main grid is conventionally still named with grid 1's prime (e.g. the spec's own example '{id:\"1'\",pos_m:-0.80}'), but this house ALSO has a genuine dummy at x=2.375 which by the ordinary 'name after the grid to its left' rule would independently also be '1\\''. Both cannot hold the same id in one file. Resolved by reading order (x increases left to right): the more-westerly line (before the origin, pos_m=-1.725) keeps the spec's own before-origin example name \"1'\"; the mid-span line (pos_m=2.375, between grid 1 and grid 2) is named \"1\\\"\" (second prime) instead of the 'expected' first prime. This is a deliberate, documented deviation from the plain 'attach to the grid on your left' wording because that wording has no answer for a dummy with no grid at all to its left — flagging per the standing order rather than silently picking one.",
+    "F2 footing (spread-footing plan, S-02, at row C) is drawn on the \"1'\" dummy line's own x-position, but with an additional small '0.175' sub-dimension between the row-C construction line and F2's own centerline, written with vertical (Y-axis-style) text like the main dimension chain. Read as the pedestal (ตอม่อ) inside footing F2 sitting 0.175m SOUTH of grid C (a footing/pedestal eccentricity), not as a separate grid line — no beam endpoint depends on this finer offset (BR1's own C-row segment springs cleanly from the C line itself), so per the beam-endpoint rule no dummy grid was created for it. Recorded as a confidence_flag on the F2 element instead of a grid entry. Flagging the alternative reading (a genuine small y-dummy at C+0.175) as a real possibility if a higher-resolution re-pass disagrees.",
+    "z_levels[] is empty: no printed '+X.XX' elevation value was found anywhere in the S-01..S-11 structural set extracted for op04. The column tables and column-rebar-spacing details (S-05/S-10/S-11) print level ROW LABELS ('ระดับอะเส' = tie-beam level, 'ระดับพื้นชั้น 1' = floor-1 level) with no attached numeric value; the architectural elevation/section sheets that would normally carry ±0.00/+0.60 etc. are A-series and out of op04's scope.",
+    "No soil_boring_log sheet in this set (op04 subtask absent — matches the sibling house 26, this design series appears not to include one), and no dedicated plan_column sheet — columns/pedestals appear only as marks on the footing plan (S-02) and in the column schedule tables (S-05/S-10/S-11), which is the expected/common case per op04's own note.",
+    "Roof framing (S-04, แปลนโครงหลังคา) is a genuine structural plan (steel ridge/purlins/rafters with grid positions) and is extracted as pattern:\"plan\" (plan_beam scope) per the roof_plan trap rule, not skipped as roof_plan.",
+    "S-04's rafter ('จันทันเหล็ก') spacing is printed only as '@ระยะตามแบบ' (spacing per this drawing / scaled, no numeric callout) — three rafter positions ARE grid-dimensioned (grid 1, the 2.375 dummy, grid 2), but the drawing also shows one additional un-dimensioned intermediate rafter line in each of the two bays (1-1.375-ish and 1.375-ish-2), roughly at each bay's midpoint. Recorded the three dimensioned rafters with full confidence and flagged the two intermediate ones as approximate/unresolved position rather than inventing a precise pos_m for them — see the roof plan file's own warnings."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "1'", "pos_m": -1.725, "type": "dummy", "confidence_flags": ["west wall of the accessible-bathroom appendage (BR2 beam, F2/F1 footings) — see grid master warnings for naming rationale"] },
+      { "id": "1\"", "pos_m": 2.375, "type": "dummy", "confidence_flags": ["mid-span column/footing/beam split within the main 1-2 bay — see grid master warnings for naming rationale"] },
+      { "id": "2", "pos_m": 4.50, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 3.00, "type": "named" },
+      { "id": "C", "pos_m": 7.00, "type": "named" },
+      { "id": "D", "pos_m": 8.50, "type": "named" },
+      { "id": "D'", "pos_m": 10.225, "type": "dummy", "confidence_flags": ["south wall of the accessible-bathroom appendage — see grid master warnings"] }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
+        "segments": [
+          { "from": "1", "to": "1\"", "value_m": 2.375 },
+          { "from": "1\"", "to": "2", "value_m": 2.125 },
+          { "from": "1", "to": "2", "value_m": 4.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "D", "value_m": 1.50 },
+          { "from": "A", "to": "D", "value_m": 8.50 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.725 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
+        "segments": [
+          { "from": "D", "to": "D'", "value_m": 1.725 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า26.png",
+        "segments": [
+          { "from": "C", "to": "D", "value_m": 1.50 },
+          { "from": "D", "to": "D'", "value_m": 1.725 },
+          { "from": "C", "to": "D'", "value_m": 3.225 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 0.175, "label": "F2 footing pedestal offset south of grid C (see grid master warnings)", "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png", "note": "footing/pedestal eccentricity, not a beam-endpoint-driven grid line" },
+      { "value_m": 0.60, "label": "roof ridge/eave overhang beyond grid A (S-04, แปลนโครงหลังคา)", "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า22.png", "note": "roof overhang past the A wall line; no beam mark of its own besides the ridge member" },
+      { "value_m": 2.87, "label": "SR/S2 divider beam (vertical BR1, row C-D) to grid 2 (S-03 plan)", "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า21.png", "note": "NOT B4's span — B4 runs the full D1-D2 = 4.50 (both leaders land on columns). This dimension places the SR/S2 divider at 4.50 − 2.87 = 1.63m east of grid 1, which a pixel scan of the PNG confirms is the divider beam's own centreline (1.63 ± 0.06). Left as an unassigned dimension rather than a dummy x_line because a third dummy between grid 1 and 1\" needs a naming ruling first — see this file's dummy-grid-naming warning and the plan_beam file warnings" }
+    ]
+  }
+}

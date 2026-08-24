@@ -1,0 +1,86 @@
+{
+  "png": "34",
+  "doc_page": 32,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แปลนโครงสร้างหลังคา, ขยาย 1",
+  "pattern": "roof_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า34.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "view_title": "แปลนโครงสร้างหลังคา 1:100 (จันทันเหล็ก+แปเหล็ก บนกริด E-D-C-B-A x 1-2-3) พร้อมขยาย 1 (จุดต่อจันทันเหล็กกับเสาคอนกรีตด้วยเหล็กหางปลา) 1:20",
+  "elements": [
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150, "b_mm": 50, "lip_mm": 20, "t_mm": 3.2,
+        "unit_weight_kg_per_m": 6.76,
+        "printed_as": "จันทันเหล็ก ⊏150x50x20x3.2 มม (นน. 6.76 กก/ม)"
+      },
+      "grid_refs": ["1", "2", "3"],
+      "count": 3,
+      "grid_ref_start": "E", "grid_ref_end": "A",
+      "span_length_m": 10.70, "span_source": "grid_table",
+      "note": "เหล็กจันทันวิ่งเต็มความยาวตามแนวกริด 1/2/3 (แนวละ 1 เส้น รวม 3 เส้น) จากกริด E ถึงกริด A (10.70ม., ตรงกับกริดหลักในกริดมาสเตอร์ทุกระยะ 3.00/2.20/4.00/1.50 — ค่านี้คือช่วง bearing-to-bearing เท่านั้น) และยื่นเลยกริด E ขึ้นไปถึง E'(-1.50) กับยื่นเลยกริด A ลงมาถึง A'(12.20) อีกด้านละ 1.50ม. เป็นชายคาหลังคา (อ่านจากมิติ 1.50 ที่กำกับไว้เหนือ E และใต้ A บนแผ่นนี้) — RESOLVED 2026-08-05: กริดมาสเตอร์เพิ่ม E'/A' แล้วตามค่านี้ (ดู revision log ของกริดมาสเตอร์สำหรับเหตุผลการตั้งชื่อ A' ใหม่ ซึ่งไปแทนที่ A' เดิม(พื้นที่จอดรถ)ที่ต้องเปลี่ยนเป็น A'')",
+      "confidence_score": 0.85,
+      "confidence_flags": ["cantilever_tips_resolved_against_grid_master_2026-08-05_now_E_prime_and_A_prime"]
+    },
+    {
+      "element_id": "แปเหล็ก",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100, "b_mm": 50, "lip_mm": 20, "t_mm": 3.2,
+        "unit_weight_kg_per_m": 5.50,
+        "printed_as": "แปเหล็ก ⊏100x50x20x3.2 มม (นน. 5.50 กก/ม) @ 1.50 ม"
+      },
+      "spacing_mm": 1500,
+      "grid_ref_start": "1''", "grid_ref_end": "3''",
+      "note": "แปวิ่งแนวขวาง (ตั้งฉากกับจันทัน) พาดระหว่างจันทันทั้ง 3 เส้น ระยะห่างระบุ @1.50ม. และยื่นเลยกริด 1 ไปทางซ้ายถึง 1''(-1.30) กับยื่นเลยกริด 3 ไปทางขวาถึง 3''(8.30) อีกด้านละ 1.30ม. (อ่านจากมิติ 1.30 กำกับที่ขอบผังทั้งสองด้าน) เป็นชายคาหลังคาด้านสกัด — grid_ref_start/end บันทึกเป็นปลายยื่นจริง (tip-to-tip) ไม่ใช่ bearing-to-bearing เพราะ element นี้คือสเปกแปโดยรวมรวมส่วนยื่น ไม่ใช่ช่วงรับน้ำหนักช่วงเดียว — RESOLVED 2026-08-05: กริดมาสเตอร์เพิ่ม 1''/3'' แล้วตามค่านี้ (คนละจุดกับ 1'/3' เดิมของคาน B2 ที่ 1.10ม.) — ระยะห่างจริงแต่ละช่วงกริด (E-D=3.00ม./D-C=2.20ม./C-B=4.00ม./B-A=1.50ม.) ไม่ใช่ทุกช่วงหารด้วย 1.50 ลงตัว จึงมีแปเสริมปิดช่องว่างที่เหลือในบางช่วง (ดู element 'ปิดปลายแป' และ warnings) — ไม่ได้ไล่บันทึกตำแหน่งแปทีละเส้น (จำนวนเส้นจริงทั้งหมดอ่านจากภาพได้ไม่ชัดระดับพิกเซลในบางช่วง) บันทึกเป็นสเปกเดียวโดยรวมตามรูปแบบที่ใช้ในบ้านหลังอื่นของชุดข้อมูลนี้ (เทียบ บ้าน_เล็ก_1ชั้น_06 หน้า24)",
+      "confidence_score": 0.8,
+      "confidence_flags": ["cantilever_tips_resolved_against_grid_master_2026-08-05_now_1_double_prime_and_3_double_prime", "individual_purlin_line_positions_not_atomized_spec_level_entry_only"]
+    },
+    {
+      "element_id": "ปิดปลายแป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100, "b_mm": 50, "lip_mm": 20, "t_mm": 3.2,
+        "unit_weight_kg_per_m": 5.50,
+        "printed_as": "ปิดปลายแป ⊏100x50x20x3.2 มม (นน. 5.50 กก/ม)"
+      },
+      "grid_ref": "D-C",
+      "note": "แปปิดปลาย ใช้หน้าตัดเดียวกับแปเหล็กมาตรฐาน (ไม่ใช่สมาชิกคนละทิศทาง) ทำหน้าที่ปิด/รับระยะที่เหลือในช่วงกริดที่หารด้วยระยะมาตรฐาน 1.50ม. ไม่ลงตัว บนแผ่นนี้มีป้ายกำกับชัดเจนเพียงตำแหน่งเดียวคือช่วง D-C (2.20ม.) แต่ช่วง C-B (4.00ม., ก็ไม่ลงตัวพอดีเช่นกัน) อาจมีสมาชิกลักษณะเดียวกันซ้ำโดยไม่ได้ติดป้ายซ้ำตามธรรมเนียมแบบก่อสร้าง — ไม่ยืนยันจำนวนจุดที่แท้จริงทั้งหมด",
+      "confidence_score": 0.75,
+      "confidence_flags": ["likely_recurs_in_other_non-1.50m-multiple_bays_C-B_not_explicitly_labeled_there"]
+    },
+    {
+      "element_id": "เหล็กหางปลา",
+      "element_type": "connection_detail",
+      "description": "จุดต่อจันทันเหล็กกับเสาคอนกรีต (ขยาย 1, มาตราส่วน 1:20)",
+      "width_mm": 50, "height_mm": 300, "thickness_mm": 6,
+      "size_printed_as": "50x300x6.00 มม.",
+      "material": "steel",
+      "detail_ref": "ขยาย 1", "detail_scale": "1:20",
+      "note": "เหล็กหางปลา (รูปตัว Y ปลายแยกสองแฉกตามที่วาดในขยาย 1) ฝังในเสาคอนกรีต จันทันเหล็กวางพาดผ่านและเชื่อมติดกับเหล็กหางปลาตลอดแนวที่สัมผัสกัน (ไม่ใช่จุดเดียว) — สังเกตสัญลักษณ์สี่เหลี่ยมเล็กมีกากบาทซ้อนอยู่ที่ทุกจุดตัดจันทัน-กริดแถวหลักบนผังด้านบน (กริด E/D/C/B/A x 1/2/3 รวม 15 จุด) เข้าใจว่าคือจุดต่อแบบนี้ทุกจุด แต่ไม่มีป้ายกำกับยืนยันเป็นรายจุด — วงกลมประ 'ดูแบบขยาย 1' อ้างอิงจากตำแหน่งประมาณกริด ~B3 บนผัง; ขนาดเหล็กหางปลาต่างจาก บ้าน_เล็ก_1ชั้น_06 (50x350x6.00มม.) ซึ่งเป็นความแตกต่างเฉพาะบ้าน ไม่ใช่การอ่านผิด",
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "confidence_score": 0.85,
+      "confidence_flags": ["connection_count_15_inferred_from_plan_symbols_not_explicitly_labeled_per_point"]
+    }
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "โครงสร้างหลังคาเป็นเหล็กรูปพรรณเบา (C-purlin/rafter, light-gauge cold-formed steel) ไม่มีเหล็กเสริม/main_bar เลยบนแผ่นนี้ — ทุก element ใช้ steel_section ตาม §6a แทน",
+    "สัญลักษณ์หน้าตัด '⊏' (วงเล็บเหลี่ยมเปิด) หน้าเลขขนาด (เช่น '⊏150x50x20x3.2') ตีความเป็นเหล็ก C-channel แบบมีปีกพับ (lipped channel) ตามรูปแบบเดียวกับที่สเปกใช้เป็นตัวอย่างมาตรฐานใน §6a (‘C100x50x20x3.2’) — mapping คีย์เป็น d_mm/b_mm/lip_mm/t_mm ตามลำดับที่พิมพ์",
+    "GRID MASTER — REWRITTEN 2026-08-05 to record the resolution (per spec: rewrite, never delete, when a later step settles what an earlier one flagged). Original flag stood: this sheet's roof-eave cantilevers (1.30m past grid 1/3 on x, 1.50m past grid E/A on y) are a genuinely different structural system from the balcony/carport overhangs already in the grid master (1.10m at 1'/3', 2.05m at the old A'), so they could not reuse those dummy names and needed the coordinator's decision (this file only has read access to the grid master). Coordinating session verified the x-axis 1.30m and the north-side y-axis 1.50m directly against the source image, added 1''(-1.30)/3''(8.30)/E'(-1.50) as new dummy grids (no conflict with anything existing), and resolved the south-side y-axis case by the same prime-ordering rule (§4: nearer to the named grid gets the single prime) — since 12.20 (this sheet's roof eave) sits closer to grid A than the existing 12.75 (S-04's carport slab edge), 12.20 became the new A' and 12.75 was renamed to A''. Grep confirmed no element file anywhere in this house actually used 'A'' as a grid_ref value (every nearby element already used a plain/approximate ref), so the rename only touched the grid master file itself. This file's own grid_ref_start/end fields were updated accordingly (rafter tips E'/A', purlin tips 1''/3''). Full reasoning lives in the grid master's own warnings[].",
+    "ระยะห่างแปเหล็กที่พิมพ์ (@1.50ม.) เป็นค่ามาตรฐาน/ทั่วไป แต่ช่วงกริดจริงบนแนว y (3.00/2.20/4.00/1.50) ไม่ใช่ทุกช่วงเป็นจำนวนเท่าของ 1.50 พอดี (มีเพียงช่วง E-D=3.00 ที่ลงตัว 2 ช่วง และ B-A=1.50 ที่ลงตัว 1 ช่วง) จึงมีป้าย 'ปิดปลายแป' กำกับตำแหน่งที่ต้องเสริมแปปิดช่องว่างที่เหลือ อ่านได้ชัดเจนเพียงตำแหน่งเดียว (ช่วง D-C) จากภาพความละเอียดที่ได้รับ ไม่ยืนยันว่ามีจุดปิดปลายซ้ำในช่วง C-B ด้วยหรือไม่",
+    "ตัวเลขหน้าตัด/น้ำหนักทุกจุดบนแผ่นนี้ (150x50x20x3.2มม./6.76กก.ม., 100x50x20x3.2มม./5.50กก.ม., เหล็กหางปลา 50x300x6.00มม.) อ่านได้ชัดเจนระดับพิกเซลหลังขยายภาพ ความเชื่อมั่นสูงสำหรับตัวเลขเหล่านี้โดยตรง — ความไม่แน่นอนหลักของแผ่นนี้อยู่ที่ตำแหน่ง/จำนวนแปแต่ละเส้นและระยะยื่นชายคาที่ยังไม่ผูกกับกริดมาสเตอร์ ตามที่ระบุข้างต้น",
+    "ไม่พบเสาเข็ม/เสาเหล็กรับจันทันเพิ่มเติม (ต่างจากบางบ้านในชุดข้อมูลที่มี 'ละพานรับจันทันเหล็ก' หรือเสาเหล็กค้ำกลาง) บนแผ่นนี้ — จันทันทั้ง 3 เส้นวางพาดตรงบนเสาคอนกรีตที่ตำแหน่งกริดหลักโดยตรงผ่านจุดต่อเหล็กหางปลาเท่านั้น"
+  ]
+}

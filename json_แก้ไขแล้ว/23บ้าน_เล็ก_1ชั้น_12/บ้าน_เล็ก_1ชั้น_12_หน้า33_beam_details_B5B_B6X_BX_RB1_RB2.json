@@ -1,0 +1,60 @@
+{
+  "png": "33",
+  "doc_page": 31,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "B5B - B6X, BX, RB1, RB2",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า33.png",
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "scale": "1:25",
+  "warnings": [
+    "**Mark collision, not a merge:** this sheet's 'RB1'/'RB2' are small tapering REINFORCED-CONCRETE beam sections (0.15-0.20 m wide, variable/'VARY' depth, 2-Ø12mm RB main bars) — completely different members from the STEEL C-channel rafters also marked 'RB1'/'RB2' on S-04/S-05 (the carport and main-roof framing plans). Kept as separate element_ids in their own file per sheet; this is a genuine same-mark-different-member case in the source drawing, not a data-entry duplicate — flagged here rather than silently renamed.",
+    "B5B and B6/B6X are tapering beams (0.60 m deep at the wide end down to 0.27-0.33 m at the narrow end) — recorded with the wide-end height_mm and a note carrying the taper; a single height_mm cannot represent a variable-depth member exactly."
+  ],
+  "elements": [
+    {
+      "element_id": "B5B", "element_type": "beam",
+      "width_mm": 200, "height_mm": 600,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200, "printed_as": "ป6มม@0.20", "variable_spacing": true, "note": "ป6มม@0.20 ช่วงกว้าง, ป6มม@0.10 ช่วงปลายแคบ" },
+      "note": "คานเรียวลาด จาก 0.60 ม (ที่ B5A) ลาดลงเหลือ 0.27-0.33 ม (ที่ปลาย B5B)",
+      "confidence_score": 0.75, "confidence_flags": []
+    },
+    {
+      "element_id": "B6, B6X", "element_type": "beam",
+      "width_mm": 200, "height_mm": 600,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200, "printed_as": "ป6มม@0.20", "variable_spacing": true, "note": "ป6มม@0.20 ช่วงกว้าง, ป6มม@0.10 ช่วงปลายแคบ" },
+      "note": "คานเรียวลาด จาก 0.60 ม ลาดลงเหลือ 0.27-0.33 ม",
+      "confidence_score": 0.75, "confidence_flags": []
+    },
+    {
+      "element_id": "BX", "element_type": "beam",
+      "width_mm": 200, "height_mm": 400,
+      "main_bar": { "top": { "count": 4, "dia_mm": 16, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "ป6มม@0.15" },
+      "note": "คานลดระดับระหว่างพื้นภายในกับพื้นภายนอก (ระดับต่างกัน 0.40 ม)",
+      "confidence_score": 0.75, "confidence_flags": []
+    },
+    {
+      "element_id": "RB1", "element_type": "beam",
+      "element_id_printed_as": "RB1",
+      "width_mm": 200,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125, "printed_as": "ป6มม@0.125", "variable_spacing": true, "note": "ป6มม@0.125 ทั่วไป, ป6มม@0.075 ช่วงจากขอบเสาถึงระยะ 0.60 ม" },
+      "note": "คาน คสล เรียวความลึกแปรผัน (VARY) — คนละองค์อาคารกับจันทันเหล็ก RB1 บน S-04/S-05",
+      "confidence_score": 0.7, "confidence_flags": ["mark_collision_with_S-04_S-05"]
+    },
+    {
+      "element_id": "RB2", "element_type": "beam",
+      "element_id_printed_as": "RB2",
+      "width_mm": 200,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125, "printed_as": "ป6มม@0.125", "variable_spacing": true, "note": "ป6มม@0.125 ทั่วไป, ป6มม@0.075 ช่วงจากขอบเสาถึงระยะ 0.60 ม" },
+      "note": "คาน คสล เรียวความลึกแปรผัน (VARY) — คนละองค์อาคารกับจันทันเหล็ก RB2 บน S-04/S-05",
+      "confidence_score": 0.7, "confidence_flags": ["mark_collision_with_S-04_S-05"]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "กริดมาสเตอร์ (รวมทั้งหลัง)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_3ชั้น_03/บ้าน_ใหญ่_3ชั้น_03_หน้า03.png",
+    "image/บ้าน_ใหญ่_3ชั้น_03/บ้าน_ใหญ่_3ชั้น_03_หน้า04.png",
+    "image/บ้าน_ใหญ่_3ชั้น_03/บ้าน_ใหญ่_3ชั้น_03_หน้า05.png",
+    "image/บ้าน_ใหญ่_3ชั้น_03/บ้าน_ใหญ่_3ชั้น_03_หน้า06.png",
+    "image/บ้าน_ใหญ่_3ชั้น_03/บ้าน_ใหญ่_3ชั้น_03_หน้า33.png",
+    "image/บ้าน_ใหญ่_3ชั้น_03/บ้าน_ใหญ่_3ชั้น_03_หน้า34.png"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "grid": {
+    "x_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 4.50, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "3", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.50, "type": "named" },
+      { "id": "1", "pos_m": 8.00, "type": "named" }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "origin_placement": "Origin (0,0) placed at the physically topmost/leftmost NAMED grid on each axis: x-axis leftmost is A (S-02 has A left of B, 4.50m apart); y-axis topmost is grid '3' (S-02/S-03 draw '3' at the top of the page, '2' in the middle, '1' at the bottom — an unusual reverse-reading numeric axis, but the rule keys on physical position, not on numeral order)."
+  },
+  "warnings": [
+    "CROSS-DISCIPLINE GRID LABEL CONFLICT (real, confirmed against 6 sheets, not a misread): the structural sheets (S-02 หน้า33, S-03 หน้า34) letter the SHORT/horizontal axis 'A,B' (0.00/4.50m) and number the LONG/vertical axis '3,2,1' top-to-bottom (0.00/3.50/8.00m). The architecture floor-plan sheets (A-03/A-04/A-05, หน้า04-06) draw the IDENTICAL physical rectangle but number the horizontal axis '1,2' (0.00/4.50m) and letter the vertical axis 'A,B,C' top-to-bottom (0.00/3.50/8.00m) — i.e. architecture and structural completely swap which axis gets letters vs numbers, for the same building. Confirmed by matching span totals and sub-splits exactly: horizontal 4.50m both disciplines; vertical 3.50+4.50=8.00m both disciplines, same split point. Per op1 README's conflict precedence #1 ('grid geometry: structural plans win'), this grid master uses the STRUCTURAL naming (A,B horizontal / 3,2,1 vertical) as canonical for every grid_ref in this house's element files, including ones extracted from architecture sheets. TRANSLATION TABLE for any consumer cross-checking against an architecture sheet's own printed grid labels: architecture '1' (left, horiz) = canonical 'A'; architecture '2' (right, horiz) = canonical 'B'; architecture 'A' (top, vert) = canonical '3'; architecture 'B' (mid, vert) = canonical '2'; architecture 'C' (bottom, vert) = canonical '1'. This is a genuinely unusual case — houses 01-18 have not shown this pattern — flagged here rather than silently normalized so a downstream reader is not misled by a grid_ref like 'A3' assuming it means the architecture-A/architecture-3 corner (it means canonical column A × canonical row 3, i.e. architecture's own '1' × 'A' corner).",
+    "Confidence held at 0.8 rather than higher: a full beam-by-beam dummy-grid audit per spec §4's beam-endpoint rule was not exhaustively completed against every atomic beam segment on S-02/S-03/S-04 in this single extraction pass (38-page house, time-boxed run). No dummy grid is asserted here because none could be confirmed with a clearly-printed dimension chain isolating it from the two confirmed main-grid sub-splits (1.50/2.00m sub-marks were visible near grid '3' on S-02's ground-floor beam plan suggesting a possible intermediate beam line, but the exact beam it bounds and whether it recurs on S-03/S-04 could not be confirmed from the page views available) — per the standing rule against inventing a grid line without a clearly-read position, this is left OMITTED rather than guessed. Any beam segment whose endpoint could not be confidently pinned to A/B/1/2/3 in the per-sheet extraction files is marked span_source:'unresolved' with the uncertainty named there instead.",
+    "Building footprint is a single rectangle 4.50m (A-B) x 8.00m (3-2-1) on all 3 floors and at the footing/ground-beam level — confirmed consistent across A-03/A-04/A-05 (floor plans), A-06 (roof plan), S-02 (footing+ground beam plan), S-03 (floor 2/3 beam plan). No second building, no multi-building grid needed (§11a not applicable)."
+  ]
+}

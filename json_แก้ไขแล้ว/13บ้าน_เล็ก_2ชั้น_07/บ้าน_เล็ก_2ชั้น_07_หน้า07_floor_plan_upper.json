@@ -1,0 +1,156 @@
+{
+  "png": "07",
+  "doc_page": 5,
+  "discipline": "architecture",
+  "sheet_code": "A-05",
+  "sheet_name": "แปลนพื้นชั้น 2",
+  "pattern": "plan",
+  "view_title": "แปลนพื้นชั้น 2",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า07.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "นอน2",
+      "element_type": "room",
+      "count": 1,
+      "grid_ref": "E-D x 1-2 (approx)",
+      "level_m": 3.75,
+      "floor_material_no": 2,
+      "opening_ref": "1",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "นอน3",
+      "element_type": "room",
+      "count": 1,
+      "grid_ref": "E-D x 2-2.30m(approx), west part of the 2-3 span (2.30 of the 3.50 sub-split)",
+      "level_m": 3.75,
+      "floor_material_no": 2,
+      "opening_ref": "1",
+      "confidence_score": 0.83,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ช่องท่อ_upper",
+      "element_type": "accessory",
+      "count": 1,
+      "grid_ref": "~D, east side, between นอน3 and ห้องน้ำ2",
+      "description": "Small labeled pipe/duct shaft ('ช่องท่อ'), same convention as the ground floor's equivalent",
+      "confidence_score": 0.62,
+      "confidence_flags": ["element_type 'accessory' used generically per spec §0.4, same as the ground-floor ช่องท่อ"]
+    },
+    {
+      "element_id": "ห้องน้ำ2_upper",
+      "element_type": "room",
+      "count": 1,
+      "grid_ref": "E-D x east part of 2-3 span (1.20 of the 3.50 sub-split, abutting 3)",
+      "level_m": 3.65,
+      "floor_material_no": 3,
+      "opening_ref": "2",
+      "detail_ref": "A-16",
+      "description": "Toilet fixture drawn. Callout 'ห้องน้ำ ดูแบบขยาย / WC.2 / A-16' points at this room. This house has only 2 bathrooms total (WC.1 ground floor, WC.2 this floor) per the A-01 index — no WC.3.",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "โถง_upper",
+      "element_type": "room",
+      "count": 1,
+      "grid_ref": "D-C x 1-2 (approx)",
+      "level_m": 3.75,
+      "floor_material_no": 2,
+      "opening_ref": "1",
+      "description": "Contains the upper run of the main switchback stair (same physical stair as ground floor's ST.2), with 'ลง' (down) arrow. Step numbers continue from the ground floor's flight (legible range approximately 3 through 17, not confidently digit-perfect at this resolution) — consistent with one continuous stair spanning both floors.",
+      "confidence_score": 0.75,
+      "confidence_flags": ["exact_step_number_sequence_not_confidently_resolved_at_this_resolution_-_low_value_to_re-zoom_since_stair_rise/run_is_detailed_on_its_own_sheets_A-19/A-20_outside_this_agent's_assigned_range"]
+    },
+    {
+      "element_id": "ST2",
+      "element_type": "stair",
+      "count": 1,
+      "grid_ref": "D-C x 1-2, in โถง (upper)",
+      "detail_ref": "A-19",
+      "description": "Same physical stair as the ground floor's ST2 (see _หน้า06_floor_plan_ground.json) — step-numbering continuity across both floor plans indicates one continuous switchback stair. IMPORTANT DISCREPANCY, verified at 3x zoom on both sheets: this upper-floor plan's own printed callout reads 'ST.3 / A-19 บันได ดูแบบขยาย' (ST.3, not ST.2), while the SAME sheet reference A-19 is called 'ST.2' by BOTH the ground-floor plan's callout (_หน้า06, also verified at 3x zoom) AND the A-01 index (_หน้า03_index.json, 'A-19 แบบขยายบันได ST.2'). 2 marks say ST.2 vs 1 mark saying ST.3 for the identical sheet A-19 — per the standing precedence rule ('more sheets agreeing beats fewer'), element_id normalized to 'ST2' to match the majority and stay joinable with the ground-floor occurrence of the same physical stair; the minority 'ST.3' reading is preserved verbatim below rather than silently discarded.",
+      "element_id_printed_as": "ST.3",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "cross-sheet_mark_discrepancy_ST.2_vs_ST.3_for_the_same_sheet_A-19_and_same_physical_stair_-_resolved_by_majority_(2_vs_1)_per_precedence_rule,_not_independently_confirmed_by_opening_the_A-19_detail_sheet_itself_(outside_this_agent's_assigned_page_range_หน้า03-14)"
+      ]
+    },
+    {
+      "element_id": "นอน1",
+      "element_type": "room",
+      "count": 1,
+      "grid_ref": "C-B x 1-2 (approx)",
+      "level_m": 3.75,
+      "floor_material_no": 2,
+      "opening_ref": "1",
+      "confidence_score": 0.83,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แนวหลังคา_west",
+      "element_type": "roofline_reference",
+      "grid_ref": "~B, west side, near นอน1",
+      "description": "Dashed 'แนวหลังคา' (roofline) reference line — indicates the roof overhang projecting beyond this floor's exterior wall; cross-reference the roof plan (A-06, หน้า08).",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ระเบียง",
+      "element_type": "room",
+      "count": 1,
+      "grid_ref": "B-A x 1-2 (approx)",
+      "level_m": 3.65,
+      "floor_material_no": 3,
+      "opening_ref": "3",
+      "detail_ref": "A-21",
+      "description": "Balcony. Callout 'ราวกันตก ดูแบบขยาย / A-21' (guardrail detail) points here.",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "กันสาด_upper",
+      "element_type": "concrete_canopy",
+      "count": 1,
+      "grid_ref": "B-A x 2-3 (approx)",
+      "level_m": 3.65,
+      "floor_material_no": 5,
+      "opening_ref": "3",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แนวหลังคา_east",
+      "element_type": "roofline_reference",
+      "grid_ref": "~B, east side, near กันสาด",
+      "description": "Dashed 'แนวหลังคา' (roofline) reference line, east side, matching the west-side occurrence",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "doors_and_windows_summary",
+      "element_type": "door_window_reference",
+      "count": null,
+      "grid_ref": null,
+      "description": "Same 3-symbol convention as the ground floor plan (room-tag circled numbers = opening_ref, hexagon tags = window references up to at least '5', frequent small triangle 'flag' symbols at door swings) — see _หน้า06_floor_plan_ground.json's equivalent element for the full description. Not re-itemized here.",
+      "confidence_score": 0.48,
+      "confidence_flags": [
+        "needs_human_review_zoom_required",
+        "door_window_schedule_sheet_(A-14)_outside_this_agent's_assigned_page_range"
+      ]
+    }
+  ],
+  "confidence_score": 0.77,
+  "confidence_flags": [],
+  "warnings": [
+    "This is the 2nd-floor plan sheet (A-05, แปลนพื้นชั้น 2) — ground floor is _หน้า06_floor_plan_ground.json, roof plan is _หน้า08_roof_plan.json (not yet read at time of writing this file).",
+    "Resolves the ground-floor material-list cross-check flagged earlier: all 3 bedrooms (นอน1/นอน2/นอน3) are on this upper floor, using floor_material_no 2 (พื้นปูไม้ปาร์เก้) as the A-01 material list's item [2] describes — ground floor genuinely has none.",
+    "GRID-RELEVANT (reporting only, master file NOT edited): top dimension chain again reads 1.10 | 3.50 | 3.50 | 1.10 (bracket 7.00) — a further (4th) independent confirmation of dummy grids 1' and 3', plus a new sub-split '2.30 | 1.20' of the grid2-3 span (นอน3 width + ห้องน้ำ2 width). Left dimension chain: 1.50 (north of gridE, matching the ground floor's own 1.50 at the same edge) | 10.70 bracket E-A (3.00+2.20+4.00+1.50, matching the grid master exactly) | 1.50 (south of gridA, DIFFERENT from the ground floor's 2.05 at the same edge). This confirms the grid master's own note that dummy grid A' (12.75 = gridA+2.05) is a GROUND-FLOOR-ONLY feature (the carport/entry slab extension, sourced from S-04 only) — this floor's balcony (ระเบียง/กันสาด) only reaches gridA+1.50=12.20, short of A', and does not need or contradict that dummy grid.",
+    "MOST NOTABLE FINDING ON THIS SHEET: a genuine cross-sheet mark discrepancy on the main stair's detail-sheet callout, ST.2 vs ST.3 for the same sheet A-19 — see the ST2 element above for full detail and resolution (majority rule, 2 marks vs 1). Flagged prominently per the task's standing instruction to surface anything contradicting other sheets.",
+    "Section-cut callout arrows '1/A-11' and '2/A-12' repeat at both north and south edges of this sheet (same convention as the ground floor), matching grid positions consistent with the ground-floor sheet's own callouts. Not re-itemized as elements here.",
+    "Room layout/names/levels closely resemble sister house #1's (บ้าน_เล็ก_2ชั้น_01) equivalent A-05 sheet, already flagged on the site plan file."
+  ]
+}

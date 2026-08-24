@@ -1,0 +1,34 @@
+{
+  "png": "16",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนคานพื้นชั้นล่าง",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_15_หน้า00_gridline.json",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "views[]: this page (หน้า16) carries 2 views — view1 (separate file, _view1_plan_footing.json) = column/footing plan; view2 (this file) = ground-floor beam plan.",
+    "Perimeter verticals at grid 1 and grid 4 (mark 'B1') run the full A-to-B span with no mid-split, since no column sits at the 2.25m midpoint on those two lines (the beam-splitting rule §5 only triggers at a column/grid intersection). All other spans (B4 rows, B2/B2'/B3 stairwell members) DO split at the dummy mid-row A'' because a real beam (B4/B3 itself) terminates there.",
+    "The stairwell bay (grid2-grid3) uses its own local marks B2 (upper half, A to A''), B2' (lower half, A'' down to a locally-marked point labelled 'Cx' on the drawing) and B3 (the two horizontal headers, at A'' and at the Cx level). 'Cx' has no printed dimension on this sheet or S-02 tying it to the main grid — it is visually just above row B, close to the stair landing detail on the (out-of-scope) A-11 stair sheet. Recorded the Cx-level members' grid_ref using row B as the nearest confirmed grid line, flagged low confidence rather than inventing a precise offset.",
+    "'GS' (2 occurrences, top-right and bottom-left of the plan) sits inside the slab-only canopy overhangs beyond row A and beyond row B (1.20m / 1.40m, see grid-master unassigned_dimensions) — no beam label or column at its corners, so no dummy grid was created for it per the dummy-grid rule; its own grid_ref below is approximate ('~' prefixed).",
+    "An 'SB' leader/callout sits over the B4 beam near grid2, row A, pointing to the expansion-joint detail defined on S-03 (หน้า18) — recorded as an element there (matching the precedent set by this same detail on other houses in this series), not repeated as a separate plan element here."
+  ],
+  "elements": [
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 4.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A4", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A''2", "span_length_m": 2.25, "span_source": "grid_table", "note": "left stairwell flank, upper half", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A''2", "grid_ref_end": "A''3", "span_length_m": 2.20, "span_source": "grid_table", "note": "stairwell landing header at the mid split", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A''3", "grid_ref_end": "A3", "span_length_m": 2.25, "span_source": "grid_table", "note": "right stairwell flank, upper half", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2'", "element_type": "beam", "grid_ref_start": "A''2", "grid_ref_end": "~B2(Cx)", "span_length_m": 2.25, "span_source": "unresolved", "note": "lower stairwell flank; lower endpoint is the drawing's own local 'Cx' mark, not independently dimensioned — see file warnings", "confidence_score": 0.5, "confidence_flags": ["'Cx' endpoint position approximated at row B"] },
+    { "element_id": "B2'", "element_type": "beam", "grid_ref_start": "A''3", "grid_ref_end": "~B3(Cx)", "span_length_m": 2.25, "span_source": "unresolved", "note": "lower stairwell flank; lower endpoint is the drawing's own local 'Cx' mark, not independently dimensioned — see file warnings", "confidence_score": 0.5, "confidence_flags": ["'Cx' endpoint position approximated at row B"] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "~B2(Cx)", "grid_ref_end": "~B3(Cx)", "span_length_m": 2.20, "span_source": "unresolved", "note": "entrance/porch header beam at the 'Cx' stair-opening level", "confidence_score": 0.5, "confidence_flags": ["'Cx' endpoints approximated at row B"] },
+    { "element_id": "GS", "element_type": "slab", "count": 2, "grid_refs": ["~beyond row A (3-4 x edge)", "~beyond row B (1-2 x edge)"], "note": "canopy/ground-slab cantilever, no beam framing — see grid-master unassigned_dimensions for the 1.20m/1.40m overhang values", "confidence_score": 0.45, "confidence_flags": ["undefined symbol, no legend found on the extracted sheets"] }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "architecture",
+  "sheet_code": "A-25",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 2",
+  "pattern": "section",
+  "view_title": "รูปด้านหน้า -- fence type 2 front elevation, 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า27.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": [
+    "view1_fence_type2_plan (_view1_fence_type2_plan.json)",
+    "view2_fence_type2_lintel_detail (_view2_fence_type2_lintel_detail.json)",
+    "view3_fence_type2_column_beam_details (_view3_fence_type2_column_beam_details.json)",
+    "view4_fence_type2_front_elevation (this file)",
+    "view5_fence_type2_section (_view5_fence_type2_section.json)"
+  ],
+  "elements": [
+    { "element_id": "tabhlang_elevation_ref", "element_type": "beam", "description": "ทับหลัง คสล capping the top of each infill bay", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "infill_panel_elevation", "element_type": "wall", "printed_as": "คอนกรีตบล็อคทีบ 0.19x0.39 ม. หนา 7 ซม.", "description": "block-tibe infill panel, shown filling both bays between the 3 columns", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "C1_elevation_ref_t2", "element_type": "column", "count": 3, "description": "three C1 columns visible (two end columns partially cropped/continuing, per the drawing break-lines), spaced 'ระยะไม่เกิน 3.00 ม.'", "confidence_score": 0.78, "confidence_flags": [] },
+    { "element_id": "GB_elevation_ref_t2", "element_type": "tie_beam", "description": "GB at grade, same as รั้วแบบที่ 1", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "base_plate_F_elevation_t2", "element_type": "connection_detail", "description": "base plate 'F' at each column foot", "confidence_score": 0.75, "confidence_flags": [] },
+    {
+      "element_id": "fence_t2_height_dims",
+      "element_type": "dimension_chain",
+      "segments_m": [0.10, 1.80, 0.10],
+      "total_m": 2.00,
+      "grouped_segments_m": [0.20, 0.40, 0.30],
+      "grouped_total_m": 0.90,
+      "description": "Total height above grade 2.00m (0.10 cap + 1.80 main infill-panel zone + 0.10, exact, re-verified by close crop). Below-grade: 0.90m (0.20 shared riser + 0.40 + 0.30), matching รั้วแบบที่ 1's below-grade chain exactly.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 5 views on this sheet; siblings are the plan (_view1_fence_type2_plan.json), lintel detail (_view2_fence_type2_lintel_detail.json), column+tie-beam details (_view3_fence_type2_column_beam_details.json), and section (_view5_fence_type2_section.json).",
+    "This height ladder (0.10+1.80+0.10=2.00 exact) is simpler/cleaner than รั้วแบบที่ 1's equivalent (0.15+1.35+0.30+0.20=2.00) -- both reach the same 2.00m total by construction logic, but Type 2's uniform block-panel infill needs only a plain top/bottom cap rather than Type 1's picket-cap-plus-GB-zone breakdown.",
+    "Below-grade chain (0.20+0.40+0.30=0.90) is IDENTICAL to รั้วแบบที่ 1's หน้า26 -- confirms both fence types share the exact same foundation system, differing only above grade."
+  ]
+}

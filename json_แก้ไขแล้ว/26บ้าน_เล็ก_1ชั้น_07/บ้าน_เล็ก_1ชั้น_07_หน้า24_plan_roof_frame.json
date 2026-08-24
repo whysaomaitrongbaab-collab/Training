@@ -1,0 +1,33 @@
+{
+  "png": "24",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แปลนโครงหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า24.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_07_หน้า00_gridline.json",
+  "confidence_score": 0.6,
+  "confidence_flags": [],
+  "warnings": [
+    "Classified pattern:'plan' per primary_rawjson_schema.md §1's pinned rule — this is structural roof FRAMING (steel rafters/ridge/purlins with grid refs), not the architectural roof_plan pattern.",
+    "All-steel roof structure (no RC roof members on this house). Purlins (แป) are a spacing-based repeated member with no individual grid position (§6a) — recorded as one spec entry with spacing_mm, not as discrete elements.",
+    "One label near row D/E ('คานหลีกทรงรีว [C]125x75x3.2มม...') was not legible enough to transcribe with confidence — likely a hip/valley rafter given the two dimension offsets (1.10/1.10) shown there, but recorded at low confidence rather than guessed."
+  ],
+  "elements": [
+    { "element_id": "ridge", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "E2", "span_length_m": 12.00, "span_source": "grid_table", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 75, "tw_mm": 3.2, "printed_as": "อกไก่เหล็ก 2-[]125x75x3.2มม." }, "note": "double channel, back-to-back", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "rafter", "element_type": "rafter", "grid_ref_start": "A1", "grid_ref_end": "D1", "span_length_m": 10.00, "span_source": "grid_table", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 75, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก []125x75x3.2มม. (ระยะตามแบบ)" }, "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "rafter", "element_type": "rafter", "grid_ref_start": "A3", "grid_ref_end": "D3col", "span_length_m": 10.00, "span_source": "grid_table", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 75, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก []125x75x3.2มม." }, "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "hip_rafter_DE", "element_type": "rafter", "grid_ref": "~D-E area", "span_length_m": null, "span_source": "unresolved", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 75, "tw_mm": 3.2, "printed_as": "unclear label near row D/E, see file warnings" }, "confidence_score": 0.35, "confidence_flags": ["label not fully legible"] }
+  ],
+  "specs": {
+    "purlin_typ": {
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tw_mm": 2.3, "printed_as": "แปเหล็ก [C]75x45x15x2.3มม. (ระยะไม่เกิน 1.00 เมตร)" },
+      "spacing_mm": 1000,
+      "spec_source": "S-06 legend",
+      "spec_confidence_score": 0.7
+    }
+  }
+}

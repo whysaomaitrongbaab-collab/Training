@@ -1,0 +1,29 @@
+{
+  "png": "17",
+  "doc_page": 17,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ผังโครงสร้างหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า17.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_17_หน้า00_gridline.json",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "This is a STRUCTURAL roof framing plan (steel hip-roof members with printed sizes/spacing over the grid) — recorded as pattern 'plan' per the primary_rawjson_schema.md §1 roof_plan-vs-plan rule, NOT as pattern 'roof_plan' (the architectural-only pattern). This is exactly the trap the op04 skill calls out.",
+    "The roof is an all-steel hip roof over the same 8.20x6.00m (grid 1-4 x A-C) footprint, plus a smaller secondary hip over a setback extension to the south/southeast (matching the ground-floor entry/stair-landing canopy visible on the architecture elevations, หน้า05/หน้า06 — roof slope 35°). All members are repeating/spacing-based (rafters @1.00m) or run the full perimeter/ridge/hip length without individual printed marks or grid endpoints, so each member TYPE is recorded once with its steel_section spec and a descriptive position, per §6a's precedent for spacing-based repeated members (purlins) — the same treatment the already-extracted house 28บ้าน_เล็ก_2ชั้น_12 used for its equivalent all-steel roof.",
+    "'จุดติดตั้งเหล็ก PLATE หนา __มม.' (steel connection-plate installation point, thickness blank/illegible on the printed sheet) is a callout with no legible thickness value — recorded with thickness_mm: null rather than a guessed number.",
+    "Fascia (เชิงชาย) and barge boards (ปั้นลม) are hardwood (ไม้เนื้อแข็ง 1\"x8\" ทับ 1\"x6\"), not steel — recorded with material 'wood', no steel_section."
+  ],
+  "elements": [
+    { "element_id": "อะเส", "element_type": "beam", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3มม." }, "description": "wall-plate / eave beam, doubled channel, runs the full perimeter of the main roof footprint (grid 1-4 along A and C, grid A-C along 1 and 4)", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "ตะเข้สัน", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3มม." }, "description": "hip rafter, doubled channel, diagonal from each of the 4 building corners up to the ridge", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "จันทัน", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "C 100x50x20x2.3มม." }, "spacing_mm": 1000, "description": "common rafter, single channel, regularly spaced @1.00m between the wall-plate and ridge on all 4 roof faces", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "อกไก่", "element_type": "beam", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3มม." }, "description": "ridge beam, doubled channel, runs along grid B between grids 2 and 3 (main ridge line)", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "จุดตั้งดั้ง", "element_type": "steel_member", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3มม." }, "description": "king-post / strut connection point below the ridge, doubled channel", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "ตะเข้ราง", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3มม." }, "description": "valley rafter, doubled channel, at the internal corner where the secondary south canopy hip roof meets the main hip roof", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "จุดติดตั้งเหล็ก PLATE", "element_type": "connection_detail", "thickness_mm": null, "description": "steel connection-plate installation point at hip/ridge intersections", "confidence_score": 0.4, "confidence_flags": ["printed plate thickness illegible/blank on this sheet"] },
+    { "element_id": "เชิงชาย", "element_type": "accessory", "material": "wood", "description": "fascia board, hardwood 1\"x8\" over 1\"x6\", eave edge", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "ปั้นลม", "element_type": "accessory", "material": "wood", "description": "barge board, hardwood 1\"x8\" over 1\"x6\", gable/hip edge", "confidence_score": 0.7, "confidence_flags": [] }
+  ]
+}

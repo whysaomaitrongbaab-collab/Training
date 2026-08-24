@@ -1,0 +1,84 @@
+{
+  "png": "31",
+  "doc_page": 31,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "LONG SECTION / SECTION beams B1-B5, B1', B3'",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า31.png",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Every beam here (B1-B5, B1', B3') is 0.15m wide x 0.40m deep with stirrup RB6mm@0.20m — no variation. Beams B2/B3/B4/B5 print two cross-sections (SECTION 1-1 near the support, SECTION 2-2 near midspan, standard practice: top steel is heavier near supports, bottom steel heavier at midspan). Per §7 precedent (B2/B4/B5/B3 curtailment case already documented in the schema), the max count at each face is recorded in main_bar with a note describing the curtailment between the two printed sections, rather than treating SECTION 1-1 and SECTION 2-2 as two different specs.",
+    "B4 and B5 each print an extra 2-bar group of a different diameter (2-DB16) that moves face-to-face between SECTION 1-1 (top, at support) and SECTION 2-2 (bottom, at midspan) — recorded as additional_bars rather than folded into main_bar.top/bottom, since the drawing shows it as a distinct leader/count from the base 2 or 3-DB12 group in both sections, unlike the true continuous-vs-curtailed single-diameter bars on B2/B3."
+  ],
+  "elements": [
+    {
+      "element_id": "B1", "element_type": "beam", "width_mm": 150, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "B2", "element_type": "beam", "width_mm": 150, "height_mm": 400,
+      "main_bar": {
+        "top": { "count": 3, "dia_mm": 12, "type": "DB", "note": "3-DB12 at support (SECTION 1-1); 1 bar curtailed toward midspan — 2-DB12 continues through SECTION 2-2" },
+        "bottom": { "count": 3, "dia_mm": 12, "type": "DB", "note": "2-DB12 at support (SECTION 1-1), continuing through; 1 bar added at midspan — 3-DB12 at SECTION 2-2" }
+      },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "B3", "element_type": "beam", "width_mm": 150, "height_mm": 400,
+      "main_bar": {
+        "top": { "count": 4, "dia_mm": 12, "type": "DB", "note": "4-DB12 at support (SECTION 1-1); reduces to 2-DB12 continuing through midspan (SECTION 2-2)" },
+        "bottom": { "count": 4, "dia_mm": 12, "type": "DB", "note": "2-DB12 at support (SECTION 1-1), continuing through; increases to 4-DB12 at midspan (SECTION 2-2)" }
+      },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "B4", "element_type": "beam", "width_mm": 150, "height_mm": 400,
+      "main_bar": {
+        "top": { "count": 2, "dia_mm": 12, "type": "DB", "note": "2-DB12 continuous top, both sections" },
+        "bottom": { "count": 2, "dia_mm": 12, "type": "DB", "note": "2-DB12 continuous bottom, both sections" }
+      },
+      "additional_bars": [
+        { "count": 2, "dia_mm": 16, "type": "DB", "position": "top face at support (SECTION 1-1) only, alongside the 2-DB12", "note": "not present at midspan (SECTION 2-2)" },
+        { "count": 2, "dia_mm": 16, "type": "DB", "position": "bottom face at midspan (SECTION 2-2) only, alongside the 2-DB12", "note": "not present at support (SECTION 1-1)" }
+      ],
+      "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "B5", "element_type": "beam", "width_mm": 150, "height_mm": 400,
+      "main_bar": {
+        "top": { "count": 3, "dia_mm": 12, "type": "DB", "note": "3-DB12 continuous top, both sections" },
+        "bottom": { "count": 3, "dia_mm": 12, "type": "DB", "note": "3-DB12 continuous bottom, both sections" }
+      },
+      "additional_bars": [
+        { "count": 2, "dia_mm": 16, "type": "DB", "position": "top face at support (SECTION 1-1) only, alongside the 3-DB12", "note": "not present at midspan (SECTION 2-2)" },
+        { "count": 2, "dia_mm": 16, "type": "DB", "position": "bottom face at midspan (SECTION 2-2) only, alongside the 3-DB12", "note": "not present at support (SECTION 1-1)" }
+      ],
+      "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "B1'", "element_type": "beam", "width_mm": 150, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } },
+      "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "note": "short stub beam, single SECTION 1-1 only (no midspan curtailment section printed)",
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "B3'", "element_type": "beam", "width_mm": 150, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB", "note": "plus 1-DB16 additional top bar, see additional_bars" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } },
+      "additional_bars": [
+        { "count": 1, "dia_mm": 16, "type": "DB", "position": "top face, alongside the 2-DB12" }
+      ],
+      "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "note": "short stub beam printed with a 0.70m offset before the section cut; single SECTION 1-1 only",
+      "confidence_score": 0.85, "confidence_flags": []
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "png": "23",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ขยายพื้นสำเร็จรูปท้องเรียบ (PLANK) / ตารางแสดงการรับน้ำหนักจร (LIVE LOAD)",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า23.png",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet is a multi-view page (§3): this file covers view 2 (right portion) only — the column schedule (view 1) is recorded separately in บ้าน_ใหญ่_2ชั้น_07_หน้า23_view1_schedule_column.json.",
+    "The live-load capacity table ('ตารางแสดงการรับน้ำหนักจร LIVE LOAD') is a pure reference table (capacity in kg/sq.m as a function of PC-wire count N and clear span S), not a drawing element with its own grid position — recorded as a sibling 'live_load_table[]' reference array per §0.1's allowance for legend/reference tables, not folded into elements[]."
+  ],
+  "elements": [
+    {
+      "element_id": "SP_ท้องเรียบ",
+      "element_type": "precast_plank_detail",
+      "description": "precast flat-soffit plank floor (พื้นสำเร็จรูปท้องเรียบ PLANK), section 0.05x0.35m, topping cast in place",
+      "topping_thickness_min_mm": 50,
+      "level_step_mm": null,
+      "topping_mesh": { "dia_mm": 6, "spacing_mm": 200, "type": "RB", "printed_as": "RB6 ø.0.20" },
+      "note": "total slab thickness (plank + topping) 100mm ('ความหนารวม 10 ซม.'); safe live load 150 kg/sq.m as designed; reinforced with PC wires Ø4mm ('เสริมลวด PC.WIRES ø4 มม.')",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ],
+  "live_load_table": {
+    "title": "ตารางแสดงการรับน้ำหนักจร (LIVE LOAD) สำหรับพื้นสำเร็จรูปท้องเรียบ PLANK ขนาดหน้าตัด 0.05x0.35 ม.",
+    "unit": "kg/sq.m",
+    "columns_S_m": [2.80, 3.00, 3.20, 3.40, 3.60, 3.80, 4.00, 4.20, 4.40, 4.60, 4.80, 5.00],
+    "rows": [
+      { "N": 4, "values_by_S": { "2.80": 504 } },
+      { "N": 5, "values_by_S": { "3.00": 532, "3.20": 464, "3.40": 400, "3.60": 350, "3.80": 300 } },
+      { "N": 6, "values_by_S": { "4.00": 318, "4.20": 274 } },
+      { "N": 7, "values_by_S": { "4.40": 305, "4.60": 300 } },
+      { "N": 8, "values_by_S": { "4.80": 300, "5.00": 250 } }
+    ],
+    "note": "N = number of PC.WIRES ø4mm prestressing wires; S = clear span between beam edges (m); table values are safe live load capacity in kg/sq.m",
+    "confidence_score": 0.6,
+    "confidence_flags": ["small/dense table text, some cells not fully legible at native resolution — transcribed the clearly legible cells only, gaps left absent rather than guessed"]
+  }
+}

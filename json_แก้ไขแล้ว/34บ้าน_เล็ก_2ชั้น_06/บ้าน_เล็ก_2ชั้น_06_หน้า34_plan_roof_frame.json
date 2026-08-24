@@ -1,0 +1,29 @@
+{
+  "png": "34",
+  "doc_page": 32,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แปลนโครงสร้างหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า34.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_06_หน้า00_gridline.json",
+  "confidence_score": 0.6,
+  "confidence_flags": [],
+  "warnings": [
+    "STRUCTURAL roof framing plan (steel hip/ridge/rafter members with marks and grid refs) — recorded as pattern 'plan' per the roof_plan-vs-plan rule, not as pattern 'roof_plan' (which is architectural-only).",
+    "Two distinct bracket/leader symbols are used for the built-up members: an open-channel symbol (⊏, used for จันทัน and the two heavier ตะเข้สัน/อกไก่ callouts at 100x50x5x7.5mm) and a different closed/box-looking symbol (⊡, used for the lighter ตะเข้ราง/ตะเข้สัน/อกไก่ callouts at 100x50x20x3.2mm). Both are recorded with designation 'C' (lipped/rolled channel family per schema §6a) since the printed dimension pattern (100x50x[lip-or-web]x[thickness]) matches the schema's own 'C' worked example in both cases — genuine uncertainty remains over whether the ⊡ symbol denotes a different back-to-back/box orientation of the same channel product rather than a distinct profile family. Flagged rather than guessed; a vector-level read of the source PDF would resolve this.",
+    "Diagonal hip/ridge/valley members do not run along the plan grid the same way beams do (they run corner-to-ridge at 45°) — grid_ref is recorded as an approximate location description rather than grid_ref_start/grid_ref_end, consistent with the stair convention (§10a) for non-orthogonal members.",
+    "Two different sizes are printed for both 'ตะเข้สัน' (hip) and 'อกไก่' (ridge): a heavier pair (2x C100x50x5x7.5mm, 9.36 kg/m) at the main hip/ridge, and a lighter pair (2x C100x50x20x3.2mm, 5.50 kg/m) together with a valley member 'ตะเข้ราง' (also 2x C100x50x20x3.2mm) at what is inferred to be a secondary, lower roof over the S0 carport/porch south of grid A — inferred from the roof plan's non-rectangular outline and the carport slab position on the floor plans, not from an explicit label distinguishing 'main roof' vs 'porch roof' on this sheet.",
+    "A small 1:20 detail on the same sheet ('ขยาย 1') shows the rafter-tail-to-column connection: จันทันเหล็ก (rafter) welded to a 50x300x6.00mm steel tail plate (เหล็กหางปลา) cast into the concrete column top — recorded as a separate installation_detail element."
+  ],
+  "elements": [
+    { "element_id": "จันทัน", "element_type": "rafter", "grid_ref": "typ. all 4 roof slopes", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "จันทันเหล็ก C-100x50x20x3.2มม." }, "material": "steel", "spacing_mm": 1000, "weight_kg_per_m": 5.50, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "ตะเข้สัน_บน", "element_type": "rafter", "grid_ref": "main hip, corner ~E1/E3 area to main ridge", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "tw_mm": 5, "tf_mm": 7.5, "printed_as": "ตะเข้สันเหล็ก 2C-100x50x5x7.5มม." }, "material": "steel", "weight_kg_per_m": 9.36, "note": "built-up member, 2 pieces combined — see file warnings", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "อกไก่_บน", "element_type": "rafter", "grid_ref": "main ridge, ~column-line 2 running E-D-C", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "tw_mm": 5, "tf_mm": 7.5, "printed_as": "อกไก่เหล็ก 2C-100x50x5x7.5มม." }, "material": "steel", "weight_kg_per_m": 9.36, "note": "built-up member, 2 pieces combined", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "อกไก่_ล่าง", "element_type": "rafter", "grid_ref": "lower ridge, ~south of row C toward the porch roof", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "อกไก่เหล็ก 2⊡-100x50x20x3.2มม." }, "material": "steel", "weight_kg_per_m": 5.50, "note": "built-up member, 2 pieces combined; symbol ambiguity — see file warnings", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "ตะเข้ราง", "element_type": "rafter", "grid_ref": "valley, ~porch-roof to main-roof intersection south of row C", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "ตะเข้รางเหล็ก 2⊡-100x50x20x3.2มม." }, "material": "steel", "weight_kg_per_m": 5.50, "note": "built-up member, 2 pieces combined; symbol ambiguity — see file warnings", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "ตะเข้สัน_ล่าง", "element_type": "rafter", "grid_ref": "porch-roof hip, ~south of row A", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "ตะเข้สันเหล็ก 2⊡-100x50x20x3.2มม." }, "material": "steel", "weight_kg_per_m": 5.50, "note": "built-up member, 2 pieces combined; symbol ambiguity — see file warnings", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "แปสำเร็จรูป", "element_type": "purlin", "grid_ref": "typ. all roof slopes", "steel_section": { "designation": "Z", "printed_as": "แปสำเร็จรูป ∧@0.32ม. หรือตามมาตรฐานผู้ผลิตวัสดุมุงหลังคา" }, "material": "steel", "spacing_mm": 320, "confidence_score": 0.6, "confidence_flags": ["profile family shown only as a small hook/lip symbol, not a lettered designation — recorded as 'Z' (typical prefab purlin family) per common Thai practice, not confirmed against a legend"] },
+    { "element_id": "rafter_tail_plate", "element_type": "installation_detail", "description": "เหล็กหางปลา 50x300x6.00มม. ฝังในเสาคอนกรีต, จันทันเหล็กเชื่อมติดกับเหล็กหางปลาตลอดแนวสัมผัส — rafter-to-column tail-plate weld connection, detail 'ขยาย 1' 1:20", "confidence_score": 0.7, "confidence_flags": [] }
+  ]
+}

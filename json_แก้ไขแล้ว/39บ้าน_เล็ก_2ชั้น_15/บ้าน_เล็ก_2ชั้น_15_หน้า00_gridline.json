@@ -1,0 +1,126 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า16.png",
+    "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png",
+    "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า18.png",
+    "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า19.png"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'บ้านสินทนิล 027' — 'แบบบ้านยิ้มเพื่อประชาชน' series, สำนักการโยธา กรุงเทพมหานคร (same series/publisher as houses 09/12/14/16/18/19/20, a different design number/name). Very small single-span 2-story house (single 3.50+2.20+3.00 x 4.50m bay, columns only at the 4 corners of a 1-bay-wide plan), pile-footing foundation, RC frame with a steel-channel hip/gable roof overlay (จันทัน 2C150x50x20x2.3mm@2.00, แป C100x50x20x2.3mm@1.00, อกไก่ 2C150x50x20x2.3mm). Structural set is only 4 sheets, S-01 to S-04, matching 'จำนวนแผ่น 4' printed on every structural sheet's title block — smallest house in this batch so far.",
+    "Main grid is a single bay: x=1,2,3,4 (0/3.50/5.70/8.70), y=A,B (0/4.50). Every plan/roof sheet in the set also shows a beam/tie-beam ('B4' ground floor, 'B7' upper floor, 'RB1' roof ring-beam tie) splitting the 4.50m A-B span at its printed midpoint (2.25+2.25) — recorded as dummy row A'' (pos_m 2.25), since a real beam terminates there on 3 separate sheets (ground floor beam plan, upper floor beam plan, roof plan). This is the highest-confidence dummy in the set.",
+    "The upper-floor beam plan (S-02, หน้า17) shows a real cantilevered edge beam (B6, with corner posts B8'/B2') running 0.60m beyond row A and (per its own separately-dimensioned run) 1.00m beyond row B — i.e. NOT symmetric (0.60 front / 1.00 back). Recorded as dummy rows A' (pos_m -0.60) and B' (pos_m 5.50), both confirmed by a printed beam mark (B6) terminating at a drawn corner-post symbol (B8', B2'), satisfying the beam-endpoint rule (spec §4).",
+    "The roof-framing plan (S-02 lower half, หน้า17) prints its own, DIFFERENT overhangs beyond the same two rows: 1.00m beyond row A (leadered 'อกไก่ 2C150x50x20x2.3mm' — a steel ridge board) and 1.00m+0.50m=1.50m beyond row B (a dash-dot reference line at +1.00, then the actual roof edge at +1.50; no beam mark printed on either run), plus 0.50m eave overhangs beyond grid 1 and grid 4 (x-axis). None of these roof-edge lines carry a printed member mark (only the generic steel-spec callouts 'จันทัน'/'แป'/'อกไก่'/'ตั้ง', which describe a repeated/overlaid steel system, not a single markable member) — per the dummy-grid rule these are transcribed into unassigned_dimensions rather than turned into additional named grid lines, since inventing endpoints for an unlabeled, overlaid roof structure not independently confirmable without the (out-of-scope) elevation sheets would be guessing, not reading. The roof's true 3-D shape (ridge position, hip vs. gable) is therefore NOT fully resolved here — flagged, not guessed.",
+    "Ground-floor beam plan (S-01, หน้า16) shows a similar but UNLABELED cantilever: a 'GS' (canopy/ground-slab) symbol sits 1.20m beyond row A and 1.40m beyond row B, with no beam mark inside that strip (only the row-A beam mark 'B4' printed adjacent to, not inside, the overhang). Per the dummy-grid rule ('do NOT invent a dummy for a slab-only edge... no beam label... at its corners'), no dummy grid was added for this — recorded in unassigned_dimensions instead.",
+    "dummy_grid_rule_check: A' (-0.60) and A'' (2.25) both derive their base name from grid A under the spec's naming rule — A' because it sits before the first main grid (negative-pos_m exception, named after the following grid), A'' because it sits between named grids A and B (named after the preceding grid). Both rules independently produce the base name 'A', which would collide. Resolved by treating them as one shared prime-sequence off grid A, ordered by ascending pos_m (the same scan-direction principle the spec uses for multiple dummies within a single gap): A'=-0.60 (encountered first, scanning top-to-bottom), A''=2.25 (second). This is a judgement call, not an explicit case in the spec — flagged per §4's 'documenting genuine ambiguity' guidance.",
+    "No z_levels[] found: none of the 4 extracted structural sheets (S-01..S-04, all plan/section views) print a floor-level or datum callout (e.g. '+0.60 ระดับพื้นชั้น 1'). Those typically appear on elevation/section-through-building sheets, which are architectural (A-05..A-09) and out of op04 scope. Left empty rather than inferring a value from the architectural index page's floor-height text (none was found there either)."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.50, "type": "named" },
+      { "id": "3", "pos_m": 5.70, "type": "named" },
+      { "id": "4", "pos_m": 8.70, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 4.50, "type": "named" },
+      { "id": "A'", "pos_m": -0.60, "type": "dummy", "confidence_score": 0.75, "confidence_flags": ["upper-floor cantilever edge beam (B6) endpoint, confirmed by corner-post symbols B8'/B2' — see grid-master warnings for naming collision resolution"] },
+      { "id": "A''", "pos_m": 2.25, "type": "dummy", "confidence_score": 0.9, "confidence_flags": [] },
+      { "id": "B'", "pos_m": 5.50, "type": "dummy", "confidence_score": 0.75, "confidence_flags": ["upper-floor cantilever edge beam (B6) endpoint, other side — asymmetric with A' (0.60 vs 1.00 overhang), both read directly off S-02's own dimension chain"] }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า16.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 2.20 },
+          { "from": "3", "to": "4", "value_m": 3.00 },
+          { "from": "1", "to": "4", "value_m": 8.70 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า16.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 4.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า16.png",
+        "segments": [
+          { "from": "edge", "to": "A", "value_m": 1.20 },
+          { "from": "A", "to": "A''", "value_m": 2.25 },
+          { "from": "A''", "to": "B", "value_m": 2.25 },
+          { "from": "A", "to": "B", "value_m": 4.50 },
+          { "from": "B", "to": "edge", "value_m": 1.40 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 0.50 },
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 2.20 },
+          { "from": "3", "to": "4", "value_m": 3.00 },
+          { "from": "4", "to": "edge", "value_m": 0.50 },
+          { "from": "1", "to": "4", "value_m": 8.70 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png",
+        "segments": [
+          { "from": "A'", "to": "A", "value_m": 0.60 },
+          { "from": "A", "to": "A''", "value_m": 2.25 },
+          { "from": "A", "to": "B", "value_m": 4.50 },
+          { "from": "A''", "to": "B", "value_m": 2.25 },
+          { "from": "B", "to": "B'", "value_m": 1.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 0.50 },
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 2.20 },
+          { "from": "3", "to": "4", "value_m": 3.00 },
+          { "from": "4", "to": "edge", "value_m": 0.50 },
+          { "from": "1", "to": "4", "value_m": 8.70 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png",
+        "segments": [
+          { "from": "edge", "to": "A", "value_m": 1.00 },
+          { "from": "A", "to": "A''", "value_m": 2.25 },
+          { "from": "A''", "to": "B", "value_m": 2.25 },
+          { "from": "B", "to": "edge", "value_m": 1.00 },
+          { "from": "edge", "to": "edge", "value_m": 0.50 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.20, "label": "GS canopy/ground-slab overhang beyond row A, ground-floor beam plan (S-01)", "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า16.png", "note": "slab-only cantilever, no beam mark inside it — no dummy grid added, per §4 rule" },
+      { "value_m": 1.40, "label": "GS canopy/ground-slab overhang beyond row B, ground-floor beam plan (S-01)", "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า16.png", "note": null },
+      { "value_m": 1.00, "label": "อกไก่ (ridge) steel-channel overhang beyond row A, roof framing plan (S-02)", "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png", "note": "unlabeled ridge line, only a material-spec callout — see grid-master warnings" },
+      { "value_m": 1.00, "label": "secondary dash-dot reference line beyond row B, roof framing plan (S-02)", "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png", "note": "no member printed on this line; a further 0.50m run continues to the actual roof edge" },
+      { "value_m": 0.50, "label": "roof eave edge beyond the +1.00 reference line below row B, roof framing plan (S-02) — 1.50m beyond B total", "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png", "note": null },
+      { "value_m": 0.50, "label": "roof/eave overhang beyond grid 1 (x-axis), shown on both the upper-floor beam plan and the roof framing plan", "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png", "note": "B6 cantilever beam itself stays within grid1-grid4 on the beam plan (its corner post B8' sits AT grid1) — no beam mark confirmed at this x-offset" },
+      { "value_m": 0.50, "label": "roof/eave overhang beyond grid 4 (x-axis), shown on both the upper-floor beam plan and the roof framing plan", "source_image": "image/บ้าน_เล็ก_2ชั้น_15/บ้าน_เล็ก_2ชั้น_15_หน้า17.png", "note": null }
+    ]
+  }
+}
