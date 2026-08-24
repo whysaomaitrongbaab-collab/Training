@@ -1,78 +1,128 @@
 {
- "png": "21",
- "doc_page": 21,
- "printed_page": 19,
- "discipline": "structural",
- "sheet_code": "S-04",
- "sheet_name": "แปลนอะเส, แปลนโครงหลังคา",
- "pattern": "roof_plan",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า21.png",
- "view_title": "แปลนโครงหลังคา 1:100",
- "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/08บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า00_gridline.json",
- "grid_dims_note": {
-  "x_axis_m": { "1": 0.0, "2": 4.0, "3": 7.0 },
-  "y_axis_m": { "D": 0.0, "C": 4.0, "B": 6.0, "A": 9.5 },
-  "eave_overhang_m": 1.0,
-  "roof_extent_note": "printed chains 1.00 | 4.00 | 3.00 | 1.00 (x) and 1.00 | 4.00 | 2.00 | 3.50 | 1.00 (y): roof plane spans x -1.00..8.00 (9.00 m), y -1.00..10.50 (11.50 m)"
- },
- "elements": [
-  {
-   "element_id": "อกไก่",
-   "element_type": "ridge_beam",
-   "material": "steel",
-   "steel_section": { "designation": "2C lipped channel", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "t_mm": 3.2, "count": 2, "weight_kg_per_m": 5.5, "printed_as": "อกไก่เหล็ก2C-100x50x20x3.2มม. (นน.5.50 กก./ม.)" },
-   "grid_ref_start": "~C-2",
-   "grid_ref_end": "~B-2",
-   "span_length_m": 2.5,
-   "span_source": "local_dimension",
-   "confidence_score": 0.8,
-   "confidence_flags": [ "ridge_on_roof_centreline_x_3.50_not_a_grid_line", "span_derived_from_printed_0.50_offsets_plus_grid" ],
-   "note": "Hip-roof ridge along x = 3.50 (roof centreline = grid 2 - 0.50, offsets printed on the sibling อะเส view), from the north hip node at y = 3.50 (0.50 north of C) to the south hip node at row B. Bears on the two CX posts (see _หน้า21_view1_ring_beam_plan.json). Weight 5.50 kg/m is per single C, printed in the callout."
+  "png": "21",
+  "doc_page": 21,
+  "printed_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แปลนอะเส, แปลนโครงหลังคา",
+  "pattern": "plan",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า21.png",
+  "view_title": "แปลนโครงหลังคา 1:100",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/08บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า00_gridline.json",
+  "grid_dims_note": {
+    "x_axis_m": {
+      "1": 0.0,
+      "2": 4.0,
+      "3": 7.0
+    },
+    "y_axis_m": {
+      "D": 0.0,
+      "C": 4.0,
+      "B": 6.0,
+      "A": 9.5
+    },
+    "eave_overhang_m": 1.0,
+    "roof_extent_note": "printed chains 1.00 | 4.00 | 3.00 | 1.00 (x) and 1.00 | 4.00 | 2.00 | 3.50 | 1.00 (y): roof plane spans x -1.00..8.00 (9.00 m), y -1.00..10.50 (11.50 m)"
   },
-  {
-   "element_id": "จันทัน",
-   "element_type": "rafter",
-   "material": "steel",
-   "steel_section": { "designation": "C lipped channel", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "t_mm": 3.2, "weight_kg_per_m": 5.5, "printed_as": "จันทันเหล็ก C-100x50x20x3.2มม. (นน.5.50 กก./ม.)@1.00 ม." },
-   "spacing_mm": 1000,
-   "count": null,
-   "grid_refs": [],
-   "confidence_score": 0.85,
-   "confidence_flags": [ "count_not_individually_tallied_spacing_note_used_instead" ],
-   "note": "Rafters @1.00 m on all four slopes of the hip roof, running perpendicular to each eave (drawn vertical on the north/south slopes, horizontal on the east/west slopes), from ridge/hip down over the อะเส to the eave line 1.00 m beyond grids 1/3/D/A (free ends -- no member on the eave line itself)."
-  },
-  {
-   "element_id": "ตะเฆ่สัน",
-   "element_type": "hip_rafter",
-   "material": "steel",
-   "steel_section": { "designation": "2C channel", "d_mm": 100, "b_mm": 50, "tw_mm": 5, "tf_mm": 7.5, "count": 2, "weight_kg_per_m": 9.36, "printed_as": "ตะเฆ่สันเหล็ก2C -100x50x5x7.5มม.(นน.9.36 กก./ม.)" },
-   "count": 4,
-   "grid_refs": [],
-   "confidence_score": 0.8,
-   "confidence_flags": [ "hip_ends_at_roof_corners_not_grid_points" ],
-   "note": "Four hips, one from each ridge node to each roof corner at (x,y) = (-1.00,-1.00), (8.00,-1.00), (-1.00,10.50), (8.00,10.50). Section keys read as a HOT-ROLLED channel (tw 5 / tf 7.5, no lip) -- the 9.36 kg/m printed weight matches the standard C100x50x5x7.5 exactly, unlike the lipped 100x50x20x3.2 (5.50 kg/m) used for จันทัน/อกไก่, so the differing 4-number tail is genuine, not a typo."
-  },
-  {
-   "element_id": "แปสำเร็จรูป",
-   "element_type": "purlin",
-   "material": "steel",
-   "steel_section": { "designation": "hat profile (สำเร็จรูป)", "printed_as": "แปสำเร็จรูป @ตามมาตรฐานผู้ผลิต" },
-   "spacing_mm": null,
-   "count": null,
-   "grid_refs": [],
-   "confidence_score": 0.75,
-   "confidence_flags": [ "manufacturer_standard_no_dimensions_printed" ],
-   "note": "Prefab hat-profile purlins, spacing 'ตามมาตรฐานผู้ผลิต' (per manufacturer) -- no size or spacing number printed; left null rather than guessed."
-  }
- ],
- "confidence_score": 0.82,
- "confidence_flags": [ "pattern_type_roof_plan_field_shape_still_draft_per_schema_§12" ],
- "warnings": [
-  "STAGE-0 OPEN QUESTION RESOLVED: the 1.00 m eave-overhang lines printed on all 4 sides are rafter free ends only -- no roof member starts or ends on a line that lacks a grid name (ridge/hip nodes are located by the printed 0.50 offsets), so no dummy grid was created for the eaves (decision recorded in the grid master).",
-  "DANGLING CALLOUT for Stage 2/3: 'ดูขยาย (1)' points at a rafter/hip junction on the east slope but names NO target sheet. Expected on S-07..S-10; must be resolved per the Stage-3 checklist item 5.",
-  "Steel weights cross-check: C100x50x20x3.2 lipped = 5.50 kg/m (printed twice), C100x50x5x7.5 hot-rolled = 9.36 kg/m (printed once) -- both match standard section tables, so the printed section strings are internally consistent.",
-  "The roof covering/slope (กระเบื้องคอนกรีต, SLOPE 35°) and the +3.75 ค.ส.ล. canopies are architectural information carried on A-04's แปลนหลังคา -- see _หน้า06_view2_roof_plan.json; this structural view shows the steel frame only."
- ]
+  "elements": [
+    {
+      "element_id": "อกไก่",
+      "element_type": "ridge_beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C lipped channel",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "count": 2,
+        "weight_kg_per_m": 5.5,
+        "printed_as": "อกไก่เหล็ก2C-100x50x20x3.2มม. (นน.5.50 กก./ม.)"
+      },
+      "grid_ref_start": "~C-2",
+      "grid_ref_end": "~B-2",
+      "span_length_m": 2.5,
+      "span_source": "local_dimension",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "ridge_on_roof_centreline_x_3.50_not_a_grid_line",
+        "span_derived_from_printed_0.50_offsets_plus_grid"
+      ],
+      "note": "Hip-roof ridge along x = 3.50 (roof centreline = grid 2 - 0.50, offsets printed on the sibling อะเส view), from the north hip node at y = 3.50 (0.50 north of C) to the south hip node at row B. Bears on the two CX posts (see _หน้า21_view1_ring_beam_plan.json). Weight 5.50 kg/m is per single C, printed in the callout."
+    },
+    {
+      "element_id": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C lipped channel",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "weight_kg_per_m": 5.5,
+        "printed_as": "จันทันเหล็ก C-100x50x20x3.2มม. (นน.5.50 กก./ม.)@1.00 ม."
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [],
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "count_not_individually_tallied_spacing_note_used_instead"
+      ],
+      "note": "Rafters @1.00 m on all four slopes of the hip roof, running perpendicular to each eave (drawn vertical on the north/south slopes, horizontal on the east/west slopes), from ridge/hip down over the อะเส to the eave line 1.00 m beyond grids 1/3/D/A (free ends -- no member on the eave line itself)."
+    },
+    {
+      "element_id": "ตะเฆ่สัน",
+      "element_type": "hip_rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C channel",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 5,
+        "tf_mm": 7.5,
+        "count": 2,
+        "weight_kg_per_m": 9.36,
+        "printed_as": "ตะเฆ่สันเหล็ก2C -100x50x5x7.5มม.(นน.9.36 กก./ม.)"
+      },
+      "count": 4,
+      "grid_refs": [],
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "hip_ends_at_roof_corners_not_grid_points"
+      ],
+      "note": "Four hips, one from each ridge node to each roof corner at (x,y) = (-1.00,-1.00), (8.00,-1.00), (-1.00,10.50), (8.00,10.50). Section keys read as a HOT-ROLLED channel (tw 5 / tf 7.5, no lip) -- the 9.36 kg/m printed weight matches the standard C100x50x5x7.5 exactly, unlike the lipped 100x50x20x3.2 (5.50 kg/m) used for จันทัน/อกไก่, so the differing 4-number tail is genuine, not a typo."
+    },
+    {
+      "element_id": "แปสำเร็จรูป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "hat profile (สำเร็จรูป)",
+        "printed_as": "แปสำเร็จรูป @ตามมาตรฐานผู้ผลิต"
+      },
+      "spacing_mm": null,
+      "count": null,
+      "grid_refs": [],
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "manufacturer_standard_no_dimensions_printed"
+      ],
+      "note": "Prefab hat-profile purlins, spacing 'ตามมาตรฐานผู้ผลิต' (per manufacturer) -- no size or spacing number printed; left null rather than guessed."
+    }
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [
+    "pattern_type_roof_plan_field_shape_still_draft_per_schema_§12"
+  ],
+  "warnings": [
+    "STAGE-0 OPEN QUESTION RESOLVED: the 1.00 m eave-overhang lines printed on all 4 sides are rafter free ends only -- no roof member starts or ends on a line that lacks a grid name (ridge/hip nodes are located by the printed 0.50 offsets), so no dummy grid was created for the eaves (decision recorded in the grid master).",
+    "DANGLING CALLOUT for Stage 2/3: 'ดูขยาย (1)' points at a rafter/hip junction on the east slope but names NO target sheet. Expected on S-07..S-10; must be resolved per the Stage-3 checklist item 5.",
+    "Steel weights cross-check: C100x50x20x3.2 lipped = 5.50 kg/m (printed twice), C100x50x5x7.5 hot-rolled = 9.36 kg/m (printed once) -- both match standard section tables, so the printed section strings are internally consistent.",
+    "The roof covering/slope (กระเบื้องคอนกรีต, SLOPE 35°) and the +3.75 ค.ส.ล. canopies are architectural information carried on A-04's แปลนหลังคา -- see _หน้า06_view2_roof_plan.json; this structural view shows the steel frame only.",
+    "2026-08-24 normalize: pattern roof_plan -> plan (structural roof framing is pattern=plan per schema §1 warning block, live data-loss bug for Constistant buildElements)"
+  ]
 }

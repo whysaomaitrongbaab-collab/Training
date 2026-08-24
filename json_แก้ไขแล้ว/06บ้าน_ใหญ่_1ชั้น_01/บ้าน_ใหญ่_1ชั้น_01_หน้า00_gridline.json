@@ -108,6 +108,14 @@
         "type": "named",
         "source": "S-01/S-02"
       }
+    ],
+    "z_levels": [
+      {
+        "id": "ระดับ",
+        "level_m": 0.15,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า09.png"
+      }
     ]
   },
   "confidence_score": 0.86,
@@ -120,6 +128,8 @@
     "This drawing set covers TWO physically separate buildings that reuse the same grid names at different spacings. This file is the main row building only (ก,ข,ค × 1-11 at 3.60 m). The detached shared-toilet block has its own grid master, บ้าน_ใหญ่_1ชั้น_01_หน้า00b_gridline_สุขา.json (ก,ข,ค × 1,2 at 4.50/6.00 m). See spec §11a. Every page/view file must point at the correct one via grid_source.",
     "NO dummy grid is needed for this building: every beam endpoint on S-02 lands on one of the ten named x-lines or three named y-lines (checked against the beam-endpoint rule, spec §4). The building is a regular repeating steel portal frame with no bay windows, stubs or notched corners.",
     "The superstructure is structural STEEL, not reinforced concrete (B1/B2/CX = WF sections, B3 = C channel -- see S-02 หมายเหตุ). Reinforced concrete is limited to footings F1-F4, pedestals ตอม่อ C1/C2 and slabs S0/S1. Consumers expecting main_bar/stirrup on beams and columns will find steel_section instead (spec §6a).",
-    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed."
+    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed.",
+    "2026-08-24 §4-upgrade: z_levels[] derived from this house's human-reviewed per-page extractions (element_type level/datum with level_m), deduplicated by (label, level_m) — not a fresh image sweep; source_image on each entry names the reviewed file's page",
+    "2026-08-24 §4-upgrade: dimension_chains[]/unassigned_dimensions[] deliberately ABSENT — they require a page-by-page image transcription sweep (§4 2026-08-21) that has not been done for this house; absence means not-yet-swept, per spec. Do not backfill them from resolved pos_m values."
   ]
 }
