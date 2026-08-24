@@ -198,22 +198,66 @@ def load_model(variant):
     return model, tokenizer
 
 
+def setup_grammar(model, tokenizer):
+    """xgrammar builtin JSON grammar — เหมือน t02's run_house_batch.py (rule_of_tune.md ข้อ 13,
+    พิสูจน์แล้วบน GPU จริง 2026-08-22: 96.8% valid vs 57.9% ไม่มี grammar). ตัว tokenizer จริงต้อง
+    แกะจาก processor wrapper (.tokenizer) ไม่ใช่ตัว tokenizer ที่ UnslothModel คืนมาตรงๆ
+    คืน None ถ้าใช้ไม่ได้ (จะรันต่อแบบไม่ constrain แทนที่จะพังทั้งสคริปต์)"""
+    try:
+        import xgrammar as xgr
+        cfg = model.config
+        vocab = getattr(cfg, "vocab_size", None) or cfg.text_config.vocab_size
+        tok_info = xgr.TokenizerInfo.from_huggingface(tokenizer.tokenizer, vocab_size=vocab)
+        compiled = xgr.GrammarCompiler(tok_info).compile_builtin_json_grammar()
+        print("grammar-constrained: xgrammar")
+        return lambda: {"logits_processor": [xgr.contrib.hf.LogitsProcessor(compiled)]}
+    except Exception as e:
+        print(f"⚠️  xgrammar ใช้ไม่ได้ ({e}) — รันต่อแบบไม่ constrain")
+        return None
+
+
 def strip_fence(text):
     t = text.strip()
     m = re.match(r"^```(?:json)?\s*(.*?)\s*```$", t, re.DOTALL)
-    return m.group(1).strip() if m else t
+    t = m.group(1).strip() if m else t
+    # ตัวกันเผื่อสำหรับ path ที่ไม่มี grammar (--no-grammar) — xgrammar เองพิสูจน์แล้วว่า
+    # comma ท้ายเป็นไปไม่ได้ที่ระดับ grammar (rule_of_tune.md ข้อ 13) แต่ output ดิบไม่มี
+    # grammar กำกับยังเสี่ยงมี trailing comma ได้ตามปกติของ LLM
+    return re.sub(r",(\s*[}\]])", r"\1", t)
 
 
-def generate(model, tokenizer, prompt_text, img_path, max_new_tokens):
+PAGE_TIMEOUT_S = 25 * 60  # มะขามสั่ง 2026-08-24: หน้าไหนเกิน 25 นาทีตัดจบเลย (หน้า25 ค้างจริง
+# แม้มี grammar+repetition_penalty แล้ว — เพดาน max_new_tokens=9000 ไม่พอกันเวลา ถ้าเนื้อหา/
+# วนซ้ำแบบ grammar-legal ยาวจริง) ใช้ StoppingCriteria เช็คเวลาแทน os-level kill เพื่อให้ยัง
+# ได้ output บางส่วนกลับมา (มักจะ parse ไม่ผ่านเพราะตัดกลางคัน แต่ไม่เสีย process/ต้องโหลดโมเดลใหม่)
+
+
+class _TimeLimit:
+    """StoppingCriteria แบบ duck-typed (import transformers.StoppingCriteria ตรงๆ ในฟังก์ชันที่ใช้
+    เพื่อไม่ต้อง import หนักที่หัวไฟล์ตอน --phase อื่นไม่ได้ใช้)"""
+    def __init__(self, deadline):
+        self.deadline = deadline
+
+    def __call__(self, input_ids, scores, **kwargs):
+        return time.time() > self.deadline
+
+
+def generate(model, tokenizer, prompt_text, img_path, max_new_tokens, grammar_setup=None):
     from PIL import Image
     import torch
+    from transformers import StoppingCriteriaList
     img = Image.open(img_path).convert("RGB")
     msgs = [{"role": "user", "content": [
         {"type": "image", "image": img}, {"type": "text", "text": prompt_text}]}]
     # enable_thinking=False required — ดู eval_fields.py comment เดียวกัน (bug พบ 2026-07-24)
     text = tokenizer.apply_chat_template(msgs, add_generation_prompt=True, enable_thinking=False)
     inputs = tokenizer([img], text, add_special_tokens=False, return_tensors="pt").to("cuda")
-    out = model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=False)
+    gen_kwargs = dict(max_new_tokens=max_new_tokens, do_sample=False,
+                       repetition_penalty=1.15, no_repeat_ngram_size=8,
+                       stopping_criteria=StoppingCriteriaList([_TimeLimit(time.time() + PAGE_TIMEOUT_S)]))
+    if grammar_setup is not None:
+        gen_kwargs.update(grammar_setup())  # ตัวใหม่ต่อครั้ง — LogitsProcessor เป็น stateful
+    out = model.generate(**inputs, **gen_kwargs)
     pred_txt = tokenizer.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
     del inputs, out
     gc.collect()
@@ -232,7 +276,7 @@ def discover_pages(images_root, house_name):
     return images_dir, sorted(pages)
 
 
-def run_classify(model, tokenizer, args):
+def run_classify(model, tokenizer, args, grammar_setup=None):
     out_root = Path(args.out_root) / "_classify"
     for hnum in args.houses:
         house_name = HOUSES[hnum]
@@ -256,7 +300,7 @@ def run_classify(model, tokenizer, args):
                 log(log_file, f"[classify] หน้า{page_str}: image missing, skip")
                 continue
             t0 = time.time()
-            content = generate(model, tokenizer, CLASSIFY_PROMPT, img_path, 300)
+            content = generate(model, tokenizer, CLASSIFY_PROMPT, img_path, 300, grammar_setup)
             elapsed = time.time() - t0
             try:
                 pats = json.loads(strip_fence(content))
@@ -274,7 +318,7 @@ def run_classify(model, tokenizer, args):
         log(log_file, f"=== จบ classify บ้าน {hnum}{house_name}: keep {len(keep)}/{len(pages)} หน้า {keep} ===")
 
 
-def run_extract(model, tokenizer, args):
+def run_extract(model, tokenizer, args, grammar_setup=None):
     for hnum in args.houses:
         house_name = HOUSES[hnum]
         images_dir, all_pages = discover_pages(Path(args.images_root), house_name)
@@ -314,7 +358,7 @@ def run_extract(model, tokenizer, args):
                 log(log_file, f"[extract] หน้า{page_str}: image missing, skip")
                 continue
             t1 = time.time()
-            content = generate(model, tokenizer, PROMPT_SHORT, img_path, 9000)
+            content = generate(model, tokenizer, PROMPT_SHORT, img_path, 9000, grammar_setup)
             elapsed = time.time() - t1
             raw_txt.write_text(content, encoding="utf-8")
             try:
@@ -342,16 +386,20 @@ def main():
     ap.add_argument("--out-root", required=True)
     ap.add_argument("--houses", nargs="+", default=list(HOUSES.keys()), choices=list(HOUSES.keys()))
     ap.add_argument("--limit", type=int, default=0, help="จำกัดจำนวนหน้า/บ้าน (0 = ทุกหน้าที่ผ่านกรอง)")
+    ap.add_argument("--no-grammar", action="store_true",
+                     help="ปิด xgrammar (ค่าเริ่มต้นเปิด — พิสูจน์แล้ว 96.8%% valid บน t02, rule_of_tune ข้อ 13)")
     args = ap.parse_args()
 
     variant = "tuned" if args.phase == "classify" else args.variant
     print(f"=== โหลดโมเดล (variant={variant}) ===")
     model, tokenizer = load_model(variant)
 
+    grammar_setup = None if args.no_grammar else setup_grammar(model, tokenizer)
+
     if args.phase == "classify":
-        run_classify(model, tokenizer, args)
+        run_classify(model, tokenizer, args, grammar_setup)
     else:
-        run_extract(model, tokenizer, args)
+        run_extract(model, tokenizer, args, grammar_setup)
 
 
 if __name__ == "__main__":

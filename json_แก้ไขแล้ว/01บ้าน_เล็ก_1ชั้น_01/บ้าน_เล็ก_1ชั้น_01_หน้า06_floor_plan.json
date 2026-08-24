@@ -9,7 +9,17 @@
   "schema_generation": "20260708draft of prime rawjson.md",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_01/บ้าน_เล็ก_1ชั้น_01_หน้า06.png",
   "grid_source": "mk_test/t4/บ้าน_เล็ก_1ชั้น_01_หน้า00_gridline.json",
-  "element": [
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "PATTERN UNCHANGED for this view: 'plan' matches new taxonomy definition (#1, ผัง/แปลน มีตำแหน่ง grid_ref). The sibling roof view on this same sheet IS reclassified — see _หน้า06_roof_plan.json.",
+    "GRID-RELEVANT FOR หน้า00 MASTER (reporting only, master file not edited): the top dimension chain on this sheet reads, left to right: 1.30 (roof overhang) | 2.55 | 1.45 (=4.00, grid1-grid2) | 3.00 (grid2-grid3) | 0.60 | 0.90 (=1.50 beyond grid3) | then a further 1.30 roof overhang. This independently confirms dummy grid '1'' at exactly 2.55 m from grid 1 (the full-height wall between นอน1/นอน2) — HIGH CONFIDENCE, matches the t4 master file's value exactly. It also confirms a two-step sub-division beyond grid 3 (+0.60 then +0.90, totaling +1.50 = dummy grid '3'' at pos_m 8.5) matching the master file's value, BUT see หน้า07_elevation1.json/หน้า09_section1.json — those sheets show a DIFFERENT sub-division beyond grid 3 (+0.60 then +0.70, totaling +1.30) for the roof-overhang dimension specifically, a separate building element (roof edge) from this floor plan's wall/room extension (+1.50). Both happen to start with an identical '0.60' first segment — flagging so the master file's '3'' entry is never accidentally conflated with the 1.30 roof-overhang figure.",
+    "Left dimension chain (D-C-B-A + south extension) matches the 4.00/2.00/3.50/[1.50] pattern used to derive dummy grids A'/A'' in the master file.",
+    "Individual door/window counts and the circle-vs-square (door-vs-window) glyph distinction per room were not confidently resolvable at this image resolution — flagged for zoom review rather than guessed.",
+    "This page also contains a second view (แปลนหลังคา, roof plan) on the same sheet A-04, now under the new pattern 'roof_plan' — see sibling file _หน้า06_roof_plan.json.",
+    "Independent read done first, then cross-checked against t3's หน้า06_floor_plan.json — same room layout and same grid dummy readings; t3's own warnings already flagged the same 3'/0.60-sub-line ambiguity, corroborated further here."
+  ],
+  "elements": [
     {
       "element_id": "นอน1",
       "element_type": "room",
@@ -125,15 +135,5 @@
         "CORRECTED_2026-07-14_by_user_stairs_use_nearest_grid_only_approximate"
       ]
     }
-  ],
-  "confidence_score": 0.78,
-  "confidence_flags": [],
-  "warnings": [
-    "PATTERN UNCHANGED for this view: 'plan' matches new taxonomy definition (#1, ผัง/แปลน มีตำแหน่ง grid_ref). The sibling roof view on this same sheet IS reclassified — see _หน้า06_roof_plan.json.",
-    "GRID-RELEVANT FOR หน้า00 MASTER (reporting only, master file not edited): the top dimension chain on this sheet reads, left to right: 1.30 (roof overhang) | 2.55 | 1.45 (=4.00, grid1-grid2) | 3.00 (grid2-grid3) | 0.60 | 0.90 (=1.50 beyond grid3) | then a further 1.30 roof overhang. This independently confirms dummy grid '1'' at exactly 2.55 m from grid 1 (the full-height wall between นอน1/นอน2) — HIGH CONFIDENCE, matches the t4 master file's value exactly. It also confirms a two-step sub-division beyond grid 3 (+0.60 then +0.90, totaling +1.50 = dummy grid '3'' at pos_m 8.5) matching the master file's value, BUT see หน้า07_elevation1.json/หน้า09_section1.json — those sheets show a DIFFERENT sub-division beyond grid 3 (+0.60 then +0.70, totaling +1.30) for the roof-overhang dimension specifically, a separate building element (roof edge) from this floor plan's wall/room extension (+1.50). Both happen to start with an identical '0.60' first segment — flagging so the master file's '3'' entry is never accidentally conflated with the 1.30 roof-overhang figure.",
-    "Left dimension chain (D-C-B-A + south extension) matches the 4.00/2.00/3.50/[1.50] pattern used to derive dummy grids A'/A'' in the master file.",
-    "Individual door/window counts and the circle-vs-square (door-vs-window) glyph distinction per room were not confidently resolvable at this image resolution — flagged for zoom review rather than guessed.",
-    "This page also contains a second view (แปลนหลังคา, roof plan) on the same sheet A-04, now under the new pattern 'roof_plan' — see sibling file _หน้า06_roof_plan.json.",
-    "Independent read done first, then cross-checked against t3's หน้า06_floor_plan.json — same room layout and same grid dummy readings; t3's own warnings already flagged the same 3'/0.60-sub-line ambiguity, corroborated further here."
   ]
 }

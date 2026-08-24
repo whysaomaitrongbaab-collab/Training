@@ -1,24 +1,62 @@
 {
- "png": "28",
- "doc_page": 26,
- "printed_page": 26,
- "discipline": "structural",
- "sheet_code": "S-06",
- "sheet_name": "แปลนโครงหลังคา",
- "pattern": "roof_plan",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_เล็ก_1ชั้น_04/บ้าน_เล็ก_1ชั้น_04_หน้า28.png",
- "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/09บ้าน_เล็ก_1ชั้น_04/บ้าน_เล็ก_1ชั้น_04_หน้า00_gridline.json",
- "specs": {
-  "จันทัน": { "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "printed_as": "C-150x50x20x3.2มม.", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2 }, "weight_kg_per_m": 6.76, "spacing_mm": 1000, "confidence_score": 0.88, "confidence_flags": [] },
-  "ตะเข้สัน": { "element_type": "hip_rafter", "material": "steel", "steel_section": { "designation": "2C (back-to-back)", "printed_as": "2⊏-150x75x6.5x10มม.", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "tf_mm": 10 }, "weight_kg_per_m": 18.6, "confidence_score": 0.85, "confidence_flags": [] },
-  "แป": { "element_type": "purlin", "material": "steel", "note": "แปสำเร็จรูป ⌐ ตามมาตรฐานผู้ผลิต — spacing/section per manufacturer standard, no printed dimension on this sheet.", "confidence_score": 0.75, "confidence_flags": ["manufacturer_standard_no_printed_dimension"] }
- },
- "confidence_score": 0.85,
- "confidence_flags": [],
- "warnings": [
-  "op1 direct read (house 09). X-plan hip roof steel frame (4 hip rafters converging at centre, ridge along the diagonal per the drawing convention), matching หน้า07's architectural roof plan exactly (same 35° 4-way hip). ดูขยาย 1 callout points to a connection detail not on this sheet (S-08 per the sheet index — 'ขยาย I').",
-  "1.00m eave overhang confirmed all 4 sides on the grid dimension chain, matching architectural หน้า07 and the grid master core (9.60x14.55)."
- ]
+  "png": "28",
+  "doc_page": 26,
+  "printed_page": 26,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แปลนโครงหลังคา",
+  "pattern": "plan",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_04/บ้าน_เล็ก_1ชั้น_04_หน้า28.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/09บ้าน_เล็ก_1ชั้น_04/บ้าน_เล็ก_1ชั้น_04_หน้า00_gridline.json",
+  "specs": {
+    "จันทัน": {
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "printed_as": "C-150x50x20x3.2มม.",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tf_mm": 3.2
+      },
+      "weight_kg_per_m": 6.76,
+      "spacing_mm": 1000,
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    "ตะเข้สัน": {
+      "element_type": "hip_rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C (back-to-back)",
+        "printed_as": "2⊏-150x75x6.5x10มม.",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "tf_mm": 10
+      },
+      "weight_kg_per_m": 18.6,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    "แป": {
+      "element_type": "purlin",
+      "material": "steel",
+      "note": "แปสำเร็จรูป ⌐ ตามมาตรฐานผู้ผลิต — spacing/section per manufacturer standard, no printed dimension on this sheet.",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "manufacturer_standard_no_printed_dimension"
+      ]
+    }
+  },
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "op1 direct read (house 09). X-plan hip roof steel frame (4 hip rafters converging at centre, ridge along the diagonal per the drawing convention), matching หน้า07's architectural roof plan exactly (same 35° 4-way hip). ดูขยาย 1 callout points to a connection detail not on this sheet (S-08 per the sheet index — 'ขยาย I').",
+    "1.00m eave overhang confirmed all 4 sides on the grid dimension chain, matching architectural หน้า07 and the grid master core (9.60x14.55).",
+    "2026-08-24 normalize: pattern roof_plan -> plan (structural roof framing is pattern=plan per schema §1 warning block, live data-loss bug for Constistant buildElements)"
+  ]
 }

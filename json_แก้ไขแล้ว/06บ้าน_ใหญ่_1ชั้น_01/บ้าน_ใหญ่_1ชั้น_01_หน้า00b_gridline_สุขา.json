@@ -68,6 +68,14 @@
         "type": "named",
         "source": "S-01/S-02"
       }
+    ],
+    "z_levels": [
+      {
+        "id": "ระดับ",
+        "level_m": 0.15,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า09.png"
+      }
     ]
   },
   "confidence_score": 0.8,
@@ -80,6 +88,8 @@
     "Footprint is a full 2 x 3 grid (6 columns): footings read off S-01 are C2/F3 at ค-1, ค-2, C2/F4 at ข-1, ข-2, and C2/F3 at ก-1, ก-2 -- i.e. pedestal C2 throughout, footing F4 on the middle row and F3 on the two outer rows.",
     "TWO DUMMY GRIDS added 2026-07-25 after applying the beam-endpoint rule (spec §4) to S-02: the toilet block has a horizontal B5 beam in the middle of each 4.50 m half (between ก-ข and between ข-ค) landing on no named grid line. Per the rule these are real structural lines and get dummy grids, rather than being dropped or recorded as a prose description. pos_m is null because no dimension is printed for either -- do NOT assume 2.25 m, the four S1 slab panels are not visibly equal in depth.",
     "Beam layout confirmed at high magnification on S-02: B4 on the two outer named rows (ค and ก), B6 on the middle named row (ข), B5 on the two dummy rows AND as the vertical edge beams on grid lines 1 and 2. Four S1 slab panels, one per bay. C2 columns sit at the six NAMED grid intersections only -- the dummy rows carry a beam but no column.",
-    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed."
+    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed.",
+    "2026-08-24 §4-upgrade: z_levels[] derived from this house's human-reviewed per-page extractions (element_type level/datum with level_m), deduplicated by (label, level_m) — not a fresh image sweep; source_image on each entry names the reviewed file's page",
+    "2026-08-24 §4-upgrade: dimension_chains[]/unassigned_dimensions[] deliberately ABSENT — they require a page-by-page image transcription sweep (§4 2026-08-21) that has not been done for this house; absence means not-yet-swept, per spec. Do not backfill them from resolved pos_m values."
   ]
 }
