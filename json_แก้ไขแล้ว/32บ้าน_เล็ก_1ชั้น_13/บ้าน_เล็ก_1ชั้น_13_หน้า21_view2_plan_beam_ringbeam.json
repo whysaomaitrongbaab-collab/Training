@@ -10,22 +10,24 @@
   "confidence_score": 0.85,
   "confidence_flags": [],
   "warnings": [
-    "This ring/tie-beam (อะเส) plan covers ONLY the main 1-2 x A-D box — no dummy grid 1\" and no accessible-bathroom appendage (1'/D') appear here, matching this house's structure: only the main box's C1-marked columns continue up as light steel columns (CS) to eave level; the appendage is a flat-roofed single-storey addition that does not reach this level.",
-    "CS = light-gauge steel column 'เสาเหล็ก [-125x50x20x2.3มม.' per this sheet's printed note (S-03) and per S-03's own CS-to-RC-beam splice detail (view3 of this page).",
-    "'เส้ง' (diagonal X-braces drawn corner-to-corner in each of the 3 bays) is recorded as element_type 'steel_member' (bracing) with an approximate cell-center grid_ref since it has no single true grid point — no printed section/size is given for it on this sheet."
+    "This ring/tie-beam (อะเส) plan covers ONLY the main 1-2 x A-D box — the accessible-bathroom appendage (1'/D') does not appear, since it is a flat-roofed single-storey addition that does not reach this level. Dummy grid 1\" DOES appear here: it is the line the four CS steel columns stand on.",
+    "CS = light-gauge steel column 'เสาเหล็ก [-125x50x20x2.3มม.' per this sheet's printed note (S-03) and per S-03's own CS-to-RC-beam splice detail (view3 of this page). There are exactly FOUR of them, one at the mid-span of each horizontal ring beam — each 'CS' leader points at a small square symbol sitting on grid 1\" (pixel-measured at 2.37m from grid 1, i.e. the 2.375 dummy line), giving A1\", B1\", C1\", D1\". The larger hatched squares at the eight grid corners are the RC columns (C1 in the column schedule) continuing up from below, not CS — they carry no mark of their own on this view and are recorded in the column schedule sheets, not here.",
+    "Each of the three bays is crossed corner-to-corner by a dashed diagonal X with a circled Thai label at its centre. The label reads 'โล่ง' (void / open — no slab or ceiling at this level), NOT a beam or brace mark: the X is the standard void hatch, not a structural member. Recorded in 'void_bays' rather than in 'elements' because it is an annotation, not a takeoff item — same convention already used in houses #2/#3 and in house 05's tie-beam plan. Earlier extraction misread the label as 'เส้ง' and recorded the three X's as steel bracing members; that was wrong on both counts and has been removed."
+  ],
+  "void_bays": [
+    { "grid_ref": "A-B x 1-2", "label": "โล่ง", "confidence_score": 0.8 },
+    { "grid_ref": "B-C x 1-2", "label": "โล่ง", "confidence_score": 0.8 },
+    { "grid_ref": "C-D x 1-2", "label": "โล่ง", "confidence_score": 0.8 }
   ],
   "elements": [
     { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 4.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "CS", "element_type": "column", "count": 8, "grid_refs": ["A1", "A2", "B1", "B2", "C1", "C2", "D1", "D2"], "material": "steel", "note": "light steel column, section per S-03 note: [-125x50x20x2.3mm", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "เส้ง", "element_type": "steel_member", "grid_ref": "~center of A-B x 1-2 bay", "confidence_score": 0.5, "confidence_flags": ["diagonal X-brace, no printed section/size on this sheet"] },
+    { "element_id": "CS", "element_type": "column", "count": 4, "grid_refs": ["A1\"", "B1\"", "C1\"", "D1\""], "material": "steel", "note": "light steel column at the mid-span of each ring beam, standing on dummy grid 1\"; section per S-03 note: [-125x50x20x2.3mm", "confidence_score": 0.8, "confidence_flags": [] },
     { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "RB3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 4.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "เส้ง", "element_type": "steel_member", "grid_ref": "~center of B-C x 1-2 bay", "confidence_score": 0.5, "confidence_flags": ["diagonal X-brace, no printed section/size on this sheet"] },
     { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "RB3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 4.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "เส้ง", "element_type": "steel_member", "grid_ref": "~center of C-D x 1-2 bay", "confidence_score": 0.5, "confidence_flags": ["diagonal X-brace, no printed section/size on this sheet"] },
     { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "D1", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "D2", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 4.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] }
