@@ -1,0 +1,12 @@
+{
+  "scope": "pass2_only",
+  "op": "op04",
+  "date": "2026-08-23",
+  "subtasks_done": ["gridline", "notes", "plan_footing", "plan_beam"],
+  "subtasks_absent_from_this_house": ["plan_column"],
+  "subtasks_not_yet_reached": ["section (beam/slab sections beyond the one footing-type sheet captured)", "schedule", "plan_slab", "soil_boring_log"],
+  "deliberately_skipped": ["material_list", "index", "site_plan", "side_profile", "title", "symbol", "roof_plan", "misc", "bbs_schedule"],
+  "pages_extracted": 9,
+  "pages_in_house": 90,
+  "note": "Pass 2 subtasks only — this house is NOT fully extracted. Extraction agent was terminated mid-run by an API session-limit error (batch of 20 parallel op04 agents, resets 8:10pm Bangkok) before it could report back; this _scope.json was written afterward by inspecting the files on disk. 'บ้านครอบครัวไทยร่วมสมัย 8 (ต้านทานแผ่นดินไหว)' (AR60007/S60164, กรมโยธาธิการฯ, 2560) — small 2-story earthquake-resistant house, both foundation systems (spread + pile) extracted, both floor beam plans, ring beam, roof frame, general notes, and one footing-detail section sheet. `subtasks_not_yet_reached` is distinct from confirmed-absent: beam/slab rebar section sheets and a column schedule plausibly still exist further into this 90-page book. python tools/check_format.py passes ALL CHECKS (after fixing one `grid`-word-in-ref violation on the roof-frame file's ridge grid_ref)."
+}

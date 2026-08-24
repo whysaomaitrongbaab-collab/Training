@@ -1,0 +1,28 @@
+{
+  "png": "21",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ผังโครงสร้างหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า21.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_07_หน้า00_gridline.json",
+  "confidence_score": 0.6,
+  "confidence_flags": [
+    "This is the STRUCTURAL roof framing plan — hip/valley/ridge/rafter steel members drawn with grid-referenced node circles over the same A-E x 1-7 grid as the floor plans. Classified pattern 'plan' (not 'roof_plan') per op04's explicit trap warning: a structural roof frame with member marks belongs to plan_beam, and misclassifying it as roof_plan/Pass-3 would silently drop the roof steel from the BOQ."
+  ],
+  "warnings": [
+    "Members here are labelled by TYPE (a repeating steel frame), not by individual mark like the floor beams — the sheet itself gives one steel_section callout per member family, not per-instance ids. Recorded one element per member TYPE (ridge, hip rafter, valley rafter, common rafter, wall-plate/eave beam) using a descriptive element_id and a general grid_ref describing its coverage, rather than inventing individual marks (แ1, แ2, ...) that are not printed on the sheet — per §0.3 'if the drawing never marked the thing, a descriptive id is fine'.",
+    "The roof plan shows two hip-roof masses: a main (larger, roughly square) hip over grid A-C x 2-7, and a smaller hip/valley-connected wing over grid C-E x 2-5, matching the two-tier massing visible on the elevations (หน้า07-10) and the architectural roof plan (หน้า06). The valley (ตะเฆ่ราง) member is where these two masses meet — its exact grid extent was not fully traced at this pass, recorded with an approximate span.",
+    "Common rafters (จันทัน) are C100x50x20x2.3mm spaced @1.00m — per §6a this is a spacing-based repeated member, recorded as one element with spacing_mm rather than as ~10-12 individual rafter entries the sheet itself does not mark individually.",
+    "Roof eave overhangs 1.20m (west) and 0.60+1.10m (east, asymmetric) printed on this sheet beyond the A/E grid lines — recorded in the grid master's unassigned_dimensions, not as beam elements."
+  ],
+  "elements": [
+    { "element_id": "อกไก่", "element_type": "beam", "grid_ref": "A-E x 1-7", "level_m": 9.585, "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3mm." }, "material": "steel", "note": "ridge beam, double channel back-to-back (2C), runs along the main and secondary roof ridges", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "ตะเฆ่สัน", "element_type": "rafter", "grid_ref": "A-E x 1-7", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3mm." }, "material": "steel", "note": "hip rafters, one per hip corner of both roof masses (4 on the main hip, additional on the secondary wing)", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "ตะเฆ่ราง", "element_type": "rafter", "grid_ref": "~C4-~C5", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3mm." }, "material": "steel", "note": "valley rafter where the two roof masses meet, approximate grid extent — not fully traced", "confidence_score": 0.35, "confidence_flags": ["position approximate"] },
+    { "element_id": "จันทัน", "element_type": "rafter", "grid_ref": "A-E x 1-7", "spacing_mm": 1000, "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "C 100x50x20x2.3mm. @ 1.00m." }, "material": "steel", "note": "common rafters covering both roof masses, @1.00m spacing per §6a — not individually enumerated", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "อเส", "element_type": "beam", "grid_ref": "A-E x 1-7", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tf_mm": 2.3, "printed_as": "2C 150x50x20x2.3mm." }, "material": "steel", "note": "wall-plate/eave beam running around the full roof perimeter, double channel (2C); labelled 'ชิ้อเส' on หน้า20's leader, printed as 2C 150x50x20x2.3mm here vs 2C 125x50x20x2.3mm on หน้า20's leader label — recorded the value printed directly on this dedicated roof sheet (หน้า21) as authoritative per op01 precedence (dedicated structural sheet over an incidental leader label on an adjacent sheet), and flagged the discrepancy rather than silently picking one", "confidence_score": 0.5, "confidence_flags": ["spec_conflict_with_หน้า20_leader_label"] },
+    { "element_id": "จุดยึดเหล็ก_PLATE", "element_type": "connection_detail", "grid_ref": "A-E x 1-7", "thickness_mm": 5, "note": "steel connection plate at rafter/hip joints, thickness 5mm ('จุดต่อยึดเหล็ก PLATE หนา5มม.')", "confidence_score": 0.5, "confidence_flags": [] }
+  ]
+}

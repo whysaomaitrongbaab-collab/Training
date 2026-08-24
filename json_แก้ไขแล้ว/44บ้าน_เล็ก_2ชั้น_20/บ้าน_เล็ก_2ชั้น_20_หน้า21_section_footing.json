@@ -1,0 +1,20 @@
+{
+  "png": "21",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "PLAN/SECTION F1A, F1, F2",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_20/บ้าน_เล็ก_2ชั้น_20_หน้า21.png",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "F2 is a combined/strap footing (1.00 m long, spanning 2 piles) with distinct top and bottom rebar layers rather than the single-count layout used by F1/F1A — recorded with main_bar.top/main_bar.bottom (beam-style) instead of a single count, since the drawing itself shows two distinct printed layers (5-DB12 top, 9-DB12 bottom) plus a wrap tie (1-RB9), flagged here as a judgement call rather than the usual single-count footing convention (§6).",
+    "F1/F1A's '3-DB12' bars carry a '#' mark on the drawing next to the leader — interpreted as dowel/anchor bars projecting up into the column above (a standard convention on this house series), not a footing mat bar; recorded as main_bar with a note rather than inventing a separate dowel field not in the schema."
+  ],
+  "elements": [
+    { "element_id": "F1A", "element_type": "footing", "width_mm": 400, "height_mm": 400, "pile": { "count": 1, "section": "I 0.22x0.22x16.00m precast, rated 20 ton/pile" }, "main_bar": { "count": 3, "dia_mm": 12, "type": "DB", "note": "dowel bars into column above (# mark)" }, "stirrup": { "count": 2, "dia_mm": 9, "type": "RB", "note": "รัดรอบ (wrap-around tie)" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "F1", "element_type": "footing", "width_mm": 400, "height_mm": 400, "pile": { "count": 1, "section": "I 0.18x0.18x16.00m precast, rated 12 ton/pile" }, "main_bar": { "count": 3, "dia_mm": 12, "type": "DB", "note": "dowel bars into column above (# mark)" }, "stirrup": { "count": 2, "dia_mm": 9, "type": "RB", "note": "รัดรอบ (wrap-around tie)" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "F2", "element_type": "footing", "width_mm": 1000, "height_mm": 400, "pile": { "count": 2, "section": "I 0.18x0.18x16.00m precast, rated 12 ton/pile each" }, "main_bar": { "top": { "count": 5, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 9, "dia_mm": 12, "type": "DB" } }, "stirrup": { "count": 1, "dia_mm": 9, "type": "RB", "note": "รัดรอบ (wrap-around tie), per the strap length" }, "note": "combined/strap footing (width_mm = long/plan direction spanning the 2 piles, height_mm = perpendicular plan width) at grid points B2 and C2, see warnings", "confidence_score": 0.8, "confidence_flags": ["footing rebar recorded top/bottom beam-style — see warnings"] }
+  ]
+}

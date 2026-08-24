@@ -1,0 +1,102 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า20.png",
+    "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า21.png",
+    "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า22.png",
+    "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า23.png",
+    "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า24.png",
+    "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า25.png",
+    "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า26.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'บ้านสำเร็จรูป 2 (บ้านชั้นเดียว ยกใต้ถุนสูง)' — 'แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข' series, กรมโยธาธิการและผังเมือง กระทรวงมหาดไทย (design no. S 62089), NOT the same series/agency as the 'แบบบ้านยิ้มเพื่อประชาชน' (สำนักการโยธา กรุงเทพมหานคร) series seen in houses 09/12/14/16/18/19/20 already in the dataset — despite the folder name 'บ้าน_เล็ก_2ชั้น_09' suggesting a shared numbering, this is a different design catalog entirely. Titled a SINGLE-STORY house raised on stilts (1 bedroom, 1 bathroom), even though the structural set draws two framing levels ('พื้นชั้นล่าง'/ground beam level and 'พื้นชั้นบน'/elevated main floor) plus two roof levels — the 'floors' are the open stilt level and the one living floor, not two stories.",
+    "This house's structural set (S-01 to S-18, 18 sheets, matching 'S-01 ถึง S-18' printed in the sarabanya/index and the '18' page-count box on every sheet) offers TWO alternate foundation systems for the same superstructure: S-02/S-03 are a driven-pile option (F3/F4/F5/F6 pile caps on 0.15x0.15x6.00m precast concrete piles) and spread-footing option (F(0.90x0.90x0.30) etc.) respectively, selected per site soil bearing capacity per S-01 note 3.1-3.3 ('เลือกใช้ชนิดเดียวชนิดหนึ่งเท่านั้นภายในอาคารเดียวกัน' — pick one type only for the whole building). Both are extracted as separate plan_footing/section files rather than merged; a real build uses only one.",
+    "Grid is identical across S-02 through S-08 (x: 1/2/3 at 0.00/2.70/5.40; y: A/B/C at 0.00/3.60/5.40) — visually confirmed on all 7 sheets with no discrepancy. dimension_chains below records the base chain once (from S-02) rather than 7 near-duplicate entries with zero new information; sheets that print ADDITIONAL segments beyond the base (S-05's balcony extension, S-07/S-08's roof overhangs) get their own chain entries.",
+    "Dummy y-line A' (pos_m -1.00): the S-08 upper/main roof plan (จันทันเหล็ก C-150x50x20x3.2mm) shows purlins/rafters terminating 1.00m north of grid A (roof eave); per the origin rule this stays a negative offset from A rather than taking over the origin.",
+    "Dummy y-line C' (pos_m 6.40): both S-07 (lower/porch roof, จันทันเหล็ก C-75x45x15x2.3mm) and S-08 (upper/main roof) show purlins/rafters terminating 1.00m south of grid C — same value on both sheets, recorded once.",
+    "Dummy y-line C'' (pos_m 6.60): S-05 (upper floor beam plan) dimensions a 1.20m balcony/stair-landing extension south of grid C, closed by beam B2 and framed by B5X (west edge, continuing from B5A) and B4X (east edge, continuing from B4A). C' (6.40, roof overhang) and C'' (6.60, balcony edge) both fall in the 'beyond C' gap; ordered by ascending pos_m per the prime-ordering rule.",
+    "S-04 (ground/lower floor plan) shows an equivalent small slab area (S0) framed by beam B3X (continuing from B3, the ground-floor column-1 beam) south of grid C, at column 1 — almost certainly the ground-level landing pad under the stair (ST1) drawn on S-05. No dimension for its southward extent is printed on S-04 itself (unlike S-05's explicit 1.20m for the balcony at columns 2-3). Judgment call: B3X's south end is recorded against the existing C'' dummy (6.60) as the best available estimate, since architecturally a ground landing pad would plausibly match the stair/balcony zone's overall depth — but this is an INFERENCE, not a printed dimension for this specific beam, and is flagged with reduced confidence on that element rather than treated as a confirmed read.",
+    "Beam mark 'BA' (150x300mm, spec confirmed on S-15 'ขยายคาน BA-B5X') appears on S-05 as a short internal beam separating two S1-marked slab areas within bay A1-B1 x grid1-2, plus an internal B2 beam closing the south side of that same small room cluster partway through the bay. Neither beam's exact offset from grid 1 (or from row A) is dimensioned on S-05 — this is an architecture-controlled interior partition, out of op04's structural-sheet scope. Recorded on the plan_beam file with an approximate grid_ref rather than a fabricated dummy grid position.",
+    "No absolute floor-to-floor or floor-to-datum elevation (e.g. '+0.60') is printed on any extracted structural sheet — S-18's stair detail labels 'ระดับพื้นชั้นบน'/'ระดับพื้นชั้นล่าง' (upper/lower floor level) as reference lines only, and stair rise/run/tread count are explicitly deferred to the architectural drawing ('ตามแบบสถาปัตยกรรม'). z_levels[] is left empty rather than populated with unlabelled placeholders."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 2.70, "type": "named" },
+      { "id": "3", "pos_m": 5.40, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A'", "pos_m": -1.00, "type": "dummy" },
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 3.60, "type": "named" },
+      { "id": "C", "pos_m": 5.40, "type": "named" },
+      { "id": "C'", "pos_m": 6.40, "type": "dummy" },
+      { "id": "C''", "pos_m": 6.60, "type": "dummy" }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า20.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 2.70 },
+          { "from": "2", "to": "3", "value_m": 2.70 },
+          { "from": "1", "to": "3", "value_m": 5.40 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า20.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.60 },
+          { "from": "B", "to": "C", "value_m": 1.80 },
+          { "from": "A", "to": "C", "value_m": 5.40 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า23.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.60 },
+          { "from": "B", "to": "C", "value_m": 1.80 },
+          { "from": "C", "to": "C''", "value_m": 1.20 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า25.png",
+        "segments": [
+          { "from": "A'", "to": "A", "value_m": 1.00 },
+          { "from": "A", "to": "B", "value_m": 3.60 },
+          { "from": "B", "to": "C", "value_m": 1.80 },
+          { "from": "C", "to": "C'", "value_m": 1.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า26.png",
+        "segments": [
+          { "from": "A'", "to": "A", "value_m": 1.00 },
+          { "from": "A", "to": "B", "value_m": 3.60 },
+          { "from": "B", "to": "C", "value_m": 1.80 },
+          { "from": "C", "to": "C'", "value_m": 1.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.00, "label": "~1.00 ม. ตอม่อดูขยายเสา — approximate embedment depth from 'ระดับที่กำหนด' (design grade) down to top of footing, printed on every footing detail section (S-09 to S-14)", "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า27.png", "note": "printed with a tilde (~), i.e. approximate — not a firm level/grid value, and repeated identically on S-09 through S-14" }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "negative_pos_m": "A' sits before the origin grid A (roof eave 1.00m north of A) — kept a negative pos_m (-1.00) rather than letting it take over the origin, per the standing rule.",
+    "prime_ordering": "Two independent dummy lines fall in the single 'beyond C' gap: the roof eave (1.00m south of C = 6.40) and the balcony/stair-landing edge (1.20m south of C = 6.60). Ordered by ascending pos_m (scan direction top-to-bottom): roof eave = C' (6.40), balcony edge = C'' (6.60)."
+  }
+}

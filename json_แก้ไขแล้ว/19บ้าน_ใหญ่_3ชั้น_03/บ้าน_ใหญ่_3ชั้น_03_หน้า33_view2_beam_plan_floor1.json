@@ -1,0 +1,34 @@
+{
+  "png": "33",
+  "doc_page": 33,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนคาน-พื้นชั้นล่าง",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_03/บ้าน_ใหญ่_3ชั้น_03_หน้า33.png",
+  "grid_source": "บ้าน_ใหญ่_3ชั้น_03_หน้า00_gridline.json",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "specs": {
+    "B1": { "spec_source": "section", "spec_confidence_score": 0.8, "note": "คานคอดินขอบอาคาร — ดูสเปกที่ S-05" },
+    "B2": { "spec_source": "section", "spec_confidence_score": 0.8, "note": "คานคอดินขอบอาคารด้านข้าง — ดูสเปกที่ S-05" },
+    "B3": { "spec_source": "section", "spec_confidence_score": 0.8, "note": "คานคอดินภายใน — ดูสเปกที่ S-05" },
+    "B4": { "spec_source": "section", "spec_confidence_score": 0.75, "note": "คานสั้นภายใน — ดูสเปกที่ S-05" }
+  },
+  "elements": [
+    { "element_id": "B1_top", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 4.50, "span_source": "grid_table", "description": "คานคอดินบนแนวกริด 3 (ขอบบนสุด)", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B1_bottom", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 4.50, "span_source": "grid_table", "description": "คานคอดินบนแนวกริด 1 (ขอบล่างสุด, ร่วมกับ B3)", "confidence_score": 0.65, "confidence_flags": ["beam_mark_at_this_position_uncertain_b1_or_b3"] },
+    { "element_id": "B1_mid", "element_type": "beam", "grid_ref_start": "?", "grid_ref_end": "?", "span_length_m": null, "span_source": "unresolved", "description": "คาน B1 เส้นกลาง (ปรากฏซ้ำในผัง แบ่งห้อง S1/B4/S1 ออกจากพื้นที่ PS กลาง) — ตำแหน่งไม่อยู่บนกริดหลัก 3-2-1 ที่ยืนยันได้ (มีเบาะแสระยะ 1.50ม.+2.00ม.=3.50ม. จากกริด 3 แต่ไม่ยืนยัน dummy grid เต็มรูปแบบ ดู grid master)", "confidence_score": 0.4, "confidence_flags": ["span_unresolved_possible_dummy_grid"] },
+    { "element_id": "B2_left", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A1", "span_length_m": 8.00, "span_source": "grid_table", "description": "คานคอดินขอบซ้าย ตลอดแนวกริด A", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B2_right", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B1", "span_length_m": 8.00, "span_source": "grid_table", "description": "คานคอดินขอบขวา ตลอดแนวกริด B", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B4_stub", "element_type": "beam", "grid_ref_start": "?", "grid_ref_end": "?", "span_length_m": null, "span_source": "unresolved", "description": "คานสั้น B4 คั่นระหว่างช่อง S1 สองช่อง (มุมบนและมุมล่างของผัง) — ความยาวไม่สามารถยืนยันจากกริดหลักได้ (span สั้นภายในห้อง S1 คู่)", "confidence_score": 0.45, "confidence_flags": ["span_unresolved"] },
+    { "element_id": "CX_columns", "element_type": "column", "grid_refs": [], "description": "เสาสั้น CX 2 ต้น ใกล้กริด 2 (ตำแหน่งชานพักบันได BST) — ดูสเปกที่ S-06", "confidence_score": 0.65, "confidence_flags": ["not_on_main_grid"] },
+    { "element_id": "BST_landing_beam", "element_type": "beam", "grid_ref_start": "~2B", "grid_ref_end": "~2B", "span_length_m": null, "span_source": "unresolved", "description": "คานชานพักบันได BST (ชานพัก) ใกล้กริด B แถว 2 — ดูสเปกที่ S-05", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "PS_slab_direction", "element_type": "precast_plank_detail", "description": "ทิศทางวางแผ่นพื้นสำเร็จรูป PS (ลูกศร ← PS →) พาดระหว่างคาน B2 (ซ้าย-ขวา) ครอบคลุมพื้นที่ห้องรับแขก", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "S1_slab_type", "element_type": "slab", "count": 4, "grid_refs": [], "description": "แผ่นพื้น S1 (ประเภทแผ่นพื้นสำเร็จรูปมาตรฐาน) 4 จุด มุมบน-ล่าง ของผัง ข้างคาน B4", "confidence_score": 0.6, "confidence_flags": [] }
+  ],
+  "warnings": [
+    "ไฟล์นี้บันทึกด้วยความเชื่อมั่นต่ำกว่าไฟล์อื่นเพราะเส้นคาน B1 เส้นกลางและ B4 ไม่สามารถยืนยัน span/grid_ref แม่นยำได้จากภาพความละเอียดที่มี (ไม่มี dummy grid ยืนยันในกริดมาสเตอร์) — บันทึก span_source:'unresolved' ตามกฎ แทนการเดาตำแหน่ง; การอ่านซ้ำด้วยภาพซูมสูงกว่านี้จะช่วยยืนยันได้แม่นยำกว่า",
+    "การรวม/กระจายจำนวนคาน B1/B2/B3/B4 ที่แท้จริงต้องอ่านเทียบกับ S-06 (แบบขยายคาน) และ S-03 (คานชั้น 2-3 ซึ่งมีผังคล้ายกันและอาจช่วยยืนยันตำแหน่ง B1 เส้นกลาง) — ทำเพียงบางส่วนในรอบสกัดนี้"
+  ]
+}

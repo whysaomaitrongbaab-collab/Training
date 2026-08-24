@@ -1,0 +1,133 @@
+{
+  "png": "14",
+  "doc_page": 12,
+  "discipline": "architecture",
+  "sheet_code": "A-12",
+  "sheet_name": "รูปตัด 2",
+  "pattern": "side_profile",
+  "view_title": "รูปตัด 2",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า14.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "levels",
+      "element_type": "datum",
+      "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับพื้นชั้น 2 +3.75, ระดับคานหลังคา +6.65, ระดับหลังเสาล่าง +6.95, ระดับหลังเสาบน +8.15 — same 6 levels and correct floor1/floor2 label pairing as _หน้า13_section1.json (this sheet does NOT repeat that sheet's level-label swap or _หน้า11_elevation3.json's +3.15 typo).",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "roof_structure_ref",
+      "element_type": "roof_frame_reference",
+      "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)",
+      "description": "'โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง' deferral note, same as every sheet. This section cuts at approximately x=2-3 (confirmed by the room sequence: นอน3/ครัว at gridE-D, ห้องน้ำ2/ห้องน้ำ1 at gridD-C, นอน1/จอดรถ at gridC-B, matching this agent's own x=2-3 grid_ref estimates from _หน้า06/_หน้า07). Roof line LOW near gridA (right end, 'เชิงชาย1/R1' fascia detail), HIGH near gridE (left end, 'เชิงชาย2/R2' fascia detail) — see warnings[], this RESOLVES the roof-slope-direction question left open across _หน้า08/_หน้า10/_หน้า12/_หน้า13.",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "eave_detail_ref_low",
+      "element_type": "detail_view",
+      "detail_ref": "A-22",
+      "description": "'เชิงชาย 1 R1 ดูแบบขยาย A-22' callout, dashed box around the LOW end, right side (gridB-A) — same R1 mark as _หน้า13_section1.json's low-end callout, now on the opposite (right) side of the page because this sheet's grid order is mirrored (E..A vs section1's A..E)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "eave_detail_ref_high",
+      "element_type": "detail_view",
+      "detail_ref": "A-22",
+      "description": "'เชิงชาย 2 R2 ดูแบบขยาย A-22' callout, dashed box around the HIGH end, left side (gridE-D) — same R2 mark as _หน้า13_section1.json's high-end callout",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "กันสาด_คสล_roof_level_cut",
+      "element_type": "concrete_canopy",
+      "grid_ref": "beyond A (right end)",
+      "level_m": 7.3,
+      "opening_ref": "-",
+      "description": "'กันสาด ค.ส.ล.' tag '[5] +7.30 (—)' — a small canopy at +7.30, ABOVE the main roof-beam level (+6.65), near the LOW/gridA end of the section, above/near จอดรถ. Not captured as a separate element on _หน้า08_roof_plan.json (a small feature, plausibly missed at 1:100 roof-plan scale) — flagged there via a cross-reference.",
+      "confidence_score": 0.62,
+      "confidence_flags": ["needs_human_review_zoom_required", "not_independently_visible_on_the_roof_plan_sheet_(หน้า08)_at_its_scale"]
+    },
+    {
+      "element_id": "นอน3_cut",
+      "element_type": "room_cut",
+      "grid_ref": "E-D, upper floor",
+      "level_m": 3.75,
+      "wall_height_m": 2.6,
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ครัว_cut",
+      "element_type": "room_cut",
+      "grid_ref": "E-D, ground floor",
+      "level_m": 0.6,
+      "wall_height_m": 2.7,
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ห้องน้ำ2_cut",
+      "element_type": "room_cut",
+      "grid_ref": "D-C, upper floor",
+      "level_m": 3.65,
+      "wall_height_m": 2.7,
+      "description": "Sink and toilet fixtures drawn in section, matches floor-plan tag '3 +3.65 (2)' from _หน้า07",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ห้องน้ำ1_cut",
+      "element_type": "room_cut",
+      "grid_ref": "D-C, ground floor",
+      "level_m": 0.5,
+      "description": "Sink and toilet fixtures drawn in section, matches floor-plan tag '3 +0.50 (2)' from _หน้า06 (WC1)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "นอน1_cut",
+      "element_type": "room_cut",
+      "grid_ref": "C-B, upper floor",
+      "level_m": 3.75,
+      "wall_height_m": 2.6,
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จอดรถ_cut",
+      "element_type": "room_cut",
+      "grid_ref": "C-B (extending toward B-A), ground floor",
+      "level_m": 0.2,
+      "description": "Diagonal cross-hatch (X) infill pattern shown in section, matching the same X-pattern motif seen on the elevations — open carport, matches floor-plan tag '4 +0.20 (3)' from _หน้า06. A stepped/graded ground line is drawn descending toward gridA, matching the site plan's grading notes.",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "overall_width",
+      "element_type": "dimension",
+      "description": "Bottom dimension chain: 1.50 (beyond gridE) | 3.00 (E-D) | 2.20 (D-C) | 4.00 (C-B) | 1.50 (B-A) [bracket 10.70 for gridE-gridA, mirror of section1's chain, exactly matching the grid master].",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "hatched_ground_zone",
+      "element_type": "grading_note",
+      "description": "Hatched earth/fill zone below ±0.00, with a stepped/graded transition down toward gridA matching the จอดรถ/entry apron area",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "This building cross-section (รูปตัด 2) cuts along the depth direction (grid E-D-C-B-A) at approximately x=2-3 — confirmed by the room sequence (นอน3/ครัว, ห้องน้ำ2/ห้องน้ำ1, นอน1/จอดรถ) matching this agent's own x=2-3 grid_ref estimates from the floor plans.",
+    "ROOF SLOPE DIRECTION — RESOLVED, superseding earlier uncertainty: this sheet, re-verified together with _หน้า13_section1.json using full-context crops (grid letters + R1/R2 fascia callouts + roofline all visible in one frame, specifically because of a discrepancy found against _หน้า10_elevation2.json), shows the SAME slope direction as section1 and _หน้า12_elevation4.json: LOW at gridA, HIGH at gridE. That makes 3 sheets (section1, section2, elevation4) in agreement, against 1 sheet (_หน้า10_elevation2.json/A-08) showing the opposite (LOW-E/HIGH-A) — re-verified 3 separate times on elevation2 itself and confirmed to genuinely print that way, not a misreading. Per the standing precedence rule ('more sheets agreeing beats fewer, count them, and say so'), the corrected, final understanding is: the roof is (most likely) a single consistent slope direction across the whole building, LOW at gridA / HIGH at gridE — NOT a twin-opposite-slope valley roof as an intermediate, now-superseded reading in _หน้า08_roof_plan.json guessed after only elevation2 and elevation4 had been read. _หน้า08_roof_plan.json carries the final 3-reversal synthesis; _หน้า10_elevation2.json is flagged as the likely-erroneous outlier sheet (a real drafting inconsistency on A-08, not resolved further — outside this extraction's ability to fix, since doing so would mean altering what A-08 actually prints).",
+    "The 'กันสาด ค.ส.ล. +7.30' canopy (see element above) is a real feature this section shows that was not caught when _หน้า08_roof_plan.json was first written — flagged there via cross-reference rather than silently left inconsistent.",
+    "Individual door/window tags on this section were not re-itemized in detail — see the floor plan and elevation files' doors_and_windows_summary elements for the general convention.",
+    "Section-cut identification: two small circled '2' triangle markers beside the 'รูปตัด 2' title at the bottom — standard section-identification symbol, not a separate building element."
+  ]
+}

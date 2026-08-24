@@ -1,0 +1,23 @@
+{
+  "png": "25",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "SECTION BEAM B5, B6, B1', B3', B6A",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า25.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "B5 follows the same 'constant main + curtailed additional bar' pattern as B4/B10A on หน้า24 — constant 3-DB12 top/bottom, plus a 2-DB16 bar that sits top-at-support and bottom-at-midspan.",
+    "B6/B6A each print FOUR distinct rebar lines per section (e.g. B6 SECTION_1-1 top: '3-DB12' then '2-DB16'; bottom: '2-DB16' then '2-DB12') — modelled as a constant 2-DB16 on both top and bottom faces (present identically in both sections) plus an additional 3-DB12/2-DB12 bar that curtails/switches face between the two sections, mirroring the B4/B10A/B5 judgement call on this house.",
+    "B3' shows only ONE section (no SECTION_2-2) with an asymmetric top (2-DB12 + 1-DB16) vs bottom (2-DB12 only) — read as a short cantilever/negative-moment beam (consistent with its 0.70m offset dimension on the LONG SECTION view, unlike B1' which starts flush at 0), not a curtailment pair, so no 'at support/at midspan' note was added."
+  ],
+  "elements": [
+    { "element_id": "B5", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 3, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 3, "dia_mm": 12, "type": "DB" } }, "additional_bars": [ { "count": 2, "dia_mm": 16, "position": "top at support (SECTION_1-1), continues to bottom at midspan (SECTION_2-2)" } ], "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "DB", "note": "constant on both top and bottom faces at both sections" }, "bottom": { "count": 2, "dia_mm": 16, "type": "DB", "note": "constant on both top and bottom faces at both sections" } }, "additional_bars": [ { "count": 3, "dia_mm": 12, "position": "top at support (SECTION_1-1), reduces to 2-DB12 continuing to bottom at midspan (SECTION_2-2)" } ], "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B1'", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B3'", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } }, "additional_bars": [ { "count": 1, "dia_mm": 16, "position": "top, single extra bar — short cantilever/negative-moment beam, only one section printed" } ], "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B6A", "element_type": "beam", "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "DB", "note": "constant on both top and bottom faces at both sections" }, "bottom": { "count": 2, "dia_mm": 16, "type": "DB", "note": "constant on both top and bottom faces at both sections" } }, "additional_bars": [ { "count": 3, "dia_mm": 12, "position": "top at support (SECTION_1-1), reduces to 2-DB12 continuing to bottom at midspan (SECTION_2-2)" } ], "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.7, "confidence_flags": [] }
+  ]
+}

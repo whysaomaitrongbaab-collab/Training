@@ -1,0 +1,67 @@
+{
+  "png": "บ้าน_เล็ก_1ชั้น_09_หน้า09.png",
+  "doc_page": 9,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนคานและโครงหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า09.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/16บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า00_gridline.json",
+  "confidence_score": 0.6,
+  "confidence_flags": [],
+  "warnings": [
+    "ระยะยื่นชายคา 1.30 ม. ทั้งสองข้างของกริด 1 และ 2 (พิมพ์ชัดเจน) เป็นแนวชายคาล้วน ไม่เติม dummy grid ตามข้อห้าม §4",
+    "ตระแกรงเส้นประถี่ทั่วผังคือระแนงสำเร็จรูป (จันทันรอง) — ไม่ได้ถอดเป็น element รายเส้น นับเฉพาะสเปกรวมจาก note ที่พิมพ์",
+    "ตัวย่อ 'L' (มุมเหล็ก 2 ตัวประกบ) มี 4 ตัวเลขในสเปกที่พิมพ์ (125x50x20x2.3มม.) ไม่ตรงรูปแบบมุมเหล็กมาตรฐาน 3 ตัวเลข — บันทึกตาม printed_as ทั้งหมด ไม่แปลงคีย์ dimension เพราะสเปก §12 ยืนยันว่า mapping ของตระกูล L ยังไม่ได้รับการยืนยัน"
+  ],
+  "elements": [
+    {
+      "element_id": "ระแนงสำเร็จรูป",
+      "element_type": "note",
+      "text": "ระแนงคอนกรีตสำเร็จรูป วางพาด ⌀0.32-0.34 ม.",
+      "spacing_mm": 320,
+      "variable_spacing": true,
+      "printed_as": "ระแนงสำเร็จรูป @ 0.32-0.34ม.",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "อะเส",
+      "element_type": "steel_member",
+      "steel_section": {
+        "designation": "L",
+        "printed_as": "2∟-125x50x20x2.3มม.",
+        "note": "มุมเหล็ก 2 ตัวประกบ — key mapping ของตระกูล L ยังไม่ยืนยัน (สเปก §12) บันทึกเฉพาะ printed_as"
+      },
+      "material": "steel",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "steel_section_family_L_unverified_mapping"
+      ]
+    },
+    {
+      "element_id": "จันทัน",
+      "element_type": "rafter",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "จันทัน [-100x50x20x2.3มม. @1.00ม."
+      },
+      "material": "steel",
+      "spacing_mm": 1000,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ชายคายื่น_1",
+      "element_type": "dimension_note",
+      "value_m": 1.30,
+      "printed_as": "1.30 ม. (ทั้งสองข้างกริด 1 และ 2)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}

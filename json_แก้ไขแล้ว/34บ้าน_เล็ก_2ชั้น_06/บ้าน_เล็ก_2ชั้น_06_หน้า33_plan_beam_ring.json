@@ -1,0 +1,54 @@
+{
+  "png": "33",
+  "doc_page": 31,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แปลนคานอะเส",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า33.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_06_หน้า00_gridline.json",
+  "confidence_score": 0.65,
+  "confidence_flags": [],
+  "warnings": [
+    "This is the ring/eave tie-beam plan at wall-top level (per S-13/หน้า40, CN2 rises 'from floor2 up to +6.65m' — that is this level). West grid1-2 bay east (grid2-3, rows D-C and C-B) segments were zoomed and read directly; several east-side and lower (row B/row A) segments could not be individually zoomed in this pass and are recorded by inference from the same topology already confirmed on the west side and on the floor-beam plans (S-04/S-05) — those are marked span_source 'unresolved' with a lower confidence_score rather than asserted as directly read.",
+    "'RB1/RB1' is printed (doubled) at two wall segments (grid1 vertical D-C, and grid1 vertical B-A near 'SX') — recorded as a single RB1 element per segment with a note preserving the doubled printed text; genuine meaning (two stacked members vs. a drafting duplicate) not resolved.",
+    "Four 'CX' pedestals (short roof-support columns, 0.15x0.15, per S-13/หน้า40) sit inside the 'โล่ง' (open/void, i.e. no ceiling below the roof) bays at local offsets dimensioned from the RB1/RB2 lines themselves (e.g. '1.75', '0.75', '0.25') rather than from the main grid — their exact grid_ref could not be resolved to a grid point and is recorded as an approximate bay reference with the printed local offsets kept in each element's note.",
+    "'RB2' appears both as a full grid-to-grid ring-beam segment (D1-D2) and as a short label next to a CX pedestal inside a void bay (not clearly a full grid-to-grid segment) — only the D1-D2 occurrence is recorded as a normal beam element; the other 'RB2' mentions near CX are folded into that CX element's note rather than invented as additional beam segments.",
+    "'SX' (a void/soffit marker distinct from 'โล่ง') appears above the S1 room (grid1-2 x B-A) on the east side — recorded as element_type 'slab' per the SO/SI/SX/ST convention (§10), spec not detailed on this sheet."
+  ],
+  "elements": [
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "D1", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "D2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "BX", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "3'", "span_length_m": 0.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["short cantilever stub, free end"] },
+
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "C1", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "printed as 'RB1/RB1' (doubled mark) — see file warnings" },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "C2", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "C3", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["east-side segment inferred from floor-plan topology, not individually zoomed"] },
+
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["inferred from topology, not individually zoomed"] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["inferred from topology, not individually zoomed"] },
+
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["inferred from topology, not individually zoomed"] },
+
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "A1", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "printed as 'RB1/RB1' (doubled mark) near the 'SX' bay — see file warnings" },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "A2", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["inferred from topology, not individually zoomed"] },
+
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+
+    { "element_id": "CX", "element_type": "column", "count": 4, "grid_refs": ["~D-E x 1-2 (bay)", "~D-C x 1-2 (bay)", "~C-B x 1-2 (bay)", "~C-B x 2-3 (bay)"], "confidence_score": 0.5, "confidence_flags": ["local offsets only (e.g. 1.75/0.75/0.25 from nearest RB line), not resolvable to a grid point — see file warnings"], "note": "short roof-support pedestal, 0.15x0.15m, 4-Ø12mm main, tie Ø6@0.075m per S-13/หน้า40" },
+
+    { "element_id": "S1", "element_type": "slab", "grid_ref": "D-E x 1-2", "confidence_score": 0.6, "confidence_flags": ["labelled 'S1' at eave level too — same slab tag as the floor plan, no attic void over this bay"] },
+    { "element_id": "SX", "element_type": "slab", "grid_ref": "A-B x 2-3", "confidence_score": 0.55, "confidence_flags": ["spec not detailed on this sheet"] }
+  ]
+}

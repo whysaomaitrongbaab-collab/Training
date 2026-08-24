@@ -1,0 +1,28 @@
+{
+  "png": "24",
+  "doc_page": 22,
+  "discipline": "architecture",
+  "sheet_code": "A-22",
+  "sheet_name": "แบบขยาย เชิงชาย",
+  "pattern": "section",
+  "view_title": "แบบขยาย เชิงชาย 1 (R1), 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า24.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": ["view1_eave_r1 (this file)", "view2_eave_r2 (_view2_eave_r2.json)"],
+  "elements": [
+    { "element_id": "roof_material_note_r1", "element_type": "note", "description": "หลังคาเหล็กรีดลอน (corrugated metal roof sheet)", "material": "หลังคาเหล็กรีดลอน", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "flashing_note_r1", "element_type": "note", "description": "FLASHING ใช้วัสดุเดียวกันกับหลังคา -- flashing uses the same material as the roof sheeting", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "fascia_r1", "element_type": "installation_detail", "description": "เชิงชายไม้ไฟเบอร์ซีเมนต์ ขนาด 8\" หนา 12มม. ทาสี -- fiber-cement fascia board, 8 inch wide, 12mm thick, painted", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "column_ref_r1", "element_type": "column", "count": 1, "grid_ref": "unresolved -- see warnings", "description": "concrete-hatched support column/post beneath the eave, wall/material code '4' (oval callout) and a small aggregate-hatched pier at its base (triangle code '4' with sub-tick), triangle code '1' on the shaft", "confidence_score": 0.55, "confidence_flags": ["column_identity_and_grid_position_not_determinable_from_this_detail-only_sheet"] },
+    { "element_id": "eave_overhang_dim_r1", "element_type": "dimension", "value_m": 1.50, "description": "horizontal eave overhang projection from the column centerline", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "arch_edge_dim_r1", "element_type": "dimension_note", "printed_as": "ระยะตามแบบสถาปัตย์ ประมาณ ±1.30 ม.", "value_m": 1.30, "description": "vertical dimension explicitly deferred to 'per the architectural drawing, approximately' rather than given as an exact figure on this detail sheet -- read carefully after an initial OCR pass misread it, re-verified by close crop", "confidence_score": 0.75, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "One of 2 views on this sheet; sibling is _view2_eave_r2.json. This sheet (A-22, 'แบบขยาย เชิงชาย') is very likely the target of the eave-detail callouts a sister house's equivalent building-section sheet described as pointing to 'R1'/'R2 A-23' -- this house's own sections (หน้า15, outside this specific callout check) were not seen to explicitly print an 'R1'/'R2' callout within this assignment's pages, but the sheet number pattern (A-13 section area, A-2x detail area) is consistent with that convention.",
+    "The support column shown in this detail cannot be tied to a specific grid position from this sheet alone -- it is a generic/typical eave-to-column condition, likely at the ST.1 entrance/carport canopy (given the 'จอดรถ'/parking references on หน้า20 and the grid master's own note about a parking-area extension past grid A), but this is inference, not a printed cross-reference.",
+    "'ระยะตามแบบสถาปัตย์ ประมาณ ±1.30 ม.' (distance per the architectural drawing, approximately ±1.30m) is a genuinely hedged/deferred dimension on the drawing itself, not a firm spec -- recorded as printed rather than treated as an exact 1.30m value.",
+    "R1/R2 here are a SEPARATE numbering sequence from หน้า23's guardrail R1 -- each detail category (guardrail, eave, gate, fence -- per this house's remaining pages) restarts its own R1/R2/... sequence; not a collision."
+  ]
+}

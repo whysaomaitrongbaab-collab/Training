@@ -1,0 +1,159 @@
+{
+  "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า23.png",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "SECTION คาน B5 / B0 / B1' / B3'",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า23.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "ชุดแบบนี้ไม่พิมพ์รหัสแผ่น (A-xx/S-xx) ที่ใดเลยทั้งเล่ม และไม่มีหน้าสารบัญ — sheet_code เป็น null ทุกไฟล์ ระบุแผ่นด้วยชื่อแบบที่พิมพ์ใต้รูปแทน",
+    "B0 เป็นคานเตี้ยแคบ 0.10 x 0.40 ม. เหล็ก 1-DB12 บน + 1-DB12 ล่าง — เล็กที่สุดในชุด ตรงกับการใช้งานบนหน้า18 ที่ B0 รับพื้นจอดรถ/ซักล้าง (+0.10) เท่านั้น",
+    "B1' และ B3' เป็นมาร์คไพรม์จริงบนแบบ ไม่ใช่การพิมพ์ผิดของ B1/B3 — หน้าตัดต่างกันชัดเจน (B1' = 2-DB12 บน/ล่าง; B3' = 2-DB12 + 1-DB16 บน, 2-DB12 ล่าง) จึงเก็บไพรม์ไว้ตามกฎ §0.3",
+    "B3' LONG SECTION พิมพ์ระยะ 0.70 ก่อนช่วง L — เป็นระยะยื่นของคานเลยเสาออกไป บันทึกเป็น cantilever_length_m ไม่ได้รวมเข้ากับ L",
+    "B5 มี 2 หน้าตัดเหมือน B2/B3/B4: SECTION 1-1 (ริมเสา) top 3-DB12 + 2-DB16 / bottom 3-DB12; SECTION 2-2 (กลางช่วง) top 3-DB12 / bottom 2-DB16 + 3-DB12"
+  ],
+  "elements": [
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "section_ref": "1-1",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "3-DB12 + 2-DB16 ที่ริมเสา"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200
+      },
+      "printed_as": "0.15 x 0.40 / ปØ 6@0.20",
+      "curtailment_note": "จุดตัดเหล็กที่ L/5 และ L/4 จากริมเสา",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "section_ref": "2-2",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "2-DB16 + 3-DB12 ที่กลางช่วง"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200
+      },
+      "printed_as": "0.15 x 0.40 / ปØ 6@0.20",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B0",
+      "element_type": "beam",
+      "width_mm": 100,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200
+      },
+      "printed_as": "0.10 x 0.40 / 1-DB12 / ปØ 6@0.20 / 1-DB12",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "section_ref": "1-1",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200
+      },
+      "printed_as": "0.15 x 0.40 / 2-DB12 / ปØ 6@0.20 / 2-DB12",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "section_ref": "1-1",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "2-DB12 + 1-DB16"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200
+      },
+      "cantilever_length_m": 0.7,
+      "printed_as": "0.15 x 0.40 / 2-DB12 + 1-DB16 / ปØ 6@0.20 / 2-DB12 ; LONG SECTION 0.70 + L",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ]
+}

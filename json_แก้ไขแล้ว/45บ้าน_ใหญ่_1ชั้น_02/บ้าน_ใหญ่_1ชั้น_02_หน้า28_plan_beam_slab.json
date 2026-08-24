@@ -1,0 +1,74 @@
+{
+  "png": "28",
+  "doc_page": 26,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนเสา คาน และพื้นชั้นล่าง",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า28.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_02_หน้า00_gridline.json",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "Perimeter/edge beams (B1,B2,B3,B3A,B3X,B4X,B6,B6X,B7,B7X,B8) sit cleanly on the main grid or the 3'/E'/E'' dummies and are recorded at full confidence.",
+    "This sheet also shows a second interior tier of partition beams (extra B4/B5/B3/B1 occurrences framing individual rooms) whose x-position is NOT given by any printed dimension on this structural sheet -- only the 1-2(5.00)/2-3(4.00)/3-3'(1.10) chain is dimensioned. Resolving their exact sub-grid position needs the dimensioned architectural floor plan, which is out of op04 scope (Pass 3). These are recorded with an approximate '~' grid_ref (row band + which bay) and span_source:'unresolved' per the standing rule against inventing an un-printed position, rather than guessed as a fraction of the bay.",
+    "S3 (defined as a precast-plank type on S-16) was not found placed anywhere legible on this floor plan -- either unused in this house or in a densely-marked area I could not resolve at this scan resolution.",
+    "S2/S1/ST/SX slab-marker counts in dense areas (the laundry box and the row-A appendage) are read at reduced confidence, same caveat as house_04's S3 precedent -- exact tag count in a busy cluster is harder to verify than an isolated one.",
+    "Bare 'SP' circles scattered through most bays are the generic precast-plank symbol (this bay is floored in SP), not a distinct typed member -- not recorded as their own elements; the typed slab marks (S1/S2/ST/SX) are.",
+    "The laundry (ซักล้าง) box's own x-extent (west/east edges of B3X/B4X) is not dimensioned on this sheet -- recorded with grid_ref '~1' at the west edge (matches B3X sitting at the building's x=1 line) and an approximate/unresolved east position for B4X and the B2 top-cap segment closing the box; see grid master warnings."
+  ],
+  "elements": [
+    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "E", "grid_ref_end": "E''", "grid_ref": "1", "span_length_m": 1.50, "span_source": "grid_table", "note": "west edge of the ซักล้าง (laundry) appendage", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "E", "grid_ref_end": "E''", "grid_ref": "~1-2", "span_length_m": 1.50, "span_source": "unresolved", "note": "east edge of the ซักล้าง (laundry) appendage; exact x-position not dimensioned on this sheet, matched by its own 1.50m cross-section span on S-12", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~1", "grid_ref_end": "~1-2", "span_length_m": null, "span_source": "unresolved", "note": "top-cap beam closing the ซักล้าง box at grid line E'' (between B3X and B4X); span not resolvable without the box's east-edge x-position", "confidence_score": 0.5, "confidence_flags": [] },
+
+    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B7X", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "E3'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "D1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~E-D", "grid_ref_end": "~E-D", "grid_ref": "~1-2 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, E-D band, exact x-position undimensioned on this sheet", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~E-D", "grid_ref_end": "~E-D", "grid_ref": "~2-3 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, E-D band, exact x-position undimensioned on this sheet", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "~E-D", "grid_ref_end": "~E-D", "grid_ref": "~2-3 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, E-D band, near the col-3 edge, exact x-position undimensioned on this sheet", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "D3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B7X", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "D3'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "C1", "span_length_m": 2.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~D-C", "grid_ref_end": "~D-C", "grid_ref": "~1-2 interior", "span_length_m": 2.50, "span_source": "unresolved", "note": "interior partition beam, D-C band", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "~D-C", "grid_ref_end": "~D-C", "grid_ref": "~2-3 interior", "span_length_m": 2.50, "span_source": "unresolved", "note": "interior beam framing the ห้องน้ำ (bathroom) slab S1, D-C band", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "count": 1, "grid_refs": ["~D-C bay 2-3"], "confidence_score": 0.7, "confidence_flags": [], "note": "ห้องน้ำ (bathroom) floor slab" },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "C3", "span_length_m": 2.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B6X", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C3'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~C-B", "grid_ref_end": "~C-B", "grid_ref": "~1-2 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, C-B band", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "~C-B", "grid_ref_end": "~C-B", "grid_ref": "~2-3 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, C-B band", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "~C-B", "grid_ref_end": "~C-B", "grid_ref": "~2-3 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, C-B band, near the col-3 edge", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B6X", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B3'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "BZ", "element_type": "beam", "grid_ref": "~B, between bay 2 and col.3", "span_length_m": null, "span_source": "unresolved", "note": "small angled/tapered transition beam east of the ห้องพักผ่อน appendage, near row B; exact position not clearly dimensioned", "confidence_score": 0.45, "confidence_flags": [] },
+    { "element_id": "BZ", "element_type": "beam", "grid_ref": "~B, between bay 2 and col.3", "span_length_m": null, "span_source": "unresolved", "note": "second occurrence of the same condition, mirrored", "confidence_score": 0.45, "confidence_flags": [] },
+    { "element_id": "S2", "element_type": "slab", "count": 2, "grid_refs": ["~B row, east of appendage box (x2)"], "confidence_score": 0.5, "confidence_flags": ["dense cluster near BZ, exact count/position uncertain"] },
+
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "A1", "span_length_m": 2.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [], "note": "west edge of the เฉลียง (porch/ramp landing) appendage south of row A" },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~B2", "grid_ref_end": "~A2", "span_length_m": 2.50, "span_source": "unresolved", "note": "east edge of the appendage box; span assumed equal to B1's per the box shape, x-position approximate", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "count": 1, "grid_refs": ["~B-A appendage box"], "confidence_score": 0.65, "confidence_flags": [], "note": "เฉลียง (porch/ramp landing) floor slab" },
+
+    { "element_id": "B8", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "stepped/ramp threshold beam, drops to level -0.40 -- see S-15 detail" },
+
+    { "element_id": "S2", "element_type": "slab", "count": 1, "grid_refs": ["~laundry box"], "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "ST", "element_type": "slab", "count": 1, "grid_refs": ["~laundry box, east side"], "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "SX", "element_type": "slab", "count": 2, "grid_refs": ["~A1 west", "~A2 east"], "confidence_score": 0.6, "confidence_flags": [], "note": "flanking B8 at both ends" },
+    { "element_id": "ST", "element_type": "slab", "count": 1, "grid_refs": ["~south of B8, row A"], "confidence_score": 0.55, "confidence_flags": [] }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "png": "39",
+  "doc_page": 37,
+  "discipline": "structural",
+  "sheet_code": "S-14",
+  "sheet_name": "ขยายคาน B7X, B7",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า39.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "B7's bottom face is genuinely ambiguous at this scan resolution: the cross-section box ('7-7') shows 3 dots at the bottom with TWO overlapping leader labels -- a longer one reading '3-Ø20มม.' running to all 3 dots, and a shorter one reading '2-Ø16มม.' whose leader appears to stop short of the outer 2 dots rather than reaching a 4th/5th dot. Only 3 dots are actually drawn (no 5-dot bottom face), so this cannot be a simple '3+2=5' additive count. Recorded main_bar.bottom as the unambiguous 3-Ø20 (matching the drawn dots), and the '2-Ø16มม.' callout separately in additional_bars with its role flagged unresolved rather than guessed into the main count -- a genuine ambiguity, not a confident merge like B3's family."
+  ],
+  "elements": [
+    {
+      "element_id": "B7X", "element_type": "beam", "width_mm": 200, "height_mm": 550,
+      "main_bar": { "top": { "count": 2, "dia_mm": 20, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 20, "type": "RB" } },
+      "stirrup": { "dia_mm": 9, "type": "RB", "spacing_mm": 100 },
+      "concrete_grade": "fc210", "steel_grade": "SD40/SR24", "spec_source": "section", "spec_confidence_score": 0.9,
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "B7", "element_type": "beam", "width_mm": 200, "height_mm": 550,
+      "main_bar": { "top": { "count": 3, "dia_mm": 20, "type": "RB" }, "bottom": { "count": 3, "dia_mm": 20, "type": "RB" } },
+      "additional_bars": [ { "count": 2, "dia_mm": 16, "type": "RB", "position": "near bottom face, exact role unresolved", "note": "printed as '2-Ø16มม.' with a leader that does not clearly land on a 4th/5th drawn dot at this scan resolution -- see file warnings; not merged into main_bar.bottom" } ],
+      "stirrup": { "dia_mm": 9, "type": "RB", "spacing_mm": 150 },
+      "concrete_grade": "fc210", "steel_grade": "SD40/SR24", "spec_source": "section", "spec_confidence_score": 0.6,
+      "confidence_score": 0.6, "confidence_flags": ["bottom_face_bar_count_genuinely_ambiguous_see_warnings"]
+    }
+  ]
+}

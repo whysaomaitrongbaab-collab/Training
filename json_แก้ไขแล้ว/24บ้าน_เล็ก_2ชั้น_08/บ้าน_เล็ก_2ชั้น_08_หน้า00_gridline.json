@@ -1,0 +1,39 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": "S-02/S-03/S-04",
+  "sheet_name": "grid master — compiled from foundation, column/beam, and roof-frame plans",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_08/บ้าน_เล็ก_2ชั้น_08_หน้า20.png",
+    "image/บ้าน_เล็ก_2ชั้น_08/บ้าน_เล็ก_2ชั้น_08_หน้า21.png",
+    "image/บ้าน_เล็ก_2ชั้น_08/บ้าน_เล็ก_2ชั้น_08_หน้า22.png"
+  ],
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "S-04 (roof/tie-beam plan) prints '1.05' left of grid 1 and '1.00' right of grid 2 as the overall tie-beam-plan dimension string, but the traced BS1 tie-beam perimeter itself only connects the 6 main grid points (same rectangle as the RC beams below) — no beam/post was confirmed ending at those outer figures. Read as roof-sheet/eave overhang beyond the last post, not a beam endpoint, so NO x-axis dummy grid was added for them, per the rule against inventing a dummy for an overhang with no structural endpoint. Flagged rather than silently added, since S-04's own drawing is ambiguous about whether CS1 posts exist there too — needs zoom review before fully ruling that out.",
+    "'2prime' at 4.80m is a separate, confirmed dummy (ground-floor stair-landing slab extension, S-03, beam BX ends there) — unrelated to the S-04 ambiguity above.",
+    "Grid confirmed independently on 3 sheets (S-02 foundation, S-03 column/beam, S-04 roof/tie-beam) — all three agree on the core A/B/C x 1/2 grid (2.70/2.70m rows, 3.60m bay).",
+    "Dummy '1'' (single-prime)': beam B1 (S-03 ground-floor plan) sits between grid 1 and grid 2, dividing the A-B room into two S1 slabs, but no dimension line pins its exact x-position anywhere on S-03 or S-07 — recorded with pos_m null rather than guessing the visual midpoint (1.80m). Needs zoom review of S-03 for a dimension this extraction may have missed."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.0, "type": "named" },
+      { "id": "1'", "pos_m": null, "type": "dummy", "confidence_score": 0.3, "confidence_flags": ["pos_unresolved_internal_partition"] },
+      { "id": "2", "pos_m": 3.60, "type": "named" },
+      { "id": "2'", "pos_m": 4.80, "type": "dummy" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.0, "type": "named" },
+      { "id": "B", "pos_m": 2.70, "type": "named" },
+      { "id": "C", "pos_m": 5.40, "type": "named" },
+      { "id": "C'", "pos_m": 6.60, "type": "dummy" }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "prime_ordering": "Only one dummy in each gap on the x-axis (1' between grid 1 and grid 2; 2' beyond grid 2) — no multi-dummy gap on this house, so the prime-ordering scan rule was not needed.",
+    "negative_pos_m": "Not applicable — no dummy grid falls before the origin on this house (unlike house #04/#05); the S-04 west/east overhang figures were read as eave overhang, not beam endpoints, so no negative-pos_m dummy was created for them (see warnings)."
+  }
+}

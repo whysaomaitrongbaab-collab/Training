@@ -1,0 +1,22 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "แบบขยายพื้น S1, S2, SR, SX",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า27.png",
+  "confidence_score": 0.7,
+  "confidence_flags": [],
+  "warnings": [
+    "S1 and S2 each print TWO typical sections on this sheet — 'ด้านสั้น' (short side) and 'ด้านยาว' (long side) — describing the same slab type's two-way reinforcement. Both are folded into one element per mark (one entry per §0.1) with the short/long-side bar detail kept in the note field, rather than creating two entries with the same element_id.",
+    "'คอม้าเส้นเว้นเส้น' (alternating bent-up/straight bar pattern) is a Thai slab-reinforcement convention (alternate bars bent up near supports) — recorded verbatim in the note rather than translated into a structured field, since the schema has no dedicated slot for it.",
+    "S1's long-side total (4.00+3.00=7.00m) and short-side total (2.375+2.125=4.50m) both exactly match this house's main grid dimension chains (y: B-C+A-B; x: 1-1\"+1\"-2) — consistent with S1 being the typical floor-slab detail for the main 1-2 x A-D bays."
+  ],
+  "elements": [
+    { "element_id": "S1", "element_type": "slab", "thickness_mm": 100, "main_bar": { "count": 1, "dia_mm": 9, "type": "RB", "spacing_mm": 200, "note": "เสริมพิเศษ (extra top reinforcement) at Ø9mm@0.40m near each support; main bottom/field reinforcement คอม้าเส้นเว้นเส้น (alternating bent-up bars) at Ø9mm@0.20m and Ø9mm@0.25m" }, "note": "short-side typical: total 2.375+2.125=4.50m; long-side typical: total 4.00+3.00=7.00m — see file warnings", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "S2", "element_type": "slab", "thickness_mm": 125, "main_bar": { "count": 1, "dia_mm": 9, "type": "RB", "spacing_mm": 200, "note": "เสริมพิเศษ (extra top reinforcement) at Ø9mm@0.40m near each support; main bottom/field reinforcement คอม้าเส้นเว้นเส้น (alternating bent-up bars) at Ø9mm@0.20m" }, "note": "short-side typical: 1.50m; long-side typical: up to 2.80m ('ไม่เกิน 2.80')", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "SR", "element_type": "slab", "thickness_mm": 125, "main_bar": { "count": 1, "dia_mm": 9, "type": "RB", "spacing_mm": 200, "note": "single-direction reinforcement Ø9mm@0.20m, printed 'ด้านสั้น' only" }, "note": "typical span up to 2.00m ('ไม่เกิน 2.00')", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "SX", "element_type": "slab", "width_mm": 400, "thickness_mm": 150, "main_bar": { "count": 1, "dia_mm": 9, "type": "RB", "spacing_mm": 100 }, "note": "small L-shaped curb/upstand detail sitting on top of beam B4 ('คาน B4'), not a floor slab field — 0.25m upstand height, 0.15m top width, Ø9mm@0.10m reinforcement", "confidence_score": 0.65, "confidence_flags": [] }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "png": "22",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ผังโครงสร้างหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า22.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_06_หน้า00_gridline.json",
+  "confidence_score": 0.6,
+  "confidence_flags": [
+    "This is a STRUCTURAL roof framing plan (light-gauge steel C/2C truss members with grid1-5 spans, x-total 14.00 matching the gridline master) — recorded as pattern 'plan' per the roof_plan-vs-plan rule, not skipped as architectural roof_plan.",
+    "Member callouts (ตะเข้สัน, อกไก่, จันทัน, etc.) are leader-line labels naming a member TYPE that recurs across the whole truss (hip rafters, ridge, common rafters at regular spacing), not individually marked/numbered instances with their own grid_ref like the RC beams on other sheets — recorded as one representative steel_section entry per named member type with grid_ref left null, rather than inventing per-instance positions the drawing does not give."
+  ],
+  "warnings": [
+    "RB1/RB2 are a different thing from the steel truss members: they are RC ring beams at the top of the walls (wall-plate level) that carry the steel roof frame, matching the rebar sections given for RB1/RB2 on หน้า26 (SECTION RB1/RB2). Recorded here as beam elements at their approximate plan position (posts/support points shown on this sheet); full spec (width/height/main_bar/stirrup) lives on the หน้า26 section file and joins by element_id.",
+    "'แปกัลวาไนซ์' (galvanized purlins) is printed without an explicit size callout on this sheet (unlike the other members, which all print a WFC/2C size string) — recorded with steel_section omitted and a note, rather than guessing a size.",
+    "Fascia/barge board members (เชิงชาย, ทับเชิงชาย, ปั้นลม, ทับปั้นลม) are hardwood trim, not structural steel — recorded as element_type 'accessory' with material 'wood', not steel_section."
+  ],
+  "elements": [
+    { "element_id": "ตะเข้สัน", "element_type": "rafter", "grid_ref": null, "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "ตะเข้สัน 2C 125x50x20x2.3mm." }, "material": "steel", "description": "hip rafter", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "อกไก่", "element_type": "rafter", "grid_ref": null, "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "อกไก่ 2C 125x50x20x2.3mm." }, "material": "steel", "description": "ridge member", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "สะพานรับจันทัน", "element_type": "purlin", "grid_ref": null, "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "สะพานรับจันทัน 2C 125x50x20x2.3mm." }, "material": "steel", "description": "rafter bridging support", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "จุดตั้งเสา", "element_type": "rafter", "grid_ref": null, "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "จุดตั้งเสา 2C 125x50x20x2.3mm." }, "material": "steel", "description": "king post bearing member", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "ตะเข้", "element_type": "rafter", "grid_ref": null, "steel_section": { "designation": "2C", "d_mm": 150, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "ชื่อ, ตะเข้ 2C 150x50x20x2.3mm." }, "material": "steel", "description": "hip rafter, larger size (perimeter/corner)", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "จันทัน", "element_type": "rafter", "grid_ref": null, "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "จันทัน C 100x50x20x2.3mm. @ 1.00m" }, "material": "steel", "spacing_mm": 1000, "description": "common rafters", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "ตะเข้ราง", "element_type": "rafter", "grid_ref": null, "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "ตะเข้ราง 2C 125x50x20x2.3mm." }, "material": "steel", "description": "valley rafter", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "แปกัลวาไนซ์", "element_type": "purlin", "grid_ref": null, "material": "steel", "description": "galvanized purlins, size not printed on this sheet", "confidence_score": 0.4, "confidence_flags": ["size_not_printed"] },
+    { "element_id": "เชิงชายไม้เนื้อแข็ง", "element_type": "accessory", "grid_ref": null, "material": "wood", "description": "hardwood fascia board 1\"x6\", plus ทับเชิงชายไม้เนื้อแข็ง (fascia cover board)", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "ปั้นลมไม้เนื้อแข็ง", "element_type": "accessory", "grid_ref": null, "material": "wood", "description": "hardwood barge board 1\"x6\", plus ทับปั้นลมไม้เนื้อแข็ง (barge board cover)", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~A2", "grid_ref_end": "~E2", "level_m": null, "span_source": "unresolved", "note": "RC ring beam supporting roof posts; full spec on หน้า26 SECTION RB2", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "~A3", "grid_ref_end": "~E3", "level_m": null, "span_source": "unresolved", "note": "RC ring beam supporting roof posts; full spec on หน้า26 SECTION RB1", "confidence_score": 0.4, "confidence_flags": [] }
+  ]
+}

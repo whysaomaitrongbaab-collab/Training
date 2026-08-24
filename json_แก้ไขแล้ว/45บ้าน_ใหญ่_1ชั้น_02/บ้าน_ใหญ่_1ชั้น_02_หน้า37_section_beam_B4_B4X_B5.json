@@ -1,0 +1,40 @@
+{
+  "png": "37",
+  "doc_page": 35,
+  "discipline": "structural",
+  "sheet_code": "S-12",
+  "sheet_name": "ขยายคาน B4, B4X, B5",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า37.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "B4 and B4X's boxed cross-sections (cut '4-4' and '4X-4X') both show a plain (not mixed-diameter) 3-bar face -- unlike B3's family, these are straight 3-Ø16 counts, no Ø12 mixed in.",
+    "B5's box is not paired with an elevation on this sheet; it also carries a distinct '2-Ø12มม. ยาว 3.00 ม. เสริมพิเศษกลางคาน' (special 2-Ø12, 3.00m long, mid-beam) note -- recorded in additional_bars since it is not part of either main face (matches the schema's genuine-extra-bar case, not a curtailed main-face bar).",
+    "B5's stirrup spacing digit read at native resolution (150mm), not independently re-zoomed -- slightly lower confidence than the B4/B4X cross-sections which were re-verified."
+  ],
+  "elements": [
+    {
+      "element_id": "B4", "element_type": "beam", "width_mm": 200, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 3, "dia_mm": 16, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175 },
+      "concrete_grade": "fc210", "steel_grade": "SD40/SR24", "spec_source": "section", "spec_confidence_score": 0.9,
+      "confidence_score": 0.9, "confidence_flags": ["ASYMMETRIC_main_bar_top2_bottom3_confirmed_by_zoomed_cross_section"]
+    },
+    {
+      "element_id": "B4X", "element_type": "beam", "width_mm": 200, "height_mm": 400,
+      "main_bar": { "top": { "count": 3, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125 },
+      "concrete_grade": "fc210", "steel_grade": "SD40/SR24", "spec_source": "section", "spec_confidence_score": 0.9,
+      "confidence_score": 0.9, "confidence_flags": ["ASYMMETRIC_main_bar_top3_bottom2_confirmed_by_zoomed_cross_section"]
+    },
+    {
+      "element_id": "B5", "element_type": "beam", "width_mm": 150, "height_mm": 500,
+      "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150 },
+      "additional_bars": [ { "count": 2, "dia_mm": 12, "type": "RB", "length_m": 3.00, "position": "กลางคาน (mid-beam), special reinforcement", "note": "printed as '2-Ø12มม. ยาว 3.00 ม. เสริมพิเศษกลางคาน' -- not part of either main face" } ],
+      "concrete_grade": "fc210", "steel_grade": "SD40/SR24", "spec_source": "section", "spec_confidence_score": 0.7,
+      "confidence_score": 0.75, "confidence_flags": []
+    }
+  ]
+}

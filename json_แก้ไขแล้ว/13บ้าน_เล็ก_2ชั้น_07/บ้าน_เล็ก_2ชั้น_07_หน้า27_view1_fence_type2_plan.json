@@ -1,0 +1,32 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "architecture",
+  "sheet_code": "A-25",
+  "sheet_name": "แบบขยาย รั้วแบบที่ 2",
+  "pattern": "plan",
+  "view_title": "แปลน -- fence type 2 plan, 1:25",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า27.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "views": [
+    "view1_fence_type2_plan (this file)",
+    "view2_fence_type2_lintel_detail (_view2_fence_type2_lintel_detail.json)",
+    "view3_fence_type2_column_beam_details (_view3_fence_type2_column_beam_details.json)",
+    "view4_fence_type2_front_elevation (_view4_fence_type2_front_elevation.json)",
+    "view5_fence_type2_section (_view5_fence_type2_section.json)"
+  ],
+  "elements": [
+    { "element_id": "C1_plan_ref_t2", "element_type": "column", "grid_ref": "n/a", "description": "fence column C1, spaced 'ระยะไม่เกิน 3.00 ม.' apart -- same spacing/base-plate 'F' bolted connection as รั้วแบบที่ 1 (หน้า26). Not on the building's own structural grid (see wrapper-level warnings).", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "GB_plan_ref_t2", "element_type": "tie_beam", "grid_ref": "n/a", "description": "คานคอดิน GB running between fence columns, same as รั้วแบบที่ 1. Not on the building's own structural grid (see wrapper-level warnings).", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "tabhlang_plan_ref", "element_type": "beam", "grid_ref": "n/a", "description": "ทับหลัง คสล (RC lintel/coping beam) capping the top of the infill wall panel, running the same span as GB below -- NEW component not present on รั้วแบบที่ 1", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "infill_panel_plan", "element_type": "wall", "printed_as": "คอนกรีตบล็อคทีบ 0.19x0.39 ม. หนา 7 ซม.", "description": "concrete block/tile infill panel, 0.19x0.39m units, 7cm thick, filling the bay between columns -- the defining difference from รั้วแบบที่ 1's open steel-picket railing", "confidence_score": 0.82, "confidence_flags": [] },
+    { "element_id": "column_spacing_note_t2", "element_type": "dimension_note", "printed_as": "ระยะไม่เกิน 3.00 ม.", "value_m": 3.00, "confidence_score": 0.85, "confidence_flags": [] }
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "'รั้วแบบที่ 2' (Fence Type 2) -- a SOLID infill fence (concrete block-tibe panels + RC coping lintel) vs. หน้า26's รั้วแบบที่ 1 (open steel-picket railing). The structural frame (C1 column, GB ground beam, F pile-cap foundation on 2 piles) is IDENTICAL between both fence types -- confirmed across all 5 sibling views on this sheet matching หน้า26's specs exactly. Only the infill/capping system differs.",
+    "One of 5 distinct titled/scaled views on this sheet: plan (this file, 1:25), lintel ทับหลัง expansion (1:10), column C1 + tie-beam GB expansions (1:20 each, sharing one detail file per this pass's grouping), front elevation (1:25), and section (1:25).",
+    "No grid_ref applies -- same as รั้วแบบที่ 1, this fence runs along the property boundary, independent of the building's structural grid."
+  ]
+}

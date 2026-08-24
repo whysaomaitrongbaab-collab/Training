@@ -1,0 +1,22 @@
+{
+  "png": "24",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "SECTION BEAM B1, B10A, B2, B3, B4",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า24.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "B2/B3 each print two different rebar layouts (SECTION_1-1 near the support, at L/4-L/5 from the column face, vs SECTION_2-2 at midspan) — a real curtailment pattern, not a duplicate/error, matching the convention already established for this same house series in this batch (house 05). Recorded top/bottom with a note stating which section each count belongs to, per §7.",
+    "B4/B10A each carry a genuine two-diameter reinforcement layer on each face (e.g. B4's top shows both '2-DB12' and '2-DB16' as separate leader lines onto the same corner region) rather than a single count — modelled as a constant minimum main_bar (2-DB12 top/bottom for B4) plus an additional_bars entry for the larger bar that switches face between the two sections (curtailed/continuous flexural bar), per the same §7 judgement precedent already used for lap-splice/continuation bars in this batch."
+  ],
+  "elements": [
+    { "element_id": "B1", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B10A", "element_type": "beam", "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 3, "dia_mm": 20, "type": "DB" }, "bottom": { "count": 3, "dia_mm": 20, "type": "DB" } }, "additional_bars": [ { "count": 2, "dia_mm": 12, "position": "top face, second layer (constant, both faces)" }, { "count": 2, "dia_mm": 12, "position": "bottom face, second layer (constant, both faces)" } ], "stirrup": { "dia_mm": 9, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 3, "dia_mm": 12, "type": "DB", "note": "at support (SECTION_1-1); reduces to 2-DB12 at midspan (SECTION_2-2)" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB", "note": "at support (SECTION_1-1); increases to 3-DB12 at midspan (SECTION_2-2)" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 4, "dia_mm": 12, "type": "DB", "note": "at support (SECTION_1-1); reduces to 2-DB12 at midspan (SECTION_2-2)" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB", "note": "at support (SECTION_1-1); increases to 4-DB12 at midspan (SECTION_2-2)" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } }, "additional_bars": [ { "count": 2, "dia_mm": 16, "position": "top at support (SECTION_1-1), continues to bottom at midspan (SECTION_2-2) — curtailed/continuous flexural bar" } ], "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.75, "confidence_flags": [] }
+  ]
+}

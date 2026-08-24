@@ -1,0 +1,101 @@
+{
+  "png": "32",
+  "doc_page": 30,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "B1 - B5A",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า32.png",
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "scale": "1:25",
+  "warnings": [
+    "B3, B4/B4X are continuous multi-span beams with additional top/bottom bars curtailed over interior supports (visible as short leader-labelled bars at the quarter-point marks in the elevation). The overall main_bar top/bottom counts at midspan and at the support are both captured (via additional_bars), but the exact curtailment cut-off length for each additional bar was not fully legible at this scan resolution and is left unspecified rather than guessed — flagged on each affected spec.",
+    "B3X's note states its 3-Ø16mm bars splice into adjacent beam B3 with a minimum development length of 1.50 m ('ฝังต่อเนื่องเข้าคาน B3 ยาวไม่น้อยกว่า 1.50 ม') — recorded verbatim per §7's guidance on lap-splice bars belonging to the beam's own main_bar face rather than being dropped as a standalone additional bar; here it is a short stub beam (0.20x0.60) so its whole main_bar is this splice-into-B3 condition."
+  ],
+  "specs": {
+    "B1": {
+      "width_mm": 200, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175, "printed_as": "ป6มม@0.175" },
+      "spec_source": "section", "spec_confidence_score": 0.85, "spec_sheet": "S-09"
+    },
+    "B2": {
+      "width_mm": 150, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175, "printed_as": "ป6มม@0.175" },
+      "spec_source": "section", "spec_confidence_score": 0.85, "spec_sheet": "S-09"
+    },
+    "B3A": {
+      "width_mm": 200, "height_mm": 600,
+      "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "ป6มม@0.15", "variable_spacing": true, "note": "ป6มม@0.125 ช่วงจากขอบเสาถึงระยะ 1.10 ม" },
+      "spec_source": "section", "spec_confidence_score": 0.8, "spec_sheet": "S-09"
+    },
+    "B3X": {
+      "width_mm": 200, "height_mm": 600,
+      "main_bar": { "top": { "count": 3, "dia_mm": 16, "type": "RB", "note": "ฝังต่อเนื่องเข้าคาน B3 ยาวไม่น้อยกว่า 1.50 ม" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "ป6มม@0.15" },
+      "spec_source": "section", "spec_confidence_score": 0.75, "spec_sheet": "S-09"
+    },
+    "B3": {
+      "width_mm": 200, "height_mm": 600,
+      "span_count": 2,
+      "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB", "note": "เส้นต่อเนื่องตลอดความยาวคาน" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB", "note": "เส้นต่อเนื่องตลอดความยาวคาน" } },
+      "additional_bars": [
+        { "count": 3, "dia_mm": 16, "type": "RB", "position": "top, over interior support (grid 2)", "printed_as": "3Ø16มม", "note": "ความยาวคาดว่าไม่ครบตามที่ปรากฏในรูป — ไม่ยืนยันระยะตัด" },
+        { "count": 3, "dia_mm": 16, "type": "RB", "position": "bottom, at each end near supports", "printed_as": "3Ø16มม" }
+      ],
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125, "printed_as": "ป6มม@0.125", "variable_spacing": true, "note": "ป6มม@0.125 ช่วงใกล้จุดรองรับ, ป6มม@0.15 ช่วงกลาง" },
+      "printed_as": "B3 คานต่อเนื่อง 2 ช่วง 4.00+4.00  0.20x0.60",
+      "spec_source": "section", "spec_confidence_score": 0.7,
+      "spec_confidence_flags": ["curtailment_length_not_resolved"],
+      "spec_sheet": "S-09"
+    },
+    "B4": {
+      "width_mm": 200, "height_mm": 600,
+      "span_count": 2,
+      "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB", "note": "เส้นต่อเนื่องตลอดความยาวคาน" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB", "note": "เส้นต่อเนื่องตลอดความยาวคาน" } },
+      "additional_bars": [
+        { "count": 3, "dia_mm": 16, "type": "RB", "position": "top, over interior support (grid 3)", "printed_as": "3Ø16มม" },
+        { "count": 2, "dia_mm": 16, "type": "RB", "position": "bottom, near end supports", "printed_as": "2Ø16มม" }
+      ],
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "ป6มม@0.15", "variable_spacing": true, "note": "ป6มม@0.15 ใกล้จุดรองรับ, ป6มม@0.125 ช่วงกลาง" },
+      "printed_as": "B4 คานต่อเนื่อง 4.00+2.00  0.20x0.60",
+      "spec_source": "section", "spec_confidence_score": 0.7,
+      "spec_confidence_flags": ["curtailment_length_not_resolved"],
+      "spec_sheet": "S-09"
+    },
+    "B4X": {
+      "width_mm": 200, "height_mm": 600,
+      "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "ป6มม@0.15" },
+      "printed_as": "B4X ปลายยื่น 1.20 ม  0.20x0.60",
+      "spec_source": "section", "spec_confidence_score": 0.75, "spec_sheet": "S-09"
+    },
+    "B5A": {
+      "width_mm": 200, "height_mm": 600,
+      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB", "note": "เหล็กยืน 4 มุม" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200, "printed_as": "ป6มม@0.20" },
+      "spec_source": "section", "spec_confidence_score": 0.8, "spec_sheet": "S-09"
+    },
+    "B5": {
+      "width_mm": 200, "height_mm": 600,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "เหล็กยืน 4 มุม" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200, "printed_as": "ป6มม@0.20" },
+      "spec_source": "section", "spec_confidence_score": 0.75, "spec_sheet": "S-09"
+    }
+  },
+  "elements": [
+    { "element_id": "B1", "element_type": "beam", "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175, "printed_as": "ป6มม@0.175" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175, "printed_as": "ป6มม@0.175" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B3A", "element_type": "beam", "width_mm": 200, "height_mm": 600, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "ป6มม@0.15" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B3X", "element_type": "beam", "width_mm": 200, "height_mm": 600, "main_bar": { "top": { "count": 3, "dia_mm": 16, "type": "RB", "note": "ฝังต่อเนื่องเข้าคาน B3 ยาวไม่น้อยกว่า 1.50 ม" } }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "ป6มม@0.15" }, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B3 SECTION 3-3", "element_type": "section_view", "section_of": "B3", "confidence_score": 0.7, "confidence_flags": ["curtailment_length_not_resolved"], "note": "ตัดที่ปลายช่วง — เห็น 2Ø16 บน + 3Ø16 ล่าง" },
+    { "element_id": "B4, B4X", "element_type": "beam", "width_mm": 200, "height_mm": 600, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150, "printed_as": "ป6มม@0.15" }, "confidence_score": 0.7, "confidence_flags": ["curtailment_length_not_resolved"] },
+    { "element_id": "4-4", "element_type": "section_view", "section_of": "B4", "width_mm": 200, "height_mm": 600, "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" }, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "4X-4X", "element_type": "section_view", "section_of": "B4X", "width_mm": 200, "height_mm": 600, "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" }, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B5A", "element_type": "beam", "width_mm": 200, "height_mm": 600, "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200, "printed_as": "ป6มม@0.20" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "width_mm": 200, "height_mm": 600, "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200, "printed_as": "ป6มม@0.20" }, "confidence_score": 0.75, "confidence_flags": [] }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "architectural",
+  "sheet_code": "A-09",
+  "sheet_name": "ขยายบันได",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_02/บ้าน_ใหญ่_2ชั้น_02_หน้า10.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_02_หน้า00_gridline.json",
+  "pattern": "plan",
+  "scale": "1:25",
+  "view_title": "แบบขยายบันไดชั้นล่าง (มาตราส่วน 1:25) - enlarged plan of the lower flight, between grids 2-3 and ค-ข",
+  "level": "ชั้นล่าง",
+  "elements": [
+    {
+      "element_id": "บันไดชั้นล่าง",
+      "element_type": "stair",
+      "grid_ref": "ค-ข x 2-3",
+      "description": "บันไดขึ้นชั้นบน ช่วงล่าง ลูกนอนกว้าง 0.225 ม. ขั้นที่ 1-10 ไล่ขึ้นไปหาชานพัก",
+      "printed_as": "ขึ้น",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ลูกนอน",
+      "element_type": "dimension",
+      "description": "ระยะลูกนอน (going) 0.225 ม. ต่อขั้น วัดซ้ำต่อเนื่องตลอดช่วงบันไดในผัง",
+      "printed_as": "0.225",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "โถงทางเข้า",
+      "element_type": "room",
+      "level_m": 0.6,
+      "floor_finish": "พ1",
+      "printed_as": "โถงทางเข้า +0.60",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "เก็บของ",
+      "element_type": "room",
+      "level_m": 0.6,
+      "floor_finish": "พ2",
+      "printed_as": "เก็บของ +0.60",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GLASS_BLOCK",
+      "element_type": "wall",
+      "width_mm": 200,
+      "height_mm": 200,
+      "description": "ผนังบล็อกแก้ว 0.20x0.20 ม. ที่ผนังใต้บันได",
+      "printed_as": "GLASS BLOCK 0.20x0.20 ม.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "riser_height_and_total_step_count_are_not_printed_on_this_sheet"
+  ],
+  "warnings": [
+    "*** 0.225 IS THE GOING (ลูกนอน), NOT THE RISER, AND MISREADING IT WOULD BREAK THE STAIR. *** แบบขยายบันได on this set is a PLAN, not a section, so the repeated 0.225 running down the left dimension chain is the tread depth measured in plan. Reading it as a riser gives 3.40 / 0.225 = 15.1 risers, which does not resolve; as a going it is a perfectly ordinary Thai stair. No riser dimension is printed anywhere on A-09 or A-10 and none was invented here.",
+    "THE ONLY VERTICAL FIGURE ON THE STAIR IS THE LANDING, +2.49, printed on the upper-flight view (the same figure A-08's รูปตัด ข prints as a bare 2.49 - this sheet's plus sign settles that it is a level, which was flagged as open on A-08).",
+    "THE STEP NUMBERS ARE DRAWN AS CIRCLED DIGITS ON BOTH VIEWS - 1 to 10 on the lower flight and a second run on the upper. They are recorded as the stair's description rather than as one element per step; a circled digit on a stair plan is a step index, not a mark, and giving each its own element_id would invent seventeen marks the drawing does not have.",
+    "The plan sits between grids 2-3 and ค-ข, matching where A-04 and A-05 put the stair, and its 2.20 grid span matches the master's grid-2-to-grid-3 bay exactly.",
+    "This file is one of four views on หน้า10 per §3; the others are the upper flight and the three 1:5 enlargements."
+  ]
+}

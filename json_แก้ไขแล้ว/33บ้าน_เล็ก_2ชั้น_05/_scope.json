@@ -1,0 +1,12 @@
+{
+  "scope": "pass2_only",
+  "op": "op04",
+  "date": "2026-08-23",
+  "subtasks_done": ["gridline", "plan_footing", "plan_beam", "section"],
+  "subtasks_absent_from_this_house": ["plan_column"],
+  "subtasks_not_yet_reached": ["schedule", "notes", "plan_slab", "soil_boring_log"],
+  "deliberately_skipped": ["material_list", "index", "site_plan", "side_profile", "title", "symbol", "roof_plan", "misc", "bbs_schedule"],
+  "pages_extracted": 8,
+  "pages_in_house": 90,
+  "note": "Pass 2 subtasks only — this house is NOT fully extracted. Extraction agent was terminated mid-run by an API session-limit error (batch of 20 parallel op04 agents, resets 8:10pm Bangkok) before it could report back or confirm remaining scope; this _scope.json was written afterward by inspecting the files actually on disk, not by the extracting agent itself. 'บ้านครอบครัวไทยร่วมสมัย 10' (แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข series, กรมโยธาธิการฯ, S59033) — both a spread-footing and pile-footing alternate foundation system extracted, plus both floor beam plans, a ring-beam plan, roof-frame plan, and one beam rebar section sheet. `subtasks_not_yet_reached` is deliberately distinct from `subtasks_absent_from_this_house`: these subtasks were not confirmed absent from the drawing set, only not gotten to before the interruption — a schedule/notes/precast-slab-detail sheet plausibly still exists further into this 90-page book and should be checked before assuming this house is as complete as it can get. python tools/check_format.py passes ALL CHECKS on what was written."
+}

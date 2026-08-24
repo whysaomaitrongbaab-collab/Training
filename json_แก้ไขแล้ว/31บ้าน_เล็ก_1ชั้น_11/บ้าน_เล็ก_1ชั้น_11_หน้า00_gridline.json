@@ -1,0 +1,130 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า25.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า26.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า27.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า28.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า29.png",
+    "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า33.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "CORRECTED BY MAKHAM 2026-08-24 — THIS WARNING PREVIOUSLY STATED THE OPPOSITE. This house's structural footprint is a single 8.00m x 8.00m square (grid 1-3 x A-C, 3x3 column grid, 9 footings). The first extraction believed there were TWO offset systems at two elevations: a roof-level one at 1.50m all round carrying ring beam RB1 (which is where dummies 1'/3'/A'/C' came from), and a separate floor-level one. That is wrong — there is only ONE. Makham's ruling on หน้า27: RB1 sits EXACTLY ON the main column grid, every run 8.00m, no prime anywhere on S-04. The 1.50m rectangle on S-04/S-05 is the DASHED roof-overhang outline (the four 'โล่ง' diagonals run out to its corners, which is what made it look like a beam perimeter), and per §329 an overhang/eave edge with no beam label and no columns at its corners gets no dummy grid. So NONE of 1'/3'/A'/C' is justified by the ring beam any more. All four survive anyway, on a DIFFERENT member: S-05 (หน้า28) draws the roof frame's solid outline 1.50m outside the grid on all four sides and runs a steel fascia/eave member 'เชิงชายเหล็ก (โดยรอบ)' continuously around it. So the original instinct — two offset systems at two elevations — was right; only the member was misidentified. At ±1.50 it is the ROOF FRAME and its fascia, not RB1. Three of the four are additionally carried by floor-level beams on S-03 (หน้า26), verified by scanning pixel rows/columns of the PNG and converting to metres off the main grid: 1'(-1.50) also carries beam B6 (measured -1.49); 3'(+9.50) also carries the small east bay's outer beams (measured +9.47, solid and continuous from the north strip down to row C); C'(+9.50) also carries the ramp/deck beam B5 (measured +9.47). A'(-1.50) is the one that is roof-frame-only. NOTE FOR ANYONE READING THE HISTORY: an intermediate version of this warning declared A' orphaned and unjustified. That was wrong — it was written off a scan of หน้า26 alone, before หน้า28 was opened. Retracted.",
+    "South of grid C the floor plan (S-03) prints a real beam — B5, plus the ends of B6X/BX — at C+1.50m, and that is now the ONLY justification for dummy grid C' (its earlier 'double duty with the roof ring beam' billing is void per the correction above; S-04 no longer contributes). Verified by pixel scan of หน้า26: beam faces at +9.40 and +9.55, centreline +9.47 against a nominal 9.50. Beyond C' by a further 3.50m (to A-to-south-edge = 13.00m total) is an unroofed, unframed slab-on-grade deck (element_type slab, marker 'S0') with no beam at its outer edge — per the beam-endpoint rule, no dummy grid was added there.",
+    "CLOSED BY MAKHAM 2026-08-24 — the y-axis north of grid A, previously logged here as open. There are TWO distinct lines up there, at two elevations, and the first extraction had collapsed them into one. (1) A'(-1.50) is the ROOF FRAME edge, carrying the steel fascia เชิงชายเหล็ก (S-05). Nothing lands on it at floor level. (2) A''(-1.00) is a FLOOR-level beam: the scan of หน้า26 shows faces at -1.08 and -0.94 in bay 2-3, i.e. a 200mm beam centred at -1.01, marked B5 on S-03, with a B3X dropping to the row-A column at each end and slab S3 in the 1.00m strip between. That strip is a real framed bay, not an overhang. หน้า26 had mis-recorded this beam as 'B5, A2-A3' (on row A), and the beam that genuinely sits on row A in that bay, marked B4, was missing from the file entirely — both fixed. Makham's ruling on the new line's pos_m: use -1.00, the beam CENTRELINE, not the printed 1.10. The printed 1.10 lands on the beam's north face, where the แนวหลังคา roofline coincides with it, and it runs on westward through bay 1-2 where there is no beam at all — so it stays in unassigned_dimensions as a roofline, and -1.00 keeps this file consistent with 1'/3'/C', whose printed values all land on centrelines. Inserting A'' pushed the interior B1 line from A'' to A'''.",
+    "Total-row cross-check (§4): S-03's own outer y-axis dimension bracket reads '13.00' — this LOOKS like it might be a mis-print at first glance (the naive read 'edge-to-C' would be 1.10+4.00+4.00=9.10, not 13.00), but re-tracing the bracket's actual tick marks shows it starts at grid A (not the -1.10 roofline edge) and runs to the south slab edge: 4.00(A-B)+4.00(B-C)+1.50(C-C')+3.50(C'-southedge) = 13.00 exactly. Separately, the architecture floor plan (A-04, out of op04 scope but checked for this cross-check per op01's precedence rules) prints '14.10' for the FULL north-roofline-edge-to-south-slab-edge span: 1.10+13.00=14.10, also exact. Both printed totals are correct; they simply measure from two different start points. No actual transcription error — flagged here only because the two numbers looked contradictory before re-verifying the bracket endpoints against a 2x zoom crop.",
+    "RESOLVED BY MAKHAM 2026-08-24 (was: unresolved). Two interior secondary beams — B1 (splits several rooms into a north/south pair, e.g. inside the 1-2 x B-C bathroom cluster and again inside the 2-3 x A-B bedroom-2/laundry cluster) and B2 (splits the 1-2 x B-C room into east/west halves) — still have NO printed dimension anywhere in the structural set (S-02 through S-10) locating their offset from the main grid; only their existence, mark, and rebar spec (S-09) are printed. The first extraction therefore left them span_source:'unresolved' with no dummy grid, per '§4 pos_m is always read from an actually-printed dimension line — never guessed'. On review Makham ruled all three occurrences sit at the MIDPOINT of their bay (2.00m), which creates three dummy lines: 1'' (x=2.00), A''' (y=2.00) and B' (y=6.00) — that y-line was created as A'' and renumbered to A''' later the same day when A''(-1.00) was inserted above it. This is a human ruling, NOT a printed dimension — every affected line and element carries a 'position_ruled_by_makham_2026-08-24_not_printed' flag so the distinction survives into training. Independent pixel check on หน้า26 at 4x agrees within drafting tolerance: upper B1 measures A+1.88m, lower B1 measures B+2.21m, B2 measures 1+1.95m, and the equal S2/S2 and S3/S3 slab pairs either side of each beam corroborate a midspan split; B1's own S-09 spec (2-Ø16mm extra bottom bars at midspan, length 3.20m = 0.8 x 4.00m span) is also consistent with a 4.00m span.",
+    "No soil_boring_log sheet and no dedicated plan_column sheet in this set — columns appear only as marks on the footing plan (S-02) and in the column schedule (S-07), matching op04's own note that this is the expected/common case."
+  ],
+  "dummy_grid_rule_check": {
+    "before_origin_naming": "1' (x=-1.50, west of grid 1) and A' (y=-1.50, north of grid A) both fall before the first main grid line on their axis. Per §4's negative-pos_m exception they are still named after the nearest main grid (1 and A respectively, not left/above-blank), matching the spec's own worked example.",
+    "after_last_naming": "3' (x=9.50, east of grid 3) and C' (y=9.50, south of grid C) are named after the main grid to their left/above (3 and C respectively), per the standard rule.",
+    "prime_ordering": "Final state after the three 2026-08-24 rounds. Grid 1 owns two dummies (-1.50, +2.00) and grid A owns THREE (-1.50, -1.00, +2.00). Per §4 the scan is by reading direction, not distance: x-axis left→right gives 1'=-1.50, 1''=+2.00; y-axis top→bottom gives A'=-1.50, A''=-1.00, A'''=+2.00. B'(y=6.00) is alone in the B-to-C gap and takes one prime. The direction rule (named after the grid to the left/above, not the nearest) is what files the x=+2.00 and y=+2.00 lines under grid 1 / grid A rather than under 2 / B. One id WAS renumbered: the interior B1 line at y=+2.00 was created as A'' earlier in the day and became A''' when A''(-1.00) was inserted above it — the references in หน้า26 were rewritten to match. After Makham's ring-beam correction หน้า27 references no primed grid at all, and nothing anywhere references A'.",
+    "beam_endpoint_rule": "1''(x=2.00), A'''(y=2.00) and B'(y=6.00) exist ONLY because printed beam marks (B1 twice, B2 once) land on them — the beam-endpoint trigger, not a slab/roofline edge — and their pos_m is a Makham ruling rather than a printed dimension chain, which is the deviation from §4 on this sheet. A''(y=-1.00) is a different case: a real printed beam mark (B5) lands on it, so the trigger is ordinary, but its pos_m is still a ruling because the only printed number nearby (1.10) measures to the beam's face rather than its centreline. A'(y=-1.50) is triggered by the steel fascia เชิงชายเหล็ก on S-05, not by an RC beam — the only line in this file justified by a roof-frame member, and the only one with no floor-level member on it at all."
+  },
+  "grid": {
+    "x_lines": [
+      { "id": "1'", "pos_m": -1.50, "type": "dummy", "confidence_score": 0.8, "confidence_flags": ["justification REPLACED 2026-08-24: was 'roof-level ring beam RB1's west run', which does not exist — RB1 is on the main grid (see warnings). The line survives on floor-level evidence instead: beam B6 runs on it, with B6X/BX at its south end (S-03)", "no footing/column sits on this line, only the beam", "pixel scan of หน้า26 puts the line at -1.49 against a printed 1.50"] },
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "1''", "pos_m": 2.00, "type": "dummy", "confidence_score": 0.6, "confidence_flags": ["carries interior secondary beam B2 only (S-03), no footing/column", "position_ruled_by_makham_2026-08-24_not_printed — midpoint of the 1-2 bay; no dimension line on any structural sheet locates it. Pixel check on หน้า26 at 4x reads 1.95m"] },
+      { "id": "2", "pos_m": 4.00, "type": "named" },
+      { "id": "3", "pos_m": 8.00, "type": "named" },
+      { "id": "3'", "pos_m": 9.50, "type": "dummy", "confidence_score": 0.7, "confidence_flags": ["justification REPLACED 2026-08-24: was 'roof-level ring beam RB1's east run', which does not exist — RB1 is on the main grid (see warnings). The line survives on floor-level evidence instead: the small east bay's outer beams B5A/B5B run on it (S-03)", "no footing/column sits on this line, only the beam", "pixel scan of หน้า26 finds beam faces at +9.39 in the B-C band, so the line is real, but note this offset was never independently dimensioned on S-03 — it was originally carried over 'by analogy with the ring-beam module', and that analogy is now void even though the measurement happens to confirm the position"] }
+    ],
+    "y_lines": [
+      { "id": "A'", "pos_m": -1.50, "type": "dummy", "confidence_score": 0.75, "confidence_flags": ["justification REPLACED 2026-08-24: was 'roof-level ring beam RB1's north run', which does not exist — RB1 is on the main grid (see warnings). The line survives on ROOF-FRAME evidence instead: S-05 (หน้า28) draws the roof frame's solid outline 1.50m outside the grid on all four sides and runs 'เชิงชายเหล็ก ⌐-100x50x20x2.3 มม. (โดยรอบ)' — a steel fascia/eave member — continuously around it. Both S-04 and S-05 print the 1.50 offset.", "no footing/column sits on this line, and unlike 1'/3'/C' no FLOOR-level beam lands on it either — this line is roof-frame only", "RETRACTION: earlier on 2026-08-24 this line was flagged ORPHANED / DO-NOT-TRAIN on the strength of a pixel scan that covered only หน้า26. That scan was right that nothing is at -1.50 at floor level, and wrong to conclude the line is unjustified — หน้า28 had not been opened. The orphan flag is withdrawn."] },
+      { "id": "A''", "pos_m": -1.00, "type": "dummy", "confidence_score": 0.7, "confidence_flags": ["carries floor-level beam B5 (bay 2-3) continuing east of grid 3 as B5A's north edge, plus the top ends of the two B3X drops and of B5A's east run (S-03) — no footing/column", "pos_m is the beam CENTRELINE, ruled by Makham 2026-08-24. Pixel scan of หน้า26 measures the two beam faces at -1.08 and -0.94, i.e. a 200mm beam centred on -1.01. The number PRINTED on S-03 is 1.10, but it lands on the beam's north face where the แนวหลังคา roofline coincides with it — not on the centreline. Every other dummy in this file (1', 3', C') has its printed value land on the centreline, so -1.00 keeps the file internally consistent; the printed 1.10 stays in unassigned_dimensions as the roofline.", "the beam exists only from grid 2 eastward: a scan at x=1250 (bay 1-2) finds the -1.10 roofline alone with no second face, so no beam there"] },
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "A'''", "pos_m": 2.00, "type": "dummy", "confidence_score": 0.6, "confidence_flags": ["carries interior secondary beam B1 (2-3 x A-B, bedroom-2 cluster) only (S-03), no footing/column", "position_ruled_by_makham_2026-08-24_not_printed — midpoint of the A-B bay; no dimension line on any structural sheet locates it. Pixel check on หน้า26 at 4x reads 1.88m", "renamed A'' → A''' later the same day when A''(-1.00) was inserted above it; prime order is by reading direction, so the new line takes the lower prime count"] },
+      { "id": "B", "pos_m": 4.00, "type": "named" },
+      { "id": "B'", "pos_m": 6.00, "type": "dummy", "confidence_score": 0.6, "confidence_flags": ["carries interior secondary beam B1 (1-2 x B-C, bathroom cluster) and the south end of B2 only (S-03), no footing/column", "position_ruled_by_makham_2026-08-24_not_printed — midpoint of the B-C bay; no dimension line on any structural sheet locates it. Pixel check on หน้า26 at 4x reads 2.21m"] },
+      { "id": "C", "pos_m": 8.00, "type": "named" },
+      { "id": "C'", "pos_m": 9.50, "type": "dummy", "confidence_score": 0.8, "confidence_flags": ["justification NARROWED 2026-08-24: was billed as double duty (roof-level ring beam RB1's south run + floor-level ramp/deck beam B5), but the RB1 half does not exist — RB1 is on the main grid (see warnings). Floor-level only now: ramp/entry-deck beam B5 plus the ends of B6X/BX (S-03)", "no footing/column sits on this line, only the beam", "pixel scan of หน้า26 puts the beam faces at +9.40 and +9.55, centreline +9.47 against a printed 9.50"] }
+    ],
+    "z_levels": [
+      { "id": "ระดับ ±0.00 ม", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า29.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า25.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "1", "to": "3", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า25.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "A", "to": "C", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า27.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.50 },
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "3'", "value_m": 1.50 },
+          { "from": "1", "to": "3", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า27.png",
+        "segments": [
+          { "from": "A'", "to": "A", "value_m": 1.50 },
+          { "from": "A", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "C'", "value_m": 1.50 },
+          { "from": "A", "to": "C", "value_m": 8.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า26.png",
+        "segments": [
+          { "from": "edge", "to": "A", "value_m": 1.10 },
+          { "from": "A", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "A", "to": "C", "value_m": 8.00 },
+          { "from": "C", "to": "C'", "value_m": 1.50 },
+          { "from": "C'", "to": "edge", "value_m": 3.50 },
+          { "from": "A", "to": "edge", "value_m": 13.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า26.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.50 },
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 4.00 },
+          { "from": "3", "to": "edge", "value_m": 1.50 },
+          { "from": "1", "to": "3", "value_m": 8.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.10, "label": "แนวหลังคา (roofline) offset north of grid A, printed on the floor plan S-03", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า26.png", "note": "architectural roof-edge reference only; no beam lands here at floor level (contrast with the real 1.50m roof-level ring-beam offset at the same side, dummy grid A')" },
+      { "value_m": 0.80, "label": "F5/F8/F10 footing depth 'ไม่น้อยกว่า 0.80 ม' (not less than 0.80m below ±0.00)", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า29.png", "note": "recorded as depth_mm on each footing spec instead of here; listed for completeness of the sweep" },
+      { "value_m": 6.00, "label": "เสาเข็ม ... ความยาวในการประมาณราคา 6.00 ม (driven pile length used for cost estimate)", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า24.png", "note": "project-wide pile spec, also carried in the notes file (S-01)" },
+      { "value_m": 0.40, "label": "step between ระดับพื้นภายนอก (exterior floor level) and ระดับพื้นภายใน (interior floor level) at beam BX, the ramp/entry threshold beam", "source_image": "image/บ้าน_เล็ก_1ชั้น_11/บ้าน_เล็ก_1ชั้น_11_หน้า33.png", "note": "only the relative 0.40m step is dimensioned, not an absolute level_m for either face relative to the ±0.00 datum, so no z_levels entry was created for these two labels — recording the interior floor as level_m 0.00 would be a reasonable but UNCONFIRMED inference, not something actually printed" }
+    ],
+    "non_grid_dimensions_do_not_confuse": [
+      { "location": "S-03 floor plan (หน้า26), x-axis edge offsets (1.50m west of grid 1, 1.50m east of grid 3)", "value_m": 1.50, "meaning": "WITHDRAWN 2026-08-24 — this entry claimed no beam lands on these two x-offsets, and that they merely coincide in value with a real ring beam one level up. Both halves are wrong. RB1 is on the main grid and never had a 1.50m offset. And a pixel scan of หน้า26 finds real FLOOR-level beams on both offsets — B6 on the west (-1.49) and the east bay's outer run (+9.47, solid from the north strip down to row C). They are dummy grids 1' and 3'. Two members do stack on each of those lines (the floor beam, and the roof frame's fascia from S-05 at the same offset), but that makes them one grid line carrying two members at two elevations, which is normal — not two lines to keep apart. The 'แนวหลังคา' roofline label runs alongside them and is not what makes them structural. Kept here rather than removed so the retraction is visible; do not treat this row as a live do-not-confuse rule. The genuine do-not-confuse case on this sheet is the Y axis instead: 1.10 north of row A is a roofline that coincides with a beam FACE in bay 2-3 and continues west through bay 1-2 where there is no beam — see the A''(-1.00) line." }
+    ]
+  }
+}

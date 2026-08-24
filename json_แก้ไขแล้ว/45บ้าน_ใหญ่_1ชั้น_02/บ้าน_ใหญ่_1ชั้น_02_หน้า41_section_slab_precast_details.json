@@ -1,0 +1,25 @@
+{
+  "png": "41",
+  "doc_page": 39,
+  "discipline": "structural",
+  "sheet_code": "S-16",
+  "sheet_name": "S1, S2, S3, SX, ST",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า41.png",
+  "confidence_score": 0.7,
+  "confidence_flags": [],
+  "warnings": [
+    "These are five precast-plank (SP) bearing/edge-condition types, each a small 1:20 elevation detail rather than a plan-position table -- same treatment as house 02's S1/SX/S0 precedent (topping_mesh + edge dims + note), not the §9 dowel_bar/topping_thickness_min_mm shape verbatim, since the printed content here is bearing length + local reinforcement rather than a generic plank cross-section.",
+    "S1 vs S3's exact dowel-spacing callouts (ø9มม@0.20/0.25/0.40 in slightly different combinations) were genuinely difficult to fully disambiguate at this scan resolution -- the bearing lengths (0.50m each side, per §schedule note 'ไม่น้อยกว่า 0.05ม') and general Ø9mm dowel size are confident; the precise per-type spacing digit is lower confidence and may need a re-zoom to fully separate S1 from S3.",
+    "S2 (a simple cantilever/edge condition, min width = half the beam width) has no rebar-size callout printed -- it is purely a bearing-geometry rule, recorded as description only.",
+    "ST is the slab condition where the finished floor level sits BELOW the beam top (ระดับสูงกว่าหลังคาน per the S-16 title vs. the drawn 'ระยะตามแบบสถาปัตย์' step) -- an angled haunch detail with its own Ø9mm/Ø6mm reinforcement; matches the ST slab-step markers seen on the S-03 floor plan (ramp/laundry step conditions).",
+    "SX is the interior-corner/T-junction bearing condition (両 beams meeting), Ø6mm@0.20/0.10 reinforcement."
+  ],
+  "elements": [
+    { "element_id": "S1", "element_type": "precast_plank_detail", "description": "ลักษณะการวางพื้น (SP) ภายใน -- interior SP plank bearing on both sides of an interior beam", "topping_mesh": { "dia_mm": 6, "spacing_mm": 200, "note": "เสริมพิเศษ (special reinforcement mesh at plank ends over the beam)" }, "dowel_bar": { "dia_mm": 9, "type": "RB", "spacing_mm": 200 }, "edge_dims_mm": { "bearing_each_side": 50 }, "confidence_score": 0.65, "confidence_flags": ["dowel spacing digit uncertain -- see file warnings"] },
+    { "element_id": "S2", "element_type": "precast_plank_detail", "description": "ลักษณะการวางพื้น (SP) บริเวณคานริม -- SP plank at the edge beam, cantilever bearing condition", "note": "min bearing width = half the beam width (ไม่น้อยกว่าครึ่งหนึ่งของความกว้างคาน); no rebar size printed on this variant", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "S3", "element_type": "precast_plank_detail", "description": "ลักษณะการวางพื้น (SP) บริเวณพื้น (S) -- SP plank meeting a cast-in-place slab (S) condition", "topping_mesh": { "dia_mm": 6, "spacing_mm": 200 }, "dowel_bar": { "dia_mm": 9, "type": "RB", "spacing_mm": 250, "printed_as": "ø9มม.@0.15 / ø9มม.@0.25 (two callouts, exact assignment uncertain)" }, "edge_dims_mm": { "bearing": 400 }, "confidence_score": 0.6, "confidence_flags": ["dowel spacing digit uncertain -- see file warnings"] },
+    { "element_id": "SX", "element_type": "precast_plank_detail", "description": "ลักษณะพื้น (S) ระดับสูงกว่าหลังคาน -- interior corner/T-junction bearing, two beams meeting", "topping_mesh": { "dia_mm": 6, "spacing_mm": 200 }, "note": "Ø6มม.@0.10 secondary tie also shown", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "ST", "element_type": "precast_plank_detail", "description": "ลักษณะพื้น (ST) บริเวณพื้นห้องน้ำ -- stepped/angled slab-to-beam haunch, finished level per architectural drawing", "dowel_bar": { "dia_mm": 9, "type": "RB", "note": "@ตามแบบ (spacing per architectural drawing)" }, "topping_mesh": { "dia_mm": 6, "spacing_mm": 200 }, "topping_thickness_min_mm": 100, "confidence_score": 0.65, "confidence_flags": [] }
+  ]
+}

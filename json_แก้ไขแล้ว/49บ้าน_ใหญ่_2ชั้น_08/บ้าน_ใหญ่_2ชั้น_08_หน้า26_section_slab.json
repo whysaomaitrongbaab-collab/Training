@@ -1,0 +1,19 @@
+{
+  "png": "26",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "SECTION S0, S1, S1a + connection details",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า26.png",
+  "confidence_score": 0.65,
+  "confidence_flags": [
+    "The sheet also carries 4 generic connection details ('SECTION-1' through 'SECTION-4': a beam-to-parapet corner, a beam/RC-tie-beam-to-wall junction, a beam stirrup detail, and a column-splice/gusset detail) plus two non-structural expansion details ('แบบขยายจุดที่มีหลังคาอบล่างติดผนัง' and 'แบบขยายรอยต่อพื้นกับระเบียง') — these are construction details without their own element mark or grid position, so they are summarized in this note rather than forced into elements[] with an invented id."
+  ],
+  "warnings": [],
+  "elements": [
+    { "element_id": "S0", "element_type": "slab", "thickness_mm": 100, "main_bar": { "top": { "count": 0, "dia_mm": 0, "type": "RB", "note": "not shown top" }, "bottom": { "dia_mm": 9, "spacing_mm": 200, "type": "RB", "note": "printed 'RB9 @0.20' as a mesh, not a top/bottom count pair" } }, "note": "cast on compacted sand base, no formed slab thickened edge shown — light on-grade slab", "confidence_score": 0.5, "confidence_flags": ["main_bar top/bottom split forced onto what is really a single-layer mesh callout (RB9@0.20); recorded as bottom only"] },
+    { "element_id": "S1", "element_type": "slab", "thickness_mm": 100, "main_bar": { "bottom": { "dia_mm": 9, "spacing_mm": 200, "type": "RB", "note": "printed 'RB9 @0.20', both directions shown on plan view of the slab underside" } }, "note": "0.50m formed edge strip shown on both sides of the span L", "confidence_score": 0.55, "confidence_flags": ["main_bar recorded as bottom-only mesh; no explicit top steel shown"] },
+    { "element_id": "S1a", "element_type": "slab", "main_bar": { "bottom": { "dia_mm": 9, "spacing_mm": 200, "type": "RB", "note": "printed 'RB9 @0.20' single-layer mesh, same as S1" } }, "note": "labeled void/opening marker over row-A beam runs on the floor-2 plan (หน้า18); this section shows only a simple mesh-reinforced strip, not a full slab", "confidence_score": 0.4, "confidence_flags": ["low confidence — S1a's own dedicated detail is thin/ambiguous on this sheet; position only confidently known from the plan sheets"] }
+  ]
+}

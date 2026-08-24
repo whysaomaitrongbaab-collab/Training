@@ -1,0 +1,131 @@
+{
+  "png": "13",
+  "doc_page": 11,
+  "discipline": "architecture",
+  "sheet_code": "A-11",
+  "sheet_name": "รูปตัด 1",
+  "pattern": "side_profile",
+  "view_title": "รูปตัด 1",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า13.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "levels",
+      "element_type": "datum",
+      "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 2(sic, printed order — see warnings) +0.60, ระดับพื้นชั้น 1(sic) +3.75, ระดับคานหลังคา +6.65, ระดับหลังเสาล่าง +6.95, ระดับหลังเสาบน +8.15. Segment labels printed: 0.60, 3.15, 2.90, then above the roof beam 0.30 (คานหลังคา to หลังเสาล่าง) and 1.15 (หลังเสาล่าง to หลังเสาบน) under an outer bracket '1.45' — 0.30+1.15=1.45 matches the bracket, but 6.65+1.45=8.10, 0.05 short of the printed +8.15 cumulative; a minor rounding/reading gap, not reconciled further.",
+      "confidence_score": 0.7,
+      "confidence_flags": ["0.05m gap between the printed cumulative +8.15 and the sum of the printed segments (1.45) — flagged, not forced to reconcile"]
+    },
+    {
+      "element_id": "roof_structure_ref",
+      "element_type": "roof_frame_reference",
+      "material": "หลังคาเหล็กรีดลอน (corrugated metal sheet)",
+      "description": "'หลังคาเหล็กรีดลอน' label and 'โครงหลังคา ดูแบบวิศวกรรมโครงสร้าง' (roof framing — see structural engineering drawing) note, same deferral as every other sheet. Shows a stepped/raised roof structure at the high end: a short post ('เสาล่าง') from the main roof beam (+6.65) up to +6.95, then a further post ('เสาบน') up to +8.15 — i.e. the roof is NOT a single flat-rafter plane but rises via intermediate posts toward its high end, consistent with the twin-opposite-slope reading already recorded in _หน้า08_roof_plan.json / _หน้า12_elevation4.json.",
+      "confidence_score": 0.68,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "eave_detail_ref_low",
+      "element_type": "detail_view",
+      "detail_ref": "A-22",
+      "description": "'เชิงชาย 1 R1 ดูแบบขยาย A-22' callout, dashed box around the LOW (gridA-B side) eave/fascia condition",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "eave_detail_ref_high",
+      "element_type": "detail_view",
+      "detail_ref": "A-22",
+      "description": "'เชิงชาย 2 R2 ดูแบบขยาย A-22' callout, dashed box around the HIGH (gridD-E side) eave/fascia condition — same detail sheet A-22 covers both the low and high eave conditions (R1 and R2), matching the R1 material-list item on _หน้า03_material_list.json",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ระเบียง_cut",
+      "element_type": "room_cut",
+      "grid_ref": "A-B, upper floor",
+      "level_m": 3.65,
+      "wall_height_m": 2.6,
+      "description": "Matches floor-plan tag '3 +3.65 (3)' exactly (_หน้า07). 'ราวกันตก ดูแบบขยาย A-21' callout repeated here.",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "เฉลียง_ทางเดิน_cut",
+      "element_type": "room_cut",
+      "grid_ref": "A-B, ground floor",
+      "description": "Two ground-floor tags at this position: 'เฉลียง [3]+0.50(3)' matching _หน้า06 exactly, and 'ทางเดิน [4]+0.20(—)' — a walkway tag not previously seen on the ground floor plan extraction (หน้า06's own room list did not carry a separate 'ทางเดิน' tag; possibly the same physical zone this agent's _หน้า06 file grouped under a different label, or a genuinely finer subdivision only visible on this section). Flagged rather than silently reconciled.",
+      "confidence_score": 0.6,
+      "confidence_flags": ["'ทางเดิน' tag not independently present in this agent's own _หน้า06_floor_plan_ground.json room list — possible finer subdivision not caught there"]
+    },
+    {
+      "element_id": "นอน1_cut",
+      "element_type": "room_cut",
+      "grid_ref": "B-C, upper floor",
+      "level_m": 3.75,
+      "wall_height_m": 2.6,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "พักผ่อน_cut",
+      "element_type": "room_cut",
+      "grid_ref": "B-C, ground floor",
+      "level_m": 0.6,
+      "wall_height_m": 2.7,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "โถง_stair_cut",
+      "element_type": "stair",
+      "grid_ref": "C-D",
+      "description": "โถง cut through both floors, showing the ST2 stair in section (small stair-icon box tagged '3'); a hexagon '5' tag also appears near the upper-floor โถง, matching the hexagon-5 window reference already seen near ห้องน้ำ2/ช่องท่อ on _หน้า07",
+      "confidence_score": 0.65,
+      "confidence_flags": ["needs_human_review_zoom_required"]
+    },
+    {
+      "element_id": "นอน2_cut",
+      "element_type": "room_cut",
+      "grid_ref": "D-E, upper floor",
+      "level_m": 3.75,
+      "wall_height_m": 2.6,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ทานอาหาร_cut",
+      "element_type": "room_cut",
+      "grid_ref": "D-E, ground floor",
+      "level_m": 0.6,
+      "wall_height_m": 2.7,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "overall_width",
+      "element_type": "dimension",
+      "description": "Bottom dimension chain: 2.05 (before gridA) | 1.50 (A-B) | 4.00 (B-C) | 2.20 (C-D) | 3.00 (D-E) | 1.50 (beyond E), bracket 10.70 for gridA-gridE — exactly matches the grid master's y_lines, same 2.05/1.50 asymmetric extents already established on the floor plans and elevations 2/4.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "hatched_ground_zone",
+      "element_type": "grading_note",
+      "description": "Hatched earth/fill zone below ±0.00 at the base of the section",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.73,
+  "confidence_flags": [],
+  "warnings": [
+    "This building cross-section (รูปตัด 1) cuts along the depth direction (grid A-B-C-D-E, i.e. the same viewing axis as elevations 2/4) at approximately x=1-2 — confirmed by the room sequence matching exactly the นอน1/พักผ่อน (B-C) / โถง (C-D) / นอน2/ทานอาหาร (D-E) / ระเบียง/เฉลียง (A-B) rooms this agent already placed at roughly x=1-2 from _หน้า06/_หน้า07's floor plans.",
+    "MOST NOTABLE FINDING: this section DIRECTLY CONFIRMS the roof slopes LOW at gridA, HIGH at gridE (matching _หน้า12_elevation4.json's A-10 reading) at this specific x=1-2 cut, via explicit structural post-height labels (+6.65/+6.95/+8.15) rather than just a silhouette line. UPDATED after _หน้า14_section2.json was also read: section2 shows the SAME direction at x=2-3, making 3 sheets (elevation4 + section1 + section2) agree on a single UNIFORM low-gridA/high-gridE slope across the whole roof, against 1 outlier (_หน้า10_elevation2.json/A-08, re-verified 3 times and genuinely showing the opposite) — see _หน้า08_roof_plan.json for the final synthesis; the earlier 'twin opposite-slope valley roof' theory floated when only elevation2+elevation4 had been read is superseded, not the final answer. This section additionally shows structural detail (stepped posts 'เสาล่าง'/'เสาบน' rising from the roof beam at +6.65 to +8.15 at the high end) that a plain elevation silhouette does not carry — worth the coordinating session's attention if resolving the roof geometry definitively against the structural S-sheets.",
+    "Level label ORDER printed on this sheet is unusual: reading top to bottom it goes +8.15(หลังเสาบน)/+6.95(หลังเสาล่าง)/+6.65(คานหลังคา)/+3.75(พื้นชั้น 1)/+0.60(พื้นชั้น 2)/±0.00(อ้างอิง) — i.e. this sheet's own labels literally read 'ระดับพื้นชั้น 1' next to +3.75 and 'ระดับพื้นชั้น 2' next to +0.60, which is BACKWARDS from every other sheet in this agent's range (floor 1 = +0.60, floor 2 = +3.75, consistently elsewhere). Read very carefully at full resolution to make sure this is what is actually printed and not a misread — it does appear to be a genuine label swap on this one sheet (likely a copy-paste/drafting slip, mirroring the same kind of isolated level-label error already found on _หน้า11_elevation3.json's '+3.15'). The height VALUES themselves (+0.60, +3.75, +6.65) and the rooms actually drawn at each height (พักผ่อน/นอน1/etc. at the +3.75 line = clearly upper floor by room content) are unambiguous and correct; only the printed Thai label-to-number pairing for 'ชั้น 1' vs 'ชั้น 2' is swapped on this one sheet. Recorded per the 'transcribe as printed, flag rather than silently fix' rule.",
+    "The 'ทางเดิน' tag (ground floor, near A-B) does not appear in this agent's own _หน้า06_floor_plan_ground.json — flagged there is no separate 'ทางเดิน' room in this agent's ground-floor room list; possible under-itemization on the floor plan extraction, or a label specific to this section view. Not resolved; the coordinating session may wish to cross-check against the floor plan image directly.",
+    "Section-cut identification: two small circled '1' triangle markers beside the 'รูปตัด 1' title at the bottom — standard section-identification symbol, not a separate building element.",
+    "Individual door/window tags on this section were not re-itemized in detail (same hexagon/triangle convention as every other sheet, low marginal value to re-describe here) — see the floor plan and elevation files' doors_and_windows_summary elements for the general convention."
+  ]
+}

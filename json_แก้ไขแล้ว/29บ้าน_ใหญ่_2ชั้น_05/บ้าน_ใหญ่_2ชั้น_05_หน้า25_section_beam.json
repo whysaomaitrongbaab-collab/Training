@@ -1,0 +1,21 @@
+{
+  "png": "25",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "SECTION BEAM B0, B1, B2, B3, B4",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า25.png",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "B2/B3/B4 print two different rebar layouts (SECTION_1-1 near the support, at L/4-L/5 from the column face, vs SECTION_2-2 at midspan) — a real curtailment pattern, not a duplicate/error. Recorded both as top/bottom per the printed section, per §7 span-vs-spec convention this is the member's own spec (not per-occurrence), so both sections are folded into one element with top/bottom read from whichever section shows the larger count at each face."
+  ],
+  "elements": [
+    { "element_id": "B0", "element_type": "beam", "width_mm": 100, "height_mm": 400, "main_bar": { "top": { "count": 1, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 1, "dia_mm": 12, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 3, "dia_mm": 12, "type": "DB", "note": "at support (L/4-L/5 from column)" }, "bottom": { "count": 3, "dia_mm": 12, "type": "DB", "note": "at midspan" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "additional_bars": [ { "count": 2, "dia_mm": 12, "position": "bottom at support / top at midspan (curtailed continuation)" } ], "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 4, "dia_mm": 12, "type": "DB", "note": "at support" }, "bottom": { "count": 4, "dia_mm": 12, "type": "DB", "note": "at midspan" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "additional_bars": [ { "count": 2, "dia_mm": 12, "position": "bottom at support / top at midspan (curtailed continuation)" } ], "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB", "note": "at support" }, "bottom": { "count": 2, "dia_mm": 16, "type": "DB", "note": "at support" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" }, "note": "midspan (section 2-2) reverses: top 2-DB16, bottom 2-DB12", "confidence_score": 0.65, "confidence_flags": [] }
+  ]
+}

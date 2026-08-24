@@ -1,0 +1,471 @@
+{
+  "png": "22",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบขยายพื้น , คาน",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_11/บ้าน_เล็ก_2ชั้น_11_หน้า22.png",
+  "confidence_score": 0.93,
+  "confidence_flags": [],
+  "warnings": [
+    "แผ่นนี้เป็นแหล่งสเปกหลักของพื้น S0/S1/S2/SP และคาน B1/B2/B3/B4 (spec_source = section ตาม §7)",
+    "B4 เป็นคานต่อเนื่อง 2 ช่วง เหล็กบนพิมพ์ '(2+2) Ø12 mm.' ที่จุดรองรับ ระยะ L/4 และเหล็กล่างพิมพ์ '(2+2) Ø12 mm.' กลางช่วง ระยะ L/5 — บันทึกเส้นต่อเนื่อง 2 เส้นไว้ใน main_bar และเส้นเสริมที่ถูกตัดไว้ใน additional_bars พร้อม position ตรวจสอบกับ SECTION 1 (บน 4/ล่าง 2) และ SECTION 2 (บน 2/ล่าง 4) แล้วสอดคล้องกัน",
+    "เหล็กปลอกของ B4 มีสองระยะ (@0.10 ช่วงปลาย, @0.20 ช่วงกลาง) บันทึก spacing_mm = 100 (ค่าน้อยสุด) พร้อม variable_spacing: true ตาม §0.5",
+    "S1 และ S2 เป็นพื้น 2 ทาง เหล็กพิมพ์สัญลักษณ์ # (ตะแกรงสองทาง) บันทึกเป็น bar_layers[] เพราะมีทั้งชั้นบนที่จุดรองรับและชั้นล่าง ตาม §0.6",
+    "เหล็กเสริมทุกตัวบนแผ่นนี้พิมพ์ด้วยสัญลักษณ์ Ø (ในภาพสแกนแสดงเป็น '|' หรือ 'Ø') จึงบันทึก type เป็น RB ทั้งหมดตาม §6 (ต่างจาก S-06 ที่พิมพ์ 'DB 12 mm.' ชัดเจนสำหรับเหล็กฐานราก)",
+    "SECTION 1 และ SECTION 2 เป็นรูปตัดของคาน B4 ตัวเดียวกันคนละตำแหน่ง จึงให้ element_id ตามป้ายที่พิมพ์จริง และชี้กลับด้วย section_of เพื่อไม่ให้ชนกับ element_id ของคาน (§0.3)"
+  ],
+  "scale": "1:20",
+  "specs": {
+    "B1": {
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "printed_as": "B1  0.15x0.30  2 Ø12mm. บน / 2 Ø12mm. ล่าง / |6mm.@0.15",
+      "spec_sheet": "S-04"
+    },
+    "B2": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "printed_as": "B2  0.15x0.40  2 Ø12mm. บน / 2 Ø12mm. ล่าง / |6mm.@0.15",
+      "spec_sheet": "S-04"
+    },
+    "B3": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "spec_confidence_flags": [
+        "asymmetric_top_bottom:2_top_3_bottom"
+      ],
+      "printed_as": "B3  0.15x0.40  2 Ø12mm. บน / 3 Ø12mm. ล่าง / |6mm.@0.15",
+      "spec_sheet": "S-04"
+    },
+    "B4": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "top, over each support, curtailed at L/4 from support face",
+          "printed_as": "(2+2) Ø12 mm.",
+          "note": "SECTION 1 (ตัดที่เสา) จึงนับเหล็กบนได้ 4 Ø12mm. รวมเส้นต่อเนื่อง"
+        },
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "bottom, at midspan, curtailed at L/5 from support face",
+          "printed_as": "(2+2) Ø12 mm.",
+          "note": "SECTION 2 (ตัดกลางช่วง) จึงนับเหล็กล่างได้ 4 Ø12mm. รวมเส้นต่อเนื่อง"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10",
+        "variable_spacing": true,
+        "note": "|6mm.@0.10 ช่วงปลายคาน (ระยะ L/4) และ |6mm.@0.20 ช่วงกลาง"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "printed_as": "B4 คานต่อเนื่อง 2 ช่วง 0.15x0.40 — SECTION 1 บน 4 Ø12mm./ล่าง 2 Ø12mm., SECTION 2 บน 2 Ø12mm./ล่าง 4 Ø12mm.",
+      "spec_sheet": "S-04"
+    }
+  },
+  "elements": [
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "rebar": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 140,
+        "each_way": true,
+        "printed_as": "|6 mm.@0.14 #"
+      },
+      "slab_type": "slab on grade",
+      "sub_base": [
+        {
+          "layer": "ASPHALT & SAND",
+          "thickness_m_range": "0.02 - 0.03",
+          "position": "on top of slab"
+        },
+        {
+          "layer": "ชั้นทรายบดอัด",
+          "thickness_mm": 50,
+          "position": "under slab"
+        },
+        {
+          "layer": "ชั้นรองพื้น",
+          "thickness_mm": 50,
+          "position": "under sand"
+        }
+      ],
+      "printed_as": "S0  |6 mm.@0.14 #  หนา 0.08  ASPHALT & SAND 0.02-0.03m.  0.05 m.ชั้นทรายบดอัด  0.05 m.ชั้นรองพื้น",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "precast_plank_detail",
+      "description": "แผ่นพื้นสำเร็จรูปพร้อมคอนกรีตทับหน้า",
+      "plank_width_mm": 350,
+      "plank_thickness_mm": 50,
+      "plank_printed_as": "แผ่นพื้นสำเร็จรูปขนาด 0.05x0.35 m.",
+      "safe_load_kg_per_sqm": 150,
+      "topping_thickness_min_mm": 50,
+      "topping_mesh": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "each_way": true,
+        "printed_as": "เหล็กตะแกรง |6 mm.@0.20 #"
+      },
+      "level_step_mm": null,
+      "printed_as": "SP  คอนกรีตทับหน้า(TOPPING)อย่างน้อย 5cm.  เหล็กตะแกรง |6 mm.@0.20 #  แผ่นพื้นสำเร็จรูปขนาด 0.05x0.35 m. รับน้ำหนักปลอดภัย 150kg./m2",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "short_span_m": 1.2,
+      "bar_layers": [
+        {
+          "location": "top, over each support",
+          "dia_mm": 6,
+          "type": "RB",
+          "spacing_mm": 140,
+          "each_way": true,
+          "extent_mm": 300,
+          "printed_as": "|6 mm.@0.14 #  ระยะ 0.30"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 6,
+          "type": "RB",
+          "spacing_mm": 140,
+          "each_way": true,
+          "printed_as": "|6 mm.@0.14 #"
+        }
+      ],
+      "printed_as": "S1  L = ด้านสั้น = 1.20  หนา 0.08",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "short_span_m": 3.0,
+      "bar_layers": [
+        {
+          "location": "top, over each support",
+          "dia_mm": 6,
+          "type": "RB",
+          "spacing_mm": 140,
+          "each_way": true,
+          "extent_mm": 750,
+          "printed_as": "|6 mm.@0.14 #  ระยะ 0.75"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 6,
+          "type": "RB",
+          "spacing_mm": 100,
+          "each_way": true,
+          "printed_as": "6 mm.@0.10 #"
+        }
+      ],
+      "printed_as": "S2  L = ด้านสั้น = 3.00  หนา 0.08",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "printed_as": "B1  0.15x0.30  2 Ø12mm. บน / 2 Ø12mm. ล่าง / |6mm.@0.15",
+      "element_id": "B1",
+      "element_type": "beam",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "printed_as": "B2  0.15x0.40  2 Ø12mm. บน / 2 Ø12mm. ล่าง / |6mm.@0.15",
+      "element_id": "B2",
+      "element_type": "beam",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "|6 mm.@0.15"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_confidence_flags": [
+        "asymmetric_top_bottom:2_top_3_bottom"
+      ],
+      "printed_as": "B3  0.15x0.40  2 Ø12mm. บน / 3 Ø12mm. ล่าง / |6mm.@0.15",
+      "element_id": "B3",
+      "element_type": "beam",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "top, over each support, curtailed at L/4 from support face",
+          "printed_as": "(2+2) Ø12 mm.",
+          "note": "SECTION 1 (ตัดที่เสา) จึงนับเหล็กบนได้ 4 Ø12mm. รวมเส้นต่อเนื่อง"
+        },
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "bottom, at midspan, curtailed at L/5 from support face",
+          "printed_as": "(2+2) Ø12 mm.",
+          "note": "SECTION 2 (ตัดกลางช่วง) จึงนับเหล็กล่างได้ 4 Ø12mm. รวมเส้นต่อเนื่อง"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10",
+        "variable_spacing": true,
+        "note": "|6mm.@0.10 ช่วงปลายคาน (ระยะ L/4) และ |6mm.@0.20 ช่วงกลาง"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "printed_as": "B4 คานต่อเนื่อง 2 ช่วง 0.15x0.40 — SECTION 1 บน 4 Ø12mm./ล่าง 2 Ø12mm., SECTION 2 บน 2 Ø12mm./ล่าง 4 Ø12mm.",
+      "element_id": "B4",
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "continuous_2_span"
+      ],
+      "span_count": 2
+    },
+    {
+      "element_id": "SECTION 1",
+      "element_type": "section_view",
+      "section_of": "B4",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "ตัดที่จุดรองรับ (เหนือเสา) — เหล็กบน 4 Ø12mm. รวมเส้นเสริม (2+2)"
+    },
+    {
+      "element_id": "SECTION 2",
+      "element_type": "section_view",
+      "section_of": "B4",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "ตัดกลางช่วง — เหล็กล่าง 4 Ø12mm. รวมเส้นเสริม (2+2)"
+    }
+  ]
+}

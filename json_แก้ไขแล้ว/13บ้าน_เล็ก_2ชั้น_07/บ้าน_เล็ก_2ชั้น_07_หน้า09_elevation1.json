@@ -1,0 +1,90 @@
+{
+  "png": "09",
+  "doc_page": 7,
+  "discipline": "architecture",
+  "sheet_code": "A-07",
+  "sheet_name": "รูปด้าน 1",
+  "pattern": "side_profile",
+  "view_title": "รูปด้าน 1",
+  "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า09.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "levels",
+      "element_type": "datum",
+      "description": "ระดับอ้างอิง ±0.00, ระดับพื้นชั้น 1 +0.60, ระดับพื้นชั้น 2 +3.75, ระดับคานหลังคา +6.65 (height chain 0.60 + 3.15 + 2.90 = 6.65)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "guardrail_reference",
+      "element_type": "guardrail",
+      "description": "'ราวกันตก ดูแบบขยาย A-21' — 2nd-floor balcony (ระเบียง) guardrail, upper-left, with a horizontal-bar balustrade drawn below a window/door opening",
+      "detail_ref": "A-21",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "control_joint_pvc_strip",
+      "element_type": "control_joint",
+      "count": 2,
+      "description": "'เซาะร่อง หรือ ฝังเส้น PVC' reveal lines — one in the 2.90m zone below the roof-beam level line, one in the 3.15m zone below the floor-2 level line",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "opening_1_upper_left",
+      "element_type": "window",
+      "count": 1,
+      "description": "hexagon/tag '1' opening, upper floor, left side — multi-lite window/door with the ราวกันตก balustrade below it (ระเบียง)",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "opening_4_upper_right",
+      "element_type": "window",
+      "count": 1,
+      "description": "small tag '4' opening, upper floor, right side (likely ห้องน้ำ2's window, matching opening_ref '2' printed on the floor plan — tag number on this elevation not confidently cross-matched to the floor-plan opening_ref)",
+      "confidence_score": 0.55,
+      "confidence_flags": ["needs_human_review_zoom_required", "elevation opening tag number not confidently cross-matched against the floor plan's own opening_ref for the same physical window"]
+    },
+    {
+      "element_id": "opening_1_lower_left",
+      "element_type": "door_or_window",
+      "count": 1,
+      "description": "tag '1' opening, ground floor, left side, large panel with a diagonal cross (X) infill pattern — possibly a decorative grille/screen or bracing motif (notable given this house's design name is 'บ้านต้านภัยพิบัติแผ่นดินไหว', earthquake-resistant); not confidently classified as door vs fixed screen",
+      "confidence_score": 0.5,
+      "confidence_flags": ["needs_human_review_zoom_required", "X-pattern infill purpose (decorative grille vs structural bracing motif vs gate) not confidently resolved"]
+    },
+    {
+      "element_id": "opening_2_lower_right",
+      "element_type": "door_or_window",
+      "count": 1,
+      "description": "tag '2' opening, ground floor, right side, narrower panel with the same diagonal cross (X) infill pattern — likely the จอดรถ carport gate/screen",
+      "confidence_score": 0.55,
+      "confidence_flags": ["needs_human_review_zoom_required"]
+    },
+    {
+      "element_id": "triangle_marker_symbols",
+      "element_type": "reference_marker",
+      "count": 4,
+      "description": "Small triangle symbols each containing '1', at the roof-top center, upper-left near the balcony, lower-left near the window, and lower-center near the ground-floor opening — same recurring, undocumented-in-the-legend triangle convention seen throughout the plan sheets (หน้า06/07); purpose not confidently identified.",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "needs_human_review_zoom_required",
+        "triangle_symbol_meaning_not_identified_in_the_symbol_legend_(หน้า03)"
+      ]
+    }
+  ],
+  "confidence_score": 0.7,
+  "confidence_flags": [
+    "compass_direction_(N/S/E/W)_of_this_elevation_not_independently_verified_-_only_the_sheet-number_to_compass-slot_mapping_(1=A-07,_bottom_of_the_floor-plan_callout_bubble)_is_used"
+  ],
+  "warnings": [
+    "GRID-RELEVANT (reporting only, master file NOT edited): bottom dimension chain reads '0.20 | 1.10 | 3.50 | 3.00 | 0.50 | 0.80' with bracket groupings '1.30 | 6.50 | 1.30', verified at 3-4x zoom for exact tick alignment against the circled grid markers 1/2/3 below. grid1 (relative x=0) confirmed at the boundary between '1.10' and '3.50' (cumulative 1.30 from the west roof edge, matching the west overhang). grid3 (relative x=7.00) confirmed BY DIRECT ZOOM at the boundary between '0.50' and '0.80' (cumulative 8.30), NOT at the '3.00|0.50' boundary as a naive symmetric read of the bracket groupings would suggest — 3.50+3.00+0.50 = 7.00 exactly matches the grid master's grid1-to-grid3 distance, so grid1 and grid3 both cleanly reconcile. HOWEVER this leaves an genuinely asymmetric implied overhang within this specific chain: west overhang (roof edge to grid1) = 0.20+1.10 = 1.30m, but east overhang (grid3 to roof edge) = only 0.80m (the segment after the confirmed grid3 tick) — NOT 1.30m as the west side and as the roof plan sheet (_หน้า08_roof_plan.json, which explicitly prints 1.30m on all 4 sides including east) both show. This asymmetry is not resolved here — flagged as a genuine minor cross-sheet discrepancy for the coordinating session rather than silently forced to match the roof plan's symmetric figure. It does not affect grid1/grid2/grid3 themselves, which all reconcile cleanly.",
+    "This elevation corresponds to compass-slot '1' on the floor plan's 4-way elevation callout bubble (sheet A-07) — cardinal direction not independently confirmed from this sheet alone.",
+    "Individual door/window opening-number-to-schedule cross-match not confidently resolvable at this resolution — the door/window schedule sheet (A-14) is outside this agent's assigned page range (หน้า03-14 stops at A-12).",
+    "The recurring small triangle-'1' markers (also seen throughout the plan sheets) remain unidentified against the symbol legend (หน้า03) — flagged consistently across every sheet where they appear."
+  ]
+}

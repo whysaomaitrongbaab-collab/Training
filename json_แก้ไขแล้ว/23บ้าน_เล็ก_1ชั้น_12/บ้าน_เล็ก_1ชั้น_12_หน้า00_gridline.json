@@ -1,0 +1,40 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "grid master (derived from S-02 แปลนฐานรากเสาตอม่อ, cross-checked against A-03/A-04/S-03)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า05.png",
+    "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า06.png",
+    "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า25.png",
+    "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า26.png"
+  ],
+  "confidence_score": 0.97,
+  "confidence_flags": [],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.0, "type": "named" },
+      { "id": "2", "pos_m": 4.00, "type": "named" },
+      { "id": "3", "pos_m": 8.00, "type": "named" },
+      { "id": "4", "pos_m": 9.50, "type": "named" },
+      { "id": "1'", "pos_m": 2.30, "type": "dummy" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.0, "type": "named" },
+      { "id": "B", "pos_m": 4.00, "type": "named" },
+      { "id": "C", "pos_m": 8.00, "type": "named" },
+      { "id": "D", "pos_m": 10.00, "type": "named" },
+      { "id": "E", "pos_m": 13.50, "type": "named" }
+    ]
+  },
+  "warnings": [
+    "Grid derived per project precedence rule from the structural footing/pedestal plan S-02 (หน้า25), which agrees exactly with the structural column/beam/floor plan S-03 (หน้า26) and with the architectural site plan A-03 (หน้า05) and floor plan A-04 (หน้า06) — 4 independent sheets agree, no conflict found.",
+    "x_lines dimension chain (S-02/A-04): 1-2 = 4.00 m, 2-3 = 4.00 m, 3-4 = 1.50 m (grid 4 sits at the building's east edge, matching the printed overall '9.50').",
+    "y_lines dimension chain (S-02): A-B = 4.00 m, B-C = 4.00 m, C-D = 2.00 m, D-E = 3.50 m; the printed overall bracket '13.50' on S-02 spans A to E (4.00+4.00+2.00+3.50=13.50), confirming this reading over an initial mis-read of A-03's site-boundary dimension chain (which includes non-grid site-setback distances '1.10'/'2.00'/'5.50' that are NOT part of the structural grid — the carport slab and site boundary extend beyond grid E, but grid E itself is fixed by the D-E=3.50 footing/column line on S-02/S-03).",
+    "No dummy grid lines were needed for this house: every footing (F5/F8/F10/F3), column (C1/C2/C0), and beam endpoint (B1-B6X, B3A, B3X, B4X, BX) sits exactly on a named grid intersection on S-02/S-03. The carport's light-steel structure (RB1/RB2 rafters, P1 post, SB1/SB1X/SB2 purlins on S-04/S-05) also lands on the same main grid (columns 1-4, rows A-D) — the purlin spacing dimensions (1.00/5.50/1.00 on S-04, and the roof-overhang dimensions on A-05/A-06/A-07) are secondary-member/overhang dimensions, not additional grid lines, since they carry no beam/column endpoint of their own per the beam-endpoint rule (§4).",
+    "Both dimension chains close against their printed overall dimensions: x = 9.50 m (4.00+4.00+1.50), y = 13.50 m (4.00+4.00+2.00+3.50).",
+    "One dummy x-grid was added: '1'' at pos_m=2.30, per the beam-endpoint rule (§4) — beam B2 on S-03 (แปลนเสา คาน และพื้น, หน้า26) sits on the partition wall between the two ห้องน้ำ (bathrooms), which the architectural floor plan A-04 (หน้า06) dimensions explicitly as 2.30 m + 1.70 m = 4.00 m within the grid-1-to-grid-2 bay — so its position (2.30 m from grid 1) is read from a printed dimension, not estimated. Named per the above/left rule: dummy grid takes the main grid to its left (grid '1') with a prime appended."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "png": "00b",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized) — carport (โรงรถ), second building",
+  "pattern": "gridline",
+  "building": "โรงรถ",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า10.png",
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า11.png",
+    "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า26.png"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "Multi-building drawing set (§11a): this small detached carport/canopy (โรงรถ) uses its own grid names (X1/X2 on one axis, Y1/Y2 on the other) at its own spacing, separate origin from the main house grid (หน้า00_gridline.json). Every carport view file points here via grid_source.",
+    "หน้า26's small floor-structure plan ('ผังโครงสร้างพื้น (โรงรถ)') legibly marks a beam 'B1(+0.10)' on the X1-side vertical (X1Y1-X1Y2) and 'B1'(+0.10)' on the X2-side vertical (X2Y1-X2Y2); the two horizontal edges (Y1 row and Y2 row, X1-X2) are drawn as the same double-line beam weight but no mark text was legible on this scan for those two segments specifically — assumed to continue mark 'B1(+0.10)' by symmetry with the labelled sides, not independently confirmed. Flagged rather than silently guessed."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "X1", "pos_m": 0.00, "type": "named" },
+      { "id": "X2", "pos_m": 5.50, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "Y1", "pos_m": 0.00, "type": "named" },
+      { "id": "Y2", "pos_m": 3.50, "type": "named" }
+    ],
+    "z_levels": [
+      { "id": "ระดับดินเดิม", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า10.png" },
+      { "id": "จอดรถ", "level_m": 0.10, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า10.png" },
+      { "id": "ระดับหลังอะเสเหล็ก", "level_m": 3.10, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า11.png" },
+      { "id": "ระดับหลังอกไก่เหล็ก", "level_m": 4.139, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า11.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า26.png",
+        "segments": [
+          { "from": "X1", "to": "X2", "value_m": 5.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า26.png",
+        "segments": [
+          { "from": "Y1", "to": "Y2", "value_m": 3.50 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า11.png",
+        "segments": [
+          { "from": "ระดับดินเดิม", "to": "จอดรถ", "value_m": 0.10 },
+          { "from": "จอดรถ", "to": "ระดับหลังอะเสเหล็ก", "value_m": 3.00 },
+          { "from": "ระดับหลังอะเสเหล็ก", "to": "ระดับหลังอกไก่เหล็ก", "value_m": 1.039 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 0.40, "label": "footing/floor plan edge offset beyond X1/X2 grid, หน้า26", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า26.png", "note": "slab edge, no beam — not a dummy grid" },
+      { "value_m": 0.70, "label": "roof-plan overhang beyond X1/X2 and Y1/Y2, หน้า26", "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า26.png", "note": "eave/fascia reach, spacing-based rafters, no individual grid_ref" }
+    ]
+  }
+}

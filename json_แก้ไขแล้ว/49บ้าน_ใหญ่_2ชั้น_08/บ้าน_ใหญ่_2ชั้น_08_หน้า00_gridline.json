@@ -1,0 +1,115 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า16.png",
+    "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า17.png",
+    "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า18.png",
+    "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า19.png"
+  ],
+  "confidence_score": 0.7,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: no house-name text printed anywhere in the set (unlike sibling houses in this batch) — only 'โครงการ แบบบ้านยิ้มเพื่อประชาชน', 'ตามนโยบาย ม.ร.ว.สุขุมพันธุ์ บริพัตร ผู้ว่าราชการกรุงเทพมหานคร', 'โดยสำนักการโยธา กรุงเทพมหานคร', drawings 'ได้รับความอนุเคราะห์แบบจาก บริษัท แลนดี้ โฮม (ประเทศไทย) จำกัด'. Same donated-design program and same contributing company (แลนดี้โฮม) as house 29 (บ้าน_ใหญ่_2ชั้น_05 / 'บ้านสกาวรัตน์'), but this set has NO index/TOC page and NO 'S-xx' sheet-code system either — pages identified purely by their drawn Thai title ('ผังโครงสร้างฐานราก', 'ผังโครงสร้างชั้นล่าง', etc.), so sheet_code is null throughout. Only 28 PNG pages total for this house (smaller drawing set than most houses in this batch). Structural sheets located by paging through the whole set, not from a TOC.",
+    "Grid column labels 1-6 are printed on BOTH the architectural floor plans (หน้า03/04) and the structural plans (หน้า16-19), but only 4 of the 6 columns (1, 2, 5, 6) carry an independent footing (หน้า16, F1/F1A/F2 marks) — columns 3 and 4 carry beam-supported points only (no footing under them; consistent with the drawing's own note on หน้า17/18 'เสา CA เสริมพิเศษบนคาน' = 'CA columns are extra columns carried on a beam, not their own footing'). Per the precedence rule (structural sheets win for grid geometry), all 6 x_lines are still recorded as 'named' main grid lines because all 6 are independently dimensioned with their own printed sub-chain on the STRUCTURAL beam plans (หน้า17/18/19: 1-2=3.50, 2-3=0.80, 3-4=2.40, 4-5=0.80, 5-6=3.50) — this is not an architectural-only reference line, it is printed on the structural sheets themselves. The footing plan (หน้า16) simply omits dimensioning 3 and 4 because no footing sits there.",
+    "pos_m for grid 3 (4.30) and grid 4 (6.70) are derived by summing the printed structural sub-chain (2-3: 0.80m, 3-4: 2.40m) onto the printed main-chain position of grid 2 (3.50m) — cross-checked: 0.80+2.40+0.80 = 4.00m, matching the printed main-chain total for 2-to-5 on both the footing plan and every beam plan. This is a straightforward sum of two printed numbers, not an estimate.",
+    "Two small sub-dimensions on the floor-1 beam plan (หน้า17), '0.90' and '1.00', sit nested inside the 1-2 and 2-3 bays respectively but do not cleanly chain to a named or resolvable point (the '1.00' in particular exceeds the 0.80m width of the 2-3 bay it appears under, so its reference point is not the adjacent grid line) — likely dimensioning an interior stair/utility-room wall not otherwise identified from this scan. Recorded verbatim in unassigned_dimensions rather than forced into a fabricated dummy grid, per the no-invented-grid-id rule (§4).",
+    "A repeated '~0.50m' tick appears directly under most main grid columns on the floor-1/floor-2/roof beam plans (หน้า17/18/19), most plausibly dimensioning the short B0 tie-beam stub at each column face (see plan_beam files). Recorded once in unassigned_dimensions rather than once per occurrence (printed identically at ~8 locations).",
+    "No printed level registry (no 'ระดับ...' callouts) was found on any of the extracted structural sheets — floor levels only appear as small per-beam '(+0.xx)' annotations directly on each beam mark on the plan sheets (e.g. 'B6(+0.35)', 'B3(+3.65)'), which are recorded as each beam element's own level_m in the plan_beam files rather than in z_levels[] here. The elevations/sections that DO carry a full ±0.000/+0.500/+3.750/+6.950/+9.300 level chain (หน้า06-09, หน้า11-12) are side_profile pattern, out of op04 Pass-2 scope, so z_levels[] is left empty — same convention used by the closest sibling house in this batch (29บ้าน_ใหญ่_2ชั้น_05).",
+    "Pile note on the footing plan (หน้า16) reads (Thai numerals, verbatim): 'เข็ม I 0.18x0.18x16.00m. (2 ต้น ต่อปลอก) จำนวน ๑๑ ต้น' then 'F1 = ๗, หลุม = ๗ ต้น' and 'F2 = ๒ หลุม = ๔ ต้น', followed by 'เข็ม I 0.22x0.22x16.00m. (2 ต้น ต่อปลอก)' then 'F1A = ๗ หลุม = ๗ ต้น'. Visually counting the footing marks on the plan confirms F1=7, F1A=7, F2=2, and 7(F1)+4(F2)=11 matches the printed total for the 0.18x0.18 pile type — so '2 ต้นต่อปลอก' is read as 'a 16m pile is spliced from 2 shorter pile segments' (matching F1's 7 footings = 7 piles, 1 per footing), NOT 'each footing gets 2 piles' (which would only be literally true for F2, whose 2 footings use 4 piles = 2 piles/footing for the larger combined footing). This is an inference beyond pure transcription; flagged as a judgment call, not a printed fact."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.50, "type": "named" },
+      { "id": "3", "pos_m": 4.30, "type": "named" },
+      { "id": "4", "pos_m": 6.70, "type": "named" },
+      { "id": "5", "pos_m": 7.50, "type": "named" },
+      { "id": "6", "pos_m": 11.00, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 3.50, "type": "named" },
+      { "id": "C", "pos_m": 5.70, "type": "named" },
+      { "id": "D", "pos_m": 6.50, "type": "named" },
+      { "id": "E", "pos_m": 9.00, "type": "named" }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า16.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "5", "value_m": 4.00 },
+          { "from": "5", "to": "6", "value_m": 3.50 },
+          { "from": "1", "to": "6", "value_m": 11.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า16.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.50 },
+          { "from": "B", "to": "C", "value_m": 2.20 },
+          { "from": "C", "to": "D", "value_m": 0.80 },
+          { "from": "D", "to": "E", "value_m": 2.50 },
+          { "from": "A", "to": "E", "value_m": 9.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า17.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 0.60 },
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 0.80 },
+          { "from": "3", "to": "4", "value_m": 2.40 },
+          { "from": "4", "to": "5", "value_m": 0.80 },
+          { "from": "2", "to": "5", "value_m": 4.00 },
+          { "from": "5", "to": "6", "value_m": 3.50 },
+          { "from": "1", "to": "6", "value_m": 11.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า18.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 0.60 },
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 0.80 },
+          { "from": "3", "to": "4", "value_m": 2.40 },
+          { "from": "4", "to": "5", "value_m": 0.80 },
+          { "from": "2", "to": "5", "value_m": 4.00 },
+          { "from": "5", "to": "6", "value_m": 3.50 },
+          { "from": "1", "to": "6", "value_m": 11.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า19.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 0.60 },
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "5", "value_m": 4.00 },
+          { "from": "5", "to": "6", "value_m": 3.50 },
+          { "from": "1", "to": "6", "value_m": 11.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 2.00, "label": "sub-tick within the grid1-2 bay, floor-1 beam plan (หน้า17)", "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า17.png", "note": "locates an interior utility-room/stair wall; not resolved to a named dummy grid, no beam endpoint confidently identified there" },
+      { "value_m": 1.50, "label": "remainder of the grid1-2 bay after the 2.00 sub-tick, floor-1 beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า17.png", "note": null },
+      { "value_m": 0.90, "label": "fine sub-dimension nested inside the 1.50 segment above, floor-1 beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า17.png", "note": "reference point unclear" },
+      { "value_m": 1.00, "label": "fine sub-dimension nested inside the grid2-3 (0.80m) bay, floor-1 beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า17.png", "note": "exceeds the 0.80m bay width it is drawn under — its true reference point is not the adjacent grid line; genuine ambiguity, not resolved" },
+      { "value_m": 0.50, "label": "repeated tick below most main grid columns on the floor-1/floor-2/roof beam plans, likely the B0 tie-beam stub length", "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า17.png", "note": "printed identically at ~8 locations across หน้า17/18/19; recorded once" },
+      { "value_m": 2.30, "label": "sub-dimension from grid1, floor-2 beam plan (หน้า18)", "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า18.png", "note": "possibly locates the stair-void wall; not resolved to a named dummy grid" },
+      { "value_m": 1.20, "label": "first half of the grid3-4 (2.40m) bay, floor-2 beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า18.png", "note": "evenly subdivides 3-4; no beam endpoint identified there so no dummy grid was added" },
+      { "value_m": 1.20, "label": "second half of the grid3-4 bay, floor-2 beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า18.png", "note": null }
+    ]
+  }
+}

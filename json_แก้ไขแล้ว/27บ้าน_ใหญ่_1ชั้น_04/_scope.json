@@ -1,0 +1,11 @@
+{
+  "scope": "pass2_only",
+  "op": "op04",
+  "date": "2026-08-23",
+  "subtasks_done": ["gridline", "plan_footing", "plan_beam", "plan_slab", "section", "notes"],
+  "subtasks_absent_from_this_house": ["plan_column", "schedule", "soil_boring_log"],
+  "deliberately_skipped": ["material_list", "index", "site_plan", "side_profile", "title", "symbol", "roof_plan", "misc", "bbs_schedule"],
+  "pages_extracted": 3,
+  "pages_in_house": 18,
+  "note": "Pass 2 subtasks only — this house is NOT fully extracted. Skipped pages were skipped on purpose (tune_ai/t03/dataset_sizing.md), not missed. This is the smallest house in the dataset so far (18 PNG pages total: cover + A-01..A-10 + S-01..S-03 + E-01/E-02 + SN-01/SN-02) — a single small standard design (ม.บ.462120, 'บ้านครอบครัวไทยเป็นสุข 2') with only 3 structural sheets. plan_column and schedule are absent as their own sheets (column marks/spec appear only inside the footing plan and the S-02 rebar-detail sheet's small 2-row column table) — folded that table into the S-02 section file rather than a separate schedule file, since it's a small embedded box, not a titled standalone schedule. The y-axis grid dimension chain (ฉ→ก) had a genuine 0.40m mismatch between its 5 printed segments and the printed 14.15 total; resolved using the total-row cross-check per primary_rawjson_schema.md §4 (documented in the grid master's warnings), not guessed."
+}

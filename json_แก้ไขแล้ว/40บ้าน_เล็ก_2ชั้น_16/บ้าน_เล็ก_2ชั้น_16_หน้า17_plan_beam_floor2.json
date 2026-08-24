@@ -1,0 +1,47 @@
+{
+  "png": "17",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "ผังโครงสร้างชั้นบน",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_16/บ้าน_เล็ก_2ชั้น_16_หน้า17.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_16_หน้า00_gridline.json",
+  "confidence_score": 0.55,
+  "confidence_flags": [
+    "Combined RC floor-2 beam grid (top ~60% of sheet) with the steel roof frame (rafters/ridge/hip/wall-plate, bottom ~40%) — one physical sheet, kept as one file rather than split, per the roof_plan-vs-plan rule (structural roof framing is pattern 'plan', not 'roof_plan')."
+  ],
+  "warnings": [
+    "'ใช้เหล็กโครงสร้างหลังคาเหมือนตัวล่าง' ('use roof steel structure same as the lower one') is printed over the small porch-roof box at the top of the plan (col1-2, above row A) — no dimensions/counts are given for it on this sheet, so no element was invented for it; it references a roof structure not otherwise detailed in this house's Pass-2 scope.",
+    "'ช่องบันได' (stair floor opening) is explicitly text-labelled on THIS sheet, confirming it is a genuine void at the upper floor — unlike the equivalent 'S1' bay on the ground-floor plan (หน้า16), which หน้า22's detail sheet confirms is a real slab, not a void. See หน้า16's own warnings for that cross-check.",
+    "Two beam marks read 'B2''(+2.40)' inside/around the ช่องบันได void, at a level (+2.40) matching the 'มีคานชานพัก +2.40' (stair-landing beam) note referenced-but-undetailed on หน้า16 — recorded here as the landing beam(s) since this sheet is where the note said to look. Their exact grid position within the void could not be pinned to precise endpoints (the void has no full grid coverage) — recorded with approximate grid_ref.",
+    "'B16' inside the void carries no legible level offset in parentheses (unlike every other mark on this sheet) — recorded with level_m: null rather than assuming it matches its neighbours.",
+    "The roof only covers grid A to C (matching the hip-roof footprint's apex points at rows B and C, cross-checked against the architectural roof plan หน้า05) — no roof framing exists south of row C; the RC beam grid continues to row D on the floor plan below it (หน้า16) but this upper sheet's own printed beams stop at row C.",
+    "Rafters (จันทัน) are a spacing-based repeated member (@1.00m) with no individual grid_ref, same treatment as purlins elsewhere in this dataset — recorded once as a typical member, not once per physical rafter.",
+    "Fascia boards (เชิงชายไม้เนื้อแข็ง 1\"x8\" + ทับเชิงชาย 1\"x6\") are non-structural timber trim, not recorded as elements[]."
+  ],
+  "elements": [
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A'''1", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B10A", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "level_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A'''1", "grid_ref_end": "A'''2", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B2'", "element_type": "beam", "grid_ref": "~A'''1", "level_m": 2.40, "note": "stair-landing beam, north side of the void — see file warnings", "confidence_score": 0.45, "confidence_flags": ["approximate position"] },
+    { "element_id": "B2'", "element_type": "beam", "grid_ref": "~B1", "level_m": 2.40, "note": "stair-landing beam, south side of the void — see file warnings", "confidence_score": 0.45, "confidence_flags": ["approximate position"] },
+    { "element_id": "B16", "element_type": "beam", "grid_ref_start": "A'''2", "grid_ref_end": "B2", "level_m": null, "span_source": "grid_table", "note": "no level offset printed for this mark on this sheet", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "level_m": 3.65, "grid_ref": "~A'''-B x 2-3", "note": "small landing/slab piece inside the ช่องบันได void area, level printed both 3.65 and 3.60 nearby", "confidence_score": 0.4, "confidence_flags": ["approximate position"] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B6A", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "level_m": 3.65, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "level_m": 3.65, "grid_ref": "~C1-C2", "confidence_score": 0.4, "confidence_flags": ["approximate position"] },
+
+    { "element_id": "rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จันทัน C 100x50x20x2.3mm @ 1.00m" }, "spacing_mm": 1000, "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "ridge", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 3.00, "span_source": "grid_table", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "อกไก่ 2C 125x50x20x2.3mm" }, "note": "double channel, hip-roof ridge along grid 2, between the two hip apex rows B and C", "confidence_score": 0.55, "confidence_flags": ["ridge extent inferred from the hip-plan graphic and cross-checked against the architectural roof plan's own apex spacing, not an independently printed grid_ref on this sheet"] },
+    { "element_id": "hip_rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "ตะเข้สัน 2C 125x50x20x2.3mm" }, "note": "hip rafter, double channel, one at each of the 4 hip corners", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "wall_plate", "element_type": "beam", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "อะเส 2C 125x50x20x2.3mm" }, "note": "eave-level wall plate carrying the rafter feet, runs around the roof perimeter", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "king_post_point", "element_type": "connection_detail", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จุดตั้งดิ่ง 2C 125x50x20x2.3mm" }, "description": "vertical strut connection point under the ridge/hip apex", "confidence_score": 0.5, "confidence_flags": [] }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า19.png",
+    "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png",
+    "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า21.png",
+    "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า22.png"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'ภัทรวรรณ' (Phattharawan), แบบบ้านยิ้มเพื่อประชาชน (ตามนโยบาย ม.ร.ว. สุขุมพันธุ์ บริพัตร, ผู้ว่าราชการกรุงเทพมหานคร, โดยสำนักการโยธา กรุงเทพมหานคร), design donated by บริษัท แลนดี้ โฮม (ประเทศไทย) จำกัด — same donated-design program as house #29 (บ้านสกาวรัตน์, also TYPE M) but a different named design. Sheets carry no S-xx code system (sheet_code null throughout) and no drawing-set index/TOC page; structural sheets were located by paging through the set (หน้า19-หน้า27, all titled 'ผังโครงสร้าง.../SECTION...' directly).",
+    "x_lines resolved from the footing plan (หน้า19) printed chain: edge(1.30)-1-3.00-2-5.00-3-2.40-4-3.60-5-3.00-6, total 17.00 (1 to 6) cross-checks exactly against the printed total. y_lines from the same sheet: A-4.00-B-1.00-C-2.00-D-2.00-E-4.00-F, total 13.00 (A to F) cross-checks exactly.",
+    "Dummy grids 2' (pos_m 4.30) and 2'' (pos_m 6.70) resolve two small footings (F1 mark) printed on row A between grid 2 and grid 3, each offset 1.30 m from its named neighbour (2'=grid2+1.30, 2''=grid3-1.30) — likely footings for a small bay/dormer projection above the 'ทำงาน' room seen on the architectural floor plan (หน้า03). Both piles are counted in the F1 pile-count note, see plan_footing warnings.",
+    "Dummy grid 1' (pos_m -1.30, before the x origin, per the schema's own negative-pos_m precedent) and dummy grid A' (pos_m 2.60, between A and B) resolve the ground-floor bow/bay-window structure at the building's NW corner (หน้า19/หน้า20): a chamfered footing/beam path runs A1 -> (1',A') -> (1',B) -> C1 -> C2. All four corner pile counts (F1 x4 additional occurrences) reconcile exactly against the handwritten pile-count note on หน้า19 (F1=11, F1A=9, F2=4 total 24 footings, all match the grid_refs enumerated in plan_footing).",
+    "The upper-floor beam plan (หน้า21) and the roof structural plan (หน้า22) both show a LARGER bow/bay-window turret at the same NW corner, projecting further out than the ground-floor footprint (an upper-floor cantilevered bay, consistent with the architectural floor plans). Its exact facet coordinates were not independently re-derived into new dummy grid lines within the time available for this house — elements on that turret (หน้า21/หน้า22) use approximate '~' grid_refs anchored to the nearest resolved point (1',A ) rather than invented precise dummy positions; flagged at lower confidence on those specific elements rather than silently guessed, matching the precedent set by house #29's bay-window plan_beam files.",
+    "Additional small sub-bay dimension ticks appear on the beam plans (หน้า20: 0.70 near grid3, 1.70/1.90/1.00 near grid4; หน้า21: 2.80 near grid3) that were not resolved to new dummy grid lines — no clear beam endpoint was confidently traced to justify a new dummy within the time available, so these are recorded in unassigned_dimensions rather than invented as grid points, per the beam-endpoint rule (only add a dummy when a beam/footing endpoint actually needs it).",
+    "z_levels left empty: this house's structural sheets print no named building-wide reference level (no 'ระดับพื้นชั้น1'-style label on any Pass-2 sheet) — every level encountered is either a per-beam soffit offset printed directly on the beam mark (e.g. 'B1(+0.40)') or a per-slab-marker offset, both recorded on the element's own level_m field rather than in this registry, matching the treatment used for house #29 (same drawing series)."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "1'", "pos_m": -1.30, "type": "dummy" },
+      { "id": "2", "pos_m": 3.00, "type": "named" },
+      { "id": "2'", "pos_m": 4.30, "type": "dummy" },
+      { "id": "2''", "pos_m": 6.70, "type": "dummy" },
+      { "id": "3", "pos_m": 8.00, "type": "named" },
+      { "id": "4", "pos_m": 10.40, "type": "named" },
+      { "id": "5", "pos_m": 14.00, "type": "named" },
+      { "id": "6", "pos_m": 17.00, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "A'", "pos_m": 2.60, "type": "dummy" },
+      { "id": "B", "pos_m": 4.00, "type": "named" },
+      { "id": "C", "pos_m": 5.00, "type": "named" },
+      { "id": "D", "pos_m": 7.00, "type": "named" },
+      { "id": "E", "pos_m": 9.00, "type": "named" },
+      { "id": "F", "pos_m": 13.00, "type": "named" }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า19.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.30 },
+          { "from": "1", "to": "2", "value_m": 3.00 },
+          { "from": "2", "to": "2'", "value_m": 1.30 },
+          { "from": "2''", "to": "3", "value_m": 1.30 },
+          { "from": "2", "to": "3", "value_m": 5.00 },
+          { "from": "3", "to": "4", "value_m": 2.40 },
+          { "from": "4", "to": "5", "value_m": 3.60 },
+          { "from": "5", "to": "6", "value_m": 3.00 },
+          { "from": "1", "to": "6", "value_m": 17.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า19.png",
+        "segments": [
+          { "from": "A", "to": "A'", "value_m": 2.60, "note": "printed as two stacked 1.30 ticks via an unlabeled intermediate reference line; recorded as the resolved total" },
+          { "from": "A", "to": "B", "value_m": 4.00 },
+          { "from": "B", "to": "C", "value_m": 1.00 },
+          { "from": "C", "to": "D", "value_m": 2.00 },
+          { "from": "D", "to": "E", "value_m": 2.00 },
+          { "from": "E", "to": "F", "value_m": 4.00 },
+          { "from": "A", "to": "F", "value_m": 13.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า22.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.00 },
+          { "from": "2", "to": "3", "value_m": 5.00 },
+          { "from": "3", "to": "4", "value_m": 2.40 },
+          { "from": "4", "to": "5", "value_m": 3.60 },
+          { "from": "1", "to": "5", "value_m": 14.00 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 0.70, "label": "sub-bay tick near grid3, x-axis, ground-floor beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png", "note": "not resolved to a dummy grid — no confidently-traced beam endpoint found there in the time available" },
+      { "value_m": 1.70, "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png", "note": null },
+      { "value_m": 1.90, "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png", "note": null },
+      { "value_m": 1.00, "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png", "note": null },
+      { "value_m": 2.80, "label": "sub-bay tick near grid3, x-axis, upper-floor beam plan (bay-window turret width)", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า21.png", "note": "likely the upper-floor bay window's own overall projection width, not independently resolved to a dummy grid" },
+      { "value_m": 1.00, "label": "diagonal facet dimension on the upper-floor bay-window turret", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า21.png", "note": "diagonal facet length of the octagonal turret, not a grid-axis dimension" }
+    ]
+  }
+}

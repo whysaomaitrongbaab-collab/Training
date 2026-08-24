@@ -1,0 +1,123 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า20.png",
+    "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า21.png",
+    "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า22.png",
+    "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า23.png",
+    "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png",
+    "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า30.png"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: 'แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข' / 'บ้านสำเร็จรูป 3 (ระบบประสานพิกัด)' (บ้านสองชั้น), เลขที่แบบ S 62071, กรมโยธาธิการและผังเมือง กระทรวงมหาดไทย, ก.พ. 2562 — a different series/theme from the 'แบบบ้านยิ้มเพื่อประชาชน' ธรรมรักษา-series houses (09/12/14/16/18/19/20) already in this batch. Small single-span (3x2 grid, 6.60x5.40m footprint), elevated 2-storey prefab house on stilts, 1 ห้องนอน 1 ห้องน้ำ, hybrid RC frame (footings/pedestals/columns/beams/slabs) below a light-gauge steel gable roof (C-channel purlins/rafters + square-tube posts).",
+    "Dummy grid '1'' (x=1.10m) is a genuine beam endpoint: on S-04 (หน้า22) the stair-support beam BST2 lands there (bearing on ground beam GB2's row-B run), and the row-C ground beam GB2 itself starts there (no footing/column exists at grid intersection C1, so the row-C beam has no support at grid1 and instead starts at this dummy point). Position read directly off the printed '1.60' sub-dimension (grid2 at 2.70 minus 1.60 = 1.10), cross-checked identically on S-02/S-03/S-04/S-05 where the same tick+1.60 callout is reprinted.",
+    "Dummy grid 'A'' (y=2.40m) is a genuine beam endpoint: on S-05 (หน้า23) beam B3A runs horizontally between grid2 and grid3 at this level, splitting the grid2-3 x A-B bay into an upper slab area (S1) and a lower room (SP-tagged). Position read off the printed '2.40' sub-dimension on S-05's left-side dimension chain (separate row alongside the '3.60' A-B chain).",
+    "Dummy grid 'B'' (y=4.65m) is a genuine beam endpoint: on S-06 (roof plan, หน้า24) the steel roof posts at grid3/grid4 change mark from BS4 (above) to BS2 (below) exactly at this level, i.e. two distinct member instances genuinely start/end there. Position read off the printed '1.05' sub-dimension (B at 3.60 + 1.05 = 4.65), part of the roof plan's own y dimension chain.",
+    "S-03 (หน้า21, pile-footing alternate plan) and S-06 (roof plan, หน้า24) each print only TWO row circles on the y-axis ('A' at the top and a second circle literally labelled 'B' at the very bottom, 5.40m down), omitting the middle row's circle entirely. The printed y-dimension chain on both sheets (3.60 then 1.80, totalling 5.40) is numerically identical to S-02/S-04/S-05's confirmed 3-row A(0.00)/B(3.60)/C(5.40) chain, and the footing/roof-post pattern at that bottom row (no member at column 1, matching S-02's row-C pattern exactly) confirms the bottom row is the master grid's row C, not a second 'B'. Resolved per the standing 'more sheets agreeing beats fewer' rule (S-02/S-04/S-05 = 3 sheets with an explicit 3rd row) against 2 sheets with a drafting omission; treated as row C throughout this house's extraction and flagged here rather than silently renamed.",
+    "Footing plans (S-02/S-03) draw the corner footings at A1/B1 with a pointed/chamfered outline instead of a plain rectangle (vs. the plain square outline used for every other footing on the same sheets) — no legend explains this; interpreted as a drafting rendering of a corner condition (adjacent to the stair/open bay), not a different footing geometry, since the printed size label (F0.90x0.90x0.30 / F3) and section details on S-07/S-08 are identical to the non-chamfered footings of the same mark.",
+    "Roof plan (S-06/หน้า24) prints a continuous perimeter note 'ปิดด้วยเหล็ก C-100x50x20x3.2 มม.' (closed off with C-100x50x20x3.2mm steel) around all 4 roof edges, and 'แปเหล็ก C-100x50x20x3.2มม.@1.00ม.หรือน้อยกว่า' (steel purlins @1.00m or closer) across each roof plane — both are spacing/perimeter-based repeated members with no individual grid_ref marks, so no dummy grid lines were added for the roof overhang edges themselves (no discrete marked beam/post lands exactly on those edges); the four overhang values are recorded in unassigned_dimensions instead, per the established 'overhang reach is not on its own a reason for a dummy grid' rule.",
+    "Roof plan (S-06) row B members are annotated 'BS3(บน-ล่าง)' (upper-lower) at every grid1-2/2-3/3-4 span, i.e. two separate BS3 members stacked at that row (interpreted as the hip/ridge-transition edge beam pair, one for each of the two roof planes meeting there) — both recorded as separate atomic BS3 entries on the relevant plan_beam file, distinguished by a 'note' field rather than a schema field of their own, since the spec has no top/bottom-of-two-separate-instances concept (main_bar.top/bottom is for one beam's own rebar faces, not two physically distinct beams)."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "1'", "pos_m": 1.10, "type": "dummy" },
+      { "id": "2", "pos_m": 2.70, "type": "named" },
+      { "id": "3", "pos_m": 4.20, "type": "named" },
+      { "id": "4", "pos_m": 6.60, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "A'", "pos_m": 2.40, "type": "dummy" },
+      { "id": "B", "pos_m": 3.60, "type": "named" },
+      { "id": "B'", "pos_m": 4.65, "type": "dummy" },
+      { "id": "C", "pos_m": 5.40, "type": "named" }
+    ],
+    "z_levels": [
+      { "id": "ระดับพื้นชั้นล่าง", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า30.png" },
+      { "id": "ระดับพื้นชั้นบน", "level_m": 2.40, "type": "named", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า30.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า20.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 2.70 },
+          { "from": "2", "to": "3", "value_m": 1.50 },
+          { "from": "3", "to": "4", "value_m": 2.40 },
+          { "from": "1", "to": "4", "value_m": 6.60 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า22.png",
+        "segments": [
+          { "from": "1'", "to": "2", "value_m": 1.60 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.20 },
+          { "from": "1", "to": "2", "value_m": 2.70 },
+          { "from": "2", "to": "3", "value_m": 1.50 },
+          { "from": "3", "to": "4", "value_m": 2.40 },
+          { "from": "4", "to": "edge", "value_m": 1.20 },
+          { "from": "1", "to": "4", "value_m": 6.60 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า20.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.60 },
+          { "from": "B", "to": "C", "value_m": 1.80 },
+          { "from": "A", "to": "C", "value_m": 5.40 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า23.png",
+        "segments": [
+          { "from": "A", "to": "A'", "value_m": 2.40 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png",
+        "segments": [
+          { "from": "edge", "to": "A", "value_m": 1.20 },
+          { "from": "A", "to": "B", "value_m": 3.60 },
+          { "from": "B", "to": "B'", "value_m": 1.05 },
+          { "from": "B", "to": "C", "value_m": 1.80 },
+          { "from": "C", "to": "edge", "value_m": 1.00 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า30.png",
+        "segments": [
+          { "from": "ระดับพื้นชั้นล่าง", "to": "ระดับพื้นชั้นบน", "value_m": 2.40 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.20, "label": "roof overhang, west of grid 1", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png", "note": "purlin/fascia reach only, no marked beam/post lands here — no dummy grid added" },
+      { "value_m": 1.20, "label": "roof overhang, east of grid 4", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png", "note": null },
+      { "value_m": 1.20, "label": "roof overhang, north of grid A", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png", "note": null },
+      { "value_m": 1.00, "label": "roof overhang, south of grid C", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png", "note": null },
+      { "value_m": 1.00, "label": "ตอม่อ (pedestal) height, footing top to reference level ระดับที่กำหนด", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า25.png", "note": "identical on every footing section, spread and pile alike (S-07/S-08/S-09) — recorded once rather than once per footing mark to avoid redundant duplicate rows" },
+      { "value_m": 0.20, "label": "footing/pile-cap thickness", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า25.png", "note": "identical on every footing section S-07/S-08/S-09 except F1/F3 pile caps which print 0.30 (see those elements' own confidence_flags)" },
+      { "value_m": 0.05, "label": "คอนกรีตหยาบ 1:3:5 (lean concrete) thickness under every footing", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า25.png", "note": "identical on every footing section S-07/S-08/S-09" },
+      { "value_m": 0.10, "label": "ทรายรองพื้น/ทรายหยาบราดน้ำอัดแน่น (compacted sand base) thickness under every footing", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า25.png", "note": "identical on every footing section S-07/S-08/S-09" }
+    ]
+  }
+}

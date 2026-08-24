@@ -1,0 +1,111 @@
+{
+  "png": "61",
+  "doc_page": 59,
+  "printed_page": 59,
+  "discipline": "electrical",
+  "sheet_code": "EE-03",
+  "sheet_name": "แปลนไฟฟ้าแสงสว่าง ชั้นล่าง",
+  "pattern": "plan",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-08-02 FORMAT LOCK revision)",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า61.png",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/13บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
+  "scale": "1:100",
+  "level": "ชั้นล่าง",
+  "circuit_start": "1/LP (from panel LP circuit 1, home-run tag drawn at พักผ่อน)",
+  "elements": [
+    {
+      "element_id": "downlight_ทานอาหาร",
+      "element_type": "ceiling_downlight_point",
+      "room": "ทานอาหาร",
+      "count": 3,
+      "switch_tags": ["f"],
+      "grid_ref": "~E-D x 1-2",
+      "confidence_score": 0.65,
+      "confidence_flags": ["symbol_count_at_this_resolution_best_effort"]
+    },
+    {
+      "element_id": "downlight_ซักล้าง_ครัว_boundary",
+      "element_type": "ceiling_downlight_point",
+      "description": "จุดดวงโคมบริเวณมุมร่วมระหว่างซักล้างกับครัว แท็กสวิตช์ g และ h อยู่ติดกัน -- ไม่สามารถแยกแน่ชัดว่า g กับ h ควบคุมดวงโคมดวงใดในสองห้องนี้จากความละเอียดของภาพ",
+      "room": "ซักล้าง / ครัว",
+      "count": 2,
+      "switch_tags": ["g", "h"],
+      "grid_ref": "~E3",
+      "confidence_score": 0.5,
+      "confidence_flags": ["switch_tag_to_fixture_pairing_ambiguous_at_this_resolution"]
+    },
+    {
+      "element_id": "downlight_ครัว",
+      "element_type": "ceiling_downlight_point",
+      "room": "ครัว",
+      "count": 1,
+      "switch_tags": ["g"],
+      "grid_ref": "~D3",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "wall_light_ครัว_มุมนอก",
+      "element_type": "wall_light_point",
+      "description": "ดวงโคมไฟผนัง (สัญลักษณ์ครึ่งวงกลม ต่างจากดาวไลต์) ที่มุมนอกอาคารใกล้ครัว/ซักล้าง",
+      "room": "ครัว",
+      "count": 1,
+      "grid_ref": "~E3",
+      "confidence_score": 0.6,
+      "confidence_flags": ["new_element_type_not_in_core_list"]
+    },
+    {
+      "element_id": "downlight_โถง_ห้องน้ำ_ล่าง",
+      "element_type": "ceiling_downlight_point",
+      "description": "จุดดวงโคมบริเวณโถง/ห้องน้ำชั้นล่าง ใกล้บันได",
+      "room": "โถง / ห้องน้ำ",
+      "count": 1,
+      "switch_tags": ["d"],
+      "grid_ref": "~D2",
+      "confidence_score": 0.6,
+      "confidence_flags": ["symbol_count_at_this_resolution_best_effort"]
+    },
+    {
+      "element_id": "downlight_พักผ่อน",
+      "element_type": "ceiling_downlight_point",
+      "room": "พักผ่อน",
+      "count": 2,
+      "switch_tags": ["b"],
+      "grid_ref": "~C-B x 1-2",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "downlight_จอดรถ",
+      "element_type": "ceiling_downlight_point",
+      "room": "จอดรถ",
+      "count": 1,
+      "switch_tags": ["e"],
+      "grid_ref": "~C-B x 2-3",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "downlight_เฉลียง",
+      "element_type": "ceiling_downlight_point",
+      "room": "เฉลียง",
+      "count": 2,
+      "switch_tags": ["a"],
+      "grid_ref": "~B-A x 1",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    }
+  ],
+  "confidence_score": 0.68,
+  "confidence_flags": [
+    "switch_letter_lowercase_tags_a-h_summarized_by_room_not_individually_traced_wire_by_wire",
+    "downlight_counts_are_best_effort_reads_of_small_repeated_symbols_at_available_image_resolution"
+  ],
+  "warnings": [
+    "op1 direct read (house 13, Stage-2 SN-EE-M agent). Lighting circuit 1/LP confirmed on plan (home-run tag drawn at พักผ่อน, near the stair/hall boundary) -- matches EE-02's circuit 1 (แสงสว่าง). Switch-to-fixture wiring shown by lowercase letter tags (a-h) reused across rooms -- summarized per room rather than traced wire-by-wire, same convention as house #8's equivalent EE-03.",
+    "Same 'ต้องการที่ดินกว้างอย่างน้อย = 11.10 ม.' / '...15.90 ม.' minimum-lot-size notes as SN-04 (page 53) are repeated on this sheet -- not re-transcribed here since already recorded verbatim once, see หน้า53.json's warnings for the reconciliation against the grid master.",
+    "element_type 'wall_light_point' is not in schema §0.4's core reuse list -- introduced because the EE-01 symbol legend (page 59) defines a distinct wall-lamp glyph separate from the ceiling downlight, and neither 'ceiling_downlight_point' nor any other core-list value fits a wall-mounted fixture; flagged per §0.4's instruction so a future house can reuse this spelling instead of inventing another.",
+    "Room-level grid_ref values are approximate ranges (~) since no dimension line ties individual downlight symbols to exact grid points on this overview lighting plan -- interior room subdivisions within the 3.50m column bays are not dimensioned on this sheet (that detail lives on the architectural floor-plan sheet, outside this discipline's scope)."
+  ]
+}

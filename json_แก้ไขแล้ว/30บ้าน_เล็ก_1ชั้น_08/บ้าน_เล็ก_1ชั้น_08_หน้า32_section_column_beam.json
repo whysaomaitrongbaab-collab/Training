@@ -1,0 +1,22 @@
+{
+  "png": "32",
+  "doc_page": 30,
+  "discipline": "structural",
+  "sheet_code": "S-15",
+  "sheet_name": "แบบขยาย C1 / แบบขยาย B1, B2, B3",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า32.png",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "B2 and B3 elevations each show a continuous 2-span beam (total 2.40+3.60=6.00m for B2, matching row B/row C; example spans 0.75+0.75=1.50m shown for the B3 support-zone detail zoom, with overall span labels '3.00'/'2.40' printed separately as additional typical-span examples) with: top 2-Ø16mm continuous the full length, PLUS an additional 3-Ø16mm top bar group printed flanking the interior support only (negative-moment zone), and 3-Ø16mm bottom bars per span (positive-moment zone). Recorded as main_bar top/bottom = the continuous base layer, with the interior-support extra top bars in additional_bars — the precise development length of those additional bars past the support is not dimensioned on this sheet.",
+    "B1 (used only for the short WC.1 partition beam and the grid-3 edge beam, per S-04) has a simple symmetric 2-Ø16mm top / 2-Ø16mm bottom section with no additional bars — no elevation is drawn for it, only the cross-section, consistent with it being a short, lightly-loaded span.",
+    "All of C1/B1/B2/B3 share the same 200mm width; C1 is 200x200mm (column), B1/B2/B3 are 200x400mm (beam)."
+  ],
+  "elements": [
+    { "element_id": "C1", "element_type": "column", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 3, "dia_mm": 16, "type": "RB" } }, "stirrup": { "dia_mm": 9, "spacing_mm": 200, "type": "RB" }, "additional_bars": [ { "count": 3, "dia_mm": 16, "position": "top, at interior support zone (negative moment)", "note": "printed 3Ø16มม additional top bars flanking the interior support (grid 2), per elevation" } ], "confidence_score": 0.6, "confidence_flags": ["support-zone additional bar extent not fully resolved, see file warnings"] },
+    { "element_id": "B3", "element_type": "beam", "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 3, "dia_mm": 16, "type": "RB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 150, "type": "RB" }, "additional_bars": [ { "count": 3, "dia_mm": 16, "position": "top, at interior support zone (negative moment)", "note": "printed 3Ø16มม additional top bars flanking the interior support, per elevation" } ], "confidence_score": 0.6, "confidence_flags": ["support-zone additional bar extent not fully resolved, see file warnings"] }
+  ]
+}

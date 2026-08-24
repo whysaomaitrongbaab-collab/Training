@@ -1,0 +1,57 @@
+{
+  "png": "19",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "ผังโครงสร้างชั้นบน",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_20/บ้าน_เล็ก_2ชั้น_20_หน้า19.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_20_หน้า00_gridline.json",
+  "confidence_score": 0.65,
+  "confidence_flags": ["dense stairwell cluster (grid1-2, row B to C) and the roof-overhang ring beam zone required interpretation — see warnings"],
+  "warnings": [
+    "Local slab-top offsets printed next to each mark (e.g. 'B2(+3.65)') are this floor's own framing/slab level, not a promoted building z-level — kept as each element's level_m (see grid master warnings). Most of this floor sits at +3.65 (beam top) / +3.75 (slab top); the roof-overhang ring beam RB2 sits at +3.45.",
+    "RB2(+3.45), the beam running along row A past the printed roof-overhang edges, is read as spanning the plain grid1-grid2 and grid2-grid3 bays (matching every other row-A beam mark on this sheet) — the eave/overhang offset dimensions printed above it (1.90/1.10 splitting 1-2, 1.10/2.40 splitting 2-3) describe the roof edge geometry, not additional RB2 endpoints; see grid master unassigned_dimensions.",
+    "A small mark transcribed as 'B4' appears near grid2/row A between the two RB2 segments — position and extent are not clearly resolvable from the scan; recorded at reduced confidence as an approximate connector near A2.",
+    "'B1\\'(+3.65)' at grid1/row B (a small boxed mark distinct from the ordinary B1 vertical running the same edge) could not be resolved to a specific sub-position — recorded with an approximate grid_ref, same treatment as the ground-floor plan's short stub beams.",
+    "The stairwell opening ('ช่องบันได', grid1-2 x B-B') and the room to its east within the same 1-2 span are two sub-bays with no printed sub-dimension separating them (same limitation as the ground-floor plan's B10A/internal-B1 divider) — recorded as one approximate slab/void zone rather than inventing a split position. The opening's west edge beam (B2', level +2.10) sits at the stair-landing level, distinctly lower than the +3.65 floor beams around it, consistent with an open stair void.",
+    "The south-east corner (grid3, row B-C and the octagonal bay window return) reuses the B6A mark and unlabelled diagonal corner returns exactly as the ground-floor plan does — not separately itemised, see that file's equivalent warning."
+  ],
+  "elements": [
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.45, "note": "roof-overhang ring beam", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.45, "note": "roof-overhang ring beam", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B4", "element_type": "beam", "grid_ref": "~A2", "level_m": 3.45, "note": "short connector near grid2/row A between the two RB2 segments, extent unclear", "confidence_score": 0.35, "confidence_flags": [] },
+
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B10A", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B1'", "element_type": "beam", "grid_ref": "~B1", "level_m": 3.65, "note": "short boxed mark distinct from the B1 vertical at the same edge, exact extent unresolved", "confidence_score": 0.35, "confidence_flags": [] },
+    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.7, "confidence_flags": [] },
+    { "element_id": "B6A", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "level_m": 3.65, "note": "east side of the octagonal bay window", "confidence_score": 0.55, "confidence_flags": [] },
+
+    { "element_id": "B2'", "element_type": "beam", "grid_ref": "~1B-1B'", "level_m": 2.10, "note": "west edge of the stairwell opening, stair-landing level", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "grid_ref": "~1-2 x B-B'", "level_m": 3.65, "note": "stairwell opening ('ช่องบันได') and adjoining room, sub-division not dimensioned", "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B'1", "grid_ref_end": "B'2", "span_length_m": null, "span_source": "unresolved", "level_m": 3.65, "confidence_score": 0.55, "confidence_flags": [] },
+
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B'1", "grid_ref_end": "C1", "span_length_m": null, "span_source": "unresolved", "level_m": 3.65, "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B'2", "grid_ref_end": "C2", "span_length_m": null, "span_source": "unresolved", "level_m": 3.65, "confidence_score": 0.5, "confidence_flags": [] },
+    { "element_id": "B6", "element_type": "beam", "grid_ref": "~2-3 x B'-C", "level_m": 3.65, "note": "small room east of the internal division, exact endpoints unresolved", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "S1", "element_type": "slab", "grid_ref": "~3 x B'-C", "level_m": 3.65, "confidence_score": 0.5, "confidence_flags": [] },
+
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "D1", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.65, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "E1", "span_length_m": 2.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "E3", "span_length_m": 2.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E3", "span_length_m": null, "span_source": "unresolved", "level_m": 3.65, "note": "bottom edge of the row D-E bay, may not span the full 6.50 m width — see B2/B2' balcony edge below", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "B2'", "element_type": "beam", "grid_ref": "~E1", "level_m": 3.65, "note": "angled/bevelled corner return, west side of the row-E balcony edge", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "B2'", "element_type": "beam", "grid_ref": "~E3", "level_m": 3.65, "note": "angled/bevelled corner return, east side of the row-E balcony edge", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref": "~2 x E", "level_m": 3.65, "note": "row-E balcony edge beam between the two bevelled corners", "confidence_score": 0.4, "confidence_flags": [] }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า19.png",
+    "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า20.png",
+    "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า21.png",
+    "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า22.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "House title block: '(024) ธรรมรักษา' — 'แบบบ้านยิ้มเพื่อประชาชน' series, สำนักการโยธา กรุงเทพมหานคร (same series as houses 09/14/16/18/19/20 already in the dataset, a different design number). Small 2-story house, single-span structure (3x3 columns), all-steel hip roof (จันทันเหล็ก C100x50x20x2.3mm@2.00m, ระแนงเหล็กกล่อง 1\"x1\"x1.6mm@0.30m, อกไก่เหล็กกล่อง 2-C150x50x20x2.3mm).",
+    "Roof-plan overhangs (1.75m west of A, 1.10m east of C, 1.10m north of row 4, 2.20m south of row 1) carry steel rafters extending past the main grid, but rafters are a spacing-based repeated member with no individual grid_ref (like purlins) — did not add dummy grid lines for the overhang edges, per the established rule that an overhang gets a dummy grid only when a discrete beam/column endpoint lands there, not for a repeating member's reach. Recorded the 4 overhang values in unassigned_dimensions instead."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "B", "pos_m": 3.00, "type": "named" },
+      { "id": "C", "pos_m": 6.00, "type": "named" }
+    ],
+    "y_lines": [
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 3.50, "type": "named" },
+      { "id": "3", "pos_m": 5.90, "type": "named" },
+      { "id": "4", "pos_m": 9.10, "type": "named" }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า20.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 3.00 },
+          { "from": "A", "to": "C", "value_m": 6.00 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า20.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 3.50 },
+          { "from": "2", "to": "3", "value_m": 2.40 },
+          { "from": "3", "to": "4", "value_m": 3.20 },
+          { "from": "1", "to": "4", "value_m": 9.10 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.75, "label": "roof overhang west of grid A", "source_image": "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า19.png", "note": "steel rafter reach, no dummy grid — see file warnings" },
+      { "value_m": 1.10, "label": "roof overhang east of grid C", "source_image": "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า19.png", "note": null },
+      { "value_m": 1.10, "label": "roof overhang north of grid 4", "source_image": "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า19.png", "note": null },
+      { "value_m": 2.20, "label": "roof overhang south of grid 1", "source_image": "image/บ้าน_เล็ก_2ชั้น_12/บ้าน_เล็ก_2ชั้น_12_หน้า19.png", "note": null }
+    ]
+  }
+}

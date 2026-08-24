@@ -1,0 +1,47 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "grid master",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า31.png",
+    "image/บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า32.png",
+    "image/บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า33.png",
+    "image/บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า34.png",
+    "image/บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า35.png",
+    "image/บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า36.png",
+    "image/บ้าน_เล็ก_2ชั้น_04/บ้าน_เล็ก_2ชั้น_04_หน้า06.png"
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1'", "pos_m": -1.00, "type": "dummy" },
+      { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "2", "pos_m": 5.00, "type": "named" },
+      { "id": "3", "pos_m": 8.50, "type": "named" },
+      { "id": "3'", "pos_m": 9.50, "type": "dummy" }
+    ],
+    "y_lines": [
+      { "id": "E'", "pos_m": -1.90, "type": "dummy", "source": "S-02 (spread footing plan) and S-03 (pile footing plan) both print 1.90m from a footing/column row (mark C0, columns 1 and 2 only) up to named grid E -- 2 sheets agree. S-04 (floor-1 beam plan) prints a close but not identical 2.00m at the same position; taken as the same real edge (laundry/utility awning extension) per the 2-sheets-agree rule, with S-04's reading flagged rather than silently discarded." },
+      { "id": "E''", "pos_m": -1.00, "type": "dummy", "source": "S-07 (roof frame plan) prints 1.00m eave overhang beyond named grid E, matching the same-size overhang printed on all 4 sides of that sheet, with a real steel eave beam (ตะเข็บลันเหล็ก) drawn at that offset (beam-endpoint rule). S-05 (floor-2 beam plan) prints a close but not identical 1.10m at the same position; taken as the same real roof-eave edge, with S-05's reading flagged rather than silently discarded." },
+      { "id": "E", "pos_m": 0.00, "type": "named" },
+      { "id": "D", "pos_m": 2.70, "type": "named" },
+      { "id": "C", "pos_m": 5.00, "type": "named" },
+      { "id": "B", "pos_m": 8.50, "type": "named" },
+      { "id": "A", "pos_m": 10.00, "type": "named" },
+      { "id": "A'", "pos_m": 11.00, "type": "dummy" }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "negative_pos_m": "1', E', E'' all sit before the origin (grid 1 / grid E), so all use negative pos_m per §4 rather than taking over the origin position.",
+    "prime_ordering": "Two dummy lines fall in the same before-origin gap on the y-axis: -1.90 (footing/floor-1 awning) and -1.00 (roof eave). Per §4 'scan in standard reading direction, y-axis top->bottom, first line found = 1 prime', and reading top-to-bottom over this open-ended gap means scanning in increasing-y order starting from far above grid E down toward it -- so the line farther from E (-1.90, encountered first) is E', and the line closer to E (-1.00, encountered second) is E''. This is a genuine judgment call (the rule's worked examples only cover gaps bounded by two named grids), recorded here per §4's 'documenting genuine ambiguity' allowance."
+  },
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Main grid (x: 1/2/3 @ 0/5.00/8.50m; y: E/D/C/B/A @ 0/2.70/5.00/8.50/10.00m) is confirmed identically on S-02 (spread footing plan), S-03 (pile footing plan), S-04 (floor 1 beam plan), S-05 (floor 2 beam plan), and S-06 (tie-beam/อะเส plan) — all print the same 8.50 total (5.00+3.50) x-span and 10.00 total (2.70+2.30+3.50+1.50) y-span. Row C's circle label is faint/unclear on S-02 and S-03 (only E/D/B/A circles are legible there) but is clearly printed on A-04 (ground floor architectural plan), which shows all 5 row circles E/D/C/B/A distinctly — used as the confirming source for grid row C. The '10.00' figure printed on S-02/S-03 near the D-to-B gap is the overall check dimension for the full E-to-A span (2.70+2.30+3.50+1.50=10.00), not a separate row gap — resolved by cross-referencing A-04 rather than guessed.",
+    "Dummy lines 1'/3'/E'/A' (all at 1.00m beyond the corresponding main grid) are derived from S-07 (roof frame plan), which prints '1.00' overhang dimensions on all four sides beyond the main 1-2-3 x E-A grid, and shows a real steel eave/hip beam (ตะเข็บลันเหล็ก, 2C-125x65x6x8) running along that offset perimeter (beam-endpoint rule, §4) — not merely an architectural roof-overhang annotation. S-04/S-05 (floor beam plans) print a smaller 0.60m dimension in the same header position, but no beam is drawn extending into that 0.60m zone in either floor plan (building outline starts exactly at grid 1/ends exactly at grid 3) — that 0.60 is left unrepresented in the grid master since it never anchors an actual floor beam endpoint; it will be noted per-page if a roof/eave architectural element needs it.",
+    "S-06 (อะเส/tie-beam plan) prints its span header as a plain 8.50 with no side margins, confirming the tie-beam ring sits exactly on the main grid with no dummy needed at that level."
+  ]
+}
