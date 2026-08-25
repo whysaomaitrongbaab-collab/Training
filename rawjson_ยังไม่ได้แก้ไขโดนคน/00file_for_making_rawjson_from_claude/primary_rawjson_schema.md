@@ -40,7 +40,7 @@ Also forbidden as separate arrays (found and repaired 2026-08-02): `slab_markers
 ```
 `confidence_score` is `null` when the sheet genuinely gave you nothing to judge by. **Never invent a number to fill the field** — a made-up confidence is worse than an honest `null`.
 
-This applies to **top-level `elements[]` entries**. A cross-reference sub-list nested *inside* an element (e.g. a section-callout element listing its cut marks as `sections[{mark: "A-A", sheet: "A-12"}]`) is exempt — those are attributes of the element, not elements themselves. An entry with no printed mark takes a descriptive id (`ceiling_fan_นอน1`, `vent_pipe_2` — type + room/running number, the style houses 08-11 established); never leave `element_id` absent.
+This applies to **top-level `elements[]` entries**. A cross-reference sub-list nested *inside* an element (e.g. a section-callout element listing its cut marks as `sections[{mark: "A-A", sheet: "A-12"}]`) is exempt — those are attributes of the element, not elements themselves. An entry with no printed mark takes `element_id: null` with the descriptive name moved to `element_name_assigned` (**convention changed 2026-08-25, Makham's approval via att1235** — the old rule of inventing a descriptive id like `ceiling_fan_นอน1` taught the tuned model to guess names that exist nowhere on the paper; 66% of section training examples carried such ids and capped section id-recall at 4% on the test house). `element_name_assigned` is human-facing metadata: dataset builders must strip it from training targets (build_dataset_t03.py `strip_assigned()`), and never leave the `element_id` key absent — null, not missing.
 
 ### 0.3 `element_id` = the mark printed on the drawing, nothing else
 

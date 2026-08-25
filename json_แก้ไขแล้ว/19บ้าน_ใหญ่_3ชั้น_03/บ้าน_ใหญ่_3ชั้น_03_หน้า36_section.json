@@ -7,7 +7,9 @@
   "pattern": "section",
   "source_image": "image/บ้าน_ใหญ่_3ชั้น_03/บ้าน_ใหญ่_3ชั้น_03_หน้า36.png",
   "confidence_score": 0.65,
-  "confidence_flags": ["staggered_table_reading_uncertain"],
+  "confidence_flags": [
+    "staggered_table_reading_uncertain"
+  ],
   "specs": {
     "C1": {
       "spec_source": "section",
@@ -15,8 +17,32 @@
       "width_mm": 200,
       "height_mm": 200,
       "levels": [
-        { "level": "ชั้นตอม่อ ถึง พื้นชั้น1", "main_bar": { "count": 6, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150 } },
-        { "level": "พื้นชั้น1 ถึง พื้นชั้น2", "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150 } }
+        {
+          "level": "ชั้นตอม่อ ถึง พื้นชั้น1",
+          "main_bar": {
+            "count": 6,
+            "dia_mm": 12,
+            "type": "DB"
+          },
+          "stirrup": {
+            "dia_mm": 6,
+            "type": "RB",
+            "spacing_mm": 150
+          }
+        },
+        {
+          "level": "พื้นชั้น1 ถึง พื้นชั้น2",
+          "main_bar": {
+            "count": 4,
+            "dia_mm": 12,
+            "type": "DB"
+          },
+          "stirrup": {
+            "dia_mm": 6,
+            "type": "RB",
+            "spacing_mm": 150
+          }
+        }
       ],
       "note": "คอลัมน์ C1 อยู่บนกริด 3 เท่านั้น (2 ต้น) — ตารางเป็นแบบขั้นบันได (staggered) จับคู่ระดับ 2 ชั้นต่อแถว อ่านตำแหน่งแถวคาบเกี่ยวกับ C2 ยาก มอบ confidence ต่ำ"
     },
@@ -24,19 +50,115 @@
       "spec_source": "section",
       "spec_confidence_score": 0.6,
       "levels": [
-        { "level": "ชั้นตอม่อ ถึง พื้นชั้น1", "width_mm": 250, "height_mm": 250, "main_bar": { "count": 8, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150 }, "note": "2Stir (ปลอกคู่)" },
-        { "level": "พื้นชั้น1 ถึง พื้นชั้น2", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 6, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150 } },
-        { "level": "พื้นชั้น2 ถึง หลังคา", "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150 }, "note": "แถวบนสุดของตาราง แสดงเฉพาะลูกศรชี้ขึ้น ไม่มีตัวเลขกำกับซ้ำ — สันนิษฐานใช้สเปกเดียวกับแถว 'พื้นชั้น1-พื้นชั้น2' ของ C1 (4-DB12, Stir-RB6@0.15) เนื่องจากตารางจัดวางแบบ C1/C2 สลับขั้นบันได แต่ไม่ยืนยัน 100%" }
+        {
+          "level": "ชั้นตอม่อ ถึง พื้นชั้น1",
+          "width_mm": 250,
+          "height_mm": 250,
+          "main_bar": {
+            "count": 8,
+            "dia_mm": 12,
+            "type": "DB"
+          },
+          "stirrup": {
+            "dia_mm": 6,
+            "type": "RB",
+            "spacing_mm": 150
+          },
+          "note": "2Stir (ปลอกคู่)"
+        },
+        {
+          "level": "พื้นชั้น1 ถึง พื้นชั้น2",
+          "width_mm": 200,
+          "height_mm": 200,
+          "main_bar": {
+            "count": 6,
+            "dia_mm": 12,
+            "type": "DB"
+          },
+          "stirrup": {
+            "dia_mm": 6,
+            "type": "RB",
+            "spacing_mm": 150
+          }
+        },
+        {
+          "level": "พื้นชั้น2 ถึง หลังคา",
+          "width_mm": 200,
+          "height_mm": 200,
+          "main_bar": {
+            "count": 4,
+            "dia_mm": 12,
+            "type": "DB"
+          },
+          "stirrup": {
+            "dia_mm": 6,
+            "type": "RB",
+            "spacing_mm": 150
+          },
+          "note": "แถวบนสุดของตาราง แสดงเฉพาะลูกศรชี้ขึ้น ไม่มีตัวเลขกำกับซ้ำ — สันนิษฐานใช้สเปกเดียวกับแถว 'พื้นชั้น1-พื้นชั้น2' ของ C1 (4-DB12, Stir-RB6@0.15) เนื่องจากตารางจัดวางแบบ C1/C2 สลับขั้นบันได แต่ไม่ยืนยัน 100%"
+        }
       ],
       "note": "คอลัมน์ C2 อยู่บนกริด 2 และ 1 (4 ต้น)"
     },
-    "CX": { "spec_source": "section", "spec_confidence_score": 0.75, "width_mm": 200, "height_mm": 200, "main_bar": { "count": 4, "dia_mm": 12, "type": "DB" }, "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150 }, "note": "เสาสั้น CX ใกล้ชานพักบันได" },
-    "S1A": { "spec_source": "section", "spec_confidence_score": 0.7, "note": "จุดรับคานยื่น S1A: RB9mm@0.10m (ช่วงต้น) + RB9mm@0.25m (ช่วงกลาง), ความหนา ~0.10-0.12ม." }
+    "CX": {
+      "spec_source": "section",
+      "spec_confidence_score": 0.75,
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "note": "เสาสั้น CX ใกล้ชานพักบันได"
+    },
+    "S1A": {
+      "spec_source": "section",
+      "spec_confidence_score": 0.7,
+      "note": "จุดรับคานยื่น S1A: RB9mm@0.10m (ช่วงต้น) + RB9mm@0.25m (ช่วงกลาง), ความหนา ~0.10-0.12ม."
+    }
   },
   "elements": [
-    { "element_id": "ST1_stair_slab_spec", "element_type": "precast_plank_detail", "description": "รูปตัดขยายบันได ST-1 (ทั้ง 2 ช่วง): เหล็กหลัก DB12mm@0.15m ตามแนวขั้นบันได, เหล็กขวาง/ปีกนก RB6mm@0.15m ทุกมุม, RB9mm@0.20m แนวยาว 4.50ม. ต่อช่วง", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "precast_plank_joint_continuous", "element_type": "precast_plank_detail", "dowel_bar": { "count": null, "dia_mm": 12, "type": "RB" }, "topping_thickness_min_mm": 50, "description": "PS ช่วงต่อเนื่อง: RB12mm x1.00m@0.20m เหล็กตะแกรงมาตรฐานผู้ผลิต, แผ่นพื้นสำเร็จรูปชนิดท้องเรียบ หนา 5ซม. SHEAR KEY RB6mm@0.20x0.60m สลับซ้าย-ขวา", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "precast_plank_joint_edge", "element_type": "precast_plank_detail", "dowel_bar": { "dia_mm": 12, "type": "RB" }, "topping_thickness_min_mm": 50, "description": "PS ช่วงริม: RB12mm x1.00m@0.20m, แผ่นพื้นสำเร็จรูปชนิดท้องเรียบ หนา 5 ซม. รับน้ำหนักบรรทุกจรได้ 150กก./ตร.ม.", "confidence_score": 0.75, "confidence_flags": [] }
+    {
+      "element_id": null,
+      "element_type": "precast_plank_detail",
+      "description": "รูปตัดขยายบันได ST-1 (ทั้ง 2 ช่วง): เหล็กหลัก DB12mm@0.15m ตามแนวขั้นบันได, เหล็กขวาง/ปีกนก RB6mm@0.15m ทุกมุม, RB9mm@0.20m แนวยาว 4.50ม. ต่อช่วง",
+      "confidence_score": 0.65,
+      "confidence_flags": [],
+      "element_name_assigned": "ST1_stair_slab_spec"
+    },
+    {
+      "element_id": null,
+      "element_type": "precast_plank_detail",
+      "dowel_bar": {
+        "count": null,
+        "dia_mm": 12,
+        "type": "RB"
+      },
+      "topping_thickness_min_mm": 50,
+      "description": "PS ช่วงต่อเนื่อง: RB12mm x1.00m@0.20m เหล็กตะแกรงมาตรฐานผู้ผลิต, แผ่นพื้นสำเร็จรูปชนิดท้องเรียบ หนา 5ซม. SHEAR KEY RB6mm@0.20x0.60m สลับซ้าย-ขวา",
+      "confidence_score": 0.75,
+      "confidence_flags": [],
+      "element_name_assigned": "precast_plank_joint_continuous"
+    },
+    {
+      "element_id": null,
+      "element_type": "precast_plank_detail",
+      "dowel_bar": {
+        "dia_mm": 12,
+        "type": "RB"
+      },
+      "topping_thickness_min_mm": 50,
+      "description": "PS ช่วงริม: RB12mm x1.00m@0.20m, แผ่นพื้นสำเร็จรูปชนิดท้องเรียบ หนา 5 ซม. รับน้ำหนักบรรทุกจรได้ 150กก./ตร.ม.",
+      "confidence_score": 0.75,
+      "confidence_flags": [],
+      "element_name_assigned": "precast_plank_joint_edge"
+    }
   ],
   "warnings": [
     "ตารางกำหนดเหล็กเสา C1/C2 เป็นตารางแบบขั้นบันได (staggered) จับคู่ระดับต่อแถว อ่านยากกว่าตารางปกติเนื่องจากแถวบนสุด (พื้นชั้น2-หลังคา ของ C2) ไม่มีตัวเลขกำกับชัดเจนในภาพที่มี — สันนิษฐานค่าจากรูปแบบตาราง ให้ confidence_score ต่ำ (0.6) และธง staggered_table_reading_uncertain เพื่อให้ผู้ตรวจทานกลับมาอ่านซ้ำด้วยภาพซูมสูงกว่านี้ก่อนใช้อ้างอิงจริง",
