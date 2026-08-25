@@ -12,6 +12,7 @@ text shaping ที่ถูกต้อง — สระบน/ล่างแ�
 ของเดิมถูกสำรองเป็น <ชื่อไฟล์>.bak.pdf ก่อนเขียนทับเสมอ
 """
 import argparse
+import re
 import subprocess
 import sys
 import tempfile
@@ -50,6 +51,8 @@ code { font-family: Consolas, monospace; background: #f2f2f2; padding: 1px 4px;
 pre { background: #f7f7f7; border: 1px solid #ddd; border-radius: 4px;
       padding: 10px 12px; overflow-x: auto; page-break-inside: avoid; }
 pre code { background: none; padding: 0; font-size: 8.5pt; line-height: 1.5; }
+img { max-width: 100%; height: auto; display: block;
+      margin: 12px auto; border: 1px solid #ddd; page-break-inside: avoid; }
 hr { border: 0; border-top: 1px solid #ddd; margin: 22px 0; }
 strong { color: #10315e; }
 """
@@ -62,11 +65,31 @@ def find_browser():
     sys.exit("หาเบราว์เซอร์ไม่เจอ — ต้องมี Edge หรือ Chrome")
 
 
+def absolutize_images(html_body: str, base_dir: Path) -> str:
+    """แปลง src ของรูปที่เขียนเป็น path สัมพัทธ์ ให้เป็น file:// เต็ม
+
+    จำเป็นเพราะ html ถูกเขียนลง temp dir (ดูเหตุผลด้านล่าง) — path สัมพัทธ์จึงหาไฟล์
+    ไม่เจอ และ Chromium จะข้ามรูปนั้นเงียบๆ ไม่ error. as_uri() เข้ารหัสอักษรไทย
+    ในชื่อโฟลเดอร์ให้ด้วย
+    """
+    def fix(m):
+        src = m.group(1)
+        if re.match(r"^(https?:|data:|file:|/)", src):
+            return m.group(0)
+        p = (base_dir / src).resolve()
+        if not p.is_file():
+            print(f"⚠️  หารูปไม่เจอ ข้ามไป: {src}")
+            return m.group(0)
+        return m.group(0).replace(src, p.as_uri())
+    return re.sub(r'<img[^>]*\ssrc="([^"]+)"', fix, html_body)
+
+
 def md_to_pdf(md_path: Path, out_pdf: Path):
     html_body = markdown.markdown(
         md_path.read_text(encoding="utf-8"),
         extensions=["tables", "fenced_code", "sane_lists"],
     )
+    html_body = absolutize_images(html_body, md_path.parent)
     html = (f'<!doctype html><html lang="th"><head><meta charset="utf-8">'
             f"<style>{CSS}</style></head><body>{html_body}</body></html>")
 
