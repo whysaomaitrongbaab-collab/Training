@@ -16,6 +16,10 @@
   "confidence_score": 0.8,
   "confidence_flags": [],
   "warnings": [
+    "CORRECTED 2026-08-24 — this master previously carried NO dummy grid lines at all. Seven were added after a pixel re-survey of the two floor beam plans, every one of them read off a printed dimension, never estimated. y: A' = -1.00 (right margin of หน้า23, '1.00' above row A), B' = 4.20 (right margin of หน้า24, 2.20 from row B), B'' = 4.30 (left margin of both sheets, 2.30 from row B), C' = 5.90 (left margin of หน้า24, 0.40 below row C). x: 1' = 1.00, 2' = 4.40, 2'' = 5.90 (all three from หน้า23's top margin, printed as 1.00 from grid 1, 1.40 from grid 2, and 0.60 before grid 3). Prime ordering is top-to-bottom / left-to-right per §Dummy grid, which is why 4.20 takes the single prime and 4.30 the double.",
+    "Method note for anyone re-checking: grid positions were pinned from the drawing before any beam was read — หน้า23 x 1=981/2=1305/3=1681/4=2004 px (107.7 px/m) and y A=720/B=932/C=1303/D=1674/E=1886 px (106.0 px/m); หน้า24 x 1=876/2=1194/3=1571/4=1890 and y A=655/B=867/C=1238/D=1609/E=1821 px (106 px/m). Beams were then separated from bare grid lines by coverage: a beam gives a FACE PAIR at coverage 1.0, a dash-dot grid line gives a single line at 0.75-0.83. Every dummy above was cross-checked both ways — printed dimension AND measured beam face.",
+    "⚠️ OPEN for Makham — B'(4.20) and B''(4.30) are 0.10 m apart and each is confirmed independently: the grid3-4 bay's beam on หน้า24 measures a north face at B+2.18 and its own right margin prints 2.20, while the grid1-2 bay's measures B+2.29 with the left margin printing 2.30. They are recorded as two rows because that is what the sheet prints and measures on each side. If this is drafting slop rather than two real rows, they should be merged into one — not merged unilaterally here.",
+    "The carport's own grid master (หน้า00b) needed no dummy lines: its floor plan's four beams are drawn as dashed pairs on all four sides (verticals at x=486/496 and 1083/1094 px, horizontals at y=554/565 and 938/948 px) and land exactly on X1/X2/Y1/Y2, spans 5.50/3.50/3.50/5.50 — verified 2026-08-24, no change.",
     "House title block: 'สราญจิต 2' (Saranchit 2), TYPE \"S\" — 'แบบบ้านยิ้มเพื่อประชาชน' series, สำนักการโยธา กรุงเทพมหานคร (same series as houses 09/12/14/16/18/19/20 already in the dataset, a different design number). Small 2-story house, single-span structure (3x4=1-4 x A-E grid), all-steel hip roof (จันทัน C100x50x20x2.3mm@1.00m, ตะเข้สัน/ตะเข้ราง/อกไก่/อะเส all 2C125x50x20x2.3mm or 2C150x50x20x2.3mm, มุงกระเบื้อง CPAC MONIER) over an RC frame (precast-pile footings, RC beams/columns/precast-plank floors).",
     "op04 (Pass-2-only) scope: the grid sweep below draws x/y from the STRUCTURAL footing/beam/roof plans (หน้า22-25, all reprinting the identical 1-2-3-4 / A-B-C-D-E chain) and z_levels/dimension_chains(z) from the two full building sections (หน้า15/16, side_profile pattern, not separately extracted as files under op04 scope). Architectural floor-plan pages (หน้า03/04) and their door/window sub-dimensions were NOT swept for unassigned_dimensions — that finer architectural detail is outside Pass-2 scope (gridline/plan_footing/plan_beam/plan_slab/section/schedule/notes only). This is narrower than a full op01 sweep and is documented here, not silently done.",
     "Ground-floor beam plan (หน้า23) prints small offset dimensions (1.00/1.40 before+after grid1, 0.60/1.00 around grid3-4) bounding two small entrance-canopy slabs (S0, +0.10) that cantilever past row A. At this scan's resolution it could not be confirmed whether a real column/beam terminus sits at those offset points (which would require dummy grids) or whether these are pure slab-edge dimensions (no dummy grid, per the 'no dummy for a slab-only edge' rule). Treated conservatively as slab-only edges — no dummy grid added — and the beam segments B2(A1-A2)/B3(A2-A3) at row A were read as continuous single segments. See หน้า23 file warnings.",
@@ -24,14 +28,21 @@
   "grid": {
     "x_lines": [
       { "id": "1", "pos_m": 0.00, "type": "named" },
+      { "id": "1'", "pos_m": 1.00, "type": "dummy" },
       { "id": "2", "pos_m": 3.00, "type": "named" },
+      { "id": "2'", "pos_m": 4.40, "type": "dummy" },
+      { "id": "2''", "pos_m": 5.90, "type": "dummy" },
       { "id": "3", "pos_m": 6.50, "type": "named" },
       { "id": "4", "pos_m": 9.50, "type": "named" }
     ],
     "y_lines": [
+      { "id": "A'", "pos_m": -1.00, "type": "dummy" },
       { "id": "A", "pos_m": 0.00, "type": "named" },
       { "id": "B", "pos_m": 2.00, "type": "named" },
+      { "id": "B'", "pos_m": 4.20, "type": "dummy" },
+      { "id": "B''", "pos_m": 4.30, "type": "dummy" },
       { "id": "C", "pos_m": 5.50, "type": "named" },
+      { "id": "C'", "pos_m": 5.90, "type": "dummy" },
       { "id": "D", "pos_m": 9.00, "type": "named" },
       { "id": "E", "pos_m": 11.00, "type": "named" }
     ],
