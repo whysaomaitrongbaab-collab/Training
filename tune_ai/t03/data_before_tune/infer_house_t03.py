@@ -37,7 +37,11 @@ def strip_fence(text):
     t = text.strip()
     m = re.match(r"^```(?:json)?\s*(.*?)\s*```$", t, re.DOTALL)
     t = m.group(1).strip() if m else t
-    return re.sub(r",(\s*[}\]])", r"\1", t)   # กันเผื่อ path ที่ไม่มี grammar
+    t = re.sub(r",(\s*[}\]])", r"\1", t)   # กันเผื่อ path ที่ไม่มี grammar
+    # 2026-08-25: บ้าน 08 task 2 (notes) พบจริง — โมเดลเขียน "0." (จุดทศนิยมไม่มีเลขตาม)
+    # ซึ่งไม่ใช่ JSON เลขที่ถูกต้อง (ต้องมีเลขอย่างน้อย 1 ตัวหลังจุด) เติม 0 ปิดให้
+    t = re.sub(r"(\d)\.(?=[,}\]\s])", r"\1.0", t)
+    return t
 
 
 def element_ids(doc):
