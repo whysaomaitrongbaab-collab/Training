@@ -20,11 +20,14 @@
   "warnings": [
     "House title block: 'บ้านครอบครัวไทยร่วมสมัย 10' — 'แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข' series (กรมโยธาธิการและผังเมือง กระทรวงมหาดไทย), sheet no. S59033. This is a DIFFERENT series from the 'แบบบ้านยิ้มเพื่อประชาชน' series used as the template reference (houses 09/12/14/16/18/19/20) — confirmed by reading this house's own title block on หน้า01-03/29, not assumed from the folder name. 2-story RC house, single-span (3x4 = grid1-4 x grid A-F) structure, hip roof framed entirely in structural steel (channel rafters/ridge/hip on RC ring beam).",
     "Main x/y grids (1-4, A-F) resolved from the identical dimension chain printed on S-02/S-03/S-04/S-05/S-06 (9.00m = 4.00+2.00+3.00 on x; 13.40m = 2.00+3.70+2.20+3.70+1.80 on y for the F-A range). Chain closes exactly on every sheet that prints it — high confidence.",
-    "Dummy x-line '4\\'' (pos_m 9.60, grid4+0.60): a small bump-out east of grid4 between rows D-C houses the stair LANDING platform (ระดับชานพัก) — confirmed by S-11/S-12 stair sections and by the 'B1/B2ที่ระดับชานพัก' callouts on S-05 — carried by short columns 'CN' that per S-09's note only rise from floor-1 level to landing level (not full-height). Same x=9.60 line is reused by a second, unrelated small beam stub 'BX1' at row B (see dummy 'B\\'' below) — both sit 0.60m east of grid4, confirmed independently from their own printed '0.60' dimensions on S-04/S-06.",
-    "Dummy y-lines 'D\\'' (6.50), 'D\\'\\'' (7.10) and 'C\\'' (9.65), 'C\\'\\'' (11.40): four short RC roof struts marked 'CX' on the ring-beam plan (S-06/หน้า34), each positioned by its own printed offset dimension (0.80/0.80 below row D at grid2+0.50 for the first pair; 1.75 below row C and ~0.20 above row B at grid1+2.00 for the second pair). Per S-09, CX rises from the ring-beam level up to the roof structure (roof strut/king-post), not a primary framing column — included for completeness since exact dimensions were printed, but these are minor relative to the main beam grid.",
-    "Dummy x-line '1\\'' (pos_m 2.00, grid1+2.00) and '2\\'' (pos_m 4.50, grid2+0.50): x-positions of the CX struts above, read directly off S-06's own printed offsets.",
+    "Dummy x-line '4\\'' (pos_m 9.50, grid4+0.50): a small bump-out east of grid4 between rows D-C houses the stair LANDING platform (ระดับชานพัก) — confirmed by S-11/S-12 stair sections and by the 'B1/B2ที่ระดับชานพัก' callouts on S-05 — carried by short columns 'CN' that per S-09's note only rise from floor-1 level to landing level (not full-height). Its offset is 0.50, the closing segment of S-04's own printed x-chain (0.60|4.00|2.00|3.00|0.50). An earlier read put this line at 9.60 and reused it for the 'BX1' stub at row B; those are two DIFFERENT offsets — BX1 has its own local '0.60' dimension on S-04 and now gets its own dummy line '4\\'\\'' at 9.60. Beams B3X (row D) and B4X (row C) therefore span 0.50, not 0.60.",
+    "Dummy y-lines 'D\\'' (6.50), 'D\\\"' (7.10) and 'C\\'' (9.65), 'C\\\"' (11.40): four short RC roof struts marked 'CX' on the ring-beam plan (S-06/หน้า34), each positioned by its own printed offset dimension (0.80/0.80 below row D at grid2+0.50 for the first pair; 1.75 below row C and ~0.20 above row B at grid1+2.00 for the second pair). Per S-09, CX rises from the ring-beam level up to the roof structure (roof strut/king-post), not a primary framing column — included for completeness since exact dimensions were printed, but these are minor relative to the main beam grid.",
+    "Dummy x-line '1\\\"' (pos_m 2.00, grid1+2.00) and '2\\'' (pos_m 4.50, grid2+0.50): x-positions of the CX struts above, read directly off S-06's own printed offsets.",
+    "Dummy x-line '1\\'' (pos_m -0.60, 0.60m WEST of grid1, i.e. before the origin): west edge of the small bump at rows C-B, printed as the opening segment of S-04's x-chain (0.60|4.00|2.00|3.00|0.50). A 'B4X' beam runs from it east to grid1 at row C and another at row B, and the labelled B2 between those two rows sits on this line — so beam endpoints genuinely land here and it earns a grid line.",
+    "DUMMY-NAMING SCHEME (follows house 13 / บ้าน_เล็ก_1ชั้น_13, which is the reference for this dataset, per Makham 2026-08-24): primes are handed out in READING ORDER along the axis — first dummy attached to a grid gets one prime, the second gets a double-prime written with the '\\\"' character. So on x this house reads 1\\' (-0.60), 1 (0.00), 1\\\" (2.00), 2 (4.00), 2\\' (4.50), 3 (6.00), 4 (9.00), 4\\' (9.50), 4\\\" (9.60) — prime count tracks position, which is the point of the scheme. This house was originally written with a different convention ('1\\'' for the 2.00 strut line, '1\\'\\'' for the -0.60 line, '4\\'\\'' for 9.60) and was converted; every grid_ref in the beam/footing sheets was rewritten to match.",
     "Dummy y-line 'B\\'' (pos_m 12.20, row B+0.60): south edge of the small 'BX1' beam stub (0.40x0.40 per S-08) east of grid4 at row B, read off S-04's printed '0.60'/'1.50' dimensions.",
-    "'1.00m north of row F' (grid1-2 bay only, over a double-thin-line boundary enclosing an 'SOA' slab-type marker, on S-04/หน้า32): NOT given a dummy grid line. No beam lands on it — the boundary has no hatched corner node like every real beam does, and 'SOA' is a slab-TYPE marker (§10 slab-marker family), so this reads as a slab-type transition line for a canopy/carport bay, not a structural beam. Recorded in dimension_chains as an edge-to-F segment per the sheet's own vertical dimension string, but flagged: it is genuinely ambiguous whether this 1.00m applies to the whole row-F edge or only the grid1-2 bay (the B3/B4 beam rectangle spanning grid2-4 sits exactly on the F line with no extension, so it is plausibly local to the SOA bay only) — not resolvable from the structural sheets alone (would need the architectural roof/site plan, out of op04 scope).",
+    "Dummy y-line 'F\\'' (pos_m -1.00, 1.00m NORTH of row F, i.e. before the origin — same before-origin convention as the spec's own '1\\'' example): this IS a beam line, corrected from an earlier read that declined to add it. A re-zoom of S-04/หน้า32 shows a labelled 'B3' beam running along it from grid2 to grid4 (5.00m) and two labelled 'B2X' spurs dropping 1.00m from it to row F at grid2 and grid4 — a real beam rectangle north of row F, not merely a slab-type transition line. The 1.00 is printed as the first segment of the sheet's vertical chain. The 'SOA' canopy slab marker sits in the grid1'-2 part of the same strip; the line west of grid2 there is the canopy slab edge and still carries no beam mark.",
+    "Dummy y-lines 'E\\'' (4.05) and 'E\\\"' (4.35): two DIFFERENT undimensioned rows inside the E-D bay, each carrying one beam. E' carries floor1's dashed 'B2' in the grid3-4 bay (S-04); E\" carries floor2's 'B1' divider between the two upper S1 bathrooms in the grid2-3 bay (S-05). Neither is isolated by a printed dimension, so both pos_m values come from a pixel scan of the PNGs — beam faces read as pairs 15px apart (= the 0.20m beam width), centreline taken as the midpoint, scale calibrated on the same sheet's rows E and D (291px = 3.70m → 78.7 px/m). Both sheets put rows E and D at identical pixel rows, so the two measurements are directly comparable: they differ by 0.30m (24px), far outside the ±1-2px repeatability, so these are genuinely two lines and not one divider drawn on both floors. Neither matches the E-D bay midpoint (3.85), so the midpoint ruling does not apply here. Every beam on them is x-direction, so no span depends on these values.",
     "Roof-plan (S-07/หน้า35) overhangs (1.00m each side, x and y) are steel-rafter/eave reach with no individual grid_ref (spacing-based repeated member, like purlins) — no dummy grid added for them, consistent with the established rule that an overhang only gets a dummy grid when a discrete beam/column endpoint lands there. Recorded in dimension_chains as edge segments instead.",
     "Compressed duplicate dimension_chains: S-02 and S-03 (footing plans) print the identical F-A/1-4 chain with no edge overhangs; S-04, S-05 and S-06 all print the identical chain WITH the 0.60/0.50 edge overhangs (S-06 omits row F, since its content only spans E-A). Rather than 6 near-duplicate entries per §4's letter, one representative source_image is kept per DISTINCT chain shape (4 x-chain shapes, 4 y-chain shapes) and this note records which sheets repeat it verbatim, to keep the file legible without losing the 'record every printed row' intent.",
     "z_levels only carries two confirmed numeric levels: 'ระดับอ้างอิง' (±0.00, from S-10's fin detail) and 'อะเส' (+7.45, from S-09's column schedule, the ring-beam/roof level). Floor-1, floor-2 and landing levels are drawn on S-11/S-12 stair sections and S-09's column table only as unlabelled datum triangles/arrows with no printed metre value anywhere in the structural set (they are dimensioned on the architecture side_profile/elevation sheets instead, out of op04 scope) — left out of z_levels rather than invented; the relative floor-to-floor rise is NOT derivable from the pages read for this extraction.",
@@ -32,23 +35,28 @@
   ],
   "grid": {
     "x_lines": [
+      { "id": "1'", "pos_m": -0.60, "type": "dummy", "confidence_flags": ["west edge of the 0.60 bump at rows C-B, printed as the opening segment of S-04's x-chain; keeps the spec's own before-origin example name per the house-13 reading-order scheme"] },
       { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "1'", "pos_m": 2.00, "type": "dummy" },
+      { "id": "1\"", "pos_m": 2.00, "type": "dummy", "confidence_flags": ["x-position of the CX roof struts; second prime under the house-13 reading-order scheme — renamed from '1\\'' when the before-origin line at -0.60 was added"] },
       { "id": "2", "pos_m": 4.00, "type": "named" },
       { "id": "2'", "pos_m": 4.50, "type": "dummy" },
       { "id": "3", "pos_m": 6.00, "type": "named" },
       { "id": "4", "pos_m": 9.00, "type": "named" },
-      { "id": "4'", "pos_m": 9.60, "type": "dummy" }
+      { "id": "4'", "pos_m": 9.50, "type": "dummy", "confidence_flags": ["stair-landing platform east edge — 0.50 from S-04's own printed edge dimension (the last segment of its 0.60|4.00|2.00|3.00|0.50 chain); corrected from an earlier 9.60 that conflated this line with the BX1 bump at row B"] },
+      { "id": "4\"", "pos_m": 9.60, "type": "dummy", "confidence_flags": ["east edge of the BX1 stub at row B only — its own local '0.60' dimension on S-04, a different offset from the landing's 0.50; second prime after 4' in reading order"] }
     ],
     "y_lines": [
+      { "id": "F'", "pos_m": -1.00, "type": "dummy", "confidence_flags": ["1.00m north of row F, printed as the first segment of S-04's vertical chain; carries the B3 beam (grid2-4) and the two B2X spurs down to row F"] },
       { "id": "F", "pos_m": 0.00, "type": "named" },
       { "id": "E", "pos_m": 2.00, "type": "named" },
+      { "id": "E'", "pos_m": 4.05, "type": "dummy", "confidence_flags": ["position_measured_from_png_not_printed: carries the dashed B2 beam in the grid3-4 bay on S-04 (floor1). No printed offset dimension isolates it. Pixel scan of the PNG: beam faces at y=915 and y=930.5, centreline y=922.75; rows E and D measure y=761.5 and y=1052.75 = 3.70m apart, giving 78.7 px/m, so this line sits 2.05m below row E. The E-D bay midpoint would be 3.85, so it is NOT the midpoint"] },
+      { "id": "E\"", "pos_m": 4.35, "type": "dummy", "confidence_flags": ["position_measured_from_png_not_printed: carries the B1 divider between the two upper S1 bathrooms in the grid2-3 bay on S-05 (floor2). Same pixel-scan method: beam faces y=938.5/953.5, centreline y=946, rows E and D at y=761/1052.5 — 2.35m below row E. It is a DIFFERENT line from E' (0.30m = 24px apart, far beyond the ±1-2px repeatability of the scan), not the same divider seen on both floors"] },
       { "id": "D", "pos_m": 5.70, "type": "named" },
       { "id": "D'", "pos_m": 6.50, "type": "dummy" },
-      { "id": "D''", "pos_m": 7.10, "type": "dummy" },
+      { "id": "D\"", "pos_m": 7.10, "type": "dummy" },
       { "id": "C", "pos_m": 7.90, "type": "named" },
       { "id": "C'", "pos_m": 9.65, "type": "dummy" },
-      { "id": "C''", "pos_m": 11.40, "type": "dummy" },
+      { "id": "C\"", "pos_m": 11.40, "type": "dummy" },
       { "id": "B", "pos_m": 11.60, "type": "named" },
       { "id": "B'", "pos_m": 12.20, "type": "dummy" },
       { "id": "A", "pos_m": 13.40, "type": "named" }
@@ -72,11 +80,11 @@
         "axis": "x",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า32.png",
         "segments": [
-          { "from": "edge", "to": "1", "value_m": 0.60 },
+          { "from": "1'", "to": "1", "value_m": 0.60 },
           { "from": "1", "to": "2", "value_m": 4.00 },
           { "from": "2", "to": "3", "value_m": 2.00 },
           { "from": "3", "to": "4", "value_m": 3.00 },
-          { "from": "4", "to": "edge", "value_m": 0.50 },
+          { "from": "4", "to": "4'", "value_m": 0.50 },
           { "from": "1", "to": "4", "value_m": 9.00 }
         ]
       },
@@ -108,7 +116,7 @@
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า32.png",
         "segments": [
-          { "from": "edge", "to": "F", "value_m": 1.00 },
+          { "from": "F'", "to": "F", "value_m": 1.00 },
           { "from": "F", "to": "E", "value_m": 2.00 },
           { "from": "E", "to": "D", "value_m": 3.70 },
           { "from": "D", "to": "C", "value_m": 2.20 },
@@ -143,12 +151,11 @@
       }
     ],
     "unassigned_dimensions": [
-      { "value_m": 1.00, "label": "SOA canopy bay boundary, north of row F, grid1-2 only", "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า32.png", "note": "also recorded as an edge-to-F chain segment above; genuinely ambiguous whether whole-width or local to the SOA bay, see file warnings" },
       { "value_m": 6.65, "label": "RB1/RB1+6.65 — local top-of-beam elevation at the stair-landing beam, grid4' D-C bay", "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า34.png", "note": "member-specific level, not a building-wide z_level" },
       { "value_m": 0.50, "label": "▽+0.50 — top level of the small RC perimeter fin ('ครีบ คสล.รอบอาคาร') detail", "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า38.png", "note": null },
       { "value_m": 0.20, "label": "▽+0.20 — level in the 'ขยาย2' small kerb/step detail referenced from S-04/S-05", "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า38.png", "note": null },
       { "value_m": 2.05, "label": "SO slab area south of row A, grid1-2 bay (rear/front yard slab, no beam)", "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า32.png", "note": "slab edge only, no beam endpoint — no dummy grid per the beam-endpoint rule" },
-      { "value_m": 1.50, "label": "SO slab area east of grid4, south of row B (beside the BX1 stub)", "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า32.png", "note": "slab edge only" }
+      { "value_m": 1.50, "label": "SO yard-slab depth south of row A, grid2-4 bay (the dimension itself is drawn just east of grid4)", "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า32.png", "note": "slab edge only, no beam endpoint — pairs with the 2.05 depth of the grid1-2 yard bay beside it" }
     ]
   }
 }

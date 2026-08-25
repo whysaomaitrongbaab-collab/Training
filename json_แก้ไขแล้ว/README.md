@@ -83,4 +83,33 @@ scratchpad (`fix_schema_phaseA.py`/`fix_gridmaster_phaseB2.py`):
 
 ---
 
+### 2026-08-25 — normalize ทั้ง 2 tree ให้ตรงสเปกปัจจุบัน + อัปเกรด checker (Claude, att1235)
+
+ทำกับ **ทั้ง `json_แก้ไขแล้ว/` และ `rawjson_ยังไม่ได้แก้ไขโดนคน/` ทั้ง 49 หลัง** (รอบ 2026-08-24
+ทำแค่ 11 หลัง) — **485 จุด / 430 ไฟล์** validate `json.loads` ผ่านครบหลังแก้:
+
+- **discipline** `architecture`→`architectural` (345), `site`/`administrative`/`credits`/
+  `reference`/`cover`→`misc` หรือ `regulatory` ตามเนื้อหา (11), `null` บนหน้าสารบัญ→`front_matter` (4)
+- **`roof_plan`→`plan`** อีก 7 ไฟล์ที่รอบก่อนไม่ได้แตะ (บ้านนอก 11 หลังแรก)
+- **notes §4a**: `notes_sections`/`spec_notes`/`notes_text`/`raw_text`/`notes_general`→`sections[]` (22),
+  ดูดคีย์เฉพาะกิจ (`concrete_strength`→`concrete`, `steel_grade`→`steel`, ฯลฯ) เข้า `notes{}` (20)
+- **`notes{}` flat fields** — parse `fc_ksc`/`fy_main_ksc`/`fy_stirrup_ksc` จาก `sections[]` ของ
+  ไฟล์ตัวเอง 62 ค่า/26 ไฟล์ เก็บข้อความที่พิมพ์ไว้ใน `notes.parsed_as` ทุกตัว **นี่คือครั้งแรกที่ค่า
+  พวกนี้ถึง consumer จริง** (§4a บอกเองว่าไม่เคยถึงสักหลัง) — ไฟล์ที่พิมพ์ค่าขัดกัน (SD-40 กับ SD-50
+  ในหน้าเดียว) **จงใจปล่อยว่าง** ไม่เลือกให้เอง
+- **ไฟล์ truncated** `31.../หน้า25_plan_footing.json` (พังทั้ง 2 tree) — ปิดให้ parse ได้ เก็บ `F5`
+  ที่ครบ ทิ้งเศษ `F10` ที่ขาด **ไม่เดาค่าที่หาย** + warning บอกว่าหายอะไรไป
+- **`tools/check_format.py`** เพิ่มกฎ 2026-08-21 ที่ checker เดิมไม่มี (discipline vocab,
+  `source_image`, notes one-off key, structural roof-framing ต้องเป็น `plan`, gridmaster ขาด 3 array)
+  — สาเหตุรากที่ drift หลุดมาได้คือ checker ตามสเปกไม่ทัน
+
+**เหลือค้าง (ต้องกวาดรูปใหม่ ทำแทนไม่ได้):** gridmaster 25 ไฟล์ยังไม่มี `dimension_chains[]`/
+`unassigned_dimensions[]` (+ z_levels บางไฟล์) — เติม array ว่างคือโกหกว่า "อ่านแล้วไม่เจอ" ตาม §4;
+และ `notes{}` ของอีก ~76 ไฟล์ที่ไม่มี `sections[]` ให้ parse
+
+`สิ่งที่ต้องแก้.md` **ย้ายออกไป** `wait_for_ทิ้ง/stale_value_logs/` (คำสั่งมะขาม) — เป็นบันทึก
+ค่าเก่า→ค่าใหม่รายบ้าน 1,220 บรรทัดที่นั่งอยู่ในโฟลเดอร์ training data = ช่องปนเปื้อนข้ามหลัง
+
+---
+
 สงสัย ให้ถามมะขาม
