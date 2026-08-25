@@ -1,0 +1,20 @@
+{
+  "title": "เปรียบเทียบผลทูน: t03 (per-subtask) vs Qwen3.6 base vs t02",
+  "subtitle": "บ้าน 08 (test, ไม่มีรอบไหนเทรน) · 33 งาน pass2 · วัดด้วย infer_house_t03.py · 2026-08-25",
+  "warning": "**ตัวเลข t02 ไม่ใช่การเทียบที่ควบคุมตัวแปร** — t02 ยิงทั้งหน้าครั้งเดียวด้วย prompt คนละแบบ ส่วน t03 ยิงทีละ subtask, t02 ขาด 10 หน้าที่ GT มี, และ t02 รันด้วย xgrammar ตัวเลข t02 จึงเป็นบริบทเชิงประวัติศาสตร์เท่านั้น ห้ามอ่านเป็น “t03 ชนะ t02 กี่เท่า” **คอลัมน์ base ถูกยกเลิกกลางทาง (มะขามมีเรียนเช้า เวลาไม่พอ) — n/a จริงๆ ไม่ใช่ยังไม่วัด** จึงยังพิสูจน์ไม่ได้ว่าการทูนคือสาเหตุของตัวเลข t03 ที่ดีขึ้น ต้องรันรอบหน้าถึงจะตัดสินได้จริง",
+  "series": [
+    { "name": "t03 · Qwen3.6-35B-A3B", "color": "#2b7fd4" },
+    { "name": "Qwen3.6 base (untuned) — ยกเลิกกลางทาง", "color": "#e8703a" },
+    { "name": "t02 · Qwen3-VL-30B-A3B", "color": "#7d8ea3" }
+  ],
+  "metrics": [
+    { "label": "JSON valid",            "values": [97.0, null, 96.0], "raw": ["32/33", "", "24/25"] },
+    { "label": "element-id recall รวม", "values": [12.3, null, 3.5],  "raw": ["10/81", "", "2/57"] },
+    { "label": "plan_beam id-recall",   "values": [0.0, null, 0.0],  "raw": ["0/15", "", "0/15"] },
+    { "label": "plan_footing id-recall","values": [33.3, null, 33.3], "raw": ["2/6", "", "2/6"] },
+    { "label": "plan_slab id-recall",   "values": [20.0, null, 0.0],  "raw": ["1/5", "", "0/5"] },
+    { "label": "section id-recall",     "values": [0.0, null, 0.0],  "raw": ["0/23", "", "0/23"] },
+    { "label": "schedule id-recall",    "values": [21.9, null, 0.0],  "raw": ["7/32", "", "0/32"] }
+  ],
+  "footer": "ที่มา: t02 = tune_ai/t02/t02_workflow.md (บ้าน 08, วัดจริง) · t03 = tune_ai/t03/data_before_tune/infer_house_t03.py บนบ้าน 08 (33/33 งานจริง, 2026-08-25) · base = ยกเลิกก่อนเริ่มงานแรก (เวลาไม่พอ) · ช่อง n/a คือยังไม่ได้วัด ไม่ใช่ 0%"
+}
