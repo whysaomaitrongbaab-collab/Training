@@ -87,6 +87,53 @@ Wrong: `"main_bar": "2-Ø16มม. top"`, `"stirrup": "Ø6มม.@0.20ม."`
 - `main_bar` / `stirrup` / `rebar` / `steel_section` are **single objects, never arrays**.
   Multi-layer reinforcement goes in `bar_layers[]`, each layer carrying its own `location`.
 
+<!-- GLOSSARY START -->
+### Thai → field glossary (not a rule — a lookup)
+
+The drawing is Thai; this prompt and every value you emit are English. These are the Thai words
+that actually appear on our sheets and what each one controls. Use it to *read*, never to
+*rewrite*: the rule directly below still holds — a printed label stays Thai, verbatim.
+
+**Words that decide `element_type`**
+
+| printed | `element_type` | | printed | `element_type` |
+|---|---|---|---|---|
+| คาน | `beam` | | ฐานราก, ฐานรากแผ่ | `footing` |
+| คานคอดิน | `tie_beam` | | ฐานรากเสาเข็ม, ฐานรากเข็มตอก | `pile_cap` |
+| อะเส, ทับหลัง, ตง | `beam` | | เสาเข็ม, เข็ม | `pile` |
+| เสา | `column` | | ตอม่อ | `pedestal` |
+| เสาเอ็น, เอ็น | `column` | | พื้น | `slab` |
+| จันทัน | `rafter` | | แผ่นพื้นสำเร็จรูป | `precast_plank_detail` |
+| บันได | `stair` | | ผนัง | `wall` |
+| ประตู | `door` | | หน้าต่าง | `window` |
+| ห้อง… (ห้องนอน, ห้องน้ำ, ครัว, โถง, เฉลียง, ระเบียง, ซักล้าง, จอดรถ) | `room` | | หมายเหตุ | `note` |
+| รูปตัด | `section_view` | | แบบขยาย | `detail_view` |
+| ผัง, แปลน | `plan_view` | | ระดับ (เป็นตัวเลขบนแบบ) | `level` |
+
+A Thai word not in this table is not permission to invent an `element_type` — pick the closest
+value from §0.4 and say so in `warnings[]`.
+
+**Words that decide a field**
+
+| printed | field | | printed | field |
+|---|---|---|---|---|
+| ขนาด | `width_mm` × `height_mm` | | ระดับ | `level_m` |
+| กว้าง | `width_mm` | | จำนวน, ต้น | `count` |
+| ยาว, ช่วง | `span_length_m` | | เหล็กเสริม, เหล็กหลัก | `main_bar` |
+| หนา | `thickness_mm` | | เหล็กบน / เหล็กล่าง | `location: "top"` / `"bottom"` |
+| สูง | `height_mm` | | ปลอก, เหล็กปลอก, รัดรอบ | `stirrup` |
+| ลึก | `depth_mm` | | @ , ระยะ (ตามด้วยเลข) | `spacing_mm` |
+| ตะแกรง | `bar_layers[]` | | ระยะหุ้ม | `cover_mm` |
+| กลม, Ø | `type: "RB"` | | ข้ออ้อย, DB | `type: "DB"` |
+| ตลอด | ต่อเนื่องทั้งช่วง — ใส่ใน `note` | | งอ, ขอ, ทาบ | รายละเอียดปลาย/ทาบ — `note` |
+
+**Units and abbreviations**
+
+`มม.` = mm · `ซม.` = cm (×10 → mm) · `ม.`, `เมตร` = m · `นิ้ว` = inch ·
+`ตร.ม.` = m² · `ลบ.ม.` = m³ · `กก.` = kg · `คสล.` = reinforced concrete ·
+`มอก.` = TIS standard number · `ชั้นล่าง` = ground floor · `ชั้นบน` = upper floor
+
+<!-- GLOSSARY END -->
 ### Keep the drawing's own words (§0.7)
 
 Whenever you convert something printed — a size string, a rebar callout, a level — keep the
