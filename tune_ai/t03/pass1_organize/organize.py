@@ -4,7 +4,7 @@ pass1_organize/organize.py — t03 Pass 1: จัดระเบียบไฟ�
 
 ไม่ใช้ AI เลย อ่านผลจาก pass 0 (บอกว่าแต่ละหน้าเป็น subtask อะไร มีกี่ view อยู่ตรงไหน)
 แล้ว (1) ตัดรูปหน้าที่มีหลาย view ออกเป็นรูปละ view (2) แตกลงโฟลเดอร์ตาม subtask
-(3) เขียน manifest.json บอกว่าโฟลเดอร์นั้นต้องการอะไรบ้าง
+(3) เขียน manifest.json บอกว่าโฟลเดอร์นั้นต้องการอะไรบ้าง (เลข pass ตาม pass_design_v2.md)
 
 ทำไมต้องตัดรูปจริง ไม่ใช่แค่สั่งโมเดลว่า "อ่านเฉพาะผังคาน":
 visual token ล็อกไว้ที่ 5120/รูป (เท่าตอนเทรน ห้ามเปลี่ยน) — ส่งเต็มหน้า token กระจายทั้งแผ่น
@@ -26,10 +26,11 @@ PASS_OF = {
     # pass 2 — Constistant ใช้จริง
     "gridline": 2, "plan_footing": 2, "plan_column": 2, "plan_beam": 2, "plan_slab": 2,
     "section": 2, "schedule": 2, "notes": 2, "material_list": 2, "soil_boring_log": 2,
-    # pass 3 — ถอดเก็บไว้ ยังไม่มีใครอ่าน
-    "plan_architectural": 3, "plan_electrical": 3, "plan_sanitary": 3, "roof_plan": 3,
-    "site_plan": 3, "side_profile": 3, "index": 3, "title": 3, "symbol": 3,
-    "misc": 3, "bbs_schedule": 3,
+    # pass 4 — หน้ารอง ถอดเก็บไว้ ยังไม่มีใครอ่าน (เลขเดิมคือ 3 — เปลี่ยนตาม
+    # pass_design_v2.md 2026-08-26: เลข 3 ถูกใช้เป็น pass ถอดระยะตัวใหม่แล้ว)
+    "plan_architectural": 4, "plan_electrical": 4, "plan_sanitary": 4, "roof_plan": 4,
+    "site_plan": 4, "side_profile": 4, "index": 4, "title": 4, "symbol": 4,
+    "misc": 4, "bbs_schedule": 4,
 }
 
 # subtask ที่ต้องใช้ grid master (pass2/gridline เป็นคนสร้าง — ตอน pass1 ยังไม่มี

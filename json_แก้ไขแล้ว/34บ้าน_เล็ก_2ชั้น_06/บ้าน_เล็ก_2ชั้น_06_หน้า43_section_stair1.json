@@ -1,0 +1,49 @@
+{
+  "png": "43",
+  "doc_page": 41,
+  "discipline": "structural",
+  "sheet_code": "S-16",
+  "sheet_name": "ST (ระดับชั้นที่ 1 - ชานพัก)",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า43.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Lower stair flight: from ระดับพื้นชั้น 1 up to the ชานพัก (half-landing). The upper flight, landing to floor 2, is on S-17/หน้า44. Together they are the 'ST' marked at ~D1 on the floor plans (S-04/S-05).",
+    "Geometry read straight off the printed chains: 10 risers @0.175 = 1.75m total rise, 9 treads @0.25 = 2.25m going, landing 1.20m long, 3.45m overall horizontally. Waist slab 0.125m thick; the landing thickens to 0.30m where it frames into the beam.",
+    "Supports: the landing end sits on B2 with a CN column under it (the column is marked just 'CN' on this sheet — the column table S-13/หน้า40 has CN1 'ขึ้นจากชั้น 1 – ถึงชานพัก', which is this one); the bottom of the flight lands on B6 at ระดับพื้นชั้น 1.",
+    "The flight carries five distinct printed rebar leaders and they are recorded individually in bar_layers rather than squeezed into a single main_bar, because a stair's top steel, bottom steel, distribution steel and step-corner bars are different bars doing different jobs. Bar extension lengths printed along the slope (0.70, 0.40, 1.00 and the 0.40 into the landing) are kept in each layer's note.",
+    "'ø9มม.ทุกมุม' means one Ø9 bar at EVERY step corner (nosing and internal corner), and 'ø9มม.@ตามแบบ' means Ø9 spaced as drawn rather than at a stated pitch — neither can be turned into a spacing_mm, so both are recorded with spacing null and the printed text preserved.",
+    "Bar-type convention: ø9มม recorded as 'RB' (plain round), ø12มม as 'DB' (deformed). The sheet prints only 'ø'.",
+    "No stair PLAN is given on this sheet — flight width is not dimensioned anywhere in the structural set, so no width is recorded."
+  ],
+  "elements": [
+    {
+      "element_id": "ST",
+      "element_type": "stair",
+      "level": "ระดับพื้นชั้น 1 - ชานพัก",
+      "riser_count": 10,
+      "riser_mm": 175,
+      "tread_count": 9,
+      "tread_mm": 250,
+      "total_rise_m": 1.75,
+      "total_going_m": 2.25,
+      "landing_length_m": 1.20,
+      "overall_horizontal_m": 3.45,
+      "waist_thickness_mm": 125,
+      "landing_thickness_mm": 300,
+      "bar_layers": [
+        { "dia_mm": 12, "spacing_mm": 200, "type": "DB", "position": "landing top, main", "note": "printed 'ø12มม.@0.20'; extends 0.40m from the beam face" },
+        { "dia_mm": 9, "spacing_mm": 250, "type": "RB", "position": "landing top, distribution", "note": "printed 'ø9มม.@0.25'" },
+        { "dia_mm": 12, "spacing_mm": 100, "type": "DB", "position": "waist bottom, main (runs the length of the flight)", "note": "printed 'ø12มม.@0.10' at both the landing and the flight" },
+        { "dia_mm": 9, "spacing_mm": 250, "type": "RB", "position": "waist bottom, distribution", "note": "printed 'ø9มม.@0.25'; sloped bar lengths 0.70 and 0.40 printed off the landing, 1.00 at the bottom end" },
+        { "dia_mm": 9, "spacing_mm": null, "type": "RB", "position": "step corners", "note": "printed 'ø9มม.ทุกมุม' — one bar at every step corner, no pitch given" },
+        { "dia_mm": 9, "spacing_mm": null, "type": "RB", "position": "as drawn", "note": "printed 'ø9มม.@ตามแบบ' — spacing as shown on the drawing, not stated numerically" },
+        { "dia_mm": 12, "spacing_mm": 200, "type": "DB", "position": "bottom-end top steel over B6", "note": "printed 'ø12มม.@0.20' with 'ø9มม.@0.25' distribution alongside" }
+      ],
+      "confidence_score": 0.8,
+      "confidence_flags": ["bar positions are assigned by following each leader to the face it touches; the sheet labels the bars but does not name their roles"],
+      "note": "top end frames into B2 over a CN column; bottom end lands on B6 at ระดับพื้นชั้น 1"
+    }
+  ]
+}

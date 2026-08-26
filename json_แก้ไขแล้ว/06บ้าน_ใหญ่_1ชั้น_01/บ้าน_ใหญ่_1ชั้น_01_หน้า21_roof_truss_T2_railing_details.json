@@ -1,198 +1,202 @@
 {
- "png": "21",
- "doc_page": 21,
- "discipline": "structural",
- "sheet_code": "S-08",
- "sheet_name": "ขยายโครงหลังคา T2 ขยายราวกันตก",
- "pattern": "section",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า21.png",
- "view_title": "แบบขยายโครงหลังคา T2 1:50, จุดต่อ 5 / Z-Z 1:10, แบบขยายราวกันตก 1:20 และตัด Y-Y 1:5",
- "grid_source": null,
- "elements": [
-  {
-   "element_id": "T2",
-   "element_type": "truss",
-   "scale": "1:50",
-   "description": "แบบขยาย T2 -- โครงถักหลังคาจั่วเหล็กกล่องของอาคารสุขารวม พาดระหว่างแนว 1 และ 2",
-   "span_m": 6.0,
-   "span_source": "grid_table",
-   "panel_points_m": [
-    0.6,
-    1.5,
-    1.5,
-    1.5,
-    1.5,
-    0.6
-   ],
-   "members": [
+  "png": "21",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "ขยายโครงหลังคา T2 ขยายราวกันตก",
+  "pattern": "section",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า21.png",
+  "view_title": "แบบขยายโครงหลังคา T2 1:50, จุดต่อ 5 / Z-Z 1:10, แบบขยายราวกันตก 1:20 และตัด Y-Y 1:5",
+  "grid_source": null,
+  "elements": [
     {
-     "role": "คอร์ดบน/คอร์ดล่าง (top & bottom chord)",
-     "material": "steel",
-     "steel_section": {
-      "designation": "RHS",
-      "d_mm": 100,
-      "b_mm": 50,
-      "t_mm": 3.2,
-      "printed_as": "เหล็กกล่อง 100x50x3.2 มม."
-     }
+      "element_id": "T2",
+      "element_type": "truss",
+      "scale": "1:50",
+      "description": "แบบขยาย T2 -- โครงถักหลังคาจั่วเหล็กกล่องของอาคารสุขารวม พาดระหว่างแนว 1 และ 2",
+      "span_m": 6.0,
+      "span_source": "grid_table",
+      "panel_points_m": [
+        0.6,
+        1.5,
+        1.5,
+        1.5,
+        1.5,
+        0.6
+      ],
+      "members": [
+        {
+          "role": "คอร์ดบน/คอร์ดล่าง (top & bottom chord)",
+          "material": "steel",
+          "steel_section": {
+            "designation": "RHS",
+            "d_mm": 100,
+            "b_mm": 50,
+            "t_mm": 3.2,
+            "printed_as": "เหล็กกล่อง 100x50x3.2 มม."
+          }
+        },
+        {
+          "role": "ท่อนโครง (web member)",
+          "material": "steel",
+          "steel_section": {
+            "designation": "RHS",
+            "d_mm": 75,
+            "b_mm": 45,
+            "t_mm": 3.2,
+            "printed_as": "เหล็กกล่อง 75x45x3.2 มม."
+          }
+        },
+        {
+          "role": "แป (purlin)",
+          "material": "steel",
+          "steel_section": {
+            "designation": "C",
+            "d_mm": 125,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "tw_mm": 3.2,
+            "printed_as": "แปเหล็ก C125x50x20x3.2 มม. @1.00 ม."
+          },
+          "spacing_mm": 1000
+        },
+        {
+          "role": "เหล็กยึดแป (purlin cleat)",
+          "material": "steel",
+          "plate_thickness_mm": 9,
+          "count_callouts": 2
+        }
+      ],
+      "joint_refs": [
+        "จุดต่อ 5",
+        "Z-Z"
+      ],
+      "confidence_score": 0.87,
+      "confidence_flags": []
     },
     {
-     "role": "ท่อนโครง (web member)",
-     "material": "steel",
-     "steel_section": {
-      "designation": "RHS",
-      "d_mm": 75,
-      "b_mm": 45,
-      "t_mm": 3.2,
-      "printed_as": "เหล็กกล่อง 75x45x3.2 มม."
-     }
+      "element_id": null,
+      "element_type": "connection_detail",
+      "scale": "1:10",
+      "description": "แบบขยายจุดต่อ ⑤ -- ปลายโครง T2 วางบนคาน คสล. ผ่านแผ่นเหล็กและสลักฝังคอนกรีต",
+      "members": [
+        "เหล็กกล่อง 100x50x3.2 มม.",
+        "แผ่นเหล็ก ⌷ หนา 9 มม.",
+        "แผ่นเหล็ก P หนา 9 มม.",
+        "อะเสเหล็ก 150x50x3.2 มม."
+      ],
+      "fasteners": [
+        {
+          "type": "BOLT",
+          "count": 2,
+          "dia_mm": 12,
+          "embedment_m": 0.3,
+          "note": "ฝังในคอนกรีต 0.30 ม. งอขอปลาย"
+        }
+      ],
+      "dims_m": {
+        "plate_chain": [
+          0.1,
+          0.1
+        ],
+        "bearing_width": 0.2
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จุดต่อ 5"
     },
     {
-     "role": "แป (purlin)",
-     "material": "steel",
-     "steel_section": {
-      "designation": "C",
-      "d_mm": 125,
-      "b_mm": 50,
-      "lip_mm": 20,
-      "tw_mm": 3.2,
-      "printed_as": "แปเหล็ก C125x50x20x3.2 มม. @1.00 ม."
-     },
-     "spacing_mm": 1000
+      "element_id": null,
+      "element_type": "connection_detail",
+      "scale": "1:10",
+      "description": "ตัด Z-Z -- จุดรับปลายโครง T2 ที่หัวเสา แสดงแผ่นเหล็กรองและสลักฝังคอนกรีต",
+      "members": [
+        "เหล็กกล่อง 100x50x3.2 มม.",
+        "แผ่นเหล็ก ⌷ หนา 9 มม."
+      ],
+      "fasteners": [
+        {
+          "type": "BOLT",
+          "count": 2,
+          "dia_mm": 12,
+          "embedment_m": 0.3,
+          "note": "ฝังในคอนกรีต 0.30 ม. งอขอปลาย"
+        }
+      ],
+      "welding": "เชื่อมโดยรอบตลอดแนว",
+      "confidence_score": 0.83,
+      "confidence_flags": [],
+      "element_name_assigned": "Z-Z"
     },
     {
-     "role": "เหล็กยึดแป (purlin cleat)",
-     "material": "steel",
-     "plate_thickness_mm": 9,
-     "count_callouts": 2
-    }
-   ],
-   "joint_refs": [
-    "จุดต่อ 5",
-    "Z-Z"
-   ],
-   "confidence_score": 0.87,
-   "confidence_flags": []
-  },
-  {
-   "element_id": "จุดต่อ 5",
-   "element_type": "connection_detail",
-   "scale": "1:10",
-   "description": "แบบขยายจุดต่อ ⑤ -- ปลายโครง T2 วางบนคาน คสล. ผ่านแผ่นเหล็กและสลักฝังคอนกรีต",
-   "members": [
-    "เหล็กกล่อง 100x50x3.2 มม.",
-    "แผ่นเหล็ก ⌷ หนา 9 มม.",
-    "แผ่นเหล็ก P หนา 9 มม.",
-    "อะเสเหล็ก 150x50x3.2 มม."
-   ],
-   "fasteners": [
+      "element_id": null,
+      "element_type": "railing",
+      "scale": "1:20",
+      "description": "แบบขยายราวกันตก -- ราวท่อเหล็กกลมตลอดแนวระเบียงทางเดินหน้าอาคาร",
+      "height_m": 0.8,
+      "panel_length_m": 3.4,
+      "post_spacing_note": "EQ. / 1.00 / EQ. รวม 3.40 ม. ต่อช่วง -- ระยะ EQ. ไม่ระบุตัวเลข",
+      "rail_count": 4,
+      "members": [
+        {
+          "role": "ราว/เสาราว",
+          "material": "steel",
+          "steel_section": {
+            "designation": "Pipe",
+            "od_in": 2,
+            "printed_as": "ท่อเหล็กกลม ø 2\""
+          }
+        }
+      ],
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "eq_spacing_not_dimensioned"
+      ],
+      "element_name_assigned": "ราวกันตก"
+    },
     {
-     "type": "BOLT",
-     "count": 2,
-     "dia_mm": 12,
-     "embedment_m": 0.3,
-     "note": "ฝังในคอนกรีต 0.30 ม. งอขอปลาย"
+      "element_id": null,
+      "element_type": "connection_detail",
+      "scale": "1:5",
+      "description": "ตัด Y-Y -- ฐานเสาราวกันตกยึดกับคานเหล็ก B1 ด้วยแผ่นเหล็กและสลักเกลียว",
+      "members": [
+        "ท่อเหล็กกลม ø 2\"",
+        "เหล็ก ⌷ 9 มม. ขนาด 0.075x0.15 ม.",
+        "คานเหล็ก B1 WF 150x150x7x10 มม."
+      ],
+      "fasteners": [
+        {
+          "type": "BOLT",
+          "count": 2,
+          "dia_mm": 12,
+          "note": "พร้อมเกลียว"
+        }
+      ],
+      "welding": "เชื่อมโดยรอบตลอดแนว",
+      "dims_m": {
+        "plate_length": 0.15,
+        "bolt_gauge": [
+          0.025,
+          0.1,
+          0.025
+        ],
+        "plate_width": 0.075
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "Y-Y"
     }
-   ],
-   "dims_m": {
-    "plate_chain": [
-     0.1,
-     0.1
-    ],
-    "bearing_width": 0.2
-   },
-   "confidence_score": 0.85,
-   "confidence_flags": []
-  },
-  {
-   "element_id": "Z-Z",
-   "element_type": "connection_detail",
-   "scale": "1:10",
-   "description": "ตัด Z-Z -- จุดรับปลายโครง T2 ที่หัวเสา แสดงแผ่นเหล็กรองและสลักฝังคอนกรีต",
-   "members": [
-    "เหล็กกล่อง 100x50x3.2 มม.",
-    "แผ่นเหล็ก ⌷ หนา 9 มม."
-   ],
-   "fasteners": [
-    {
-     "type": "BOLT",
-     "count": 2,
-     "dia_mm": 12,
-     "embedment_m": 0.3,
-     "note": "ฝังในคอนกรีต 0.30 ม. งอขอปลาย"
-    }
-   ],
-   "welding": "เชื่อมโดยรอบตลอดแนว",
-   "confidence_score": 0.83,
-   "confidence_flags": []
-  },
-  {
-   "element_id": "ราวกันตก",
-   "element_type": "railing",
-   "scale": "1:20",
-   "description": "แบบขยายราวกันตก -- ราวท่อเหล็กกลมตลอดแนวระเบียงทางเดินหน้าอาคาร",
-   "height_m": 0.8,
-   "panel_length_m": 3.4,
-   "post_spacing_note": "EQ. / 1.00 / EQ. รวม 3.40 ม. ต่อช่วง -- ระยะ EQ. ไม่ระบุตัวเลข",
-   "rail_count": 4,
-   "members": [
-    {
-     "role": "ราว/เสาราว",
-     "material": "steel",
-     "steel_section": {
-      "designation": "Pipe",
-      "od_in": 2,
-      "printed_as": "ท่อเหล็กกลม ø 2\""
-     }
-    }
-   ],
-   "confidence_score": 0.82,
-   "confidence_flags": [
-    "eq_spacing_not_dimensioned"
-   ]
-  },
-  {
-   "element_id": "Y-Y",
-   "element_type": "connection_detail",
-   "scale": "1:5",
-   "description": "ตัด Y-Y -- ฐานเสาราวกันตกยึดกับคานเหล็ก B1 ด้วยแผ่นเหล็กและสลักเกลียว",
-   "members": [
-    "ท่อเหล็กกลม ø 2\"",
-    "เหล็ก ⌷ 9 มม. ขนาด 0.075x0.15 ม.",
-    "คานเหล็ก B1 WF 150x150x7x10 มม."
-   ],
-   "fasteners": [
-    {
-     "type": "BOLT",
-     "count": 2,
-     "dia_mm": 12,
-     "note": "พร้อมเกลียว"
-    }
-   ],
-   "welding": "เชื่อมโดยรอบตลอดแนว",
-   "dims_m": {
-    "plate_length": 0.15,
-    "bolt_gauge": [
-     0.025,
-     0.1,
-     0.025
-    ],
-    "plate_width": 0.075
-   },
-   "confidence_score": 0.85,
-   "confidence_flags": []
-  }
- ],
- "confidence_score": 0.85,
- "confidence_flags": [],
- "warnings": [
-  "RESOLVES the T2 member sizes left null on หน้า16_view2 (S-03): T2 is a BOX-SECTION (RHS) truss, unlike T1 which is a channel/angle truss. Chords are เหล็กกล่อง 100x50x3.2, web members เหล็กกล่อง 75x45x3.2, purlins C125x50x20x3.2 @1.00 m. Span is dimensioned 6.00 m, matching the toilet block's grid 1-2 spacing exactly -- unlike T1, whose span is never dimensioned.",
-  "EAVE MEMBER -- this sheet's จุดต่อ 5 labels the อะเส 'อะเสเหล็ก 150x50x3.2 มม.' with a box symbol and three numbers. RESOLVED AGAINST this sheet on 2026-07-25: both S-03's หมายเหตุ and A-11's รูปตัด 1 (หน้า12) print it as the lipped channel C150x50x20x3.2, so two sheets to one. The box label here is treated as a drafting slip; the element above keeps the box form as printed for audit, but the canonical spec is the channel (see หน้า16_view2).",
-  "This sheet mixes both buildings: T2 / จุดต่อ 5 / Z-Z belong to the toilet block, while the ราวกันตก railing and its Y-Y section bolt to the MAIN building's B1 beam (WF150x150x7x10) along the front walkway. building is therefore null at the wrapper level.",
-  "RHS/box sections are recorded with designation 'RHS' and d/b/t keys. Spec §12 lists RHS as an unverified family -- this is the first real box section in the corpus and the key names are this file's proposal.",
-  "The railing's post spacing is only partly dimensioned: the sheet gives 'EQ. / 1.00 / EQ.' over a 3.40 m panel, so the two EQ. bays are 1.20 m each by arithmetic. That subtraction is NOT recorded as a dimension -- per spec §4 only printed dimensions are used, so post_spacing_note keeps the printed form and the flag records why.",
-  "The pipe railing is sized in INCHES (ø 2\"), the only imperial dimension found anywhere in this drawing set. steel_section uses od_in rather than a millimetre key to avoid an unstated unit conversion."
- ]
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "RESOLVES the T2 member sizes left null on หน้า16_view2 (S-03): T2 is a BOX-SECTION (RHS) truss, unlike T1 which is a channel/angle truss. Chords are เหล็กกล่อง 100x50x3.2, web members เหล็กกล่อง 75x45x3.2, purlins C125x50x20x3.2 @1.00 m. Span is dimensioned 6.00 m, matching the toilet block's grid 1-2 spacing exactly -- unlike T1, whose span is never dimensioned.",
+    "EAVE MEMBER -- this sheet's จุดต่อ 5 labels the อะเส 'อะเสเหล็ก 150x50x3.2 มม.' with a box symbol and three numbers. RESOLVED AGAINST this sheet on 2026-07-25: both S-03's หมายเหตุ and A-11's รูปตัด 1 (หน้า12) print it as the lipped channel C150x50x20x3.2, so two sheets to one. The box label here is treated as a drafting slip; the element above keeps the box form as printed for audit, but the canonical spec is the channel (see หน้า16_view2).",
+    "This sheet mixes both buildings: T2 / จุดต่อ 5 / Z-Z belong to the toilet block, while the ราวกันตก railing and its Y-Y section bolt to the MAIN building's B1 beam (WF150x150x7x10) along the front walkway. building is therefore null at the wrapper level.",
+    "RHS/box sections are recorded with designation 'RHS' and d/b/t keys. Spec §12 lists RHS as an unverified family -- this is the first real box section in the corpus and the key names are this file's proposal.",
+    "The railing's post spacing is only partly dimensioned: the sheet gives 'EQ. / 1.00 / EQ.' over a 3.40 m panel, so the two EQ. bays are 1.20 m each by arithmetic. That subtraction is NOT recorded as a dimension -- per spec §4 only printed dimensions are used, so post_spacing_note keeps the printed form and the flag records why.",
+    "The pipe railing is sized in INCHES (ø 2\"), the only imperial dimension found anywhere in this drawing set. steel_section uses od_in rather than a millimetre key to avoid an unstated unit conversion."
+  ]
 }

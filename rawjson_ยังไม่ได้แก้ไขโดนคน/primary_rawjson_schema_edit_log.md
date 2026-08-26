@@ -52,3 +52,16 @@
 - **AI ที่ใช้ทำ** — ชื่อ/รุ่นโมเดลที่ใช้แก้
 - **ผู้แก้ไข/อนุมัติ** — คนที่สั่ง/อนุมัติการแก้ในบทสนทนานั้น
 - **หมายเหตุ** — เหตุผล/บริบท ทำไมถึงแก้
+
+## 2026-08-25 — §0.2: unmarked elements now take `element_id: null` + `element_name_assigned`
+
+- **Who:** Claude (session with Makham), authorized explicitly by Makham with `att1235`.
+- **What:** replaced the "descriptive id, never absent" rule with `element_id: null` +
+  `element_name_assigned` for entries with no printed mark. §0.3's title ("element_id = the mark
+  printed on the drawing, nothing else") now holds without exception.
+- **Why:** measured 2026-08-25 — 1,534/2,436 section element ids (63%) were annotator-invented
+  names; 66% of section training examples taught the model to guess them; test-house section
+  id-recall ceiling was 4%, making the metric meaningless. Detail: tune_ai/t03/t03_workflow.md.
+- **Applied to data:** batch edit of json_แก้ไขแล้ว/ (343 section files, 1,534 elements moved,
+  902 printed ids untouched) — logged in No_touch_box/raw_json_data_log.md same day.
+  rawjson_ยังไม่ได้แก้ไขโดนคน/ raw layer NOT touched.

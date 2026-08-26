@@ -15,15 +15,145 @@
     "The arched beam detail ('แบบขยาย_2') matches the curved bay/oriel beam recorded approximately on the ground-floor beam plan (หน้า19, B3 between ~B7-~C7) — this sheet gives its stirrup spacing (RB9@0.15 along the arch, RB9@0.20 at the springs) but does not give a plan position/span, so it does not resolve that beam's grid_ref ambiguity."
   ],
   "elements": [
-    { "element_id": "S0", "element_type": "slab", "thickness_mm": 100, "rebar": { "dia_mm": 9, "spacing_mm": 200, "type": "RB" }, "note": "on compacted sand fill ('ทรายถมบดอัดแน่น'), two 100mm layers noted on the detail", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "thickness_mm": 100, "main_bar": { "dia_mm": 9, "spacing_mm": 200, "type": "RB" }, "note": "cast-in-place slab panel with cantilever edges (~0.50m each side noted on the detail)", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "S1a", "element_type": "slab", "thickness_mm": 100, "main_bar": { "dia_mm": 9, "spacing_mm": 200, "type": "RB" }, "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "ครีบโค้ง_แบบขยาย_2", "element_type": "beam", "description": "arched bay/oriel beam formwork detail (แบบขยาย_2), spanning between grid ~3 and ~5 per the detail's own local reference marks", "stirrup": { "dia_mm": 9, "spacing_mm": 150, "type": "RB", "note": "RB9@0.15 along the arch; RB9@0.20 at the spring/support ends" }, "thickness_mm": 100, "confidence_score": 0.5, "confidence_flags": ["plan position not resolved, see file warnings"] },
-    { "element_id": "มุมคานชั้นล่าง_section1", "element_type": "connection_detail", "description": "corner beam-rebar bend detail, ground floor structure ('ตามแบบโครงสร้างชั้นล่าง')", "rebar": { "dia_mm": 9, "spacing_mm": 100, "type": "RB" }, "thickness_mm": 100, "confidence_score": 0.45, "confidence_flags": [] },
-    { "element_id": "มุมคานชั้นบน_section3", "element_type": "connection_detail", "description": "corner rebar detail, upper floor structure ('ตามแบบโครงสร้างชั้นบน')", "rebar": { "dia_mm": 9, "spacing_mm": 200, "type": "RB" }, "thickness_mm": 100, "confidence_score": 0.45, "confidence_flags": [] },
-    { "element_id": "พื้นลดระดับ", "element_type": "slab", "description": "stepped-down slab detail (ขยายพื้นลดระดับ), e.g. bathroom floor stepped below adjacent rooms", "thickness_mm": 100, "main_bar": { "dia_mm": 9, "spacing_mm": 200, "type": "RB" }, "additional_bars": [ { "count": 3, "dia_mm": 12, "position": "special reinforcement at the step ('เสริมพิเศษ')" } ], "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "จุดยึดหลังคาอลูมิเนียมติดผนัง", "element_type": "connection_detail", "description": "wall-mounted aluminum awning support point, dowel bars into the wall/beam ('รอยเชื่อมเหล็กรูปพรรณตัว C' — welded to C-channel steel)", "dowel_bar": { "dia_mm": 12, "type": "DB" }, "note": "printed with two embedment lengths, DB12@1.50m and DB12@1.00m", "confidence_score": 0.4, "confidence_flags": ["small handwritten text, moderate confidence only"] },
-    { "element_id": "รอยต่อพื้นกับระเบียง", "element_type": "connection_detail", "description": "joint detail between the precast floor plank and the balcony slab (S1) — rebar dowels left projecting before casting ('เหล็กพื้นเหลียบไว้ก่อนเทพื้น')", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "แบบขยาย_1_มุมคาน", "element_type": "connection_detail", "description": "beam corner rebar-bend detail at an obtuse/acute corner ('แสดงการดัดเหล็กคานช่วงมุม')", "rebar": { "dia_mm": 9, "spacing_mm": 150, "type": "RB" }, "confidence_score": 0.45, "confidence_flags": [] }
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "rebar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
+      "note": "on compacted sand fill ('ทรายถมบดอัดแน่น'), two 100mm layers noted on the detail",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
+      "note": "cast-in-place slab panel with cantilever edges (~0.50m each side noted on the detail)",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1a",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "description": "arched bay/oriel beam formwork detail (แบบขยาย_2), spanning between grid ~3 and ~5 per the detail's own local reference marks",
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "note": "RB9@0.15 along the arch; RB9@0.20 at the spring/support ends"
+      },
+      "thickness_mm": 100,
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "plan position not resolved, see file warnings"
+      ],
+      "element_name_assigned": "ครีบโค้ง_แบบขยาย_2"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "corner beam-rebar bend detail, ground floor structure ('ตามแบบโครงสร้างชั้นล่าง')",
+      "rebar": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB"
+      },
+      "thickness_mm": 100,
+      "confidence_score": 0.45,
+      "confidence_flags": [],
+      "element_name_assigned": "มุมคานชั้นล่าง_section1"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "corner rebar detail, upper floor structure ('ตามแบบโครงสร้างชั้นบน')",
+      "rebar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
+      "thickness_mm": 100,
+      "confidence_score": 0.45,
+      "confidence_flags": [],
+      "element_name_assigned": "มุมคานชั้นบน_section3"
+    },
+    {
+      "element_id": null,
+      "element_type": "slab",
+      "description": "stepped-down slab detail (ขยายพื้นลดระดับ), e.g. bathroom floor stepped below adjacent rooms",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
+      "additional_bars": [
+        {
+          "count": 3,
+          "dia_mm": 12,
+          "position": "special reinforcement at the step ('เสริมพิเศษ')"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_flags": [],
+      "element_name_assigned": "พื้นลดระดับ"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "wall-mounted aluminum awning support point, dowel bars into the wall/beam ('รอยเชื่อมเหล็กรูปพรรณตัว C' — welded to C-channel steel)",
+      "dowel_bar": {
+        "dia_mm": 12,
+        "type": "DB"
+      },
+      "note": "printed with two embedment lengths, DB12@1.50m and DB12@1.00m",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "small handwritten text, moderate confidence only"
+      ],
+      "element_name_assigned": "จุดยึดหลังคาอลูมิเนียมติดผนัง"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "joint detail between the precast floor plank and the balcony slab (S1) — rebar dowels left projecting before casting ('เหล็กพื้นเหลียบไว้ก่อนเทพื้น')",
+      "confidence_score": 0.4,
+      "confidence_flags": [],
+      "element_name_assigned": "รอยต่อพื้นกับระเบียง"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "beam corner rebar-bend detail at an obtuse/acute corner ('แสดงการดัดเหล็กคานช่วงมุม')",
+      "rebar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB"
+      },
+      "confidence_score": 0.45,
+      "confidence_flags": [],
+      "element_name_assigned": "แบบขยาย_1_มุมคาน"
+    }
   ]
 }

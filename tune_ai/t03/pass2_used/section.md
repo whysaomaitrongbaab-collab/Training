@@ -57,6 +57,12 @@ Output **one JSON object and nothing else**.
 }
 ```
 
+**`element_id` = the mark printed on the drawing, or `null` — never an invented name.**
+(Convention changed 2026-08-25, Makham's ruling.) A cross-section labelled `B1` or `C1` takes
+that mark verbatim. A detail with **no printed mark at all** (a gate detail, a pipe sleeve, a
+generic wall section) takes `element_id: null` — do NOT invent a descriptive name for it; the
+rest of the fields (element_type, dimensions, reinforcement) still describe it fully.
+
 ### Rebar rules (§6) — the ones that have been got wrong before
 
 **Beams split `top` / `bottom` always, even when the two are equal.** Never collapse a symmetric

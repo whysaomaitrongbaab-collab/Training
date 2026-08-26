@@ -1,6 +1,6 @@
-# pass3.md — the patterns nothing reads yet
+# pass4 extract.md — the patterns nothing reads yet (เดิมเรียก pass 3 — renumbered 2026-08-26, ดู pass_design_v2.md)
 
-One prompt for all eight Pass 3 subtasks. The runner substitutes `{{PATTERN}}`, `{{TARGET}}` and
+One prompt for all eight Pass 4 subtasks. The runner substitutes `{{PATTERN}}`, `{{TARGET}}` and
 `{{NEEDS_GRID}}`.
 
 | subtask | `{{PATTERN}}` | `{{TARGET}}` | grid? |
