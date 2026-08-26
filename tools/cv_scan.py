@@ -8,8 +8,9 @@
                (1) JSON บัญชี element รายชิ้น มีเลขกำกับ #n คงที่ + พิกัด pixel
                (2) ภาพมาร์คเลข (Set-of-Mark, arXiv 2310.11441) ไว้ป้อน pass 2.4b
                (3) บล็อกข้อความ hint (+กฎกันหลอน 4 ข้อ) ไว้แปะ prompt pass 2.4
-  Pass 2.5 — self-harvest: เอา detection คะแนนสูง (≥0.85) ของหน้านั้นเองมาเป็น template
-             แล้วกวาดซ้ำที่ threshold ต่ำลง หา element ที่คลัง template กลางหาไม่เจอ
+  Pass 2.5 — self-harvest: เอา detection ของหน้านั้นเอง (ผ่านคลังกลางมาแล้ว) เป็น template
+             แล้วกวาดซ้ำแบบเข้ม (0.90 — ไอคอนพิมพ์เดียวกันหน้าเดียวกัน match เกือบ 1.0)
+             หา element ที่คลังกลางจับข้ามซีรีส์ไม่ติด
              (ทางแก้บ้าน 19 หลังที่คลังยังขาด — บ้านที่ CV หาไม่เจอเลยสักตัวยังช่วยไม่ได้ ติดธงไว้)
 
 เลขกำกับ #n เรียง: column → footing → beam_h → beam_v, ในชนิดเรียงแถวบน→ล่าง ซ้าย→ขวา
@@ -38,8 +39,12 @@ from pattern_recognition import (imread_thai, imwrite_thai, load_templates,  # n
 
 # 4 subtask ที่ pass 1.5 กวาด (โฟลเดอร์จาก organize.py อยู่ใต้ pass2/ — Qwen อ่านที่ pass 2/2.4)
 PLAN_SUBTASKS = ("plan_footing", "plan_column", "plan_beam", "plan_slab")
-SEED_SCORE = 0.85      # detection มั่นใจพอเป็น seed ของ self-harvest
-HARVEST_THRESH = 0.65  # กวาดซ้ำด้วย seed ของหน้าตัวเอง ยอมต่ำกว่าคลังกลางได้ (ไอคอนเหมือนเป๊ะกว่า)
+# self-harvest: seed "หลวม" (ทุก detection ที่ผ่านคลังกลางมาแล้ว — ข้ามซีรีส์ได้แค่ ~0.72-0.80
+# วัดจริง 3 บ้าน 2026-08-26 ไม่มีทางถึง 0.85) แต่การกวาดซ้ำต้อง "เข้ม" 0.90 — ไอคอนพิมพ์
+# เดียวกันในหน้าเดียวกัน match กันเกือบ 1.0 (วัดตอนทำ harvest_templates: 0.87-1.00)
+# ห้ามกลับข้างเป็น seed เข้ม + match หลวม: นั่นคือคลาสบั๊ก HARVEST_THRESH 0.55 ที่เคยทำ
+# รายงาน "44/44 ✅" ปลอมมาแล้ว
+HARVEST_THRESH = 0.90
 MIN_SEED_PX = 28       # กฎเดียวกับ load_templates — template เล็กกว่านี้จับมั่วแน่นอน
 CLASS_ORDER = ("column", "footing", "beam_h", "beam_v")
 CLASS_TH = {"column": "เสา", "footing": "ฐานราก", "beam_h": "คานแนวนอน", "beam_v": "คานแนวตั้ง"}
@@ -96,13 +101,15 @@ def draw_som_marks(gray, elements):
         cv2.rectangle(img, (x, y), (x + el["w"], y + el["h"]), c, th_px)
         label = "#%d" % el["n"]
         (tw, tht), base = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, fs, th_px)
-        lx = max(0, min(x, img.shape[1] - tw - 4))
+        # ตำแหน่งป้ายเลือกให้ (1) สองป้ายที่จุดเดียวกันไม่ทับกัน (2) ไม่ทับมาร์คที่พิมพ์
+        # บนแบบ — มาร์ค (เช่น F1) มักพิมพ์ "ซ้ายบน" ของไอคอน ป้ายเราจึงห้ามอยู่ซ้ายบน
+        # (ทั้งสองข้อเจอจริงด้วยตา 2026-08-26: เลขเสาโดนทับ / เลข "1" ของ F1 โดนบัง)
         if el["class"] == "column":
-            # เสาซ้อนในฐานรากที่จุดเดียวกัน — ป้ายเสาลงใต้กล่อง ไม่งั้นพื้นขาวของ
-            # ป้ายฐานราก (วาดทีหลัง มุมเดียวกัน) ทับเลขเสาหาย (เจอจริงด้วยตา 2026-08-26)
-            ly = min(img.shape[0] - base - 2, y + el["h"] + tht + 6)
+            lx = max(0, min(x, img.shape[1] - tw - 4))
+            ly = min(img.shape[0] - base - 2, y + el["h"] + tht + 6)   # ใต้กล่อง
         else:
-            ly = max(tht + 4, y - 4)
+            lx = max(0, min(x + el["w"] + 4, img.shape[1] - tw - 4))  # ขวาของกล่อง
+            ly = max(tht + 4, y + tht // 2)
         cv2.rectangle(img, (lx - 2, ly - tht - 4), (lx + tw + 2, ly + base),
                       (255, 255, 255), -1)
         cv2.putText(img, label, (lx, ly), cv2.FONT_HERSHEY_SIMPLEX, fs, c, th_px,
@@ -152,23 +159,23 @@ def cv_hint_text(scan):
 # ---------- pass 2.5: self-harvest ----------
 
 def self_harvest(gray, det):
-    """เอา detection มั่นใจสูงของหน้านี้เองเป็น template กวาดซ้ำ → (det ใหม่, จำนวนที่เพิ่ม, warnings)
+    """เอา detection ของหน้านี้เอง (ทุกตัวที่ผ่านคลังกลาง) เป็น template กวาดซ้ำเข้ม 0.90
+    → (det ใหม่, จำนวนที่เพิ่ม, warnings)
     ไม่มี seed (บ้านที่คลังกลางหาไม่เจอเลย) → คืนของเดิม + ติดธง — ช่วยไม่ได้ ไม่เดา"""
     seeds = {"footing": [], "column": []}
     for cls in seeds:
         for cx, cy, w, h, sc in det.get(cls, []):
-            if sc < SEED_SCORE or min(w, h) < MIN_SEED_PX:
+            if min(w, h) < MIN_SEED_PX:
                 continue
             x, y = cx - w // 2, cy - h // 2
             crop = gray[max(0, y):y + h, max(0, x):x + w]
             if crop.size:
                 seeds[cls].append(crop)
     if not seeds["footing"] and not seeds["column"]:
-        return det, 0, ["self_harvest: ไม่มี seed (คลังกลางหาไม่เจอสักตัวที่มั่นใจ >= %.2f)"
-                        % SEED_SCORE]
+        return det, 0, ["self_harvest: ไม่มี seed (คลังกลางหาไม่เจอเลยในหน้านี้ — ช่วยไม่ได้)"], []
     har = analyze(gray, seeds["footing"], seeds["column"],
                   footing_thresh=HARVEST_THRESH, column_thresh=HARVEST_THRESH)
-    out, added = dict(det), 0
+    out, added, added_pts = dict(det), 0, []
     for cls in ("footing", "column"):
         cur = list(det.get(cls, []))
         for cand in har.get(cls, []):
@@ -177,8 +184,10 @@ def self_harvest(gray, det):
                    for ox, oy, ow, oh, _ in cur):
                 cur.append(cand)
                 added += 1
+                added_pts.append({"class": cls, "cx": int(cx), "cy": int(cy),
+                                  "score": round(sc, 3)})
         out[cls] = cur
-    return out, added, []
+    return out, added, [], added_pts
 
 
 # ---------- scan หลัก ----------
@@ -198,9 +207,9 @@ def page_hint(counts):
 def scan_image(path, tpls, pass25=False):
     gray = imread_thai(path)
     det = analyze(gray, tpls.get("footing", []), tpls.get("column", []))
-    warnings, added = [], 0
+    warnings, added, added_pts = [], 0, []
     if pass25:
-        det, added, warnings = self_harvest(gray, det)
+        det, added, warnings, added_pts = self_harvest(gray, det)
     elements = number_elements(det)
     counts = {"footing": len(det["footing"]), "column": len(det["column"]),
               "beam": len(det["beam_h"]) + len(det["beam_v"])}
@@ -211,6 +220,7 @@ def scan_image(path, tpls, pass25=False):
         "hint": page_hint(counts),
         "elements": elements,
         "self_harvest_added": added,
+        "self_harvest_points": added_pts,
         "warnings": warnings,
     }
     return scan, gray
