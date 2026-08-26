@@ -10,56 +10,105 @@
   "view_title": "ลักษณะการวางพื้นสำเร็จรูป (precast plank, SP) 5 กรณี: ภายใน / บริเวณพื้น S / พื้น S ระดับสูงกว่าหลังคาน / บริเวณพื้นห้องน้ำ (มีระดับต่างพื้น 0.10ม.) / บริเวณริมคาน — สอดคล้องกับระบบพื้นสำเร็จรูป (SP) ที่ระบุใน S-01",
   "elements": [
     {
-      "element_id": "SP_ภายใน", "element_type": "precast_plank_detail",
+      "element_id": null,
+      "element_type": "precast_plank_detail",
       "description": "ลักษณะการวางพื้น SP ภายใน (SP ทั้งสองฝั่งของคาน, ปกติ)",
-      "dowel_bar": { "count": 2, "dia_mm": 9, "type": "RB", "spacing_mm": 200,
-        "note": "1+1-Ø9มม. (1 เส้นต่อฝั่ง) ปลายงอ (hook) เรียงทุกระยะ 0.20ม. ตามแนวรอยต่อ" },
-      "topping_mesh": { "dia_mm": 6, "spacing_mm": 200, "printed_as": "เสริมพิเศษ Ø6มม.@0.20ม." },
+      "dowel_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 200,
+        "note": "1+1-Ø9มม. (1 เส้นต่อฝั่ง) ปลายงอ (hook) เรียงทุกระยะ 0.20ม. ตามแนวรอยต่อ"
+      },
+      "topping_mesh": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "printed_as": "เสริมพิเศษ Ø6มม.@0.20ม."
+      },
       "topping_thickness_min_mm": 50,
       "level_step_mm": null,
       "printed_as": "ลักษณะการวางพื้น SP ภายใน 1:20 ; คอนกรีต TOPPING ไม่น้อยกว่า 0.05ม. ; 1.00+1.00 ; 0.40 (ความลึกคานใต้พื้น) ; 1+1Ø9มม. ; Ø9มม.@0.20 (งอปลาย) ; เสริมพิเศษ Ø6มม.@0.20",
-      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
       "confidence_score": 0.75,
-      "confidence_flags": []
+      "confidence_flags": [],
+      "element_name_assigned": "SP_ภายใน"
     },
     {
-      "element_id": "SP_บริเวณพื้น_S", "element_type": "precast_plank_detail",
+      "element_id": null,
+      "element_type": "precast_plank_detail",
       "description": "ลักษณะการวางพื้น SP บริเวณพื้น S (SP ฝั่งหนึ่ง ต่อกับพื้นหล่อในที่ S อีกฝั่งหนึ่ง คนละมิติ 1.00/0.40)",
-      "dowel_bar": { "count": 2, "dia_mm": 9, "type": "RB", "spacing_mm": 200,
-        "note": "1+1-Ø9มม. ปลายงอ (hook) เรียงทุกระยะ 0.20ม. ตามแนวรอยต่อ" },
-      "topping_mesh": { "dia_mm": 6, "spacing_mm": 200, "printed_as": "เสริมพิเศษ Ø6มม.@0.20ม." },
+      "dowel_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 200,
+        "note": "1+1-Ø9มม. ปลายงอ (hook) เรียงทุกระยะ 0.20ม. ตามแนวรอยต่อ"
+      },
+      "topping_mesh": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "printed_as": "เสริมพิเศษ Ø6มม.@0.20ม."
+      },
       "topping_thickness_min_mm": 50,
       "level_step_mm": null,
       "printed_as": "ลักษณะการวางพื้น SP บริเวณพื้น S 1:20 ; คอนกรีต TOPPING ไม่น้อยกว่า 0.05ม. ; 1.00 (ฝั่ง SP) / 0.40 (ฝั่ง S) ; 0.40 ; 1+1Ø9มม. ; Ø9มม.@0.20 (งอปลาย) ; เสริมพิเศษ Ø6มม.@0.20",
-      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
       "confidence_score": 0.75,
-      "confidence_flags": ["asymmetric_1.00_vs_0.40_dimension_meaning_of_each_side_inferred_from_SP/S_label_position"]
+      "confidence_flags": [
+        "asymmetric_1.00_vs_0.40_dimension_meaning_of_each_side_inferred_from_SP/S_label_position"
+      ],
+      "element_name_assigned": "SP_บริเวณพื้น_S"
     },
     {
-      "element_id": "S_ระดับสูงกว่าหลังคาน", "element_type": "slab",
+      "element_id": null,
+      "element_type": "slab",
       "description": "ลักษณะพื้น S (หล่อในที่ ไม่ใช่ SP) ระดับสูงกว่าหลังคาน — ทั้งสองฝั่งเป็น S, พื้นอยู่สูงกว่าระดับหลังคาน มีเหล็กงอฝังยึดจากคานขึ้นพื้น",
-      "dowel_bar": { "count": 2, "dia_mm": 9, "type": "RB", "spacing_mm": 200,
-        "note": "1+1-Ø9มม. ปลายงอ (hook) เรียงทุกระยะ 0.20ม. — ไม่พบป้าย 'เสริมพิเศษ Ø6มม.' หรือ 'คอนกรีต TOPPING' บนกล่องนี้ (ต่างจาก 2 กล่องแรกที่มี SP) เนื่องจากทั้งสองฝั่งเป็นพื้นหล่อในที่ ไม่มีชั้น topping เหนือแผ่นสำเร็จรูป" },
+      "dowel_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 200,
+        "note": "1+1-Ø9มม. ปลายงอ (hook) เรียงทุกระยะ 0.20ม. — ไม่พบป้าย 'เสริมพิเศษ Ø6มม.' หรือ 'คอนกรีต TOPPING' บนกล่องนี้ (ต่างจาก 2 กล่องแรกที่มี SP) เนื่องจากทั้งสองฝั่งเป็นพื้นหล่อในที่ ไม่มีชั้น topping เหนือแผ่นสำเร็จรูป"
+      },
       "printed_as": "ลักษณะพื้น S ระดับสูงกว่าหลังคาน 1:20 ; 0.40 ; 1+1Ø9มม. ; Ø9มม.@0.20 (งอปลาย)",
-      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
       "confidence_score": 0.7,
-      "confidence_flags": ["no_topping_mesh_or_topping_thickness_label_confirmed_on_this_box_treated_as_genuinely_absent_not_omitted_by_mistake"]
+      "confidence_flags": [
+        "no_topping_mesh_or_topping_thickness_label_confirmed_on_this_box_treated_as_genuinely_absent_not_omitted_by_mistake"
+      ],
+      "element_name_assigned": "S_ระดับสูงกว่าหลังคาน"
     },
     {
-      "element_id": "SP_บริเวณพื้นห้องน้ำ", "element_type": "precast_plank_detail",
+      "element_id": null,
+      "element_type": "precast_plank_detail",
       "description": "ลักษณะการวางพื้น SP บริเวณพื้นห้องน้ำ — พื้นห้องน้ำ (ฝั่ง S) ลดระดับลง 0.10ม. จากฝั่ง SP เพื่อกันน้ำ/ระบายน้ำ",
-      "dowel_bar": { "count": 2, "dia_mm": 9, "type": "RB", "spacing_mm": 200,
-        "note": "1+1-Ø9มม. ปลายงอ (hook) เรียงทุกระยะ 0.20ม." },
-      "topping_mesh": { "dia_mm": 6, "spacing_mm": 200, "printed_as": "เสริมพิเศษ Ø6มม.@0.20ม." },
+      "dowel_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 200,
+        "note": "1+1-Ø9มม. ปลายงอ (hook) เรียงทุกระยะ 0.20ม."
+      },
+      "topping_mesh": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "printed_as": "เสริมพิเศษ Ø6มม.@0.20ม."
+      },
       "topping_thickness_min_mm": 50,
       "level_step_mm": 100,
       "printed_as": "ลักษณะการวางพื้น SP บริเวณพื้นห้องน้ำ 1:20 ; คอนกรีต TOPPING ไม่น้อยกว่า 0.05ม. ; 1.00 ; ▽ระดับพื้นห้องน้ำ ลดลง 0.10ม. ; 0.40 ; 1+1Ø9มม. ; Ø9มม.@0.20 (งอปลาย) ; เสริมพิเศษ Ø6มม.@0.20",
-      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
       "confidence_score": 0.78,
-      "confidence_flags": []
+      "confidence_flags": [],
+      "element_name_assigned": "SP_บริเวณพื้นห้องน้ำ"
     },
     {
-      "element_id": "SP_บริเวณริมคาน", "element_type": "precast_plank_detail",
+      "element_id": null,
+      "element_type": "precast_plank_detail",
       "description": "ลักษณะการวางพื้น SP บริเวณริมคาน — แผ่น SP สองแผ่นวางต่อกันบนคานขอบอาคาร (L-shape ledge), ไม่มีรายละเอียดเหล็กงอ/เสริมพิเศษแสดงบนกล่องนี้",
       "dowel_bar": null,
       "topping_mesh": null,
@@ -68,7 +117,10 @@
       "printed_as": "ลักษณะการวางพื้น SP บริเวณริมคาน 1:20 ; คอนกรีต TOPPING ; SP, SP",
       "concrete_grade": "fc210",
       "confidence_score": 0.65,
-      "confidence_flags": ["simplest_of_the_5_views_no_rebar_callout_visible_edge-bearing_condition_only"]
+      "confidence_flags": [
+        "simplest_of_the_5_views_no_rebar_callout_visible_edge-bearing_condition_only"
+      ],
+      "element_name_assigned": "SP_บริเวณริมคาน"
     }
   ],
   "confidence_score": 0.73,

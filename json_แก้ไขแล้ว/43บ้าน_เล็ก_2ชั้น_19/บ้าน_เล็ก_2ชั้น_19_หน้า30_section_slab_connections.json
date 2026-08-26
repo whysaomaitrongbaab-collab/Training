@@ -12,14 +12,99 @@
     "SECTION-1 and SECTION-2 on this sheet are printed with a blank/illegible mark reference ('SECTION _-1', 'SECTION _-2' — the callout letter before the dash did not print clearly) with a note '(ตามแบบโครงสร้างชั้นล่าง)'/'(ตามแบบโครงสร้าง)' referring back to the beam plans; recorded here using the printed 'SECTION' label plus a descriptive suffix rather than inventing a callout letter."
   ],
   "elements": [
-    { "element_id": "S0", "element_type": "slab", "description": "ground-bearing slab edge (canopy/carport), cast on compacted sand", "thickness_mm": 100, "main_bar": { "dia_mm": 9, "spacing_mm": 200, "type": "RB", "note": "dowel at slab edge, printed 'RB9mm@0.20m'" }, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "description": "elevated slab edge upstand (balcony/terrace type), U-shaped edge reinforcement", "thickness_mm": 100, "main_bar": { "dia_mm": 9, "spacing_mm": 200, "type": "RB", "note": "U-shaped edge dowel at slab upstand, printed 'RB9mm@0.20m'" }, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "SECTION_roof_eave_at_wall", "element_type": "connection_detail", "description": "detail where the roof soffit/eave meets a parapet wall below (ตามแบบโครงสร้างชั้นล่าง)", "main_bar": { "dia_mm": 6, "spacing_mm": 200, "type": "RB", "note": "0.07x0.07m dowel into wall/floor" }, "confidence_score": 0.65, "confidence_flags": ["printed section callout letter illegible — see file warnings"] },
-    { "element_id": "SECTION_floor_terrace_edge", "element_type": "connection_detail", "description": "floor/terrace slab edge detail (ตามแบบโครงสร้าง)", "main_bar": { "dia_mm": 9, "spacing_mm": 200, "type": "RB", "note": "U-shaped bar, 0.10m depth" }, "confidence_score": 0.65, "confidence_flags": ["printed section callout letter illegible — see file warnings"] },
-    { "element_id": "แบบขยายจุดที่มีหลังคาอบล่างติดผนัง", "element_type": "connection_detail", "description": "detail at the point where a lower roof eave meets a wall — steel C-section embedded in the beam with dowel bars into the wall", "additional_bars": [
-        { "count": 1, "dia_mm": 12, "type": "DB", "position": "dowel at 1.50m spacing, into wall above the C-section embed", "note": "printed 'DB12mm@1.50m.'" },
-        { "count": 1, "dia_mm": 12, "type": "DB", "position": "dowel at 1.00m spacing, into wall below the C-section embed", "note": "printed 'DB12mm@1.00m.'" }
-      ], "note": "embedded steel C-channel weld plate ('รอยเชื่อมเหล็กรูปพรรณ ตัว C'), beam depth reference 0.30m", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "แบบขยายรอยต่อพื้นกับระเบียง", "element_type": "connection_detail", "description": "joint detail between the precast-plank floor (พื้นสำเร็จรูป) and the terrace/balcony slab (พื้นระเบียง, S1) at a beam", "note": "'เหล็กพื้นเสียบไว้ก่อนเทพื้น' — floor dowel bars embedded before the plank/topping pour, at an embedded steel C-channel in the beam", "confidence_score": 0.6, "confidence_flags": [] }
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "description": "ground-bearing slab edge (canopy/carport), cast on compacted sand",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "note": "dowel at slab edge, printed 'RB9mm@0.20m'"
+      },
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "description": "elevated slab edge upstand (balcony/terrace type), U-shaped edge reinforcement",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "note": "U-shaped edge dowel at slab upstand, printed 'RB9mm@0.20m'"
+      },
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "detail where the roof soffit/eave meets a parapet wall below (ตามแบบโครงสร้างชั้นล่าง)",
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "note": "0.07x0.07m dowel into wall/floor"
+      },
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "printed section callout letter illegible — see file warnings"
+      ],
+      "element_name_assigned": "SECTION_roof_eave_at_wall"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "floor/terrace slab edge detail (ตามแบบโครงสร้าง)",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "note": "U-shaped bar, 0.10m depth"
+      },
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "printed section callout letter illegible — see file warnings"
+      ],
+      "element_name_assigned": "SECTION_floor_terrace_edge"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "detail at the point where a lower roof eave meets a wall — steel C-section embedded in the beam with dowel bars into the wall",
+      "additional_bars": [
+        {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "dowel at 1.50m spacing, into wall above the C-section embed",
+          "note": "printed 'DB12mm@1.50m.'"
+        },
+        {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "dowel at 1.00m spacing, into wall below the C-section embed",
+          "note": "printed 'DB12mm@1.00m.'"
+        }
+      ],
+      "note": "embedded steel C-channel weld plate ('รอยเชื่อมเหล็กรูปพรรณ ตัว C'), beam depth reference 0.30m",
+      "confidence_score": 0.6,
+      "confidence_flags": [],
+      "element_name_assigned": "แบบขยายจุดที่มีหลังคาอบล่างติดผนัง"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "joint detail between the precast-plank floor (พื้นสำเร็จรูป) and the terrace/balcony slab (พื้นระเบียง, S1) at a beam",
+      "note": "'เหล็กพื้นเสียบไว้ก่อนเทพื้น' — floor dowel bars embedded before the plank/topping pour, at an embedded steel C-channel in the beam",
+      "confidence_score": 0.6,
+      "confidence_flags": [],
+      "element_name_assigned": "แบบขยายรอยต่อพื้นกับระเบียง"
+    }
   ]
 }

@@ -14,10 +14,76 @@
     "'ลักษณะการวางพื้น SP' (SP floor-laying details, right half of sheet) are precast SOLID PLANK laying/topping details, not connection hardware — recorded separately as element_type precast_plank_detail per schema §9."
   ],
   "elements": [
-    { "element_id": "CS1_base_plate", "element_type": "connection_detail", "description": "Base connection: steel column CS1 to RC column/pedestal C1 top, via PLATE 200x200x9mm + 4-Ø12mm L-anchor bolts, 0.20m embedment into the RC column. Shown in section 1-1 (along BS1) and section 2-2 (along BS2).", "material": "steel", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "conn_A", "element_type": "connection_detail", "description": "'ขยายจุดต่อ A' — plate connection between a steel tie beam and column, PLATE 200x200x9mm + 4-Ø12mm anchor bolts, called out on S-05 near grid point B1.", "material": "steel", "confidence_score": 0.5, "confidence_flags": ["exact beam mark (BS1 vs BS2) and column not fully certain at this scale"] },
-    { "element_id": "conn_B", "element_type": "connection_detail", "description": "'ขยายจุดต่อ B' — plate connection between a steel tie beam and the CS1 ridge column, PLATE 200x200x9mm + 4-Ø12mm anchor bolts, called out on S-05 near the A2-B2 vertical.", "material": "steel", "confidence_score": 0.5, "confidence_flags": ["exact beam mark (BS1 vs BS2) not fully certain at this scale"] },
-    { "element_id": "SP_interior", "element_type": "precast_plank_detail", "description": "interior SP slab-laying detail (between two SP fields)", "dowel_bar": { "count": 2, "dia_mm": 9, "type": "RB" }, "topping_mesh": { "dia_mm": 6, "spacing_mm": 200 }, "topping_thickness_min_mm": 50, "level_step_mm": null, "note": "min. 0.05m clearance both sides per printed '*ไม่น้อยกว่า 0.05 ม.'", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "SP_bathroom", "element_type": "precast_plank_detail", "description": "SP slab-laying detail at the bathroom floor edge, stepped down to 'ระดับพื้นห้องน้ำ'", "dowel_bar": { "count": 2, "dia_mm": 9, "type": "RB" }, "topping_mesh": { "dia_mm": 6, "spacing_mm": 200 }, "topping_thickness_min_mm": 50, "level_step_mm": 100, "note": "min. 0.05m clearance per printed '*ไม่น้อยกว่า 0.05 ม.'; step matches the architectural WC.1 floor level (+0.70 vs +0.80 elsewhere, out of op04 scope)", "confidence_score": 0.6, "confidence_flags": [] }
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "Base connection: steel column CS1 to RC column/pedestal C1 top, via PLATE 200x200x9mm + 4-Ø12mm L-anchor bolts, 0.20m embedment into the RC column. Shown in section 1-1 (along BS1) and section 2-2 (along BS2).",
+      "material": "steel",
+      "confidence_score": 0.7,
+      "confidence_flags": [],
+      "element_name_assigned": "CS1_base_plate"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "'ขยายจุดต่อ A' — plate connection between a steel tie beam and column, PLATE 200x200x9mm + 4-Ø12mm anchor bolts, called out on S-05 near grid point B1.",
+      "material": "steel",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "exact beam mark (BS1 vs BS2) and column not fully certain at this scale"
+      ],
+      "element_name_assigned": "conn_A"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "'ขยายจุดต่อ B' — plate connection between a steel tie beam and the CS1 ridge column, PLATE 200x200x9mm + 4-Ø12mm anchor bolts, called out on S-05 near the A2-B2 vertical.",
+      "material": "steel",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "exact beam mark (BS1 vs BS2) not fully certain at this scale"
+      ],
+      "element_name_assigned": "conn_B"
+    },
+    {
+      "element_id": null,
+      "element_type": "precast_plank_detail",
+      "description": "interior SP slab-laying detail (between two SP fields)",
+      "dowel_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB"
+      },
+      "topping_mesh": {
+        "dia_mm": 6,
+        "spacing_mm": 200
+      },
+      "topping_thickness_min_mm": 50,
+      "level_step_mm": null,
+      "note": "min. 0.05m clearance both sides per printed '*ไม่น้อยกว่า 0.05 ม.'",
+      "confidence_score": 0.65,
+      "confidence_flags": [],
+      "element_name_assigned": "SP_interior"
+    },
+    {
+      "element_id": null,
+      "element_type": "precast_plank_detail",
+      "description": "SP slab-laying detail at the bathroom floor edge, stepped down to 'ระดับพื้นห้องน้ำ'",
+      "dowel_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB"
+      },
+      "topping_mesh": {
+        "dia_mm": 6,
+        "spacing_mm": 200
+      },
+      "topping_thickness_min_mm": 50,
+      "level_step_mm": 100,
+      "note": "min. 0.05m clearance per printed '*ไม่น้อยกว่า 0.05 ม.'; step matches the architectural WC.1 floor level (+0.70 vs +0.80 elsewhere, out of op04 scope)",
+      "confidence_score": 0.6,
+      "confidence_flags": [],
+      "element_name_assigned": "SP_bathroom"
+    }
   ]
 }

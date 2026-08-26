@@ -1,0 +1,46 @@
+{
+  "png": "44",
+  "doc_page": 42,
+  "discipline": "structural",
+  "sheet_code": "S-17",
+  "sheet_name": "ST (ระดับชานพัก - ชั้นที่ 2)",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า44.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Upper stair flight: from the ชานพัก (half-landing) up to ระดับพื้นชั้น 2. The lower flight is on S-16/หน้า43; the conventions described in that file's warnings (bar_layers rather than a single main_bar, 'ทุกมุม' left without a pitch, RB/DB assignment, no flight width dimensioned) apply here unchanged.",
+    "Geometry: 8 risers @0.175 = 1.40m rise, 7 treads @0.25 = 1.75m going, landing 1.20m, 2.95m overall horizontally. Waist 0.125m, landing 0.30m thick.",
+    "The two flights share the same 0.175 riser and 0.25 tread, so the storey height works out at 18 risers x 0.175 = 3.15m from floor 1 to floor 2. That is consistent but is NOT printed anywhere — this house's structural set gives no floor-level table (see the grid master's z_levels warning), so it is recorded here as a note rather than added as a z-level.",
+    "Both ends of this flight frame into a B2: the landing end and the floor-2 end. No column is drawn on this sheet.",
+    "Bar lengths printed along the slope on this flight are 0.70 and 0.80 (off the upper end) and 0.40 (off the landing)."
+  ],
+  "elements": [
+    {
+      "element_id": "ST",
+      "element_type": "stair",
+      "level": "ชานพัก - ระดับพื้นชั้น 2",
+      "riser_count": 8,
+      "riser_mm": 175,
+      "tread_count": 7,
+      "tread_mm": 250,
+      "total_rise_m": 1.40,
+      "total_going_m": 1.75,
+      "landing_length_m": 1.20,
+      "overall_horizontal_m": 2.95,
+      "waist_thickness_mm": 125,
+      "landing_thickness_mm": 300,
+      "bar_layers": [
+        { "dia_mm": 12, "spacing_mm": 200, "type": "DB", "position": "top steel at the floor-2 end", "note": "printed 'ø12มม.@0.20'" },
+        { "dia_mm": 9, "spacing_mm": 250, "type": "RB", "position": "distribution alongside the top steel", "note": "printed 'ø9มม.@0.25'" },
+        { "dia_mm": 12, "spacing_mm": 100, "type": "DB", "position": "waist bottom, main (runs the length of the flight)", "note": "printed 'ø12มม.@0.10' at both ends of the flight" },
+        { "dia_mm": 9, "spacing_mm": 250, "type": "RB", "position": "waist bottom, distribution", "note": "printed 'ø9มม.@0.25'; sloped bar lengths 0.70, 0.80 and 0.40 printed on this flight" },
+        { "dia_mm": 12, "spacing_mm": 200, "type": "DB", "position": "landing top, main", "note": "printed 'ø12มม.@0.20' with 'ø9มม.@0.25' distribution; landing bars run 0.40 from the beam face" },
+        { "dia_mm": 12, "spacing_mm": 100, "type": "DB", "position": "landing bottom, main", "note": "printed 'ø12มม.@0.10' with 'ø9มม.@0.25' distribution" }
+      ],
+      "confidence_score": 0.8,
+      "confidence_flags": ["bar positions are assigned by following each leader to the face it touches; the sheet labels the bars but does not name their roles"],
+      "note": "both ends frame into a B2; 'ทุกมุม' step-corner bars are drawn on this flight the same way as on S-16 but are not separately labelled here"
+    }
+  ]
+}

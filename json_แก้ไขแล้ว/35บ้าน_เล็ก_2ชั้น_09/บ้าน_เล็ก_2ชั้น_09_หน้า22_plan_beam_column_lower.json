@@ -11,7 +11,8 @@
   "confidence_flags": [],
   "warnings": [
     "'ชั้นล่าง' here means the ground/stilt-level beam grid (open under-floor level of this single-story-on-stilts house), not a second story — see grid-master warnings.",
-    "Beam mark B3X's south grid_ref_end (C1 to beyond) is not dimensioned on this sheet — recorded against grid line C'' (6.60, established on S-05's balcony) as a best-effort estimate, not a confirmed read; see grid-master warning and this element's confidence_flags.",
+    "Beam mark B3X runs south from C1 to grid line C\" (6.60). No dimension is printed for it on this sheet, but a pixel scan of this PNG puts the south edge of the B3X/S0 landing pad exactly 1.20m below row C (189 px at the sheet's own 157.4 px/m, calibrated on grid1-grid3 = 5.40m and A-B = 3.60m) — the same 1.20m that S-05 prints for the balcony/stair-landing edge. So C\" is a measurement on this sheet, not an inference borrowed from S-05, and span_source was upgraded from 'unresolved' to 'grid_table' on 2026-08-26 after Makham queried it.",
+    "NOT C' — C' (6.40) is the ROOF EAVE line, 1.00m south of C, and comes from the roof plans S-07/S-08 (หน้า25/26). It has nothing to do with the floor structure: no floor beam or slab stops on it. The two dummy lines are 0.20m apart and easy to confuse, so every floor-level element south of C uses C\" and every roof-level one uses C'.",
     "S0 markers at the 4 interior bays carry no plan-level dimension beyond the beam grid that bounds them (each bay is exactly one grid module) — grid_refs given as the bounding beam intersection points per bay."
   ],
   "elements": [
@@ -25,7 +26,7 @@
     { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C''1", "span_length_m": 1.20, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["south endpoint not dimensioned on this sheet; grid_ref_end/span estimated against S-05's C'' balcony line, see file warnings"] },
+    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C\"1", "span_length_m": 1.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["no printed dimension on this sheet; the 1.20m was measured off the PNG and matches S-05's printed balcony depth exactly — see file warnings"] },
     { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
     { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
 
@@ -33,6 +34,6 @@
     { "element_id": "S0", "element_type": "slab", "count": 1, "grid_refs": ["A2", "A3", "B2", "B3"], "confidence_score": 0.7, "confidence_flags": [] },
     { "element_id": "S0", "element_type": "slab", "count": 1, "grid_refs": ["B1", "B2", "C1", "C2"], "confidence_score": 0.7, "confidence_flags": [] },
     { "element_id": "S0", "element_type": "slab", "count": 1, "grid_refs": ["B2", "B3", "C2", "C3"], "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "S0", "element_type": "slab", "count": 1, "grid_refs": ["C1", "C''1"], "note": "landing-pad slab south of C1, framed by B3X", "confidence_score": 0.6, "confidence_flags": [] }
+    { "element_id": "S0", "element_type": "slab", "count": 1, "grid_refs": ["C1", "C\"1"], "note": "landing-pad slab south of C1, framed by B3X", "confidence_score": 0.6, "confidence_flags": [] }
   ]
 }

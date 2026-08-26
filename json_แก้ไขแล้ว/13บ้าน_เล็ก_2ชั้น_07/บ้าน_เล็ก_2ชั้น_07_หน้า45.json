@@ -10,80 +10,157 @@
   "view_title": "รูปตัดขอบพื้น (precast plank topping mesh) มาร์ค S0/S1/S3/SX, แบบขยายรอยต่อเสา CX บนคาน คสล., และ 'ขยาย 2' (รูปตัดขอบพื้นระดับ +0.20 พร้อมเหล็กฝัง — สงสัยเชื่อมโยงกับ 'แบบขยาย 2' ที่ S-04 อ้างถึงสำหรับพื้นที่จอดรถ/ทางเข้าเลยกริด A, ดู warnings)",
   "elements": [
     {
-      "element_id": "S0", "element_type": "slab",
+      "element_id": "S0",
+      "element_type": "slab",
       "description": "รูปตัดขอบพื้นที่รอยต่อผนัง/คาน มีทรายราดน้ำอัดแน่นรองใต้ผิวหน้า (precast plank topping edge condition)",
       "thickness_mm": 100,
-      "rebar": { "dia_mm": 9, "spacing_mm": 250, "type": "RB", "note": "ตะแกรงสองทาง (#), พิมพ์เป็น Ø9มม.@0.25ม.#" },
-      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "rebar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "note": "ตะแกรงสองทาง (#), พิมพ์เป็น Ø9มม.@0.25ม.#"
+      },
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
       "printed_as": "รูปตัด[ขอบพื้น] S0 1:20 ; Ø9มม.@0.25ม.# ; 0.10+0.10 ; ทรายราดน้ำอัดแน่น",
-      "spec_source": "section", "spec_confidence_score": 0.65,
+      "spec_source": "section",
+      "spec_confidence_score": 0.65,
       "confidence_score": 0.65,
-      "confidence_flags": ["box_caption_text_partially_illegible_transcribed_as_'รูปตัดขอบพื้น'_best_effort", "thickness_mm_inferred_from_one_of_two_0.10_dimensions_meaning_of_second_0.10_uncertain"]
+      "confidence_flags": [
+        "box_caption_text_partially_illegible_transcribed_as_'รูปตัดขอบพื้น'_best_effort",
+        "thickness_mm_inferred_from_one_of_two_0.10_dimensions_meaning_of_second_0.10_uncertain"
+      ]
     },
     {
-      "element_id": "S1", "element_type": "slab",
+      "element_id": "S1",
+      "element_type": "slab",
       "description": "รูปตัดขอบพื้นแถบแคบ กว้างไม่เกิน 1.20ม. (max width constraint, ไม่ใช่ค่าคงที่)",
-      "rebar": { "dia_mm": 9, "spacing_mm": 250, "type": "RB", "note": "ตะแกรงสองทาง (#), พิมพ์เป็น Ø9มม.@0.25ม.# ทั้งสองขอบ" },
-      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "rebar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "note": "ตะแกรงสองทาง (#), พิมพ์เป็น Ø9มม.@0.25ม.# ทั้งสองขอบ"
+      },
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
       "printed_as": "รูปตัด[ขอบพื้น] S1 1:20 ; ไม่เกิน 1.20ม. ; Ø9มม.@0.25ม.#",
-      "spec_source": "section", "spec_confidence_score": 0.7,
+      "spec_source": "section",
+      "spec_confidence_score": 0.7,
       "confidence_score": 0.7,
-      "confidence_flags": ["box_caption_text_partially_illegible_transcribed_as_'รูปตัดขอบพื้น'_best_effort"]
+      "confidence_flags": [
+        "box_caption_text_partially_illegible_transcribed_as_'รูปตัดขอบพื้น'_best_effort"
+      ]
     },
     {
-      "element_id": "S3", "element_type": "slab",
-      "span_m": 3.50, "span_source": "local_dimension",
-      "thickness_mm": 150, "size_printed_as": "0.15",
+      "element_id": "S3",
+      "element_type": "slab",
+      "span_m": 3.5,
+      "span_source": "local_dimension",
+      "thickness_mm": 150,
+      "size_printed_as": "0.15",
       "description": "รูปตัดขอบพื้นแถบกว้าง 3.50ม. รูปตัวยู (U-shape) เหล็กบน-ล่างแยกชั้น",
       "bar_layers": [
-        { "location": "top", "dia_mm": 9, "type": "RB", "spacing_mm": 125, "variable_spacing": true,
-          "printed_as": "Ø9มม.@0.15ม. / Ø9มม.@0.125ม.", "note": "0.125ม. ใกล้ขอบ, 0.15ม. กลางช่วง (ตีความจากลำดับป้ายกำกับ)" },
-        { "location": "bottom", "dia_mm": 9, "type": "RB", "spacing_mm": 125, "variable_spacing": true,
-          "printed_as": "Ø9มม.@0.125ม. / Ø9มม.@0.15ม.", "note": "0.125ม. ใกล้ขอบ, 0.15ม. กลางช่วง (ตีความจากลำดับป้ายกำกับ)" }
+        {
+          "location": "top",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 125,
+          "variable_spacing": true,
+          "printed_as": "Ø9มม.@0.15ม. / Ø9มม.@0.125ม.",
+          "note": "0.125ม. ใกล้ขอบ, 0.15ม. กลางช่วง (ตีความจากลำดับป้ายกำกับ)"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 125,
+          "variable_spacing": true,
+          "printed_as": "Ø9มม.@0.125ม. / Ø9มม.@0.15ม.",
+          "note": "0.125ม. ใกล้ขอบ, 0.15ม. กลางช่วง (ตีความจากลำดับป้ายกำกับ)"
+        }
       ],
-      "concrete_grade": "fc210", "steel_grade": "SR24",
-      "spec_source": "section", "spec_confidence_score": 0.65,
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
+      "spec_source": "section",
+      "spec_confidence_score": 0.65,
       "confidence_score": 0.65,
-      "confidence_flags": ["two_spacing_values_per_face_interpreted_as_variable_spacing_near_edge_vs_midspan_not_fully_certain_could_alternatively_be_two_separate_mesh_layers"]
+      "confidence_flags": [
+        "two_spacing_values_per_face_interpreted_as_variable_spacing_near_edge_vs_midspan_not_fully_certain_could_alternatively_be_two_separate_mesh_layers"
+      ]
     },
     {
-      "element_id": "SX", "element_type": "slab",
+      "element_id": "SX",
+      "element_type": "slab",
       "description": "รูปตัดขอบพื้นแบบทั่วไป/มุม (generic corner/typical edge condition)",
-      "thickness_mm": 100, "size_printed_as": "0.10",
+      "thickness_mm": 100,
+      "size_printed_as": "0.10",
       "main_bar": null,
-      "rebar": { "dia_mm": 9, "spacing_mm": 250, "type": "RB", "note": "พิมพ์เป็น Ø9มม.@0.25ม. บวกเหล็กมุมเดี่ยว 1-Ø9มม." },
+      "rebar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "note": "พิมพ์เป็น Ø9มม.@0.25ม. บวกเหล็กมุมเดี่ยว 1-Ø9มม."
+      },
       "additional_bars": [
-        { "count": 1, "dia_mm": 9, "type": "RB", "position": "มุมขอบพื้น L-shape", "note": "1-Ø9มม. ที่มุม" }
+        {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "position": "มุมขอบพื้น L-shape",
+          "note": "1-Ø9มม. ที่มุม"
+        }
       ],
-      "concrete_grade": "fc210", "steel_grade": "SR24",
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
       "printed_as": "รูปตัด[ขอบพื้น] SX 1:20 ; 0.10 ; 1-Ø9มม. ; Ø9มม.@0.25ม.",
-      "spec_source": "section", "spec_confidence_score": 0.7,
+      "spec_source": "section",
+      "spec_confidence_score": 0.7,
       "confidence_score": 0.7,
-      "confidence_flags": ["box_caption_text_partially_illegible_transcribed_as_'รูปตัดขอบพื้น'_best_effort"]
+      "confidence_flags": [
+        "box_caption_text_partially_illegible_transcribed_as_'รูปตัดขอบพื้น'_best_effort"
+      ]
     },
     {
-      "element_id": "CX", "element_type": "connection_detail",
+      "element_id": "CX",
+      "element_type": "connection_detail",
       "description": "แบบขยายรอยต่อเสา CX (การตั้งเสา CX บนคานคอนกรีต) — เสา CX ไม่ได้ตั้งจากฐานราก แต่ตั้งบนคาน คสล. โดยตรง",
-      "width_mm": 300, "size_printed_as": "0.30",
+      "width_mm": 300,
+      "size_printed_as": "0.30",
       "printed_as": "แบบขยายรอยต่อเสา CX 1:20 (การตั้งเสา CX บนคานคอนกรีต) ; 0.30",
-      "spec_source": "section", "spec_confidence_score": 0.75,
+      "spec_source": "section",
+      "spec_confidence_score": 0.75,
       "confidence_score": 0.75,
-      "confidence_flags": ["rebar_dowel_detail_at_joint_shown_schematically_not_fully_dimensioned"],
+      "confidence_flags": [
+        "rebar_dowel_detail_at_joint_shown_schematically_not_fully_dimensioned"
+      ],
       "note": "เชื่อมโยงกับหน้าตัดเสา CX (200x200มม., 4-Ø16มม., ปลอก Ø6มม.@0.15ม.) ที่บันทึกไว้แล้วในไฟล์ หน้า42.json (S-15) — ไฟล์นี้เพิ่มข้อมูลเงื่อนไขฐานรองรับ (ตั้งบนคาน ไม่ใช่ฐานราก) ซึ่งหน้า42 ไม่ได้ระบุ"
     },
     {
-      "element_id": "ขยาย2_รูปตัดขอบพื้น", "element_type": "detail_view",
+      "element_id": null,
+      "element_type": "detail_view",
       "description": "'ขยาย 2' — รูปตัดขอบพื้น/คานยกระดับ ที่ระดับ +0.20ม. มีเหล็กงอฝัง (hook) และตะแกรง Ø9มม.@0.25ม. กว้าง 0.45ม., ความสูงเป็นชั้น 0.15+0.15+0.10ม.",
-      "level_m": 0.20,
-      "rebar": { "dia_mm": 9, "spacing_mm": 250, "type": "RB", "printed_as": "Ø9 มม.@0.25ม." },
+      "level_m": 0.2,
+      "rebar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "Ø9 มม.@0.25ม."
+      },
       "printed_as": "ขยาย 2 1:20 ; ▽+0.20 ; 0.15/0.15/0.10 ; 0.45 ; Ø9 มม.@0.25ม.",
-      "spec_source": "section", "spec_confidence_score": 0.5,
+      "spec_source": "section",
+      "spec_confidence_score": 0.5,
       "confidence_score": 0.5,
-      "confidence_flags": ["no_explicit_element_id_printed_descriptive_id_used", "possible_match_to_grid_master's_S-04_'แบบขยาย2'_reference_see_warnings_unverified"]
+      "confidence_flags": [
+        "no_explicit_element_id_printed_descriptive_id_used",
+        "possible_match_to_grid_master's_S-04_'แบบขยาย2'_reference_see_warnings_unverified"
+      ],
+      "element_name_assigned": "ขยาย2_รูปตัดขอบพื้น"
     }
   ],
   "confidence_score": 0.68,
-  "confidence_flags": ["ไม่พบกล่องรายละเอียดที่ระบุมาร์ค S2 อย่างชัดเจนบนแผ่นนี้ แม้ชื่อแผ่น (แสดงแบบ) จะระบุ 'S2' ไว้ด้วย — ดู warnings"],
+  "confidence_flags": [
+    "ไม่พบกล่องรายละเอียดที่ระบุมาร์ค S2 อย่างชัดเจนบนแผ่นนี้ แม้ชื่อแผ่น (แสดงแบบ) จะระบุ 'S2' ไว้ด้วย — ดู warnings"
+  ],
   "warnings": [
     "ชื่อแผ่น (แสดงแบบ) ระบุ 'S0, S1, S2, S3, SX' แต่บนแผ่นจริงพบกล่องรายละเอียดเพียง S0, S1, S3, SX (4 กล่อง) — ไม่พบกล่องที่ระบุมาร์ค 'S2' อย่างชัดเจน เป็นไปได้ว่า S2 อยู่บนหน้าอื่น (นอกขอบเขตงานนี้) หรือซ้ำกับ S1/S3/SX โดยไม่ได้แยกกล่อง หรืออ่านป้ายกำกับผิดพลาด — ผู้ประสานงานควรตรวจสอบหน้าข้างเคียงหรือภาพความละเอียดสูงกว่านี้",
     "'ขยาย 2' (bottom-right ของแผ่นนี้) มีความเป็นไปได้สูงที่จะเป็นแบบขยายเดียวกับที่กริดมาสเตอร์ (หน้า00_gridline.json) ระบุไว้ว่า S-04 อ้างถึงสำหรับพื้นที่จอดรถ/ทางเข้าที่ยื่นเลยกริด A ไป 2.05ม. (dummy grid A' ที่ y=12.75, confidence_score 0.7 เพราะยังไม่ได้เปิดดู 'แบบขยาย 2' โดยตรงตอนสร้าง grid master) — เนื้อหาที่พบในไฟล์นี้ (รูปตัดขอบพื้นระดับ +0.20ม.) สอดคล้องกับเงื่อนไขพื้นที่จอดรถที่มีระดับต่างจากพื้นบ้านหลัก แต่ agent นี้ไม่มีสิทธิ์แก้ไขกริดมาสเตอร์ (read-only ตามคำสั่งงาน) จึงบันทึกเป็น element_type: detail_view แยกไว้ และรายงานจุดเชื่อมโยงนี้ให้ผู้ประสานงานตรวจสอบและอัปเดต confidence_score ของ dummy grid A' หากยืนยันตรงกันจริง",

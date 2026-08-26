@@ -37,6 +37,22 @@ HERE = Path(__file__).resolve().parent
 T03 = HERE.parent
 TRAINING = T03.parent.parent           # .../Training
 GT_ROOT = TRAINING / "json_แก้ไขแล้ว"
+
+
+def strip_assigned(obj):
+    """ตัด element_name_assigned ออกจาก training target (2026-08-25, มะขามอนุมัติ att1235)
+
+    convention ใหม่ของ section: element ที่ไม่มี mark พิมพ์บนแบบ → element_id: null และชื่อที่
+    คนจดตั้งเอง (gate_front ฯลฯ) ย้ายไป element_name_assigned ซึ่งเป็น metadata สำหรับมนุษย์ —
+    **ห้ามรั่วเข้า target** ไม่งั้นโมเดลถูกสอนให้เดาชื่อที่ไม่มีบนกระดาษ (ปัญหาเดิม 66% ของ
+    ตัวอย่าง section) ตัดแบบ deep เพราะ element อยู่ได้ทั้ง elements[] และ views[].elements[]
+    """
+    if isinstance(obj, dict):
+        return {k: strip_assigned(v) for k, v in obj.items() if k != "element_name_assigned"}
+    if isinstance(obj, list):
+        return [strip_assigned(x) for x in obj]
+    return obj
+
 IMG_ROOT = TRAINING / "image"
 OUT_IMAGES = HERE / "images"
 
@@ -261,7 +277,8 @@ def main():
                         {"role": "user", "content": content},
                         {"role": "assistant",
                          "content": [{"type": "text",
-                                      "text": json.dumps(gt, ensure_ascii=False)}]},
+                                      "text": json.dumps(strip_assigned(gt),
+                                                         ensure_ascii=False)}]},
                     ],
                 }
                 (rows_test if house in TEST_HOUSES

@@ -28,7 +28,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 BASE_MODEL = "unsloth/Qwen3.6-35B-A3B"
-MAX_PIXELS = 5120 * 1024      # = ตอนเทรนเป๊ะ
+MAX_PIXELS = 5120 * 1024      # = ตอนเทรน t03 เป๊ะ ⚠️ t03b เทรนที่ 7680 (train_t03.py แก้
+                              # 2026-08-25) — ก่อนวัดผล t03b ต้องแก้ตรงนี้เป็น 7680*1024 ตาม
+                              # ไม่งั้นวัดที่ความละเอียดต่ำกว่าที่เทรน = ซ้ำบั๊กคลาส t01 §0.4
 MIN_PIXELS = 256 * 1024
 PAGE_TIMEOUT_S = 25 * 60      # มะขามสั่ง 2026-08-24: เกิน 25 นาที/หน้า ตัดจบ
 
@@ -42,6 +44,39 @@ def strip_fence(text):
     # ซึ่งไม่ใช่ JSON เลขที่ถูกต้อง (ต้องมีเลขอย่างน้อย 1 ตัวหลังจุด) เติม 0 ปิดให้
     t = re.sub(r"(\d)\.(?=[,}\]\s])", r"\1.0", t)
     return t
+
+
+# ── การให้คะแนน id-recall แก้ใหม่ 2026-08-25 (มะขามสั่ง "ไปหาในเน็ตและแก้มา") ──
+# ปัญหาเดิม: set(gt) & set(pred) เทียบสตริงตรงเป๊ะ ทั้งที่ element_id ใน GT มี 2 พันธุ์ —
+# ชื่อที่พิมพ์บนแบบจริง (B1, C1, F1A, RB1') กับชื่อที่คนจดตั้งเอง (gate_front, SP_at_bathroom,
+# ห้องนอน) ซึ่งไม่มีบนกระดาษ โมเดลเดาไม่ได้ → section มีเพดานแค่ 4% บนบ้าน 08 (วัดด้วย
+# measure_id_ceiling.py) เลข 0% จึงแทบไม่บอกอะไรเรื่องโมเดล
+# ทางแก้ตามมาตรฐาน KIE (KIEval 2025, arXiv:2503.05488 — รายงาน exact กับ relaxed แยกกัน):
+#   1) normalize ก่อนเทียบ (strip/ยุบช่องว่าง/casefold) — กัน "B1 " ไม่ตรง "B1"
+#   2) รายงาน 2 คอลัมน์: recall เดิม (ทุก id, เทียบย้อนรอบเก่าได้) + recall_printed
+#      (เฉพาะ id ที่พิมพ์บนแบบจริง = ตัวเลขที่ตัดสินความสามารถโมเดลได้จริง)
+# GT ไม่ถูกแตะแม้แต่ไบต์เดียว — แก้เฉพาะวิธีอ่านคะแนน
+PRINTED_ID = re.compile(r"^[A-Za-zก-๙]{1,4}[0-9]{0,3}[A-Za-z']{0,3}$")  # = measure_id_ceiling.py
+
+
+def norm_id(s):
+    """ปรับสตริงก่อนเทียบ: ตัดขอบ ยุบช่องว่างภายใน casefold — ไม่แตะเนื้อหาไทย/อังกฤษ"""
+    return re.sub(r"\s+", " ", s.strip()).casefold()
+
+
+def score_ids(gt_ids, pred_ids):
+    """คืน dict คะแนนทั้งแบบรวม (เดิม) และแบบเฉพาะชื่อที่พิมพ์บนแบบ (printed)"""
+    g_all = {norm_id(i) for i in gt_ids}
+    p_all = {norm_id(i) for i in pred_ids}
+    g_pr = {norm_id(i) for i in gt_ids if PRINTED_ID.match(i.strip())}
+    hit_all = len(g_all & p_all)
+    hit_pr = len(g_pr & p_all)
+    return dict(
+        gt_ids=len(g_all), hit_ids=hit_all,
+        recall=hit_all / len(g_all) if g_all else None,
+        gt_printed=len(g_pr), hit_printed=hit_pr,
+        recall_printed=hit_pr / len(g_pr) if g_pr else None,
+    )
 
 
 def element_ids(doc):
@@ -215,15 +250,14 @@ def main():
         gt = json.loads(gt_txt)
         gt_ids, gt_n = element_ids(gt)
         p_ids, p_n = element_ids(doc) if valid else ([], 0)
-        hit = len(set(gt_ids) & set(p_ids))
-        rec = hit / len(set(gt_ids)) if gt_ids else None
+        sc = score_ids(gt_ids, p_ids)
         results.append(dict(id=r["id"], subtask=sub, valid=valid, error=err, sec=round(dt, 1),
                             gt_elements=gt_n, pred_elements=p_n,
-                            gt_ids=len(set(gt_ids)), hit_ids=hit, recall=rec,
-                            grammar=bool(use_g)))
-        rl = "-" if rec is None else f"{rec:.0%}"
+                            grammar=bool(use_g), **sc))
+        rl = "-" if sc["recall"] is None else f"{sc['recall']:.0%}"
+        rp = "-" if sc["recall_printed"] is None else f"{sc['recall_printed']:.0%}"
         print(f"[{i}/{len(rows)}] {sub:<13} {'JSON ok ' if valid else 'JSON เสีย'} "
-              f"el {p_n:>3}/{gt_n:<3} id-recall {rl:>4} {dt:>6.0f}s"
+              f"el {p_n:>3}/{gt_n:<3} recall {rl:>4} printed {rp:>4} {dt:>6.0f}s"
               f"{' [xgrammar]' if use_g else ''}{' ' + err if err else ''}", flush=True)
 
     (out_dir / "_summary.json").write_text(
@@ -233,19 +267,26 @@ def main():
 
     ok = sum(1 for x in results if x["valid"])
     recs = [x["recall"] for x in results if x["recall"] is not None]
+    prs = [x["recall_printed"] for x in results if x.get("recall_printed") is not None]
     line = (f"\nสรุป {label} ({tag}, split={','.join(splits_seen)}): "
             f"JSON valid {ok}/{len(results)} ({ok / len(results):.0%})")
     if recs:
-        line += f" | id-recall เฉลี่ย {sum(recs) / len(recs):.1%} (จาก {len(recs)} งานที่ GT มี id)"
+        line += f" | recall รวม {sum(recs) / len(recs):.1%} (จาก {len(recs)} งาน)"
+    if prs:
+        line += f" | recall เฉพาะชื่อบนแบบ {sum(prs) / len(prs):.1%} (จาก {len(prs)} งาน)"
     print(line)
+    print("  (recall รวม = ตัวเลขเทียบย้อนรอบเก่าได้ · recall เฉพาะชื่อบนแบบ = ตัวตัดสินโมเดลจริง"
+          " — id ที่คนจดตั้งเอง เช่น gate_front โมเดลเดาไม่ได้ ไม่นับในคอลัมน์หลัง)")
     per = {}
     for x in results:
         per.setdefault(x["subtask"], []).append(x)
     for s, xs in sorted(per.items()):
         rs = [x["recall"] for x in xs if x["recall"] is not None]
+        ps = [x["recall_printed"] for x in xs if x.get("recall_printed") is not None]
         v = sum(1 for x in xs if x["valid"])
         print(f"  {s:<13} valid {v}/{len(xs)}"
-              + (f" | id-recall {sum(rs) / len(rs):.1%}" if rs else ""))
+              + (f" | recall {sum(rs) / len(rs):.1%}" if rs else "")
+              + (f" | printed {sum(ps) / len(ps):.1%} ({len(ps)} งาน)" if ps else " | printed - (GT ไม่มีชื่อบนแบบเลย)"))
     print(f"\nไฟล์: {out_dir}")
 
 
