@@ -105,16 +105,26 @@ PLAN_SUBTASKS = {
 }
 
 def load_prompt_block():
+    """คืน (block ที่เจาะช่อง {{GLOSSARY}} ไว้, ตัว glossary)
+
+    glossary ไทย→field (DIP — แทรกศัพท์ ไม่แปลทั้ง prompt) คั่นด้วย HTML comment ใน
+    _common.md เพื่อให้ตัดออกราย subtask ได้: gridline หาแต่เส้นกริด ไม่แตะตาราง
+    element_type/เหล็กเลย และเป็น subtask ที่ seq ยาวสุด "ทุกตัว" (~45.6k) — ใส่ไปก็
+    เปลืองเปล่าแล้วดัน MAX_LENGTH ทะลุ 47,104 (= ต้องขยับ VRAM ตาม)
+    """
     txt = (T03 / "_common.md").read_text(encoding="utf-8")
     m = re.search(r"## BLOCK START\n(.*?)\n## BLOCK END", txt, re.DOTALL)
-    return m.group(1).strip()
+    body = m.group(1).strip()
+    g = re.search(r"<!-- GLOSSARY START -->\n(.*?)\n<!-- GLOSSARY END -->\n", body, re.DOTALL)
+    assert g, "_common.md ไม่มี marker GLOSSARY START/END"
+    return body.replace(g.group(0), "{{GLOSSARY}}"), g.group(1).strip()
 
 def load_subtask_prompt(name):
     txt = (T03 / "pass2_used" / f"{name}.md").read_text(encoding="utf-8")
     m = re.search(r"## PROMPT START\n(.*?)(?:\n## PROMPT END|\Z)", txt, re.DOTALL)
     return m.group(1).strip()
 
-COMMON = load_prompt_block()
+COMMON, GLOSSARY = load_prompt_block()
 PROMPTS = {n: load_subtask_prompt(n) for n in
            ("gridline", "plan", "section", "schedule", "notes")}
 
@@ -126,7 +136,8 @@ def prompt_for(subtask):
                 .replace("{{ELEMENT_TYPES}}", ", ".join(sorted(cfg["types"]))))
     else:
         body = PROMPTS[subtask]
-    return COMMON + "\n\n" + body
+    gloss = "" if subtask == "gridline" else GLOSSARY
+    return COMMON.replace("{{GLOSSARY}}", gloss) + "\n\n" + body
 
 # ---- element filtering ---------------------------------------------------
 def type_matches(t, cfg):

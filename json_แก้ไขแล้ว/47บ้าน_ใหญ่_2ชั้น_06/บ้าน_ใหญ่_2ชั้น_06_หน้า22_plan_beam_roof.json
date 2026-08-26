@@ -1,4 +1,4 @@
-{
+﻿{
   "png": "22",
   "doc_page": 22,
   "discipline": "structural",
@@ -13,6 +13,7 @@
     "Member callouts (ตะเข้สัน, อกไก่, จันทัน, etc.) are leader-line labels naming a member TYPE that recurs across the whole truss (hip rafters, ridge, common rafters at regular spacing), not individually marked/numbered instances with their own grid_ref like the RC beams on other sheets — recorded as one representative steel_section entry per named member type with grid_ref left null, rather than inventing per-instance positions the drawing does not give."
   ],
   "warnings": [
+    "CORRECTED 2026-08-24 โ€” span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections (Pythagoras where the beam is diagonal, so chamfered members get a real length too). This is pure computation from the grid per the ยง4 rule that span is calculated by code and never estimated by the model โ€” no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
     "RB1/RB2 are a different thing from the steel truss members: they are RC ring beams at the top of the walls (wall-plate level) that carry the steel roof frame, matching the rebar sections given for RB1/RB2 on หน้า26 (SECTION RB1/RB2). Recorded here as beam elements at their approximate plan position (posts/support points shown on this sheet); full spec (width/height/main_bar/stirrup) lives on the หน้า26 section file and joins by element_id.",
     "'แปกัลวาไนซ์' (galvanized purlins) is printed without an explicit size callout on this sheet (unlike the other members, which all print a WFC/2C size string) — recorded with steel_section omitted and a note, rather than guessing a size.",
     "Fascia/barge board members (เชิงชาย, ทับเชิงชาย, ปั้นลม, ทับปั้นลม) are hardwood trim, not structural steel — recorded as element_type 'accessory' with material 'wood', not steel_section."
@@ -28,7 +29,7 @@
     { "element_id": "แปกัลวาไนซ์", "element_type": "purlin", "grid_ref": null, "material": "steel", "description": "galvanized purlins, size not printed on this sheet", "confidence_score": 0.4, "confidence_flags": ["size_not_printed"] },
     { "element_id": "เชิงชายไม้เนื้อแข็ง", "element_type": "accessory", "grid_ref": null, "material": "wood", "description": "hardwood fascia board 1\"x6\", plus ทับเชิงชายไม้เนื้อแข็ง (fascia cover board)", "confidence_score": 0.6, "confidence_flags": [] },
     { "element_id": "ปั้นลมไม้เนื้อแข็ง", "element_type": "accessory", "grid_ref": null, "material": "wood", "description": "hardwood barge board 1\"x6\", plus ทับปั้นลมไม้เนื้อแข็ง (barge board cover)", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~A2", "grid_ref_end": "~E2", "level_m": null, "span_source": "unresolved", "note": "RC ring beam supporting roof posts; full spec on หน้า26 SECTION RB2", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "~A3", "grid_ref_end": "~E3", "level_m": null, "span_source": "unresolved", "note": "RC ring beam supporting roof posts; full spec on หน้า26 SECTION RB1", "confidence_score": 0.4, "confidence_flags": [] }
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~A2", "grid_ref_end": "~E2", "level_m": null, "span_length_m": 9.00, "span_source": "unresolved", "note": "RC ring beam supporting roof posts; full spec on หน้า26 SECTION RB2", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "~A3", "grid_ref_end": "~E3", "level_m": null, "span_length_m": 9.00, "span_source": "unresolved", "note": "RC ring beam supporting roof posts; full spec on หน้า26 SECTION RB1", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] }
   ]
 }

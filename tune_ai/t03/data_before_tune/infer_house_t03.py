@@ -108,6 +108,39 @@ class _TimeLimit:
         return time.time() > self.deadline
 
 
+def apply_arm(content, arm, cv_dir):
+    """แขนทดลอง pass 2 vs 2.4 (pass_design_v2.md #hint-design) — คืน (content ใหม่, hint_used)
+
+    arm "2"    = ของเดิมเป๊ะ (ตัวคุม)
+    arm "2.4a" = ภาพเปล่า + แปะ hint text จาก sidecar ของ tools/cv_scan.py
+    arm "2.4b" = ภาพมาร์คเลข (Set-of-Mark) + hint text
+    sidecar/marked หาไม่เจอ → คืนของเดิม + hint_used=False (แถวนั้นกลายเป็น arm 2
+    โดยพฤตินัย — บันทึกลง results ให้เห็น ไม่เงียบ) ห้ามเดา/ห้ามสร้าง hint เปล่า"""
+    if arm == "2" or not cv_dir:
+        return content, False
+    cv_dir = Path(cv_dir)
+    out, hint, marked = [], None, None
+    for c in content:
+        if c["type"] == "image" and hint is None:
+            stem = Path(c["image"]).stem
+            hp = cv_dir / (stem + "_hint.txt")
+            if hp.exists():
+                hint = hp.read_text(encoding="utf-8").strip()
+            mp = cv_dir / (stem + "_marked.png")
+            if arm == "2.4b" and mp.exists():
+                marked = str(mp.resolve())  # absolute — HERE / abs ใน generate() คืน abs เอง
+    if not hint:
+        return content, False
+    for c in content:
+        if c["type"] == "image" and marked and Path(c["image"]).stem + "_marked.png" == Path(marked).name:
+            out.append({"type": "image", "image": marked})
+            marked = None  # ใช้ครั้งเดียว — งานหลายภาพ (gridline) แทนเฉพาะใบที่มี marked
+        else:
+            out.append(dict(c))
+    out.append({"type": "text", "text": "\n\n" + hint})
+    return out, True
+
+
 def load_model(src):
     try:
         from unsloth import FastVisionModel as UnslothModel
@@ -182,6 +215,9 @@ def main():
     ap.add_argument("--grammar-all", action="store_true")
     ap.add_argument("--no-grammar", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--arm", choices=("2", "2.4a", "2.4b"), default="2",
+                    help="แขนทดลอง hint (pass_design_v2.md): 2=ไม่มี hint, 2.4a=hint ข้อความ, 2.4b=+ภาพมาร์คเลข")
+    ap.add_argument("--cv-dir", help="โฟลเดอร์ sidecar จาก tools/cv_scan.py (จำเป็นเมื่อ --arm != 2)")
     a = ap.parse_args()
 
     if not a.house and not a.all_val:
@@ -217,8 +253,13 @@ def main():
         print("⚠️  มีบ้านที่อยู่ใน TRAIN — โมเดลเคยเห็นหน้าพวกนี้แล้ว ตัวเลขคือ 'จำได้แค่ไหน'")
         print("    ไม่ใช่ความแม่นยำจริง ต้องดูเฉพาะบ้าน val ถึงจะรู้ generalization")
 
+    if a.arm != "2" and not a.cv_dir:
+        raise SystemExit("--arm %s ต้องมี --cv-dir (รัน tools/cv_scan.py กับภาพชุดนี้ก่อน)" % a.arm)
+
     tag = "base" if a.base else "tuned"
     out_dir = Path(a.out_root) / tag / (label.replace("::", "__") if a.all_val else houses[0])
+    if a.arm != "2":
+        out_dir = out_dir.with_name(out_dir.name + "__arm" + a.arm)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     model, tokenizer = load_model(BASE_MODEL if a.base else a.adapter)
@@ -231,11 +272,12 @@ def main():
         use_g = grammar if (grammar and (a.grammar_all or sub == "plan_beam")) else None
         t0 = time.time()
         try:
-            pred = generate(model, tokenizer, r["messages"][0]["content"],
-                            a.max_new_tokens, use_g)
+            content, hint_used = apply_arm(r["messages"][0]["content"], a.arm, a.cv_dir)
+            pred = generate(model, tokenizer, content, a.max_new_tokens, use_g)
             err = None
         except Exception as e:                       # OOM/อื่นๆ — บันทึกแล้วไปหน้าถัดไป
             pred, err = "", f"{type(e).__name__}: {e}"
+            hint_used = False
         dt = time.time() - t0
 
         stem = r["id"].replace("::", "__").replace("/", "_")
@@ -251,7 +293,8 @@ def main():
         gt_ids, gt_n = element_ids(gt)
         p_ids, p_n = element_ids(doc) if valid else ([], 0)
         sc = score_ids(gt_ids, p_ids)
-        results.append(dict(id=r["id"], subtask=sub, valid=valid, error=err, sec=round(dt, 1),
+        results.append(dict(id=r["id"], subtask=sub, arm=a.arm, hint_used=hint_used,
+                            valid=valid, error=err, sec=round(dt, 1),
                             gt_elements=gt_n, pred_elements=p_n,
                             grammar=bool(use_g), **sc))
         rl = "-" if sc["recall"] is None else f"{sc['recall']:.0%}"
