@@ -1,4 +1,4 @@
-{
+﻿{
   "png": "19",
   "doc_page": null,
   "discipline": "structural",
@@ -12,22 +12,24 @@
     "This sheet is a STRUCTURAL roof-framing plan (RC ring beams RB1/RB2/RB1'/RB3' with element marks and grid refs, plus a light-gauge steel purlin/rafter system) — recorded as pattern 'plan' per the roof_plan-vs-plan rule (op04 SKILL.md), not as the Pass-3 'roof_plan' pattern. This is a hybrid structural system: RC ring beams at wall-top level (rebar-detailed, หน้า24-25) carry a light-gauge steel roof frame above (steel_section members, no individual grid position — see the steel_member entries below, which record the spec only, per §6a).",
     "The ring beam follows a hip-roof outline with diagonal hip/valley lines running from each corner (labelled RB1' at the corners) toward interior intersection points (circular RB1/RB2 tags) — the diagonal members' true two-grid-point span was not resolved (their far end is a roof ridge/valley intersection, not a plan grid point), so those entries carry a single approximate grid_ref rather than an invented span endpoint."
   ],
-  "warnings": [],
+  "warnings": [
+    "CORRECTED 2026-08-24 — span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections. This is pure computation from the grid per the §4 rule that span is calculated by code and never estimated by the model — no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length."
+  ],
   "elements": [
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A5", "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A5", "grid_ref_end": "A6", "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A5", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A5", "grid_ref_end": "A6", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
 
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "~C1", "note": "no footing/column between B and E on grid1 for the roof ring — endpoint approximate", "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D1", "grid_ref_end": "E1", "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A6", "grid_ref_end": "B6", "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B6", "grid_ref_end": "~D6", "note": "endpoint approximate", "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D6", "grid_ref_end": "E6", "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "~C1", "note": "no footing/column between B and E on grid1 for the roof ring — endpoint approximate", "span_length_m": 2.20, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D1", "grid_ref_end": "E1", "span_length_m": 2.50, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A6", "grid_ref_end": "B6", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B6", "grid_ref_end": "~D6", "note": "endpoint approximate", "span_length_m": 3.00, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D6", "grid_ref_end": "E6", "span_length_m": 2.50, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
 
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B5", "note": "long double-line-marked run between the two interior hip intersection points — read as one continuous RB1 span between the circular tags", "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D2", "grid_ref_end": "~D5", "note": "second interior ring run near row D, matches the floor-2 stair-void beams below", "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "~E2", "grid_ref_end": "~E5", "note": "bottom interior triangular hip cluster near row E", "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B5", "note": "long double-line-marked run between the two interior hip intersection points — read as one continuous RB1 span between the circular tags", "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D2", "grid_ref_end": "~D5", "note": "second interior ring run near row D, matches the floor-2 stair-void beams below", "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "~E2", "grid_ref_end": "~E5", "note": "bottom interior triangular hip cluster near row E", "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
 
     { "element_id": "RB1'", "element_type": "beam", "grid_ref_start": "~A1", "grid_ref_end": "~A1", "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point", "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
     { "element_id": "RB1'", "element_type": "beam", "grid_ref_start": "~A6", "grid_ref_end": "~A6", "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point", "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
