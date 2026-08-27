@@ -1,0 +1,50 @@
+{
+  "png": "21",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนเสา คาน พื้น ชั้นที่ 1",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า21.png",
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "S-03 is a 3-view sheet (§3): this file covers view1 'แปลนเสา คาน พื้น ชั้นที่ 1' only. View2 'แปลนคานระดับอะเส' and view3 'ขยายรอยต่อเสา CS กับคาน ค.ส.ล' are separate files.",
+    "One interior beam BR1 (partitioning the second small 'SR' room from the 'S2' room, inside the utility nook west of grid 1) is visibly drawn on the plan but its X position is not dimensioned anywhere on this sheet or any other op04-scope sheet reviewed. Per the beam-endpoint rule, a dummy grid line is only added when its position can be read off a printed dimension chain — none exists for this specific line, so it is OMITTED here rather than assigned an invented grid_ref. It runs roughly north-south between grid '1' and grid '1''', spanning row C to row D.",
+    "The main D-row perimeter beam's identity beyond B4 (which only spans 2.87m of the building's 4.50m width, at the SX/S2 step) is not fully resolved from this sheet — B4's exact geometry is a jogged/stepped line (drawn with a diagonal kink), recorded here as span_length_m=2.87 with span_source='local_dimension' rather than grid-derived.",
+    "Beam BR2 (west wall of the utility nook) is drawn as one continuous run C1'-D'1' on the sheet with a single label, but per the beam-splitting rule (grid line D sits in between) it is recorded as two atomic segments here."
+  ],
+  "grid_source": "บ้าน_เล็ก_1ชั้น_14_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A1''", "span_length_m": 2.375, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1''", "grid_ref_end": "A2", "span_length_m": 2.125, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B1''", "span_length_m": 2.375, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1''", "grid_ref_end": "B2", "span_length_m": 2.125, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C1''", "span_length_m": 2.375, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1''", "grid_ref_end": "C2", "span_length_m": 2.125, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A1''", "grid_ref_end": "B1''", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1''", "grid_ref_end": "C1''", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+
+    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "D2", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+
+    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "D1''", "grid_ref_end": "D2", "span_length_m": 2.87, "span_source": "local_dimension", "confidence_score": 0.65, "confidence_flags": ["jogged_beam_geometry_simplified_to_endpoints"], "note": "Edge beam under slab 'SX', drawn with a diagonal step in plan; recorded here by its two structural endpoints and printed span, not the jog geometry." },
+
+    { "element_id": "BR2", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "D1'", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "BR2", "element_type": "beam", "grid_ref_start": "D1'", "grid_ref_end": "D'1'", "span_length_m": 1.725, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "BR1", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "C1", "span_length_m": 1.725, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "BR1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "D1", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
+    { "element_id": "BR1", "element_type": "beam", "grid_ref_start": "D1'", "grid_ref_end": "D1", "span_length_m": 1.725, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+    { "element_id": "BR1", "element_type": "beam", "grid_ref_start": "D'1'", "grid_ref_end": "D'1", "span_length_m": 1.725, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
+
+    { "element_id": "S1", "element_type": "slab", "count": 4, "grid_refs": [], "confidence_score": 0.8, "confidence_flags": [], "note": "One per main bay (A-B x 1-1'', A-B x 1''-2, B-C x 1-1'', B-C x 1''-2). Not positionally sortable — marker only." },
+    { "element_id": "S2", "element_type": "slab", "count": 1, "grid_refs": [], "confidence_score": 0.75, "confidence_flags": [], "note": "Utility-nook room, between BR1 partitions, row C-D." },
+    { "element_id": "SR", "element_type": "slab", "count": 3, "grid_refs": [], "confidence_score": 0.75, "confidence_flags": [], "note": "3 small utility-nook rooms (toilet/store) west of grid 1: two in row C-D, one in row D-D'." },
+    { "element_id": "SX", "element_type": "slab", "count": 1, "grid_refs": [], "confidence_score": 0.7, "confidence_flags": [], "note": "Small step-out slab south of row D, edged by beam B4." }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "png": "28",
+  "doc_page": 26,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "รายละเอียดการเสริมเหล็กเพื่อต้านทานการสั่นสะเทือนของแผ่นดินไหว บริเวณ 1 และ 2",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า28.png",
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet's C0/C1 table OVERRIDES the S-05 default table's rebar/stirrup spacing (not a different mark) when the site falls in seismic zone 1 or 2, per S-01's note. Distinguished from the S-05 entries via the 'level' field.",
+    "Zone applicability list (provinces) recorded as a design_criterion element's note rather than a new pattern, since this is a schedule+section sheet, not a notes-pattern sheet."
+  ],
+  "elements": [
+    {
+      "element_id": "C0", "element_type": "pedestal",
+      "level": "ระดับพื้นชั้น 1 (บริเวณแผ่นดินไหว 1,2)",
+      "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "schedule", "spec_confidence_score": 0.82,
+      "confidence_score": 0.82, "confidence_flags": []
+    },
+    {
+      "element_id": "C1", "element_type": "pedestal",
+      "level": "ระดับพื้นชั้น 1 (บริเวณแผ่นดินไหว 1,2)",
+      "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "schedule", "spec_confidence_score": 0.82,
+      "confidence_score": 0.82, "confidence_flags": []
+    },
+    {
+      "element_id": "C1", "element_type": "pedestal",
+      "level": "ตอม่อ/ฐานราก (บริเวณแผ่นดินไหว 1,2)",
+      "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": null, "spacing_mm_printed_as": "@VARIES", "note": "denser stirrup spacing near the grade-beam joint, per the ductile detailing rule below" },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "schedule", "spec_confidence_score": 0.7,
+      "confidence_score": 0.7, "confidence_flags": ["stirrup_spacing_printed_as_VARIES_not_a_number"]
+    },
+    {
+      "element_id": "seismic_beam_stirrup_ductile_zone",
+      "element_type": "design_criterion",
+      "element_name_assigned": "รายละเอียดการเสริมเหล็กระยะเรียงของเหล็กปลอกในคาน (TYP.) — บริเวณ 1,2",
+      "description": "For every beam: stirrup spacing tightens to Ø6@100mm within a distance from each support equal to the greater of 2h (h = beam depth) or the beam's own drawing-specified distance; normal (drawing) spacing resumes beyond that zone.",
+      "applies_to": "all beam marks (B1-B4, BR1-BR2, RB1-RB3)",
+      "confidence_score": 0.85, "confidence_flags": []
+    },
+    {
+      "element_id": "seismic_column_stirrup_ductile_zone",
+      "element_type": "design_criterion",
+      "element_name_assigned": "รายละเอียดระยะเรียงของเหล็กในเสา (TYP.) — บริเวณ 1,2",
+      "description": "Column/pedestal stirrup Ø6mm spacing zones (bottom to top): footing/pedestal region @0.10m for 0.60m, then @0.15m for 1.80m, then a further zone at 3.00m total height, tightening again to @0.10m for 0.60m approaching the grade beam. Main bar continuous 4-Ø12mm.",
+      "applies_to": "C0, C1",
+      "confidence_score": 0.7, "confidence_flags": ["zone_heights_read_from_a_dense_dimension_stack_moderate_confidence"]
+    },
+    {
+      "element_id": "seismic_zone_1_2_provinces",
+      "element_type": "design_criterion",
+      "element_name_assigned": "พื้นที่บริเวณ 1 และ 2 ตามกฎกระทรวง พ.ศ. 2564",
+      "description": "บริเวณ 1: กระบี่ ชุมพร ตรัง นครพนม นครศรีธรรมราช บึงกาฬ ประจวบคีรีขันธ์ พิษณุโลก เพชรบุรี เลย สงขลา สตูล สุราษฎร์ธานี หนองคาย. บริเวณ 2: กรุงเทพมหานคร กำแพงเพชร ชัยนาท นครปฐม นครสวรรค์ นนทบุรี ปทุมธานี พระนครศรีอยุธยา พังงา ภูเก็ต ระนอง ราชบุรี สมุทรปราการ สมุทรสงคราม สมุทรสาคร สุพรรณบุรี อุทัยธานี",
+      "confidence_score": 0.9, "confidence_flags": []
+    }
+  ]
+}

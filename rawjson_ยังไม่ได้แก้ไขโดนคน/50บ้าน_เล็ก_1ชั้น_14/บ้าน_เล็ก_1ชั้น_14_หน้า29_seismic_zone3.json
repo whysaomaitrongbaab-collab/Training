@@ -1,0 +1,88 @@
+{
+  "png": "29",
+  "doc_page": 27,
+  "discipline": "structural",
+  "sheet_code": "S-11",
+  "sheet_name": "รายละเอียดการเสริมเหล็กเพื่อต้านทานการสั่นสะเทือนของแผ่นดินไหว บริเวณ 3",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า29.png",
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet's C0/C1 table OVERRIDES the S-05 default table (and is stronger than S-10's zone 1/2 table: pedestal grows to 0.25x0.25m and main bar to 4-Ø16mm) when the site falls in seismic zone 3, per S-01's note. Distinguished from S-05/S-10 via the 'level' field.",
+    "Note 2 on this sheet is a real structural override, not boilerplate: 'ให้ขยายหน้าตัดคาน B1, RB1 เป็น 0.15x0.40 เมตร' — in seismic zone 3, beams B1 and RB1 must be enlarged from their S-08 default 150x300mm to 150x400mm. Recorded as a design_criterion rather than editing the B1/RB1 section entries directly (those stay as literally drawn on S-08 for the default/non-seismic case)."
+  ],
+  "elements": [
+    {
+      "element_id": "C0", "element_type": "pedestal",
+      "level": "ระดับพื้นชั้น 1 (บริเวณแผ่นดินไหว 3)",
+      "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "schedule", "spec_confidence_score": 0.82,
+      "confidence_score": 0.82, "confidence_flags": []
+    },
+    {
+      "element_id": "C1", "element_type": "pedestal",
+      "level": "ระดับพื้นชั้น 1 (บริเวณแผ่นดินไหว 3)",
+      "width_mm": 200, "height_mm": 200,
+      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "schedule", "spec_confidence_score": 0.82,
+      "confidence_score": 0.82, "confidence_flags": []
+    },
+    {
+      "element_id": "C0", "element_type": "pedestal",
+      "level": "ตอม่อ/ฐานราก (บริเวณแผ่นดินไหว 3)",
+      "width_mm": 250, "height_mm": 250,
+      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "schedule", "spec_confidence_score": 0.82,
+      "confidence_score": 0.82, "confidence_flags": []
+    },
+    {
+      "element_id": "C1", "element_type": "pedestal",
+      "level": "ตอม่อ/ฐานราก (บริเวณแผ่นดินไหว 3)",
+      "width_mm": 250, "height_mm": 250,
+      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": null, "spacing_mm_printed_as": "@VARIES", "note": "denser stirrup spacing near the grade-beam joint, per the ductile detailing rule below" },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "schedule", "spec_confidence_score": 0.7,
+      "confidence_score": 0.7, "confidence_flags": ["stirrup_spacing_printed_as_VARIES_not_a_number"]
+    },
+    {
+      "element_id": "seismic_beam_stirrup_ductile_zone",
+      "element_type": "design_criterion",
+      "element_name_assigned": "รายละเอียดการเสริมเหล็กระยะเรียงของเหล็กปลอกในคาน (TYP.) — บริเวณ 3",
+      "description": "Same ductile-zone rule as zone 1/2 (S-10): stirrup Ø6@100mm within the greater of 2h or the beam's specified distance from each support, normal spacing beyond.",
+      "applies_to": "all beam marks (B1-B4, BR1-BR2, RB1-RB3)",
+      "confidence_score": 0.85, "confidence_flags": []
+    },
+    {
+      "element_id": "seismic_zone3_beam_upsize",
+      "element_type": "design_criterion",
+      "element_name_assigned": "ขยายหน้าตัดคาน B1, RB1 — บริเวณ 3",
+      "description": "ให้ขยายหน้าตัดคาน B1, RB1 เป็น 0.15x0.40 เมตร (upsize from the S-08 default 150x300mm to 150x400mm when building in seismic zone 3).",
+      "applies_to": "B1, RB1",
+      "confidence_score": 0.9, "confidence_flags": []
+    },
+    {
+      "element_id": "seismic_column_stirrup_ductile_zone",
+      "element_type": "design_criterion",
+      "element_name_assigned": "รายละเอียดระยะเรียงของเหล็กในเสา (TYP.) — บริเวณ 3",
+      "description": "Column/pedestal stirrup Ø6mm spacing zones (bottom to top): footing/pedestal region @0.10m for 0.60m, then @0.15m for 1.80m, then a further zone at 3.00m total height, tightening again to @0.10m for 0.60m approaching the grade beam. Main bar continuous 4-Ø16mm (heavier than zone 1/2's 4-Ø12mm).",
+      "applies_to": "C0, C1",
+      "confidence_score": 0.7, "confidence_flags": ["zone_heights_read_from_a_dense_dimension_stack_moderate_confidence"]
+    },
+    {
+      "element_id": "seismic_zone_3_provinces",
+      "element_type": "design_criterion",
+      "element_name_assigned": "พื้นที่บริเวณ 3 ตามกฎกระทรวง พ.ศ. 2564",
+      "description": "กาญจนบุรี เชียงราย เชียงใหม่ ตาก น่าน พะเยา แพร่ แม่ฮ่องสอน ลำปาง ลำพูน สุโขทัย และอุตรดิตถ์",
+      "confidence_score": 0.9, "confidence_flags": []
+    }
+  ]
+}

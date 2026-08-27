@@ -1,0 +1,51 @@
+{
+  "png": "27",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "แบบขยายพื้น S1, S2, SR, SX",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า27.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Each slab type shows a field main mesh (Ø9@200mm typical) plus a wider-spaced negative-moment strip (Ø9@400mm, 'เสริมพิเศษ') over supports — recorded via additional_bars rather than a second main_bar face, since slabs are not covered by the beam top/bottom convention.",
+    "SX's rebar detail is drawn attached to beam B4's cross-section rather than as its own standalone slab strip; recorded with the mesh spec shown (Ø9@100mm) and B4's section dims for context."
+  ],
+  "elements": [
+    {
+      "element_id": "S1", "element_type": "slab",
+      "height_mm": 100,
+      "main_bar": { "dia_mm": 9, "type": "RB", "spacing_mm": 200 },
+      "additional_bars": [ { "dia_mm": 9, "type": "RB", "spacing_mm": 400, "position": "top, over supports (negative moment strip, ~0.60m wide)", "note": "เสริมพิเศษ" } ],
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8, "confidence_flags": []
+    },
+    {
+      "element_id": "S2", "element_type": "slab",
+      "height_mm": 125,
+      "main_bar": { "dia_mm": 9, "type": "RB", "spacing_mm": 200 },
+      "additional_bars": [ { "dia_mm": 9, "type": "RB", "spacing_mm": 400, "position": "top, over supports (negative moment strip)", "note": "เสริมพิเศษ" } ],
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8, "confidence_flags": []
+    },
+    {
+      "element_id": "SR", "element_type": "slab",
+      "height_mm": 125,
+      "main_bar": { "dia_mm": 9, "type": "RB", "spacing_mm": 200 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8, "confidence_flags": [],
+      "note": "Max span 2.00m (ไม่เกิน 2.00). No separate support strip shown."
+    },
+    {
+      "element_id": "SX", "element_type": "slab",
+      "main_bar": { "dia_mm": 9, "type": "RB", "spacing_mm": 100 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.7,
+      "confidence_score": 0.7, "confidence_flags": ["drawn_attached_to_beam_B4_section_rather_than_standalone"]
+    }
+  ]
+}

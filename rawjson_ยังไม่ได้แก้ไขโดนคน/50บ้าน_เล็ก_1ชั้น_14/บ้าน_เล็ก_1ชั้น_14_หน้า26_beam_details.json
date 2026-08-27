@@ -1,0 +1,103 @@
+{
+  "png": "26",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "แบบขยายคาน B1, B2, B3, B4, BR1, BR2, RB1, RB2, RB3",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า26.png",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Every main bar callout on this sheet is printed with the round-bar symbol 'Ø' (e.g. '2Ø12มม.'), so type is recorded as RB per spec rule 0.6 ('Ø always = RB, never infer from diameter') even though S-01's general note table would suggest DB/SD-40 for >=12mm bars. This is a real tension between the general spec note and the as-drawn member callouts, flagged for review rather than silently resolved either way.",
+    "B4's bottom face shows 2-Ø16mm plus a separately-listed 2-Ø12mm; recorded as bottom main_bar 2-Ø16mm with the 2-Ø12mm as additional_bars (position on the actual leader line not fully resolved at this zoom level).",
+    "BR2 shows an asymmetric top(2)/bottom(4) main bar count plus a stepped/jogged haunch detail near one end (labelled 'R2', with its own small elevation and 0.50+0.50m dimensioning) — the haunch geometry itself is not modelled, only the straight-run section spec.",
+    "B3's longitudinal detail on this sheet shows two example span lengths (4.00m and 3.00m, matching the two span lengths B3 actually occurs at per the grid) with extra bent/hooked top bars near mid-span — the section spec below is the typical cross-section; the two longitudinal views are cut-length/stirrup-layout detail for those two span lengths, not a different structural spec.",
+    "RB3's longitudinal detail (labelled 'R3-R3') shows a generic 4.50m span with 0.55m end offsets — informational cut-length detail, not a separate spec from the RB3 section below."
+  ],
+  "elements": [
+    {
+      "element_id": "B1", "element_type": "beam",
+      "width_mm": 150, "height_mm": 300,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.85,
+      "confidence_score": 0.85, "confidence_flags": []
+    },
+    {
+      "element_id": "B2", "element_type": "beam",
+      "width_mm": 150, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.85,
+      "confidence_score": 0.85, "confidence_flags": []
+    },
+    {
+      "element_id": "BR1", "element_type": "beam",
+      "width_mm": 150, "height_mm": 300,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.85,
+      "confidence_score": 0.85, "confidence_flags": []
+    },
+    {
+      "element_id": "BR2", "element_type": "beam",
+      "width_mm": 150, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 4, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.75,
+      "confidence_score": 0.75, "confidence_flags": ["haunch_geometry_at_one_end_not_modelled"]
+    },
+    {
+      "element_id": "B3", "element_type": "beam",
+      "width_mm": 200, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "additional_bars": [ { "count": 2, "dia_mm": 12, "type": "RB", "position": "bent-up top bars near mid-span, per the longitudinal detail" } ],
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.8,
+      "confidence_score": 0.8, "confidence_flags": []
+    },
+    {
+      "element_id": "B4", "element_type": "beam",
+      "width_mm": 200, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "RB" } },
+      "additional_bars": [ { "count": 2, "dia_mm": 12, "type": "RB", "position": "unresolved — printed alongside the bottom face callout, exact leader-line target not confirmed at this zoom" } ],
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.7,
+      "confidence_score": 0.7, "confidence_flags": ["additional_bars_position_unresolved"]
+    },
+    {
+      "element_id": "RB1", "element_type": "beam",
+      "width_mm": 150, "height_mm": 300,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 125 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.85,
+      "confidence_score": 0.85, "confidence_flags": []
+    },
+    {
+      "element_id": "RB2", "element_type": "beam",
+      "width_mm": 150, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.75,
+      "confidence_score": 0.75, "confidence_flags": ["jogged_haunch_detail_R2_not_modelled"]
+    },
+    {
+      "element_id": "RB3", "element_type": "beam",
+      "width_mm": 150, "height_mm": 400,
+      "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "RB" } },
+      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 175 },
+      "concrete_grade": "ค.3 (fc>=210 ksc)", "steel_grade": "SR-24",
+      "spec_source": "section", "spec_confidence_score": 0.85,
+      "confidence_score": 0.85, "confidence_flags": []
+    }
+  ]
+}

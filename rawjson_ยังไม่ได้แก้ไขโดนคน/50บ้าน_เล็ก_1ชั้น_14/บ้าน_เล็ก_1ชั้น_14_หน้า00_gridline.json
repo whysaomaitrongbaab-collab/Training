@@ -1,0 +1,140 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized from S-02, S-03, S-04)",
+  "pattern": "gridline",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png",
+    "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า21.png",
+    "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า22.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": ["dummy_grid_naming_judgment_call"],
+  "warnings": [
+    "Two dummy x-lines both naturally anchor to main grid '1' (one before the origin at x=-1.725, one between grid 1 and grid 2 at x=2.375). Spec precedent (house #04) names a before-origin dummy '1'' with negative pos_m; the between-1-and-2 dummy also anchors left to grid '1' per the direction rule. Applying the prime-ordering rule (scan left-to-right, first found = 1 prime) since both anchor to the same base grid: x=-1.725 is encountered first -> '1\\'', x=2.375 is encountered second -> '1\\'\\''. This is a judgment call, not an explicit spec example — flagged for review.",
+    "A small circular symbol with 4 diagonal lines radiating to the bay corners appears at the center of every bay on the grade-beam plan (หน้า21, right view, 'แปลนคานระดับอะเส'). Text inside the circle is illegible even at 5x zoom. Not a recognized element_type from the closed vocabulary and no clear structural role (does not sit on a grid intersection). Excluded from elements[] on the ring-beam plan file rather than guessed — possibly an M&E coordination symbol (floor drain / grounding point) copied onto the structural sheet from a shared template.",
+    "z_levels: no sheet within op04 scope (S-01 through S-11) prints a metric value (e.g. '+0.60') next to the level labels 'ระดับอะเส' / 'ระดับพื้นชั้น 1' / 'ระดับที่กำหนด' — those labels are used as reference datums in S-05/S-10/S-11's column schedules and S-06/S-07's pile-cap sections without an accompanying printed elevation number on any structural sheet. The architectural sheets (A-01 to A-16) likely carry the actual finished-floor-level elevation but are out of op04 scope. z_levels[] is left empty rather than inventing values."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1'", "pos_m": -1.725, "type": "dummy", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" },
+      { "id": "1", "pos_m": 0.00, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" },
+      { "id": "1''", "pos_m": 2.375, "type": "dummy", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" },
+      { "id": "2", "pos_m": 4.50, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" }
+    ],
+    "y_lines": [
+      { "id": "A'", "pos_m": -0.60, "type": "dummy", "note": "roof ridge (อกไก่เหล็ก) overhang beyond A, from S-04 roof framing plan", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า22.png" },
+      { "id": "A", "pos_m": 0.00, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" },
+      { "id": "B", "pos_m": 3.00, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" },
+      { "id": "C", "pos_m": 7.00, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" },
+      { "id": "D", "pos_m": 8.50, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" },
+      { "id": "D'", "pos_m": 10.225, "type": "dummy", "note": "small utility-room footing extension south of D", "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png" }
+    ],
+    "z_levels": [],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png",
+        "segments": [
+          { "from": "1", "to": "1''", "value_m": 2.375 },
+          { "from": "1", "to": "2", "value_m": 4.50 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า21.png",
+        "segments": [
+          { "from": "1", "to": "1''", "value_m": 2.375 },
+          { "from": "1", "to": "2", "value_m": 4.50 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า22.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 4.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "D", "value_m": 1.50 },
+          { "from": "A", "to": "D", "value_m": 8.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า21.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "D", "value_m": 1.50 },
+          { "from": "A", "to": "D", "value_m": 8.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า22.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 3.00 },
+          { "from": "B", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "D", "value_m": 1.50 },
+          { "from": "A", "to": "D", "value_m": 8.50 },
+          { "from": "A'", "to": "A", "value_m": 0.60 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.725 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.725 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png",
+        "segments": [
+          { "from": "D", "to": "D'", "value_m": 1.725 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า21.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.725 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า21.png",
+        "segments": [
+          { "from": "C", "to": "D", "value_m": 1.50 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      {
+        "value_m": 0.175,
+        "label": "0.175",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png",
+        "note": "Small dimension printed immediately beside footing F(0.60x0.80)/pile-mark F2 at grid ref C1'. Exact meaning unresolved (possibly a Y-axis eccentricity of the footing centroid off the C row line, common for an edge/corner footing). Does not change the footing's recorded grid_ref (C1'), which is read from the clearly-printed 1.725 chain instead."
+      }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "negative_pos_m": "Dummy x-line before the x=0 origin (grid '1') is at x=-1.725; per the house #04 precedent this keeps the id '1\\'' rather than taking over the origin, with a negative pos_m.",
+    "prime_ordering": "Two separate dummy x-lines both anchor to grid '1' (one before it, one between it and grid '2'). No spec example covers two dummies anchored to the same base grid in different gaps; resolved by scanning left-to-right across the whole x-axis and assigning primes in the order encountered: x=-1.725 -> '1\\'' (1st), x=2.375 -> '1\\'\\'' (2nd). See warnings[]."
+  }
+}

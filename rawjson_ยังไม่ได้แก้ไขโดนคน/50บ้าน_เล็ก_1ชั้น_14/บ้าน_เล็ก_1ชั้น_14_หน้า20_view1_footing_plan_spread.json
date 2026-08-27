@@ -1,0 +1,77 @@
+{
+  "png": "20",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานรากแผ่ เสาตอม่อ",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า20.png",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "S-02 is a multi-view sheet (§3): left view = spread-footing alternative (this file), right view = pile-footing alternative (separate file, _view2). Both are alternate foundation DESIGNS for the same building per S-01 note 3 (soil bearing >=8 t/m2 -> spread; otherwise -> pile) — not two foundation systems used together.",
+    "Grid ref C1' footing F(0.60x0.80) carries an unresolved secondary '0.175' offset printed beside it — see the grid master's unassigned_dimensions[]. Recorded position (C1') is read from the clearly-printed 1.725 chain, independent of that unresolved offset."
+  ],
+  "grid_source": "บ้าน_เล็ก_1ชั้น_14_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "F(1.00x1.00)",
+      "element_type": "footing",
+      "count": 5,
+      "grid_refs": ["A1", "A1''", "A2", "B1''", "D1"],
+      "width_mm": 1000,
+      "height_mm": 1000,
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F(1.20x1.20)",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": ["B1", "B2", "C1", "C2"],
+      "width_mm": 1200,
+      "height_mm": 1200,
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F(0.60x0.80)",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": ["C1'"],
+      "width_mm": 600,
+      "height_mm": 800,
+      "confidence_score": 0.8,
+      "confidence_flags": ["unresolved_secondary_offset_0.175"],
+      "note": "Small footing outside the main building envelope (likely a canopy/porch post) — see warnings[]."
+    },
+    {
+      "element_id": "F(0.80x0.80)",
+      "element_type": "footing",
+      "count": 3,
+      "grid_refs": ["D2", "D'1'", "D'1"],
+      "width_mm": 800,
+      "height_mm": 800,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "pedestal",
+      "count": 8,
+      "grid_refs": ["A1", "A2", "B1", "B2", "C1", "C2", "D1", "D2"],
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "note": "เสาตอม่อ (pedestal), spec joined from S-05/S-10/S-11 column schedule tables."
+    },
+    {
+      "element_id": "C0",
+      "element_type": "pedestal",
+      "count": 6,
+      "grid_refs": ["A1''", "B1''", "C1'", "C1''", "D'1'", "D'1"],
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "note": "เสาตอม่อ (pedestal), interior line — spec joined from S-05/S-10/S-11 column schedule tables."
+    }
+  ]
+}
