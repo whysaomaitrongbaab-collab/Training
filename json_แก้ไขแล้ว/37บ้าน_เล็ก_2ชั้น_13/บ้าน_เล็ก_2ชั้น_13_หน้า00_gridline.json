@@ -15,10 +15,11 @@
   "confidence_score": 0.82,
   "confidence_flags": [],
   "warnings": [
+    "THE '4' FAMILY HAS THREE DUMMIES AND THE NAMING SCHEME ONLY SUPPORTS TWO. 4' = 9.10 (floor-1 bay window), 4\" = 10.90 (balcony edge) and now 4''' = 10.60 (the floor-2 balcony beam end, from S-03/หน้า24's printed chain 1.10 = 0.80 + 0.30). Two things are wrong with that name and both are deliberate stop-gaps, Makham's call 2026-08-26: (a) it is written with THREE APOSTROPHES, the exact character the house-13 rule bans because ''' and \" look alike at small sizes; (b) it is OUT OF READING ORDER — by ascending pos_m the three should be ' = 9.10, \" = 10.60 and a third name for 10.90, but renaming 10.90 would mean rewriting every 4\" reference in this house for a second time in one day. So 4''' sits between 4 and 4\" in this array by position while carrying a third-slot name. A PERMANENT CONVENTION for families with 3+ dummies is still needed — do not copy 4''' as a precedent without checking first.",
     "House title block: 'แบบ 025 ศิลไพศาลา' (best-effort reading of a decorative/cursive font in the title block, e.g. หน้า02/A-01 — the design-name script is genuinely hard to read at source resolution; the design number '025' is clear, the name is lower confidence) — 'แบบบ้านยิ้มเพื่อประชาชน' series, สำนักการโยธา กรุงเทพมหานคร (same series as houses 09/12/14/16/18/19/20 already in the dataset, a different design number). 29 total sheets printed ('จำนวนแผ่น 29'): A-01..A-20 (architectural), S-01..S-05 (structural), E-01..E-04 (electrical). Small 2-story house, single-bay-and-a-half structure (3 columns A-B-C x 4 rows), RC frame with an all-steel hip roof (จันทันเหล็ก C-100x50x20x3.2mm@1.00m, ระแนงเหล็กกล่อง 25x25x1.6mm@0.32-0.34m, ตะเข้สัน/อกไก่/ดั้ง all 2C-125x50x20x3.2mm).",
     "x_lines A-B-C and y_lines 1-2-3-4 both cross-checked: printed total row (7.10 = 3.50+3.60; 9.80 = 3.30+3.00+3.50) matches the sum of the printed segment rows on both S-02 (หน้า23) and S-03 (หน้า24) — no reconciliation needed.",
     "Dummy y-line '3\\'' (pos_m 4.95) resolves a beam mark 'B1' that spans A-B at a level splitting the 2-3 gap into 1.55m (upper, toward row 3) and 1.45m (lower, toward row 2) on the floor-1 beam plan (หน้า23) — named after the grid above it (3) per the direction rule, not the nearer one (distances are close enough that this is not a distance call either way).",
-    "Three dummy points cluster around grid 4, all resolved by the direction rule to reference grid '4' and then disambiguated by scan order (top-to-bottom) per the prime-ordering rule: '4\\'' (pos_m 10.90) is a small overhang bay beyond grid 4 spanning A-B (beam B3 at its outer edge, verticals B5/B7 at A/B) — beam-endpoint rule, real dummy. '4\\'\\'' (pos_m 9.10) splits a small bay-window overhang beyond grid C (x 7.10-8.60, dummy 'C\\'') into two stacked S2 slab panels — read from a 0.70/2.00/0.60 dimension chain on หน้า23 that sums to the full 3.30m row3-row4 gap. The fine internal beam-mark boundary within that C-C' bay (which segment is B5 vs B4 vs B2, and whether a third boundary exists at 7.10) could not be resolved with full confidence even after 2x-2.5x zoom — recorded at reduced confidence (~0.5) on the affected elements in the floor-1 beam plan file, not guessed silently. This is a minor secondary bay (bay-window/AC ledge scale), not part of the main structural grid.",
+    "Three dummy points cluster around grid 4, all resolved by the direction rule to reference grid '4\" and then disambiguated by scan order (top-to-bottom) per the prime-ordering rule: '4\\'' (pos_m 10.90) is a small overhang bay beyond grid 4 spanning A-B (beam B3 at its outer edge, verticals B5/B7 at A/B) — beam-endpoint rule, real dummy. '4\\'\\'' (pos_m 9.10) splits a small bay-window overhang beyond grid C (x 7.10-8.60, dummy 'C\\'') into two stacked S2 slab panels — read from a 0.70/2.00/0.60 dimension chain on หน้า23 that sums to the full 3.30m row3-row4 gap. The fine internal beam-mark boundary within that C-C' bay (which segment is B5 vs B4 vs B2, and whether a third boundary exists at 7.10) could not be resolved with full confidence even after 2x-2.5x zoom — recorded at reduced confidence (~0.5) on the affected elements in the floor-1 beam plan file, not guessed silently. This is a minor secondary bay (bay-window/AC ledge scale), not part of the main structural grid.",
     "Dummy x-line 'C\\'' (pos_m 8.60) is a straightforward beam-endpoint case: printed offset '1.50' beyond grid C on หน้า23/หน้า24/หน้า21, unambiguous (only one adjacent named grid).",
     "Dummy y-line '1\\'' (pos_m -1.50) is the mirror-image case at the opposite end: an overhang bay beyond row 1 (A-B, beam B3 at its outer edge, verticals B5 at A/B, slab marker S2 inside) — beam-endpoint rule, before-origin case, negative pos_m per §4.",
     "z_levels are a partial list — only levels actually seen on the pages read for this op04 (Pass-2) extraction are recorded (±0.00 datum, +0.10 walkway, +0.30 ground-floor room level, +0.85 one room, +3.05/+3.15 floor-2 finish levels from the F-5/F-6 floor-material tags on the balcony/bedroom-3 detail, หน้า21). No elevation/section (side_profile) sheet was read (out of op04 scope), so this is not a full sweep of every printed level in the drawing set."
@@ -26,6 +27,7 @@
   "grid": {
     "x_lines": [
       { "id": "A", "pos_m": 0.00, "type": "named" },
+      { "id": "A'", "pos_m": 2.45, "type": "dummy", "confidence_score": 0.65, "confidence_flags": ["added 2026-08-26: carries a B4 running the full row3-row2 bay and closes the east side of the stair/S2 boxes at row 3'. Not dimensioned anywhere; pos_m is a pixel measurement (104.4 px/m, calibrated on A-B = 3.50m and B-C = 3.60m) of the beam centreline, faces at 2.35/2.55. Makham read it as 2.50 by eye — the same scan reproduces row 3' at 4.95 exactly, so 2.45 is kept"] },
       { "id": "B", "pos_m": 3.50, "type": "named" },
       { "id": "C", "pos_m": 7.10, "type": "named" },
       { "id": "C'", "pos_m": 8.60, "type": "dummy" }
@@ -35,10 +37,12 @@
       { "id": "1", "pos_m": 0.00, "type": "named" },
       { "id": "2", "pos_m": 3.50, "type": "named" },
       { "id": "3'", "pos_m": 4.95, "type": "dummy", "confidence_score": 0.6, "confidence_flags": ["splits the row2-row3 gap for beam B1 on the floor-1 plan; direction-rule name, not distance"] },
+      { "id": "3\"", "pos_m": 6.20, "type": "dummy", "confidence_score": 0.6, "confidence_flags": ["added 2026-08-26 from S-03/หน้า24: the grid-A vertical below row 3 is a 0.30m B5 stub and then a 2.70m B2, so a line sits 0.30m south of row 3. Reading order in the '3' family: 3' = 4.95 then 3\" = 6.20"] },
       { "id": "3", "pos_m": 6.50, "type": "named" },
-      { "id": "4''", "pos_m": 9.10, "type": "dummy", "confidence_score": 0.5, "confidence_flags": ["internal boundary inside the small bay-window overhang beyond grid C; see file warnings"] },
+      { "id": "4'", "pos_m": 9.10, "type": "dummy", "confidence_score": 0.5, "confidence_flags": ["internal boundary inside the small bay-window overhang beyond grid C; see file warnings"] },
       { "id": "4", "pos_m": 9.80, "type": "named" },
-      { "id": "4'", "pos_m": 10.90, "type": "dummy" }
+      { "id": "4'''", "pos_m": 10.60, "type": "dummy", "confidence_score": 0.55, "confidence_flags": ["NAME IS PROVISIONAL — three apostrophes, which breaks the house-13 ' / \" convention. Makham's call 2026-08-26: use 4''' for now and flag it. See the gridline warnings", "position from S-03/หน้า24's printed chain 1.10 = 0.80 + 0.30 at the grid-A balcony; the 0.80 segment is the B5 beam's own length"] },
+      { "id": "4\"", "pos_m": 10.90, "type": "dummy" }
     ],
     "z_levels": [
       { "id": "ระดับพื้นอ้างอิง", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า20.png" },
@@ -78,7 +82,7 @@
           { "from": "3", "to": "4", "value_m": 3.30 },
           { "from": "1", "to": "4", "value_m": 9.80 },
           { "from": "1'", "to": "1", "value_m": 1.50 },
-          { "from": "4", "to": "4'", "value_m": 1.10 }
+          { "from": "4", "to": "4\"", "value_m": 1.10 }
         ]
       },
       {
@@ -95,14 +99,14 @@
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า23.png",
         "segments": [
-          { "from": "4", "to": "4''", "value_m": 0.70 },
-          { "from": "4''", "to": "edge_approx", "value_m": 2.00 },
+          { "from": "4", "to": "4'", "value_m": 0.70 },
+          { "from": "4'", "to": "edge_approx", "value_m": 2.00 },
           { "from": "edge_approx", "to": "3", "value_m": 0.60 }
         ]
       }
     ],
     "unassigned_dimensions": [
-      { "value_m": 1.10, "label": "แปลนโครงสร้างชั้นล่าง overhang beyond row 4 (A-B bay, beam B3)", "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า23.png", "note": "resolved into dummy y-line 4'" },
+      { "value_m": 1.10, "label": "แปลนโครงสร้างชั้นล่าง overhang beyond row 4 (A-B bay, beam B3)", "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า23.png", "note": "resolved into dummy y-line 4\"" },
     { "value_m": 1.50, "label": "overhang beyond row 1 (A-B bay, slab marker S2)", "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า23.png", "note": "resolved into dummy y-line 1' (negative pos_m, before origin, per §4)" },
       { "value_m": 1.50, "label": "overhang beyond grid C (bay-window)", "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า23.png", "note": "resolved into dummy x-line C'" },
       { "value_m": 0.50, "label": "small offset near DUCT box, column C row3", "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า23.png", "note": "architectural duct-box dimension, not a beam endpoint — no dummy grid added" },
