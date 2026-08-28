@@ -4,21 +4,116 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนฐานรากเสาเข็ม",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า31.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_05_หน้า00_gridline.json",
   "confidence_score": 0.9,
   "confidence_flags": [],
   "warnings": [
     "Alternate foundation-type plan (pile footing) — see S-02/หน้า30 for the spread-footing alternative. Every footing position matches S-02's grid_refs exactly (same column grid, same C0/C1/C2 column-type tags), which cross-checks both sheets' grid reading.",
-    "Same merge-by-size-mark approach as S-02: element_id is the pile-footing size mark (F4/F6/F8/F11/F12/F16, detailed on S-15/S-16/S-17), with a position-parallel 'column_types' array."
+    "Same merge-by-size-mark approach as S-02: element_id is the pile-footing size mark (F4/F6/F8/F11/F12/F16, detailed on S-15/S-16/S-17), with a position-parallel 'column_types' array.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 6 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F6", "element_type": "footing", "count": 3, "grid_refs": ["F2", "F4", "B4"], "column_types": ["C0", "C0", "C1"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F8", "element_type": "footing", "count": 4, "grid_refs": ["E1", "E4", "D4", "B1"], "column_types": ["C1", "C1", "C1", "C1"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F16", "element_type": "footing", "count": 2, "grid_refs": ["E2", "C2"], "column_types": ["C2", "C2"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F11", "element_type": "footing", "count": 5, "grid_refs": ["E3", "D1", "C1", "C4", "B2"], "column_types": ["C1", "C1", "C1", "C1", "C1"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F12", "element_type": "footing", "count": 1, "grid_refs": ["D3"], "column_types": ["C2"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F4", "element_type": "footing", "count": 2, "grid_refs": ["A1", "A2"], "column_types": ["C1", "C1"], "confidence_score": 0.9, "confidence_flags": [] }
+    {
+      "element_id": "F6",
+      "element_type": "footing",
+      "count": 3,
+      "grid_refs": [
+        "F2",
+        "F4",
+        "B4"
+      ],
+      "column_types": [
+        "C0",
+        "C0",
+        "C1"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F8",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": [
+        "E1",
+        "E4",
+        "D4",
+        "B1"
+      ],
+      "column_types": [
+        "C1",
+        "C1",
+        "C1",
+        "C1"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F16",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "E2",
+        "C2"
+      ],
+      "column_types": [
+        "C2",
+        "C2"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F11",
+      "element_type": "footing",
+      "count": 5,
+      "grid_refs": [
+        "E3",
+        "D1",
+        "C1",
+        "C4",
+        "B2"
+      ],
+      "column_types": [
+        "C1",
+        "C1",
+        "C1",
+        "C1",
+        "C1"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F12",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": [
+        "D3"
+      ],
+      "column_types": [
+        "C2"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F4",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "A1",
+        "A2"
+      ],
+      "column_types": [
+        "C1",
+        "C1"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
   ]
 }

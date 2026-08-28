@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลนโครงหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า30.png",
   "grid_source": "บ้าน_ใหญ่_1ชั้น_03_หน้า00_gridline.json",
   "confidence_score": 0.6,
@@ -13,12 +13,78 @@
     "This is a STRUCTURAL roof framing plan (purlins + rafters with member sizes and spacing over the main grid) — classified pattern:'plan' per the schema's roof_plan-vs-plan rule, NOT 'roof_plan' (that pattern is reserved for the architectural ridge/eave/roofing-material sheet, which is out of op04's Pass-2 scope).",
     "Purlins (แป) run continuously across the whole roof at 1.50m centres, perpendicular to the ridge — they are not individually marked, so per schema §6a they are recorded as ONE spacing-based member type (spacing_mm:1500) covering the roof plan area, rather than atomizing ~9-10 individual unmarked runs.",
     "Roof geometry: overall roof envelope is 15.40m x 15.40m (13.00m main grid + 1.20m eave overhang on all 4 sides, per the printed dimension chain) with a ridge line offset 1.20m to the right/below of grid 2 on both axes — this reads as a hip roof with an off-centre ridge, but the exact hip-line layout is not fully resolvable from the plan view alone at this scan resolution (no elevation/roof_plan-architectural sheet is in op04's scope to cross-check).",
-    "Two rafter (จันทัน) leader callouts are printed (top-left and top-right of the plan) for the same size ⊏-125x65x6x8mm — recorded as one rafter spec applied wherever จันทัน appears; exact rafter count/run lines are not individually traceable from this plan view."
+    "Two rafter (จันทัน) leader callouts are printed (top-left and top-right of the plan) for the same size ⊏-125x65x6x8mm — recorded as one rafter spec applied wherever จันทัน appears; exact rafter count/run lines are not individually traceable from this plan view.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 beams on a roof-framing sheet (floor_level=None). Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "Purlin", "element_type": "beam", "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "⊏-100x50x20x3.2 มม." }, "spacing_mm": 1500, "grid_ref": "roof field, columns 1-4 x rows E-A plus 1.20m eave overhang all sides", "note": "แปเหล็ก @1.50ม., runs continuously across the roof; not individually marked", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "Rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 65, "tw_mm": 6, "tf_mm": 8, "printed_as": "⊏-125x65x6x8 มม." }, "grid_ref": "จันทันเหล็ก, near NW and NE roof edges per the two printed leaders", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "RidgeCap", "element_type": "beam", "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "⊏-100x50x20x3.2 มม." }, "grid_ref": "ridge line, offset 1.20m from column-line 2", "note": "ทับหลัง ⊏-100x50x20x3.2 มม. วาง ⌐ (ridge cap channel, placed inverted)", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "PurlinEndClosure", "element_type": "accessory", "count": 4, "grid_ref": "4 eave corners (NW, NE, SW, SE)", "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "⊏-100x50x20x3.2 มม." }, "note": "ปิดปลายแป (purlin end-closure channel)", "confidence_score": 0.55, "confidence_flags": [] }
+    {
+      "element_id": "Purlin",
+      "element_type": "beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "⊏-100x50x20x3.2 มม."
+      },
+      "spacing_mm": 1500,
+      "grid_ref": "roof field, columns 1-4 x rows E-A plus 1.20m eave overhang all sides",
+      "note": "แปเหล็ก @1.50ม., runs continuously across the roof; not individually marked",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "Rafter",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 65,
+        "tw_mm": 6,
+        "tf_mm": 8,
+        "printed_as": "⊏-125x65x6x8 มม."
+      },
+      "grid_ref": "จันทันเหล็ก, near NW and NE roof edges per the two printed leaders",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RidgeCap",
+      "element_type": "beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "⊏-100x50x20x3.2 มม."
+      },
+      "grid_ref": "ridge line, offset 1.20m from column-line 2",
+      "note": "ทับหลัง ⊏-100x50x20x3.2 มม. วาง ⌐ (ridge cap channel, placed inverted)",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PurlinEndClosure",
+      "element_type": "accessory",
+      "count": 4,
+      "grid_ref": "4 eave corners (NW, NE, SW, SE)",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "⊏-100x50x20x3.2 มม."
+      },
+      "note": "ปิดปลายแป (purlin end-closure channel)",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    }
   ]
 }

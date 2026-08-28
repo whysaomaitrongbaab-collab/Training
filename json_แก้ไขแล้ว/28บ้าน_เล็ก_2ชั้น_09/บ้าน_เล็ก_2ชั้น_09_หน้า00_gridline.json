@@ -26,75 +26,235 @@
     "Dummy y-line C\" (pos_m 6.60): S-05 (upper floor beam plan) dimensions a 1.20m balcony/stair-landing extension south of grid C, closed by beam B2 and framed by B5X (west edge, continuing from B5A) and B4X (east edge, continuing from B4A). C' (6.40, roof overhang) and C\" (6.60, balcony edge) both fall in the 'beyond C' gap; ordered by ascending pos_m per the prime-ordering rule.",
     "RESOLVED 2026-08-26 (was an inference, now measured): S-04 (ground/lower floor plan) shows an equivalent small slab area (S0) framed by beam B3X (continuing from B3, the ground-floor column-1 beam) south of grid C, at column 1 — almost certainly the ground-level landing pad under the stair (ST1) drawn on S-05. No dimension for its southward extent is printed on S-04 itself (unlike S-05's explicit 1.20m for the balcony at columns 2-3). Judgment call: B3X's south end is recorded against the existing C\" dummy (6.60) as the best available estimate, since architecturally a ground landing pad would plausibly match the stair/balcony zone's overall depth — and a pixel scan of the S-04 PNG confirms it: the south edge of the B3X/S0 pad measures exactly 1.20m below row C at that sheet own scale, so B3X does land on C\" (6.60) and NOT on C' (6.40, the roof eave). span_source upgraded to grid_table, confidence 0.4 -> 0.75.",
     "Beam mark 'BA' (150x300mm, spec confirmed on S-15 'ขยายคาน BA-B5X') appears on S-05 as a short internal beam separating two S1-marked slab areas within bay A1-B1 x grid1-2, plus an internal B2 beam closing the south side of that same small room cluster partway through the bay. Neither beam's exact offset from grid 1 (or from row A) is dimensioned on S-05 — this is an architecture-controlled interior partition, out of op04's structural-sheet scope. Recorded on the plan_beam file with an approximate grid_ref rather than a fabricated dummy grid position.",
-    "No absolute floor-to-floor or floor-to-datum elevation (e.g. '+0.60') is printed on any extracted structural sheet — S-18's stair detail labels 'ระดับพื้นชั้นบน'/'ระดับพื้นชั้นล่าง' (upper/lower floor level) as reference lines only, and stair rise/run/tread count are explicitly deferred to the architectural drawing ('ตามแบบสถาปัตยกรรม'). z_levels[] is left empty rather than populated with unlabelled placeholders."
+    "No absolute floor-to-floor or floor-to-datum elevation (e.g. '+0.60') is printed on any extracted structural sheet — S-18's stair detail labels 'ระดับพื้นชั้นบน'/'ระดับพื้นชั้นล่าง' (upper/lower floor level) as reference lines only, and stair rise/run/tread count are explicitly deferred to the architectural drawing ('ตามแบบสถาปัตยกรรม'). z_levels[] is left empty rather than populated with unlabelled placeholders.",
+    "z_levels[] and the z dimension_chain read 2026-08-28 off A-08 (หน้า10, 'รูปด้าน 3 / รูปด้าน 4') -- an architectural elevation sheet OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. All four levels are labelled and in metres, and the chain closes exactly: 0.10 + 2.50 = 2.60, + 2.40 = 5.00. The same sheet also prints the plan axes (รูปด้าน 3: 2.70 / 2.70 = 5.40 over grids 3-2-1; รูปด้าน 4: 1.80 / 3.60 = 5.40 over C-B-A) -- not written as chains here because they were not cross-checked against this master's x_lines/y_lines in this pass. unassigned_dimensions[] still un-swept."
   ],
   "grid": {
     "x_lines": [
-      { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "2", "pos_m": 2.70, "type": "named" },
-      { "id": "3", "pos_m": 5.40, "type": "named" }
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "2",
+        "pos_m": 2.7,
+        "type": "named"
+      },
+      {
+        "id": "3",
+        "pos_m": 5.4,
+        "type": "named"
+      }
     ],
     "y_lines": [
-      { "id": "A'", "pos_m": -1.00, "type": "dummy" },
-      { "id": "A", "pos_m": 0.00, "type": "named" },
-      { "id": "B", "pos_m": 3.60, "type": "named" },
-      { "id": "B'", "pos_m": 4.60, "type": "dummy" },
-      { "id": "C", "pos_m": 5.40, "type": "named" },
-      { "id": "C'", "pos_m": 6.40, "type": "dummy" },
-      { "id": "C\"", "pos_m": 6.60, "type": "dummy" }
+      {
+        "id": "A'",
+        "pos_m": -1.0,
+        "type": "dummy"
+      },
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "B",
+        "pos_m": 3.6,
+        "type": "named"
+      },
+      {
+        "id": "B'",
+        "pos_m": 4.6,
+        "type": "dummy"
+      },
+      {
+        "id": "C",
+        "pos_m": 5.4,
+        "type": "named"
+      },
+      {
+        "id": "C'",
+        "pos_m": 6.4,
+        "type": "dummy"
+      },
+      {
+        "id": "C\"",
+        "pos_m": 6.6,
+        "type": "dummy"
+      }
     ],
-    "z_levels": [],
+    "z_levels": [
+      {
+        "id": "ระดับดินเดิม",
+        "level_m": 0.0,
+        "type": "datum",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า10.png"
+      },
+      {
+        "id": "ระดับพื้นชั้นล่าง",
+        "level_m": 0.1,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า10.png"
+      },
+      {
+        "id": "ระดับพื้นชั้นบน",
+        "level_m": 2.6,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า10.png"
+      },
+      {
+        "id": "ระดับหลังอเส",
+        "level_m": 5.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า10.png"
+      }
+    ],
     "dimension_chains": [
       {
         "axis": "x",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า20.png",
         "segments": [
-          { "from": "1", "to": "2", "value_m": 2.70 },
-          { "from": "2", "to": "3", "value_m": 2.70 },
-          { "from": "1", "to": "3", "value_m": 5.40 }
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.7
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 2.7
+          },
+          {
+            "from": "1",
+            "to": "3",
+            "value_m": 5.4
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า20.png",
         "segments": [
-          { "from": "A", "to": "B", "value_m": 3.60 },
-          { "from": "B", "to": "C", "value_m": 1.80 },
-          { "from": "A", "to": "C", "value_m": 5.40 }
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.6
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 1.8
+          },
+          {
+            "from": "A",
+            "to": "C",
+            "value_m": 5.4
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า23.png",
         "segments": [
-          { "from": "A", "to": "B", "value_m": 3.60 },
-          { "from": "B", "to": "C", "value_m": 1.80 },
-          { "from": "C", "to": "C\"", "value_m": 1.20 }
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.6
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 1.8
+          },
+          {
+            "from": "C",
+            "to": "C\"",
+            "value_m": 1.2
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า25.png",
         "segments": [
-          { "from": "A'", "to": "A", "value_m": 1.00 },
-          { "from": "A", "to": "B", "value_m": 3.60 },
-          { "from": "B", "to": "C", "value_m": 1.80 },
-          { "from": "C", "to": "C'", "value_m": 1.00 }
+          {
+            "from": "A'",
+            "to": "A",
+            "value_m": 1.0
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.6
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 1.8
+          },
+          {
+            "from": "C",
+            "to": "C'",
+            "value_m": 1.0
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า26.png",
         "segments": [
-          { "from": "A'", "to": "A", "value_m": 1.00 },
-          { "from": "A", "to": "B", "value_m": 3.60 },
-          { "from": "B", "to": "C", "value_m": 1.80 },
-          { "from": "C", "to": "C'", "value_m": 1.00 }
+          {
+            "from": "A'",
+            "to": "A",
+            "value_m": 1.0
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.6
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 1.8
+          },
+          {
+            "from": "C",
+            "to": "C'",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า10.png",
+        "segments": [
+          {
+            "from": "ระดับดินเดิม",
+            "to": "ระดับพื้นชั้นล่าง",
+            "value_m": 0.1
+          },
+          {
+            "from": "ระดับพื้นชั้นล่าง",
+            "to": "ระดับพื้นชั้นบน",
+            "value_m": 2.5
+          },
+          {
+            "from": "ระดับพื้นชั้นบน",
+            "to": "ระดับหลังอเส",
+            "value_m": 2.4
+          }
         ]
       }
     ],
     "unassigned_dimensions": [
-      { "value_m": 1.00, "label": "~1.00 ม. ตอม่อดูขยายเสา — approximate embedment depth from 'ระดับที่กำหนด' (design grade) down to top of footing, printed on every footing detail section (S-09 to S-14)", "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า27.png", "note": "printed with a tilde (~), i.e. approximate — not a firm level/grid value, and repeated identically on S-09 through S-14" }
+      {
+        "value_m": 1.0,
+        "label": "~1.00 ม. ตอม่อดูขยายเสา — approximate embedment depth from 'ระดับที่กำหนด' (design grade) down to top of footing, printed on every footing detail section (S-09 to S-14)",
+        "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า27.png",
+        "note": "printed with a tilde (~), i.e. approximate — not a firm level/grid value, and repeated identically on S-09 through S-14"
+      }
     ]
   },
   "dummy_grid_rule_check": {

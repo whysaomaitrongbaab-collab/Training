@@ -4,11 +4,13 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนโครงสร้างชั้น 2",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า24.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_13_หน้า00_gridline.json",
   "confidence_score": 0.62,
-  "confidence_flags": ["read at lower overall confidence than the floor-1 plan (หน้า23) — see file warnings"],
+  "confidence_flags": [
+    "read at lower overall confidence than the floor-1 plan (หน้า23) — see file warnings"
+  ],
   "warnings": [
     "This is view 1 of 2 on this page (หน้า24) — the roof structural framing plan (view 2) is in a separate file, _view2_plan_beam_roof.json.",
     "INCOMPLETE — DO NOT TREAT THE ELEMENT COUNT AS THE MEMBER COUNT. Makham reviewed this sheet on 2026-08-26 and found it substantially under-extracted: this floor is subdivided by many short interior beams that an earlier pass did not record. Corrections APPLIED so far: grid-C row4-row3 vertical is B6 (was B5); row-2 B-C is B6 (was B2); row-1 A-B is B3 (was B2); the row-1' B7 runs B1-B1' at 1.50m (was A1'-B1' at 3.50m); and the grid-A run below row 3 is two members, a 0.30m B5 stub to the new dummy row 3\" (6.20) plus a 2.70m B2, which is what the doubled 'B5/B5' label meant.",
@@ -19,34 +21,271 @@
     "A small feature near column C row 3-4 (marked 'SC', a shaft/duct opening matching DETAIL SC on หน้า26) subdivides that short vertical run further; the exact sub-boundary mark (B5 vs B6 vs B3) could not be resolved with confidence at available zoom and is recorded as a single approximate segment.",
     "A marker printed '0/BC' appears at column A, row 3 — 'BC' is a confirmed real beam mark (SECTION 1-1(BC)/LONG SECTION BC exist on หน้า26, a short ~1.00m beam) but this mark's exact two grid endpoints on this plan could not be located with confidence; not recorded as an element to avoid inventing a grid_ref. Flagged here as an open question rather than guessed.",
     "Column A's row3-row2 vertical beam label was printed twice as 'B5/B5' — transcribed as printed rather than silently treated as a typo; recorded once as a single B5 segment.",
-    "Slab markers S2 (two instances, B-C bay at row3-4 and row1-2) and 'SC' (small shaft near column C) follow the same reading as floor 1's S2/SC precedent."
+    "Slab markers S2 (two instances, B-C bay at row3-4 and row1-2) and 'SC' (small shaft near column C) follow the same reading as floor 1's S2/SC precedent.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 22 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A4\"", "grid_ref_end": "B4\"", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["balcony overhang, see file warnings"] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "A4'''", "span_length_m": 0.80, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["0.80 not 1.10: the top-left chain reads 1.10 = 0.80 + 0.30 and this beam ends on the first break. The remaining 0.30 up to the balcony edge (4\") is drawn but its member, if any, is not yet recorded", "grid_ref_end uses the provisional name 4''' — see the grid master's naming warning"] },
-    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "B4\"", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "C4", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "A3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "B3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C4", "grid_ref_end": "C3", "span_length_m": 3.30, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": ["SC shaft feature subdivides this run further; exact sub-boundary not resolved, see file warnings"] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A3\"", "span_length_m": 0.30, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["the grid-A run below row 3 is TWO members, not one: a 0.30m B5 stub then a 2.70m B2. That is what the doubled 'B5/B5' label was pointing at — an earlier pass read it as a single 3.00m B5"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A3\"", "grid_ref_end": "A2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["second of the two grid-A members below row 3, see the B5 stub above it"] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["mark re-read at high zoom 2026-08-26: the label is B6, the same glyph as its B-C neighbour on the same row — an earlier pass had it as B2"] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B1'", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["mirrored overhang beyond row 1, see file warnings"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-
-    { "element_id": "ST-1", "element_type": "stair", "grid_ref": "~A2", "note": "open stairwell void at floor 2, same footprint as ground-floor stair below", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "S2", "element_type": "slab", "count": 2, "grid_refs": ["~3-4 x B-C", "~1-2 x B-C"], "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "SC", "element_type": "slab", "grid_ref": "~C3", "note": "small shaft/duct opening, see DETAIL SC on หน้า26_section.json", "confidence_score": 0.55, "confidence_flags": [] }
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A4\"",
+      "grid_ref_end": "B4\"",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "balcony overhang, see file warnings"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A4'''",
+      "span_length_m": 0.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "0.80 not 1.10: the top-left chain reads 1.10 = 0.80 + 0.30 and this beam ends on the first break. The remaining 0.30 up to the balcony edge (4\") is drawn but its member, if any, is not yet recorded",
+        "grid_ref_end uses the provisional name 4''' — see the grid master's naming warning"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B4\"",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "SC shaft feature subdivides this run further; exact sub-boundary not resolved, see file warnings"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A3\"",
+      "span_length_m": 0.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "the grid-A run below row 3 is TWO members, not one: a 0.30m B5 stub then a 2.70m B2. That is what the doubled 'B5/B5' label was pointing at — an earlier pass read it as a single 3.00m B5"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A3\"",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "second of the two grid-A members below row 3, see the B5 stub above it"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "mark re-read at high zoom 2026-08-26: the label is B6, the same glyph as its B-C neighbour on the same row — an earlier pass had it as B2"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B1'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "mirrored overhang beyond row 1, see file warnings"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-1",
+      "element_type": "stair",
+      "grid_ref": "~A2",
+      "note": "open stairwell void at floor 2, same footprint as ground-floor stair below",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": [
+        "~3-4 x B-C",
+        "~1-2 x B-C"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SC",
+      "element_type": "slab",
+      "grid_ref": "~C3",
+      "note": "small shaft/duct opening, see DETAIL SC on หน้า26_section.json",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    }
   ]
 }

@@ -4,11 +4,13 @@
   "discipline": "structural",
   "sheet_code": "S-04",
   "sheet_name": "แปลนคาน,พื้นชั้น1",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_05/บ้าน_เล็ก_2ชั้น_05_หน้า32.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_05_หน้า00_gridline.json",
   "confidence_score": 0.75,
-  "confidence_flags": ["dense multi-room sheet at 1:100 — main perimeter/primary beam grid (rows F/E/D/C/B, columns 1-4) read with high confidence; interior beams that bear on another beam rather than a column (grid2 at row D/C, grid3 at row C) and the small stair-landing bump-out east of grid4 read with moderate confidence; see warnings"],
+  "confidence_flags": [
+    "dense multi-room sheet at 1:100 — main perimeter/primary beam grid (rows F/E/D/C/B, columns 1-4) read with high confidence; interior beams that bear on another beam rather than a column (grid2 at row D/C, grid3 at row C) and the small stair-landing bump-out east of grid4 read with moderate confidence; see warnings"
+  ],
   "warnings": [
     "'B5' (grid2, span E-D-C) and the grid2/grid3 mid-span beam changes at rows D and C are all confirmed to sit exactly ON the named grid (not off-grid) — an earlier close read mistook B5 for an unaligned interior beam; re-zoomed and confirmed it runs precisely at x=grid2 (S-06's ring-beam plan and this sheet's own gridlines agree). D2 and C3 have no footing (S-02) — the beam continuing through them without a support is a beam-bears-on-beam condition, not a missing column; flagged confidence_flags:['bears_on_beam'] on the affected segments per §5.",
     "'B3' at D3-D4 is drawn dashed (under the dashed 'S1' sunken-slab boundary) — recorded as a real beam (per §5 nothing here suggests it is only a reference line; dashing on this sheet consistently marks 'behind/under the stepped slab', not 'not built') but flagged lower confidence since dashed linework is harder to trace precisely at this scale.",
@@ -18,50 +20,475 @@
     "The small bump-out east of grid4 (dummy grid 4', between rows D-C) is the stair LANDING platform, confirmed by S-11/S-12 stair sections and the 'B1/B2ที่ระดับชานพัก' ('at landing level') callouts on S-05 — its short columns 'CN' rise only from floor-1 to landing level, not full height (S-09). Recorded as element_type 'column' with grid_refs [D4', C4'].",
     "'BX1' (small ~0.40x0.40 beam per S-08) sits in a 0.60 x 0.60 bump east of grid4 at row B, both offsets locally dimensioned on this sheet. Re-zoomed: the bump starts at grid4 itself, so BX1 runs from grid4 east to the dummy x-line 4\" (9.60) along row B, and its flanking 'SX' slab-corner markers sit in the same bump. Note this 0.60 is NOT the stair landing's offset — the landing east of grid4 at rows D-C is 0.50 (dummy 4'), a distinction the earlier read collapsed into a single 9.60 line.",
     "The WEST side carries a second small bump: a 'B4X' spur at row C and another at row B run 0.60m west of grid1 (the 0.60 that opens this sheet's x-dimension chain), closed by a beam on the outer line between them — and it is that OUTER beam the printed 'B2' label sits beside, not the grid1 line. All three are now recorded on dummy x-line 1' (-0.60); the CX strut line that used to hold that name was renamed 1\" when this house was converted to house 13's reading-order prime scheme — see the grid master. The beam drawn on grid1 itself between the C1 and B1 columns is kept as well but with its mark flagged as inferred, since only one B2 label is printed in that area.",
-    "Slab-type markers (SOA/S1/SO/SX per §10) are room/zone tags, not point beams — recorded with approximate area-style grid_ref rather than an exact grid intersection, consistent with how a slab-type marker is drawn on this sheet."
+    "Slab-type markers (SOA/S1/SO/SX per §10) are room/zone tags, not point beams — recorded with approximate area-style grid_ref rather than an exact grid intersection, consistent with how a slab-type marker is drawn on this sheet.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 36 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "F'2", "grid_ref_end": "F'4", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["north beam of the row-F' rectangle, 1.00m north of row F"] },
-    { "element_id": "B2X", "element_type": "beam", "grid_ref_start": "F'2", "grid_ref_end": "F2", "span_length_m": 1.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["west spur of the row-F' rectangle"] },
-    { "element_id": "B2X", "element_type": "beam", "grid_ref_start": "F'4", "grid_ref_end": "F4", "span_length_m": 1.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["east spur of the row-F' rectangle"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "F2", "grid_ref_end": "F4", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "F2", "grid_ref_end": "E2", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "F4", "grid_ref_end": "E4", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "E4", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "D1", "span_length_m": 3.70, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "D2", "span_length_m": 3.70, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["bears_on_beam:row-D beam(D2), no column at D2"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "D3", "span_length_m": 3.70, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "E4", "grid_ref_end": "D4", "span_length_m": 3.70, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["east vertical of the grid3-4 bay"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E'3", "grid_ref_end": "E'4", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["drawn dashed under the S1 sunken-slab boundary; sits on dummy row E' whose own pos_m is pixel-measured, not printed — see grid master. The span itself is an x-direction grid distance and is unaffected"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "D4", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["drawn dashed under S1 sunken-slab boundary"] },
-    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "D4", "grid_ref_end": "D4'", "span_length_m": 0.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["stair-landing spur; 0.50 per S-04's closing x-chain segment, not the 0.60 of the BX1 bump at row B"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "C1", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "C2", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["mark inferred by continuity of the drawn line from the E2-D2 B5 segment above; not independently re-labelled at this position"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "C3", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["bears_on_beam:row-C beam(C3), no column at C3"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "D4", "grid_ref_end": "C4", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D4'", "grid_ref_end": "C4'", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["stair-landing edge beam, parallel to and 0.60m east of the B2 above"] },
-    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "C1", "span_length_m": 0.60, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["west bump spur at row C, own printed 'B4X' mark"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C4", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["bears_on_beam: spans through unsupported grid3 (no footing at C3)"] },
-    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "C4", "grid_ref_end": "C4'", "span_length_m": 0.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["stair-landing spur; 0.50 per S-04's closing x-chain segment, not the 0.60 of the BX1 bump at row B"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "B1'", "span_length_m": 3.70, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["outer beam of the west bump — this is the line the printed 'B2' label actually sits beside; it closes the bump between the two B4X spurs"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "B1", "span_length_m": 3.70, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["mark inferred: a beam is drawn on grid1 between the C1 and B1 columns, but the only printed mark in this area labels the outer bump beam 0.60m west — recorded as B2 by continuity with the rest of the perimeter"] },
-    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "B1'", "grid_ref_end": "B1", "span_length_m": 0.60, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["west bump spur at row B, own printed 'B4X' mark"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "B2", "span_length_m": 3.70, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": ["the labelled B2 between rows C and B runs on grid2, not grid4 — an earlier read put it at C4-B4; re-zoomed and confirmed against the columns it lands on"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "A1", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["dashed sunken-bathroom-slab boundary beam"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "A2", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["dashed sunken-bathroom-slab boundary beam"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "BX1", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "B4\"", "span_length_m": 0.60, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["runs east from grid4 along row B into the 0.60x0.60 bump; both offsets locally dimensioned — see file warnings"] },
-
-    { "element_id": "CN", "element_type": "column", "count": 2, "grid_refs": ["D4'", "C4'"], "confidence_score": 0.7, "confidence_flags": ["short stair-landing column, rises floor-1 to landing level only (S-09)"] },
-    { "element_id": "SOA", "element_type": "slab", "count": 1, "grid_refs": ["~F x 1-2"], "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "count": 2, "grid_refs": ["~D-C x 3-4'", "~B-A x 1-2"], "confidence_score": 0.55, "confidence_flags": ["sunken/dashed slab bays — bathroom and stair-adjacent room"] },
-    { "element_id": "SO", "element_type": "slab", "count": 3, "grid_refs": ["~C-B x 2-4", "~south of A x 1-2 (2.05m deep yard slab)", "~south of A x 2-4 (1.50m deep yard slab)"], "confidence_score": 0.6, "confidence_flags": ["three separate SO circles are printed; the two yard bays south of row A have different depths (2.05 and 1.50) and were previously merged into one '~south of A x 1-4' entry"] },
-    { "element_id": "SX", "element_type": "slab", "count": 3, "grid_refs": ["~A1", "~A2", "~B4\""], "confidence_score": 0.6, "confidence_flags": ["slab corner markers, no legend printed: two flank the 'ดูขยาย2' step at row A (grid1 and grid2), one sits in the 0.60 BX1 bump at row B — only ONE circle is printed at the bump, not one per corner"] }
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "F'2",
+      "grid_ref_end": "F'4",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "north beam of the row-F' rectangle, 1.00m north of row F"
+      ]
+    },
+    {
+      "element_id": "B2X",
+      "element_type": "beam",
+      "grid_ref_start": "F'2",
+      "grid_ref_end": "F2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "west spur of the row-F' rectangle"
+      ]
+    },
+    {
+      "element_id": "B2X",
+      "element_type": "beam",
+      "grid_ref_start": "F'4",
+      "grid_ref_end": "F4",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "east spur of the row-F' rectangle"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "F2",
+      "grid_ref_end": "F4",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "F2",
+      "grid_ref_end": "E2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "F4",
+      "grid_ref_end": "E4",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "bears_on_beam:row-D beam(D2), no column at D2"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "D4",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "east vertical of the grid3-4 bay"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E'3",
+      "grid_ref_end": "E'4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "drawn dashed under the S1 sunken-slab boundary; sits on dummy row E' whose own pos_m is pixel-measured, not printed — see grid master. The span itself is an x-direction grid distance and is unaffected"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "drawn dashed under S1 sunken-slab boundary"
+      ]
+    },
+    {
+      "element_id": "B3X",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "D4'",
+      "span_length_m": 0.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "stair-landing spur; 0.50 per S-04's closing x-chain segment, not the 0.60 of the BX1 bump at row B"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "mark inferred by continuity of the drawn line from the E2-D2 B5 segment above; not independently re-labelled at this position"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "C3",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "bears_on_beam:row-C beam(C3), no column at C3"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "C4",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D4'",
+      "grid_ref_end": "C4'",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "stair-landing edge beam, parallel to and 0.60m east of the B2 above"
+      ]
+    },
+    {
+      "element_id": "B4X",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C1",
+      "span_length_m": 0.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "west bump spur at row C, own printed 'B4X' mark"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C4",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "bears_on_beam: spans through unsupported grid3 (no footing at C3)"
+      ]
+    },
+    {
+      "element_id": "B4X",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "C4'",
+      "span_length_m": 0.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "stair-landing spur; 0.50 per S-04's closing x-chain segment, not the 0.60 of the BX1 bump at row B"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "B1'",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "outer beam of the west bump — this is the line the printed 'B2' label actually sits beside; it closes the bump between the two B4X spurs"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "mark inferred: a beam is drawn on grid1 between the C1 and B1 columns, but the only printed mark in this area labels the outer bump beam 0.60m west — recorded as B2 by continuity with the rest of the perimeter"
+      ]
+    },
+    {
+      "element_id": "B4X",
+      "element_type": "beam",
+      "grid_ref_start": "B1'",
+      "grid_ref_end": "B1",
+      "span_length_m": 0.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "west bump spur at row B, own printed 'B4X' mark"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "the labelled B2 between rows C and B runs on grid2, not grid4 — an earlier read put it at C4-B4; re-zoomed and confirmed against the columns it lands on"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "dashed sunken-bathroom-slab boundary beam"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "dashed sunken-bathroom-slab boundary beam"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BX1",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B4\"",
+      "span_length_m": 0.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "runs east from grid4 along row B into the 0.60x0.60 bump; both offsets locally dimensioned — see file warnings"
+      ]
+    },
+    {
+      "element_id": "CN",
+      "element_type": "column",
+      "count": 2,
+      "grid_refs": [
+        "D4'",
+        "C4'"
+      ],
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "short stair-landing column, rises floor-1 to landing level only (S-09)"
+      ]
+    },
+    {
+      "element_id": "SOA",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~F x 1-2"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": [
+        "~D-C x 3-4'",
+        "~B-A x 1-2"
+      ],
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "sunken/dashed slab bays — bathroom and stair-adjacent room"
+      ]
+    },
+    {
+      "element_id": "SO",
+      "element_type": "slab",
+      "count": 3,
+      "grid_refs": [
+        "~C-B x 2-4",
+        "~south of A x 1-2 (2.05m deep yard slab)",
+        "~south of A x 2-4 (1.50m deep yard slab)"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "three separate SO circles are printed; the two yard bays south of row A have different depths (2.05 and 1.50) and were previously merged into one '~south of A x 1-4' entry"
+      ]
+    },
+    {
+      "element_id": "SX",
+      "element_type": "slab",
+      "count": 3,
+      "grid_refs": [
+        "~A1",
+        "~A2",
+        "~B4\""
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "slab corner markers, no legend printed: two flank the 'ดูขยาย2' step at row A (grid1 and grid2), one sits in the 0.60 BX1 bump at row B — only ONE circle is printed at the bump, not one per corner"
+      ]
+    }
   ]
 }

@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า17.png",
   "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
   "confidence_score": 0.85,
@@ -13,7 +13,8 @@
     "จำนวนฐานรากที่นับได้จากแปลน = 22 จุด ตรงกับหมายเหตุที่พิมพ์บนแผ่นเดียวกันเป๊ะ 2 ทาง: 'เข็ม I 0.22x0.22x18.00m. (2 ต้น ต่อเชื่อม) จำนวน 22 ต้น' และ 'F1A = 22 หลุม = 22 ต้น' — cross-check ที่สะอาดที่สุดในแผ่นนี้ ไม่มีจุดตกหล่น",
     "มาร์คบนแบบพิมพ์รวมกันเป็น 'F1A/C1' ทุกจุด (ฐานราก/เสา) — แยกเป็น 2 element ตามแบบข้อ 53 เพื่อไม่ให้ column_mark หาย ทั้งคู่ merge เป็น 1 entry ตามกฎ point element §4",
     "หมายเหตุขนาดเข็มบนแผ่นนี้ (I 0.22x0.22x18.00 ม.) ตรงกับข้อความเขียนมือแก้ไขบนหน้า02 ('ใช้เข็ม I-22X22 ซม. ยาว 18ม. ทั้งหมด ตามใบ ป/ป 4/3') — สองแผ่นสอดคล้องกัน ไม่ขัดแย้ง",
-    "แถว F กับ G ห่างกันเพียง 0.50 ม. ที่มาตราส่วน 1:75 — ฐานรากที่กริด 3 และ 4 อ่านว่าอยู่บนแนว F (สัญลักษณ์ฐานรากคร่อมเส้น F) และที่กริด 1 อยู่บนแนว G สอดคล้องกับหน้า18 ที่มีคาน B0 ลงที่ C1 และ G1 ปักธง confidence ระดับกลางไว้ที่ 4 จุดนี้ ควรซูมยืนยันซ้ำ"
+    "แถว F กับ G ห่างกันเพียง 0.50 ม. ที่มาตราส่วน 1:75 — ฐานรากที่กริด 3 และ 4 อ่านว่าอยู่บนแนว F (สัญลักษณ์ฐานรากคร่อมเส้น F) และที่กริด 1 อยู่บนแนว G สอดคล้องกับหน้า18 ที่มีคาน B0 ลงที่ C1 และ G1 ปักธง confidence ระดับกลางไว้ที่ 4 จุดนี้ ควรซูมยืนยันซ้ำ",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
     {

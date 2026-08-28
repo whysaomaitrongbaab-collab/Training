@@ -1,190 +1,191 @@
 {
- "png": "39",
- "doc_page": 39,
- "printed_page": 37,
- "discipline": "structural",
- "sheet_code": "S-06",
- "sheet_name": "แปลนโครงหลังคา",
- "pattern": "etc_plan",
- "building": null,
- "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
- "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า39.png",
- "view_title": "แปลนโครงหลังคา  1:100",
- "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/07บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า00_gridline.json",
- "grid_dims_note": {
-  "x_axis_m": {
-   "1": 0.0,
-   "2": 4.0,
-   "3": 9.0,
-   "4": 13.0
+  "png": "39",
+  "doc_page": 39,
+  "printed_page": 37,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แปลนโครงหลังคา",
+  "pattern": "roof_frame_plan",
+  "building": null,
+  "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า39.png",
+  "view_title": "แปลนโครงหลังคา  1:100",
+  "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/07บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า00_gridline.json",
+  "grid_dims_note": {
+    "x_axis_m": {
+      "1": 0.0,
+      "2": 4.0,
+      "3": 9.0,
+      "4": 13.0
+    },
+    "y_axis_m": {
+      "A": 0.0,
+      "B": 2.0,
+      "C": 6.0,
+      "D": 11.0
+    }
   },
-  "y_axis_m": {
-   "A": 0.0,
-   "B": 2.0,
-   "C": 6.0,
-   "D": 11.0
-  }
- },
- "elements": [
-  {
-   "element_id": "หลังคาโครงเหล็กอาคารหลัก",
-   "element_type": "roof_area",
-   "plan_extent_m": {
-    "x_from": "grid 1 - 1.20",
-    "x_to": "grid 3 + 1.20",
-    "y_from": "grid A + 0.80",
-    "y_to": "grid D + 1.20"
-   },
-   "confidence_score": 0.75,
-   "confidence_flags": [
-    "extent_partly_scaled"
-   ],
-   "note": "Main hipped mass, 11.40 m in the number direction x 11.40 m in the letter direction. The four printed 1.20 figures fix the north, west and east oversails; the south edge of this mass is NOT dimensioned and is scaled at about grid A + 0.80. CORRECTED 2026-07-27: the mass is symmetric about its hip APEX POINT (not a ridge -- see the อกไก่ element), which sits on the line 0.50 m north of grid C; that position is exactly what 45-degree hips on an 11.40 m square predict (north edge + 5.70 m), an internal consistency check that passes."
-  },
-  {
-   "element_id": "หลังคาโครงเหล็กปีกล่าง",
-   "element_type": "roof_area",
-   "plan_extent_m": {
-    "x_from": "grid 1 - 1.20",
-    "x_to": "grid 2 + 1.20",
-    "y_from": "grid A - 1.20",
-    "y_to": "grid A + 0.80"
-   },
-   "confidence_score": 0.75,
-   "confidence_flags": [
-    "extent_partly_scaled"
-   ],
-   "note": "Lower projecting wing at the south-west, 6.40 m wide. Its width is fixed by the two 1.20 dimensions printed under grids 1 and 2; its depth shares the unscaled south edge of the main mass."
-  },
-  {
-   "element_id": "อกไก่เหล็ก",
-   "element_type": "steel_ridge",
-   "material": "steel",
-   "steel_section": {
-    "designation": "2C back-to-back",
-    "printed_as": "2 C-125x65x6x8 มม.",
-    "d_mm": 125,
-    "b_mm": 65,
-    "tw_mm": 6,
-    "tf_mm": 8,
-    "count": 2,
-    "weight_kg_per_m": 13.4
-   },
-   "count": 1,
-   "confidence_score": 0.85,
-   "confidence_flags": [],
-   "note": "REWRITTEN on high-zoom re-read 2026-07-27 (recording a reversal): the earlier entry claimed TWO ridges, with the main one 'running in the number direction 0.50 m north of grid C across the whole main mass'. Wrong -- the main mass is an 11.40 x 11.40 SQUARE, its four 45-degree hips converge at a SINGLE POINT apex (verified at high zoom: the four heavy-dash hips meet at one node; the full-width horizontal line through that point is a medium dash-dot RAFTER centre line, a visibly lighter weight than the hips). A square pyramidal hip has no ridge member. The only อกไก่ on this sheet is the LOWER WING's letter-direction ridge at about x = 2.00 m, which is exactly where the sheet's own อกไก่เหล็ก leader lands. The apex point sits on the line 0.50 m north of grid C."
-  },
-  {
-   "element_id": "ตะเฆ่สันเหล็ก",
-   "element_type": "steel_hip",
-   "material": "steel",
-   "steel_section": {
-    "designation": "2C back-to-back",
-    "printed_as": "2 C-125x65x6x8 มม.",
-    "d_mm": 125,
-    "b_mm": 65,
-    "tw_mm": 6,
-    "tf_mm": 8,
-    "count": 2,
-    "weight_kg_per_m": 13.4
-   },
-   "count": 6,
-   "confidence_score": 0.72,
-   "confidence_flags": [
-    "count_traced_from_line_weight"
-   ],
-   "note": "Four 45-degree hips radiating from the main ridge's centre point to the four corners of the main mass, plus two more from the lower wing's south ridge end to that wing's two south corners."
-  },
-  {
-   "element_id": "ตะเฆ่รางเหล็ก",
-   "element_type": "steel_valley",
-   "material": "steel",
-   "steel_section": {
-    "designation": "2C back-to-back",
-    "printed_as": "2 C-125x65x6x8 มม.",
-    "d_mm": 125,
-    "b_mm": 65,
-    "tw_mm": 6,
-    "tf_mm": 8,
-    "count": 2,
-    "weight_kg_per_m": 13.4
-   },
-   "count": 1,
-   "confidence_score": 0.7,
-   "confidence_flags": [
-    "count_traced_from_line_weight"
-   ],
-   "note": "Valley where the lower wing's roof runs into the main mass's south slope, from the wing ridge's north end down to the south-east corner of the wing. Same section as the hips and ridge, but a different mark -- ราง (gutter/valley) vs สัน (hip)."
-  },
-  {
-   "element_id": "จันทันเหล็ก",
-   "element_type": "steel_rafter",
-   "material": "steel",
-   "steel_section": {
-    "designation": "C (lipped channel)",
-    "printed_as": "C-150x75x25x3.2 มม.",
-    "d_mm": 150,
-    "b_mm": 75,
-    "lip_mm": 25,
-    "t_mm": 3.2,
-    "weight_kg_per_m": 8.27
-   },
-   "confidence_score": 0.8,
-   "confidence_flags": [
-    "count_not_determined"
-   ],
-   "note": "Common rafters, drawn as the heavy dash-dot lines running perpendicular to the eave of each plane. No spacing is printed for them on this sheet."
-  },
-  {
-   "element_id": "แปเหล็ก",
-   "element_type": "steel_purlin",
-   "material": "steel",
-   "steel_section": {
-    "designation": "C (lipped channel)",
-    "printed_as": "C-100x50x20x2.3 มม.",
-    "d_mm": 100,
-    "b_mm": 50,
-    "lip_mm": 20,
-    "t_mm": 2.3,
-    "weight_kg_per_m": 4.06
-   },
-   "spacing_m": 1.0,
-   "confidence_score": 0.85,
-   "confidence_flags": [],
-   "note": "Purlins at 1.00 m, the light dash-dot lines running parallel to each eave. Spacing printed in both the plan callout and the หมายเหตุ block."
-  },
-  {
-   "element_id": "ตำแหน่งเสารองรับโครงหลังคา",
-   "element_type": "column_reference",
-   "count": 9,
-   "grid_ref": "1,2,3 x B,C,D",
-   "confidence_score": 0.8,
-   "confidence_flags": [],
-   "note": "Nine crossed-square symbols mark the columns carrying the roof frame, at every intersection of grids 1/2/3 with rows B/C/D. They are reference marks from the storey below, not new members -- no size is given on this sheet."
-  },
-  {
-   "element_id": "หลังคาปีกขวา (อ้างอิง)",
-   "element_type": "roof_area_reference",
-   "grid_ref": "3 to 4+1.20 x C-1.20 to D+1.20",
-   "confidence_score": 0.78,
-   "confidence_flags": [],
-   "note": "The right-wing hip roof is repeated here in thin dashed line as a reference outline only, with none of its framing drawn. It is detailed on S-05 (PNG 38), whose members are a lighter set of sections than this sheet's."
-  }
- ],
- "confidence_score": 0.76,
- "confidence_flags": [
-  "roof_topology_traced_from_line_weight"
- ],
- "warnings": [
-  "THIS SHEET ANSWERS THE GAP LEFT BY S-05. S-05 drew a BS1 beam grillage over the main block but no rafters or purlins; the main block's actual roof structure is here -- a large hipped steel roof with a south-west wing.",
-  "MEMBER SCHEDULE (from the sheet's own หมายเหตุ block): จันทันเหล็ก C-150x75x25x3.2 มม. (8.27 กก./ม.), แปเหล็ก C-100x50x20x2.3 มม. @1.00 ม. (4.06 กก./ม.), ตะเฆ่รางเหล็ก 2 C-125x65x6x8 มม. (13.40 กก./ม.), ตะเฆ่สันเหล็ก 2 C-125x65x6x8 มม. (13.40 กก./ม.), อกไก่เหล็ก 2 C-125x65x6x8 มม. (13.40 กก./ม.). All recorded with steel_section per spec §6a.",
-  "NOTE THE SECTION SWAP BETWEEN S-05 AND S-06. The same member names carry DIFFERENT sections on the two sheets: here จันทัน is C-150x75x25x3.2 (8.27 กก./ม.) and แป is C-100x50x20x2.3 (4.06 กก./ม.); on S-05 จันทัน is C-100x50x20x2.3 (4.06) and แป is C-75x45x15x2.3 (3.25). This is not a contradiction -- S-06 frames the big main roof and S-05 the small right wing -- but any consumer that keys sections off the member NAME alone will get it wrong. Key off the sheet as well.",
-  "ตะเฆ่ราง, ตะเฆ่สัน and อกไก่ are all the SAME section on this sheet (2 C-125x65x6x8, 13.40 กก./ม.) but are three distinct marks, so they are kept as three elements.",
-  "ROOF TOPOLOGY WAS TRACED FROM LINE WEIGHTS at 1:100 and carries roof_topology_traced_from_line_weight. REWRITTEN 2026-07-27 (recording a reversal): the earlier version described 'a heavy dash-dot ridge in the number direction 0.50 m north of grid C'. High-zoom re-read shows NO such member -- the four 45-degree hips of the square main mass converge at a single point apex (0.50 m north of grid C), and the full-width horizontal through it is a rafter centre line of visibly lighter weight. What is actually drawn: four heavy-dash hips to the main mass's corners meeting at the point apex; a letter-direction ridge over the south-west wing at about x = 2.00 with two more hips to that wing's south corners; and one valley between the two masses. The hip/valley/ridge readings follow the printed leaders (ตะเฆ่ราง onto the inter-mass diagonal, ตะเฆ่สัน onto corner diagonals, อกไก่ onto the wing ridge). Verify against the elevations before relying on it.",
-  "ONLY THE OVERSAILS ARE DIMENSIONED. Seven 1.20 figures fix the eaves -- REWRITTEN 2026-07-27 to correct the enumeration (the old list only accounted for six): north of grid D, west of grid 1 TWICE (top chain for the main mass, bottom chain for the wing), east of grid 3, south of grid A, EAST OF GRID 2 (the wing's east eave, bottom chain -- omitted before), and one on the right-wing reference outline. NOTHING dimensions where the main mass ends and the wing begins, so both roof_area extents carry extent_partly_scaled.",
-  "The right-wing roof from S-05 is repeated on this sheet in thin dashed outline as reference only.",
-  "The main-block roof COVERING is framed here, but S-05 also draws a BS1 grillage over the same area at what appears to be a lower level. The two are complementary, not alternatives: S-05 is the beam/post layer that the S-06 rafters and purlins sit on. The ขยาย \"1\" detail on S-15 shows exactly that stack -- RC column, BS1 beam, จันทัน rafter.",
-  "VERIFIED LATER AGAINST A-07 (PNG 09) -- REWRITTEN 2026-07-27: the two sheets agree on extents (main mass grid 1-1.20 to 3+1.20, wing 1-1.20 to 2+1.20, wing ridge at about x = 2.00, hips crossing about 0.50-0.60 m north of grid C) and A-07 supplies the pitch this sheet omits: SLOPE 25 degrees. CAUTION recorded with the agreement: both sheets' first-pass readings ALSO agreed on a phantom 'main ridge' along that crossing line -- on this sheet the look-alike was the central rafter line, on A-07 it was the A-A section line. The agreement of two misreadings is not verification; the point-apex reading now recorded on both files is what the high-zoom line weights actually show."
- ]
+  "elements": [
+    {
+      "element_id": "หลังคาโครงเหล็กอาคารหลัก",
+      "element_type": "roof_area",
+      "plan_extent_m": {
+        "x_from": "grid 1 - 1.20",
+        "x_to": "grid 3 + 1.20",
+        "y_from": "grid A + 0.80",
+        "y_to": "grid D + 1.20"
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "extent_partly_scaled"
+      ],
+      "note": "Main hipped mass, 11.40 m in the number direction x 11.40 m in the letter direction. The four printed 1.20 figures fix the north, west and east oversails; the south edge of this mass is NOT dimensioned and is scaled at about grid A + 0.80. CORRECTED 2026-07-27: the mass is symmetric about its hip APEX POINT (not a ridge -- see the อกไก่ element), which sits on the line 0.50 m north of grid C; that position is exactly what 45-degree hips on an 11.40 m square predict (north edge + 5.70 m), an internal consistency check that passes."
+    },
+    {
+      "element_id": "หลังคาโครงเหล็กปีกล่าง",
+      "element_type": "roof_area",
+      "plan_extent_m": {
+        "x_from": "grid 1 - 1.20",
+        "x_to": "grid 2 + 1.20",
+        "y_from": "grid A - 1.20",
+        "y_to": "grid A + 0.80"
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "extent_partly_scaled"
+      ],
+      "note": "Lower projecting wing at the south-west, 6.40 m wide. Its width is fixed by the two 1.20 dimensions printed under grids 1 and 2; its depth shares the unscaled south edge of the main mass."
+    },
+    {
+      "element_id": "อกไก่เหล็ก",
+      "element_type": "steel_ridge",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C back-to-back",
+        "printed_as": "2 C-125x65x6x8 มม.",
+        "d_mm": 125,
+        "b_mm": 65,
+        "tw_mm": 6,
+        "tf_mm": 8,
+        "count": 2,
+        "weight_kg_per_m": 13.4
+      },
+      "count": 1,
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "REWRITTEN on high-zoom re-read 2026-07-27 (recording a reversal): the earlier entry claimed TWO ridges, with the main one 'running in the number direction 0.50 m north of grid C across the whole main mass'. Wrong -- the main mass is an 11.40 x 11.40 SQUARE, its four 45-degree hips converge at a SINGLE POINT apex (verified at high zoom: the four heavy-dash hips meet at one node; the full-width horizontal line through that point is a medium dash-dot RAFTER centre line, a visibly lighter weight than the hips). A square pyramidal hip has no ridge member. The only อกไก่ on this sheet is the LOWER WING's letter-direction ridge at about x = 2.00 m, which is exactly where the sheet's own อกไก่เหล็ก leader lands. The apex point sits on the line 0.50 m north of grid C."
+    },
+    {
+      "element_id": "ตะเฆ่สันเหล็ก",
+      "element_type": "steel_hip",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C back-to-back",
+        "printed_as": "2 C-125x65x6x8 มม.",
+        "d_mm": 125,
+        "b_mm": 65,
+        "tw_mm": 6,
+        "tf_mm": 8,
+        "count": 2,
+        "weight_kg_per_m": 13.4
+      },
+      "count": 6,
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "count_traced_from_line_weight"
+      ],
+      "note": "Four 45-degree hips radiating from the main ridge's centre point to the four corners of the main mass, plus two more from the lower wing's south ridge end to that wing's two south corners."
+    },
+    {
+      "element_id": "ตะเฆ่รางเหล็ก",
+      "element_type": "steel_valley",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C back-to-back",
+        "printed_as": "2 C-125x65x6x8 มม.",
+        "d_mm": 125,
+        "b_mm": 65,
+        "tw_mm": 6,
+        "tf_mm": 8,
+        "count": 2,
+        "weight_kg_per_m": 13.4
+      },
+      "count": 1,
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "count_traced_from_line_weight"
+      ],
+      "note": "Valley where the lower wing's roof runs into the main mass's south slope, from the wing ridge's north end down to the south-east corner of the wing. Same section as the hips and ridge, but a different mark -- ราง (gutter/valley) vs สัน (hip)."
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "steel_rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C (lipped channel)",
+        "printed_as": "C-150x75x25x3.2 มม.",
+        "d_mm": 150,
+        "b_mm": 75,
+        "lip_mm": 25,
+        "t_mm": 3.2,
+        "weight_kg_per_m": 8.27
+      },
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "count_not_determined"
+      ],
+      "note": "Common rafters, drawn as the heavy dash-dot lines running perpendicular to the eave of each plane. No spacing is printed for them on this sheet."
+    },
+    {
+      "element_id": "แปเหล็ก",
+      "element_type": "steel_purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C (lipped channel)",
+        "printed_as": "C-100x50x20x2.3 มม.",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "weight_kg_per_m": 4.06
+      },
+      "spacing_m": 1.0,
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "Purlins at 1.00 m, the light dash-dot lines running parallel to each eave. Spacing printed in both the plan callout and the หมายเหตุ block."
+    },
+    {
+      "element_id": "ตำแหน่งเสารองรับโครงหลังคา",
+      "element_type": "column_reference",
+      "count": 9,
+      "grid_ref": "1,2,3 x B,C,D",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "note": "Nine crossed-square symbols mark the columns carrying the roof frame, at every intersection of grids 1/2/3 with rows B/C/D. They are reference marks from the storey below, not new members -- no size is given on this sheet."
+    },
+    {
+      "element_id": "หลังคาปีกขวา (อ้างอิง)",
+      "element_type": "roof_area_reference",
+      "grid_ref": "3 to 4+1.20 x C-1.20 to D+1.20",
+      "confidence_score": 0.78,
+      "confidence_flags": [],
+      "note": "The right-wing hip roof is repeated here in thin dashed line as a reference outline only, with none of its framing drawn. It is detailed on S-05 (PNG 38), whose members are a lighter set of sections than this sheet's."
+    }
+  ],
+  "confidence_score": 0.76,
+  "confidence_flags": [
+    "roof_topology_traced_from_line_weight"
+  ],
+  "warnings": [
+    "THIS SHEET ANSWERS THE GAP LEFT BY S-05. S-05 drew a BS1 beam grillage over the main block but no rafters or purlins; the main block's actual roof structure is here -- a large hipped steel roof with a south-west wing.",
+    "MEMBER SCHEDULE (from the sheet's own หมายเหตุ block): จันทันเหล็ก C-150x75x25x3.2 มม. (8.27 กก./ม.), แปเหล็ก C-100x50x20x2.3 มม. @1.00 ม. (4.06 กก./ม.), ตะเฆ่รางเหล็ก 2 C-125x65x6x8 มม. (13.40 กก./ม.), ตะเฆ่สันเหล็ก 2 C-125x65x6x8 มม. (13.40 กก./ม.), อกไก่เหล็ก 2 C-125x65x6x8 มม. (13.40 กก./ม.). All recorded with steel_section per spec §6a.",
+    "NOTE THE SECTION SWAP BETWEEN S-05 AND S-06. The same member names carry DIFFERENT sections on the two sheets: here จันทัน is C-150x75x25x3.2 (8.27 กก./ม.) and แป is C-100x50x20x2.3 (4.06 กก./ม.); on S-05 จันทัน is C-100x50x20x2.3 (4.06) and แป is C-75x45x15x2.3 (3.25). This is not a contradiction -- S-06 frames the big main roof and S-05 the small right wing -- but any consumer that keys sections off the member NAME alone will get it wrong. Key off the sheet as well.",
+    "ตะเฆ่ราง, ตะเฆ่สัน and อกไก่ are all the SAME section on this sheet (2 C-125x65x6x8, 13.40 กก./ม.) but are three distinct marks, so they are kept as three elements.",
+    "ROOF TOPOLOGY WAS TRACED FROM LINE WEIGHTS at 1:100 and carries roof_topology_traced_from_line_weight. REWRITTEN 2026-07-27 (recording a reversal): the earlier version described 'a heavy dash-dot ridge in the number direction 0.50 m north of grid C'. High-zoom re-read shows NO such member -- the four 45-degree hips of the square main mass converge at a single point apex (0.50 m north of grid C), and the full-width horizontal through it is a rafter centre line of visibly lighter weight. What is actually drawn: four heavy-dash hips to the main mass's corners meeting at the point apex; a letter-direction ridge over the south-west wing at about x = 2.00 with two more hips to that wing's south corners; and one valley between the two masses. The hip/valley/ridge readings follow the printed leaders (ตะเฆ่ราง onto the inter-mass diagonal, ตะเฆ่สัน onto corner diagonals, อกไก่ onto the wing ridge). Verify against the elevations before relying on it.",
+    "ONLY THE OVERSAILS ARE DIMENSIONED. Seven 1.20 figures fix the eaves -- REWRITTEN 2026-07-27 to correct the enumeration (the old list only accounted for six): north of grid D, west of grid 1 TWICE (top chain for the main mass, bottom chain for the wing), east of grid 3, south of grid A, EAST OF GRID 2 (the wing's east eave, bottom chain -- omitted before), and one on the right-wing reference outline. NOTHING dimensions where the main mass ends and the wing begins, so both roof_area extents carry extent_partly_scaled.",
+    "The right-wing roof from S-05 is repeated on this sheet in thin dashed outline as reference only.",
+    "The main-block roof COVERING is framed here, but S-05 also draws a BS1 grillage over the same area at what appears to be a lower level. The two are complementary, not alternatives: S-05 is the beam/post layer that the S-06 rafters and purlins sit on. The ขยาย \"1\" detail on S-15 shows exactly that stack -- RC column, BS1 beam, จันทัน rafter.",
+    "VERIFIED LATER AGAINST A-07 (PNG 09) -- REWRITTEN 2026-07-27: the two sheets agree on extents (main mass grid 1-1.20 to 3+1.20, wing 1-1.20 to 2+1.20, wing ridge at about x = 2.00, hips crossing about 0.50-0.60 m north of grid C) and A-07 supplies the pitch this sheet omits: SLOPE 25 degrees. CAUTION recorded with the agreement: both sheets' first-pass readings ALSO agreed on a phantom 'main ridge' along that crossing line -- on this sheet the look-alike was the central rafter line, on A-07 it was the A-A section line. The agreement of two misreadings is not verification; the point-apex reading now recorded on both files is what the high-zoom line weights actually show.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 4 roof-framing elements. Nothing else in this file changed."
+  ]
 }

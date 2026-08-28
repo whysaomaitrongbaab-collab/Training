@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-04",
   "sheet_name": "แปลนโครงสร้างหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_03/บ้าน_ใหญ่_2ชั้น_03_หน้า22.png",
   "confidence_score": 0.7,
   "confidence_flags": [],
@@ -12,13 +12,21 @@
   "warnings": [
     "โครงหลังคาเป็นเหล็กรูปพรรณ (steel truss) วางบนคานรัดหลังคาคอนกรีต RB1/RB2 (สเปคเต็มดู หน้า24_S-06) — ไม่ใช่โครงสร้าง ค.ส.ล. บันทึกสมาชิกเหล็กด้วย element_type: steel_member ตาม §6a",
     "จุด CN (3 จุดที่เห็นบนแบบ) คือจุดต่อ/หัวเสาเอ็นรับจันทัน (king post connection node) ไม่ใช่มาร์คที่มีสเปคของตัวเอง — บันทึกเป็น note บนสมาชิกที่เกี่ยวข้อง ไม่สร้าง element แยก",
-    "รูปทรงหลังคาเป็นปั้นหยา (hip roof) ซับซ้อน มีจั่วยื่นด้านซ้าย (นอกกริดหลัก) และส่วนหลังคาแยกช่วงกริด 5-7 — ไม่ได้ถอดตำแหน่งจันทันทุกเส้นแบบ atomic segment เนื่องจากไม่มีระยะกริดกำกับแต่ละเส้นจันทัน (เป็นเหล็กรูปพรรณเรียงระยะเท่ากันตามที่ระบุ ไม่ใช่มาร์คจุดเดี่ยว) — บันทึกเป็นสเปคภาพรวมของแต่ละชนิดสมาชิกแทน"
+    "รูปทรงหลังคาเป็นปั้นหยา (hip roof) ซับซ้อน มีจั่วยื่นด้านซ้าย (นอกกริดหลัก) และส่วนหลังคาแยกช่วงกริด 5-7 — ไม่ได้ถอดตำแหน่งจันทันทุกเส้นแบบ atomic segment เนื่องจากไม่มีระยะกริดกำกับแต่ละเส้นจันทัน (เป็นเหล็กรูปพรรณเรียงระยะเท่ากันตามที่ระบุ ไม่ใช่มาร์คจุดเดี่ยว) — บันทึกเป็นสเปคภาพรวมของแต่ละชนิดสมาชิกแทน",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 roof-framing elements. Nothing else in this file changed."
   ],
   "elements": [
     {
       "element_id": "จันทันเหล็ก",
       "element_type": "rafter",
-      "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "tw_mm": 20, "tf_mm": 3.2, "printed_as": "[100x50x20x3.2 มม." },
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "[100x50x20x3.2 มม."
+      },
       "material": "steel",
       "spacing_mm": 1000,
       "confidence_score": 0.8,
@@ -28,7 +36,14 @@
       "element_id": "สันตะเข็เหล็ก",
       "element_type": "rafter",
       "description": "โครงเหล็กแนวสันตะเข็ (hip rafter)",
-      "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 65, "tw_mm": 6, "tf_mm": 8, "printed_as": "[125x65x6x8 มม., นน.13.4กก./ม." },
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 65,
+        "tw_mm": 6,
+        "tf_mm": 8,
+        "printed_as": "[125x65x6x8 มม., นน.13.4กก./ม."
+      },
       "material": "steel",
       "confidence_score": 0.8,
       "confidence_flags": []
@@ -37,7 +52,14 @@
       "element_id": "อกไก่เหล็ก",
       "element_type": "beam",
       "description": "อกไก่/สันหลังคาเหล็ก (steel ridge)",
-      "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "tf_mm": 10, "printed_as": "[150x75x6.5x10 มม." },
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "tf_mm": 10,
+        "printed_as": "[150x75x6.5x10 มม."
+      },
       "material": "steel",
       "confidence_score": 0.75,
       "confidence_flags": []
@@ -46,7 +68,14 @@
       "element_id": "ตั้งเหล็ก",
       "element_type": "steel_member",
       "description": "เสาเอ็นเหล็กรับจันทัน (king post), จุดต่อ CN",
-      "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "tf_mm": 10, "printed_as": "[150x75x6.5x10 มม." },
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "tf_mm": 10,
+        "printed_as": "[150x75x6.5x10 มม."
+      },
       "material": "steel",
       "confidence_score": 0.6,
       "confidence_flags": []
@@ -55,11 +84,17 @@
       "element_id": "แป",
       "element_type": "steel_member",
       "description": "แปเหล็กรองกระเบื้อง (purlin)",
-      "steel_section": { "designation": "Pipe", "d_mm": 25.4, "printed_as": "1\"x1\" หนา 2มม.@0.32ม." },
+      "steel_section": {
+        "designation": "Pipe",
+        "d_mm": 25.4,
+        "printed_as": "1\"x1\" หนา 2มม.@0.32ม."
+      },
       "material": "steel",
       "spacing_mm": 320,
       "confidence_score": 0.55,
-      "confidence_flags": ["designation_uncertain"],
+      "confidence_flags": [
+        "designation_uncertain"
+      ],
       "note": "พิมพ์เป็นท่อเหล็ก 1นิ้วx1นิ้ว หนา 2มม. — designation 'Pipe' เป็นการอนุมาน อาจเป็นเหล็กกล่อง (SHS) ก็ได้ ไม่ระบุชัดบนแบบ"
     }
   ]

@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-01/1",
   "sheet_name": "แปลนฐานรากแผ่",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_02/บ้าน_ใหญ่_2ชั้น_02_หน้า20.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_02_หน้า00_gridline.json",
   "view_title": "แปลนฐานรากแผ่ (มาตราส่วน 1:100) - spread-footing alternative to the pile foundation on S-01, same 16 column positions",
@@ -15,7 +15,11 @@
       "element_id": "F1",
       "element_type": "footing",
       "count": 3,
-      "grid_refs": ["ข4", "ก1", "ก2"],
+      "grid_refs": [
+        "ข4",
+        "ก1",
+        "ก2"
+      ],
       "description": "ฐานรากแผ่ขนาด 1.0 x 1.0 ม. หนา 0.20 ม. เขียนคู่กับเสาตอม่อ C1",
       "printed_as": "F 1",
       "confidence_score": 0.8,
@@ -26,7 +30,17 @@
       "element_id": "F1.5",
       "element_type": "footing",
       "count": 9,
-      "grid_refs": ["ง'2", "ง'4", "ง1", "ง4", "ค'1", "ค4", "ข1", "ข2", "ข3"],
+      "grid_refs": [
+        "ง'2",
+        "ง'4",
+        "ง1",
+        "ง4",
+        "ค'1",
+        "ค4",
+        "ข1",
+        "ข2",
+        "ข3"
+      ],
       "description": "ฐานรากแผ่ขนาด 1.5 x 1.5 ม. หนา 0.25 ม. เขียนคู่กับเสาตอม่อ C1",
       "printed_as": "F 1.5",
       "confidence_score": 0.8,
@@ -36,7 +50,12 @@
       "element_id": "F1.8",
       "element_type": "footing",
       "count": 4,
-      "grid_refs": ["ง2", "ง3", "ค2", "ค3"],
+      "grid_refs": [
+        "ง2",
+        "ง3",
+        "ค2",
+        "ค3"
+      ],
       "description": "ฐานรากแผ่ขนาด 1.8 x 1.8 ม. หนา 0.30 ม. เขียนคู่กับเสาตอม่อ C2",
       "printed_as": "F 1.8",
       "confidence_score": 0.85,
@@ -46,7 +65,20 @@
       "element_id": "C1",
       "element_type": "pedestal",
       "count": 12,
-      "grid_refs": ["ง'2", "ง'4", "ง1", "ง4", "ค'1", "ค4", "ข1", "ข2", "ข3", "ข4", "ก1", "ก2"],
+      "grid_refs": [
+        "ง'2",
+        "ง'4",
+        "ง1",
+        "ง4",
+        "ค'1",
+        "ค4",
+        "ข1",
+        "ข2",
+        "ข3",
+        "ข4",
+        "ก1",
+        "ก2"
+      ],
       "description": "เสาตอม่อบนฐานรากแผ่ F1 และ F1.5",
       "confidence_score": 0.85,
       "confidence_flags": []
@@ -55,7 +87,12 @@
       "element_id": "C2",
       "element_type": "pedestal",
       "count": 4,
-      "grid_refs": ["ง2", "ง3", "ค2", "ค3"],
+      "grid_refs": [
+        "ง2",
+        "ง3",
+        "ค2",
+        "ค3"
+      ],
       "description": "เสาตอม่อบนฐานรากแผ่ F1.8",
       "confidence_score": 0.85,
       "confidence_flags": []
@@ -70,6 +107,7 @@
     "COLUMN POSITIONS ARE IDENTICAL TO S-01, position for position: 16 columns, C2 at ง2/ง3/ค2/ค3 and C1 everywhere else. Cross-checked one by one against both S-01 views. That agreement is what makes the size mapping below trustworthy even though the footing outlines here are drawn as light dashed squares.",
     "F1 vs F1.5 ON THE BOTTOM TWO ROWS IS THE LEAST CERTAIN READING ON THIS SHEET. The labels on the ข and ก rows are printed small and overlap the C1 tags. Read as: ข1/ข2/ข3 = F1.5, ข4 = F1, ก1/ก2 = F1. That gives 3 + 9 + 4 = 16, matching the column count exactly, which is the strongest check available. Flagged rather than stated as certain; a later pass on the full-size sheet should confirm the four smallest squares.",
     "The three footing sizes and their reinforcement are printed on the same sheet in the ฐานรากแผ่ section detail (see the separate _view2 file): F 1.0 = 6+6 Ø12#, F 1.5 = 8+8 Ø16 มม.#, F 1.8 = 10+10 Ø16 มม.#, with thicknesses 0.20 / 0.25 / 0.30 m and a 1.20 m founding depth below ±0.00.",
-    "POINT ELEMENTS MERGED PER §4: one entry per mark with count + grid_refs. The three footing marks' grid_refs do not overlap, so 3 + 9 + 4 is a genuine total and not a double count."
+    "POINT ELEMENTS MERGED PER §4: one entry per mark with count + grid_refs. The three footing marks' grid_refs do not overlap, so 3 + 9 + 4 is a genuine total and not a double count.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 5 footing-family elements. Nothing else in this file changed."
   ]
 }

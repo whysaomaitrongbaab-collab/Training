@@ -4,46 +4,185 @@
   "discipline": "structural",
   "sheet_code": "S-06",
   "sheet_name": "แปลนคานระดับอะเส",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า24.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_09_หน้า00_gridline.json",
   "confidence_score": 0.85,
   "confidence_flags": [],
   "warnings": [
     "This house's wall-plate ('อะเส') level and everything above it (roof frame, S-07/S-08) switches from the RC frame (footings/pedestals/floor beams, columns marked C1) to a light-gauge STEEL post-and-ring-beam system (CS1 posts, BS1 ring beam), a hybrid RC-below/steel-above structure. This contradicts the column schedule on S-15, which shows an up-arrow ('continues unchanged') at the 'ระดับอะเส' row for column C1 — that generic table convention appears not to account for the material switch documented here; not resolved by inventing RC rebar for C1 at this level, flagged instead.",
-    "Each of the 4 interior bays (A-B/B-C x 1-2/2-3) shows a dashed diagonal X between the CS1 posts, with a small 'x' mark at the crossing point and no printed member mark, size, or leader text anywhere on the sheet. Interpreted as probable diagonal wind bracing between the steel posts (consistent with a light post-and-beam system) but NOT recorded as an element — no mark, no dimension, and no confirming spec on any other sheet in this set; recording it would require inventing a member that is undimensioned and unlabeled."
+    "Each of the 4 interior bays (A-B/B-C x 1-2/2-3) shows a dashed diagonal X between the CS1 posts, with a small 'x' mark at the crossing point and no printed member mark, size, or leader text anywhere on the sheet. Interpreted as probable diagonal wind bracing between the steel posts (consistent with a light post-and-beam system) but NOT recorded as an element — no mark, no dimension, and no confirming spec on any other sheet in this set; recording it would require inventing a member that is undimensioned and unlabeled.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 12 beam-family elements. Nothing else in this file changed."
   ],
   "specs": {
     "BS1": {
       "element_type": "beam",
       "material": "steel",
-      "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "อะเสเหล็ก [-125x50x20x3.2 มม. (นน. 6.13 กก./ม.)" },
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "อะเสเหล็ก [-125x50x20x3.2 มม. (นน. 6.13 กก./ม.)"
+      },
       "spec_source": "plan",
       "spec_confidence_score": 0.85
     },
     "CS1": {
       "element_type": "column",
       "material": "steel",
-      "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "เสาเหล็ก [-125x50x20x3.2 มม. (นน. 6.13 กก./ม.)" },
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "เสาเหล็ก [-125x50x20x3.2 มม. (นน. 6.13 กก./ม.)"
+      },
       "note": "ตั้งบน PL.-200x200x9 มม. และ 4-Ø12 มม. BOLTS ยาว 0.25 ม. (base plate 200x200x9mm on 4-Ø12mm anchor bolts, 0.25m long)",
       "spec_source": "plan",
       "spec_confidence_score": 0.85
     }
   },
   "elements": [
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "CS1", "element_type": "column", "count": 9, "grid_refs": ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"], "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "CS1",
+      "element_type": "column",
+      "count": 9,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

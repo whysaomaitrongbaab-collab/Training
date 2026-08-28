@@ -1,10 +1,10 @@
-﻿{
+{
   "png": "20",
   "doc_page": 20,
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_06_หน้า00_gridline.json",
   "confidence_score": 0.55,
@@ -15,39 +15,372 @@
     "CORRECTED 2026-08-24 โ€” span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections (Pythagoras where the beam is diagonal, so chamfered members get a real length too). This is pure computation from the grid per the ยง4 rule that span is calculated by code and never estimated by the model โ€” no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
     "B7A(+0.85) and B9A(+0.40) are both printed stacked on the same grid-2 column line (A2 to C2) at two different levels — recorded as two separate beam entries rather than merged, since the drawing genuinely shows two distinct level callouts at the same plan location.",
     "S0/S1 slab markers recorded as element_type 'slab' with approximate grid_ref (nearest room), per the precast-plank field convention documented on หน้า24/หน้า27 (PLANK topping + RB6@0.20 mesh detail).",
-    "Small triangular arrow symbols (marked 1, 2, 3) on the plan indicate plank-laying direction per the sheet's own legend ('แสดงทิศทางการวางพื้นสำเร็จรูป PLANK') — not structural elements, not recorded as elements[]."
+    "Small triangular arrow symbols (marked 1, 2, 3) on the plan indicate plank-laying direction per the sheet's own legend ('แสดงทิศทางการวางพื้นสำเร็จรูป PLANK') — not structural elements, not recorded as elements[].",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 26 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A'1'", "level_m": 0.85, "span_length_m": 2.91, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A'1'", "grid_ref_end": "B1'", "level_m": 0.85, "span_length_m": 1.40, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1'", "grid_ref_end": "C1", "level_m": 0.85, "span_length_m": 1.64, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "level_m": 0.85, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B7A", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "C2", "level_m": 0.85, "span_length_m": 5.00, "span_source": "grid_table", "note": "co-located with B9A on the same plan line, different level", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B9A", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "C2", "level_m": 0.40, "span_length_m": 5.00, "span_source": "grid_table", "note": "co-located with B7A on the same plan line, different level", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "level_m": 0.40, "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A4", "level_m": 0.40, "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B1'", "element_type": "beam", "grid_ref_start": "~A2''", "grid_ref_end": "~A3", "level_m": 0.40, "span_length_m": 1.30, "span_source": "unresolved", "note": "short stub near a door opening symbol between grid2''/grid3", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B24", "element_type": "beam", "grid_ref_start": "~A3", "grid_ref_end": "~B3", "level_m": 0.40, "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B8A", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "A5", "level_m": 0.40, "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A5", "grid_ref_end": "A6", "level_m": 0.35, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "~C3", "level_m": 0.40, "span_length_m": 5.00, "span_source": "unresolved", "confidence_score": 0.5, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~A4", "grid_ref_end": "~B4", "level_m": 0.40, "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~B4", "grid_ref_end": "~C4", "level_m": 0.40, "span_length_m": 1.00, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B10A", "element_type": "beam", "grid_ref_start": "~B4", "grid_ref_end": "~B5", "level_m": 0.40, "span_length_m": 3.60, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B5B", "element_type": "beam", "grid_ref_start": "~B5", "grid_ref_end": "~C5", "level_m": 0.40, "span_length_m": 1.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B6A", "element_type": "beam", "grid_ref_start": "~C5", "grid_ref_end": "~D5", "level_m": 0.40, "span_length_m": 2.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "~D5", "grid_ref_end": "~E5", "level_m": 0.35, "span_length_m": 2.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B3'", "element_type": "beam", "grid_ref_start": "~D4", "grid_ref_end": "~D5", "level_m": 0.40, "span_length_m": 3.60, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~D4", "grid_ref_end": "~E4", "level_m": 0.40, "span_length_m": 2.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B7A", "element_type": "beam", "grid_ref_start": "~C2", "grid_ref_end": "~E2", "level_m": 0.30, "span_length_m": 4.00, "span_source": "unresolved", "note": "second B7A occurrence, lower level, interior corridor/stair column line", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~D2", "grid_ref_end": "~E2", "level_m": 0.30, "span_length_m": 2.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "~D2", "grid_ref_end": "~E2", "level_m": 0.30, "span_length_m": 2.00, "span_source": "unresolved", "note": "printed close to B1(+0.20) and B1(+0.40) marks in the same corridor cluster; only one representative segment recorded", "confidence_score": 0.35, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B1'", "element_type": "beam", "grid_ref_start": "~E2", "grid_ref_end": "~F2", "level_m": 0.00, "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B1'", "element_type": "beam", "grid_ref_start": "~E4", "grid_ref_end": "~F4", "level_m": 0.00, "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "~A5", "level_m": 0.10, "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "~C4", "level_m": 0.10, "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "~D3", "level_m": null, "confidence_score": 0.35, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "~B4", "level_m": 0.40, "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "~C4", "level_m": 0.40, "confidence_score": 0.4, "confidence_flags": [] }
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A'1'",
+      "level_m": 0.85,
+      "span_length_m": 2.91,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A'1'",
+      "grid_ref_end": "B1'",
+      "level_m": 0.85,
+      "span_length_m": 1.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1'",
+      "grid_ref_end": "C1",
+      "level_m": 0.85,
+      "span_length_m": 1.64,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "level_m": 0.85,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7A",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "C2",
+      "level_m": 0.85,
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "co-located with B9A on the same plan line, different level",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9A",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "C2",
+      "level_m": 0.4,
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "co-located with B7A on the same plan line, different level",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "level_m": 0.4,
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "level_m": 0.4,
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref_start": "~A2''",
+      "grid_ref_end": "~A3",
+      "level_m": 0.4,
+      "span_length_m": 1.3,
+      "span_source": "unresolved",
+      "note": "short stub near a door opening symbol between grid2''/grid3",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B24",
+      "element_type": "beam",
+      "grid_ref_start": "~A3",
+      "grid_ref_end": "~B3",
+      "level_m": 0.4,
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B8A",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "level_m": 0.4,
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "level_m": 0.35,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "~C3",
+      "level_m": 0.4,
+      "span_length_m": 5.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "~A4",
+      "grid_ref_end": "~B4",
+      "level_m": 0.4,
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "~B4",
+      "grid_ref_end": "~C4",
+      "level_m": 0.4,
+      "span_length_m": 1.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B10A",
+      "element_type": "beam",
+      "grid_ref_start": "~B4",
+      "grid_ref_end": "~B5",
+      "level_m": 0.4,
+      "span_length_m": 3.6,
+      "span_source": "unresolved",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B5B",
+      "element_type": "beam",
+      "grid_ref_start": "~B5",
+      "grid_ref_end": "~C5",
+      "level_m": 0.4,
+      "span_length_m": 1.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B6A",
+      "element_type": "beam",
+      "grid_ref_start": "~C5",
+      "grid_ref_end": "~D5",
+      "level_m": 0.4,
+      "span_length_m": 2.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "~D5",
+      "grid_ref_end": "~E5",
+      "level_m": 0.35,
+      "span_length_m": 2.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "~D4",
+      "grid_ref_end": "~D5",
+      "level_m": 0.4,
+      "span_length_m": 3.6,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "~D4",
+      "grid_ref_end": "~E4",
+      "level_m": 0.4,
+      "span_length_m": 2.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B7A",
+      "element_type": "beam",
+      "grid_ref_start": "~C2",
+      "grid_ref_end": "~E2",
+      "level_m": 0.3,
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "note": "second B7A occurrence, lower level, interior corridor/stair column line",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "~D2",
+      "grid_ref_end": "~E2",
+      "level_m": 0.3,
+      "span_length_m": 2.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "~D2",
+      "grid_ref_end": "~E2",
+      "level_m": 0.3,
+      "span_length_m": 2.0,
+      "span_source": "unresolved",
+      "note": "printed close to B1(+0.20) and B1(+0.40) marks in the same corridor cluster; only one representative segment recorded",
+      "confidence_score": 0.35,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref_start": "~E2",
+      "grid_ref_end": "~F2",
+      "level_m": 0.0,
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref_start": "~E4",
+      "grid_ref_end": "~F4",
+      "level_m": 0.0,
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "~A5",
+      "level_m": 0.1,
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "~C4",
+      "level_m": 0.1,
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "~D3",
+      "level_m": null,
+      "confidence_score": 0.35,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "~B4",
+      "level_m": 0.4,
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "~C4",
+      "level_m": 0.4,
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    }
   ]
 }

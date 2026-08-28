@@ -126,3 +126,116 @@
 - **Risk accepted (stated per att1235):** regex classification is heuristic — a printed-but-long
   id (e.g. `เหล็ก WF 150x150x7x10`) becomes null+assigned; recoverable per-file since the name
   is preserved, but next dataset rebuild trains on null for those.
+
+## 2026-08-28 — batch: `json_แก้ไขแล้ว/` brought to full `primary_rawjson_schema.md` conformance (z axis + plan family + 4 hard fails)
+
+- **Authorized:** มะขาม, this conversation — "แก้ json แก้ไขโดยคนให้เหมือน สิ่งที่ primary rawjson
+  ทุกประการ บ้านไหนหน้า00 ไม่มีแกน z ก็ไปถอดมา".
+- **Edited by:** Claude (Claude Code). Scripted where the decision was mechanical; the 8 grid
+  masters whose z axis existed nowhere in JSON were read personally off the drawing PNGs.
+- **Not touched:** `rawjson_ยังไม่ได้แก้ไขโดนคน/` and `No_touch_box/raw/` (raw layers verbatim,
+  rule 1). The instruction named the human-corrected tree only.
+
+**1. `grid.z_levels[]` — was on 24 of 40 grid masters, now on all 40.**
+Three routes, none of them a guess, each recorded in that master's own `warnings[]`:
+
+| route | houses | source |
+|---|---|---|
+| merged from the house's own `element_type:"level"` entries | 12, 14, 15, 16, 22, 23 | the sheets already extracted |
+| split out of a prose `datum`/`level` description that packed every level into one string | 13, 24 | same |
+| read off the drawing PNG, outside the house's own recorded op04 scope | 26, 27, 29, 30, 32, 35, 47, 49 | รูปตัด / รูปด้าน sheets |
+
+- Merge rule: dedupe on `level_m`, keep the printed Thai label, record a competing label from
+  another sheet in `confidence_flags`. A level printed as a bare number gets `id: null` per §4
+  with the printed text kept in `level_m_printed_as`. An installation-height schedule (fixture
+  mounting heights: +0.68 กระดาษชำระ, +1.80 ฝักบัว …) is deliberately NOT a source — those are not
+  building levels; that alone removed 9 false entries from house 12.
+- 9 houses also gained a real `axis: "z"` `dimension_chains[]` entry. Every chain was checked to
+  close against its own levels before being written.
+- **House 26's old warning said the z axis was not printed anywhere — that was wrong and is now
+  rewritten in place (§ append-or-rewrite, never delete) to record the reversal.** It was true of
+  the S-01..S-14 structural set it was based on; A-08 (หน้า10) prints the whole axis with labels.
+  The same sheet independently re-confirmed that master's x/y lines.
+- **Two genuine sheet-vs-sheet disagreements found, recorded and NOT reconciled** (§4: a mismatch
+  is what this array exists to catch): house 32's หน้า10 prints segments 0.31+2.99+1.60 = its own
+  4.90 total, but labels the ridge +5.20 — one of the two is wrong, ridge given a lowered
+  confidence_score; house 27's A-06 prints the y chain totalling 14.55 against the structural
+  plan's 14.15, the whole 0.40 sitting in one bay — logged as an unverified observation only, no
+  chain written and the resolved `y_lines` left on the structural sheet.
+
+**2. Plan family (§1) — 183 files re-labelled off the legacy `etc_plan`.**
+82 → `beam_plan`, 57 → `footing_plan`, 44 → `roof_frame_plan`; the 199 that stayed `etc_plan` are
+exactly the 199 non-structural sheets (architectural 85 / sanitary 49 / electrical 47 /
+mechanical 18), which is what §1 defines the residual to be. **Zero structural plan sheets are
+left on `etc_plan`.** Decided from what the sheet draws — discipline + `element_type` mix, with
+the view's own title as tie-breaker — never the filename. Each file carries a `warnings[]` line
+naming the old value and the reason. Three traps that a naive pass gets wrong, all handled:
+- `แป` is a substring of `แปลน`, so a bare roof-keyword match called **every** Thai plan sheet a
+  roof sheet. Compound words only (`แปเหล็ก`, `โครงหลังคา`).
+- `sheet_name` on a multi-view page names every view on it (`"แปลนอะเส, แปลนโครงหลังคา"`), so it
+  called the tie-beam view a roof-frame sheet. `view_title` wins when present.
+- a **คานอะเส / ring-beam** plan is a `beam_plan` (t03's pass2 table lists ring beams under
+  plan_beam) even when the file is named `*_beam_roof`; the roof FRAME is always a separate sheet.
+- a structural โครงหลังคา sheet whose members are typed `steel_member` has no element in the
+  footing/beam/roof sets at all — the title is the only signal left, and it is enough (8 files).
+
+**3. Four hard checker failures, all fixed.**
+- 22 files under house 44 were UTF-8 **BOM**-encoded and would not `JSON.parse` at all — stripped.
+  Their other checks had never run; two of the failures below only became visible afterwards.
+- House 30: the อะเส sheet recorded two eave beams `A'1->A1` / `A'3->A3` with `span_source:
+  "grid_table"` against a line the master never carried. `A'` added at `pos_m: -1.20` — the mirror
+  of the already-present `C''`(6.30) eave 1.20 past `C`(5.10), negative per §4's origin rule. The
+  value comes from the recorded span, not a printed dimension, and is flagged on the line itself.
+- House 47: two `grid_ref` values were prose containing the word "grid" (§0.8). The prose moved
+  verbatim into `description`, `grid_ref` set to `null` — the human had already CHECKED both and
+  found the length not derivable, so nothing was invented to fill them.
+
+**Verified:** `tools/check_format.py json_แก้ไขแล้ว/*ชั้น*` → **ALL CHECKS PASS** (was 23 problems);
+whole repo → ALL CHECKS PASS; Constistant `npm test` → **1288/1288**; 5 corrected houses pushed
+through the real `adaptRawExtraction()` — elements/specs/spans all still resolve, house 30's
+y_lines now 7. Re-labelling is a no-op for Constistant: all four plan values are already in its
+`PLAN_PATTERNS`.
+
+**Still open, named honestly:** 20 of 40 grid masters have no `dimension_chains[]` /
+`unassigned_dimensions[]` at all — a full printed-dimension sweep of every page, not in scope
+here; §4 says absent ≠ empty so it stays a NOTE, not a failure. Every master touched above says
+so in its own warnings. Houses 29/47/49 had only 1-2 sheets read for z, so their z axis is
+correct as far as it goes but is not a full sweep. `z_levels[]` still has no consumer in
+Constistant (`GridReference` is stored, never read) — unchanged, pre-existing.
+
+## 2026-08-28 (2) — `json_แก้ไขแล้ว/` house folders renumbered 01–38 (contiguous)
+
+- **Authorized:** มะขาม, this conversation — asked for the numbers to run in order, and after being
+  shown the cost (below) chose "ไล่เลขใหม่ 01–39 เฉพาะ json_แก้ไขแล้ว" over leaving them alone.
+- **Done by:** Claude, via `git mv` (renames tracked, fully reversible from history).
+- **Scope:** folder names only, in `json_แก้ไขแล้ว/` only. `rawjson_ยังไม่ได้แก้ไขโดนคน/` still 01–50.
+  Nothing inside any file changed; `00file_for_making_rawjson_from_claude/` untouched.
+
+**What moved:** 38 house folders, of which **16 kept their number** (01–16, since the first gap is
+at 17) and **22 shifted down**: 22→17, 23→18, 24→19, 26→20, 27→21, 29→22, 30→23, 31→24, 32→25,
+33→26, 34→27, 35→28, 36→29, 37→30, 41→31, 43→32, 44→33, 45→34, 46→35, 47→36, 48→37, 49→38.
+Full old→new table lives in `json_แก้ไขแล้ว/README.md` — that table is the only way to read an old
+log line, so it must not be deleted.
+
+**The gaps were not a naming defect.** They were the 12 houses that exist in raw but have never
+been human-corrected (17-21, 25, 28, 38-40, 42, 50). Those are now listed by name in the README so
+the information the gaps used to carry is not lost.
+
+**Cost, accepted knowingly:**
+- The number is no longer a shared house ID. `json_แก้ไขแล้ว/17` is บ้าน_เล็ก_2ชั้น_04 while
+  `rawjson_.../17` is บ้าน_เล็ก_1ชั้น_15 — **same number, different house.**
+- Every log / workmen's diary / `สิ่งที่ต้องแก้.md` / schema edit-log line written before today uses
+  the old numbers and was **deliberately left unrewritten** (those records state what was true when
+  written; rewriting them would falsify history). Use the README table.
+- The README's own "บันทึกการแก้ไข" headings keep their old numbers, for the same reason.
+
+**Why nothing broke:** the number appears **only** on the folder. JSON filenames, `source_image`,
+`grid_source` and the `image/` folders are all name-only with no number, so no path inside any file
+moved. Of the 116 references to `json_แก้ไขแล้ว/<NN>` in the repo, exactly **3 are live paths**
+(`tools/export_qwen_to_platform.py`, `tune_ai/t01/data_before_tune/run_house_batch_t01.py`,
+`tune_ai/t03/data_before_tune/val.jsonl`) and all three name houses 05/09/11 — inside the 01–16
+range that did not move. Verified present after the rename. The other 113 are docs/diary/logs.
+`INVENTORY.csv` (13 refs) is a generated listing and is now stale for those rows.
+
+**Verified:** `check_format.py json_แก้ไขแล้ว/*ชั้น*` → ALL CHECKS PASS; whole repo → ALL CHECKS
+PASS; Constistant `npm test` → 1288/1288.

@@ -4,25 +4,162 @@
   "discipline": "structural",
   "sheet_code": "S-04",
   "sheet_name": "แปลนโครงหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า22.png",
   "grid_source": "บ้าน_เล็ก_1ชั้น_13_หน้า00_gridline.json",
   "confidence_score": 0.65,
-  "confidence_flags": ["structural roof-framing plan, extracted as pattern:plan per the roof_plan trap rule, not skipped"],
+  "confidence_flags": [
+    "structural roof-framing plan, extracted as pattern:plan per the roof_plan trap rule, not skipped"
+  ],
   "warnings": [
     "This is the STRUCTURAL steel roof framing plan (ridge/purlins/rafters with sections and grid positions) — extracted under plan_beam scope as pattern 'plan', per op04's explicit roof_plan trap rule; the architectural roof sheet (eave lines, roofing material, slope arrows) is on the A-series and out of op04 scope.",
     "The ridge (อกไก่เหล็ก) sits 0.60m beyond (north of) grid A — this offset is printed but not itself a beam-endpoint-driven dummy grid line (nothing else frames into that offset row), so it is recorded as a text grid_ref rather than a new grid master entry; the 0.60m value is logged in the grid master's unassigned_dimensions[].",
     "Purlin ('แปเหล็ก') spacing is printed as a maximum ('@ไม่เกิน 0.80 เมตร'), not an exact count/position — recorded as one repeating-member entry with spacing_mm rather than enumerating individual purlins, since the drawing does not dimension each one.",
-    "Rafter ('จันทันเหล็ก') spacing is printed only as '@ระยะตามแบบ' (per this drawing / scaled) with no numeric callout. Three rafter positions ARE grid-dimensioned (they align with the column grid: 1, 1\", 2) and are recorded at full confidence; the drawing also shows one additional un-dimensioned rafter line in each of the two bays (roughly mid-bay). Recorded those two as approximate/unresolved position rather than inventing a precise pos_m — a genuine gap in what this sheet prints, not a missed reading."
+    "Rafter ('จันทันเหล็ก') spacing is printed only as '@ระยะตามแบบ' (per this drawing / scaled) with no numeric callout. Three rafter positions ARE grid-dimensioned (they align with the column grid: 1, 1\", 2) and are recorded at full confidence; the drawing also shows one additional un-dimensioned rafter line in each of the two bays (roughly mid-bay). Recorded those two as approximate/unresolved position rather than inventing a precise pos_m — a genuine gap in what this sheet prints, not a missed reading.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 6 roof-framing elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "อกไก่เหล็ก", "element_type": "steel_member", "grid_ref_start": "1", "grid_ref_end": "2", "span_length_m": 4.50, "span_source": "grid_table", "steel_section": { "designation": "C", "printed_as": "2[-125x50x20x2.3มม." }, "material": "steel", "note": "roof ridge, double channel, back-to-back; sits 0.60m beyond grid A", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "แปเหล็ก", "element_type": "purlin", "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tf_mm": 2.3, "printed_as": "[-75x45x15x2.3มม." }, "spacing_mm": 800, "material": "steel", "note": "spacing printed as a maximum ('@ไม่เกิน 0.80 เมตร'); individual purlin count/positions not dimensioned on this sheet", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "จันทันเหล็ก", "element_type": "rafter", "grid_ref_start": "~0.60 beyond A, column 1", "grid_ref_end": "D1", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "[-100x50x20x3.2มม." }, "material": "steel", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "จันทันเหล็ก", "element_type": "rafter", "grid_ref_start": "~0.60 beyond A, column 1\"", "grid_ref_end": "D1\"", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "[-100x50x20x3.2มม." }, "material": "steel", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "จันทันเหล็ก", "element_type": "rafter", "grid_ref_start": "~0.60 beyond A, column 2", "grid_ref_end": "D2", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "[-100x50x20x3.2มม." }, "material": "steel", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "จันทันเหล็ก", "element_type": "rafter", "grid_ref": "~mid-bay between column 1 and column 1\"", "span_source": "unresolved", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "[-100x50x20x3.2มม." }, "material": "steel", "confidence_score": 0.4, "confidence_flags": ["intermediate rafter visible on the drawing, exact x-position not dimensioned — see file warnings"] },
-    { "element_id": "จันทันเหล็ก", "element_type": "rafter", "grid_ref": "~mid-bay between column 1\" and column 2", "span_source": "unresolved", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "[-100x50x20x3.2มม." }, "material": "steel", "confidence_score": 0.4, "confidence_flags": ["intermediate rafter visible on the drawing, exact x-position not dimensioned — see file warnings"] },
-    { "element_id": "ปิดปลายจันทัน", "element_type": "steel_member", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 4.50, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tf_mm": 2.3, "printed_as": "[-75x45x15x2.3มม." }, "material": "steel", "note": "rafter end-cap / fascia closure member at the eave (grid D)", "confidence_score": 0.65, "confidence_flags": [] }
+    {
+      "element_id": "อกไก่เหล็ก",
+      "element_type": "steel_member",
+      "grid_ref_start": "1",
+      "grid_ref_end": "2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "printed_as": "2[-125x50x20x2.3มม."
+      },
+      "material": "steel",
+      "note": "roof ridge, double channel, back-to-back; sits 0.60m beyond grid A",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แปเหล็ก",
+      "element_type": "purlin",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "tf_mm": 2.3,
+        "printed_as": "[-75x45x15x2.3มม."
+      },
+      "spacing_mm": 800,
+      "material": "steel",
+      "note": "spacing printed as a maximum ('@ไม่เกิน 0.80 เมตร'); individual purlin count/positions not dimensioned on this sheet",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "grid_ref_start": "~0.60 beyond A, column 1",
+      "grid_ref_end": "D1",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "[-100x50x20x3.2มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "grid_ref_start": "~0.60 beyond A, column 1\"",
+      "grid_ref_end": "D1\"",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "[-100x50x20x3.2มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "grid_ref_start": "~0.60 beyond A, column 2",
+      "grid_ref_end": "D2",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "[-100x50x20x3.2มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "grid_ref": "~mid-bay between column 1 and column 1\"",
+      "span_source": "unresolved",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "[-100x50x20x3.2มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "intermediate rafter visible on the drawing, exact x-position not dimensioned — see file warnings"
+      ]
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "grid_ref": "~mid-bay between column 1\" and column 2",
+      "span_source": "unresolved",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "[-100x50x20x3.2มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "intermediate rafter visible on the drawing, exact x-position not dimensioned — see file warnings"
+      ]
+    },
+    {
+      "element_id": "ปิดปลายจันทัน",
+      "element_type": "steel_member",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "tf_mm": 2.3,
+        "printed_as": "[-75x45x15x2.3มม."
+      },
+      "material": "steel",
+      "note": "rafter end-cap / fascia closure member at the eave (grid D)",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    }
   ]
 }

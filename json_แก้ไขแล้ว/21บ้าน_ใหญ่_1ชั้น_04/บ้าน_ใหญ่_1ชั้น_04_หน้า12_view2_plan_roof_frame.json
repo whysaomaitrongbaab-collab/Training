@@ -4,25 +4,86 @@
   "discipline": "structural",
   "sheet_code": "S-01",
   "sheet_name": "แปลนโครงหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png",
   "grid_source": "บ้าน_ใหญ่_1ชั้น_04_หน้า00_gridline.json",
   "confidence_score": 0.5,
-  "confidence_flags": ["hip-roof X-brace framing has many repeated RB1/RB2 diagonal member instances at 1:100 — recorded the member TYPES and their specs with confidence, but did not individually itemize/grid-reference every diagonal segment (would need a higher-resolution re-pass); classified pattern:'plan' per the structural-roof-framing rule, not 'roof_plan'"],
+  "confidence_flags": [
+    "hip-roof X-brace framing has many repeated RB1/RB2 diagonal member instances at 1:100 — recorded the member TYPES and their specs with confidence, but did not individually itemize/grid-reference every diagonal segment (would need a higher-resolution re-pass); classified pattern:'plan' per the structural-roof-framing rule, not 'roof_plan'"
+  ],
   "warnings": [
-    "All-steel hip roof over the main house; the small carport (south projection, grid col 2-3) instead gets a short RC ridge beam ('อกไก่ ค.ส.ล. RB1 บน', i.e. RB1 rebar on top of a concrete ridge beam) at its two CX steel-column positions — a genuine hybrid detail, not a transcription inconsistency."
+    "All-steel hip roof over the main house; the small carport (south projection, grid col 2-3) instead gets a short RC ridge beam ('อกไก่ ค.ส.ล. RB1 บน', i.e. RB1 rebar on top of a concrete ridge beam) at its two CX steel-column positions — a genuine hybrid detail, not a transcription inconsistency.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 roof-framing elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "hip_rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "printed_as": "ตะเข้สันเหล็ก C150x75x6.5x10มม. น้ำหนัก 13.4 กก./ม." }, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "side_hip_rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "printed_as": "ตะเข้ข้างเหล็ก C150x75x6.5x10มม." }, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "CN", "element_type": "column", "material": "steel", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "printed_as": "ตั้งเหล็ก (CN) C150x75x6.5x10มม." }, "note": "roof king-post/strut at rafter intersections", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "CX_roof", "element_type": "column", "material": "steel", "grid_refs": ["~ข3", "~ก3"], "note": "steel post continuing up from the carport's CX column below, paired with a short RC ridge beam ('อกไก่ ค.ส.ล. RB1 บน') at this location", "confidence_score": 0.55, "confidence_flags": [] }
+    {
+      "element_id": "hip_rafter",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "printed_as": "ตะเข้สันเหล็ก C150x75x6.5x10มม. น้ำหนัก 13.4 กก./ม."
+      },
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "side_hip_rafter",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "printed_as": "ตะเข้ข้างเหล็ก C150x75x6.5x10มม."
+      },
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "CN",
+      "element_type": "column",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "printed_as": "ตั้งเหล็ก (CN) C150x75x6.5x10มม."
+      },
+      "note": "roof king-post/strut at rafter intersections",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "CX_roof",
+      "element_type": "column",
+      "material": "steel",
+      "grid_refs": [
+        "~ข3",
+        "~ก3"
+      ],
+      "note": "steel post continuing up from the carport's CX column below, paired with a short RC ridge beam ('อกไก่ ค.ส.ล. RB1 บน') at this location",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    }
   ],
   "specs": {
     "purlin_typ": {
       "element_type": "steel_member",
       "material": "steel",
-      "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก C100x50x20x3.2มม. @1.00ม." },
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "จันทันเหล็ก C100x50x20x3.2มม. @1.00ม."
+      },
       "spacing_mm": 1000,
       "spec_source": "S-01 roof plan legend",
       "spec_confidence_score": 0.7
@@ -30,7 +91,13 @@
     "batten_typ": {
       "element_type": "steel_member",
       "material": "steel",
-      "steel_section": { "designation": "C", "d_mm": 25, "b_mm": 25, "tw_mm": 2, "printed_as": "ระแนงเหล็ก 25x25x2มม. @0.32ม." },
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 25,
+        "b_mm": 25,
+        "tw_mm": 2,
+        "printed_as": "ระแนงเหล็ก 25x25x2มม. @0.32ม."
+      },
       "spacing_mm": 320,
       "spec_source": "S-01 roof plan legend",
       "spec_confidence_score": 0.7

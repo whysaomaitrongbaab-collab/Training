@@ -5,7 +5,7 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนฐานรากเสาเข็ม",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า21.png",
@@ -141,6 +141,7 @@
     "op1 direct read (house 11). Pile-count-per-mark convention confirmed (F1=1 pile, F2=2, F3=3, F4=4, F6=6, F7=7, F11=11) matching the F<n>=n-piles pattern seen in prior houses (e.g. house 07's diary entry).",
     "F11 (11-pile footing) appears at all three middle-row (B) intersections and at A-2/C-2 -- the heaviest-loaded footings, consistent with A-2/B-2/C-2 (grid column 2) being the shared wall line between the two roof gables (highest tributary load), matching A-06/A-08's twin-gable structure.",
     "F(0.80x0.80)/C0 spread footings correspond 1:1 in position with F1/C0 pile footings here — same 4 isolated points, same open question about what superstructure they support.",
-    "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 15 entries -> 9. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched."
+    "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 15 entries -> 9. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 9 footing-family elements. Nothing else in this file changed."
   ]
 }

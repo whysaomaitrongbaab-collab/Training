@@ -20,78 +20,382 @@
     "Dummy grid 1' (pos_m -1.30, before the x origin, per the schema's own negative-pos_m precedent) and dummy grid A' (pos_m 2.60, between A and B) resolve the ground-floor bow/bay-window structure at the building's NW corner (หน้า19/หน้า20): a chamfered footing/beam path runs A1 -> (1',A') -> (1',B) -> C1 -> C2. All four corner pile counts (F1 x4 additional occurrences) reconcile exactly against the handwritten pile-count note on หน้า19 (F1=11, F1A=9, F2=4 total 24 footings, all match the grid_refs enumerated in plan_footing).",
     "The upper-floor beam plan (หน้า21) and the roof structural plan (หน้า22) both show a LARGER bow/bay-window turret at the same NW corner, projecting further out than the ground-floor footprint (an upper-floor cantilevered bay, consistent with the architectural floor plans). Its exact facet coordinates were not independently re-derived into new dummy grid lines within the time available for this house — elements on that turret (หน้า21/หน้า22) use approximate '~' grid_refs anchored to the nearest resolved point (1',A ) rather than invented precise dummy positions; flagged at lower confidence on those specific elements rather than silently guessed, matching the precedent set by house #29's bay-window plan_beam files.",
     "Additional small sub-bay dimension ticks appear on the beam plans (หน้า20: 0.70 near grid3, 1.70/1.90/1.00 near grid4; หน้า21: 2.80 near grid3) that were not resolved to new dummy grid lines — no clear beam endpoint was confidently traced to justify a new dummy within the time available, so these are recorded in unassigned_dimensions rather than invented as grid points, per the beam-endpoint rule (only add a dummy when a beam/footing endpoint actually needs it).",
-    "z_levels left empty: this house's structural sheets print no named building-wide reference level (no 'ระดับพื้นชั้น1'-style label on any Pass-2 sheet) — every level encountered is either a per-beam soffit offset printed directly on the beam mark (e.g. 'B1(+0.40)') or a per-slab-marker offset, both recorded on the element's own level_m field rather than in this registry, matching the treatment used for house #29 (same drawing series)."
+    "z_levels left empty: this house's structural sheets print no named building-wide reference level (no 'ระดับพื้นชั้น1'-style label on any Pass-2 sheet) — every level encountered is either a per-beam soffit offset printed directly on the beam mark (e.g. 'B1(+0.40)') or a per-slab-marker offset, both recorded on the element's own level_m field rather than in this registry, matching the treatment used for house #29 (same drawing series).",
+    "z_levels[] and the z dimension_chain read 2026-08-28 off รูปตัด A-A (หน้า12) plus one turret-roof level off รูปด้าน 4 (หน้า09) -- both architectural sheets OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. The sheet prints in MILLIMETRES (the drawing's own convention for this แบบบ้านยิ้มเพื่อประชาชน series); level_m is the same number in metres, not a conversion judgement. The chain closes exactly: 0.500+3.600 = 4.100, +3.000 = 7.100, +3.550 = 10.650, and 3.800+3.050 = 6.850. Six room-floor levels (ซักล้าง/จอดรถ/ชานพัก/ห้องน้ำ2 etc.) are printed as bare numbers with no ระดับ label and carry id null per section 4, with the printed text kept in level_m_printed_as. Only หน้า09 and หน้า12 were read -- รูปด้าน 1/2/3 and any other รูปตัด may print further levels, so this is the z axis as of those two sheets, not a full sweep. unassigned_dimensions[] still un-swept."
   ],
   "grid": {
     "x_lines": [
-      { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "1'", "pos_m": -1.30, "type": "dummy" },
-      { "id": "2", "pos_m": 3.00, "type": "named" },
-      { "id": "2'", "pos_m": 4.30, "type": "dummy" },
-      { "id": "2''", "pos_m": 6.70, "type": "dummy" },
-      { "id": "3", "pos_m": 8.00, "type": "named" },
-      { "id": "4", "pos_m": 10.40, "type": "named" },
-      { "id": "5", "pos_m": 14.00, "type": "named" },
-      { "id": "6", "pos_m": 17.00, "type": "named" }
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "1'",
+        "pos_m": -1.3,
+        "type": "dummy"
+      },
+      {
+        "id": "2",
+        "pos_m": 3.0,
+        "type": "named"
+      },
+      {
+        "id": "2'",
+        "pos_m": 4.3,
+        "type": "dummy"
+      },
+      {
+        "id": "2''",
+        "pos_m": 6.7,
+        "type": "dummy"
+      },
+      {
+        "id": "3",
+        "pos_m": 8.0,
+        "type": "named"
+      },
+      {
+        "id": "4",
+        "pos_m": 10.4,
+        "type": "named"
+      },
+      {
+        "id": "5",
+        "pos_m": 14.0,
+        "type": "named"
+      },
+      {
+        "id": "6",
+        "pos_m": 17.0,
+        "type": "named"
+      }
     ],
     "y_lines": [
-      { "id": "A", "pos_m": 0.00, "type": "named" },
-      { "id": "A'", "pos_m": 2.60, "type": "dummy" },
-      { "id": "B", "pos_m": 4.00, "type": "named" },
-      { "id": "C", "pos_m": 5.00, "type": "named" },
-      { "id": "D", "pos_m": 7.00, "type": "named" },
-      { "id": "E", "pos_m": 9.00, "type": "named" },
-      { "id": "F", "pos_m": 13.00, "type": "named" }
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "A'",
+        "pos_m": 2.6,
+        "type": "dummy"
+      },
+      {
+        "id": "B",
+        "pos_m": 4.0,
+        "type": "named"
+      },
+      {
+        "id": "C",
+        "pos_m": 5.0,
+        "type": "named"
+      },
+      {
+        "id": "D",
+        "pos_m": 7.0,
+        "type": "named"
+      },
+      {
+        "id": "E",
+        "pos_m": 9.0,
+        "type": "named"
+      },
+      {
+        "id": "F",
+        "pos_m": 13.0,
+        "type": "named"
+      }
     ],
-    "z_levels": [],
+    "z_levels": [
+      {
+        "id": "ระดับดินเดิม",
+        "level_m": 0.0,
+        "type": "datum",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png"
+      },
+      {
+        "id": null,
+        "level_m": 0.1,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png",
+        "level_m_printed_as": "ซักล้าง +100",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": null,
+        "level_m": 0.3,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png",
+        "level_m_printed_as": "จอดรถ +300",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": "ระดับพื้นชั้นล่าง",
+        "level_m": 0.5,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png"
+      },
+      {
+        "id": null,
+        "level_m": 2.3,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png",
+        "level_m_printed_as": "ชานพัก +2300",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": "ระดับหลังอะเส คสล.-บริเวณจอดรถ",
+        "level_m": 3.8,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png"
+      },
+      {
+        "id": null,
+        "level_m": 4.0,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png",
+        "level_m_printed_as": "ห้องน้ำ 2 +4000",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": "ระดับพื้นชั้นบน",
+        "level_m": 4.1,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png"
+      },
+      {
+        "id": null,
+        "level_m": 5.0,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า09.png",
+        "level_m_printed_as": "+5000",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4) -- turret/porch roof, รูปด้าน 4"
+        ]
+      },
+      {
+        "id": "ระดับหลังอกไก่เหล็ก-บริเวณจอดรถ",
+        "level_m": 6.85,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png"
+      },
+      {
+        "id": "ระดับหลังอะเสเหล็กชั้นบน",
+        "level_m": 7.1,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png"
+      },
+      {
+        "id": "ระดับหลังอกไก่เหล็กบนสุด",
+        "level_m": 10.65,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png"
+      }
+    ],
     "dimension_chains": [
       {
         "axis": "x",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า19.png",
         "segments": [
-          { "from": "edge", "to": "1", "value_m": 1.30 },
-          { "from": "1", "to": "2", "value_m": 3.00 },
-          { "from": "2", "to": "2'", "value_m": 1.30 },
-          { "from": "2''", "to": "3", "value_m": 1.30 },
-          { "from": "2", "to": "3", "value_m": 5.00 },
-          { "from": "3", "to": "4", "value_m": 2.40 },
-          { "from": "4", "to": "5", "value_m": 3.60 },
-          { "from": "5", "to": "6", "value_m": 3.00 },
-          { "from": "1", "to": "6", "value_m": 17.00 }
+          {
+            "from": "edge",
+            "to": "1",
+            "value_m": 1.3
+          },
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.0
+          },
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.3
+          },
+          {
+            "from": "2''",
+            "to": "3",
+            "value_m": 1.3
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 5.0
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 2.4
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 3.6
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 3.0
+          },
+          {
+            "from": "1",
+            "to": "6",
+            "value_m": 17.0
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า19.png",
         "segments": [
-          { "from": "A", "to": "A'", "value_m": 2.60, "note": "printed as two stacked 1.30 ticks via an unlabeled intermediate reference line; recorded as the resolved total" },
-          { "from": "A", "to": "B", "value_m": 4.00 },
-          { "from": "B", "to": "C", "value_m": 1.00 },
-          { "from": "C", "to": "D", "value_m": 2.00 },
-          { "from": "D", "to": "E", "value_m": 2.00 },
-          { "from": "E", "to": "F", "value_m": 4.00 },
-          { "from": "A", "to": "F", "value_m": 13.00 }
+          {
+            "from": "A",
+            "to": "A'",
+            "value_m": 2.6,
+            "note": "printed as two stacked 1.30 ticks via an unlabeled intermediate reference line; recorded as the resolved total"
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 4.0
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 1.0
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 2.0
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "value_m": 2.0
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "value_m": 4.0
+          },
+          {
+            "from": "A",
+            "to": "F",
+            "value_m": 13.0
+          }
         ]
       },
       {
         "axis": "x",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า22.png",
         "segments": [
-          { "from": "1", "to": "2", "value_m": 3.00 },
-          { "from": "2", "to": "3", "value_m": 5.00 },
-          { "from": "3", "to": "4", "value_m": 2.40 },
-          { "from": "4", "to": "5", "value_m": 3.60 },
-          { "from": "1", "to": "5", "value_m": 14.00 }
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.0
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 5.0
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 2.4
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 3.6
+          },
+          {
+            "from": "1",
+            "to": "5",
+            "value_m": 14.0
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า12.png",
+        "segments": [
+          {
+            "from": "ระดับดินเดิม",
+            "to": "ระดับพื้นชั้นล่าง",
+            "value_m": 0.5
+          },
+          {
+            "from": "ระดับพื้นชั้นล่าง",
+            "to": "ระดับพื้นชั้นบน",
+            "value_m": 3.6
+          },
+          {
+            "from": "ระดับพื้นชั้นบน",
+            "to": "ระดับหลังอะเสเหล็กชั้นบน",
+            "value_m": 3.0
+          },
+          {
+            "from": "ระดับหลังอะเสเหล็กชั้นบน",
+            "to": "ระดับหลังอกไก่เหล็กบนสุด",
+            "value_m": 3.55
+          },
+          {
+            "from": "ระดับหลังอะเส คสล.-บริเวณจอดรถ",
+            "to": "ระดับหลังอกไก่เหล็ก-บริเวณจอดรถ",
+            "value_m": 3.05
+          }
         ]
       }
     ],
     "unassigned_dimensions": [
-      { "value_m": 0.70, "label": "sub-bay tick near grid3, x-axis, ground-floor beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png", "note": "not resolved to a dummy grid — no confidently-traced beam endpoint found there in the time available" },
-      { "value_m": 1.70, "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png", "note": null },
-      { "value_m": 1.90, "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png", "note": null },
-      { "value_m": 1.00, "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png", "note": null },
-      { "value_m": 2.80, "label": "sub-bay tick near grid3, x-axis, upper-floor beam plan (bay-window turret width)", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า21.png", "note": "likely the upper-floor bay window's own overall projection width, not independently resolved to a dummy grid" },
-      { "value_m": 1.00, "label": "diagonal facet dimension on the upper-floor bay-window turret", "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า21.png", "note": "diagonal facet length of the octagonal turret, not a grid-axis dimension" }
+      {
+        "value_m": 0.7,
+        "label": "sub-bay tick near grid3, x-axis, ground-floor beam plan",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png",
+        "note": "not resolved to a dummy grid — no confidently-traced beam endpoint found there in the time available"
+      },
+      {
+        "value_m": 1.7,
+        "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png",
+        "note": null
+      },
+      {
+        "value_m": 1.9,
+        "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png",
+        "note": null
+      },
+      {
+        "value_m": 1.0,
+        "label": "sub-bay tick near grid4, x-axis, ground-floor beam plan",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า20.png",
+        "note": null
+      },
+      {
+        "value_m": 2.8,
+        "label": "sub-bay tick near grid3, x-axis, upper-floor beam plan (bay-window turret width)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า21.png",
+        "note": "likely the upper-floor bay window's own overall projection width, not independently resolved to a dummy grid"
+      },
+      {
+        "value_m": 1.0,
+        "label": "diagonal facet dimension on the upper-floor bay-window turret",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า21.png",
+        "note": "diagonal facet length of the octagonal turret, not a grid-axis dimension"
+      }
     ]
   }
 }

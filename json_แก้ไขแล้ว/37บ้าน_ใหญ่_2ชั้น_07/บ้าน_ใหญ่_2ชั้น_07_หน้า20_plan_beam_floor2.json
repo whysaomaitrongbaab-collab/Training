@@ -1,10 +1,10 @@
-﻿{
+{
   "png": "20",
   "doc_page": null,
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างชั้นบน",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า20.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_07_หน้า00_gridline.json",
   "confidence_score": 0.5,
@@ -15,30 +15,295 @@
     "CORRECTED 2026-08-24 โ€” span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections (Pythagoras where the beam is diagonal, so chamfered members get a real length too). This is pure computation from the grid per the ยง4 rule that span is calculated by code and never estimated by the model โ€” no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
     "This sheet carries a small secondary gable roof frame (a decorative front dormer over the entry porch, matching the gable visible in elevation หน้า07/09) drawn directly on top of the floor-2 beam grid near B7-C7: two raking members marked 'B3'' at (+3.65) forming the gable, with an 'S1' slab/ceiling panel (+3.65/+3.60) inside. Recorded as beam/slab elements in THIS file rather than splitting into a second view file, since it shares the exact same grid and is spatially inseparable from the adjacent floor beams at this scale — flagged here per the multi-view rule (§3) rather than silently merged.",
     "A curved void near A3-A4 is explicitly labelled 'ช่องบันได' (stairwell opening) on this sheet — resolves the ambiguity left open on the ground-floor plan (หน้า19), where the same curved shape at the same grid location was recorded without a text label.",
-    "'จันทัน C100x50x20x2.3mm @1.00m', 'ตะเฆ่สัน/ตะเฆ่ราง 2C125x50x20x2.3mm', 'อกไก่ 2C125x50x20x2.3mm', 'อี,อเส 2C150x50x20x2.3mm' printed as leader labels on the left margin of this sheet all describe the MAIN hip roof steel frame, which is drawn in full on the dedicated roof structure plan (หน้า21) — not re-transcribed as separate elements here to avoid duplicating that file; only the small gable dormer local to this sheet (B3'/S1 above) was captured here."
+    "'จันทัน C100x50x20x2.3mm @1.00m', 'ตะเฆ่สัน/ตะเฆ่ราง 2C125x50x20x2.3mm', 'อกไก่ 2C125x50x20x2.3mm', 'อี,อเส 2C150x50x20x2.3mm' printed as leader labels on the left margin of this sheet all describe the MAIN hip roof steel frame, which is drawn in full on the dedicated roof structure plan (หน้า21) — not re-transcribed as separate elements here to avoid duplicating that file; only the small gable dormer local to this sheet (B3'/S1 above) was captured here.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 18 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B1'", "element_type": "beam", "grid_ref_start": "~A7", "grid_ref_end": "A7", "level_m": 3.65, "span_length_m": 0.40, "span_source": "user_confirmed", "note": "short west stub/jog at row 7; its west endpoint is not a grid line, so the length cannot be derived from the grid — 0.40 m given directly by Makham from the drawing on 2026-08-24.", "confidence_score": 0.8, "confidence_flags": ["span given by Makham, not computed"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A7", "grid_ref_end": "~B7", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B3'", "element_type": "rafter", "count": 2, "grid_refs": ["~B7","~C7"], "level_m": 3.65, "note": "raking members of the small decorative gable dormer over the entry porch, see file warnings", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "count": 1, "grid_refs": ["~B7"], "level_m": 3.65, "note": "gable dormer ceiling/slab panel, printed +3.65/+3.60 on the two roof faces", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "~C7", "grid_ref_end": "D7", "level_m": 3.65, "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "D7", "grid_ref_end": "~E7", "level_m": 3.65, "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A7", "grid_ref_end": "A6", "level_m": 3.65, "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A6", "grid_ref_end": "~A5", "level_m": 3.65, "span_length_m": 1.60, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "~B3", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B3'", "element_type": "beam", "grid_ref_start": "~A3", "grid_ref_end": "~A4", "level_m": 2.75, "note": "curved edge beam around the stairwell opening (ช่องบันได); level distinct from the +3.65 floor beams around it because it edges the stair void, not the floor slab", "span_length_m": 2.40, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "S1", "element_type": "slab", "count": 1, "grid_refs": ["~B4"], "level_m": 3.65, "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "B6A", "element_type": "beam", "grid_ref_start": "~B5", "grid_ref_end": "~B7", "level_m": 3.65, "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length", "interior vertical beam, column position approximate"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~C5", "grid_ref_end": "~C7", "level_m": 3.65, "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length", "interior vertical beam, column position approximate"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~C5", "grid_ref_end": "~D5", "level_m": 3.65, "span_length_m": 3.50, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B6A", "element_type": "beam", "grid_ref_start": "~D5", "grid_ref_end": "~D7", "level_m": 3.65, "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length", "interior vertical beam, column position approximate"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "~C4", "grid_ref_end": "~C5", "level_m": 3.65, "span_length_m": 1.60, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~C3", "grid_ref_end": "~C4", "level_m": 3.65, "span_length_m": 2.40, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "~C3", "grid_ref_end": "~D3", "level_m": 3.65, "span_length_m": 3.50, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B1'", "element_type": "beam", "grid_ref_start": "~D2", "grid_ref_end": "~D3", "level_m": 3.65, "note": "near the stair-landing area, matches 'แบบขยาย_2' detail callout on this sheet (see หน้า26 arch beam detail)", "span_length_m": 2.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~D2", "grid_ref_end": "~D3", "level_m": 3.65, "span_length_m": 2.00, "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length", "possible duplicate/adjacent-parallel run with B1' above, not fully disambiguated"] },
-    { "element_id": "S1", "element_type": "slab", "count": 1, "grid_refs": ["~D3"], "level_m": 3.65, "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "~A4", "level_m": 3.65, "span_length_m": 2.40, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] }
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref_start": "~A7",
+      "grid_ref_end": "A7",
+      "level_m": 3.65,
+      "span_length_m": 0.4,
+      "span_source": "user_confirmed",
+      "note": "short west stub/jog at row 7; its west endpoint is not a grid line, so the length cannot be derived from the grid — 0.40 m given directly by Makham from the drawing on 2026-08-24.",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "span given by Makham, not computed"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "~B7",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "rafter",
+      "count": 2,
+      "grid_refs": [
+        "~B7",
+        "~C7"
+      ],
+      "level_m": 3.65,
+      "note": "raking members of the small decorative gable dormer over the entry porch, see file warnings",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~B7"
+      ],
+      "level_m": 3.65,
+      "note": "gable dormer ceiling/slab panel, printed +3.65/+3.60 on the two roof faces",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "~C7",
+      "grid_ref_end": "D7",
+      "level_m": 3.65,
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "D7",
+      "grid_ref_end": "~E7",
+      "level_m": 3.65,
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A6",
+      "level_m": 3.65,
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "~A5",
+      "level_m": 3.65,
+      "span_length_m": 1.6,
+      "span_source": "unresolved",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "~B3",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "~A3",
+      "grid_ref_end": "~A4",
+      "level_m": 2.75,
+      "note": "curved edge beam around the stairwell opening (ช่องบันได); level distinct from the +3.65 floor beams around it because it edges the stair void, not the floor slab",
+      "span_length_m": 2.4,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~B4"
+      ],
+      "level_m": 3.65,
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6A",
+      "element_type": "beam",
+      "grid_ref_start": "~B5",
+      "grid_ref_end": "~B7",
+      "level_m": 3.65,
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length",
+        "interior vertical beam, column position approximate"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "~C5",
+      "grid_ref_end": "~C7",
+      "level_m": 3.65,
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length",
+        "interior vertical beam, column position approximate"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "~C5",
+      "grid_ref_end": "~D5",
+      "level_m": 3.65,
+      "span_length_m": 3.5,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B6A",
+      "element_type": "beam",
+      "grid_ref_start": "~D5",
+      "grid_ref_end": "~D7",
+      "level_m": 3.65,
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length",
+        "interior vertical beam, column position approximate"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "~C4",
+      "grid_ref_end": "~C5",
+      "level_m": 3.65,
+      "span_length_m": 1.6,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "~C3",
+      "grid_ref_end": "~C4",
+      "level_m": 3.65,
+      "span_length_m": 2.4,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "~C3",
+      "grid_ref_end": "~D3",
+      "level_m": 3.65,
+      "span_length_m": 3.5,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref_start": "~D2",
+      "grid_ref_end": "~D3",
+      "level_m": 3.65,
+      "note": "near the stair-landing area, matches 'แบบขยาย_2' detail callout on this sheet (see หน้า26 arch beam detail)",
+      "span_length_m": 2.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "~D2",
+      "grid_ref_end": "~D3",
+      "level_m": 3.65,
+      "span_length_m": 2.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.35,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length",
+        "possible duplicate/adjacent-parallel run with B1' above, not fully disambiguated"
+      ]
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~D3"
+      ],
+      "level_m": 3.65,
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "~A4",
+      "level_m": 3.65,
+      "span_length_m": 2.4,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    }
   ]
 }

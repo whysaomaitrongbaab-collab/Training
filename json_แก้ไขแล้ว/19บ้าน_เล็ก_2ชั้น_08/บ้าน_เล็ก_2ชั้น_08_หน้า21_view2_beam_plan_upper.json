@@ -4,29 +4,158 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนเสา, คานพื้นชั้นบน",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_08/บ้าน_เล็ก_2ชั้น_08_หน้า21.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_08_หน้า00_gridline.json",
   "confidence_score": 0.75,
   "confidence_flags": [],
   "warnings": [
     "Right-side lower vertical beam (B2 point to C2 point) has no clearly legible mark label at this scan resolution — recorded as B2 by continuity with the right-side upper segment, but this is inferred, not directly read. Needs zoom review.",
-    "No SE corner slab/beam extension on this floor (unlike ground floor) — the exterior stair (ST1) is open-air, landing only at ground level, consistent with the cover render."
+    "No SE corner slab/beam extension on this floor (unlike ground floor) — the exterior stair (ST1) is open-air, landing only at ground level, consistent with the cover render.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 8 beam-family elements. Nothing else in this file changed."
   ],
   "specs": {
-    "B2X": { "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 20, "type": "RB" }, "bottom": { "count": 2, "dia_mm": 20, "type": "RB" } }, "stirrup": { "dia_mm": 9, "spacing_mm": 200, "type": "RB" }, "spec_source": "S-07", "spec_confidence_score": 0.9, "note": "same section as B2, shares S-07's B2,B2X detail" },
-    "SP": { "description": "precast solid-plank floor, 50mm plank + 50mm concrete topping with wire mesh/rebar per S-07 note 4 and the S-08 laying-joint detail", "thickness_mm": 50, "topping_thickness_mm": 50, "topping_mesh": { "dia_mm": 6, "spacing_mm": 250, "type": "RB" }, "spec_source": "S-01 note 4 / S-08", "spec_confidence_score": 0.85 }
+    "B2X": {
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
+      "spec_source": "S-07",
+      "spec_confidence_score": 0.9,
+      "note": "same section as B2, shares S-07's B2,B2X detail"
+    },
+    "SP": {
+      "description": "precast solid-plank floor, 50mm plank + 50mm concrete topping with wire mesh/rebar per S-07 note 4 and the S-08 laying-joint detail",
+      "thickness_mm": 50,
+      "topping_thickness_mm": 50,
+      "topping_mesh": {
+        "dia_mm": 6,
+        "spacing_mm": 250,
+        "type": "RB"
+      },
+      "spec_source": "S-01 note 4 / S-08",
+      "spec_confidence_score": 0.85
+    }
   },
   "elements": [
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["needs_zoom_review", "label_not_clearly_legible"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2X", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C'1", "span_length_m": 1.20, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "SP", "element_type": "slab", "count": 2, "grid_refs": ["~A1", "~B1"], "confidence_score": 0.7, "confidence_flags": ["no_printed_grid_ref_approximate"] },
-    { "element_id": "ST1", "element_type": "stair", "grid_ref": "~C1", "description": "stair opening, labeled ลง (down)", "confidence_score": 0.75, "confidence_flags": [] }
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "needs_zoom_review",
+        "label_not_clearly_legible"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2X",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C'1",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": [
+        "~A1",
+        "~B1"
+      ],
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "no_printed_grid_ref_approximate"
+      ]
+    },
+    {
+      "element_id": "ST1",
+      "element_type": "stair",
+      "grid_ref": "~C1",
+      "description": "stair opening, labeled ลง (down)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
   ]
 }

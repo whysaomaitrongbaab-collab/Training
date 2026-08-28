@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-04",
   "sheet_name": "แปลนพื้น",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า21.png",
   "grid_source": "บ้าน_เล็ก_1ชั้น_08_หน้า00_gridline.json",
   "confidence_score": 0.8,
@@ -15,28 +15,220 @@
     "B2 (row B, grid1-grid2-grid3, and again row C, grid1-grid2-grid3) reads as the SAME mark used on two different physical beam lines with matching total lengths (2.40+3.60=6.00m each) — consistent with S-15's B2 elevation, which details one continuous 2-span beam over 3 supports rather than two separate short beams. Recorded as printed (mark appears at both row B and row C, each as its own atomic segments) rather than assumed to be a drafting reuse of a single elevation for both.",
     "SP (SOLID PLANK precast floor marker) merged into one point-element entry per §0.1/§4 — each of the 4 room zones has its own SP circle with arrows showing plank span direction; recorded with approximate room-bounding grid_refs (no single point position exists for a floor-zone marker), same convention as the stair '~grid' rule in §10a.",
     "'S1' (3 occurrences: 1 inside the WC.1 dashed sub-room, 2 inside a smaller dashed double-box within the เฉลียง/porch room near the stair) is NOT the same thing as 'ST1' (the stair, hexagon marker). S1's own detail sheet (S-17, 'แบบขยาย S1') shows a 1.80m long stepped/notched precast channel (Ø9mm@0.25m reinforcement, 0.10m thick) whose exact function (door-sill / threshold step piece) is not explicitly labelled anywhere in this house's op04-scoped sheets — recorded as element_type 'slab' at reduced confidence rather than guessed at.",
-    "BX(เอียง) = inclined beam, plan-view projection only (its actual slope is drawn in elevation on S-17's 'BX' section, not on this plan) — grid_ref_start/end given as the plan projection endpoints."
+    "BX(เอียง) = inclined beam, plan-view projection only (its actual slope is drawn in elevation on S-17's 'BX' section, not on this plan) — grid_ref_start/end given as the plan projection endpoints.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 17 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A2'", "grid_ref_end": "B2'", "span_length_m": 2.40, "span_source": "grid_table", "note": "WC.1 west partition wall/beam", "confidence_score": 0.6, "confidence_flags": ["endpoint position sourced from architectural sheet, see file warnings"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B'1", "grid_ref_end": "B'2", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B'1'", "grid_ref_end": "C1'", "span_length_m": 1.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BX", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "C'1j", "span_length_m": 1.00, "span_source": "grid_table", "note": "BX(เอียง) — inclined stair-side beam, plan projection only", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "BX", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C'2", "span_length_m": 1.00, "span_source": "grid_table", "note": "BX(เอียง) — inclined stair-side beam, plan projection only", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "ST1", "element_type": "stair", "grid_ref": "~C1-C2", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "SP", "element_type": "slab", "count": 4, "grid_refs": ["~A1-B2 room", "~A2-B2' room", "~B1-C2 room", "~B2-C3 room"], "confidence_score": 0.6, "confidence_flags": ["SOLID PLANK floor marker, one per room — approximate room-bounding grid_refs only, see file warnings"] },
-    { "element_id": "S1", "element_type": "slab", "count": 3, "grid_refs": ["~A2'-B3 room (WC.1)", "~B1-C2 room (เฉลียง, near stair)", "~B1-C2 room (เฉลียง, near stair)"], "confidence_score": 0.4, "confidence_flags": ["exact function unresolved — see file warnings"] }
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "B2'",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "note": "WC.1 west partition wall/beam",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "endpoint position sourced from architectural sheet, see file warnings"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B'1'",
+      "grid_ref_end": "C1'",
+      "span_length_m": 1.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BX",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C'1j",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "BX(เอียง) — inclined stair-side beam, plan projection only",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BX",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C'2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "BX(เอียง) — inclined stair-side beam, plan projection only",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST1",
+      "element_type": "stair",
+      "grid_ref": "~C1-C2",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "slab",
+      "count": 4,
+      "grid_refs": [
+        "~A1-B2 room",
+        "~A2-B2' room",
+        "~B1-C2 room",
+        "~B2-C3 room"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "SOLID PLANK floor marker, one per room — approximate room-bounding grid_refs only, see file warnings"
+      ]
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 3,
+      "grid_refs": [
+        "~A2'-B3 room (WC.1)",
+        "~B1-C2 room (เฉลียง, near stair)",
+        "~B1-C2 room (เฉลียง, near stair)"
+      ],
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "exact function unresolved — see file warnings"
+      ]
+    }
   ]
 }

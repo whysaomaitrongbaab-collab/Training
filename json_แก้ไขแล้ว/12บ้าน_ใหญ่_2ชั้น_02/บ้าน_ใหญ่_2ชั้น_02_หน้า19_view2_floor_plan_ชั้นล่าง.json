@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-01",
   "sheet_name": "แปลนฐานราก เสาตอม่อ, แปลนเสา,คาน,พื้นชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_02/บ้าน_ใหญ่_2ชั้น_02_หน้า19.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_02_หน้า00_gridline.json",
   "view_title": "แปลนเสา, คาน, พื้นชั้นล่าง (มาตราส่วน 1:100) - ground-floor column, beam and slab layout",
@@ -629,6 +629,7 @@
     "SG ON THIS PLAN IS RECORDED AS GS, AND THIS IS A DECISION, NOT A TRANSCRIPTION. Four slab bubbles on the rear terrace and the carport carry a two-letter mark that reads as SG on two of them and GS on the other two at the largest magnification this scan supports; the glyphs are ~10 px tall and S/G are the confusable pair §10 warns about. S-03 (แบบขยายการเสริมเหล็ก ฐานราก,ตอม่อ,เสา พื้น) details exactly five slab marks - S, S1, S2, S3 and GS - and no SG anywhere. Per §7 the detail sheet wins over the plan, and recording a phantom SG would create a mark that can never join to a spec, which is worse than normalising. All four are therefore recorded as GS with the plan reading preserved in element_id_printed_as and flagged. Both are slabs on grade (rear terrace and carport), which is exactly what S-03's GS detail draws, so one mark covering both is physically consistent. A later pass on the full-size sheet should confirm.",
     "SLAB MARKS ON THIS SHEET ARE S, S2, SG AND GS. SG and GS are two different marks, not a transcription of one: SG labels the two rear terrace panels poured on grade inside the building footprint, GS labels the carport slab outside grid 4. Both spellings were re-read at high magnification specifically because of the §10 SI-versus-S1 warning. No S1 and no SI appears anywhere on the ground floor; S1 does appear on the upper floor (S-02).",
     "Slab panels have no beam endpoints of their own, so per §0.8 they carry a single approximate grid_ref (or an area ref) rather than start/end refs, and per §4's ordering rule they are listed after the positioned elements.",
-    "SPECS ARE NOT JOINED INTO THIS FILE. Beam sections and reinforcement for B1/B2/B2A/B2B/B2C/B3/B3A/B3B/B3C live on S-04 (หน้า23) and column/pedestal/footing details on S-03 (หน้า22); per §7 they belong in a specs{} object keyed by element_id. They are recorded on those sheets' own files instead of being duplicated here."
+    "SPECS ARE NOT JOINED INTO THIS FILE. Beam sections and reinforcement for B1/B2/B2A/B2B/B2C/B3/B3A/B3B/B3C live on S-04 (หน้า23) and column/pedestal/footing details on S-03 (หน้า22); per §7 they belong in a specs{} object keyed by element_id. They are recorded on those sheets' own files instead of being duplicated here.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 43 beam-family elements. Nothing else in this file changed."
   ]
 }

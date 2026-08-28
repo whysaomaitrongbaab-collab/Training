@@ -1,14 +1,16 @@
-﻿{
+{
   "png": "18",
   "doc_page": 18,
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "ผังโครงสร้างชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_20/บ้าน_เล็ก_2ชั้น_20_หน้า18.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_20_หน้า00_gridline.json",
   "confidence_score": 0.65,
-  "confidence_flags": ["dense multi-box entrance/stairwell cluster (grid1-2, row A to E) required interpretation — see warnings"],
+  "confidence_flags": [
+    "dense multi-box entrance/stairwell cluster (grid1-2, row A to E) required interpretation — see warnings"
+  ],
   "warnings": [
     "CORRECTED 2026-08-24 — pixel re-survey. Grid pinned first: x 1=1088, 2=1399, 3=1765 px (104 px/m) and y A=652, B=865, B'=1055, C=1288, D=1607, E=1872 px (106 px/m). Note B' here is a REAL printed grid (its own bubble is on the left margin), not a dummy — the master is right to type it 'named'. Two dummy COLUMNS were added, both off printed dimensions on the top margin: 1' = -1.00 (the '1.00' printed before grid 1) and 1'' = 1.90 (the 1.90 of the '1.90 + 1.10 = 3.00' sub-chain).",
     "Three elements that were recorded as unplaced '~1-2' or with a null span are now pinned. The B'-C band has FOUR verticals in a row, all read at 5x zoom: 1'(-1.00) = B1, grid 1 = B10A, 1''(1.90) = B2, grid 2 = B8A. The earlier extraction had B10A floating at '~1-2' and B1 at 'B'1-C1' with no span; B2 was missing entirely. The A-B band's floating '~1-2' B1 is the same 1.90 column (faces x=1268/1284 px).",
@@ -19,41 +21,311 @@
     "The grid1-2 span (row A-B, and again row B'-C) is each internally sub-divided into two rooms by an extra vertical beam (also marked 'B1' in the A-B bay; marked 'B10A' in the B'-C bay) that does NOT sit on any named or dummy grid line, and no printed sub-dimension locates it precisely within the 3.00 m bay in the available scan. Per the beam-endpoint rule this should get its own dummy grid, but inventing a pos_m with no printed basis would violate the 'never guess pos_m' rule — so these two internal beams are recorded with an approximate grid_ref ('~1-2') and reduced confidence rather than a fabricated dummy-grid coordinate, and are flagged here rather than silently dropped. The two slab bays they divide are recorded as separate slab elements either side.",
     "The 'S1' slab bay at grid1-2 x B-B' prints two different local levels inside the same cross-hatch box (+0.40 and +0.35) — likely a sloped/drained slab rather than a transcription conflict. Both values are kept (level_m = leading value, both recorded in level_m_printed_as) rather than averaging them into a fabricated single number.",
     "The porch/entrance zone (grid1-3, row D to E) includes a curved archway beam (marked B3, level +0.20, drawn as a semicircular arc rather than a straight grid-to-grid segment) plus two short stub beams marked B1'(+0.30) flanking it and a small stub 'B0(+0.10)' near grid1/row D. None of these sit on simple two-point grid lines — their extents are approximated (prefixed '~') at reduced confidence (0.5) rather than invented as precise grid coordinates. The full architectural detail for this porch arch would be on a Pass-3 entrance detail sheet, out of op04 scope.",
-    "Slab markers S0/S1 (plank-direction/void indicators) are recorded as element_type 'slab' with their printed local level; S1 boxes show a diagonal X pattern typically meaning a plank-laid slab bay in this drawing series (not a structural void)."
+    "Slab markers S0/S1 (plank-direction/void indicators) are recorded as element_type 'slab' with their printed local level; S1 boxes show a diagonal X pattern typically meaning a plank-laid slab bay in this drawing series (not a structural void).",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 22 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "CA", "element_type": "column", "count": 1, "grid_refs": ["B'1"], "note": "special column on beam only, no footing — see warnings", "confidence_score": 0.7, "confidence_flags": [] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 0.40, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 0.40, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1'''", "grid_ref_end": "B1'''", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 0.40, "note": "stands on dummy column 1'' (1.90) in the A-B band; mark read as B1(+0.40) at 4x zoom, faces traced x=1268/1284 px against grid 1 at 1088 and grid 2 at 1399.", "confidence_score": 0.7, "confidence_flags": ["CORRECTED_2026-08-24_was_~1-2_unresolved"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 0.40, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "~1-2 x A-B (east sub-bay)", "level_m": 0.40, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 0.35, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 0.35, "confidence_score": 0.8, "confidence_flags": [] },
-
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 0.40, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 0.35, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B8A", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "level_m": 0.40, "note": "spans through row B' without splitting — grid2 has no column at B'", "confidence_score": 0.7, "confidence_flags": [] },
-
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "1-2 x B-B'", "level_m": 0.40, "level_m_printed_as": "+0.40 / +0.35 (two levels printed in this slab bay, likely sloped/drained)", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B10A", "element_type": "beam", "grid_ref_start": "B'1", "grid_ref_end": "C1", "span_length_m": 2.20, "span_source": "grid_table", "level_m": 0.40, "note": "sits on named grid 1 (not an unplaced ~1-2 member) — the B'-C band has four verticals in a row and this is the second: 1'(-1.00)=B1, grid1=B10A, 1''(1.90)=B2, grid2=B8A, all read at 5x zoom. The CA special column marker sits on top of this one.", "confidence_score": 0.7, "confidence_flags": ["CORRECTED_2026-08-24_was_~1-2_unresolved"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B'1''", "grid_ref_end": "C1''", "span_length_m": 2.20, "span_source": "grid_table", "level_m": 0.40, "note": "stands on dummy column 1' (-1.00), the west edge of the B'-C annexe, printed as '1.00' before grid 1 on the top margin. Mark read as B1(+0.40) at 5x zoom. Faces traced x=984/1006 px against grid 1 at 1088.", "confidence_score": 0.7, "confidence_flags": ["CORRECTED_2026-08-24_was_B'1-C1_with_no_span"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B'1'''", "grid_ref_end": "C1'''", "span_length_m": 2.20, "span_source": "grid_table", "level_m": 0.40, "note": "stands on dummy column 1'' (1.90), printed as the '1.90' of the 1.90+1.10=3.00 sub-chain on the top margin. Mark read as B2(+0.40) at 5x zoom. Faces traced x=1285/1306 px.", "confidence_score": 0.7, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B'1", "grid_ref_end": "B'2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 0.40, "note": "row B' beam, grid1 to grid2 (faces y=1044/1065 px). Row B' carries no beam in the grid2-3 bay — only the dash-dot line at coverage 0.808.", "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-08-24_span_was_null"] },
-
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 0.40, "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B6A", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "level_m": 0.40, "note": "east side of the octagonal bay window; angled corner returns marked B3' on the section sheets are drawn but not separately itemised here", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 0.30, "confidence_score": 0.55, "confidence_flags": [] },
-
-    { "element_id": "B0", "element_type": "beam", "grid_ref": "~D1", "level_m": 0.10, "note": "short stub beam near grid1/row D, exact extent not dimensioned", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "~E1", "span_length_m": 2.50, "span_source": "unresolved", "level_m": 0.40, "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 0.40, "note": "row D beam; it starts at grid 2, not grid 1 — the grid1-2 stretch of row D carries only the dash-dot grid line (coverage 0.789, no face pair), confirmed at 4x zoom.", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_~D2-D3_with_no_span"] },
-    { "element_id": "B1'", "element_type": "beam", "grid_ref": "~E1", "level_m": 0.30, "note": "short stub flanking the porch arch, west side", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "B1'", "element_type": "beam", "grid_ref": "~E3", "level_m": 0.30, "note": "short stub flanking the porch arch, east side", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref": "~D2-E2", "level_m": 0.20, "note": "curved porch archway, drawn as a semicircular arc, not a straight grid-to-grid segment", "confidence_score": 0.4, "confidence_flags": ["curved member, span_length_m not applicable"] },
-
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "~1-2 x A", "level_m": 0.10, "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "~1 x C-D", "level_m": 0.30, "confidence_score": 0.5, "confidence_flags": [] }
+    {
+      "element_id": "CA",
+      "element_type": "column",
+      "count": 1,
+      "grid_refs": [
+        "B'1"
+      ],
+      "note": "special column on beam only, no footing — see warnings",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1'''",
+      "grid_ref_end": "B1'''",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "note": "stands on dummy column 1'' (1.90) in the A-B band; mark read as B1(+0.40) at 4x zoom, faces traced x=1268/1284 px against grid 1 at 1088 and grid 2 at 1399.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~1-2_unresolved"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "~1-2 x A-B (east sub-bay)",
+      "level_m": 0.4,
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 0.35,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "level_m": 0.35,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 0.35,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8A",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "note": "spans through row B' without splitting — grid2 has no column at B'",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "1-2 x B-B'",
+      "level_m": 0.4,
+      "level_m_printed_as": "+0.40 / +0.35 (two levels printed in this slab bay, likely sloped/drained)",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10A",
+      "element_type": "beam",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "note": "sits on named grid 1 (not an unplaced ~1-2 member) — the B'-C band has four verticals in a row and this is the second: 1'(-1.00)=B1, grid1=B10A, 1''(1.90)=B2, grid2=B8A, all read at 5x zoom. The CA special column marker sits on top of this one.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~1-2_unresolved"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B'1''",
+      "grid_ref_end": "C1''",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "note": "stands on dummy column 1' (-1.00), the west edge of the B'-C annexe, printed as '1.00' before grid 1 on the top margin. Mark read as B1(+0.40) at 5x zoom. Faces traced x=984/1006 px against grid 1 at 1088.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_B'1-C1_with_no_span"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B'1'''",
+      "grid_ref_end": "C1'''",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "note": "stands on dummy column 1'' (1.90), printed as the '1.90' of the 1.90+1.10=3.00 sub-chain on the top margin. Mark read as B2(+0.40) at 5x zoom. Faces traced x=1285/1306 px.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "note": "row B' beam, grid1 to grid2 (faces y=1044/1065 px). Row B' carries no beam in the grid2-3 bay — only the dash-dot line at coverage 0.808.",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_span_was_null"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6A",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "note": "east side of the octagonal bay window; angled corner returns marked B3' on the section sheets are drawn but not separately itemised here",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.3,
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B0",
+      "element_type": "beam",
+      "grid_ref": "~D1",
+      "level_m": 0.1,
+      "note": "short stub beam near grid1/row D, exact extent not dimensioned",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "~E1",
+      "span_length_m": 2.5,
+      "span_source": "unresolved",
+      "level_m": 0.4,
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 0.4,
+      "note": "row D beam; it starts at grid 2, not grid 1 — the grid1-2 stretch of row D carries only the dash-dot grid line (coverage 0.789, no face pair), confirmed at 4x zoom.",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~D2-D3_with_no_span"
+      ]
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref": "~E1",
+      "level_m": 0.3,
+      "note": "short stub flanking the porch arch, west side",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref": "~E3",
+      "level_m": 0.3,
+      "note": "short stub flanking the porch arch, east side",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref": "~D2-E2",
+      "level_m": 0.2,
+      "note": "curved porch archway, drawn as a semicircular arc, not a straight grid-to-grid segment",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "curved member, span_length_m not applicable"
+      ]
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "~1-2 x A",
+      "level_m": 0.1,
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "~1 x C-D",
+      "level_m": 0.3,
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    }
   ]
 }

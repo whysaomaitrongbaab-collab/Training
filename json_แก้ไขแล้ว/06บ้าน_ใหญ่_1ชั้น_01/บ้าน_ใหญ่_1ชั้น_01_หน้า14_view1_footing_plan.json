@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-01",
   "sheet_name": "แปลนฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "building": "อาคารหลัก",
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า14.png",
@@ -121,6 +121,7 @@
     "grid_ref uses the spec §4 format (row letter first, then column number, e.g. \"ค-1\"). NOTE a corpus inconsistency: houses 02-05 wrote structural plan grid_refs in the opposite order with a prefix (\"grid2-gridF\"), which contradicts the Axis order rule added to the spec on 2026-07-13. This house follows the written spec. The older files have not been touched.",
     "Columns 10 and 11 carry confidence flag grid_pos_unresolved_expansion_joint: their absolute grid positions are unresolved because the expansion-joint gap between grids 8 and 10 is not dimensioned anywhere in the set (see หน้า00_gridline.json). Their footing marks and row assignments are NOT in doubt -- only the absolute x position.",
     "This sheet also carries two further views extracted to separate files: the รายการประกอบแบบ specification notes (_view3_notes.json) and the separate toilet-block footing plan (_view2_footing_plan_สุขา.json), which uses a DIFFERENT grid master.",
-    "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 33 entries -> 4. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched."
+    "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 33 entries -> 4. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 4 footing-family elements. Nothing else in this file changed."
   ]
 }

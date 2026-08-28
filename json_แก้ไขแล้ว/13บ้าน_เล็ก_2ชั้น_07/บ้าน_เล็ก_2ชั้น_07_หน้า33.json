@@ -4,22 +4,41 @@
   "discipline": "structural",
   "sheet_code": "S-06",
   "sheet_name": "แปลนคานอะเส",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_07/บ้าน_เล็ก_2ชั้น_07_หน้า33.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_07_หน้า00_gridline.json",
   "elements": [
     {
-      "element_id": "RB1", "element_type": "tie_beam",
-      "grid_refs": ["1", "2", "3", "E", "D", "C", "B", "A"],
+      "element_id": "RB1",
+      "element_type": "tie_beam",
+      "grid_refs": [
+        "1",
+        "2",
+        "3",
+        "E",
+        "D",
+        "C",
+        "B",
+        "A"
+      ],
       "note": "คานอะเส (roof tie beam / ring beam) วิ่งตามแนวกริดหลักทั้งแนวนอน (E/D/C/B/A) และแนวตั้ง (1/2/3) ครบทุกช่วง รวม 22 ช่วงย่อย (10 แนวนอน + 12 แนวตั้ง ตามตาราง 3x5) — บันทึกเป็นสเปกเดียวโดยรวมตามรูปแบบเดียวกับแปเหล็ก/จันทันหลังคา (หน้า34) เนื่องจากเป็นหน้าตัด/มาร์คเดียวกันตลอดทั้งแผ่น ไม่ได้ atomize ทีละช่วง — คานอะเสอยู่ในกริดหลัก 3x5 เท่านั้น ไม่มีส่วนยื่นเลยกริดออกไปเหมือนชั้น 1/2/หลังคา (ยืนยันแล้ว ไม่มี dummy grid ใหม่จากแผ่นนี้)",
-      "spec_source": "section", "spec_confidence_score": 0.5,
-      "confidence_score": 0.75, "confidence_flags": ["not_atomized_per_segment_spec_level_entry_only", "no_new_dummy_grid_confirmed_from_this_sheet"]
+      "spec_source": "section",
+      "spec_confidence_score": 0.5,
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "not_atomized_per_segment_spec_level_entry_only",
+        "no_new_dummy_grid_confirmed_from_this_sheet"
+      ]
     },
     {
-      "element_id": "โล่ง_diagonal_pattern", "element_type": "symbol",
+      "element_id": "โล่ง_diagonal_pattern",
+      "element_type": "symbol",
       "description": "ลายเส้นทแยงมุมรูปกากบาท (X) ปรากฏในทุกช่องตาราง 3x5 พร้อมป้ายกำกับ 'โล่ง' (ว่าง/เปิดโล่ง) ที่บางช่อง",
       "note": "ตีความว่าเป็นสัญลักษณ์แสดงพื้นที่ใต้แนวคานอะเสเป็นที่ว่าง/โล่ง (ไม่มีพื้น/ผนังปิดในช่องนั้นที่ระดับนี้) ไม่ใช่คานทแยงมุมโครงสร้างจริง — ไม่พบหน้าตัด/น้ำหนักกำกับเส้นทแยงเหล่านี้ (ต่างจาก RB1 ที่มีหน้าตัดกำกับชัดเจน) จึงไม่บันทึกเป็น element โครงสร้าง เก็บไว้เป็น symbol เพื่อบันทึกการมีอยู่เท่านั้น",
-      "confidence_score": 0.6, "confidence_flags": ["interpreted_as_void_indicator_not_structural_diagonal_brace"]
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "interpreted_as_void_indicator_not_structural_diagonal_brace"
+      ]
     }
   ],
   "confidence_score": 0.75,
@@ -27,6 +46,7 @@
   "warnings": [
     "แผ่นนี้ยืนยันว่าไม่มี dummy grid เพิ่มเติมนอกเหนือจากกริดหลัก 3x5 ที่ระดับคานอะเส — ตรงกับที่รายงานไว้แล้วในกริดมาสเตอร์ (หน้า00)",
     "ไม่พบหน้าตัด/ขนาด/น้ำหนักของ RB1 กำกับบนแผ่นนี้เอง (ต่างจากแปลนโครงสร้างหลังคา หน้า34 ที่ระบุหน้าตัดชัดเจน) — สเปกจริงของ RB1 อาจอยู่ในแบบขยาย/รายละเอียดอื่นที่ไม่ได้อยู่ในหน้านี้ ต้องการตรวจสอบเพิ่มเติมหากต้องใช้คำนวณปริมาณเหล็ก",
-    "ไม่ atomize RB1 เป็นรายช่วง (22 ช่วง) เนื่องจากไม่มีข้อมูลแตกต่างกันระหว่างช่วง (หน้าตัดเดียวกันทั้งแผ่น) — สอดคล้องกับหลักการ §7 ที่ไม่ให้พิมพ์สเปกซ้ำทุก occurrence เมื่อยืนยันแล้วว่าเหมือนกันทุกจุด"
+    "ไม่ atomize RB1 เป็นรายช่วง (22 ช่วง) เนื่องจากไม่มีข้อมูลแตกต่างกันระหว่างช่วง (หน้าตัดเดียวกันทั้งแผ่น) — สอดคล้องกับหลักการ §7 ที่ไม่ให้พิมพ์สเปกซ้ำทุก occurrence เมื่อยืนยันแล้วว่าเหมือนกันทุกจุด",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 1 beam-family elements. Nothing else in this file changed."
   ]
 }

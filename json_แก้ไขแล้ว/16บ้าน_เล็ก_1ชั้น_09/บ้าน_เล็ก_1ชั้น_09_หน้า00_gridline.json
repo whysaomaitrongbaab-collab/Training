@@ -17,8 +17,16 @@
   "confidence_flags": [],
   "grid": {
     "x_lines": [
-      { "id": "1", "pos_m": 0.0, "type": "named" },
-      { "id": "2", "pos_m": 3.85, "type": "named" },
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "2",
+        "pos_m": 3.85,
+        "type": "named"
+      },
       {
         "id": "2'",
         "pos_m": 5.725,
@@ -27,9 +35,71 @@
       }
     ],
     "y_lines": [
-      { "id": "A", "pos_m": 0.0, "type": "named" },
-      { "id": "B", "pos_m": 3.925, "type": "named" },
-      { "id": "C", "pos_m": 7.85, "type": "named" }
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "B",
+        "pos_m": 3.925,
+        "type": "named"
+      },
+      {
+        "id": "C",
+        "pos_m": 7.85,
+        "type": "named"
+      }
+    ],
+    "z_levels": [
+      {
+        "id": "ระดับดินเดิม",
+        "level_m": 0.0,
+        "type": "datum",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า05.png",
+        "level_m_printed_as": "(±0.00) ระดับดินเดิม",
+        "confidence_flags": [
+          "same level also labelled ระดับดินเดิม_รูปด้าน3 / ระดับดินเดิม_AA / ระดับดินเดิม_BB on another sheet"
+        ]
+      },
+      {
+        "id": "ระดับซักล้าง",
+        "level_m": 0.2,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า05.png",
+        "level_m_printed_as": "ซักล้าง +0.20",
+        "confidence_score": 0.8,
+        "confidence_flags": [
+          "same level also labelled ระดับซักล้าง_BB on another sheet"
+        ]
+      },
+      {
+        "id": "ระดับพื้นห้องน้ำ-ส้วม",
+        "level_m": 0.25,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า06.png",
+        "confidence_score": 0.8
+      },
+      {
+        "id": "ระดับพื้นชั้นล่าง",
+        "level_m": 0.3,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า05.png",
+        "level_m_printed_as": "(+0.30) ระดับพื้นชั้นล่าง",
+        "confidence_flags": [
+          "same level also labelled ระดับพื้นชั้นล่าง_รูปด้าน3 / ระดับพื้นชั้นล่าง_AA on another sheet"
+        ]
+      },
+      {
+        "id": "ระดับหลังคาหน้าจั่ว",
+        "level_m": 3.3,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า05.png",
+        "level_m_printed_as": "(+3.30) ระดับหลังคาหน้าจั่ว",
+        "confidence_flags": [
+          "same level also labelled ระดับหลังคาหน้าจั่ว_รูปด้าน3 / ระดับหลังคาหน้าจั่ว_AA / ระดับหลังคาหน้าจั่ว_BB on another sheet"
+        ]
+      }
     ]
   },
   "warnings": [
@@ -38,6 +108,7 @@
     "ตรวจหาเส้นตัดย่อแบบ (break line) ตามบทเรียนบ้าน 06 แล้ว — บ้านหลังนี้เล็กมาก (3.85x7.85 ม., ~30.75 ตร.ม.) วางเต็มแผ่นที่มาตราส่วน 1:75/1:50 ได้พอดี ไม่มีเส้นคู่ที่ต้องสงสัย",
     "dummy grid 2' มาจากส่วนต่อขยายครัว (ครัว/GS อยู่นอกแนวชายคาหลักในผังพื้นหน้า04) — คาน CB2 ที่ขอบส่วนต่อขยายมีมุมจริงที่ 1.875 ม. เลยกริด 2 พิมพ์ชัดเจนบนหน้า08 เป็นเส้นบอกระยะ ไม่ได้ประมาณ",
     "ระยะยื่นชายคา 1.30 ม. รอบด้าน (พิมพ์บนหน้า09 แปลนคานและโครงหลังคา ทั้งสองข้างของกริด 1 และ 2) และระยะยื่นชายคาที่ปลายกริด A/C (0.375/0.550/1.025/1.425 ที่เห็นบนหน้า03/04/05/06) เป็นแนวชายคาล้วน ไม่มีคานหรือเสาที่ปลาย จึงไม่เติมเป็น dummy grid ตามข้อห้าม §4",
-    "ไม่พบ dummy grid อื่นบนแกน y — ผนัง/คานภายในทั้งหมดอ้างอิงกับ A/B/C ที่มีอยู่แล้ว (ห้องน้ำ-ส้วมมีระดับพื้นต่างกัน +0.25 แต่ไม่มีคานปลายนอกกริด)"
+    "ไม่พบ dummy grid อื่นบนแกน y — ผนัง/คานภายในทั้งหมดอ้างอิงกับ A/B/C ที่มีอยู่แล้ว (ห้องน้ำ-ส้วมมีระดับพื้นต่างกัน +0.25 แต่ไม่มีคานปลายนอกกริด)",
+    "z_levels[] built 2026-08-28 by merging the element_type:\"level\" entries this house's own already-extracted sheets carry (schema section 4: one z_levels[] per building, merged across every sheet that prints levels). Transcription only -- no value was computed and no level was invented; each entry keeps the source_image of the sheet it was read from. Deduplicated on level_m, keeping the printed Thai label and recording any competing label from another sheet in confidence_flags. An installation-height schedule (fixture mounting heights) is deliberately NOT a source -- those are not building levels. dimension_chains[]/unassigned_dimensions[] are still un-swept for this house."
   ]
 }

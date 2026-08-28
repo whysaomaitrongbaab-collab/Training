@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนฐานรากแผ่",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า29.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_06_หน้า00_gridline.json",
   "confidence_score": 0.85,
@@ -13,21 +13,147 @@
     "This is the spread-footing alternate of the foundation (compare S-03/หน้า30, the pile-footing alternate for the same column layout). Per this house's own notes sheet (S-01, item 3.3): 'การเลือกใช้ชนิดฐานรากที่มีเสาเข็มหรือไม่มีเสาเข็ม ควรเลือกใช้ชนิดใดชนิดหนึ่งเท่านั้นภายในอาคารเดียวกัน' — only one of the two systems is actually built; both are printed as a reference-design alternate pair. Both are extracted here since the source drawing set includes both.",
     "Column mark 'C6' appears on this plan (at E2/D2, under footings F1.00x1.00 and F1.40x1.40) but is NOT listed in the column-schedule header on S-13/หน้า40 (which reads only 'C2,C5,C9,C10,C12'). Recorded C6 as printed on this plan; its own rebar spec could not be cross-confirmed against S-13 and is flagged again on the column-section file.",
     "'F0.90x0.90' (at E1, E3, B3) has NO detail sheet. The spread-footing details are S-08/หน้า35 (F0.60x0.60, F0.80x0.80, F1.00x1.00) and S-09/หน้า36 (F1.30x1.30, F1.40x1.40, F1.50x1.50) — F0.80x0.80 is detailed but used nowhere, and F0.90x0.90 is used here but detailed nowhere. Both readings were re-checked at high zoom 2026-08-26 and both are as printed; the mismatch is left standing rather than reconciled. Same flag on S-08/หน้า35.",
-    "Footing element_id here is the printed size string itself (e.g. 'F0.90x0.90') — this house's spread-footing plan and its detail sheets (S-08/S-09) do not use a separate short footing code for this alternate; the size string is the only mark printed."
+    "Footing element_id here is the printed size string itself (e.g. 'F0.90x0.90') — this house's spread-footing plan and its detail sheets (S-08/S-09) do not use a separate short footing code for this alternate; the size string is the only mark printed.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 6 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F0.90x0.90", "element_type": "footing", "count": 3, "grid_refs": ["E1", "E3", "B3"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1.00x1.00", "element_type": "footing", "count": 1, "grid_refs": ["E2"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1.30x1.30", "element_type": "footing", "count": 6, "grid_refs": ["D1", "D3", "C1", "C3", "B1", "B2"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1.40x1.40", "element_type": "footing", "count": 1, "grid_refs": ["D2"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1.50x1.50", "element_type": "footing", "count": 1, "grid_refs": ["C2"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F0.60x0.60", "element_type": "footing", "count": 2, "grid_refs": ["A1", "A2"], "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "C5", "element_type": "column", "count": 3, "grid_refs": ["E1", "E3", "B3"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "C6", "element_type": "column", "count": 1, "grid_refs": ["E2"], "confidence_score": 0.6, "confidence_flags": ["mark not present in S-13 column-schedule header, see file warnings"] },
-    { "element_id": "C9", "element_type": "column", "count": 6, "grid_refs": ["D1", "D3", "C1", "C3", "B1", "B2"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "C10", "element_type": "column", "count": 1, "grid_refs": ["D2"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "C12", "element_type": "column", "count": 1, "grid_refs": ["C2"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "C2", "element_type": "column", "count": 2, "grid_refs": ["A1", "A2"], "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "F0.90x0.90",
+      "element_type": "footing",
+      "count": 3,
+      "grid_refs": [
+        "E1",
+        "E3",
+        "B3"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1.00x1.00",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": [
+        "E2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1.30x1.30",
+      "element_type": "footing",
+      "count": 6,
+      "grid_refs": [
+        "D1",
+        "D3",
+        "C1",
+        "C3",
+        "B1",
+        "B2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1.40x1.40",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": [
+        "D2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1.50x1.50",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": [
+        "C2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F0.60x0.60",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "A1",
+        "A2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C5",
+      "element_type": "column",
+      "count": 3,
+      "grid_refs": [
+        "E1",
+        "E3",
+        "B3"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C6",
+      "element_type": "column",
+      "count": 1,
+      "grid_refs": [
+        "E2"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "mark not present in S-13 column-schedule header, see file warnings"
+      ]
+    },
+    {
+      "element_id": "C9",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "D1",
+        "D3",
+        "C1",
+        "C3",
+        "B1",
+        "B2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C10",
+      "element_type": "column",
+      "count": 1,
+      "grid_refs": [
+        "D2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C12",
+      "element_type": "column",
+      "count": 1,
+      "grid_refs": [
+        "C2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 2,
+      "grid_refs": [
+        "A1",
+        "A2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

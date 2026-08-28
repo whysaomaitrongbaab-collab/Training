@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนฐานราก เสาตอม่อ",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า25.png",
   "confidence_score": 0.92,
   "confidence_flags": [],
@@ -13,15 +13,27 @@
   "warnings": [
     "**Genuine spec conflict between the footing-detail pedestal (S-06/S-07 sections) and the column schedule's 'เสาตอม่อ' row (S-07 ตารางเสา)** — S-06's sections 3-3/5-5/8-8 and S-07's section 10-10 each show the pedestal (เสาตอม่อ) as a 0.30x0.30 m shaft with Ø9mm main bars (4+4 for F3, 6+6 for F5/F8/F10) rising not less than 1.00 m from the footing to ±0.00; S-07's ตารางเสา (column schedule table) separately shows a 'เสาตอม่อ' row for both C1 and C2 at 0.25x0.25 m with 4-Ø16mm bars, ties Ø6mm@0.10 — a different size AND a different rebar spec for what is nominally the same physical member. Resolved per the project's section-wins-over-schedule precedence: the footing-section pedestal spec (0.30x0.30, Ø9mm, per-footing bar count) is used as this house's 'pedestal' element spec below; the column table's conflicting 'เสาตอม่อ' row is recorded but NOT used, flagged 'spec_conflict_section_vs_schedule'.",
     "F10's exact pile arrangement (10 piles) could not be resolved with full confidence from the S-07 plan-view dot pattern — the pad's overall 1.65x1.65 m size and the '10' pile count (matching the mark name F10 and the section label '10-10', the same naming convention confirmed for F3=3 piles/F5=5 piles/F8=8 piles) are recorded with high confidence, but the internal pile grid spacing is approximate.",
-    "Footing pad mat rebar (Ø12mm, two-way, count growing 4+4/6+6/8+8/10+10 for F3/F5/F8/F10) and pedestal shaft rebar (Ø9mm, 4+4/6+6/6+6/6+6) are two distinct rebar callouts on the same section drawing, correctly kept separate as `rebar` (pad) vs the pedestal element's `main_bar` (shaft) — not merged."
+    "Footing pad mat rebar (Ø12mm, two-way, count growing 4+4/6+6/8+8/10+10 for F3/F5/F8/F10) and pedestal shaft rebar (Ø9mm, 4+4/6+6/6+6/6+6) are two distinct rebar callouts on the same section drawing, correctly kept separate as `rebar` (pad) vs the pedestal element's `main_bar` (shaft) — not merged.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 5 footing-family elements. Nothing else in this file changed."
   ],
   "specs": {
     "F3": {
       "width_mm": 800,
       "depth_mm": 800,
       "thickness_mm": 250,
-      "rebar": { "count": 8, "dia_mm": 12, "type": "RB", "each_way": true, "count_printed_as": "4+4Ø12มม#" },
-      "pile": { "count": 3, "dia_mm": 150, "capacity_ton": 1.7, "printed_as": "เสาเข็ม⊙-0.15ม จำนวน 3 ต้น" },
+      "rebar": {
+        "count": 8,
+        "dia_mm": 12,
+        "type": "RB",
+        "each_way": true,
+        "count_printed_as": "4+4Ø12มม#"
+      },
+      "pile": {
+        "count": 3,
+        "dia_mm": 150,
+        "capacity_ton": 1.7,
+        "printed_as": "เสาเข็ม⊙-0.15ม จำนวน 3 ต้น"
+      },
       "lean_concrete_note": "กรอกคอนกรีตหลีก 0.80 ม (TPY.)",
       "dowel_note": "1Ø12มม ยาว 1.20 ม ฝังในเสาเข็มยาว 0.75 ม (TPY.)",
       "spec_source": "section",
@@ -32,8 +44,19 @@
       "width_mm": 1200,
       "depth_mm": 1200,
       "thickness_mm": 250,
-      "rebar": { "count": 12, "dia_mm": 12, "type": "RB", "each_way": true, "count_printed_as": "6+6Ø12มม#" },
-      "pile": { "count": 5, "dia_mm": 150, "capacity_ton": 1.7, "printed_as": "เสาเข็ม⊙-0.15ม จำนวน 5 ต้น" },
+      "rebar": {
+        "count": 12,
+        "dia_mm": 12,
+        "type": "RB",
+        "each_way": true,
+        "count_printed_as": "6+6Ø12มม#"
+      },
+      "pile": {
+        "count": 5,
+        "dia_mm": 150,
+        "capacity_ton": 1.7,
+        "printed_as": "เสาเข็ม⊙-0.15ม จำนวน 5 ต้น"
+      },
       "lean_concrete_note": "กรอกคอนกรีตหลีก 0.80 ม (TPY.)",
       "dowel_note": "1Ø12มม ยาว 1.20 ม ฝังในเสาเข็มยาว 0.75 ม (TPY.)",
       "spec_source": "section",
@@ -44,8 +67,19 @@
       "width_mm": 1500,
       "depth_mm": 1500,
       "thickness_mm": 250,
-      "rebar": { "count": 16, "dia_mm": 12, "type": "RB", "each_way": true, "count_printed_as": "8+8Ø12มม#" },
-      "pile": { "count": 8, "dia_mm": 150, "capacity_ton": 1.7, "printed_as": "เสาเข็ม⊙-0.15ม จำนวน 8 ต้น" },
+      "rebar": {
+        "count": 16,
+        "dia_mm": 12,
+        "type": "RB",
+        "each_way": true,
+        "count_printed_as": "8+8Ø12มม#"
+      },
+      "pile": {
+        "count": 8,
+        "dia_mm": 150,
+        "capacity_ton": 1.7,
+        "printed_as": "เสาเข็ม⊙-0.15ม จำนวน 8 ต้น"
+      },
       "lean_concrete_note": "กรอกคอนกรีตหลีก 0.80 ม (TPY.)",
       "dowel_note": "1Ø12มม ยาว 1.20 ม ฝังในเสาเข็มยาว 0.75 ม (TPY.)",
       "spec_source": "section",
@@ -56,13 +90,26 @@
       "width_mm": 1650,
       "depth_mm": 1650,
       "thickness_mm": 250,
-      "rebar": { "count": 20, "dia_mm": 12, "type": "RB", "each_way": true, "count_printed_as": "10+10Ø12มม#" },
-      "pile": { "count": 10, "dia_mm": 150, "capacity_ton": 1.7, "printed_as": "เสาเข็ม⊙-0.15ม จำนวน 10 ต้น" },
+      "rebar": {
+        "count": 20,
+        "dia_mm": 12,
+        "type": "RB",
+        "each_way": true,
+        "count_printed_as": "10+10Ø12มม#"
+      },
+      "pile": {
+        "count": 10,
+        "dia_mm": 150,
+        "capacity_ton": 1.7,
+        "printed_as": "เสาเข็ม⊙-0.15ม จำนวน 10 ต้น"
+      },
       "lean_concrete_note": "กรอกคอนกรีตหลีก 0.80 ม (TPY.)",
       "dowel_note": "1Ø12มม ยาว 1.20 ม ฝังในเสาเข็มยาว 0.75 ม (TPY.)",
       "spec_source": "section",
       "spec_confidence_score": 0.75,
-      "spec_confidence_flags": ["pile_layout_approximate"],
+      "spec_confidence_flags": [
+        "pile_layout_approximate"
+      ],
       "spec_sheet": "S-07"
     },
     "pedestal": {
@@ -71,26 +118,45 @@
       "main_bar": {
         "note": "ไม่มีการแยก top/bottom — เสาตอม่อใช้เหล็กยืนรอบเสาเป็นจำนวนเดียว ตาม §6; ที่นี่แตกต่างกันตามฐานราก จึงเก็บแยกในแต่ละ element ด้านล่างแทนที่จะรวมเป็นค่าเดียว"
       },
-      "min_height_m": 1.00,
+      "min_height_m": 1.0,
       "min_height_note": "ไม่น้อยกว่า 1.00 ม จากท้องฐานรากถึงระดับ ±0.00",
       "spec_source": "section",
       "spec_confidence_score": 0.85,
       "spec_sheet": "S-06 / S-07",
-      "spec_confidence_flags": ["spec_conflict_section_vs_schedule"],
+      "spec_confidence_flags": [
+        "spec_conflict_section_vs_schedule"
+      ],
       "conflicting_schedule_spec": {
         "spec_sheet": "S-07 (ตารางเสา)",
         "width_mm": 250,
         "height_mm": 250,
-        "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
-        "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100 },
+        "main_bar": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "RB"
+        },
+        "stirrup": {
+          "dia_mm": 6,
+          "type": "RB",
+          "spacing_mm": 100
+        },
         "note": "ตารางเสาแสดง 'เสาตอม่อ' ของทั้ง C1 และ C2 ด้วยสเปกเดียวกันนี้ — ขัดแย้งกับรูปตัดฐานรากแต่ละแบบบน S-06/S-07 ไม่ได้นำมาใช้ ตามกฎ section ชนะ schedule"
       }
     },
     "C1": {
       "width_mm": 200,
       "height_mm": 200,
-      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
-      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100, "printed_as": "ป6มม@0.10" },
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "RB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "ป6มม@0.10"
+      },
       "level": "ระดับหลังคานอะเส ถึง ระดับพื้นชั้น1",
       "spec_source": "schedule",
       "spec_confidence_score": 0.9,
@@ -99,8 +165,17 @@
     "C1_pedestal": {
       "width_mm": 250,
       "height_mm": 250,
-      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
-      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100, "printed_as": "ป6มม@0.10" },
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "RB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "ป6มม@0.10"
+      },
       "level": "ระดับพื้นชั้น1 ถึง ระดับฐานราก",
       "spec_source": "schedule",
       "spec_confidence_score": 0.9,
@@ -109,8 +184,17 @@
     "C2": {
       "width_mm": 200,
       "height_mm": 200,
-      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
-      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100, "printed_as": "ป6มม@0.10" },
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "RB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "ป6มม@0.10"
+      },
       "level": "ระดับหลังคานอะเส ถึง ระดับพื้นชั้น1",
       "spec_source": "schedule",
       "spec_confidence_score": 0.9,
@@ -119,8 +203,17 @@
     "C2_pedestal": {
       "width_mm": 250,
       "height_mm": 250,
-      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
-      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100, "printed_as": "ป6มม@0.10" },
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "RB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "ป6มม@0.10"
+      },
       "level": "ระดับพื้นชั้น1 ถึง ระดับฐานราก",
       "spec_source": "schedule",
       "spec_confidence_score": 0.9,
@@ -129,8 +222,17 @@
     "C0": {
       "width_mm": 250,
       "height_mm": 250,
-      "main_bar": { "count": 4, "dia_mm": 16, "type": "RB" },
-      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 100, "printed_as": "ป6มม@0.10" },
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "RB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "ป6มม@0.10"
+      },
       "note": "เสาตอม่อรับเสาเหล็กโรงจอดรถ (SC1) — แบบขยาย C0 บน S-07",
       "spec_source": "section",
       "spec_confidence_score": 0.8,
@@ -142,7 +244,9 @@
       "element_id": "F5",
       "element_type": "footing",
       "count": 1,
-      "grid_refs": ["A1"],
+      "grid_refs": [
+        "A1"
+      ],
       "printed_as": "F5,C1",
       "confidence_score": 0.9,
       "confidence_flags": []
@@ -151,7 +255,13 @@
       "element_id": "F10",
       "element_type": "footing",
       "count": 5,
-      "grid_refs": ["A2", "A3", "B2", "B3", "C2"],
+      "grid_refs": [
+        "A2",
+        "A3",
+        "B2",
+        "B3",
+        "C2"
+      ],
       "printed_as": "F10,C2",
       "confidence_score": 0.9,
       "confidence_flags": []
@@ -160,7 +270,11 @@
       "element_id": "F8",
       "element_type": "footing",
       "count": 3,
-      "grid_refs": ["B1", "C1", "C3"],
+      "grid_refs": [
+        "B1",
+        "C1",
+        "C3"
+      ],
       "printed_as": "F8,C1",
       "confidence_score": 0.9,
       "confidence_flags": []
@@ -169,7 +283,12 @@
       "element_id": "F3",
       "element_type": "footing",
       "count": 4,
-      "grid_refs": ["D2", "D4", "E2", "E4"],
+      "grid_refs": [
+        "D2",
+        "D4",
+        "E2",
+        "E4"
+      ],
       "printed_as": "F3,C0",
       "confidence_score": 0.9,
       "confidence_flags": []
@@ -178,7 +297,12 @@
       "element_id": "C1",
       "element_type": "column",
       "count": 4,
-      "grid_refs": ["A1", "B1", "C1", "C3"],
+      "grid_refs": [
+        "A1",
+        "B1",
+        "C1",
+        "C3"
+      ],
       "printed_as": "F5,C1 / F8,C1",
       "confidence_score": 0.9,
       "confidence_flags": []
@@ -187,7 +311,13 @@
       "element_id": "C2",
       "element_type": "column",
       "count": 5,
-      "grid_refs": ["A2", "A3", "B2", "B3", "C2"],
+      "grid_refs": [
+        "A2",
+        "A3",
+        "B2",
+        "B3",
+        "C2"
+      ],
       "printed_as": "F10,C2",
       "confidence_score": 0.9,
       "confidence_flags": []
@@ -196,7 +326,12 @@
       "element_id": "C0",
       "element_type": "column",
       "count": 4,
-      "grid_refs": ["D2", "D4", "E2", "E4"],
+      "grid_refs": [
+        "D2",
+        "D4",
+        "E2",
+        "E4"
+      ],
       "printed_as": "F3,C0",
       "note": "เสาตอม่อรับเสาเหล็ก SC1 ของโรงจอดรถ",
       "confidence_score": 0.85,
@@ -206,10 +341,28 @@
       "element_id": "pedestal",
       "element_type": "pedestal",
       "count": 13,
-      "grid_refs": ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3", "D2", "D4", "E2", "E4"],
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3",
+        "D2",
+        "D4",
+        "E2",
+        "E4"
+      ],
       "note": "เสาตอม่อใต้เสาทุกต้น (C1 4 ต้น + C2 5 ต้น + C0 4 ต้น = 13 ตำแหน่ง) ขนาด/เหล็กเสริมต่างกันตามฐานรากที่รองรับ ดูรายละเอียดต่อฐานรากในธาตุ footing แต่ละตัว ไม่ใช้สเปกเดียวจาก specs.pedestal ตรงๆ เพราะแต่ละฐานรากมีจำนวนเหล็กต่างกัน (F3:4+4Ø9, F5/F8/F10:6+6Ø9)",
       "confidence_score": 0.7,
-      "confidence_flags": ["mark_not_printed_separately_on_plan", "count_inferred_from_column_positions", "spec_varies_by_footing_see_specs_pedestal"]
+      "confidence_flags": [
+        "mark_not_printed_separately_on_plan",
+        "count_inferred_from_column_positions",
+        "spec_varies_by_footing_see_specs_pedestal"
+      ]
     }
   ]
 }

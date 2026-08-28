@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลน โครงหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "building": "อาคารสุขารวม",
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า16.png",
@@ -184,6 +184,7 @@
     "Both ends of the roof carry the note 'ระยะตามแบบสถาปัตย์ ไม่มากกว่า 1.00 ม.' (overhang per the architectural drawings, not more than 1.00 m). That is a stated LIMIT, not a dimension -- no overhang value is fixed on this sheet, so none is recorded.",
     "T2 member sizes BACK-FILLED 2026-07-25 from S-08 (หน้า21): box-section truss, chords 100x50x3.2, webs 75x45x3.2, purlins C125x50x20x3.2 @1.00, span 6.00 m with panel points 0.60/1.50/1.50/1.50/1.50/0.60.",
     "E (อะเส) section CONFLICT RESOLVED 2026-07-25 in favour of the lipped channel C150x50x20x3.2 -- confirmed by A-11 (หน้า12) as well as S-03, against S-08's single box-section label.",
-    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit."
+    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 5 roof-framing elements. Nothing else in this file changed."
   ]
 }

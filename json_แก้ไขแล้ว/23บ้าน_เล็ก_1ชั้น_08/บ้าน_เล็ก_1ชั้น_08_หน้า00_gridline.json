@@ -22,73 +22,231 @@
     "unassigned_dimensions includes a '1.05' dimension on S-06 (roof frame plan, หน้า23) measured from a point 1.05m left of grid 2 to grid 2 itself. This does NOT mark a separate structural line: the roof ridge (steel beam 'BS1', 125x75x3.2mm) and the CS1 steel columns below it sit exactly on grid 2 (confirmed by S-05's CS1 markers at A2/B2/C2 and by S-16's base-plate connection detail cut along grid 2). The 1.05 dimension appears to be a purlin/reference tick, not a beam endpoint, so no dummy grid was created for it.",
     "House title block reads 'บ้านสำเร็จรูป 4 (บ้านชั้นเดียว) — ระบบประสานพิกัด' (Prefab House No.4, single storey, modular-coordination system), from the 'แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข' series by กรมโยธาธิการและผังเมือง, เลขที่แบบ S 62088 (structural)/AR 62004 (architectural), dated ก.พ. 2562. Structure is hybrid: RC columns/pedestals C1 (0.20x0.20m, 4-Ø12mm main, RB6@0.15 ties) on either pile (F2/F3/F4/F5/F6, alternate design) or spread (F(0.95x0.50) etc., alternate design) footings, with a full light-gauge steel superstructure above floor level — eave tie beams (BS1 125x75x3.2mm, BS2 100x50x3.2mm C-channels), a steel ridge column (CS1) at grid 2 supporting an asymmetric (mono-pitch-like) roof, and steel roof framing (purlins 25x25x3.2mm @1.00m, rafters/จันทัน C-100x50x20x3.2mm @≤1.00m) — all bolted to the RC columns via 200x200x9mm base/cap plates and 4-Ø12mm L-anchors.",
     "No soil_boring_log sheet in this set (op04 subtask absent), and no dedicated plan_column sheet (op04 subtask absent) — the single column type C1 appears only as a marker on the footing plans (S-02/S-03) and in its own rebar detail on S-15, matching op04's own note that this is the expected/common case.",
-    "This house prints BOTH a pile-footing design (S-02, S-07..S-10, BOQ page 51) and a spread-footing design (S-03, S-11..S-14, BOQ page 41) for the identical building — two alternate foundation options depending on site soil, not two different buildings. Both are recorded (plan_footing_pile and plan_footing_spread) rather than picking one."
+    "This house prints BOTH a pile-footing design (S-02, S-07..S-10, BOQ page 51) and a spread-footing design (S-03, S-11..S-14, BOQ page 41) for the identical building — two alternate foundation options depending on site soil, not two different buildings. Both are recorded (plan_footing_pile and plan_footing_spread) rather than picking one.",
+    "Dummy y-line A' at -1.20 added 2026-08-28: the อะเส/roof-beam sheet (หน้า22) records two BS1 eave beams A'1->A1 and A'3->A3 with span 1.20 and span_source grid_table, i.e. they were computed against a line the master never carried — the checker's 'ref not in grid master' failure. It is the eave overhang on the A side, the mirror of the already-present C''(6.30) eave 1.20 past C(5.10). Negative pos_m per section 4's origin rule: grid A stays the 0.00 origin, the dummy sits before it. Value comes from the recorded span, not from a printed dimension read off the sheet -- flagged on the line itself.",
+    "z_levels[] and the z dimension_chain read 2026-08-28 off A-08 (หน้า10, 'รูปด้าน 3 / รูปด้าน 4') -- an architectural elevation sheet OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. Three levels, all labelled, all in metres: 0.80 + 2.40 = 3.20 closes exactly. Same sheet independently CONFIRMS this master's plan axes: its รูปด้าน 3 prints 3.60 / 2.40 = 6.00 across grids 3-2-1 and its รูปด้าน 4 prints 2.70 / 2.40 = 5.10 across C-B-A, both matching x_lines 1(0.00) 2(2.40) 3(6.00) and y_lines A(0.00) B(2.40) C(5.10) already read from the structural set. unassigned_dimensions[] still un-swept."
   ],
   "grid": {
     "x_lines": [
-      { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "1'", "pos_m": 1.20, "type": "dummy" },
-      { "id": "2", "pos_m": 2.40, "type": "named" },
-      { "id": "2'", "pos_m": 4.50, "type": "dummy", "confidence_score": 0.55, "confidence_flags": ["pos_m sourced from architectural sheet A-05 (out of op04 scope), not from a structural sheet's own printed dimension — see warnings"] },
-      { "id": "3", "pos_m": 6.00, "type": "named" }
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "1'",
+        "pos_m": 1.2,
+        "type": "dummy"
+      },
+      {
+        "id": "2",
+        "pos_m": 2.4,
+        "type": "named"
+      },
+      {
+        "id": "2'",
+        "pos_m": 4.5,
+        "type": "dummy",
+        "confidence_score": 0.55,
+        "confidence_flags": [
+          "pos_m sourced from architectural sheet A-05 (out of op04 scope), not from a structural sheet's own printed dimension — see warnings"
+        ]
+      },
+      {
+        "id": "3",
+        "pos_m": 6.0,
+        "type": "named"
+      }
     ],
     "y_lines": [
-      { "id": "A", "pos_m": 0.00, "type": "named" },
-      { "id": "B", "pos_m": 2.40, "type": "named" },
-      { "id": "B'", "pos_m": 3.70, "type": "dummy" },
-      { "id": "C", "pos_m": 5.10, "type": "named" },
-      { "id": "C'", "pos_m": 6.10, "type": "dummy", "confidence_flags": ["stair/ramp projection south of grid C, beams BX(เอียง) x2 and stair ST1 end here"] },
-      { "id": "C''", "pos_m": 6.30, "type": "dummy" }
+      {
+        "id": "A'",
+        "pos_m": -1.2,
+        "type": "dummy",
+        "confidence_score": 0.8,
+        "confidence_flags": [
+          "derived_from_recorded_span_not_a_printed_dimension"
+        ]
+      },
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "B",
+        "pos_m": 2.4,
+        "type": "named"
+      },
+      {
+        "id": "B'",
+        "pos_m": 3.7,
+        "type": "dummy"
+      },
+      {
+        "id": "C",
+        "pos_m": 5.1,
+        "type": "named"
+      },
+      {
+        "id": "C'",
+        "pos_m": 6.1,
+        "type": "dummy",
+        "confidence_flags": [
+          "stair/ramp projection south of grid C, beams BX(เอียง) x2 and stair ST1 end here"
+        ]
+      },
+      {
+        "id": "C''",
+        "pos_m": 6.3,
+        "type": "dummy"
+      }
     ],
-    "z_levels": [],
+    "z_levels": [
+      {
+        "id": "ระดับดินเดิม",
+        "level_m": 0.0,
+        "type": "datum",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า10.png"
+      },
+      {
+        "id": "ระดับพื้นภายใน",
+        "level_m": 0.8,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า10.png"
+      },
+      {
+        "id": "ระดับหลังอเส",
+        "level_m": 3.2,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า10.png"
+      }
+    ],
     "dimension_chains": [
       {
         "axis": "x",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า19.png",
         "segments": [
-          { "from": "1", "to": "2", "value_m": 2.40 },
-          { "from": "2", "to": "3", "value_m": 3.60 }
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.4
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.6
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า19.png",
         "segments": [
-          { "from": "A", "to": "B", "value_m": 2.40 },
-          { "from": "B", "to": "C", "value_m": 2.70 }
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 2.4
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 2.7
+          }
         ]
       },
       {
         "axis": "x",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png",
         "segments": [
-          { "from": "edge", "to": "1", "value_m": 1.00 },
-          { "from": "1", "to": "2", "value_m": 2.40 },
-          { "from": "2", "to": "3", "value_m": 3.60 },
-          { "from": "3", "to": "edge", "value_m": 1.00 }
+          {
+            "from": "edge",
+            "to": "1",
+            "value_m": 1.0
+          },
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.4
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.6
+          },
+          {
+            "from": "3",
+            "to": "edge",
+            "value_m": 1.0
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png",
         "segments": [
-          { "from": "edge", "to": "A", "value_m": 1.20 },
-          { "from": "A", "to": "B", "value_m": 2.40 },
-          { "from": "B", "to": "C", "value_m": 2.70 },
-          { "from": "C", "to": "edge", "value_m": 1.20 },
-          { "from": "edge", "to": "edge", "value_m": 7.50 }
+          {
+            "from": "edge",
+            "to": "A",
+            "value_m": 1.2
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 2.4
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 2.7
+          },
+          {
+            "from": "C",
+            "to": "edge",
+            "value_m": 1.2
+          },
+          {
+            "from": "edge",
+            "to": "edge",
+            "value_m": 7.5
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า21.png",
         "segments": [
-          { "from": "C", "to": "C'", "value_m": 1.00 }
+          {
+            "from": "C",
+            "to": "C'",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า10.png",
+        "segments": [
+          {
+            "from": "ระดับดินเดิม",
+            "to": "ระดับพื้นภายใน",
+            "value_m": 0.8
+          },
+          {
+            "from": "ระดับพื้นภายใน",
+            "to": "ระดับหลังอเส",
+            "value_m": 2.4
+          }
         ]
       }
     ],
     "unassigned_dimensions": [
-      { "value_m": 1.05, "label": "dimension from a point 1.05m left of grid 2 to grid 2, printed on S-06 roof frame plan (หน้า23)", "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png", "note": "likely a purlin/reference tick near the ridge, not a beam endpoint — ridge (BS1) and CS1 columns already sit on grid 2 itself, see warnings" }
+      {
+        "value_m": 1.05,
+        "label": "dimension from a point 1.05m left of grid 2 to grid 2, printed on S-06 roof frame plan (หน้า23)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png",
+        "note": "likely a purlin/reference tick near the ridge, not a beam endpoint — ridge (BS1) and CS1 columns already sit on grid 2 itself, see warnings"
+      }
     ]
   }
 }

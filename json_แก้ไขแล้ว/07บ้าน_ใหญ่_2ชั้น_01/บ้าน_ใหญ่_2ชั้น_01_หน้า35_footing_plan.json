@@ -5,7 +5,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนฐานรากเสาเข็ม, เสาตอม่อ",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า35.png",
@@ -182,6 +182,7 @@
     "Ground beams GB1 and GB1X are both set at -0.50 m. REWRITTEN 2026-07-27 (recording a reversal): the earlier version said 'only two are drawn' and labelled the vertical C-4 to B-4 run as GB1X. High-zoom re-read shows THREE segments in the bottom-right corner: GB1 horizontal B-3 to B-4, GB1 vertical C-4 to B-4 (its rotated label clearly reads GB1, not GB1X), and GB1X as a short 1.60 m stub continuing south of B-4 to the free end the 1.60 dimension locates. The main ground-floor beam layout is on S-03.",
     "No break lines anywhere on this sheet -- the full 13.00 x 11.00 m building fits at 1:100.",
     "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 18 entries -> 11. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched.",
-    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit."
+    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 8 footing-family elements. Nothing else in this file changed."
   ]
 }

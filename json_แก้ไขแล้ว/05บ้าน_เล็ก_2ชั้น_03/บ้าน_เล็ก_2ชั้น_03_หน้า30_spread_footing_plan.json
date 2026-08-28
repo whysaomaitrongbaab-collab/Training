@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนฐานรากแผ่",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า30.png",
   "view_title": "แปลนฐานรากแผ่ 1:100",
@@ -194,6 +194,7 @@
     "Column marks follow C0 (small corner, row F only)/C1/C1A/C2/C2A convention -- C1A/C2A appear to be edge-condition variants of C1/C2 (extra reinforcement or different footing size for perimeter columns), consistent with houses #2-#4's footing/column separation convention (footing element_id = dimension notation, column mark kept separate).",
     "MERGED_2026-07-24 per item 48 (สิ่งที่ต้องแก้.md): the 17 combined footing+column entries were split into 5 footing entries (keyed by dimension) + 5 column entries (keyed by mark), each with summed count and concatenated grid_refs. No grid_ref appears in more than one entry of the same mark, so every merge is a pure merge (not a double-count removal). Footing total 17 before and after; column total 17. Same transform as house #4's หน้า31 (item 49). grid_dims_note y-axis also re-based to the corrected F=0 origin (matches หน้า00, 2026-07-24).",
     "grid_ref format normalized to row-letter+column-number (e.g. 'grid2-gridF' -> 'F2') per item 34/5/8, matching the merged house-04 precedent.",
-    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 5 footing-family elements. Nothing else in this file changed."
   ]
 }

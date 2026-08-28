@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลน เสา คานพื้น ชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_03/บ้าน_ใหญ่_2ชั้น_03_หน้า20.png",
   "confidence_score": 0.8,
   "confidence_flags": [],
@@ -13,39 +13,326 @@
     "สี่เหลี่ยมหลักของบ้าน (ปีก S1/S3/S4/S2/S0 กลาง) วางอยู่บนกริดหลัก 4 แถวเท่านั้น: ช(0.0)/จ(4.0)/ค(7.0)/ข(12.0) — ตรงกับแถวที่มีฐานราก C3/C4/C5(กริด5)/C6 บนหน้า19/S-01 พอดี แถว ฉ(1.0)/ง(6.0) มีเฉพาะฐานรากกริด 1 (ปีกซ้าย) จึงไม่ตัดผ่านสี่เหลี่ยมหลัก",
     "ปีกซ้าย (กริด 1, ห้อง S3 เล็ก x2 + S0 ทางเดิน, คาน B3/B5) และส่วนต่อเติมลานซักล้างทางใต้ (ห้อง S0 ใต้คาน B7, คาน B4/B6, จุด Cx) เป็นโซนรองที่ไม่ตัดผ่านกริดหลักครบทุกจุด — บันทึกคานในโซนนี้แบบตำแหน่งโดยประมาณเทียบกับกริดที่ใกล้ที่สุด (confidence ต่ำกว่าโซนหลัก) เนื่องจากระยะย่อยภายในบางเส้น (เช่น B5 ที่ระยะ 2.50/1.50 จากกริด 1) ไม่ตรงกับเส้นกริดที่ตั้งชื่อไว้",
     "B1A ที่กริด 3(=4) และ 5' เป็นเสาเอ็น/เสาสั้นรับคาน (ไม่ใช่คานพาดช่วง) — บันทึกเป็น element_type: column ในไฟล์นี้ (คู่กับ column C3/C4 บนหน้า19 ที่ตำแหน่งเดียวกันในกรณีกริด 3 แต่ 5' เป็นจุดใหม่ไม่มีฐานรากของตัวเอง เพราะเป็นเสาเอ็นรับคานบัว ไม่ใช่เสาโครงสร้างหลัก)",
-    "Cx (จุดมุมล่างของส่วนต่อเติม S0) คือจุดเดียวกับกริด 3(=4) และ 5' ที่แถว ข(12.0) — ไม่ใช่กริดใหม่ เป็นชื่อเรียกจุดเชื่อมต่อคาน B4/B6/B7 บนแบบเท่านั้น"
+    "Cx (จุดมุมล่างของส่วนต่อเติม S0) คือจุดเดียวกับกริด 3(=4) และ 5' ที่แถว ข(12.0) — ไม่ใช่กริดใหม่ เป็นชื่อเรียกจุดเชื่อมต่อคาน B4/B6/B7 บนแบบเท่านั้น",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 29 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ช2", "grid_ref_end": "ช3", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ช3", "grid_ref_end": "ช5'", "span_length_m": 4.2, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ช5'", "grid_ref_end": "ช6", "span_length_m": 2.8, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ2", "grid_ref_end": "จ3", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ3", "grid_ref_end": "จ5'", "span_length_m": 4.2, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ5'", "grid_ref_end": "จ6", "span_length_m": 2.8, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ค2", "grid_ref_end": "ค3", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ค3", "grid_ref_end": "ค5'", "span_length_m": 4.2, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ค5'", "grid_ref_end": "ค6", "span_length_m": 2.8, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ข2", "grid_ref_end": "ข3", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ข5'", "grid_ref_end": "ข6", "span_length_m": 2.8, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [], "note": "ช่วง ข3-ข5' ไม่พิมพ์คาน B2 บนแบบ — เป็นขอบเปิดของส่วนต่อเติม S0 ทางใต้ (ดูคาน B7 ของส่วนต่อเติม)" },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ช2", "grid_ref_end": "จ2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ2", "grid_ref_end": "ค2", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ค2", "grid_ref_end": "ข2", "span_length_m": 5.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ช6", "grid_ref_end": "จ6", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ6", "grid_ref_end": "ค6", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ค6", "grid_ref_end": "ข6", "span_length_m": 5.0, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ช3", "grid_ref_end": "จ3", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [], "note": "เสาเอ็น B1A ต่อคาน B1 ที่ระยะ 2.65ม. จากกริด ช ตามที่พิมพ์ในแบบ (ไม่ใช่ 4.0ม.เต็มช่วง) — บันทึก span_length_m ตามกริดเต็มช่วงแบบ over-approximation, ดู note" },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "จ3", "grid_ref_end": "ค3", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ค3", "grid_ref_end": "ข3", "span_length_m": 5.0, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "จ5'", "grid_ref_end": "ค5'", "span_length_m": 3.0, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ค5'", "grid_ref_end": "ข5'", "span_length_m": 5.0, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "ค5", "grid_ref_end": "ค6", "span_length_m": 2.1, "span_source": "local_dimension", "confidence_score": 0.55, "confidence_flags": [], "note": "ระยะ 2.10ม. พิมพ์กำกับใกล้มุม กริด5-6 แถว ค — ตำแหน่งปลายคานแม่นระดับปานกลาง" },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "ช3", "grid_ref_end": "จ3", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.5, "confidence_flags": [], "note": "อาจซ้อนตำแหน่งกับ B1 ที่ระยะเดียวกัน — ป้าย B6 พิมพ์กำกับส่วนเสาเอ็นด้านซ้ายของช่อง S3 บนสุด แยกจาก B1 ด้านขวา" },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~ก4", "grid_ref_end": "~ก6", "span_length_m": 3.6, "span_source": "local_dimension", "confidence_score": 0.6, "confidence_flags": [], "note": "คานแนวดิ่งขอบส่วนต่อเติมลานซักล้าง S0 (คู่ 2 เส้น) วิ่งจากจุด Cx (แถว ข, กริด 3(=4) และ 5') ลงไปทางใต้ — ไม่มีระยะแนวดิ่งพิมพ์กำกับความยาวจริง จึงไม่ระบุ grid_ref ปลายทางแน่ชัด บันทึกอ้างอิงกริดใกล้เคียงแถว ก ตามฐานราก 2 ตัวใน หน้า19_S-01" },
-    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "~ก4", "grid_ref_end": "~ก6", "span_length_m": 3.6, "span_source": "local_dimension", "confidence_score": 0.7, "confidence_flags": [], "note": "คานหัวส่วนต่อเติมลานซักล้าง S0 ระยะ 3.60ม. พิมพ์ชัดเจนบนแบบ (ดู note ที่ หน้า19_S-01 เรื่องตำแหน่ง x ของฐานรากรองรับ)" },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "~ฉ1", "grid_ref_end": "~ฉ1", "span_length_m": 2.5, "span_source": "local_dimension", "confidence_score": 0.5, "confidence_flags": [], "note": "คานแบ่งห้อง S3 เล็กในปีกซ้าย (กริด 1) ระยะ 2.50ม.จากขอบกริด 1 — ตำแหน่งแถวโดยประมาณ, มีคาน B5 อีกเส้นถัดไปที่ระยะ 1.50ม. (ดูไฟล์ S-02 หน้าเดียวกัน ส่วนล่าง) ไม่ได้แยก entry เพราะไม่มีระยะยืนยันแน่ชัด" },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "~ฉ1", "grid_ref_end": "~ง1", "span_length_m": 5.0, "span_source": "unresolved", "confidence_score": 0.5, "confidence_flags": [], "note": "ขอบนอกปีกซ้าย (ด้านตะวันตก) ของห้อง S3/S0 เล็ก — มาร์คแยกจาก B2 ที่ใช้ขอบสี่เหลี่ยมหลัก" },
-    { "element_id": "Bx", "element_type": "beam", "grid_ref_start": "~จ1", "grid_ref_end": "~จ1", "span_length_m": null, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": ["position_estimated_from_image"], "note": "คานสั้นมาร์ค Bx คั่นระหว่างห้อง S3 เล็ก 2 ห้องในปีกซ้าย — สเปคดูไฟล์ หน้า25_S-07 (0.20x0.50, 2Ø12mm top/bottom)" },
-    { "element_id": "B1A", "element_type": "column", "grid_ref": "ช3", "confidence_score": 0.85, "confidence_flags": [], "note": "เสาเอ็นรับคานบัวขอบช่อง S3 — เป็นจุดเดียวกับเสาตอม่อ C3/C4 (กริด 3=4) บนหน้า19" },
-    { "element_id": "B1A", "element_type": "column", "grid_ref": "ช5'", "confidence_score": 0.85, "confidence_flags": [], "note": "เสาเอ็นรับคานบัวขอบช่อง S3 ที่กริดหลอก 5' — ไม่มีฐานรากอิสระ (รับน้ำหนักผ่านคาน B2 ที่พาดจากกริด 5 มายื่น 1.20ม.)" }
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ช2",
+      "grid_ref_end": "ช3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ช3",
+      "grid_ref_end": "ช5'",
+      "span_length_m": 4.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ช5'",
+      "grid_ref_end": "ช6",
+      "span_length_m": 2.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ2",
+      "grid_ref_end": "จ3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ3",
+      "grid_ref_end": "จ5'",
+      "span_length_m": 4.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ5'",
+      "grid_ref_end": "จ6",
+      "span_length_m": 2.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค2",
+      "grid_ref_end": "ค3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค3",
+      "grid_ref_end": "ค5'",
+      "span_length_m": 4.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค5'",
+      "grid_ref_end": "ค6",
+      "span_length_m": 2.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ข2",
+      "grid_ref_end": "ข3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ข5'",
+      "grid_ref_end": "ข6",
+      "span_length_m": 2.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "note": "ช่วง ข3-ข5' ไม่พิมพ์คาน B2 บนแบบ — เป็นขอบเปิดของส่วนต่อเติม S0 ทางใต้ (ดูคาน B7 ของส่วนต่อเติม)"
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ช2",
+      "grid_ref_end": "จ2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ2",
+      "grid_ref_end": "ค2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค2",
+      "grid_ref_end": "ข2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ช6",
+      "grid_ref_end": "จ6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ6",
+      "grid_ref_end": "ค6",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค6",
+      "grid_ref_end": "ข6",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ช3",
+      "grid_ref_end": "จ3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [],
+      "note": "เสาเอ็น B1A ต่อคาน B1 ที่ระยะ 2.65ม. จากกริด ช ตามที่พิมพ์ในแบบ (ไม่ใช่ 4.0ม.เต็มช่วง) — บันทึก span_length_m ตามกริดเต็มช่วงแบบ over-approximation, ดู note"
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "จ3",
+      "grid_ref_end": "ค3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ค3",
+      "grid_ref_end": "ข3",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "จ5'",
+      "grid_ref_end": "ค5'",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ค5'",
+      "grid_ref_end": "ข5'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "ค5",
+      "grid_ref_end": "ค6",
+      "span_length_m": 2.1,
+      "span_source": "local_dimension",
+      "confidence_score": 0.55,
+      "confidence_flags": [],
+      "note": "ระยะ 2.10ม. พิมพ์กำกับใกล้มุม กริด5-6 แถว ค — ตำแหน่งปลายคานแม่นระดับปานกลาง"
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "ช3",
+      "grid_ref_end": "จ3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.5,
+      "confidence_flags": [],
+      "note": "อาจซ้อนตำแหน่งกับ B1 ที่ระยะเดียวกัน — ป้าย B6 พิมพ์กำกับส่วนเสาเอ็นด้านซ้ายของช่อง S3 บนสุด แยกจาก B1 ด้านขวา"
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "~ก4",
+      "grid_ref_end": "~ก6",
+      "span_length_m": 3.6,
+      "span_source": "local_dimension",
+      "confidence_score": 0.6,
+      "confidence_flags": [],
+      "note": "คานแนวดิ่งขอบส่วนต่อเติมลานซักล้าง S0 (คู่ 2 เส้น) วิ่งจากจุด Cx (แถว ข, กริด 3(=4) และ 5') ลงไปทางใต้ — ไม่มีระยะแนวดิ่งพิมพ์กำกับความยาวจริง จึงไม่ระบุ grid_ref ปลายทางแน่ชัด บันทึกอ้างอิงกริดใกล้เคียงแถว ก ตามฐานราก 2 ตัวใน หน้า19_S-01"
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "~ก4",
+      "grid_ref_end": "~ก6",
+      "span_length_m": 3.6,
+      "span_source": "local_dimension",
+      "confidence_score": 0.7,
+      "confidence_flags": [],
+      "note": "คานหัวส่วนต่อเติมลานซักล้าง S0 ระยะ 3.60ม. พิมพ์ชัดเจนบนแบบ (ดู note ที่ หน้า19_S-01 เรื่องตำแหน่ง x ของฐานรากรองรับ)"
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "~ฉ1",
+      "grid_ref_end": "~ฉ1",
+      "span_length_m": 2.5,
+      "span_source": "local_dimension",
+      "confidence_score": 0.5,
+      "confidence_flags": [],
+      "note": "คานแบ่งห้อง S3 เล็กในปีกซ้าย (กริด 1) ระยะ 2.50ม.จากขอบกริด 1 — ตำแหน่งแถวโดยประมาณ, มีคาน B5 อีกเส้นถัดไปที่ระยะ 1.50ม. (ดูไฟล์ S-02 หน้าเดียวกัน ส่วนล่าง) ไม่ได้แยก entry เพราะไม่มีระยะยืนยันแน่ชัด"
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "~ฉ1",
+      "grid_ref_end": "~ง1",
+      "span_length_m": 5.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.5,
+      "confidence_flags": [],
+      "note": "ขอบนอกปีกซ้าย (ด้านตะวันตก) ของห้อง S3/S0 เล็ก — มาร์คแยกจาก B2 ที่ใช้ขอบสี่เหลี่ยมหลัก"
+    },
+    {
+      "element_id": "Bx",
+      "element_type": "beam",
+      "grid_ref_start": "~จ1",
+      "grid_ref_end": "~จ1",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "position_estimated_from_image"
+      ],
+      "note": "คานสั้นมาร์ค Bx คั่นระหว่างห้อง S3 เล็ก 2 ห้องในปีกซ้าย — สเปคดูไฟล์ หน้า25_S-07 (0.20x0.50, 2Ø12mm top/bottom)"
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "column",
+      "grid_ref": "ช3",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "เสาเอ็นรับคานบัวขอบช่อง S3 — เป็นจุดเดียวกับเสาตอม่อ C3/C4 (กริด 3=4) บนหน้า19"
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "column",
+      "grid_ref": "ช5'",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "เสาเอ็นรับคานบัวขอบช่อง S3 ที่กริดหลอก 5' — ไม่มีฐานรากอิสระ (รับน้ำหนักผ่านคาน B2 ที่พาดจากกริด 5 มายื่น 1.20ม.)"
+    }
   ]
 }

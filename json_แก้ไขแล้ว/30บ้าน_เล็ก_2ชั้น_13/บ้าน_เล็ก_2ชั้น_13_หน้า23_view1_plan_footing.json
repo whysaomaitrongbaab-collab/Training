@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนเสาเข็มและฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_13/บ้าน_เล็ก_2ชั้น_13_หน้า23.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_13_หน้า00_gridline.json",
   "confidence_score": 0.9,
@@ -12,12 +12,71 @@
   "warnings": [
     "This is view 1 of 2 on this page (หน้า23) — the second view (ground-floor beam plan) is in a separate file, _view2_plan_beam_floor1.json, per the multi-view rule.",
     "Footings/columns are marked at all 12 grid intersections (A1-A4, B1-B4, C1-C4) with no additional footings beyond the main grid — the bay-window overhang beyond grid C (dummy 'C\\'') and the A-B overhang beyond row 4 (dummy '4\\'') carry no footing of their own on this sheet, consistent with them being cantilevered/upper-floor-only bays.",
-    "Full pile/rebar specs for F1/F2 and column type-mark C1/C2 (which reuses the same text as several grid point ids — a real naming collision printed on the sheet, not an extraction error) are recorded in the section file for this house (หน้า25_section.json), per §7 'section wins' — this plan file carries position only."
+    "Full pile/rebar specs for F1/F2 and column type-mark C1/C2 (which reuses the same text as several grid point ids — a real naming collision printed on the sheet, not an extraction error) are recorded in the section file for this house (หน้า25_section.json), per §7 'section wins' — this plan file carries position only.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F1", "element_type": "footing", "count": 8, "grid_refs": ["A4", "C4", "A3", "C3", "A2", "C2", "A1", "C1"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F2", "element_type": "footing", "count": 4, "grid_refs": ["B4", "B3", "B2", "B1"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "C1", "element_type": "column", "count": 8, "grid_refs": ["A4", "C4", "A3", "C3", "A2", "C2", "A1", "C1"], "note": "column type-mark 'C1', printed identically to (but distinct from) grid point ids A1/C1 etc.", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "C2", "element_type": "column", "count": 4, "grid_refs": ["B4", "B3", "B2", "B1"], "note": "column type-mark 'C2'", "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 8,
+      "grid_refs": [
+        "A4",
+        "C4",
+        "A3",
+        "C3",
+        "A2",
+        "C2",
+        "A1",
+        "C1"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": [
+        "B4",
+        "B3",
+        "B2",
+        "B1"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 8,
+      "grid_refs": [
+        "A4",
+        "C4",
+        "A3",
+        "C3",
+        "A2",
+        "C2",
+        "A1",
+        "C1"
+      ],
+      "note": "column type-mark 'C1', printed identically to (but distinct from) grid point ids A1/C1 etc.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 4,
+      "grid_refs": [
+        "B4",
+        "B3",
+        "B2",
+        "B1"
+      ],
+      "note": "column type-mark 'C2'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

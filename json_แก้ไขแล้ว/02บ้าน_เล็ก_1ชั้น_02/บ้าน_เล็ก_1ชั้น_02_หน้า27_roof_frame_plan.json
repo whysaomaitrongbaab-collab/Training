@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-06",
   "sheet_name": "แปลนโครงหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_02/บ้าน_เล็ก_1ชั้น_02_หน้า27.png",
   "view_title": "แปลนโครงหลังคา",
@@ -50,6 +50,7 @@
   "warnings": [
     "The 1.30m/1.50m roof eave overhangs beyond the named grid are dimensional notes for the roof only, not structural grid/beam lines -- not added as dummy grid lines to the shared grid master. If a later architecture-discipline read finds a WALL or BEAM at this same offset (not just a roof eave), that would need a real dummy grid line and should be flagged separately.",
     "2026-08-24 normalize: pattern roof_plan -> plan (structural roof framing is pattern=plan per schema §1 warning block, live data-loss bug for Constistant buildElements)",
-    "2026-08-24 normalize: steel_members[] moved into elements[] as element_type=steel_member (container rule §0.1); element_id from thai_name (unmarked members, §0.3)"
+    "2026-08-24 normalize: steel_members[] moved into elements[] as element_type=steel_member (container rule §0.1); element_id from thai_name (unmarked members, §0.3)",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: structural roof-framing sheet by title (แปลนโครงหลังคา). Nothing else in this file changed."
   ]
 }

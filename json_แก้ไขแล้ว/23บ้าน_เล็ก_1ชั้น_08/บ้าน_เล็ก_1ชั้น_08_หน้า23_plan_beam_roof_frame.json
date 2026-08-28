@@ -4,20 +4,72 @@
   "discipline": "structural",
   "sheet_code": "S-06",
   "sheet_name": "แปลนโครงหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png",
   "grid_source": "บ้าน_เล็ก_1ชั้น_08_หน้า00_gridline.json",
   "confidence_score": 0.7,
-  "confidence_flags": ["This is a STRUCTURAL roof framing plan (purlins, rafters, ridge beam with grid refs) — recorded as pattern 'plan' per the roof_plan trap (op04 SKILL.md), not skipped as 'roof_plan'."],
+  "confidence_flags": [
+    "This is a STRUCTURAL roof framing plan (purlins, rafters, ridge beam with grid refs) — recorded as pattern 'plan' per the roof_plan trap (op04 SKILL.md), not skipped as 'roof_plan'."
+  ],
   "warnings": [
     "Purlins (แปเหล็ก, 25x25x3.2mm) and rafters (จันทันเหล็ก C-100x50x20x3.2mm) are drawn as a repeating spacing pattern across the whole roof (arrows + '@1.00ม'/'@ไม่เกิน1.00ม' callouts), not as individually marked/numbered members — recorded as one typical-pattern element each (no grid_ref, since they are not tied to specific grid points) rather than invented as a numbered series.",
     "The ridge member is printed with mark 'BS1' (125x75x3.2mm), the SAME mark as the ground-floor-level eave tie beams on S-05 (plan_beam_roof_edge). This is a physically different beam (roof-ridge level, running along grid 2 through the CS1 columns) despite the shared mark — flagged rather than silently merged or silently renamed.",
-    "Roof sheathing overhangs the building footprint by 1.00m (x, both sides) and 1.20m (y, both sides) — already recorded in the grid master's dimension_chains; the overhang itself carries no beam member (purlins/rafters cantilever past the ridge/eave beams)."
+    "Roof sheathing overhangs the building footprint by 1.00m (x, both sides) and 1.20m (y, both sides) — already recorded in the grid master's dimension_chains; the overhang itself carries no beam member (purlins/rafters cantilever past the ridge/eave beams).",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 roof-framing elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 2.40, "span_source": "grid_table", "note": "roof ridge beam, on CS1 steel columns — not the same physical member as S-05's ground-level BS1, see warnings", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 2.70, "span_source": "grid_table", "note": "roof ridge beam, on CS1 steel columns — not the same physical member as S-05's ground-level BS1, see warnings", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "purlin_typ", "element_type": "purlin", "description": "typical purlin, repeated across every roof bay, no individual marks printed", "steel_section": { "designation": "L", "printed_as": "แปเหล็ก 25 x 25 x 3.2 มม." }, "material": "steel", "spacing_mm": 1000, "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "rafter_typ", "element_type": "rafter", "description": "typical rafter (จันทันเหล็ก), repeated across every roof bay, no individual marks printed", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tf_mm": 3.2, "printed_as": "จันทันเหล็ก C-100x50x20x3.2มม" }, "material": "steel", "spacing_mm": 1000, "note": "spacing printed as '@ไม่เกิน 1.00ม' (at not more than 1.00m)", "confidence_score": 0.7, "confidence_flags": [] }
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "note": "roof ridge beam, on CS1 steel columns — not the same physical member as S-05's ground-level BS1, see warnings",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "note": "roof ridge beam, on CS1 steel columns — not the same physical member as S-05's ground-level BS1, see warnings",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "purlin_typ",
+      "element_type": "purlin",
+      "description": "typical purlin, repeated across every roof bay, no individual marks printed",
+      "steel_section": {
+        "designation": "L",
+        "printed_as": "แปเหล็ก 25 x 25 x 3.2 มม."
+      },
+      "material": "steel",
+      "spacing_mm": 1000,
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "rafter_typ",
+      "element_type": "rafter",
+      "description": "typical rafter (จันทันเหล็ก), repeated across every roof bay, no individual marks printed",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "จันทันเหล็ก C-100x50x20x3.2มม"
+      },
+      "material": "steel",
+      "spacing_mm": 1000,
+      "note": "spacing printed as '@ไม่เกิน 1.00ม' (at not more than 1.00m)",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    }
   ]
 }

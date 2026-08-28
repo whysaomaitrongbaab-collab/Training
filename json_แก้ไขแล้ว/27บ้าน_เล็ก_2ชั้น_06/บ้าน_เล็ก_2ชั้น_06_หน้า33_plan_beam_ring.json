@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-06",
   "sheet_name": "แปลนคานอะเส",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า33.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_06_หน้า00_gridline.json",
   "confidence_score": 0.65,
@@ -16,47 +16,327 @@
     "'RB2' appears twice as a real beam and both are now recorded: the row-D grid1-grid2 segment, and a full-height interior member on dummy line 1\" running row C to row B (4.00m). An earlier pass read the second one as 'a short label next to a CX pedestal, not clearly a full grid-to-grid segment' and left it out — it is a continuous beam, and two of the four CX pedestals sit on it.",
     "WEST 'S1' BOX (grid1' to grid1, rows D to C) was missing entirely: three RB1 segments frame it — D1'-D1 (1.10), C1'-C1 (1.10) and the west edge D1'-C1' (2.20). An earlier pass stopped the ring beam at grid1 and recorded only the grid1 vertical (the doubled 'RB1/RB1' mark). Flagged by Makham 2026-08-26.",
     "The CX pedestals are dimensioned from the beams they sit on, not from the main grid, and the sheet's own numbers are CENTRE-TO-CENTRE here: '1.75' locates the 1\" line from grid2, '0.75' locates row C' below row C, and '0.25' places the third CX just west of grid2. That is the opposite of the printed-face convention this house uses for its edge dimensions (1.10, 0.50, 0.90) — see the grid master's warnings.",
-    "'SX' (a void/soffit marker distinct from 'โล่ง') appears above the S1 room (grid1-2 x B-A) on the east side — recorded as element_type 'slab' per the SO/SI/SX/ST convention (§10), spec not detailed on this sheet."
+    "'SX' (a void/soffit marker distinct from 'โล่ง') appears above the S1 room (grid1-2 x B-A) on the east side — recorded as element_type 'slab' per the SO/SI/SX/ST convention (§10), spec not detailed on this sheet.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 26 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "D1", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "D2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "BX", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "D3'", "span_length_m": 0.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["short cantilever stub, free end"] },
-
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D1'", "grid_ref_end": "D1", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["north edge of the west 'S1' box; missing from an earlier pass, which stopped the ring beam at grid1"] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D1'", "grid_ref_end": "C1'", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["west edge of the 'S1' box, over the balcony line; missing from an earlier pass"] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "C1", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "printed as 'RB1/RB1' (doubled mark) — see file warnings" },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "C2", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "D3'", "grid_ref_end": "C3'", "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["east edge beam: re-scanned and it sits on 3' (6.90), not on grid3 — grid3 carries only its dash-dot centreline through this strip, the same pattern already corrected on S-04/หน้า31. Previously recorded as D3-C3"] },
-
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "C1", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["south edge of the west 'S1' box; missing from an earlier pass"] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C'1\"", "grid_ref_end": "C'2", "span_length_m": 1.75, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["interior sub-beam inside the row C-B void, missing from an earlier pass. Located by the sheet's own printed dimensions: '0.75' from row C down to it and '1.75' from grid2 back to the 1\" line, both centre-to-centre (faces scan 0.65/0.85 below row C). Carries the third CX pedestal, which sits 0.25 west of grid2 at its east end"] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "C1\"", "grid_ref_end": "B1\"", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["full-height interior sub-beam on the new 1\" line (1.75m east of grid1, printed as '1.75' measured back from grid2). An earlier pass saw this 'RB2' mark next to a CX pedestal, judged it not to be a full grid-to-grid segment and left it out; it is in fact a continuous C-to-B member carrying two of the four CX roof pedestals"] },
-
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": ["inferred from topology, not individually zoomed"] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["inferred from topology, not individually zoomed"] },
-
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["inferred from topology, not individually zoomed"] },
-
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "A1", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "printed as 'RB1/RB1' (doubled mark) near the 'SX' bay — see file warnings" },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "A2", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["inferred from topology, not individually zoomed"] },
-
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [] },
-
-    { "element_id": "CX", "element_type": "column", "count": 4, "grid_refs": ["~D-E x 1-2 (bay)", "~D-C x 1-2 (bay)", "~C-B x 1-2 (bay)", "~C-B x 2-3 (bay)"], "confidence_score": 0.5, "confidence_flags": ["local offsets only (e.g. 1.75/0.75/0.25 from nearest RB line), not resolvable to a grid point — see file warnings"], "note": "short roof-support pedestal, 0.15x0.15m, 4-Ø12mm main, tie Ø6@0.075m per S-13/หน้า40" },
-
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "D-E x 1-2", "confidence_score": 0.6, "confidence_flags": ["labelled 'S1' at eave level too — same slab tag as the floor plan, no attic void over this bay"] },
-    { "element_id": "SX", "element_type": "slab", "grid_ref": "A-B x 2-3", "confidence_score": 0.55, "confidence_flags": ["spec not detailed on this sheet"] }
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BX",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D3'",
+      "span_length_m": 0.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "short cantilever stub, free end"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "D1'",
+      "grid_ref_end": "D1",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "north edge of the west 'S1' box; missing from an earlier pass, which stopped the ring beam at grid1"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "D1'",
+      "grid_ref_end": "C1'",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "west edge of the 'S1' box, over the balcony line; missing from an earlier pass"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [],
+      "note": "printed as 'RB1/RB1' (doubled mark) — see file warnings"
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "D3'",
+      "grid_ref_end": "C3'",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "east edge beam: re-scanned and it sits on 3' (6.90), not on grid3 — grid3 carries only its dash-dot centreline through this strip, the same pattern already corrected on S-04/หน้า31. Previously recorded as D3-C3"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "south edge of the west 'S1' box; missing from an earlier pass"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "C'1\"",
+      "grid_ref_end": "C'2",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "interior sub-beam inside the row C-B void, missing from an earlier pass. Located by the sheet's own printed dimensions: '0.75' from row C down to it and '1.75' from grid2 back to the 1\" line, both centre-to-centre (faces scan 0.65/0.85 below row C). Carries the third CX pedestal, which sits 0.25 west of grid2 at its east end"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "C1\"",
+      "grid_ref_end": "B1\"",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "full-height interior sub-beam on the new 1\" line (1.75m east of grid1, printed as '1.75' measured back from grid2). An earlier pass saw this 'RB2' mark next to a CX pedestal, judged it not to be a full grid-to-grid segment and left it out; it is in fact a continuous C-to-B member carrying two of the four CX roof pedestals"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "inferred from topology, not individually zoomed"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "inferred from topology, not individually zoomed"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "inferred from topology, not individually zoomed"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [],
+      "note": "printed as 'RB1/RB1' (doubled mark) near the 'SX' bay — see file warnings"
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "inferred from topology, not individually zoomed"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "CX",
+      "element_type": "column",
+      "count": 4,
+      "grid_refs": [
+        "~D-E x 1-2 (bay)",
+        "~D-C x 1-2 (bay)",
+        "~C-B x 1-2 (bay)",
+        "~C-B x 2-3 (bay)"
+      ],
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "local offsets only (e.g. 1.75/0.75/0.25 from nearest RB line), not resolvable to a grid point — see file warnings"
+      ],
+      "note": "short roof-support pedestal, 0.15x0.15m, 4-Ø12mm main, tie Ø6@0.075m per S-13/หน้า40"
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "D-E x 1-2",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "labelled 'S1' at eave level too — same slab tag as the floor plan, no attic void over this bay"
+      ]
+    },
+    {
+      "element_id": "SX",
+      "element_type": "slab",
+      "grid_ref": "A-B x 2-3",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "spec not detailed on this sheet"
+      ]
+    }
   ]
 }

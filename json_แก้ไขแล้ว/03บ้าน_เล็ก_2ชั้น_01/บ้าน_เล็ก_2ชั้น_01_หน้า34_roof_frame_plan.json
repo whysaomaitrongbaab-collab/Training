@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-07",
   "sheet_name": "แปลนโครงสร้างหลังคา, ขยาย 1",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า34.png",
   "view_title": "แปลนโครงสร้างหลังคา + ขยาย 1 (purlin-rafter hanger detail)",
@@ -50,6 +50,7 @@
     "The 1.30m eave overhangs are dimensional notes for the roof only, not structural grid/beam lines -- not added as dummy grid lines to the shared grid master (and they do NOT coincide with the master's 1'(-1.1)/3'(7.0): 1.30 beyond grid1/3 would be -1.3/7.8).",
     "NOTE_2026-07-19: checked against the new user-added dummy grids 1''(2.25)/A'(12.75)/A''(13.7) -- no roof-frame feature at any of them on this sheet (rafters at named grid columns only, no printed y-direction overhang). Nothing cascaded.",
     "2026-08-24 normalize: pattern roof_plan -> plan (structural roof framing is pattern=plan per schema §1 warning block, live data-loss bug for Constistant buildElements)",
-    "2026-08-24 normalize: steel_members[] moved into elements[] as element_type=steel_member (container rule §0.1); element_id from thai_name (unmarked members, §0.3)"
+    "2026-08-24 normalize: steel_members[] moved into elements[] as element_type=steel_member (container rule §0.1); element_id from thai_name (unmarked members, §0.3)",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: structural roof-framing sheet by title (แปลนโครงสร้างหลังคา + ขยาย 1 (purlin-raf). Nothing else in this file changed."
   ]
 }

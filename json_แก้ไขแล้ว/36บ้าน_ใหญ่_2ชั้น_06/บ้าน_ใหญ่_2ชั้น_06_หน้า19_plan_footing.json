@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า19.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_06_หน้า00_gridline.json",
   "confidence_score": 0.85,
@@ -13,11 +13,84 @@
     "Pile-count note cross-checked and reconciles exactly against the plan: handwritten note reads 'เข็ม I 0.18x0.18x16.00m. (2 ต้น ต่อปลอก) จำนวน = 19 ต้น: F1=11 หลุม=11 ต้น, F2=4 หลุม=8 ต้น' and 'เข็ม I 0.22x0.22x16.00m. (2 ต้น ต่อปลอก) F1A=9 หลุม=9 ต้น'. Counting every F1/F1A/F2 marker on the plan gives exactly F1=11, F1A=9, F2=4 (24 footings total) — matches. High confidence on this file as a result.",
     "Footing label format is 'FootingMark/ColumnMark' (e.g. 'F1/C1', 'F2/C2') printed directly on the plan — F1 and F1A both pair with column C1, F2 pairs with the heavier C2 (matches the SECTION COLUMN schedule on หน้า24, where C2 carries larger rebar). Recorded the trailing mark as column_mark.",
     "Tie beam B0(+0.30) forms a chamfered path around the NW bow-window corner: A1 -> (1',A') -> (1',B) -> C1 -> C2, all at level +0.30. Recorded as beam-plan-relevant context here but the beam itself belongs to plan_beam scope; not duplicated as an element in this footing file.",
-    "Two footings on row A (grid_ref A2' and A2'') sit on dummy grid lines 1.30 m either side of a point between grid2 and grid3 — see gridline master warnings for how these dummies were resolved."
+    "Two footings on row A (grid_ref A2' and A2'') sit on dummy grid lines 1.30 m either side of a point between grid2 and grid3 — see gridline master warnings for how these dummies were resolved.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 3 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F1", "element_type": "footing", "count": 11, "grid_refs": ["A1", "A2'", "A2''", "A6", "A'1'", "B1'", "C1", "E3", "E4", "F3", "F4"], "column_mark": "C1", "pile": { "count": 1, "width_mm": 180, "height_mm": 180, "length_m": 16.00, "printed_as": "เข็ม I 0.18x0.18x16.00m." }, "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1A", "element_type": "footing", "count": 9, "grid_refs": ["A2", "A3", "A4", "A5", "B6", "D3", "D4", "D5", "E2"], "column_mark": "C1", "pile": { "count": 1, "width_mm": 220, "height_mm": 220, "length_m": 16.00, "printed_as": "เข็ม I 0.22x0.22x16.00m." }, "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F2", "element_type": "footing", "count": 4, "grid_refs": ["B3", "B4", "B5", "C2"], "column_mark": "C2", "pile": { "count": 2, "width_mm": 180, "height_mm": 180, "length_m": 16.00, "printed_as": "เข็ม I 0.18x0.18x16.00m. (2 ต้น ต่อปลอก)" }, "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 11,
+      "grid_refs": [
+        "A1",
+        "A2'",
+        "A2''",
+        "A6",
+        "A'1'",
+        "B1'",
+        "C1",
+        "E3",
+        "E4",
+        "F3",
+        "F4"
+      ],
+      "column_mark": "C1",
+      "pile": {
+        "count": 1,
+        "width_mm": 180,
+        "height_mm": 180,
+        "length_m": 16.0,
+        "printed_as": "เข็ม I 0.18x0.18x16.00m."
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1A",
+      "element_type": "footing",
+      "count": 9,
+      "grid_refs": [
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "B6",
+        "D3",
+        "D4",
+        "D5",
+        "E2"
+      ],
+      "column_mark": "C1",
+      "pile": {
+        "count": 1,
+        "width_mm": 220,
+        "height_mm": 220,
+        "length_m": 16.0,
+        "printed_as": "เข็ม I 0.22x0.22x16.00m."
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": [
+        "B3",
+        "B4",
+        "B5",
+        "C2"
+      ],
+      "column_mark": "C2",
+      "pile": {
+        "count": 2,
+        "width_mm": 180,
+        "height_mm": 180,
+        "length_m": 16.0,
+        "printed_as": "เข็ม I 0.18x0.18x16.00m. (2 ต้น ต่อปลอก)"
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

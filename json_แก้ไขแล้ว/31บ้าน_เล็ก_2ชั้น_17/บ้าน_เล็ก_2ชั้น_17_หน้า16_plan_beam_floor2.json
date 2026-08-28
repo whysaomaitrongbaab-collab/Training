@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างชั้นบน",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า16.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_17_หน้า00_gridline.json",
   "confidence_score": 0.75,
@@ -17,31 +17,283 @@
     "Row C grid3-4 segment (B1, +3.65) was read by strong pattern consistency with the grid3-4 segment at rows A and B (both confirmed B1 directly) rather than from its own fully legible crop — the specific label at this one segment was partly cut off across zoom crops. Confidence lowered slightly on that element only.",
     "'RB1'(+3.65)' appears once near the lower void's NW corner, same short-beam-stub role as the three RB1' occurrences on หน้า15 — recorded as its own atomic element. UPDATED 2026-08-24: it no longer needs the '~grid2/row B' approximation. This sheet's own left-margin chain prints 1.15 + 1.85 = 3.00 across B-C, and the 1.15 tick (y=1207 px) lands on this stub's south face (beam faces at y=1189-1191 and y=1206-1208) — so it sits on dummy row B'' (pos_m=4.15). grid_ref is now exact ('B''2') and confidence raised 0.5 → 0.75. Named B'' and not B' because หน้า15's 0.55 tick (3.55) was confirmed to carry a beam too and takes the single prime, prime order being top-to-bottom — see the grid master.",
     "The balcony void south of row C (grid2-grid3, B1(+3.65) on all 3 open sides, S1 +3.65) has no column/footing markers at its south corners (plain beam-end crosses only, no 'C1' box) and no printed dimension anywhere in this set gives its south (cantilever) projection length — recorded with approximate grid_ref, same treatment and same reasoning as the ground-floor south recess on หน้า15. This is a real cantilever balcony slab, not a missed dummy-grid case (§4: no dummy grid is invented for a slab/beam edge with no printed length).",
-    "This floor's footprint does not reach row D at all (no row-D columns anywhere on this sheet, matching the upper-floor architecture หน้า04 which is smaller than the ground floor) — consistent with the footing plan (หน้า14) also having no D1/D2 footings."
+    "This floor's footprint does not reach row D at all (no row-D columns anywhere on this sheet, matching the upper-floor architecture หน้า04 which is smaller than the ground floor) — consistent with the footing plan (หน้า14) also having no D1/D2 footings.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 22 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "A'3", "level_m": 3.65, "span_length_m": 2.20, "span_source": "grid_table", "note": "stair-void S1 (upper) north edge, on dummy row A' (pos_m=-1.10)", "confidence_score": 0.85, "confidence_flags": ["CORRECTED_2026-08-24_was_recorded_as_A2-A3"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A''2", "grid_ref_end": "A''3", "level_m": 3.65, "span_length_m": 2.20, "span_source": "grid_table", "note": "stair-void S1 (upper) south edge, on dummy row A'' (pos_m=0.80)", "confidence_score": 0.85, "confidence_flags": ["CORRECTED_2026-08-24_was_recorded_as_A2-A3"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A4", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "B2", "level_m": 3.65, "span_length_m": 4.10, "span_source": "grid_table", "note": "stair-void S1 (upper) west edge; starts on dummy row A' (-1.10), not row A — outer face traced continuous y=652..1416 px at x=1384", "confidence_score": 0.85, "confidence_flags": ["CORRECTED_2026-08-24_start_was_A_now_A'_span_3.00_to_4.10"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A'3", "grid_ref_end": "B3", "level_m": 3.65, "span_length_m": 4.10, "span_source": "grid_table", "note": "stair-void S1 (upper) east edge; starts on dummy row A' (-1.10), not row A — outer face traced continuous y=653..1500 px at x=1638", "confidence_score": 0.85, "confidence_flags": ["CORRECTED_2026-08-24_start_was_A_now_A'_span_3.00_to_4.10"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "level_m": 3.65, "span_length_m": 2.20, "span_source": "grid_table", "note": "shared edge between the upper and lower stair-void S1 boxes", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "RB1'", "element_type": "beam", "grid_ref": "B''2", "level_m": 3.65, "note": "short beam stub at the lower void's NW corner, on dummy row B'' (pos_m=4.15) beside the S1 +3.75 stair landing", "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-08-24_was_~B2_approximate_now_resolved_by_dummy_row_B''"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "note": "lower stair-void S1 west edge", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "note": "lower stair-void S1 east edge", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "C4", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "level_m": 2.10, "span_length_m": 2.20, "span_source": "grid_table", "note": "supports the stair landing slab (ชานพัก +2.125) directly below/above, matches หน้า15's C1-C2 beam exactly", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C4", "level_m": 3.65, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": ["read by pattern consistency, not a fully legible individual crop — see file warnings"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref": "~C2 south (balcony west edge)", "level_m": 3.65, "note": "balcony void cantilever west edge, south projection length not printed on this sheet", "confidence_score": 0.45, "confidence_flags": ["approximate position — see file warnings"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref": "~C3 south (balcony east edge)", "level_m": 3.65, "note": "balcony void cantilever east edge, south projection length not printed on this sheet", "confidence_score": 0.45, "confidence_flags": ["approximate position — see file warnings"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "~C2 south", "grid_ref_end": "~C3 south", "level_m": 3.65, "note": "balcony void cantilever south (outer) edge", "confidence_score": 0.45, "confidence_flags": ["approximate position — see file warnings"] },
-    { "element_id": "S1", "element_type": "slab", "count": 3, "grid_refs": ["A'-A'' x 2-3 (upper stair void, straddles row A)", "B2-B3xC (lower stair void)", "~C2-C3 south (balcony)"], "note": "slab void/opening markers, levels +3.65/+3.75 as printed at each occurrence", "confidence_score": 0.6, "confidence_flags": [] }
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A'3",
+      "level_m": 3.65,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "note": "stair-void S1 (upper) north edge, on dummy row A' (pos_m=-1.10)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_recorded_as_A2-A3"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''3",
+      "level_m": 3.65,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "note": "stair-void S1 (upper) south edge, on dummy row A'' (pos_m=0.80)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_recorded_as_A2-A3"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "B2",
+      "level_m": 3.65,
+      "span_length_m": 4.1,
+      "span_source": "grid_table",
+      "note": "stair-void S1 (upper) west edge; starts on dummy row A' (-1.10), not row A — outer face traced continuous y=652..1416 px at x=1384",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_start_was_A_now_A'_span_3.00_to_4.10"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "B3",
+      "level_m": 3.65,
+      "span_length_m": 4.1,
+      "span_source": "grid_table",
+      "note": "stair-void S1 (upper) east edge; starts on dummy row A' (-1.10), not row A — outer face traced continuous y=653..1500 px at x=1638",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_start_was_A_now_A'_span_3.00_to_4.10"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "level_m": 3.65,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "note": "shared edge between the upper and lower stair-void S1 boxes",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1'",
+      "element_type": "beam",
+      "grid_ref": "B''2",
+      "level_m": 3.65,
+      "note": "short beam stub at the lower void's NW corner, on dummy row B'' (pos_m=4.15) beside the S1 +3.75 stair landing",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~B2_approximate_now_resolved_by_dummy_row_B''"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "lower stair-void S1 west edge",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "lower stair-void S1 east edge",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "level_m": 2.1,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "note": "supports the stair landing slab (ชานพัก +2.125) directly below/above, matches หน้า15's C1-C2 beam exactly",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "level_m": 3.65,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "read by pattern consistency, not a fully legible individual crop — see file warnings"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref": "~C2 south (balcony west edge)",
+      "level_m": 3.65,
+      "note": "balcony void cantilever west edge, south projection length not printed on this sheet",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "approximate position — see file warnings"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref": "~C3 south (balcony east edge)",
+      "level_m": 3.65,
+      "note": "balcony void cantilever east edge, south projection length not printed on this sheet",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "approximate position — see file warnings"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "~C2 south",
+      "grid_ref_end": "~C3 south",
+      "level_m": 3.65,
+      "note": "balcony void cantilever south (outer) edge",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "approximate position — see file warnings"
+      ]
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 3,
+      "grid_refs": [
+        "A'-A'' x 2-3 (upper stair void, straddles row A)",
+        "B2-B3xC (lower stair void)",
+        "~C2-C3 south (balcony)"
+      ],
+      "note": "slab void/opening markers, levels +3.65/+3.75 as printed at each occurrence",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    }
   ]
 }

@@ -73,3 +73,26 @@
 - **Applied to data:** batch edit of json_แก้ไขแล้ว/ (343 section files, 1,534 elements moved,
   902 printed ids untouched) — logged in No_touch_box/raw_json_data_log.md same day.
   rawjson_ยังไม่ได้แก้ไขโดนคน/ raw layer NOT touched.
+
+## 2026-08-28 (6) — §1 plan family: four classification traps recorded
+
+- **Who:** Claude (session with มะขาม), authorized by มะขาม — "แก้ json แก้ไขโดยคนให้เหมือน
+  สิ่งที่ primary rawjson ทุกประการ".
+- **What:** added a "Four traps" block to the plan-family section (§1). No rule, value, table
+  row or definition changed — the four values and the decision table are exactly as they were.
+- **Why:** all four were hit while re-labelling the 183 legacy `etc_plan` structural sheets in
+  `json_แก้ไขแล้ว/`, and every one of them produces a *plausible* wrong answer rather than an
+  error, so nothing would have caught them downstream:
+  1. `แป` (purlin) is a substring of `แปลน` (plan) — a bare roof-keyword match labelled every
+     Thai plan sheet a roof-framing sheet.
+  2. `sheet_name` on a multi-view page names every view on it, so it called the tie-beam view of
+     `"แปลนอะเส, แปลนโครงหลังคา"` a roof-framing sheet. `view_title` is the per-view field.
+  3. a คานอะเส / ring-beam plan is a `beam_plan` even when filed as `*_beam_roof` — the roof
+     frame is always a separate sheet.
+  4. a steel `roof_frame_plan` can carry zero beam/roof-typed elements (everything is
+     `steel_member`), so an element_type-only classifier falls through to `etc_plan`.
+- **Applied to data:** the same session's batch over `json_แก้ไขแล้ว/` — 183 files re-labelled
+  (82 `beam_plan` / 57 `footing_plan` / 44 `roof_frame_plan`), plus `z_levels[]` completed on all
+  40 grid masters and 4 hard checker failures fixed. Logged in
+  `No_touch_box/docs/raw_json_data_log.md` same day.
+  `rawjson_ยังไม่ได้แก้ไขโดนคน/` raw layer NOT touched.

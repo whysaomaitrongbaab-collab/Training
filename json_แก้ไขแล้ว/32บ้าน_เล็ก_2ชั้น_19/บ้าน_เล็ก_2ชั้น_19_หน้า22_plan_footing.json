@@ -4,18 +4,61 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า22.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_19_หน้า00_gridline.json",
   "confidence_score": 0.85,
   "confidence_flags": [],
   "warnings": [
     "Pile note printed bottom-left cross-checked arithmetically: 'เข็ม I 0.18x0.18x16.00m (2 ต้นต่อปลอก) จำนวน 14 ต้น' = F1(10 หลุม, 1 ต้น/หลุม)=10 + F2(2 หลุม, 2 ต้น/หลุม)=4, total 14 — matches. 'เข็ม I 0.22x0.22x16.00m (2 ต้นต่อปลอก) F1A = 6 หลุม = 6 ต้น' (1 ต้น/หลุม) also matches the 6 F1A positions counted on the plan. All three footing-type counts (F1=10, F1A=6, F2=2) were independently verified by counting grid positions, not just copied from the printed note.",
-    "Every footing position also carries a column mark (C1 or C2) printed alongside it (e.g. 'F1/C1') — the column itself is recorded separately in the column schedule (หน้า29) and cross-referenced there by grid position; not duplicated as its own element on this file to avoid double-counting the same C1/C2 entries that the schedule already carries per-mark."
+    "Every footing position also carries a column mark (C1 or C2) printed alongside it (e.g. 'F1/C1') — the column itself is recorded separately in the column schedule (หน้า29) and cross-referenced there by grid position; not duplicated as its own element on this file to avoid double-counting the same C1/C2 entries that the schedule already carries per-mark.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 3 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F1", "element_type": "footing", "count": 10, "grid_refs": ["A1", "A2", "A3", "A4", "B1", "B4", "D1", "D4", "E3", "E4"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1A", "element_type": "footing", "count": 6, "grid_refs": ["B2", "B3", "C1", "C4", "D2", "D3"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F2", "element_type": "footing", "count": 2, "grid_refs": ["C2", "C3"], "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 10,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "B1",
+        "B4",
+        "D1",
+        "D4",
+        "E3",
+        "E4"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1A",
+      "element_type": "footing",
+      "count": 6,
+      "grid_refs": [
+        "B2",
+        "B3",
+        "C1",
+        "C4",
+        "D2",
+        "D3"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "C2",
+        "C3"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

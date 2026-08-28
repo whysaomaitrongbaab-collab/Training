@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-04",
   "sheet_name": "แปลน เสา, คาน, พื้นชั้น 1",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า22.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_10_หน้า00_gridline.json",
   "confidence_score": 0.8,
@@ -17,30 +17,203 @@
     "S0 tags (4 bays) are recorded as element_type 'slab' per §10; their spec (100mm slab-on-grade with Ø6mm@0.20m mesh over compacted sand, expansion joint at panel edges) is confirmed on S-11. SP tag (1 bay) is a precast-plank floor area (element_type 'precast_plank_detail'), see S-13 for the plank-joint spec.",
     "ROW B-C STRIP re-read at high zoom 2026-08-26 after Makham flagged it. Two vertical GB2 beams were missing: B3-C3 and B4-C4, both drawn as 0.15m-wide double lines with their own printed GB2 marks and both landing on real column nodes at C3 and C4. Pixel scan (157.4 px/m, calibrated on grid1-grid4 = 6.60m and A-C = 5.40m) puts their centrelines exactly on grid 3 (4.20) and grid 4 (6.60).",
     "The row-C beam is ONE 3.10m member from 1' to grid 3, not two. Grid 2 crosses row C with only its dash-dot centreline — no beam pair, no column node, no footing at C2 on either foundation plan — and the sheet prints a single GB2 mark over the whole run. An earlier pass split it at C2 into 1.60 + 1.50, which would have produced two members and a phantom support in a takeoff. Row A and row B are genuinely split at their grid 2 and grid 3 crossings (real columns there), so the merge applies to row C only.",
-    "'GS' or similar overhang markers were not observed on this particular sheet (unlike some other houses in this series) — none omitted."
+    "'GS' or similar overhang markers were not observed on this particular sheet (unlike some other houses in this series) — none omitted.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 15 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "GB1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "GB1", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "BST2", "element_type": "beam", "grid_ref_start": "B1'", "grid_ref_end": "C1'", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["bears_on_beam:GB2(start)", "no footing/column confirmed at its C1' end — see file warnings"] },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [], "note": "grid-3 vertical in the B-C strip, own printed GB2 mark; missing from an earlier pass" },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "C4", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [], "note": "grid-4 vertical in the B-C strip, own printed GB2 mark; missing from an earlier pass" },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "C3", "span_length_m": 3.10, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": ["west end has no confirmed support beyond BST2's foot — see file warnings"], "note": "ONE continuous beam, not two: grid 2 has no column and no node where it crosses row C, and the sheet prints a single GB2 mark over the whole 1'-to-3 run. An earlier pass split it at C2 into 1.60 + 1.50" },
-    { "element_id": "GB2", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C4", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "A-B x 1-2", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "A-B x 2-3", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "B-C x 1-1'", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "S0", "element_type": "slab", "grid_ref": "B-C x 1'-2", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "SP", "element_type": "precast_plank_detail", "grid_ref": "A-B x 3-4", "description": "precast plank floor area, span direction marked by arrow", "confidence_score": 0.65, "confidence_flags": [] }
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB1",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BST2",
+      "element_type": "beam",
+      "grid_ref_start": "B1'",
+      "grid_ref_end": "C1'",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "bears_on_beam:GB2(start)",
+        "no footing/column confirmed at its C1' end — see file warnings"
+      ]
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "grid-3 vertical in the B-C strip, own printed GB2 mark; missing from an earlier pass"
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "grid-4 vertical in the B-C strip, own printed GB2 mark; missing from an earlier pass"
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "west end has no confirmed support beyond BST2's foot — see file warnings"
+      ],
+      "note": "ONE continuous beam, not two: grid 2 has no column and no node where it crosses row C, and the sheet prints a single GB2 mark over the whole 1'-to-3 run. An earlier pass split it at C2 into 1.60 + 1.50"
+    },
+    {
+      "element_id": "GB2",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "A-B x 1-2",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "A-B x 2-3",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "B-C x 1-1'",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_ref": "B-C x 1'-2",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "precast_plank_detail",
+      "grid_ref": "A-B x 3-4",
+      "description": "precast plank floor area, span direction marked by arrow",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    }
   ]
 }

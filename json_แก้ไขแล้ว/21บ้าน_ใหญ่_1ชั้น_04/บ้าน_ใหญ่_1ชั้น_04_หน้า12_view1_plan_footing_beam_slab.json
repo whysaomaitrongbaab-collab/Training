@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-01",
   "sheet_name": "แปลนฐานราก, ตอม่อ, เสา คาน พื้น",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png",
   "grid_source": "บ้าน_ใหญ่_1ชั้น_04_หน้า00_gridline.json",
   "confidence_score": 0.75,
@@ -14,57 +14,468 @@
     "Building shape: main rectangle ฉ-ค (full width 1-4, porch strip จ-ง wraps all 4 corners via short B1A return beams) plus a small carport projecting south from grid columns 2-3 only (rows ข, ก) — see grid master.",
     "F2-marked footings carry column C1 everywhere except ข3, which carries CX (a steel column, matching the carport's steel post) — kept in one merged F2 entry per §4's point-element merge rule (column mark doesn't split a footing entry) with the CX exception noted on that entry rather than split out.",
     "'B1A' is a short corner-return beam (the 0.70m/1.90m jog at each porch corner) with no clean grid-to-grid span in this scan — recorded as 4 occurrences at their corner grid points with span_source:'unresolved' rather than invented span lengths.",
-    "Slab marker (S3) count is an estimate from a busy area of the plan (the porch strip, จ-ง) where several S3 tags sit close together — recorded at reduced confidence rather than guessed precisely."
+    "Slab marker (S3) count is an estimate from a busy area of the plan (the porch strip, จ-ง) where several S3 tags sit close together — recorded at reduced confidence rather than guessed precisely.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 36 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F1", "element_type": "footing", "count": 12, "grid_refs": ["ฉ2","ฉ3","ฉ4","จ2","จ3","จ4","ง2","ง3","ง4","ค2","ค3","ค4"], "column_mark": "C1", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "F2", "element_type": "footing", "count": 8, "grid_refs": ["ฉ1","จ1","ง1","ค1","ข2","ข3","ก2","ก3"], "column_mark": "C1", "confidence_score": 0.75, "confidence_flags": ["column at ข3 is 'CX' (steel), not C1 — see file warnings; the other 9 occurrences are all C1"] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ฉ1", "grid_ref_end": "ฉ2", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ฉ2", "grid_ref_end": "ฉ3", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ฉ3", "grid_ref_end": "ฉ4", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "ฉ1", "grid_ref_end": "จ1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "ฉ2", "grid_ref_end": "จ2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "ฉ3", "grid_ref_end": "จ3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "ฉ4", "grid_ref_end": "จ4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "B1A", "element_type": "beam","grid_ref_start": "จ1'", "grid_ref_end": "จ1", "span_length_m": 0.70, "span_source": "grid_table", "note": "porch corner return, offset 0.70/1.90", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B1A", "element_type": "beam","grid_ref_start": "ง1'", "grid_ref_end": "ง1", "span_length_m": 0.70, "span_source": "grid_table", "note": "porch corner return, offset 0.70/1.90", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B1A", "element_type": "beam","grid_ref_start": "จ4", "grid_ref_end": "จ4'", "span_length_m": 0.70, "span_source": "grid_table", "note": "porch corner return, offset 0.70/1.90", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B1A", "element_type": "beam","grid_ref_start": "ง4", "grid_ref_end": "ง4'", "span_length_m": 0.70, "span_source": "grid_table", "note": "porch corner return, offset 0.70/1.90", "confidence_score": 0.5, "confidence_flags": [] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "จ1", "grid_ref_end": "จ2", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "จ2", "grid_ref_end": "จ3", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "จ3", "grid_ref_end": "จ4", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ1'", "grid_ref_end": "ง1'", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ2", "grid_ref_end": "ง2", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ3", "grid_ref_end": "ง3", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ1''", "grid_ref_end": "ง1''", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ3'", "grid_ref_end": "ง3'", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "จ4'", "grid_ref_end": "ง4'", "span_length_m": 2.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ง1", "grid_ref_end": "ง2", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ง2", "grid_ref_end": "ง3", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ง3", "grid_ref_end": "ง4", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ง1", "grid_ref_end": "ค1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ง2", "grid_ref_end": "ค2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ง3", "grid_ref_end": "ค3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ง4", "grid_ref_end": "ค4", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ค1", "grid_ref_end": "ค2", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ค2", "grid_ref_end": "ค3", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ค3", "grid_ref_end": "ค4", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ค2", "grid_ref_end": "ข2", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [], "note": "carport upright, first segment" },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "ค3", "grid_ref_end": "ข3", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [], "note": "carport upright, first segment" },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ข2", "grid_ref_end": "ข3", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ข3", "grid_ref_end": "ก3", "span_length_m": 3.15, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [], "note": "carport upright, second segment" },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "ค4", "grid_ref_end": "ก4", "span_length_m": 4.95, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [], "note": "carport upright, second segment, heavier mark than the col-2 side" },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "ก3", "grid_ref_end": "ก4", "span_length_m": 3.20, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "S1", "element_type": "slab", "count": 2, "grid_refs": ["~ฉจ bay 2-3", "~ฉจ bay 3-4"], "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "S3", "element_type": "slab", "count": 5, "grid_refs": ["~ฉจ bay 1-2", "~จง bay 1-2", "~จง bay 2-3", "~จง bay 3-4", "~ง row area"], "confidence_score": 0.5, "confidence_flags": ["porch strip has several closely-spaced S3 tags, exact count uncertain — see file warnings"] },
-    { "element_id": "S2", "element_type": "slab", "count": 3, "grid_refs": ["~งค bay 1-2", "~งค bay 2-3", "~งค bay 3-4"], "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "S4", "element_type": "slab", "count": 1, "grid_refs": ["~carport, ข-ก x 2-3"], "confidence_score": 0.75, "confidence_flags": [] }
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 12,
+      "grid_refs": [
+        "ฉ2",
+        "ฉ3",
+        "ฉ4",
+        "จ2",
+        "จ3",
+        "จ4",
+        "ง2",
+        "ง3",
+        "ง4",
+        "ค2",
+        "ค3",
+        "ค4"
+      ],
+      "column_mark": "C1",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 8,
+      "grid_refs": [
+        "ฉ1",
+        "จ1",
+        "ง1",
+        "ค1",
+        "ข2",
+        "ข3",
+        "ก2",
+        "ก3"
+      ],
+      "column_mark": "C1",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "column at ข3 is 'CX' (steel), not C1 — see file warnings; the other 9 occurrences are all C1"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ1",
+      "grid_ref_end": "ฉ2",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ2",
+      "grid_ref_end": "ฉ3",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ3",
+      "grid_ref_end": "ฉ4",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ1",
+      "grid_ref_end": "จ1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ2",
+      "grid_ref_end": "จ2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ3",
+      "grid_ref_end": "จ3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ4",
+      "grid_ref_end": "จ4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "beam",
+      "grid_ref_start": "จ1'",
+      "grid_ref_end": "จ1",
+      "span_length_m": 0.7,
+      "span_source": "grid_table",
+      "note": "porch corner return, offset 0.70/1.90",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "beam",
+      "grid_ref_start": "ง1'",
+      "grid_ref_end": "ง1",
+      "span_length_m": 0.7,
+      "span_source": "grid_table",
+      "note": "porch corner return, offset 0.70/1.90",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "beam",
+      "grid_ref_start": "จ4",
+      "grid_ref_end": "จ4'",
+      "span_length_m": 0.7,
+      "span_source": "grid_table",
+      "note": "porch corner return, offset 0.70/1.90",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "beam",
+      "grid_ref_start": "ง4",
+      "grid_ref_end": "ง4'",
+      "span_length_m": 0.7,
+      "span_source": "grid_table",
+      "note": "porch corner return, offset 0.70/1.90",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "จ1",
+      "grid_ref_end": "จ2",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "จ2",
+      "grid_ref_end": "จ3",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "จ3",
+      "grid_ref_end": "จ4",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ1'",
+      "grid_ref_end": "ง1'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ2",
+      "grid_ref_end": "ง2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ3",
+      "grid_ref_end": "ง3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ1''",
+      "grid_ref_end": "ง1''",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ3'",
+      "grid_ref_end": "ง3'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "จ4'",
+      "grid_ref_end": "ง4'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ง1",
+      "grid_ref_end": "ง2",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ง2",
+      "grid_ref_end": "ง3",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ง3",
+      "grid_ref_end": "ง4",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ง1",
+      "grid_ref_end": "ค1",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ง2",
+      "grid_ref_end": "ค2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ง3",
+      "grid_ref_end": "ค3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ง4",
+      "grid_ref_end": "ค4",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ค1",
+      "grid_ref_end": "ค2",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ค2",
+      "grid_ref_end": "ค3",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ค3",
+      "grid_ref_end": "ค4",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค2",
+      "grid_ref_end": "ข2",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "carport upright, first segment"
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค3",
+      "grid_ref_end": "ข3",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "carport upright, first segment"
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ข2",
+      "grid_ref_end": "ข3",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ข3",
+      "grid_ref_end": "ก3",
+      "span_length_m": 3.15,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "carport upright, second segment"
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "ค4",
+      "grid_ref_end": "ก4",
+      "span_length_m": 4.95,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "carport upright, second segment, heavier mark than the col-2 side"
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ก3",
+      "grid_ref_end": "ก4",
+      "span_length_m": 3.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": [
+        "~ฉจ bay 2-3",
+        "~ฉจ bay 3-4"
+      ],
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "count": 5,
+      "grid_refs": [
+        "~ฉจ bay 1-2",
+        "~จง bay 1-2",
+        "~จง bay 2-3",
+        "~จง bay 3-4",
+        "~ง row area"
+      ],
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "porch strip has several closely-spaced S3 tags, exact count uncertain — see file warnings"
+      ]
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "count": 3,
+      "grid_refs": [
+        "~งค bay 1-2",
+        "~งค bay 2-3",
+        "~งค bay 3-4"
+      ],
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S4",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~carport, ข-ก x 2-3"
+      ],
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
   ]
 }

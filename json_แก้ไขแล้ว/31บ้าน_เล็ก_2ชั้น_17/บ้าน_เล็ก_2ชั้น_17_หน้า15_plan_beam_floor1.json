@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_17/บ้าน_เล็ก_2ชั้น_17_หน้า15.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_17_หน้า00_gridline.json",
   "confidence_score": 0.7,
@@ -17,33 +17,321 @@
     "A small unlabelled marker 'B0 (+0.10)' sits just west of grid1 at row C (a small square with an X, drawn like a floor opening/drain symbol rather than a column or footing box) — no legend on this sheet or elsewhere in the set defines it. Recorded as a low-confidence slab/opening marker, not as a footing or column (the footing plan หน้า14 shows no footing at this position).",
     "CORRECTED 2026-08-24 — the 'south recessed room' is NOT off-grid and NOT at grid 1-2. It occupies grid3-grid4 x row C-row D exactly, landing on named grid lines on all four sides, and the earlier warning here (claiming it had no matching footing and no printed dimension for its south projection) was wrong on both counts: หน้า14's footing plan carries F1A footings at D3 and D4 — precisely this room's two south corners — and row D is a named grid with a printed 2.00 m C-D dimension. Measured evidence: row D beam faces at y=1640/1661 px in the grid3-4 bay; the two side beams trace continuously from row C to row D (grid 3 at x=1605, y=1176..1714; grid 4 at x=1935, y=790..1692). All four edge beams read B1(+0.30) at 5x zoom. Two side beams (C3-D3, C4-D4) were missing from the earlier extraction entirely and have been added; the south beam moved from '~C1 to ~C2 south' to D3-D4 span 3.00, and confidences were raised from 0.45 accordingly.",
     "'RB1'' (a distinct printed beam mark, not a dummy-grid-prime notation — confirmed by its own rebar section on หน้า20) appears 3 times on this sheet: once near the stairwell void's NW corner (~A2, level +0.40) and twice at the south room's bottom corners, which are now resolved to the named grids D3 and D4 (level +0.30 each) rather than the old '~C1/~C2 south' approximations. Kept as 3 separate atomic entries (span/beam element, never merged) per §4.",
-    "Slab-direction arrows with a level figure (e.g. '+0.45', '+0.50') appear throughout the interior bays — these mark precast-plank laying direction/slab top level within each bay, not distinct elements, and were not individually extracted (same treatment as the precedent house 28บ้าน_เล็ก_2ชั้น_12 used for its slab-direction arrows)."
+    "Slab-direction arrows with a level figure (e.g. '+0.45', '+0.50') appear throughout the interior bays — these mark precast-plank laying direction/slab top level within each bay, not distinct elements, and were not individually extracted (same treatment as the precedent house 28บ้าน_เล็ก_2ชั้น_12 used for its slab-direction arrows).",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 23 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "level_m": 0.35, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "A'3", "level_m": 0.40, "span_length_m": 2.20, "span_source": "grid_table", "note": "north (outer) edge beam of the entrance/stair projection, on dummy row A' (pos_m=-1.10)", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_recorded_as_A2-A3"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A''2", "grid_ref_end": "A''3", "level_m": 0.40, "span_length_m": 2.20, "span_source": "grid_table", "note": "south (inner) edge beam of the entrance/stair projection, on dummy row A'' (pos_m=0.80)", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_recorded_as_A2-A3"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A4", "level_m": 0.40, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A'''1", "grid_ref_end": "A'''2", "level_m": 0.35, "span_length_m": 3.00, "span_source": "grid_table", "note": "interior split beam of the west appendage, on dummy row A''' (pos_m=2.00)", "confidence_score": 0.6, "confidence_flags": ["CORRECTED_2026-08-24_row_was_A'=1.60_now_A'''=2.00"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "level_m": 0.35, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "B2", "level_m": 0.40, "span_length_m": 4.10, "span_source": "grid_table", "note": "stairwell void S1 west edge; starts on dummy row A' (-1.10), not row A — outer face at x=1376 traced continuous y=654..1451 px", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_start_was_A_now_A'_span_3.00_to_4.10_same_as_หน้า16_B4"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A'3", "grid_ref_end": "B3", "level_m": 0.40, "span_length_m": 4.10, "span_source": "grid_table", "note": "stairwell void S1 east edge; starts on dummy row A' (-1.10), not row A — outer face at x=1626 traced continuous y=686..1608 px", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_start_was_A_now_A'_span_3.00_to_4.10_same_as_หน้า16_B4"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "level_m": 0.40, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "RB1'", "element_type": "beam", "grid_ref": "~A2", "level_m": 0.40, "note": "short beam stub at the stairwell void's NW corner", "confidence_score": 0.5, "confidence_flags": ["approximate position — see file warnings"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B'2", "grid_ref_end": "B'3", "level_m": 0.40, "span_length_m": 2.20, "span_source": "grid_table", "note": "printed mark reads B2, not B1 (read at 9x zoom); sits on dummy row B' (3.55), NOT on row B — row B itself is bare dash-dot line here. Beam faces y=1154-1158 / 1174-1180 px, spanning x=1396..1607 = grid2 east face to grid3 west face", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_B1_B2-B3_on_row_B"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "level_m": 0.40, "span_length_m": 3.00, "span_source": "grid_table", "note": "row B does carry a beam in the grid3-4 bay — label read directly as B1(+0.40), beam faces y=1105-1111 / 1127-1132 px", "confidence_score": 0.8, "confidence_flags": ["ADDED_2026-08-24_missing_from_earlier_extraction"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "level_m": 0.40, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "level_m": 0.40, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "C4", "level_m": 0.40, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "level_m": 2.10, "span_length_m": 2.20, "span_source": "grid_table", "note": "supports the stair landing slab (ชานพัก +2.125) directly above; the printed 'B2(+2.10)' label sits between grid 2 and grid 3, and the grid1-2 segment of row C carries no beam at all", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_C1-C2_span_3.00_wrong_bay"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "level_m": 0.40, "span_length_m": 2.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C4", "level_m": 0.40, "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "D3", "level_m": 0.30, "span_length_m": 2.00, "span_source": "grid_table", "note": "south room west edge; vertical face traced continuous y=1176..1714 px at x=1605", "confidence_score": 0.75, "confidence_flags": ["ADDED_2026-08-24_missing_from_earlier_extraction"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C4", "grid_ref_end": "D4", "level_m": 0.30, "span_length_m": 2.00, "span_source": "grid_table", "note": "south room east edge; vertical face traced continuous y=790..1692 px at x=1935", "confidence_score": 0.75, "confidence_flags": ["ADDED_2026-08-24_missing_from_earlier_extraction"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "D4", "level_m": 0.30, "span_length_m": 3.00, "span_source": "grid_table", "note": "south room closing beam on named row D (beam faces y=1640/1661 px) — this room is fully grid-aligned at grid3-4 x C-D, not the off-grid box the earlier extraction assumed", "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-08-24_was_~C1_to_~C2_south_approximate"] },
-    { "element_id": "RB1'", "element_type": "beam", "grid_ref": "D3", "level_m": 0.30, "note": "corner stub at the south room's SW corner, on named grid D3 (footing F1A present there on หน้า14)", "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-08-24_was_~C1_south_approximate"] },
-    { "element_id": "RB1'", "element_type": "beam", "grid_ref": "D4", "level_m": 0.30, "note": "corner stub at the south room's SE corner, on named grid D4 (footing F1A present there on หน้า14)", "confidence_score": 0.75, "confidence_flags": ["CORRECTED_2026-08-24_was_~C2_south_approximate"] },
-    { "element_id": "S0", "element_type": "slab", "count": 3, "grid_refs": ["~north of A1-A2 (carport canopy)", "~A1-A'''1 west (kitchen)", "~A'''1-B1 west (entry)"], "note": "level +0.10 / +0.30 / +0.10 respectively at the three occurrences, west appendage slab panels — see architecture หน้า03 for room use (ครัว/ขัดล้าง)", "confidence_score": 0.5, "confidence_flags": ["approximate position — see file warnings"] },
-    { "element_id": "B0", "element_type": "symbol", "grid_ref": "~C1 west", "level_m": 0.10, "note": "small square-with-X marker west of grid1 at row C, undefined on any legend in this set — likely a floor opening/drain, not a footing (no footing at this position on หน้า14)", "confidence_score": 0.3, "confidence_flags": ["undefined symbol, no legend found — see file warnings"] }
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "level_m": 0.35,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A'3",
+      "level_m": 0.4,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "note": "north (outer) edge beam of the entrance/stair projection, on dummy row A' (pos_m=-1.10)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_recorded_as_A2-A3"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''3",
+      "level_m": 0.4,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "note": "south (inner) edge beam of the entrance/stair projection, on dummy row A'' (pos_m=0.80)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_recorded_as_A2-A3"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "level_m": 0.4,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "A'''2",
+      "level_m": 0.35,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "interior split beam of the west appendage, on dummy row A''' (pos_m=2.00)",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_row_was_A'=1.60_now_A'''=2.00"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "level_m": 0.35,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "B2",
+      "level_m": 0.4,
+      "span_length_m": 4.1,
+      "span_source": "grid_table",
+      "note": "stairwell void S1 west edge; starts on dummy row A' (-1.10), not row A — outer face at x=1376 traced continuous y=654..1451 px",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_start_was_A_now_A'_span_3.00_to_4.10_same_as_หน้า16_B4"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "B3",
+      "level_m": 0.4,
+      "span_length_m": 4.1,
+      "span_source": "grid_table",
+      "note": "stairwell void S1 east edge; starts on dummy row A' (-1.10), not row A — outer face at x=1626 traced continuous y=686..1608 px",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_start_was_A_now_A'_span_3.00_to_4.10_same_as_หน้า16_B4"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "level_m": 0.4,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1'",
+      "element_type": "beam",
+      "grid_ref": "~A2",
+      "level_m": 0.4,
+      "note": "short beam stub at the stairwell void's NW corner",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "approximate position — see file warnings"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B'2",
+      "grid_ref_end": "B'3",
+      "level_m": 0.4,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "note": "printed mark reads B2, not B1 (read at 9x zoom); sits on dummy row B' (3.55), NOT on row B — row B itself is bare dash-dot line here. Beam faces y=1154-1158 / 1174-1180 px, spanning x=1396..1607 = grid2 east face to grid3 west face",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_B1_B2-B3_on_row_B"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "level_m": 0.4,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "row B does carry a beam in the grid3-4 bay — label read directly as B1(+0.40), beam faces y=1105-1111 / 1127-1132 px",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_earlier_extraction"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "level_m": 0.4,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "level_m": 0.4,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "level_m": 0.4,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "level_m": 2.1,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "note": "supports the stair landing slab (ชานพัก +2.125) directly above; the printed 'B2(+2.10)' label sits between grid 2 and grid 3, and the grid1-2 segment of row C carries no beam at all",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_C1-C2_span_3.00_wrong_bay"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "level_m": 0.4,
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "level_m": 0.4,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "level_m": 0.3,
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "south room west edge; vertical face traced continuous y=1176..1714 px at x=1605",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_earlier_extraction"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "D4",
+      "level_m": 0.3,
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "south room east edge; vertical face traced continuous y=790..1692 px at x=1935",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_earlier_extraction"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "level_m": 0.3,
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "south room closing beam on named row D (beam faces y=1640/1661 px) — this room is fully grid-aligned at grid3-4 x C-D, not the off-grid box the earlier extraction assumed",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~C1_to_~C2_south_approximate"
+      ]
+    },
+    {
+      "element_id": "RB1'",
+      "element_type": "beam",
+      "grid_ref": "D3",
+      "level_m": 0.3,
+      "note": "corner stub at the south room's SW corner, on named grid D3 (footing F1A present there on หน้า14)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~C1_south_approximate"
+      ]
+    },
+    {
+      "element_id": "RB1'",
+      "element_type": "beam",
+      "grid_ref": "D4",
+      "level_m": 0.3,
+      "note": "corner stub at the south room's SE corner, on named grid D4 (footing F1A present there on หน้า14)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~C2_south_approximate"
+      ]
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "count": 3,
+      "grid_refs": [
+        "~north of A1-A2 (carport canopy)",
+        "~A1-A'''1 west (kitchen)",
+        "~A'''1-B1 west (entry)"
+      ],
+      "note": "level +0.10 / +0.30 / +0.10 respectively at the three occurrences, west appendage slab panels — see architecture หน้า03 for room use (ครัว/ขัดล้าง)",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "approximate position — see file warnings"
+      ]
+    },
+    {
+      "element_id": "B0",
+      "element_type": "symbol",
+      "grid_ref": "~C1 west",
+      "level_m": 0.1,
+      "note": "small square-with-X marker west of grid1 at row C, undefined on any legend in this set — likely a floor opening/drain, not a footing (no footing at this position on หน้า14)",
+      "confidence_score": 0.3,
+      "confidence_flags": [
+        "undefined symbol, no legend found — see file warnings"
+      ]
+    }
   ]
 }

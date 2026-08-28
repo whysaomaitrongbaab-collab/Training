@@ -5,7 +5,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลน เสา, คาน, หลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า38.png",
@@ -561,6 +561,7 @@
     "The circled 'ดูขยาย 1' at grid A-1 is captioned 'แสดงการยึดเสา ค.ส.ล.กับคานเหล็กและจันทัน' -- the sheet's own confirmation that the frame is HYBRID, RC columns below carrying a steel roof above. The enlargement itself is on S-15 (PNG 48): a 200x200x9 base plate on the column head with two Ø9 anchors 0.15 m deep, and the rafter cleated to BS1 with a 100x100x9 plate.",
     "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
     "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
-    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 17 beams on a roof-framing sheet (floor_level=None). Nothing else in this file changed."
   ]
 }

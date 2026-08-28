@@ -4,24 +4,107 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า22.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_05_หน้า00_gridline.json",
   "confidence_score": 0.5,
-  "confidence_flags": ["hip/valley roof over an irregular (notched) footprint — recorded member types/specs with confidence, did not trace every hip/valley segment's exact grid extent"],
-  "warnings": [],
+  "confidence_flags": [
+    "hip/valley roof over an irregular (notched) footprint — recorded member types/specs with confidence, did not trace every hip/valley segment's exact grid extent"
+  ],
+  "warnings": [
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 3 roof-framing elements. Nothing else in this file changed."
+  ],
   "elements": [
-    { "element_id": "ridge", "element_type": "beam", "grid_ref": "~3-4 x A-D", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "อกไก่ 2C 125x50x20x2.3มม." }, "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "hip_rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "ตะเข้สัน 2C 125x50x20x2.3มม." }, "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "valley_rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "ตะเข้ราง 2C 125x50x20x2.3มม." }, "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "king_post", "element_type": "column", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จุดตั้งดิ่ง 2C 125x50x20x2.3มม." }, "note": "roof strut at rafter intersections", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จันทัน C 100x50x20x2.3มม. @1.00ม." }, "spacing_mm": 1000, "confidence_score": 0.55, "confidence_flags": [] }
+    {
+      "element_id": "ridge",
+      "element_type": "beam",
+      "grid_ref": "~3-4 x A-D",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "อกไก่ 2C 125x50x20x2.3มม."
+      },
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "hip_rafter",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "ตะเข้สัน 2C 125x50x20x2.3มม."
+      },
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "valley_rafter",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "ตะเข้ราง 2C 125x50x20x2.3มม."
+      },
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "king_post",
+      "element_type": "column",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "จุดตั้งดิ่ง 2C 125x50x20x2.3มม."
+      },
+      "note": "roof strut at rafter intersections",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "rafter",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "จันทัน C 100x50x20x2.3มม. @1.00ม."
+      },
+      "spacing_mm": 1000,
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    }
   ],
   "specs": {
     "purlin_typ": {
       "element_type": "steel_member",
       "material": "steel",
-      "steel_section": { "designation": "L", "b_mm": 25, "h_mm": 25, "tw_mm": 3, "printed_as": "แป L 25x25x3มม. @0.34ม." },
+      "steel_section": {
+        "designation": "L",
+        "b_mm": 25,
+        "h_mm": 25,
+        "tw_mm": 3,
+        "printed_as": "แป L 25x25x3มม. @0.34ม."
+      },
       "spacing_mm": 340,
       "spec_source": "S-roof legend",
       "spec_confidence_score": 0.6

@@ -5,7 +5,7 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลน เสา, คาน, พื้นชั้น 1",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า36.png",
@@ -449,6 +449,7 @@
     "THE STAIR ZONE between grids 2 and 3 on rows C-D -- REWRITTEN 2026-07-27 after the higher-magnification re-read this warning itself asked for (recording several reversals). Resolved: all three B5s traced (on grid 2, on grid 3, and the well's west frame approx 2.35 m east of grid 2 -- all full D-to-C spans); the S1 count around the well corrected from four to THREE (the fourth S1 sits in bay 3-4's north strip); and three elements the original pass missed entirely were added -- an intermediate B2 across bay 3-4 approx 1.45 m below D (continuing as the middle B2X beyond grid 4), the SP panel south of it (the sheet has FIVE SP circles, not four), and a plain vertical B6 along the ST2 corner's east edge. Still open: the (ซพ) suffix meaning, and the sloped beams' slope values.",
     "Slab types: SP is the precast solid plank system (S-01 item 4) and carries span-direction arrows; S0 appears to be slab-on-grade outside the framed floor; S1/S2/S3 are cast-in-place panels detailed on S-13. Only SP panels could be tied to full grid bays with confidence.",
     "The B2X beams cantilever 1.20 m past grid 4 (printed on the top dimension chain). REWRITTEN 2026-07-27 (recording a reversal): the earlier version said the 1.95 / 0.70 dimensions sit 'above grid D' and locate terrace edges. Both wrong -- they are on the RIGHT edge measuring DOWN from D, and they locate STRUCTURAL lines: 1.95 m below D = the B6(เอียง) line, plus 0.70 m = 2.65 m below D = the lowest B2X (ST2 landing edge). The remaining off-grid dimensions -- 1.60 / 1.50 / 3.10 below grid A, 4.10 / 0.90 at the bottom -- do locate terrace and ramp edges. No dummy grids were created for any of these.",
-    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit."
+    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 26 beam-family elements. Nothing else in this file changed."
   ]
 }

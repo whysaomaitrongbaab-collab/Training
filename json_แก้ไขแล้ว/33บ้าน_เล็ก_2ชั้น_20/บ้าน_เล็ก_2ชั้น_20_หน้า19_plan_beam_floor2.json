@@ -1,14 +1,16 @@
-﻿{
+{
   "png": "19",
   "doc_page": 19,
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "ผังโครงสร้างชั้นบน",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_20/บ้าน_เล็ก_2ชั้น_20_หน้า19.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_20_หน้า00_gridline.json",
   "confidence_score": 0.65,
-  "confidence_flags": ["dense stairwell cluster (grid1-2, row B to C) and the roof-overhang ring beam zone required interpretation — see warnings"],
+  "confidence_flags": [
+    "dense stairwell cluster (grid1-2, row B to C) and the roof-overhang ring beam zone required interpretation — see warnings"
+  ],
   "warnings": [
     "CORRECTED 2026-08-24 — pixel re-survey. Grid pinned first: x 1=1224, 2=1537, 3=1899 px (104 px/m) and y A=668, B=880, B'=1071, C=1304, D=1622, E=1887 px (106 px/m). Four dummy lines were added to the master off printed margin dimensions: y A'=0.90 ('0.90' below row A, then 1.10 to B), y C'=7.90 ('1.90' below row C, then 1.10 to D), y D'=10.20 ('1.20' below row D), x 2'=4.10 (grid 2 + '1.10' in the second top sub-chain).",
     "⚠️ ROW B CARRIES NO BEAM ANYWHERE ON THIS SHEET. Coverage sweeps of both bays return a single bare line at y=880 px (0.811 in grid1-2, 0.774 in grid2-3) with no face pair, and a 4x zoom shows only the C1 / C2 / C1 column marks sitting on the dash-dot line. What the earlier extraction read as row-B beams are the B2(+3.65) pair one row up on A' (0.90) — their faces measure y=763/785 px, and the B1 / B4 / B1 marks label the three short verticals dropping from A' down to row B, not row-B beams. B2 A1-A2 and B2 A2-A3 have been moved to A', the floating '~A2' B4 is now A'2-B2 span 1.10, and B3 B1-B2 span 3.00 has been deleted.",
@@ -20,44 +22,355 @@
     "A small mark transcribed as 'B4' appears near grid2/row A between the two RB2 segments — position and extent are not clearly resolvable from the scan; recorded at reduced confidence as an approximate connector near A2.",
     "'B1\\'(+3.65)' at grid1/row B (a small boxed mark distinct from the ordinary B1 vertical running the same edge) could not be resolved to a specific sub-position — recorded with an approximate grid_ref, same treatment as the ground-floor plan's short stub beams.",
     "The stairwell opening ('ช่องบันได', grid1-2 x B-B') and the room to its east within the same 1-2 span are two sub-bays with no printed sub-dimension separating them (same limitation as the ground-floor plan's B10A/internal-B1 divider) — recorded as one approximate slab/void zone rather than inventing a split position. The opening's west edge beam (B2', level +2.10) sits at the stair-landing level, distinctly lower than the +3.65 floor beams around it, consistent with an open stair void.",
-    "The south-east corner (grid3, row B-C and the octagonal bay window return) reuses the B6A mark and unlabelled diagonal corner returns exactly as the ground-floor plan does — not separately itemised, see that file's equivalent warning."
+    "The south-east corner (grid3, row B-C and the octagonal bay window return) reuses the B6A mark and unlabelled diagonal corner returns exactly as the ground-floor plan does — not separately itemised, see that file's equivalent warning.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 29 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.45, "note": "roof-overhang ring beam", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.45, "note": "roof-overhang ring beam", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "B2", "span_length_m": 1.10, "span_source": "grid_table", "level_m": 3.45, "note": "vertical stub on grid 2 running from dummy row A' (0.90) down to row B; mark read as B4 at 4x zoom, sitting between the two B2(+3.65) beams. Faces traced y=787..893 px against A'=764 and B=880. Was recorded as an unplaced '~A2'.", "confidence_score": 0.65, "confidence_flags": ["CORRECTED_2026-08-24_was_~A2_unresolved"] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A'1", "grid_ref_end": "A'2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B10A", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "A'3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C'2", "grid_ref_end": "C'3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.65, "note": "beam on dummy row C' (7.90), printed as the '1.90' of the 1.90+1.10=3.00 C-to-D sub-chain in the left margin. Faces traced y=1504/1526 px against C=1304 and D=1622. Missing from the earlier extraction; mark not legible at this scan resolution, recorded as B1 by neighbourhood pattern and flagged.", "confidence_score": 0.5, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction", "MARK NOT READ — assigned by pattern, not by zoom"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D'1", "grid_ref_end": "D'2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "note": "beam on dummy row D' (10.20), printed as '1.20' below row D in the left margin. Faces traced y=1730/1751 px in the grid1-2 bay. Missing from the earlier extraction; mark not legible, flagged.", "confidence_score": 0.5, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction", "MARK NOT READ — assigned by pattern, not by zoom"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 2.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "B1'", "element_type": "beam", "grid_ref": "~B1", "level_m": 3.65, "note": "short boxed mark distinct from the B1 vertical at the same edge, exact extent unresolved", "confidence_score": 0.35, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref": "~B'-C x 2-3", "level_m": 3.65, "span_length_m": 3.50, "span_source": "grid_table", "note": "sits in the B'-C band, not on row B — confirmed by Makham 2026-08-24, matching the measurement that put its faces about 0.3 m below row B' (y=1101/1122 px). It spans grid 2 to grid 3, so the length is the 3.50 m column distance whatever its exact row.", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_row_confirmed_by_Makham_was_row_B"] },
-    { "element_id": "B6A", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "level_m": 3.65, "note": "east side of the octagonal bay window", "confidence_score": 0.55, "confidence_flags": [] },
-
-    { "element_id": "B2'", "element_type": "beam", "grid_ref": "~1B-1B'", "level_m": 2.10, "note": "west edge of the stairwell opening, stair-landing level", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "~1-2 x B-B'", "level_m": 3.65, "note": "stairwell opening ('ช่องบันได') and adjoining room, sub-division not dimensioned", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B'1", "grid_ref_end": "B'2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.55, "confidence_flags": [] },
-
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C1'", "level_m": 3.65, "span_length_m": 4.10, "span_source": "user_confirmed", "note": "row C, running west from grid 2 past grid 1 and out to the eave line at -1.10 — total 4.10 m, given directly by Makham on 2026-08-24. The earlier B'1 -> C1 reading was wrong (a sweep of the B'-C band had already shown no beam face pair at grid 1, which is why it was flagged). The 1.10 overhang beyond grid 1 is printed on this sheet's top margin and is now the dummy column 1' (-1.10); the previous 1'(-1.00) and 1''(1.90) shifted to 1'' and 1''' to keep prime order left-to-right.", "confidence_score": 0.85, "confidence_flags": ["CORRECTED_2026-08-24_span_and_position_given_by_Makham"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B'2", "grid_ref_end": "C2", "span_length_m": 2.20, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref": "~2-3 x B'-C", "level_m": 3.65, "note": "small room east of the internal division, exact endpoints unresolved", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "~3 x B'-C", "level_m": 3.65, "confidence_score": 0.5, "confidence_flags": [] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "D1", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "D3", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 3.00, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "E1", "span_length_m": 2.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "E3", "span_length_m": 2.50, "span_source": "grid_table", "level_m": 3.65, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 3.65, "note": "row E carries a beam only in the grid2-3 bay (faces y=1878/1900 px); the grid1-2 stretch of row E returns nothing at all on a coverage sweep. Corrected from a span-less E1-E3.", "confidence_score": 0.7, "confidence_flags": ["CORRECTED_2026-08-24_was_E1-E3_with_no_span"] },
-    { "element_id": "B2'", "element_type": "beam", "grid_ref": "~E1", "level_m": 3.65, "note": "angled/bevelled corner return, west side of the row-E balcony edge", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "B2'", "element_type": "beam", "grid_ref": "~E3", "level_m": 3.65, "note": "angled/bevelled corner return, east side of the row-E balcony edge", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref": "~2 x E", "level_m": 3.65, "note": "row-E balcony edge beam between the two bevelled corners", "confidence_score": 0.4, "confidence_flags": [] }
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 3.45,
+      "note": "roof-overhang ring beam",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 3.45,
+      "note": "roof-overhang ring beam",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "B2",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "level_m": 3.45,
+      "note": "vertical stub on grid 2 running from dummy row A' (0.90) down to row B; mark read as B4 at 4x zoom, sitting between the two B2(+3.65) beams. Faces traced y=787..893 px against A'=764 and B=880. Was recorded as an unplaced '~A2'.",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~A2_unresolved"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A'2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10A",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A'3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C'2",
+      "grid_ref_end": "C'3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "note": "beam on dummy row C' (7.90), printed as the '1.90' of the 1.90+1.10=3.00 C-to-D sub-chain in the left margin. Faces traced y=1504/1526 px against C=1304 and D=1622. Missing from the earlier extraction; mark not legible at this scan resolution, recorded as B1 by neighbourhood pattern and flagged.",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction",
+        "MARK NOT READ — assigned by pattern, not by zoom"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D'1",
+      "grid_ref_end": "D'2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "note": "beam on dummy row D' (10.20), printed as '1.20' below row D in the left margin. Faces traced y=1730/1751 px in the grid1-2 bay. Missing from the earlier extraction; mark not legible, flagged.",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction",
+        "MARK NOT READ — assigned by pattern, not by zoom"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref": "~B1",
+      "level_m": 3.65,
+      "note": "short boxed mark distinct from the B1 vertical at the same edge, exact extent unresolved",
+      "confidence_score": 0.35,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref": "~B'-C x 2-3",
+      "level_m": 3.65,
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "sits in the B'-C band, not on row B — confirmed by Makham 2026-08-24, matching the measurement that put its faces about 0.3 m below row B' (y=1101/1122 px). It spans grid 2 to grid 3, so the length is the 3.50 m column distance whatever its exact row.",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_row_confirmed_by_Makham_was_row_B"
+      ]
+    },
+    {
+      "element_id": "B6A",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "note": "east side of the octagonal bay window",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2'",
+      "element_type": "beam",
+      "grid_ref": "~1B-1B'",
+      "level_m": 2.1,
+      "note": "west edge of the stairwell opening, stair-landing level",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "~1-2 x B-B'",
+      "level_m": 3.65,
+      "note": "stairwell opening ('ช่องบันได') and adjoining room, sub-division not dimensioned",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C1'",
+      "level_m": 3.65,
+      "span_length_m": 4.1,
+      "span_source": "user_confirmed",
+      "note": "row C, running west from grid 2 past grid 1 and out to the eave line at -1.10 — total 4.10 m, given directly by Makham on 2026-08-24. The earlier B'1 -> C1 reading was wrong (a sweep of the B'-C band had already shown no beam face pair at grid 1, which is why it was flagged). The 1.10 overhang beyond grid 1 is printed on this sheet's top margin and is now the dummy column 1' (-1.10); the previous 1'(-1.00) and 1''(1.90) shifted to 1'' and 1''' to keep prime order left-to-right.",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_span_and_position_given_by_Makham"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B'2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.2,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref": "~2-3 x B'-C",
+      "level_m": 3.65,
+      "note": "small room east of the internal division, exact endpoints unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "~3 x B'-C",
+      "level_m": 3.65,
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "E3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 3.65,
+      "note": "row E carries a beam only in the grid2-3 bay (faces y=1878/1900 px); the grid1-2 stretch of row E returns nothing at all on a coverage sweep. Corrected from a span-less E1-E3.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_E1-E3_with_no_span"
+      ]
+    },
+    {
+      "element_id": "B2'",
+      "element_type": "beam",
+      "grid_ref": "~E1",
+      "level_m": 3.65,
+      "note": "angled/bevelled corner return, west side of the row-E balcony edge",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2'",
+      "element_type": "beam",
+      "grid_ref": "~E3",
+      "level_m": 3.65,
+      "note": "angled/bevelled corner return, east side of the row-E balcony edge",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref": "~2 x E",
+      "level_m": 3.65,
+      "note": "row-E balcony edge beam between the two bevelled corners",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    }
   ]
 }

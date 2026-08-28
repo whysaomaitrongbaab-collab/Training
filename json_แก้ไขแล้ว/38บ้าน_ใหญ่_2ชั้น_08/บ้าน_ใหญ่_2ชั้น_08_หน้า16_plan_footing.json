@@ -4,18 +4,62 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า16.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_08_หน้า00_gridline.json",
   "confidence_score": 0.85,
   "confidence_flags": [],
   "warnings": [
     "Footing marks are printed combined with the column mark that sits on them ('F1/C1', 'F1A/C1', 'F2/C2'). Recorded here as footing-only elements (element_id = footing mark); the co-located column type is kept in a 'column_mark' note field and is fully specified in the column schedule (หน้า21_schedule_column.json), joined by grid position, not by a duplicate column element on this file — matching the convention used by the closest sibling house in this batch (29บ้าน_ใหญ่_2ชั้น_05) of not re-emitting a separate point element for every footing's co-located column.",
-    "Visual count matches the sheet's own note exactly: F1 x7 (A1, A6, D6, E1, E2, E5, E6), F1A x7 (A2, A5, B1, B6, C1, D2, D5), F2 x2 (B2, B5) — 16 footings total. See the grid master's warnings for the pile-count note transcription."
+    "Visual count matches the sheet's own note exactly: F1 x7 (A1, A6, D6, E1, E2, E5, E6), F1A x7 (A2, A5, B1, B6, C1, D2, D5), F2 x2 (B2, B5) — 16 footings total. See the grid master's warnings for the pile-count note transcription.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 3 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F1", "element_type": "footing", "column_mark": "C1", "count": 7, "grid_refs": ["A1", "A6", "D6", "E1", "E2", "E5", "E6"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F1A", "element_type": "footing", "column_mark": "C1", "count": 7, "grid_refs": ["A2", "A5", "B1", "B6", "C1", "D2", "D5"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F2", "element_type": "footing", "column_mark": "C2", "count": 2, "grid_refs": ["B2", "B5"], "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "column_mark": "C1",
+      "count": 7,
+      "grid_refs": [
+        "A1",
+        "A6",
+        "D6",
+        "E1",
+        "E2",
+        "E5",
+        "E6"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1A",
+      "element_type": "footing",
+      "column_mark": "C1",
+      "count": 7,
+      "grid_refs": [
+        "A2",
+        "A5",
+        "B1",
+        "B6",
+        "C1",
+        "D2",
+        "D5"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "column_mark": "C2",
+      "count": 2,
+      "grid_refs": [
+        "B2",
+        "B5"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

@@ -4,11 +4,13 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า28.png",
   "grid_source": "บ้าน_ใหญ่_1ชั้น_03_หน้า00_gridline.json",
   "confidence_score": 0.65,
-  "confidence_flags": ["dense_interior_layout_reduced_precision"],
+  "confidence_flags": [
+    "dense_interior_layout_reduced_precision"
+  ],
   "warnings": [
     "CORRECTED 2026-08-24 — pixel survey. Grid pinned at x 1=1043, 2=1437, 3=1752, 4=2067 px (78.8 px/m) and y E=575, D=890, C=1089, B=1408, A=1604 px, both scales agreeing. ADDED: a whole edge beam line that was missing from the extraction — B1A on dummy column 4' (14.10), which is the '1.10' printed beyond grid 4 on the top margin. It traces as one continuous line at x=2153 px from y=568 to y=1411 (row E to row B) and carries the B1A mark three times, so it is recorded as three atomic segments E-D / D-C / C-B.",
     "⚠️ The E-D band carries NO beam on grid 3: a coverage sweep of that band returns face pairs at x=1035/1051 (grid 1), 1146/1161, 1429/1445 (grid 2), 1665/1681, 1862/1878 and 2059 (grid 4) — nothing brackets grid 3 at 1752, although the D-C and C-B bands both do (1744/1760). Not corrected in the element list because the extraction never claimed a grid-3 beam there; recorded here so a later pass does not 'restore' one.",
@@ -17,68 +19,555 @@
     "PERIMETER CHORDS and EDGE VERTICALS (rows E/D/C/B, grid columns 1/1'/1''/2/3/4, and the ramp stubs at row A-A') are recorded with full grid_ref_start/grid_ref_end precision, cross-checked pixel-by-pixel against the established grid master.",
     "INTERIOR PARTITION/SUPPORT BEAMS (marks B2, B2A, B3, B4, B4A, B4B recurring inside each bay, supporting the SP/SPA precast-plank fields) do NOT have their own printed local dimension chain on this sheet — unlike the footing plan (S-02), no witness-line dimension pins their exact x-position inside a bay. Per §4's beam-endpoint rule these are still recorded (never dropped), but with span_source:'unresolved' and a descriptive bay location instead of an invented grid_ref_start/end. This is a deliberate, flagged simplification for a dense room layout, consistent with op04's pass-2 scope — the alternative (guessing sub-bay positions) would violate the 'never estimate pos_m' rule.",
     "Slab marker 'SI' (letter I) vs 'S1' (digit 1): this sheet uses 'S1' (digit) at the grid3-4 bay per the printed circles — double-checked per §10 since these two are known lookalikes in this dataset.",
-    "Row A between grid1''-grid2 shows a hatched 'stair nosing' pocket (พอกขั้นบันได, detailed on S-15) rather than a clear ground beam mark between footings F5@A2 and F5@A3 — recorded as unresolved rather than assuming a beam mark not clearly legible at this scan resolution."
+    "Row A between grid1''-grid2 shows a hatched 'stair nosing' pocket (พอกขั้นบันได, detailed on S-15) rather than a clear ground beam mark between footings F5@A2 and F5@A3 — recorded as unresolved rather than assuming a beam mark not clearly legible at this scan resolution.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 41 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E1'", "span_length_m": 1.50, "span_source": "grid_table", "note": "entry-vestibule roof-edge beam", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E1'", "grid_ref_end": "E2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "E4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-
-    { "element_id": "B2A", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "D1", "span_length_m": 4.00, "span_source": "grid_table", "note": "left edge (grid1), E-D bay", "confidence_score": 0.7, "confidence_flags": [] },
-
-    { "element_id": "B5X", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D1'", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "D1'", "grid_ref_end": "D2", "span_length_m": 3.50, "span_source": "grid_table", "note": "note on sheet: B4B ties into B5 with 2-Ø20mm, lapped 0.40m into B4B and B5", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B5B", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B5A", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "D4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "C1", "span_length_m": 2.50, "span_source": "grid_table", "note": "left edge (grid1), D-C bay", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B5X", "element_type": "beam", "grid_ref_start": "D4", "grid_ref_end": "C4", "span_length_m": 2.50, "span_source": "grid_table", "note": "right edge (grid4), D-C bay", "confidence_score": 0.7, "confidence_flags": [] },
-
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C1''", "span_length_m": 3.35, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B1B", "element_type": "beam", "grid_ref_start": "C1''", "grid_ref_end": "C2", "span_length_m": 1.65, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "note": "left edge (grid1), C-B bay", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B5X", "element_type": "beam", "grid_ref_start": "C4", "grid_ref_end": "B4", "span_length_m": 4.00, "span_source": "grid_table", "note": "right edge (grid4), C-B bay", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B1A", "element_type": "beam", "grid_ref_start": "E4'", "grid_ref_end": "D4'", "span_length_m": 4.00, "span_source": "grid_table", "note": "east edge beam on dummy column 4' (14.10), printed as the '1.10' beyond grid 4 on the top margin. Traced as one continuous line x=2153 px running y=568..1411, i.e. row E to row B, and marked B1A three times along it — recorded as three atomic segments. Missing from the earlier extraction entirely (B1A did not appear at all).", "confidence_score": 0.7, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction"] },
-    { "element_id": "B1A", "element_type": "beam", "grid_ref_start": "D4'", "grid_ref_end": "C4'", "span_length_m": 2.50, "span_source": "grid_table", "note": "middle segment of the same continuous 4' edge beam.", "confidence_score": 0.7, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction"] },
-    { "element_id": "B1A", "element_type": "beam", "grid_ref_start": "C4'", "grid_ref_end": "B4'", "span_length_m": 4.00, "span_source": "grid_table", "note": "south segment of the same continuous 4' edge beam; the trace ends at row B (y=1411 px).", "confidence_score": 0.7, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C1''", "grid_ref_end": "B1''", "span_length_m": 4.00, "span_source": "grid_table", "note": "interior vertical member landing on the C/B-row grid1'' column line", "confidence_score": 0.55, "confidence_flags": [] },
-
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B1''", "span_length_m": 3.35, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1''", "grid_ref_end": "B2", "span_length_m": 1.65, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "A1", "span_length_m": 2.50, "span_source": "grid_table", "note": "left edge (grid1), B-A bay", "confidence_score": 0.7, "confidence_flags": [] },
-
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A'1", "span_length_m": 1.50, "span_source": "grid_table", "note": "ramp support stub, grid1, lands on the SO sloped ramp slab", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A1''", "grid_ref_end": "A'1''", "span_length_m": 1.50, "span_source": "grid_table", "note": "ramp support stub, grid1'', lands on the SO sloped ramp slab", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A'2", "span_length_m": 1.50, "span_source": "grid_table", "note": "ramp support stub, grid2, lands on the SO sloped ramp slab", "confidence_score": 0.7, "confidence_flags": [] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref": "~bay 1''-2, row B-A (rows B-A)", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-
-    { "element_id": "B3", "element_type": "beam", "grid_ref": "~bay 1-2, rows E-D and D-C (rows E-D)", "span_length_m": 4.00, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref": "~bay 1-2, rows E-D and D-C (rows D-C)", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref": "~bays 1-2 and 2-3, rows E-D through C-B (rows E-D)", "span_length_m": 4.00, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref": "~bays 1-2 and 2-3, rows E-D through C-B (rows D-C)", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref": "~bays 1-2 and 2-3, rows E-D through C-B (rows C-B)", "span_length_m": 4.00, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B4A", "element_type": "beam", "grid_ref": "~bay 2-3, rows D-C and C-B (rows D-C)", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B4A", "element_type": "beam", "grid_ref": "~bay 2-3, rows D-C and C-B (rows C-B)", "span_length_m": 4.00, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B4B", "element_type": "beam", "grid_ref": "~bay 2-3, rows D-C and B-A (rows D-C)", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B4B", "element_type": "beam", "grid_ref": "~bay 2-3, rows D-C and B-A (rows B-A)", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B2A", "element_type": "beam", "grid_ref": "~bay 3-4, rows D-C and B-A (rows D-C)", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-    { "element_id": "B2A", "element_type": "beam", "grid_ref": "~bay 3-4, rows D-C and B-A (rows B-A)", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.", "confidence_score": 0.55, "confidence_flags": ["span ADDED 2026-08-24 from the band height; x-position still approximate"] },
-
-    { "element_id": "SP", "element_type": "slab", "count": 14, "grid_refs": ["~bay 1-2 x rows E-A", "~bay 2-3 x rows E-A", "~bay 3-4 x rows E-A"], "confidence_score": 0.5, "confidence_flags": ["SP is the generic precast-plank field marker repeated across nearly every bay on this sheet; count is an estimate from the drawing's density, not an exact tally"] },
-    { "element_id": "SPA", "element_type": "slab", "count": 2, "grid_refs": ["~bay 1-2 row E-D", "~bay 3-4 row E-D"], "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "SP1", "element_type": "slab", "count": 3, "grid_refs": ["~bay 1-2 row D-C", "~bay 1-2 row C-B", "~bay 1-2 row B-A"], "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "count": 2, "grid_refs": ["~bay 3-4 row E-D", "~bay 3-4 row C-B"], "confidence_score": 0.65, "confidence_flags": ["read as 'S1' (digit 1), not 'SI' (letter I) — double-checked per §10"] },
-    { "element_id": "S2", "element_type": "slab", "count": 1, "grid_refs": ["~bay 3-4 row D-C"], "confidence_score": 0.65, "confidence_flags": [] },
-    { "element_id": "SX", "element_type": "slab", "count": 1, "grid_refs": ["~bay 1''-2 row C-B"], "confidence_score": 0.55, "confidence_flags": ["hatched marker near the stair pocket; role (void/stair opening vs slab type) not fully certain from this scan"] },
-    { "element_id": "S0", "element_type": "slab", "count": 1, "grid_refs": ["~bay 1-1'' row A-A'"], "confidence_score": 0.7, "confidence_flags": [], "note": "sloped ramp slab (ทางลาด), detail on S-15/หน้า40" },
-    { "element_id": "ST1", "element_type": "stair", "grid_ref": "~E1", "confidence_score": 0.6, "confidence_flags": [], "note": "entry vestibule stair, detail 'ขยายพอกขั้นบันได' on S-15/หน้า40" }
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E1'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "entry-vestibule roof-edge beam",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "E1'",
+      "grid_ref_end": "E2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2A",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "D1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "left edge (grid1), E-D bay",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5X",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D1'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "D1'",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "note on sheet: B4B ties into B5 with 2-Ø20mm, lapped 0.40m into B4B and B5",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5B",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5A",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "left edge (grid1), D-C bay",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5X",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "C4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "right edge (grid4), D-C bay",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C1''",
+      "span_length_m": 3.35,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1B",
+      "element_type": "beam",
+      "grid_ref_start": "C1''",
+      "grid_ref_end": "C2",
+      "span_length_m": 1.65,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "left edge (grid1), C-B bay",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5X",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "right edge (grid4), C-B bay",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "beam",
+      "grid_ref_start": "E4'",
+      "grid_ref_end": "D4'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "east edge beam on dummy column 4' (14.10), printed as the '1.10' beyond grid 4 on the top margin. Traced as one continuous line x=2153 px running y=568..1411, i.e. row E to row B, and marked B1A three times along it — recorded as three atomic segments. Missing from the earlier extraction entirely (B1A did not appear at all).",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction"
+      ]
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "beam",
+      "grid_ref_start": "D4'",
+      "grid_ref_end": "C4'",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "middle segment of the same continuous 4' edge beam.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction"
+      ]
+    },
+    {
+      "element_id": "B1A",
+      "element_type": "beam",
+      "grid_ref_start": "C4'",
+      "grid_ref_end": "B4'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "south segment of the same continuous 4' edge beam; the trace ends at row B (y=1411 px).",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "C1''",
+      "grid_ref_end": "B1''",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "interior vertical member landing on the C/B-row grid1'' column line",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B1''",
+      "span_length_m": 3.35,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1''",
+      "grid_ref_end": "B2",
+      "span_length_m": 1.65,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "A1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "left edge (grid1), B-A bay",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A'1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "ramp support stub, grid1, lands on the SO sloped ramp slab",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "A1''",
+      "grid_ref_end": "A'1''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "ramp support stub, grid1'', lands on the SO sloped ramp slab",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A'2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "ramp support stub, grid2, lands on the SO sloped ramp slab",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref": "~bay 1''-2, row B-A (rows B-A)",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref": "~bay 1-2, rows E-D and D-C (rows E-D)",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref": "~bay 1-2, rows E-D and D-C (rows D-C)",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref": "~bays 1-2 and 2-3, rows E-D through C-B (rows E-D)",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref": "~bays 1-2 and 2-3, rows E-D through C-B (rows D-C)",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref": "~bays 1-2 and 2-3, rows E-D through C-B (rows C-B)",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B4A",
+      "element_type": "beam",
+      "grid_ref": "~bay 2-3, rows D-C and C-B (rows D-C)",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B4A",
+      "element_type": "beam",
+      "grid_ref": "~bay 2-3, rows D-C and C-B (rows C-B)",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B4B",
+      "element_type": "beam",
+      "grid_ref": "~bay 2-3, rows D-C and B-A (rows D-C)",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B4B",
+      "element_type": "beam",
+      "grid_ref": "~bay 2-3, rows D-C and B-A (rows B-A)",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B2A",
+      "element_type": "beam",
+      "grid_ref": "~bay 3-4, rows D-C and B-A (rows D-C)",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "B2A",
+      "element_type": "beam",
+      "grid_ref": "~bay 3-4, rows D-C and B-A (rows B-A)",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical interior beam — its x-position is undimensioned on this sheet so the bay ref stays approximate, but the LENGTH is exact: a vertical spanning a full band equals that band height whatever its x. Split into atomic per-band segments so each carries its own span.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "span ADDED 2026-08-24 from the band height; x-position still approximate"
+      ]
+    },
+    {
+      "element_id": "SP",
+      "element_type": "slab",
+      "count": 14,
+      "grid_refs": [
+        "~bay 1-2 x rows E-A",
+        "~bay 2-3 x rows E-A",
+        "~bay 3-4 x rows E-A"
+      ],
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "SP is the generic precast-plank field marker repeated across nearly every bay on this sheet; count is an estimate from the drawing's density, not an exact tally"
+      ]
+    },
+    {
+      "element_id": "SPA",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": [
+        "~bay 1-2 row E-D",
+        "~bay 3-4 row E-D"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP1",
+      "element_type": "slab",
+      "count": 3,
+      "grid_refs": [
+        "~bay 1-2 row D-C",
+        "~bay 1-2 row C-B",
+        "~bay 1-2 row B-A"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": [
+        "~bay 3-4 row E-D",
+        "~bay 3-4 row C-B"
+      ],
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "read as 'S1' (digit 1), not 'SI' (letter I) — double-checked per §10"
+      ]
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~bay 3-4 row D-C"
+      ],
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SX",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~bay 1''-2 row C-B"
+      ],
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "hatched marker near the stair pocket; role (void/stair opening vs slab type) not fully certain from this scan"
+      ]
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~bay 1-1'' row A-A'"
+      ],
+      "confidence_score": 0.7,
+      "confidence_flags": [],
+      "note": "sloped ramp slab (ทางลาด), detail on S-15/หน้า40"
+    },
+    {
+      "element_id": "ST1",
+      "element_type": "stair",
+      "grid_ref": "~E1",
+      "confidence_score": 0.6,
+      "confidence_flags": [],
+      "note": "entry vestibule stair, detail 'ขยายพอกขั้นบันได' on S-15/หน้า40"
+    }
   ]
 }

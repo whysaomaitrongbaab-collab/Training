@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-01",
   "sheet_name": "แปลนฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_03/บ้าน_ใหญ่_2ชั้น_03_หน้า19.png",
   "confidence_score": 0.88,
   "confidence_flags": [],
@@ -13,14 +13,21 @@
     "ทุกจุดกริดพิมพ์เครื่องหมายเสาตอม่อและฐานรากคู่กันเสมอ (เช่น 'C2,F2') — บันทึกเป็น 2 element แยกกัน (element_type: column กับ footing) ที่ grid_ref เดียวกัน เพราะเป็นสมาชิกโครงสร้างคนละชิ้นจริง (ตอม่อ vs ฐานราก) แม้ mark จะปรากฏคู่กันเสมอในไฟล์นี้",
     "กริด 3/4 และ 6/7 เป็นจุดเดียวกันจริง (ดู หน้า00_gridline.json) — ใช้ชื่ออ้างอิงเดียวคือ '3' และ '6' ตลอดทั้งไฟล์นี้เพื่อไม่ให้ grid_refs ซ้ำจุด (ค่าเทียบเท่า '4'/'7' ก็ถูกต้องเช่นกัน)",
     "หมายเหตุจากแบบ (พิมพ์บนแผ่นนี้): แบบชุดนี้ใช้ มยธ.101-106 เป็นรายการประกอบแบบ; คอนกรีตใช้ ค.1; เหล็กเสริม Ø6/Ø9มม. ใช้เหล็กเส้นกลม SR-24, เหล็กข้ออ้อยตั้งแต่ Ø12มม.ขึ้นไปใช้ SD-30; ฐานรากเสาเข็มใช้เสาเข็มคอนกรีต 0.18x0.18x12ม. รับน้ำหนักบรรทุกปลอดภัยไม่น้อยกว่า 7 ตัน/ต้น (นี่คือแบบที่ใช้จริงในแผ่นนี้และ S-05); ฐานรากแผ่เป็นทางเลือกสำรอง ใช้ได้เมื่อดินรับน้ำหนักปลอดภัยไม่น้อยกว่า 8 ตัน/ตร.ม. (ดูหมายเหตุใน หน้า23_S-05 สำหรับสเปคทางเลือกนี้)",
-    "2 ฐานราก C2,F2 ที่แถว ก (นอกกริดหลัก แถวใต้สุด) ไม่มีระยะพิมพ์กำกับตำแหน่ง x ที่แน่ชัด — เป็นฐานรากรองรับคาน B4 ของส่วนต่อเติมลานซักล้าง (ห้อง S0 ใต้คาน B7 บนหน้า20/S-02) ตำแหน่ง x วัดจากภาพเทียบสัดส่วนกับกริดที่ยืนยันแล้วได้ประมาณ 10.3ม. และ 15.0ม. (ใกล้กริด 4 และกริด 6 ตามลำดับ) แต่ไม่ตรงกับตำแหน่งเสาบัว B1A/Cx ที่อยู่กริด 3(=4)/5' พอดี — บันทึกด้วย confidence ต่ำกว่าและ grid_ref แบบประมาณ (~) แยกเป็นคนละ entry จากกลุ่ม F2 หลักตามข้อยกเว้นใน §0.10"
+    "2 ฐานราก C2,F2 ที่แถว ก (นอกกริดหลัก แถวใต้สุด) ไม่มีระยะพิมพ์กำกับตำแหน่ง x ที่แน่ชัด — เป็นฐานรากรองรับคาน B4 ของส่วนต่อเติมลานซักล้าง (ห้อง S0 ใต้คาน B7 บนหน้า20/S-02) ตำแหน่ง x วัดจากภาพเทียบสัดส่วนกับกริดที่ยืนยันแล้วได้ประมาณ 10.3ม. และ 15.0ม. (ใกล้กริด 4 และกริด 6 ตามลำดับ) แต่ไม่ตรงกับตำแหน่งเสาบัว B1A/Cx ที่อยู่กริด 3(=4)/5' พอดี — บันทึกด้วย confidence ต่ำกว่าและ grid_ref แบบประมาณ (~) แยกเป็นคนละ entry จากกลุ่ม F2 หลักตามข้อยกเว้นใน §0.10",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 4 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
     {
       "element_id": "F2",
       "element_type": "footing",
       "count": 5,
-      "grid_refs": ["ช6", "ฉ1", "จ1", "ง1", "ข3"],
+      "grid_refs": [
+        "ช6",
+        "ฉ1",
+        "จ1",
+        "ง1",
+        "ข3"
+      ],
       "width_mm": 1000,
       "confidence_score": 0.9,
       "confidence_flags": [],
@@ -30,16 +37,29 @@
       "element_id": "F2",
       "element_type": "footing",
       "count": 2,
-      "grid_refs": ["~ก4", "~ก6"],
+      "grid_refs": [
+        "~ก4",
+        "~ก6"
+      ],
       "confidence_score": 0.55,
-      "confidence_flags": ["position_estimated_from_image", "no_printed_dimension_for_exact_position"],
+      "confidence_flags": [
+        "position_estimated_from_image",
+        "no_printed_dimension_for_exact_position"
+      ],
       "note": "ฐานรากรองรับคาน B4/ผนัง S0 (ลานซักล้างต่อเติม) ใต้กริดแถว ก — ตำแหน่ง x ประมาณจากสัดส่วนภาพ ไม่มีระยะบอกพิมพ์บนแผ่น"
     },
     {
       "element_id": "F3",
       "element_type": "footing",
       "count": 6,
-      "grid_refs": ["ช2", "จ6", "ค2", "ค6", "ข5", "ข6"],
+      "grid_refs": [
+        "ช2",
+        "จ6",
+        "ค2",
+        "ค6",
+        "ข5",
+        "ข6"
+      ],
       "confidence_score": 0.9,
       "confidence_flags": [],
       "note": "ฐานรากทรงคางหมู (5 เหลี่ยมไม่สมมาตร) กว้าง 1.00ม., เข็ม 3 ต้น — สเปคเต็มดูที่ specs และไฟล์ หน้า23_S-05"
@@ -48,7 +68,15 @@
       "element_id": "F4",
       "element_type": "footing",
       "count": 7,
-      "grid_refs": ["ช3", "ช5", "จ2", "จ3", "จ5", "ค3", "ค5"],
+      "grid_refs": [
+        "ช3",
+        "ช5",
+        "จ2",
+        "จ3",
+        "จ5",
+        "ค3",
+        "ค5"
+      ],
       "confidence_score": 0.9,
       "confidence_flags": [],
       "note": "ฐานรากสี่เหลี่ยมจัตุรัส 1.00x1.00ม., เข็ม 4 ต้น — สเปคเต็มดูที่ specs และไฟล์ หน้า23_S-05"
@@ -57,7 +85,13 @@
       "element_id": "C2",
       "element_type": "column",
       "count": 5,
-      "grid_refs": ["ช6", "ฉ1", "จ1", "ง1", "ข3"],
+      "grid_refs": [
+        "ช6",
+        "ฉ1",
+        "จ1",
+        "ง1",
+        "ข3"
+      ],
       "confidence_score": 0.9,
       "confidence_flags": [],
       "note": "เสาตอม่อคู่กับ F2 — สเปคเสริมเหล็กเต็มดูที่ไฟล์ หน้า23_S-05"
@@ -66,15 +100,28 @@
       "element_id": "C2",
       "element_type": "column",
       "count": 2,
-      "grid_refs": ["~ก4", "~ก6"],
+      "grid_refs": [
+        "~ก4",
+        "~ก6"
+      ],
       "confidence_score": 0.55,
-      "confidence_flags": ["position_estimated_from_image", "no_printed_dimension_for_exact_position"]
+      "confidence_flags": [
+        "position_estimated_from_image",
+        "no_printed_dimension_for_exact_position"
+      ]
     },
     {
       "element_id": "C3",
       "element_type": "column",
       "count": 6,
-      "grid_refs": ["ช2", "จ6", "ค2", "ค6", "ข5", "ข6"],
+      "grid_refs": [
+        "ช2",
+        "จ6",
+        "ค2",
+        "ค6",
+        "ข5",
+        "ข6"
+      ],
       "confidence_score": 0.9,
       "confidence_flags": [],
       "note": "เสาตอม่อคู่กับ F3 — สเปคเสริมเหล็กเต็มดูที่ไฟล์ หน้า23_S-05"
@@ -83,15 +130,81 @@
       "element_id": "C4",
       "element_type": "column",
       "count": 7,
-      "grid_refs": ["ช3", "ช5", "จ2", "จ3", "จ5", "ค3", "ค5"],
+      "grid_refs": [
+        "ช3",
+        "ช5",
+        "จ2",
+        "จ3",
+        "จ5",
+        "ค3",
+        "ค5"
+      ],
       "confidence_score": 0.9,
       "confidence_flags": [],
       "note": "เสาตอม่อคู่กับ F4 — สเปคเสริมเหล็กเต็มดูที่ไฟล์ หน้า23_S-05"
     }
   ],
   "specs": {
-    "F2": { "width_mm": 1000, "depth_mm": 700, "pedestal_size_mm": { "width_mm": 200, "height_mm": 200 }, "main_bar": { "count": 10, "dia_mm": 12, "type": "RB", "note": "5+5Ø12มม. ตามแนวรอบเสาตอม่อ" }, "stirrup": { "count": 1, "dia_mm": 9, "type": "RB", "note": "1Ø9มม. จัดรอบ" }, "pile_type": "เสาเข็มคอนกรีต 0.18x0.18x12.00ม.", "pile_count": 2, "spec_source": "section", "spec_confidence_score": 0.9 },
-    "F3": { "width_mm": 1000, "mat_bar": { "count": 4, "dia_mm": 16, "type": "RB" }, "stirrup": { "dia_mm": 12, "type": "RB", "spacing_mm": 200, "note": "เหล็กยึด Ø12มม.@0.20" }, "pedestal_main_bar": { "count": 4, "dia_mm": 16, "type": "RB" }, "pile_type": "เสาเข็มคอนกรีต 0.18x0.18x12.00ม.", "pile_count": 3, "spec_source": "section", "spec_confidence_score": 0.85 },
-    "F4": { "width_mm": 1000, "height_mm": 1000, "pedestal_main_bar": { "count": 18, "dia_mm": 12, "type": "RB", "note": "9+9Ø12มม. (ยืนยันจาก หน้า24/S-06)" }, "pile_type": "เสาเข็มคอนกรีต 0.18x0.18x12.00ม.", "pile_count": 4, "spec_source": "section", "spec_confidence_score": 0.85 }
+    "F2": {
+      "width_mm": 1000,
+      "depth_mm": 700,
+      "pedestal_size_mm": {
+        "width_mm": 200,
+        "height_mm": 200
+      },
+      "main_bar": {
+        "count": 10,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "5+5Ø12มม. ตามแนวรอบเสาตอม่อ"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1Ø9มม. จัดรอบ"
+      },
+      "pile_type": "เสาเข็มคอนกรีต 0.18x0.18x12.00ม.",
+      "pile_count": 2,
+      "spec_source": "section",
+      "spec_confidence_score": 0.9
+    },
+    "F3": {
+      "width_mm": 1000,
+      "mat_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "RB"
+      },
+      "stirrup": {
+        "dia_mm": 12,
+        "type": "RB",
+        "spacing_mm": 200,
+        "note": "เหล็กยึด Ø12มม.@0.20"
+      },
+      "pedestal_main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "RB"
+      },
+      "pile_type": "เสาเข็มคอนกรีต 0.18x0.18x12.00ม.",
+      "pile_count": 3,
+      "spec_source": "section",
+      "spec_confidence_score": 0.85
+    },
+    "F4": {
+      "width_mm": 1000,
+      "height_mm": 1000,
+      "pedestal_main_bar": {
+        "count": 18,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "9+9Ø12มม. (ยืนยันจาก หน้า24/S-06)"
+      },
+      "pile_type": "เสาเข็มคอนกรีต 0.18x0.18x12.00ม.",
+      "pile_count": 4,
+      "spec_source": "section",
+      "spec_confidence_score": 0.85
+    }
   }
 }

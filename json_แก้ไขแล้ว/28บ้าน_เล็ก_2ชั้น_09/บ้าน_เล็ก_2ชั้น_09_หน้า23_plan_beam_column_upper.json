@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลนเสา คาน พื้นชั้นบน",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า23.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_09_หน้า00_gridline.json",
   "confidence_score": 0.8,
@@ -13,34 +13,244 @@
     "'พื้นชั้นบน' is this single-story-on-stilts house's one elevated living floor (the priority beam plan of the two S-04/S-05 sheets) — not a second story; see grid-master warnings.",
     "The bay bounded by A1-B1x1-2 contains two small rooms (each marked S1, likely bathroom/wet-area cast-in-place slabs, per S-17's stepped-down 'ระดับพื้นห้องน้ำ' detail) separated by beam mark 'BA' (150x300mm, spec confirmed on S-15), with a further internal B2 beam closing the south side of that small room cluster partway through the bay. Neither BA's east-west offset from grid 1, nor the internal B2's north-south offset from grid A, is dimensioned on this architecture-controlled interior layout — both recorded with approximate '~' grid refs and low confidence per the standing 'never invent a dimension' rule, rather than fabricated exact coordinates.",
     "The balcony/stair-landing zone south of grid C (columns 2-3, to dummy line C\" at 6.60) is closed by beam B2 (C\"2-C\"3), framed by B5X (continuing from B5A) and B4X (continuing from B4A) — see grid-master warning on C\". The stair void itself (columns 1-2, same C-to-C\" zone) carries no closing beam; ST1 is a stair, not a slab, there.",
-    "Slab marker S1 is printed twice inside the single dashed balcony/stair-landing zone box (once near row B-C, once again near C-C\") with no visible internal dividing line between the two printed labels — treated as one continuous S1 slab area (B2 to C\"3) rather than two separate pours; flagged since the double label could instead indicate two distinct slab pours split at row C."
+    "Slab marker S1 is printed twice inside the single dashed balcony/stair-landing zone box (once near row B-C, once again near C-C\") with no visible internal dividing line between the two printed labels — treated as one continuous S1 slab area (B2 to C\"3) rather than two separate pours; flagged since the double label could instead indicate two distinct slab pours split at row C.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 17 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B4A", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B5A", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B4A", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 1.80, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B5X", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C\"2", "span_length_m": 1.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C\"3", "span_length_m": 1.20, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C\"2", "grid_ref_end": "C\"3", "span_length_m": 2.70, "span_source": "grid_table", "note": "south closing edge beam of the balcony/stair-landing cantilever", "confidence_score": 0.75, "confidence_flags": [] },
-
-    { "element_id": "BA", "element_type": "beam", "grid_ref_start": "~A1", "grid_ref_end": "~B1", "span_length_m": null, "span_source": "unresolved", "note": "interior partition beam between the two S1 rooms, exact x-offset within bay 1-2 not dimensioned on this sheet", "confidence_score": 0.35, "confidence_flags": ["position undimensioned, see file warnings"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~A1", "grid_ref_end": "~B1", "span_length_m": null, "span_source": "unresolved", "note": "internal beam closing south side of the small S1 room cluster within bay A1-B1x1-2, exact position not dimensioned on this sheet", "confidence_score": 0.35, "confidence_flags": ["position undimensioned, see file warnings"] },
-
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "~A1", "note": "cast-in-place wet-area slab, west of BA", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "~A2", "note": "cast-in-place wet-area slab, east of BA", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "SP", "element_type": "slab", "grid_ref": "~A1-B1", "note": "precast solid-plank floor, direction arrow only, south portion of bay 1-2", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "SP", "element_type": "slab", "grid_ref": "~A2-B2", "note": "precast solid-plank floor, direction arrow only", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "SP", "element_type": "slab", "grid_ref": "~B1-C1", "note": "precast solid-plank floor, direction arrow only", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "grid_ref": "B-C\" x 2-3", "note": "balcony/stair-landing slab, label printed twice in one dashed area — see file warnings", "confidence_score": 0.55, "confidence_flags": ["possibly two distinct pours split at row C, see file warnings"] },
-    { "element_id": "ST1", "element_type": "stair", "grid_ref": "~C1", "note": "stair down to ground level, void between columns 1-2 south of C carries no closing beam", "confidence_score": 0.6, "confidence_flags": [] }
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4A",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5A",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4A",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5X",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C\"2",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4X",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C\"3",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C\"2",
+      "grid_ref_end": "C\"3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "note": "south closing edge beam of the balcony/stair-landing cantilever",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BA",
+      "element_type": "beam",
+      "grid_ref_start": "~A1",
+      "grid_ref_end": "~B1",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "interior partition beam between the two S1 rooms, exact x-offset within bay 1-2 not dimensioned on this sheet",
+      "confidence_score": 0.35,
+      "confidence_flags": [
+        "position undimensioned, see file warnings"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "~A1",
+      "grid_ref_end": "~B1",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "internal beam closing south side of the small S1 room cluster within bay A1-B1x1-2, exact position not dimensioned on this sheet",
+      "confidence_score": 0.35,
+      "confidence_flags": [
+        "position undimensioned, see file warnings"
+      ]
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "~A1",
+      "note": "cast-in-place wet-area slab, west of BA",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "~A2",
+      "note": "cast-in-place wet-area slab, east of BA",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "slab",
+      "grid_ref": "~A1-B1",
+      "note": "precast solid-plank floor, direction arrow only, south portion of bay 1-2",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "slab",
+      "grid_ref": "~A2-B2",
+      "note": "precast solid-plank floor, direction arrow only",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "slab",
+      "grid_ref": "~B1-C1",
+      "note": "precast solid-plank floor, direction arrow only",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "B-C\" x 2-3",
+      "note": "balcony/stair-landing slab, label printed twice in one dashed area — see file warnings",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "possibly two distinct pours split at row C, see file warnings"
+      ]
+    },
+    {
+      "element_id": "ST1",
+      "element_type": "stair",
+      "grid_ref": "~C1",
+      "note": "stair down to ground level, void between columns 1-2 south of C carries no closing beam",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    }
   ]
 }

@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า20.png",
   "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
   "confidence_score": 0.7,
@@ -13,7 +13,8 @@
     "แผ่นนี้แสดงเฉพาะช่วงแนว 2-5 และ B-H (ส่วนหลังคาหลัก) ไม่ครอบคลุมทั้งอาคาร — ระยะรวมที่พิมพ์คือ 9.20 (แนว 2→5) และ 6.00 (แนว B→H) ตรงกับ grid master พอดีทั้งคู่",
     "ชายคายื่น 1.10 ม. ทุกด้าน (พิมพ์ไว้ 3 จุดบนขอบล่าง และ 1.00/1.00 บนขอบขวา) — เป็นแนวชายคาไม่ใช่แนวโครงสร้างที่มีเสา จึงไม่เติมเป็น dummy grid ตามข้อห้าม §4",
     "หน้าตัดเหล็กบนแผ่นนี้ระบุ 2C 125x50x20x2.3 มม. สำหรับอกไก่/ดั้ง/ชื่อ-อะเส/ตะเข้ราง และ จันทัน C 100x50x20x2.3 มม. @1.00 ม. — ตรงกับที่พิมพ์บนหน้า19 ทุกค่า ไม่มีข้อขัดแย้ง",
-    "ไม่ได้นับจำนวนจันทัน/แปรายตัว — ที่ 1:75 เส้นจันทันถี่จนนับพลาดได้ง่าย บันทึกเป็นระยะเรียง (spacing_mm) ตามที่แบบพิมพ์แทน ซึ่งเป็นข้อมูลที่แบบให้จริง"
+    "ไม่ได้นับจำนวนจันทัน/แปรายตัว — ที่ 1:75 เส้นจันทันถี่จนนับพลาดได้ง่าย บันทึกเป็นระยะเรียง (spacing_mm) ตามที่แบบพิมพ์แทน ซึ่งเป็นข้อมูลที่แบบให้จริง",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: structural roof-framing sheet by title (ผังโครงสร้างหลังคา). Nothing else in this file changed."
   ],
   "elements": [
     {

@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลน เสา คานและพื้น",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "building": "อาคารสุขารวม",
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า15.png",
@@ -331,6 +331,7 @@
     "C2 columns appear at the six NAMED grid intersections only; the dummy rows carry a beam but no column -- which is precisely why they needed a dummy grid rather than being treated as column lines.",
     "SPECS BACK-FILLED 2026-07-25 from S-05 (หน้า18): B4/B5/B6 are REINFORCED CONCRETE beams, not steel -- which is why S-02's steel-only หมายเหตุ block omitted them. B4 200x500 (2ø15 top / 4ø15 bottom / ป.ø6@0.20), B5 200x500 (2ø19 / 4ø19 / ป.ø9@0.20 + 2ø19 curtailed top bars 1.15 m over the middle support), B6 200x600 (2ø19 / 4ø19 / ป.ø9@0.20). C2 is 200x200 with 4ø12 and ป.ø6@0.20, printed on S-05 as 'C-2'.",
     "UNRESOLVED CONFLICT on the B5 mark. S-05 draws B5 as a two-span continuous beam of 4.50 + 4.50 m, which matches the letter direction (ก-ข-ค) on grid lines 1 and 2 -- consistent with the four vertical B5 entries in this file. But this file ALSO records two horizontal B5 beams on the dummy rows ค'/ข', which would span 6.00 m, a length the B5 detail never shows. Either those mid-panel members carry a different mark that was misread at this scan resolution, or they are the S1 slab's intermediate support drawn without its own mark (S-04's S1 detail does show 2.25 + 2.25 spans, implying an intermediate support exists). The two horizontal B5 entries and the ค'/ข' dummy grids are therefore LOW CONFIDENCE pending a higher-resolution read of the toilet-block plan.",
-    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit."
+    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 9 beam-family elements. Nothing else in this file changed."
   ]
 }

@@ -195,6 +195,13 @@ Rules that follow from it being a residual:
 - **`etc_plan` is a last resort, not a default.** Check #1, #2, #3 in that order first. Reaching for `etc_plan` because the sheet is crowded or hard to read is how a beam plan's beams stop reaching the BOQ — the same failure the `roof_plan` warning below records. When genuinely unsure, pick the specific one that matches the marks you can read and say so in `warnings[]`.
 - **It is not a dumping ground for non-plans.** No `grid_ref` and not top-down → it is `side_profile`, `section`, `schedule`, `notes`, `misc` or `unknown`, never `etc_plan`.
 
+**Four traps, all found the hard way on 2026-08-28 while re-labelling the 183 legacy `etc_plan` structural sheets in `json_แก้ไขแล้ว/`.** Each one silently produces a plausible-looking wrong answer, so they are recorded here rather than left to be rediscovered:
+
+- **`แป` is a substring of `แปลน`.** `แป` alone means *purlin* (a roof member), but `แปลน` means *plan* and starts the title of essentially every plan sheet in the corpus — so matching a bare `แป` as a roof signal calls **every Thai plan sheet a roof-framing sheet**. Match the compound words only: `แปเหล็ก`, `แปหลังคา`, `โครงหลังคา`, `โครงสร้างหลังคา`, `จันทัน`, `อกไก่`.
+- **`sheet_name` on a multi-view page names every view on it, not this one.** A page whose `sheet_name` is `"แปลนอะเส, แปลนโครงหลังคา"` produces two files (§3), and reading `sheet_name` on the first one labels the tie-beam view a roof-framing sheet. **`view_title` is the field that describes this view**; fall back to `sheet_name` only when there is no `view_title`.
+- **A คานอะเส / ring-beam plan is a `beam_plan`, even when it is filed as `*_beam_roof` or `*_roof_beam`.** The อะเส sits at the top of the wall and carries the roof, so its sheet is often named for the roof — but the roof *frame* (จันทัน / แป / โครงหลังคา) is always a separate sheet, and that separate one is the `roof_frame_plan`. If a house has both, the อะเส sheet is the beam plan.
+- **A `roof_frame_plan` can contain no beam-shaped element at all.** A steel roof frame is often typed `steel_member` throughout (or `truss`/`purlin`/`rafter`), so a classifier keyed only on `element_type` finds nothing and falls through to `etc_plan`. When the title says `โครงหลังคา`/`โครงสร้างหลังคา`, that is sufficient on its own.
+
 Applies to all four equally:
 
 - **A sheet carrying two of these is a multi-view page (§3)** — split it, one file per view, each with its own pattern. A single sheet showing footing plan + beam plan produces `_view1_footing_plan.json` (`footing_plan`) and `_view2_beam_plan.json` (`beam_plan`).

@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลนคาน พื้นชั้น 2",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า33.png",
   "view_title": "แปลนคาน พื้นชั้น 2 1:100",
@@ -488,6 +488,7 @@
     "Several beam segments near the stairwell (grid2-gridD to grid2-gridC, and grid3-4 near gridD-gridC) carry explicit callout notes ('B1 ที่ระดับชานพัก', 'B1/B2ที่ระดับชานพัก', 'B4X/B1ที่ระดับชานพัก') indicating the true beam mark at those positions is different at the STAIR LANDING level vs the main floor-2 level printed on this sheet -- recorded both marks where legible, flagged for structural-detail cross-check against S-11/S-12 (stair sheets) once read.",
     "This floor 2 layout confirms a single main interior stair (ST marker, floor opening + ลง/down arrow) positioned at grid3-grid4/gridD-gridC -- expect matching S-11/S-12 stair section sheets to reference this same position.",
     "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
-    "NORMALIZED_2026-08-02(r5): slab_markers[]/reference_markers[] arrays folded into elements[] - schema section 10 already says SO/SI/SX/ST markers are element_type 'slab' cross-referencing like beams, and houses 02-04 keep them in elements[]; a separate array was a house-05-only shape. mark -> element_id, nothing dropped."
+    "NORMALIZED_2026-08-02(r5): slab_markers[]/reference_markers[] arrays folded into elements[] - schema section 10 already says SO/SI/SX/ST markers are element_type 'slab' cross-referencing like beams, and houses 02-04 keep them in elements[]; a separate array was a house-05-only shape. mark -> element_id, nothing dropped.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 23 beam-family elements. Nothing else in this file changed."
   ]
 }

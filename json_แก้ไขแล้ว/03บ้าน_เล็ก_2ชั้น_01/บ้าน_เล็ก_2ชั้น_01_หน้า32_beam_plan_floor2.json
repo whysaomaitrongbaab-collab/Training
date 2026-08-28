@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลนเสา คาน พื้นชั้น 2",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_01/บ้าน_เล็ก_2ชั้น_01_หน้า32.png",
   "view_title": "แปลนเสา คาน พื้นชั้น 2",
@@ -623,6 +623,7 @@
     "The east edge line at 3'(7.04 m) running D->C carries no legible mark at the zoom used; not recorded as an element. Needs a dedicated zoom or a section sheet.",
     "'B1(ชพ)' is recorded with a distinct element_id suffix (B1_ชพ) rather than merged into regular 'B1', since it sits at stair-landing level even though it shares B1's cross-section spec. Their 3.06 m extents are inferred from the void box, not printed -- lowest-confidence entries on this sheet.",
     "CORRECTED_2026-07-16: B3X and B4's additional_bars merged into main_bar per the corrected S-08 (หน้า35) spec, matching the fixes made to the floor-1 beam plan (หน้า31).",
-    "NORMALIZED_2026-08-02: element_id reduction to the printed mark was ATTEMPTED and PARTLY REVERTED on this sheet - some ids reduce to the same mark while being genuinely different members (e.g. the stair vs its steps, a landing beam vs the ordinary beam of the same mark, three eave materials at one R-mark). Those keep their suffix; the rest were reduced with the original in element_id_printed_as."
+    "NORMALIZED_2026-08-02: element_id reduction to the printed mark was ATTEMPTED and PARTLY REVERTED on this sheet - some ids reduce to the same mark while being genuinely different members (e.g. the stair vs its steps, a landing beam vs the ordinary beam of the same mark, three eave materials at one R-mark). Those keep their suffix; the rest were reduced with the original in element_id_printed_as.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 28 beam-family elements. Nothing else in this file changed."
   ]
 }

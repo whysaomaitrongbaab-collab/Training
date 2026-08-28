@@ -1,10 +1,10 @@
-﻿{
+{
   "png": "17",
   "doc_page": 17,
   "discipline": "structural",
   "sheet_code": "S-01",
   "sheet_name": "ผังโครงสร้างฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_20/บ้าน_เล็ก_2ชั้น_20_หน้า17.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_20_หน้า00_gridline.json",
   "confidence_score": 0.9,
@@ -12,13 +12,85 @@
   "warnings": [
     "Every point on this sheet is printed as a combined footing/column marker, e.g. 'F1/C1' = footing type F1 with column type C1 on top. Recorded as two separate merged entries (one footing, one column) sharing the same grid_refs, per §0.1's rule that footing and column are distinct element_types with distinct specs — not a single 'F1/C1' element_id.",
     "Footing counts cross-checked against the sheet's own footnote: 'F1 = 6 หลุม = 6 ต้น, F2 = 2 หลุม = 4 ต้น (2 ต้นต่อหลุม), F1A = 6 หลุม = 6 ต้น' — 6+2+6=14 marked positions on the plan, which matches exactly (F1 x6, F1A x6, F2 x2). No footing is printed at row E, column 1 (the building footprint is notched there) and none at row B' (see grid master note on 'CA').",
-    "Row B' (between B and C) carries a column (CA) on the beam plans (หน้า18/19) but has no footing on this sheet — the sheet's own dimension chain skips straight from B to C as a single 4.00 m span, confirming B' is beam-supported only, not a separate footing line."
+    "Row B' (between B and C) carries a column (CA) on the beam plans (หน้า18/19) but has no footing on this sheet — the sheet's own dimension chain skips straight from B to C as a single 4.00 m span, confirming B' is beam-supported only, not a separate footing line.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 3 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F1", "element_type": "footing", "count": 6, "grid_refs": ["A1", "A3", "D1", "D3", "E2", "E3"], "note": "each position also carries column C1 (see column elements below)", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F1A", "element_type": "footing", "count": 6, "grid_refs": ["A2", "B1", "B3", "C1", "C3", "D2"], "note": "each position also carries column C1", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F2", "element_type": "footing", "count": 2, "grid_refs": ["B2", "C2"], "note": "each position also carries column C2", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "C1", "element_type": "column", "count": 12, "grid_refs": ["A1", "A3", "B1", "B3", "C1", "C3", "D1", "D2", "D3", "E2", "E3", "A2"], "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "C2", "element_type": "column", "count": 2, "grid_refs": ["B2", "C2"], "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 6,
+      "grid_refs": [
+        "A1",
+        "A3",
+        "D1",
+        "D3",
+        "E2",
+        "E3"
+      ],
+      "note": "each position also carries column C1 (see column elements below)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1A",
+      "element_type": "footing",
+      "count": 6,
+      "grid_refs": [
+        "A2",
+        "B1",
+        "B3",
+        "C1",
+        "C3",
+        "D2"
+      ],
+      "note": "each position also carries column C1",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "B2",
+        "C2"
+      ],
+      "note": "each position also carries column C2",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 12,
+      "grid_refs": [
+        "A1",
+        "A3",
+        "B1",
+        "B3",
+        "C1",
+        "C3",
+        "D1",
+        "D2",
+        "D3",
+        "E2",
+        "E3",
+        "A2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 2,
+      "grid_refs": [
+        "B2",
+        "C2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

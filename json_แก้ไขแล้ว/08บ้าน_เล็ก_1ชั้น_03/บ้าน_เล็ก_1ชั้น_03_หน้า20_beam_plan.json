@@ -5,7 +5,7 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนคาน, พื้นชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_03/บ้าน_เล็ก_1ชั้น_03_หน้า20.png",
@@ -404,6 +404,7 @@
     "SI vs S1 checked per §10 at high zoom: the circled marks read SI (letter I). ST is drawn as a hexagon on this sheet (SI/SO in circles).",
     "The 0.60 dimension printed below row B east of grid 3 measures from the grid-3 centreline to the OUTER face of the B2 edge beam / slab edge; the CN post centres scale to ~7.50 m. 3' recorded at the printed 7.60 with this noted (grid master carries the same flag).",
     "No drawing break lines on this sheet (mandatory check done; see grid master).",
-    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit."
+    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 26 beam-family elements. Nothing else in this file changed."
   ]
 }

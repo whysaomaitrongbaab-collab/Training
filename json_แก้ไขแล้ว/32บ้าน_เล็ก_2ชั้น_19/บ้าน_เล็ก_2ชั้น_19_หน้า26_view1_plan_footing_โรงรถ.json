@@ -4,17 +4,34 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างฐานราก (โรงรถ)",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "building": "โรงรถ",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า26.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_19_หน้า00b_gridline_โรงรถ.json",
-  "views": ["plan_footing (this file)", "plan_beam floor (_view2)", "plan_beam roof (_view3)"],
+  "views": [
+    "plan_footing (this file)",
+    "plan_beam floor (_view2)",
+    "plan_beam roof (_view3)"
+  ],
   "confidence_score": 0.85,
   "confidence_flags": [],
   "warnings": [
-    "Pile note: 'เข็ม I 0.18x0.18x8.00m. จำนวน 4 ต้น, F1 = 4 หลุม = 4 ต้น' — 1 pile per footing, 4 footings at the carport's 4 corners; matches the 4 F1/C1 marks read on the plan."
+    "Pile note: 'เข็ม I 0.18x0.18x8.00m. จำนวน 4 ต้น, F1 = 4 หลุม = 4 ต้น' — 1 pile per footing, 4 footings at the carport's 4 corners; matches the 4 F1/C1 marks read on the plan.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 1 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F1", "element_type": "footing", "count": 4, "grid_refs": ["X1Y1", "X2Y1", "X1Y2", "X2Y2"], "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": [
+        "X1Y1",
+        "X2Y1",
+        "X1Y2",
+        "X2Y2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-01",
   "sheet_name": "แปลนเสาเข็มและฐานราก",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า08.png",
   "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/16บ้าน_เล็ก_1ชั้น_09/บ้าน_เล็ก_1ชั้น_09_หน้า00_gridline.json",
   "confidence_score": 0.75,
@@ -12,14 +12,20 @@
   "warnings": [
     "แผ่นนี้พิมพ์ 'F1,C1' ที่แถว A และ C, 'F2,C1' ที่แถว B — เสา C1 มีมาร์คเดียวทุกจุด (6 จุด) ส่วนฐานรากแยก F1 (4 จุด แถว A,C) และ F2 (2 จุด แถว B) ตามภาระที่ต่างกัน (คานพาดกลาง B รับน้ำหนักมากกว่า)",
     "แปลนนี้ไม่ครอบคลุมฐานรากของส่วนต่อขยายครัว (นอกกริด 2 ที่จุด 2') — ส่วนต่อขยายปรากฏเฉพาะในหน้า09 (S-02 แปลนโครงสร้างชั้นล่าง) ด้วยมาร์ค CB2 ไม่มีฐานราก/เสาเข็มของตัวเองระบุแยกต่างหาก อาจฝากน้ำหนักบนคาน CB2 ที่ยื่นจากตัวบ้านหลัก หรือไม่ได้แสดงในชุดแบบนี้ — เป็นคำถามเปิด",
-    "สเปกฐานราก F1/F2/เสา C1 (ขนาด, เหล็กเสริม, เข็ม) อยู่ที่หน้า10 (S-03 แบบขยาย) ไม่ได้ inline ซ้ำในไฟล์นี้ ตามกฎ §7 เก็บ spec ไว้ที่เดียว"
+    "สเปกฐานราก F1/F2/เสา C1 (ขนาด, เหล็กเสริม, เข็ม) อยู่ที่หน้า10 (S-03 แบบขยาย) ไม่ได้ inline ซ้ำในไฟล์นี้ ตามกฎ §7 เก็บ spec ไว้ที่เดียว",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 3 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
     {
       "element_id": "F1",
       "element_type": "footing",
       "count": 4,
-      "grid_refs": ["A1", "A2", "C1", "C2"],
+      "grid_refs": [
+        "A1",
+        "A2",
+        "C1",
+        "C2"
+      ],
       "column_mark": "C1",
       "printed_as": "F1, C1",
       "confidence_score": 0.75,
@@ -29,7 +35,10 @@
       "element_id": "F2",
       "element_type": "footing",
       "count": 2,
-      "grid_refs": ["B1", "B2"],
+      "grid_refs": [
+        "B1",
+        "B2"
+      ],
       "column_mark": "C1",
       "printed_as": "F2, C1",
       "confidence_score": 0.75,
@@ -39,7 +48,14 @@
       "element_id": "C1",
       "element_type": "column",
       "count": 6,
-      "grid_refs": ["A1", "A2", "B1", "B2", "C1", "C2"],
+      "grid_refs": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
       "printed_as": "C1 (ทุกจุด)",
       "confidence_score": 0.8,
       "confidence_flags": []

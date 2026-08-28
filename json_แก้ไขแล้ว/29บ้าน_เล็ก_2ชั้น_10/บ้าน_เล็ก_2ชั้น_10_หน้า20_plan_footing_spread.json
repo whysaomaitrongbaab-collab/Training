@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนฐานรากแผ่, เสาตอม่อ",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า20.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_10_หน้า00_gridline.json",
   "confidence_score": 0.85,
@@ -12,12 +12,69 @@
   "warnings": [
     "This is the SPREAD-footing alternate of the foundation (see notes sheet §3.3: the two footing systems — spread footing (this sheet) vs. driven-pile footing (S-03) — are mutually exclusive design options for the same building, only one is built per site depending on bearing capacity; both are captured since both are printed).",
     "Footings at A1/B1 are drawn with a chamfered/pointed outline instead of the plain square used elsewhere on this sheet — no legend explains this; recorded with the same size/mark as printed (F0.90x0.90x0.30, C1), flagged as a drafting variation rather than a distinct footing type (see grid master warnings).",
-    "No footing/column exists at grid intersection C1 on this sheet — row C only carries footings at columns 2, 3 and 4."
+    "No footing/column exists at grid intersection C1 on this sheet — row C only carries footings at columns 2, 3 and 4.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 4 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F0.90x0.90x0.30", "element_type": "footing", "count": 3, "grid_refs": ["A1", "A4", "B1"], "width_mm": 900, "height_mm": 900, "thickness_mm": 300, "note": "column mark C1 printed alongside each footing; A1/B1 drawn with a chamfered corner outline (see file warnings)", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "F0.95x0.95", "element_type": "footing", "count": 5, "grid_refs": ["A2", "A3", "B2", "B3", "B4"], "width_mm": 950, "height_mm": 950, "note": "column mark C1 printed alongside each footing", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "F0.50x0.50", "element_type": "footing", "count": 1, "grid_refs": ["C2"], "width_mm": 500, "height_mm": 500, "note": "column mark C2 printed alongside", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "F0.50x0.95", "element_type": "footing", "count": 2, "grid_refs": ["C3", "C4"], "width_mm": 500, "height_mm": 950, "note": "column mark C2 printed alongside each footing", "confidence_score": 0.8, "confidence_flags": [] }
+    {
+      "element_id": "F0.90x0.90x0.30",
+      "element_type": "footing",
+      "count": 3,
+      "grid_refs": [
+        "A1",
+        "A4",
+        "B1"
+      ],
+      "width_mm": 900,
+      "height_mm": 900,
+      "thickness_mm": 300,
+      "note": "column mark C1 printed alongside each footing; A1/B1 drawn with a chamfered corner outline (see file warnings)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F0.95x0.95",
+      "element_type": "footing",
+      "count": 5,
+      "grid_refs": [
+        "A2",
+        "A3",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "width_mm": 950,
+      "height_mm": 950,
+      "note": "column mark C1 printed alongside each footing",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F0.50x0.50",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": [
+        "C2"
+      ],
+      "width_mm": 500,
+      "height_mm": 500,
+      "note": "column mark C2 printed alongside",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F0.50x0.95",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "C3",
+        "C4"
+      ],
+      "width_mm": 500,
+      "height_mm": 950,
+      "note": "column mark C2 printed alongside each footing",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
   ]
 }

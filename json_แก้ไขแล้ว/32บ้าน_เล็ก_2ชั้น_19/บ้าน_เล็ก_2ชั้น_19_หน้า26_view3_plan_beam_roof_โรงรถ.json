@@ -4,23 +4,130 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างหลังคา (โรงรถ)",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "building": "โรงรถ",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า26.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_19_หน้า00b_gridline_โรงรถ.json",
-  "views": ["plan_footing (_view1)", "plan_beam floor (_view2)", "plan_beam roof (this file)"],
+  "views": [
+    "plan_footing (_view1)",
+    "plan_beam floor (_view2)",
+    "plan_beam roof (this file)"
+  ],
   "confidence_score": 0.75,
   "confidence_flags": [],
   "warnings": [
-    "Structural hip-roof framing plan over the carport (real member sections with grid refs) → pattern 'plan', not 'roof_plan', same rule applied as the main house's roof plan (หน้า25)."
+    "Structural hip-roof framing plan over the carport (real member sections with grid refs) → pattern 'plan', not 'roof_plan', same rule applied as the main house's roof plan (หน้า25).",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 3 beams on a roof-framing sheet (floor_level=None). Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "จันทัน", "element_type": "rafter", "grid_ref": "X1-X2 x Y1-Y2", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จันทัน C 100x50x20x2.3 mm.@1.00m." }, "material": "steel", "spacing_mm": 1000, "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "อกไก่", "element_type": "beam", "grid_ref": "X1-X2 x Y1-Y2", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "อกไก่ 2C 125x50x20x2.3 mm." }, "material": "steel", "note": "ridge beam, double-C back-to-back", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "ตะเข้สัน", "element_type": "beam", "grid_ref": "X1-X2 x Y1-Y2", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "ตะเข้สัน 2C 125x50x20x2.3 mm." }, "material": "steel", "note": "hip rafter, double-C back-to-back", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "อะเส", "element_type": "beam", "grid_ref": "X1-X2 x Y1-Y2", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "อะเส,ยึด 2C 150x50x20x2.3 mm." }, "material": "steel", "note": "wall-plate/tie beam around the roof perimeter, double-C back-to-back", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "แปกัลวาไนซ์", "element_type": "purlin", "grid_ref": "X1-X2 x Y1-Y2", "steel_section": null, "material": "steel", "printed_as": "แปกัลวาไนซ์", "confidence_score": 0.4, "confidence_flags": ["no dimensions printed for this member on this sheet"] },
-    { "element_id": "จุดตั้งดั้ง", "element_type": "connection_detail", "grid_ref": "X1-X2 x Y1-Y2", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จุดตั้งดั้ง 2C 125x50x20x2.3 mm." }, "material": "steel", "note": "king-post support point at the hip apex", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "จุดติดตั้งเหล็ก_PLATE", "element_type": "connection_detail", "grid_ref": "X1-X2 x Y1-Y2", "material": "steel", "thickness_mm": null, "printed_as": "จุดติดตั้งเหล็ก PLATE หนา_มม.", "confidence_score": 0.4, "confidence_flags": ["plate-thickness digit illegible on this scan"] }
+    {
+      "element_id": "จันทัน",
+      "element_type": "rafter",
+      "grid_ref": "X1-X2 x Y1-Y2",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "จันทัน C 100x50x20x2.3 mm.@1.00m."
+      },
+      "material": "steel",
+      "spacing_mm": 1000,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "อกไก่",
+      "element_type": "beam",
+      "grid_ref": "X1-X2 x Y1-Y2",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "อกไก่ 2C 125x50x20x2.3 mm."
+      },
+      "material": "steel",
+      "note": "ridge beam, double-C back-to-back",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ตะเข้สัน",
+      "element_type": "beam",
+      "grid_ref": "X1-X2 x Y1-Y2",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "ตะเข้สัน 2C 125x50x20x2.3 mm."
+      },
+      "material": "steel",
+      "note": "hip rafter, double-C back-to-back",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "อะเส",
+      "element_type": "beam",
+      "grid_ref": "X1-X2 x Y1-Y2",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "อะเส,ยึด 2C 150x50x20x2.3 mm."
+      },
+      "material": "steel",
+      "note": "wall-plate/tie beam around the roof perimeter, double-C back-to-back",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แปกัลวาไนซ์",
+      "element_type": "purlin",
+      "grid_ref": "X1-X2 x Y1-Y2",
+      "steel_section": null,
+      "material": "steel",
+      "printed_as": "แปกัลวาไนซ์",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "no dimensions printed for this member on this sheet"
+      ]
+    },
+    {
+      "element_id": "จุดตั้งดั้ง",
+      "element_type": "connection_detail",
+      "grid_ref": "X1-X2 x Y1-Y2",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "จุดตั้งดั้ง 2C 125x50x20x2.3 mm."
+      },
+      "material": "steel",
+      "note": "king-post support point at the hip apex",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จุดติดตั้งเหล็ก_PLATE",
+      "element_type": "connection_detail",
+      "grid_ref": "X1-X2 x Y1-Y2",
+      "material": "steel",
+      "thickness_mm": null,
+      "printed_as": "จุดติดตั้งเหล็ก PLATE หนา_มม.",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "plate-thickness digit illegible on this scan"
+      ]
+    }
   ]
 }

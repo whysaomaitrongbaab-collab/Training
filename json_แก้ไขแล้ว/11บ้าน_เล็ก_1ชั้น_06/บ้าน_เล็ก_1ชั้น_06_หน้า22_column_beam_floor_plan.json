@@ -5,7 +5,7 @@
   "discipline": "structural",
   "sheet_code": "S-04",
   "sheet_name": "แปลนเสา คาน พื้น ชั้นที่ 1",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า22.png",
@@ -207,6 +207,7 @@
     "Beam marks confirmed: B1 (small room only), B2 (single interior segment), B3 (perimeter, most common), B4/B4A (interior cross beams), B5 (perimeter + small room). No B6 seen on this sheet despite S-01's index listing 'B6, B6X' — expected on S-06 (roof level) or S-12 (detail) instead, per house 08's precedent where B6 was a roof-level (+3.75) mark distinct from floor-level beams.",
     "9.00 and 7.00 chains both close matching S-02/S-03.",
     "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
-    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 16 beam-family elements. Nothing else in this file changed."
   ]
 }

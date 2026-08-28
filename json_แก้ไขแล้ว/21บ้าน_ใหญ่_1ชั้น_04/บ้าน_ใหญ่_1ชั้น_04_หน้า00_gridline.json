@@ -13,56 +13,258 @@
   "warnings": [
     "y-axis total row prints 14.15 but the 5 printed segments as I first read them (4.00+2.00+3.60+1.80+3.15) sum to 14.55, a 0.40m mismatch. Re-checking against the total row (the exact check §4 exists for): 4.00+2.00+3.20+1.80+3.15=14.15 resolves exactly if the ง-ค segment is 3.20 (not 3.60) — used 3.20 for ค's pos_m. This is a resolved reading, not a guess: the total-row cross-check is decisive, but the ง-ค segment's own digit was genuinely hard to distinguish (3.60 vs 3.20) at this scan's resolution/rotation, so confidence on that one line is lower than the rest.",
     "Rows ข(11.00m) and ก(14.15m) only carry structure for a small south-projecting carport at grid columns 2-3 (footings C1,F2/CX,F2 at ข, C1,F2/C1,F2 at ก) — the main house footprint only spans ฉ(0.00) to ค(9.20m). Both rows are still real printed main grid lines (circled on the left margin like ฉ/จ/ง/ค), not dummies.",
-    "House title block: 'บ้านครอบครัวไทยเป็นสุข 2' (กรมโยธาธิการและผังเมือง, โครงการแบบอาคารเพื่อประชาชน, เลขที่แบบ ม.บ.462120, 21 พ.ย. 2546) — all-steel roof structure (hip roof, RB1/RB2 rafters + CN/CX king posts) over an RC footing/column/beam/slab substructure; a different series from both บ้าน_เล็ก_1ชั้น_07 (house 26) and the บ้านครอบครัวไทยร่วมสมัย series (houses 01-05)."
+    "House title block: 'บ้านครอบครัวไทยเป็นสุข 2' (กรมโยธาธิการและผังเมือง, โครงการแบบอาคารเพื่อประชาชน, เลขที่แบบ ม.บ.462120, 21 พ.ย. 2546) — all-steel roof structure (hip roof, RB1/RB2 rafters + CN/CX king posts) over an RC footing/column/beam/slab substructure; a different series from both บ้าน_เล็ก_1ชั้น_07 (house 26) and the บ้านครอบครัวไทยร่วมสมัย series (houses 01-05).",
+    "z_levels[] and the z dimension_chain read 2026-08-28 off A-06 (หน้า07, 'รูปตัด ก,ข ขยายหลังคา') -- an architectural section sheet that sits OUTSIDE this house's recorded op04 pass-2 scope (side_profile/section architectural pages were deliberately skipped), opened specifically because the master carried an empty z_levels[]. The chain closes on itself: 0.60 + 3.25 = 3.85 and 3.85 + 3.32 = 7.17, both matching the printed levels exactly. ระดับฝ้าเพดาน is genuinely printed twice at two heights (2.60 over the bathrooms, 2.80 over the main rooms) and both are kept.",
+    "UNVERIFIED OBSERVATION, not acted on: A-06 (หน้า07) prints the y-axis chain as 3.15 / 1.80 / 3.60 / 2.00 / 3.00 / 1.00 with a printed total of 14.55, while this master's y_lines (read from the structural plan หน้า12) give ก->ข 3.15, ข->ค 1.80, ค->ง 3.20, ง->จ 2.00, จ->ฉ' 3.00, ฉ'->ฉ 1.00, total 14.15. The whole 0.40 gap sits in the single ค->ง bay (3.60 vs 3.20). Read off a reduced-resolution scan and NOT confirmed, so nothing was changed and no chain was written from that sheet -- the resolved y_lines still come from the structural plan. Worth one higher-resolution look at หน้า07 vs หน้า12 before anyone trusts either number."
   ],
   "grid": {
     "x_lines": [
-      { "id": "1'", "pos_m": -0.70, "type": "dummy" },
-      { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "1''", "pos_m": 1.90, "type": "dummy" },
-      { "id": "2", "pos_m": 3.20, "type": "named" },
-      { "id": "3", "pos_m": 6.40, "type": "named" },
-      { "id": "3'", "pos_m": 7.70, "type": "dummy" },
-      { "id": "4", "pos_m": 9.60, "type": "named" },
-      { "id": "4'", "pos_m": 10.30, "type": "dummy" }
+      {
+        "id": "1'",
+        "pos_m": -0.7,
+        "type": "dummy"
+      },
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "1''",
+        "pos_m": 1.9,
+        "type": "dummy"
+      },
+      {
+        "id": "2",
+        "pos_m": 3.2,
+        "type": "named"
+      },
+      {
+        "id": "3",
+        "pos_m": 6.4,
+        "type": "named"
+      },
+      {
+        "id": "3'",
+        "pos_m": 7.7,
+        "type": "dummy"
+      },
+      {
+        "id": "4",
+        "pos_m": 9.6,
+        "type": "named"
+      },
+      {
+        "id": "4'",
+        "pos_m": 10.3,
+        "type": "dummy"
+      }
     ],
     "y_lines": [
-      { "id": "ฉ", "pos_m": 0.00, "type": "named" },
-      { "id": "ฉ'", "pos_m": 1.00, "type": "dummy" },
-      { "id": "จ", "pos_m": 4.00, "type": "named" },
-      { "id": "ง", "pos_m": 6.00, "type": "named" },
-      { "id": "ค", "pos_m": 9.20, "type": "named", "confidence_score": 0.6, "confidence_flags": ["ง-ค segment read as 3.20, resolving a 0.40m mismatch against the printed 14.15 total — see file warnings"] },
-      { "id": "ข", "pos_m": 11.00, "type": "named" },
-      { "id": "ก", "pos_m": 14.15, "type": "named" }
+      {
+        "id": "ฉ",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "ฉ'",
+        "pos_m": 1.0,
+        "type": "dummy"
+      },
+      {
+        "id": "จ",
+        "pos_m": 4.0,
+        "type": "named"
+      },
+      {
+        "id": "ง",
+        "pos_m": 6.0,
+        "type": "named"
+      },
+      {
+        "id": "ค",
+        "pos_m": 9.2,
+        "type": "named",
+        "confidence_score": 0.6,
+        "confidence_flags": [
+          "ง-ค segment read as 3.20, resolving a 0.40m mismatch against the printed 14.15 total — see file warnings"
+        ]
+      },
+      {
+        "id": "ข",
+        "pos_m": 11.0,
+        "type": "named"
+      },
+      {
+        "id": "ก",
+        "pos_m": 14.15,
+        "type": "named"
+      }
     ],
-    "z_levels": [],
+    "z_levels": [
+      {
+        "id": "ระดับพื้นดิน",
+        "level_m": 0.0,
+        "type": "datum",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png"
+      },
+      {
+        "id": "ระดับเฉลียง",
+        "level_m": 0.5,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png"
+      },
+      {
+        "id": "ระดับพื้น",
+        "level_m": 0.6,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png"
+      },
+      {
+        "id": "ระดับราวกันตก",
+        "level_m": 1.3,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png"
+      },
+      {
+        "id": "ระดับฝ้าเพดาน",
+        "level_m": 2.6,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png",
+        "confidence_flags": [
+          "รูปตัด ข prints 2.60 over the ห้องน้ำ bays and 2.80 over the main rooms -- both are recorded, this is a real two-height ceiling, not a misread"
+        ]
+      },
+      {
+        "id": "ระดับฝ้าเพดาน",
+        "level_m": 2.8,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png",
+        "confidence_flags": [
+          "main-room ceiling; see the 2.60 entry"
+        ]
+      },
+      {
+        "id": "ระดับหลังอะเส",
+        "level_m": 3.85,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png"
+      },
+      {
+        "id": "ระดับหลังอกไก่",
+        "level_m": 7.17,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png"
+      }
+    ],
     "dimension_chains": [
       {
         "axis": "x",
         "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png",
         "segments": [
-          { "from": "1", "to": "2", "value_m": 3.20 },
-          { "from": "2", "to": "3", "value_m": 3.20 },
-          { "from": "3", "to": "4", "value_m": 3.20 },
-          { "from": "1", "to": "4", "value_m": 9.60 }
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.2
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.2
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 3.2
+          },
+          {
+            "from": "1",
+            "to": "4",
+            "value_m": 9.6
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png",
         "segments": [
-          { "from": "ฉ", "to": "จ", "value_m": 4.00 },
-          { "from": "จ", "to": "ง", "value_m": 2.00 },
-          { "from": "ง", "to": "ค", "value_m": 3.20 },
-          { "from": "ค", "to": "ข", "value_m": 1.80 },
-          { "from": "ข", "to": "ก", "value_m": 3.15 },
-          { "from": "ฉ", "to": "ก", "value_m": 14.15 }
+          {
+            "from": "ฉ",
+            "to": "จ",
+            "value_m": 4.0
+          },
+          {
+            "from": "จ",
+            "to": "ง",
+            "value_m": 2.0
+          },
+          {
+            "from": "ง",
+            "to": "ค",
+            "value_m": 3.2
+          },
+          {
+            "from": "ค",
+            "to": "ข",
+            "value_m": 1.8
+          },
+          {
+            "from": "ข",
+            "to": "ก",
+            "value_m": 3.15
+          },
+          {
+            "from": "ฉ",
+            "to": "ก",
+            "value_m": 14.15
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า07.png",
+        "segments": [
+          {
+            "from": "ระดับพื้นดิน",
+            "to": "ระดับเฉลียง",
+            "value_m": 0.5
+          },
+          {
+            "from": "ระดับเฉลียง",
+            "to": "ระดับราวกันตก",
+            "value_m": 0.8
+          },
+          {
+            "from": "ระดับพื้นดิน",
+            "to": "ระดับพื้น",
+            "value_m": 0.6
+          },
+          {
+            "from": "ระดับพื้น",
+            "to": "ระดับหลังอะเส",
+            "value_m": 3.25
+          },
+          {
+            "from": "ระดับหลังอะเส",
+            "to": "ระดับหลังอกไก่",
+            "value_m": 3.32
+          }
         ]
       }
     ],
     "unassigned_dimensions": [
-      { "value_m": 0.70, "label": "corner beam B1A offset from grid column 1/4 at the porch corners (จ1, จ4, ง1, ง4)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png", "note": "local offset for the porch's short return beam, not a new grid line — no other element sits on it" },
-      { "value_m": 1.90, "label": "remainder of the 2.60 corner offset (0.70+1.90) at the same porch corners", "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png", "note": null }
+      {
+        "value_m": 0.7,
+        "label": "corner beam B1A offset from grid column 1/4 at the porch corners (จ1, จ4, ง1, ง4)",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png",
+        "note": "local offset for the porch's short return beam, not a new grid line — no other element sits on it"
+      },
+      {
+        "value_m": 1.9,
+        "label": "remainder of the 2.60 corner offset (0.70+1.90) at the same porch corners",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_04/บ้าน_ใหญ่_1ชั้น_04_หน้า12.png",
+        "note": null
+      }
     ]
   }
 }

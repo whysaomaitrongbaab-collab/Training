@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนเสา คาน และพื้นชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า28.png",
   "grid_source": "บ้าน_ใหญ่_1ชั้น_02_หน้า00_gridline.json",
   "confidence_score": 0.75,
@@ -21,63 +21,501 @@
     "S3 (defined as a precast-plank type on S-16) was not found placed anywhere legible on this floor plan -- either unused in this house or in a densely-marked area I could not resolve at this scan resolution.",
     "S2/S1/ST/SX slab-marker counts in dense areas (the laundry box and the row-A appendage) are read at reduced confidence, same caveat as house_04's S3 precedent -- exact tag count in a busy cluster is harder to verify than an isolated one.",
     "Bare 'SP' circles scattered through most bays are the generic precast-plank symbol (this bay is floored in SP), not a distinct typed member -- not recorded as their own elements; the typed slab marks (S1/S2/ST/SX) are.",
-    "The laundry (ซักล้าง) box's own x-extent (west/east edges of B3X/B4X) is not dimensioned on this sheet -- recorded with grid_ref '~1' at the west edge (matches B3X sitting at the building's x=1 line) and an approximate/unresolved east position for B4X and the B2 top-cap segment closing the box; see grid master warnings."
+    "The laundry (ซักล้าง) box's own x-extent (west/east edges of B3X/B4X) is not dimensioned on this sheet -- recorded with grid_ref '~1' at the west edge (matches B3X sitting at the building's x=1 line) and an approximate/unresolved east position for B4X and the B2 top-cap segment closing the box; see grid master warnings.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 37 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "E", "grid_ref_end": "E''", "grid_ref": "1", "span_length_m": 1.50, "span_source": "grid_table", "note": "west edge of the ซักล้าง (laundry) appendage", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "E", "grid_ref_end": "E''", "grid_ref": "~1-2", "span_length_m": 1.50, "span_source": "unresolved", "note": "east edge of the ซักล้าง (laundry) appendage; exact x-position not dimensioned on this sheet, matched by its own 1.50m cross-section span on S-12", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~1", "grid_ref_end": "~1-2", "span_length_m": null, "span_source": "unresolved", "note": "top-cap beam closing the ซักล้าง box at grid line E'' (between B3X and B4X); span not resolvable without the box's east-edge x-position", "confidence_score": 0.5, "confidence_flags": [] },
-
-    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "E2", "grid_ref_end": "E3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B7X", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "E3'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "D1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~E-D", "grid_ref_end": "~E-D", "grid_ref": "~1-2 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, E-D band, exact x-position undimensioned on this sheet", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "~E-D", "grid_ref_end": "~E-D", "grid_ref": "~1-2 interior (westmost of two)", "span_length_m": 4.00, "span_source": "unresolved", "note": "SECOND interior beam in the grid1-2 bay of the E-D band, missing from the earlier extraction — that bay has TWO, not one (measured centres x=1072 and 1226 px = about 1.96 m and 3.93 m east of grid 1, both read as clean face pairs at 4x zoom, marks B3 then B4). Its x-position is NOT dimensioned anywhere in the structural set, so no dummy column was created; the span 4.00 is exact regardless, being the full E-D band height. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).", "confidence_score": 0.5, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction", "x-position undimensioned — measured only"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~E-D", "grid_ref_end": "~E-D", "grid_ref": "~2-3 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, E-D band, exact x-position undimensioned on this sheet", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E3", "grid_ref_end": "D3", "span_length_m": 4.00, "span_source": "grid_table", "note": "sits on named grid 3, not an interior line — faces measure x=1617/1633 px. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_~2-3_interior"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "E3'", "grid_ref_end": "D3'", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": ["CORRECTED_2026-08-24_was_E3-D3_on_grid_3"] },
-
-    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B7", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B7X", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "D3'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "C1", "span_length_m": 2.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "C2", "span_length_m": 2.50, "span_source": "grid_table", "note": "sits on named grid 2, not an interior line — faces measure x=1302/1318 px against grid 2 at 1309, with hatched column boxes at D2 and C2 at both ends. The grid1-2 bay of this band carries NO interior beam at all. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_~1-2_interior"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "~D-C", "grid_ref_end": "~D-C", "grid_ref": "~2-3 interior", "span_length_m": 2.50, "span_source": "unresolved", "note": "interior beam framing the ห้องน้ำ (bathroom) slab S1, D-C band", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "count": 1, "grid_refs": ["~D-C bay 2-3"], "confidence_score": 0.7, "confidence_flags": [], "note": "ห้องน้ำ (bathroom) floor slab" },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "D3'", "grid_ref_end": "C3'", "span_length_m": 2.50, "span_source": "grid_table", "note": "runs on grid 3' (10.10), not grid 3. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_D3-C3_on_grid_3"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "D3", "grid_ref_end": "C3", "span_length_m": 2.50, "span_source": "grid_table", "note": "vertical on named grid 3, missing from the earlier extraction. Faces measure x=1617/1633 px; mark read as B1 (the same mark as the interior beam framing the S1 bathroom slab in this band). Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).", "confidence_score": 0.75, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction"] },
-
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B6X", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C3'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "~C-B", "grid_ref_end": "~C-B", "grid_ref": "~1-2 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, C-B band", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "~C-B", "grid_ref_end": "~C-B", "grid_ref": "~2-3 interior", "span_length_m": 4.00, "span_source": "unresolved", "note": "interior partition beam, C-B band", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "note": "sits on named grid 3, not an interior line — faces measure x=1617/1633 px against grid 3 at 1624, with B2 a further 1.10 m east on grid 3'. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_~2-3_interior"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C3'", "grid_ref_end": "B3'", "span_length_m": 4.00, "span_source": "grid_table", "note": "runs on grid 3' (10.10), not grid 3 — its beam faces measure x=1696/1711 px while grid 3 sits at 1624 and carries B5. The B6X C3-C3' and B6X B3-B3' stubs already in this file are the 1.10 m returns that reach it. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).", "confidence_score": 0.8, "confidence_flags": ["CORRECTED_2026-08-24_was_C3-B3_on_grid_3"] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "note": "vertical on named grid 2, missing from the earlier extraction entirely. Faces measure x=1302/1318 px with the hatched column boxes at C2 and B2 at both ends; mark read as B4. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).", "confidence_score": 0.8, "confidence_flags": ["ADDED_2026-08-24_missing_from_the_extraction"] },
-
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B6X", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B3'", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-
-    { "element_id": "BZ", "element_type": "beam", "grid_ref": "~B, between bay 2 and col.3", "span_length_m": null, "span_source": "unresolved", "note": "small angled/tapered transition beam east of the ห้องพักผ่อน appendage, near row B; exact position not clearly dimensioned", "confidence_score": 0.45, "confidence_flags": [] },
-    { "element_id": "BZ", "element_type": "beam", "grid_ref": "~B, between bay 2 and col.3", "span_length_m": null, "span_source": "unresolved", "note": "second occurrence of the same condition, mirrored", "confidence_score": 0.45, "confidence_flags": [] },
-    { "element_id": "S2", "element_type": "slab", "count": 2, "grid_refs": ["~B row, east of appendage box (x2)"], "confidence_score": 0.5, "confidence_flags": ["dense cluster near BZ, exact count/position uncertain"] },
-
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "A1", "span_length_m": 2.50, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [], "note": "west edge of the เฉลียง (porch/ramp landing) appendage south of row A" },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "~B2", "grid_ref_end": "~A2", "span_length_m": 2.50, "span_source": "unresolved", "note": "east edge of the appendage box; span assumed equal to B1's per the box shape, x-position approximate", "confidence_score": 0.5, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "count": 1, "grid_refs": ["~B-A appendage box"], "confidence_score": 0.65, "confidence_flags": [], "note": "เฉลียง (porch/ramp landing) floor slab" },
-
-    { "element_id": "B8", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 5.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": [], "note": "stepped/ramp threshold beam, drops to level -0.40 -- see S-15 detail" },
-
-    { "element_id": "S2", "element_type": "slab", "count": 1, "grid_refs": ["~laundry box"], "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "ST", "element_type": "slab", "count": 1, "grid_refs": ["~laundry box, east side"], "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "SX", "element_type": "slab", "count": 2, "grid_refs": ["~A1 west", "~A2 east"], "confidence_score": 0.6, "confidence_flags": [], "note": "flanking B8 at both ends" },
-    { "element_id": "ST", "element_type": "slab", "count": 1, "grid_refs": ["~south of B8, row A"], "confidence_score": 0.55, "confidence_flags": [] }
+    {
+      "element_id": "B3X",
+      "element_type": "beam",
+      "grid_ref_start": "E",
+      "grid_ref_end": "E''",
+      "grid_ref": "1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "west edge of the ซักล้าง (laundry) appendage",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4X",
+      "element_type": "beam",
+      "grid_ref_start": "E",
+      "grid_ref_end": "E''",
+      "grid_ref": "~1-2",
+      "span_length_m": 1.5,
+      "span_source": "unresolved",
+      "note": "east edge of the ซักล้าง (laundry) appendage; exact x-position not dimensioned on this sheet, matched by its own 1.50m cross-section span on S-12",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "~1",
+      "grid_ref_end": "~1-2",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "top-cap beam closing the ซักล้าง box at grid line E'' (between B3X and B4X); span not resolvable without the box's east-edge x-position",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7X",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E3'",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "D1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "~E-D",
+      "grid_ref_end": "~E-D",
+      "grid_ref": "~1-2 interior",
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "note": "interior partition beam, E-D band, exact x-position undimensioned on this sheet",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "~E-D",
+      "grid_ref_end": "~E-D",
+      "grid_ref": "~1-2 interior (westmost of two)",
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "note": "SECOND interior beam in the grid1-2 bay of the E-D band, missing from the earlier extraction — that bay has TWO, not one (measured centres x=1072 and 1226 px = about 1.96 m and 3.93 m east of grid 1, both read as clean face pairs at 4x zoom, marks B3 then B4). Its x-position is NOT dimensioned anywhere in the structural set, so no dummy column was created; the span 4.00 is exact regardless, being the full E-D band height. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction",
+        "x-position undimensioned — measured only"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "~E-D",
+      "grid_ref_end": "~E-D",
+      "grid_ref": "~2-3 interior",
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "note": "interior partition beam, E-D band, exact x-position undimensioned on this sheet",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "sits on named grid 3, not an interior line — faces measure x=1617/1633 px. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~2-3_interior"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E3'",
+      "grid_ref_end": "D3'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_E3-D3_on_grid_3"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7X",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D3'",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "sits on named grid 2, not an interior line — faces measure x=1302/1318 px against grid 2 at 1309, with hatched column boxes at D2 and C2 at both ends. The grid1-2 bay of this band carries NO interior beam at all. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~1-2_interior"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "~D-C",
+      "grid_ref_end": "~D-C",
+      "grid_ref": "~2-3 interior",
+      "span_length_m": 2.5,
+      "span_source": "unresolved",
+      "note": "interior beam framing the ห้องน้ำ (bathroom) slab S1, D-C band",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~D-C bay 2-3"
+      ],
+      "confidence_score": 0.7,
+      "confidence_flags": [],
+      "note": "ห้องน้ำ (bathroom) floor slab"
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D3'",
+      "grid_ref_end": "C3'",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "runs on grid 3' (10.10), not grid 3. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_D3-C3_on_grid_3"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "C3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "vertical on named grid 3, missing from the earlier extraction. Faces measure x=1617/1633 px; mark read as B1 (the same mark as the interior beam framing the S1 bathroom slab in this band). Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6X",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C3'",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "~C-B",
+      "grid_ref_end": "~C-B",
+      "grid_ref": "~1-2 interior",
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "note": "interior partition beam, C-B band",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "~C-B",
+      "grid_ref_end": "~C-B",
+      "grid_ref": "~2-3 interior",
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "note": "interior partition beam, C-B band",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "sits on named grid 3, not an interior line — faces measure x=1617/1633 px against grid 3 at 1624, with B2 a further 1.10 m east on grid 3'. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_~2-3_interior"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C3'",
+      "grid_ref_end": "B3'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "runs on grid 3' (10.10), not grid 3 — its beam faces measure x=1696/1711 px while grid 3 sits at 1624 and carries B5. The B6X C3-C3' and B6X B3-B3' stubs already in this file are the 1.10 m returns that reach it. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "CORRECTED_2026-08-24_was_C3-B3_on_grid_3"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "vertical on named grid 2, missing from the earlier extraction entirely. Faces measure x=1302/1318 px with the hatched column boxes at C2 and B2 at both ends; mark read as B4. Marks and positions re-read at 4x zoom with the grid pinned at x 1=918, 2=1309, 3=1624, 3'=1725 px (78.4 px/m).",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "ADDED_2026-08-24_missing_from_the_extraction"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6X",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B3'",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BZ",
+      "element_type": "beam",
+      "grid_ref": "~B, between bay 2 and col.3",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "small angled/tapered transition beam east of the ห้องพักผ่อน appendage, near row B; exact position not clearly dimensioned",
+      "confidence_score": 0.45,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BZ",
+      "element_type": "beam",
+      "grid_ref": "~B, between bay 2 and col.3",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "second occurrence of the same condition, mirrored",
+      "confidence_score": 0.45,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": [
+        "~B row, east of appendage box (x2)"
+      ],
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "dense cluster near BZ, exact count/position uncertain"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "A1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "west edge of the เฉลียง (porch/ramp landing) appendage south of row A"
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "~B2",
+      "grid_ref_end": "~A2",
+      "span_length_m": 2.5,
+      "span_source": "unresolved",
+      "note": "east edge of the appendage box; span assumed equal to B1's per the box shape, x-position approximate",
+      "confidence_score": 0.5,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~B-A appendage box"
+      ],
+      "confidence_score": 0.65,
+      "confidence_flags": [],
+      "note": "เฉลียง (porch/ramp landing) floor slab"
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [],
+      "note": "stepped/ramp threshold beam, drops to level -0.40 -- see S-15 detail"
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~laundry box"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~laundry box, east side"
+      ],
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SX",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": [
+        "~A1 west",
+        "~A2 east"
+      ],
+      "confidence_score": 0.6,
+      "confidence_flags": [],
+      "note": "flanking B8 at both ends"
+    },
+    {
+      "element_id": "ST",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "~south of B8, row A"
+      ],
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    }
   ]
 }

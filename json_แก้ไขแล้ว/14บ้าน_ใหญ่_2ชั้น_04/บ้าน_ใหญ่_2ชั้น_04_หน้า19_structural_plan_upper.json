@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างชั้นบน",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า19.png",
   "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
   "confidence_score": 0.6,
@@ -14,7 +14,8 @@
     "ระดับหลังคานชั้นบนพิมพ์ (+3.65) เกือบทุกตัว ตรงกับระดับพื้นชั้นบน +3.75 ที่หักความหนาพื้นแล้ว (รูปตัด A-A/B-B ให้ +3750 ระดับพื้นชั้นบน) — สอดคล้องกัน",
     "แผ่นนี้มีมาร์คคานที่ไม่ปรากฏบนชั้นล่าง: B4, B5 และ B3' (ไพรม์) — B3' บันทึกตามที่พิมพ์จริง ไม่ย่อเป็น B3 เพราะเป็นคนละมาร์คบนแบบ",
     "โครงหลังคาเหล็กรูปพรรณระบุบนแผ่นนี้ด้วย (2C 125x50x20x2.3 มม. สำหรับอกไก่/ดั้ง/ชื่อ-อะเส, จันทัน C 100x50x20x2.3 มม. @1.00 ม., แปกัลวาไนซ์, เชิงชาย/ปั้นลมไม้เนื้อแข็ง 1\"x6\" และ 1\"x8\") — บันทึกเป็น element steel_member แยกจากคาน คสล.",
-    "ยังไม่ได้ไล่คานครบทุกช่วงบนแผ่นนี้ — ชุดที่บันทึกคือช่วงที่อ่านได้ชัด ไม่ใช่ชุดสมบูรณ์"
+    "ยังไม่ได้ไล่คานครบทุกช่วงบนแผ่นนี้ — ชุดที่บันทึกคือช่วงที่อ่านได้ชัด ไม่ใช่ชุดสมบูรณ์",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 12 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
     {

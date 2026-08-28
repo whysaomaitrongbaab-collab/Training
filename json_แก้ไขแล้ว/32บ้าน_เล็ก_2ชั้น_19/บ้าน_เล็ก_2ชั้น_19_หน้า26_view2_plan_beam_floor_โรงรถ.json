@@ -4,22 +4,84 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างพื้น (โรงรถ)",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "building": "โรงรถ",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_19/บ้าน_เล็ก_2ชั้น_19_หน้า26.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_19_หน้า00b_gridline_โรงรถ.json",
-  "views": ["plan_footing (_view1)", "plan_beam floor (this file)", "plan_beam roof (_view3)"],
+  "views": [
+    "plan_footing (_view1)",
+    "plan_beam floor (this file)",
+    "plan_beam roof (_view3)"
+  ],
   "confidence_score": 0.55,
-  "confidence_flags": ["horizontal (Y1/Y2 row) beam marks assumed by symmetry with the labelled vertical sides — see warnings"],
+  "confidence_flags": [
+    "horizontal (Y1/Y2 row) beam marks assumed by symmetry with the labelled vertical sides — see warnings"
+  ],
   "warnings": [
-    "Only the two vertical (X1 and X2, Y1-Y2) sides of this small perimeter beam loop carry legible mark text — 'B1(+0.10)' at X1, 'B1''(+0.10)' at X2. The two horizontal sides (Y1 row and Y2 row, X1-X2) are drawn at the same double-line beam weight but no mark text was legible for them on this scan; recorded here as B1(+0.10) by symmetry with the X1 side, flagged low confidence rather than left unrecorded (per the beam-endpoint rule — a drawn beam must get a position, not a prose placeholder)."
+    "Only the two vertical (X1 and X2, Y1-Y2) sides of this small perimeter beam loop carry legible mark text — 'B1(+0.10)' at X1, 'B1''(+0.10)' at X2. The two horizontal sides (Y1 row and Y2 row, X1-X2) are drawn at the same double-line beam weight but no mark text was legible for them on this scan; recorded here as B1(+0.10) by symmetry with the X1 side, flagged low confidence rather than left unrecorded (per the beam-endpoint rule — a drawn beam must get a position, not a prose placeholder).",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 4 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "X1Y1", "grid_ref_end": "X2Y1", "span_length_m": 5.50, "span_source": "grid_table", "level_m": 0.10, "confidence_score": 0.5, "confidence_flags": ["mark inferred by symmetry, not directly legible — see file warnings"] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "X1Y1", "grid_ref_end": "X1Y2", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 0.10, "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1'", "element_type": "beam", "grid_ref_start": "X2Y1", "grid_ref_end": "X2Y2", "span_length_m": 3.50, "span_source": "grid_table", "level_m": 0.10, "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "X1Y2", "grid_ref_end": "X2Y2", "span_length_m": 5.50, "span_source": "grid_table", "level_m": 0.10, "confidence_score": 0.5, "confidence_flags": ["mark inferred by symmetry, not directly legible — see file warnings"] },
-
-    { "element_id": "S0", "element_type": "slab", "count": 1, "grid_refs": ["X1Y1", "X2Y1", "X1Y2", "X2Y2"], "confidence_score": 0.7, "confidence_flags": [] }
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "X1Y1",
+      "grid_ref_end": "X2Y1",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "level_m": 0.1,
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "mark inferred by symmetry, not directly legible — see file warnings"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "X1Y1",
+      "grid_ref_end": "X1Y2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 0.1,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1'",
+      "element_type": "beam",
+      "grid_ref_start": "X2Y1",
+      "grid_ref_end": "X2Y2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "level_m": 0.1,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "X1Y2",
+      "grid_ref_end": "X2Y2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "level_m": 0.1,
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "mark inferred by symmetry, not directly legible — see file warnings"
+      ]
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": [
+        "X1Y1",
+        "X2Y1",
+        "X1Y2",
+        "X2Y2"
+      ],
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    }
   ]
 }

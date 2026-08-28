@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลนคาน อะเส",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า22.png",
   "grid_source": "บ้าน_เล็ก_1ชั้น_08_หน้า00_gridline.json",
   "confidence_score": 0.85,
@@ -13,25 +13,184 @@
     "This sheet is the tie-beam ('อะเส') plan for the light-steel superstructure above floor level, all C-channel sections: CS1/BS1 = 125x75x3.2mm, BS2 = 100x50x3.2mm (printed legend). Material is steel, not RC — no main_bar/stirrup, see steel_section in the section files instead.",
     "CS1 is a steel column stub (marked with a boxed-X symbol, distinct from the plain-cross symbol on the other 6 columns) at A2/B2/C2 only — this is the ridge line (grid 2), matching S-17's 'รูปตัด 1-1 แสดงเสา CS1-อกไก่' (section showing the CS1 ridge column) and the base-plate connection detail on S-16 cut along grid 2.",
     "Two connection callouts are printed on this sheet: 'ดูขยายจุดต่อ B' near the A2-B2 vertical (top of CS1 meeting BS2) and 'ดูขยายจุดต่อ A' near the B1 area (a BS1-to-column connection) — both detailed on S-16 (section_connections_precast file), not repeated here.",
-    "The '1' triangle markers at row B, outside the building on both sides with a dashed connecting line, are a section cutline reference ('รูปตัด 1-1'), detailed on S-17 — not a structural element."
+    "The '1' triangle markers at row B, outside the building on both sides with a dashed connecting line, are a section cutline reference ('รูปตัด 1-1'), detailed on S-17 — not a structural element.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 16 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A'1", "grid_ref_end": "A1", "span_length_m": 1.20, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A'3", "grid_ref_end": "A3", "span_length_m": 1.20, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C''1", "span_length_m": 1.20, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C''3", "span_length_m": 1.20, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 2.40, "span_source": "grid_table", "note": "runs along the ridge line (grid 2), connects to CS1 at both ends", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS2", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS2", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 2.70, "span_source": "grid_table", "note": "runs along the ridge line (grid 2), connects to CS1 at both ends", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 2.40, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "CS1", "element_type": "column", "count": 3, "grid_refs": ["A2", "B2", "C2"], "note": "steel ridge column stub, bolted onto RC column C1 top via base plate (see S-16); material steel", "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C''1",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C''3",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "note": "runs along the ridge line (grid 2), connects to CS1 at both ends",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "note": "runs along the ridge line (grid 2), connects to CS1 at both ends",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "CS1",
+      "element_type": "column",
+      "count": 3,
+      "grid_refs": [
+        "A2",
+        "B2",
+        "C2"
+      ],
+      "note": "steel ridge column stub, bolted onto RC column C1 top via base plate (see S-16); material steel",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

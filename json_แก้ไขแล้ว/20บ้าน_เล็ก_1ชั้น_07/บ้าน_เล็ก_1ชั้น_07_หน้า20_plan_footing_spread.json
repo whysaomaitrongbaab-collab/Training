@@ -4,20 +4,94 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนฐานรากแผ่",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_07/บ้าน_เล็ก_1ชั้น_07_หน้า20.png",
   "grid_source": "บ้าน_เล็ก_1ชั้น_07_หน้า00_gridline.json",
   "confidence_score": 0.85,
   "confidence_flags": [],
   "warnings": [
     "This is one of 2 alternate foundation systems for this house (spread footing here; pile footing on S-03/หน้า21) — both extracted per op04's plan_footing subtask, matching how prior houses extracted parallel foundation systems.",
-    "Column marks C0/C1 printed alongside each footing are the pedestal/column that sits on it, not a separate column plan sheet (this house has none — see op04 note that plan_column commonly doesn't exist as its own sheet). Full column section/rebar is in the S-07 schedule."
+    "Column marks C0/C1 printed alongside each footing are the pedestal/column that sits on it, not a separate column plan sheet (this house has none — see op04 note that plan_column commonly doesn't exist as its own sheet). Full column section/rebar is in the S-07 schedule.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 5 footing-family elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "F(1.30x1.30)", "element_type": "footing", "count": 7, "grid_refs": ["A2", "B1", "B3", "C1", "C3", "D1", "D3"], "width_mm": 1300, "height_mm": 1300, "column_mark": "C1", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F(1.50x1.50)", "element_type": "footing", "count": 3, "grid_refs": ["B2", "C2", "D2"], "width_mm": 1500, "height_mm": 1500, "column_mark": "C1", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F(1.00x1.00)", "element_type": "footing", "count": 3, "grid_refs": ["A1", "A3", "E2"], "width_mm": 1000, "height_mm": 1000, "column_mark": "C1", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "F(0.80x0.80)", "element_type": "footing", "count": 1, "grid_refs": ["E3"], "width_mm": 800, "height_mm": 800, "column_mark": "C1", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "F(0.80x0.80)_ramp", "element_type": "footing", "count": 2, "grid_refs": ["E'1", "E'1'"], "width_mm": 800, "height_mm": 800, "column_mark": "C0", "confidence_score": 0.75, "confidence_flags": ["gave this occurrence a distinct element_id from the main F(0.80x0.80) mark above only to keep the C0 (ramp, no pedestal) vs C1 (main structure) column distinction visible without re-checking spec identity — the drawing prints the same 'F(0.80x0.80)' text for both; merge back into one entry if a later pass confirms the footing spec itself (not just the column riding on it) is identical"] }
+    {
+      "element_id": "F(1.30x1.30)",
+      "element_type": "footing",
+      "count": 7,
+      "grid_refs": [
+        "A2",
+        "B1",
+        "B3",
+        "C1",
+        "C3",
+        "D1",
+        "D3"
+      ],
+      "width_mm": 1300,
+      "height_mm": 1300,
+      "column_mark": "C1",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F(1.50x1.50)",
+      "element_type": "footing",
+      "count": 3,
+      "grid_refs": [
+        "B2",
+        "C2",
+        "D2"
+      ],
+      "width_mm": 1500,
+      "height_mm": 1500,
+      "column_mark": "C1",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F(1.00x1.00)",
+      "element_type": "footing",
+      "count": 3,
+      "grid_refs": [
+        "A1",
+        "A3",
+        "E2"
+      ],
+      "width_mm": 1000,
+      "height_mm": 1000,
+      "column_mark": "C1",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F(0.80x0.80)",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": [
+        "E3"
+      ],
+      "width_mm": 800,
+      "height_mm": 800,
+      "column_mark": "C1",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F(0.80x0.80)_ramp",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "E'1",
+        "E'1'"
+      ],
+      "width_mm": 800,
+      "height_mm": 800,
+      "column_mark": "C0",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "gave this occurrence a distinct element_id from the main F(0.80x0.80) mark above only to keep the C0 (ramp, no pedestal) vs C1 (main structure) column distinction visible without re-checking spec identity — the drawing prints the same 'F(0.80x0.80)' text for both; merge back into one entry if a later pass confirms the footing spec itself (not just the column riding on it) is identical"
+      ]
+    }
   ]
 }

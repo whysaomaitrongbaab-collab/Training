@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลน โครงหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "building": "อาคารหลัก",
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า16.png",
@@ -329,6 +329,7 @@
     "'รอยต่อเสา ดูแบบขยาย (ก)' is called out twice on this sheet (top and bottom of the grid 2 truss line), pointing to a column splice detail on S-06 (หน้า19).",
     "The 1.20 m overhangs beyond grids ค and ก appear here as they do on S-02 -- roof/walkway overhang, no grid line.",
     "The 'รอยต่อเสา ดูแบบขยาย (ก)' callouts on this sheet point to S-07 (หน้า20), NOT S-06 -- confirmed 2026-07-25 by finding แบบขยาย (ก) drawn there.",
-    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit."
+    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 18 roof-framing elements. Nothing else in this file changed."
   ]
 }

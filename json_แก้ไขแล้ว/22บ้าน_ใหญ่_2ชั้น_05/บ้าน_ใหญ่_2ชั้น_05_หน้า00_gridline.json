@@ -17,71 +17,411 @@
     "House title block: 'บ้านสกาวรัตน์', 'SMILE HOME' TYPE M, V.1 [11/2/45], donated design from บริษัท แลนดี้ โฮม (ประเทศไทย) จำกัด, under the same 'แบบบ้านยิ้มเพื่อประชาชน' program as houses 09/14/16/18/19/20/28 but a contributed design, not the ธรรมรักษา series — noticeably lower scan quality (visible handwritten annotations, uneven contrast) than the other houses in this batch. This document has NO index/TOC page and NO 'S-xx' sheet-code system at all — pages are identified purely by their drawn title ('ผังโครงสร้างฐานราก', 'ผังโครงสร้างชั้นล่าง', etc.), so sheet_code is null throughout this house's files.",
     "Building footprint is irregular (an L-shape / notched rectangle, not a simple box) — grid columns 2-5 and rows A-E are the FULL bounding grid, but not every grid point is inside the building (e.g. no footing at A1/B1/E1, per the footing plan). Did not force a rectangular reading.",
     "A secondary sub-dimension chain on the floor-beam plans (0.50/3.60/0.90/0.50/0.50 along x, various small clusters along y) locates interior beam lines (B1'/B3'/C2) more precisely than the main grid — did not fully re-derive exact pos_m for these interior points from that chain given time constraints on this house; C2's x-position is approximated at grid 4 (see plan_beam files) rather than a separately resolved dummy line. Flagged as a known gap, not silently resolved.",
-    "Beam-top levels vary per beam (printed directly on each beam mark as e.g. 'B6(+0.35)', 'B1(+3.65)') rather than a single project-wide floor level — this is real per-beam data, not a transcription artefact, and is recorded on each beam element's own 'level_m' below."
+    "Beam-top levels vary per beam (printed directly on each beam mark as e.g. 'B6(+0.35)', 'B1(+3.65)') rather than a single project-wide floor level — this is real per-beam data, not a transcription artefact, and is recorded on each beam element's own 'level_m' below.",
+    "z_levels[] and the z dimension_chain read 2026-08-28 off รูปตัด B-B (หน้า14), plus two levels only รูปด้าน 3 (หน้า09) prints (+2125 stair landing, +7250) -- both architectural sheets OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. The sheet prints in MILLIMETRES (this แบบบ้านยิ้มเพื่อประชาชน series' own convention); level_m is the same number in metres, not a conversion judgement. Both printed chains close exactly: 0.500+3.250 = 3.750, +3.000 = 6.750, +2.660 = 9.410 (= the printed 9410 total), and 3.750+2.600 = 6.350, +0.400 = 6.750, +1.435 = 8.185. Room-floor levels printed as bare numbers carry id null per section 4 with the printed text in level_m_printed_as. Only หน้า09 and หน้า14 were read -- the other elevations and รูปตัด A-A may print more, so this is not a full sweep. unassigned_dimensions[] still un-swept."
   ],
   "grid": {
     "x_lines": [
-      { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "1'", "pos_m": -0.40, "type": "dummy" },
-      { "id": "1''", "pos_m": 2.00, "type": "dummy" },
-      { "id": "1'''", "pos_m": 2.50, "type": "dummy" },
-      { "id": "2", "pos_m": 3.00, "type": "named" },
-      { "id": "2'", "pos_m": 3.40, "type": "dummy" },
-      { "id": "2''", "pos_m": 5.10, "type": "dummy" },
-      { "id": "2'''", "pos_m": 6.60, "type": "dummy" },
-      { "id": "2''''", "pos_m": 6.80, "type": "dummy" },
-      { "id": "3", "pos_m": 7.00, "type": "named" },
-      { "id": "4", "pos_m": 7.50, "type": "named" },
-      { "id": "4'", "pos_m": 8.00, "type": "dummy" },
-      { "id": "4''", "pos_m": 8.30, "type": "dummy" },
-      { "id": "4'''", "pos_m": 8.75, "type": "dummy" },
-      { "id": "5", "pos_m": 10.50, "type": "named" },
-      { "id": "5'", "pos_m": 11.20, "type": "dummy" },
-      { "id": "5''", "pos_m": 11.50, "type": "dummy" }
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "1'",
+        "pos_m": -0.4,
+        "type": "dummy"
+      },
+      {
+        "id": "1''",
+        "pos_m": 2.0,
+        "type": "dummy"
+      },
+      {
+        "id": "1'''",
+        "pos_m": 2.5,
+        "type": "dummy"
+      },
+      {
+        "id": "2",
+        "pos_m": 3.0,
+        "type": "named"
+      },
+      {
+        "id": "2'",
+        "pos_m": 3.4,
+        "type": "dummy"
+      },
+      {
+        "id": "2''",
+        "pos_m": 5.1,
+        "type": "dummy"
+      },
+      {
+        "id": "2'''",
+        "pos_m": 6.6,
+        "type": "dummy"
+      },
+      {
+        "id": "2''''",
+        "pos_m": 6.8,
+        "type": "dummy"
+      },
+      {
+        "id": "3",
+        "pos_m": 7.0,
+        "type": "named"
+      },
+      {
+        "id": "4",
+        "pos_m": 7.5,
+        "type": "named"
+      },
+      {
+        "id": "4'",
+        "pos_m": 8.0,
+        "type": "dummy"
+      },
+      {
+        "id": "4''",
+        "pos_m": 8.3,
+        "type": "dummy"
+      },
+      {
+        "id": "4'''",
+        "pos_m": 8.75,
+        "type": "dummy"
+      },
+      {
+        "id": "5",
+        "pos_m": 10.5,
+        "type": "named"
+      },
+      {
+        "id": "5'",
+        "pos_m": 11.2,
+        "type": "dummy"
+      },
+      {
+        "id": "5''",
+        "pos_m": 11.5,
+        "type": "dummy"
+      }
     ],
     "y_lines": [
-      { "id": "A", "pos_m": 0.00, "type": "named" },
-      { "id": "A'", "pos_m": 2.00, "type": "dummy" },
-      { "id": "B", "pos_m": 3.00, "type": "named" },
-      { "id": "B'", "pos_m": 3.30, "type": "dummy" },
-      { "id": "B''", "pos_m": 4.20, "type": "dummy" },
-      { "id": "B'''", "pos_m": 4.90, "type": "dummy" },
-      { "id": "C", "pos_m": 5.20, "type": "named" },
-      { "id": "C'", "pos_m": 5.60, "type": "dummy" },
-      { "id": "C''", "pos_m": 7.80, "type": "dummy" },
-      { "id": "D", "pos_m": 8.20, "type": "named" },
-      { "id": "D'", "pos_m": 9.00, "type": "dummy" },
-      { "id": "D''", "pos_m": 10.30, "type": "dummy" },
-      { "id": "E", "pos_m": 10.70, "type": "named" }
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "A'",
+        "pos_m": 2.0,
+        "type": "dummy"
+      },
+      {
+        "id": "B",
+        "pos_m": 3.0,
+        "type": "named"
+      },
+      {
+        "id": "B'",
+        "pos_m": 3.3,
+        "type": "dummy"
+      },
+      {
+        "id": "B''",
+        "pos_m": 4.2,
+        "type": "dummy"
+      },
+      {
+        "id": "B'''",
+        "pos_m": 4.9,
+        "type": "dummy"
+      },
+      {
+        "id": "C",
+        "pos_m": 5.2,
+        "type": "named"
+      },
+      {
+        "id": "C'",
+        "pos_m": 5.6,
+        "type": "dummy"
+      },
+      {
+        "id": "C''",
+        "pos_m": 7.8,
+        "type": "dummy"
+      },
+      {
+        "id": "D",
+        "pos_m": 8.2,
+        "type": "named"
+      },
+      {
+        "id": "D'",
+        "pos_m": 9.0,
+        "type": "dummy"
+      },
+      {
+        "id": "D''",
+        "pos_m": 10.3,
+        "type": "dummy"
+      },
+      {
+        "id": "E",
+        "pos_m": 10.7,
+        "type": "named"
+      }
     ],
-    "z_levels": [],
+    "z_levels": [
+      {
+        "id": "ระดับดินเดิม",
+        "level_m": 0.0,
+        "type": "datum",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png"
+      },
+      {
+        "id": null,
+        "level_m": 0.1,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png",
+        "level_m_printed_as": "ซักล้าง +100",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": null,
+        "level_m": 0.275,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png",
+        "level_m_printed_as": "+275",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4) -- step at the ซักล้าง edge"
+        ]
+      },
+      {
+        "id": null,
+        "level_m": 0.4,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png",
+        "level_m_printed_as": "เฉลียง +400",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": null,
+        "level_m": 0.45,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png",
+        "level_m_printed_as": "ครัว +450",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": "ระดับพื้นชั้นล่าง",
+        "level_m": 0.5,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png"
+      },
+      {
+        "id": null,
+        "level_m": 2.125,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า09.png",
+        "level_m_printed_as": "+2125",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4) -- stair landing, รูปด้าน 3"
+        ]
+      },
+      {
+        "id": null,
+        "level_m": 3.45,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png",
+        "level_m_printed_as": "+3450",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4) -- carport / lower roof"
+        ]
+      },
+      {
+        "id": null,
+        "level_m": 3.65,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png",
+        "level_m_printed_as": "ระเบียง +3650",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": "ระดับพื้นชั้นบน",
+        "level_m": 3.75,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png"
+      },
+      {
+        "id": "ระดับหลังคานรับจันทัน",
+        "level_m": 6.35,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png"
+      },
+      {
+        "id": "ระดับหลังอะเสเหล็กชั้นบน",
+        "level_m": 6.75,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png"
+      },
+      {
+        "id": null,
+        "level_m": 7.25,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า09.png",
+        "level_m_printed_as": "+7250",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4) -- รูปด้าน 3"
+        ]
+      },
+      {
+        "id": "ระดับหลังอกไก่ ห้องนอน 1",
+        "level_m": 8.185,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png"
+      },
+      {
+        "id": "ระดับหลังอกไก่บนสุด",
+        "level_m": 9.41,
+        "type": "named",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png"
+      }
+    ],
     "dimension_chains": [
       {
         "axis": "x",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า19.png",
         "segments": [
-          { "from": "1", "to": "2", "value_m": 3.00 },
-          { "from": "2", "to": "3", "value_m": 4.00 },
-          { "from": "3", "to": "4", "value_m": 0.50 },
-          { "from": "4", "to": "5", "value_m": 3.00 },
-          { "from": "1", "to": "5", "value_m": 10.50 }
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.0
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 4.0
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 0.5
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 3.0
+          },
+          {
+            "from": "1",
+            "to": "5",
+            "value_m": 10.5
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า19.png",
         "segments": [
-          { "from": "A", "to": "B", "value_m": 3.00 },
-          { "from": "B", "to": "C", "value_m": 2.20 },
-          { "from": "C", "to": "D", "value_m": 3.00 },
-          { "from": "D", "to": "E", "value_m": 2.50 },
-          { "from": "A", "to": "E", "value_m": 10.70 }
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.0
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 2.2
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 3.0
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "value_m": 2.5
+          },
+          {
+            "from": "A",
+            "to": "E",
+            "value_m": 10.7
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า14.png",
+        "segments": [
+          {
+            "from": "ระดับดินเดิม",
+            "to": "ระดับพื้นชั้นล่าง",
+            "value_m": 0.5
+          },
+          {
+            "from": "ระดับพื้นชั้นล่าง",
+            "to": "ระดับพื้นชั้นบน",
+            "value_m": 3.25
+          },
+          {
+            "from": "ระดับพื้นชั้นบน",
+            "to": "ระดับหลังคานรับจันทัน",
+            "value_m": 2.6
+          },
+          {
+            "from": "ระดับหลังคานรับจันทัน",
+            "to": "ระดับหลังอะเสเหล็กชั้นบน",
+            "value_m": 0.4
+          },
+          {
+            "from": "ระดับหลังอะเสเหล็กชั้นบน",
+            "to": "ระดับหลังอกไก่ ห้องนอน 1",
+            "value_m": 1.435
+          },
+          {
+            "from": "ระดับพื้นชั้นบน",
+            "to": "ระดับหลังอะเสเหล็กชั้นบน",
+            "value_m": 3.0
+          },
+          {
+            "from": "ระดับหลังอะเสเหล็กชั้นบน",
+            "to": "ระดับหลังอกไก่บนสุด",
+            "value_m": 2.66
+          },
+          {
+            "from": "ระดับดินเดิม",
+            "to": "ระดับหลังอกไก่บนสุด",
+            "value_m": 9.41
+          }
         ]
       }
     ],
     "unassigned_dimensions": [
-      { "value_m": 3.60, "label": "sub-bay offset locating interior beam line B1'/B3', x-axis, near grid 2-3", "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า20.png", "note": "not resolved to a named dummy grid — see grid master warnings" },
-      { "value_m": 0.90, "label": "sub-bay offset, x-axis, near grid 3", "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า20.png", "note": null }
+      {
+        "value_m": 3.6,
+        "label": "sub-bay offset locating interior beam line B1'/B3', x-axis, near grid 2-3",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า20.png",
+        "note": "not resolved to a named dummy grid — see grid master warnings"
+      },
+      {
+        "value_m": 0.9,
+        "label": "sub-bay offset, x-axis, near grid 3",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_05/บ้าน_ใหญ่_2ชั้น_05_หน้า20.png",
+        "note": null
+      }
     ]
   }
 }

@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลนโครงหลังคาเหล็ก 1",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า30.png",
   "grid_source": "บ้าน_ใหญ่_1ชั้น_02_หน้า00_gridline.json",
   "confidence_score": 0.75,
@@ -14,14 +14,123 @@
     "จันทันเหล็ก (main rafters, ⌷150x75x6.5x10mm) are drawn as continuous thick lines at each row (E,D,C,B) running the full roof width edge-to-edge (including both 1.20m eave overhangs), with no drafted joint/break at the columns -- recorded as ONE continuous span per row ('edge' to 'edge') rather than split at 1/2/3, since §5's beam-splitting rule is for framed RC beams and this member visibly rests through its supports. Flagged as a judgment call.",
     "แปเหล็ก (purlins, ⌷125x50x20x3.2mm @ spacing per drawing) run perpendicular to the rafters and are spaced roughly 1.00m apart based on a secondary dimension row printed under the right portion of the sheet (1.00+1.00+~1.10+1.00+1.00, an approximate reading) -- recorded as ONE repeated-member entry with spacing_mm per schema §6a rather than enumerating every individual purlin position; the secondary dimension row itself is kept in the grid master's unassigned_dimensions as a purlin-spacing chain, not as new grid lines (purlins are not beam endpoints).",
     "SAG ROD (ø15mm round bar, diagonal ties bracing the purlins against the rafters) recorded as an accessory note on the purlin entry rather than its own plan element -- it has no grid position of its own.",
-    "CX posts repeat the same 4 positions (E2,D2,C2,B2) already recorded on S-04 (อะเส plan) -- this sheet re-draws them as the base of the roof structure; not double-counted as a separate structural quantity, just cross-referenced."
+    "CX posts repeat the same 4 positions (E2,D2,C2,B2) already recorded on S-04 (อะเส plan) -- this sheet re-draws them as the base of the roof structure; not double-counted as a separate structural quantity, just cross-referenced.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 5 roof-framing elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "CX", "element_type": "column", "count": 4, "grid_refs": ["E2", "D2", "C2", "B2"], "confidence_score": 0.85, "confidence_flags": [], "note": "same steel posts as S-04, re-drawn here as roof support" },
-    { "element_id": "จันทันเหล็ก-E", "element_type": "rafter", "grid_ref_start": "edge", "grid_ref_end": "edge", "grid_ref": "E, x -1.20 to 10.20", "span_length_m": 11.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "tf_mm": 10, "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม." }, "material": "steel", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "จันทันเหล็ก-D", "element_type": "rafter", "grid_ref_start": "edge", "grid_ref_end": "edge", "grid_ref": "D, x -1.20 to 10.20", "span_length_m": 11.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "tf_mm": 10, "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม." }, "material": "steel", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "จันทันเหล็ก-C", "element_type": "rafter", "grid_ref_start": "edge", "grid_ref_end": "edge", "grid_ref": "C, x -1.20 to 10.20", "span_length_m": 11.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "tf_mm": 10, "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม." }, "material": "steel", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "จันทันเหล็ก-B", "element_type": "rafter", "grid_ref_start": "edge", "grid_ref_end": "edge", "grid_ref": "B, x -1.20 to 10.20", "span_length_m": 11.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "tf_mm": 10, "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม." }, "material": "steel", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "แปเหล็ก", "element_type": "purlin", "grid_ref": "spans B to E, spaced across the roof plane between the rafters", "spacing_mm": 1000, "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 3.2, "printed_as": "แปเหล็กขนาด ⌷125x50x20x3.2 มม. @ระยะตามแบบ" }, "material": "steel", "note": "spacing per printed dimension row, approximately 1.00m typical (last bay reads ~1.10m); stabilized by SAG ROD ø15mm round-bar diagonal ties between purlin lines", "confidence_score": 0.55, "confidence_flags": ["purlin count/exact spacing not individually verified across the whole roof; see file warnings"] }
+    {
+      "element_id": "CX",
+      "element_type": "column",
+      "count": 4,
+      "grid_refs": [
+        "E2",
+        "D2",
+        "C2",
+        "B2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "same steel posts as S-04, re-drawn here as roof support"
+    },
+    {
+      "element_id": "จันทันเหล็ก-E",
+      "element_type": "rafter",
+      "grid_ref_start": "edge",
+      "grid_ref_end": "edge",
+      "grid_ref": "E, x -1.20 to 10.20",
+      "span_length_m": 11.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "tf_mm": 10,
+        "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทันเหล็ก-D",
+      "element_type": "rafter",
+      "grid_ref_start": "edge",
+      "grid_ref_end": "edge",
+      "grid_ref": "D, x -1.20 to 10.20",
+      "span_length_m": 11.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "tf_mm": 10,
+        "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทันเหล็ก-C",
+      "element_type": "rafter",
+      "grid_ref_start": "edge",
+      "grid_ref_end": "edge",
+      "grid_ref": "C, x -1.20 to 10.20",
+      "span_length_m": 11.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "tf_mm": 10,
+        "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทันเหล็ก-B",
+      "element_type": "rafter",
+      "grid_ref_start": "edge",
+      "grid_ref_end": "edge",
+      "grid_ref": "B, x -1.20 to 10.20",
+      "span_length_m": 11.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "tf_mm": 10,
+        "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แปเหล็ก",
+      "element_type": "purlin",
+      "grid_ref": "spans B to E, spaced across the roof plane between the rafters",
+      "spacing_mm": 1000,
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "tw_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "แปเหล็กขนาด ⌷125x50x20x3.2 มม. @ระยะตามแบบ"
+      },
+      "material": "steel",
+      "note": "spacing per printed dimension row, approximately 1.00m typical (last bay reads ~1.10m); stabilized by SAG ROD ø15mm round-bar diagonal ties between purlin lines",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "purlin count/exact spacing not individually verified across the whole roof; see file warnings"
+      ]
+    }
   ]
 }

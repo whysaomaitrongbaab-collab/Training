@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-01",
   "sheet_name": "แปลนฐานราก เสาตอม่อ, แปลนเสา,คาน,พื้นชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_02/บ้าน_ใหญ่_2ชั้น_02_หน้า19.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_02_หน้า00_gridline.json",
   "view_title": "แปลนฐานราก เสาตอม่อ (มาตราส่วน 1:100) - pile-cap footing and pedestal layout, 16 positions",
@@ -15,7 +15,20 @@
       "element_id": "F1",
       "element_type": "footing",
       "count": 12,
-      "grid_refs": ["ง'2", "ง'4", "ง1", "ง4", "ค'1", "ค4", "ข1", "ข2", "ข3", "ข4", "ก1", "ก2"],
+      "grid_refs": [
+        "ง'2",
+        "ง'4",
+        "ง1",
+        "ง4",
+        "ค'1",
+        "ค4",
+        "ข1",
+        "ข2",
+        "ข3",
+        "ข4",
+        "ก1",
+        "ก2"
+      ],
       "description": "ฐานรากเสาเข็มขนาดเล็ก เขียนคู่กับเสาตอม่อ C1 ทุกตำแหน่ง",
       "printed_as": "F1,C1",
       "confidence_score": 0.9,
@@ -25,7 +38,12 @@
       "element_id": "F2",
       "element_type": "footing",
       "count": 4,
-      "grid_refs": ["ง2", "ง3", "ค2", "ค3"],
+      "grid_refs": [
+        "ง2",
+        "ง3",
+        "ค2",
+        "ค3"
+      ],
       "description": "ฐานรากเสาเข็มขนาดใหญ่ (รูปสี่เหลี่ยมผืนผ้าในแบบ) เขียนคู่กับเสาตอม่อ C2 ทุกตำแหน่ง",
       "printed_as": "F2,C2",
       "confidence_score": 0.9,
@@ -35,7 +53,20 @@
       "element_id": "C1",
       "element_type": "pedestal",
       "count": 12,
-      "grid_refs": ["ง'2", "ง'4", "ง1", "ง4", "ค'1", "ค4", "ข1", "ข2", "ข3", "ข4", "ก1", "ก2"],
+      "grid_refs": [
+        "ง'2",
+        "ง'4",
+        "ง1",
+        "ง4",
+        "ค'1",
+        "ค4",
+        "ข1",
+        "ข2",
+        "ข3",
+        "ข4",
+        "ก1",
+        "ก2"
+      ],
       "description": "เสาตอม่อบนฐานราก F1",
       "printed_as": "F1,C1",
       "confidence_score": 0.9,
@@ -45,7 +76,12 @@
       "element_id": "C2",
       "element_type": "pedestal",
       "count": 4,
-      "grid_refs": ["ง2", "ง3", "ค2", "ค3"],
+      "grid_refs": [
+        "ง2",
+        "ง3",
+        "ค2",
+        "ค3"
+      ],
       "description": "เสาตอม่อบนฐานราก F2",
       "printed_as": "F2,C2",
       "confidence_score": 0.9,
@@ -70,6 +106,7 @@
     "The footing and the pedestal are printed together on one label (F1,C1 / F2,C2), which is why the same grid_refs array appears on the footing entry and the pedestal entry. They are recorded as two elements because they are two different member types with different specs on S-03 - not as a double count of one thing.",
     "F2 is drawn as a rectangle wider than it is tall while F1 is drawn square; no plan dimension is printed for either on this sheet. Sizes come from S-03. No size was invented here.",
     "NO PILE COUNT IS SHOWN ON THIS PLAN. Each footing is drawn as an outline with a single small square at its centre (the pedestal), not as a pile group, so the number of piles per footing cannot be read from this sheet and is left absent rather than guessed. The pile itself is specified in the sheet notes (0.18x0.18, 21.00 m, ≥20 ตัน/ต้น).",
-    "Every grid_ref on this sheet resolves against the grid master. The two positions on the ง' line (ง'2, ง'4) are the front-porch columns; ค'1 is the single column on the west bay-window line."
+    "Every grid_ref on this sheet resolves against the grid master. The two positions on the ง' line (ง'2, ง'4) are the front-porch columns; ค'1 is the single column on the west bay-window line.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 4 footing-family elements. Nothing else in this file changed."
   ]
 }

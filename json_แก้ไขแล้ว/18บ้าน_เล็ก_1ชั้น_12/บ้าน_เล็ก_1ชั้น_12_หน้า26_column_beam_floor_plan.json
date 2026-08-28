@@ -4,17 +4,20 @@
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนเสา คาน และพื้น",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_12/บ้าน_เล็ก_1ชั้น_12_หน้า26.png",
   "confidence_score": 0.75,
-  "confidence_flags": ["dense_interior_beam_cluster_moderate_confidence"],
+  "confidence_flags": [
+    "dense_interior_beam_cluster_moderate_confidence"
+  ],
   "grid_source": "บ้าน_เล็ก_1ชั้น_12_หน้า00_gridline.json",
   "scale": "1:100",
   "warnings": [
     "This sheet packs many short interior beam segments (marks B1/B2/B3/B4 reused across several different segments, per the project's generic-mark convention already confirmed on this same sheet — e.g. B3 appears at both the west edge A1-B1 and the row-B edge B1-B2 with identical spec) into a visually compact area around the two bedrooms/bathrooms/dining zone. Perimeter beams (B3A, B5, B5A, B5B, B6, B6X) and the clearly-labelled column/slab positions are extracted with high confidence; the exact grid-cell assignment for the reused-mark interior segments (B1, B2, B3, B3X, B4, B4X, BX) was cross-checked against the architectural floor plan A-04's room layout and partition dimensions rather than isolated purely from this sheet's own tightly-packed labels, and is recorded at a reduced confidence_score (0.65-0.75) per affected element rather than left blank. A higher-zoom re-check against the source PDF is recommended if per-segment certainty is required.",
     "Beam B2 (between the two ห้องน้ำ) lands on dummy grid '1'' (pos_m=2.30), added to the grid master from A-04's printed 2.30+1.70=4.00 m sub-dimension of the grid-1-to-2 bay — see หน้า00_gridline.json warnings.",
     "BX is a level-transition (stepped/tapering) beam per its own detail on S-10 (หน้า33, 'ระดับพื้นภายใน' vs 'ระดับพื้นภายนอก') — used here at the row-C threshold between the interior floor (+0.50/+0.47) and the exterior/เฉลียง; B5B is a similarly tapering beam (0.60 to 0.27/0.33 deep per S-10) used at the col-4 edge between rows B and C.",
-    "SC1 (steel columns, ⌐-100x100x6.0mm, per the sheet's own หมายเหตุ) support the carport roof and sit directly above the C0 RC pedestals at the same D2/D4/E2/E4 grid points recorded on S-02 (หน้า25) — two different structural materials at the same plan position, kept as separate elements (steel column SC1 vs RC pedestal C0)."
+    "SC1 (steel columns, ⌐-100x100x6.0mm, per the sheet's own หมายเหตุ) support the carport roof and sit directly above the C0 RC pedestals at the same D2/D4/E2/E4 grid points recorded on S-02 (หน้า25) — two different structural materials at the same plan position, kept as separate elements (steel column SC1 vs RC pedestal C0).",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 30 beam-family elements. Nothing else in this file changed."
   ],
   "specs": {
     "SC1": {
@@ -29,40 +32,386 @@
     }
   },
   "elements": [
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "A''2", "grid_ref_end": "A''3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "A4", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B5", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "A'3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B5A", "element_type": "beam", "grid_ref_start": "A'3", "grid_ref_end": "A'4", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["interior_segment_inferred_from_room_layout"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "A3", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["interior_segment_inferred_from_room_layout"] },
-    { "element_id": "B5A", "element_type": "beam", "grid_ref_start": "A4", "grid_ref_end": "B4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["interior_segment_inferred_from_room_layout"], "note": "ป้าย B5A ปรากฏซ้ำตามแนวขอบตะวันออก (col4) ช่วง A-B ทั้งแนว — ตีความว่าเป็นคานตัวเดียวยาวตลอดช่วง label เขียนซ้ำเพื่ออ่านง่าย" },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B4", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["interior_segment_inferred_from_room_layout"] },
-    { "element_id": "B4X", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "B4", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["interior_segment_inferred_from_room_layout"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B5B", "element_type": "beam", "grid_ref_start": "B4", "grid_ref_end": "C4", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": ["tapering_beam_see_S-10"] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["interior_segment_inferred_from_room_layout"] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "B1'", "grid_ref_end": "B'1'", "span_length_m": 2.30, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["interior_segment_inferred_from_room_layout", "dummy_grid_endpoint"], "note": "คานกั้นระหว่างห้องน้ำ 2 ห้อง อยู่บนกริดเสมือน 1' (2.30 ม จากกริด 1) — ช่วงแนวดิ่ง B ถึง C สันนิษฐานเต็มช่วง (ไม่มีมิติย่อยยืนยันความลึกที่แท้จริงของห้องน้ำ)" },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "B3A", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.7, "confidence_flags": ["interior_segment_inferred_from_room_layout"] },
-    { "element_id": "BX", "element_type": "beam", "grid_ref_start": "C3", "grid_ref_end": "C4", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["level_transition_beam_see_S-10", "interior_segment_inferred_from_room_layout"] },
-    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C'1", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.65, "confidence_flags": ["interior_segment_inferred_from_room_layout"] },
-    { "element_id": "B6", "element_type": "beam", "grid_ref_start": "C'1", "grid_ref_end": "C'2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "B6X", "element_type": "beam", "grid_ref_start": "C'2", "grid_ref_end": "C'2'", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "A2", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B3X", "element_type": "beam", "grid_ref_start": "A'3", "grid_ref_end": "A3", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B5A", "element_type": "beam", "grid_ref_start": "A'4", "grid_ref_end": "A4", "span_length_m": 1.10, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B1", "element_type": "beam", "grid_ref_start": "B'1", "grid_ref_end": "B'2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "BX", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "C'2", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B2", "element_type": "beam", "grid_ref_start": "C1'", "grid_ref_end": "C'1'", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "B3", "element_type": "beam", "grid_ref_start": "B3", "grid_ref_end": "C3", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "SC1", "element_type": "column", "count": 4, "grid_refs": ["D2", "D4", "E2", "E4"], "material": "steel", "note": "เสาเหล็กโรงจอดรถ วางบนเสาตอม่อ C0 (RC) ที่ตำแหน่งเดียวกัน", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "S1", "element_type": "slab", "count": 2, "note": "แผ่นพื้น S1 — นอน 1 (col1-2 x A-B) และอีกจุดใกล้ ทานอาหาร/พักผ่อน (col3 x B-C)", "confidence_score": 0.7, "confidence_flags": ["marker_only_no_grid_ref"] },
-    { "element_id": "S2", "element_type": "slab", "count": 2, "note": "แผ่นพื้น S2 — นอน 2 และช่วงถัดลงมา (col2-3 x A-B)", "confidence_score": 0.7, "confidence_flags": ["marker_only_no_grid_ref"] },
-    { "element_id": "S3", "element_type": "slab", "count": 6, "note": "แผ่นพื้น S3 (พื้นที่เปียก) — ซักล้าง, ห้องน้ำ x2, เฉลียง, และโซนใกล้ B2/BX x2", "confidence_score": 0.7, "confidence_flags": ["marker_only_no_grid_ref"] },
-    { "element_id": "S0", "element_type": "slab", "count": 4, "note": "แผ่นพื้นวางบนดิน S0 — โรงจอดรถ/พื้นที่ภายนอก (col1-4 x C-E) รายละเอียดบน S-08", "confidence_score": 0.75, "confidence_flags": ["marker_only_no_grid_ref"] }
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4X",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A'3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5A",
+      "element_type": "beam",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "A'4",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout"
+      ]
+    },
+    {
+      "element_id": "B5A",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout"
+      ],
+      "note": "ป้าย B5A ปรากฏซ้ำตามแนวขอบตะวันออก (col4) ช่วง A-B ทั้งแนว — ตีความว่าเป็นคานตัวเดียวยาวตลอดช่วง label เขียนซ้ำเพื่ออ่านง่าย"
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout"
+      ]
+    },
+    {
+      "element_id": "B4X",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5B",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "tapering_beam_see_S-10"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1'",
+      "grid_ref_end": "B'1'",
+      "span_length_m": 2.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout",
+        "dummy_grid_endpoint"
+      ],
+      "note": "คานกั้นระหว่างห้องน้ำ 2 ห้อง อยู่บนกริดเสมือน 1' (2.30 ม จากกริด 1) — ช่วงแนวดิ่ง B ถึง C สันนิษฐานเต็มช่วง (ไม่มีมิติย่อยยืนยันความลึกที่แท้จริงของห้องน้ำ)"
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout"
+      ]
+    },
+    {
+      "element_id": "BX",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "level_transition_beam_see_S-10",
+        "interior_segment_inferred_from_room_layout"
+      ]
+    },
+    {
+      "element_id": "B3X",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C'1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "interior_segment_inferred_from_room_layout"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C'1",
+      "grid_ref_end": "C'2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6X",
+      "element_type": "beam",
+      "grid_ref_start": "C'2",
+      "grid_ref_end": "C'2'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3X",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3X",
+      "element_type": "beam",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5A",
+      "element_type": "beam",
+      "grid_ref_start": "A'4",
+      "grid_ref_end": "A4",
+      "span_length_m": 1.1,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BX",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C'2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C'1'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SC1",
+      "element_type": "column",
+      "count": 4,
+      "grid_refs": [
+        "D2",
+        "D4",
+        "E2",
+        "E4"
+      ],
+      "material": "steel",
+      "note": "เสาเหล็กโรงจอดรถ วางบนเสาตอม่อ C0 (RC) ที่ตำแหน่งเดียวกัน",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 2,
+      "note": "แผ่นพื้น S1 — นอน 1 (col1-2 x A-B) และอีกจุดใกล้ ทานอาหาร/พักผ่อน (col3 x B-C)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "marker_only_no_grid_ref"
+      ]
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "count": 2,
+      "note": "แผ่นพื้น S2 — นอน 2 และช่วงถัดลงมา (col2-3 x A-B)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "marker_only_no_grid_ref"
+      ]
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "count": 6,
+      "note": "แผ่นพื้น S3 (พื้นที่เปียก) — ซักล้าง, ห้องน้ำ x2, เฉลียง, และโซนใกล้ B2/BX x2",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "marker_only_no_grid_ref"
+      ]
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "count": 4,
+      "note": "แผ่นพื้นวางบนดิน S0 — โรงจอดรถ/พื้นที่ภายนอก (col1-4 x C-E) รายละเอียดบน S-08",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "marker_only_no_grid_ref"
+      ]
+    }
   ]
 }

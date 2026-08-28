@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างชั้นล่าง",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า18.png",
   "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
   "confidence_score": 0.6,
@@ -14,7 +14,8 @@
     "หมายเหตุที่พิมพ์บนแผ่น: (1) ลูกศรแสดงทิศทางการวางพื้นสำเร็จรูป PLANK (2) ระยะแนวคานทั้งหมด ก่อนวางให้ทำการเช็คกับแปลนสถาปัตย์ด้วยทุกครั้งเพื่อป้องกันความผิดพลาด หรือปรึกษากับผู้ควบคุมงานของทางบริษัทฯก่อน (3) ฝังสลีปท่อตามผังสุขาภิบาลด้วย",
     "ระดับหลังคานพิมพ์กำกับในวงเล็บท้ายมาร์คทุกตัว เช่น B2(+0.40) — เก็บเป็น level_m ของแต่ละช่วง ไม่ได้ยุบรวมเพราะมาร์คเดียวกันปรากฏหลายระดับจริง (B3 มีทั้ง +0.40, +0.35 และ +0.30)",
     "เสาเฉลียงแถว I 2 ต้นไม่อยู่บนกริดหลัก — ใช้ dummy grid 2' (5.90) และ 2'' (8.60) ที่เพิ่มไว้ใน grid master ตามกฎ beam-endpoint §4 คาน B1'(+0.30) และ B2(+0.30) ลงที่จุดนี้",
-    "ยังไม่ได้ไล่คานครบทุกช่วงบนแผ่นนี้ — ที่บันทึกไว้เป็นชุดที่อ่านได้ชัด ไม่ใช่ชุดสมบูรณ์ ต้องซูมไล่ซ้ำทั้งแผ่นก่อนถือว่าปิดงาน"
+    "ยังไม่ได้ไล่คานครบทุกช่วงบนแผ่นนี้ — ที่บันทึกไว้เป็นชุดที่อ่านได้ชัด ไม่ใช่ชุดสมบูรณ์ ต้องซูมไล่ซ้ำทั้งแผ่นก่อนถือว่าปิดงาน",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 20 beam-family elements. Nothing else in this file changed."
   ],
   "elements": [
     {

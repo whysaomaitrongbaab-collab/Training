@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลน คาน พื้นชั้น 2",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_02/บ้าน_เล็ก_2ชั้น_02_หน้า34.png",
   "view_title": "แปลนคาน พื้นชั้น 2",
@@ -559,6 +559,7 @@
     "REMOVED_2026-07-20 by user: the 'B2(ชานพัก)' entry, which had grid_ref_start = grid_ref_end = D1 and a null span because its far endpoint was never resolved.",
     "specs{} gained a B1_ชานพัก entry -- that element_id was in use but had no spec defined. It reuses B1's section since S-08 (หน้า37) prints no separate ชานพัก spec; the suffix records level, not a different section.",
     "CORRECTED_2026-07-16: every B4 occurrence on this sheet had still been carrying the pre-fix bottom:2 spec inline -- updated to match the corrected หน้า37 spec (bottom:4, L/8 bars merged).",
-    "NORMALIZED_2026-08-02: element_id reduction to the printed mark was ATTEMPTED and PARTLY REVERTED on this sheet - some ids reduce to the same mark while being genuinely different members (e.g. the stair vs its steps, a landing beam vs the ordinary beam of the same mark, three eave materials at one R-mark). Those keep their suffix; the rest were reduced with the original in element_id_printed_as."
+    "NORMALIZED_2026-08-02: element_id reduction to the printed mark was ATTEMPTED and PARTLY REVERTED on this sheet - some ids reduce to the same mark while being genuinely different members (e.g. the stair vs its steps, a landing beam vs the ordinary beam of the same mark, three eave materials at one R-mark). Those keep their suffix; the rest were reduced with the original in element_id_printed_as.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 30 beam-family elements. Nothing else in this file changed."
   ]
 }

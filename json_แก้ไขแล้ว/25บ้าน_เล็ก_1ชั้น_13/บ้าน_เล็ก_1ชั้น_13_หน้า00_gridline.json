@@ -21,71 +21,245 @@
     "z_levels[] is empty: no printed '+X.XX' elevation value was found anywhere in the S-01..S-11 structural set extracted for op04. The column tables and column-rebar-spacing details (S-05/S-10/S-11) print level ROW LABELS ('ระดับอะเส' = tie-beam level, 'ระดับพื้นชั้น 1' = floor-1 level) with no attached numeric value; the architectural elevation/section sheets that would normally carry ±0.00/+0.60 etc. are A-series and out of op04's scope.",
     "No soil_boring_log sheet in this set (op04 subtask absent — matches the sibling house 26, this design series appears not to include one), and no dedicated plan_column sheet — columns/pedestals appear only as marks on the footing plan (S-02) and in the column schedule tables (S-05/S-10/S-11), which is the expected/common case per op04's own note.",
     "Roof framing (S-04, แปลนโครงหลังคา) is a genuine structural plan (steel ridge/purlins/rafters with grid positions) and is extracted as pattern:\"plan\" (plan_beam scope) per the roof_plan trap rule, not skipped as roof_plan.",
-    "S-04's rafter ('จันทันเหล็ก') spacing is printed only as '@ระยะตามแบบ' (spacing per this drawing / scaled, no numeric callout) — three rafter positions ARE grid-dimensioned (grid 1, the 2.375 dummy, grid 2), but the drawing also shows one additional un-dimensioned intermediate rafter line in each of the two bays (1-1.375-ish and 1.375-ish-2), roughly at each bay's midpoint. Recorded the three dimensioned rafters with full confidence and flagged the two intermediate ones as approximate/unresolved position rather than inventing a precise pos_m for them — see the roof plan file's own warnings."
+    "S-04's rafter ('จันทันเหล็ก') spacing is printed only as '@ระยะตามแบบ' (spacing per this drawing / scaled, no numeric callout) — three rafter positions ARE grid-dimensioned (grid 1, the 2.375 dummy, grid 2), but the drawing also shows one additional un-dimensioned intermediate rafter line in each of the two bays (1-1.375-ish and 1.375-ish-2), roughly at each bay's midpoint. Recorded the three dimensioned rafters with full confidence and flagged the two intermediate ones as approximate/unresolved position rather than inventing a precise pos_m for them — see the roof plan file's own warnings.",
+    "z_levels[] and the z dimension_chain read 2026-08-28 off A-08 (หน้า10, 'รูปตัด A-A / รูปตัด B-B') -- an architectural sheet OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. ARITHMETIC MISMATCH, recorded as printed and NOT reconciled: the sheet's own segments 0.31 + 2.99 + 1.60 sum to the 4.90 total it also prints, but the top level is labelled ระดับหลังอกไก่ +5.20, which needs a 1.90 top segment, not 1.60 (or a 5.20 total, not 4.90). Both the printed segments and the printed +5.20 label are recorded verbatim per section 4 ('a mismatch between the detail row and the total row is exactly the extraction error this array exists to catch'); the ridge level carries a lowered confidence_score. Sibling house 26 (บ้าน_เล็ก_1ชั้น_07), the same กรมโยธาธิการ บ้านผู้สูงวัย design at a larger size, prints the analogous chain 0.31 + 2.99 + 2.65 = 5.95 and closes perfectly -- so the layout is normally consistent and one of these two numbers on หน้า10 is a scan/read error. Needs one higher-resolution look before either is trusted. unassigned_dimensions[] still un-swept."
   ],
   "grid": {
     "x_lines": [
-      { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "1'", "pos_m": -1.725, "type": "dummy", "confidence_flags": ["west wall of the accessible-bathroom appendage (BR2 beam, F2/F1 footings) — see grid master warnings for naming rationale"] },
-      { "id": "1\"", "pos_m": 2.375, "type": "dummy", "confidence_flags": ["mid-span column/footing/beam split within the main 1-2 bay — see grid master warnings for naming rationale"] },
-      { "id": "2", "pos_m": 4.50, "type": "named" }
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "1'",
+        "pos_m": -1.725,
+        "type": "dummy",
+        "confidence_flags": [
+          "west wall of the accessible-bathroom appendage (BR2 beam, F2/F1 footings) — see grid master warnings for naming rationale"
+        ]
+      },
+      {
+        "id": "1\"",
+        "pos_m": 2.375,
+        "type": "dummy",
+        "confidence_flags": [
+          "mid-span column/footing/beam split within the main 1-2 bay — see grid master warnings for naming rationale"
+        ]
+      },
+      {
+        "id": "2",
+        "pos_m": 4.5,
+        "type": "named"
+      }
     ],
     "y_lines": [
-      { "id": "A", "pos_m": 0.00, "type": "named" },
-      { "id": "B", "pos_m": 3.00, "type": "named" },
-      { "id": "C", "pos_m": 7.00, "type": "named" },
-      { "id": "D", "pos_m": 8.50, "type": "named" },
-      { "id": "D'", "pos_m": 10.225, "type": "dummy", "confidence_flags": ["south wall of the accessible-bathroom appendage — see grid master warnings"] }
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named"
+      },
+      {
+        "id": "B",
+        "pos_m": 3.0,
+        "type": "named"
+      },
+      {
+        "id": "C",
+        "pos_m": 7.0,
+        "type": "named"
+      },
+      {
+        "id": "D",
+        "pos_m": 8.5,
+        "type": "named"
+      },
+      {
+        "id": "D'",
+        "pos_m": 10.225,
+        "type": "dummy",
+        "confidence_flags": [
+          "south wall of the accessible-bathroom appendage — see grid master warnings"
+        ]
+      }
     ],
-    "z_levels": [],
+    "z_levels": [
+      {
+        "id": "ระดับอ้างอิง",
+        "level_m": 0.0,
+        "type": "datum",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า10.png"
+      },
+      {
+        "id": null,
+        "level_m": 0.3,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า10.png",
+        "level_m_printed_as": "ห้องน้ำ +0.30 / เฉลียง +0.30",
+        "confidence_flags": [
+          "printed as a bare number with no ระดับ label (section 4)"
+        ]
+      },
+      {
+        "id": "ระดับพื้นชั้นล่าง",
+        "level_m": 0.31,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า10.png"
+      },
+      {
+        "id": "ระดับหลังคานหลังคา",
+        "level_m": 3.3,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า10.png"
+      },
+      {
+        "id": "ระดับหลังอกไก่",
+        "level_m": 5.2,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า10.png",
+        "confidence_score": 0.7,
+        "confidence_flags": [
+          "does not close against the printed chain on the same sheet -- see the master's warnings"
+        ]
+      }
+    ],
     "dimension_chains": [
       {
         "axis": "x",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
         "segments": [
-          { "from": "1", "to": "1\"", "value_m": 2.375 },
-          { "from": "1\"", "to": "2", "value_m": 2.125 },
-          { "from": "1", "to": "2", "value_m": 4.50 }
+          {
+            "from": "1",
+            "to": "1\"",
+            "value_m": 2.375
+          },
+          {
+            "from": "1\"",
+            "to": "2",
+            "value_m": 2.125
+          },
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 4.5
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
         "segments": [
-          { "from": "A", "to": "B", "value_m": 3.00 },
-          { "from": "B", "to": "C", "value_m": 4.00 },
-          { "from": "C", "to": "D", "value_m": 1.50 },
-          { "from": "A", "to": "D", "value_m": 8.50 }
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.0
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 4.0
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 1.5
+          },
+          {
+            "from": "A",
+            "to": "D",
+            "value_m": 8.5
+          }
         ]
       },
       {
         "axis": "x",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
         "segments": [
-          { "from": "1'", "to": "1", "value_m": 1.725 }
+          {
+            "from": "1'",
+            "to": "1",
+            "value_m": 1.725
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
         "segments": [
-          { "from": "D", "to": "D'", "value_m": 1.725 }
+          {
+            "from": "D",
+            "to": "D'",
+            "value_m": 1.725
+          }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า26.png",
         "segments": [
-          { "from": "C", "to": "D", "value_m": 1.50 },
-          { "from": "D", "to": "D'", "value_m": 1.725 },
-          { "from": "C", "to": "D'", "value_m": 3.225 }
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 1.5
+          },
+          {
+            "from": "D",
+            "to": "D'",
+            "value_m": 1.725
+          },
+          {
+            "from": "C",
+            "to": "D'",
+            "value_m": 3.225
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า10.png",
+        "segments": [
+          {
+            "from": "ระดับอ้างอิง",
+            "to": "ระดับพื้นชั้นล่าง",
+            "value_m": 0.31
+          },
+          {
+            "from": "ระดับพื้นชั้นล่าง",
+            "to": "ระดับหลังคานหลังคา",
+            "value_m": 2.99
+          },
+          {
+            "from": "ระดับหลังคานหลังคา",
+            "to": "ระดับหลังอกไก่",
+            "value_m": 1.6
+          },
+          {
+            "from": "ระดับอ้างอิง",
+            "to": "ระดับหลังอกไก่",
+            "value_m": 4.9
+          }
         ]
       }
     ],
     "unassigned_dimensions": [
-      { "value_m": 0.175, "label": "F2 footing pedestal offset south of grid C (see grid master warnings)", "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png", "note": "footing/pedestal eccentricity, not a beam-endpoint-driven grid line" },
-      { "value_m": 0.60, "label": "roof ridge/eave overhang beyond grid A (S-04, แปลนโครงหลังคา)", "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า22.png", "note": "roof overhang past the A wall line; no beam mark of its own besides the ridge member" },
-      { "value_m": 2.87, "label": "SR/S2 divider beam (vertical BR1, row C-D) to grid 2 (S-03 plan)", "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า21.png", "note": "NOT B4's span — B4 runs the full D1-D2 = 4.50 (both leaders land on columns). This dimension places the SR/S2 divider at 4.50 − 2.87 = 1.63m east of grid 1, which a pixel scan of the PNG confirms is the divider beam's own centreline (1.63 ± 0.06). Left as an unassigned dimension rather than a dummy x_line because a third dummy between grid 1 and 1\" needs a naming ruling first — see this file's dummy-grid-naming warning and the plan_beam file warnings" }
+      {
+        "value_m": 0.175,
+        "label": "F2 footing pedestal offset south of grid C (see grid master warnings)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า20.png",
+        "note": "footing/pedestal eccentricity, not a beam-endpoint-driven grid line"
+      },
+      {
+        "value_m": 0.6,
+        "label": "roof ridge/eave overhang beyond grid A (S-04, แปลนโครงหลังคา)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า22.png",
+        "note": "roof overhang past the A wall line; no beam mark of its own besides the ridge member"
+      },
+      {
+        "value_m": 2.87,
+        "label": "SR/S2 divider beam (vertical BR1, row C-D) to grid 2 (S-03 plan)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_13/บ้าน_เล็ก_1ชั้น_13_หน้า21.png",
+        "note": "NOT B4's span — B4 runs the full D1-D2 = 4.50 (both leaders land on columns). This dimension places the SR/S2 divider at 4.50 − 2.87 = 1.63m east of grid 1, which a pixel scan of the PNG confirms is the divider beam's own centreline (1.63 ± 0.06). Left as an unassigned dimension rather than a dummy x_line because a third dummy between grid 1 and 1\" needs a naming ruling first — see this file's dummy-grid-naming warning and the plan_beam file warnings"
+      }
     ]
   }
 }

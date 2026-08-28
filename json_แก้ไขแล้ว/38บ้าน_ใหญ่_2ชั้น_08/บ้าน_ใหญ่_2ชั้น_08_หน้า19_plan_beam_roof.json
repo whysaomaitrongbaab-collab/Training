@@ -1,10 +1,10 @@
-﻿{
+{
   "png": "19",
   "doc_page": null,
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": "ผังโครงสร้างหลังคา",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_ใหญ่_2ชั้น_08/บ้าน_ใหญ่_2ชั้น_08_หน้า19.png",
   "grid_source": "บ้าน_ใหญ่_2ชั้น_08_หน้า00_gridline.json",
   "confidence_score": 0.5,
@@ -13,39 +13,320 @@
     "The ring beam follows a hip-roof outline with diagonal hip/valley lines running from each corner (labelled RB1' at the corners) toward interior intersection points (circular RB1/RB2 tags) — the diagonal members' true two-grid-point span was not resolved (their far end is a roof ridge/valley intersection, not a plan grid point), so those entries carry a single approximate grid_ref rather than an invented span endpoint."
   ],
   "warnings": [
-    "CORRECTED 2026-08-24 — span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections. This is pure computation from the grid per the §4 rule that span is calculated by code and never estimated by the model — no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length."
+    "CORRECTED 2026-08-24 — span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections. This is pure computation from the grid per the §4 rule that span is calculated by code and never estimated by the model — no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 20 beams on a roof-framing sheet (floor_level=None). Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "A5", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A5", "grid_ref_end": "A6", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.6, "confidence_flags": [] },
-
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "~C1", "note": "no footing/column between B and E on grid1 for the roof ring — endpoint approximate", "span_length_m": 2.20, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D1", "grid_ref_end": "E1", "span_length_m": 2.50, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A6", "grid_ref_end": "B6", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.55, "confidence_flags": [] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B6", "grid_ref_end": "~D6", "note": "endpoint approximate", "span_length_m": 3.00, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D6", "grid_ref_end": "E6", "span_length_m": 2.50, "span_source": "unresolved", "confidence_score": 0.45, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "B5", "note": "long double-line-marked run between the two interior hip intersection points — read as one continuous RB1 span between the circular tags", "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "~D2", "grid_ref_end": "~D5", "note": "second interior ring run near row D, matches the floor-2 stair-void beams below", "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "~E2", "grid_ref_end": "~E5", "note": "bottom interior triangular hip cluster near row E", "span_length_m": 4.00, "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": ["span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"] },
-
-    { "element_id": "RB1'", "element_type": "beam", "grid_ref_start": "~A1", "grid_ref_end": "~A1", "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point", "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "RB1'", "element_type": "beam", "grid_ref_start": "~A6", "grid_ref_end": "~A6", "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point", "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "RB1'", "element_type": "beam", "grid_ref_start": "~E1", "grid_ref_end": "~E1", "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point", "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
-    { "element_id": "RB1'", "element_type": "beam", "grid_ref_start": "~E6", "grid_ref_end": "~E6", "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point", "span_source": "unresolved", "confidence_score": 0.4, "confidence_flags": [] },
-
-    { "element_id": "RB3'", "element_type": "beam", "grid_ref_start": "~B1", "grid_ref_end": "~B1", "note": "short valley-connector stub at the ring beam, row B near grid1", "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": [] },
-    { "element_id": "RB3'", "element_type": "beam", "grid_ref_start": "~D1", "grid_ref_end": "~D1", "note": "short valley-connector stub at the ring beam, row D near grid1", "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": [] },
-    { "element_id": "RB3'", "element_type": "beam", "grid_ref_start": "~B6", "grid_ref_end": "~B6", "note": "short valley-connector stub at the ring beam, row B near grid6", "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": [] },
-    { "element_id": "RB2'", "element_type": "beam", "grid_ref_start": "~D6", "grid_ref_end": "~D6", "note": "short valley-connector stub at the ring beam, row D near grid6", "span_source": "unresolved", "confidence_score": 0.35, "confidence_flags": [] },
-
-    { "element_id": "rafter", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จันทัน C 100x50x20x2.3mm. @ 1.00m." }, "spacing_mm": 1000, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "purlin", "element_type": "purlin", "material": "steel", "steel_section": { "designation": "L", "b_mm": 25, "tw_mm": 3, "printed_as": "แป L 25x25x3mm. @ 0.34m." }, "spacing_mm": 340, "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "ridge", "element_type": "purlin", "material": "steel", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "อกไก่ 2C 125x50x20x2.3mm." }, "note": "ridge purlin, doubled C-channel", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "hip", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "ตะเข้สัน 2C 125x50x20x2.3mm." }, "note": "hip rafter, doubled C-channel", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "valley", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "ตะเข้ราง 2C 125x50x20x2.3mm." }, "note": "valley rafter, doubled C-channel", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "king_post_base", "element_type": "connection_detail", "material": "steel", "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3, "printed_as": "จุดตั้งดั้ง 2C 125x50x20x2.3mm." }, "note": "king-post base point, doubled C-channel", "confidence_score": 0.55, "confidence_flags": [] }
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "~C1",
+      "note": "no footing/column between B and E on grid1 for the roof ring — endpoint approximate",
+      "span_length_m": 2.2,
+      "span_source": "unresolved",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "~D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 2.5,
+      "span_source": "unresolved",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "B6",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "B6",
+      "grid_ref_end": "~D6",
+      "note": "endpoint approximate",
+      "span_length_m": 3.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "~D6",
+      "grid_ref_end": "E6",
+      "span_length_m": 2.5,
+      "span_source": "unresolved",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B5",
+      "note": "long double-line-marked run between the two interior hip intersection points — read as one continuous RB1 span between the circular tags",
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "~D2",
+      "grid_ref_end": "~D5",
+      "note": "second interior ring run near row D, matches the floor-2 stair-void beams below",
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.35,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "~E2",
+      "grid_ref_end": "~E5",
+      "note": "bottom interior triangular hip cluster near row E",
+      "span_length_m": 4.0,
+      "span_source": "unresolved",
+      "confidence_score": 0.35,
+      "confidence_flags": [
+        "span computed from the shared row/column โ€” the ~ affects the POSITION only, not the length"
+      ]
+    },
+    {
+      "element_id": "RB1'",
+      "element_type": "beam",
+      "grid_ref_start": "~A1",
+      "grid_ref_end": "~A1",
+      "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point",
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1'",
+      "element_type": "beam",
+      "grid_ref_start": "~A6",
+      "grid_ref_end": "~A6",
+      "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point",
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1'",
+      "element_type": "beam",
+      "grid_ref_start": "~E1",
+      "grid_ref_end": "~E1",
+      "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point",
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1'",
+      "element_type": "beam",
+      "grid_ref_start": "~E6",
+      "grid_ref_end": "~E6",
+      "note": "diagonal hip corner beam; far end is a roof hip/valley intersection, not a plan grid point",
+      "span_source": "unresolved",
+      "confidence_score": 0.4,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB3'",
+      "element_type": "beam",
+      "grid_ref_start": "~B1",
+      "grid_ref_end": "~B1",
+      "note": "short valley-connector stub at the ring beam, row B near grid1",
+      "span_source": "unresolved",
+      "confidence_score": 0.35,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB3'",
+      "element_type": "beam",
+      "grid_ref_start": "~D1",
+      "grid_ref_end": "~D1",
+      "note": "short valley-connector stub at the ring beam, row D near grid1",
+      "span_source": "unresolved",
+      "confidence_score": 0.35,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB3'",
+      "element_type": "beam",
+      "grid_ref_start": "~B6",
+      "grid_ref_end": "~B6",
+      "note": "short valley-connector stub at the ring beam, row B near grid6",
+      "span_source": "unresolved",
+      "confidence_score": 0.35,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2'",
+      "element_type": "beam",
+      "grid_ref_start": "~D6",
+      "grid_ref_end": "~D6",
+      "note": "short valley-connector stub at the ring beam, row D near grid6",
+      "span_source": "unresolved",
+      "confidence_score": 0.35,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "rafter",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "จันทัน C 100x50x20x2.3mm. @ 1.00m."
+      },
+      "spacing_mm": 1000,
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "purlin",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "b_mm": 25,
+        "tw_mm": 3,
+        "printed_as": "แป L 25x25x3mm. @ 0.34m."
+      },
+      "spacing_mm": 340,
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ridge",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "อกไก่ 2C 125x50x20x2.3mm."
+      },
+      "note": "ridge purlin, doubled C-channel",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "hip",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "ตะเข้สัน 2C 125x50x20x2.3mm."
+      },
+      "note": "hip rafter, doubled C-channel",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "valley",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "ตะเข้ราง 2C 125x50x20x2.3mm."
+      },
+      "note": "valley rafter, doubled C-channel",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "king_post_base",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "จุดตั้งดั้ง 2C 125x50x20x2.3mm."
+      },
+      "note": "king-post base point, doubled C-channel",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    }
   ]
 }

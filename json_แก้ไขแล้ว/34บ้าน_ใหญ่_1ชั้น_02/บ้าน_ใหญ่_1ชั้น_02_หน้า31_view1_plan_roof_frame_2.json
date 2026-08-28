@@ -4,17 +4,55 @@
   "discipline": "structural",
   "sheet_code": "S-06",
   "sheet_name": "แปลนโครงหลังคาเหล็ก 2",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า31.png",
   "grid_source": "บ้าน_ใหญ่_1ชั้น_02_หน้า00_gridline.json",
   "confidence_score": 0.65,
   "confidence_flags": [],
   "warnings": [
     "This view (left half of the sheet) redraws the same roof grid (CX at E2/D2/C2/B2, จันทันเหล็ก ⌷150x75x6.5x10mm at row B, แปเหล็ก ⌷125x50x20x3.2mm purlins @ระยะตามแบบ) already captured on S-05 -- almost certainly the drawing set's second roof-plane view (hip/gable) of the same single steel roof system, not a second physically distinct roof. NOT re-listing the CX posts or the row-E/D/C rafters again here to avoid double-counting; only the content genuinely distinct to this sheet is recorded (the 'เหล็กยันแป' purlin-bracing rod callout and confirmation of the row-B rafter).",
-    "'เหล็กยันแป 1ø9มม ทุกจุด' = a ø9mm round-bar brace tying every purlin-to-rafter joint -- recorded as a note on the purlin entry, same treatment as SAG ROD on S-05."
+    "'เหล็กยันแป 1ø9มม ทุกจุด' = a ø9mm round-bar brace tying every purlin-to-rafter joint -- recorded as a note on the purlin entry, same treatment as SAG ROD on S-05.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 roof-framing elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "จันทันเหล็ก-B", "element_type": "rafter", "grid_ref_start": "edge", "grid_ref_end": "edge", "grid_ref": "B, x -1.20 to 10.20", "span_length_m": 11.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 75, "tw_mm": 6.5, "tf_mm": 10, "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม." }, "material": "steel", "note": "confirms the same member already recorded on S-05; re-drawn on this second roof-plane view", "confidence_score": 0.6, "confidence_flags": [] },
-    { "element_id": "แปเหล็ก", "element_type": "purlin", "grid_ref": "spans B to E, spaced across this roof plane between the rafters", "spacing_mm": 1000, "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 3.2, "printed_as": "แปเหล็กขนาด ⌷125x50x20x3.2 มม. @ระยะตามแบบ" }, "material": "steel", "note": "เหล็กยันแป (purlin brace) ø9mm round bar at every purlin/rafter joint", "confidence_score": 0.55, "confidence_flags": [] }
+    {
+      "element_id": "จันทันเหล็ก-B",
+      "element_type": "rafter",
+      "grid_ref_start": "edge",
+      "grid_ref_end": "edge",
+      "grid_ref": "B, x -1.20 to 10.20",
+      "span_length_m": 11.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 6.5,
+        "tf_mm": 10,
+        "printed_as": "จันทันเหล็ก ⌷150x75x6.5x10 มม."
+      },
+      "material": "steel",
+      "note": "confirms the same member already recorded on S-05; re-drawn on this second roof-plane view",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แปเหล็ก",
+      "element_type": "purlin",
+      "grid_ref": "spans B to E, spaced across this roof plane between the rafters",
+      "spacing_mm": 1000,
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125,
+        "b_mm": 50,
+        "tw_mm": 20,
+        "tf_mm": 3.2,
+        "printed_as": "แปเหล็กขนาด ⌷125x50x20x3.2 มม. @ระยะตามแบบ"
+      },
+      "material": "steel",
+      "note": "เหล็กยันแป (purlin brace) ø9mm round bar at every purlin/rafter joint",
+      "confidence_score": 0.55,
+      "confidence_flags": []
+    }
   ]
 }

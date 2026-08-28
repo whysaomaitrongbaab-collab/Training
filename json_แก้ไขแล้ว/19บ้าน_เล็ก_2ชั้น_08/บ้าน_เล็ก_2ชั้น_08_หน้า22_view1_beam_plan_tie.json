@@ -4,26 +4,126 @@
   "discipline": "structural",
   "sheet_code": "S-04",
   "sheet_name": "แปลนเสา, คานระดับอะเส",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_08/บ้าน_เล็ก_2ชั้น_08_หน้า22.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_08_หน้า00_gridline.json",
   "confidence_score": 0.8,
   "confidence_flags": [],
   "warnings": [
-    "Steel roof-level tie-beam/post plan — traced perimeter matches the same 6-point grid as the RC beam plans below (no dummy extension used, see grid master warnings)."
+    "Steel roof-level tie-beam/post plan — traced perimeter matches the same 6-point grid as the RC beam plans below (no dummy extension used, see grid master warnings).",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 7 beam-family elements. Nothing else in this file changed."
   ],
   "specs": {
-    "CS1": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "2⊏-100x50x20x3.2มม", "material": "steel", "description": "double-channel back-to-back post, sits on RC column C1 via a bolted base plate (see S-08 Joint A)", "spec_source": "S-04/S-08", "spec_confidence_score": 0.85 },
-    "BS1": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "2⊏-100x50x20x3.2มม", "material": "steel", "description": "double-channel tie beam at roof-eave level", "spec_source": "S-04", "spec_confidence_score": 0.85 }
+    "CS1": {
+      "designation": "C",
+      "d_mm": 100,
+      "b_mm": 50,
+      "lip_mm": 20,
+      "tw_mm": 3.2,
+      "printed_as": "2⊏-100x50x20x3.2มม",
+      "material": "steel",
+      "description": "double-channel back-to-back post, sits on RC column C1 via a bolted base plate (see S-08 Joint A)",
+      "spec_source": "S-04/S-08",
+      "spec_confidence_score": 0.85
+    },
+    "BS1": {
+      "designation": "C",
+      "d_mm": 100,
+      "b_mm": 50,
+      "lip_mm": 20,
+      "tw_mm": 3.2,
+      "printed_as": "2⊏-100x50x20x3.2มม",
+      "material": "steel",
+      "description": "double-channel tie beam at roof-eave level",
+      "spec_source": "S-04",
+      "spec_confidence_score": 0.85
+    }
   },
   "elements": [
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 2.70, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "BS1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 3.60, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
-    { "element_id": "CS1", "element_type": "column", "count": 6, "grid_refs": ["A1", "A2", "B1", "B2", "C1", "C2"], "confidence_score": 0.85, "confidence_flags": [] }
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BS1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "CS1",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
   ]
 }

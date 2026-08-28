@@ -5,7 +5,7 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนฐานรากแผ่",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า20.png",
@@ -173,6 +173,7 @@
     "9 main footings (C1 mark) at all 9 named-grid intersections except D-1 (no footing shown there -- the main building's SW corner near the ramp is a slab-only edge per A-04, consistent with no column needed there).",
     "The 4 isolated C0 footings (0.80x0.80, smaller than any C1 footing) remain UNRESOLVED as to what superstructure they support -- see grid master warnings. Recorded here as positioned per the printed dimension chain, with x-position of the D' pair flagged low-confidence since no x-dimension was printed for them specifically (only the 1.65m spacing between the pair).",
     "NORMALIZED_2026-08-02: applied the one-entry-per-element_id rule (สิ่งที่ต้องแก้ item 48 / schema section 4) to point elements. 15 entries -> 10. Scalar grid_ref replaced by a grid_refs array + count; point-ref dashes stripped (D-1 -> D1) per the schema section 4 dash rule. 0 duplicate grid_ref(s) removed (double-count bug, count NOT increased for those). Entries were merged only where every non-position field matched exactly; beams/span elements untouched.",
-    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 10 footing-family elements. Nothing else in this file changed."
   ]
 }

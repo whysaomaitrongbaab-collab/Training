@@ -4,19 +4,29 @@
   "discipline": "structural",
   "sheet_code": "S-02",
   "sheet_name": "แปลนฐานรากเสาเข็ม, เสาตอม่อ",
-  "pattern": "etc_plan",
+  "pattern": "footing_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_08/บ้าน_เล็ก_2ชั้น_08_หน้า20.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_08_หน้า00_gridline.json",
   "confidence_score": 0.9,
   "confidence_flags": [],
   "warnings": [
-    "Alternative to หน้า20_view2 (spread footing) per S-01 note 3.3 — pick one foundation system, do not build both."
+    "Alternative to หน้า20_view2 (spread footing) per S-01 note 3.3 — pick one foundation system, do not build both.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 footing-family elements. Nothing else in this file changed."
   ],
   "specs": {
     "C1": {
-      "width_mm": 200, "height_mm": 200,
-      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" },
-      "stirrup": { "dia_mm": 6, "spacing_mm": 200, "type": "RB" },
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
       "concrete_grade": "ค.3 (fc' >= 210 ksc)",
       "steel_grade": "RB6mm/RB9mm = SR-24, main bar >=12mm = SD-40/SD-40T",
       "spec_source": "S-07",
@@ -26,28 +36,86 @@
       "description": "triangular pile cap for 3 piles, 0.90m base",
       "pile_count": 3,
       "pile_type": "เสาเข็มสี่เหลี่ยมตัน (solid square)",
-      "pile_size_mm": { "width_mm": 150, "length_m": 6.0, "printed_as": "0.15x0.15x6.00 ม." },
+      "pile_size_mm": {
+        "width_mm": 150,
+        "length_m": 6.0,
+        "printed_as": "0.15x0.15x6.00 ม."
+      },
       "pile_capacity_ton": 1.7,
       "footing_thickness_note": "top-of-pile-cap 0.30m below grade step shown in section; not separately dimensioned as a single thickness figure",
-      "main_bar": { "count": null, "dia_mm": 12, "type": "RB", "note": "cap reinforcement read as 2ø12mm corner bars + 3ø12mm bottom mesh one way + 3ø12mm@0.15m the other way, per the rebar plan on S-05 — could not resolve to a single count/spacing pair with confidence, recorded as printed_as instead of guessing a merged figure", "printed_as": "2ø12มม + 3ø12มม + 3ø12มม@0.15ม" },
+      "main_bar": {
+        "count": null,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "cap reinforcement read as 2ø12mm corner bars + 3ø12mm bottom mesh one way + 3ø12mm@0.15m the other way, per the rebar plan on S-05 — could not resolve to a single count/spacing pair with confidence, recorded as printed_as instead of guessing a merged figure",
+        "printed_as": "2ø12มม + 3ø12มม + 3ø12มม@0.15ม"
+      },
       "spec_source": "S-05",
       "spec_confidence_score": 0.6,
-      "spec_confidence_flags": ["pile_cap_rebar_layout_not_fully_resolved"]
+      "spec_confidence_flags": [
+        "pile_cap_rebar_layout_not_fully_resolved"
+      ]
     },
     "F4": {
       "description": "square pile cap for 4 piles, 0.95x0.95m",
       "pile_count": 4,
       "pile_type": "เสาเข็มสี่เหลี่ยมตัน (solid square)",
-      "pile_size_mm": { "width_mm": 150, "length_m": 6.0, "printed_as": "0.15x0.15x6.00 ม." },
+      "pile_size_mm": {
+        "width_mm": 150,
+        "length_m": 6.0,
+        "printed_as": "0.15x0.15x6.00 ม."
+      },
       "pile_capacity_ton": 1.7,
-      "main_bar": { "count": 5, "dia_mm": 12, "type": "RB", "note": "bottom mesh, both directions", "printed_as": "5ø12มม" },
+      "main_bar": {
+        "count": 5,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "bottom mesh, both directions",
+        "printed_as": "5ø12มม"
+      },
       "spec_source": "S-05",
       "spec_confidence_score": 0.85
     }
   },
   "elements": [
-    { "element_id": "C1", "element_type": "column", "count": 6, "grid_refs": ["A1", "A2", "B1", "B2", "C1", "C2"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F3", "element_type": "footing", "count": 4, "grid_refs": ["A1", "A2", "C1", "C2"], "confidence_score": 0.9, "confidence_flags": [] },
-    { "element_id": "F4", "element_type": "footing", "count": 2, "grid_refs": ["B1", "B2"], "confidence_score": 0.9, "confidence_flags": [] }
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "C1",
+        "C2"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F4",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "B1",
+        "B2"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
   ]
 }

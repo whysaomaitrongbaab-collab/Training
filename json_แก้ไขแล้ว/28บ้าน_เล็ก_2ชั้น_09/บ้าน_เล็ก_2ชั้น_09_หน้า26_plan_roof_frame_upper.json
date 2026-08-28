@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-08",
   "sheet_name": "แปลนโครงหลังคา (ชั้นบน)",
-  "pattern": "etc_plan",
+  "pattern": "roof_frame_plan",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_09/บ้าน_เล็ก_2ชั้น_09_หน้า26.png",
   "grid_source": "บ้าน_เล็ก_2ชั้น_09_หน้า00_gridline.json",
   "confidence_score": 0.8,
@@ -12,17 +12,167 @@
   "warnings": [
     "'(ชั้นบน)' names the UPPER/main roof plane, covering the full building footprint (A' to C', 1.00m overhang each end) — the priority roof sheet of this house's two S-07/S-08 roof plans. Structural roof framing, extracted as pattern 'plan' per the op04 roof_plan-vs-plan rule.",
     "Rafters here (C-150x50x20x3.2mm, 6.76 kg/m) are a visibly heavier section than the lower/porch roof's rafters on S-07 (C-75x45x15x2.3mm, 3.25 kg/m) — consistent with this being the primary roof structure.",
-    "Only the grid-anchored purlin rows (A', A, B, C, C') are recorded as atomic elements. Counted and measured 2026-08-26: this roof actually carries about NINE purlin rows at an even ~1.00m pitch — pixel-scanning the channel outlines (157.4 px/m) gives centrelines near -0.98, -0.37, 0.63, 1.63, 2.63, 3.61, 4.63 plus the rows at C (5.40) and C' (6.40). Four of them (-0.37, 0.63, 1.63, 2.63) land on no grid line and none is individually dimensioned. Makham's call 2026-08-26 was to LEAVE IT: they stay described by the '@ไม่เกิน 1.00ม.' spacing rather than getting four invented dummy rows, which the ' / \" prime scheme could not name cleanly anyway. Note this differs from S-07/หน้า25, where the lower roof has only four rows and the single unanchored one was given a dummy line (B' at 4.60) — that was proportionate there and is not here. So the element count on this file UNDERSTATES the purlin quantity by design; use spacing_mm, not the row count, for a takeoff."
+    "Only the grid-anchored purlin rows (A', A, B, C, C') are recorded as atomic elements. Counted and measured 2026-08-26: this roof actually carries about NINE purlin rows at an even ~1.00m pitch — pixel-scanning the channel outlines (157.4 px/m) gives centrelines near -0.98, -0.37, 0.63, 1.63, 2.63, 3.61, 4.63 plus the rows at C (5.40) and C' (6.40). Four of them (-0.37, 0.63, 1.63, 2.63) land on no grid line and none is individually dimensioned. Makham's call 2026-08-26 was to LEAVE IT: they stay described by the '@ไม่เกิน 1.00ม.' spacing rather than getting four invented dummy rows, which the ' / \" prime scheme could not name cleanly anyway. Note this differs from S-07/หน้า25, where the lower roof has only four rows and the single unanchored one was given a dummy line (B' at 4.60) — that was proportionate there and is not here. So the element count on this file UNDERSTATES the purlin quantity by design; use spacing_mm, not the row count, for a takeoff.",
+    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 8 roof-framing elements. Nothing else in this file changed."
   ],
   "elements": [
-    { "element_id": "จันทัน", "element_type": "rafter", "grid_ref_start": "A'1", "grid_ref_end": "C'1", "span_length_m": 7.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก [-150x50x20x3.2 มม. (นน. 6.76 กก./ม.)" }, "material": "steel", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "จันทัน", "element_type": "rafter", "grid_ref_start": "A'2", "grid_ref_end": "C'2", "span_length_m": 7.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก [-150x50x20x3.2 มม. (นน. 6.76 กก./ม.)" }, "material": "steel", "confidence_score": 0.8, "confidence_flags": [] },
-    { "element_id": "จันทัน", "element_type": "rafter", "grid_ref_start": "A'3", "grid_ref_end": "C'3", "span_length_m": 7.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก [-150x50x20x3.2 มม. (นน. 6.76 กก./ม.)" }, "material": "steel", "confidence_score": 0.8, "confidence_flags": [] },
-
-    { "element_id": "แป (ปิดปลาย)", "element_type": "purlin", "grid_ref_start": "A'1", "grid_ref_end": "A'3", "span_length_m": 5.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tw_mm": 2.3, "printed_as": "แปเหล็ก [-75x45x15x2.3 มม. @ไม่เกิน 1.00 ม." }, "material": "steel", "note": "north eave end-closure purlin", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "แป", "element_type": "purlin", "grid_ref_start": "A1", "grid_ref_end": "A3", "span_length_m": 5.40, "span_source": "grid_table", "spacing_mm": 1000, "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tw_mm": 2.3, "printed_as": "แปเหล็ก [-75x45x15x2.3 มม. @ไม่เกิน 1.00 ม." }, "material": "steel", "note": "3 further intermediate purlins exist in the 3.60m A-B gap per the <=1.00m spacing rule, unresolved grid positions", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "แป", "element_type": "purlin", "grid_ref_start": "B1", "grid_ref_end": "B3", "span_length_m": 5.40, "span_source": "grid_table", "spacing_mm": 1000, "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tw_mm": 2.3, "printed_as": "แปเหล็ก [-75x45x15x2.3 มม. @ไม่เกิน 1.00 ม." }, "material": "steel", "note": "one further intermediate purlin exists in the 1.80m B-C gap per the <=1.00m spacing rule, unresolved grid position", "confidence_score": 0.7, "confidence_flags": [] },
-    { "element_id": "แป", "element_type": "purlin", "grid_ref_start": "C1", "grid_ref_end": "C3", "span_length_m": 5.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tw_mm": 2.3, "printed_as": "แปเหล็ก [-75x45x15x2.3 มม." }, "material": "steel", "confidence_score": 0.75, "confidence_flags": [] },
-    { "element_id": "แป (ปิดปลาย)", "element_type": "purlin", "grid_ref_start": "C'1", "grid_ref_end": "C'3", "span_length_m": 5.40, "span_source": "grid_table", "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tw_mm": 2.3, "printed_as": "ปิดปลายแปเหล็ก [-75x45x15x2.3 มม. (นน. 3.25 กก./ม.)" }, "material": "steel", "note": "south eave end-closure purlin", "confidence_score": 0.75, "confidence_flags": [] }
+    {
+      "element_id": "จันทัน",
+      "element_type": "rafter",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "C'1",
+      "span_length_m": 7.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "จันทันเหล็ก [-150x50x20x3.2 มม. (นน. 6.76 กก./ม.)"
+      },
+      "material": "steel",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทัน",
+      "element_type": "rafter",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "C'2",
+      "span_length_m": 7.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "จันทันเหล็ก [-150x50x20x3.2 มม. (นน. 6.76 กก./ม.)"
+      },
+      "material": "steel",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "จันทัน",
+      "element_type": "rafter",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "C'3",
+      "span_length_m": 7.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "จันทันเหล็ก [-150x50x20x3.2 มม. (นน. 6.76 กก./ม.)"
+      },
+      "material": "steel",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แป (ปิดปลาย)",
+      "element_type": "purlin",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A'3",
+      "span_length_m": 5.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "tw_mm": 2.3,
+        "printed_as": "แปเหล็ก [-75x45x15x2.3 มม. @ไม่เกิน 1.00 ม."
+      },
+      "material": "steel",
+      "note": "north eave end-closure purlin",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แป",
+      "element_type": "purlin",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A3",
+      "span_length_m": 5.4,
+      "span_source": "grid_table",
+      "spacing_mm": 1000,
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "tw_mm": 2.3,
+        "printed_as": "แปเหล็ก [-75x45x15x2.3 มม. @ไม่เกิน 1.00 ม."
+      },
+      "material": "steel",
+      "note": "3 further intermediate purlins exist in the 3.60m A-B gap per the <=1.00m spacing rule, unresolved grid positions",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แป",
+      "element_type": "purlin",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B3",
+      "span_length_m": 5.4,
+      "span_source": "grid_table",
+      "spacing_mm": 1000,
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "tw_mm": 2.3,
+        "printed_as": "แปเหล็ก [-75x45x15x2.3 มม. @ไม่เกิน 1.00 ม."
+      },
+      "material": "steel",
+      "note": "one further intermediate purlin exists in the 1.80m B-C gap per the <=1.00m spacing rule, unresolved grid position",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แป",
+      "element_type": "purlin",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C3",
+      "span_length_m": 5.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "tw_mm": 2.3,
+        "printed_as": "แปเหล็ก [-75x45x15x2.3 มม."
+      },
+      "material": "steel",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "แป (ปิดปลาย)",
+      "element_type": "purlin",
+      "grid_ref_start": "C'1",
+      "grid_ref_end": "C'3",
+      "span_length_m": 5.4,
+      "span_source": "grid_table",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "tw_mm": 2.3,
+        "printed_as": "ปิดปลายแปเหล็ก [-75x45x15x2.3 มม. (นน. 3.25 กก./ม.)"
+      },
+      "material": "steel",
+      "note": "south eave end-closure purlin",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
   ]
 }

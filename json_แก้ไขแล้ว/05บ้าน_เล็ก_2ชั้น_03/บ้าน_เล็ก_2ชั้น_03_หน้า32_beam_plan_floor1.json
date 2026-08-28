@@ -4,7 +4,7 @@
   "discipline": "structural",
   "sheet_code": "S-04",
   "sheet_name": "แปลนคาน พื้นชั้น 1",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
   "source_image": "image/บ้าน_เล็ก_2ชั้น_03/บ้าน_เล็ก_2ชั้น_03_หน้า32.png",
   "view_title": "แปลนคาน พื้นชั้น 1 1:100",
@@ -819,6 +819,7 @@
     "The 0.60m/0.50m overhangs beyond grid1/grid4 at the top dimension chain (gridF row) appear to be eave/slab-edge dimensions rather than a beam-bearing dummy grid, since no beam is drawn beyond those points at the F line itself -- unlike the southern extension which does show real beams. Flagged as a lower-priority discrepancy vs. the southern extension.",
     "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
     "NORMALIZED_2026-08-02: a 'tie'/'tie_bar' field was renamed to 'stirrup' - schema section 0.6 makes 'stirrup' the only spelling for transverse reinforcement. Its contents were not changed.",
-    "NORMALIZED_2026-08-02(r5): slab_markers[]/reference_markers[] arrays folded into elements[] - schema section 10 already says SO/SI/SX/ST markers are element_type 'slab' cross-referencing like beams, and houses 02-04 keep them in elements[]; a separate array was a house-05-only shape. mark -> element_id, nothing dropped."
+    "NORMALIZED_2026-08-02(r5): slab_markers[]/reference_markers[] arrays folded into elements[] - schema section 10 already says SO/SI/SX/ST markers are element_type 'slab' cross-referencing like beams, and houses 02-04 keep them in elements[]; a separate array was a house-05-only shape. mark -> element_id, nothing dropped.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 40 beam-family elements. Nothing else in this file changed."
   ]
 }

@@ -5,7 +5,7 @@
   "discipline": "structural",
   "sheet_code": "S-05",
   "sheet_name": "แปลนคานระดับอะเส, ขยายรอยต่อเสา CS กับคาน คสล",
-  "pattern": "etc_plan",
+  "pattern": "beam_plan",
   "building": null,
   "schema_generation": "primary_rawjson_schema.md (2026-07-25 revision, §6a steel_section + §11a multi-building)",
   "source_image": "image/บ้าน_เล็ก_1ชั้น_06/บ้าน_เล็ก_1ชั้น_06_หน้า23.png",
@@ -174,6 +174,7 @@
     "B6X stub beam (west of grid 1) and the earlier-flagged small room appendage on S-04 are STILL NOT fully resolved by this sheet — the 1.11/1.50 offsets here don't obviously connect to the ramp geometry (A-13/A-14) or to the north/south C0 footings either. This open question is carried forward, not fabricated an answer for.",
     "The C0 footings north of A / south of D remain UNEXPLAINED after S-02 through S-05 — no beam on this ring-beam sheet reaches the A' or D' dummy grid lines. Will check S-06 (roof frame) and S-07 (fascia detail) next.",
     "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit.",
-    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact."
+    "NORMALIZED_2026-08-02: removed the redundant word 'grid'/'dummy' in front of a grid id inside grid_ref values (สิ่งที่ต้องแก้ item 5: write '2', not 'grid2'). Only the redundant label word was removed - any genuinely descriptive wording in the value was left intact.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 13 beam-family elements. Nothing else in this file changed."
   ]
 }
