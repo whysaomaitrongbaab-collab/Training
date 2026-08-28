@@ -102,6 +102,17 @@
           "printed_dim_is_outer_face_not_centreline"
         ],
         "note": "Narrow service strip east of grid 4 carrying the B1 beams and the (S) slab panels beside the rear terrace."
+      },
+      {
+        "id": "4''",
+        "pos_m": 10.5,
+        "type": "dummy",
+        "source": "S-01 หน้า19 (แปลนชั้นล่าง, printed 1.80 right of grid 4 - outer edge of the GS carport slab, the right-most line on the plan)",
+        "confidence_score": 0.75,
+        "confidence_flags": [
+          "slab_edge_line_no_beam_or_column_on_it"
+        ],
+        "note": "Right-most x line on the sheet: the outer edge of the GS slab-on-grade carport that projects 1.80 m east of grid 4, running from ง'' down to 0.30 m past ง. Printed 1.80 from grid 4, so pos_m = 8.70 + 1.80 = 10.50. This is a FLOOR (slab) boundary recorded so the GS panel has a real right-hand edge; it carries no beam mark and no column at its corners, so consumers must not treat it as a beam/column line."
       }
     ],
     "y_lines": [
@@ -192,7 +203,8 @@
   },
   "confidence_score": 0.85,
   "confidence_flags": [
-    "four_dummy_x_lines_and_three_dummy_y_lines_added_by_the_beam_endpoint_rule"
+    "seven_dummy_x_lines_and_four_dummy_y_lines_added_by_the_beam_endpoint_rule",
+    "x_line_4''_is_a_slab_edge_not_a_beam_line"
   ],
   "warnings": [
     "PRINTED PRIME LINES BREAK §4's PRIME-ORDERING RULE, AND THE PRINTED LABEL WINS. This sheet set prints two of its own primed grid bubbles, ง' (-2.80) and ค' (3.20), drawn identically to the plain ง/ค/ข/ก bubbles. §4 says a prime is appended to the main grid ABOVE the line, and §4's ordering rule says the first line found scanning top-to-bottom takes one prime; the sheet obeys neither (ค' sits 0.80 ABOVE ค, so §4 would have called it ง'). §0.3 and §4's own exception forbid renaming a label the drawing supplies, so both are recorded verbatim as type 'named'. THE RULE THIS FILE USES INSTEAD, applied consistently: every dummy this extraction ADDS is named after the plain letter of its group and given the next prime count not already taken by a printed bubble, assigned in top-to-bottom order among the ADDED lines only. That gives ง'' (-3.80) → ง''' (-0.80) → ง'''' (2.00), which IS monotonic top-to-bottom among the added lines; only the printed ง' interleaves at -2.80. Prime COUNT therefore means 'how many primes were already taken', not absolute position. Do not 'fix' this by renumbering; the printed bubbles are the ground truth.",
@@ -200,7 +212,7 @@
     "DIMENSION CONVENTION IS MIXED ON THIS SET, AND IT MATTERS. The grid-bubble-to-grid-bubble dimensions (3.50 / 2.20 / 3.00 on x; 2.00 / 0.80 / 4.00 / 3.00 / 1.60 on y) are centreline dimensions and close exactly against the printed overall 8.70 and 11.40. Every LOCAL feature dimension on the same sheets (0.80, 0.65, 0.60, 0.30, 1.10, 3.90) scales to a member FACE, not a centreline - repeatedly about 0.10 m, i.e. half a 0.20 m beam, away from the line it appears to dimension. Every dummy line derived from a local dimension is flagged individually above. Where the two readings disagreed, the printed number was kept and the discrepancy recorded, per §4's rule against guessing a pos_m.",
     "BOTH DIMENSION CHAINS CLOSE. x: 3.50 + 2.20 + 3.00 = 8.70, matching the printed overall on all three structural sheets. y: 2.00 + 0.80 + 4.00 + 3.00 + 1.60 = 11.40, matching the printed overall. The 0.80 printed beside ค'/ค is an auxiliary offset dimension drawn on its own short witness line, NOT a member of the main chain - adding it would give 12.20 and was the first wrong reading taken on this house.",
     "NO DRAWING BREAK LINES ANYWHERE IN THIS SET. Checked explicitly at high magnification on S-01, S-01/1 and S-02 per the house-06 lesson: the building is 8.70 x 11.40 m, fits on the paper at 1:100 uninterrupted, and no double line with a zigzag symbol appears on any structural sheet. The x axis really is 4 lines and the y axis really is 6 printed lines.",
-    "THE CARPORT SLAB EAST OF GRID 4 GETS NO DUMMY GRID. The GS slab drawn 1.80 m beyond grid 4 on S-01 (แปลนชั้นล่าง) is bounded by a thin slab edge with no beam mark and no column at its corners, so per §4's explicit slab-edge exception it is a slab-only edge, not a structural line. Same for the 0.30-wide (S) strip just west of grid 2 between ง' and ง''', and the terrace edge 0.30 east of grid 2 below ข.",
+    "THE CARPORT SLAB EDGE EAST OF GRID 4 IS RECORDED AS 4'' (10.50). The GS slab drawn 1.80 m beyond grid 4 on S-01 (แปลนชั้นล่าง) is the right-most line on the plan and bounds a FLOOR (slab) panel, so it is carried in the master as dummy x line 4'' at 8.70 + 1.80 = 10.50. It is a SLAB EDGE, not a structural line: no beam mark, no column at its corners - flagged slab_edge_line_no_beam_or_column_on_it on the line itself. An earlier revision of this file dropped it under §4's slab-edge exception, which left the GS panel with no right-hand boundary on a floor plan; that omission is corrected here. The remaining slab-only edges are still omitted: the 0.30-wide (S) strip just west of grid 2 between ง' and ง''', and the terrace edge 0.30 east of grid 2 below ข.",
     "SINGLE BUILDING. Unlike บ้าน_ใหญ่_1ชั้น_01 this set covers one building only; §11a does not apply and there is no second grid master."
   ]
 }
