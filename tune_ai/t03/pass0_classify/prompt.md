@@ -9,9 +9,9 @@ Does **not** use `../_common.md` — this pass classifies, it does not extract.
 Two things make this the highest-stakes prompt in the pipeline:
 1. Pass 1 routes purely on what this pass says. A page labelled wrong is extracted by the wrong
    subtask with the wrong prompt, or lands in Pass 3 and never reaches the BOQ at all.
-2. It must emit the **destination subtask**, not one of the 16 `pattern` values in
+2. It must emit the **destination subtask**, not one of the 19 `pattern` values in
    `primary_rawjson_schema.md` §1 — Pass 1 has to route a plan page to one of seven folders and
-   `pattern: "plan"` alone cannot tell it which.
+   `pattern: "beam_plan"` alone cannot tell it which (the plan family names the sheet, not the extraction).
 
 ---
 

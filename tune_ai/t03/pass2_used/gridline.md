@@ -25,7 +25,7 @@ Output **one JSON object and nothing else**.
   "discipline": "structural",
   "sheet_code": null,
   "sheet_name": null,
-  "pattern": "gridline",
+  "pattern": "grid_master",
   "source_pages": ["image/<house>/<house>_หน้า15.png", "image/<house>/<house>_หน้า20.png"],
   "grid": {
     "x_lines": [

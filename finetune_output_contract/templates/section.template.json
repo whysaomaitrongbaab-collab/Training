@@ -3,10 +3,10 @@
   "doc_page": 19,
   "discipline": "structural",
   "sheet_code": "S-04",
-  "sheet_name": "ขยายคาน B1,B2 และขยายเสา C1",
+  "sheet_name": "ขยายคาน B1,B2,B4 · ขยายเสา C1 · ขยายฐานราก F1,F2 · คานเหล็ก GB1",
   "pattern": "section",
   "source_image": "image/<house>/<house>_หน้า21.png",
-  "view_title": "ขยายคาน (beam sections)",
+  "view_title": "ขยายคาน/เสา/ฐานราก และหน้าตัดเหล็กรูปพรรณ (member sections)",
   "elements": [
     {
       "element_id": "B2",
@@ -14,10 +14,23 @@
       "width_mm": 200,
       "height_mm": 400,
       "main_bar": {
-        "top": { "count": 2, "dia_mm": 12, "type": "RB" },
-        "bottom": { "count": 3, "dia_mm": 12, "type": "RB", "note": "2 เส้นเต็มความยาว + 1 เส้นหยุดที่ L/8" }
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "2 เส้นเต็มความยาว + 1 เส้นหยุดที่ L/8"
+        }
       },
-      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 150 },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
       "additional_bars": [],
       "concrete_grade": "fc210",
       "steel_grade": "SR24",
@@ -25,16 +38,114 @@
       "confidence_flags": []
     },
     {
+      "element_id": "B4",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "additional_bars": [],
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
       "element_id": "C1",
       "element_type": "column",
       "width_mm": 200,
       "height_mm": 200,
-      "main_bar": { "count": 4, "dia_mm": 12, "type": "RB", "note": "เหล็กเสริมหลักรอบเสา 4 มุม — เสาใช้ count เดียว ไม่แยก top/bottom" },
-      "stirrup": { "dia_mm": 6, "type": "RB", "spacing_mm": 200 },
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "เหล็กเสริมหลักรอบเสา 4 มุม — เสาใช้ count เดียว ไม่แยก top/bottom"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200
+      },
       "additional_bars": [],
       "concrete_grade": "fc210",
       "steel_grade": "SR24",
       "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "width_mm": 1000,
+      "height_mm": 300,
+      "main_bar": {
+        "count": 12,
+        "dia_mm": 9,
+        "type": "RB",
+        "count_printed_as": "6+6",
+        "note": "6 เส้นต่อทิศทาง วางตาราง 2 ทาง — mat ใช้ count เดียว ไม่แยก top/bottom"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "1-Ø9มม. รัดรอบขอบฐานราก — จำนวนตายตัว ห้ามใส่ spacing_mm"
+      },
+      "pile_count": 5,
+      "concrete_grade": "fc210",
+      "steel_grade": "SR24",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "width_mm": 1000,
+      "depth_mm": 1400,
+      "height_mm": 350,
+      "main_bar": {
+        "count": 16,
+        "dia_mm": 12,
+        "type": "DB",
+        "count_printed_as": "7+9"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB"
+      },
+      "concrete_grade": "fc210",
+      "steel_grade": "SD40",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GB1",
+      "element_type": "beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "WF",
+        "d_mm": 400,
+        "b_mm": 200,
+        "tw_mm": 8,
+        "tf_mm": 13,
+        "printed_as": "WF 400x200x8x13 มม."
+      },
+      "confidence_score": 0.9,
       "confidence_flags": []
     }
   ],

@@ -17,9 +17,15 @@ import json, sys, os, re, glob, collections
 # carried it. Kept readable here on purpose: a stray old file should fail on its real problem,
 # not on an unrecognised pattern. PLAN_FAMILY mirrors Constistant's PLAN_PATTERNS.
 PLAN_FAMILY = {'beam_plan', 'footing_plan', 'roof_frame_plan', 'etc_plan', 'plan'}
-PATTERNS = PLAN_FAMILY | {'section', 'schedule', 'notes', 'index', 'material_list', 'site_plan',
-                          'side_profile', 'gridline', 'title', 'symbol', 'roof_plan', 'misc',
-                          'bbs_schedule', 'soil_boring_log', 'unknown'}
+# 'gridline' renamed to 'grid_master' 2026-08-28 (section 1) -- an audit of all 93 files found
+# every one is a หน้า00 master, so the old name's "per-page companion" never existed.
+# Old spelling kept readable for the same reason as 'plan': a stray file should fail on its
+# real problem, not on an unrecognised pattern.
+GRID_FAMILY = {'grid_master', 'gridline'}
+PATTERNS = PLAN_FAMILY | GRID_FAMILY | {'section', 'schedule', 'notes', 'index', 'material_list',
+                                        'site_plan', 'side_profile', 'title', 'symbol',
+                                        'roof_plan', 'misc', 'bbs_schedule', 'soil_boring_log',
+                                        'unknown'}
 WRAPPER = ['png', 'doc_page', 'discipline', 'sheet_code', 'sheet_name', 'pattern',
            'confidence_score', 'confidence_flags', 'warnings']
 # section 2, pinned 2026-08-21. 'architecture' is the wrong spelling of 'architectural'
@@ -99,7 +105,7 @@ def check_house(house_dir):
         if doc.get('discipline') not in DISCIPLINES:
             fails['discipline vocabulary'].append(f'{name}: {doc.get("discipline")!r}')
         # section 2: source_image on every file; the grid master uses source_pages instead
-        img_key = 'source_pages' if doc.get('pattern') == 'gridline' else 'source_image'
+        img_key = 'source_pages' if doc.get('pattern') in GRID_FAMILY else 'source_image'
         if img_key not in doc:
             fails['wrapper fields'].append(f'{name}: missing {img_key}')
         if 'phase_note' in doc:
@@ -107,14 +113,18 @@ def check_house(house_dir):
         for k in doc:
             if k in ELEMENT_KIND_ARRAYS and isinstance(doc[k], list) and doc[k]:
                 fails['element-kind array'].append(f'{name}: {k}')
-        if doc.get('pattern') == 'gridline' and 'x_lines' in doc:
+        if doc.get('pattern') in GRID_FAMILY and 'x_lines' in doc:
             fails['grid not nested'].append(name)
-        if doc.get('pattern') == 'gridline' and 'หน้า00' in name:
+        if doc.get('pattern') in GRID_FAMILY and 'หน้า00' in name:
             miss = [a for a in GRID_ARRAYS if a not in (doc.get('grid') or {})]
             if miss:
-                # needs the source sheets re-read; an empty array would be a false
-                # "read it, found nothing" claim (section 4), so this is never auto-filled
-                fails['grid master missing 2026-08-21 arrays'].append(f'{name}: {",".join(miss)}')
+                # NOTE, not FAIL (downgraded 2026-08-28). Section 4 says an ABSENT array means
+                # "this house has not been dimension-swept yet", while an EMPTY array would be a
+                # false "I read every sheet and found nothing" claim -- so the only way to clear a
+                # hard FAIL here was to write that lie. A gate you cannot pass honestly is a gate
+                # everyone learns to ignore. It stays visible; it no longer blocks.
+                soft.append(('grid master not dimension-swept yet (section 4 -- absent != empty)',
+                             f'{name}: {",".join(miss)}'))
         if doc.get('pattern') == 'notes':
             bad = sorted(k for k in doc if k in NOTES_ONEOFF)
             if bad:
@@ -194,8 +204,9 @@ def check_house(house_dir):
                 distinct = {(x.get('confidence_score'), x.get('note'), x.get('offset_note'),
                              tuple(x.get('confidence_flags') or [])) for x in g}
                 if len(distinct) == len(g):
-                    soft.append(f'{os.path.basename(house_dir)[:2]} {name}: {eid} x{len(g)} '
-                                f'(kept apart - differing confidence/note, allowed by section 0.10)')
+                    soft.append(('allowed non-merges (section 0.10 exception)',
+                                 f'{os.path.basename(house_dir)[:2]} {name}: {eid} x{len(g)} '
+                                 f'(kept apart - differing confidence/note)'))
                 else:
                     fails['footing not merged'].append(f'{name}: {eid} x{len(g)}')
     return fails, soft
@@ -234,8 +245,7 @@ def main(argv):
     print(f'checked {len(targets)} house folder(s)\n')
     order = ['parse', 'wrapper fields', 'pattern in 19', 'discipline vocabulary',
              'phase_note left', 'element-kind array',
-             'grid not nested', 'grid master missing 2026-08-21 arrays',
-             'notes one-off container key', 'structural roof framing must be pattern roof_frame_plan',
+             'grid not nested', 'notes one-off container key', 'structural roof framing must be pattern roof_frame_plan',
              'rebar is a string', 'stirrup misnamed',
              'rebar/steel as array (use bar_layers/spans_m)', 'numeric field wrong type',
              'grid_ref is an array', 'element missing element_id', 'element missing element_type',
@@ -249,12 +259,15 @@ def main(argv):
         if len(v) > 5:
             print(f'              ... and {len(v) - 5} more')
 
-    if soft_all:
-        print(f'\n  NOTE  {len(soft_all)} allowed non-merges (section 0.10 exception):')
-        for line in soft_all[:8]:
+    by_kind = collections.defaultdict(list)
+    for kind, line in soft_all:
+        by_kind[kind].append(line)
+    for kind, lines in by_kind.items():
+        print(f'\n  NOTE  {len(lines)} {kind}:')
+        for line in lines[:8]:
             print(f'          {line}')
-        if len(soft_all) > 8:
-            print(f'          ... and {len(soft_all) - 8} more')
+        if len(lines) > 8:
+            print(f'          ... and {len(lines) - 8} more')
 
     bad = sum(len(v) for v in total.values())
     print(f'\n  {"ALL CHECKS PASS" if bad == 0 else str(bad) + " PROBLEM(S) FOUND"}')

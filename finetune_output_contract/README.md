@@ -22,14 +22,14 @@ Import path: **นำเข้าไฟล์สกัดข้อมูล (JSO
 Only **9 of the 19 patterns** are adapted: the whole plan family (`beam_plan`,
 `footing_plan`, `roof_frame_plan`, `etc_plan` — split from the single `plan` value
 2026-08-28, schema §1; the dead `plan` spelling is still accepted defensively), plus
-`section`, `schedule`, `notes`, `gridline`, `material_list`. The other 10 (`index`,
+`section`, `schedule`, `notes`, `grid_master`, `material_list`. The other 10 (`index`,
 `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`,
 `soil_boring_log`, `unknown`) are stored verbatim in the raw-extraction store with a
 warning — they never reach a number the user sees.
 
 ## Field flow per pattern
 
-### `gridline` (one master file per building, `หน้า00`)
+### `grid_master` (one file per building, `หน้า00`) — renamed from `gridline` 2026-08-28
 
 | field | Constistant |
 |---|---|
@@ -68,12 +68,14 @@ Per element, the adapter whitelist (`SPEC_FIELDS`) passes exactly:
 | field | Constistant |
 |---|---|
 | `element_id` | ✅ join key |
-| `element_type`, `width_mm`, `height_mm`, `level` | ✅ consumed |
-| `main_bar{}` (beam: `top`/`middle`/`bottom`; column: single `count` — never top/bottom) | ✅ consumed |
+| `element_type`, `width_mm`, `height_mm`, `depth_mm`, `thickness_mm`, `level`, `pile_count` | ✅ consumed |
+| `steel_section{}`, `material`, member `spacing_mm` (§6a) | ✅ consumed (added 2026-08-28 — a steel-framed house used to import with no member specs at all) |
+| a §8 **multi-level** schedule (same mark, one row per `level`) | ⚠️ **kept, not resolved.** Every row is preserved in `level_variants[]` and flagged `spec_multi_level_not_resolved`; the pipeline still uses the **first** row for all floors. Matching a free-text Thai level (`"พื้นชั้น 1, ตอม่อ, ฐานราก"`) to a floor is not automated — the warning names every level found and tells the user to eyeball it |
+| `main_bar{}` (beam: `top`/`middle`/`bottom`; column and footing mat: single `count` — never top/bottom) | ✅ consumed |
 | `stirrup{}` → `dia_mm`, `type`, `spacing_mm`, `spacing_dense_mm`, `dense_zone_mm` | ✅ consumed (the last two are optional Constistant extensions for variable spacing — emit when the drawing prints a dense end zone) |
 | `additional_bars[]`, `concrete_grade`, `steel_grade` | ✅ consumed |
 | `confidence_score`, `confidence_flags[]` | ✅ consumed (per-spec) |
-| `thickness_mm`, `depth_mm`, `steel_section{}`, `material`, `spacing_mm` (member spacing), `bar_layers[]`, `spans_m[]`, `*_printed_as` | ❌ **dropped by SPEC_FIELDS today** — keep emitting per schema; see Known gaps |
+| `bar_layers[]`, `spans_m[]`, `*_printed_as` | ❌ still dropped by `SPEC_FIELDS` — keep emitting per schema |
 
 ### `notes`
 
@@ -87,9 +89,25 @@ Per element, the adapter whitelist (`SPEC_FIELDS`) passes exactly:
 
 | field | Constistant |
 |---|---|
-| `items[]` (flat, top-level) → `item_no`, `description`, `unit`, `quantity` | ✅ consumed → `boqSeed` |
-| `categories[].items[]` (the shape the schema §0.1 mandates and every real house uses) | ❌ **NOT read — known adapter gap.** Until fixed, every real house's BOQ seed imports empty. See Known gaps |
+| `categories[].items[]` (the shape schema §0.1 mandates and every real house uses) | ✅ consumed → `boqSeed`, with the category name kept on each row (fixed 2026-08-28 — before that the seed imported empty for every schema-compliant house) |
+| `items[]` (flat, top-level) | ✅ also consumed, for a file that has no categories |
 | price columns (`material_unit_price` …), `confidence_*` per item | ⚠️ stored raw only |
+
+## Fixed 2026-08-28 — no longer gaps
+
+Three of the gaps this folder was created to track are closed on the Constistant side.
+Listed so nobody re-reports them.
+
+- **`material_list` `categories[].items[]`** — now read (with the category kept per
+  row). Before this, `boqSeed` imported empty for every schema-compliant house.
+- **`steel_section{}` / `material` / member `spacing_mm` / `depth_mm` / `thickness_mm` /
+  `pile_count`** — now in `SPEC_FIELDS`. A steel-framed house used to import with no
+  member specs at all.
+- **§8 multi-level rows no longer vanish** — every level is preserved in
+  `level_variants[]` with a `spec_multi_level_not_resolved` flag and a warning that
+  names each level. **Not fully solved:** the pipeline still applies the first row to
+  every floor, because matching a free-text Thai level string to a floor is a guess.
+  The warning now says so instead of reporting "duplicate mark".
 
 ## Known gaps — data the model emits correctly that Constistant does not see yet
 
@@ -97,16 +115,16 @@ These are **Constistant-side fixes**, not reasons to change the model's output. 
 model keeps emitting per `primary_rawjson_schema.md`; this list is the work queue for
 the pipeline side (the reason this folder exists).
 
-1. **`material_list` container mismatch** — schema mandates `categories[].items[]`;
-   `adaptRawExtraction()` reads only flat `f.items[]`. Result: `boqSeed` is empty for
-   every schema-compliant house. Fix: adapter reads both.
-2. **`steel_section{}` / `material` / member `spacing_mm` not in `SPEC_FIELDS`** — a
-   steel-framed house (e.g. `บ้าน_ใหญ่_1ชั้น_01`) imports with no member specs at all.
-   Schema §7 says these join; the whitelist predates §6a.
-3. **Slab quantities are always 0** — `computeBOQ()` needs `floor_area_sqm`, but no
+1. **Slab quantities are always 0** — `computeBOQ()` needs `floor_area_sqm`, but no
    raw-JSON field produces it (slab markers `SO`/`SI`/`ST` carry no boundary). Needs a
    decision: either the pipeline derives area from grid bays, or the schema grows a
-   field. Today the import warns and the BOQ shows ฿0.00 rows.
+   field. Today the import warns and the BOQ shows ฿0.00 rows. **This is why `SO`/`SI`/
+   `ST` show as "no spec" when you import `examples/` — expected, not a broken file.**
+2. **A non-square footing still imports as square** — `depth_mm` now reaches the spec
+   (§6b), but `computeBOQ()`/`computeBBS()` use `width_mm` for both plan sides and only
+   flag the mismatch (`footing_cap_not_square_width_used_for_both_sides`).
+3. **A §8 multi-level spec is not resolved per floor** — see the Fixed list above; the
+   data is all there now, the floor↔level match is not.
 4. **10 patterns stored raw only** — most importantly `bbs_schedule` and
    `soil_boring_log` (Constistant's Foundation Design reads soil data on the live-AI
    path but not on this import path), and `side_profile` (only source of Z levels).
@@ -115,9 +133,9 @@ the pipeline side (the reason this folder exists).
 6. **Plan-file `specs{}` unread** — by design (specs come from section/schedule), but
    it means a spec that exists ONLY on a plan sheet must still be duplicated into that
    sheet's section/schedule extraction or it never reaches `BeamLibraryEntry`.
-7. **`thickness_mm`/`depth_mm` dropped** — a slab or footing detailed with thickness
-   instead of width×height loses its dimension (the pile-cap field miss fixed
-   2026-08-25 was this class of bug).
+7. **`bar_layers[]` / `spans_m[]` / `*_printed_as` dropped by `SPEC_FIELDS`** — keep
+   emitting them per schema; they are audit trail, not numbers, so nothing is wrong
+   today, but a multi-layer stair slab has no way through.
 
 ## Acceptance checklist for a model-output house
 
@@ -138,10 +156,10 @@ the pipeline side (the reason this folder exists).
 
 ```
 templates/                          minimal valid shape per pattern (placeholder values)
-  gridline.template.json
-  plan_line_element.template.json   beams — atomic segments, grid_ref_start/end
-  plan_point_element.template.json  footings/columns — merged grid_refs[] + count
-  section.template.json             beam + column spec elements
+  grid_master.template.json
+  beam_plan.template.json           beams — atomic segments, grid_ref_start/end
+  footing_plan.template.json        footings/columns — merged grid_refs[] + count
+  section.template.json             beam + column + footing (§6b) + steel (§6a) specs
   schedule.template.json            multi-level column schedule (level field)
   notes.template.json               sections[] + notes{} with the four flat aliases
   material_list.template.json       categories[].items[] incl. continuation-row rule
@@ -149,9 +167,10 @@ examples/                           real, human-corrected files from house 01 �
                                     together they form an importable mini-house
   ..._หน้า00_gridline.json           grid master (named + dummy lines, full audit trail)
   ..._หน้า18_notes.json              structural notes with flat aliases
-  ..._หน้า19_view1_footing_plan.json point elements
+  ..._หน้า19_view1_footing_plan.json point elements (pattern footing_plan)
   ..._หน้า19_view2_beam_plan.json    line elements + specs{} + heavy warnings[] history
   ..._หน้า21_view1_section.json      beam sections (the spec source that actually joins)
+  ..._หน้า22.json                    footing sections F1/F2 — the §6b flat-field shape
   ..._หน้า21_view2_schedule.json     column schedule with per-level rows
   ..._หน้า38_1.json                  material_list (categories[].items[])
 ```
@@ -161,3 +180,42 @@ correction-history `warnings[]` — that is the human-correction audit trail. Th
 is not expected to produce those meta fields (extra fields are harmless; the wrapper
 and `elements[]` shapes are what must match). The `warnings[]` array itself IS
 expected: it is where the model reports anything ambiguous, blurred, or judged.
+
+## How to check your own output against this contract
+
+Two gates, in this order. Both are real and both catch different things.
+
+**1. Format lock** — run the schema's own checker on your house folder:
+
+```
+python tools/check_format.py <house-folder>
+```
+
+Exit 0 means every rule in `primary_rawjson_schema.md` §0 holds. It checks patterns,
+wrapper fields, `discipline` spelling, rebar shapes, grid-ref notation, point-element
+merging, and that every `grid_ref` resolves against the grid master. Do not hand-audit;
+a 1000-house set cannot be eyeballed.
+
+**2. Real import** — run the files through Constistant's actual adapter, which is the
+only thing that proves a number reaches a BOQ:
+
+```js
+import { adaptRawExtraction } from './js/drawing/raw-extraction-adapter.js';
+const out = adaptRawExtraction(files);   // files = every JSON in the house, parsed
+```
+
+What to read in the result:
+
+| check | healthy | what it means when it isn't |
+|---|---|---|
+| `out.elements.length` | > 0 | no plan file was read — wrong `pattern` value |
+| `out.gridStore.x_lines` / `y_lines` | non-empty | no grid master found; every span will be `unresolved` |
+| elements with `span_source: 'unresolved'` | 0 | a `grid_ref` names a line the master doesn't have — **fix the master, don't invent the ref** |
+| `Object.keys(out.specs).length` | ≈ your marks | a mark with a position but no `section`/`schedule` entry gets no rebar and no concrete |
+| `out.extractedNotes` | four values, `null` allowed | the notes file is missing its four flat aliases |
+| `out.boqSeed.length` | > 0 if the set has BOQ pages | — |
+| `out.warnings` containing `ยังไม่มี adapter รองรับ` | only for the 10 non-adapted patterns | a plan/section/schedule page was labelled with a pattern nothing reads |
+
+Running the shipped `examples/` folder through it today gives **24 elements, 12 specs,
+grid 7/7, 0 unresolved spans**, and one warning (the C1 multi-level note). `SO`/`SI`/
+`ST` come back with no spec — that is Known gap #1, not a broken file.

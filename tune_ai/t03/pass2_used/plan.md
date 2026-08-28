@@ -34,7 +34,7 @@ Output **one JSON object and nothing else**.
   "discipline": "structural",
   "sheet_code": "S-03",
   "sheet_name": "แปลนคาน, พื้นชั้นล่าง",
-  "pattern": "plan",
+  "pattern": "beam_plan",
   "source_image": "image/<house>/<house>_หน้า20.png",
   "floor_level": "F1",
   "building": "main",
@@ -46,8 +46,33 @@ Output **one JSON object and nothing else**.
 }
 ```
 
-`pattern` is `"plan"` for all four subtasks — the subtask decides what you extract, not what the
-file is called.
+### `pattern` — pick one of four (schema §1, split 2026-08-28)
+
+`pattern` used to be `"plan"` for all four subtasks. It is now one of four values, and **you pick
+it from what the sheet actually draws** — the subtask still decides what you *extract*, this only
+names what the sheet *is*:
+
+| Your subtask | The sheet draws | `pattern` |
+|---|---|---|
+| `plan_footing` | footings / pile caps (แปลนฐานราก) | `footing_plan` |
+| `plan_beam` | beams at a floor level (คานคอดิน, คานพื้น, คานอะเส) | `beam_plan` |
+| `plan_beam` | **roof framing** (แปลนโครงหลังคา) — roof beams, purlins, trusses | `roof_frame_plan` |
+| `plan_column` | columns | `etc_plan` |
+| `plan_slab` | floor slabs / precast planks | `etc_plan` |
+
+Two traps, both of which have cost real data before:
+
+- **`plan_beam` splits into two patterns.** The subtask is the same because the extraction is the
+  same, but a roof-framing sheet is `roof_frame_plan`, not `beam_plan`. Decide it the same way you
+  decide `floor_level`: if the sheet title makes it a roof framing plan (`floor_level` is `"RF"`),
+  the pattern is `roof_frame_plan`.
+- **Never write `roof_plan`.** That value exists and means the *architectural* roof plan — ridge
+  lines, eaves, roofing material, no structural marks. A roof-framing sheet filed under it is not
+  read at all and its beams never reach a BOQ. This happened to 8 houses out of 11.
+
+`etc_plan` is the residual — "a plan sheet that is not a beam plan, not a footing plan and not a
+roof-framing plan". Use it for column and slab sheets, and never as a fallback because the sheet is
+crowded: check the three specific values first.
 
 ### `floor_level`
 

@@ -12,7 +12,7 @@ Every file puts its content in **`elements[]`**. Three documented exceptions, an
 
 | pattern | container |
 |---|---|
-| `gridline` | `grid{ x_lines[], y_lines[], z_levels[], dimension_chains[], unassigned_dimensions[] }` — **nested under `grid`**, never `x_lines` at the top level (the last three added 2026-08-21, see §4) |
+| `grid_master` | `grid{ x_lines[], y_lines[], z_levels[], dimension_chains[], unassigned_dimensions[] }` — **nested under `grid`**, never `x_lines` at the top level (the last three added 2026-08-21, see §4) |
 | `material_list` (BOQ) | `categories[].items[]` |
 | everything else | **`elements[]`** |
 
@@ -147,7 +147,7 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 | 9 | `material_list` | bill of quantities (BOQ) |
 | 10 | `site_plan` | site layout |
 | 11 | `side_profile` | non-top-down view, e.g. elevation/building section (not site/terrain info, no rebar) — formerly named `site_profile` |
-| 12 | `gridline` | grid reference file (per-page companion + `หน้า00` master) |
+| 12 | `grid_master` | the house's one grid reference file (`หน้า00`) — main + dummy grids, `z_levels[]`, and every printed dimension (§4). **Renamed from `gridline` 2026-08-28, files included**; the old name claimed to also cover a "per-page companion" file, and an audit of all 93 gridline files found **every one is a `หน้า00` master — the companion never existed.** `gridline` is a dead spelling. Note this renames the *pattern value only*: the **filename stays `<house>_หน้า00_gridline.json`**, because every other file points at it by name through `grid_source` |
 | 13 | `title` | cover page *(draft — no field-set verified yet)* |
 | 14 | `symbol` | symbol/legend page *(draft)* |
 | 15 | `roof_plan` | **architectural** roof plan only — ridge/hip lines, eave overhangs, roofing material. **A structural roof-framing plan (แปลนโครงหลังคา — beams/purlins with marks and grid refs) is `roof_frame_plan` (#3), NOT `roof_plan`** (pinned 2026-08-21, see the warning under this table) *(draft)* |
@@ -224,7 +224,7 @@ A sheet showing both is a multi-view page (§3): split it, one file each.
 
 **The 2026-08-28 split does not change this rule, it names it.** A structural roof-framing sheet was `plan` and is now `roof_frame_plan` — what must never happen, before or after the split, is calling it `roof_plan`. Nor is it `etc_plan`: a roof-framing sheet has its own specific value now, so the residual bucket is the wrong answer for a freshly read one. (A renamed legacy file may well be sitting in `etc_plan` — see the legacy note above; fixing those is the separate re-labelling pass.) The 59 existing `roof_plan` files are **not** all wrong: audit each against the two rows above before touching anything.
 
-**Automation scope:** `run_pipeline.py` auto-extracts the plan family plus `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 10 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`, `soil_boring_log`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
+**Automation scope:** `run_pipeline.py` auto-extracts the plan family plus `section` / `schedule` / `notes` / `grid_master` / `material_list`. The other 10 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`, `soil_boring_log`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
 
 ## 2. Required fields on every file (wrapper level)
 
@@ -649,19 +649,27 @@ Emit `count` and **omit `spacing_mm` entirely** — do not invent a spacing to f
 | `cap_length_m: 1.2` | `depth_mm: 1200` (omit when square) |
 | `cap_thickness_m: 0.3` | `height_mm: 300` |
 | `cap_thickness_m: {cap, cover, lean_concrete, sand_fill}` | `height_mm` = the `cap` value only; the rest keep their own fields |
-| `cap_plan_dims_m: {width_total, depth_total, sub_dims[]}` | `width_mm` / `depth_mm`; the sub-dimension chain belongs in the grid master's `dimension_chains[]` (§4) |
+| `cap_plan_dims_m: {width_total, depth_total, sub_dims[]}` | `width_mm` / `depth_mm` from the totals; the sub-dimension chain goes in `width_mm_printed_as` / `depth_mm_printed_as` (§0.7) — see the note below |
 | `main_bar_mesh: {total_bars, dia_mm, type}` | `main_bar: {count, dia_mm, type}` |
 | `stirrup_tie_count: 1` (element top level) | `stirrup: { count: 1, ... }` |
-| `pedestal_tie: {...}` on the footing | its own `element_type: "pedestal"` element, or `stirrup` if the tie is genuinely the footing's |
-| `element_type: "pile_cap_detail"` / `"spread_footing_detail"` | `"footing"` or `"pile_cap"` (§0.4) |
+| `element_type: "pile_cap_detail"` / `"spread_footing_detail"` | `"pile_cap"` or `"footing"` (§0.4) |
+
+**Where a cap's sub-dimension chain goes — corrected 2026-08-28 after reading the real data.** This rule first said the chain belonged in the grid master's `dimension_chains[]`; **that was wrong.** A real chain reads `{width_total: 0.85, sub_dims: [0.20, 0.225, 0.225, 0.20]}` — edge distance and pile spacing *inside one footing*, on no grid axis at all. `dimension_chains[]` records the building's printed grid dimensions (§4); putting per-element detail dimensions there would pollute the one file every span in the house is computed from. Keep the chain on the element, in the `*_printed_as` sibling §0.7 already provides:
+
+```json
+"width_mm": 850,
+"width_mm_printed_as": "0.20+0.225+0.225+0.20 = 0.85",
+```
+
+**`pedestal_tie` is allowed — it was wrongly listed as forbidden above until 2026-08-28.** Real data reads `{count: 1, dia_mm: 9, type: "RB", note: "1Ø9มม. รัดรอบ — wraps around pedestal"}`: a tie on the **pedestal (ตอม่อ)**, a different member from the footing it sits on. Neither correction offered before was right — splitting out an `element_type: "pedestal"` element means inventing that pedestal's width and height (the sheet gives only `pedestal_height_m`), and folding it into `stirrup` would file a pedestal bar as the footing's own edge tie, which a consumer reads as `stirrup.count`. So it stays its own named field. Do not merge it, do not delete it, and do not rename it.
 
 **Why not just bless `cap_*`:** it violates §0.5 (no metre variant of a member dimension) — so the schema would contradict itself — and it is the minority form by a wide margin: `width_mm` appears on **253** footing elements, `cap_width_m` on **2**. The `cap_thickness_m` name is worse than unused, it is actively ambiguous: **15 elements across houses 01/02/03/05/07 write it as a plain number and 4 elements in house 04 write it as an object** with four sub-thicknesses. A downstream consumer converting metres to millimetres gets `NaN` on the object form and cannot tell that it failed. One field, two incompatible types, silent corruption — that is the whole case against it.
 
 ### Context fields — keep, don't re-spell
 
-These describe what the footing sits on rather than the footing itself, are already consistent across houses, and stay exactly as they are: `pile_count`, `pile{}`, `lean_concrete{}`, `sand_bed_thickness_m`, `pedestal_height_m`, `ground_reference`, `base_fill`, `plan_layout`, `column_stub_mm`, `footing_type`. Add nothing new here without a `warnings[]` note (§0.4).
+These describe what the footing sits on rather than the footing itself, are already consistent across houses, and stay exactly as they are: `pile_count`, `pile{}`, `lean_concrete{}`, `sand_bed_thickness_m`, `pedestal_height_m`, `pedestal_tie{}`, `ground_reference`, `base_fill`, `plan_layout`, `column_stub_mm`, `footing_type`. Add nothing new here without a `warnings[]` note (§0.4).
 
-**A pedestal (ตอม่อ) is its own element, not a field.** It has its own mark, its own section and its own rebar — `element_type: "pedestal"`, single `count` main bar per §6. `pedestal_height_m` on the footing is only the height figure printed in the footing's own detail.
+**A pedestal (ตอม่อ) detailed as its own member is its own element** — its own mark, its own section, `element_type: "pedestal"`, single `count` main bar per §6. But when the footing's detail sheet only prints the pedestal's height and its tie (the common case), those stay on the footing as `pedestal_height_m` / `pedestal_tie{}`: promoting them to a separate element would mean inventing a width and height nobody drew.
 
 ### Legacy files
 
