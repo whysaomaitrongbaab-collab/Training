@@ -84,10 +84,10 @@ cd tune_ai/t03/data_before_tune
 # บ้าน 01 ก่อน (จบ 3 แขนแล้วดูเลข ค่อยไล่ 02-05)
 python infer_house_t03.py --house 01 --subtask plan_footing --arm 2
 python infer_house_t03.py --house 01 --subtask plan_footing --arm 2.4a --cv-dir cv_val
-python infer_house_t03.py --house 01 --subtask plan_footing --arm 2.4b --cv-dir cv_val
+# (แขน 2.4b ภาพมาร์คเลข — ยกเลิก 2026-08-29 มะขามสั่ง "ใส่แต่ hint พอ")
 ```
 
-ผลแยกโฟลเดอร์เองอัตโนมัติ: `ผล_t03/tuned/01…` / `…__arm2.4a` / `…__arm2.4b` — ไม่ทับกัน
+ผลแยกโฟลเดอร์เองอัตโนมัติ: `ผล_t03/tuned/01…` / `…__arm2.4a` — ไม่ทับกัน
 
 จบบ้าน 01 แล้วดูเลขก่อน (ข้อ 4) ถ้าไม่มีอะไรเพี้ยนหนัก ค่อยรันบ้าน 02–05 (เปลี่ยนแค่ `--house`)
 — อย่ารันยาวรวดเดียวโดยไม่ดูผลบ้านแรก เปลืองชั่วโมง GPU ฟรีถ้าพัง
@@ -113,8 +113,7 @@ python infer_house_t03.py --house 01 --subtask plan_footing --arm 2.4b --cv-dir 
 | `null` ซื่อสัตย์ | มีได้ ไม่ใช่แต้มลบ |
 
 ผลที่เป็นไปได้ 3 ทาง → งานต่อ:
-- **2.4b ชนะชัด** → คุ้มค่ามาร์คภาพ: แผนต่อไปคือใส่ภาพมาร์คเข้าชุดเทรน (`build_dataset_t03.py` มีภาพครบ วาดเองได้)
-- **2.4a ≈ 2.4b** → ใช้ข้อความล้วน ถูกกว่ามากตอนเทรน
+- **2.4a ชนะ** → hint ข้อความช่วยจริง เดินต่อ pass 3 ด้วย hint (แขน 2.4b ภาพมาร์ค ยกเลิกแล้ว 2026-08-29 — ไม่ต้องเทียบ)
 - **แขน 2 ชนะ** → โมเดล fine-tune แล้วมองข้าม hint (ข้อกังวลที่จดไว้ใน pass_design_v2.md) —
   จบแนวนี้ได้เลย เสียแค่ค่ายิง ไม่ต้องเสียดาย
 
@@ -132,7 +131,7 @@ prompt พร้อม (`pass3_takeoff/prompt.md` — แก้ตรง §6b �
 # บัญชี element จาก sidecar pass 2.5 → บรรทัดข้อความตามสัญญาใน prompt.md
 import json
 scan = json.load(open("cv_val/<stem>_cv25.json", encoding="utf-8"))
-account = "\n".join(f'#{e["n"]}  {e["class"]}' for e in scan["elements"])
+account = "\n".join(f'{e["n"]}) {e["class"]}' for e in scan["elements"])  # เลข) ไม่ใช้ #
 # แทน {{ELEMENT_ACCOUNT}} ใน prompt → ยิงคู่ภาพ <stem>_marked25.png
 # หลังโมเดลตอบ: จาก merge_guard import merge_no_delete → merged, warnings
 ```

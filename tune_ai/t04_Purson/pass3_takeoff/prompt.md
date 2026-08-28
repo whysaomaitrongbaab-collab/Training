@@ -18,16 +18,17 @@ element ไหนในบัญชีที่โมเดลไม่ตอบ
 ## `{{ELEMENT_ACCOUNT}}` — รูปแบบบัญชีที่ป้อนเข้า prompt
 
 Runner ดึง `elements[]` จาก sidecar ของ pass 2.5 (`<stem>_cv25.json`) มาเรียงเป็นบรรทัดข้อความ
-หนึ่งบรรทัดต่อหนึ่ง element ตามลำดับ `n` เดิม (ห้ามเรียงใหม่ — เลขต้องตรงกับที่มาร์คบนภาพเป๊ะ):
+หนึ่งบรรทัดต่อหนึ่ง element ตามลำดับ `n` เดิม (ห้ามเรียงใหม่ — เลขต้องตรงกับที่มาร์คบนภาพเป๊ะ)
+รูปแบบ `เลข) class` — ไม่ใช้ `#` (กติกาห้ามอักขระ markdown ใน prompt, 2026-08-29):
 
 ```
-#1  column
-#2  column
+1) column
+2) column
 ...
-#15 footing
-#16 footing
+15) footing
+16) footing
 ...
-#29 beam_h
+29) beam_h
 ```
 
 ชื่อ class (`column`/`footing`/`beam_h`/`beam_v`) เป็นแค่ป้ายบอกว่ากรอบนั้นเป็นไอคอนหน้าตาแบบไหน
@@ -38,16 +39,16 @@ Runner ดึง `elements[]` จาก sidecar ของ pass 2.5 (`<stem>_cv25
 
 ## PROMPT START
 
-You are given (1) a Thai construction drawing image with numbered boxes `#n` marking elements a
+You are given (1) a Thai construction drawing image with numbered boxes marking elements a
 computer-vision pass already found, and (2) the list below telling you what shape each numbered
-box looks like (its coarse class, not its real mark).
+box looks like (its coarse class, not its real mark)
 
 {{ELEMENT_ACCOUNT}}
 
-Your job: for **every** numbered box, find it on the image, read its real mark and dimensions, and
-extract its full spec — size, span (for beams), and reinforcement.
+Your job - for every numbered box, find it on the image, read its real mark and dimensions, and
+extract its full spec - size, span (for beams), and reinforcement
 
-Output **one JSON object and nothing else**:
+Output one JSON object and nothing else
 
 ```json
 {
@@ -64,7 +65,7 @@ Output **one JSON object and nothing else**:
 }
 ```
 
-### Every element you output carries `cv_mark` when it corresponds to a numbered box
+Every element you output carries `cv_mark` when it corresponds to a numbered box
 
 ```json
 {
@@ -81,35 +82,35 @@ Output **one JSON object and nothing else**:
 }
 ```
 
-A fixed number of edge ties (e.g. `1-Ø9mm รัดรอบขอบฐานราก`) goes in `stirrup.count` with
-`spacing_mm` **omitted** — never a top-level `stirrup_tie_count`, which schema §6b forbids
-(Constistant reads `stirrup.count` only when `spacing_mm` is absent; a repeating stirrup keeps
-`spacing_mm` as usual).
+A fixed number of edge ties (for example `1-Ø9มม. รัดรอบขอบฐานราก`) goes in `stirrup.count` with
+`spacing_mm` omitted - never a top-level `stirrup_tie_count`, which schema §6b forbids
+(Constistant reads `stirrup.count` only when `spacing_mm` is absent, a repeating stirrup keeps
+`spacing_mm` as usual)
 
 A beam uses `span_length_m`/`grid_ref_start`/`grid_ref_end` from the grid master exactly as in
-`pass2_used/plan.md`. A footing/column uses `width_mm`/`height_mm`/`main_bar`/`stirrup` exactly as
-in `pass2_used/section.md`. **This prompt does not redefine those field shapes — it only adds
-`cv_mark` on top of them.**
+the beam plan prompt A footing or column uses `width_mm`/`height_mm`/`main_bar`/`stirrup`
+exactly as in the section prompt This prompt does not redefine those field shapes - it only adds
+`cv_mark` on top of them
 
-### Rules, in priority order
+Rules, in priority order
 
-1. **Never remove a numbered box from your output.** Every `#n` in the list above appears in your
-   output with that `cv_mark`. If you cannot read anything about it (blurred, obstructed, or the
+1) Never remove a numbered box from your output Every number in the list above appears in your
+   output with that `cv_mark` If you cannot read anything about it (blurred, obstructed, or the
    box is a false positive with nothing there), output it anyway with all measurement fields
-   `null` and a `confidence_flags` entry saying why — that is a correct answer, not a failure.
-   [`merge_guard.py`](../../../tools/merge_guard.py) enforces this even if you get it wrong, but
-   get it right anyway — a stub with no real data is worse than your own honest read.
-2. **You may add elements the list missed** — a real member the CV pass did not detect. An added
-   element has no `cv_mark`.
-3. **Never invent a `cv_mark`.** Only use a number that appears in the list above. Guessing a
-   number that isn't there is worse than leaving `cv_mark` off — `merge_guard.py` treats an unknown
-   `cv_mark` as a warning-worthy anomaly, not a silent match.
-4. **Two elements never claim the same `cv_mark`.** If two real members genuinely sit at one
-   marked point (rare — a column-on-footing box drawn once for both), pick the element type the
-   coarse class in the account most closely matches and note the other in `warnings[]`.
-5. Spans come from the printed grid dimensions via the grid master — never from how long a line
-   looks (`_common.md` honesty rule 1).
-6. All `_common.md` rules apply unchanged (element shape, units, rebar-as-object, honesty rules,
-   Thai glossary).
+   `null` and a `confidence_flags` entry saying why - that is a correct answer, not a failure
+   A guard program enforces this even if you get it wrong, but get it right anyway - a stub with
+   no real data is worse than your own honest read
+2) You may add elements the list missed - a real member the CV pass did not detect An added
+   element has no `cv_mark`
+3) Never invent a `cv_mark` Only use a number that appears in the list above Guessing a
+   number that is not there is worse than leaving `cv_mark` off - the guard treats an unknown
+   `cv_mark` as a warning-worthy anomaly, not a silent match
+4) Two elements never claim the same `cv_mark` If two real members genuinely sit at one
+   marked point (rare - a column-on-footing box drawn once for both), pick the element type the
+   coarse class in the account most closely matches and note the other in `warnings[]`
+5) Spans come from the printed grid dimensions via the grid master - never from how long a line
+   looks (honesty rule 1)
+6) All the shared rules apply unchanged (element shape, units, rebar-as-object, honesty rules,
+   Thai glossary)
 
 ## PROMPT END

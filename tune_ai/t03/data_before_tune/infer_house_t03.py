@@ -113,30 +113,22 @@ def apply_arm(content, arm, cv_dir):
 
     arm "2"    = ของเดิมเป๊ะ (ตัวคุม)
     arm "2.4a" = ภาพเปล่า + แปะ hint text จาก sidecar ของ tools/cv_scan.py
-    arm "2.4b" = ภาพมาร์คเลข (Set-of-Mark) + hint text
-    sidecar/marked หาไม่เจอ → คืนของเดิม + hint_used=False (แถวนั้นกลายเป็น arm 2
+    (arm "2.4b" ภาพมาร์คเลขถูกยกเลิก 2026-08-29 มะขามสั่ง "ใส่แต่ hint พอ" — ภาพที่ส่งเป็น
+    ภาพเปล่าเสมอ; _marked.png ยังถูกสร้างโดย cv_scan.py ไว้ให้คนตรวจด้วยตาเท่านั้น)
+    sidecar หาไม่เจอ → คืนของเดิม + hint_used=False (แถวนั้นกลายเป็น arm 2
     โดยพฤตินัย — บันทึกลง results ให้เห็น ไม่เงียบ) ห้ามเดา/ห้ามสร้าง hint เปล่า"""
     if arm == "2" or not cv_dir:
         return content, False
     cv_dir = Path(cv_dir)
-    out, hint, marked = [], None, None
+    hint = None
     for c in content:
         if c["type"] == "image" and hint is None:
-            stem = Path(c["image"]).stem
-            hp = cv_dir / (stem + "_hint.txt")
+            hp = cv_dir / (Path(c["image"]).stem + "_hint.txt")
             if hp.exists():
                 hint = hp.read_text(encoding="utf-8").strip()
-            mp = cv_dir / (stem + "_marked.png")
-            if arm == "2.4b" and mp.exists():
-                marked = str(mp.resolve())  # absolute — HERE / abs ใน generate() คืน abs เอง
     if not hint:
         return content, False
-    for c in content:
-        if c["type"] == "image" and marked and Path(c["image"]).stem + "_marked.png" == Path(marked).name:
-            out.append({"type": "image", "image": marked})
-            marked = None  # ใช้ครั้งเดียว — งานหลายภาพ (gridline) แทนเฉพาะใบที่มี marked
-        else:
-            out.append(dict(c))
+    out = [dict(c) for c in content]
     out.append({"type": "text", "text": "\n\n" + hint})
     return out, True
 
@@ -215,8 +207,9 @@ def main():
     ap.add_argument("--grammar-all", action="store_true")
     ap.add_argument("--no-grammar", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--arm", choices=("2", "2.4a", "2.4b"), default="2",
-                    help="แขนทดลอง hint (pass_design_v2.md): 2=ไม่มี hint, 2.4a=hint ข้อความ, 2.4b=+ภาพมาร์คเลข")
+    ap.add_argument("--arm", choices=("2", "2.4a"), default="2",
+                    help="แขนทดลอง hint (pass_design_v2.md): 2=ไม่มี hint, 2.4a=hint ข้อความ "
+                         "(2.4b ภาพมาร์คเลขยกเลิก 2026-08-29 — ใส่แต่ hint พอ)")
     ap.add_argument("--cv-dir", help="โฟลเดอร์ sidecar จาก tools/cv_scan.py (จำเป็นเมื่อ --arm != 2)")
     a = ap.parse_args()
 

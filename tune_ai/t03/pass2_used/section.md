@@ -1,9 +1,9 @@
-# pass2_section.md — detail sections (rebar specs)
+# pass2_section.md - detail sections (rebar specs)
 
 **Input:** one section-sheet image (a detail cut through a member).
 **Output:** one `pattern: "section"` file.
 
-Does **not** need the grid master — a section is a cut through a member, it has no plan axes.
+Does **not** need the grid master - a section is a cut through a member, it has no plan axes.
 
 This is where the numbers that become steel weight come from. A wrong bar count here is wrong
 everywhere downstream, and unlike a missing element it will not look wrong.
@@ -14,10 +14,10 @@ Prepend `../_common.md`.
 
 ## PROMPT START
 
-You are reading a detail-section sheet. Extract the size and reinforcement of every member
-detailed on it.
+You are reading a detail-section sheet Extract the size and reinforcement of every member
+detailed on it
 
-Output **one JSON object and nothing else**.
+Output one JSON object and nothing else
 
 ```json
 {
@@ -35,7 +35,7 @@ Output **one JSON object and nothing else**.
 }
 ```
 
-### A reinforced-concrete member
+A reinforced-concrete member
 
 ```json
 {
@@ -57,52 +57,52 @@ Output **one JSON object and nothing else**.
 }
 ```
 
-**`element_id` = the mark printed on the drawing, or `null` — never an invented name.**
-(Convention changed 2026-08-25, Makham's ruling.) A cross-section labelled `B1` or `C1` takes
-that mark verbatim. A detail with **no printed mark at all** (a gate detail, a pipe sleeve, a
-generic wall section) takes `element_id: null` — do NOT invent a descriptive name for it; the
-rest of the fields (element_type, dimensions, reinforcement) still describe it fully.
+`element_id` = the mark printed on the drawing, or `null` - never an invented name
+A cross-section labelled `B1` or `C1` takes that mark verbatim A detail with no printed mark
+at all (a gate detail, a pipe sleeve, a generic wall section) takes `element_id: null` - do NOT
+invent a descriptive name for it, the rest of the fields (`element_type`, dimensions,
+reinforcement) still describe it fully
 
-### Rebar rules (§6) — the ones that have been got wrong before
+Rebar rules (§6) - the ones that have been got wrong before
 
-**Beams split `top` / `bottom` always, even when the two are equal.** Never collapse a symmetric
-beam into one count. Genuine top≠bottom cases exist and merging destroys them.
+Beams split `top` / `bottom` always, even when the two are equal Never collapse a symmetric
+beam into one count Genuine top and bottom differ in real cases and merging destroys them
 
-**A column NEVER uses `top`/`bottom` — a single `count` only:**
+A column NEVER uses `top`/`bottom` - a single `count` only
 
 ```json
 "main_bar": { "count": 4, "dia_mm": 12, "type": "RB" }
 ```
 
-A column has bars around its corners, printed as one figure (`4-Ø12มม.`). Writing it as
-`top: 4, bottom: 4` silently doubles the real count to 8. This applies to structural columns,
-pedestals (ตอม่อ), short columns (`C0`/`CN`) and fence columns alike.
+A column has bars around its corners, printed as one figure (`4-Ø12มม.`) Writing it as
+top 4 bottom 4 silently doubles the real count to 8 This applies to structural columns,
+pedestals (ตอม่อ), short columns (`C0`/`CN`) and fence columns alike
 
-**`middle` — only for a genuinely distinct mid-depth row.** A deep beam sometimes shows a third
+`middle` - only for a genuinely distinct mid-depth row A deep beam sometimes shows a third
 bar row at mid-depth with its own leader line and its own row of dots between the top and bottom
-clusters (skin/waist bars). That is `main_bar.middle`. Do **not** invent one by splitting a top or
+clusters (skin/waist bars) That is `main_bar.middle` Do not invent one by splitting a top or
 bottom cluster, and do not use it for a bar that is merely drawn between the clusters but whose
-leader ties it to the top or bottom face.
+leader ties it to the top or bottom face
 
-**`additional_bars[]` is only for bars belonging to no longitudinal face at all** — a standalone
-tie or dowel. A mid-depth longitudinal row is `main_bar.middle`, not an additional bar.
+`additional_bars[]` is only for bars belonging to no longitudinal face at all - a standalone
+tie or dowel A mid-depth longitudinal row is `main_bar.middle`, not an additional bar
 
-**Read `position` off the actual leader line, never off the label text alone, and never by analogy
-to how a similar-looking mark resolved elsewhere.** Two same-looking labels on the same sheet have
-been found to mean opposite faces.
+Read `position` off the actual leader line, never off the label text alone, and never by analogy
+to how a similar-looking mark resolved elsewhere Two same-looking labels on the same sheet have
+been found to mean opposite faces
 
-**`Ø` always means `type: "RB"`.** Never infer bar type from diameter. A deformed bar with visible
-ribs is `DB`.
+`Ø` always means `type: "RB"` Never infer bar type from diameter A deformed bar with visible
+ribs is `DB`
 
-**`stirrup` is the only name for it** — `tie`, `tie_bar`, `stirrup_or_tie` are forbidden spellings.
-Spacing is `spacing_mm` as an integer; `@0.20ม.` is not a value.
+`stirrup` is the only name for it - `tie`, `tie_bar`, `stirrup_or_tie` are forbidden spellings
+Spacing is `spacing_mm` as an integer, `@0.20ม.` is not a value
 
-Variable stirrup spacing (`@0.10 ends, @0.25 mid`) → `spacing_mm` = the **smallest**,
-`variable_spacing: true`, and the detail in `note`.
+Variable stirrup spacing (`@0.10` at the ends, `@0.25` mid-span) means `spacing_mm` = the
+smallest, `variable_spacing: true`, and the detail in `note`
 
-### A structural steel member (§6a)
+A structural steel member (§6a)
 
-A steel member has no `main_bar` or `stirrup` at all:
+A steel member has no `main_bar` or `stirrup` at all
 
 ```json
 {
@@ -119,35 +119,35 @@ A steel member has no `main_bar` or `stirrup` at all:
 }
 ```
 
-- `designation` is the printed family verbatim — `WF`, `C`, `L`, `RHS`, `SHS`, `Pipe`. Never
-  translate to a foreign standard (no `H-beam`, no `W14x…`).
-- `WF`/`C` print as `d×b×tw×tf`. A lipped channel with five numbers adds `lip_mm` before the
-  thickness.
-- `element_type` stays semantic (`beam`, `column`, `purlin`) — the material is carried by
-  `steel_section` being present.
+- `designation` is the printed family verbatim - `WF`, `C`, `L`, `RHS`, `SHS`, `Pipe` Never
+  translate to a foreign standard (no H-beam, no W14x)
+- `WF`/`C` print four numbers in the order depth, flange width, web thickness, flange thickness
+  A lipped channel with five numbers adds `lip_mm` before the thickness
+- `element_type` stays semantic (`beam`, `column`, `purlin`) - the material is carried by
+  `steel_section` being present
 - Repeated members at a spacing (purlins at `@0.40 ม.`) put it in `spacing_mm`, the same field
-  name the rebar side uses.
+  name the rebar side uses
 
-**A member has either rebar or `steel_section`, never both.** A hybrid building — steel frame on
-RC footings — is normal: the RC parts keep rebar fields, the steel frame above uses
-`steel_section`.
+A member has either rebar or `steel_section`, never both A hybrid building - steel frame on
+RC footings - is normal, the RC parts keep rebar fields, the steel frame above uses
+`steel_section`
 
-### Dimensions
+Dimensions
 
-Member sizes are **integer millimetres**: `width_mm`, `height_mm`, `thickness_mm`, `depth_mm`.
-Never a packed string (`"0.20x0.40"` → `width_mm: 200, height_mm: 400`), never a metre variant of
-a member dimension. Keep the printed text in a `*_printed_as` sibling.
+Member sizes are integer millimetres `width_mm`, `height_mm`, `thickness_mm`, `depth_mm`
+Never a packed string (`"0.20x0.40"` becomes `width_mm: 200, height_mm: 400`), never a metre
+variant of a member dimension Keep the printed text in a `*_printed_as` sibling
 
-### Rules
+Rules
 
-- `element_id` exactly as printed, with no suffix for the cut label — put that in `section_ref`
-  (§0.3).
-- One entry per member detailed on the sheet. The same mark detailed twice on one sheet, showing
-  genuinely different things, keeps whatever suffix distinguishes them.
-- **A dimension that is not printed is `null`.** Do not scale it off the drawing. A section is
+- `element_id` exactly as printed, with no suffix for the cut label - put that in `section_ref`
+  (§0.3)
+- One entry per member detailed on the sheet The same mark detailed twice on one sheet, showing
+  genuinely different things, keeps whatever suffix distinguishes them
+- A dimension that is not printed is `null` Do not scale it off the drawing A section is
   drawn to a scale you cannot verify from the image, and an estimated bar count or member depth is
-  worse than an honest gap.
-- No positions or counts of instances here — those come from the plan sheets and join by
-  `element_id` later (§7).
+  worse than an honest gap
+- No positions or counts of instances here - those come from the plan sheets and join by
+  `element_id` later (§7)
 
 ## PROMPT END
