@@ -59,11 +59,13 @@ Across houses 01-11 this field grew to **359 distinct values over 4,507 elements
 
 Only add a new value when **none** of the above genuinely fits, and when you do, say so in `warnings[]` so the next house can reuse it instead of inventing a third spelling of the same idea.
 
+**A detail sheet does not get its own `element_type`.** `pile_cap_detail` and `spread_footing_detail` are the same members as `pile_cap` and `footing`, drawn at a bigger scale — the sheet's `pattern` (`section`) already carries "this is a detail". Writing the sheet type into `element_type` splits one mark across two vocabularies and breaks the §7 spec join. See §6b.
+
 ### 0.5 Dimensions are integer millimetres
 
 - Member size → **`width_mm`, `height_mm`, `thickness_mm`, `depth_mm`** as numbers.
 - ❌ Never a packed string: `"size_m": "0.20x0.40"` is wrong → `width_mm: 200, height_mm: 400`.
-- ❌ Never a metre variant of a member dimension (`width_m`, `height_m`, `depth_m`, `section_mm: "200x200"`).
+- ❌ Never a metre variant of a member dimension (`width_m`, `height_m`, `depth_m`, `cap_width_m`, `cap_length_m`, `cap_thickness_m`, `section_mm: "200x200"`). This applies to footings and pile caps exactly like beams and columns — see §6b.
 - Levels, spans, grid positions and site distances stay in metres (`level_m`, `span_length_m`, `pos_m`) — those are *positions*, not member sizes.
 - **Metre fields are numbers, never strings.** `"+0.60"`/`"±0.00"` → `level_m: 0.6`/`0.0`; an annotated value (`"0.50 (sub-area at +0.40)"`) → the leading number, full text in `level_m_printed_as`.
 - A **multi-span member** puts its list in `spans_m[]` (plural); `span_m`/`span_length_m` is always a single number.
@@ -97,11 +99,13 @@ Whenever you convert something the drawing printed (a size string, a rebar callo
 - Row letters keep the drawing's own alphabet — Thai `ก`/`ข`/`ค` stays Thai, it is what is printed.
 - Every point ref must resolve against that house's `หน้า00_gridline.json`. If it doesn't, the grid master is missing a line (§4 beam-endpoint rule) — fix the master, don't invent a ref.
 
-### 0.9 `pattern` must be one of the 16 in §1
+### 0.9 `pattern` must be one of the 19 in §1
 
 Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and needed 21 files remapped. A detail sheet is `section`; an elevation is `side_profile`; a schematic diagram is `side_profile`; a site plan is `site_plan`, not `plan`.
 
-**A summary table is `schedule`; a bar-bending (cut-list) table is `bbs_schedule`** — the test is whether a row describes a *member* or a single *bar* (§1 #14). A soil borehole log is `soil_boring_log`, never `schedule` or `notes` (§1 #15).
+**The plan family is four values, not one** (`beam_plan` · `footing_plan` · `roof_frame_plan` · `etc_plan`, split 2026-08-28 — see §1). Check the first three in order; `etc_plan` is the residual for a plan sheet that is none of them (column plan, slab plan, architectural/MEP layout). **`plan` is a dead spelling** — it was renamed to `etc_plan` in the same pass, files included. Do not add a fifth by analogy.
+
+**A summary table is `schedule`; a bar-bending (cut-list) table is `bbs_schedule`** — the test is whether a row describes a *member* or a single *bar* (§1 #17). A soil borehole log is `soil_boring_log`, never `schedule` or `notes` (§1 #18).
 
 ### 0.10 Before you call a house finished
 
@@ -109,7 +113,7 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 
 - [ ] every file parses as JSON
 - [ ] every file has the §2 wrapper fields
-- [ ] `pattern` is one of the 16 (§1)
+- [ ] `pattern` is one of the 19 (§1) — and the three gated plan-family values are not emitted until §1's consumer gate is lifted
 - [ ] no file carries `phase_note` (§2a)
 - [ ] no array named after a kind of drawing element (§0.1)
 - [ ] grid master nests `x_lines`/`y_lines` under `grid{}` (§0.1)
@@ -126,26 +130,84 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 
 **The one allowed exception to the merge check:** two entries of the same point mark may stay separate when they carry genuinely different `confidence_score` or a different per-position `note` — merging would erase which positions were read off the drawing and which were inferred. The checker reports these; keep them, and say why in `warnings[]`. Anything else that trips the checker is a real defect.
 
-## 1. Pattern taxonomy — 16 types
+## 1. Pattern taxonomy — 19 types
+
+**The plan family sits first (#1-4) because it is where the money is** — every beam, footing and roof member that reaches a BOQ or a BBS arrives through one of these four. Everything from #5 down is either a spec source, a reference page, or not a drawing of the building at all.
 
 | # | pattern | description |
 |---|---|---|
-| 1 | `plan` | floor plan / layout, has `grid_ref` |
-| 2 | `section` | detail section — rebar spec/dimensions for beam, column, footing |
-| 3 | `schedule` | summary table of any element/material type (column, beam, door, window, fence, etc. — not limited to column/beam) |
-| 4 | `notes` | project-level requirements/specs |
-| 5 | `index` | drawing set table of contents |
-| 6 | `material_list` | bill of quantities (BOQ) |
-| 7 | `site_plan` | site layout |
-| 8 | `side_profile` | non-top-down view, e.g. elevation/building section (not site/terrain info, no rebar) — formerly named `site_profile` |
-| 9 | `gridline` | grid reference file (per-page companion + `หน้า00` master) |
-| 10 | `title` | cover page *(draft — no field-set verified yet)* |
-| 11 | `symbol` | symbol/legend page *(draft)* |
-| 12 | `roof_plan` | **architectural** roof plan only — ridge/hip lines, eave overhangs, roofing material. **A structural roof-framing plan (แปลนโครงหลังคา — beams/purlins with marks and grid refs) is `plan`, NOT `roof_plan`** (pinned 2026-08-21, see the warning under this table) *(draft)* |
-| 13 | `misc` | เบ็ดเตล็ด — whole-series catalog/promotional/reference pages that aren't about this house's own construction (e.g. a back-cover price-comparison table across all 10 designs in the series, or a cover collage of every design's render) — added 2026-07-14, previously misclassified as `title` |
-| 14 | `bbs_schedule` | **bar bending schedule (ตารางตัดเหล็ก)** — one row per individual BAR, not per element: `bar_mark`, `shape_code`, bend dimensions `len_A`/`len_B`/`len_C`, `qty`, `grade`. **Split from `schedule` 2026-08-04 because the granularity is genuinely different** — a `schedule` row describes one member (`C1`: 200×200, 4-Ø12), a `bbs_schedule` row describes one cut bar (`C1`/`T1`: Ø12, shape 00, 4.5 m, ×2). Putting both under `schedule` forced two incompatible row shapes into one pattern *(draft — no field-set verified against a real extraction yet)* |
-| 15 | `soil_boring_log` | **soil investigation / borehole log (รายงานเจาะสำรวจดิน)** — SPT blow counts, stratum table, lab results, groundwater level. Not a drawing of the building at all: it carries no `grid_ref`, no element marks, no rebar. Container is `elements[]` per §0.1 with `element_type: "soil_layer"`, plus wrapper-level `borehole_id` and `groundwater_level_m`. Added 2026-08-04 — Constistant already reads these live (`QT_PROMPT_SOIL_BORING_LOG` → `js/site/site-index.js`, feeding Foundation Design's bearing-capacity calc) and had no pattern to record them under *(draft — no field-set verified against a real extraction yet)* |
-| 16 | `unknown` | doesn't fit any of the 15 above |
+| 1 | `beam_plan` | **structural beam plan** (แปลนคาน) — beams with marks, `grid_ref_start`/`grid_ref_end`, spans. Added 2026-08-28 *(draft — see the consumer gate below)* |
+| 2 | `footing_plan` | **structural footing plan** (แปลนฐานราก) — footings/pile caps as point elements with `grid_refs[]` + `count`. A sheet drawing both a spread-footing and a pile-footing system is two views (§3), one file each. Added 2026-08-28 *(draft)* |
+| 3 | `roof_frame_plan` | **structural roof-framing plan** (แปลนโครงหลังคา) — roof beams/purlins/trusses with marks and grid refs. **Not `roof_plan`** (#15), which is the architectural roof plan and carries no structural marks. Added 2026-08-28 *(draft)* |
+| 4 | `etc_plan` | **any other top-down plan with `grid_ref` — the "none of the above three" bucket.** This is the value formerly spelled `plan`: **renamed 2026-08-28, same value, and every existing `plan` file was renamed with it.** `plan` is now a dead spelling — see the legacy note below |
+| 5 | `section` | detail section — rebar spec/dimensions for beam, column, footing |
+| 6 | `schedule` | summary table of any element/material type (column, beam, door, window, fence, etc. — not limited to column/beam) |
+| 7 | `notes` | project-level requirements/specs |
+| 8 | `index` | drawing set table of contents |
+| 9 | `material_list` | bill of quantities (BOQ) |
+| 10 | `site_plan` | site layout |
+| 11 | `side_profile` | non-top-down view, e.g. elevation/building section (not site/terrain info, no rebar) — formerly named `site_profile` |
+| 12 | `gridline` | grid reference file (per-page companion + `หน้า00` master) |
+| 13 | `title` | cover page *(draft — no field-set verified yet)* |
+| 14 | `symbol` | symbol/legend page *(draft)* |
+| 15 | `roof_plan` | **architectural** roof plan only — ridge/hip lines, eave overhangs, roofing material. **A structural roof-framing plan (แปลนโครงหลังคา — beams/purlins with marks and grid refs) is `roof_frame_plan` (#3), NOT `roof_plan`** (pinned 2026-08-21, see the warning under this table) *(draft)* |
+| 16 | `misc` | เบ็ดเตล็ด — whole-series catalog/promotional/reference pages that aren't about this house's own construction (e.g. a back-cover price-comparison table across all 10 designs in the series, or a cover collage of every design's render) — added 2026-07-14, previously misclassified as `title` |
+| 17 | `bbs_schedule` | **bar bending schedule (ตารางตัดเหล็ก)** — one row per individual BAR, not per element: `bar_mark`, `shape_code`, bend dimensions `len_A`/`len_B`/`len_C`, `qty`, `grade`. **Split from `schedule` 2026-08-04 because the granularity is genuinely different** — a `schedule` row describes one member (`C1`: 200×200, 4-Ø12), a `bbs_schedule` row describes one cut bar (`C1`/`T1`: Ø12, shape 00, 4.5 m, ×2). Putting both under `schedule` forced two incompatible row shapes into one pattern *(draft — no field-set verified against a real extraction yet)* |
+| 18 | `soil_boring_log` | **soil investigation / borehole log (รายงานเจาะสำรวจดิน)** — SPT blow counts, stratum table, lab results, groundwater level. Not a drawing of the building at all: it carries no `grid_ref`, no element marks, no rebar. Container is `elements[]` per §0.1 with `element_type: "soil_layer"`, plus wrapper-level `borehole_id` and `groundwater_level_m`. Added 2026-08-04 — Constistant already reads these live (`QT_PROMPT_SOIL_BORING_LOG` → `js/site/site-index.js`, feeding Foundation Design's bearing-capacity calc) and had no pattern to record them under *(draft — no field-set verified against a real extraction yet)* |
+| 19 | `unknown` | doesn't fit any of the other 18 |
+
+**`plan` is a dead spelling — it was renamed to `etc_plan` on 2026-08-28, files included (Makham's ruling).** All 899 existing plan files across both trees were rewritten in that pass, so `pattern: "plan"` should no longer appear anywhere in this repo. A consumer may keep accepting the old string defensively, but nothing produces it.
+
+**What a legacy `etc_plan` does and does not tell you.** For a **newly extracted** file, `etc_plan` is a positive statement: the extractor checked #1, #2, #3 and none matched. For one of the **899 renamed** files it is only "an unclassified plan" — the old `plan` value carried no kind information at all, so the rename neither added nor destroyed any, but it also did not verify anything. Most of those files are in fact beam plans or footing plans.
+
+Consequences, both directions:
+
+- **Do not read `etc_plan` as "definitely not a beam plan"** while renamed files are still in the set. A pass that skips `etc_plan` while hunting for beams would skip real beam plans.
+- **Re-labelling a renamed file to #1/#2/#3 is real work, not a regex** — read the sheet, apply the test table, pick one, one file at a time. That is a separate future pass; it is not what the rename did.
+- There is no per-file marker separating the two cases. The boundary is this entry plus the `primary_rawjson_schema_edit_log.md` row and the git commit for that pass — deliberately, rather than stamping a mechanical note into 899 files' `warnings[]`, which is a channel for genuine reading ambiguity (§2a), not for bookkeeping.
+
+### The plan family — `beam_plan` · `footing_plan` · `roof_frame_plan` · `etc_plan` (split 2026-08-28)
+
+`plan` was one pattern doing four jobs, so a consumer could not tell a beam sheet from a footing sheet without reading `sheet_name` free text. #1-3 name the three that carry structural quantities; **#4 `etc_plan` is everything else, and is defined by exclusion, not by content.**
+
+The test is what the sheet carries, exactly as in the `roof_plan` rule below:
+
+| The sheet shows | pattern |
+|---|---|
+| Beams with marks + two grid endpoints each (แปลนคาน, แปลนคาน-พื้น) | `beam_plan` |
+| Footings/pile caps as points with `grid_refs[]` (แปลนฐานราก) | `footing_plan` |
+| Roof beams / purlins / trusses with marks (แปลนโครงหลังคา) | `roof_frame_plan` |
+| A top-down plan with `grid_ref` that is **none of the three above** | `etc_plan` |
+| Ridge/hip/eave/roofing material, no structural marks | `roof_plan` (#15) |
+| Site/lot layout, not the building itself | `site_plan` (#10) |
+
+**`etc_plan` in full — what it does and does not mean.** It means exactly one thing: *a plan sheet that is not a beam plan, not a footing plan, and not a roof-framing plan.* It is a residual bucket, so it is defined by what it excludes, and the exclusion test is the only test. Known members today:
+
+- **Column plan** (แปลนเสา) — columns as point elements with `grid_refs[]`. `etc_plan`, **not** `column_plan`.
+- **Slab / floor plan** (แปลนพื้น) — slab markers `SO`/`SI`/`SX`/`ST` (§10). `etc_plan`, **not** `slab_plan`.
+- **Architectural floor plan / layout** — rooms, doors, windows, walls with grid refs.
+- **Sanitary / electrical / mechanical layouts** drawn top-down over the same grid.
+- **A mixed structural plan** whose views genuinely cannot be separated (rare — try §3 first: a sheet with a footing view *and* a beam view is two files, `footing_plan` + `beam_plan`, not one `etc_plan`).
+
+Rules that follow from it being a residual:
+
+- **Never invent a fifth specific value.** A column plan is `etc_plan`, not `column_plan`; a slab plan is `etc_plan`, not `slab_plan`; an electrical layout is `etc_plan`, not `electrical_plan`. If one of those earns its own pattern later it gets added to the table above, never coined inside a house file (§0.9).
+- **`etc_plan` is a last resort, not a default.** Check #1, #2, #3 in that order first. Reaching for `etc_plan` because the sheet is crowded or hard to read is how a beam plan's beams stop reaching the BOQ — the same failure the `roof_plan` warning below records. When genuinely unsure, pick the specific one that matches the marks you can read and say so in `warnings[]`.
+- **It is not a dumping ground for non-plans.** No `grid_ref` and not top-down → it is `side_profile`, `section`, `schedule`, `notes`, `misc` or `unknown`, never `etc_plan`.
+
+Applies to all four equally:
+
+- **A sheet carrying two of these is a multi-view page (§3)** — split it, one file per view, each with its own pattern. A single sheet showing footing plan + beam plan produces `_view1_footing_plan.json` (`footing_plan`) and `_view2_beam_plan.json` (`beam_plan`).
+- **Element shapes do not change at all.** A `beam_plan` element is the same atomic-segment shape as before (§4), a `footing_plan` element is the same merged point shape (§4). Only the wrapper's `pattern` value is new — nothing inside `elements[]` moves.
+- `floor_level`, `grid_source` and every other wrapper field apply unchanged to all four.
+
+**✅ CONSUMER GATE — LIFTED 2026-08-28.** All four values are safe to emit. The gate existed because Constistant's `buildElements()` filtered on the literal string `'plan'` and `ADAPTED_PATTERNS` listed six values, so a file labelled `beam_plan` would have been stored raw with a warning and **every beam on it would have silently disappeared from BOQ and BBS** — the identical failure that cost 8 houses their roof beams (see the `roof_plan` warning immediately below). Closed in the same pass as the rename, in this order (consumer first, files last — the reverse order would have zeroed every house's BOQ in between):
+
+1. `Constistant/js/drawing/raw-extraction-adapter.js` — `PLAN_PATTERNS` accepts all four plus the dead `plan`, used by both `buildElements()` and `ADAPTED_PATTERNS`
+2. `tools/check_format.py` — `PATTERNS` set widened; the roof-framing check now accepts `roof_frame_plan`
+3. the 899 legacy files renamed `plan` → `etc_plan`
+
+Still open, and the reason a fresh extraction should keep producing `etc_plan` rather than guessing: **the t04 Pass 0 / Pass 2 prompts have not been taught the three specific values yet.** Until they are, a model run classifies every plan as `etc_plan` — correct under the residual rule, just not yet using the split.
 
 ### ⚠️ `roof_plan` vs `plan` — a real, live data-loss bug (found 2026-08-21)
 
@@ -155,12 +217,14 @@ The test is what the sheet carries, not what it is called:
 
 | The sheet shows | pattern |
 |---|---|
-| Beams/purlins with element marks, grid refs, spans (แปลนโครงหลังคา, roof frame plan, roof beam plan) | `plan` |
-| Ridge/hip lines, eave overhang, roofing material, slope arrows — no structural marks | `roof_plan` |
+| Beams/purlins with element marks, grid refs, spans (แปลนโครงหลังคา, roof frame plan, roof beam plan) | `roof_frame_plan` (#3) |
+| Ridge/hip lines, eave overhang, roofing material, slope arrows — no structural marks | `roof_plan` (#15) |
 
 A sheet showing both is a multi-view page (§3): split it, one file each.
 
-**Automation scope:** `run_pipeline.py` currently only auto-extracts `plan` / `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 10 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`, `soil_boring_log`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
+**The 2026-08-28 split does not change this rule, it names it.** A structural roof-framing sheet was `plan` and is now `roof_frame_plan` — what must never happen, before or after the split, is calling it `roof_plan`. Nor is it `etc_plan`: a roof-framing sheet has its own specific value now, so the residual bucket is the wrong answer for a freshly read one. (A renamed legacy file may well be sitting in `etc_plan` — see the legacy note above; fixing those is the separate re-labelling pass.) The 59 existing `roof_plan` files are **not** all wrong: audit each against the two rows above before touching anything.
+
+**Automation scope:** `run_pipeline.py` auto-extracts the plan family plus `section` / `schedule` / `notes` / `gridline` / `material_list`. The other 10 patterns (`index`, `site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`, `soil_boring_log`, `unknown`) are manual-extraction only for now — which is exactly what this workflow (Claude reading pages directly) is for.
 
 ## 2. Required fields on every file (wrapper level)
 
@@ -535,17 +599,85 @@ Not every house is reinforced concrete. When a member is **structural steel** (h
 
 **A member has either `main_bar`/`stirrup` or `steel_section` — never both.** A hybrid building (steel superstructure on RC footings/pedestals, as in `บ้าน_ใหญ่_1ชั้น_01`) is normal: the RC footings/pedestals/slabs keep the rebar fields, the steel frame above uses `steel_section`, and both live in the same `specs{}` object keyed by `element_id`.
 
+## 6b. Footings and pile caps — same flat fields as everything else (added 2026-08-28)
+
+A footing is the most common structural element in this corpus (**427 `footing` + 45 `pile_cap` across 50 houses**) and until now had no section of its own. Five houses independently invented five field vocabularies for it. This section closes that: **a footing carries exactly the same four load-bearing fields as a beam or a column** — no metre variants, no `cap_*` family, no mesh-specific rebar object.
+
+```json
+{
+  "element_id": "F1",
+  "element_type": "footing",
+  "width_mm": 1000,
+  "height_mm": 300,
+  "main_bar": { "count": 12, "dia_mm": 9, "type": "RB", "count_printed_as": "6+6",
+                "note": "6 เส้นต่อทิศทาง วางตาราง 2 ทาง" },
+  "stirrup": { "count": 1, "dia_mm": 9, "type": "RB", "note": "1-Ø9มม. รัดรอบขอบฐานราก" },
+  "pile_count": 5,
+  "concrete_grade": "fc210",
+  "steel_grade": "SR24",
+  "confidence_score": 0.92,
+  "confidence_flags": []
+}
+```
+
+### The four load-bearing fields
+
+| field | meaning on a footing |
+|---|---|
+| `width_mm` | plan dimension, integer mm. A **square** cap (the normal case) needs only this one. |
+| `depth_mm` | the **other** plan dimension — emit it **only when the cap is genuinely not square**. |
+| `height_mm` | the cap's / footing's own **structural thickness**, nothing else (see below). |
+| `main_bar` | the mat, as **one flat object** with a single `count`. |
+
+**`height_mm` is the concrete member only.** Lean concrete, sand bed, cover and pedestal height are *not* part of it and must never be summed into it — each keeps its own field (`lean_concrete`, `sand_bed_thickness_m`, `pedestal_height_m`). A cap drawn `0.20 cap / 0.05 cover / 0.10 lean / 0.05 sand` is `height_mm: 200`, full stop.
+
+**The mat is `main_bar` with a single `count`, like a column — never `top`/`bottom`.** A two-way mat prints as `6+6` or `4+4`: `count` is the **sum** (12, 8) and the printed text goes in `count_printed_as`, exactly as §0.5 already requires. The two directions of a square cap are the same bar length, so one count carries the full steel weight with no loss. Never split a mat into `top`/`bottom` — that is the beam convention and it silently doubles the count (§6).
+
+**`stirrup` on a footing is usually a fixed count, not a spacing.** An edge tie printed `1-Ø9มม. รัดรอบ` is one bar, not a repeating row:
+
+```json
+"stirrup": { "count": 1, "dia_mm": 9, "type": "RB", "note": "1-Ø9มม. รัดรอบขอบฐานราก" }
+```
+
+Emit `count` and **omit `spacing_mm` entirely** — do not invent a spacing to fill the field. A consumer that sees a spacing where none was printed computes `ceil(1/0.20)+1 = 6` bars from a number nobody drew; this exact substitution was found live and had been inflating footing tie steel sixfold. A footing that genuinely *does* print a repeating spacing (`Ø9@0.20`) uses `spacing_mm` as normal and omits `count` — the two are mutually exclusive.
+
+### Forbidden spellings — write the right-hand column
+
+| ❌ never | ✅ write instead |
+|---|---|
+| `cap_width_m: 1.0` | `width_mm: 1000` |
+| `cap_length_m: 1.2` | `depth_mm: 1200` (omit when square) |
+| `cap_thickness_m: 0.3` | `height_mm: 300` |
+| `cap_thickness_m: {cap, cover, lean_concrete, sand_fill}` | `height_mm` = the `cap` value only; the rest keep their own fields |
+| `cap_plan_dims_m: {width_total, depth_total, sub_dims[]}` | `width_mm` / `depth_mm`; the sub-dimension chain belongs in the grid master's `dimension_chains[]` (§4) |
+| `main_bar_mesh: {total_bars, dia_mm, type}` | `main_bar: {count, dia_mm, type}` |
+| `stirrup_tie_count: 1` (element top level) | `stirrup: { count: 1, ... }` |
+| `pedestal_tie: {...}` on the footing | its own `element_type: "pedestal"` element, or `stirrup` if the tie is genuinely the footing's |
+| `element_type: "pile_cap_detail"` / `"spread_footing_detail"` | `"footing"` or `"pile_cap"` (§0.4) |
+
+**Why not just bless `cap_*`:** it violates §0.5 (no metre variant of a member dimension) — so the schema would contradict itself — and it is the minority form by a wide margin: `width_mm` appears on **253** footing elements, `cap_width_m` on **2**. The `cap_thickness_m` name is worse than unused, it is actively ambiguous: **15 elements across houses 01/02/03/05/07 write it as a plain number and 4 elements in house 04 write it as an object** with four sub-thicknesses. A downstream consumer converting metres to millimetres gets `NaN` on the object form and cannot tell that it failed. One field, two incompatible types, silent corruption — that is the whole case against it.
+
+### Context fields — keep, don't re-spell
+
+These describe what the footing sits on rather than the footing itself, are already consistent across houses, and stay exactly as they are: `pile_count`, `pile{}`, `lean_concrete{}`, `sand_bed_thickness_m`, `pedestal_height_m`, `ground_reference`, `base_fill`, `plan_layout`, `column_stub_mm`, `footing_type`. Add nothing new here without a `warnings[]` note (§0.4).
+
+**A pedestal (ตอม่อ) is its own element, not a field.** It has its own mark, its own section and its own rebar — `element_type: "pedestal"`, single `count` main bar per §6. `pedestal_height_m` on the footing is only the height figure printed in the footing's own detail.
+
+### Legacy files
+
+The five houses carrying `cap_*` were extracted before this section existed and are **not being rewritten as part of this edit** — see the entry in `primary_rawjson_schema_edit_log.md`. Every new extraction (t04 included) emits the flat form only.
+
 ## 7. Spec join (plan + section/schedule)
 
 A `plan` element (has `grid_ref`) + a `section` **or** `schedule` element (has width/height/main_bar/stirrup) for the same mark join together via `element_id` — **`section` and `schedule` are equally valid spec sources**, not limited to `section` only.
 
 Fields joined in:
 ```
-width_mm, height_mm, main_bar{}, stirrup{}, additional_bars[],
-steel_section{}, material, spacing_mm,
+width_mm, height_mm, depth_mm, main_bar{}, stirrup{}, additional_bars[],
+steel_section{}, material, spacing_mm, pile_count,
 concrete_grade, steel_grade, spec_source, spec_confidence_score
 ```
-(`steel_section{}`/`material` per §6a — a steel member joins exactly the same way, it just carries a section designation instead of rebar.)
+(`steel_section{}`/`material` per §6a — a steel member joins exactly the same way, it just carries a section designation instead of rebar. `depth_mm`/`pile_count` per §6b — a footing joins the same way too, which is the point of it using the same field names.)
 
 **Conflict rule:** if the same `element_id` has mismatched specs in both `section` and `schedule` → **`section` always wins**, and must be flagged with `confidence_flag: "spec_conflict_section_vs_schedule"` every time — never silently pick one without recording it. *(Not yet tested against real data.)*
 
@@ -612,6 +744,8 @@ A single drawing set can cover **more than one physically separate building** (e
 - `source_image` field — older files in `mk_test/t1-t3` don't have it
 - "section wins over schedule" conflict rule (section 7) — not yet tested against real data
 - Same `element_id` appearing in more than one `section` file (e.g. B2 in both S-04 and S-05) — no resolved precedence rule yet; open question
+- **Footing flat-field rule (§6b) — written 2026-08-28 against the existing corpus, not yet exercised by a fresh extraction.** The rule matches what 253 footing elements already do, but no house has been extracted *under* it yet; t04's first real run is the test. Five houses (01/02/03/05/07 with `cap_*` as numbers, 04 with `cap_thickness_m` as an object) still carry the legacy form and have not been migrated
+- **Non-square footings.** §6b defines `depth_mm` for a rectangular cap, but the Constistant pipeline currently squares `width_mm` for both plan sides and only flags the mismatch (`footing_cap_not_square_width_used_for_both_sides`). Emit `depth_mm` anyway — the data should be right before the consumer is
 
 ## 13. `site_plan` — `element_type` not standardized across houses
 

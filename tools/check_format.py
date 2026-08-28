@@ -11,10 +11,15 @@ houses 01-11 drifted apart and had to be repaired in bulk (สิ่งที่
 import json, sys, os, re, glob, collections
 
 # section 1 of primary_rawjson_schema.md. 'bbs_schedule' and 'soil_boring_log' added 2026-08-04
-# (14 -> 16); keep this set and that table in step, the checker is what actually enforces it.
-PATTERNS = {'plan', 'section', 'schedule', 'notes', 'index', 'material_list', 'site_plan',
-            'side_profile', 'gridline', 'title', 'symbol', 'roof_plan', 'misc',
-            'bbs_schedule', 'soil_boring_log', 'unknown'}
+# (14 -> 16); the plan family split 2026-08-28 (16 -> 19). Keep this set and that table in step,
+# the checker is what actually enforces it.
+# 'plan' is a DEAD spelling per section 1 -- renamed to 'etc_plan' along with all 899 files that
+# carried it. Kept readable here on purpose: a stray old file should fail on its real problem,
+# not on an unrecognised pattern. PLAN_FAMILY mirrors Constistant's PLAN_PATTERNS.
+PLAN_FAMILY = {'beam_plan', 'footing_plan', 'roof_frame_plan', 'etc_plan', 'plan'}
+PATTERNS = PLAN_FAMILY | {'section', 'schedule', 'notes', 'index', 'material_list', 'site_plan',
+                          'side_profile', 'gridline', 'title', 'symbol', 'roof_plan', 'misc',
+                          'bbs_schedule', 'soil_boring_log', 'unknown'}
 WRAPPER = ['png', 'doc_page', 'discipline', 'sheet_code', 'sheet_name', 'pattern',
            'confidence_score', 'confidence_flags', 'warnings']
 # section 2, pinned 2026-08-21. 'architecture' is the wrong spelling of 'architectural'
@@ -28,9 +33,9 @@ NOTES_ONEOFF = {'notes_sections', 'spec_notes', 'notes_text', 'raw_text', 'notes
                 'precast_plank_spec', 'general_requirements', 'footing_bearing_notes'}
 # section 4, added 2026-08-21: the grid master records every printed dimension.
 GRID_ARRAYS = ('z_levels', 'dimension_chains', 'unassigned_dimensions')
-# section 1 warning: a structural roof-FRAMING sheet is pattern 'plan', never 'roof_plan'
-# -- Constistant's buildElements() reads only 'plan', so roof beams filed under
-# 'roof_plan' have never reached a BOQ.
+# section 1 warning: a structural roof-FRAMING sheet is pattern 'roof_frame_plan' (was 'plan'
+# before the 2026-08-28 split), never 'roof_plan' -- Constistant's buildElements() reads only the
+# plan family, so roof beams filed under 'roof_plan' have never reached a BOQ.
 STRUCT_TYPES = {'beam', 'column', 'rafter', 'steel_member', 'tie_beam', 'slab'}
 # arrays named after a KIND of drawing element (section 0.1). 'sections'/'columns'/'details' are
 # deliberately absent: they legitimately mean document sections / table headers / detail callouts.
@@ -90,7 +95,7 @@ def check_house(house_dir):
             if k not in doc:
                 fails['wrapper fields'].append(f'{name}: missing {k}')
         if doc.get('pattern') not in PATTERNS:
-            fails['pattern in 16'].append(f'{name}: {doc.get("pattern")!r}')
+            fails['pattern in 19'].append(f'{name}: {doc.get("pattern")!r}')
         if doc.get('discipline') not in DISCIPLINES:
             fails['discipline vocabulary'].append(f'{name}: {doc.get("discipline")!r}')
         # section 2: source_image on every file; the grid master uses source_pages instead
@@ -119,7 +124,7 @@ def check_house(house_dir):
                       if isinstance(e, dict) and e.get('element_type') in STRUCT_TYPES
                       and (e.get('grid_ref') or e.get('grid_refs') or e.get('grid_ref_start'))]
             if marked:
-                fails['structural roof framing must be pattern plan'].append(
+                fails['structural roof framing must be pattern roof_frame_plan'].append(
                     f'{name}: {len(marked)} marked structural elements')
 
         def scan(k, v):
@@ -227,10 +232,10 @@ def main(argv):
         soft_all.extend(s)
 
     print(f'checked {len(targets)} house folder(s)\n')
-    order = ['parse', 'wrapper fields', 'pattern in 16', 'discipline vocabulary',
+    order = ['parse', 'wrapper fields', 'pattern in 19', 'discipline vocabulary',
              'phase_note left', 'element-kind array',
              'grid not nested', 'grid master missing 2026-08-21 arrays',
-             'notes one-off container key', 'structural roof framing must be pattern plan',
+             'notes one-off container key', 'structural roof framing must be pattern roof_frame_plan',
              'rebar is a string', 'stirrup misnamed',
              'rebar/steel as array (use bar_layers/spans_m)', 'numeric field wrong type',
              'grid_ref is an array', 'element missing element_id', 'element missing element_type',

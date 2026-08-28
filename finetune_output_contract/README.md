@@ -19,11 +19,13 @@ Import path: **นำเข้าไฟล์สกัดข้อมูล (JSO
 `adaptRawExtraction()` → `buildEntitiesFromAdapted()` → `DrawingElement[]` /
 `BeamLibraryEntry[]` / `GridReference` → `runPipeline()` (BOQ/BBS/Schedule/Resources).
 
-Only **6 of the 16 patterns** are adapted: `plan`, `section`, `schedule`, `notes`,
-`gridline`, `material_list`. The other 10 (`index`, `site_plan`, `side_profile`,
-`title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`, `soil_boring_log`, `unknown`)
-are stored verbatim in the raw-extraction store with a warning — they never reach a
-number the user sees.
+Only **9 of the 19 patterns** are adapted: the whole plan family (`beam_plan`,
+`footing_plan`, `roof_frame_plan`, `etc_plan` — split from the single `plan` value
+2026-08-28, schema §1; the dead `plan` spelling is still accepted defensively), plus
+`section`, `schedule`, `notes`, `gridline`, `material_list`. The other 10 (`index`,
+`site_plan`, `side_profile`, `title`, `symbol`, `roof_plan`, `misc`, `bbs_schedule`,
+`soil_boring_log`, `unknown`) are stored verbatim in the raw-extraction store with a
+warning — they never reach a number the user sees.
 
 ## Field flow per pattern
 
@@ -36,15 +38,17 @@ number the user sees.
 | `grid.z_levels[]`, `grid.dimension_chains[]`, `grid.unassigned_dimensions[]` | ⚠️ stored raw, not read by any code yet — still REQUIRED by the schema (audit trail) |
 | per-line `source`, `confidence_*` | ⚠️ stored raw only |
 
-Every point `grid_ref` and every beam endpoint in every `plan` file must resolve
+Every point `grid_ref` and every beam endpoint in every plan-family file must resolve
 against this master — an unresolvable ref becomes `span_source: "unresolved"` and that
 beam's concrete/steel is silently 0 in the BOQ.
 
-### `plan` (per view — see the two plan templates)
+### the plan family — `beam_plan` / `footing_plan` / `roof_frame_plan` / `etc_plan`
 
 Wrapper: `floor_level` ✅ (missing → defaults to `F1` + warning — never omit on a real
-sheet), `pattern` must be exactly `"plan"` (a structural roof-framing sheet included —
-`roof_plan` files are NOT read, their beams vanish).
+sheet), `pattern` must be one of the four (schema §1). All four adapt **identically** —
+the value tells a human and a future consumer what kind of sheet it is, and changes
+nothing about how `elements[]` is read today. A structural roof-framing sheet is
+`roof_frame_plan`; `roof_plan` files are NOT read at all and their beams vanish.
 
 Per element:
 

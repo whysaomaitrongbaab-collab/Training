@@ -67,6 +67,11 @@
 11. รวมผล 1.5 + 2.5 เป็น "บัญชี element ฉบับสุดท้าย" พร้อมพิกัด
 
 ### เฟส E — pass 3
+**2026-08-28: ที่อยู่ถาวรของโฟลเดอร์ pass ทั้งหมด (0-4) ย้ายไป `tune_ai/t04_Purson/` แล้ว**
+(สร้างโดยมะขาม, ตั้งชื่อขำๆ "Purson") — `pass3_takeoff/` ย้ายจาก `tune_ai/t03/` ไปอยู่ที่นั่น
+จริง prompt.md เต็มแล้ว ดู [`t04_Purson/README.md`](../t04_Purson/README.md) เป็นดัชนี
+ไฟล์นี้ (`pass_design_v2.md`) ยังเป็นแหล่งอ้างอิงแผน/เหตุผล ไม่ย้าย
+
 12. prompt ใหม่: ป้อนบัญชีจาก 2.5 + รูป → ถอดระยะ/เหล็ก
 13. **บังคับ "ห้ามลบ" ด้วยโค้ด ไม่ใช่ prompt** — เขียน merge step: element ไหนหายไปจากคำตอบ
     ให้ใส่กลับพร้อม `confidence_flags: ["dropped_by_pass3"]` และฟิลด์ระยะเป็น `null`
@@ -188,7 +193,7 @@ SoM ใช้ได้ zero-shot กับ VLM ทั่วไป แต่โ�
 | เฟส C ฝั่งโค้ด: `apply_arm()` + `--arm 2/2.4a/2.4b --cv-dir` ใน infer_house_t03.py | ✅ unit test ผ่าน (ไม่ใช้ GPU) |
 | เฟส C ยิงจริง 3 แขน | ⏸ รอ GPU (เครดิต Vast) |
 | เฟส D pass 2.5 self-harvest (`--pass25`) | ✅ พิสูจน์ด้วยตา 2 หลัง |
-| เฟส E `tools/merge_guard.py` (ห้ามลบ บังคับด้วยโค้ด) + โครง prompt `pass3_takeoff/` | ✅ self-check ผ่าน / prompt ยังไม่เคยรัน |
+| เฟส E `tools/merge_guard.py` (ห้ามลบ บังคับด้วยโค้ด) + prompt `t04_Purson/pass3_takeoff/` | ✅ self-check ผ่าน / prompt เขียนเต็มแล้ว ยังไม่เคยรัน |
 | เติมคลัง template 19 หลังที่ขาด | ⏸ งานคนคัด |
 
 **บั๊กที่จับได้ด้วยตา (unit test มองไม่เห็นทั้งคู่):** (1) ป้ายเสา #1-#14 โดนพื้นขาวของป้าย
