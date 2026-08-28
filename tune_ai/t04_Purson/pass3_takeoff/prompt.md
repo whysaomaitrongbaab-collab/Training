@@ -75,11 +75,16 @@ Output **one JSON object and nothing else**:
   "height_mm": 300,
   "grid_refs": ["A1"],
   "main_bar": { "count": 12, "dia_mm": 9, "type": "RB" },
-  "stirrup_tie_count": 1,
+  "stirrup": { "count": 1, "dia_mm": 9, "type": "RB" },
   "confidence_score": 0.9,
   "confidence_flags": []
 }
 ```
+
+A fixed number of edge ties (e.g. `1-Ø9mm รัดรอบขอบฐานราก`) goes in `stirrup.count` with
+`spacing_mm` **omitted** — never a top-level `stirrup_tie_count`, which schema §6b forbids
+(Constistant reads `stirrup.count` only when `spacing_mm` is absent; a repeating stirrup keeps
+`spacing_mm` as usual).
 
 A beam uses `span_length_m`/`grid_ref_start`/`grid_ref_end` from the grid master exactly as in
 `pass2_used/plan.md`. A footing/column uses `width_mm`/`height_mm`/`main_bar`/`stirrup` exactly as

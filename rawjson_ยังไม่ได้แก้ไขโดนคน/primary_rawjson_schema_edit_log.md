@@ -96,3 +96,44 @@
   40 grid masters and 4 hard checker failures fixed. Logged in
   `No_touch_box/docs/raw_json_data_log.md` same day.
   `rawjson_ยังไม่ได้แก้ไขโดนคน/` raw layer NOT touched.
+
+## 2026-08-28 (7) — §0.4 / §6a element_type contradiction closed: purlin/truss added
+
+- **Who:** Claude, on มะขาม's direct follow-up ("แล้วหน้า section แก้บัคยัง") — this was flagged
+  as a known, unresolved self-contradiction during the finetune_output_contract audit earlier the
+  same day and deliberately left unfixed pending a decision ("รายงานไว้แทนที่จะตัดสินเอง").
+- **What:** §0.4's `element_type` allowlist gained `purlin` and `truss`. §6a already required them
+  (steel roof-frame members must stay semantic — `purlin`/`truss`, not a generic `steel_member` or
+  a misleading `beam`), but §0.4's list never carried them, so the two sections contradicted each
+  other. Pure vocabulary fix — no real file anywhere in either tree has ever used these values (the
+  templates work earlier today explicitly avoided them and used `beam` instead, specifically
+  because of this gap), so there is nothing to migrate.
+- **Also fixed, found while closing this out:** `tools/check_format.py`'s `STRUCT_TYPES` set (the
+  one guarding against the historical `roof_plan`-vs-`roof_frame_plan` bug — 8/11 houses' roof
+  framing silently missing from BOQ because it was mislabeled architectural `roof_plan`) did not
+  include `purlin`/`truss` either. Left as-is, a roof-framing sheet whose members happened to be
+  typed `purlin`/`truss` instead of `beam`/`rafter` could have been mislabeled `roof_plan` again
+  without the checker ever catching it -- the exact same failure class, just reachable through a
+  different element_type spelling. Added to `STRUCT_TYPES` in the same commit.
+- **Verified:** `check_format.py` whole repo and `finetune_output_contract/{templates,examples}` —
+  ALL CHECKS PASS, unchanged (confirms zero real file is affected).
+
+## 2026-08-29 — §1 stale claim corrected: pass 2 prompt already teaches the plan-family split
+
+- **Who:** Claude, while continuing มะขาม's ask to scope pass 2/2.4/2.5 to only the patterns
+  Constistant needs — checking pass 2's actual prompt files surfaced a stale claim in this doc.
+- **What:** §1's "CONSUMER GATE — LIFTED 2026-08-28" note was immediately followed by a "Still
+  open... the t04 Pass 0 / Pass 2 prompts have not been taught the three specific values yet"
+  paragraph. Read `tune_ai/t03/pass2_used/plan.md` and `gridline.md` directly: both already carry
+  the full decision table (`plan.md` §"pattern — pick one of four", all four values + the
+  `plan_beam`-splits-into-two trap + the `roof_plan` trap; `gridline.md` already emits
+  `pattern: "grid_master"`) — the "still open" claim was false at the time of this edit. Replaced
+  with a ✅-done note naming the two files and clarifying Pass 0 was never in scope for this (it
+  sorts pages into subtask folders, not into the four pattern values).
+- **Not determined:** exactly which earlier session/commit updated `plan.md`/`gridline.md` — the
+  content is dated internally to 2026-08-28 (same day as the schema split) but this doc's own
+  "still open" line was never corrected to match. Recorded as a stale-doc fix, not a new capability.
+- **Verified:** `grep` across `tune_ai/t03/pass2_used/`, `pass2.4_hint/`, `pass2.5_harvest/`,
+  `pass3_takeoff/` for any remaining `"pattern": "plan"` / bare `gridline`-as-pattern-value —
+  none found; the only `gridline` hits left are the `<house>_หน้า00_gridline.json` **filename**
+  convention, which schema §1 explicitly keeps unchanged. No `.json` data touched, no code touched.

@@ -42,7 +42,7 @@ GRID_ARRAYS = ('z_levels', 'dimension_chains', 'unassigned_dimensions')
 # section 1 warning: a structural roof-FRAMING sheet is pattern 'roof_frame_plan' (was 'plan'
 # before the 2026-08-28 split), never 'roof_plan' -- Constistant's buildElements() reads only the
 # plan family, so roof beams filed under 'roof_plan' have never reached a BOQ.
-STRUCT_TYPES = {'beam', 'column', 'rafter', 'steel_member', 'tie_beam', 'slab'}
+STRUCT_TYPES = {'beam', 'column', 'rafter', 'purlin', 'truss', 'steel_member', 'tie_beam', 'slab'}
 # arrays named after a KIND of drawing element (section 0.1). 'sections'/'columns'/'details' are
 # deliberately absent: they legitimately mean document sections / table headers / detail callouts.
 ELEMENT_KIND_ARRAYS = {'beams', 'columns_structural', 'slabs', 'footing_types',

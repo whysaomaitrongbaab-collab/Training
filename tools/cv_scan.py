@@ -119,12 +119,12 @@ def draw_som_marks(gray, elements):
 
 # ---------- hint text สำหรับ pass 2.4 ----------
 
-HINT_RULES_TH = """กฎการใช้ hint (สำคัญกว่าความครบ):
-1. hint คือสิ่งที่เครื่องเห็น ไม่ใช่คำตอบ — จุดไหนอ่านป้ายบนแบบไม่ออก ใช้ชื่อบรรยาย + ติดธงใน confidence_flags ห้ามแต่งชื่อมาร์คขึ้นเอง
-2. hint ไม่ใช่เพดาน — เห็น element มากกว่าที่ hint บอก ให้ตอบตามที่เห็น
-3. hint ไม่ใช่พื้น — อ่านได้จริงน้อยกว่าที่ hint ชี้ ให้ตอบเท่าที่อ่านได้ แล้วบอกใน warnings[] ห้ามเติมให้ครบ
-4. จุดที่มีกรอบแต่ไม่มีของจริง → บอกใน warnings[] (เครื่องตรวจภาพจับผิดได้)
-ทุก element ที่ตรงกับกรอบเลขไหน ให้ใส่ฟิลด์ "cv_mark": <เลข n> ด้วย (จับคู่ไม่ได้ = ไม่ต้องใส่)"""
+HINT_RULES_TH = """กฎการใช้ hint (สำคัญกว่าความครบ) มีดังนี้
+1) hint คือสิ่งที่เครื่องเห็น ไม่ใช่คำตอบ จุดไหนอ่านป้ายบนแบบไม่ออก ใช้ชื่อบรรยาย + ติดธงใน confidence_flags ห้ามแต่งชื่อมาร์คขึ้นเอง
+2) hint ไม่ใช่เพดาน เห็น element มากกว่าที่ hint บอก ให้ตอบตามที่เห็น
+3) hint ไม่ใช่พื้น อ่านได้จริงน้อยกว่าที่ hint ชี้ ให้ตอบเท่าที่อ่านได้ แล้วบอกใน warnings[] ห้ามเติมให้ครบ
+4) จุดที่มีกรอบแต่ไม่มีของจริง ให้บอกใน warnings[] (เครื่องตรวจภาพจับผิดได้)
+ทุก element ที่ตรงกับกรอบหมายเลขไหน ให้ใส่ฟิลด์ cv_mark เป็นค่าเท่ากับเลขนั้นด้วย เช่นตรงกับกรอบหมายเลข 7 ให้ใส่ cv_mark เท่ากับ 7 (จับคู่ไม่ได้ก็ไม่ต้องใส่)"""
 
 
 def _row_counts(elements, cls):
@@ -141,17 +141,17 @@ def cv_hint_text(scan):
     els = scan["elements"]
     if not els:
         return ""
-    lines = ["### สิ่งที่เครื่องตรวจภาพ (CV) เห็นบนแผ่นนี้ — hint ไม่ใช่คำตอบ",
-             "บนภาพมีกรอบเลขกำกับ #n ตรงจุดที่เครื่องเห็น เรียงบน→ล่าง ซ้าย→ขวา:"]
+    lines = ["สิ่งที่เครื่องตรวจภาพ (CV) เห็นบนแผ่นนี้ hint ไม่ใช่คำตอบ",
+             "บนภาพมีกรอบหมายเลขกำกับตรงจุดที่เครื่องเห็น เรียงบน→ล่าง ซ้าย→ขวา ดังนี้"]
     for cls in CLASS_ORDER:
         sub = [e for e in els if e["class"] == cls]
         if not sub:
             continue
         lo, hi = sub[0]["n"], sub[-1]["n"]
-        rng = "#%d" % lo if lo == hi else "#%d–#%d" % (lo, hi)
+        rng = "%d" % lo if lo == hi else "%d ถึง %d" % (lo, hi)
         rc = _row_counts(els, cls)
         row_txt = " แถวละ %s" % rc if len(rc) > 1 and not cls.startswith("beam") else ""
-        lines.append("- %s (%s) %d จุด: %s%s" % (CLASS_TH[cls], cls, len(sub), rng, row_txt))
+        lines.append("- %s (%s) จำนวน %d จุด หมายเลข %s%s" % (CLASS_TH[cls], cls, len(sub), rng, row_txt))
     lines.append(HINT_RULES_TH)
     return "\n".join(lines)
 
@@ -290,7 +290,7 @@ def demo():
 
     # hint text มีชนิด+กฎครบ + มีคำสั่ง cv_mark + ไม่มีตัวเลขระยะ
     h = cv_hint_text(s14)
-    assert "ไม่ใช่คำตอบ" in h and "cv_mark" in h and "\n4." in h
+    assert "ไม่ใช่คำตอบ" in h and "cv_mark" in h and "\n4)" in h
     assert "เมตร" not in h and "span" not in h, "hint ห้ามมีระยะ"
 
     # marked image วาดได้จริง ขนาดเท่าภาพเดิม

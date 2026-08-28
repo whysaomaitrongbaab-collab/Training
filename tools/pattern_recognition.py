@@ -36,11 +36,24 @@ OUT_DIR = HERE / "pattern_out"
 # จำนวน template (เทสต์จริง: หน้า16 บ้าน 17 ซึ่งไม่มีฐานรากเลย ขึ้น 607 จุดที่เกณฑ์เดิม)
 # บ้าน 17 ของแท้ให้คะแนน 0.82-1.00 จึงยังห่างเกณฑ์ใหม่พอสมควร
 FOOTING_THRESH = 0.72
-COLUMN_THRESH = 0.65
+# column 0.65 → 0.75 (2026-08-28 หลังขยาย bank 1→5): บทเรียนซ้ำรอย footing เป๊ะ — bank ใหญ่ขึ้น
+# ขยะช่วงคะแนนกลางคูณตามจำนวน template (sweep จริง 30 บ้าน: @0.65 เกิน 10 บ้าน / @0.75 เหลือ 1
+# โดยบ้านที่ไอคอนตรง template จริงให้ 0.78-1.00 ไม่สะเทือน) ราคาที่จ่าย: บ้าน 12/14 ที่เคยติด
+# แบบหลวม (0.65-0.72 กับ tpl_column.png เดิม) หลุด — สองบ้านนั้นต้องได้ template ของตัวเอง
+COLUMN_THRESH = 0.75
+# template เสาที่สัดส่วนพิกเซลหมึก < CUT ใช้เกณฑ์สูงพิเศษ — เหตุผล/ตัวเลขวัดจริงดูใน analyze()
+COLUMN_LOWINK_CUT = 0.15
+COLUMN_LOWINK_THRESH = 0.85
 BEAM_THRESH = 0.70
 BEAM_MIN_LEN = 100   # แถบคานสั้นกว่านี้ (px) ตัดทิ้ง — กัน false positive จากตัวหนังสือ/ขอบตาราง
 BEAM_GAP = 21        # ระยะหน้าคานบน-ล่าง (px) — วัดจากบ้าน 17
 BEAM_THICK = 3
+# วัดจริงทั้งคลัง 33 บ้าน 2026-08-28 (harvest_templates.py --measure-beam-gap): ระยะเส้นคู่คาน
+# แบ่ง 2 ซีรีส์ชัด — กรมโยธา ~15-16px (16 บ้าน) กับซีรีส์บ้าน 17 ~21-22px (8 บ้าน)
+# ค่าเดี่ยว 21 จึงบอดคานไปครึ่งคลัง → ลองทุก gap ในลิสต์แล้วรวม mask (คำตอบเดียวกับ
+# multi-scale ของ footing) ค่าห่าง ±1px template เส้นหนา 3px ยังจับติดที่ 0.70 ไม่ต้องใส่ถี่กว่านี้
+# ponytail: กลุ่มย่อย 8/11/24/39/44px (บ้านละ 1-2 หลัง) ยังไม่ใส่ — เพิ่มเมื่อบ้านพวกนั้นถูกใช้จริง
+BEAM_GAPS = (16, 21)
 
 
 def imread_thai(path):
@@ -100,14 +113,20 @@ def _nms_greedy(cands):
     return keep
 
 
-def match_beam_runs(gray, tpl, thresh, min_len, vertical=False):
-    """match คานแล้วรวมจุดต่อเนื่องเป็นแถบยาว คืน [(x, y, w, h)]"""
-    res = cv2.matchTemplate(gray, tpl, cv2.TM_CCOEFF_NORMED)
-    th, tw = tpl.shape
+def match_beam_runs(gray, tpls, thresh, min_len, vertical=False):
+    """match คานแล้วรวมจุดต่อเนื่องเป็นแถบยาว คืน [(x, y, w, h)]
+
+    tpls รับได้ทั้ง template เดี่ยวหรือลิสต์ (คนละ gap) — รวมทุกตัวลง mask เดียวก่อนหา
+    contour ทีเดียว คานเดียวกันที่ติดสอง gap จึงหลอมเป็นแถบเดียว ไม่นับเบิ้ล"""
+    if not isinstance(tpls, (list, tuple)):
+        tpls = [tpls]
     mask = np.zeros(gray.shape, np.uint8)
-    ys, xs = np.where(res >= thresh)
-    for x, y in zip(xs, ys):
-        mask[y:y + th, x:x + tw] = 255
+    for tpl in tpls:
+        res = cv2.matchTemplate(gray, tpl, cv2.TM_CCOEFF_NORMED)
+        th, tw = tpl.shape
+        ys, xs = np.where(res >= thresh)
+        for x, y in zip(xs, ys):
+            mask[y:y + th, x:x + tw] = 255
     # ปิดช่องว่างเล็กๆ ตามแนวคาน (ข้าม label/เสาที่คั่นกลาง)
     k = (1, 25) if vertical else (25, 1)
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones(k[::-1], np.uint8))
@@ -122,24 +141,38 @@ def match_beam_runs(gray, tpl, thresh, min_len, vertical=False):
 
 def match_bank(gray, tpls, thresh, scales=SCALES):
     """match ทุก template ในลิสต์ (ต่างชนิดไอคอน เช่น F1 จัตุรัสซ้อน / F2 ผืนผ้า+จุดเข็ม)
-    รวม candidate ทุกตัวก่อนแล้วค่อย NMS ทีเดียว — กันกล่อง F1/F2 เบิ้ลทับตำแหน่งเดียวกัน"""
+    รวม candidate ทุกตัวก่อนแล้วค่อย NMS ทีเดียว — กันกล่อง F1/F2 เบิ้ลทับตำแหน่งเดียวกัน
+
+    template เล็ก+หมึกน้อย (ไอคอนจิ๋วกลางพื้นขาว เช่น tpl_column6/7 ink 0.09-0.11, ตัวปกติ
+    0.22-0.47) correlation ใจดีเกิน — วัดจริง 2026-08-28: ที่ 0.75 พ่นขยะ 49-83 จุดใส่บ้าน
+    ซีรีส์อื่น ที่ 0.85 ตัวจริงบ้านตัวเองครบ (12/12, 16/16) ขยะศูนย์ทุกหน้า จึงยกเกณฑ์
+    รายตัวตรงนี้ (จุดเดียว — analyze() กับ harvest_templates.py ใช้ทางเดียวกัน ไม่ดริฟท์)
+    คลัง footing ปัจจุบันไม่มีตัวไหนเข้าเงื่อนไข (เล็กสุด 50px) กฎนี้จึงเป็นกลางกับ footing"""
     cands = []
     for tpl in tpls:
-        cands += match_points(gray, tpl, thresh, scales=scales, _nms=False)
+        eff = thresh
+        if min(tpl.shape) < 50 and (tpl < 128).mean() < COLUMN_LOWINK_CUT:
+            eff = max(thresh, COLUMN_LOWINK_THRESH)
+        cands += match_points(gray, tpl, eff, scales=scales, _nms=False)
     return _nms(cands)
 
 
 def analyze(gray, tpls_footing=(), tpls_column=(),
             footing_thresh=FOOTING_THRESH, column_thresh=COLUMN_THRESH,
-            beam_thresh=BEAM_THRESH, beam_gap=BEAM_GAP):
+            beam_thresh=BEAM_THRESH, beam_gap=None):
     """คืน dict ผลตรวจทุก class (template ไหนไม่มีก็ข้าม class นั้น)"""
     out = {"footing": [], "column": [], "beam_h": [], "beam_v": []}
     out["footing"] = match_bank(gray, tpls_footing, footing_thresh)
     # เสา: single-scale พอ — C1 บนผังคานขนาดคงที่ในบ้านเดียวกัน และ template เล็กมาก
     # ย่อ scale แล้วเริ่มจับ noise (เทสต์บ้าน 17: multi-scale ทำให้ 14 กลายเป็น 21)
+    # (กฎ template เล็ก+หมึกน้อยใช้เกณฑ์ 0.85 อยู่ใน match_bank — จุดเดียว ทุกทางผ่าน)
     out["column"] = match_bank(gray, tpls_column, column_thresh, scales=(1.0,))
-    out["beam_h"] = match_beam_runs(gray, beam_template(beam_gap), beam_thresh, BEAM_MIN_LEN)
-    out["beam_v"] = match_beam_runs(gray, beam_template(beam_gap, vertical=True),
+    # beam_gap ระบุมา = บังคับ gap เดียว (ทางแก้บ้าน DPI แปลก ผ่าน --beam-gap เดิม)
+    # ไม่ระบุ = ลองทุกค่าใน BEAM_GAPS ที่วัดจริงจากคลัง
+    gaps = (beam_gap,) if beam_gap else BEAM_GAPS
+    out["beam_h"] = match_beam_runs(gray, [beam_template(g) for g in gaps],
+                                    beam_thresh, BEAM_MIN_LEN)
+    out["beam_v"] = match_beam_runs(gray, [beam_template(g, vertical=True) for g in gaps],
                                     beam_thresh, BEAM_MIN_LEN, vertical=True)
     # ไอคอนฐานราก F2 (ผืนผ้าแนวตั้ง) หน้าตาคล้าย "คานตั้งวิ่งผ่านกล่องเสา" — บนผังคานจึง
     # จับมั่ว (เจอจริงบ้าน 12 หน้า22) แก้โดยตัดฐานรากที่จุดกึ่งกลางตกในแถบคานทิ้ง:
@@ -186,7 +219,7 @@ def load_templates():
     return tpls
 
 
-def run(image_path, out_path=None, beam_gap=BEAM_GAP):
+def run(image_path, out_path=None, beam_gap=None):
     gray = imread_thai(image_path)
     tpls = load_templates()
     det = analyze(gray, tpls["footing"], tpls["column"], beam_gap=beam_gap)
@@ -215,8 +248,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("image", nargs="?", help="ภาพหน้าแบบ (.png)")
     ap.add_argument("-o", "--out", help="path ภาพผลลัพธ์")
-    ap.add_argument("--beam-gap", type=int, default=BEAM_GAP,
-                    help=f"ระยะหน้าคานบน-ล่าง px (default {BEAM_GAP} จากบ้าน 17)")
+    ap.add_argument("--beam-gap", type=int, default=None,
+                    help=f"บังคับ gap เดียว px (default: ลองทุกค่าใน BEAM_GAPS {BEAM_GAPS})")
     ap.add_argument("--demo", action="store_true", help="รัน self-check บ้าน 17")
     a = ap.parse_args()
     if a.demo:

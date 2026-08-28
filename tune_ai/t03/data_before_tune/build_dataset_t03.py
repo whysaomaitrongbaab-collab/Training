@@ -92,7 +92,7 @@ PLAN_SUBTASKS = {
         "types": {"footing", "pile", "pile_cap", "pedestal", "column"},
     },
     "plan_beam": {
-        "target": ("beams at every level — ground beams (คานคอดิน), floor beams, ring beams "
+        "target": ("beams at every level, ground beams (คานคอดิน), floor beams, ring beams "
                    "(คานอะเส), roof framing (โครงหลังคา)"),
         "types": {"beam", "tie_beam", "steel_member"},
         # โครงหลังคาใช้ชื่อแต่งหลากหลาย (rafter/hip_rafter/steel_rafter/steel_ridge/purlin/...)
@@ -227,7 +227,7 @@ def main():
 
             examples = []  # (subtask, gt_dict, images[list of Path], extra_text)
 
-            if pat == "gridline":
+            if pat in ("grid_master", "gridline"):
                 srcs = d.get("source_pages") or []
                 imgs = [TRAINING / s for s in srcs if (TRAINING / s).exists()]
                 if not imgs:
@@ -237,7 +237,7 @@ def main():
                     imgs = imgs[:4]  # เพดานเดียวกับ t01 gridmaster examples
                 examples.append(("gridline", d, imgs, None))
 
-            elif pat == "plan" and disc == "structural":
+            elif pat in ("beam_plan", "footing_plan", "roof_frame_plan", "etc_plan", "plan") and disc == "structural":
                 img = find_image(house, d, fp.name)
                 if not img:
                     skipped["no_image"].append(f"{house}/{fp.name}")
@@ -246,7 +246,7 @@ def main():
                 if gridmaster and isinstance(gridmaster.get("grid"), dict):
                     slim = {"grid": {k: gridmaster["grid"].get(k)
                                      for k in ("x_lines", "y_lines") if k in gridmaster["grid"]}}
-                    gm_text = ("\n\nGRID MASTER (resolved axes for this building):\n"
+                    gm_text = ("\n\nGRID MASTER (resolved axes for this building)\n"
                                + json.dumps(slim, ensure_ascii=False))
                 for sub, cfg in PLAN_SUBTASKS.items():
                     gt, n = gt_for_plan_subtask(d, cfg)

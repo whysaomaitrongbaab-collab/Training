@@ -159,6 +159,8 @@ templates/                          minimal valid shape per pattern (placeholder
   grid_master.template.json
   beam_plan.template.json           beams — atomic segments, grid_ref_start/end
   footing_plan.template.json        footings/columns — merged grid_refs[] + count
+  roof_frame_plan.template.json     roof beam/truss/purlin — same atomic-segment shape as beam_plan
+  etc_plan.template.json            standalone column plan — the residual bucket's #1 known member
   section.template.json             beam + column + footing (§6b) + steel (§6a) specs
   schedule.template.json            multi-level column schedule (level field)
   notes.template.json               sections[] + notes{} with the four flat aliases

@@ -55,7 +55,9 @@ This applies to **top-level `elements[]` entries**. A cross-reference sub-list n
 
 Across houses 01-11 this field grew to **359 distinct values over 4,507 elements**. That is drift, not richness. Use one of these established values whenever it fits:
 
-`beam` · `column` · `footing` · `pile` · `pile_cap` · `pedestal` · `slab` · `tie_beam` · `rafter` · `stair` · `room` · `room_cut` · `door` · `window` · `wall` · `dimension` · `dimension_chain` · `dimension_note` · `level` · `datum` · `note` · `symbol` · `symbol_legend_entry` · `sheet_index_entry` · `detail_view` · `section_view` · `plan_view` · `precast_plank_detail` · `sanitary_fixture` · `vent_pipe` · `fitting` · `accessory` · `furniture` · `gate_component` · `railing_component` · `electrical_outlet` · `ceiling_downlight_point` · `ceiling_fan` · `design_criterion` · `steel_member` · `connection_detail` · `installation_detail`
+`beam` · `column` · `footing` · `pile` · `pile_cap` · `pedestal` · `slab` · `tie_beam` · `rafter` · `purlin` · `truss` · `stair` · `room` · `room_cut` · `door` · `window` · `wall` · `dimension` · `dimension_chain` · `dimension_note` · `level` · `datum` · `note` · `symbol` · `symbol_legend_entry` · `sheet_index_entry` · `detail_view` · `section_view` · `plan_view` · `precast_plank_detail` · `sanitary_fixture` · `vent_pipe` · `fitting` · `accessory` · `furniture` · `gate_component` · `railing_component` · `electrical_outlet` · `ceiling_downlight_point` · `ceiling_fan` · `design_criterion` · `steel_member` · `connection_detail` · `installation_detail`
+
+`purlin` and `truss` were added 2026-08-28 to close a self-contradiction: §6a already names them as the correct semantic `element_type` for a steel roof frame's individual members (distinct from generic `steel_member`), but this list never carried them, so no real file has used them yet — this is a pure vocabulary fix, not a migration.
 
 Only add a new value when **none** of the above genuinely fits, and when you do, say so in `warnings[]` so the next house can reuse it instead of inventing a third spelling of the same idea.
 
@@ -214,7 +216,7 @@ Applies to all four equally:
 2. `tools/check_format.py` — `PATTERNS` set widened; the roof-framing check now accepts `roof_frame_plan`
 3. the 899 legacy files renamed `plan` → `etc_plan`
 
-Still open, and the reason a fresh extraction should keep producing `etc_plan` rather than guessing: **the t04 Pass 0 / Pass 2 prompts have not been taught the three specific values yet.** Until they are, a model run classifies every plan as `etc_plan` — correct under the residual rule, just not yet using the split.
+**✅ Pass 2 prompt taught the split — done 2026-08-29.** `tune_ai/t03/pass2_used/plan.md` carries the full sheet-content → pattern decision table (all four values, the `plan_beam`-splits-into-two trap, the `roof_plan` trap) and `gridline.md` already emits `pattern: "grid_master"`. A model run through pass 2 now picks the specific value instead of defaulting to `etc_plan`. Pass 0 (page classification, before pattern is even decided) does not need this — it only sorts pages into subtask folders (`plan_footing`/`plan_beam`/etc., §1 table in `pass_design.csv`), not into the four output pattern values.
 
 ### ⚠️ `roof_plan` vs `plan` — a real, live data-loss bug (found 2026-08-21)
 
