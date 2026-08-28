@@ -1,0 +1,24 @@
+{
+  "png": "42",
+  "doc_page": 40,
+  "discipline": "structural",
+  "sheet_code": "S-15",
+  "sheet_name": "แบบขยายคาน B5, B6, RB1, RB2",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า42.png",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Second beam-detail sheet, continuing S-14/หน้า41 (BX, B1, B2, B3, B3X, B4, B4X). The stirrup, bar-type and '0.30 = stirrup height' conventions described in S-14's warnings apply here unchanged.",
+    "B6 is 0.25m WIDE — the only 0.25 beam in the house; every other beam is 0.15 or 0.20. Its tie is ø6@0.075 throughout. An earlier note on the floor-1 plan (S-04/หน้า31) described B6 as '0.20x0.40 ... tie ø6@0.15'; that was wrong on both counts and the plan file's warning has been corrected.",
+    "B5 has no curtailed bars: 2ø20มม top and 3ø20มม bottom run the full length, matching section 5-5. Like B4 it is drawn at a fixed 4.00m span with 1.00m end zones rather than the 'L/4 แต่ไม่น้อยกว่า 0.80' form.",
+    "RB1 and RB2 are the ring/tie beams (คานอะเส) used on S-06/หน้า33. Both are drawn in elevation with the L/4 end-zone form plus their own cross-section (R1-R1 and R2-R2); the sections give the mid-span spacing (@0.15) and the elevations give the end-zone spacing (@0.075).",
+    "B6 and B5 are both drawn with three bottom bars; B6 also has three on top. Dot counts on each face were checked against their own leaders rather than assumed from the nearest label."
+  ],
+  "elements": [
+    { "element_id": "B5", "element_type": "beam", "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 20, "type": "DB" }, "bottom": { "count": 3, "dia_mm": 20, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 75, "type": "RB", "variable_spacing": true, "note": "@0.075 over 1.00m at each end, @0.10 through the middle; first stirrup 0.05 from the support face" }, "confidence_score": 0.9, "confidence_flags": [], "note": "elevation drawn at a fixed 4.00m span plus section 5-5; the heaviest beam in the house" },
+    { "element_id": "B6", "element_type": "beam", "width_mm": 250, "height_mm": 400, "main_bar": { "top": { "count": 3, "dia_mm": 16, "type": "DB" }, "bottom": { "count": 3, "dia_mm": 16, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 75, "type": "RB" }, "confidence_score": 0.9, "confidence_flags": [], "note": "cross-section only, no elevation. On the plans it is the beam east of the stair opening (dummy line 2', S-04/หน้า31) and it also supports the bottom of the first stair flight on S-16/หน้า43" },
+    { "element_id": "RB1", "element_type": "tie_beam", "width_mm": 150, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 12, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 12, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 75, "type": "RB", "variable_spacing": true, "note": "@0.075 over L/4 (แต่ไม่น้อยกว่า 0.80) at each end, @0.15 through the middle; first stirrup 0.05 from the support face" }, "confidence_score": 0.9, "confidence_flags": [], "note": "คานอะเส; elevation plus section R1-R1. Same section and rebar as B1, which is why the ring-beam plan can run RB1 almost everywhere" },
+    { "element_id": "RB2", "element_type": "tie_beam", "width_mm": 200, "height_mm": 400, "main_bar": { "top": { "count": 2, "dia_mm": 16, "type": "DB" }, "bottom": { "count": 2, "dia_mm": 16, "type": "DB" } }, "stirrup": { "dia_mm": 6, "spacing_mm": 75, "type": "RB", "variable_spacing": true, "note": "@0.075 over L/4 (แต่ไม่น้อยกว่า 0.80) at each end, @0.15 through the middle; first stirrup 0.05 from the support face" }, "confidence_score": 0.9, "confidence_flags": [], "note": "คานอะเส; elevation plus section R2-R2. Same section and rebar as B2" }
+  ]
+}

@@ -1,0 +1,740 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบขยายพื้น , คาน",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_10/บ้าน_เล็ก_1ชั้น_10_หน้า16.png",
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "**บนแผ่นนี้มีรูปตัด 2 รูปที่ติดป้ายว่า 'B2 SECTION ②' เหมือนกันทั้งคู่ แต่เหล็กกลับด้านกัน** — รูปซ้าย 0.20x0.40 บน 4-DB12 / ล่าง 2-DB12 และรูปขวา 0.20x0.40 บน 2-DB12 / ล่าง 4-DB12 ตัดสินว่ารูปขวาคือ **SECTION 1** ที่ถูกพิมพ์เลขผิด โดยอ่านตำแหน่งลูกศรตัดบนรูปด้าน B2 เทียบกับผังเหล็กจริง: ลูกศร 1 อยู่ห่างจากกริด 1 ประมาณ 1.2 ม. ซึ่งอยู่ในช่วงที่เหล็กเสริมล่าง (2+2) พาดอยู่ (พิมพ์ '(2+2) DB 12mm.' กำกับเหล็กล่างช่วงกลาง) จึงต้องได้ล่าง 4 บน 2; ส่วนลูกศร 2 อยู่ห่างจากกริด 1 ประมาณ 2.4 ม. คือชิดเสากลางซึ่งเหล็กเสริมบน (2+2) เริ่มพาด จึงต้องได้บน 4 ล่าง 2 — เก็บข้อความป้ายเดิมไว้ที่ element_id_printed_as ของรูปที่แก้เลข",
+    "รูปตัดคานทุกรูปบนแผ่นนี้พิมพ์เหล็กหลักเป็น 'DB' (เหล็กข้ออ้อย) ชัดเจน ส่วนเหล็กปลอกพิมพ์เพียง '6mm.@...' ไม่มีตัวอักษรนำหน้า — บันทึกเหล็กปลอกเป็น RB ตาม §6 (ขนาด 6 มม. เป็นเหล็กกลม) และเพราะ S-04 ในชุดเดียวกันพิมพ์ 'RB6 mm.@...' เต็มรูปแบบสำหรับเหล็กปลอกตัวเดียวกัน",
+    "แบบขยายพื้น S1/S2/S3 พิมพ์เหล็กเป็น '9mm.@...' ไม่มีตัวอักษรนำหน้าเช่นกัน — บันทึกเป็น RB ด้วยเหตุผลเดียวกัน และเก็บข้อความเดิมไว้ใน printed_as ทุกชั้นเหล็ก",
+    "**S2 มีเหล็กบนสองระยะต่างกันในสองทิศทาง (9mm.@0.20 และ 9mm.@0.15)** ต่างจาก S1/S3 ที่ใช้สัญลักษณ์ # (ระยะเท่ากันสองทาง) — เก็บเป็น bar_layers แยกทิศทางตาม §0.6 ไม่ยุบรวม",
+    "B1 และ B8 ใช้แบบขยายรูปเดียวกัน ป้ายพิมพ์ว่า 'B1,B8' — บันทึกเป็น 2 มาร์คแยกกันใน specs (คนละตำแหน่งบนผัง) และเก็บป้ายเดิมไว้ที่ element_id_printed_as ของรายการ B1 บนแผ่นนี้",
+    "'คานรับผนังรอบเสาโชว์' เป็นชื่อบรรยาย ไม่ใช่มาร์คที่พิมพ์เป็นรหัส และไม่ปรากฏบนผังใดเลย — ใช้ชื่อไทยตามที่พิมพ์เป็น element_id ตาม §0.3 (แบบไม่ได้ตั้งมาร์คให้)"
+  ],
+  "scale": "1:20",
+  "specs": {
+    "B1": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "printed_as": "B1,B8  0.15x0.40  2-DB 12mm. บน / 2-DB 12mm. ล่าง / 6mm.@0.15",
+      "spec_sheet": "S-03",
+      "spec_confidence_flags": [
+        "detail_shared_with:B8"
+      ]
+    },
+    "B2": {
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "top, over the middle support, extent 0.75 each side",
+          "printed_as": "(2+2) DB 12mm."
+        },
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "bottom, at midspan, curtailed 0.60 from each support face",
+          "printed_as": "(2+2) DB 12mm."
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "RB6 mm.@0.20"
+      },
+      "spec_source": "section",
+      "spec_confidence_score": 0.85,
+      "printed_as": "B2 คานต่อเนื่อง 2 ช่วง 3.00+3.00  0.20x0.40  6mm.@0.20",
+      "spec_sheet": "S-03",
+      "span_count": 2,
+      "spec_confidence_flags": [
+        "section_number_mislabelled_on_sheet"
+      ]
+    },
+    "B3": {
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "RB6 mm.@0.20"
+      },
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "printed_as": "B3  0.20x0.50  3-DB 16mm. บน / 4-DB 16mm. ล่าง / 6mm.@0.20",
+      "spec_sheet": "S-03",
+      "spec_confidence_flags": [
+        "asymmetric_top_bottom:3_top_4_bottom"
+      ]
+    },
+    "B4": {
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "top, over the middle support, extent 0.75 each side",
+          "printed_as": "(2+2) DB 12mm.",
+          "note": "SECTION 5 (ตัดที่เสากลาง) จึงนับเหล็กบนได้ 4-DB 12mm."
+        },
+        {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "bottom, at midspan",
+          "printed_as": "3 -DB 12mm.",
+          "note": "SECTION 4 (ตัดกลางช่วง) นับเหล็กล่างได้ 3-DB 12mm. = 2 เส้นต่อเนื่อง + 1 เส้นเสริม"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "printed_as": "B4 คานต่อเนื่อง 2 ช่วง 3.00+3.00  0.20x0.40  6mm.@0.15",
+      "spec_sheet": "S-03",
+      "span_count": 2
+    },
+    "B8": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "printed_as": "B1,B8  0.15x0.40  2-DB 12mm. บน / 2-DB 12mm. ล่าง / 6mm.@0.15",
+      "spec_sheet": "S-03",
+      "spec_confidence_flags": [
+        "detail_shared_with:B1"
+      ]
+    },
+    "คานรับผนังรอบเสาโชว์": {
+      "width_mm": 100,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "printed_as": "คานรับผนังรอบเสาโชว์  0.10x0.40  1-DB 12mm. บน / 1-DB 12mm. ล่าง / 6mm.@0.15",
+      "spec_sheet": "S-03",
+      "spec_confidence_flags": [
+        "descriptive_mark_not_a_printed_code"
+      ]
+    },
+    "S1": {
+      "thickness_mm": 100,
+      "short_span_m": 3.0,
+      "bar_layers": [
+        {
+          "location": "top, over each support",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "each_way": true,
+          "extent_mm": 750,
+          "printed_as": "9mm.@0.20#  ระยะ 0.75"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "each_way": true,
+          "printed_as": "9mm.@0.20#"
+        }
+      ],
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "spec_sheet": "S-03"
+    },
+    "S2": {
+      "thickness_mm": 100,
+      "short_span_m": 3.0,
+      "bar_layers": [
+        {
+          "location": "top, over each support, direction 1",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "extent_mm": 750,
+          "printed_as": "9mm.@0.20  ระยะ 0.75"
+        },
+        {
+          "location": "top, over each support, direction 2",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "extent_mm": 750,
+          "printed_as": "9mm.@0.15  ระยะ 0.75"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "each_way": true,
+          "printed_as": "9mm.@0.20#"
+        }
+      ],
+      "spec_source": "section",
+      "spec_confidence_score": 0.85,
+      "spec_sheet": "S-03",
+      "spec_confidence_flags": [
+        "top_bars_differ_by_direction:0.20_vs_0.15"
+      ]
+    },
+    "S3": {
+      "thickness_mm": 100,
+      "short_span_m": 1.5,
+      "bar_layers": [
+        {
+          "location": "top, over each support",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250,
+          "each_way": true,
+          "extent_mm": 500,
+          "printed_as": "9mm.@0.25#  ระยะ 0.50"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250,
+          "each_way": true,
+          "printed_as": "9mm.@0.25#"
+        }
+      ],
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "spec_sheet": "S-03"
+    }
+  },
+  "elements": [
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "thickness_mm": 100,
+      "short_span_m": 3.0,
+      "bar_layers": [
+        {
+          "location": "top, over each support",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "each_way": true,
+          "extent_mm": 750,
+          "printed_as": "9mm.@0.20#  ระยะ 0.75"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "each_way": true,
+          "printed_as": "9mm.@0.20#"
+        }
+      ]
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "thickness_mm": 100,
+      "short_span_m": 3.0,
+      "bar_layers": [
+        {
+          "location": "top, over each support, direction 1",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "extent_mm": 750,
+          "printed_as": "9mm.@0.20  ระยะ 0.75"
+        },
+        {
+          "location": "top, over each support, direction 2",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "extent_mm": 750,
+          "printed_as": "9mm.@0.15  ระยะ 0.75"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "each_way": true,
+          "printed_as": "9mm.@0.20#"
+        }
+      ]
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "thickness_mm": 100,
+      "short_span_m": 1.5,
+      "bar_layers": [
+        {
+          "location": "top, over each support",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250,
+          "each_way": true,
+          "extent_mm": 500,
+          "printed_as": "9mm.@0.25#  ระยะ 0.50"
+        },
+        {
+          "location": "bottom",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250,
+          "each_way": true,
+          "printed_as": "9mm.@0.25#"
+        }
+      ]
+    },
+    {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "printed_as": "B1,B8  0.15x0.40  2-DB 12mm. บน / 2-DB 12mm. ล่าง / 6mm.@0.15",
+      "element_id": "B1",
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "element_id_printed_as": "B1,B8"
+    },
+    {
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "top, over the middle support, extent 0.75 each side",
+          "printed_as": "(2+2) DB 12mm."
+        },
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "bottom, at midspan, curtailed 0.60 from each support face",
+          "printed_as": "(2+2) DB 12mm."
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "RB6 mm.@0.20"
+      },
+      "printed_as": "B2 คานต่อเนื่อง 2 ช่วง 3.00+3.00  0.20x0.40  6mm.@0.20",
+      "span_count": 2,
+      "element_id": "B2",
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "continuous_2_span"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "B2",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "RB6 mm.@0.20"
+      },
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "section_number_mislabelled_on_sheet"
+      ],
+      "note": "ตัดกลางช่วง — เหล็กล่าง 4-DB 12mm. รวมเส้นเสริม (2+2); ป้ายบนแบบพิมพ์เลขรูปตัดผิดเป็น 2 (ดู warnings)",
+      "element_id_printed_as": "B2 SECTION 2",
+      "element_name_assigned": "B2 SECTION 1"
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "B2",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "RB6 mm.@0.20"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "ตัดที่จุดรองรับกลาง — เหล็กบน 4-DB 12mm. รวมเส้นเสริม (2+2)",
+      "element_name_assigned": "B2 SECTION 2"
+    },
+    {
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "RB6 mm.@0.20"
+      },
+      "printed_as": "B3  0.20x0.50  3-DB 16mm. บน / 4-DB 16mm. ล่าง / 6mm.@0.20",
+      "element_id": "B3",
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "top, over the middle support, extent 0.75 each side",
+          "printed_as": "(2+2) DB 12mm.",
+          "note": "SECTION 5 (ตัดที่เสากลาง) จึงนับเหล็กบนได้ 4-DB 12mm."
+        },
+        {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "bottom, at midspan",
+          "printed_as": "3 -DB 12mm.",
+          "note": "SECTION 4 (ตัดกลางช่วง) นับเหล็กล่างได้ 3-DB 12mm. = 2 เส้นต่อเนื่อง + 1 เส้นเสริม"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "printed_as": "B4 คานต่อเนื่อง 2 ช่วง 3.00+3.00  0.20x0.40  6mm.@0.15",
+      "span_count": 2,
+      "element_id": "B4",
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "continuous_2_span"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "B4",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "ตัดช่วงปลายคาน",
+      "element_name_assigned": "B4 SECTION 3"
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "B4",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "ตัดกลางช่วง — เหล็กล่างเพิ่มเป็น 3 เส้น",
+      "element_name_assigned": "B4 SECTION 4"
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "B4",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "ตัดที่จุดรองรับกลาง — เหล็กบน 4-DB 12mm. รวมเส้นเสริม (2+2)",
+      "element_name_assigned": "B4 SECTION 5"
+    },
+    {
+      "width_mm": 100,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "RB6 mm.@0.15"
+      },
+      "printed_as": "คานรับผนังรอบเสาโชว์  0.10x0.40  1-DB 12mm. บน / 1-DB 12mm. ล่าง / 6mm.@0.15",
+      "element_id": null,
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "element_name_assigned": "คานรับผนังรอบเสาโชว์"
+    }
+  ]
+}

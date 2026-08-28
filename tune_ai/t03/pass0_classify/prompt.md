@@ -106,6 +106,37 @@ Each view entry:
 | Symbol / legend page | `symbol` |
 | Series price table, catalogue, promotional page | `misc` |
 
+### Title-block wording → `subtask` (glossary, not a rule)
+
+The title block is Thai and every `subtask` above is English. These are the exact wordings that
+appear in our own drawing sets, most frequent first. Read the title block first, then confirm
+against what the drawing actually shows — the wording narrows the choice, the drawing decides it.
+
+| printed in the title block | `subtask` |
+|---|---|
+| ผังบริเวณ | `site_plan` |
+| แปลนฐานรากแผ่ · แปลนฐานรากเสาเข็ม · ผังโครงสร้างฐานราก | `plan_footing` (+ `plan_column` if column marks share the sheet) |
+| ผังโครงสร้างชั้นล่าง · ผังโครงสร้างชั้นบน · แปลนพื้นชั้น N | `plan_beam` และ/หรือ `plan_slab` — one view each if both are drawn |
+| แปลนโครงหลังคา · ผังโครงสร้างหลังคา | `plan_beam` (โครง = framing → structural) |
+| แปลนหลังคา (ไม่มี mark/กริด) | `roof_plan` (architectural) |
+| รูปด้าน 1-4 | `side_profile` + `also_gridline: true` |
+| รูปตัด N | มีเหล็กเสริม → `section` · ไม่มี → `side_profile` |
+| แบบขยาย… (บันได ST.n · ห้องน้ำ WC.n · ประตู-หน้าต่าง · รั้ว · ราวกันตก · เชิงชาย) | `plan_architectural` |
+| แบบขยายระบบสุขาภิบาล… · ตารางระยะการแขวนท่อ | `plan_sanitary` |
+| แปลนไฟฟ้าแสงสว่าง · แปลนเต้ารับไฟฟ้า · รายละเอียดแผงเมนสวิตช์ | `plan_electrical` |
+| รายการประกอบแบบ | `notes` |
+| รายการวัสดุ · รายการปริมาณวัสดุและแรงงาน | `material_list` |
+| สารบัญ · สารบัญแบบ… | `index` |
+| รายการสัญลักษณ์ประกอบแบบ · สัญลักษณ์… | `symbol` |
+| คณะผู้จัดทำโครงการ… | `title` |
+| หลักเกณฑ์และข้อกำหนด… | `misc` |
+
+Words worth knowing on their own: `แปลน`/`ผัง` = plan (top-down) · `โครงสร้าง` = structural ·
+`โครง` = framing · `แบบขยาย` = enlarged detail · `รูปด้าน` = elevation · `รูปตัด` = section ·
+`ชั้นล่าง`/`ชั้นบน` = ground/upper floor · `รายการ` = schedule or list · `สารบัญ` = contents.
+
+A wording not in this table is not permission to coin a subtask — fall back to the tables above.
+
 ### Two traps that have already cost real data
 
 1. **Roof framing is `plan_beam`, not `roof_plan`.** A แปลนโครงหลังคา carrying beams or purlins

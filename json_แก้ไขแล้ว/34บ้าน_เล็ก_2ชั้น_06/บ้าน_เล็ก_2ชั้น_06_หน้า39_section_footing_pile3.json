@@ -1,0 +1,66 @@
+{
+  "png": "39",
+  "doc_page": 37,
+  "discipline": "structural",
+  "sheet_code": "S-12",
+  "sheet_name": "ขยาย F10, F12",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า39.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Last of three pile-cap detail sheets (S-10/S-11/S-12). F10 is used at D2 and F12 at C2 on S-03/หน้า30 — the two most heavily loaded columns. The construction notes common to all six caps are written out on S-10/หน้า37 and not repeated here.",
+    "F10 is the only NON-RECTANGULAR cap in the house: its plan is a hexagon (a 1.75 x 1.20 rectangle with the two short ends cut back to points), holding 10 piles in a 3-4-3 arrangement. width_mm/depth_mm are the bounding rectangle 1750 x 1200 — the cut corners are not captured by those two numbers, so the shape is described in the element note instead of being packed into a size field.",
+    "F10's plan chain reads 0.20 then six bays of 0.225 then 0.20 = 1.75 across (7 pile columns), and 0.20|0.40|0.40|0.20 = 1.20 deep. F12's reads 0.20|0.45|0.225|0.225|0.45|0.20 = 1.75 across and 0.20|0.45|0.45|0.20 = 1.30 deep, giving 12 piles in a 4x3 grid.",
+    "F12's mat is printed as two separate leaders, '8ø12มม.' and '10ø12มม.', not as a single 'n+nø12มม.#' — recorded as a main_bar total of 18 with the two directions itemised in bar_layers. Which leader belongs to which direction is NOT stated on the sheet; assigned 10 bars to the wider 1.75m direction and 8 to the 1.30m direction on the reasonable-but-unconfirmed basis that the larger count spans the larger dimension. Flagged on the element.",
+    "Bar-type convention: ø9มม and smaller recorded as 'RB' (plain round), ø12มม and larger as 'DB' (deformed). The sheet prints only 'ø'."
+  ],
+  "elements": [
+    {
+      "element_id": "F10",
+      "element_type": "pile_cap",
+      "width_mm": 1750,
+      "depth_mm": 1200,
+      "thickness_mm": 300,
+      "pile_count": 10,
+      "main_bar": {
+        "count": 18,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "printed as '9+9ø12มม.#', 9 bars each way"
+      },
+      "additional_bars": [
+        { "count": 1, "dia_mm": 9, "type": "RB", "position": "รัดรอบ (bound around the cap perimeter at mid-depth)" },
+        { "count": 1, "dia_mm": 12, "type": "DB", "position": "dowel per pile, 'ø12มม.ยาว 1.00 ม.' from the pile head up into the cap" }
+      ],
+      "confidence_score": 0.8,
+      "confidence_flags": ["hexagonal plan — width_mm/depth_mm are the bounding rectangle only, see file warnings"],
+      "note": "pedestal per 'ตอม่อดูขยายเสา' (S-13/หน้า40); hexagonal cap, 10 piles arranged 3-4-3 (three along the top edge, four across the middle row, three along the bottom); filled 0.50m deep, heads embedded 0.05m"
+    },
+    {
+      "element_id": "F12",
+      "element_type": "pile_cap",
+      "width_mm": 1750,
+      "depth_mm": 1300,
+      "thickness_mm": 300,
+      "pile_count": 12,
+      "main_bar": {
+        "count": 18,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "printed as two separate leaders '8ø12มม.' and '10ø12มม.' — see bar_layers and the file warnings"
+      },
+      "bar_layers": [
+        { "count": 10, "dia_mm": 12, "type": "DB", "direction": "long (1.75m) direction", "note": "printed '10ø12มม.'; direction assignment inferred, not printed" },
+        { "count": 8, "dia_mm": 12, "type": "DB", "direction": "short (1.30m) direction", "note": "printed '8ø12มม.'; direction assignment inferred, not printed" }
+      ],
+      "additional_bars": [
+        { "count": 1, "dia_mm": 9, "type": "RB", "position": "รัดรอบ (bound around the cap perimeter at mid-depth)" },
+        { "count": 1, "dia_mm": 12, "type": "DB", "position": "dowel per pile, 'ø12มม.ยาว 1.00 ม.' from the pile head up into the cap" }
+      ],
+      "confidence_score": 0.8,
+      "confidence_flags": ["which of the two printed bar counts runs which way is not stated on the sheet — see file warnings"],
+      "note": "pedestal per 'ตอม่อดูขยายเสา' (S-13/หน้า40); 12 piles in a 4x3 grid, filled 0.50m deep, heads embedded 0.05m"
+    }
+  ]
+}

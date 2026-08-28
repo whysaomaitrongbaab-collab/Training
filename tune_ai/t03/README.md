@@ -26,7 +26,7 @@ t03/
 │   ├── material_list.md
 │   └── soil_boring_log.md
 │
-├── pass3_unused/             ④ 11 subtask ที่ยังไม่มีอะไรใน Constistant อ่าน แต่ถอดไว้ก่อน
+├── pass4_unused/             ④ 11 subtask ที่ยังไม่มีอะไรใน Constistant อ่าน แต่ถอดไว้ก่อน (เดิมชื่อ pass3 — ดู pass_design_v2.md)
 │   └── extract.md            ← ไฟล์เดียวครอบทั้ง 11 (แทนค่า {{PATTERN}})
 │
 └── _old_2026-08-04_two_pass/ ⛔ ดีไซน์เก่า 2 pass เลิกใช้แล้ว เก็บไว้อ่านย้อนหลัง
@@ -82,14 +82,14 @@ from anywhere else. If a prompt and the spec disagree, the spec wins and the pro
 
 ### Why one prompt covers several subtasks
 
-`pass2_used/plan.md` covers four subtasks and `pass3_unused/extract.md` covers eleven, both
+`pass2_used/plan.md` covers four subtasks and `pass4_unused/extract.md` covers eleven, both
 parameterized by substitution rather than copied per subtask. Four or eleven near-identical files
 drift apart — and drift between same-shaped files is the exact failure `primary_rawjson_schema.md`
 §0 exists to stop. Change a rule once, and every subtask that shares it changes together.
 
 ### The anti-loop wording is deliberate
 
-`pass2_used/plan.md` and `pass3_unused/extract.md` both carry an explicit instruction to stop and
+`pass2_used/plan.md` and `pass4_unused/extract.md` both carry an explicit instruction to stop and
 close the JSON on noticing repetition. That is aimed at a specific observed failure: on 2026-08-20
 t02 hit house 08's beam plan, fell into emitting the same `B2` beam across every grid cell, and ran
 to the token cap without ever closing the JSON — so the whole page, including the real elements read
@@ -149,7 +149,7 @@ a real image yet — run it on one house with a hand-written `pass0.json` before
 the cropping.
 
 What it does: reads pass 0's output, cuts multi-view pages into one image per view with OpenCV,
-scatters everything into `pass2/<subtask>/images/` + `pass3/<subtask>/images/`, and writes a
+scatters everything into `pass2/<subtask>/images/` + `pass4/<subtask>/images/`, and writes a
 `manifest.json` per folder listing what that subtask needs.
 
 **Why crop at all** — visual tokens are pinned at 5120/image (must match training). A full page

@@ -1,0 +1,51 @@
+{
+  "png": "21",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนคานระดับอะเส",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า21.png",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "S-03 is a 3-view sheet (§3): this file covers view2 'แปลนคานระดับอะเส' only. View1 (floor/beam/column plan) and view3 (CS connection detail) are separate files.",
+    "A small circular symbol with 4 diagonal lines to the bay corners appears at the center of each of the 6 main bays. Illegible even at 5x zoom, not a recognized element_type, and not on a grid intersection — excluded from elements[] rather than guessed. See grid master warnings[].",
+    "This view only covers the main 2x4 grid rectangle — the utility nook (SR/S2 rooms, west of grid 1) has no grade-beam run shown on this view."
+  ],
+  "grid_source": "บ้าน_เล็ก_1ชั้น_14_หน้า00_gridline.json",
+  "elements": [
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "D1", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 3.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 4.00, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB1", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "D2", "span_length_m": 1.50, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A1''", "span_length_m": 2.375, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "A1''", "grid_ref_end": "A2", "span_length_m": 2.125, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D1''", "span_length_m": 2.375, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB2", "element_type": "beam", "grid_ref_start": "D1''", "grid_ref_end": "D2", "span_length_m": 2.125, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+
+    { "element_id": "RB3", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B1''", "span_length_m": 2.375, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB3", "element_type": "beam", "grid_ref_start": "B1''", "grid_ref_end": "B2", "span_length_m": 2.125, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB3", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C1''", "span_length_m": 2.375, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "RB3", "element_type": "beam", "grid_ref_start": "C1''", "grid_ref_end": "C2", "span_length_m": 2.125, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+
+    {
+      "element_id": "CS",
+      "element_type": "column",
+      "count": 12,
+      "grid_refs": ["A1", "A1''", "A2", "B1", "B1''", "B2", "C1", "C1''", "C2", "D1", "D1''", "D2"],
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3,
+        "printed_as": "เสาตั้งเหล็ก [ตัวซี] -125x50x20x2.3มม."
+      },
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "note": "เสาเหล็กตั้ง (steel column) from grade-beam level up to roof, distinct from the RC pedestal (C0/C1) below it. Connects via baseplate — see view3 (connection detail)."
+    }
+  ]
+}

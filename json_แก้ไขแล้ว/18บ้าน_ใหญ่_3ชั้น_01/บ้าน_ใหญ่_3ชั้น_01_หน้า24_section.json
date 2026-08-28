@@ -1,0 +1,333 @@
+{
+  "png": "บ้าน_ใหญ่_3ชั้น_01_หน้า24.png",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบขยายโครงสร้าง 1",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_01/บ้าน_ใหญ่_3ชั้น_01_หน้า24.png",
+  "confidence_score": 0.65,
+  "confidence_flags": [],
+  "warnings": [
+    "เสา C1 หน้าตัดวงกลม เส้นผ่านศูนย์กลางที่พิมพ์ 0.20ม. เล็กมากเทียบกับอาคาร 3 ชั้น — บันทึกตามตัวเลขที่อ่านได้จริง ไม่ได้ปรับแก้เอง อาจเป็นไปได้ว่าตัวเลขจริงคือ 0.25/0.30ม. แต่ภาพไม่ชัดพอจะยืนยัน",
+    "B2 หน้าตัด①-① ใช้เหล็กหลัก DB12 แต่หน้าตัด②-② ของคานเดียวกันใช้ DB16 — ขนาดเหล็กต่างกันระหว่างสองหน้าตัดของคานมาร์คเดียวกัน เป็นสิ่งผิดปกติ บันทึกตามที่พิมพ์จริงทั้งสองค่า ไม่ได้สันนิษฐานว่าค่าใดอ่านผิด",
+    "B5 มีคำอธิบายเหล็กหลักเพียงบรรทัดเดียว ('4-DB16mm') ต่างจากคานอื่นที่แยกบน/ล่างชัดเจน 2 บรรทัด — ไม่ยืนยันว่า 4-DB16 คือรวมบน+ล่าง (2 บน+2 ล่าง) หรือใช้ค่าเดียวกันทั้งสองฝั่ง บันทึก main_bar เป็นค่ารวมตามที่พิมพ์ พร้อม flag ความไม่ชัดเจนนี้",
+    "F1 มีตัวเลขเหล็ก 2 ชุด (8-DB16 บนผังพื้นฐานราก, 5-DB16 บนรูปตัดที่แสดงเหล็กทาบต่อเสา) — บันทึกแยกเป็น main_bar (ฐานราก) และ dowel_bar (เหล็กทาบต่อเสาขึ้นตอม่อ) ตามตำแหน่งที่ปรากฏ ไม่รวมเป็นค่าเดียว",
+    "DETAIL GS/SR ไม่มีสเปกโครงสร้าง (ขนาด/หน้าที่การใช้งาน) ชัดเจนพอจะระบุ element_type มาตรฐานได้ 100% — บันทึกที่ confidence ต่ำพร้อม note บรรยายจากภาพ"
+  ],
+  "elements": [
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ฐานราก-หลังคา (ตลอดความสูง)",
+      "diameter_mm": 200,
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 12,
+        "type": "DB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "legs": 2
+      },
+      "printed_as": "⌀0.20 / 8-DB12 / 2ปRB6มม.@0.15ม.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "unusually_small_diameter_for_3_story"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "column",
+      "level": "ตอม่อ-ชั้น1 (ฐานราก)",
+      "width_mm": 250,
+      "height_mm": 250,
+      "main_bar": {
+        "count": 12,
+        "dia_mm": 12,
+        "type": "DB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "legs": 3
+      },
+      "printed_as": "0.25x0.25 / 12-DB12 / 3ปRB6มม.@0.15ม.",
+      "confidence_score": 0.65,
+      "confidence_flags": [],
+      "element_name_assigned": "C1_pedestal"
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "0.20x0.40 / 2-DB12 บน / 3-DB12 ล่าง / ปRB6มม.@0.15ม.",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "additional_bars": [
+        {
+          "location": "bottom_section_1-1",
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เสริมพิเศษ"
+        },
+        {
+          "location": "top_section_2-2",
+          "count": 1,
+          "dia_mm": 16,
+          "type": "DB",
+          "note": "เสริมพิเศษ"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "หน้าตัด①-①: 0.20x0.40 / 2-DB12 บน / 2-DB12+1-DB12(เสริมพิเศษ) ล่าง / ปRB6มม.@0.15ม. — หน้าตัด②-②: 2-DB16+1-DB16(เสริมพิเศษ) บน / 2-DB16 ล่าง / ปRB6มม.@0.15ม.",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "bar_diameter_differs_between_sections"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "additional_bars": [
+        {
+          "location": "bottom_section_1-1_or_top_section_2-2",
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เสริมพิเศษ (สลับตำแหน่งบน/ล่างระหว่างหน้าตัด①-① และ②-②)"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "หน้าตัด①-①: 2-DB12 บน / 2-DB12+1-DB12(เสริมพิเศษ) ล่าง — หน้าตัด②-②: 2-DB12+1-DB12(เสริมพิเศษ) บน / 2-DB12 ล่าง",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3A",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "additional_bars": [
+        {
+          "location": "top",
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "note": "เสริมพิเศษ"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "0.20x0.40 / 2-DB12+1-DB12(เสริมพิเศษ) บน / 2-DB12 ล่าง / ปRB6มม.@0.15ม. — ช่วง 0.70+2.70=3.40ม. ต่อเนื่องผ่านจุดรองรับ①",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "0.20x0.40 / 2-DB12 บน / 2-DB12 ล่าง / ปRB6มม.@0.15ม.",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "DB",
+        "note": "ไม่ระบุแยกบน/ล่างชัดเจนในภาพ"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "printed_as": "0.20x0.50 / 4-DB16มม. / ปRB6มม.@0.15ม.",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "top_bottom_split_unclear"
+      ]
+    },
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "width_mm": 500,
+      "depth_mm": 500,
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 16,
+        "type": "DB",
+        "note": "ตะแกรงฐานราก 2 ทิศทาง"
+      },
+      "dowel_bar": {
+        "count": 5,
+        "dia_mm": 16,
+        "type": "DB",
+        "note": "เหล็กทาบต่อขึ้นตอม่อ"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "ผูกยึด"
+      },
+      "pile_count": 1,
+      "pile_spec": "เสาเข็ม I ⌀0.22x0.22ม. Safe Load 20 ตัน/ต้น",
+      "printed_as": "0.50x0.50 / 8-DB16 (ฐานราก) / 5-DB16 (เหล็กทาบต่อเสา) / ปRB9มม. / เสาเข็ม I 0.22x0.22ม. 20ตัน/ต้น จำนวน 1 ต้น",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "width_mm": 1160,
+      "depth_mm": 500,
+      "dowel_bar": {
+        "count": 6,
+        "dia_mm": 16,
+        "type": "DB",
+        "note": "เหล็กทาบต่อขึ้นตอม่อ"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 150
+      },
+      "pile_count": 2,
+      "pile_spec": "เสาเข็ม I ⌀0.22x0.22ม. Safe Load 20 ตัน/ต้น",
+      "printed_as": "1.16 (0.25+0.33+0.33+0.25) x0.50 / 6-DB16 (เหล็กทาบต่อเสา) / ปRB9มม.@0.15ม. / เสาเข็ม I 0.22x0.22ม. 20ตัน/ต้น จำนวน 2 ต้น",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "installation_detail",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 200
+      },
+      "note": "DETAIL GS — พื้นวางบนดิน เสริม Ø9มม.@0.20ม. บนหินคลุกอัดแน่น/ทรายอัดแน่น ความหมาย GS ที่แน่นอนไม่ยืนยัน 100% (สันนิษฐานพื้นจอดรถ/ทางเดินวางบนดิน)",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "uncertain_element_function"
+      ]
+    },
+    {
+      "element_id": "SR",
+      "element_type": "installation_detail",
+      "width_mm": 700,
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 200
+      },
+      "note": "DETAIL SR — หน้าตัดรูปตัว L กว้าง 0.70ม. เสริม Ø9มม.@0.20ม. ความหมายที่แน่นอนไม่ยืนยัน 100% (สันนิษฐานธรณี/ขอบพื้นหน้าประตูหรือช่องเปิด)",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "uncertain_element_function"
+      ]
+    }
+  ]
+}

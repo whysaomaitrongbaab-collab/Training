@@ -1,0 +1,87 @@
+{
+  "png": "22",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "รายละเอียดพื้น/รอยต่อ (S0, S1 + connection details)",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_18/บ้าน_เล็ก_2ชั้น_18_หน้า22.png",
+  "confidence_score": 0.65,
+  "confidence_flags": [],
+  "warnings": [
+    "S0/S1 are slab-type markers (§10 convention) shown only as generic details here — no plan sheet in this house's drawing set shows where S0 vs S1 applies on the floor (plan_slab is absent from this house, see _scope.json). Spec-only, no position.",
+    "The remaining items on this sheet (SECTION-1, SECTION-2, ขยายพื้นลดระดับ, แบบขยายจุดที่มีหลังคาอบล่างติดผนัง, แบบขยายรอยต่อพื้นกับระเบียง) are construction/installation details (beam-to-parapet flashing, sunken-floor step, roof-to-wall dowel connection, plank-to-balcony joint) rather than positioned structural members — recorded as descriptive installation_detail elements with the specs printed, no grid_ref.",
+    "SECTION-1 and SECTION-2 are captioned '(ตามแบบโครงสร้างชั้นล่าง)' (per the ground-floor structural drawing) — a cross-reference this sheet makes to another sheet not further identified by sheet code (none of this house's structural sheets carry sheet codes, see หน้า00 warnings)."
+  ],
+  "elements": [
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
+      "note": "cast-in-place ground slab on compacted sand, RB9@0.20 top mesh over ทรายหยาบบดอัดแน่น (compacted coarse sand)",
+      "confidence_score": 0.65,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB"
+      },
+      "spacing_mm": null,
+      "note": "precast plank strip over beam stems, RB9@0.20 top bars, ~0.50m bearing each side of the beam",
+      "confidence_score": 0.6,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "installation_detail",
+      "description": "beam-to-parapet drip/flashing detail, RB9@0.10 + RB6@0.20 rebar",
+      "note": "SECTION-1 (ตามแบบโครงสร้างชั้นล่าง)",
+      "confidence_score": 0.5,
+      "confidence_flags": [],
+      "element_name_assigned": "beam_parapet_flashing_1"
+    },
+    {
+      "element_id": null,
+      "element_type": "installation_detail",
+      "description": "beam-to-parapet U-channel detail, RB9@0.20 rebar",
+      "note": "SECTION-2 (ตามแบบโครงสร้างชั้นล่าง)",
+      "confidence_score": 0.5,
+      "confidence_flags": [],
+      "element_name_assigned": "beam_parapet_flashing_2"
+    },
+    {
+      "element_id": null,
+      "element_type": "installation_detail",
+      "description": "sunken/stepped-down floor edge detail, RB9@0.20 + 3-DB12 (เสริมพิเศษ, additional reinforcement)",
+      "confidence_score": 0.55,
+      "confidence_flags": [],
+      "element_name_assigned": "ขยายพื้นลดระดับ"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "roof-to-wall dowel connection where a lower roof plane meets a wall — DB12mm dowels @1.50m and @1.00m into a เหล็กรูปพรรณ (steel channel, ตัว C) embed with welded lug",
+      "confidence_score": 0.5,
+      "confidence_flags": [],
+      "element_name_assigned": "แบบขยายจุดที่มีหลังคาอบล่างติดผนัง"
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "description": "precast plank floor-to-balcony joint detail — พื้นสำเร็จรูป (precast plank) meets พื้นระเบียง (S1 balcony slab) over a beam, with floor rebar left projecting (เหล็กพื้นเสียบไว้ก่อนเทพื้น) before the pour",
+      "confidence_score": 0.5,
+      "confidence_flags": [],
+      "element_name_assigned": "แบบขยายรอยต่อพื้นกับระเบียง"
+    }
+  ]
+}

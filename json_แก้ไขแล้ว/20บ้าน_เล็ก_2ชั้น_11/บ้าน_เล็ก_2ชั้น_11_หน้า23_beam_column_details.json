@@ -1,0 +1,478 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบขยายคาน , เสา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_11/บ้าน_เล็ก_2ชั้น_11_หน้า23.png",
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "แผ่นนี้เป็นแหล่งสเปกหลักของคาน B5, คานยื่น BC1/BC2 และเสา C1 ทั้ง 3 ระดับ",
+    "เสา C1 พิมพ์ 3 หน้าตัดตามระดับ (เสาชั้น 2 / เสาชั้น 1 / เสาตอม่อ) โดยมีมาร์ค 'C1' กำกับใต้ภาพชุดเดียว — บันทึกเป็น 3 รายการที่ใช้ element_id 'C1' ซ้ำกันและแยกด้วยฟิลด์ level ตาม §8 ไม่ฝังระดับลงในมาร์ค; ข้อยกเว้นการรวม point element ตาม §4 ใช้ได้เพราะนี่เป็นตารางหลายระดับ ไม่ใช่ตำแหน่งบนผัง",
+    "เสาใช้ main_bar แบบ count เดียว (4 Ø12) ไม่แยก top/bottom ตามข้อบังคับ §6 สำหรับ element_type column/pedestal",
+    "เสาตอม่อบันทึกเป็น element_type 'pedestal' ส่วนเสาชั้น 1/ชั้น 2 เป็น 'column' โดยยังใช้มาร์ค C1 เดียวกันตามที่แบบพิมพ์",
+    "คานยื่น BC1 ในแบบขยายนี้พิมพ์ความยาวยื่น 1.00 ม. แต่บนผัง S-02 ทุกตำแหน่งที่ติดป้าย BC1 ยื่นออกจริงเพียง 0.50 ม. — เก็บทั้งสองค่าไว้คนละที่ (1.00 ที่นี่, 0.50 ที่ span_length_m บนผัง) พร้อม flag ทั้งสองแผ่น ดูรายละเอียดใน warnings ของหน้า 20",
+    "ระยะ 0.60 ที่พิมพ์ทางซ้ายของรูปด้าน BC1/BC2 เป็นระยะฝังเหล็กบนเข้าไปในตัวรองรับ (anchorage) ไม่ใช่ความลึกคาน — ความลึกคานคือ 0.40 ตาม SECTION 5/6 บันทึกแยกไว้ที่ anchorage_depth_m",
+    "SECTION 3-6 เป็นรูปตัดของ B5/BC1/BC2 ให้ element_id ตามป้ายที่พิมพ์ และชี้กลับด้วย section_of"
+  ],
+  "scale": "1:20",
+  "specs": {
+    "B5": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "top, over each support, curtailed at L/4 from support face",
+          "printed_as": "(4+4) Ø12 mm.",
+          "note": "SECTION 3 (ตัดที่เสา) จึงนับเหล็กบนได้ 8 Ø12mm."
+        },
+        {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "bottom, at midspan, curtailed at L/5 from support face",
+          "printed_as": "(4+4) Ø12 mm.",
+          "note": "SECTION 4 (ตัดกลางช่วง) จึงนับเหล็กล่างได้ 8 Ø12mm."
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10",
+        "variable_spacing": true,
+        "note": "|6mm.@0.10 ช่วงปลายคาน (ระยะ L/4) และ |6mm.@0.20 ช่วงกลาง"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "printed_as": "B5 คานต่อเนื่อง 2 ช่วง 0.15x0.40 — SECTION 3 บน 8 Ø12mm./ล่าง 4 Ø12mm., SECTION 4 บน 4 Ø12mm./ล่าง 8 Ø12mm.",
+      "spec_sheet": "S-05"
+    },
+    "BC1": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "cantilever_length_m": 1.0,
+      "anchorage_depth_m": 0.6,
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.85,
+      "spec_confidence_flags": [
+        "cantilever_length_conflicts_with_plan:detail_1.00_vs_plan_0.50"
+      ],
+      "printed_as": "BC1 คานยื่น 1.00 ม. — SECTION 5  0.15x0.40  2 Ø12mm. บน / 2 Ø12mm. ล่าง / |6mm.@0.10",
+      "spec_sheet": "S-05"
+    },
+    "BC2": {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "พิมพ์ '(3+2) Ø12มม.' = 3 เส้นต่อเนื่อง + 2 เส้นเสริม รวม 5 เส้นตาม SECTION 6"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "cantilever_length_m": 1.5,
+      "anchorage_depth_m": 0.6,
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_source": "section",
+      "spec_confidence_score": 0.9,
+      "printed_as": "BC2 คานยื่น 1.50 ม. — SECTION 6  0.15x0.40  5 Ø12mm. บน / 3 Ø12mm. ล่าง / |6mm.@0.10",
+      "spec_sheet": "S-05"
+    },
+    "C1": {
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "เหล็กยืนมุมเสา 4 มุม พิมพ์เป็นตัวเลขเดียว 4 Ø12 mm."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "Tie |6 mm.@0.15"
+      },
+      "levels": [
+        {
+          "level": "เสาตอม่อ",
+          "width_mm": 200,
+          "height_mm": 200
+        },
+        {
+          "level": "เสาชั้น 1",
+          "width_mm": 150,
+          "height_mm": 150
+        },
+        {
+          "level": "เสาชั้น 2",
+          "width_mm": 150,
+          "height_mm": 150
+        }
+      ],
+      "spec_source": "section",
+      "spec_confidence_score": 0.95,
+      "spec_sheet": "S-05"
+    }
+  },
+  "elements": [
+    {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "เส้นต่อเนื่องตลอดความยาวคาน"
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "top, over each support, curtailed at L/4 from support face",
+          "printed_as": "(4+4) Ø12 mm.",
+          "note": "SECTION 3 (ตัดที่เสา) จึงนับเหล็กบนได้ 8 Ø12mm."
+        },
+        {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "bottom, at midspan, curtailed at L/5 from support face",
+          "printed_as": "(4+4) Ø12 mm.",
+          "note": "SECTION 4 (ตัดกลางช่วง) จึงนับเหล็กล่างได้ 8 Ø12mm."
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10",
+        "variable_spacing": true,
+        "note": "|6mm.@0.10 ช่วงปลายคาน (ระยะ L/4) และ |6mm.@0.20 ช่วงกลาง"
+      },
+      "concrete_grade": null,
+      "steel_grade": null,
+      "printed_as": "B5 คานต่อเนื่อง 2 ช่วง 0.15x0.40 — SECTION 3 บน 8 Ø12mm./ล่าง 4 Ø12mm., SECTION 4 บน 4 Ø12mm./ล่าง 8 Ø12mm.",
+      "element_id": "B5",
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "continuous_2_span"
+      ],
+      "span_count": 2
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "B5",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 8,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "ตัดที่จุดรองรับ (เหนือเสา) — เหล็กบน 8 Ø12mm. รวมเส้นเสริม (4+4)",
+      "element_name_assigned": "SECTION 3"
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "B5",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 8,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "|6 mm.@0.20"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "ตัดกลางช่วง — เหล็กล่าง 8 Ø12mm. รวมเส้นเสริม (4+4)",
+      "element_name_assigned": "SECTION 4"
+    },
+    {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "cantilever_length_m": 1.0,
+      "anchorage_depth_m": 0.6,
+      "concrete_grade": null,
+      "steel_grade": null,
+      "spec_confidence_flags": [
+        "cantilever_length_conflicts_with_plan:detail_1.00_vs_plan_0.50"
+      ],
+      "printed_as": "BC1 คานยื่น 1.00 ม. — SECTION 5  0.15x0.40  2 Ø12mm. บน / 2 Ø12mm. ล่าง / |6mm.@0.10",
+      "element_id": "BC1",
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "BC1",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "element_name_assigned": "SECTION 5"
+    },
+    {
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 12,
+          "type": "RB",
+          "note": "พิมพ์ '(3+2) Ø12มม.' = 3 เส้นต่อเนื่อง + 2 เส้นเสริม รวม 5 เส้นตาม SECTION 6"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "cantilever_length_m": 1.5,
+      "anchorage_depth_m": 0.6,
+      "concrete_grade": null,
+      "steel_grade": null,
+      "printed_as": "BC2 คานยื่น 1.50 ม. — SECTION 6  0.15x0.40  5 Ø12mm. บน / 3 Ø12mm. ล่าง / |6mm.@0.10",
+      "element_id": "BC2",
+      "element_type": "beam",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "section_view",
+      "section_of": "BC2",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 12,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "|6 mm.@0.10"
+      },
+      "confidence_score": 0.95,
+      "confidence_flags": [],
+      "note": "เหล็กบนพิมพ์ '(3+2) Ø12มม.' บนรูปด้าน = 5 เส้นตามรูปตัดนี้",
+      "element_name_assigned": "SECTION 6"
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "เสาชั้น 2",
+      "width_mm": 150,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "เหล็กยืนมุมเสา 4 มุม พิมพ์เป็นตัวเลขเดียว 4 Ø12 mm."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "Tie |6 mm.@0.15"
+      },
+      "printed_as": "เสาชั้น 2  0.15x0.15  4 Ø12 mm.  Tie |6 mm.@0.15",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "เสาชั้น 1",
+      "width_mm": 150,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "เหล็กยืนมุมเสา 4 มุม พิมพ์เป็นตัวเลขเดียว 4 Ø12 mm."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "Tie |6 mm.@0.15"
+      },
+      "printed_as": "เสาชั้น 1  0.15x0.15  4 Ø12 mm.  Tie |6 mm.@0.15",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "pedestal",
+      "level": "เสาตอม่อ",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "note": "เหล็กยืนมุมเสา 4 มุม พิมพ์เป็นตัวเลขเดียว 4 Ø12 mm."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "Tie |6 mm.@0.15"
+      },
+      "printed_as": "เสาตอม่อ  0.20x0.20  4 Ø12 mm.  Tie |6 mm.@0.15",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    }
+  ]
+}

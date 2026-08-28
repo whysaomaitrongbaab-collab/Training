@@ -1,4 +1,4 @@
-{
+﻿{
   "png": "21",
   "doc_page": null,
   "discipline": "structural",
@@ -12,6 +12,7 @@
     "This is the STRUCTURAL roof framing plan — hip/valley/ridge/rafter steel members drawn with grid-referenced node circles over the same A-E x 1-7 grid as the floor plans. Classified pattern 'plan' (not 'roof_plan') per op04's explicit trap warning: a structural roof frame with member marks belongs to plan_beam, and misclassifying it as roof_plan/Pass-3 would silently drop the roof steel from the BOQ."
   ],
   "warnings": [
+    "CORRECTED 2026-08-24 โ€” span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections (Pythagoras where the beam is diagonal, so chamfered members get a real length too). This is pure computation from the grid per the ยง4 rule that span is calculated by code and never estimated by the model โ€” no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
     "Members here are labelled by TYPE (a repeating steel frame), not by individual mark like the floor beams — the sheet itself gives one steel_section callout per member family, not per-instance ids. Recorded one element per member TYPE (ridge, hip rafter, valley rafter, common rafter, wall-plate/eave beam) using a descriptive element_id and a general grid_ref describing its coverage, rather than inventing individual marks (แ1, แ2, ...) that are not printed on the sheet — per §0.3 'if the drawing never marked the thing, a descriptive id is fine'.",
     "The roof plan shows two hip-roof masses: a main (larger, roughly square) hip over grid A-C x 2-7, and a smaller hip/valley-connected wing over grid C-E x 2-5, matching the two-tier massing visible on the elevations (หน้า07-10) and the architectural roof plan (หน้า06). The valley (ตะเฆ่ราง) member is where these two masses meet — its exact grid extent was not fully traced at this pass, recorded with an approximate span.",
     "Common rafters (จันทัน) are C100x50x20x2.3mm spaced @1.00m — per §6a this is a spacing-based repeated member, recorded as one element with spacing_mm rather than as ~10-12 individual rafter entries the sheet itself does not mark individually.",

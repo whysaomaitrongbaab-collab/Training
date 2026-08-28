@@ -32,7 +32,10 @@ TEMPLATE_DIR = HERE / "templates"
 OUT_DIR = HERE / "pattern_out"
 
 # threshold ต่อ class — จูนกับบ้าน 17: footing นิ่งมาก (14/14 ตั้งแต่ 0.5-0.8), column ต้องสูงกว่า
-FOOTING_THRESH = 0.60
+# 0.60 → 0.72 (2026-08-25 หลังขยาย bank 3→12): bank ใหญ่ = โอกาสขยะช่วง 0.6-0.65 คูณตาม
+# จำนวน template (เทสต์จริง: หน้า16 บ้าน 17 ซึ่งไม่มีฐานรากเลย ขึ้น 607 จุดที่เกณฑ์เดิม)
+# บ้าน 17 ของแท้ให้คะแนน 0.82-1.00 จึงยังห่างเกณฑ์ใหม่พอสมควร
+FOOTING_THRESH = 0.72
 COLUMN_THRESH = 0.65
 BEAM_THRESH = 0.70
 BEAM_MIN_LEN = 100   # แถบคานสั้นกว่านี้ (px) ตัดทิ้ง — กัน false positive จากตัวหนังสือ/ขอบตาราง
@@ -142,8 +145,9 @@ def analyze(gray, tpls_footing=(), tpls_column=(),
     # จับมั่ว (เจอจริงบ้าน 12 หน้า22) แก้โดยตัดฐานรากที่จุดกึ่งกลางตกในแถบคานทิ้ง:
     # ผังฐานรากจริงไม่มีคานให้ detect อยู่แล้ว กฎนี้จึงไม่มีทางตัดฐานรากจริง
     beams = out["beam_h"] + out["beam_v"]
+    M = 10  # ขยายแถบคานเผื่อขอบ — กล่อง run แน่นเป๊ะ ขยะที่เกาะขอบคาน (ห่าง 4px ก็เจอจริง) หนีได้
     out["footing"] = [f for f in out["footing"]
-                      if not any(bx <= f[0] <= bx + bw and by <= f[1] <= by + bh
+                      if not any(bx - M <= f[0] <= bx + bw + M and by - M <= f[1] <= by + bh + M
                                  for bx, by, bw, bh in beams)]
     return out
 
@@ -172,7 +176,13 @@ def load_templates():
     tpls = {"footing": [], "column": []}
     for name in tpls:
         for p in sorted(TEMPLATE_DIR.glob(f"tpl_{name}*.png")):
-            tpls[name].append(imread_thai(p))
+            t = imread_thai(p)
+            # template จิ๋วเกิน = จับทุกอย่างที่คล้ายเส้นตัดกัน (บทเรียนจริง 2026-08-25:
+            # เครื่องหมาย + ขนาด 22px จากบ้าน 11 ทำ footing บวม 636 จุดในหน้าที่ไม่มีฐานราก)
+            if min(t.shape) < 28:
+                print(f"⚠️ ข้าม {p.name} — เล็กกว่า 28px จับมั่วแน่นอน (ย้ายออกจาก templates/)")
+                continue
+            tpls[name].append(t)
     return tpls
 
 

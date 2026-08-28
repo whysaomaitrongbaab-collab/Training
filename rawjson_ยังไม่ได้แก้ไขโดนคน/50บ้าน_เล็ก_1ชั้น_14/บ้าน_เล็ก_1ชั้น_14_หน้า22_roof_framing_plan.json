@@ -1,0 +1,97 @@
+{
+  "png": "22",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แปลนโครงหลังคา",
+  "pattern": "plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_14/บ้าน_เล็ก_1ชั้น_14_หน้า22.png",
+  "confidence_score": 0.75,
+  "confidence_flags": [],
+  "warnings": [
+    "Recorded as pattern:'plan' per the repo's pinned rule (a structural roof-framing plan with member marks/grid refs is 'plan', never 'roof_plan', which is architectural-only) — this sheet shows ridge/purlin/rafter members with grid positions.",
+    "Interpreted as a mono-pitch (shed) roof: ridge (อกไก่เหล็ก) at the row-A end (extended 0.60m beyond A as an overhang), rafters (จันทันเหล็ก) running the full building depth from A to D, purlins (แปเหล็ก) spanning horizontally between rafters at <=0.80m centres, end closure (ปิดปลายจันทัน) at the row-D (low) end. This reading is inferred from the plan + the front-gable render on the cover page (page 1) showing a tall glazed gable wall at the front sloping down toward the back — not independently confirmed against an elevation sheet, which is outside op04 scope. If wrong, the member marks/sizes/spacing below are still correct; only the overall roof shape (mono-pitch vs. hip) would need revisiting.",
+    "Purlin quantity is spacing-governed ('@ไม่เกิน 0.80 เมตร' = at not more than 0.80m centres) rather than individually counted on the drawing — count left null, spacing recorded instead."
+  ],
+  "grid_source": "บ้าน_เล็ก_1ชั้น_14_หน้า00_gridline.json",
+  "elements": [
+    {
+      "element_id": "อกไก่เหล็ก",
+      "element_type": "beam",
+      "element_name_assigned": "steel ridge",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A'2",
+      "span_length_m": 4.50,
+      "span_source": "grid_table",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 125, "b_mm": 50, "lip_mm": 20, "tw_mm": 2.3,
+        "printed_as": "อกไก่เหล็ก 2[ตัวซี]-125x50x20x2.3มม.",
+        "note": "Doubled channel (2 sections back-to-back)."
+      },
+      "confidence_score": 0.7,
+      "confidence_flags": ["roof_shape_inferred_not_confirmed"]
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "D1",
+      "span_length_m": 9.10,
+      "span_source": "grid_table",
+      "material": "steel",
+      "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก [ตัวซี] 100x50x20x3.2มม. @ระยะตามแบบ" },
+      "confidence_score": 0.7,
+      "confidence_flags": ["roof_shape_inferred_not_confirmed"]
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "grid_ref_start": "A'1''",
+      "grid_ref_end": "D1''",
+      "span_length_m": 9.10,
+      "span_source": "grid_table",
+      "material": "steel",
+      "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก [ตัวซี] 100x50x20x3.2มม. @ระยะตามแบบ" },
+      "confidence_score": 0.7,
+      "confidence_flags": ["roof_shape_inferred_not_confirmed"]
+    },
+    {
+      "element_id": "จันทันเหล็ก",
+      "element_type": "rafter",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "D2",
+      "span_length_m": 9.10,
+      "span_source": "grid_table",
+      "material": "steel",
+      "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "tw_mm": 3.2, "printed_as": "จันทันเหล็ก [ตัวซี] 100x50x20x3.2มม. @ระยะตามแบบ" },
+      "confidence_score": 0.7,
+      "confidence_flags": ["roof_shape_inferred_not_confirmed"]
+    },
+    {
+      "element_id": "แปเหล็ก",
+      "element_type": "purlin",
+      "count": null,
+      "grid_refs": [],
+      "spacing_mm": 800,
+      "material": "steel",
+      "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tw_mm": 2.3, "printed_as": "แปเหล็ก [ตัวซี] 75x45x15x2.3มม.@ไม่เกิน 0.80 เมตร" },
+      "confidence_score": 0.7,
+      "confidence_flags": ["quantity_governed_by_spacing_not_individually_drawn"]
+    },
+    {
+      "element_id": "ปิดปลายจันทัน",
+      "element_type": "beam",
+      "element_name_assigned": "rafter end closure / fascia",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.50,
+      "span_source": "grid_table",
+      "material": "steel",
+      "steel_section": { "designation": "C", "d_mm": 75, "b_mm": 45, "lip_mm": 15, "tw_mm": 2.3, "printed_as": "ปิดปลายจันทัน [ตัวซี] 75x45x15x2.3มม." },
+      "confidence_score": 0.7,
+      "confidence_flags": ["roof_shape_inferred_not_confirmed"]
+    }
+  ]
+}

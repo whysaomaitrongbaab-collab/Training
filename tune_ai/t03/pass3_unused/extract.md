@@ -3,19 +3,19 @@
 One prompt for all eight Pass 3 subtasks. The runner substitutes `{{PATTERN}}`, `{{TARGET}}` and
 `{{NEEDS_GRID}}`.
 
-| subtask | `{{PATTERN}}` | `{{TARGET}}` | grid? |
-|---|---|---|---|
-| `plan_architectural` | `plan` | rooms, doors, windows, walls, fixtures, furniture | yes |
-| `plan_electrical` | `plan` | lighting points, outlets, fans, air-conditioning | yes |
-| `plan_sanitary` | `plan` | pipes, fittings, fixtures, septic tanks, grease traps, manholes | yes |
-| `roof_plan` | `roof_plan` | ridge and hip lines, eave overhangs, slope arrows, roofing material | yes |
-| `site_plan` | `site_plan` | boundaries, setbacks, building footprint, roads, levels | yes |
-| `side_profile` | `side_profile` | elevation or building section — levels, openings, materials | yes |
-| `index` | `index` | the drawing-set table of contents | no |
-| `title` | `title` | cover-page information | no |
-| `symbol` | `symbol` | the symbol / legend table | no |
-| `misc` | `misc` | series price table, catalogue, promotional content | no |
-| `bbs_schedule` | `bbs_schedule` | bar-bending schedule — one row per **cut bar** | no |
+| subtask                | `{{PATTERN}}`  | `{{TARGET}}`                                                      | grid? |
+| ---------------------- | ---------------- | ------------------------------------------------------------------- | ----- |
+| `plan_architectural` | `plan`         | rooms, doors, windows, walls, fixtures, furniture                   | yes   |
+| `plan_electrical`    | `plan`         | lighting points, outlets, fans, air-conditioning                    | yes   |
+| `plan_sanitary`      | `plan`         | pipes, fittings, fixtures, septic tanks, grease traps, manholes     | yes   |
+| `roof_plan`          | `roof_plan`    | ridge and hip lines, eave overhangs, slope arrows, roofing material | yes   |
+| `site_plan`          | `site_plan`    | boundaries, setbacks, building footprint, roads, levels             | yes   |
+| `side_profile`       | `side_profile` | elevation or building section — levels, openings, materials        | yes   |
+| `index`              | `index`        | the drawing-set table of contents                                   | no    |
+| `title`              | `title`        | cover-page information                                              | no    |
+| `symbol`             | `symbol`       | the symbol / legend table                                           | no    |
+| `misc`               | `misc`         | series price table, catalogue, promotional content                  | no    |
+| `bbs_schedule`       | `bbs_schedule` | bar-bending schedule — one row per**cut bar**                | no    |
 
 Nothing in Constistant reads any of these today. They are extracted so the archive is complete
 and so a future consumer does not have to re-read the drawings — **which is exactly why the

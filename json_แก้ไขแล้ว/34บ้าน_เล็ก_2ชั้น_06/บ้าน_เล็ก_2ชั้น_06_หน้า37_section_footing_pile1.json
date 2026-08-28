@@ -1,0 +1,69 @@
+{
+  "png": "37",
+  "doc_page": 35,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "ขยาย F2, F5",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_06/บ้าน_เล็ก_2ชั้น_06_หน้า37.png",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "First of three pile-cap detail sheets (S-10/S-11/S-12, หน้า37/38/39) covering F2, F5, F6, F9, F10, F12 — the pile-footing alternate of the foundation (S-03/หน้า30). Only one system is built; see S-02/หน้า29's 'เลือกใช้ชนิดใดชนิดหนึ่งเท่านั้น' warning. F2 is used at A1/A2 and F5 at E1/E3/B3.",
+    "Each detail is drawn as a section plus a plan of the cap. The plan dimension chain gives pile centres, not member edges: F2 reads 0.20|0.225|0.225|0.20 = 0.85 across (pile, column centre, pile) and 0.20|0.20 = 0.40 deep; F5 reads 0.20|0.35|0.35|0.20 = 1.10 both ways. Cap outline dimensions recorded as width_mm/depth_mm are those chain totals.",
+    "Notes common to every pile cap on S-10/S-11/S-12 and recorded once per element: '1ø12มม.ยาว 1.00 ม.' is a dowel from each pile head into the cap; 'กรอกคอนกรีตลึก 0.50 ม.' means the hollow pile head is filled with concrete 0.50m deep; the pile head embeds 0.05m into the cap; bedding is 0.10m คอนกรีต 1:3:5 over 0.05m ทรายราดน้ำอัดแน่น (note the spread footings on S-08/S-09 use 0.10 sand instead of 0.05); cap bottom sits 1.00m below ระดับดินเดิม ±0.00.",
+    "Pile section/length is NOT given on these sheets — only the count per cap. The pile type and depth would come from a soil-boring/pile sheet not reached in this extraction.",
+    "Bar-type convention: ø9มม and smaller recorded as 'RB' (plain round), ø12มม and larger as 'DB' (deformed). The sheet prints only 'ø'.",
+    "'1ø9มม.รัดรอบ' (one Ø9 bound around the cap perimeter at mid-depth) is on both details and is recorded under additional_bars, not as part of the main mat."
+  ],
+  "elements": [
+    {
+      "element_id": "F2",
+      "element_type": "pile_cap",
+      "width_mm": 850,
+      "depth_mm": 400,
+      "thickness_mm": 200,
+      "pile_count": 2,
+      "main_bar": {
+        "count": 3,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "printed as '3ø12มม.' on its own leader — the long-direction bottom mat"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB",
+        "note": "printed as 'ø9มม.@0.10', the transverse bars across the two-pile cap"
+      },
+      "additional_bars": [
+        { "count": 1, "dia_mm": 9, "type": "RB", "position": "รัดรอบ (bound around the cap perimeter at mid-depth)" },
+        { "count": 1, "dia_mm": 12, "type": "DB", "position": "dowel per pile, 'ø12มม.ยาว 1.00 ม.' from the pile head up into the cap" }
+      ],
+      "confidence_score": 0.8,
+      "confidence_flags": ["the two-pile cap is the only one on these three sheets reinforced with a spacing note ('ø9มม.@0.10') rather than a counted mat — recorded under stirrup because that is what the spacing describes, with the counted 3ø12 as main_bar"],
+      "note": "pedestal per 'ตอม่อดูขยายเสา' (S-13/หน้า40); 2 piles, filled 0.50m deep, head embedded 0.05m into the cap"
+    },
+    {
+      "element_id": "F5",
+      "element_type": "pile_cap",
+      "width_mm": 1100,
+      "depth_mm": 1100,
+      "thickness_mm": 300,
+      "pile_count": 5,
+      "main_bar": {
+        "count": 10,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "printed as '5+5ø12มม.#', 5 bars each way"
+      },
+      "additional_bars": [
+        { "count": 1, "dia_mm": 9, "type": "RB", "position": "รัดรอบ (bound around the cap perimeter at mid-depth)" },
+        { "count": 1, "dia_mm": 12, "type": "DB", "position": "dowel per pile, 'ø12มม.ยาว 1.00 ม.' from the pile head up into the cap" }
+      ],
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "pedestal per 'ตอม่อดูขยายเสา' (S-13/หน้า40); 5 piles — four at the corners plus one directly under the column, as drawn on the cap plan; filled 0.50m deep, heads embedded 0.05m"
+    }
+  ]
+}
