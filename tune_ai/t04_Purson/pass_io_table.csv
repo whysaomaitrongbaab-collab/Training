@@ -1,0 +1,10 @@
+pass,ชื่อ,input,output,สถานะ
+0,จำแนกหน้า (classify),รูปภาพทุกหน้าของบ้าน ทีละหน้า,pass0.json 1 ไฟล์ต่อบ้าน = {house pages[]} บอก subtask+views ของแต่ละหน้า,ไม่มี runner ต้องทำมือหรือ Claude
+1,จัดระเบียบ (organize.py),pass0.json + รูปภาพต้นฉบับ,work/<บ้าน>/pass<N>/<subtask>/images/ รูปตัดตาม view + manifest.json,พร้อมใช้
+1.5,สแกน CV (cv_scan.py),รูปผังที่จัดแล้ว (คลาส CV มี เสา ฐานราก คานนอน คานตั้ง — ไม่มีพื้น),_cv.json เลขกำกับ element + _marked.png รูปมาร์คเลข + _hint.txt คำใบ้ข้อความ,พร้อมใช้
+2,ถอดข้อมูล แขน 2 (control),รูป subtask + prompt (ไม่มี hint),ไฟล์ JSON ตาม pattern ของแผ่นนั้น,รอยิง GPU
+2.4a,ถอดข้อมูล แขน 2.4a (hint text),รูป subtask + prompt + _hint.txt,ไฟล์ JSON แบบเดียวกับแขน 2,รอยิง GPU
+2.5,เก็บตกด้วยตัวเอง (ไม่ใช้ AI),_cv.json ของหน้าเดียวกัน กวาดซ้ำที่ 0.90,_cv25.json + _marked25.png + _hint25.txt,พร้อมใช้ เป็นบัญชีตั้งต้นของ pass 3
+3,ถอดระยะ/เหล็ก (takeoff),_marked25.png + บัญชี element จาก _cv25.json + grid master + prompt,JSON เต็ม สเปกแต่ละ element ผ่าน merge_guard ห้ามลบ element ที่ไม่ตอบ,เขียนพร้อมยิง ยังไม่มี runner รอผล GPU ก่อน
+4,หน้ารอง (arch/elec/sanitary/roof/site/misc ฯลฯ),-,-,ยกเลิก 2026-08-29 หน้าพวกนี้ไม่จำเป็นกับ Constistant
+หมายเหตุ,ตารางนี้เป็นฉบับย่อ ไม่มีคอลัมน์ pattern เพื่อไม่ให้ขัดกับฉบับเต็ม,ดูรายละเอียดราย subtask + pattern จริงที่วัดจากชุดเทรน ที่ pass_io_table_detailed.csv,-,-

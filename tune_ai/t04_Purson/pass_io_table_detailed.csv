@@ -1,0 +1,17 @@
+pass,subtask,pattern จริง (วัดจากชุดเทรน),input,output,hint 2.4a,ตัวอย่าง,สถานะ,กับดัก
+0,ทุกหน้า,- (ยังไม่ตัดสิน pattern),รูป 1 หน้า,pass0.json = {house pages[]},-,-,ไม่มี runner,ต้องเติมคีย์ image เอง ไม่งั้น organize.py KeyError
+1,ทุก subtask,-,pass0.json + รูปต้นฉบับ,work/<บ้าน>/pass2/<subtask>/images/ + manifest.json,-,-,พร้อมใช้,ไม่มีโค้ดตัวใดอ่าน manifest.json — gate needs ยังไม่ทำงานจริง
+1.5,ผังฐานราก + ผังคาน,-,รูปจาก pass 1,_cv.json + _marked.png + _hint.txt,-,-,พร้อมใช้,CV มี 4 คลาส เสา/ฐานราก/คานนอน/คานตั้ง — ไม่มีคลาสพื้น
+2,gridline,grid_master 40/40,รูปกริดทั้งชุด (เพดาน 4 ใบ) + _common.md,grid{x_lines y_lines z_levels dimension_chains} — ไม่มี elements[],ไม่มี,40,รอยิง GPU,ตัด glossary ออก · ไฟล์ยังชื่อ _หน้า00_gridline.json
+2,plan_footing,footing_plan 57 · beam_plan 35 · roof_frame_plan 8,รูป + _common.md + แกนกริด x/y + plan.md,elements[] · ฐานราก/เสาเป็นจุด grid_refs[]+count,มี,100,รอยิง GPU,ส่งแค่ x_lines/y_lines · ไม่มีไฟล์ gridmaster.json จริง
+2,plan_beam,beam_plan 82 · roof_frame_plan 42 · footing_plan 1,เหมือน plan_footing,elements[] · คานเป็นเส้น grid_ref_start/end + span_length_m,มี,125,รอยิง GPU,แปลนโครงหลังคา = roof_frame_plan ห้ามเขียน roof_plan
+2,plan_slab,beam_plan 70/70,เหมือน plan_footing,elements[] · slab marker grid_refs[] ว่าง,มี,70,รอยิง GPU,ไม่เคยออกเป็น etc_plan · ห้ามเขียน slab_plan
+2,plan_column,- (0 ตัวอย่าง),ไม่มี config ใน PLAN_SUBTASKS,-,-,0,ตัน,prompt_for KeyError · ไม่มีแผ่นแปลนเสาเดี่ยวในคลัง เสาอยู่บนแผ่นฐานราก/คาน
+2,section,section 438/438,รูป section + _common.md,elements[] · ขนาด + main_bar + stirrup,ไม่มี,438,รอยิง GPU,ไม่ต้องใช้ grid master
+2,schedule,schedule 111/111,รูปตาราง 1 แถว=1 ชิ้น + _common.md,elements[],ไม่มี,111,รอยิง GPU,-
+2,notes,notes 105/105,รูปข้อกำหนดโครงการ + _common.md,notes{} (§4a),ไม่มี,105,รอยิง GPU,-
+2,material_list,material_list,รูป BOQ + _common.md,categories[].items[] ไม่ใช่ elements[],ไม่มี,0,ยิงไม่ได้,build_dataset โหลด prompt แค่ 5 ตัว ไม่รวมตัวนี้
+2,soil_boring_log,soil_boring_log,รูป log เจาะดิน + _common.md,elements[] element_type soil_layer,ไม่มี,0,ยิงไม่ได้,ไม่มีไฟล์ GT เลยสักหลัง
+2.5,ฐานราก + เสา,- (แค่เติม sidecar),_cv.json เดิม กวาดซ้ำที่ 0.90,_cv25.json + _marked25.png + _hint25.txt,-,-,พร้อมใช้,เก็บตกแค่ ฐานราก/เสา — คาน/พื้นไม่ถูก harvest
+3,ทุก element ในบัญชี,pattern ผังของแผ่นนั้น,_common.md + _marked25.png + บัญชี (เลข) class) + กริด,elements[] + cv_mark + spec เต็ม,ไม่มี,-,ไม่มี runner,merge_guard ใส่ stub กลับให้ — โมเดลลบ element ไม่ได้
+4,11 subtask หน้ารอง,-,-,-,-,-,ยกเลิก 29/8/2026,etc_plan ทั้ง 199 ไฟล์คือหน้าพวกนี้ → เลิก pass 4 = ไม่มี etc_plan ออกจากสายพานอีก
