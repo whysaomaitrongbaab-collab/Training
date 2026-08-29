@@ -8,7 +8,7 @@ Does **not** need the grid master - a section is a cut through a member, it has 
 This is where the numbers that become steel weight come from. A wrong bar count here is wrong
 everywhere downstream, and unlike a missing element it will not look wrong.
 
-Prepend `../_common.md`.
+Prepend `../../../t03/_common.md`.
 
 ---
 

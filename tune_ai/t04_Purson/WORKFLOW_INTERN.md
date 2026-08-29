@@ -24,6 +24,7 @@
 
 ```
 PDF บ้าน 1 หลัง (แปลงเป็น png รายหน้าแล้ว ใน image/<บ้าน>/)
+  ↓ (เสริม) titleblock_ocr.py — OCR คำใบ้ sheet_code/sheet_name ก่อนเข้า Pass 0 (ดูข้อ 1)
   ↓ Pass 0    คัดหน้า (ยังไม่มี runner — ดูข้อ 1)
   ↓ Pass 1    organize.py จัดรูปลงโฟลเดอร์ subtask
   ↓ Pass 1.5  cv_scan.py ตา CV นับ element + ทำ hint
@@ -35,13 +36,30 @@ PDF บ้าน 1 หลัง (แปลงเป็น png รายหน้
 
 ---
 
-## ข้อ 1 — Pass 0: คัดหน้า (งานมือ + AI ช่วย ยังไม่มีสคริปต์)
+## ข้อ 1 — Pass 0: คัดหน้า (VLM + OCR ช่วย, ยังไม่มีสคริปต์ยิงจริง)
 
-**สถานะจริง: ไม่มี runner** — prompt อยู่ `tune_ai/t03/pass0_classify/prompt.md`
-รูปแบบผลลัพธ์อยู่ `output_example.json` ข้างกัน
+**สถานะจริง: ไม่มี runner** — ตัวคัดหน้ายังต้องเป็น **VLM (Qwen) เท่านั้น**, prompt อยู่
+`tune_ai/t04_Purson/pass0/prompt.md` รูปแบบผลลัพธ์อยู่ `output_example.json` ข้างกัน
+**ทดลองเปลี่ยนไปใช้ OCR ล้วนแล้ว (2026-08-29) — ไม่ไหว** OCR อ่านตัวหนังสือในกรอบชื่อแบบเองก็พัง
+(easyocr 0/4 หน้า) และต่อให้อ่านออกหมด ก็ยังตอบ `views[]` (หน้านี้กี่รูป ตัดตรงไหน
+`also_gridline` ไหม) ไม่ได้เลย เพราะนั่นเป็นการตัดสิน layout ไม่ใช่ text — VLM ยังจำเป็นเสมอ
 
-วิธีทำวันนี้: เอา prompt + รูปทีละหน้า ป้อนโมเดล (หรือให้ Claude ทำ) → รวมผลทุกหน้าเป็น
-`pass0_<บ้าน>.json` ตามรูปแบบตัวอย่าง
+**สิ่งใหม่ (2026-08-29 คืน): OCR ช่วยเป็นคำใบ้เสริมได้แล้ว** หลังแก้ crop/engine จนแม่นขึ้นมาก
+(PaddleOCR PP-OCRv5 lang=th, local ไม่ต้อง API key — วัดจริง 27 หน้า: sheet_code ตรง 24/26)
+รันก่อนเรียก VLM:
+
+```bash
+python tools/titleblock_ocr.py --dir image/<บ้าน>/
+```
+
+จะได้ `<บ้าน>_หน้าNN_titleblock_hint.txt` ข้างรูปที่ OCR อ่านออก (ไม่ใช่ทุกหน้า — บางหน้าไม่มี
+สิ่งที่อ่านได้จริงจะไม่มีไฟล์นี้เกิด ปกติ) ถ้ามีไฟล์นี้ ให้แปะต่อท้าย prompt เป็น
+`{{TITLEBLOCK_OCR}}` ตามที่ `pass0_classify/prompt.md` อธิบายไว้ — **ช่วยแค่ sheet_code/
+sheet_name เท่านั้น ไม่ช่วย views[]** อย่าคาดหวังเกินนี้
+
+วิธีทำวันนี้: (ไม่บังคับ) รัน `titleblock_ocr.py` ก่อนก็ได้ → เอา prompt + รูปทีละหน้า
+(+ hint ถ้ามี) ป้อนโมเดล (หรือให้ Claude ทำ) → รวมผลทุกหน้าเป็น `pass0_<บ้าน>.json`
+ตามรูปแบบตัวอย่าง
 
 เช็คว่าผ่าน: ทุกหน้ามี entry ครบ ไม่มีหน้าตกหล่น (นับจำนวน entry = จำนวน png) —
 **นี่คือด่านอันตรายสุดของสายพาน** หน้าที่คัดผิดจะหายไปทั้งสาย (เคยเกิดจริง:
@@ -123,8 +141,8 @@ prompt เขียนเสร็จ (`pass3_takeoff/prompt.md`) แต่**ย
 
 | ช่องว่าง | ผลต่อ intern |
 |---|---|
-| Pass 0 ไม่มี runner | ทำมือ/ให้ AI ช่วยตามข้อ 1 ไปก่อน |
+| Pass 0 ไม่มี runner | ทำมือ/ให้ VLM ช่วยตามข้อ 1 ไปก่อน (OCR ช่วยได้แค่ sheet_code/sheet_name) |
+| `plan_column` ตัน 0 ตัวอย่าง | ไม่มี prompt config + ไม่มีแผ่นแปลนเสาเดี่ยวในคลังเลย — เสาไปโผล่บน footing_plan/beam_plan แทน |
 | `infer_house_t03.py` อ่านแต่ jsonl | บ้านใหม่นอก val/train ยังยิงโมเดลไม่ได้ |
-| prompt 5 ตัวยังมี markdown noise (`section/schedule/notes/material_list/soil_boring_log`) | ใช้ได้ แต่ผลอาจหลอนกว่าชุดที่ล้างแล้ว (gridline/plan) — ทีมจะล้างตาม |
 | Pass 3 ไม่มี runner | ข้อ 6 — ห้ามลอง |
 | คลังเสายังขาด 13 บ้าน · slab ไม่มีทั้ง class | CV นับ 0 ในบ้านพวกนั้น = ปกติ จดแล้วไปต่อ |

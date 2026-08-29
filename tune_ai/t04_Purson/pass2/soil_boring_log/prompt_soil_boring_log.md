@@ -10,7 +10,7 @@ a proven one; expect to revise after the first real sheet.
 This sits in Pass 2 rather than Pass 3 because Constistant consumes it - through a different door
 than the raw-JSON import (Site Investigate → Foundation Design's bearing-capacity calculation).
 
-Prepend `../_common.md`.
+Prepend `../../../t03/_common.md`.
 
 ---
 

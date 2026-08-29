@@ -1,5 +1,5 @@
 pass,subtask,pattern จริง (วัดจากชุดเทรน),input,output,hint 2.4a,ตัวอย่าง,สถานะ,กับดัก
-0,ทุกหน้า,- (ยังไม่ตัดสิน pattern),รูป 1 หน้า,pass0.json = {house pages[]},-,-,ไม่มี runner,ต้องเติมคีย์ image เอง ไม่งั้น organize.py KeyError
+0,ทุกหน้า,- (ยังไม่ตัดสิน pattern),รูป 1 หน้า (+ ตัวเลือกเสริม: tools/titleblock_ocr.py OCR local ช่วย sheet_code/sheet_name เท่านั้น ไม่ช่วย views[]),pass0.json = {house pages[]},-,-,ไม่มี runner,ต้องเติมคีย์ image เอง ไม่งั้น organize.py KeyError
 1,ทุก subtask,-,pass0.json + รูปต้นฉบับ,work/<บ้าน>/pass2/<subtask>/images/ + manifest.json,-,-,พร้อมใช้,ไม่มีโค้ดตัวใดอ่าน manifest.json — gate needs ยังไม่ทำงานจริง
 1.5,ผังฐานราก + ผังคาน,-,รูปจาก pass 1,_cv.json + _marked.png + _hint.txt,-,-,พร้อมใช้,CV มี 4 คลาส เสา/ฐานราก/คานนอน/คานตั้ง — ไม่มีคลาสพื้น
 2,gridline,grid_master 40/40,รูปกริดทั้งชุด (เพดาน 4 ใบ) + _common.md,grid{x_lines y_lines z_levels dimension_chains} — ไม่มี elements[],ไม่มี,40,รอยิง GPU,ตัด glossary ออก · ไฟล์ยังชื่อ _หน้า00_gridline.json

@@ -16,3 +16,8 @@ tools/graphify-out/
 tune_ai/graphify-out/.graphify_python
 tune_ai/graphify-out/.graphify_root
 tune_ai/graphify-out/cache/
+
+# titleblock_ocr.py: PaddleOCR model weights (~50-100MB, downloaded on first run) —
+# lives here instead of ~/.cache because this machine's ~/.cache is a symlink to a
+# /tmp path Windows-native python can't resolve (see tools/titleblock_ocr.py header)
+tools/.cache_local/

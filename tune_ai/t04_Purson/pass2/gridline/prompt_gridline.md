@@ -7,7 +7,7 @@ has them, plus every view Pass 0 flagged `also_gridline: true` - plans, elevatio
 Runs **first** in Pass 2. Every plan subtask blocks on it: spans are computed from this file and
 from nothing else.
 
-Prepend `../_common.md`.
+Prepend `../../../t03/_common.md`.
 
 ---
 

@@ -36,6 +36,9 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 T03 = HERE.parent
 TRAINING = T03.parent.parent           # .../Training
+# plan.md moved to t04_Purson 2026-08-29 (t03 is not the pipeline's home anymore) - the other
+# subtask prompts (gridline/section/schedule/notes) are still under T03/pass2_used/
+T04_PASS2 = TRAINING / "tune_ai" / "t04_Purson" / "pass2"
 GT_ROOT = TRAINING / "json_แก้ไขแล้ว"
 
 
@@ -86,20 +89,18 @@ TEST_HOUSES = {"08บ้าน_เล็ก_1ชั้น_03"}
 # และ train เสียบ้านคุณภาพสูงสุด 5 หลังไป — ยอมแลกเพื่อให้ตัววัดเชื่อถือได้
 
 # ---- subtask definitions -------------------------------------------------
+# "target"/{{TARGET}} substitution retired 2026-08-29 - each plan subtask now has its own
+# rendered prompt.md (see load_subtask_prompt); these dicts now only drive GT element filtering.
 PLAN_SUBTASKS = {
     "plan_footing": {
-        "target": "footings (ฐานราก) and the columns marked with them",
         "types": {"footing", "pile", "pile_cap", "pedestal", "column"},
     },
     "plan_beam": {
-        "target": ("beams at every level, ground beams (คานคอดิน), floor beams, ring beams "
-                   "(คานอะเส), roof framing (โครงหลังคา)"),
         "types": {"beam", "tie_beam", "steel_member"},
         # โครงหลังคาใช้ชื่อแต่งหลากหลาย (rafter/hip_rafter/steel_rafter/steel_ridge/purlin/...)
         "type_regex": r"(rafter|purlin|ridge|hip|valley|truss)",
     },
     "plan_slab": {
-        "target": "floor slabs and precast plank fields",
         "types": {"slab", "precast_plank_detail", "precast_plank_placement_detail"},
     },
 }
@@ -120,22 +121,20 @@ def load_prompt_block():
     return body.replace(g.group(0), "{{GLOSSARY}}"), g.group(1).strip()
 
 def load_subtask_prompt(name):
-    txt = (T03 / "pass2_used" / f"{name}.md").read_text(encoding="utf-8")
+    # 2026-08-29: every pass-2 subtask now has its own concrete prompt.md folder under
+    # T04_PASS2/<subtask>/ - the plan family (footing/beam/slab/column) used to share one
+    # templated file (plan.md, {{TARGET}}/{{ELEMENT_TYPES}} substitution); it is now four
+    # separate rendered files, same rendering plan.md itself still documents for re-rendering.
+    txt = (T04_PASS2 / name / f"prompt_{name}.md").read_text(encoding="utf-8")
     m = re.search(r"## PROMPT START\n(.*?)(?:\n## PROMPT END|\Z)", txt, re.DOTALL)
     return m.group(1).strip()
 
 COMMON, GLOSSARY = load_prompt_block()
 PROMPTS = {n: load_subtask_prompt(n) for n in
-           ("gridline", "plan", "section", "schedule", "notes")}
+           ("gridline", "plan_footing", "plan_beam", "plan_slab", "section", "schedule", "notes")}
 
 def prompt_for(subtask):
-    if subtask.startswith("plan_"):
-        cfg = PLAN_SUBTASKS[subtask]
-        body = (PROMPTS["plan"]
-                .replace("{{TARGET}}", cfg["target"])
-                .replace("{{ELEMENT_TYPES}}", ", ".join(sorted(cfg["types"]))))
-    else:
-        body = PROMPTS[subtask]
+    body = PROMPTS[subtask]
     gloss = "" if subtask == "gridline" else GLOSSARY
     return COMMON.replace("{{GLOSSARY}}", gloss) + "\n\n" + body
 

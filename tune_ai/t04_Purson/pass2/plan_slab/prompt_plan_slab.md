@@ -1,30 +1,17 @@
-# pass2_plan.md - structural plans
+# pass2_plan_slab.md - floor slab plan
 
-**Moved here from `tune_ai/t03/pass2_used/plan.md` 2026-08-29** - `_common.md` and the other
-subtask prompts (`gridline.md`/`section.md`/`schedule.md`/`notes.md`/`material_list.md`/
-`soil_boring_log.md`) stay in `tune_ai/t03/pass2_used/` for now, linked from `README.md` here.
+Rendered 2026-08-29 from `../plan.md`'s shared template - one concrete file per subtask now, not a template, per Makham's call to split them. The old one-file-four-subtasks design's own warning about copy drift (`../plan.md` still documents it) is still true - if a rule below needs to change for every plan subtask at once, edit `../plan.md` and re-render all four, do not patch this file alone and let it drift from its siblings.
 
-One prompt, four subtasks. The runner substitutes `{{TARGET}}` and `{{ELEMENT_TYPES}}` per folder:
+**Input:** one `plan_slab` sheet image plus the building's grid master (`x_lines`/`y_lines` only, extracted from `<house>_หน้า00_gridline.json`).
+**Output:** one JSON file, `pattern` decided from what the sheet draws (see the prompt body).
 
-| subtask | `{{TARGET}}` | `{{ELEMENT_TYPES}}` |
-|---|---|---|
-| `plan_footing` | footings (ฐานราก) and the columns marked with them | `footing`, `pile`, `pile_cap`, `pedestal`, `column` |
-| `plan_column` | columns (เสา) | `column`, `pedestal` |
-| `plan_beam` | beams at every level - ground beams (คานคอดิน), floor beams, ring beams (คานอะเส), roof framing (โครงหลังคา) | `beam`, `tie_beam`, `rafter` |
-| `plan_slab` | floor slabs and precast plank fields | `slab`, `precast_plank_detail` |
-
-Deliberately **one file, not four near-identical copies** - four copies drift, and drift across
-same-shaped files is the exact failure this whole spec exists to stop (`primary_rawjson_schema.md`
-§0). Change the rules here once and all four subtasks change together.
-
-Prepend `../../t03/_common.md`. Requires `_shared/gridmaster.json` - the manifest's `needs` gate
-blocks this subtask until it exists.
+Prepend `../../../t03/_common.md`. Requires `_shared/gridmaster.json` - the manifest's `needs` gate blocks this subtask until it exists.
 
 ---
 
 ## PROMPT START
 
-You are reading a structural plan sheet Extract {{TARGET}}
+You are reading a structural plan sheet Extract floor slabs and precast plank fields
 
 You are also given the building's grid master Use it - the spans you report come from it, not
 from the image

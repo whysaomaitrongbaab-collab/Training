@@ -1,10 +1,27 @@
 # Pass 0 - page classification
 
+**Moved here from `tune_ai/t03/pass0_classify/` 2026-08-29 — t03 is not the pipeline's home
+anymore, t04_Purson is** (same move `pass3_takeoff/` made on 2026-08-28; `pass2/plan.md`
+alongside this one made the same move today).
+
 **Input:** every page image of one house, one at a time.
 **Output:** one JSON object per page, merged by the runner into the `pass0.json` that
-`../pass1_organize/organize.py` consumes (shape: `output_example.json`, next to this file).
+`../../t03/pass1_organize/organize.py` consumes (shape: `output_example.json`, next to this file).
 
-Does **not** use `../_common.md` - this pass classifies, it does not extract.
+Does **not** use `../../t03/_common.md` - this pass classifies, it does not extract.
+
+**Optional `{{TITLEBLOCK_OCR}}` hint (added 2026-08-29) — run BEFORE this pass, on the raw
+`image/<house>/` pages, not after:** `tools/titleblock_ocr.py --dir image/<house>/`
+crops the sheet_code/sheet_name corner of every page and OCRs it locally (PaddleOCR PP-OCRv5, no
+API key), writing `<page>_titleblock_hint.txt` next to each page image when it found something
+worth reading. If the runner finds that file for the page being classified, append its contents
+after the image, verbatim, prefixed exactly as the tool writes it ("OCR อ่านมุมกรอบชื่อแบบได้
+(อาจผิด...")) - the wording itself already tells the model to verify against the image. **This
+covers `sheet_code`/`sheet_name` only.** It does nothing for `views[]` - OCR returns text, not a
+layout decision, and a page's split into multiple views has to come from looking at the drawing.
+Do not extend this hint to try to answer `views[]`; that is still 100% on the model reading the
+image. No hint file for a page means OCR found nothing legible there - proceed exactly as without
+this section, do not treat the absence as a signal.
 
 Two things make this the highest-stakes prompt in the pipeline:
 1. Pass 1 routes purely on what this pass says. A page labelled wrong is extracted by the wrong
@@ -21,6 +38,70 @@ You are looking at one page of a Thai construction drawing set Classify it Do no
 data from it
 
 Output one JSON object and nothing else - no prose, no markdown fence
+
+Choosing `subtask` - the destination for what a view shows (lookup, not a rule - read it, then
+confirm against the drawing itself)
+
+Structural - these feed the quantity take-off
+
+- footing layout, spread or pile (แปลนฐานราก) → `plan_footing`
+- column layout → `plan_column`
+- beams at any level - ground beams (คานคอดิน), floor beams, ring beams (คานอะเส), and roof
+  framing (แปลนโครงหลังคา) → `plan_beam`
+- floor slab / precast plank layout → `plan_slab`
+- a detail cut showing rebar and dimensions of a member → `section`
+- a table summarising members (one row = one member) → `schedule`
+- a bar-bending / cut-list table (one row = one bar) → `bbs_schedule`
+- project-wide concrete and steel specifications → `notes`
+- a bill of quantities → `material_list`
+- a dedicated grid-reference sheet → `gridline`
+- a borehole log - SPT counts, strata, groundwater → `soil_boring_log`
+
+Non-structural
+
+- room layout, bathroom plan, balcony, furniture → `plan_architectural`
+- lighting, outlets, air-conditioning, fans → `plan_electrical`
+- water supply, drainage, rainwater, septic → `plan_sanitary`
+- architectural roof plan - ridge and hip lines, eave overhang, roofing material, no structural
+  marks → `roof_plan`
+- site layout, boundaries, setbacks → `site_plan`
+- elevation (รูปด้าน) or building section - not top-down, no rebar → `side_profile`
+- drawing-set table of contents → `index`
+- cover page → `title`
+- symbol / legend page → `symbol`
+- series price table, catalogue, promotional page → `misc`
+
+Title-block wording to `subtask` (Thai → English lookup, not a rule)
+
+The title block is Thai and every `subtask` above is English These are the exact wordings that
+appear in our own drawing sets, most frequent first Read the title block first, then confirm
+against what the drawing actually shows - the wording narrows the choice, the drawing decides it
+
+- ผังบริเวณ → `site_plan`
+- แปลนฐานรากแผ่ · แปลนฐานรากเสาเข็ม · ผังโครงสร้างฐานราก → `plan_footing`
+  (plus `plan_column` if column marks share the sheet)
+- ผังโครงสร้างชั้นล่าง · ผังโครงสร้างชั้นบน · แปลนพื้นชั้น N → `plan_beam` and/or `plan_slab` -
+  one view each if both are drawn
+- แปลนโครงหลังคา · ผังโครงสร้างหลังคา → `plan_beam` (โครง = framing = structural)
+- แปลนหลังคา (no marks, no grid) → `roof_plan` (architectural)
+- รูปด้าน 1-4 → `side_profile` plus `also_gridline: true`
+- รูปตัด N → has rebar = `section` · no rebar = `side_profile`
+- แบบขยาย (บันได `ST.n` · ห้องน้ำ `WC.n` · ประตู-หน้าต่าง · รั้ว · ราวกันตก · เชิงชาย)
+  → `plan_architectural`
+- แบบขยายระบบสุขาภิบาล · ตารางระยะการแขวนท่อ → `plan_sanitary`
+- แปลนไฟฟ้าแสงสว่าง · แปลนเต้ารับไฟฟ้า · รายละเอียดแผงเมนสวิตช์ → `plan_electrical`
+- รายการประกอบแบบ → `notes`
+- รายการวัสดุ · รายการปริมาณวัสดุและแรงงาน → `material_list`
+- สารบัญ · สารบัญแบบ → `index`
+- รายการสัญลักษณ์ประกอบแบบ · สัญลักษณ์ → `symbol`
+- คณะผู้จัดทำโครงการ → `title`
+- หลักเกณฑ์และข้อกำหนด → `misc`
+
+Words worth knowing on their own - `แปลน`/`ผัง` = plan (top-down) · `โครงสร้าง` = structural ·
+`โครง` = framing · `แบบขยาย` = enlarged detail · `รูปด้าน` = elevation · `รูปตัด` = section ·
+`ชั้นล่าง`/`ชั้นบน` = ground/upper floor · `รายการ` = schedule or list · `สารบัญ` = contents
+
+A wording not in this list is not permission to coin a subtask - fall back to the lists above
 
 ```json
 {
@@ -72,69 +153,6 @@ Each view entry carries
   along its edges) or a level band (`+3.75 ระดับหลังคาน`, `±0.00 ระดับอ้างอิง`) Set it
   generously - a view that shows either of those is a real source for the grid master, and
   elevations and sections are the only place levels are printed at all
-
-Choosing `subtask`
-
-Structural - these feed the quantity take-off
-
-- footing layout, spread or pile (แปลนฐานราก) → `plan_footing`
-- column layout → `plan_column`
-- beams at any level - ground beams (คานคอดิน), floor beams, ring beams (คานอะเส), and roof
-  framing (แปลนโครงหลังคา) → `plan_beam`
-- floor slab / precast plank layout → `plan_slab`
-- a detail cut showing rebar and dimensions of a member → `section`
-- a table summarising members (one row = one member) → `schedule`
-- a bar-bending / cut-list table (one row = one bar) → `bbs_schedule`
-- project-wide concrete and steel specifications → `notes`
-- a bill of quantities → `material_list`
-- a dedicated grid-reference sheet → `gridline`
-- a borehole log - SPT counts, strata, groundwater → `soil_boring_log`
-
-Non-structural
-
-- room layout, bathroom plan, balcony, furniture → `plan_architectural`
-- lighting, outlets, air-conditioning, fans → `plan_electrical`
-- water supply, drainage, rainwater, septic → `plan_sanitary`
-- architectural roof plan - ridge and hip lines, eave overhang, roofing material, no structural
-  marks → `roof_plan`
-- site layout, boundaries, setbacks → `site_plan`
-- elevation (รูปด้าน) or building section - not top-down, no rebar → `side_profile`
-- drawing-set table of contents → `index`
-- cover page → `title`
-- symbol / legend page → `symbol`
-- series price table, catalogue, promotional page → `misc`
-
-Title-block wording to `subtask` (glossary, not a rule)
-
-The title block is Thai and every `subtask` above is English These are the exact wordings that
-appear in our own drawing sets, most frequent first Read the title block first, then confirm
-against what the drawing actually shows - the wording narrows the choice, the drawing decides it
-
-- ผังบริเวณ → `site_plan`
-- แปลนฐานรากแผ่ · แปลนฐานรากเสาเข็ม · ผังโครงสร้างฐานราก → `plan_footing`
-  (plus `plan_column` if column marks share the sheet)
-- ผังโครงสร้างชั้นล่าง · ผังโครงสร้างชั้นบน · แปลนพื้นชั้น N → `plan_beam` and/or `plan_slab` -
-  one view each if both are drawn
-- แปลนโครงหลังคา · ผังโครงสร้างหลังคา → `plan_beam` (โครง = framing = structural)
-- แปลนหลังคา (no marks, no grid) → `roof_plan` (architectural)
-- รูปด้าน 1-4 → `side_profile` plus `also_gridline: true`
-- รูปตัด N → has rebar = `section` · no rebar = `side_profile`
-- แบบขยาย (บันได `ST.n` · ห้องน้ำ `WC.n` · ประตู-หน้าต่าง · รั้ว · ราวกันตก · เชิงชาย)
-  → `plan_architectural`
-- แบบขยายระบบสุขาภิบาล · ตารางระยะการแขวนท่อ → `plan_sanitary`
-- แปลนไฟฟ้าแสงสว่าง · แปลนเต้ารับไฟฟ้า · รายละเอียดแผงเมนสวิตช์ → `plan_electrical`
-- รายการประกอบแบบ → `notes`
-- รายการวัสดุ · รายการปริมาณวัสดุและแรงงาน → `material_list`
-- สารบัญ · สารบัญแบบ → `index`
-- รายการสัญลักษณ์ประกอบแบบ · สัญลักษณ์ → `symbol`
-- คณะผู้จัดทำโครงการ → `title`
-- หลักเกณฑ์และข้อกำหนด → `misc`
-
-Words worth knowing on their own - `แปลน`/`ผัง` = plan (top-down) · `โครงสร้าง` = structural ·
-`โครง` = framing · `แบบขยาย` = enlarged detail · `รูปด้าน` = elevation · `รูปตัด` = section ·
-`ชั้นล่าง`/`ชั้นบน` = ground/upper floor · `รายการ` = schedule or list · `สารบัญ` = contents
-
-A wording not in this list is not permission to coin a subtask - fall back to the lists above
 
 Two traps that have already cost real data
 

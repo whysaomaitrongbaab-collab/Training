@@ -97,10 +97,10 @@ hint ช่วยได้แค่ไหน
 
 | โฟลเดอร์ | มีอะไร |
 |---|---|
-| [`pass0/`](pass0/) | pointer → `tune_ai/t03/pass0_classify/` (ไม่เปลี่ยน) |
+| [`pass0/prompt.md`](pass0/prompt.md) | **จริง** — ย้ายมาจาก `t03/pass0_classify/` 2026-08-29 |
 | [`pass1/`](pass1/) | pointer → `tune_ai/t03/pass1_organize/` (ไม่เปลี่ยน) |
 | [`pass1.5_cv/`](pass1.5_cv/) | pointer → `tools/cv_scan.py` (`--manifest`) — ไม่มี prompt |
-| [`pass2/`](pass2/) | pointer → `tune_ai/t03/pass2_used/` — นี่คือแขน "2" ตัวคุม |
+| [`pass2/`](pass2/) | **จริง** — ทั้ง 10 subtask ย้ายมาจาก `t03/pass2_used/` แล้ว 2026-08-29 แยกโฟลเดอร์ต่อ subtask (`plan_footing/` `plan_beam/` `plan_slab/` `plan_column/` `gridline/` `section/` `schedule/` `notes/` `material_list/` `soil_boring_log/`), แขน "2" ตัวคุม — ดู [`pass2/README.md`](pass2/README.md) |
 | [`pass2.4_hint/prompt.md`](pass2.4_hint/prompt.md) | **จริง** — สัญญาของ hint block, การทดลอง 3 แขน |
 | [`pass2.5_harvest/`](pass2.5_harvest/) | pointer → `tools/cv_scan.py` (`--pass25`) — ไม่มี prompt |
 | [`pass3_takeoff/prompt.md`](pass3_takeoff/prompt.md) | **จริง** — prompt เต็ม เขียนแล้วยังไม่เคยรัน |

@@ -31,8 +31,9 @@ python tune_ai/t03/data_before_tune/infer_house_t03.py \
 
 ## พาร์ทที่ 2 - prompt pass 2 เดิม (ไม่แตะเลย)
 
-`../../t03/_common.md` + `../../t03/pass2_used/plan.md` (หรือ subtask อื่นตามโฟลเดอร์) -
-เหมือนแขน 2 ทุกตัวอักษร ไม่มีการแก้ไขใดๆ
+`../../t03/_common.md` + `../pass2/<subtask>/prompt.md` (ตัวอย่างนี้คือ `../pass2/plan_beam/`) -
+เหมือนแขน 2 ทุกตัวอักษร ไม่มีการแก้ไขใดๆ ทุก subtask ของ pass 2 แยกโฟลเดอร์ตัวเองแล้ว
+2026-08-29 (ดู `../pass2/README.md`)
 
 ## พาร์ทที่ 3 - hint ข้อความ (เฉพาะแขน 2.4a, โค้ดแปะต่อท้ายเอง)
 

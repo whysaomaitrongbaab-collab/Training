@@ -14,7 +14,7 @@
 > and **`notes{}`** (the parsed specification values, §4a - added 2026-08-21 on Makham's
 > decision). Every other key is a defect. Existing files have not been migrated yet.
 
-Prepend `../_common.md`.
+Prepend `../../../t03/_common.md`.
 
 ---
 
