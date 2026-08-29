@@ -17,7 +17,7 @@
 | **2** | เปล่า (ของเดิม) | ไม่มี ← ตัวคุม |
 | **2.4a** | เปล่า | มี (ข้อความล้วน) |
 
-รันผ่าน `tune_ai/t03/data_before_tune/infer_house_t03.py --arm 2|2.4a --cv-dir <sidecar>`
+รันผ่าน `tune_ai/t04_Purson/data_before_tune/infer_house_t03.py --arm 2|2.4a --cv-dir <sidecar>`
 (`apply_arm()` ในไฟล์นั้นเป็นคนแปะ hint จริง)
 
 **แขน 2.4b (ภาพมาร์คเลข Set-of-Mark, arXiv 2310.11441) ยกเลิก 2026-08-29 มะขามสั่ง

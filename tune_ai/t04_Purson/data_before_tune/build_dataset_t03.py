@@ -34,11 +34,13 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-T03 = HERE.parent
-TRAINING = T03.parent.parent           # .../Training
-# plan.md moved to t04_Purson 2026-08-29 (t03 is not the pipeline's home anymore) - the other
-# subtask prompts (gridline/section/schedule/notes) are still under T03/pass2_used/
-T04_PASS2 = TRAINING / "tune_ai" / "t04_Purson" / "pass2"
+# 2026-08-29 late: this whole file moved tune_ai/t03/data_before_tune -> t04_Purson/data_before_tune
+# (มะขามสั่ง "เลิกอ่าน t03 เราไม่ใช้แล้ว") - t03 is legacy/reference only now, t04_Purson is home.
+T04 = HERE.parent
+TRAINING = T04.parent.parent           # .../Training
+# every pass-2 subtask prompt (gridline/section/schedule/notes/plan_*) lives under
+# T04_PASS2/<subtask>/prompt_<subtask>.md as of 2026-08-29 (see load_subtask_prompt)
+T04_PASS2 = T04 / "pass2"
 GT_ROOT = TRAINING / "json_แก้ไขแล้ว"
 
 
@@ -70,15 +72,13 @@ VAL_HOUSES = {
     "04บ้าน_เล็ก_2ชั้น_02", "05บ้าน_เล็ก_2ชั้น_03",
 }
 
-# บ้านทดสอบ — **อยู่นอก dataset ทั้ง train และ val** (มะขามสั่ง 2026-08-24 ดึก:
-# "เอาบ้าน 08 ออกจาก dataset") เขียนออกเป็น test.jsonl ต่างหาก
-# ทำไมต้องอยู่นอกทั้งคู่: บ้าน 08 คือ benchmark ข้ามรอบ — t02 มีผลของบ้านนี้อยู่แล้ว
-# (`tune_ai/t02/ผล/08.../` 25 หน้า, id-recall 3.5%, plan_beam 0%) และ **t02 ไม่เคยเทรนบ้าน 08**
-# ถ้า t03 เทรนมัน ตัวเลขจะสูงเพราะจำได้ ไม่ใช่เพราะอ่านเป็น → เทียบกันไม่ได้เลย
-# อยู่ใน val ก็ยังสื่อผิด (val = ไม้บรรทัดคุณภาพ GT ซึ่งบ้าน 08 ยังไม่ผ่านรีวิวเนื้อหา)
-# แยกเป็น test จึงตรงความจริงที่สุด: train / val (01-05 รีวิวแล้ว) / test (08 benchmark)
-# บ้าน 32 อยู่ใน train ตามปกติอยู่แล้ว (ไม่เคยถูกกันออก)
-TEST_HOUSES = {"08บ้าน_เล็ก_1ชั้น_03"}
+# บ้านทดสอบ — เคยกันบ้าน 08 ไว้นอก train/val ทั้งคู่ (มะขามสั่ง 2026-08-24 ดึก:
+# "เอาบ้าน 08 ออกจาก dataset") เพราะเป็น cross-round benchmark กับ t02 (t02 ไม่เคยเทรนบ้านนี้
+# — ถ้า t03/t04 เทรนมัน ตัวเลขจะสูงเพราะจำได้ ไม่ใช่เพราะอ่านเป็น เทียบข้ามรอบไม่ได้อีก)
+# **กลับคำ 2026-08-29 ค่ำ (มะขามสั่ง "เอาบ้าน 08 เข้ามาด้วย จะได้ครบ 40 หลัง")** —
+# ยอมรับการเสีย cross-round benchmark กับ t02 อย่างเปิดเผย เพื่อให้ dataset สมบูรณ์ 40/40 หลัง
+# TEST_HOUSES ว่างเปล่าถาวรจากนี้ (ไม่ลบ set/logic ทิ้ง เผื่อรอบหน้าอยากกันบ้านอื่นออกอีก)
+TEST_HOUSES = set()
 # แก้ 2026-08-24 ค่ำ รอบ 2 — หลัง op04 ส่ง 39 หลังใหม่เข้ามา (452 → 1,116 ตัวอย่าง)
 # val = บ้าน 01-05 ทั้งหมด = "ทุกหลังที่คนรีวิวเนื้อหากับภาพต้นฉบับแล้ว" (229 ตัวอย่าง)
 #   → train 887 / val 229 = 3.9:1 ตรงเป้า 4:1 ที่มะขามสั่ง
@@ -118,7 +118,7 @@ def load_prompt_block():
     ฟังก์ชันนี้จึงไม่ต้องเจาะช่อง {{GLOSSARY}} อีกต่อไป - เอา glossary block ออกจาก COMMON
     เฉยๆ กัน COMMON ลากตัวเปล่าติดมาซ้ำกับที่ฝังในแต่ละไฟล์แล้ว
     """
-    txt = (T03 / "_common.md").read_text(encoding="utf-8")
+    txt = (T04 / "_common.md").read_text(encoding="utf-8")
     m = re.search(r"## BLOCK START\n(.*?)\n## BLOCK END", txt, re.DOTALL)
     body = m.group(1).strip()
     g = re.search(r"<!-- GLOSSARY START -->\n(.*?)\n<!-- GLOSSARY END -->\n", body, re.DOTALL)
@@ -200,14 +200,16 @@ def find_image(house_dir, d, fname):
     return None
 
 # ---- build ---------------------------------------------------------------
-def main():
-    OUT_IMAGES.mkdir(exist_ok=True)
-    rows_train, rows_val, rows_test = [], [], []
+def gather_all_rows():
+    """เดินทุกบ้านทุกไฟล์ครั้งเดียว คืน rows ทั้งหมด (ไม่ตัดสิน train/val/test ที่นี่ -
+    การแบ่ง split เป็นขั้นแยกใน main()/build_folds() ที่กรอง all_rows ตาม row['house']
+    ทำให้ path เดียวใช้ได้ทั้ง default single-split และ k-fold โดยไม่พิมพ์ logic ซ้ำ"""
     broken_files = []
     stats = Counter()
     per_subtask = Counter()
     skipped = defaultdict(list)
     needed_images = set()
+    all_rows = []
 
     houses = sorted(d.name for d in GT_ROOT.iterdir() if d.is_dir())
     for house in houses:
@@ -296,14 +298,80 @@ def main():
                                                          ensure_ascii=False)}]},
                     ],
                 }
-                if house in TEST_HOUSES:
-                    rows_test.append(row)
-                else:
-                    if house in VAL_HOUSES:
-                        rows_val.append(row)
-                    rows_train.append(row)  # 2026-08-29 มะขามสั่ง: val houses (01-05) go in train too
+                all_rows.append(row)
                 per_subtask[sub] += 1
                 stats["examples"] += 1
+
+    return all_rows, broken_files, per_subtask, stats, skipped, needed_images
+
+
+def write_jsonl(name, rows):
+    with open(HERE / f"{name}.jsonl", "w", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
+def build_folds(all_rows, k):
+    """k-fold แบบ house-level (ห้ามหั่นตัวอย่างข้ามบ้านเดียวกันไปคนละ fold - จะรั่วความจำ
+    รูปทรง/สไตล์การเขียนแบบของบ้านนั้นข้าม fold เหมือนบั๊กเดิมที่กันบ้าน 08 ไว้นอก dataset)
+    fold assignment = greedy balance by จำนวนตัวอย่างต่อบ้าน (ไม่ใช่ random - reproducible)
+    เขียน train_fold{i}.jsonl/val_fold{i}.jsonl ทุก fold + fold_manifest.json
+
+    หมายเหตุคุณภาพข้อมูล (2026-08-29 ค่ำ, มะขามสั่งทำแม้ไม่คุ้ม GPU-hours - งานต้องดี):
+    5 หลังที่คนรีวิวเนื้อหาแล้ว (VAL_HOUSES เดิม 01-05) ตอนนี้ปนกับบ้าน op04 ที่ยังไม่รีวิว
+    ในทุก fold เท่าๆ กันไม่ได้การันตี - fold_manifest.json ระบุ reviewed_houses_in_fold
+    ต่อ fold ไว้ให้เห็นตรงๆ ว่า fold ไหนได้ GT สะอาดกี่หลัง อย่าเชื่อว่าทุก fold คุณภาพเท่ากัน"""
+    house_rows = defaultdict(list)
+    for r in all_rows:
+        house_rows[r["house"]].append(r)
+    house_count = {h: len(rows) for h, rows in house_rows.items()}
+    houses_sorted = sorted(house_count, key=lambda h: (-house_count[h], h))
+
+    fold_totals = [0] * k
+    fold_members = [[] for _ in range(k)]
+    for h in houses_sorted:
+        idx = min(range(k), key=lambda i: (fold_totals[i], i))
+        fold_members[idx].append(h)
+        fold_totals[idx] += house_count[h]
+
+    fold_sizes = []
+    for i in range(k):
+        val_houses_i = set(fold_members[i])
+        train_rows = [r for r in all_rows if r["house"] not in val_houses_i]
+        val_rows = [r for r in all_rows if r["house"] in val_houses_i]
+        write_jsonl(f"train_fold{i}", train_rows)
+        write_jsonl(f"val_fold{i}", val_rows)
+        fold_sizes.append({
+            "fold": i,
+            "houses": sorted(fold_members[i]),
+            "val_examples": len(val_rows),
+            "train_examples": len(train_rows),
+            "reviewed_houses_in_fold": sorted(h for h in fold_members[i] if h in VAL_HOUSES),
+        })
+
+    manifest = {
+        "folds": k,
+        "assignment": {h: i for i, hs in enumerate(fold_members) for h in hs},
+        "fold_sizes": fold_sizes,
+    }
+    (HERE / "fold_manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"\n--folds {k}: เขียน train_fold0..{k-1}.jsonl / val_fold0..{k-1}.jsonl + fold_manifest.json")
+    for fs in fold_sizes:
+        print(f"  fold {fs['fold']}: {len(fs['houses'])} หลัง, val {fs['val_examples']} ตัวอย่าง, "
+              f"reviewed {len(fs['reviewed_houses_in_fold'])}/{len(fs['houses'])}")
+
+
+def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--folds", type=int, default=0,
+                     help="เปิด k-fold CV เพิ่ม (house-level, greedy-balanced) เช่น --folds 5 "
+                          "- ไม่กระทบ train.jsonl/val.jsonl/test.jsonl เดิม เขียนเพิ่มเป็นไฟล์ใหม่")
+    args = ap.parse_args()
+
+    OUT_IMAGES.mkdir(exist_ok=True)
+    all_rows, broken_files, per_subtask, stats, skipped, needed_images = gather_all_rows()
 
     # copy images (flat, filenames unique — house name is in the filename)
     for img in sorted(needed_images):
@@ -311,15 +379,14 @@ def main():
         if not dst.exists():
             shutil.copy2(img, dst)
 
-    with open(HERE / "train.jsonl", "w", encoding="utf-8") as f:
-        for r in rows_train:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    with open(HERE / "val.jsonl", "w", encoding="utf-8") as f:
-        for r in rows_val:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    with open(HERE / "test.jsonl", "w", encoding="utf-8") as f:
-        for r in rows_test:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    rows_test = [r for r in all_rows if r["house"] in TEST_HOUSES]
+    rows_val = [r for r in all_rows if r["house"] in VAL_HOUSES]
+    # 2026-08-29 มะขามสั่ง: val houses (01-05) go in train too
+    rows_train = [r for r in all_rows if r["house"] not in TEST_HOUSES]
+
+    write_jsonl("train", rows_train)
+    write_jsonl("val", rows_val)
+    write_jsonl("test", rows_test)
     with open(HERE / "images_manifest.txt", "w", encoding="utf-8") as f:
         for img in sorted(needed_images):
             f.write(str(img.relative_to(TRAINING)) + "\n")
@@ -340,6 +407,9 @@ def main():
     (HERE / "stats.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2),
                                      encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
+
+    if args.folds:
+        build_folds(all_rows, args.folds)
 
 if __name__ == "__main__":
     sys.exit(main())

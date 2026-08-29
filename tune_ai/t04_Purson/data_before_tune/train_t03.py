@@ -100,6 +100,15 @@ FINETUNE_VISION = os.environ.get("FINETUNE_VISION", "0") == "1"
                                     #   อาจแม่นขึ้น — เป็นการทดลองของรอบหน้า ไม่ใช่รอบนี้
 OUT_DIR = "outputs_t03"
 
+# k-fold CV (2026-08-29 ค่ำ, มะขามสั่ง - build_dataset_t03.py --folds 5 เขียน
+# train_fold{N}.jsonl/val_fold{N}.jsonl ไว้แล้ว): FOLD=0 python3 train_t03.py รันด้วยชุดนั้น
+# แทน train/val ปกติ, output แยกโฟลเดอร์ต่อ fold กันเขียนทับกัน - ไม่ตั้ง FOLD = พฤติกรรมเดิมเป๊ะ
+FOLD = os.environ.get("FOLD", "")
+TRAIN_SPLIT = f"train_fold{FOLD}" if FOLD != "" else "train"
+VAL_SPLIT = f"val_fold{FOLD}" if FOLD != "" else "val"
+if FOLD != "":
+    OUT_DIR = f"outputs_t03_fold{FOLD}"
+
 TEST_STEPS = int(os.environ.get("TEST_STEPS", "0"))
 SKIP_DEMO = os.environ.get("SKIP_DEMO", "0") == "1"
 # ─────────────────────────────────────────────────────────────
@@ -136,8 +145,8 @@ def load_split(name):
     return rows, subtasks, subtask_list
 
 
-train_ds, train_sub, _ = load_split("train")
-val_ds, val_sub, val_subtasks = load_split("val")
+train_ds, train_sub, _ = load_split(TRAIN_SPLIT)
+val_ds, val_sub, val_subtasks = load_split(VAL_SPLIT)
 n_multi = sum(1 for r in train_ds
               if sum(1 for c in r["messages"][0]["content"] if c["type"] == "image") > 1)
 print(f"train {len(train_ds)} | val {len(val_ds)} | multi-image {n_multi}")

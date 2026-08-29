@@ -12,7 +12,7 @@
 
 | ของ | เช็คยังไง | ถ้าไม่ผ่าน |
 |---|---|---|
-| sidecar CV ของ 5 บ้าน val | `ls tune_ai/t03/data_before_tune/cv_val/*_hint.txt` → ควรมีหลายไฟล์ | รันข้อ 1 ข้างล่าง |
+| sidecar CV ของ 5 บ้าน val | `ls tune_ai/t04_Purson/data_before_tune/cv_val/*_hint.txt` → ควรมีหลายไฟล์ | รันข้อ 1 ข้างล่าง |
 | prompt pass 3 ตรง §6b | เปิด `pass3_takeoff/prompt.md` ดูตัวอย่าง F1 → ต้องเป็น `"stirrup": {...}` ไม่ใช่ `stirrup_tie_count` | แก้แล้ว 2026-08-28 ไม่ต้องทำอะไร |
 | merge_guard ยังดี | `python tools/merge_guard.py` → OK | อ่าน error ก่อนไปต่อ |
 
@@ -20,7 +20,7 @@
 
 ## ข้อ 1 — Pass 1.5: CV สแกนหน้า plan ของ 5 บ้าน val (CPU, ไม่ใช้ GPU)
 
-**Claude รันไว้ให้แล้วคืน 2026-08-28** → sidecar อยู่ `tune_ai/t03/data_before_tune/cv_val/`
+**Claude รันไว้ให้แล้วคืน 2026-08-28** → sidecar อยู่ `tune_ai/t04_Purson/data_before_tune/cv_val/`
 (25 หน้า plan จาก val.jsonl ของบ้าน 01–05, รวม `--pass25` self-harvest ด้วย)
 
 ถ้าต้องรันใหม่ (เช่น เติมคลัง template แล้ว):
@@ -31,7 +31,7 @@ import json, sys
 from pathlib import Path
 sys.path.insert(0,'tools')
 from cv_scan import scan_paths, load_templates
-HERE=Path('tune_ai/t03/data_before_tune'); OUT=HERE/'cv_val'; OUT.mkdir(exist_ok=True)
+HERE=Path('tune_ai/t04_Purson/data_before_tune'); OUT=HERE/'cv_val'; OUT.mkdir(exist_ok=True)
 imgs={HERE/c['image'] for line in open(HERE/'val.jsonl',encoding='utf-8')
       for r in [json.loads(line)] if (r.get('subtask') or '').startswith('plan_')
       for c in r['messages'][0]['content'] if c['type']=='image'}
@@ -59,7 +59,7 @@ PY
 
 1. **การ์ดถูกก่อนเสมอ** — ทดสอบสคริปต์ให้จบ 1 หน้าบนการ์ดถูก แล้วค่อยขยับไปการ์ดแรง
 2. **venv แยกเสมอ** — ห้าม pip install ลง env รวมระหว่างมีงานอื่นรัน
-3. ของที่ต้องอัปขึ้นเครื่อง: repo (หรืออย่างน้อย `tune_ai/t03/data_before_tune/` ทั้งโฟลเดอร์
+3. ของที่ต้องอัปขึ้นเครื่อง: repo (หรืออย่างน้อย `tune_ai/t04_Purson/data_before_tune/` ทั้งโฟลเดอร์
    รวม `cv_val/` + `images/` + adapter `outputs_t03/lora`) — `cv_val/` คือของใหม่ที่รอบก่อนไม่มี
 4. **ก่อน destroy เครื่อง: ดึง `ผล_t03/` กลับมาก่อนทุกครั้ง**
 
@@ -79,7 +79,7 @@ PY
 เพราะ hint ของมันแม่นที่สุด แล้วค่อยขยับไป beam
 
 ```bash
-cd tune_ai/t03/data_before_tune
+cd tune_ai/t04_Purson/data_before_tune
 
 # บ้าน 01 ก่อน (จบ 3 แขนแล้วดูเลข ค่อยไล่ 02-05)
 python infer_house_t03.py --house 01 --subtask plan_footing --arm 2

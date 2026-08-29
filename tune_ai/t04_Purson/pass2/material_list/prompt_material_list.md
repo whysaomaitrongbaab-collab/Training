@@ -3,7 +3,7 @@
 **Input:** one BOQ-sheet image.
 **Output:** one `pattern: "material_list"` file using `categories[].items[]` (§0.1, §11).
 
-Prepend `../../../t03/_common.md`.
+Prepend `../../_common.md`.
 
 ---
 

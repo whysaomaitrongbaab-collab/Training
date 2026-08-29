@@ -8,7 +8,7 @@ alongside this one made the same move today).
 **Output:** one JSON object per page, merged by the runner into the `pass0.json` that
 `../../t03/pass1_organize/organize.py` consumes (shape: `output_example.json`, next to this file).
 
-Does **not** use `../../t03/_common.md` - this pass classifies, it does not extract, so
+Does **not** use `../_common.md` - this pass classifies, it does not extract, so
 `_common.md`'s field/rebar glossary does not apply. It has its own Thai-to-English lookup for
 the one thing it does need - the title-block wording table under "Choosing `subtask`" below,
 already at the top of the prompt (2026-08-29 review: no addition needed here).

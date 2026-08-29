@@ -6,7 +6,7 @@
 
 **Input:** รูปมาร์คเลข (จาก [pass 1.5](../pass1.5_cv/)) + บัญชี element ฉบับสุดท้าย
 (CV ∪ โมเดล จาก [pass 2.5](../pass2.5_harvest/)) + grid master + prompt นี้
-(prepend `../../t03/_common.md` — glossary ไทยติดมาด้วย)
+(prepend `../_common.md` — glossary ไทยติดมาด้วย)
 
 **กฎเหล็กของ pass นี้ — บังคับด้วยโค้ด ไม่ใช่แค่ prompt:**
 [`tools/merge_guard.py::merge_no_delete()`](../../../tools/merge_guard.py) รันหลังโมเดลตอบเสมอ —

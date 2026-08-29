@@ -17,7 +17,7 @@ Deliberately **one file, not four near-identical copies** - four copies drift, a
 same-shaped files is the exact failure this whole spec exists to stop (`primary_rawjson_schema.md`
 §0). Change the rules here once and all four subtasks change together.
 
-Prepend `../../t03/_common.md`. Requires `_shared/gridmaster.json` - the manifest's `needs` gate
+Prepend `../_common.md`. Requires `_shared/gridmaster.json` - the manifest's `needs` gate
 blocks this subtask until it exists.
 
 ---

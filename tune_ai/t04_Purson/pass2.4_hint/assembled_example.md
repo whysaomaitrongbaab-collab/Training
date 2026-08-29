@@ -19,7 +19,7 @@ pass 2.4 **ไม่มี prompt ใหม่** - มันคือ prompt pas
 คนรันไม่ต้องแก้ prompt ไหนเลย - สลับแขนด้วย flag `--arm` อย่างเดียว:
 
 ```
-python tune_ai/t03/data_before_tune/infer_house_t03.py \
+python tune_ai/t04_Purson/data_before_tune/infer_house_t03.py \
     --house <บ้าน> --subtask plan_beam --arm 2.4a --cv-dir image/<บ้าน>/
 ```
 
@@ -31,7 +31,7 @@ python tune_ai/t03/data_before_tune/infer_house_t03.py \
 
 ## พาร์ทที่ 2 - prompt pass 2 เดิม (ไม่แตะเลย)
 
-`../../t03/_common.md` + `../pass2/<subtask>/prompt.md` (ตัวอย่างนี้คือ `../pass2/plan_beam/`) -
+`../_common.md` + `../pass2/<subtask>/prompt.md` (ตัวอย่างนี้คือ `../pass2/plan_beam/`) -
 เหมือนแขน 2 ทุกตัวอักษร ไม่มีการแก้ไขใดๆ ทุก subtask ของ pass 2 แยกโฟลเดอร์ตัวเองแล้ว
 2026-08-29 (ดู `../pass2/README.md`)
 

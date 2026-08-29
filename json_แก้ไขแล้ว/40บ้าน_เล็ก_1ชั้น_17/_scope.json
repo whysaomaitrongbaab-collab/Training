@@ -1,0 +1,16 @@
+{
+  "scope": "pass2_only",
+  "op": "op04",
+  "date": "2026-08-29",
+  "house_design": "บ้านไทยพอเพียง 2 (บ้านชั้นเดียว) — แบบบ้านสานฝัน ของขวัญปีใหม่ คนไทยมีความสุข, กรมโยธาธิการและผังเมือง, แบบเลขที่ S60216/AR60053 ปี 2560; ดาวน์โหลดจาก townsquare.dpt.go.th (plan id 417) 2026-08-29 — บ้านหลังนี้ใหม่ต่อคลังทั้งชุด ไม่ซ้ำกับ 50 หลังเดิม (ตรวจชื่อแบบจากหน้าปกทั้ง 19 หลัง 1 ชั้นเดิมแล้ว); เป็นแบบพี่น้องกับ 51บ้าน_เล็ก_1ชั้น_16 (ไทยพอเพียง 1) — ผังใหญ่กว่า 1 ช่วงเสา (A-D, 12 ม.) และมี F9 เพิ่ม",
+  "subtasks_done": ["gridline", "plan_footing", "plan_beam", "section", "schedule", "notes"],
+  "subtasks_absent_from_this_house": [
+    "plan_column (no dedicated column-plan sheet — the 10 columns are markers in the footing plan S-02 ('F..,C1') and unlabeled squares in the beam plan S-03; spec lives in the ตารางเสา on S-09)",
+    "plan_slab (no dedicated slab-plan sheet — slab tags SP/S0/S1/S2 are markers within the combined แปลนเสา คาน พื้น S-03)",
+    "soil_boring_log (standard DPT catalog design, no site-specific soil sheet exists)"
+  ],
+  "deliberately_skipped": ["material_list", "index", "site_plan", "side_profile", "title", "symbol", "roof_plan", "misc", "bbs_schedule"],
+  "pages_extracted": 14,
+  "pages_in_house": 66,
+  "note": "Pass 2 subtasks only — this house is NOT fully extracted. Skipped pages were skipped on purpose (tune_ai/t03/dataset_sizing.md), not missed. All 12 structural sheets (S-01..S-12, PDF pages 25-36) were read in full — the entire structural discipline. Beyond the S sheets, exactly one architectural page was extracted as a file: A-11 (หน้า18, door/window schedule); A-09 (รูปตัด, หน้า16) was additionally READ (not extracted as a file) to fill the grid master's z_levels/dimension chains, with source_image recorded per entry in หน้า00_gridline.json. The A-02 general-architectural notes sheet and A-12 รายการสุขภัณฑ์ exist but were not extracted (outside op04's notes/schedule scope — same reasoning as sibling house 51). BOQ pages 45-62 = material_list, deliberately skipped."
+}

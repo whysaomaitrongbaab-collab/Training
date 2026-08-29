@@ -1,0 +1,183 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized from S-02, S-03, S-04 + z levels from A-09)",
+  "pattern": "grid_master",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png",
+    "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า27.png",
+    "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า28.png",
+    "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png",
+    "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า13.png"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": ["dummy_grid_naming_judgment_call"],
+  "warnings": [
+    "z_levels and part of the dimension chains come from architectural sheets A-09 (รูปตัด A-A, หน้า16) and A-06 (แปลนหลังคา, หน้า13), which are outside op04's extraction scope as page files. They were consulted for the grid master only, per schema §4 ('elevations and sections are first-class sources' — the structural sheets label levels like ระดับดินเดิม ±0.00 but only A-09 prints the full metric z chain). No page JSON is produced for A-09/A-06; their contribution lives here with source_image recorded per entry. This follows §4's sweep rule; house-14's op04 precedent left z_levels empty instead — this house chooses completeness because the source pages were actually read.",
+    "Two dummy x-lines both anchor to main grid '1' (the roof-eave line before the origin at x=-1.25, and the ridge/B1 wall line at x=1.90 between grids 1 and 2). Following house #14's recorded precedent for this exact situation: scan the whole x-axis left-to-right and assign primes in encounter order — x=-1.25 -> '1''(negative pos_m, house #04/#05 precedent), x=1.90 -> '1'''.",
+    "Three dummy x-lines anchor to main grid '2': the right roof-eave line at x=5.25 (printed 1.25 right of grid 2 on S-04/A-06/A-09), and the stair-landing footing F2's two edge lines at x=5.35 and x=6.65 (printed 1.35/1.30/1.35 chain between grids 2 and 3 on S-02/S-03). Scan order left-to-right: 5.25 -> 2', 5.35 -> 2'', 6.65 -> 2'''. Note 2' and 2'' are only 0.10 m apart — they are genuinely different lines (roof eave vs. landing edge).",
+    "Dummy y-line B' at 5.90 exists because beam B1's south endpoint lands there (S-03 prints 1.90 below grid B): the interior beams B3 (1->2) and B2 (2->3) run along y=5.90 and B1 bears on B3 at that line. Without B' those beams' endpoints would have no grid ref (schema §4 beam-endpoint rule).",
+    "Dummy y-lines below C: C' = 9.00 (roof gable-overhang edge, printed 1.00 below C on S-04/A-06 — the อกไก่/อะเส members end there) and C'' = 9.85 (stair-landing beam B0's centerline: printed 1.35 from C to the landing edge on S-02/S-03, plus 0.50 from the landing edge to the pile/beam centerline on S-05's F2 detail). Scan order top-to-bottom: 9.00 -> C', 9.85 -> C''. The landing-slab S0 edges at y=9.35 and y=10.35 get NO dummy (slab-only edges, §4).",
+    "The stair-landing footing F2's detail on S-05 is drawn rotated 90° relative to the building plan: its detail-plan reads 1.00 wide × 1.30 tall, while S-02/S-03 place the landing 1.30 along building-x × 1.00 along building-y. All grid positions here use building coordinates.",
+    "Dummy y-line A' at -1.00 is the north roof gable-overhang edge (printed 1.00 above A on S-04/A-06); named A' per house #14 precedent for a before-origin line (negative pos_m, keeps the origin on the first named grid)."
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1'", "pos_m": -1.25, "type": "dummy", "note": "roof eave line, printed 1.25 left of grid 1 (S-04, A-06, A-09) — จันทัน endpoints", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า28.png" },
+      { "id": "1", "pos_m": 0.0, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png" },
+      { "id": "1''", "pos_m": 1.9, "type": "dummy", "note": "ridge (อกไก่/CS king posts) line = interior wall/beam B1 line, printed 1.90 from grid 1 (S-03, A-09)", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า27.png" },
+      { "id": "2", "pos_m": 4.0, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png" },
+      { "id": "2'", "pos_m": 5.25, "type": "dummy", "note": "roof eave line, printed 1.25 right of grid 2 (S-04, A-06) — จันทัน endpoints", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า28.png" },
+      { "id": "2''", "pos_m": 5.35, "type": "dummy", "note": "stair-landing / footing F2 left edge = beam B0 start, printed 1.35 right of grid 2 (S-02, S-03)", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png" },
+      { "id": "2'''", "pos_m": 6.65, "type": "dummy", "note": "stair-landing / footing F2 right edge = beam B0 end (1.35 + 1.30 from grid 2)", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png" },
+      { "id": "3", "pos_m": 8.0, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png" }
+    ],
+    "y_lines": [
+      { "id": "A'", "pos_m": -1.0, "type": "dummy", "note": "roof gable-overhang edge, printed 1.00 above A (S-04, A-06) — อกไก่/อะเส endpoints", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า28.png" },
+      { "id": "A", "pos_m": 0.0, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png" },
+      { "id": "B", "pos_m": 4.0, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png" },
+      { "id": "B'", "pos_m": 5.9, "type": "dummy", "note": "interior beam line (B3 1->2, B2 2->3); beam B1's south endpoint, printed 1.90 below B (S-03)", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า27.png" },
+      { "id": "C", "pos_m": 8.0, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png" },
+      { "id": "C'", "pos_m": 9.0, "type": "dummy", "note": "roof gable-overhang edge, printed 1.00 below C (S-04, A-06) — อกไก่/อะเส endpoints", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า28.png" },
+      { "id": "C''", "pos_m": 9.85, "type": "dummy", "note": "stair-landing beam B0 / footing F2 centerline: 1.35 (C to landing edge, S-02/S-03) + 0.50 (edge to pile centerline, S-05 F2 detail)", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า29.png" }
+    ],
+    "z_levels": [
+      { "id": "ระดับดินเดิม", "level_m": 0.0, "type": "datum", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png" },
+      { "id": "ระดับพื้นภายใน", "level_m": 1.5, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png" },
+      { "id": "ห้องน้ำ WC.1", "level_m": 1.4, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png" },
+      { "id": "ชานระเบียง", "level_m": 1.4, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png" },
+      { "id": "ระดับหลังอะเส", "level_m": 4.5, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png" },
+      { "id": "ระดับหลังอกไก่", "level_m": 5.935, "type": "named", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 4.0 },
+          { "from": "2", "to": "3", "value_m": 4.0 },
+          { "from": "1", "to": "3", "value_m": 8.0 },
+          { "from": "2", "to": "2''", "value_m": 1.35 },
+          { "from": "2''", "to": "2'''", "value_m": 1.3 },
+          { "from": "2'''", "to": "3", "value_m": 1.35 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า26.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 4.0 },
+          { "from": "B", "to": "C", "value_m": 4.0 },
+          { "from": "A", "to": "C", "value_m": 8.0 },
+          { "from": "C", "to": "edge", "value_m": 1.35 },
+          { "from": "edge", "to": "edge", "value_m": 1.0 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า27.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 4.0 },
+          { "from": "2", "to": "3", "value_m": 4.0 },
+          { "from": "1", "to": "3", "value_m": 8.0 },
+          { "from": "1", "to": "1''", "value_m": 1.9 },
+          { "from": "2", "to": "2''", "value_m": 1.35 },
+          { "from": "2''", "to": "2'''", "value_m": 1.3 },
+          { "from": "2'''", "to": "3", "value_m": 1.35 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า27.png",
+        "segments": [
+          { "from": "A", "to": "B", "value_m": 4.0 },
+          { "from": "B", "to": "C", "value_m": 4.0 },
+          { "from": "A", "to": "C", "value_m": 8.0 },
+          { "from": "B", "to": "B'", "value_m": 1.9 },
+          { "from": "C", "to": "edge", "value_m": 1.35 },
+          { "from": "edge", "to": "edge", "value_m": 1.0 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า28.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.25 },
+          { "from": "1", "to": "2", "value_m": 4.0 },
+          { "from": "2", "to": "2'", "value_m": 1.25 },
+          { "from": "1", "to": "3", "value_m": 8.0 },
+          { "from": "2", "to": "3", "value_m": 4.0 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า28.png",
+        "segments": [
+          { "from": "A'", "to": "A", "value_m": 1.0 },
+          { "from": "A", "to": "B", "value_m": 4.0 },
+          { "from": "B", "to": "C", "value_m": 4.0 },
+          { "from": "C", "to": "C'", "value_m": 1.0 },
+          { "from": "A", "to": "C", "value_m": 8.0 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า13.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.25 },
+          { "from": "1", "to": "2", "value_m": 4.0 },
+          { "from": "2", "to": "3", "value_m": 4.0 },
+          { "from": "1", "to": "3", "value_m": 8.0 },
+          { "from": "2", "to": "2'", "value_m": 1.25 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า13.png",
+        "segments": [
+          { "from": "A'", "to": "A", "value_m": 1.0 },
+          { "from": "A", "to": "B", "value_m": 4.0 },
+          { "from": "B", "to": "C", "value_m": 4.0 },
+          { "from": "C", "to": "C'", "value_m": 1.0 },
+          { "from": "A", "to": "C", "value_m": 8.0 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png",
+        "segments": [
+          { "from": "1'", "to": "1", "value_m": 1.25 },
+          { "from": "1", "to": "2", "value_m": 4.0 },
+          { "from": "2", "to": "3", "value_m": 4.0 },
+          { "from": "1", "to": "3", "value_m": 8.0 },
+          { "from": "1", "to": "1''", "value_m": 1.9 },
+          { "from": "2", "to": "edge", "value_m": 1.0 },
+          { "from": "edge", "to": "edge", "value_m": 2.0 },
+          { "from": "edge", "to": "3", "value_m": 1.0 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png",
+        "segments": [
+          { "from": "ระดับดินเดิม", "to": "ระดับพื้นภายใน", "value_m": 1.5 },
+          { "from": "ระดับพื้นภายใน", "to": "ระดับหลังอะเส", "value_m": 3.0 },
+          { "from": "ระดับหลังอะเส", "to": "ระดับหลังอกไก่", "value_m": 1.435 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 2.8, "label": "2.80", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png", "note": "clear height of the interior door/wall opening shown in รูปตัด A-A — not a grid or level" },
+      { "value_m": 0.9, "label": "0.90", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png", "note": "ราวระเบียง (deck railing) height" },
+      { "value_m": 1.075, "label": "1.075", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png", "note": "railing height to top rail (second printed railing dimension)" },
+      { "value_m": null, "label": "SLOPE 35°", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า13.png", "note": "roof slope, printed on A-06 both sides of the ridge and as 35° on A-09; angle not a linear dimension" },
+      { "value_m": 1.435, "label": "~1.435", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า16.png", "note": "printed with a ~ (approx) on the z chain อะเส->อกไก่; recorded verbatim here, value used in dimension_chains" }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "negative_pos_m": "Two before-origin dummies exist: x = -1.25 (roof eave left of grid 1) and y = -1.00 (gable overhang above A). Both keep the prime-on-nearest-following-main-grid name ('1'', 'A'') with negative pos_m per house #04/#05/#14 precedent; the origin stays on named grids 1/A.",
+    "prime_ordering": "x-axis dummies anchored to '1': -1.25 then 1.90 (left-to-right) -> 1', 1''. Anchored to '2': 5.25, 5.35, 6.65 -> 2', 2'', 2'''. y-axis dummies anchored to 'C': 9.00 then 9.85 (top-to-bottom) -> C', C''."
+  }
+}

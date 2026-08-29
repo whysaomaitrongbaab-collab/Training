@@ -156,6 +156,41 @@ python tools/cv_scan.py --manifest work/<บ้าน> --pass25
 prompt เขียนเสร็จ (`pass3_takeoff/prompt.md`) แต่**ยังไม่มี runner** — ตั้งใจรอผลแขนทดลอง
 ข้อ 4 ก่อน ห้าม intern ลองประกอบยิงเอง (ผลจะไม่ผ่าน merge_guard และไม่มีใครรับผล)
 
+## ข้อ 6.5 — Fine-tune จริง (train_t03.py) + k-fold CV
+
+**ที่อยู่ย้ายแล้ว 2026-08-29 ค่ำ (มะขามสั่ง "เลิกอ่าน t03 เราไม่ใช้แล้ว"):**
+`build_dataset_t03.py`/`train_t03.py`/`infer_house_t03.py` ทั้งชุด + `_common.md` ย้ายจาก
+`tune_ai/t03/data_before_tune/` มาอยู่ **`tune_ai/t04_Purson/data_before_tune/`** แล้ว (โฟลเดอร์
+`pass1_organize/` เดียวยังอยู่ t03 ตามเดิม — โค้ดล้วนไม่มี prompt ไม่เข้าเกณฑ์ย้าย ดู
+`pass1/README.md`) รันคำสั่งทุกอย่างในข้อ 1-6 ด้านบนจาก path ใหม่นี้
+
+**บ้าน 08 เข้า dataset แล้ว (มะขามสั่ง "เอาบ้าน 08 เข้ามาด้วย จะได้ครบ 40 หลัง")** — เดิมกันไว้
+นอก train/val ทั้งคู่เพราะเป็น cross-round benchmark กับ t02 (t02 ไม่เคยเทรนบ้านนี้) กลับคำแล้ว
+ยอมเสีย benchmark ข้ามรอบนั้นเพื่อให้ dataset สมบูรณ์ 40/40 หลัง `TEST_HOUSES` ว่างถาวรจากนี้
+(train 987→**1020** ตัวอย่าง, val คงที่ 229)
+
+**k-fold CV (มะขามสั่งทำแม้ GPU-hours จะแพงกว่าเดิม — "งานผมต้องดี"):**
+
+```bash
+python build_dataset_t03.py --folds 5     # เขียนเพิ่ม train_fold0..4.jsonl/val_fold0..4.jsonl
+                                           # + fold_manifest.json (ไม่กระทบ train/val/test.jsonl เดิม)
+FOLD=0 python3 train_t03.py               # เทรน fold 0 → output แยกที่ outputs_t03_fold0/
+FOLD=0 TEST_STEPS=5 python3 train_t03.py  # ★ รันสั้นทดสอบก่อนเสมอ (rule_of_tune ข้อ 4) ต่อทุก fold
+```
+
+fold แบ่งระดับ**บ้าน** (ห้ามหั่นตัวอย่างของบ้านเดียวข้าม fold — กันรั่วสไตล์แบบ) ด้วย greedy
+balance ตามจำนวนตัวอย่าง (40 หลัง ÷ 5 fold = 8 หลัง/fold, 203-205 ตัวอย่าง/fold วัดจริงแล้ว)
+**⚠️ ข้อจำกัดคุณภาพที่ต้องรู้ก่อนเชื่อผล:** 5 หลังที่คนรีวิวเนื้อหาแล้ว (01-05) กระจายไม่เท่ากันทุก
+fold — วัดจริงรอบแรก: fold 0 กับ 3 ได้บ้านรีวิวแล้ว **0 หลัง**, fold 1/2 ได้ 2 หลัง, fold 4 ได้ 1
+หลัง เปิด `fold_manifest.json`'s `reviewed_houses_in_fold` ดูก่อนเชื่อว่าทุก fold วัดผลได้แม่นเท่ากัน
+— fold ที่ reviewed=0 วัดจาก GT ที่ยังไม่ผ่านรีวิวเนื้อหาล้วนๆ
+
+**คำเตือนต้นทุนจริง (ไม่ได้ทำให้อัตโนมัติ ตั้งใจ):** แต่ละ fold = เทรน LoRA เต็มรอบใหม่บนการ์ด
+เช่า (bf16 35B-A3B, ~95GB VRAM, margin แคบมาก ดู docstring `train_t03.py`) ทำ 5 fold = 5 เท่าของ
+ค่าการ์ด/เวลาเดิม ทุก fold ต้องผ่าน `TEST_STEPS=5` ยืนยันก่อนรันเต็มเหมือนกันหมด (ข้อ 2 กติกา GPU
+เดิมใช้ต่อ — การ์ดถูกก่อน/venv แยก/ดึงผลก่อน destroy) **infra พร้อมแล้ว แต่ยังไม่มีใครยิงจริง** —
+รอคนตัดสินใจเปิดเครื่องเช่ารอบต่อไป ไม่ใช่สิ่งที่ agent ยิงเองได้กลางดึกโดยไม่มีคนดู
+
 ## ข้อ 7 — ส่งงาน
 
 1. `python tools/check_format.py <โฟลเดอร์ผลของบ้าน>` → ต้อง ALL CHECKS PASS

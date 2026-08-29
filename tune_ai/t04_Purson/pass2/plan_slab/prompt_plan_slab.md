@@ -5,7 +5,7 @@ Rendered 2026-08-29 from `../plan.md`'s shared template - one concrete file per 
 **Input:** one `plan_slab` sheet image plus the building's grid master (`x_lines`/`y_lines` only, extracted from `<house>_หน้า00_gridline.json`).
 **Output:** one JSON file, `pattern` decided from what the sheet draws (see the prompt body).
 
-Prepend `../../../t03/_common.md`. Requires `_shared/gridmaster.json` - the manifest's `needs` gate blocks this subtask until it exists.
+Prepend `../../_common.md`. Requires `_shared/gridmaster.json` - the manifest's `needs` gate blocks this subtask until it exists.
 
 ---
 

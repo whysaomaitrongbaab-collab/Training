@@ -115,7 +115,7 @@ hint ช่วยได้แค่ไหน
 | เครื่องมือสร้าง/เติมคลัง template | `tools/harvest_templates.py` |
 | คลัง template จริง | `tools/templates/*.png` |
 | ด่านห้ามลบของ pass 3 | `tools/merge_guard.py` |
-| แขนทดลอง 2/2.4a | `tune_ai/t03/data_before_tune/infer_house_t03.py` (`--arm`) |
+| แขนทดลอง 2/2.4a | `tune_ai/t04_Purson/data_before_tune/infer_house_t03.py` (`--arm`) |
 
 ## เหลือทำ
 
@@ -127,7 +127,7 @@ hint ช่วยได้แค่ไหน
 prompt ประกอบเสร็จของจริงทั้ง 3 แขน จากหน้า/sidecar จริง
 
 - ยิง 3 แขนทดลองบน GPU จริง (รอเครดิต Vast) — sidecar CV ของ 5 บ้าน val เตรียมแล้ว
-  (`tune_ai/t03/data_before_tune/cv_val/`, 2026-08-28)
+  (`tune_ai/t04_Purson/data_before_tune/cv_val/`, 2026-08-28)
 - เติมคลัง template ให้ครบ (23/44 หลังพอใช้ ตอนนี้)
 - รัน pass 3 ครั้งแรกกับข้อมูลจริง — prompt แก้ตรง §6b แล้ว (2026-08-28: `stirrup_tie_count` →
   `stirrup:{count}`) แต่**ยังไม่มี runner** (ดู RUNBOOK ข้อ 5 — ตั้งใจรอผลแขนทดลองก่อน)

@@ -1,0 +1,92 @@
+{
+  "png": "28",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แปลนโครงหลังคา, ขยาย 1",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_17/บ้าน_เล็ก_1ชั้น_17_หน้า28.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_17_หน้า00_gridline.json",
+  "view_title": "แปลนโครงหลังคา",
+  "scale": "1:100",
+  "views": ["แปลนโครงหลังคา (1:100)", "ขยาย 1 (1:20)"],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Roof geometry cross-checked against A-09 (รูปตัด A-A): gable roof, ridge (อกไก่) runs the y direction on line 1'' (x=1.90), SLOPE 35° down both ways along x to eave lines 1' (x=-1.25) and 2' (x=5.25); gable-end overhangs 1.00 beyond rows A and D (lines A'/D'). The roof covers only the main block (grids 1-2, rows A-D); the deck between grids 2-3 is open.",
+    "The steel roof frame uses no printed member marks — element_id is the printed Thai member name (same convention as house 14's roof file and sibling house 16). All members are structural steel: specs in specs{} per §6a.",
+    "จันทัน (rafters) run the x direction from eave 1' over อะเส (grids 1/2) to the ridge 1''. Their individual positions/spacing are not dimensioned anywhere on this sheet — recorded as one element per slope with count null rather than inventing a spacing. The thin y-direction double-arrow lines drawn mid-bay are read as the แป span-direction indicators between the frame rows (the least certain graphical reading on the sheet; member sizes are unambiguous).",
+    "แป (purlins) run the y direction parallel to the ridge, printed '@ 1.00 ม' — spacing recorded, count deliberately null (spacing-governed, per precedent).",
+    "CS = เสาดั้งเหล็ก (king posts) per the sheet's หมายเหตุ; drawn at the ridge line over rows A, B, C, D standing on the ขื่อ."
+  ],
+  "elements": [
+    { "element_id": "อกไก่เหล็ก", "element_type": "beam", "grid_ref_start": "A'1''", "grid_ref_end": "A1''", "span_length_m": 1.0, "span_source": "grid_table", "note": "ridge member, gable-overhang segment north of A", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "อกไก่เหล็ก", "element_type": "beam", "grid_ref_start": "A1''", "grid_ref_end": "B1''", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อกไก่เหล็ก", "element_type": "beam", "grid_ref_start": "B1''", "grid_ref_end": "C1''", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อกไก่เหล็ก", "element_type": "beam", "grid_ref_start": "C1''", "grid_ref_end": "D1''", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อกไก่เหล็ก", "element_type": "beam", "grid_ref_start": "D1''", "grid_ref_end": "D'1''", "span_length_m": 1.0, "span_source": "grid_table", "note": "gable-overhang segment south of D", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "A'1", "grid_ref_end": "A1", "span_length_m": 1.0, "span_source": "grid_table", "note": "wall-plate beam on grid 1, overhang segment", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "B1", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "C1", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "D1", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D'1", "span_length_m": 1.0, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "A'2", "grid_ref_end": "A2", "span_length_m": 1.0, "span_source": "grid_table", "note": "wall-plate beam on grid 2, overhang segment", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "A2", "grid_ref_end": "B2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "B2", "grid_ref_end": "C2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "C2", "grid_ref_end": "D2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "อะเสเหล็ก", "element_type": "beam", "grid_ref_start": "D2", "grid_ref_end": "D'2", "span_length_m": 1.0, "span_source": "grid_table", "confidence_score": 0.85, "confidence_flags": [] },
+    { "element_id": "ขื่อเหล็ก", "element_type": "beam", "grid_ref_start": "A1", "grid_ref_end": "A2", "span_length_m": 4.0, "span_source": "grid_table", "note": "tie beam of the row-A frame; CS king post bears on it at 1''", "confidence_score": 0.88, "confidence_flags": [] },
+    { "element_id": "ขื่อเหล็ก", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.88, "confidence_flags": [] },
+    { "element_id": "ขื่อเหล็ก", "element_type": "beam", "grid_ref_start": "C1", "grid_ref_end": "C2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.88, "confidence_flags": [] },
+    { "element_id": "ขื่อเหล็ก", "element_type": "beam", "grid_ref_start": "D1", "grid_ref_end": "D2", "span_length_m": 4.0, "span_source": "grid_table", "confidence_score": 0.88, "confidence_flags": [] },
+    { "element_id": "CS", "element_type": "column", "count": 4, "grid_refs": ["A1''", "B1''", "C1''", "D1''"], "note": "เสาดั้งเหล็ก (king posts) on the ridge line, standing on the ขื่อ at rows A/B/C/D — see หมายเหตุ on sheet", "confidence_score": 0.9, "confidence_flags": [] },
+    { "element_id": "จันทันเหล็ก", "element_type": "rafter", "grid_ref": "A'-D' x 1'-1''", "count": null, "span_length_m": null, "span_source": "unresolved", "note": "rafters of the west slope, running x from eave 1' up to ridge 1'' over อะเส at grid 1; individual positions/spacing not dimensioned on this sheet", "confidence_score": 0.7, "confidence_flags": ["rafter_positions_not_dimensioned"] },
+    { "element_id": "จันทันเหล็ก", "element_type": "rafter", "grid_ref": "A'-D' x 1''-2'", "count": null, "span_length_m": null, "span_source": "unresolved", "note": "rafters of the east slope, running x from ridge 1'' down to eave 2' over อะเส at grid 2", "confidence_score": 0.7, "confidence_flags": ["rafter_positions_not_dimensioned"] },
+    { "element_id": "แปเหล็ก", "element_type": "purlin", "grid_ref": "A'-D' x 1'-2'", "count": null, "spacing_mm": 1000, "spacing_printed_as": "@ 1.00 ม", "note": "purlins run the y direction parallel to the ridge across the whole roof; spacing-governed, count not printed", "confidence_score": 0.85, "confidence_flags": [] }
+  ],
+  "specs": {
+    "อกไก่เหล็ก": {
+      "material": "steel",
+      "steel_section": { "designation": "2C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "t_mm": 2.8, "printed_as": "อกไก่เหล็ก 2[]-100x50x20x2.8 มม (4.87 กก/ม)" },
+      "unit_weight_kg_per_m": 4.87,
+      "spec_source": "roof_frame_plan_callout",
+      "spec_confidence_score": 0.92
+    },
+    "อะเสเหล็ก": {
+      "material": "steel",
+      "steel_section": { "designation": "2C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "t_mm": 2.8, "printed_as": "อะเสเหล็ก 2[]-100x50x20x2.8 มม (4.87 กก/ม)" },
+      "unit_weight_kg_per_m": 4.87,
+      "spec_source": "roof_frame_plan_callout",
+      "spec_confidence_score": 0.92
+    },
+    "ขื่อเหล็ก": {
+      "material": "steel",
+      "steel_section": { "designation": "2C", "d_mm": 150, "b_mm": 50, "lip_mm": 20, "t_mm": 3.2, "printed_as": "ขื่อเหล็ก 2[]-150x50x20x3.2 มม (6.76 กก/ม)" },
+      "unit_weight_kg_per_m": 6.76,
+      "spec_source": "roof_frame_plan_callout",
+      "spec_confidence_score": 0.92
+    },
+    "จันทันเหล็ก": {
+      "material": "steel",
+      "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "t_mm": 3.2, "printed_as": "จันทันเหล็ก C-125x50x20x3.2 มม (6.13 กก/ม)" },
+      "unit_weight_kg_per_m": 6.13,
+      "spec_source": "roof_frame_plan_callout",
+      "spec_confidence_score": 0.9
+    },
+    "แปเหล็ก": {
+      "material": "steel",
+      "steel_section": { "designation": "C", "d_mm": 100, "b_mm": 50, "lip_mm": 20, "t_mm": 2.8, "printed_as": "แปเหล็ก C-100x50x20x2.8 มม (4.87 กก/ม) @ 1.00 ม" },
+      "unit_weight_kg_per_m": 4.87,
+      "spacing_mm": 1000,
+      "spec_source": "roof_frame_plan_callout",
+      "spec_confidence_score": 0.9
+    },
+    "CS": {
+      "material": "steel",
+      "steel_section": { "designation": "2C", "d_mm": 125, "b_mm": 50, "lip_mm": 20, "t_mm": 3.2, "printed_as": "หมายเหตุ CS = เสาดั้งเหล็ก 2[]-125x50x20x3.2 มม (6.13 กก/ม)" },
+      "unit_weight_kg_per_m": 6.13,
+      "spec_source": "roof_frame_plan_note",
+      "spec_confidence_score": 0.9
+    }
+  }
+}

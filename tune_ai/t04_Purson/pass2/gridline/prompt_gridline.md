@@ -7,7 +7,7 @@ has them, plus every view Pass 0 flagged `also_gridline: true` - plans, elevatio
 Runs **first** in Pass 2. Every plan subtask blocks on it: spans are computed from this file and
 from nothing else.
 
-Prepend `../../../t03/_common.md`. No embedded glossary here (2026-08-29 review) - this sheet
+Prepend `../../_common.md`. No embedded glossary here (2026-08-29 review) - this sheet
 never touches `element_type` or rebar, and every position it reports is already a decimal metre
 read straight off a printed dimension chain, so none of the Thai-field lookup applies.
 

@@ -7,7 +7,7 @@
 the presentation differs (a table instead of a drawn cut). Everything in `pass2_section.md` about
 rebar objects, the column single-`count` rule, and steel members applies here unchanged.
 
-Prepend `../../../t03/_common.md`.
+Prepend `../../_common.md`.
 
 ---
 

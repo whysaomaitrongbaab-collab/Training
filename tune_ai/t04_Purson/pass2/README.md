@@ -24,7 +24,7 @@
 ตามมะขามสั่ง แต่ `plan.md` ยังอยู่ที่นี่เป็น **template ต้นฉบับ** สำหรับ re-render ใหม่ถ้ากฎ
 ที่ใช้ร่วมกันต้องเปลี่ยน (ทุกไฟล์ลูกมีคอมเมนต์บอกไว้ว่าต้อง re-render จาก `plan.md` ไม่ใช่แก้ตรง)
 
-`_common.md` ยังอยู่ที่ [`tune_ai/t03/_common.md`](../../t03/_common.md) (glossary ไทย, prepend
+`_common.md` ย้ายมาที่ [`tune_ai/t04_Purson/_common.md`](../_common.md) แล้ว 2026-08-29 (glossary ไทย, prepend
 ทุก prompt) — ยังไม่ย้าย
 
-รันโดย `tune_ai/t03/data_before_tune/infer_house_t03.py --arm 2` (ค่าปริยาย)
+รันโดย `tune_ai/t04_Purson/data_before_tune/infer_house_t03.py --arm 2` (ค่าปริยาย)
