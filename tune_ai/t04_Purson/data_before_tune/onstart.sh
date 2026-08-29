@@ -1,4 +1,7 @@
 #!/bin/bash
+# ⛔ 2026-08-29 มะขามเคาะ: t04 เปลี่ยนโมเดลเป็น InternVL3-78B — onstart นี้ติดตั้ง unsloth
+#    ซึ่งใช้กับ InternVL3 ไม่ได้ ห้ามใช้กับรอบ t04 · เก็บเป็น reference ยุค Qwen
+#    onstart ใหม่รอเลือก framework (LLaMA-Factory/ms-swift) ก่อน — ดู t04_workflow.md
 # Vast.ai on-start script — t03: Qwen3.6-35B-A3B per-subtask fine-tune env
 # (Blackwell: RTX PRO 6000 / RTX 50-series) — ดัดแปลงจาก t02/onstart.sh ที่รันผ่านจริง
 # ⚠️ ไฟล์นี้ต้องเป็น LF เท่านั้น — CRLF ทำให้ set -euo pipefail พังทันที

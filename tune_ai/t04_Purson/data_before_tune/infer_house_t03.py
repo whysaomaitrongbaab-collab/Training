@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
-"""infer_house_t03.py — ให้โมเดล t03 ถอดแบบ "ทีละ subtask" แล้วเทียบกับ GT
+"""⛔ 2026-08-29 มะขามเคาะ: t04 เปลี่ยนโมเดลเป็น InternVL3-78B — ไฟล์นี้ (Unsloth) ใช้กับ t04
+ไม่ได้แล้ว เก็บเป็น reference ยุค Qwen · สคริปต์ infer ใหม่ต้อง port logic วัดผลจากไฟล์นี้ไป:
+score_ids()/element_ids()/strip_fence()/apply_arm()/hide_grid_lines() ไม่ผูก Unsloth ใช้ต่อได้ตรงๆ
+— ดู t04_workflow.md Phase 0 ข้อ 9
+
+infer_house_t03.py — ให้โมเดล t03 ถอดแบบ "ทีละ subtask" แล้วเทียบกับ GT
 
 ออกแบบให้ไม่ทำงานซ้ำกับ build_dataset_t03.py เลย: **อ่าน train.jsonl/val.jsonl ที่อัปโหลด
 ไปแล้วเป็นตัวป้อน** — แต่ละแถวมี (ภาพ, prompt ของ subtask, GT) ครบอยู่แล้ว จึงไม่ต้องส่ง
 โฟลเดอร์ json_แก้ไขแล้ว/ หรือ image/ ขึ้นเครื่องเช่าเพิ่มแม้แต่ไฟล์เดียว
 โมเดลเห็นเฉพาะ messages[0] (ภาพ+prompt) — GT ใน messages[1] ใช้ตอนเทียบผลเท่านั้น
 
-    python3 infer_house_t03.py --house 32 --adapter outputs_t03/lora
-    python3 infer_house_t03.py --house 01 --adapter outputs_t03/lora   # บ้าน val (ไม่เคยเห็น)
+    python3 infer_house_t03.py --house 32 --adapter outputs_t04/lora
+    python3 infer_house_t03.py --house 01 --adapter outputs_t04/lora   # บ้าน val (ไม่เคยเห็น)
+    python3 infer_house_t03.py --house 01 --adapter outputs_t03/lora   # เทียบกับ adapter t03 เดิม (arm experiment บน adapter เก่า)
     python3 infer_house_t03.py --house 32 --base                       # untuned เทียบ
 
 📌 กติกาถาวรของ t03 (มะขามสั่ง 2026-08-24): **หน้า plan_beam แนบ xgrammar ทุกครั้ง**
@@ -35,9 +41,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 BASE_MODEL = "unsloth/Qwen3.6-35B-A3B"
-MAX_PIXELS = 5120 * 1024      # = ตอนเทรน t03 เป๊ะ ⚠️ t03b เทรนที่ 7680 (train_t03.py แก้
-                              # 2026-08-25) — ก่อนวัดผล t03b ต้องแก้ตรงนี้เป็น 7680*1024 ตาม
-                              # ไม่งั้นวัดที่ความละเอียดต่ำกว่าที่เทรน = ซ้ำบั๊กคลาส t01 §0.4
+MAX_PIXELS = 7680 * 1024      # [2026-08-29 แก้] ตรงกับ train_t03.py (t03b, แก้ 2026-08-25) แล้ว
+                              # เดิมค้างที่ 5120 — วัดผลที่ความละเอียดต่ำกว่าที่เทรนจะซ้ำบั๊กคลาส
+                              # t01 §0.4 (parity-table lesson, rule_of_tune ข้อ 12)
 MIN_PIXELS = 256 * 1024
 PAGE_TIMEOUT_S = 25 * 60      # มะขามสั่ง 2026-08-24: เกิน 25 นาที/หน้า ตัดจบ
 
@@ -237,9 +243,9 @@ def main():
     ap.add_argument("--all-val", action="store_true",
                     help="ทุกบ้านใน val.jsonl (คู่กับ --subtask ใช้วัด subtask เดียวให้ n มากพอ)")
     ap.add_argument("--subtask", help="กรองเฉพาะ subtask นี้ เช่น plan_beam")
-    ap.add_argument("--adapter", default="outputs_t03/lora")
+    ap.add_argument("--adapter", default="outputs_t04/lora")
     ap.add_argument("--base", action="store_true", help="ใช้ base ไม่มี adapter (เทียบ untuned)")
-    ap.add_argument("--out-root", default="ผล_t03")
+    ap.add_argument("--out-root", default="ผล_t04")
     ap.add_argument("--max-new-tokens", type=int, default=6000)
     ap.add_argument("--grammar-all", action="store_true",
                     help="no-op ตั้งแต่ 2026-08-29 — grammar เปิดทุก subtask เป็นค่าปริยายแล้ว "

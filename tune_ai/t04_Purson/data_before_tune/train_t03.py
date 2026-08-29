@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 """
+⛔ 2026-08-29 มะขามเคาะ: t04 เปลี่ยนโมเดลเป็น InternVL3-78B — ไฟล์นี้ใช้กับ t04 ไม่ได้แล้ว
+   (Unsloth ใช้กับ InternVL3 ไม่ได้ — issue #3401/#2341; ต้อง LLaMA-Factory/ms-swift)
+   เก็บไว้เป็น reference ยุค Qwen เท่านั้น สคริปต์เทรนจริงของ t04 ยังไม่เขียน — ดู t04_workflow.md
+
 train_t03.py — fine-tune Qwen3.6-35B-A3B แบบ per-subtask (t03) ด้วย Unsloth + LoRA
 
 เขียนใหม่ 2026-08-24 (มะขามสั่ง "เขียนใหม่ หาข้อมูลในเน็ตมาด้วย") — ไม่ใช่ copy ของ
@@ -98,7 +102,8 @@ FINETUNE_VISION = os.environ.get("FINETUNE_VISION", "0") == "1"
                                     #   (หัวใจของ t01 export strategy — เปลี่ยนเมื่อไหร่
                                     #   เส้นทาง GGUF+mmproj พังทันที) [W] docs บอกว่า unfreeze
                                     #   อาจแม่นขึ้น — เป็นการทดลองของรอบหน้า ไม่ใช่รอบนี้
-OUT_DIR = "outputs_t03"
+OUT_DIR = "outputs_t04"  # [2026-08-29 แก้] เดิม "outputs_t03" ค้างจากตอนไฟล์นี้ยังอยู่ t03/ —
+                          # เทรน t04 จริงจะไปทับ/ปนกับ adapter ของ t03 (outputs_t03/lora) ถ้าไม่แก้
 
 # k-fold CV (2026-08-29 ค่ำ, มะขามสั่ง - build_dataset_t03.py --folds 5 เขียน
 # train_fold{N}.jsonl/val_fold{N}.jsonl ไว้แล้ว): FOLD=0 python3 train_t03.py รันด้วยชุดนั้น
@@ -107,7 +112,7 @@ FOLD = os.environ.get("FOLD", "")
 TRAIN_SPLIT = f"train_fold{FOLD}" if FOLD != "" else "train"
 VAL_SPLIT = f"val_fold{FOLD}" if FOLD != "" else "val"
 if FOLD != "":
-    OUT_DIR = f"outputs_t03_fold{FOLD}"
+    OUT_DIR = f"outputs_t04_fold{FOLD}"
 
 TEST_STEPS = int(os.environ.get("TEST_STEPS", "0"))
 SKIP_DEMO = os.environ.get("SKIP_DEMO", "0") == "1"
