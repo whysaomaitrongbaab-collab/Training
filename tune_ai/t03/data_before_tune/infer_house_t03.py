@@ -13,7 +13,14 @@
 📌 กติกาถาวรของ t03 (มะขามสั่ง 2026-08-24): **หน้า plan_beam แนบ xgrammar ทุกครั้ง**
    หน้าคลาสนี้คือตัววนซ้ำ/JSON ไม่ปิด (บ้าน08 หน้า20, บ้าน09 หน้า26 48→2 collapse)
    xgrammar พิสูจน์บน GPU แล้ว 96.8% vs 57.9% — rule_of_tune ข้อ 13
-   `--grammar-all` บังคับใช้ทุก subtask, `--no-grammar` ปิดทั้งหมด (ไว้ทำ A/B)
+📌 ขยาย 2026-08-29 (มะขามสั่ง "ใส่ xgrammar ทุก pass ตามความเหมาะสม"): **เปิดทุก subtask
+   เป็นค่าปริยาย** — grammar ที่ใช้คือ builtin JSON (บังคับแค่ "ต้องเป็น JSON ถูกไวยากรณ์"
+   ไม่ใช่ schema เฉพาะรูป) จึงถูกความหมายกับทุก subtask เหมือนกันหมด: grid{} ของ gridline,
+   notes{} ของ notes, elements[] ของ plan/section/schedule ล้วนเป็น JSON object เดียว
+   ไม่มีเคสที่ grammar ตัวนี้ไปบีบให้ตอบผิดรูปได้ กติกา plan_beam เดิมยังจริงโดยอัตโนมัติ
+   (เป็น subset ของกติกาใหม่)
+   `--grammar-all` จึงกลายเป็น no-op (คงไว้เพื่อ backward compat กับสคริปต์/โน้ตเก่า),
+   `--no-grammar` ยังปิดทั้งหมดได้ (ไว้ทำ A/B วัดผลของ grammar เอง)
 
 ⚠️ อ่านตัวเลขให้ถูก: บ้านที่อยู่ใน train (เช่น 32) โมเดลเคยเห็นตอนเทรนแล้ว ตัวเลขคือ
    "จำได้แค่ไหน" ไม่ใช่ "อ่านแบบเป็นแค่ไหน" — ต้องเทียบกับบ้าน val (01-05) ถึงจะรู้
@@ -133,6 +140,36 @@ def apply_arm(content, arm, cv_dir):
     return out, True
 
 
+GM_MARK = "GRID MASTER (resolved axes for this building)\n"
+
+
+def hide_grid_lines(content, ids):
+    """eval เท่านั้น (2026-08-29 มะขามเคาะ "ทำใน pass เดียว ใช้ dataset/val เดิม"):
+    ซ่อน pos_m ของเส้นกริดที่เลือกในบล็อก GRID MASTER ที่แปะท้าย prompt เพื่อบังคับให้โมเดล
+    เข้าทางวัดสัดส่วน pixel (span_source: scaled_from_grid ตาม prompt ใหม่) บนหน้า val ที่
+    GT รู้ค่า span จริงอยู่แล้ว → วัด |ค่าที่โมเดลวัด - GT| ได้ตรงๆ โดยไม่ต้องสร้าง dataset ใหม่
+    ห้ามใช้กับงานสกัดจริง — เส้นยังอยู่ (id เห็น) แค่ตำแหน่งหาย คืน (content, จำนวนที่ซ่อนจริง)"""
+    if not ids:
+        return content, 0
+    hidden = 0
+    out = []
+    for c in content:
+        if c.get("type") == "text" and GM_MARK in c.get("text", ""):
+            head, gm = c["text"].split(GM_MARK, 1)
+            try:
+                doc = json.loads(gm)
+                for axis in ("x_lines", "y_lines"):
+                    for ln in (doc.get("grid") or {}).get(axis) or []:
+                        if str(ln.get("id")) in ids and ln.get("pos_m") is not None:
+                            ln["pos_m"] = None
+                            hidden += 1
+                c = {**c, "text": head + GM_MARK + json.dumps(doc, ensure_ascii=False)}
+            except Exception:
+                pass  # ก้อน GM แปลกรูป — ปล่อยผ่าน อย่าให้ eval ทำการยิงพัง
+        out.append(c)
+    return out, hidden
+
+
 def load_model(src):
     try:
         from unsloth import FastVisionModel as UnslothModel
@@ -204,13 +241,20 @@ def main():
     ap.add_argument("--base", action="store_true", help="ใช้ base ไม่มี adapter (เทียบ untuned)")
     ap.add_argument("--out-root", default="ผล_t03")
     ap.add_argument("--max-new-tokens", type=int, default=6000)
-    ap.add_argument("--grammar-all", action="store_true")
-    ap.add_argument("--no-grammar", action="store_true")
+    ap.add_argument("--grammar-all", action="store_true",
+                    help="no-op ตั้งแต่ 2026-08-29 — grammar เปิดทุก subtask เป็นค่าปริยายแล้ว "
+                         "(คงไว้ให้สคริปต์เก่าไม่พัง)")
+    ap.add_argument("--no-grammar", action="store_true",
+                    help="ปิด xgrammar ทั้งหมด (ไว้ทำ A/B วัดผลของ grammar)")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--arm", choices=("2", "2.4a"), default="2",
                     help="แขนทดลอง hint (pass_design_v2.md): 2=ไม่มี hint, 2.4a=hint ข้อความ "
                          "(2.4b ภาพมาร์คเลขยกเลิก 2026-08-29 — ใส่แต่ hint พอ)")
     ap.add_argument("--cv-dir", help="โฟลเดอร์ sidecar จาก tools/cv_scan.py (จำเป็นเมื่อ --arm != 2)")
+    ap.add_argument("--hide-grid-lines",
+                    help="eval เท่านั้น: ซ่อน pos_m ของเส้นกริด id เหล่านี้ (คั่นด้วย ,) "
+                         "ในบล็อก GRID MASTER เพื่อบังคับทาง scaled_from_grid บน val ที่รู้ GT "
+                         "— ห้ามใช้กับงานสกัดจริง")
     a = ap.parse_args()
 
     if not a.house and not a.all_val:
@@ -253,6 +297,10 @@ def main():
     out_dir = Path(a.out_root) / tag / (label.replace("::", "__") if a.all_val else houses[0])
     if a.arm != "2":
         out_dir = out_dir.with_name(out_dir.name + "__arm" + a.arm)
+    hide_ids = {x.strip() for x in a.hide_grid_lines.split(",") if x.strip()} \
+        if a.hide_grid_lines else set()
+    if hide_ids:
+        out_dir = out_dir.with_name(out_dir.name + "__hide" + "-".join(sorted(hide_ids)))
     out_dir.mkdir(parents=True, exist_ok=True)
 
     model, tokenizer = load_model(BASE_MODEL if a.base else a.adapter)
@@ -261,16 +309,18 @@ def main():
     results = []
     for i, r in enumerate(rows, 1):
         sub = r.get("subtask")
-        # 📌 กติกาถาวร: plan_beam ต้องมี grammar เสมอ (subtask อื่นตาม flag)
-        use_g = grammar if (grammar and (a.grammar_all or sub == "plan_beam")) else None
+        # 📌 2026-08-29: grammar เปิดทุก subtask เป็นค่าปริยาย (ดู docstring หัวไฟล์) —
+        # ปิดได้ทางเดียวคือ --no-grammar (ซึ่งทำให้ grammar เป็น None ไปแล้วตั้งแต่ต้น)
+        use_g = grammar
         t0 = time.time()
         try:
             content, hint_used = apply_arm(r["messages"][0]["content"], a.arm, a.cv_dir)
+            content, n_hidden = hide_grid_lines(content, hide_ids)
             pred = generate(model, tokenizer, content, a.max_new_tokens, use_g)
             err = None
         except Exception as e:                       # OOM/อื่นๆ — บันทึกแล้วไปหน้าถัดไป
             pred, err = "", f"{type(e).__name__}: {e}"
-            hint_used = False
+            hint_used, n_hidden = False, 0
         dt = time.time() - t0
 
         stem = r["id"].replace("::", "__").replace("/", "_")
@@ -287,6 +337,7 @@ def main():
         p_ids, p_n = element_ids(doc) if valid else ([], 0)
         sc = score_ids(gt_ids, p_ids)
         results.append(dict(id=r["id"], subtask=sub, arm=a.arm, hint_used=hint_used,
+                            hidden_grid_lines=n_hidden,
                             valid=valid, error=err, sec=round(dt, 1),
                             gt_elements=gt_n, pred_elements=p_n,
                             grammar=bool(use_g), **sc))

@@ -20,6 +20,59 @@ from the image
 
 Output one JSON object and nothing else
 
+Thai to field glossary (not a rule - a lookup)
+
+The drawing is Thai, this prompt and every value you emit are English These are the
+Thai words that actually appear on our sheets and what each one controls Use it to
+read, never to rewrite the rule directly below still holds - a printed label stays
+Thai, verbatim (this pass is position and count only - no rebar fields, so the rebar
+words are left out)
+
+Words that decide `element_type`
+
+- คาน → `beam`
+- คานคอดิน → `tie_beam`
+- อะเส, ทับหลัง, ตง → `beam`
+- เสา → `column`
+- เสาเอ็น, เอ็น → `column`
+- จันทัน → `rafter`
+- บันได → `stair`
+- ประตู → `door`
+- ห้อง… (ห้องนอน, ห้องน้ำ, ครัว, โถง, เฉลียง, ระเบียง, ซักล้าง, จอดรถ) → `room`
+- รูปตัด → `section_view`
+- ผัง, แปลน → `plan_view`
+- ฐานราก, ฐานรากแผ่ → `footing`
+- ฐานรากเสาเข็ม, ฐานรากเข็มตอก → `pile_cap`
+- เสาเข็ม, เข็ม → `pile`
+- ตอม่อ → `pedestal`
+- พื้น → `slab`
+- แผ่นพื้นสำเร็จรูป → `precast_plank_detail`
+- ผนัง → `wall`
+- หน้าต่าง → `window`
+- หมายเหตุ → `note`
+- แบบขยาย → `detail_view`
+- ระดับ (เป็นตัวเลขบนแบบ) → `level`
+
+Words that decide a dimension field
+
+- ขนาด → `width_mm` and `height_mm`
+- กว้าง → `width_mm`
+- ยาว, ช่วง → `span_length_m`
+- หนา → `thickness_mm`
+- สูง → `height_mm`
+- ลึก → `depth_mm`
+- ระดับ → `level_m`
+- จำนวน, ต้น → `count`
+
+Units and abbreviations
+
+`มม` = mm · `ซม` = cm (×10 → mm) · `ม`, `เมตร` = m · `นิ้ว` = inch ·
+`ตรม` = m² · `ลบม` = m³ · `กก` = kg · `คสล` = reinforced concrete ·
+`มอก` = TIS standard number · `ชั้นล่าง` = ground floor · `ชั้นบน` = upper floor
+
+A Thai word not in this list is not permission to invent an `element_type` - pick the
+closest value from §0.4 and say so in `warnings[]`
+
 `pattern` - pick one of four (schema §1, split 2026-08-28)
 
 `pattern` used to be `"plan"` for all four subtasks It is now one of four values, and you pick
@@ -118,12 +171,74 @@ Look up both endpoints in the grid master and subtract
 
 - Both endpoints known, same row or same column → `span_source: "grid_table"`
 - The distance is printed locally on this sheet and you used that → `span_source: "local_dimension"`
-- You could not resolve it → `span_length_m: null`, `span_source: "unresolved"`, and name the
-  missing line in `warnings[]`
+- Nothing printed anywhere, but you measured it against the grid by proportion, as described
+  below → `span_source: "scaled_from_grid"`
+- You could not resolve it even by proportion → `span_length_m: null`,
+  `span_source: "unresolved"`, and name the missing line in `warnings[]`
 - The element is a point, not a line → `span_source: "n/a"`
 
-Never estimate a span by how long the line looks A wrong span silently becomes a wrong
+Never estimate a span by how long the line looks alone A wrong span silently becomes a wrong
 concrete volume and a wrong steel weight downstream
+
+Measuring against the grid by proportion - what the grid master is for
+
+The grid master is a ruler printed on this same image Two grid lines whose `pos_m` you already
+know tell you the scale of the drawing, so a span with no printed dimension can still be
+recovered by proportion instead of being thrown away That is measuring against a printed
+reference, not guessing
+
+Work in two separate steps, always in this order - find every pixel number first, convert to
+metres second A metres figure produced in one leap, without its pixel numbers committed first,
+is a guess dressed as a measurement
+
+Step 1 - find the pixels (no metres yet)
+
+- Pick two grid lines on the same axis as the span you are measuring, both with a known `pos_m`
+  Take the pair furthest apart - a long baseline makes the error small
+- Measure those two lines' separation on the image Call it P pixels
+- Measure the unknown span on the image along that same axis Call it U pixels
+- Step 1 ends with exactly two pixel numbers, P and U, and no arithmetic done on them yet
+
+Step 2 - convert the pixels to real length
+
+- The two reference lines' true separation is the difference of their `pos_m` Call it R metres
+- The span is U divided by P, multiplied by R, in metres
+- Look at the printed dimension chain If your answer lands within about 0.05 m of a value the
+  chain actually prints, use the printed value instead - the chain is the truth and your
+  measurement only found which entry of it applies
+
+A worked example - the shape your work must take
+
+Grid lines `2` and `5` have `pos_m` 4.00 and 12.00 On the image they are 400 pixels apart, so
+P is 400 The unknown span, measured along that same axis, is 150 pixels, so U is 150 That ends
+Step 1 Now convert - R is 12.00 minus 4.00, which is 8.00 The span is 150 divided by 400,
+times 8.00, which is 3.00 m The chain prints no 3.00 anywhere, so the element records
+`span_length_m: 3.0` with `span_source: "scaled_from_grid"`, the flag
+`scaled_between:2,5 P:400 U:150`, and a lower `confidence_score`
+
+Rules that keep this honest
+
+- A printed value always wins Never scale something the drawing states outright This applies
+  only to a span that would otherwise be `unresolved`
+- Use the x axis scale for a horizontal span and the y axis scale for a vertical one, never one
+  for the other A scan that was cropped or resized does not stretch both axes equally, and
+  borrowing one axis to measure the other produces a wrong number that looks right
+- A diagonal span cannot be measured this way Leave it `unresolved`
+- `span_source` is `scaled_from_grid`, never `grid_table` `grid_table` means you read the number
+  off the grid, `scaled_from_grid` means you derived it Whoever reads this file has to be able
+  to tell those apart
+- Round to 2 decimal places A drawing does not carry more precision than that, and a value like
+  3.9847 reads as a measurement when it is an estimate
+- Record the whole measurement in `confidence_flags` - the two reference lines and both pixel
+  numbers, for example `scaled_between:1,3 P:380 U:142` A human must be able to redo your
+  arithmetic from the flag alone If you cannot state P and U, you did not measure - the span
+  is `unresolved`, not `scaled_from_grid` A scaled value with no pixel numbers behind it is
+  the guess this rule exists to prevent
+- Give a scaled span a lower `confidence_score` than a read one It is a real number, but it is
+  not a number you read
+- `unresolved` after attempting Step 1 and failing is a correct answer - you could not find two
+  same-axis lines with known `pos_m`, or could not put a pixel number on both endpoints
+  `unresolved` without attempting Step 1 is not
 
 Every beam endpoint must land on a named line - the beam-endpoint rule (§4)
 

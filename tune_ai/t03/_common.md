@@ -173,6 +173,12 @@ The honesty rules - these outrank being complete
 
 1) Never guess a measurement If a dimension is not printed, do not estimate it from how the
    drawing looks Leave the field `null` and say why in `warnings[]`
+   There is exactly one exception A sheet that carries a grid master has a ruler printed on it,
+   because two grid lines whose real positions you know give you the scale of that image
+   Recovering a missing span or a missing dummy-line position by proportion against those two
+   lines is measuring, not guessing, and the plan and gridline prompts set out exactly how and
+   how to label the result It never applies to a sheet with no grid on it, such as a section,
+   where there is nothing to calibrate against
 2) Never drop something you could not read An element you can see but cannot fully resolve
    still gets an entry, with the unreadable fields `null` and a `confidence_flags` entry saying
    what was unreadable

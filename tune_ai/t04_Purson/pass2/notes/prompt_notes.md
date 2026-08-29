@@ -24,6 +24,26 @@ You are reading a notes sheet - the project-wide requirements and specifications
 
 Output one JSON object and nothing else
 
+Thai to field glossary (not a rule - a lookup)
+
+The drawing is Thai, this prompt and every value you emit are English These are the
+Thai words that actually appear on our sheets and what each one controls Use it to
+read, never to rewrite the rule directly below still holds - a printed label stays
+Thai, verbatim (this sheet is specifications, not elements - only the spec-relevant words apply)
+
+Words that decide a spec value
+
+- กลม, Ø → `type: "RB"`
+- ข้ออ้อย, DB → `type: "DB"`
+- คสล → reinforced concrete
+- มอก → TIS standard number
+
+Units and abbreviations
+
+`มม` = mm · `ซม` = cm (×10 → mm) · `ม`, `เมตร` = m · `นิ้ว` = inch ·
+`ตรม` = m² · `ลบม` = m³ · `กก` = kg · `คสล` = reinforced concrete ·
+`มอก` = TIS standard number · `ชั้นล่าง` = ground floor · `ชั้นบน` = upper floor
+
 ```json
 {
   "png": "29",

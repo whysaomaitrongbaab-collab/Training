@@ -13,6 +13,13 @@ You are reading a bill of quantities (BOQ / ใบประมาณราคา
 
 Output one JSON object and nothing else
 
+Units glossary (not a rule - a lookup)
+
+This sheet's own printed unit strings go in `unit` verbatim - this is only for
+reading the sheet, never for rewriting what it prints
+
+`มม` = mm · `ซม` = cm · `ม`, `เมตร` = m · `ตรม` = m² · `ลบม` = m³ · `กก` = kg
+
 ```json
 {
   "png": "38",

@@ -7,7 +7,9 @@ has them, plus every view Pass 0 flagged `also_gridline: true` - plans, elevatio
 Runs **first** in Pass 2. Every plan subtask blocks on it: spans are computed from this file and
 from nothing else.
 
-Prepend `../../../t03/_common.md`.
+Prepend `../../../t03/_common.md`. No embedded glossary here (2026-08-29 review) - this sheet
+never touches `element_type` or rebar, and every position it reports is already a decimal metre
+read straight off a printed dimension chain, so none of the Thai-field lookup applies.
 
 ---
 
@@ -90,8 +92,8 @@ file has not been read
 - `x_lines` = the horizontal axis, markers along the top edge (usually `1`, `2`, `3`…)
   `y_lines` = the vertical axis, markers along the side edge (usually `A`, `B`, `C`… - Thai
   `ก`/`ข`/`ค` stays Thai)
-- `pos_m` is always read off a printed dimension line Never estimated, never scaled off the
-  image
+- `pos_m` for a named line is always read off a printed dimension line Never estimated A dummy
+  line the chain never gives a position for is the one exception, and it has its own rule below
 - Origin `0.0` is the leftmost / topmost `type: "named"` line A dummy line never takes the
   origin, one that falls before it gets a negative `pos_m`
 - The same line appearing on several sheets is one entry If two sheets print different
@@ -109,6 +111,43 @@ How to find them - the beam-endpoint rule If a beam's start or end does not sit 
 line, that point needs a dummy grid A beam always lands on something, if there is nowhere to name
 its landing point, the grid master is incomplete, not the beam Read the new line's `pos_m` off
 the printed dimension chain
+
+A dummy line whose position is printed nowhere - measure it by proportion
+
+A dummy grid is often exactly the line the dimension chain forgot, so this is the common case,
+not the rare one You already know the real positions of the named lines around it, and they are
+printed on this same image, so they are a ruler you can measure against
+
+Work in two separate steps - find the pixels first, convert to metres second Never produce the
+position in one leap
+
+Step 1 - find the pixels (no metres yet)
+
+- Take two named lines on the same axis with known `pos_m`, the pair furthest apart Measure
+  their separation on the image Call it P pixels
+- Measure from one of those named lines to the dummy line, along that same axis Call it U pixels
+- Step 1 ends with two pixel numbers, P and U, and no arithmetic done on them yet
+
+Step 2 - convert the pixels to a real position
+
+- The two named lines' true separation is the difference of their `pos_m` Call it R metres
+- The dummy line sits at the reference line's `pos_m`, plus or minus U divided by P multiplied
+  by R - plus or minus by which side of the reference line the dummy sits on
+
+Keep it honest
+
+- A printed position always wins This is only for a line the chain never gives you
+- Use the x axis scale for an x line and the y axis scale for a y line, never one for the other
+- Round to 2 decimal places, and give that line its own lower `confidence_score` with a
+  `confidence_flags` entry carrying the two reference lines and both pixel numbers, for example
+  `scaled_between:1,3 P:350 U:55` If you cannot state P and U, you did not measure - the line
+  keeps `pos_m: null`
+- A worked example - lines `1` and `3` have `pos_m` 0.00 and 7.00 and sit 350 pixels apart, so
+  P is 350 The dummy line sits 55 pixels past line `3`, so U is 55 R is 7.00, and the dummy
+  line is at 7.00 plus 55 divided by 350 times 7.00, which is 8.10
+- If you cannot even do this, the line still gets an entry with `pos_m: null` and a `warnings[]`
+  note Never drop the line - a named line with an unknown position is still information, and
+  a beam that lands on it can say so
 
 But do not invent a dummy for a slab-only edge A dashed slab boundary, a roof overhang, or an
 eave line with no beam label and no columns at its corners is not a structural line The trigger
@@ -169,9 +208,11 @@ Do not add these to a file that does not need them
 
 Rules
 
-- Every `pos_m` and every `level_m` traces to a printed number If a line is clearly there but its
-  position is printed nowhere, record the line with `pos_m: null` and explain in `warnings[]` -
-  never scale it off the image
+- Every `pos_m` and every `level_m` traces to a printed number, or to a proportion measured
+  against two printed lines as described under Dummy grids A named line always traces to a
+  printed number A level always traces to a printed number - an elevation gives you no second
+  axis to calibrate against, so a level that is printed nowhere is `null` plus a `warnings[]`
+  note, never scaled
 - One grid master per building If the sheets you were given cover more than one building, extract
   the main building only and name the others in `warnings[]`
 

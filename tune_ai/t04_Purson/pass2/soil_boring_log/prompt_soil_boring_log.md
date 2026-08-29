@@ -10,7 +10,9 @@ a proven one; expect to revise after the first real sheet.
 This sits in Pass 2 rather than Pass 3 because Constistant consumes it - through a different door
 than the raw-JSON import (Site Investigate → Foundation Design's bearing-capacity calculation).
 
-Prepend `../../../t03/_common.md`.
+Prepend `../../../t03/_common.md`. No embedded glossary here (2026-08-29 review) - this pattern's
+vocabulary (SPT, USCS, groundwater) is soil-investigation domain, not the structural drawing
+vocabulary `_common.md`'s glossary covers, and it is already given inline in the rules below.
 
 ---
 

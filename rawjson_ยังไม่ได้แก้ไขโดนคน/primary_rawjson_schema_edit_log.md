@@ -137,3 +137,34 @@
   `pass3_takeoff/` for any remaining `"pattern": "plan"` / bare `gridline`-as-pattern-value —
   none found; the only `gridline` hits left are the `<house>_หน้า00_gridline.json` **filename**
   convention, which schema §1 explicitly keeps unchanged. No `.json` data touched, no code touched.
+
+
+## 2026-08-29 — §4 span rule amended + `scaled_from_grid` added to `span_source` (Makham's order)
+
+- **Who:** Claude, on Makham's direct order ("สั่งให้มันทำซะ ผมสั่งนั้นคือจุดประสงค์ของการมีอยู่ของ
+  gridmaster เลยนะ") — the grid master is a ruler printed on the same image, so measuring an
+  unprinted span by proportion against two lines with known `pos_m` is measurement against a
+  printed reference, not the eyeball-guessing §4 forbids.
+- **What:** the "Span: calculated by code from the grid only — never let the model estimate
+  distance" bullet gained an amendment: a span printed nowhere may now be recovered by pixel
+  proportion against two grid lines with known `pos_m`, labelled with a new 5th enum value
+  `span_source: "scaled_from_grid"` — kept distinct from `grid_table` deliberately, so read vs
+  derived stays distinguishable downstream. Guardrails baked into the amendment: a printed value
+  always wins; the x-axis scale measures x spans only and y measures y (a cropped/rescaled scan
+  does not stretch both axes equally); a diagonal stays `unresolved`; the same rule extends to a
+  dummy grid line's unprinted `pos_m`; it does NOT apply to grid-less sheets (`section`) — there
+  an unprinted dimension is still `null`. Per Makham's follow-up the prompts teach it in **two
+  separate steps** — find every pixel number first (P, U), convert to metres second (R, U÷P×R) —
+  so the model cannot leap to a plausible metres figure without first committing to pixel
+  measurements a human can re-check.
+- **Where taught:** `tune_ai/t04_Purson/pass2/plan.md` (template; 4 plan prompts re-rendered
+  from it), `pass2/gridline/prompt_gridline.md` (dummy lines — levels are still never scaled,
+  an elevation has no second axis to calibrate against), `pass3_takeoff/prompt.md` rule 5
+  (method inlined, because at runtime pass 3 does not carry the plan prompt to refer to),
+  `t03/_common.md` honesty rule 1 (the single exception, named as such).
+- **Consumers updated:** Constistant `js/shared/schema.js` `SPAN_SOURCE_VALUES` +
+  `tests/schema-raw-extraction-fields.test.js` (the test deepEquals the enum). Training
+  `tools/check_format.py` checked — it does not pin the enum, no change needed there.
+- **Not yet proven:** whether the VLM measures pixels accurately at all — the first GPU run must
+  compare every `scaled_from_grid` span against GT before trusting any; if the error routinely
+  exceeds ~0.1 m, fall back to `unresolved` (recorded in WORKFLOW_INTERN ข้อ 4).

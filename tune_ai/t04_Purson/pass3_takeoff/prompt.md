@@ -13,6 +13,11 @@
 element ไหนในบัญชีที่โมเดลไม่ตอบ (ไม่มี `cv_mark` ตรงกัน) จะถูกใส่กลับเป็น stub + ธง
 `dropped_by_pass3` ให้คนดู โมเดลจึง**ลบอะไรไม่ได้จริง** ต่อให้ prompt ล้มเหลว
 
+**Runner ของ pass นี้ต้องเปิด xgrammar (builtin JSON) เสมอ** (มะขามสั่ง 2026-08-29 "ใส่ xgrammar
+ทุก pass") — pass นี้ยิ่งจำเป็นกว่าเพื่อน: merge_guard ทำงานได้ก็ต่อเมื่อคำตอบ parse เป็น JSON ได้
+ก่อน คำตอบที่ JSON พังเท่ากับ element ทั้งบัญชีกลายเป็น stub หมดทั้งหน้า ดูวิธี setup ที่
+`infer_house_t03.py::setup_grammar()` (เปิดทุก subtask เป็นค่าปริยายแล้วที่นั่น)
+
 ---
 
 ## `{{ELEMENT_ACCOUNT}}` — รูปแบบบัญชีที่ป้อนเข้า prompt
@@ -49,6 +54,67 @@ Your job - for every numbered box, find it on the image, read its real mark and 
 extract its full spec - size, span (for beams), and reinforcement
 
 Output one JSON object and nothing else
+
+Thai to field glossary (not a rule - a lookup)
+
+The drawing is Thai, this prompt and every value you emit are English These are the
+Thai words that actually appear on our sheets and what each one controls Use it to
+read, never to rewrite the rule directly below still holds - a printed label stays
+Thai, verbatim
+
+Words that decide `element_type`
+
+- คาน → `beam`
+- คานคอดิน → `tie_beam`
+- อะเส, ทับหลัง, ตง → `beam`
+- เสา → `column`
+- เสาเอ็น, เอ็น → `column`
+- จันทัน → `rafter`
+- บันได → `stair`
+- ประตู → `door`
+- ห้อง… (ห้องนอน, ห้องน้ำ, ครัว, โถง, เฉลียง, ระเบียง, ซักล้าง, จอดรถ) → `room`
+- รูปตัด → `section_view`
+- ผัง, แปลน → `plan_view`
+- ฐานราก, ฐานรากแผ่ → `footing`
+- ฐานรากเสาเข็ม, ฐานรากเข็มตอก → `pile_cap`
+- เสาเข็ม, เข็ม → `pile`
+- ตอม่อ → `pedestal`
+- พื้น → `slab`
+- แผ่นพื้นสำเร็จรูป → `precast_plank_detail`
+- ผนัง → `wall`
+- หน้าต่าง → `window`
+- หมายเหตุ → `note`
+- แบบขยาย → `detail_view`
+- ระดับ (เป็นตัวเลขบนแบบ) → `level`
+
+Words that decide a field
+
+- ขนาด → `width_mm` and `height_mm`
+- กว้าง → `width_mm`
+- ยาว, ช่วง → `span_length_m`
+- หนา → `thickness_mm`
+- สูง → `height_mm`
+- ลึก → `depth_mm`
+- ระดับ → `level_m`
+- จำนวน, ต้น → `count`
+- ตะแกรง → `bar_layers[]`
+- กลม, Ø → `type: "RB"`
+- เหล็กเสริม, เหล็กหลัก → `main_bar`
+- เหล็กบน / เหล็กล่าง → `location: "top"` / `"bottom"`
+- ปลอก, เหล็กปลอก, รัดรอบ, ป. → `stirrup`
+- @ , ระยะ (ตามด้วยเลข) → `spacing_mm`
+- ระยะหุ้ม → `cover_mm`
+- ข้ออ้อย, DB → `type: "DB"`
+- ตลอด → ต่อเนื่องทั้งช่วง ใส่ใน `note`
+- งอ, ขอ, ทาบ → รายละเอียดปลาย/ทาบ ใส่ใน `note`
+
+Units and abbreviations
+
+`มม` = mm · `ซม` = cm (×10 → mm) · `ม`, `เมตร` = m · `นิ้ว` = inch ·
+`ตรม` = m² · `ลบม` = m³ · `กก` = kg · `คสล` = reinforced concrete ·
+`มอก` = TIS standard number · `ชั้นล่าง` = ground floor · `ชั้นบน` = upper floor
+
+A Thai word not in this list is not permission to invent an `element_type` - pick the closest value from §0.4 and say so in `warnings[]`
 
 ```json
 {
@@ -109,7 +175,18 @@ Rules, in priority order
    marked point (rare - a column-on-footing box drawn once for both), pick the element type the
    coarse class in the account most closely matches and note the other in `warnings[]`
 5) Spans come from the printed grid dimensions via the grid master - never from how long a line
-   looks (honesty rule 1)
+   looks alone (honesty rule 1) When a span is printed nowhere, recover it by proportion in two
+   separate steps, never in one leap First find the pixels - P = the on-image separation of two
+   same-axis grid lines with known `pos_m` (the pair furthest apart), U = the on-image length of
+   the span itself Then convert - R = the difference of those two `pos_m` in metres, and the
+   span is U divided by P, multiplied by R A printed value always wins, an x span uses the
+   x-axis scale only and a y span the y-axis scale only, a diagonal stays `unresolved` Label
+   the result `span_source` `scaled_from_grid` with a lower `confidence_score` and a
+   `confidence_flags` entry carrying the two reference lines and both pixel numbers
+   (`scaled_between:1,3 P:380 U:142`) - a human must be able to redo the arithmetic from the
+   flag alone, and if you cannot state P and U you did not measure, so the span stays
+   `unresolved` It is a derived number, not a read one, and whoever reads the file must be
+   able to tell those apart
 6) All the shared rules apply unchanged (element shape, units, rebar-as-object, honesty rules,
    Thai glossary)
 

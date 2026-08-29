@@ -1,17 +1,21 @@
-pass,subtask,pattern จริง (วัดจากชุดเทรน),input,output,hint 2.4a,ตัวอย่าง,สถานะ,กับดัก
-0,ทุกหน้า,- (ยังไม่ตัดสิน pattern),รูป 1 หน้า (+ ตัวเลือกเสริม: tools/titleblock_ocr.py OCR local ช่วย sheet_code/sheet_name เท่านั้น ไม่ช่วย views[]),pass0.json = {house pages[]},-,-,ไม่มี runner,ต้องเติมคีย์ image เอง ไม่งั้น organize.py KeyError
-1,ทุก subtask,-,pass0.json + รูปต้นฉบับ,work/<บ้าน>/pass2/<subtask>/images/ + manifest.json,-,-,พร้อมใช้,ไม่มีโค้ดตัวใดอ่าน manifest.json — gate needs ยังไม่ทำงานจริง
-1.5,ผังฐานราก + ผังคาน,-,รูปจาก pass 1,_cv.json + _marked.png + _hint.txt,-,-,พร้อมใช้,CV มี 4 คลาส เสา/ฐานราก/คานนอน/คานตั้ง — ไม่มีคลาสพื้น
-2,gridline,grid_master 40/40,รูปกริดทั้งชุด (เพดาน 4 ใบ) + _common.md,grid{x_lines y_lines z_levels dimension_chains} — ไม่มี elements[],ไม่มี,40,รอยิง GPU,ตัด glossary ออก · ไฟล์ยังชื่อ _หน้า00_gridline.json
-2,plan_footing,footing_plan 57 · beam_plan 35 · roof_frame_plan 8,รูป + _common.md + แกนกริด x/y + plan.md,elements[] · ฐานราก/เสาเป็นจุด grid_refs[]+count,มี,100,รอยิง GPU,ส่งแค่ x_lines/y_lines · ไม่มีไฟล์ gridmaster.json จริง
-2,plan_beam,beam_plan 82 · roof_frame_plan 42 · footing_plan 1,เหมือน plan_footing,elements[] · คานเป็นเส้น grid_ref_start/end + span_length_m,มี,125,รอยิง GPU,แปลนโครงหลังคา = roof_frame_plan ห้ามเขียน roof_plan
-2,plan_slab,beam_plan 70/70,เหมือน plan_footing,elements[] · slab marker grid_refs[] ว่าง,มี,70,รอยิง GPU,ไม่เคยออกเป็น etc_plan · ห้ามเขียน slab_plan
-2,plan_column,- (0 ตัวอย่าง),ไม่มี config ใน PLAN_SUBTASKS,-,-,0,ตัน,prompt_for KeyError · ไม่มีแผ่นแปลนเสาเดี่ยวในคลัง เสาอยู่บนแผ่นฐานราก/คาน
-2,section,section 438/438,รูป section + _common.md,elements[] · ขนาด + main_bar + stirrup,ไม่มี,438,รอยิง GPU,ไม่ต้องใช้ grid master
-2,schedule,schedule 111/111,รูปตาราง 1 แถว=1 ชิ้น + _common.md,elements[],ไม่มี,111,รอยิง GPU,-
-2,notes,notes 105/105,รูปข้อกำหนดโครงการ + _common.md,notes{} (§4a),ไม่มี,105,รอยิง GPU,-
-2,material_list,material_list,รูป BOQ + _common.md,categories[].items[] ไม่ใช่ elements[],ไม่มี,0,ยิงไม่ได้,build_dataset โหลด prompt แค่ 5 ตัว ไม่รวมตัวนี้
-2,soil_boring_log,soil_boring_log,รูป log เจาะดิน + _common.md,elements[] element_type soil_layer,ไม่มี,0,ยิงไม่ได้,ไม่มีไฟล์ GT เลยสักหลัง
-2.5,ฐานราก + เสา,- (แค่เติม sidecar),_cv.json เดิม กวาดซ้ำที่ 0.90,_cv25.json + _marked25.png + _hint25.txt,-,-,พร้อมใช้,เก็บตกแค่ ฐานราก/เสา — คาน/พื้นไม่ถูก harvest
-3,ทุก element ในบัญชี,pattern ผังของแผ่นนั้น,_common.md + _marked25.png + บัญชี (เลข) class) + กริด,elements[] + cv_mark + spec เต็ม,ไม่มี,-,ไม่มี runner,merge_guard ใส่ stub กลับให้ — โมเดลลบ element ไม่ได้
-4,11 subtask หน้ารอง,-,-,-,-,-,ยกเลิก 29/8/2026,etc_plan ทั้ง 199 ไฟล์คือหน้าพวกนี้ → เลิก pass 4 = ไม่มี etc_plan ออกจากสายพานอีก
+pass,subtask,prompt file,input,output,pattern จริง,ตัวอย่าง,hint 2.4a,สถานะ,หมายเหตุ
+0,ทุกหน้า,pass0/prompt.md,รูป 1 หน้า (+ ตัวเลือกเสริม _titleblock_hint.txt จาก tools/titleblock_ocr.py),pass0.json = {house pages[]} ต่อหน้า: png doc_page sheet_code sheet_name discipline building views[] confidence_score warnings[],ยังไม่ตัดสิน,-,-,ไม่มี runner,VLM เท่านั้น ตัดสิน views[]/layout ได้ OCR ทำไม่ได้ ช่วยได้แค่ sheet_code/sheet_name
+1,ทุก subtask,- (โค้ดล้วน organize.py),pass0.json + รูปต้นฉบับทุกหน้า,work/<บ้าน>/pass2/<subtask>/images/ รูปตัดตาม view + manifest.json ต่อ subtask,-,-,-,พร้อมใช้,ไม่มีโค้ดตัวใดอ่าน manifest.json จริง gate needs ยังไม่ทำงาน
+1.5,ฐานราก+คาน,- (โค้ดล้วน cv_scan.py),รูปที่จัดแล้วจาก pass 1 (เฉพาะ plan_footing/plan_column/plan_beam/plan_slab),_cv.json เลขกำกับ element + _marked.png (คนดูเท่านั้น) + _hint.txt,-,-,-,พร้อมใช้,เจอเฉลี่ย ~51.5% ของจริง (วัด 132 หน้า) 31% ของหน้าได้ 0% 28% ได้ >=80% บางหน้าเกิน 100% เพราะ class ปนกัน
+2,gridline,pass2/gridline/prompt_gridline.md,รูปกริดทั้งชุดพร้อมกัน (เพดาน 4 ใบ) + t03/_common.md (ตัด glossary ออก),grid{x_lines y_lines z_levels dimension_chains} ไม่มี elements[],grid_master,40,ไม่มี,รอยิง GPU,ไฟล์ยังชื่อ _หน้า00_gridline.json แม้ pattern เปลี่ยนชื่อแล้ว · dummy line ไม่มีค่าพิมพ์วัดสัดส่วน pixel เทียบเส้นที่รู้ pos_m ได้ (2 จังหวะ: หา pixel ก่อนแล้วค่อยแปลง · level ห้ามวัดแบบนี้)
+2,plan_footing,pass2/plan_footing/prompt_plan_footing.md,รูป + t03/_common.md + แกนกริด x/y (จาก grid_master) + prompt นี้,elements[] ฐานราก/เสาเป็นจุด grid_refs[]+count,footing_plan/beam_plan/roof_frame_plan,100,มี,รอยิง GPU,ส่งกริดแค่ x_lines/y_lines ไม่มีไฟล์ gridmaster.json จริงที่ไหน · span ไม่มีค่าพิมพ์วัดสัดส่วน pixel เทียบกริดได้ = scaled_from_grid (2 จังหวะ ใช้กับ plan_beam/plan_slab/pass3 ด้วย)
+2,plan_beam,pass2/plan_beam/prompt_plan_beam.md,เหมือน plan_footing,elements[] คานเป็นเส้น grid_ref_start/end + span_length_m,beam_plan/roof_frame_plan/footing_plan,125,มี,รอยิง GPU,แปลนโครงหลังคา = roof_frame_plan ห้ามเขียน roof_plan
+2,plan_slab,pass2/plan_slab/prompt_plan_slab.md,เหมือน plan_footing,elements[] slab marker grid_refs[] ว่าง,beam_plan,70,มี,รอยิง GPU,สลาบวาดรวมบนแผ่นคาน ไม่เคยออกเป็น etc_plan
+2,plan_column,pass2/plan_column/prompt_plan_column.md,ไม่มีบ้านไหนมีแผ่นเดี่ยว (render ไว้อ้างอิงเฉยๆ),-,-,0,มี,ตัน,ไม่มี config ใน PLAN_SUBTASKS เสาอยู่บนแผ่นฐานราก/คานแทน
+2,section,pass2/section/prompt_section.md,รูป section เดี่ยว + t03/_common.md (ไม่ต้องกริด),elements[] ขนาด + main_bar + stirrup,section,438,ไม่มี,รอยิง GPU,-
+2,schedule,pass2/schedule/prompt_schedule.md,รูปตาราง 1 แถว=1 ชิ้น + t03/_common.md,elements[],schedule,111,ไม่มี,รอยิง GPU,-
+2,notes,pass2/notes/prompt_notes.md,รูปข้อกำหนดโครงการ + t03/_common.md,notes{} (§4a) + sections[] transcript,notes,105,ไม่มี,รอยิง GPU,-
+2,material_list,pass2/material_list/prompt_material_list.md,รูป BOQ + t03/_common.md,categories[].items[] ไม่ใช่ elements[],material_list,0,ไม่มี,ยิงไม่ได้,prompt เขียนไว้แต่ build_dataset ไม่โหลดเข้าชุดเทรน
+2,soil_boring_log,pass2/soil_boring_log/prompt_soil_boring_log.md,รูป log เจาะดิน + t03/_common.md,elements[] element_type soil_layer + borehole_id/groundwater_level_m,soil_boring_log,0,ไม่มี,ยิงไม่ได้,ไม่มีไฟล์ GT เลยสักหลัง
+2.4a,plan_footing,pass2/plan_footing/prompt_plan_footing.md (เหมือนแขน 2 เป๊ะ),input ของแขน 2 + _hint.txt จาก pass 1.5 (apply_arm() แปะต่อท้ายอัตโนมัติ),เหมือนแขน 2 ทุกตัวอักษร + cv_mark ถ้าจับคู่กับเลขใน hint ได้,footing_plan/beam_plan/roof_frame_plan,100,-,รอยิง GPU,ไม่ใช่ prompt ใหม่ เป็นแขน 2 + hint runtime เท่านั้น
+2.4a,plan_beam,pass2/plan_beam/prompt_plan_beam.md (เหมือนแขน 2 เป๊ะ),input ของแขน 2 + _hint.txt,เหมือนแขน 2 + cv_mark,beam_plan/roof_frame_plan/footing_plan,125,-,รอยิง GPU,-
+2.4a,plan_slab,pass2/plan_slab/prompt_plan_slab.md (เหมือนแขน 2 เป๊ะ),input ของแขน 2 + _hint.txt,เหมือนแขน 2 + cv_mark,beam_plan,70,-,รอยิง GPU,-
+2.4a,plan_column,pass2/plan_column/prompt_plan_column.md (เหมือนแขน 2 เป๊ะ),input ของแขน 2 + _hint.txt,เหมือนแขน 2 + cv_mark,-,0,-,ตัน,plan_column เองก็ 0 ตัวอย่างอยู่แล้วในแขน 2
+2.5,ฐานราก+เสา,- (โค้ดล้วน cv_scan.py --pass25),_cv.json เดิม กวาดซ้ำที่ 0.90,_cv25.json + _marked25.png + _hint25.txt (บัญชีตั้งต้นของ pass 3),-,-,-,พร้อมใช้,harvest_templates.py เติม staging ให้ 14 บ้านที่ CV เจอ 0% แล้ว รอคนตรวจก่อน promote
+3,ทุก element,pass3_takeoff/prompt.md,_common.md + _marked25.png + บัญชี (เลข) class) จาก _cv25.json + กริด,elements[] + cv_mark + spec เต็ม,ตาม pattern ของแผ่น,-,ไม่มี,ไม่มี runner,merge_guard.py ใส่ element ที่โมเดลไม่ตอบกลับเป็น stub โมเดลลบไม่ได้จริง
+4,11 subtask หน้ารอง,-,-,-,-,-,-,ยกเลิก 2026-08-29,etc_plan ทั้ง 199 ไฟล์ในคลังคือหน้าพวกนี้ เลิก pass 4 = ไม่มี etc_plan ออกจากสายพานอีก

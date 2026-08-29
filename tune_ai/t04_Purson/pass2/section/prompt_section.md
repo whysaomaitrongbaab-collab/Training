@@ -19,6 +19,67 @@ detailed on it
 
 Output one JSON object and nothing else
 
+Thai to field glossary (not a rule - a lookup)
+
+The drawing is Thai, this prompt and every value you emit are English These are the
+Thai words that actually appear on our sheets and what each one controls Use it to
+read, never to rewrite the rule directly below still holds - a printed label stays
+Thai, verbatim
+
+Words that decide `element_type`
+
+- คาน → `beam`
+- คานคอดิน → `tie_beam`
+- อะเส, ทับหลัง, ตง → `beam`
+- เสา → `column`
+- เสาเอ็น, เอ็น → `column`
+- จันทัน → `rafter`
+- บันได → `stair`
+- ประตู → `door`
+- ห้อง… (ห้องนอน, ห้องน้ำ, ครัว, โถง, เฉลียง, ระเบียง, ซักล้าง, จอดรถ) → `room`
+- รูปตัด → `section_view`
+- ผัง, แปลน → `plan_view`
+- ฐานราก, ฐานรากแผ่ → `footing`
+- ฐานรากเสาเข็ม, ฐานรากเข็มตอก → `pile_cap`
+- เสาเข็ม, เข็ม → `pile`
+- ตอม่อ → `pedestal`
+- พื้น → `slab`
+- แผ่นพื้นสำเร็จรูป → `precast_plank_detail`
+- ผนัง → `wall`
+- หน้าต่าง → `window`
+- หมายเหตุ → `note`
+- แบบขยาย → `detail_view`
+- ระดับ (เป็นตัวเลขบนแบบ) → `level`
+
+Words that decide a field
+
+- ขนาด → `width_mm` and `height_mm`
+- กว้าง → `width_mm`
+- ยาว, ช่วง → `span_length_m`
+- หนา → `thickness_mm`
+- สูง → `height_mm`
+- ลึก → `depth_mm`
+- ระดับ → `level_m`
+- จำนวน, ต้น → `count`
+- ตะแกรง → `bar_layers[]`
+- กลม, Ø → `type: "RB"`
+- เหล็กเสริม, เหล็กหลัก → `main_bar`
+- เหล็กบน / เหล็กล่าง → `location: "top"` / `"bottom"`
+- ปลอก, เหล็กปลอก, รัดรอบ, ป. → `stirrup`
+- @ , ระยะ (ตามด้วยเลข) → `spacing_mm`
+- ระยะหุ้ม → `cover_mm`
+- ข้ออ้อย, DB → `type: "DB"`
+- ตลอด → ต่อเนื่องทั้งช่วง ใส่ใน `note`
+- งอ, ขอ, ทาบ → รายละเอียดปลาย/ทาบ ใส่ใน `note`
+
+Units and abbreviations
+
+`มม` = mm · `ซม` = cm (×10 → mm) · `ม`, `เมตร` = m · `นิ้ว` = inch ·
+`ตรม` = m² · `ลบม` = m³ · `กก` = kg · `คสล` = reinforced concrete ·
+`มอก` = TIS standard number · `ชั้นล่าง` = ground floor · `ชั้นบน` = upper floor
+
+A Thai word not in this list is not permission to invent an `element_type` - pick the closest value from §0.4 and say so in `warnings[]`
+
 ```json
 {
   "png": "24",

@@ -106,37 +106,42 @@ PLAN_SUBTASKS = {
 }
 
 def load_prompt_block():
-    """คืน (block ที่เจาะช่อง {{GLOSSARY}} ไว้, ตัว glossary)
+    """คืน block ของ _common.md (กฎร่วม - output shape, honesty rules) โดยตัด glossary
+    ทิ้งเสมอ (ไม่มี {{GLOSSARY}} ให้เติมอีกต่อไป)
 
-    glossary ไทย→field (DIP — แทรกศัพท์ ไม่แปลทั้ง prompt) คั่นด้วย HTML comment ใน
-    _common.md เพื่อให้ตัดออกราย subtask ได้: gridline หาแต่เส้นกริด ไม่แตะตาราง
-    element_type/เหล็กเลย และเป็น subtask ที่ seq ยาวสุด "ทุกตัว" (~45.6k) — ใส่ไปก็
-    เปลืองเปล่าแล้วดัน MAX_LENGTH ทะลุ 47,104 (= ต้องขยับ VRAM ตาม)
+    2026-08-29 (มะขามสั่ง "ใส่ dictionary เข้าไปในทุก prompt ใน t04 เลย"): glossary ไทย→field
+    ย้ายจาก "ก้อนเดียวใช้ร่วมกันทุก subtask" ไปเป็น "ฝังตรงในไฟล์ prompt ของแต่ละ subtask เอง
+    ปรับให้ตรงกับงานจริงของ subtask นั้น" (เช่น plan family ตัดคำศัพท์เหล็กเสริมออกเพราะ pass
+    นี้ไม่แตะสเปกเหล็ก, notes/material_list ได้แค่ศัพท์ที่ตรงกับสิ่งที่หน้านั้นสกัดจริง) —
+    ทำที่ tune_ai/t04_Purson/pass2/<subtask>/prompt_<subtask>.md ทุกไฟล์แล้ว (plan family
+    render มาจาก pass2/plan.md ซึ่งพก glossary ของตัวเองอยู่แล้ว re-render ใหม่ไม่หาย)
+    ฟังก์ชันนี้จึงไม่ต้องเจาะช่อง {{GLOSSARY}} อีกต่อไป - เอา glossary block ออกจาก COMMON
+    เฉยๆ กัน COMMON ลากตัวเปล่าติดมาซ้ำกับที่ฝังในแต่ละไฟล์แล้ว
     """
     txt = (T03 / "_common.md").read_text(encoding="utf-8")
     m = re.search(r"## BLOCK START\n(.*?)\n## BLOCK END", txt, re.DOTALL)
     body = m.group(1).strip()
     g = re.search(r"<!-- GLOSSARY START -->\n(.*?)\n<!-- GLOSSARY END -->\n", body, re.DOTALL)
     assert g, "_common.md ไม่มี marker GLOSSARY START/END"
-    return body.replace(g.group(0), "{{GLOSSARY}}"), g.group(1).strip()
+    return body.replace(g.group(0), "").strip()
 
 def load_subtask_prompt(name):
     # 2026-08-29: every pass-2 subtask now has its own concrete prompt.md folder under
     # T04_PASS2/<subtask>/ - the plan family (footing/beam/slab/column) used to share one
     # templated file (plan.md, {{TARGET}}/{{ELEMENT_TYPES}} substitution); it is now four
     # separate rendered files, same rendering plan.md itself still documents for re-rendering.
+    # Each file also carries its own tailored Thai-glossary block near the top (see
+    # load_prompt_block's docstring) - the shared _common.md glossary is retired.
     txt = (T04_PASS2 / name / f"prompt_{name}.md").read_text(encoding="utf-8")
     m = re.search(r"## PROMPT START\n(.*?)(?:\n## PROMPT END|\Z)", txt, re.DOTALL)
     return m.group(1).strip()
 
-COMMON, GLOSSARY = load_prompt_block()
+COMMON = load_prompt_block()
 PROMPTS = {n: load_subtask_prompt(n) for n in
            ("gridline", "plan_footing", "plan_beam", "plan_slab", "section", "schedule", "notes")}
 
 def prompt_for(subtask):
-    body = PROMPTS[subtask]
-    gloss = "" if subtask == "gridline" else GLOSSARY
-    return COMMON.replace("{{GLOSSARY}}", gloss) + "\n\n" + body
+    return COMMON + "\n\n" + PROMPTS[subtask]
 
 # ---- element filtering ---------------------------------------------------
 def type_matches(t, cfg):
@@ -291,8 +296,12 @@ def main():
                                                          ensure_ascii=False)}]},
                     ],
                 }
-                (rows_test if house in TEST_HOUSES
-                 else rows_val if house in VAL_HOUSES else rows_train).append(row)
+                if house in TEST_HOUSES:
+                    rows_test.append(row)
+                else:
+                    if house in VAL_HOUSES:
+                        rows_val.append(row)
+                    rows_train.append(row)  # 2026-08-29 มะขามสั่ง: val houses (01-05) go in train too
                 per_subtask[sub] += 1
                 stats["examples"] += 1
 
