@@ -1,0 +1,87 @@
+{
+  "png": "26",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนฐานรากเสาเข็ม",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_17/บ้าน_เล็ก_1ชั้น_17_หน้า26.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_17_หน้า00_gridline.json",
+  "view_title": "แปลนฐานรากเสาเข็ม",
+  "scale": "1:100",
+  "confidence_score": 0.93,
+  "confidence_flags": [],
+  "warnings": [
+    "Footing marks are printed 'F<n>,C1' — the pile count is encoded in the mark (F2=2, F3=3, F4=4, F7=7, F8=8, F9=9, F10=10, confirmed against the S-05..S-08 details) and ',C1' names the column each footing carries. Columns are recorded here because this is the only plan sheet printing the column mark; the beam plan S-03 draws them unlabeled.",
+    "F2 (stair-landing footing) sits off-grid between C and D: cap 1.30×1.00 between dummy lines 2''-2''' (x) centred on C' (y); its two piles sit on C' at 0.30 from each cap end (S-05 detail)."
+  ],
+  "elements": [
+    {
+      "element_id": "F4",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": ["A1", "A2", "D1", "D2"],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F8",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": ["B1"],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F10",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": ["B2"],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": ["B3", "C3"],
+      "note": "มุมตัด (pentagon) corner footing — cut corner faces outward/grid-3 side on both positions",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F7",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": ["C1"],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F9",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": ["C2"],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 1,
+      "grid_refs": ["C' x 2''-2'''"],
+      "note": "ฐานรากบันได/ชานพัก นอกกริดหลัก — landing strip 1.30 (x) × 1.00 (y) between rows C and D; ดูขยาย F2 ใน S-05",
+      "confidence_score": 0.9,
+      "confidence_flags": ["off_grid_position_recorded_as_area_ref"]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 10,
+      "grid_refs": ["A1", "A2", "B1", "B2", "B3", "C1", "C2", "C3", "D1", "D2"],
+      "note": "printed as the ',C1' half of each footing mark — one column on every main-grid footing (F2 carries no column, only the landing beam B0)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    }
+  ]
+}

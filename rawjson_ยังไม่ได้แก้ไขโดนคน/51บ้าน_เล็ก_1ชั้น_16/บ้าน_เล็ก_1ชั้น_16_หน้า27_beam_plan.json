@@ -1,0 +1,206 @@
+{
+  "png": "27",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนคาน, พื้นชั้น 1",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า27.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_16_หน้า00_gridline.json",
+  "view_title": "แปลนเสา คาน พื้น",
+  "scale": "1:100",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "The sheet's own drawing title is 'แปลนเสา คาน พื้น' while the title block reads 'แปลนคาน, พื้นชั้น 1' — one combined column/beam/slab plan, one view. Classified beam_plan (beams with marks and grid endpoints dominate; slab tags and unlabeled column squares ride along), matching house 14's precedent for the same combined-sheet situation.",
+    "Column positions are drawn (hatched squares at the 8 main-grid intersections) but not labeled on this sheet — the column mark C1 is printed only on the footing plan S-02, so columns are recorded there, not here.",
+    "B1 is a short interior beam on the ridge/wall line 1'' from B to B'; both of its ends land on beams (B3 at row B and B3 at row B'), not on columns — flagged bears_on_beam per §5. The B' interior beam line (B3 1→2, B2 2→3) likewise has both ends bearing on the grid-1/2/3 vertical beams, not on columns.",
+    "Slab markers: SP = precast solid plank (arrow on plan shows planks spanning the x direction), S1 = ห้องน้ำ cast-in-place slab, S2 = deck slab, S0 = stair-landing slab (ดูขยาย F2). Recorded one entry per mark with the marked areas listed in grid_refs.",
+    "บันไดไม้ดูแบบสถาปัตยกรรม — the wooden stair south of row C between the landing and the deck is architectural (no structural members drawn) and is deliberately not an element here."
+  ],
+  "elements": [
+    {
+      "element_id": "B4A",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5A",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "row-B beam under the upper SP block's south edge; beam B1 bears on it at 1''",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1''",
+      "grid_ref_end": "B'1''",
+      "span_length_m": 1.9,
+      "span_source": "grid_table",
+      "note": "short interior beam on the 1'' (ridge/wall) line separating S1 from the middle SP panel",
+      "confidence_score": 0.9,
+      "confidence_flags": ["bears_on_beam:B3(start)", "bears_on_beam:B3(end)"]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "deck (ระเบียง) north edge beam",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "deck east edge beam on grid 3",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "interior beam on line B' (1.90 below B), south edge of S1/middle-SP band",
+      "confidence_score": 0.88,
+      "confidence_flags": ["bears_on_beam:B4(start)", "bears_on_beam:B5(end)"]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B'2",
+      "grid_ref_end": "B'3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "deck middle beam on line B' dividing the two S2 panels",
+      "confidence_score": 0.88,
+      "confidence_flags": ["bears_on_beam:B5(start)", "bears_on_beam:B3(end)"]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B0",
+      "element_type": "beam",
+      "grid_ref_start": "C''2''",
+      "grid_ref_end": "C''2'''",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "note": "stair-landing beam on the two piles of F2 (ดูขยาย F2, S-05)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "slab",
+      "count": 3,
+      "grid_refs": ["A-B x 1-2", "B-B' x 1''-2", "B'-C x 1-2"],
+      "note": "precast SOLID PLANK areas; plan arrows show planks spanning the x direction",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": ["B-B' x 1-1''"],
+      "note": "ห้องน้ำ cast-in-place slab (drawn dashed)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "count": 2,
+      "grid_refs": ["B-B' x 2-3", "B'-C x 2-3"],
+      "note": "deck (ระเบียง) slabs, drawn dashed",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "count": 1,
+      "grid_refs": ["C'' x 2''-2'''"],
+      "note": "stair-landing slab 1.30×1.00 below row C (y edges are slab-only lines with no grid); ดูขยาย F2 ใน S-05",
+      "confidence_score": 0.88,
+      "confidence_flags": ["off_grid_position_recorded_as_area_ref"]
+    }
+  ]
+}
