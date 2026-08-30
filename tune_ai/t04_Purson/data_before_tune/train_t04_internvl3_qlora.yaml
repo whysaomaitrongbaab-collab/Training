@@ -56,9 +56,9 @@ report_to: none
 per_device_train_batch_size: 1
 gradient_accumulation_steps: 8
 learning_rate: 1.0e-4    # [t01/t03] พิสูจน์ converge แล้วข้ามรอบ — ค่านี้ไม่ผูกสถาปัตยกรรม ยกมาได้
-num_train_epochs: 5.0   # มะขามเคาะ 2026-08-30: เปลี่ยนจาก 3.0 → 5.0 (ให้ตรงจำนวนรอบกับแนวคิด k-fold=5
-                         # จาก 40 หลัง ÷ 8 หลัง/fold ที่คุยกันไว้ตอนต้น — เป็นการตัดสินใจของมะขาม ไม่ใช่
-                         # ค่าที่วัด converge จริง ต้องดู loss curve จริงว่า overfit ไหมหลัง epoch 3-4)
+num_train_epochs: 3.0   # มะขามเคาะ 2026-08-30 (รอบสุดท้าย): 3.0 → 5.0 → 4.0 → 3.0
+                         # ลดกลับมา 3 เพื่อให้ k-fold 2 folds อยู่ในงบ ($32 แทน $43 ที่ 4 epochs)
+                         # ไม่ใช่ค่าที่วัด converge จริง — ต้องดู loss curve ว่า overfit ไหมช่วงท้าย
 lr_scheduler_type: cosine
 warmup_ratio: 0.05        # = ค่า t03 (ไม่ใช่ default 0.1 ของตัวอย่าง LLaMA-Factory — ตั้งใจตาม parity)
 bf16: true                 # compute dtype บน 4-bit weights (ตามตัวอย่าง otfq.yaml จริง)
