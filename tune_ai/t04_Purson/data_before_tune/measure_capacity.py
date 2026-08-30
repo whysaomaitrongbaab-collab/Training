@@ -22,6 +22,7 @@ from pathlib import Path
 from PIL import Image
 
 HERE = Path(__file__).parent
+MEDIA_ROOT = HERE
 PX_PER_TOKEN = 32 * 32          # patch_size 16 x merge_size 2 กำลังสอง
 CHARS_PER_TOKEN = 2.2           # ประมาณการข้อความไทย+JSON (ค่าเดียวกับ _est() ใน train_t03.py)
 CURRENT_MAX_PIXELS_TOKENS = 5120
@@ -53,7 +54,7 @@ def measure(rows, cap_tokens):
             if c["type"] != "image":
                 continue
             n_images += 1
-            w, h = Image.open(HERE / c["image"]).size
+            w, h = Image.open(MEDIA_ROOT / c["image"]).size
             capped, raw = visual_tokens(w, h, cap_tokens)
             vis += capped
             if raw > cap_tokens:
@@ -91,7 +92,7 @@ def report(split, caps):
     for r in rows:
         for c in r["messages"][0]["content"]:
             if c["type"] == "image":
-                w, h = Image.open(HERE / c["image"]).size
+                w, h = Image.open(MEDIA_ROOT / c["image"]).size
                 biggest[(w, h)] += 1
     print("\n  ขนาดภาพในชุดนี้ (5 อันดับ):")
     for (w, h), n in biggest.most_common(5):
@@ -102,11 +103,17 @@ def report(split, caps):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--split", default="train", choices=["train", "val", "test"])
+    ap.add_argument("--split", default="train")  # เช่น train / val / train_fold0 / val_fold1
     ap.add_argument("--pixels", type=int, nargs="+",
                     default=[5120, 7680, 10240, 16384],
                     help="ค่า MAX_PIXELS (หน่วย visual token/ภาพ) ที่อยากเทียบ")
+    # t05 เก็บ jsonl คนละที่กับรูป (path ในไฟล์เทียบรากรีโป) — เดิมสคริปต์นี้สมมติว่าอยู่ที่เดียวกัน
+    ap.add_argument("--data-dir", default=None, help="โฟลเดอร์ที่มี <split>.jsonl (default: ข้างสคริปต์)")
+    ap.add_argument("--media-root", default=None, help="รากที่ path รูปในไฟล์อ้างถึง (default: --data-dir)")
     a = ap.parse_args()
+    if a.data_dir:
+        HERE = Path(a.data_dir).resolve()
+    MEDIA_ROOT = Path(a.media_root).resolve() if a.media_root else HERE
     report(a.split, a.pixels)
     print("\nหมายเหตุ: ตัวเลข seq เป็นการประมาณ (ข้อความหาร 2.2) — ตัวจริงต้องวัดด้วย")
     print("collator บน GPU แต่ส่วน visual token คำนวณตรงจากขนาดไฟล์ภาพ = แม่นยำ")

@@ -171,9 +171,15 @@ Rules, in priority order
 3) Never invent a `cv_mark` Only use a number that appears in the list above Guessing a
    number that is not there is worse than leaving `cv_mark` off - the guard treats an unknown
    `cv_mark` as a warning-worthy anomaly, not a silent match
-4) Two elements never claim the same `cv_mark` If two real members genuinely sit at one
-   marked point (rare - a column-on-footing box drawn once for both), pick the element type the
-   coarse class in the account most closely matches and note the other in `warnings[]`
+4) Two elements never claim the same `cv_mark` at a single point If two real members
+   genuinely sit at one marked point (rare - a column-on-footing box drawn once for both), pick
+   the element type the coarse class in the account most closely matches and note the other in
+   `warnings[]`
+   Exception - a `beam_h` box is a coarse per-row detection, not a per-member one The double
+   line of a beam run often prints unbroken across more than one grid bay, so one box can
+   legitimately span two or three real beam segments in the same row When that happens every
+   real segment inside that box shares its `cv_mark` - this is expected for `beam_h`, not a
+   failure to disambiguate, and it does not apply to `beam_v`, `footing`, or `column`
 5) Spans come from the printed grid dimensions via the grid master - never from how long a line
    looks alone (honesty rule 1) When a span is printed nowhere, recover it by proportion in two
    separate steps, never in one leap First find the pixels - P = the on-image separation of two
