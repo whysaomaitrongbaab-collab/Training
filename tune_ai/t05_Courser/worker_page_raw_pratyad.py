@@ -24,17 +24,13 @@ BASE = "unsloth/Qwen3.6-35B-A3B"
 ADAPTER = "dacarokann/destrier"
 MAX_PIXELS = 6912 * 1024
 MAX_NEW = 4096
-COURSER_DIR = "/workspace/Training/tune_ai/t05_Courser"
-# HOUSE_DIR overridable via env — ใช้กับบ้านทดสอบตัวใหม่ (บ้านแบบประหยัด1) ได้โดยไม่ต้องแก้โค้ด
-HOUSE_DIR = os.environ.get(
-    "HOUSE_DIR",
-    "/workspace/Training/tune_ai/t04_Purson/test_house_new/image_บ้านไทยพอเพียง3")
-REPO_ROOT = "/workspace/Training"
+COURSER_DIR = "/workspace/t05_Courser"
+# ตัวนี้ทำสำหรับบ้านแบบประหยัด1 (เครื่อง GPU-A แยกต่างหาก) โดยเฉพาะ — ก็อปจาก
+# worker_page.py มาแก้ ไม่แตะไฟล์เดิมกันชนกับที่มะขามกำลังแก้อยู่คนละจุด
+HOUSE_DIR = "/workspace/image_บ้านแบบประหยัด1"
+REPO_ROOT = "/workspace"
 
-PROMPT_CORE_PATH = os.environ.get(
-    "PROMPT_CORE_PATH",
-    os.path.join(os.path.dirname(__file__), "..", "t04_Purson",
-                 "test_house_new", "_prompt_core.txt"))
+PROMPT_CORE_PATH = "/workspace/_prompt_core.txt"
 
 
 def load_val_row(subtask):
