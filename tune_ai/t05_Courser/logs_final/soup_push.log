@@ -1,0 +1,28 @@
+รวม 3 fold — ต่อแกน rank แบบ exact: ΔW = (1/3)·Σ ΔW_i
+   ดึง dacarokann/Courser_a …
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files: 100%|██████████| 13/13 [00:00<00:00, 967.65it/s]
+   ดึง dacarokann/Courser_c …
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files: 100%|██████████| 13/13 [00:00<00:00, 3810.07it/s]
+   ดึง dacarokann/Courser_d …
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files: 100%|██████████| 13/13 [00:00<00:00, 3933.77it/s]
+   ⚠️  fold แยกตัวประกอบ MoE คนละข้าง: {'dacarokann/Courser_a': (4096, 1024), 'dacarokann/Courser_c': (4096, 2048), 'dacarokann/Courser_d': (4096, 2048)}
+   → ใช้ convention (4096, 2048) (กลุ่มมากสุด) แปลงที่เหลือให้ตรง
+      ตรวจการแปลง: max|ΔW เดิม − ΔW ใหม่ᵀ| = 0.00e+00
+      แปลง dacarokann/Courser_a แล้ว 80 คู่
+   คีย์+รูปร่างตรงกันครบ 860 เทนเซอร์
+   ต่อแกน rank แบบ exact: r 16 → 48 (860 เทนเซอร์)
+   ΔW = (1/3)·Σ ΔW_i เป๊ะ ไม่มีพจน์ไขว้ (ต่างจากการเฉลี่ยน้ำหนัก A/B ตรง ๆ)
+
+ตรวจ attn: layers.23.self_attn.q_proj.lora_A.weight
+   ‖ΔW เฉลี่ยจริง‖ = 0.2807
+   ‖ΔW ที่รวมได้‖ = 0.2807   อัตราส่วน 1.000
+   ✅ ตรงกับค่าเฉลี่ยจริง
+
+ตรวจ MoE expert: layers.1.mlp.experts.base_layer.lora_A.weight
+   ‖ΔW เฉลี่ยจริง‖ = 0.0517
+   ‖ΔW ที่รวมได้‖ = 0.0517   อัตราส่วน 1.000
+   ✅ ตรงกับค่าเฉลี่ยจริง
+   r=48 alpha=96 (scaling 2.0 เท่าเดิม)
+
+✅ อัปแล้ว → https://huggingface.co/dacarokann/destrier
+   ต่อไป: ตรวจ Day of Shame ให้ครบ **ก่อน** destroy การ์ด

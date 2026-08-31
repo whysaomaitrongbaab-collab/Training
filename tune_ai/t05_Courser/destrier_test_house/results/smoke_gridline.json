@@ -1,0 +1,96 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": null,
+  "pattern": "grid_master",
+  "source_pages": [
+    "image/58001/58001_หน้า15.png",
+    "image/58001/58001_หน้า17.png",
+    "image/58001/58001_หน้า18.png"
+  ],
+  "grid": {
+    "x_lines": [
+      { "id": "1", "pos_m": 0.0, "type": "named" },
+      { "id": "2", "pos_m": 4.0, "type": "named" },
+      { "id": "3", "pos_m": 7.0, "type": "named" },
+      { "id": "3'", "pos_m": 8.5, "type": "dummy" }
+    ],
+    "y_lines": [
+      { "id": "D", "pos_m": 0.0, "type": "named" },
+      { "id": "C", "pos_m": 4.0, "type": "named" },
+      { "id": "B", "pos_m": 6.0, "type": "named" },
+      { "id": "A", "pos_m": 9.5, "type": "named" }
+    ],
+    "z_levels": [
+      { "id": "ระดับอ้างอิง", "level_m": 0.0, "type": "datum", "source_image": "image/58001/58001_หน้า15.png" },
+      { "id": "ระดับพื้นชั้น 1", "level_m": 0.6, "type": "named", "source_image": "image/58001/58001_หน้า15.png" },
+      { "id": "ระดับหลังคาน", "level_m": 3.75, "type": "named", "source_image": "image/58001/58001_หน้า15.png" }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/58001/58001_หน้า15.png",
+        "segments": [
+          { "from": "edge", "to": "1", "value_m": 1.30 },
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 3.00 },
+          { "from": "3", "to": "edge", "value_m": 1.50 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/58001/58001_หน้า17.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 3.00 }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/58001/58001_หน้า18.png",
+        "segments": [
+          { "from": "1", "to": "2", "value_m": 4.00 },
+          { "from": "2", "to": "3", "value_m": 3.00 },
+          { "from": "3", "to": "edge", "value_m": 0.60 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/58001/58001_หน้า15.png",
+        "segments": [
+          { "from": "D", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "B", "value_m": 2.00 },
+          { "from": "B", "to": "A", "value_m": 3.50 }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/58001/58001_หน้า17.png",
+        "segments": [
+          { "from": "D", "to": "C", "value_m": 4.00 },
+          { "from": "C", "to": "B", "value_m": 2.00 },
+          { "from": "B", "to": "A", "value_m": 3.50 }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/58001/58001_หน้า15.png",
+        "segments": [
+          { "from": "ระดับอ้างอิง", "to": "ระดับพื้นชั้น 1", "value_m": 0.60 },
+          { "from": "ระดับพื้นชั้น 1", "to": "ระดับหลังคาน", "value_m": 3.15 },
+          { "from": "ระดับอ้างอิง", "to": "ระดับหลังคาน", "value_m": 3.75 }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      { "value_m": 1.10, "label": "1.10", "source_image": "image/58001/58001_หน้า18.png", "note": "Dimension below grid line A on the roof plan, not part of the main grid chain" }
+    ]
+  },
+  "confidence_score": 0.95,
+  "confidence_flags": [],
+  "warnings": [
+    "Grid line 3' at 8.50 m is a dummy grid derived from the beam endpoint rule (S-02, grid C3''/B3''), not from a printed dimension chain segment."
+  ]
+}

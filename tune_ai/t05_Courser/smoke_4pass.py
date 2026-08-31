@@ -16,7 +16,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
 T44 = REPO / "tune_ai" / "t44_Voldemort"
 MAX_PIXELS = 7680 * 1024
-FOLDS = [0, 1]
+FOLDS = [0, 1, 2, 3]
 
 fails = []
 

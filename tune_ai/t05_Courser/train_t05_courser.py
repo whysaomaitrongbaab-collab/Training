@@ -67,6 +67,10 @@ from pathlib import Path
 # 2026-07-21 ขาด ~100MB จาก 95GB; t03 ใช้ MAX_LENGTH สูงกว่า t01 อีก ยิ่งจำเป็น)
 # เจอว่าหายไปตอนทำ parity table (rule_of_tune ข้อ 12) 2026-08-24
 os.environ.setdefault("PYTORCH_ALLOC_CONF", "expandable_segments:True")
+# [2026-08-31] ตั้งชื่อเก่าด้วย — torch 2.11 ยังพิมพ์ชื่อนี้ในข้อความ OOM ของตัวเอง
+# ("try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True") ไม่คุ้มจะเดาว่าชื่อใหม่
+# มีผลจริงบนเวอร์ชันนี้ ตั้งทั้งสองชื่อเสียเลย — ทั้งคู่ต้องตั้ง**ก่อน** import torch
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 # ─────────────────────────────────────────────────────────────
 # ค่าหลัก — ที่มากำกับทุกตัว (ดู docstring)
@@ -79,7 +83,15 @@ LOAD_IN_4BIT = False                # [W] MoE QLoRA 4-bit ไม่รองร�
 #   ที่ 7,680: เหลือโดนย่อ 292/973 (30%) = ภาพ 3309x2339 (615 ใบ ส่วนใหญ่ของชุด) ได้ครบไม่ย่อ
 #   ⛔ ห้ามขึ้นถึง 16,384 (ไม่ย่อเลย) บนการ์ด 96GB — คำนวณแล้ว peak 97.8 GB = เกินการ์ด
 #      ต้อง H200 140GB ($3.29/ชม. = $17.45/รอบ เทียบการ์ดเดิม $5.87) ยังไม่ได้เช่า เครดิตไม่พอ
-MAX_PIXELS = 7680 * 1024            # [t03b] 7,680 visual tokens/ภาพ (เดิม 5,120 = ย่อทุกใบ)
+MAX_PIXELS = 6912 * 1024            # [2026-08-31 att1235] ลดจาก 7680 → 6912 (-10%) หลัง
+# real training (ไม่ใช่ dry-run) OOM จริง 2 ใน 4 fold ที่ step 4 (fold0) และ step 1 ของ
+# worst-case probe (fold3) — ทั้งคู่ "Tried to allocate 1.18 GiB, มีว่าง 1.0-1.04 GiB" คือ
+# margin ติดลบเฉียดฉิว ไม่ใช่แค่ fragmentation (expandable_segments เปิดอยู่จริงแล้วยังพัง)
+# อีก 2 fold ที่ยังไม่ตาย (fold1/fold2) ก็วัดจริงอยู่ที่ 93.7/94.66 จาก 94.97 GB ceiling
+# ตอนที่พบปัญหา — จะพังตามได้ทุกเมื่อ ตัดสินใจลดทุก fold เท่ากัน (ไม่ใช่แค่ 2 ตัวที่ตาย)
+# เพื่อรักษาความเทียบเท่ากันของความละเอียดภาพข้าม fold (เลี่ยง Lesson 12 class: ถ้าลดแค่บาง
+# fold จะเทียบผลข้าม fold ไม่ได้อีกต่อไป) [t03b] เดิม 7,680 visual tokens/ภาพ (5,120 เดิม
+# ย่อทุกใบ) — 6,912 ยังสูงกว่า 5,120 มาก ไม่ใช่ถอยกลับไปจุดที่ย่อทุกภาพ
 MIN_PIXELS = 256 * 1024             # [t01]
 # [t03b] 32768 → 47104 บังคับตามข้อบน: seq ยาวสุดที่ 7,680 = 44,607 (ประมาณ) + margin 5%
 #   ตัวที่ดันเพดานคือ gridline ล้วนๆ (36 ใน 37 ตัวที่ยาวเกิน ใช้ 4 ภาพ) subtask อื่นไม่แตะ
@@ -132,11 +144,23 @@ OUT_DIR = f"outputs_t05_fold{FOLD}"
 # (แทนที่กฎเดิม "ห้ามรันหลาย fold คู่ขนาน" — ยกเลิกเพราะรอบนี้ dry-run ผ่านทั้งคู่แล้วก่อนรันเต็ม
 # ต่างจาก t04 ที่พังตอน fold เดียวยังไม่พิสูจน์) หลังเทรนครบ รวม fold0+fold1 เป็น adapter เดียว
 # ด้วย PEFT model soup (ดู ../merge_adapters_soup.py) ก่อนใช้งานจริง — ไม่ได้ deploy แยก 2 adapter
-HUB_MODEL_ID = f"dacarokann/Courser_{'a' if FOLD == '0' else 'b'}"  # a=fold0, b=fold1
-# push ขึ้น HF ด้วย token ใหม่ "t44" (FINEGRAINED) — export HF_TOKEN=hf_...XCRE ก่อนรัน
+HUB_MODEL_ID = f"dacarokann/Courser_{'abcd'[int(FOLD)]}"  # fold0→a fold1→b fold2→c fold3→d
+# push ขึ้น HF ด้วย token ใหม่ "t44" (FINEGRAINED) — export HF_TOKEN=hf_... ก่อนรัน
 # (huggingface_hub อ่าน env HF_TOKEN เองอัตโนมัติ ไม่ต้องเรียก login() เพิ่ม)
 
 TEST_STEPS = int(os.environ.get("TEST_STEPS", "0"))
+
+# [2026-08-31] `push_to_hub=True` ทำให้ Trainer เรียก `init_hf_repo()` ตั้งแต่ `__init__`
+# **ไม่ใช่ตอน save_steps** — dry-run จึงตายด้วย 401 ทั้งที่ยังไม่ถึง step ที่จะเซฟ (เจอจริง)
+#   - dry-run (TEST_STEPS>0): ปิด push ไปเลย ไม่มีอะไรควรอัปอยู่แล้ว
+#   - รันจริง: **บังคับต้องมี HF_TOKEN แล้วตายทันทีถ้าไม่มี** — ห้ามปล่อยให้เทรน 15 ชม.
+#     แล้วค่อยไปพังตอน push (นั่นคือคลาส Day of Shame: งานเสร็จแต่ไม่มีที่เก็บ)
+PUSH_TO_HUB = TEST_STEPS == 0
+if PUSH_TO_HUB and not (os.environ.get("HF_TOKEN") or os.environ.get("HUGGING_FACE_HUB_TOKEN")):
+    raise SystemExit(
+        "⛔ ไม่พบ HF_TOKEN — รันจริงต้อง push adapter ขึ้น HF (Day-of-Shame guard)\n"
+        "   แก้: export HF_TOKEN=hf_xxxxx  แล้วรันใหม่\n"
+        "   (ถ้าตั้งใจ dry-run ให้ใส่ TEST_STEPS=5 ซึ่งปิด push ให้อัตโนมัติ)")
 SKIP_DEMO = os.environ.get("SKIP_DEMO", "0") == "1"
 # ─────────────────────────────────────────────────────────────
 
@@ -177,6 +201,27 @@ def load_split(name):
 
 
 train_ds, train_sub, _ = load_split(TRAIN_SPLIT)
+
+# [2026-08-31] SORT_LONGEST=1 — เรียงตัวอย่างยาวสุดขึ้นก่อน **สำหรับ dry-run เท่านั้น**
+# เหตุผล: dry-run TEST_STEPS=5 เห็นแค่ 40/1008 ตัวอย่างแบบสุ่ม จึงไม่เคยเจอตัวที่ยาวสุด
+# → peak VRAM ที่วัดได้เป็น "peak ของตัวอย่างธรรมดา" ไม่ใช่ worst case จริง
+# รอบแรกวัดได้ 92.1/95.0 GB เหลือ margin แค่ 2.9 GB ถ้าตัวยาวสุด (41.8k token) กินมากกว่านี้
+# = OOM ที่ชั่วโมงที่ 8 ของการเทรน 15 ชม. ซึ่งแพงกว่าการทดสอบ 10 นาทีมาก
+# ⛔ ห้ามเปิดตอนเทรนจริง — ลำดับข้อมูลจะไม่สุ่ม (curriculum โดยไม่ตั้งใจ)
+if os.environ.get("SORT_LONGEST") == "1":
+    if TEST_STEPS == 0:
+        raise SystemExit("⛔ SORT_LONGEST ใช้ได้เฉพาะ dry-run (ต้องมี TEST_STEPS>0) — "
+                         "เปิดตอนเทรนจริงจะทำให้ลำดับข้อมูลไม่สุ่ม")
+    def _len_est(r):
+        vis = sum(min(c["image"].size[0] * c["image"].size[1], MAX_PIXELS) // 1024
+                  for c in r["messages"][0]["content"] if c["type"] == "image")
+        txt = sum(len(c["text"]) for c in r["messages"][0]["content"] if c["type"] == "text")
+        a = r["messages"][1]["content"]
+        gt = "".join(x.get("text", "") for x in a) if isinstance(a, list) else a
+        return vis + (txt + len(gt)) / 2.2
+    train_ds = sorted(train_ds, key=_len_est, reverse=True)
+    print(f"⚠️  SORT_LONGEST=1 — เรียงยาวสุดขึ้นก่อน (worst-case VRAM probe) "
+          f"ตัวยาวสุด est {_len_est(train_ds[0]):.0f} token")
 val_ds, val_sub, val_subtasks = load_split(VAL_SPLIT)
 n_multi = sum(1 for r in train_ds
               if sum(1 for c in r["messages"][0]["content"] if c["type"] == "image") > 1)
@@ -297,9 +342,8 @@ trainer = SFTTrainer(
         save_strategy="steps",
         save_steps=25,
         save_total_limit=2,
-        push_to_hub=True,
-        hub_model_id=HUB_MODEL_ID,
-        hub_strategy="checkpoint",
+        push_to_hub=PUSH_TO_HUB,
+        **({"hub_model_id": HUB_MODEL_ID, "hub_strategy": "checkpoint"} if PUSH_TO_HUB else {}),
         # [t03] ⛔ eval ต่อ epoch ปิดไว้ — OOM จริง 2026-08-24 (TEST_STEPS=5 ผ่าน 5 step
         # แล้วตายตอน evaluate): accelerate ห่อ model.forward ด้วย convert_to_fp32 ซึ่ง
         # upcast logits ทั้งก้อนเป็น fp32 = seq 21,445 × vocab 152k × 4B ≈ 13GB (+ต้นทาง
@@ -335,10 +379,21 @@ try:
         assert _tok_per_img > 1000, (
             f"visual tokens = {_tok_per_img}/ภาพ ต่ำผิดปกติ — resize='max' ไม่มีผล? "
             f"(บั๊กคลาส t01 §0.4: ภาพโดนย่อ 512px เงียบๆ เหลือ ~266)")
-        # เตือน (ไม่ abort) ถ้าได้ต่ำกว่า cap มาก — แปลว่ามีอะไรย่อภาพก่อนถึง cap ของเรา
-        if _tok_per_img < _cap * 0.75:
-            print(f"⚠️  ได้ {_tok_per_img}/ภาพ ต่ำกว่า cap {_cap} เกิน 25% — collator อาจย่อภาพ"
-                  f" เองเพื่อให้พอดี max_seq_length ตรวจก่อนเชื่อว่าได้ความละเอียดเต็ม")
+        # [แก้ 2026-08-31] เดิมเทียบกับ `_cap` (เพดานรวม) ตรง ๆ → **เตือนผิดทุกครั้งที่ภาพต้นทาง
+        # เล็กกว่าเพดานอยู่แล้ว** เช่น train_fold1[0] เป็นภาพ 2339×1654 = 3.87 MP ซึ่งคิดเป็น
+        # 3,778 token ตามคณิตศาสตร์เป๊ะ ๆ (วัดได้ 3,796) ไม่ได้โดนย่อเลย แต่ยามฟ้องว่า
+        # "ต่ำกว่า cap เกิน 25%" — ยามที่ร้องหมาป่าทุกครั้งคือยามที่คนเลิกเชื่อ
+        # ตอนนี้เทียบกับ **เพดานที่แถวนี้ควรได้จริง** = min(พิกเซลจริงของภาพ, MAX_PIXELS)/1024
+        # จึงเตือนเฉพาะเมื่อมีการย่อจริงที่อธิบายไม่ได้ด้วยขนาดไฟล์ต้นทาง
+        _row0_imgs = [c["image"] for c in train_ds[0]["messages"][0]["content"]
+                      if c["type"] == "image"]
+        _expect = (sum(min(im.size[0] * im.size[1], MAX_PIXELS) // 1024 for im in _row0_imgs)
+                   // max(len(_row0_imgs), 1)) if _row0_imgs else _cap
+        if _tok_per_img < _expect * 0.75:
+            print(f"⚠️  ได้ {_tok_per_img}/ภาพ แต่ขนาดภาพจริงควรได้ ~{_expect} (cap {_cap}) "
+                  f"— ต่ำเกิน 25% จากที่ควรเป็น = มีอะไรย่อภาพเงียบ ๆ ตรวจก่อนเทรนต่อ")
+        else:
+            print(f"   (ภาพแถวนี้ควรได้ ~{_expect} token/ภาพ ตามขนาดจริง — ตรงกัน ไม่โดนย่อ)")
     # ตัวอย่างที่ "น่าจะยาวสุด" — ต้องประเมินจากภาพ+prompt+GT ไม่ใช่จำนวนภาพอย่างเดียว
     # (2026-08-24: ชุด op04 มี gridline GT ยาวถึง 19,114 ตัวอักษร — ตัวที่ภาพเยอะสุด
     #  ไม่ใช่ตัวที่ยาวสุดเสมอไป assert เดิมจึงมองไม่เห็นตัวที่เสี่ยงจริง)
@@ -359,7 +414,11 @@ try:
                                    f"label จะขาดกลาง JSON (บั๊กคลาส t01 §0.4) "
                                    f"— ตัดตัวอย่างนี้ทิ้งหรือลดจำนวนภาพ gridline ห้ามลด MAX_LENGTH")
         del _b2
-    del _b, _b2, _gt
+    # [2026-08-31] เดิมเป็น `del _b, _b2, _gt` — แต่ `_b2` ถูก del ไปแล้วในลูปข้างบน
+    # → NameError ทุกครั้ง แล้วโดน except จับ พิมพ์ว่า "ตรวจ batch แรกไม่สำเร็จ" ทั้งที่
+    # **การตรวจผ่านครบทุกข้อไปแล้ว** (เห็น ✓ ทั้ง 3 อันดับ) — ยามดูเหมือนล้มทั้งที่ทำงานถูก
+    # อันตรายเพราะยามชุดนี้คือของที่กันบั๊กคลาส Lesson 15/t01 โดยตรง เจอจริงตอน dry-run รอบ 5
+    del _b, _gt
     gc.collect(); torch.cuda.empty_cache()
 except AssertionError:
     raise

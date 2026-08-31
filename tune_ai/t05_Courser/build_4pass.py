@@ -38,6 +38,7 @@ k-fold (2026-08-31 ตอนดึก — convention เดียวกับ bu
 รัน:  python build_4pass.py
 """
 import json
+import os
 import re
 import sys
 from collections import Counter
@@ -49,7 +50,12 @@ T44 = TRAINING / "tune_ai" / "t44_Voldemort"
 DATA_T04 = TRAINING / "tune_ai" / "t04_Purson" / "data_before_tune"
 IMG_ROOT = TRAINING / "image"
 
-FOLDS = [0, 1]     # รันแค่ 2 จาก 5 fold ที่มีจริง (งบ) — ดู docstring ด้านบน
+# รันแค่บาง fold จาก 5 fold ที่ t04 แบ่งไว้ (งบ) — ดู docstring ด้านบน
+# [2026-08-31 ดึก] มะขามสั่งย้ายการ์ด 2 ใบจาก Voldemort (ตกประตู go/no-go) มาทำ fold เพิ่ม
+# ของ Courser → ต้องสร้าง fold2/fold3 **โดยไม่แตะไฟล์ fold0/fold1 ที่อัปขึ้นเครื่องเช่าไปแล้ว**
+# (เขียนทับแล้ว md5 อาจไม่ตรงกับที่อัปไป = ผิด rule_of_tune ข้อ 2) จึงคุมด้วย env:
+#     FOLDS=2,3 python build_4pass.py
+FOLDS = [int(x) for x in os.environ.get("FOLDS", "0,1").split(",") if x.strip() != ""]
 
 # pass0 มี label auto ครบทั้ง 40 บ้าน (939 หน้า) แต่สโคปคุมงบเดิมของมะขามคือ 5 บ้าน
 # True = ใช้ทุกบ้าน (ข้อมูลฟรีที่ derive ไว้แล้ว แต่ +~775 แถว = ค่าเทรนเพิ่ม)
@@ -176,15 +182,63 @@ def bypass(split):
     return dict(Counter(r["pass"] for r in split))
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# [2026-08-31 ดึก] มะขามสั่ง: "อย่าเอา fold ของ t04 ไปใช้ เพราะ t04 ไม่มีระบบ tune
+# pass0 / 2.5 / 3" — ถูกต้องและพิสูจน์ได้จากผลที่สร้างด้วย fold ของ t04 จริง:
+#     fold1 val = pass1 204 · pass0 0 · pass2.4 0 · pass3 0
+#     fold2 val = pass1 204 · pass0 0 · pass2.4 9 · pass3 2
+#     fold3 val = pass1 204 · pass0 0 · pass2.4 9 · pass3 1
+# t04 แบ่ง 40 บ้านโดยไม่รู้ว่ามีแค่ **10 บ้าน** ที่มี pass0/2.4/3 (และ pass0 มีแค่ 5 บ้าน)
+# บ้านพิเศษเลยไปกองอยู่ฝั่ง train เกือบหมด → **วัดไม่ได้ว่าโมเดลเรียน pass0/pass3 ได้ไหม
+# ซึ่งเป็นสมมติฐานหลักของรอบนี้ทั้งรอบ**
+#
+# ตัวแบ่งใหม่: stratify ที่ระดับบ้าน ให้ทุก fold ได้ val ที่มีครบทุก pass
+#   - 5 บ้านที่มี pass0 → กระจาย fold ละ 1 (มีพอดี 5 fold)
+#   - 5 บ้านที่มี pass2.4+pass3 แต่ไม่มี pass0 → กระจาย fold ละ 1
+#   - 30 บ้านธรรมดา → fold ละ 6
+#   รวม val = 8 บ้าน/fold (4:1 เท่าเดิม) แต่ทุก fold มี pass0/2.4/3 ใน val จริง
+# deterministic ล้วน (เรียงชื่อ + วนตามลำดับ) ไม่ใช้ random — rebuild แล้วต้องได้เหมือนเดิม
+PASS1_SUBTASKS = {"gridline", "section", "plan_beam", "plan_slab", "plan_footing",
+                  "notes", "schedule"}
+N_FOLDS = 5
+
+
+def build_house_folds(pass024, all_houses):
+    """คืน {fold_index: set(บ้าน val)} — stratified ตาม pass ที่บ้านนั้นมี"""
+    has = {}
+    for r in pass024:
+        has.setdefault(bare(r["house"]), set()).add(r["pass"])
+    pass0_houses = sorted(h for h, s in has.items() if "pass0" in s)
+    other_rich = sorted(h for h, s in has.items() if "pass0" not in s)
+    ordinary = sorted(set(all_houses) - set(has))
+
+    val = {k: set() for k in range(N_FOLDS)}
+    for i, h in enumerate(pass0_houses):
+        val[i % N_FOLDS].add(h)
+    for i, h in enumerate(other_rich):
+        val[i % N_FOLDS].add(h)
+    for i, h in enumerate(ordinary):
+        val[i % N_FOLDS].add(h)
+    return val
+
+
 def main():
     problems = []
     pass024 = collect_pass024(problems)
     info = {}
 
+    # pool ของ pass1: union train+val ของ fold ใด ๆ ของ t04 = ครบ 40 บ้าน
+    # (ใช้ "แถว" ของ t04 ซึ่งเป็นรูป/prompt/GT ชุดเดียวกัน — แต่ **ไม่ใช้วิธีแบ่ง fold ของมัน**)
+    p1_pool = normalize_pass1(
+        read_jsonl(DATA_T04 / "train_fold0.jsonl") + read_jsonl(DATA_T04 / "val_fold0.jsonl"),
+        problems)
+    all_houses = {bare(r["house"]) for r in p1_pool}
+    fold_val_houses = build_house_folds(pass024, all_houses)
+
     for k in FOLDS:
-        val_houses_k = {bare(r["house"]) for r in read_jsonl(DATA_T04 / f"val_fold{k}.jsonl")}
-        p1_train = normalize_pass1(read_jsonl(DATA_T04 / f"train_fold{k}.jsonl"), problems)
-        p1_val = normalize_pass1(read_jsonl(DATA_T04 / f"val_fold{k}.jsonl"), problems)
+        val_houses_k = fold_val_houses[k]
+        p1_train = [r for r in p1_pool if bare(r["house"]) not in val_houses_k]
+        p1_val = [r for r in p1_pool if bare(r["house"]) in val_houses_k]
         p024_train = [r for r in pass024 if bare(r["house"]) not in val_houses_k]
         p024_val = [r for r in pass024 if bare(r["house"]) in val_houses_k]
 
