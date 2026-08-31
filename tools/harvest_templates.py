@@ -151,6 +151,38 @@ def repeated_icon_candidates(gray, min_rep=3):
     return cands
 
 
+def harvest_image(img_path, house, kind="footing"):
+    """เก็บ candidate จากหน้าเดียวที่ระบุเอง — สำหรับบ้านใหม่ที่ยัง**ไม่มี GT**
+
+    harvest() ปกติใช้ชื่อไฟล์ GT บอกว่าหน้าไหนคือผังฐานราก และใช้ `gt_n` เป็นเกณฑ์ว่า
+    bank ขาดจริงไหม บ้านที่เพิ่งนำเข้าจึงเข้าทางนั้นไม่ได้ → ระบุหน้าเอง แล้วรายงาน
+    จำนวนที่ bank ปัจจุบันจับได้ให้ดูแทน (ไม่มีเฉลยให้เทียบ = ต้องใช้ตาคนตัดสิน)
+    **ไม่ auto-promote เหมือนเดิม** — ลง staging อย่างเดียว"""
+    from pattern_recognition import COLUMN_THRESH
+    bank = load_templates().get(kind, [])
+    thresh = HARVEST_THRESH if kind == "footing" else COLUMN_THRESH
+    g = imread_thai(img_path)
+    hits = (match_bank(g, bank, thresh, scales=(1.0,)) if kind == "column"
+            else match_bank(g, bank, thresh))
+    STAGING.mkdir(parents=True, exist_ok=True)
+    tag = kind.capitalize()
+    saved = []
+    for gi, grp in enumerate(repeated_icon_candidates(g, min_rep=3)):
+        x, y, w, h = grp[0]
+        pad = 6
+        crop = g[max(y - pad, 0):y + h + pad, max(x - pad, 0):x + w + pad]
+        out = STAGING / f"cand_from{tag}Page__{house}__g{gi}_n{len(grp)}.png"
+        imwrite_thai(out, crop)
+        saved.append((out.name, len(grp), (w, h)))
+    print(f"{house} · {Path(img_path).name} · kind={kind}")
+    print(f"  bank ปัจจุบันจับได้ {len(hits)} จุด (ไม่มี GT ให้เทียบ — ใช้ตาคนตัดสิน)")
+    for name, n, wh in saved:
+        print(f"  → staging {name}  (ซ้ำ {n} จุด, {wh[0]}×{wh[1]}px)")
+    if not saved:
+        print("  → contour ไม่เจอไอคอนซ้ำเลย ต้องเปิดหน้าดูเอง")
+    return saved
+
+
 def harvest(houses_filter=None, kind="footing"):
     from pattern_recognition import COLUMN_THRESH
     tpls = load_templates()
@@ -271,7 +303,12 @@ def promote(names, kind="footing"):
         if not src:
             print(f"ไม่เจอ {n} ใน staging")
             continue
-        seq = len(list((HERE / "templates").glob(f"tpl_{kind}*.png"))) + 1
+        # เลขว่างตัวถัดไป ไม่ใช่ "จำนวนไฟล์+1" — คลังมีเลขขาด (ไม่มี 8/9/10 เพราะ retire ไป
+        # retired_dupes/) นับแล้ว +1 จึงชนของเดิมและ **ทับทิ้งเงียบๆ** (เจอจริง 2026-09-01:
+        # promote 2 ไฟล์ติดกันได้ tpl_footing15 ทั้งคู่ ทับ tpl_footing15 เดิมที่มีอยู่แล้ว)
+        seq = 1
+        while (HERE / "templates" / f"tpl_{kind}{seq}.png").exists():
+            seq += 1
         dst = HERE / "templates" / f"tpl_{kind}{seq}.png"
         shutil.move(str(src), str(dst))
         print(f"✅ {src.name} → {dst.name}")
@@ -336,8 +373,12 @@ if __name__ == "__main__":
                     help="ชนิด template ที่เก็บ/รีวิว/promote (คานไม่ใช้คลัง — ดู --measure-beam-gap)")
     ap.add_argument("--measure-beam-gap", action="store_true",
                     help="วัดระยะเส้นคู่คานจริงต่อบ้าน สำหรับตั้ง BEAM_GAPS")
+    ap.add_argument("--from-image", help="เก็บ candidate จากหน้านี้ตรงๆ (บ้านใหม่ที่ยังไม่มี GT)")
+    ap.add_argument("--house", help="ชื่อบ้านที่จะใช้ตั้งชื่อไฟล์ candidate (คู่กับ --from-image)")
     a = ap.parse_args()
-    if a.measure_beam_gap:
+    if a.from_image:
+        harvest_image(a.from_image, a.house or Path(a.from_image).parent.name, a.kind)
+    elif a.measure_beam_gap:
         measure_beam_gaps(a.houses)
     elif a.review:
         review(a.kind)
