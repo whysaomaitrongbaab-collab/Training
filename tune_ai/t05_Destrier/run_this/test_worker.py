@@ -207,3 +207,43 @@ assert len(posts) == 1 + worker.NET_TRIES, \
     f"ต่อไม่ติดต้องยิงซ้ำครบ (ยิงไป {len(posts)} ครั้ง)"
 
 print("OK — retry/ทนเน็ตสะดุด ผ่านทุกข้อ")
+
+
+# ── ครอปผิดโซนต้อง fallback เต็มหน้า ไม่ใช่ส่งครอปที่ CV ยืนยันแล้วว่าไม่มีของ (2026-09-01) ──
+# เจอจริง: pass0 สลับ top/bottom ของหน้าที่มี 2 view → organize.py ครอปตามที่สั่งอย่าง
+# ซื่อสัตย์ ได้ครอปที่ไม่มีฐานรากอยู่เลย ส่งให้โมเดลอ่านเป็น plan_footing จนตอบช้าผิดปกติ
+import json as _json
+import shutil as _shutil
+import tempfile as _tempfile
+
+_ct_root = Path(_tempfile.mkdtemp(prefix="purson_croptest_"))
+try:
+    _sub_dir = _ct_root / "pass2" / "plan_footing"
+    (_sub_dir / "images").mkdir(parents=True)
+    (_sub_dir / "cv").mkdir(parents=True)
+    # crop_for_task แค่อ่าน bytes ดิบ ไม่ decode ภาพ — เนื้อหาไฟล์ไม่สำคัญสำหรับเทสนี้
+    (_sub_dir / "images" / "page_1_view1.png").write_bytes(b"\x89PNG\r\n\x1a\nfake")
+    (_sub_dir / "manifest.json").write_text(_json.dumps({
+        "sources": [{"image": "images/page_1_view1.png", "png": "1", "cropped": True}]
+    }), encoding="utf-8")
+
+    # ครอปที่ตัดจริง (cropped:true) แต่ CV หาฐานราก/เสาไม่เจอเลย → สงสัยว่าผิดโซน → fallback
+    (_sub_dir / "cv" / "page_1_view1_cv.json").write_text(
+        _json.dumps({"counts": {"footing": 0, "column": 0, "beam": 0}}), encoding="utf-8")
+    crop, hint = worker.crop_for_task(_ct_root, "plan_footing", 1)
+    assert crop is None and hint is None, "ครอปที่ CV ยืนยันว่าไม่มีฐานราก/เสาเลยต้อง fallback"
+
+    # เจอของจริงแม้แค่ตัวเดียว → เชื่อครอป ใช้ตามปกติ
+    (_sub_dir / "cv" / "page_1_view1_cv.json").write_text(
+        _json.dumps({"counts": {"footing": 1, "column": 0, "beam": 0}}), encoding="utf-8")
+    crop, hint = worker.crop_for_task(_ct_root, "plan_footing", 1)
+    assert crop is not None, "เจอฐานรากอย่างน้อย 1 ตัวในครอปแล้วต้องเชื่อครอป ไม่ fallback"
+
+    # ไม่มี cv.json เลย (pass1.5 ล้ม/ข้าม) → เชื่อครอปไปก่อน (ไม่มีหลักฐานว่าผิดโซน)
+    (_sub_dir / "cv" / "page_1_view1_cv.json").unlink()
+    crop, hint = worker.crop_for_task(_ct_root, "plan_footing", 1)
+    assert crop is not None, "ไม่มีผล CV ให้เช็ค ต้องเชื่อครอปไปก่อน ไม่ใช่ fallback เดา"
+finally:
+    _shutil.rmtree(_ct_root, ignore_errors=True)
+
+print("OK — ครอปผิดโซน (CV ยืนยันว่าง) fallback เต็มหน้า ผ่านทุกข้อ")

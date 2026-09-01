@@ -382,6 +382,19 @@ def call_purson(image_bytes_list, prompt):
         return None, raw
 
 
+def call_purson_safe(image_bytes_list, prompt):
+    """เหมือน call_purson แต่ไม่โยน exception ออกไปทำลายทั้งงาน — คืน (None, เหตุผล) แทน
+
+    เจอจริง 1 ก.ย.: บ้าน 18 หน้า pass0 ครบ + pass2 เสร็จไปแล้ว 2 งาน แล้วหน้าฐานรากหน้าเดียว
+    ตอบเกิน 25 นาที (ReadTimeout) → **งานทั้งใบพัง** หายทั้ง 18+2 งานที่ทำไปแล้วทิ้งเปล่าๆ ทั้งที่
+    มันคือแค่ "หน้านี้อ่านไม่ทัน" ไม่ใช่ทั้งบ้านอ่านไม่ได้ — มะขามสั่งให้ข้ามหน้าที่พังแล้วทำหน้า
+    อื่นต่อแทน เหมือนที่ pass1/1.5 (local CPU) ทำอยู่แล้ว: ล้มได้ทีละจุด ไม่ล้มยกบ้าน"""
+    try:
+        return call_purson(image_bytes_list, prompt)
+    except Exception as e:
+        return None, f"ยิงโมเดลไม่สำเร็จ ({type(e).__name__}: {e})"
+
+
 # ── pass1/1.5/2.5 (local CPU, no GPU/network) ──────────────────────────────────
 def run_pass1_organize(house, classified, images):
     """pass1: ตัด view + จัด folder ผ่าน organize.py จริง (subprocess, ห้ามเขียนใหม่)
@@ -426,13 +439,49 @@ def run_cv_scan(workroot, pass25=False):
     return r.returncode == 0
 
 
+# subtask → คลาสที่ cv_scan.py ต้องเจออย่างน้อย 1 ตัวถึงจะเชื่อครอปนี้ (plan_slab
+# ไม่มีเทมเพลตแยกใน cv_scan — ไม่เช็ค ปล่อยผ่านเสมอ)
+CROP_TRUST_CLASSES = {"plan_footing": ("footing", "column"), "plan_beam": ("beam",)}
+
+
+def _was_actually_cropped(workroot, sub, page):
+    manifest_path = workroot / "pass2" / sub / "manifest.json"
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    matches = [e for e in manifest.get("sources", []) if e.get("png") == str(page)]
+    return len(matches) == 1 and bool(matches[0].get("cropped"))
+
+
 def crop_for_task(workroot, sub, page):
     """หา crop + hint ของ (page, sub) นี้จาก manifest ที่ organize.py เขียนไว้
     คืน (crop_bytes หรือ None, hint_text หรือ None) — None ทั้งคู่ = ให้ผู้เรียก fallback เต็มหน้า
-    (0 หรือ >1 crop ตรงกับหน้านี้ = ไม่ชัดเจน ไม่เดา ส่งเต็มหน้าแทน)"""
+    (0 หรือ >1 crop ตรงกับหน้านี้ = ไม่ชัดเจน ไม่เดา ส่งเต็มหน้าแทน)
+
+    เจอจริง 1 ก.ย.: pass0 ตอบ top/bottom ของหน้าที่มี 2 view สลับกัน (บ้านครอบครัวไทย
+    เป็นสุข๒ หน้า 12 — สั่ง top=plan_footing ทั้งที่ top จริงคือแปลนโครงหลังคา ฐานรากอยู่
+    bottom) organize.py ก็ครอปตามที่สั่งอย่างซื่อสัตย์ ได้ครอปที่ **ไม่มีฐานรากอยู่เลย
+    สักตัว** ส่งให้โมเดลอ่านเป็น plan_footing → โมเดลงมหาของที่ไม่มีจนตอบช้าผิดปกติ (ค้าง
+    จนครบเพดานเวลา) จุดตรวจนี้ใช้ pass1.5 (CV) เป็นตัวเช็คสุขภาพครอปก่อนส่ง — ถ้า CV
+    (ซึ่งเทมเพลตตรงไปตรงมา ไม่มีทางหลอน) หา element ของ subtask นี้ในครอปไม่เจอเลยสักตัว
+    แปลว่าครอปน่าจะผิดโซน ไม่เชื่อมัน fallback เต็มหน้าให้โมเดลหาเองแทนดีกว่าส่งครอปที่ผิดแน่ๆ"""
     img_path = _crop_image_path(workroot, sub, page)
     if img_path is None:
         return None, None
+    # เช็คสุขภาพเฉพาะกรณีตัดจริง (cropped:true) — หน้าที่มี view เดียวส่งเต็มหน้าตรงๆ
+    # (cropped:false) ไม่มี "โซนผิด" ให้พลาด, CV หา 0 ตัวได้เพราะแบบจริงไม่มีสัญลักษณ์
+    # แบบที่เทมเพลตรู้จัก ไม่ใช่สัญญาณว่าตัดผิดโซน — ไม่ควร fallback ทิ้งของจริงไป
+    classes = CROP_TRUST_CLASSES.get(sub)
+    if classes and _was_actually_cropped(workroot, sub, page):
+        cv_path = img_path.parent.parent / "cv" / f"{img_path.stem}_cv.json"
+        if cv_path.exists():
+            try:
+                counts = (json.loads(cv_path.read_text(encoding="utf-8")).get("counts") or {})
+            except Exception:
+                counts = None
+            if counts is not None and sum(counts.get(c, 0) for c in classes) == 0:
+                return None, None
     crop_bytes = img_path.read_bytes()
     hint_path = img_path.parent.parent / "cv" / f"{img_path.stem}_hint.txt"
     hint = hint_path.read_text(encoding="utf-8") if hint_path.exists() else None
@@ -582,9 +631,9 @@ def run_house_extract(job):
     meta["phase"] = 2
     classified = []
     for i, p in enumerate(pages, 1):
-        doc, raw = call_purson([images[p["page"]]], PASS0_PROMPT)
+        doc, raw = call_purson_safe([images[p["page"]]], PASS0_PROMPT)
         if doc is None:
-            warnings.append(f"pass0 หน้า {p['page']}: JSON เสีย — ข้ามหน้านี้")
+            warnings.append(f"pass0 หน้า {p['page']}: {raw or 'JSON เสีย'} — ข้ามหน้านี้")
         else:
             doc["_page"] = p["page"]
             classified.append(doc)
@@ -652,9 +701,9 @@ def run_house_extract(job):
         if prompt:
             set_progress(job_id, "pass2", 0, pass2_total, "อ่านผังกริด (ใช้อ้างอิงทุกหน้า)",
                          warnings=len(warnings), **meta)
-            doc, raw = call_purson([images[p] for p in gp], prompt)
+            doc, raw = call_purson_safe([images[p] for p in gp], prompt)
             if doc is None:
-                warnings.append("gridline: JSON เสีย — plan_* จะไม่มี GRID MASTER แนบ")
+                warnings.append(f"gridline: {raw or 'JSON เสีย'} — plan_* จะไม่มี GRID MASTER แนบ")
                 files.append({"name": "grid_master.raw.txt", "json": {"raw_text": raw}})
             else:
                 doc.setdefault("pattern", SUBTASK_PATTERN["gridline"])
@@ -683,10 +732,10 @@ def run_house_extract(job):
                 img_bytes = crop_bytes
             if hint:
                 prompt += "\n\n" + hint
-        doc, raw = call_purson([img_bytes], prompt)
+        doc, raw = call_purson_safe([img_bytes], prompt)
         name = f"page_{page:02d}_{sub}"
         if doc is None:
-            warnings.append(f"{name}: JSON เสีย — เก็บ raw text ไว้ ไม่เดาค่า")
+            warnings.append(f"{name}: {raw or 'JSON เสีย'} — ข้ามหน้านี้ ไปหน้าถัดไปต่อ ไม่เดาค่า")
             files.append({"name": f"{name}.raw.txt", "json": {"raw_text": raw}})
         else:
             doc = sanitize_elements(doc)

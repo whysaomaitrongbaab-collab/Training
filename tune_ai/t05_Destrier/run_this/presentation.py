@@ -151,8 +151,14 @@ def cmd_up(a):
     upload_and_start_server(st, m)
     start_tunnel(st)
     wait_healthy()
-    print("\n✅ พร้อมแล้ว — เปิดอีก terminal แล้วรัน: python worker.py"
+    print("   เปิดอีก terminal แล้วรัน: python worker.py"
           "\n   (จบวันอย่าลืม: python presentation.py down — ไม่งั้นเผาเงินทั้งคืน)")
+
+
+def print_ready():
+    """บรรทัด READY เด่นๆ แยกจากข้อความอื่น — ให้มะขามเหลือบตาดู terminal แล้วรู้ทันที
+    ไม่ต้องอ่านข้อความไทยทั้งหมด (เจอจริง: ข้อความยาวรวมกับ log อื่นแล้วมองไม่ทัน)"""
+    print("\n" + "=" * 40 + "\nREADY\n" + "=" * 40)
 
 
 def wait_running(iid, timeout_s=15 * 60):
@@ -197,9 +203,23 @@ def upload_and_start_server(st, m):
               #  ยังวนอยู่ 17 นาทีจนต้องเข้าไป kill เอง) · วงเล็บทำให้ pattern ที่
               # pgrep ใช้ ไม่ตรงกับสตริงที่ปรากฏใน command line ของ bash ตัวนี้
               f"while pgrep -f '[p]ip install' > /dev/null; do sleep 10; done && "
-              f"nohup {VENV_PY} serve_purson.py --adapter {adapter} --port {LOCAL_PORT}{px} "
-              f"> /workspace/purson.log 2>&1 &")
-    r = sh(["ssh", *ssh_base(st), remote])
+              # nohup + `< /dev/null` + `2>&1 >file` ปิด fd ครบ 3 ช่อง แต่**ไม่พอ** — ตัว
+              # process ยังอยู่ session/process-group เดียวกับ shell ที่ ssh สั่งงาน พอ ssh
+              # ปิด pty ของ session นั้น kernel ยังไม่ยอมปิด channel จนกว่าทุก process ใน
+              # session จะตายหมด (ลองแล้ว 1 ก.ย. รอบแรก: ใส่ `< /dev/null` เฉยๆ ยังค้างซ้ำ
+              # อีกรอบ) `setsid` ตัดตัวเองออกเป็น session ใหม่ทั้งหมด ไม่ผูกกับ pty ของ ssh
+              # เลย — เป็นทางแก้มาตรฐานของปัญหา "ssh ค้างรอ background process" นี้
+              f"setsid nohup {VENV_PY} serve_purson.py --adapter {adapter} --port {LOCAL_PORT}{px} "
+              f"> /workspace/purson.log 2>&1 < /dev/null &")
+    # timeout กันไว้อีกชั้น เผื่อ setsid ไม่พอในบางภาพเครื่องเช่า — 60s พอเหลือสำหรับแค่
+    # สั่งงาน (ตัว while pip-wait ทำงานฝั่ง remote shell ไปแล้วก่อนหน้านี้จะไม่ถูกนับ เพราะ
+    # ssh คำสั่งนี้แยกจากคำสั่งเช็ค pgrep ด้านบน — ที่จริง while อยู่ในคำสั่งเดียวกัน ดังนั้น
+    # ต้องให้เวลาพอสำหรับกรณี pip ยังไม่เสร็จตอนเรียกด้วย — ตั้งกว้างไว้ 20 นาที)
+    try:
+        r = sh(["ssh", *ssh_base(st), remote], timeout=20 * 60)
+    except subprocess.TimeoutExpired:
+        sys.exit("สั่งรันเซิร์ฟเวอร์ค้างเกิน 20 นาที (setsid ควรกันไม่ให้เกิดแล้ว — ถ้าเจออีก "
+                 "แจ้งมะขาม) ลอง: python presentation.py tunnel (ถ้า server รันจริงอยู่แล้วจะต่อได้เลย)")
     if r.returncode != 0:
         sys.exit(f"สั่งรันเซิร์ฟเวอร์ไม่สำเร็จ: {r.stderr.strip()}")
     print(f"ส่ง serve_purson.py ขึ้นแล้ว + สั่งรัน (adapter {adapter})")
@@ -238,6 +258,7 @@ def wait_healthy(timeout_s=60 * 60):
     while time.time() - t0 < timeout_s:
         if healthy():
             print(f"✅ vLLM ตอบแล้ว ({int((time.time() - t0) / 60)} นาที)")
+            print_ready()
             return
         time.sleep(30)
         print(f"  ...ยังไม่พร้อม ({int((time.time() - t0) / 60)} นาที) "
@@ -254,7 +275,11 @@ def cmd_status(_a):
         print(f"instance {st['instance_id']}: "
               f"{ins[0].get('actual_status') if ins else 'ไม่พบ (โดน destroy แล้ว?)'} "
               f"@ ${st.get('price_per_hr', '?')}/ชม. (model {st.get('model')})")
-        print(f"tunnel/vLLM: {'✅ ตอบปกติ' if healthy() else '❌ ไม่ตอบ — ลอง: python presentation.py tunnel'}")
+        if healthy():
+            print("tunnel/vLLM: ✅ ตอบปกติ")
+            print_ready()
+        else:
+            print("tunnel/vLLM: ❌ ไม่ตอบ — ลอง: python presentation.py tunnel")
     user = vastai_json(["show", "user"])
     print(f"เครดิตคงเหลือ: ${user.get('credit', '?')}")
 
