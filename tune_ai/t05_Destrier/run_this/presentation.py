@@ -207,8 +207,13 @@ def upload_and_start_server(st, m):
 
 def start_tunnel(st):
     # -N ไม่เปิด shell, ทิ้ง process ค้างไว้เป็นตัว tunnel · ปิดใน down
+    # ServerAliveCountMax=6 → ยอมให้เงียบได้ 30s × 6 = 3 นาที ก่อนตัดสินว่าตาย
+    # (ค่า default = 3 ครั้ง = 1.5 นาที · เน็ตบ้านกระตุกทีนึงเกินนั้นได้ง่าย ๆ)
+    # ExitOnForwardFailure=yes → ถ้าจอง port ไม่ได้ให้ตายดัง ๆ ตอนนี้เลย ดีกว่าค้างเป็น
+    # tunnel ที่ไม่ได้ forward อะไรจริงแล้ว worker มาเจอ connection refused ทีหลัง
     cmd = ["ssh", "-N", "-L", f"{LOCAL_PORT}:localhost:{LOCAL_PORT}",
-           *ssh_base(st), "-o", "ServerAliveInterval=30"]
+           *ssh_base(st), "-o", "ServerAliveInterval=30",
+           "-o", "ServerAliveCountMax=6", "-o", "ExitOnForwardFailure=yes"]
     print(f"$ {' '.join(cmd)}  (background)")
     p = subprocess.Popen(cmd)
     st["tunnel_pid"] = p.pid

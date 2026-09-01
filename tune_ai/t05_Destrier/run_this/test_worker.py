@@ -148,3 +148,62 @@ else:
         pass
 
     print("OK — pass1/1.5/2.5 wiring (organize.py + cv_scan.py จริง) ผ่านทุกข้อ")
+
+
+# ── ทนเน็ตสะดุด (เพิ่ม 2026-09-01) ────────────────────────────────────────────
+# งานจริงยาว 75-80 นาที คุย Supabase ~40 ครั้ง — เน็ตกระตุกครั้งเดียวต้องไม่ทิ้งงานทั้งใบ
+_slept = []
+worker.time.sleep = lambda s: _slept.append(s)   # ไม่ต้องรอจริงตอนเทส
+
+calls = []
+assert worker._retry(lambda: (calls.append(1), "ok")[1], "ทดสอบ") == "ok"
+assert len(calls) == 1 and not _slept, "สำเร็จรอบแรกต้องไม่ retry และไม่ sleep"
+
+calls.clear(); _slept.clear()
+def flaky():
+    calls.append(1)
+    if len(calls) < 3:
+        raise ConnectionError("เน็ตหลุด")
+    return "ok"
+assert worker._retry(flaky, "ทดสอบ") == "ok"
+assert len(calls) == 3, f"ต้องยิงซ้ำจนสำเร็จ (ได้ {len(calls)} ครั้ง)"
+assert _slept == [5, 15], f"ต้องถอยหลังตาม NET_BACKOFF_S (ได้ {_slept})"
+
+calls.clear(); _slept.clear()
+def always_dead():
+    calls.append(1)
+    raise ConnectionError(f"ตายรอบที่ {len(calls)}")
+try:
+    worker._retry(always_dead, "ทดสอบ")
+    raise AssertionError("พังครบทุกรอบต้อง raise ไม่ใช่คืน None เงียบๆ")
+except ConnectionError as e:
+    assert "ตายรอบที่ 5" in str(e), f"ต้องโยน exception ตัวล่าสุด (ได้ {e})"
+assert len(calls) == worker.NET_TRIES, f"ต้องลอง {worker.NET_TRIES} ครั้ง (ได้ {len(calls)})"
+
+# call_purson: ต่อไม่ติด = ยิงซ้ำได้ · แต่ ReadTimeout = โมเดลยังคิดอยู่ ห้ามยิงซ้ำ
+# (ยิงซ้ำ = GPU ทำงานสองงานพร้อมกัน ช้าลงกว่าเดิม แล้วก็ timeout ซ้ำอยู่ดี)
+posts = []
+def post_readtimeout(*a, **k):
+    posts.append(1)
+    raise worker.requests.exceptions.ReadTimeout("อ่านไม่ทัน")
+worker.requests.post = post_readtimeout
+try:
+    worker.call_purson([b"x"], "prompt")
+    raise AssertionError("ReadTimeout ต้องทะลุออกมา ไม่ใช่ถูกกลืน")
+except worker.requests.exceptions.ReadTimeout:
+    pass
+assert len(posts) == 1, f"ReadTimeout ห้ามยิงซ้ำ (ยิงไป {len(posts)} ครั้ง)"
+
+posts.clear(); _slept.clear()
+def post_connfail(*a, **k):
+    posts.append(1)
+    raise worker.requests.exceptions.ConnectionError("tunnel ตาย")
+worker.requests.post = post_connfail
+try:
+    worker.call_purson([b"x"], "prompt")
+except worker.requests.exceptions.ConnectionError:
+    pass
+assert len(posts) == 1 + worker.NET_TRIES, \
+    f"ต่อไม่ติดต้องยิงซ้ำครบ (ยิงไป {len(posts)} ครั้ง)"
+
+print("OK — retry/ทนเน็ตสะดุด ผ่านทุกข้อ")

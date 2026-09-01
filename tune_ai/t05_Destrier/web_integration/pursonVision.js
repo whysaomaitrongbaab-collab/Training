@@ -14,6 +14,8 @@
 
 const BUCKET = 'purson-jobs';
 const POLL_MS = 5000;
+// 180 × 5 วิ = ทนเน็ตหลุดได้ ~15 นาทีก่อนจะยอมแพ้ (เพดานจริงยังคุมด้วย timeoutMs 4 ชม.)
+const MAX_POLL_FAILS = 180;
 
 /**
  * Submit a full-house extraction job.
@@ -66,8 +68,22 @@ export async function purson_getJob(jobId) {
  */
 export async function purson_waitForJob(jobId, { onProgress, timeoutMs = 4 * 3600 * 1000 } = {}) {
   const deadline = Date.now() + timeoutMs;
+  let netFails = 0;
   for (;;) {
-    const job = await purson_getJob(jobId);
+    let job;
+    try {
+      job = await purson_getJob(jobId);
+      netFails = 0;
+    } catch (e) {
+      // เน็ตสะดุด ≠ งานพัง — worker ยังทำงานต่ออยู่ฝั่งโน้น ถ้าโยน error ทันที
+      // ผู้ใช้จะเห็น "ล้มเหลว" ทั้งที่อีกฝั่งกำลังวิ่งอยู่ และไม่มีทางกลับเข้าไปดูได้อีก
+      // ไม่เรียก onProgress ตอนพลาด — ให้ UI ค้างค่าล่าสุดไว้ ดีกว่าไปกวน ETA ให้เพี้ยน
+      if (++netFails > MAX_POLL_FAILS) {
+        throw new Error(`ติดต่อ Supabase ไม่ได้ ${netFails} ครั้งติดกัน: ${e.message}`);
+      }
+      await new Promise((r) => setTimeout(r, POLL_MS));
+      continue;
+    }
     if (onProgress && job.progress) onProgress(job.progress);
     if (job.status === 'done') return job.result;
     if (job.status === 'failed') throw new Error(job.error_message || 'งาน Purson ล้มเหลว');

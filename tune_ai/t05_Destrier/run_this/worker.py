@@ -216,6 +216,30 @@ def sanitize_elements(doc):
     return doc
 
 
+# ── ทนเน็ตสะดุด ───────────────────────────────────────────────────────────────
+# งานจริงยาว 75-80 นาที และคุย Supabase ~40 ครั้งระหว่างทาง (set_progress ทุกหน้า)
+# ถ้าเน็ตกระตุก 1 ครั้งแล้วทิ้งงานทั้งใบ = จ่ายค่า GPU ไปเปล่า ๆ 40 นาที
+NET_TRIES = 5
+NET_BACKOFF_S = (5, 15, 30, 60, 60)
+
+
+def _retry(fn, what, tries=NET_TRIES):
+    """ยิงซ้ำแบบถอยหลังเมื่อเน็ตสะดุด — ใช้กับ call ที่ยิงซ้ำแล้วผลเหมือนเดิม (GET/PATCH) เท่านั้น"""
+    last = None
+    for i in range(tries):
+        try:
+            return fn()
+        except Exception as e:
+            last = e
+            if i == tries - 1:
+                break
+            wait = NET_BACKOFF_S[min(i, len(NET_BACKOFF_S) - 1)]
+            print(f"  ⚠️ {what} ไม่สำเร็จ ({type(e).__name__}) — รอ {wait}s ลองใหม่ "
+                  f"({i + 1}/{tries})", flush=True)
+            time.sleep(wait)
+    raise last
+
+
 # ── Supabase helpers ──────────────────────────────────────────────────────────
 def claim_next_job():
     r = requests.get(
@@ -249,9 +273,11 @@ JOB_T0 = None
 
 
 def update_job(job_id, patch):
-    r = requests.patch(f"{REST}/purson_jobs", headers=SB_HEADERS,
-                       params={"id": f"eq.{job_id}"}, json=patch, timeout=60)
-    r.raise_for_status()
+    def once():
+        r = requests.patch(f"{REST}/purson_jobs", headers=SB_HEADERS,
+                           params={"id": f"eq.{job_id}"}, json=patch, timeout=60)
+        r.raise_for_status()
+    _retry(once, f"เขียนสถานะงาน {job_id}")
 
 
 def set_progress(job_id, step, done, total, note="", **extra):
@@ -293,10 +319,12 @@ def requeue_stale():
 
 
 def download_image(path):
-    r = requests.get(f"{STORAGE}/object/{requests.utils.quote('purson-jobs/' + path)}",
-                     headers=SB_HEADERS, timeout=120)
-    r.raise_for_status()
-    return r.content
+    def once():
+        r = requests.get(f"{STORAGE}/object/{requests.utils.quote('purson-jobs/' + path)}",
+                         headers=SB_HEADERS, timeout=120)
+        r.raise_for_status()
+        return r.content
+    return _retry(once, f"โหลดภาพ {path}")
 
 
 def now_iso():
@@ -316,20 +344,37 @@ def call_purson(image_bytes_list, prompt):
     headers = {"Content-Type": "application/json"}
     if CFG.get("PURSON_GPU_KEY"):
         headers["Authorization"] = f"Bearer {CFG['PURSON_GPU_KEY']}"
-    r = requests.post(
-        f"{CFG['PURSON_GPU_URL']}/v1/chat/completions",
-        headers=headers,
-        json={
-            "model": CFG["PURSON_MODEL"],
-            "messages": [{"role": "user", "content": content}],
-            "max_tokens": CFG["MAX_NEW_TOKENS"],
-            "temperature": 0,
-            "repetition_penalty": 1.15,   # ค่าเดียวกับ infer_house_t03.py
-            "response_format": {"type": "json_object"},
-        },
-        timeout=CFG["PAGE_TIMEOUT_S"],
-    )
-    r.raise_for_status()
+
+    def once():
+        r = requests.post(
+            f"{CFG['PURSON_GPU_URL']}/v1/chat/completions",
+            headers=headers,
+            json={
+                "model": CFG["PURSON_MODEL"],
+                "messages": [{"role": "user", "content": content}],
+                "max_tokens": CFG["MAX_NEW_TOKENS"],
+                # ⚠️ ห้ามเป็น greedy (temperature 0) — วัดจริงแล้วโมเดลหลุดพ่นภาษาจีน
+                # 18 นาทีเต็ม token, recall 0% · ค่านี้คือค่าที่ Qwen แนะนำและวัดผ่านจริง
+                # serve_purson.py บังคับค่านี้ฝั่ง server อยู่แล้ว แต่ส่งให้ตรงกันไว้ด้วย
+                # เผื่อวันหนึ่งสลับไปใช้ vLLM ซึ่ง**เชื่อค่าที่ client ส่งมา**
+                "temperature": 0.7,
+                "top_p": 0.8,
+                "top_k": 20,
+                "repetition_penalty": 1.15,   # ค่าเดียวกับ infer_house_t03.py
+                "response_format": {"type": "json_object"},
+            },
+            timeout=CFG["PAGE_TIMEOUT_S"],
+        )
+        r.raise_for_status()
+        return r
+    try:
+        r = once()
+    except requests.exceptions.ReadTimeout:
+        # อ่านไม่ทันเวลา = โมเดลยังคิดอยู่จริง ๆ ยิงซ้ำมีแต่ทำให้ GPU หนักกว่าเดิม
+        raise
+    except Exception:
+        # ต่อไม่ติด/5xx = tunnel สะดุดหรือ server เพิ่งรีสตาร์ท — รอแล้วยิงใหม่ได้
+        r = _retry(once, "ยิงโมเดล")
     raw = r.json()["choices"][0]["message"]["content"] or ""
     try:
         return json.loads(strip_fence(raw)), raw
@@ -743,13 +788,28 @@ def main():
         try:
             result = (run_house_extract if job["job_type"] == "house_extract"
                       else run_single_call)(job)
+        except Exception as e:
+            traceback.print_exc()
+            # เขียนสถานะ "ล้มเหลว" เป็น network call เหมือนกัน — ถ้าเน็ตคือสาเหตุที่งานพัง
+            # call นี้ก็พังตามไปด้วย ถ้าไม่กันไว้ exception จะทะลุออกนอก while แล้ว
+            # **worker ทั้งตัวตาย** ปล่อยงานค้าง processing โดยไม่มีใครทำต่อ
+            try:
+                update_job(job["id"], {"status": "failed",
+                                       "error_message": f"{type(e).__name__}: {e}"})
+                print(f"งาน {job['id']} ล้มเหลว: {e}")
+            except Exception as e2:
+                print(f"งาน {job['id']} ล้มเหลว ({e}) และรายงานกลับไม่ได้ ({e2}) — "
+                      f"ปล่อยค้าง processing ให้ requeue_stale เก็บไปทำใหม่", flush=True)
+            continue
+        # แยกออกมานอก try เดิม: ถ้าเขียน "done" ไม่สำเร็จ ห้ามตกไปทาง except แล้ว
+        # ประทับว่า failed ทั้งที่ผลออกมาครบแล้ว (ทิ้งงาน 40 นาทีทิ้งเปล่า)
+        try:
             update_job(job["id"], {"status": "done", "result": result})
             print(f"งาน {job['id']} เสร็จ")
         except Exception as e:
-            traceback.print_exc()
-            update_job(job["id"], {"status": "failed",
-                                   "error_message": f"{type(e).__name__}: {e}"})
-            print(f"งาน {job['id']} ล้มเหลว: {e}")
+            print(f"⚠️ งาน {job['id']} ทำเสร็จแล้วแต่เขียนผลกลับไม่ได้: {e}\n"
+                  f"   งานจะค้างสถานะ processing → requeue_stale จะเก็บไปทำใหม่รอบหน้า",
+                  flush=True)
 
 
 if __name__ == "__main__":
