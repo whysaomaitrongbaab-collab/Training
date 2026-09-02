@@ -247,3 +247,41 @@ finally:
     _shutil.rmtree(_ct_root, ignore_errors=True)
 
 print("OK — ครอปผิดโซน (CV ยืนยันว่าง) fallback เต็มหน้า ผ่านทุกข้อ")
+
+
+# ── checkpoint/resume: บันทึกผลทุก pass ระหว่างทาง + resume ไม่เริ่มจาก 0 (2026-09-02, มะขามสั่ง) ──
+_patch_calls = []
+def _patch_capture(url, headers=None, params=None, json=None, timeout=None):
+    _patch_calls.append({"url": url, "params": params, "json": json})
+    class R:
+        status_code = 200
+        def raise_for_status(self): pass
+        def json(self): return [{}]
+    return R()
+worker.requests.patch = _patch_capture
+
+worker.save_checkpoint("job-abc", [{"name": "pass0.json", "json": {"pages": []}}], ["w1"], {"pass0_s": 1.2})
+assert len(_patch_calls) == 1, "save_checkpoint ต้องเขียนครั้งเดียวต่อการเรียกหนึ่งครั้ง"
+_call = _patch_calls[0]
+assert _call["params"]["id"] == "eq.job-abc"
+assert _call["json"]["result"]["files"][0]["name"] == "pass0.json"
+assert _call["json"]["result"]["warnings"] == ["w1"]
+assert _call["json"]["result"]["timings"] == {"pass0_s": 1.2}
+assert "status" not in _call["json"], \
+    "save_checkpoint ต้องไม่แตะ status — งานยัง processing อยู่ระหว่าง checkpoint"
+
+# claim_next_job ต้องดึง result ติดมาด้วย ไม่งั้น resume หาของเดิมไม่เจอเงียบๆ
+_get_calls = []
+def _get_capture(url, headers=None, params=None, timeout=None):
+    _get_calls.append(params)
+    class R:
+        status_code = 200
+        def raise_for_status(self): pass
+        def json(self): return []
+    return R()
+worker.requests.get = _get_capture
+worker.claim_next_job()
+assert "result" in _get_calls[0]["select"].split(","), \
+    "claim_next_job ต้อง select result ด้วย ไม่งั้น resume ในกฎ run_house_extract หาของเดิมไม่เจอ"
+
+print("OK — checkpoint บันทึกถูกก้อน + claim_next_job ดึง result มาด้วย ผ่านทุกข้อ")

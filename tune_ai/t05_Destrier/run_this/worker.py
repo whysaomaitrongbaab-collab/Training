@@ -246,7 +246,9 @@ def claim_next_job():
         f"{REST}/purson_jobs",
         headers=SB_HEADERS,
         params={"status": "eq.pending", "order": "created_at.asc", "limit": 1,
-                "select": "id,job_type,payload,attempts"},
+                # "result" ต้องดึงมาด้วย — checkpoint รอบก่อน (ถ้ามี) อยู่ในนี้ ใช้ resume
+                # ต่อแทนเริ่มจาก 0 (ดู run_house_extract's resume block)
+                "select": "id,job_type,payload,attempts,result"},
         timeout=30,
     )
     r.raise_for_status()
@@ -292,6 +294,19 @@ def set_progress(job_id, step, done, total, note="", **extra):
         p["elapsed_s"] = round(time.time() - JOB_T0, 1)
     update_job(job_id, {"progress": p})
     print(f"  [{step}] {done}/{total} {note}", flush=True)
+
+
+def save_checkpoint(job_id, files, warnings, timings):
+    """เขียน `result` ทับทั้งก้อนระหว่างงานยังไม่จบ (status ยังเป็น processing เหมือนเดิม) —
+    2026-09-02 มะขามสั่ง: เก็บผลทุก pass ไว้ระหว่างทาง ไม่ใช่รอจบงานทั้งใบค่อยเขียนทีเดียว
+    เหตุผล 2 ข้อ: (1) เข้าไปดูความคืบหน้าจริงได้ก่อนงานจบ ไม่ใช่แค่ progress bar (2) ถ้างานตาย
+    กลางทาง (crash/timeout/ปิดเครื่อง) — requeue_stale() ดีดกลับเป็น pending แล้ว worker ตัวไหน
+    ก็ตามที่คว้าไปทำต่อจะเห็น result เดิมนี้ผ่าน claim_next_job() แล้ว resume ต่อได้ (ดู resume
+    block ต้น run_house_extract) ไม่ต้องเริ่ม pass0 ใหม่ทั้งหมด — ล้มได้ทีละจุดเหมือน pass1.5/2.5
+    เขียนบ่อยแค่ไหนไม่ใช่ปัญหา (jsonb ก้อนเดียว ไม่มี history ให้บวมเหมือน progress ที่มี trigger
+    touch updated_at ตัวเดียวกัน) — ยอมเขียนถี่กว่าจำเป็นดีกว่าเขียนน้อยไปแล้วข้อมูลหาย
+    (update_job เองมี _retry อยู่แล้ว ไม่ต้องห่อซ้ำ)"""
+    update_job(job_id, {"result": {"files": files, "warnings": warnings, "timings": timings}})
 
 
 def requeue_stale():
@@ -619,28 +634,44 @@ def run_house_extract(job):
     warnings, files, timings = [], [], {}
     meta = {"phase": 1, "phase_total": 3, "pages": len(pages)}
 
-    # ดาวน์โหลดภาพทุกหน้า
+    # resume — checkpoint รอบก่อน (ถ้ามี งานนี้เคยตายกลางทางแล้วถูก requeue_stale() ดีดกลับมา
+    # pending) เก็บ files/warnings/timings ที่ทำสำเร็จไปแล้วไว้ก่อน แต่ละ pass ด้านล่างเช็คเอง
+    # ว่ามีของเดิมให้ใช้ต่อไหม ก่อนจะยิงโมเดลซ้ำ — ล้มได้ทีละจุด ไม่เริ่มใหม่ทั้งบ้าน
+    prev = job.get("result") or {}
+    prev_by_name = {f["name"]: f for f in (prev.get("files") or [])}
+    if prev_by_name:
+        warnings.extend(prev.get("warnings") or [])
+        timings.update(prev.get("timings") or {})
+
+    # ดาวน์โหลดภาพทุกหน้า (เร็ว ไม่คุ้มเก็บ checkpoint แยก — โหลดใหม่ทุกรอบเรียบง่ายกว่า)
     set_progress(job_id, "download", 0, len(pages), **meta)
     images = {}  # page number -> bytes
     for i, p in enumerate(pages, 1):
         images[p["page"]] = download_image(p["path"])
         set_progress(job_id, "download", i, len(pages), **meta)
 
-    # pass0 — จำแนกทีละหน้า
+    # pass0 — จำแนกทีละหน้า (resume: ถ้า checkpoint มี pass0.json ครบแล้ว ใช้ของเดิม ไม่ยิงซ้ำ)
     t0 = time.time()
     meta["phase"] = 2
-    classified = []
-    for i, p in enumerate(pages, 1):
-        doc, raw = call_purson_safe([images[p["page"]]], PASS0_PROMPT)
-        if doc is None:
-            warnings.append(f"pass0 หน้า {p['page']}: {raw or 'JSON เสีย'} — ข้ามหน้านี้")
-        else:
-            doc["_page"] = p["page"]
-            classified.append(doc)
-        set_progress(job_id, "pass0", i, len(pages),
-                     note=f"หน้า {p['page']}", warnings=len(warnings), **meta)
+    if "pass0.json" in prev_by_name:
+        classified = prev_by_name["pass0.json"]["json"]["pages"]
+        files.append(prev_by_name["pass0.json"])
+        set_progress(job_id, "pass0", len(pages), len(pages),
+                     note="resume จาก checkpoint เดิม", warnings=len(warnings), **meta)
+    else:
+        classified = []
+        for i, p in enumerate(pages, 1):
+            doc, raw = call_purson_safe([images[p["page"]]], PASS0_PROMPT)
+            if doc is None:
+                warnings.append(f"pass0 หน้า {p['page']}: {raw or 'JSON เสีย'} — ข้ามหน้านี้")
+            else:
+                doc["_page"] = p["page"]
+                classified.append(doc)
+            set_progress(job_id, "pass0", i, len(pages),
+                         note=f"หน้า {p['page']}", warnings=len(warnings), **meta)
+        files.append({"name": "pass0.json", "json": {"pages": classified}})
     timings["pass0_s"] = round(time.time() - t0, 1)
-    files.append({"name": "pass0.json", "json": {"pages": classified}})
+    save_checkpoint(job_id, files, warnings, timings)
 
     # pass1 + pass1.5 — local CPU, ล้มได้โดยไม่ล้มทั้งงาน (fallback = เต็มหน้า ไม่มี hint)
     workroot = None
@@ -663,6 +694,7 @@ def run_house_extract(job):
     except Exception as e:
         warnings.append(f"pass1/1.5 ล้ม ({type(e).__name__}: {e}) — ส่งเต็มหน้าแทน")
         workroot = None
+    save_checkpoint(job_id, files, warnings, timings)
 
     # วางแผนงาน pass2: (page, subtask) ไม่ซ้ำ + หน้าที่ติดธง gridline
     grid_pages, tasks = [], []
@@ -695,7 +727,19 @@ def run_house_extract(job):
     # ทำให้แถบไม่มีวันถึง 100% เมื่อมีหน้ากริด (ไม่เคยเห็นเพราะงานทดสอบไม่มีหน้ากริด)
     grid_step = 1 if grid_pages else 0
     pass2_total = len(tasks) + grid_step
-    if grid_pages:
+    if "grid_master.json" in prev_by_name:
+        # resume — gridline ตอบสำเร็จไปแล้วรอบก่อน ไม่ยิงซ้ำ
+        doc = prev_by_name["grid_master.json"]["json"]
+        files.append(prev_by_name["grid_master.json"])
+        grid = doc.get("grid")
+        if isinstance(grid, dict):
+            grid_master = grid
+            slim = {"grid": {k: grid.get(k) for k in ("x_lines", "y_lines") if k in grid}}
+            gm_text = ("\n\nGRID MASTER (resolved axes for this building)\n"
+                       + json.dumps(slim, ensure_ascii=False))
+        set_progress(job_id, "pass2", 0, pass2_total, "อ่านผังกริด (resume จาก checkpoint เดิม)",
+                     warnings=len(warnings), **meta)
+    elif grid_pages:
         gp = grid_pages[:4]  # เพดานเดียวกับตอนเทรน
         prompt = subtask_prompt("gridline")
         if prompt:
@@ -714,6 +758,7 @@ def run_house_extract(job):
                     slim = {"grid": {k: grid.get(k) for k in ("x_lines", "y_lines") if k in grid}}
                     gm_text = ("\n\nGRID MASTER (resolved axes for this building)\n"
                                + json.dumps(slim, ensure_ascii=False))
+            save_checkpoint(job_id, files, warnings, timings)
     else:
         warnings.append("pass0 ไม่พบหน้าไหนติดธง gridline — plan_* ไม่มี GRID MASTER แนบ")
 
@@ -722,6 +767,20 @@ def run_house_extract(job):
     plan_docs = []   # [(sub, page, doc)] — pass3 กลับมาเติมผลวัดทีหลัง (dict ตัวเดียวกับใน
                      # files[] เพราะเป็น reference — แก้ตรงนี้ = ผลที่ส่งกลับเว็บเปลี่ยนด้วย)
     for i, (page, sub) in enumerate(tasks, 1):
+        name = f"page_{page:02d}_{sub}"
+        if f"{name}.json" in prev_by_name:
+            # resume — หน้านี้ตอบสำเร็จไปแล้วรอบก่อน ไม่ยิงซ้ำ (เดาไม่ได้ว่ารอบใหม่จะตอบ
+            # เหมือนเดิม ของเดิมที่สำเร็จแล้วดีกว่า)
+            doc = prev_by_name[f"{name}.json"]["json"]
+            files.append(prev_by_name[f"{name}.json"])
+            if workroot and sub in PLAN_SUBTASKS:
+                plan_docs.append((sub, page, doc))
+            els = doc.get("elements")
+            n_elements += len(els) if isinstance(els, list) else 0
+            set_progress(job_id, "pass2", i + grid_step, pass2_total,
+                         note=f"หน้า {page} · {SUBTASK_TH.get(sub, sub)} (resume)",
+                         elements=n_elements, warnings=len(warnings), **meta)
+            continue
         prompt = subtask_prompt(sub)
         if sub.startswith("plan_") and gm_text:
             prompt += gm_text
@@ -733,7 +792,6 @@ def run_house_extract(job):
             if hint:
                 prompt += "\n\n" + hint
         doc, raw = call_purson_safe([img_bytes], prompt)
-        name = f"page_{page:02d}_{sub}"
         if doc is None:
             warnings.append(f"{name}: {raw or 'JSON เสีย'} — ข้ามหน้านี้ ไปหน้าถัดไปต่อ ไม่เดาค่า")
             files.append({"name": f"{name}.raw.txt", "json": {"raw_text": raw}})
@@ -749,6 +807,9 @@ def run_house_extract(job):
         set_progress(job_id, "pass2", i + grid_step, pass2_total,
                      note=f"หน้า {page} · {SUBTASK_TH.get(sub, sub)}",
                      elements=n_elements, warnings=len(warnings), **meta)
+        # checkpoint ทุกหน้า — จุดนี้แหละที่ช้าที่สุด/พังบ่อยที่สุด อยากได้ resume ตรงนี้มากสุด
+        timings["pass2_s"] = round(time.time() - t0, 1)
+        save_checkpoint(job_id, files, warnings, timings)
     timings["pass2_s"] = round(time.time() - t0, 1)
 
     # pass2.5 — self-harvest sidecar, local CPU (จุดที่คลังกลางจับข้ามซีรีส์ไม่ติด)
@@ -762,6 +823,7 @@ def run_house_extract(job):
                         f"pass2.5: self-harvest {len(cv25_files)} ไฟล์ (+{added} จุด)")
         except Exception as e:
             warnings.append(f"pass2.5 ล้ม ({type(e).__name__}: {e}) — ข้าม ไม่กระทบผลหลัก")
+    save_checkpoint(job_id, files, warnings, timings)
 
     # pass3 — วัดระยะจริง: หมุด (grid_ref ที่โมเดลอ่านได้ + พิกัด CV) → px ต่อเมตร →
     # เติมตำแหน่งเมตรให้ทุก element, snap grid ref ให้ตัวที่โมเดลไม่ได้ตอบ, และรายงาน
