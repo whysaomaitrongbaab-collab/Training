@@ -271,7 +271,12 @@ def cmd_up(a):
               f"@ ${price:.3f}/ชม. rel={offer.get('reliability2', offer.get('reliability', '?'))}")
         if price > a.max_price:
             # offer เรียงจากถูกไปแพง — ตัวนี้แพงเกินแล้ว ตัวถัดไปยิ่งแพง ไม่ต้องลองต่อ
-            sys.exit(f"แพงเกิน --max-price {a.max_price} — เพิ่ม limit เองถ้ายอมจ่าย")
+            # บอกราคาที่ถูกสุดจริงไปด้วย ไม่งั้นต้องเดาว่าต้องเพิ่มเพดานเป็นเท่าไหร่
+            sys.exit(
+                f"การ์ดถูกสุดที่ว่างตอนนี้ ${price:.2f}/ชม. แต่เพดานตั้งไว้ ${a.max_price:.2f}/ชม."
+                f"\n   ยอมจ่ายก็สั่งแบบนี้: python presentation.py up --model {a.model} "
+                f"--yes --max-price {price + 0.2:.1f}"
+                f"\n   อยากให้เมนูจำถาวร: แก้เลข --max-price ใน go.py")
         if not a.yes and input("เช่าเลยไหม? [y/N] ").strip().lower() != "y":
             sys.exit("ยกเลิก")
 
@@ -782,7 +787,7 @@ def main():
                          "destrier-sglang / destrier-vllm = โมเดล merged แล้ว เร็วกว่ามาก "
                          "(ต้องรัน merge_lora_to_base.py + verify_merge.py ให้ผ่านก่อน) · "
                          "t03 = adapter รุ่นเก่า · t04 = InternVL3-78B (ยังใช้ไม่ได้)")
-    up.add_argument("--max-price", type=float, default=1.5, help="เพดาน $/ชม.")
+    up.add_argument("--max-price", type=float, default=2.0, help="เพดาน $/ชม.")
     up.add_argument("--yes", action="store_true", help="ไม่ต้องถามยืนยันก่อนเช่า")
     attach = sub.add_parser("attach", help="ต่อกับเครื่องที่เช่าเองจากหน้าเว็บ vast.ai แล้ว (ข้าม auto-select)")
     attach.add_argument("instance_id", type=int, help="instance ID จากหน้าเว็บ vast.ai (คอลัมน์ ID)")
