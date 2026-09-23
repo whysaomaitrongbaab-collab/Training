@@ -315,3 +315,47 @@ _d4, _rep4 = worker.salvage_truncated_json(_tricky)
 assert _d4 is not None and len(_d4["elements"]) == 2 and "{200x400}" in _d4["note"],     "วงเล็บในสตริงต้องไม่ถูกนับเป็นโครงสร้าง"
 
 print("OK — กู้ JSON ที่โดนตัด ผ่านทุกข้อ (ปกติไม่แตะ · ตัดแล้วกู้ได้ · มั่วแล้วไม่เดา · วงเล็บในสตริงปลอดภัย)")
+
+# ── งานที่ยิงโมเดลไม่สำเร็จทุกหน้า ต้องขึ้น failed ไม่ใช่ done ────────────────────────
+# เจอจริง 23 ก.ย. 69 (job c2f4f69a): การ์ดหลุดกลางทาง ทั้ง 3 หน้าได้ ConnectionError
+# แต่ run_house_extract คืน files=[pass0.json] ออกมาเฉยๆ ผู้เรียกจึงประทับ done
+# → หน้าเว็บขึ้น "งานถอดแบบล่าสุดเสร็จแล้ว" พร้อมปุ่มดึงผลที่ไม่มีอะไรให้ดึง
+# ผลบางส่วนต้องยังผ่านตามเดิม — สเปกจากหน้าที่อ่านได้ก็มีค่าในตัวมันเอง
+_SIDECAR = ("cv15_", "cv25_")
+
+
+def _usable(names):
+    """ตรรกะเดียวกับที่ run_house_extract ใช้ตัดสิน — แก้ที่โน่นต้องแก้ที่นี่ด้วย"""
+    return [n for n in names
+            if n.endswith(".json")
+            and n not in ("pass0.json", "pass3_measure.json")
+            and not n.startswith(_SIDECAR)]
+
+
+_src = Path(__file__).with_name("worker.py").read_text(encoding="utf-8")
+assert ("ยิงโมเดลไม่สำเร็จสักหน้าเดียว" in _src), (
+    "run_house_extract ต้องมีด่านดักงานที่ไม่ได้ผลอะไรเลย")
+_guard_at = _src.index("SIDECAR_PREFIXES")
+_return_at = _src.index("return {" + chr(34) + "files" + chr(34) + ": files")
+assert _guard_at < _return_at, "ด่านต้องอยู่ก่อน return ไม่งั้นไม่มีผล"
+
+# ล้มทุกหน้า → ไม่มีไฟล์ที่ใช้ได้
+assert _usable(["pass0.json"]) == [], "งานที่ล้มทุกหน้าต้องนับว่าไม่มีผลที่ใช้ได้"
+
+# งานจริงที่สำเร็จ (cbb90abe) → ต้องผ่าน
+_real = ["pass0.json", "cv15_plan_footing_page_1_view1_cv.json", "grid_master.json",
+         "page_01_plan_footing.json", "page_01_plan_beam.raw.txt", "page_01_notes.json",
+         "page_02_section.json", "page_03_section.json",
+         "cv25_plan_beam_page_1_view2_cv25.json", "pass3_measure.json"]
+assert len(_usable(_real)) == 5, "งานจริงต้องนับได้ 5 ไฟล์ (ได้ %d)" % len(_usable(_real))
+
+# ผลบางส่วน (ได้แค่ grid) → ต้องยังผ่าน ห้ามประทับ failed
+assert _usable(["pass0.json", "grid_master.json"]) == ["grid_master.json"], (
+    "ผลบางส่วนต้องยังใช้ได้ ไม่ใช่โดนตัดทิ้ง")
+
+# ไฟล์ CV/วัดระยะล้วน ไม่นับว่าเป็นผลอ่านแบบ (ไม่มีเนื้อหาจากโมเดล)
+assert _usable(["pass0.json", "cv15_a_cv.json", "cv25_b_cv25.json", "pass3_measure.json"]) == [], (
+    "ไฟล์ CV/วัดระยะอย่างเดียวไม่นับว่าอ่านแบบสำเร็จ")
+
+print("OK — งานที่ไม่ได้ผลอะไรเลยต้องขึ้น failed ผ่านทุกข้อ "
+      "(ล้มทุกหน้า · งานจริงผ่าน · ผลบางส่วนผ่าน · CV ล้วนไม่นับ)")

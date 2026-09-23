@@ -987,6 +987,27 @@ def run_house_extract(job):
                 f"(จุดที่ CV เห็นทั้งหมด {n_cv_only})")
         timings["pass3_s"] = round(time.time() - t3, 1)
 
+    # งานที่ยิงโมเดลไม่สำเร็จ "ทุกหน้า" ยังคืน files=[pass0.json] ออกไปตามปกติ แล้วผู้เรียก
+    # ประทับ status=done ทับ — หน้าเว็บจึงขึ้น "งานถอดแบบล่าสุดเสร็จแล้ว" พร้อมปุ่มดึงผล
+    # ที่ไม่มีอะไรให้ดึง (เจอจริง 23 ก.ย. 69 job c2f4f69a: การ์ดหลุดกลางทาง 3/3 หน้าล้ม
+    # ConnectionError ทุกหน้า แต่สถานะเป็น done) — แย่กว่าขึ้น failed ตรงๆ เพราะคนเชื่อว่าได้ผลแล้ว
+    #
+    # ดักเฉพาะ "ไม่ได้อะไรกลับมาเลย" — ผลบางส่วน (บางหน้าล้ม บางหน้าผ่าน) ยังถือว่าใช้ได้
+    # ตามเดิม เพราะสเปกจากหน้าที่ผ่านก็มีค่าในตัวมันเอง
+    #
+    # โยน exception ได้โดยไม่เสีย diagnostic เพราะ save_checkpoint() เขียน result ลง DB
+    # ไประหว่างทางแล้ว — ทาง except ของผู้เรียกเขียนแค่ status/error_message ไม่ทับ result
+    SIDECAR_PREFIXES = ("cv15_", "cv25_")
+    usable = [f for f in files
+              if f["name"].endswith(".json")
+              and f["name"] not in ("pass0.json", "pass3_measure.json")
+              and not f["name"].startswith(SIDECAR_PREFIXES)]
+    if not usable:
+        raise RuntimeError(
+            "ยิงโมเดลไม่สำเร็จสักหน้าเดียว — ไม่ได้ผลอ่านแบบกลับมาเลย "
+            f"(มีคำเตือน {len(warnings)} รายการบันทึกไว้แล้ว) "
+            "มักเกิดจากการ์ดหลุดหรือโมเดลยังไม่พร้อม — เช็คด้วยเมนูข้อ 2 แล้วสั่งถอดแบบใหม่")
+
     return {"files": files, "warnings": warnings, "timings": timings}
 
 
