@@ -377,6 +377,12 @@ def call_purson(image_bytes_list, prompt):
                 "top_k": 20,
                 "repetition_penalty": 1.15,   # ค่าเดียวกับ infer_house_t03.py
                 "response_format": {"type": "json_object"},
+                # ⚠️ จำเป็นเมื่อสลับไป vLLM/SGLang (2026-09-20): Qwen3.6 เป็น thinking-by-default
+                # และตัว **เซิร์ฟเวอร์** เป็นคนประกอบ chat template ไม่ใช่เรา — ถ้าไม่ปิด โมเดลจะ
+                # เขียน <think> ยาวจนหมด token ก่อนถึง JSON (บั๊กคลาส t01 ที่ serve_purson.py
+                # กันไว้ด้วย enable_thinking=False ฝั่งตัวเองอยู่แล้ว แต่ engine อื่นไม่รู้)
+                # serve_purson.py เมินคีย์ที่ไม่รู้จัก ส่งไปด้วยจึงปลอดภัยทั้งสามเส้นทาง
+                "chat_template_kwargs": {"enable_thinking": False},
             },
             timeout=CFG["PAGE_TIMEOUT_S"],
         )
