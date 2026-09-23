@@ -346,6 +346,52 @@ def now_iso():
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
+def release_stuck_jobs():
+    """ปลดงานที่ค้าง processing ให้ทำต่อได้ทันที ไม่ต้องรอครบ STALE_PROCESSING_MIN (45 นาที)
+
+    ทำไมต้องมี: requeue_stale() ถูกเรียก**ครั้งเดียวตอนเปิด worker** (ไม่ได้อยู่ในลูป) และปลด
+    เฉพาะงานที่เงียบเกิน 45 นาที — ถ้าหน้าต่าง worker ถูกปิดตอนงานเดินไป 10 นาทีแล้วเปิดใหม่
+    ทันที งานนั้นจะไม่ถูกปลด (เพิ่งเงียบ 10 นาที) และ worker ตัวใหม่ก็หาไม่เจอเพราะมันคว้าแต่
+    งาน pending → งานค้างเฉยๆ ทั้งที่ checkpoint ครบ ไม่มีผลอะไรหายเลย แค่ไม่มีใครหยิบไปทำต่อ
+
+    ⚠️ ห้ามใช้ถ้า worker ตัวเดิมยังวิ่งอยู่จริง — งานจะถูกคว้าซ้ำ = จ่ายค่า GPU สองเท่า
+    และผลเขียนทับกันตอนจบ (เหตุผลเดียวกับที่ requeue_stale ดู updated_at ไม่ใช่ claimed_at)
+    จึงโชว์เวลาที่รายงานความคืบหน้าล่าสุดแล้วบังคับให้ยืนยันด้วยมือ ไม่ทำอัตโนมัติ"""
+    r = requests.get(f"{REST}/purson_jobs", headers=SB_HEADERS,
+                     params={"status": "eq.processing",
+                             "select": "id,updated_at,progress", "order": "updated_at.desc"},
+                     timeout=30)
+    r.raise_for_status()
+    jobs = r.json()
+    if not jobs:
+        print("ไม่มีงานค้างสถานะ processing — ไม่มีอะไรต้องปลด")
+        return
+
+    print(f"\nเจองานค้าง {len(jobs)} งาน:\n")
+    now = time.time()
+    for j in jobs:
+        try:
+            last = time.mktime(time.strptime(j["updated_at"][:19], "%Y-%m-%dT%H:%M:%S"))
+            quiet = f"{int((now - last - time.timezone) / 60)} นาทีที่แล้ว"
+        except Exception:
+            quiet = j.get("updated_at", "?")
+        p = j.get("progress") or {}
+        print(f"  งาน {j['id']}")
+        print(f"    รายงานความคืบหน้าล่าสุด: {quiet}")
+        print(f"    ทำถึง: {p.get('step', '?')} {p.get('done', '?')}/{p.get('total', '?')}\n")
+
+    print("⚠️  ถ้าเวลาข้างบนเพิ่งผ่านไปไม่กี่นาที แปลว่า worker ตัวเดิม**น่าจะยังวิ่งอยู่**")
+    print("    ปลดตอนนี้จะกลายเป็นทำซ้ำสองตัว เสียค่า GPU สองเท่า — ปลดเมื่อแน่ใจว่าตัวเดิมตายแล้วเท่านั้น")
+    if input("\nปลดทั้งหมดให้ทำต่อเลยไหม? [y/N] ").strip().lower() != "y":
+        print("ยกเลิก — ไม่ได้แตะอะไร")
+        return
+
+    for j in jobs:
+        update_job(j["id"], {"status": "pending"})
+        print(f"✅ ปลดงาน {j['id']} แล้ว")
+    print("\nเปิดหน้าต่างรับงานไว้ เดี๋ยวมันจะคว้าไปทำต่อจาก checkpoint เดิมเอง ไม่เริ่ม pass0 ใหม่")
+
+
 # ── GPU call ──────────────────────────────────────────────────────────────────
 def call_purson(image_bytes_list, prompt):
     """ยิง OpenAI-compatible chat completion 1 ครั้ง คืน (parsed_json|None, raw_text)
@@ -930,4 +976,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # ไม่ใช้ argparse — มีโหมดเดียวจริงๆ และเคยเจอปัญหาคัดลอกคำสั่งมาแล้ว argparse ตาย
+    if "--release-stuck" in sys.argv:
+        release_stuck_jobs()
+    else:
+        main()
