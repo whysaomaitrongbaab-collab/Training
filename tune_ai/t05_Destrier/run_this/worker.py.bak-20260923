@@ -61,7 +61,6 @@ import requests
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from pass3_measure import measure_page, merge_into_pass2  # noqa: E402  (pure, stdlib)
-import notify  # noqa: E402  (เสียงบอกเหตุ — ไม่มี dependency ภายนอก)
 
 
 def load_config():
@@ -347,52 +346,6 @@ def now_iso():
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
-def release_stuck_jobs():
-    """ปลดงานที่ค้าง processing ให้ทำต่อได้ทันที ไม่ต้องรอครบ STALE_PROCESSING_MIN (45 นาที)
-
-    ทำไมต้องมี: requeue_stale() ถูกเรียก**ครั้งเดียวตอนเปิด worker** (ไม่ได้อยู่ในลูป) และปลด
-    เฉพาะงานที่เงียบเกิน 45 นาที — ถ้าหน้าต่าง worker ถูกปิดตอนงานเดินไป 10 นาทีแล้วเปิดใหม่
-    ทันที งานนั้นจะไม่ถูกปลด (เพิ่งเงียบ 10 นาที) และ worker ตัวใหม่ก็หาไม่เจอเพราะมันคว้าแต่
-    งาน pending → งานค้างเฉยๆ ทั้งที่ checkpoint ครบ ไม่มีผลอะไรหายเลย แค่ไม่มีใครหยิบไปทำต่อ
-
-    ⚠️ ห้ามใช้ถ้า worker ตัวเดิมยังวิ่งอยู่จริง — งานจะถูกคว้าซ้ำ = จ่ายค่า GPU สองเท่า
-    และผลเขียนทับกันตอนจบ (เหตุผลเดียวกับที่ requeue_stale ดู updated_at ไม่ใช่ claimed_at)
-    จึงโชว์เวลาที่รายงานความคืบหน้าล่าสุดแล้วบังคับให้ยืนยันด้วยมือ ไม่ทำอัตโนมัติ"""
-    r = requests.get(f"{REST}/purson_jobs", headers=SB_HEADERS,
-                     params={"status": "eq.processing",
-                             "select": "id,updated_at,progress", "order": "updated_at.desc"},
-                     timeout=30)
-    r.raise_for_status()
-    jobs = r.json()
-    if not jobs:
-        print("ไม่มีงานค้างสถานะ processing — ไม่มีอะไรต้องปลด")
-        return
-
-    print(f"\nเจองานค้าง {len(jobs)} งาน:\n")
-    now = time.time()
-    for j in jobs:
-        try:
-            last = time.mktime(time.strptime(j["updated_at"][:19], "%Y-%m-%dT%H:%M:%S"))
-            quiet = f"{int((now - last - time.timezone) / 60)} นาทีที่แล้ว"
-        except Exception:
-            quiet = j.get("updated_at", "?")
-        p = j.get("progress") or {}
-        print(f"  งาน {j['id']}")
-        print(f"    รายงานความคืบหน้าล่าสุด: {quiet}")
-        print(f"    ทำถึง: {p.get('step', '?')} {p.get('done', '?')}/{p.get('total', '?')}\n")
-
-    print("⚠️  ถ้าเวลาข้างบนเพิ่งผ่านไปไม่กี่นาที แปลว่า worker ตัวเดิม**น่าจะยังวิ่งอยู่**")
-    print("    ปลดตอนนี้จะกลายเป็นทำซ้ำสองตัว เสียค่า GPU สองเท่า — ปลดเมื่อแน่ใจว่าตัวเดิมตายแล้วเท่านั้น")
-    if input("\nปลดทั้งหมดให้ทำต่อเลยไหม? [y/N] ").strip().lower() != "y":
-        print("ยกเลิก — ไม่ได้แตะอะไร")
-        return
-
-    for j in jobs:
-        update_job(j["id"], {"status": "pending"})
-        print(f"✅ ปลดงาน {j['id']} แล้ว")
-    print("\nเปิดหน้าต่างรับงานไว้ เดี๋ยวมันจะคว้าไปทำต่อจาก checkpoint เดิมเอง ไม่เริ่ม pass0 ใหม่")
-
-
 # ── GPU call ──────────────────────────────────────────────────────────────────
 def call_purson(image_bytes_list, prompt):
     """ยิง OpenAI-compatible chat completion 1 ครั้ง คืน (parsed_json|None, raw_text)
@@ -443,80 +396,11 @@ def call_purson(image_bytes_list, prompt):
     except Exception:
         # ต่อไม่ติด/5xx = tunnel สะดุดหรือ server เพิ่งรีสตาร์ท — รอแล้วยิงใหม่ได้
         r = _retry(once, "ยิงโมเดล")
-    body = r.json()
-    choice = (body.get("choices") or [{}])[0]
-    raw = (choice.get("message") or {}).get("content") or ""
+    raw = r.json()["choices"][0]["message"]["content"] or ""
     try:
         return json.loads(strip_fence(raw)), raw
     except Exception:
-        # ⚠️ แยกให้ออกระหว่าง "โมเดลตอบมั่ว" กับ "เราตัดมันเองเพราะชนเพดาน token"
-        # เดิมสองเคสนี้คืนค่าเหมือนกันเป๊ะ หน้าที่คำตอบยาวเกินจึงหายไปทั้งหน้าแบบเงียบสนิท
-        # ไม่มีข้อความบอกสักคำว่าทำไม (เจอจริง 23 ก.ย. หน้า S-01 เขียน 15,910 ตัวอักษร
-        # = ชนเพดาน 6000 token พอดี แล้ว JSON ขาดครึ่ง)
-        # หมายเหตุ: เซิร์ฟเวอร์รุ่นเก่ายังตอบ "stop" ตายตัว เช็คความยาวเสริมไว้ด้วย
-        # ลองกู้ก่อนยอมแพ้ — คำตอบที่โดนตัดมักสมบูรณ์เกือบทั้งก้อน เสียแค่ชิ้นสุดท้าย
-        salvaged, was_repaired = salvage_truncated_json(strip_fence(raw))
-        if salvaged is not None and was_repaired:
-            n = len((salvaged or {}).get("elements") or [])
-            print(f"   ⚕️ กู้ JSON ที่โดนตัดสำเร็จ — ได้ชิ้นส่วนคืน {n} ตัว "
-                  f"(ชิ้นสุดท้ายที่เขียนไม่จบถูกตัดทิ้ง)", flush=True)
-            if isinstance(salvaged, dict):
-                salvaged.setdefault("warnings", []).append(
-                    "คำตอบโดนตัดเพราะชนเพดาน token — กู้กลับมาได้ แต่ชิ้นส่วนท้ายสุด "
-                    "อาจขาดไปบางตัว ควรตรวจก่อนใช้จริง")
-            return salvaged, raw
-        if choice.get("finish_reason") == "length":
-            return None, ("คำตอบโดนตัดกลางคันเพราะชนเพดาน token — หน้านี้มีของเยอะเกินกว่าที่ "
-                          f"MAX_NEW_TOKENS={CFG['MAX_NEW_TOKENS']} จะเขียนครบ "
-                          "(แก้ได้สองทาง: ขยายเพดานแล้วยอมให้ช้าลง หรือแยกผังในหน้านี้ออกเป็นคนละภาพ) "
-                          f"· ที่เขียนมาได้ {len(raw)} ตัวอักษร · ท้ายสุด: ...{raw[-160:]}")
         return None, raw
-
-
-def salvage_truncated_json(text):
-    """กู้ JSON ที่ถูกตัดกลางคัน — ถอยไปถึงชิ้นที่สมบูรณ์ตัวสุดท้าย แล้วปิดวงเล็บที่ค้างอยู่
-
-    ทำไมต้องมี (วัดจริง 23 ก.ย. 2026): หน้า S-01 ของบ้านครอบครัวไทยเป็นสุข2 ตอบยาว
-    15,910 ตัวอักษรจนชนเพดาน token แล้ว JSON ขาดกลางประโยค ระบบเดิมโยนทิ้งทั้งไฟล์
-    เหลือชิ้นส่วนเข้าโปรเจกต์แค่ 5 ตัว — **กู้แล้วได้คืน 49 ตัว** (ฐานราก 5 + คานคอดิน 44
-    ซึ่ง 44 ตัวมีความยาวช่วงจริงจากตารางกริดครบ) คือของที่ทิ้งไปคือเนื้อหลักทั้งก้อน
-
-    วิธี: เดินอ่านทีละตัวอักษรโดยรู้ว่าตอนนี้อยู่ในสตริงหรือไม่ (ห้ามนับวงเล็บที่อยู่ในสตริง)
-    จำตำแหน่งที่ "ปิดชิ้นส่วนพอดี" ไว้ แล้วตัดตรงนั้น ปิดวงเล็บที่ยังค้างย้อนกลับตามลำดับ
-    กติกา "ไม่เดา" ยังอยู่: ถ้าปิดแล้วยังแปลงไม่ผ่าน คืน None ไม่ยัดข้อมูลมั่ว
-    """
-    try:
-        return json.loads(text), False
-    except Exception:
-        pass
-    stack, in_str, esc, cut, cut_stack = [], False, False, -1, None
-    for i, c in enumerate(text):
-        if esc:
-            esc = False
-            continue
-        if c == "\\":
-            esc = True
-            continue
-        if c == '"':
-            in_str = not in_str
-            continue
-        if in_str:
-            continue
-        if c in "{[":
-            stack.append(c)
-        elif c in "}]":
-            if stack:
-                stack.pop()
-            # ปิดชิ้นส่วนที่อยู่ในอาร์เรย์พอดี = จุดตัดที่ปลอดภัย
-            if len(stack) >= 2 and stack[-1] == "[":
-                cut, cut_stack = i, list(stack)
-    if cut < 0 or not cut_stack:
-        return None, False
-    closing = "".join("}" if b == "{" else "]" for b in reversed(cut_stack))
-    try:
-        return json.loads(text[:cut + 1] + closing), True
-    except Exception:
-        return None, False
 
 
 def call_purson_safe(image_bytes_list, prompt):
@@ -1030,7 +914,6 @@ def main():
                 update_job(job["id"], {"status": "failed",
                                        "error_message": f"{type(e).__name__}: {e}"})
                 print(f"งาน {job['id']} ล้มเหลว: {e}")
-                notify.fail()
             except Exception as e2:
                 print(f"งาน {job['id']} ล้มเหลว ({e}) และรายงานกลับไม่ได้ ({e2}) — "
                       f"ปล่อยค้าง processing ให้ requeue_stale เก็บไปทำใหม่", flush=True)
@@ -1040,7 +923,6 @@ def main():
         try:
             update_job(job["id"], {"status": "done", "result": result})
             print(f"งาน {job['id']} เสร็จ")
-            notify.done()
         except Exception as e:
             print(f"⚠️ งาน {job['id']} ทำเสร็จแล้วแต่เขียนผลกลับไม่ได้: {e}\n"
                   f"   งานจะค้างสถานะ processing → requeue_stale จะเก็บไปทำใหม่รอบหน้า",
@@ -1048,8 +930,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # ไม่ใช้ argparse — มีโหมดเดียวจริงๆ และเคยเจอปัญหาคัดลอกคำสั่งมาแล้ว argparse ตาย
-    if "--release-stuck" in sys.argv:
-        release_stuck_jobs()
-    else:
-        main()
+    main()
