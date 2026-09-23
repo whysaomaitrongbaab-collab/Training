@@ -329,6 +329,39 @@ def cmd_up(a):
              "   สั่งเปิดการ์ดใหม่อีกรอบได้เลย มันจะข้ามเครื่องพวกนั้นให้เอง")
 
 
+def check_ssh_mode(iid):
+    """เครื่องที่เช่าเองจากเว็บ ถ้าเลือกโหมด Jupyter จะ **ไม่มี sshd อยู่ในนั้นเลย**
+
+    vast.ai มีโหมดเปิดเครื่อง 3 แบบ — entrypoint / ssh / jupyter — และ "เปิด ssh" กับ
+    "เปิด jupyter" เป็นสวิตช์คนละตัว ค่าเริ่มต้นปิดทั้งคู่ · เว็บของ vast.ai ค่าเริ่มต้น
+    มักเป็น jupyter อย่างเดียว คนเช่าเองจึงได้เครื่องที่ ssh เข้าไม่ได้โดยไม่รู้ตัว
+    (สคริปต์เราเองไม่เคยเจอ เพราะ `create instance` ของเราใส่ --ssh ไว้เสมอ)
+
+    อาการตอนเจอ: ต่อพร็อกซีแล้ว TCP ติดแต่ถูกปิดทันทีตอน handshake
+    "kex_exchange_identification: Connection closed by remote host" ส่วนทางตรงก็ timeout
+    — หน้าตาเหมือนเครื่องเสีย ทั้งที่การ์ดดีทุกอย่าง แค่เช่ามาผิดโหมด
+
+    แก้ทีหลังไม่ได้: `vastai attach ssh <id> <key>` ตอบกลับมาว่า
+    "Error adding SSH key to instance: 'NoneType' object is not subscriptable"
+    (ลองจริง 23 ก.ย. 69 กับ instance 52242218) — ต้องคืนแล้วเช่าใหม่โดยเลือกโหมด SSH
+
+    เช็คจาก image_runtype ซึ่ง vast.ai บอกโหมดจริงมาตรงๆ (ssh / ssh_proxy / ssh_direc /
+    jupyter / jupyter_proxy / ...) — ไม่ใช่การเดาจากชื่อ image"""
+    ins = next((i for i in vastai_json(["show", "instances"]) if i.get("id") == iid), None)
+    if ins is None:
+        sys.exit(f"ไม่เจอ instance {iid} ในบัญชี — เช็คเลข ID ที่หน้าเว็บ vast.ai อีกที")
+    runtype = (ins.get("image_runtype") or "")
+    if "ssh" in runtype:
+        return
+    sys.exit(
+        f"⛔ เครื่องนี้เช่ามาแบบ '{runtype or 'ไม่ระบุ'}' ไม่ได้เปิด SSH ไว้ — ต่อเข้าไม่ได้เลย"
+        f"\n   (ไม่ใช่เครื่องเสีย การ์ดดีปกติ แค่ตอนกดเช่าบนเว็บเลือกโหมดผิด"
+        f" และแก้ทีหลังไม่ได้)"
+        f"\n   วิธีแก้: คืนเครื่องนี้ แล้วเช่าใหม่โดย **ติ๊ก SSH** ตอนเลือก template"
+        f"\n   สังเกตง่ายๆ ที่การ์ดบนเว็บ: บรรทัด Status ต้องลงท้ายด้วย /ssh ไม่ใช่ /jupyter"
+        f"\n   หรือใช้เมนูข้อ 3 ให้สคริปต์เช่าเอง — มันใส่ --ssh ให้เสมอ ไม่มีทางพลาดข้อนี้")
+
+
 def cmd_attach(a):
     """ต่อกับเครื่องที่มะขามเช่าเองแล้วจากหน้าเว็บ vast.ai โดยตรง — ข้ามขั้นเลือก/เช่า
     offer อัตโนมัติของ `up` ทั้งหมด แค่รอให้เครื่องขึ้น running แล้วอัพโหลด+สั่งรัน
@@ -341,6 +374,7 @@ def cmd_attach(a):
     if st.get("instance_id") and st["instance_id"] != a.instance_id:
         sys.exit(f"มี instance {st['instance_id']} ค้างอยู่ใน state — รัน down ก่อนถ้าจะสลับเครื่อง")
 
+    check_ssh_mode(a.instance_id)          # กันเสีย 15 นาทีไปกับเครื่องที่ ssh เข้าไม่ได้ตั้งแต่เกิด
     print(f"ต่อกับ instance {a.instance_id} ที่มะขามเช่าไว้แล้ว — รอเครื่องขึ้น...")
     save_state({"instance_id": a.instance_id, "model": a.model, "price_per_hr": None})
 

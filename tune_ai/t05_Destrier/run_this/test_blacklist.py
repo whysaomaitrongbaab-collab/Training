@@ -156,6 +156,54 @@ def test_dead_server_detection():
           "tunnel_pid" in scrap)
 
 
+def test_jupyter_mode_guard():
+    """เครื่องที่เช่าเองจากเว็บแล้วเลือกโหมด Jupyter จะไม่มี sshd เลย — ต่อไม่ได้ทั้งทางตรง
+    และพร็อกซี และแก้ทีหลังไม่ได้ (vastai attach ssh ตอบ error) ต้องบอกทันทีตั้งแต่วินาทีแรก
+    ไม่ใช่ปล่อยให้รอ 15 นาทีแล้วค่อยบอกว่าเครื่องเสีย (เจอจริง 23 ก.ย. 69 instance 52242218)
+
+    ห้ามขึ้นบัญชีดำเด็ดขาด — เครื่องไม่ได้เสีย การ์ดดีปกติ เช่าใหม่แบบเลือกโหมด SSH ก็ใช้ได้เลย
+    ถ้าแบนไป เท่ากับตัดเครื่องดีทิ้งเพราะความผิดของคนกดเช่า"""
+    real_json = P.vastai_json
+    P.vastai_json = lambda args: [{"id": 1, "image_runtype": "ssh_proxy"},
+                                  {"id": 2, "image_runtype": "ssh_direc"},
+                                  {"id": 3, "image_runtype": "jupyter"},
+                                  {"id": 4, "image_runtype": "jupyter_proxy"}]
+    try:
+        ok = []
+        for iid in (1, 2):
+            try:
+                P.check_ssh_mode(iid)
+                ok.append(True)
+            except SystemExit:
+                ok.append(False)
+        check("โหมด ssh ทุกแบบต้องผ่าน (ssh_proxy · ssh_direc)", all(ok))
+
+        blocked = []
+        for iid in (3, 4):
+            try:
+                P.check_ssh_mode(iid)
+                blocked.append(False)
+            except SystemExit:
+                blocked.append(True)
+        check("โหมด jupyter ต้องหยุดทันที ไม่ปล่อยให้รอ 15 นาที", all(blocked))
+
+        try:
+            P.check_ssh_mode(999)
+            found = False
+        except SystemExit:
+            found = True
+        check("ไม่เจอ instance id ต้องบอกตรงๆ ไม่ใช่เดินต่อ", found)
+    finally:
+        P.vastai_json = real_json
+
+    src = (HERE / "presentation.py").read_text(encoding="utf-8")
+    guard = src[src.index("def check_ssh_mode("):src.index("def cmd_attach(")]
+    check("ห้ามแบนเครื่อง เพราะเครื่องไม่ได้เสีย (คนกดเช่าผิดโหมด)",
+          "blacklist_add" not in guard and "BadMachine" not in guard)
+    check("cmd_attach เรียกด่านนี้ก่อนรอเครื่อง",
+          src.index("check_ssh_mode(a.instance_id)") < src.index("wait_running(a.instance_id)"))
+
+
 def main():
     print("ตรวจบัญชีดำเครื่องเช่า")
     for fn in (test_store, test_filter):
@@ -163,6 +211,7 @@ def main():
     test_ssh_endpoint_sentinel()
     test_cmd_up_structure()
     test_dead_server_detection()
+    test_jupyter_mode_guard()
     if FAILED:
         sys.exit(f"\n❌ ไม่ผ่าน {len(FAILED)} ข้อ: {', '.join(FAILED)}")
     print("\nok — บัญชีดำทำงานครบ (จำได้ · กรองได้ · ไฟล์พังไม่ล้ม · cmd_up กู้ตัวเองได้)")
