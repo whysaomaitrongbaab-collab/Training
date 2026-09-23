@@ -75,18 +75,31 @@ def test_filter():
 
 
 def test_ssh_endpoint_sentinel():
-    """65535 คือรหัส 'ไม่มีพอร์ตตรง' — ถ้าไม่กรองออก จะเสียเวลา timeout ทุกรอบ
-    และหน้าจอจะบอกว่า 'ทางตรงยังไม่ตอบ' ซ้ำๆ จนคนเข้าใจผิดว่าเครื่องกำลังจะขึ้น"""
+    """vast.ai ใช้เลขพอร์ตที่เป็นไปไม่ได้แทนรหัส "ยังไม่มีพอร์ตตรง" — เจอมาแล้ว 2 แบบ:
+    65535 (ไม่เปิดพอร์ตตรงเลย) กับ -1 (เครื่องยังบูตไม่เสร็จ — เจอสด 23 ก.ย. 69 ตอน
+    เครื่องอายุ 1 นาที) ถ้าไม่กรองออก จะเสียเวลา timeout ทุกรอบและบังหน้าว่าเครื่องเงียบ
+    ทั้งที่ควรไปลองพร็อกซีเลย"""
+    for bad_port in (65535, -1, 0):
+        tried = []
+        real_alive = P.ssh_alive
+        P.ssh_alive = lambda h, p: (tried.append((h, p)), False)[1]
+        try:
+            P.pick_ssh_endpoint({"public_ipaddr": "1.2.3.4", "direct_port_start": bad_port,
+                                 "ssh_host": "ssh2.vast.ai", "ssh_port": 32696})
+        finally:
+            P.ssh_alive = real_alive
+        check(f"ไม่ลองทางตรงเมื่อ direct_port_start = {bad_port}",
+              ("1.2.3.4", bad_port) not in tried)
+        check(f"ยังลองพร็อกซีตามปกติ (port={bad_port})", ("ssh2.vast.ai", 32696) in tried)
+
     tried = []
-    real_alive = P.ssh_alive
     P.ssh_alive = lambda h, p: (tried.append((h, p)), False)[1]
     try:
-        P.pick_ssh_endpoint({"public_ipaddr": "1.2.3.4", "direct_port_start": 65535,
+        P.pick_ssh_endpoint({"public_ipaddr": "1.2.3.4", "direct_port_start": 22000,
                              "ssh_host": "ssh2.vast.ai", "ssh_port": 32696})
     finally:
         P.ssh_alive = real_alive
-    check("ไม่ลองทางตรงเมื่อ direct_port_start = 65535", ("1.2.3.4", 65535) not in tried)
-    check("ยังลองพร็อกซีตามปกติ", ("ssh2.vast.ai", 32696) in tried)
+    check("พอร์ตตรงที่ใช้ได้จริงยังลองตามปกติ", ("1.2.3.4", 22000) in tried)
 
 
 def test_cmd_up_structure():

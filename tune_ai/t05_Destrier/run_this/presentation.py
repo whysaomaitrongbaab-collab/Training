@@ -398,10 +398,13 @@ def pick_ssh_endpoint(ins):
     """เลือกทางที่ตอบจริง — ลองทางตรงก่อนเพราะใช้ได้กว้างกว่า แล้วค่อยถอยไปพร็อกซี
     คืน (host, port) หรือ None ถ้ายังไม่มีทางไหนตอบ (เครื่องอาจยังบูต sshd ไม่เสร็จ)"""
     cands = []
-    # 65535 คือรหัสว่า "โฮสต์นี้ไม่เปิดพอร์ตตรง" ไม่ใช่เลขพอร์ตจริง — ลองต่อไปก็ได้แต่
-    # timeout ทิ้งฟรีทุกรอบ แล้วบังหน้าว่าเครื่องเงียบทั้งที่ควรไปลองพร็อกซีเลย
-    if ins.get("public_ipaddr") and ins.get("direct_port_start") not in (None, 65535):
-        cands.append(("ทางตรง", ins["public_ipaddr"], int(ins["direct_port_start"])))
+    # vast.ai ใช้เลขพอร์ตที่เป็นไปไม่ได้แทนรหัส "ยังไม่มีพอร์ตตรง" — เจอมาแล้ว 2 แบบ:
+    # 65535 = โฮสต์นี้ไม่เปิดพอร์ตตรงเลย, -1 = เครื่องยังบูตไม่เสร็จ พอร์ตยังไม่ถูกจอง
+    # (เจอสด 23 ก.ย. 69 ตอนเครื่องอายุ 1 นาที) — เช็คว่า "เป็นพอร์ตที่ใช้ได้จริง" (1-65534)
+    # แทนที่จะไล่จำทีละค่า กันเจอสันดานใหม่ของ vast.ai อีกในอนาคต
+    dp = ins.get("direct_port_start")
+    if ins.get("public_ipaddr") and isinstance(dp, (int, float)) and 0 < dp < 65535:
+        cands.append(("ทางตรง", ins["public_ipaddr"], int(dp)))
     if ins.get("ssh_host") and ins.get("ssh_port"):
         cands.append(("พร็อกซี", ins["ssh_host"], int(ins["ssh_port"])))
     for label, host, port in cands:
