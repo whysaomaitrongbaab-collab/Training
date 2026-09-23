@@ -104,10 +104,18 @@ def start_worker():
                       f'cd /d "{HERE}" && "{PY}" worker.py'], shell=False)
 
 
-def clear_stuck_card():
-    """ถ้ามีการ์ดค้างอยู่ ถามว่าจะคืนก่อนไหม — คืน True เมื่อพร้อมไปต่อ"""
+def clear_stuck_card(keep=None):
+    """ถ้ามีการ์ดค้างอยู่ ถามว่าจะคืนก่อนไหม — คืน True เมื่อพร้อมไปต่อ
+
+    keep = instance id ที่กำลังจะต่อด้วย · ถ้าตรงกับตัวที่ค้างอยู่ แปลว่ากำลังต่อกลับเข้า
+    **การ์ดตัวเดิมของตัวเอง** ไม่ใช่การเปลี่ยนเครื่อง — ข้ามไปเลย ไม่ต้องถาม
+    เจอจริง 23 ก.ย.: ต่อรอบแรกล้มเพราะ ssh ไปทางพร็อกซีที่เครื่อง Jupyter ไม่รองรับ
+    พอกดข้อ 1 ซ้ำด้วย id เดิม มันดันเสนอให้คืนการ์ดตัวเองทิ้ง = จ่ายค่าเช่าใหม่ฟรีๆ"""
     iid = current_instance()
     if not iid:
+        return True
+    if keep and str(keep) == str(iid):
+        print(f"\n(ต่อกลับเข้าการ์ดเดิม instance {iid} ที่เปิดอยู่แล้ว — ไม่ต้องคืน)")
         return True
     print(f"\n⚠️  มีการ์ดค้างอยู่ (instance {iid}) — ถ้าไม่คืนก่อน ระบบจะเปิดใหม่ไม่ได้")
     if input("   คืนการ์ดเดิมแล้วเริ่มใหม่เลยไหม? [y/N] ").strip().lower() != "y":
@@ -124,7 +132,7 @@ def bring_up(instance_id=None):
     instance_id = "1234" → ต่อกับเครื่องที่ไปเช่าเองจากหน้าเว็บ vast.ai (ข้อ 1)
 
     ที่เหลือ (เลือกรุ่น → ทดสอบ → เปิดตัวรับงาน) เหมือนกันทุกขั้น"""
-    if not clear_stuck_card():
+    if not clear_stuck_card(keep=instance_id):
         return
 
     model = pick_model()

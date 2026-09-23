@@ -133,6 +133,15 @@ def sh(cmd, **kw):
     แล้ว stdout ว่างเปล่า (JSON parse พังแบบไม่มีเบาะแส) ทุกคำสั่งที่มี > หรือ quote
     ต้องส่งเป็น list เท่านั้น"""
     print(f"$ {cmd if isinstance(cmd, str) else ' '.join(map(str, cmd))}")
+    # ⚠️ บทเรียน 2026-09-23 (เจอสดตอนเตรียมพรีเซนต์ เครื่อง 52203739): ssh/scp ที่ **สืบ
+    # stdin ของคอนโซลมาใช้** ค้างได้ไม่มีกำหนด และเพราะ capture_output กลืน stderr ไว้หมด
+    # หน้าจอจะนิ่งสนิทไม่มีเบาะแสเลย — ค้างจริง 10+ นาทีที่ `mkdir -p /workspace` ทั้งที่
+    # คำสั่งเดียวกันเป๊ะรันมือผ่านใน 1 วินาที ต่างกันแค่ `< /dev/null` · ตัด stdin ที่นี่
+    # ที่เดียวครอบคลุมผู้เรียกทุกตัว (เป็นทางผ่านร่วมของ ssh/scp/vastai ทั้งหมด)
+    # ผู้เรียกที่ต้องป้อน stdin จริง (destroy ที่ส่งตัวอักษร y) ส่ง input= มาเอง ห้ามไปทับ
+    # ไม่งั้น subprocess โยน ValueError ทันที
+    if "input" not in kw:
+        kw.setdefault("stdin", subprocess.DEVNULL)
     return subprocess.run(cmd, shell=isinstance(cmd, str),
                           capture_output=True, text=True, **kw)
 
@@ -242,14 +251,56 @@ def print_ready():
     print("\n" + "=" * 40 + "\nREADY\n" + "=" * 40)
 
 
+def ssh_alive(host, port, timeout=12):
+    """ปลายทางนี้ตอบ SSH จริงไหม — ไม่ใช่แค่ TCP ติด
+
+    vast.ai ให้สองทางเข้าเครื่อง: พร็อกซี (ssh_host/ssh_port เช่น ssh6.vast.ai:13738)
+    กับทางตรง (public_ipaddr/direct_port_start) — **ไม่ใช่ทุกเครื่องที่ใช้พร็อกซีได้**
+
+    เจอจริง 23 ก.ย. instance 52203739 (เปิดด้วยโหมด Jupyter): ต่อพร็อกซีแล้ว TCP ติด
+    แต่ถูกปิดทันทีตอน handshake — `kex_exchange_identification: Connection closed by
+    remote host` เพราะข้างในไม่มี sshd หลังพร็อกซี · ทางตรงใช้ได้ปกติ และ `vastai ssh-url`
+    เองก็คืนทางตรงมาให้ · เดิมโค้ดหยิบแต่ ssh_host/ssh_port จึงล้มทั้งที่เครื่องดีอยู่
+    แล้วขึ้นข้อความชวนให้ destroy เครื่องทิ้งฟรีๆ
+
+    BatchMode=yes กันไม่ให้มันค้างถามรหัสผ่านเวลาคีย์ใช้ไม่ได้"""
+    try:
+        r = subprocess.run(
+            ["ssh", "-p", str(port), f"root@{host}",
+             "-o", "StrictHostKeyChecking=accept-new",
+             "-o", f"ConnectTimeout={timeout}", "-o", "BatchMode=yes", "true"],
+            capture_output=True, text=True, timeout=timeout + 10)
+        return r.returncode == 0
+    except Exception:
+        return False
+
+
+def pick_ssh_endpoint(ins):
+    """เลือกทางที่ตอบจริง — ลองทางตรงก่อนเพราะใช้ได้กว้างกว่า แล้วค่อยถอยไปพร็อกซี
+    คืน (host, port) หรือ None ถ้ายังไม่มีทางไหนตอบ (เครื่องอาจยังบูต sshd ไม่เสร็จ)"""
+    cands = []
+    if ins.get("public_ipaddr") and ins.get("direct_port_start"):
+        cands.append(("ทางตรง", ins["public_ipaddr"], int(ins["direct_port_start"])))
+    if ins.get("ssh_host") and ins.get("ssh_port"):
+        cands.append(("พร็อกซี", ins["ssh_host"], int(ins["ssh_port"])))
+    for label, host, port in cands:
+        if ssh_alive(host, port):
+            print(f"เครื่องขึ้นแล้ว ({label}): ssh -p {port} root@{host}")
+            return host, port
+        print(f"  ...{label} ยังไม่ตอบ (ssh -p {port} root@{host})")
+    return None
+
+
 def wait_running(iid, timeout_s=15 * 60):
     t0 = time.time()
     while time.time() - t0 < timeout_s:
         for ins in vastai_json(["show", "instances"]):
             if ins.get("id") == iid and ins.get("actual_status") == "running":
-                host, port = ins.get("ssh_host"), ins.get("ssh_port")
-                print(f"เครื่องขึ้นแล้ว: ssh -p {port} root@{host}")
-                return host, port
+                picked = pick_ssh_endpoint(ins)
+                if picked:
+                    return picked
+                # เครื่อง running แล้วแต่ sshd ยังไม่ขึ้น — วนรออีกรอบ ไม่ตายทันที
+                break
         time.sleep(20)
         print(f"  ...รอเครื่องขึ้น ({int(time.time() - t0)}s)")
     sys.exit("เครื่องไม่ขึ้นใน 15 นาที — เช็ค vastai show instances เอง "
@@ -257,8 +308,14 @@ def wait_running(iid, timeout_s=15 * 60):
 
 
 def ssh_base(st):
+    """ตัวเลือก ssh ร่วมของทุกคำสั่งที่ยิงเข้าเครื่องเช่า
+
+    BatchMode=yes สำคัญกว่าที่คิด: ถ้า auth มีปัญหา ssh จะ **ล้มทันที** แทนที่จะขึ้น prompt
+    ถามรหัสผ่านที่ไม่มีใครมองเห็น (stderr ถูก capture ไว้) แล้วค้างยาว — ssh_alive() ใช้
+    ตัวเลือกนี้อยู่แล้วและต่อติดทุกครั้ง ส่วนทางนี้ที่ไม่มี ค้าง 10+ นาทีเมื่อ 2026-09-23"""
     return ["-p", str(st["ssh_port"]), f"root@{st['ssh_host']}",
-            "-o", "StrictHostKeyChecking=accept-new"]
+            "-o", "StrictHostKeyChecking=accept-new",
+            "-o", "BatchMode=yes", "-o", "ConnectTimeout=15"]
 
 
 def check_model_available(name, m, assume_yes=False):
@@ -367,7 +424,13 @@ def upload_and_start_server(st, m):
     # ตอนนี้ลองใหม่สั้นๆ ก่อน ไม่ยอมแพ้ทันที
     ssh_ok = False
     for attempt in range(6):
-        r = sh(["ssh", *ssh_base(st), "mkdir -p /workspace"])
+        # timeout เป็นตาข่ายชั้นสอง: stdin=DEVNULL ใน sh() ปิดต้นเหตุการค้างไปแล้ว แต่ถ้า
+        # ยังค้างด้วยเหตุอื่น ให้ **ดังขึ้นแล้วลองใหม่** ดีกว่าเงียบไปเรื่อยๆ กลางวันพรีเซนต์
+        try:
+            r = sh(["ssh", *ssh_base(st), "mkdir -p /workspace"], timeout=60)
+        except subprocess.TimeoutExpired:
+            print(f"  ...ssh ค้างเกิน 60 วิ ลองใหม่ {attempt + 1}/6")
+            continue
         if r.returncode == 0:
             ssh_ok = True
             break
@@ -378,8 +441,15 @@ def upload_and_start_server(st, m):
                   "destroy แล้วเช่าใหม่")
     if not m.get("serve"):          # เส้นทาง Unsloth — ต้องส่งตัวเสิร์ฟของเราขึ้นไปก่อน
         src = HERE / "serve_purson.py"
-        r = sh(["scp", "-P", str(st["ssh_port"]), "-o", "StrictHostKeyChecking=accept-new",
-                str(src), f'root@{st["ssh_host"]}:/workspace/serve_purson.py'])
+        try:
+            r = sh(["scp", "-P", str(st["ssh_port"]),
+                    "-o", "StrictHostKeyChecking=accept-new",
+                    "-o", "BatchMode=yes", "-o", "ConnectTimeout=15",
+                    str(src), f'root@{st["ssh_host"]}:/workspace/serve_purson.py'],
+                   timeout=5 * 60)
+        except subprocess.TimeoutExpired:
+            sys.exit("scp ค้างเกิน 5 นาที — ไฟล์แค่ ~12KB ไม่ควรนานขนาดนี้ "
+                     "เครื่องนี้มีอาการ destroy แล้วเช่าใหม่")
         if r.returncode != 0:
             sys.exit(f"scp ไม่สำเร็จ: {r.stderr.strip()}")
 
