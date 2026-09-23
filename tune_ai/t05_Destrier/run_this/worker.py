@@ -442,10 +442,22 @@ def call_purson(image_bytes_list, prompt):
     except Exception:
         # ต่อไม่ติด/5xx = tunnel สะดุดหรือ server เพิ่งรีสตาร์ท — รอแล้วยิงใหม่ได้
         r = _retry(once, "ยิงโมเดล")
-    raw = r.json()["choices"][0]["message"]["content"] or ""
+    body = r.json()
+    choice = (body.get("choices") or [{}])[0]
+    raw = (choice.get("message") or {}).get("content") or ""
     try:
         return json.loads(strip_fence(raw)), raw
     except Exception:
+        # ⚠️ แยกให้ออกระหว่าง "โมเดลตอบมั่ว" กับ "เราตัดมันเองเพราะชนเพดาน token"
+        # เดิมสองเคสนี้คืนค่าเหมือนกันเป๊ะ หน้าที่คำตอบยาวเกินจึงหายไปทั้งหน้าแบบเงียบสนิท
+        # ไม่มีข้อความบอกสักคำว่าทำไม (เจอจริง 23 ก.ย. หน้า S-01 เขียน 15,910 ตัวอักษร
+        # = ชนเพดาน 6000 token พอดี แล้ว JSON ขาดครึ่ง)
+        # หมายเหตุ: เซิร์ฟเวอร์รุ่นเก่ายังตอบ "stop" ตายตัว เช็คความยาวเสริมไว้ด้วย
+        if choice.get("finish_reason") == "length":
+            return None, ("คำตอบโดนตัดกลางคันเพราะชนเพดาน token — หน้านี้มีของเยอะเกินกว่าที่ "
+                          f"MAX_NEW_TOKENS={CFG['MAX_NEW_TOKENS']} จะเขียนครบ "
+                          "(แก้ได้สองทาง: ขยายเพดานแล้วยอมให้ช้าลง หรือแยกผังในหน้านี้ออกเป็นคนละภาพ) "
+                          f"· ที่เขียนมาได้ {len(raw)} ตัวอักษร · ท้ายสุด: ...{raw[-160:]}")
         return None, raw
 
 

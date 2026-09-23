@@ -106,11 +106,17 @@ def generate(images, prompt, max_new_tokens, use_grammar):
     if use_grammar and grammar is not None:
         kw["logits_processor"] = grammar()
     out = model.generate(**inputs, **kw)
+    gen_len = out.shape[1] - inputs["input_ids"].shape[1]
+    # ⚠️ ต้องรู้ให้ได้ว่า "จบเพราะโมเดลเขียนครบ" หรือ "จบเพราะเราตัดเอง" — สองอย่างนี้
+    # ต่างกันคนละเรื่อง แต่เดิมตอบ finish_reason="stop" ตายตัวทั้งคู่ ฝั่ง worker จึงแยกไม่ออก
+    # พอ JSON ขาดครึ่งเพราะโดนตัด มันก็แค่ทิ้งหน้านั้นเงียบๆ เหมือนหน้าที่โมเดลตอบมั่ว
+    # (เจอจริง 23 ก.ย.: หน้า S-01 เขียน 15,910 ตัวอักษรใน 1,411 วินาที = ชนเพดาน 6000 token พอดี)
+    truncated = gen_len >= max_new_tokens
     pred = tok.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
     del inputs, out
     gc.collect()
     torch.cuda.empty_cache()
-    return pred
+    return pred, truncated
 
 
 def make_app():
@@ -143,15 +149,16 @@ def make_app():
         want_json = (body.get("response_format") or {}).get("type") == "json_object"
         t0 = time.time()
         try:
-            text = generate(images, "\n".join(texts),
-                            body.get("max_tokens", 6000), want_json)
+            text, truncated = generate(images, "\n".join(texts),
+                                       body.get("max_tokens", 6000), want_json)
             err = None
         except Exception as e:      # OOM ฯลฯ — ตอบ error ให้ worker บันทึก อย่าล้มเซิร์ฟเวอร์
-            text, err = "", f"{type(e).__name__}: {e}"
+            text, truncated, err = "", False, f"{type(e).__name__}: {e}"
         dt = time.time() - t0
         print(f"[{time.strftime('%H:%M:%S')}] {len(images)} ภาพ · "
               f"{'grammar' if want_json else 'ไม่ constrain'} · {dt:.0f}s"
-              + (f" · ERROR {err}" if err else f" · {len(text)} ตัวอักษร"), flush=True)
+              + (f" · ERROR {err}" if err else f" · {len(text)} ตัวอักษร"
+                 + (" · ⚠️ โดนตัดเพราะชนเพดาน token" if truncated else "")), flush=True)
         if err:
             # ต้องใช้ JSONResponse — `return dict, 500` FastAPI ตีเป็น list ธรรมดา
             # ทำให้ฝั่ง client เห็น [body, 500] แทน HTTP 500 (เจอจริง 2026-08-31)
@@ -160,7 +167,7 @@ def make_app():
             "id": f"purson-{int(t0)}", "object": "chat.completion",
             "model": _state["name"],
             "choices": [{"index": 0, "message": {"role": "assistant", "content": text},
-                         "finish_reason": "stop"}],
+                         "finish_reason": "length" if truncated else "stop"}],
         }
 
     return app
