@@ -186,7 +186,21 @@ def main():
 
     src = BASE_MODEL if a.base else a.adapter
     print(f"โหลดโมเดล: {src} (ครั้งแรกต้องดาวน์โหลด ~70GB ใช้เวลา 15-45 นาที)", flush=True)
-    model, tok = load(src, a.max_pixels)
+    # เน็ตสะดุดทีเดียวตอนโหลด 72 GB ไม่ควรฆ่าการเช่าเครื่องทั้งรอบ — HuggingFace แคชไฟล์ที่
+    # โหลดจบแล้วไว้ ลองใหม่จึงเริ่มต่อจากของเดิม ไม่ได้เริ่มศูนย์
+    # (23 ก.ย. 69: Xet พังที่ 9.1/72 GB แล้ว process ตายทันที เสียเวลาไป ~20 นาที)
+    for attempt in range(1, 4):
+        try:
+            model, tok = load(src, a.max_pixels)
+            break
+        except Exception as e:
+            if attempt == 3:
+                print(f"❌ โหลดโมเดลไม่สำเร็จครบ 3 ครั้ง — ยอมแพ้: {type(e).__name__}: {e}",
+                      flush=True)
+                raise
+            print(f"⚠️ โหลดโมเดลล้มครั้งที่ {attempt}/3 ({type(e).__name__}: {e})"
+                  f" — รอ 20 วิแล้วลองต่อจากไฟล์ที่โหลดไว้แล้ว", flush=True)
+            time.sleep(20)
     _state.update(model=model, tok=tok, grammar=build_grammar(model, tok),
                   name=a.name if not a.base else f"{a.name}-base")
     print(f"✅ พร้อมรับงานที่ port {a.port} — worker ยิงมาที่ /v1/chat/completions ได้เลย",

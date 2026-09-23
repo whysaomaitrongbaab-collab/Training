@@ -50,7 +50,15 @@ SLOW_MINUTES_MAX = 60       # โหลดโมเดลนานกว่า�
 #    (expert ทุกตัวจับคู่กับ rank คอลัมน์ผิด) — คือบั๊กคลาสเดียวกับที่ฆ่า GGUF t01/t02 ตอน ก.ค.
 #    กัน: ส่ง env UNSLOTH_MOE_LORA_B_LAYOUT=grouped_by_expert ตอนรันเซิร์ฟเวอร์เสมอ
 #    (เวอร์ชันเก่าไม่รู้จักตัวแปรนี้ = เมินทิ้ง ไม่กระทบ · เวอร์ชันใหม่ = อ่านถูกต้อง) ปลอดภัยทั้งสองทาง
-SERVE_ENV = "UNSLOTH_MOE_LORA_B_LAYOUT=grouped_by_expert"
+# HF_HUB_DISABLE_XET=1 — Xet คือโปรโตคอลโหลดตัวใหม่ของ HuggingFace ที่เปิดเป็นค่า
+# เริ่มต้น **และมันพังจริงกลางวันพรีเซนต์ 23 ก.ย. 69**: โหลดไป 9.1 GB จาก 72 GB แล้วโยน
+#   RuntimeError: File reconstruction error: Internal Writer Error:
+#                Background writer channel closed
+# ตัวเสิร์ฟตายทั้ง process แล้วหน้าจอฝั่งเราก็ยังขึ้น "รอโมเดลพร้อม" ต่อไปเงียบๆ
+# เสียไป ~20 นาทีกับการรอสิ่งที่ไม่มีวันมา
+# ปิดแล้วถอยไปใช้ HTTP ธรรมดา ซึ่ง net_check วัดได้ 390 MB/s บนเครื่องที่ดี = เร็วพอ
+# และเราโหลดโมเดลใหม่ทุกครั้งที่เช่า ไม่มีของเก่าให้ Xet dedup อยู่แล้ว = แทบไม่เสียอะไร
+SERVE_ENV = ("UNSLOTH_MOE_LORA_B_LAYOUT=grouped_by_expert HF_HUB_DISABLE_XET=1")
 
 MODELS = {
     "t03": {
@@ -218,7 +226,15 @@ def instance_machine_id(iid):
 
 
 def scrap_instance(iid):
-    """คืนเครื่องที่ใช้ไม่ได้ทิ้งทันที — ไม่ปล่อยให้ค่าเช่าเดินระหว่างไปลองเครื่องถัดไป"""
+    """คืนเครื่องที่ใช้ไม่ได้ทิ้งทันที — ไม่ปล่อยให้ค่าเช่าเดินระหว่างไปลองเครื่องถัดไป
+
+    ต้องฆ่า tunnel ก่อนด้วย: ถ้าล้มหลัง start_tunnel แล้ว จะมี ssh -N ค้างชี้ไปที่เครื่องที่
+    กำลังจะหายไป มันจองพอร์ต 8000 ไว้ แล้วเครื่องถัดไปจะต่อ tunnel ไม่ได้
+    (ExitOnForwardFailure=yes ทำให้ตายดังๆ ตรงนั้นแทนที่จะเงียบ แต่ก็คือล้มอยู่ดี)"""
+    st = load_state()
+    if st.get("tunnel_pid"):
+        sh(["taskkill", "/PID", str(st["tunnel_pid"]), "/F", "/T"]
+           if sys.platform == "win32" else ["kill", str(st["tunnel_pid"])])
     print(f"  คืนเครื่อง {iid} ทิ้ง (ไม่ปล่อยให้เงินเดิน)...")
     r = sh(["vastai", "destroy", "instance", str(iid)], input="y\n")
     if r.returncode != 0:
@@ -296,14 +312,13 @@ def cmd_up(a):
             st.update({"ssh_host": host, "ssh_port": port})
             save_state(st)
             upload_and_start_server(st, m)
+            start_tunnel(st)
+            wait_healthy(st)
         except BadMachine as e:
             print(f"\n❌ เครื่องนี้ใช้ไม่ได้: {e}")
             blacklist_add(offer.get("machine_id"), str(e), offer.get("gpu_name", ""))
             scrap_instance(new_id)
             continue                     # ไปเครื่องถัดไปเลย ไม่ต้องรอใครสั่ง
-        start_tunnel(st)
-        wait_healthy()
-        print_ready()
         print("   เปิดอีก terminal แล้วรัน: python worker.py"
               "\n   (จบวันอย่าลืม: python presentation.py down — ไม่งั้นเผาเงินทั้งคืน)")
         return
@@ -335,6 +350,8 @@ def cmd_attach(a):
         st.update({"ssh_host": host, "ssh_port": port})
         save_state(st)
         upload_and_start_server(st, m)
+        start_tunnel(st)
+        wait_healthy(st)
     except BadMachine as e:
         # เครื่องนี้มะขามเลือกเอง — จำไว้ว่าใช้ไม่ได้ แต่ไม่คืนให้เอง (สิทธิ์ตัดสินใจเป็นของเขา)
         mid, gpu = instance_machine_id(a.instance_id)
@@ -342,9 +359,6 @@ def cmd_attach(a):
         sys.exit(f"⛔ เครื่องนี้ใช้ไม่ได้: {e}\n"
                  "   คืนเครื่อง (เมนูข้อ 4) แล้วใช้เมนูข้อ 3 ให้สคริปต์หาเครื่องใหม่ให้เอง\n"
                  "   — มันจะข้ามเครื่องนี้ให้อัตโนมัติแล้ว")
-    start_tunnel(st)
-    wait_healthy()
-    print_ready()
     print("   เปิดอีก terminal แล้วรัน: python worker.py"
           "\n   (จบวันอย่าลืม: python presentation.py down — ไม่งั้นเผาเงินทั้งคืน)")
 
@@ -673,18 +687,44 @@ def healthy():
         return False
 
 
-def wait_healthy(timeout_s=60 * 60):
-    print("รอ vLLM พร้อม (ติดตั้ง + โหลดโมเดล ~70GB — ปกติ 15-45 นาที)...")
+def server_alive(st):
+    """ตัวเสิร์ฟบนเครื่องเช่ายังมีชีวิตอยู่ไหม — คืน (alive, log ท้ายๆ ถ้าตาย)
+
+    ssh ช้า/ตอบไม่ได้ชั่วคราว **ไม่ใช่** หลักฐานว่าตาย — เคสนั้นคืน True เสมอ
+    ตัดสินว่าตายเฉพาะตอนที่เข้าไปดูได้จริงแล้วไม่เจอ process"""
+    # [s]erve_purson — วงเล็บกัน pgrep เจอตัวเอง (กับดักเดียวกับ [p]ip install ด้านล่าง)
+    try:
+        r = sh(["ssh", *ssh_base(st),
+                "pgrep -f '[s]erve_purson.py' > /dev/null && echo ALIVE || "
+                "{ echo DEAD; tail -20 /workspace/purson.log 2>/dev/null; }"], timeout=60)
+    except subprocess.TimeoutExpired:
+        return True, ""
+    out = (r.stdout or "").strip()
+    if r.returncode != 0 or not out.startswith("DEAD"):
+        return True, ""
+    return False, out[len("DEAD"):].strip()
+
+
+def wait_healthy(st=None, timeout_s=60 * 60):
+    print("รอโมเดลพร้อม (ติดตั้ง + โหลดโมเดล ~70GB — ปกติ 15-45 นาที)...")
     t0 = time.time()
     while time.time() - t0 < timeout_s:
         if healthy():
-            print(f"✅ vLLM ตอบแล้ว ({int((time.time() - t0) / 60)} นาที)")
+            print(f"✅ โมเดลตอบแล้ว ({int((time.time() - t0) / 60)} นาที)")
             print_ready()
             return
         time.sleep(30)
+        # เช็คว่ายังมีอะไรทำงานอยู่จริงไหม — 23 ก.ย. 69 ตัวเสิร์ฟตายตั้งแต่นาทีที่ 4
+        # (Xet พังกลางโหลด) แต่หน้าจอยังขึ้น "ยังไม่พร้อม" ต่อไปอีก 20 นาทีเหมือนปกติ
+        # ทุกประการ — รอสิ่งที่ไม่มีวันมา นี่คือกับดักคลาสเดียวกับ ssh ค้างเงียบ
+        if st:
+            alive, log_tail = server_alive(st)
+            if not alive:
+                print("\n--- ท้าย purson.log บนเครื่องเช่า ---\n" + (log_tail or "(ไม่มี log)"))
+                raise BadMachine("ตัวเสิร์ฟบนเครื่องเช่าตายกลางทาง (ดู log ข้างบน)")
         print(f"  ...ยังไม่พร้อม ({int((time.time() - t0) / 60)} นาที) "
               f"— ดู log: ssh เข้าไปแล้ว tail -f /workspace/purson.log")
-    sys.exit("เกิน 1 ชม. ยังไม่พร้อม — ssh เข้าไปดู /workspace/purson.log")
+    raise BadMachine("เกิน 1 ชม. ยังไม่พร้อม")
 
 
 def cmd_status(_a):
@@ -710,7 +750,14 @@ def cmd_tunnel(_a):
     if not st.get("ssh_host"):
         sys.exit("ไม่มีข้อมูลเครื่องใน state — รัน up ก่อน")
     start_tunnel(st)
-    wait_healthy(timeout_s=120)
+    # ส่ง st เข้าไปด้วย เพื่อให้มันบอกได้ว่า "ตัวเสิร์ฟตายไปแล้ว" พร้อม log
+    # แทนที่จะรอ 2 นาทีแล้วบอกแค่ว่าไม่ตอบ
+    try:
+        wait_healthy(st, timeout_s=120)
+    except BadMachine as e:
+        sys.exit(f"ต่อ tunnel ได้แล้วแต่โมเดลยังไม่ตอบ: {e}\n"
+                 "   ถ้าตัวเสิร์ฟตาย (ดู log ข้างบน) = คืนเครื่องแล้วเช่าใหม่ "
+                 "— เมนูข้อ 4 แล้วข้อ 3")
 
 
 def cmd_smoke(_a):

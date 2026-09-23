@@ -108,12 +108,48 @@ def test_cmd_up_structure():
               needle not in src or "raise BadMachine" in src)
 
 
+def test_dead_server_detection():
+    """23 ก.ย. 69: ตัวโหลดของ HuggingFace (Xet) พังที่ 9.1/72 GB ตัวเสิร์ฟตายทั้ง process
+    แต่หน้าจอยังขึ้น "ยังไม่พร้อม" ต่อไปอีก 20 นาทีเหมือนปกติทุกประการ — กับดักคลาสเดียวกับ
+    ssh ค้างเงียบ: รอสิ่งที่ไม่มีวันมา โดยไม่มีอะไรบอก"""
+    import re
+    pres = (HERE / "presentation.py").read_text(encoding="utf-8")
+    serve = (HERE / "serve_purson.py").read_text(encoding="utf-8")
+
+    check("ปิด Xet ตอนโหลดโมเดล (ตัวที่พังจริง)", "HF_HUB_DISABLE_XET=1" in pres)
+    check("ยังคง MoE layout เดิมไว้ (ไม่งั้นผลเป็นขยะเงียบๆ)",
+          "UNSLOTH_MOE_LORA_B_LAYOUT=grouped_by_expert" in pres)
+
+    wh = pres[pres.index("def wait_healthy("):pres.index("def cmd_status(")]
+    check("รอโมเดลแล้วเช็คด้วยว่าตัวเสิร์ฟยังอยู่", "server_alive(st)" in wh)
+    check("ตัวเสิร์ฟตาย = โยน BadMachine (กู้ได้ ไม่ใช่ตายทั้งโปรแกรม)",
+          "raise BadMachine" in wh)
+
+    sa = pres[pres.index("def server_alive("):pres.index("def wait_healthy(")]
+    check("ssh ตอบช้าไม่นับว่าตัวเสิร์ฟตาย (ห้ามตัดสินผิดทาง)",
+          "TimeoutExpired" in sa and "return True" in sa)
+    check("pgrep ต้องไม่เจอตัวเอง (ใช้ [s]erve_purson)", "[s]erve_purson" in sa)
+
+    # ทุกจุดที่เรียก wait_healthy ต้องมีคนรับ BadMachine ไม่งั้นโผล่เป็น traceback ใส่หน้า
+    calls = list(re.finditer(r"^( *)wait_healthy" + chr(92) + "(", pres, re.M))
+    check(f"เรียก wait_healthy {len(calls)} จุด และทุกจุดอยู่ใน try",
+          len(calls) >= 3 and all(len(m.group(1)) >= 8 for m in calls))
+
+    check("โหลดโมเดลล้ม = ลองใหม่ ไม่ใช่ตายทันที",
+          "for attempt in range(1, 4)" in serve and "model, tok = load(" in serve)
+
+    scrap = pres[pres.index("def scrap_instance("):pres.index("def cmd_up(")]
+    check("คืนเครื่องแล้วต้องฆ่า tunnel ด้วย (ไม่งั้นจองพอร์ต 8000 ค้าง)",
+          "tunnel_pid" in scrap)
+
+
 def main():
     print("ตรวจบัญชีดำเครื่องเช่า")
     for fn in (test_store, test_filter):
         with_temp_blacklist(fn)
     test_ssh_endpoint_sentinel()
     test_cmd_up_structure()
+    test_dead_server_detection()
     if FAILED:
         sys.exit(f"\n❌ ไม่ผ่าน {len(FAILED)} ข้อ: {', '.join(FAILED)}")
     print("\nok — บัญชีดำทำงานครบ (จำได้ · กรองได้ · ไฟล์พังไม่ล้ม · cmd_up กู้ตัวเองได้)")
