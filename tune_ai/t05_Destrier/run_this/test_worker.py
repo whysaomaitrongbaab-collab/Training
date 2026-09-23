@@ -285,3 +285,33 @@ assert "result" in _get_calls[0]["select"].split(","), \
     "claim_next_job ต้อง select result ด้วย ไม่งั้น resume ในกฎ run_house_extract หาของเดิมไม่เจอ"
 
 print("OK — checkpoint บันทึกถูกก้อน + claim_next_job ดึง result มาด้วย ผ่านทุกข้อ")
+
+
+# ── กู้ JSON ที่โดนตัดเพราะชนเพดาน token ───────────────────────────────────────
+# เจอจริง 23 ก.ย. 2026: หน้า S-01 ตอบยาว 15,910 ตัวอักษรจนชนเพดาน JSON ขาดกลางประโยค
+# ระบบเดิมโยนทิ้งทั้งไฟล์ → ชิ้นส่วนเข้าโปรเจกต์เหลือ 5 ตัว · กู้แล้วได้คืน 49 ตัว
+_head = '{"sheet_code": "S-01", "elements": ['
+_el = '{"element_id": "TB%d", "element_type": "tie_beam", "span_length_m": 3.2}'
+_whole = _head + ", ".join(_el % i for i in range(1, 6)) + ']}'
+
+# 1) JSON ปกติต้องผ่านโดยไม่ถูกทำเครื่องหมายว่าซ่อม — ห้ามไปแตะเส้นทางที่ดีอยู่แล้ว
+_d, _rep = worker.salvage_truncated_json(_whole)
+assert _d is not None and _rep is False and len(_d["elements"]) == 5,     "JSON ที่สมบูรณ์ต้องผ่านตรงๆ ไม่ถูกซ่อม"
+
+# 2) ตัดกลางชิ้นสุดท้าย → ต้องกู้ได้ และได้ชิ้นที่สมบูรณ์ครบทุกตัวก่อนหน้า
+_cut = _whole[:_whole.rindex('{"element_id": "TB5"')] + '{"element_id": "TB5", "element_ty'
+_d2, _rep2 = worker.salvage_truncated_json(_cut)
+assert _d2 is not None and _rep2 is True, "คำตอบที่โดนตัดต้องกู้ได้ ไม่ใช่ทิ้งทั้งไฟล์"
+assert len(_d2["elements"]) == 4, f"ต้องได้ชิ้นที่สมบูรณ์ 4 ตัว (ได้ {len(_d2['elements'])})"
+assert _d2["sheet_code"] == "S-01", "ข้อมูลส่วนหัวต้องไม่หายไปตอนกู้"
+
+# 3) กติกา "ไม่เดา" — ข้อความที่ไม่ใช่ JSON เลยต้องคืน None ห้ามยัดข้อมูลมั่ว
+_d3, _rep3 = worker.salvage_truncated_json("ข้อความมั่วที่ไม่ใช่ json")
+assert _d3 is None and _rep3 is False, "ข้อความที่กู้ไม่ได้ต้องคืน None ไม่ใช่เดา"
+
+# 4) วงเล็บที่อยู่ในสตริงห้ามถูกนับ ไม่งั้นตัดผิดตำแหน่ง
+_tricky = '{"note": "ขนาด {200x400} และ [เหล็ก]", "elements": [{"a": 1}, {"b": 2}, {"c"'
+_d4, _rep4 = worker.salvage_truncated_json(_tricky)
+assert _d4 is not None and len(_d4["elements"]) == 2 and "{200x400}" in _d4["note"],     "วงเล็บในสตริงต้องไม่ถูกนับเป็นโครงสร้าง"
+
+print("OK — กู้ JSON ที่โดนตัด ผ่านทุกข้อ (ปกติไม่แตะ · ตัดแล้วกู้ได้ · มั่วแล้วไม่เดา · วงเล็บในสตริงปลอดภัย)")

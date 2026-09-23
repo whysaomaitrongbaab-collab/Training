@@ -453,12 +453,69 @@ def call_purson(image_bytes_list, prompt):
         # ไม่มีข้อความบอกสักคำว่าทำไม (เจอจริง 23 ก.ย. หน้า S-01 เขียน 15,910 ตัวอักษร
         # = ชนเพดาน 6000 token พอดี แล้ว JSON ขาดครึ่ง)
         # หมายเหตุ: เซิร์ฟเวอร์รุ่นเก่ายังตอบ "stop" ตายตัว เช็คความยาวเสริมไว้ด้วย
+        # ลองกู้ก่อนยอมแพ้ — คำตอบที่โดนตัดมักสมบูรณ์เกือบทั้งก้อน เสียแค่ชิ้นสุดท้าย
+        salvaged, was_repaired = salvage_truncated_json(strip_fence(raw))
+        if salvaged is not None and was_repaired:
+            n = len((salvaged or {}).get("elements") or [])
+            print(f"   ⚕️ กู้ JSON ที่โดนตัดสำเร็จ — ได้ชิ้นส่วนคืน {n} ตัว "
+                  f"(ชิ้นสุดท้ายที่เขียนไม่จบถูกตัดทิ้ง)", flush=True)
+            if isinstance(salvaged, dict):
+                salvaged.setdefault("warnings", []).append(
+                    "คำตอบโดนตัดเพราะชนเพดาน token — กู้กลับมาได้ แต่ชิ้นส่วนท้ายสุด "
+                    "อาจขาดไปบางตัว ควรตรวจก่อนใช้จริง")
+            return salvaged, raw
         if choice.get("finish_reason") == "length":
             return None, ("คำตอบโดนตัดกลางคันเพราะชนเพดาน token — หน้านี้มีของเยอะเกินกว่าที่ "
                           f"MAX_NEW_TOKENS={CFG['MAX_NEW_TOKENS']} จะเขียนครบ "
                           "(แก้ได้สองทาง: ขยายเพดานแล้วยอมให้ช้าลง หรือแยกผังในหน้านี้ออกเป็นคนละภาพ) "
                           f"· ที่เขียนมาได้ {len(raw)} ตัวอักษร · ท้ายสุด: ...{raw[-160:]}")
         return None, raw
+
+
+def salvage_truncated_json(text):
+    """กู้ JSON ที่ถูกตัดกลางคัน — ถอยไปถึงชิ้นที่สมบูรณ์ตัวสุดท้าย แล้วปิดวงเล็บที่ค้างอยู่
+
+    ทำไมต้องมี (วัดจริง 23 ก.ย. 2026): หน้า S-01 ของบ้านครอบครัวไทยเป็นสุข2 ตอบยาว
+    15,910 ตัวอักษรจนชนเพดาน token แล้ว JSON ขาดกลางประโยค ระบบเดิมโยนทิ้งทั้งไฟล์
+    เหลือชิ้นส่วนเข้าโปรเจกต์แค่ 5 ตัว — **กู้แล้วได้คืน 49 ตัว** (ฐานราก 5 + คานคอดิน 44
+    ซึ่ง 44 ตัวมีความยาวช่วงจริงจากตารางกริดครบ) คือของที่ทิ้งไปคือเนื้อหลักทั้งก้อน
+
+    วิธี: เดินอ่านทีละตัวอักษรโดยรู้ว่าตอนนี้อยู่ในสตริงหรือไม่ (ห้ามนับวงเล็บที่อยู่ในสตริง)
+    จำตำแหน่งที่ "ปิดชิ้นส่วนพอดี" ไว้ แล้วตัดตรงนั้น ปิดวงเล็บที่ยังค้างย้อนกลับตามลำดับ
+    กติกา "ไม่เดา" ยังอยู่: ถ้าปิดแล้วยังแปลงไม่ผ่าน คืน None ไม่ยัดข้อมูลมั่ว
+    """
+    try:
+        return json.loads(text), False
+    except Exception:
+        pass
+    stack, in_str, esc, cut, cut_stack = [], False, False, -1, None
+    for i, c in enumerate(text):
+        if esc:
+            esc = False
+            continue
+        if c == "\\":
+            esc = True
+            continue
+        if c == '"':
+            in_str = not in_str
+            continue
+        if in_str:
+            continue
+        if c in "{[":
+            stack.append(c)
+        elif c in "}]":
+            if stack:
+                stack.pop()
+            # ปิดชิ้นส่วนที่อยู่ในอาร์เรย์พอดี = จุดตัดที่ปลอดภัย
+            if len(stack) >= 2 and stack[-1] == "[":
+                cut, cut_stack = i, list(stack)
+    if cut < 0 or not cut_stack:
+        return None, False
+    closing = "".join("}" if b == "{" else "]" for b in reversed(cut_stack))
+    try:
+        return json.loads(text[:cut + 1] + closing), True
+    except Exception:
+        return None, False
 
 
 def call_purson_safe(image_bytes_list, prompt):
