@@ -642,6 +642,22 @@ def upload_and_start_server(st, m):
         time.sleep(10)
     if not ssh_ok:
         raise BadMachine("ssh เข้าไม่ได้หลังลองซ้ำ 6 ครั้ง")
+
+    # กันเรียกฟังก์ชันนี้ซ้ำใส่เครื่องที่มีตัวเสิร์ฟรันอยู่แล้ว (เช่น เผลอกดข้อ 1 ซ้ำด้วย
+    # instance เดิม — เคยเกิดจริง 2 ก.ย. ต้องเข้าไป kill PID ทับกันเอง) เดิม scp+รันใหม่ทับ
+    # ไปเลยโดยไม่เช็คก่อน: process เก่ายัง live จองพอร์ต 8000 ไว้ ตัวใหม่ bind ไม่ติดแล้วตาย
+    # เงียบ (ssh คำสั่งพื้นหลังคืน returncode 0 เสมอเพราะไม่รอ process ลูกจริง — ดูคอมเมนต์
+    # `&` ด้านล่าง) แต่โค้ดเดิมพิมพ์ "สั่งรันเซิร์ฟเวอร์แล้ว" ราวกับสำเร็จทุกครั้ง — พังจริง
+    # แต่จอบอกว่าโอเค อันตรายกว่าไม่เช็คเลย
+    r = sh(["ssh", *ssh_base(st), "pgrep -f '[s]erve_purson.py' > /dev/null && echo LIVE"],
+           timeout=20)
+    if (r.stdout or "").strip() == "LIVE":
+        print("  ⚠️ เครื่องนี้มีตัวเสิร์ฟรันอยู่แล้ว — ข้ามการอัปโหลด/รันซ้ำ "
+              "(ไม่แตะของที่ทำงานอยู่ ป้องกันแย่งพอร์ต 8000 กัน)")
+        print("     อยากรีสตาร์ทจริง ให้เข้าไป kill เองก่อน: ssh เข้าเครื่องแล้ว "
+              "pkill -f serve_purson.py แล้วค่อยรันคำสั่งนี้ใหม่")
+        return
+
     net_check(st)
     if not m.get("serve"):          # เส้นทาง Unsloth — ต้องส่งตัวเสิร์ฟของเราขึ้นไปก่อน
         src = HERE / "serve_purson.py"
@@ -831,11 +847,18 @@ def cmd_down(_a):
     if st.get("instance_id"):
         r = sh(["vastai", "destroy", "instance", str(st["instance_id"])], input="y\n")
         print(r.stdout.strip() or r.stderr.strip())
-        left = vastai_json(["show", "instances"])
-        print(f"instance คงเหลือในบัญชี: {len(left)} "
-              f"{'✅ คืนครบ' if not left else '⚠️ ยังมีเครื่องอื่นเปิดอยู่ — เช็คว่าตั้งใจไหม'}")
     STATE_FILE.unlink(missing_ok=True)
-    print("จบวัน — ไม่เผาเงินต่อแล้ว")
+    # ต้องเช็คทุกครั้งไม่ว่า state จะมี instance_id ไหม — ถ้า state ว่างเพราะ destroy รอบก่อน
+    # ล้มแล้วโค้ดยังลบ state ทิ้ง (scrap_instance ก็ทำแบบนี้) เครื่องอาจยังเดินอยู่จริง
+    # ห้ามพูดว่า "ไม่เผาเงินต่อแล้ว" โดยไม่เคยถาม vast.ai ก่อน (เจอช่องโหว่นี้จากตรวจโค้ด 23 ก.ย.)
+    left = vastai_json(["show", "instances"])
+    if left:
+        notify.fail()
+        ids = ", ".join(str(i.get("id")) for i in left)
+        print(f"⚠️ ยังมี {len(left)} เครื่องเปิดอยู่ในบัญชี: {ids}")
+        print("   เงินยังเดินอยู่ — เข้าหน้าเว็บ vast.ai แล้วคืนเดี๋ยวนี้ อย่าปล่อยไว้ข้ามคืน")
+    else:
+        print("เหลือ 0 instance ในบัญชี — จบวัน ไม่เผาเงินต่อแล้ว")
 
 
 def cmd_blacklist(a):

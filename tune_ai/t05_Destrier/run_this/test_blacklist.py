@@ -204,6 +204,61 @@ def test_jupyter_mode_guard():
           src.index("check_ssh_mode(a.instance_id)") < src.index("wait_running(a.instance_id)"))
 
 
+def test_cmd_down_always_checks_vastai():
+    """23 ก.ย. 69 ตรวจโค้ดเจอ: cmd_down เดิมนับ instance คงเหลือ **ข้างใน** if st.get(id) —
+    state ว่าง (destroy รอบก่อนล้มแล้ว scrap_instance ลบ state ทิ้งไปแล้วก็ตาม) จะข้ามการถาม
+    vast.ai ทั้งก้อน แล้วพิมพ์ "จบวัน — ไม่เผาเงินต่อแล้ว" ทั้งที่ไม่เคยเช็คจริง"""
+    real_sh, real_vj, real_load, real_state, real_fail = (
+        P.sh, P.vastai_json, P.load_state, P.STATE_FILE, P.notify.fail)
+    P.sh = lambda *a, **k: type("R", (), {"returncode": 0, "stdout": "", "stderr": ""})()
+    P.load_state = lambda: {}                       # state ว่างสนิท — เคสที่เคยพัง
+    P.STATE_FILE = type("X", (), {"unlink": lambda self, missing_ok=True: None})()
+    try:
+        calls, notified = [], []
+        P.vastai_json = lambda a: (calls.append(a), [{"id": 999}])[1]
+        P.notify.fail = lambda: notified.append(True)
+        P.cmd_down(type("A", (), {"bad": None})())
+        check("cmd_down ถาม vast.ai เสมอแม้ state ว่าง",
+              calls == [["show", "instances"]])
+        check("มีเครื่องเหลือ (แม้ state ว่าง) ต้องมีเสียงเตือน", notified)
+
+        calls.clear(); notified.clear()
+        P.vastai_json = lambda a: (calls.append(a), [])[1]
+        P.cmd_down(type("A", (), {"bad": None})())
+        check("ไม่มีเครื่องเหลือจริง ไม่เตือนมั่ว", not notified)
+    finally:
+        P.sh, P.vastai_json, P.load_state, P.STATE_FILE, P.notify.fail = (
+            real_sh, real_vj, real_load, real_state, real_fail)
+
+
+def test_no_relaunch_over_live_server():
+    """23 ก.ย. 69 ตรวจโค้ดเจอ: upload_and_start_server ไม่เคยเช็คว่าเครื่องมีตัวเสิร์ฟรันอยู่
+    แล้วหรือยัง — scp+รันซ้ำทับไปเลย ของเดิมยังจองพอร์ต 8000 ตัวใหม่ bind ไม่ติดแล้วตายเงียบ
+    (ssh คำสั่งพื้นหลังคืน returncode 0 เสมอเพราะไม่รอ process ลูก) แต่จอพิมพ์ "สั่งรันเซิร์ฟเวอร์
+    แล้ว" เหมือนสำเร็จทุกครั้ง — เคยเกิดจริง 2 ก.ย. ต้อง ssh เข้าไป kill PID ทับกันเอง"""
+    real_sh, real_net, real_ssh_base = P.sh, P.net_check, P.ssh_base
+    P.ssh_base = lambda st: ["-p", "1", "root@x"]
+
+    def fake_sh(cmd, **kw):
+        joined = " ".join(str(x) for x in cmd)
+        if "mkdir" in joined:
+            return type("R", (), {"returncode": 0, "stdout": "", "stderr": ""})()
+        if "pgrep" in joined:
+            return type("R", (), {"returncode": 0, "stdout": "LIVE\n", "stderr": ""})()
+        raise AssertionError(f"ไม่ควรเรียกคำสั่งนี้เมื่อรู้แล้วว่ามีตัวเสิร์ฟรันอยู่: {cmd}")
+
+    P.sh = fake_sh
+    P.net_check = lambda st: (_ for _ in ()).throw(
+        AssertionError("ห้ามถึง net_check เมื่อเครื่องมีตัวเสิร์ฟรันอยู่แล้ว"))
+    try:
+        P.upload_and_start_server({"ssh_host": "x", "ssh_port": 1}, {})
+        check("มีตัวเสิร์ฟรันอยู่แล้ว -> ไม่ scp/รันซ้ำทับของเดิม", True)
+    except AssertionError as e:
+        check(f"มีตัวเสิร์ฟรันอยู่แล้ว -> ไม่ scp/รันซ้ำทับของเดิม ({e})", False)
+    finally:
+        P.sh, P.net_check, P.ssh_base = real_sh, real_net, real_ssh_base
+
+
 def main():
     print("ตรวจบัญชีดำเครื่องเช่า")
     for fn in (test_store, test_filter):
@@ -212,6 +267,8 @@ def main():
     test_cmd_up_structure()
     test_dead_server_detection()
     test_jupyter_mode_guard()
+    test_cmd_down_always_checks_vastai()
+    test_no_relaunch_over_live_server()
     if FAILED:
         sys.exit(f"\n❌ ไม่ผ่าน {len(FAILED)} ข้อ: {', '.join(FAILED)}")
     print("\nok — บัญชีดำทำงานครบ (จำได้ · กรองได้ · ไฟล์พังไม่ล้ม · cmd_up กู้ตัวเองได้)")
