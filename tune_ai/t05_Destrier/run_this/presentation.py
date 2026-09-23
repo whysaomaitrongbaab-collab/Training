@@ -412,6 +412,54 @@ def launch_cmd(m, adapter, px):
     sys.exit(f"⛔ ไม่รู้จัก serve='{kind}'")
 
 
+# ขนาดโมเดลฐานที่ต้องโหลดลงเครื่องเช่าทุกครั้ง (unsloth/Qwen3.6-35B-A3B = 71.9 GB
+# วัดจาก HF API จริง 23 ก.ย. 2026) ใช้แค่ประมาณเวลา ไม่ได้ใช้ตัดสินใจอะไรเอง
+MODEL_DOWNLOAD_GB = 72
+
+
+def net_check(st, sample_mb=90, streams=6):
+    """วัดความเร็วโหลดจริงของเครื่องเช่า **ก่อน** จะปล่อยให้โหลดโมเดล 72 GB
+
+    ทำไมต้องมี (เจอจริง 23 ก.ย. 2026 เสียไปเกือบสองชั่วโมง):
+    vast.ai โฆษณา inet_down ของแต่ละ offer และ `search` ก็กรอง inet_down>500 อยู่แล้ว
+    **แต่ตัวเลขนั้นเชื่อไม่ได้** — instance 52207647 โฆษณา 996 Mbps (≈125 MB/s) แต่
+    ดึงจริงได้ 6 MB/s ตายตัว ยิงขนาน 8 เส้นก็ยังได้ 6 MB/s เท่าเดิม (คือถูกจำกัดที่ต้นทาง
+    ไม่ใช่ปัญหาต่อคอนเนกชัน) · ที่แย่กว่าคือมันเงียบ: หน้าจอขึ้น "รอ vLLM พร้อม" เหมือนปกติ
+    ทุกประการ กว่าจะรู้ว่าเครื่องนี้ต้องใช้ 2 ชม. 45 นาทีแทน 25 นาที ก็จ่ายไปแล้วครึ่งทาง
+
+    ไม่บล็อกการทำงาน แค่บอกความจริงให้เห็นตั้งแต่นาทีแรก — คนตัดสินใจเองว่าจะรอหรือเปลี่ยนเครื่อง
+    (การเปลี่ยนเครื่องเสียแค่ค่าเช่าไม่กี่นาที ถูกกว่าการรออยู่หลายเท่า)
+    """
+    url = ("https://huggingface.co/unsloth/Qwen3.6-35B-A3B/resolve/main/"
+           "model-00001-of-00026.safetensors")
+    chunk = sample_mb * 1000 * 1000
+    # ยิงขนานหลายเส้นแล้วบวกกัน เพราะนั่นคือสิ่งที่ตัวโหลดจริงของ huggingface ทำ
+    # วัดเส้นเดียวจะได้ตัวเลขต่ำกว่าความจริงและตัดสินผิด
+    remote = (f"for i in $(seq 0 {streams - 1}); do S=$((i*{chunk})); "
+              f"curl -sL -o /dev/null -w '%{{speed_download}}\n' -m 20 "
+              f"-r $S-$((S+{chunk - 1})) '{url}' & done > /tmp/netcheck.txt; wait; "
+              "awk '{s+=$1} END {print s+0}' /tmp/netcheck.txt")
+    print("เช็คความเร็วเน็ตของเครื่องเช่าก่อน (ไม่กี่วินาที)...")
+    try:
+        r = sh(["ssh", *ssh_base(st), remote], timeout=90)
+        mbps = float(r.stdout.strip().splitlines()[-1]) / 1e6
+    except Exception:
+        print("  (วัดไม่สำเร็จ — ข้ามไป ไม่ใช่เรื่องคอขวด)")
+        return None
+    if mbps <= 0:
+        print("  (วัดไม่ได้ — ข้ามไป)")
+        return None
+    mins = MODEL_DOWNLOAD_GB * 1000 / mbps / 60
+    print(f"  เน็ตเครื่องนี้ {mbps:.1f} MB/s → โหลดโมเดล {MODEL_DOWNLOAD_GB} GB "
+          f"ราว {mins:.0f} นาที")
+    if mins > 60:
+        print("  ⚠️  ช้าผิดปกติ — ปกติเครื่องที่ดีใช้ 20-30 นาที")
+        print("      คุ้มกว่าถ้าคืนเครื่องนี้แล้วเช่าใหม่ (เสียแค่ค่าเช่าไม่กี่นาที):")
+        print("      python presentation.py down   แล้วเช่าใหม่")
+        print("      ถ้าจะรอต่อก็ได้ ไม่มีอะไรพัง แค่ช้าและจ่ายนานกว่า")
+    return mbps
+
+
 def upload_and_start_server(st, m):
     """ส่ง serve_purson.py ขึ้นเครื่องเช่าแล้วสั่งรันใน background
 
@@ -439,6 +487,7 @@ def upload_and_start_server(st, m):
     if not ssh_ok:
         sys.exit("ssh เข้าเครื่องไม่ได้หลังลองซ้ำ 6 ครั้ง (60s) — เครื่องนี้อาจมีปัญหาจริง "
                   "destroy แล้วเช่าใหม่")
+    net_check(st)
     if not m.get("serve"):          # เส้นทาง Unsloth — ต้องส่งตัวเสิร์ฟของเราขึ้นไปก่อน
         src = HERE / "serve_purson.py"
         try:
