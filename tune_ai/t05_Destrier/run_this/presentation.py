@@ -814,6 +814,11 @@ def cmd_tunnel(_a):
 
 
 def cmd_smoke(_a):
+    # เดิมยิงครั้งเดียวไม่มี try/except เลย — เน็ตกระตุกหรือโมเดลตอบช้าตอนคำขอแรกหลัง
+    # โหลดเสร็จ (คำขอต่อ ๆ ไปเร็วกว่านี้เยอะ) พังทีเดียวจบ ทั้งที่โมเดลจริง ๆ ใช้ได้
+    # เจอสด 23 ก.ย. 69: bring_up() ผูก start_worker() ไว้กับผลของฟังก์ชันนี้ พอสะดุด
+    # ครั้งเดียว worker เลยไม่ถูกเปิดทั้งที่การ์ดพร้อมสมบูรณ์ — ตอนนี้ bring_up() เลิกผูก
+    # สองเรื่องนี้แล้ว แต่ตัวนี้เองก็ควรทนได้บ้าง ไม่ใช่ล้มง่ายเกินความเป็นจริง
     body = json.dumps({
         "model": "purson",
         "messages": [{"role": "user",
@@ -821,16 +826,27 @@ def cmd_smoke(_a):
         "max_tokens": 50, "temperature": 0,
         "response_format": {"type": "json_object"},
     }).encode()
-    req = urllib.request.Request(
-        f"http://localhost:{LOCAL_PORT}/v1/chat/completions", data=body,
-        headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        out = json.load(r)
-    text = out["choices"][0]["message"]["content"]
-    json.loads(text)  # ต้อง parse ได้ ไม่งั้น throw
-    print(f"✅ smoke ผ่าน — โมเดลตอบ JSON ถูกต้อง: {text[:200]}")
-    print("   (นี่เช็คแค่ 'เครื่องติด' — ก่อนเชื่อผลจริง ยิงหน้าแบบที่รู้คำตอบ 1 หน้า"
-          " เทียบด้วยตาเสมอ โดยเฉพาะหลังเปลี่ยน is_3d_lora_weight/adapter)")
+    last_err = None
+    for attempt in range(1, 4):
+        try:
+            req = urllib.request.Request(
+                f"http://localhost:{LOCAL_PORT}/v1/chat/completions", data=body,
+                headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=120) as r:
+                out = json.load(r)
+            text = out["choices"][0]["message"]["content"]
+            json.loads(text)  # ต้อง parse ได้ ไม่งั้น throw
+            print(f"✅ smoke ผ่าน — โมเดลตอบ JSON ถูกต้อง: {text[:200]}")
+            print("   (นี่เช็คแค่ 'เครื่องติด' — ก่อนเชื่อผลจริง ยิงหน้าแบบที่รู้คำตอบ 1 หน้า"
+                  " เทียบด้วยตาเสมอ โดยเฉพาะหลังเปลี่ยน is_3d_lora_weight/adapter)")
+            return
+        except Exception as e:
+            last_err = e
+            if attempt < 3:
+                print(f"  ...smoke ครั้งที่ {attempt}/3 ไม่ผ่าน ({type(e).__name__}) "
+                      f"ลองใหม่ใน 10 วิ")
+                time.sleep(10)
+    sys.exit(f"smoke ล้มครบ 3 ครั้ง: {type(last_err).__name__}: {last_err}")
 
 
 def cmd_down(_a):
