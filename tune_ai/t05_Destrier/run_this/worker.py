@@ -772,25 +772,40 @@ def run_house_extract(job):
         images[p["page"]] = download_image(p["path"])
         set_progress(job_id, "download", i, len(pages), **meta)
 
-    # pass0 — จำแนกทีละหน้า (resume: ถ้า checkpoint มี pass0.json ครบแล้ว ใช้ของเดิม ไม่ยิงซ้ำ)
+    # pass0 — จำแนกทีละหน้า (resume: ถ้า checkpoint มี pass0.json ครบทุกหน้าแล้ว ใช้ของเดิม
+    # ไม่ยิงซ้ำ — เดิมเช็คแค่ "มีไฟล์ pass0.json ไหม" ไม่ได้เช็คว่าครบทุกหน้าไหม พอหน้าไหน
+    # ยิงพลาด (tunnel หลุด/ConnectionError) โค้ดเดิมจะ "ข้ามหน้านี้" แล้วไม่มีวันจำแนกซ้ำอีก
+    # เพราะรอบต่อไปเจอว่ามี pass0.json อยู่แล้วก็เชื่อว่าสมบูรณ์ทันที — เจอจริง 23-24 ก.ย. 69:
+    # tunnel หลุดตอน pass0 ทำให้ 21 จาก 29 หน้าโดนข้าม แล้วล็อกอยู่ในนั้นถาวร ทั้งบ้านเหลือ
+    # ข้อมูลจริงแค่ ~8 หน้า โดยไม่มีอะไรบอกจนกว่าจะไปนับเองตอนงานจบ**
     t0 = time.time()
     meta["phase"] = 2
-    if "pass0.json" in prev_by_name:
-        classified = prev_by_name["pass0.json"]["json"]["pages"]
-        files.append(prev_by_name["pass0.json"])
+    prev_pass0 = prev_by_name.get("pass0.json")
+    classified = list(prev_pass0["json"]["pages"]) if prev_pass0 else []
+    done_pages = {c["_page"] for c in classified if "_page" in c}
+    missing = [p for p in pages if p["page"] not in done_pages]
+
+    if not missing:
+        files.append(prev_pass0 or {"name": "pass0.json", "json": {"pages": classified}})
         set_progress(job_id, "pass0", len(pages), len(pages),
-                     note="resume จาก checkpoint เดิม", warnings=len(warnings), **meta)
+                     note="resume จาก checkpoint เดิม (ครบทุกหน้าแล้ว)",
+                     warnings=len(warnings), **meta)
     else:
-        classified = []
-        for i, p in enumerate(pages, 1):
+        if prev_pass0:
+            print(f"   ↻ pass0 checkpoint เดิมมีแค่ {len(done_pages)}/{len(pages)} หน้า "
+                  f"— จำแนกซ้ำเฉพาะ {len(missing)} หน้าที่ขาด: "
+                  f"{[p['page'] for p in missing]}", flush=True)
+        for i, p in enumerate(missing, 1):
             doc, raw = call_purson_safe([images[p["page"]]], PASS0_PROMPT)
             if doc is None:
                 warnings.append(f"pass0 หน้า {p['page']}: {raw or 'JSON เสีย'} — ข้ามหน้านี้")
             else:
                 doc["_page"] = p["page"]
                 classified.append(doc)
-            set_progress(job_id, "pass0", i, len(pages),
-                         note=f"หน้า {p['page']}", warnings=len(warnings), **meta)
+            set_progress(job_id, "pass0", i, len(missing),
+                         note=f"หน้า {p['page']}"
+                              + (f" (เติมหน้าที่ขาด {i}/{len(missing)})" if prev_pass0 else ""),
+                         warnings=len(warnings), **meta)
         files.append({"name": "pass0.json", "json": {"pages": classified}})
     timings["pass0_s"] = round(time.time() - t0, 1)
     save_checkpoint(job_id, files, warnings, timings)

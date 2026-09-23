@@ -287,6 +287,90 @@ assert "result" in _get_calls[0]["select"].split(","), \
 print("OK — checkpoint บันทึกถูกก้อน + claim_next_job ดึง result มาด้วย ผ่านทุกข้อ")
 
 
+# ── pass0 resume ต้องเติมเฉพาะหน้าที่ขาด ไม่ใช่เชื่อว่า "มีไฟล์ = ครบแล้ว" ─────────────
+# เจอจริง 23-24 ก.ย. 2026: tunnel หลุดตอน pass0 ทำให้ 21 จาก 29 หน้าโดน "ข้ามหน้านี้"
+# checkpoint เดิมเช็คแค่ "pass0.json in prev_by_name" ไม่เช็คว่าครบทุกหน้าไหม —
+# พอมีไฟล์แล้วก็เชื่อว่าสมบูรณ์ถาวร หน้าที่ขาดไม่มีวันถูกจำแนกซ้ำอีกเลย
+def _run_pass0_only(job, fake_call, fake_download=None):
+    """ตัดเฉพาะท่อน pass0 ของ run_house_extract ออกมารันเดี่ยว ๆ — ท่อนถัดไป (pass1+)
+    ต้องมีเครื่องจริง/prompt จริง รันในนี้ไม่ได้และไม่จำเป็นสำหรับเทสต์นี้"""
+    real_call, real_dl, real_prog, real_ckpt = (
+        worker.call_purson_safe, worker.download_image, worker.set_progress, worker.save_checkpoint)
+    worker.call_purson_safe = fake_call
+    worker.download_image = fake_download or (lambda path: path)
+    worker.set_progress = lambda *a, **k: None
+    worker.save_checkpoint = lambda *a, **k: None
+    try:
+        src = Path(__file__).with_name("worker.py").read_text(encoding="utf-8")
+        i = src.index("def run_house_extract(job):")
+        j = src.index("    # pass1 + pass1.5")
+        ns = {}
+        exec(compile(src[i:j] + "    return classified, missing\n", "pass0_snippet", "exec"),
+             vars(worker), ns)
+        return ns["run_house_extract"](job)
+    finally:
+        worker.call_purson_safe, worker.download_image, worker.set_progress, worker.save_checkpoint = (
+            real_call, real_dl, real_prog, real_ckpt)
+
+
+_calls = []
+def _fake_call(imgs, prompt):
+    page = imgs[0]
+    _calls.append(page)
+    if page == 12:
+        return None, "จำลองว่าพังอีกรอบ"
+    return {"sheet_code": f"S-{page}"}, "raw"
+
+
+_job = {
+    "id": "test-topup",
+    "payload": {"pages": [{"page": n, "path": f"p{n}.png"} for n in [3, 5, 8, 12, 20]]},
+    "result": {
+        "files": [{"name": "pass0.json", "json": {"pages": [
+            {"sheet_code": "S-3", "_page": 3},
+            {"sheet_code": "S-8", "_page": 8},
+            {"sheet_code": "S-20", "_page": 20},
+        ]}}],
+        "warnings": ["pass0 หน้า 5: ConnectionError — ข้ามหน้านี้",
+                    "pass0 หน้า 12: ConnectionError — ข้ามหน้านี้"],
+        "timings": {},
+    },
+}
+_classified, _missing = _run_pass0_only(
+    _job, _fake_call, fake_download=lambda path: int(path.strip("p.png")))
+
+assert _calls == [5, 12], f"ต้องเรียกจำแนกซ้ำแค่หน้าที่ขาด (5,12) ไม่แตะ 3/8/20 ที่มีอยู่แล้ว ได้ {_calls}"
+assert [p["page"] for p in _missing] == [5, 12], "ต้องระบุหน้าที่ขาดถูกตัว"
+assert sorted(c["_page"] for c in _classified) == [3, 5, 8, 20], \
+    "หน้า 5 ต้องถูกเติมเข้ามา (รอดรอบนี้) ส่วนหน้า 12 ยังพังอยู่ต้องไม่ถูกยัดเข้าไปมั่ว"
+
+# checkpoint ที่ครบทุกหน้าอยู่แล้ว ต้องไม่ยิงโมเดลซ้ำเลย (resume เร็วเหมือนเดิม)
+_calls2 = []
+_job_complete = {
+    "id": "test-complete",
+    "payload": {"pages": [{"page": n, "path": f"p{n}.png"} for n in [1, 2]]},
+    "result": {"files": [{"name": "pass0.json", "json": {"pages": [
+        {"sheet_code": "S-1", "_page": 1}, {"sheet_code": "S-2", "_page": 2}]}}],
+               "warnings": [], "timings": {}},
+}
+_classified2, _missing2 = _run_pass0_only(
+    _job_complete, lambda *a: (_calls2.append(1), (None, "ไม่ควรถูกเรียก"))[1])
+assert not _calls2, f"checkpoint ครบทุกหน้าแล้ว ต้องไม่ยิงโมเดลซ้ำเลย ได้ {_calls2}"
+assert not _missing2, "checkpoint ครบทุกหน้าแล้ว missing ต้องว่าง"
+
+# ไม่มี checkpoint เลย (งานใหม่) ต้องจำแนกครบทุกหน้าเหมือนเดิม (ไม่ regress เส้นทางปกติ)
+_calls3 = []
+_job_fresh = {"id": "test-fresh",
+             "payload": {"pages": [{"page": n, "path": f"p{n}.png"} for n in [7, 9]]}}
+_classified3, _missing3 = _run_pass0_only(
+    _job_fresh, lambda imgs, p: (_calls3.append(imgs[0]), ({"sheet_code": "ok"}, "raw"))[1],
+    fake_download=lambda path: int(path.strip("p.png")))
+assert _calls3 == [7, 9], f"งานใหม่ไม่มี checkpoint ต้องจำแนกครบทุกหน้า ได้ {_calls3}"
+
+print("OK — pass0 resume เติมเฉพาะหน้าที่ขาด ผ่านทุกข้อ "
+      "(เติมหน้าที่ขาด · ครบแล้วไม่ยิงซ้ำ · งานใหม่ไม่ regress)")
+
+
 # ── กู้ JSON ที่โดนตัดเพราะชนเพดาน token ───────────────────────────────────────
 # เจอจริง 23 ก.ย. 2026: หน้า S-01 ตอบยาว 15,910 ตัวอักษรจนชนเพดาน JSON ขาดกลางประโยค
 # ระบบเดิมโยนทิ้งทั้งไฟล์ → ชิ้นส่วนเข้าโปรเจกต์เหลือ 5 ตัว · กู้แล้วได้คืน 49 ตัว
