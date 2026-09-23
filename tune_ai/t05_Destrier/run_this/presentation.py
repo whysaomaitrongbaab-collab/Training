@@ -517,8 +517,16 @@ def upload_and_start_server(st, m):
               # ปิด pty ของ session นั้น kernel ยังไม่ยอมปิด channel จนกว่าทุก process ใน
               # session จะตายหมด (ลองแล้ว 1 ก.ย. รอบแรก: ใส่ `< /dev/null` เฉยๆ ยังค้างซ้ำ
               # อีกรอบ) `setsid` ตัดตัวเองออกเป็น session ใหม่ทั้งหมด ไม่ผูกกับ pty ของ ssh
-              # เลย — เป็นทางแก้มาตรฐานของปัญหา "ssh ค้างรอ background process" นี้
-              f"setsid nohup {launch_cmd(m, adapter, px)} "
+              #
+              # ⚠️ `--fork` ไม่ใช่ของประดับ — ขาดแล้วค้างจริง (เจอสด 23 ก.ย. instance
+              # 52213153): `&` ท้ายคำสั่งทำให้ทั้งชุดไปอยู่ใน subshell เบื้องหลัง และ
+              # subshell นั้น**เป็นหัวหน้ากลุ่มโปรเซสอยู่แล้ว** — `setsid` เจอเคสนี้จะ
+              # **exec ทับตัวเองแทนที่จะ fork** subshell จึงกลายเป็นตัวเซิร์ฟเวอร์เสียเอง
+              # แล้วกอด fd ของช่อง ssh ไว้จนกว่าโมเดลจะตาย = ssh ไม่มีวันจบ
+              # ผลคือ upload_and_start_server() ค้าง → start_tunnel() ไม่ได้รัน →
+              # เซิร์ฟเวอร์พร้อมอยู่บนเครื่องแต่ localhost:8000 ตายสนิท หาสาเหตุยากมาก
+              # วัดบนเครื่องจริงแล้ว: ไม่มี --fork → ssh ค้างเกิน 30 วิ · มี --fork → จบใน 4 วิ
+              f"setsid --fork nohup {launch_cmd(m, adapter, px)} "
               f"> /workspace/purson.log 2>&1 < /dev/null &")
     # timeout กันไว้อีกชั้น เผื่อ setsid ไม่พอในบางภาพเครื่องเช่า — 60s พอเหลือสำหรับแค่
     # สั่งงาน (ตัว while pip-wait ทำงานฝั่ง remote shell ไปแล้วก่อนหน้านี้จะไม่ถูกนับ เพราะ

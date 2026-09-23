@@ -41,4 +41,13 @@ base = P.ssh_base(ST)
 for opt in ("BatchMode=yes", "ConnectTimeout=15", "StrictHostKeyChecking=accept-new"):
     assert opt in base, f"ssh_base ขาด {opt} — เปิดช่องให้ค้างเงียบอีกรอบ"
 
-print("ok — ด่านกัน ssh ค้างเงียบครบทั้ง 3 ข้อ")
+# 4) คำสั่งสั่งรันเซิร์ฟเวอร์ต้องใช้ setsid --fork ไม่ใช่ setsid เปล่า
+#    `&` ท้ายคำสั่งทำให้ทั้งชุดอยู่ใน subshell ที่เป็นหัวหน้ากลุ่มโปรเซสอยู่แล้ว
+#    setsid เปล่าจะ exec ทับตัวเองแทนที่จะ fork → subshell กลายเป็นเซิร์ฟเวอร์เสียเอง
+#    แล้วกอด fd ของ ssh ไว้ = ssh ไม่มีวันจบ = start_tunnel() ไม่ได้รัน
+#    วัดบนเครื่องจริง 23 ก.ย.: ไม่มี --fork ค้างเกิน 30 วิ · มี --fork จบใน 4 วิ
+src = Path(__file__).resolve().parent.joinpath("presentation.py").read_text(encoding="utf-8")
+assert "setsid --fork nohup" in src,     "คำสั่งสั่งรันเซิร์ฟเวอร์ขาด --fork — ssh จะค้างจนกว่าโมเดลจะตาย"
+assert "setsid nohup" not in src.replace("setsid --fork nohup", ""),     "ยังมี setsid เปล่าหลงเหลืออยู่"
+
+print("ok — ด่านกัน ssh ค้างเงียบครบทั้ง 4 ข้อ")
