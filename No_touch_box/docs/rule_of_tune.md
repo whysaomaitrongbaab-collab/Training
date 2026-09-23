@@ -1,6 +1,16 @@
-# Rules for Touching Raw Training JSON
+# Rules for Touching Raw Training Data
 
 **Read this file before any work** in `No_touch_box/` and `rawjson_ยังไม่ได้แก้ไขโดนคน/` (repo root). No exceptions.
+
+## Scope of this file — general rules + this project's own log
+
+**This file has two layers, and they generalize differently.** Rules 1-4, the override code, the priority order, and every "Lessons Learned" item below are written as **general safety rules for any AI fine-tuning project** — the specific incidents attached to them (Thai construction-drawing extraction, Constistant/Destrier, house names, tuning-round codenames like t01/t04/t44) are the *evidence* those rules are grounded in, not a scope limit on the rules themselves. Read every "Never…"/"Always…" sentence as applying regardless of domain — reading drawings, labeling images, transcribing audio, whatever the dataset is.
+
+Two parts stay genuinely project-specific and should **not** be copied as-is into a different AI-tuning project:
+- **Rule 1's "Protected files" list** — the general principle (never edit/overwrite/delete the raw, pre-tuning ground truth without explicit per-conversation authorization) is universal; the actual file paths are this project's own and must be replaced with whatever your new project's raw-ground-truth paths are.
+- **"Ground Truth JSON Format"** and **"Mark of Shame"** below — the JSON schema is this project's own data shape, and the Mark of Shame section is this project's own incident log (kept for its concrete, hard-won detail). **A new AI-tuning project should start its own Mark of Shame log** rather than append into this one, so a future reader can tell which incidents belong to which project at a glance — but should still apply the same discipline (state risks of irreversible loss as a standalone hard-block warning, log real incidents honestly, extract a numbered "Rules going forward" list from each one).
+
+**How to adopt this file for a different AI-tuning project:** keep the override code, Rule 1-4's structure, the priority order, and all Lessons Learned unchanged; swap Rule 1's protected-files list for your new project's own raw/ground-truth paths; start a fresh "Ground Truth JSON Format" section describing your new project's actual label schema; and start a fresh "Mark of Shame" log for that project's own incidents rather than mixing them in here.
 
 ## Override code — `att1235`
 
@@ -19,9 +29,9 @@ Scope and limits, so the code stays useful instead of dangerous:
 
 ## Rule 1 (highest priority)
 
-**Never edit, overwrite, or delete raw JSON of pre-tuning raw data**, unless the user explicitly authorizes it in that same conversation.
+**General rule (any AI fine-tuning project): never edit, overwrite, or delete the raw, pre-tuning ground truth data**, unless the user explicitly authorizes it in that same conversation. "Raw ground truth" means whatever this project's dataset is built from before any human/model correction — JSON, images, audio, transcripts, whatever the domain is. When starting a new AI-tuning project, identify and list that project's own protected paths explicitly before any work touches them, using the same protected/not-protected split below as the template.
 
-**Protected files** ("raw JSON of raw data"):
+**This project's protected files** ("raw JSON of raw data" — Constistant/Destrier Thai construction-drawing extraction):
 - `raw/image/<house>/qwen-output/<house>_หน้าNN.json` — real AI extraction output (source ground truth)
 - `raw/image/<house>/qwen-output/_document_map.json`, `_run_summary.json`
 - Any direct output of `run_pipeline.py` / `build_document_map.py` / `analyze_folder.py`
@@ -109,7 +119,9 @@ Rule 1 always outranks Rules 2 and 3 — even a direct user order to edit raw JS
 
 ---
 
-## Ground Truth JSON Format (reference)
+## Ground Truth JSON Format (reference — this project only, Constistant/Destrier)
+
+> **This whole section is Constistant/Destrier's own label schema, not a general format.** A different AI-tuning project has its own ground-truth shape (different fields, maybe not JSON at all) and should write its own reference section here instead of reusing this one — kept only because it's this project's real, still-relevant format for its own tuning rounds.
 
 > **2026-08-02 — Label Studio cancelled (Makham's order).** The annotated/-via-Label-Studio flow described in this section no longer runs; its tooling was deleted 2026-08-02 (recoverable from git history). **Ground truth is now solely the raw JSON in `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house>/`** (format-gated by `tools/check_format.py`). The section below is kept as the historical record of the format used for tuning rounds t01/t02, and the type rules at its end still apply to any future dataset assembly.
 
@@ -220,9 +232,14 @@ Historical format (`label-studio-import-repeater-annotations.js` output → `ann
 
 ---
 
-## Mark of Shame
+## Mark of Shame (this project's incident log — Constistant/Destrier)
 
-Real incidents where Claude made a serious mistake during actual tuning work — process-level lessons, not just raw-JSON handling.
+Real incidents where Claude made a serious mistake during actual tuning work — process-level lessons, not just raw-JSON handling. **This is this project's own log — a different AI-tuning project should start its own Mark of Shame section rather than append here**, so incidents stay traceable to the project they happened in. The universal takeaways below apply regardless of project; the incident narrative under each is this project's specific evidence for it.
+
+**Universal takeaways from this log, for any AI-tuning project:**
+1. Never call an output "ready to use" if it can't do the task's core job, even if it technically runs.
+2. Any risk of permanent, irreversible data loss (destroy/delete/overwrite with no undo) gets its own standalone hard-block warning — never buried inside routine planning language.
+3. A known unresolved blocker (e.g. a required upload not yet possible) is a blocker to finishing the task, stated as such — not a deferred nice-to-have.
 
 ### 2026-07-21 — "DAY OF SHAME" — Tuned model files (LoRA/GGUF) permanently lost from not warning before instance destroy
 
