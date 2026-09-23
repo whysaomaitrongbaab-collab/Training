@@ -29,7 +29,10 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 STATE_FILE = HERE / "presentation_state.json"
+BLACKLIST_FILE = HERE / "blacklist.json"
 LOCAL_PORT = 8000
+MAX_RENT_TRIES = 3          # ลองกี่เครื่องก่อนยอมแพ้แล้วให้คนมาดู
+SLOW_MINUTES_MAX = 60       # โหลดโมเดลนานกว่านี้ = ทิ้งเครื่องนี้ (เครื่องดีใช้ 20-30 นาที)
 
 # preset ต่อโมเดล — เสิร์ฟด้วย serve_purson.py (Unsloth) ไม่ใช่ vLLM
 # ⚠️ ตรวจแล้ว 2026-08-30: adapter t03 เก็บ MoE LoRA เป็น experts.lora_A [4096,2048]
@@ -161,6 +164,67 @@ def save_state(st):
     STATE_FILE.write_text(json.dumps(st, indent=2))
 
 
+class BadMachine(Exception):
+    """เครื่องเช่าเครื่องนี้ใช้ไม่ได้จริง — ไม่ใช่ความผิดของสคริปต์เรา
+
+    ต่างจาก sys.exit ตรงที่ **กู้ได้**: cmd_up จับแล้วคืนเครื่องทิ้ง + ขึ้นบัญชีดำ +
+    เช่าเครื่องถัดไปให้อัตโนมัติ แทนที่จะโยนงานกลับให้คนนั่งเลือกเครื่องใหม่เอง
+    (23 ก.ย. 2026 เจอเครื่องเสีย 4 เครื่องติดกัน เสียเวลาไปชั่วโมงกว่า เพราะทุกครั้ง
+    ต้องเริ่มเมนูใหม่เองและมีสิทธิ์สุ่มได้เครื่องเดิมซ้ำ)"""
+
+
+def load_blacklist():
+    try:
+        return json.loads(BLACKLIST_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        return {}      # ไฟล์หาย/พัง = ถือว่ายังไม่เคยแบนใคร ไม่ใช่เหตุให้หยุดทำงาน
+
+
+def blacklist_add(machine_id, reason, gpu=""):
+    """จำเป็น **machine_id** ไม่ใช่ instance_id — instance คือสัญญาเช่ารอบนั้น เกิดใหม่ทุกครั้ง
+    ที่กดเช่า ส่วน machine_id คือเครื่องจริงของโฮสต์ ซึ่งเป็นตัวที่มีปัญหาและจะโผล่มาให้
+    เลือกซ้ำเรื่อยๆ ถ้าไม่จำไว้"""
+    if not machine_id:
+        print(f"  (ไม่รู้ machine_id จึงจำไม่ได้ว่าเครื่องไหน — {reason})")
+        return
+    bl = load_blacklist()
+    bl[str(machine_id)] = {"reason": reason, "gpu": gpu or "?",
+                           "at": time.strftime("%Y-%m-%d %H:%M")}
+    BLACKLIST_FILE.write_text(json.dumps(bl, indent=2, ensure_ascii=False),
+                              encoding="utf-8")
+    print(f"  🚫 ขึ้นบัญชีดำแล้ว: เครื่อง {machine_id} ({gpu or '?'}) — {reason}")
+
+
+def drop_blacklisted(offers):
+    bl = load_blacklist()
+    if not bl:
+        return offers
+    keep = [o for o in offers if str(o.get("machine_id")) not in bl]
+    skipped = len(offers) - len(keep)
+    if skipped:
+        print(f"  (ข้าม {skipped} เครื่องที่เคยมีปัญหา — ดูรายชื่อ: "
+              f"python presentation.py blacklist)")
+    return keep
+
+
+def instance_machine_id(iid):
+    """คืน (machine_id, gpu_name) ของ instance ที่ยังมีชีวิตอยู่ — ต้องเรียก **ก่อน** destroy"""
+    for ins in vastai_json(["show", "instances"]):
+        if ins.get("id") == iid:
+            return ins.get("machine_id"), ins.get("gpu_name", "")
+    return None, ""
+
+
+def scrap_instance(iid):
+    """คืนเครื่องที่ใช้ไม่ได้ทิ้งทันที — ไม่ปล่อยให้ค่าเช่าเดินระหว่างไปลองเครื่องถัดไป"""
+    print(f"  คืนเครื่อง {iid} ทิ้ง (ไม่ปล่อยให้เงินเดิน)...")
+    r = sh(["vastai", "destroy", "instance", str(iid)], input="y\n")
+    if r.returncode != 0:
+        print(f"  ⚠️ คืนไม่สำเร็จ: {(r.stderr or r.stdout).strip()}"
+              f"\n     เช็คเองที่หน้าเว็บ vast.ai ด้วย อย่าปล่อยค้าง")
+    STATE_FILE.unlink(missing_ok=True)
+
+
 # ⚠️ ค้นพบจริงบน instance 49282912 (2026-08-31) — 3 อย่างที่ image ของ vast.ai ไม่ได้ให้ฟรี:
 # 1) /workspace **ไม่มี** มาแต่แรก → redirect `> /workspace/pip.log` ทำให้ onstart ล้มทั้งบรรทัด
 #    แบบเงียบๆ (ไม่มีทั้ง log ให้ดูและไม่มี package ที่ลง)
@@ -186,36 +250,60 @@ def cmd_up(a):
     if st.get("instance_id"):
         sys.exit(f"มี instance {st['instance_id']} ค้างอยู่ใน state — รัน status หรือ down ก่อน")
 
-    offers = vastai_json(["search", "offers", m["search"], "-o", "dph_total"])
+    offers = drop_blacklisted(
+        vastai_json(["search", "offers", m["search"], "-o", "dph_total"]))
     if not offers:
-        sys.exit("ไม่เจอ offer ที่เข้าเงื่อนไข")
-    offer = offers[0]
-    price = offer.get("dph_total", 0)
-    print(f"\nเลือก offer {offer['id']}: {offer.get('gpu_name')} ×{offer.get('num_gpus')} "
-          f"({offer.get('gpu_ram', 0) / 1024:.0f}GB) @ ${price:.3f}/ชม. "
-          f"rel={offer.get('reliability2', offer.get('reliability', '?'))}")
-    if price > a.max_price:
-        sys.exit(f"แพงเกิน --max-price {a.max_price} — เพิ่ม limit เองถ้ายอมจ่าย")
-    if not a.yes and input("เช่าเลยไหม? [y/N] ").strip().lower() != "y":
-        sys.exit("ยกเลิก")
+        sys.exit("ไม่เจอ offer ที่เข้าเงื่อนไข\n"
+                 "   (ถ้าแบนไว้เยอะ ลองล้างบัญชีดำ: python presentation.py blacklist clear)")
 
-    r = sh(["vastai", "create", "instance", str(offer["id"]), "--image", IMAGE,
-            "--disk", str(DISK_GB), "--ssh", "--onstart-cmd", onstart_cmd(m), "--raw"])
-    if r.returncode != 0:
-        sys.exit(f"เช่าไม่สำเร็จ: {r.stderr.strip()}\n{r.stdout.strip()}")
-    new_id = json.loads(r.stdout).get("new_contract")
-    print(f"เช่าแล้ว instance {new_id} — รอเครื่องขึ้น...")
-    save_state({"instance_id": new_id, "model": a.model, "price_per_hr": price})
+    # ลองทีละเครื่องจนกว่าจะได้เครื่องที่ใช้ได้จริง — เครื่องที่ล้มถูกคืน+จำไว้ทันที
+    # ไม่ต้องมีคนมานั่งกดเมนูใหม่ทุกรอบ (บทเรียน 23 ก.ย.: เสีย 4 เครื่องติดกัน)
+    for attempt in range(1, MAX_RENT_TRIES + 1):
+        if not offers:
+            sys.exit("offer หมดแล้ว — ลองใหม่ทีหลัง หรือผ่อนเงื่อนไขใน MODELS[...]['search']")
+        offer = offers.pop(0)
+        price = offer.get("dph_total", 0)
+        print(f"\n[เครื่องที่ {attempt}/{MAX_RENT_TRIES}] offer {offer['id']} "
+              f"(machine {offer.get('machine_id')}): {offer.get('gpu_name')} "
+              f"×{offer.get('num_gpus')} ({offer.get('gpu_ram', 0) / 1024:.0f}GB) "
+              f"@ ${price:.3f}/ชม. rel={offer.get('reliability2', offer.get('reliability', '?'))}")
+        if price > a.max_price:
+            # offer เรียงจากถูกไปแพง — ตัวนี้แพงเกินแล้ว ตัวถัดไปยิ่งแพง ไม่ต้องลองต่อ
+            sys.exit(f"แพงเกิน --max-price {a.max_price} — เพิ่ม limit เองถ้ายอมจ่าย")
+        if not a.yes and input("เช่าเลยไหม? [y/N] ").strip().lower() != "y":
+            sys.exit("ยกเลิก")
 
-    host, port = wait_running(new_id)
-    st = load_state()
-    st.update({"ssh_host": host, "ssh_port": port})
-    save_state(st)
-    upload_and_start_server(st, m)
-    start_tunnel(st)
-    wait_healthy()
-    print("   เปิดอีก terminal แล้วรัน: python worker.py"
-          "\n   (จบวันอย่าลืม: python presentation.py down — ไม่งั้นเผาเงินทั้งคืน)")
+        r = sh(["vastai", "create", "instance", str(offer["id"]), "--image", IMAGE,
+                "--disk", str(DISK_GB), "--ssh", "--onstart-cmd", onstart_cmd(m), "--raw"])
+        if r.returncode != 0:
+            sys.exit(f"เช่าไม่สำเร็จ: {r.stderr.strip()}\n{r.stdout.strip()}")
+        new_id = json.loads(r.stdout).get("new_contract")
+        print(f"เช่าแล้ว instance {new_id} — รอเครื่องขึ้น...")
+        save_state({"instance_id": new_id, "model": a.model, "price_per_hr": price,
+                    "machine_id": offer.get("machine_id"),
+                    "gpu_name": offer.get("gpu_name", "")})
+
+        try:
+            host, port = wait_running(new_id)
+            st = load_state()
+            st.update({"ssh_host": host, "ssh_port": port})
+            save_state(st)
+            upload_and_start_server(st, m)
+        except BadMachine as e:
+            print(f"\n❌ เครื่องนี้ใช้ไม่ได้: {e}")
+            blacklist_add(offer.get("machine_id"), str(e), offer.get("gpu_name", ""))
+            scrap_instance(new_id)
+            continue                     # ไปเครื่องถัดไปเลย ไม่ต้องรอใครสั่ง
+        start_tunnel(st)
+        wait_healthy()
+        print_ready()
+        print("   เปิดอีก terminal แล้วรัน: python worker.py"
+              "\n   (จบวันอย่าลืม: python presentation.py down — ไม่งั้นเผาเงินทั้งคืน)")
+        return
+
+    sys.exit(f"ลองไปแล้ว {MAX_RENT_TRIES} เครื่อง ใช้ไม่ได้ทั้งหมด "
+             "— ทุกเครื่องถูกคืนและขึ้นบัญชีดำแล้ว ไม่มีอะไรค้างเผาเงิน\n"
+             "   สั่งเปิดการ์ดใหม่อีกรอบได้เลย มันจะข้ามเครื่องพวกนั้นให้เอง")
 
 
 def cmd_attach(a):
@@ -233,11 +321,19 @@ def cmd_attach(a):
     print(f"ต่อกับ instance {a.instance_id} ที่มะขามเช่าไว้แล้ว — รอเครื่องขึ้น...")
     save_state({"instance_id": a.instance_id, "model": a.model, "price_per_hr": None})
 
-    host, port = wait_running(a.instance_id)
-    st = load_state()
-    st.update({"ssh_host": host, "ssh_port": port})
-    save_state(st)
-    upload_and_start_server(st, m)
+    try:
+        host, port = wait_running(a.instance_id)
+        st = load_state()
+        st.update({"ssh_host": host, "ssh_port": port})
+        save_state(st)
+        upload_and_start_server(st, m)
+    except BadMachine as e:
+        # เครื่องนี้มะขามเลือกเอง — จำไว้ว่าใช้ไม่ได้ แต่ไม่คืนให้เอง (สิทธิ์ตัดสินใจเป็นของเขา)
+        mid, gpu = instance_machine_id(a.instance_id)
+        blacklist_add(mid, str(e), gpu)
+        sys.exit(f"⛔ เครื่องนี้ใช้ไม่ได้: {e}\n"
+                 "   คืนเครื่อง (เมนูข้อ 4) แล้วใช้เมนูข้อ 3 ให้สคริปต์หาเครื่องใหม่ให้เอง\n"
+                 "   — มันจะข้ามเครื่องนี้ให้อัตโนมัติแล้ว")
     start_tunnel(st)
     wait_healthy()
     print_ready()
@@ -279,7 +375,9 @@ def pick_ssh_endpoint(ins):
     """เลือกทางที่ตอบจริง — ลองทางตรงก่อนเพราะใช้ได้กว้างกว่า แล้วค่อยถอยไปพร็อกซี
     คืน (host, port) หรือ None ถ้ายังไม่มีทางไหนตอบ (เครื่องอาจยังบูต sshd ไม่เสร็จ)"""
     cands = []
-    if ins.get("public_ipaddr") and ins.get("direct_port_start"):
+    # 65535 คือรหัสว่า "โฮสต์นี้ไม่เปิดพอร์ตตรง" ไม่ใช่เลขพอร์ตจริง — ลองต่อไปก็ได้แต่
+    # timeout ทิ้งฟรีทุกรอบ แล้วบังหน้าว่าเครื่องเงียบทั้งที่ควรไปลองพร็อกซีเลย
+    if ins.get("public_ipaddr") and ins.get("direct_port_start") not in (None, 65535):
         cands.append(("ทางตรง", ins["public_ipaddr"], int(ins["direct_port_start"])))
     if ins.get("ssh_host") and ins.get("ssh_port"):
         cands.append(("พร็อกซี", ins["ssh_host"], int(ins["ssh_port"])))
@@ -303,8 +401,7 @@ def wait_running(iid, timeout_s=15 * 60):
                 break
         time.sleep(20)
         print(f"  ...รอเครื่องขึ้น ({int(time.time() - t0)}s)")
-    sys.exit("เครื่องไม่ขึ้นใน 15 นาที — เช็ค vastai show instances เอง "
-             "(host มีอาการ = destroy แล้วเช่าใหม่ อย่าฝืนรอ — บทเรียน fold3)")
+    raise BadMachine("เครื่องไม่ขึ้น/ssh ไม่ตอบใน 15 นาที")
 
 
 def ssh_base(st):
@@ -427,8 +524,9 @@ def net_check(st, sample_mb=90, streams=6):
     ไม่ใช่ปัญหาต่อคอนเนกชัน) · ที่แย่กว่าคือมันเงียบ: หน้าจอขึ้น "รอ vLLM พร้อม" เหมือนปกติ
     ทุกประการ กว่าจะรู้ว่าเครื่องนี้ต้องใช้ 2 ชม. 45 นาทีแทน 25 นาที ก็จ่ายไปแล้วครึ่งทาง
 
-    ไม่บล็อกการทำงาน แค่บอกความจริงให้เห็นตั้งแต่นาทีแรก — คนตัดสินใจเองว่าจะรอหรือเปลี่ยนเครื่อง
-    (การเปลี่ยนเครื่องเสียแค่ค่าเช่าไม่กี่นาที ถูกกว่าการรออยู่หลายเท่า)
+    2026-09-23 เปลี่ยนจาก "เตือนแล้วให้คนตัดสิน" เป็น **โยน BadMachine ทิ้งเครื่องเลย**
+    เพราะคำตอบมันมีอยู่คำตอบเดียวมาตลอด (เปลี่ยนเครื่องถูกกว่ารอเสมอ) การถามคนจึงเป็นแค่
+    การบังคับให้มีคนนั่งเฝ้าจอ — ตอนนี้ cmd_up ไปเครื่องถัดไปให้เองโดยไม่ต้องมีใครกด
     """
     url = ("https://huggingface.co/unsloth/Qwen3.6-35B-A3B/resolve/main/"
            "model-00001-of-00026.safetensors")
@@ -452,11 +550,9 @@ def net_check(st, sample_mb=90, streams=6):
     mins = MODEL_DOWNLOAD_GB * 1000 / mbps / 60
     print(f"  เน็ตเครื่องนี้ {mbps:.1f} MB/s → โหลดโมเดล {MODEL_DOWNLOAD_GB} GB "
           f"ราว {mins:.0f} นาที")
-    if mins > 60:
+    if mins > SLOW_MINUTES_MAX:
         print("  ⚠️  ช้าผิดปกติ — ปกติเครื่องที่ดีใช้ 20-30 นาที")
-        print("      คุ้มกว่าถ้าคืนเครื่องนี้แล้วเช่าใหม่ (เสียแค่ค่าเช่าไม่กี่นาที):")
-        print("      python presentation.py down   แล้วเช่าใหม่")
-        print("      ถ้าจะรอต่อก็ได้ ไม่มีอะไรพัง แค่ช้าและจ่ายนานกว่า")
+        raise BadMachine(f"เน็ตช้า {mbps:.1f} MB/s (โหลดโมเดลต้องใช้ ~{mins:.0f} นาที)")
     return mbps
 
 
@@ -485,8 +581,7 @@ def upload_and_start_server(st, m):
         print(f"  ...ssh ยังไม่พร้อม (key propagation lag) ลองใหม่ {attempt + 1}/6")
         time.sleep(10)
     if not ssh_ok:
-        sys.exit("ssh เข้าเครื่องไม่ได้หลังลองซ้ำ 6 ครั้ง (60s) — เครื่องนี้อาจมีปัญหาจริง "
-                  "destroy แล้วเช่าใหม่")
+        raise BadMachine("ssh เข้าไม่ได้หลังลองซ้ำ 6 ครั้ง")
     net_check(st)
     if not m.get("serve"):          # เส้นทาง Unsloth — ต้องส่งตัวเสิร์ฟของเราขึ้นไปก่อน
         src = HERE / "serve_purson.py"
@@ -497,8 +592,7 @@ def upload_and_start_server(st, m):
                     str(src), f'root@{st["ssh_host"]}:/workspace/serve_purson.py'],
                    timeout=5 * 60)
         except subprocess.TimeoutExpired:
-            sys.exit("scp ค้างเกิน 5 นาที — ไฟล์แค่ ~12KB ไม่ควรนานขนาดนี้ "
-                     "เครื่องนี้มีอาการ destroy แล้วเช่าใหม่")
+            raise BadMachine("ส่งไฟล์ขึ้นเครื่องค้างเกิน 5 นาที (ไฟล์แค่ ~12KB)")
         if r.returncode != 0:
             sys.exit(f"scp ไม่สำเร็จ: {r.stderr.strip()}")
 
@@ -635,6 +729,12 @@ def cmd_down(_a):
     if st.get("tunnel_pid"):
         sh(["taskkill", "/PID", str(st["tunnel_pid"]), "/F", "/T"]
            if sys.platform == "win32" else ["kill", str(st["tunnel_pid"])])
+    if getattr(_a, "bad", None) and st.get("instance_id"):
+        # ต้องถาม machine_id **ก่อน** destroy — พอคืนไปแล้ว instance หายจากรายการทันที
+        mid, gpu = st.get("machine_id"), st.get("gpu_name", "")
+        if not mid:
+            mid, gpu = instance_machine_id(st["instance_id"])
+        blacklist_add(mid, _a.bad, gpu)
     if st.get("instance_id"):
         r = sh(["vastai", "destroy", "instance", str(st["instance_id"])], input="y\n")
         print(r.stdout.strip() or r.stderr.strip())
@@ -643,6 +743,29 @@ def cmd_down(_a):
               f"{'✅ คืนครบ' if not left else '⚠️ ยังมีเครื่องอื่นเปิดอยู่ — เช็คว่าตั้งใจไหม'}")
     STATE_FILE.unlink(missing_ok=True)
     print("จบวัน — ไม่เผาเงินต่อแล้ว")
+
+
+def cmd_blacklist(a):
+    bl = load_blacklist()
+    if a.action == "clear":
+        BLACKLIST_FILE.unlink(missing_ok=True)
+        print(f"ล้างบัญชีดำแล้ว ({len(bl)} เครื่อง) — ครั้งหน้าจะกลับไปเลือกเครื่องพวกนี้ได้อีก")
+        return
+    if a.action == "add":
+        if not a.machine_id:
+            sys.exit("ต้องบอก machine_id ด้วย: python presentation.py blacklist add 149000 "
+                     "--reason 'เน็ตช้า'\n"
+                     "   (machine_id ดูได้จาก vastai show instances คอลัมน์ Machine)")
+        blacklist_add(a.machine_id, a.reason or "สั่งแบนเอง")
+        return
+    if not bl:
+        print("ยังไม่มีเครื่องไหนถูกแบน")
+        return
+    print(f"เครื่องที่ถูกแบนไว้ {len(bl)} เครื่อง (ไฟล์: {BLACKLIST_FILE.name})")
+    for mid, info in sorted(bl.items(), key=lambda kv: kv[1].get("at", ""), reverse=True):
+        print(f"  {mid:>9}  {info.get('gpu', '?'):<22} {info.get('at', '?')}  "
+              f"{info.get('reason', '')}")
+    print("\nล้างทั้งหมด: python presentation.py blacklist clear")
 
 
 def main():
@@ -660,11 +783,18 @@ def main():
     attach = sub.add_parser("attach", help="ต่อกับเครื่องที่เช่าเองจากหน้าเว็บ vast.ai แล้ว (ข้าม auto-select)")
     attach.add_argument("instance_id", type=int, help="instance ID จากหน้าเว็บ vast.ai (คอลัมน์ ID)")
     attach.add_argument("--model", choices=list(MODELS), default="destrier")
-    for name in ("status", "tunnel", "smoke", "down"):
+    for name in ("status", "tunnel", "smoke"):
         sub.add_parser(name)
+    down = sub.add_parser("down")
+    down.add_argument("--bad", metavar="เหตุผล",
+                      help="คืนเพราะเครื่องมีปัญหา — ขึ้นบัญชีดำไม่ให้เช่าซ้ำ")
+    bl = sub.add_parser("blacklist", help="ดู/ล้าง/เพิ่มรายชื่อเครื่องที่ใช้ไม่ได้")
+    bl.add_argument("action", nargs="?", choices=["list", "clear", "add"], default="list")
+    bl.add_argument("machine_id", nargs="?", help="ใช้กับ add เท่านั้น")
+    bl.add_argument("--reason", default="")
     a = ap.parse_args()
     {"up": cmd_up, "attach": cmd_attach, "status": cmd_status, "tunnel": cmd_tunnel,
-     "smoke": cmd_smoke, "down": cmd_down}[a.cmd](a)
+     "smoke": cmd_smoke, "down": cmd_down, "blacklist": cmd_blacklist}[a.cmd](a)
 
 
 if __name__ == "__main__":
