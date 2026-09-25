@@ -285,3 +285,161 @@ assert "result" in _get_calls[0]["select"].split(","), \
     "claim_next_job ต้อง select result ด้วย ไม่งั้น resume ในกฎ run_house_extract หาของเดิมไม่เจอ"
 
 print("OK — checkpoint บันทึกถูกก้อน + claim_next_job ดึง result มาด้วย ผ่านทุกข้อ")
+
+
+# ── pass0 resume ต้องเติมเฉพาะหน้าที่ขาด ไม่ใช่เชื่อว่า "มีไฟล์ = ครบแล้ว" ─────────────
+# เจอจริง 23-24 ก.ย. 2026: tunnel หลุดตอน pass0 ทำให้ 21 จาก 29 หน้าโดน "ข้ามหน้านี้"
+# checkpoint เดิมเช็คแค่ "pass0.json in prev_by_name" ไม่เช็คว่าครบทุกหน้าไหม —
+# พอมีไฟล์แล้วก็เชื่อว่าสมบูรณ์ถาวร หน้าที่ขาดไม่มีวันถูกจำแนกซ้ำอีกเลย
+def _run_pass0_only(job, fake_call, fake_download=None):
+    """ตัดเฉพาะท่อน pass0 ของ run_house_extract ออกมารันเดี่ยว ๆ — ท่อนถัดไป (pass1+)
+    ต้องมีเครื่องจริง/prompt จริง รันในนี้ไม่ได้และไม่จำเป็นสำหรับเทสต์นี้"""
+    real_call, real_dl, real_prog, real_ckpt = (
+        worker.call_purson_safe, worker.download_image, worker.set_progress, worker.save_checkpoint)
+    worker.call_purson_safe = fake_call
+    worker.download_image = fake_download or (lambda path: path)
+    worker.set_progress = lambda *a, **k: None
+    worker.save_checkpoint = lambda *a, **k: None
+    try:
+        src = Path(__file__).with_name("worker.py").read_text(encoding="utf-8")
+        i = src.index("def run_house_extract(job):")
+        j = src.index("    # pass1 + pass1.5")
+        ns = {}
+        exec(compile(src[i:j] + "    return classified, missing\n", "pass0_snippet", "exec"),
+             vars(worker), ns)
+        return ns["run_house_extract"](job)
+    finally:
+        worker.call_purson_safe, worker.download_image, worker.set_progress, worker.save_checkpoint = (
+            real_call, real_dl, real_prog, real_ckpt)
+
+
+_calls = []
+def _fake_call(imgs, prompt):
+    page = imgs[0]
+    _calls.append(page)
+    if page == 12:
+        return None, "จำลองว่าพังอีกรอบ"
+    return {"sheet_code": f"S-{page}"}, "raw"
+
+
+_job = {
+    "id": "test-topup",
+    "payload": {"pages": [{"page": n, "path": f"p{n}.png"} for n in [3, 5, 8, 12, 20]]},
+    "result": {
+        "files": [{"name": "pass0.json", "json": {"pages": [
+            {"sheet_code": "S-3", "_page": 3},
+            {"sheet_code": "S-8", "_page": 8},
+            {"sheet_code": "S-20", "_page": 20},
+        ]}}],
+        "warnings": ["pass0 หน้า 5: ConnectionError — ข้ามหน้านี้",
+                    "pass0 หน้า 12: ConnectionError — ข้ามหน้านี้"],
+        "timings": {},
+    },
+}
+_classified, _missing = _run_pass0_only(
+    _job, _fake_call, fake_download=lambda path: int(path.strip("p.png")))
+
+assert _calls == [5, 12], f"ต้องเรียกจำแนกซ้ำแค่หน้าที่ขาด (5,12) ไม่แตะ 3/8/20 ที่มีอยู่แล้ว ได้ {_calls}"
+assert [p["page"] for p in _missing] == [5, 12], "ต้องระบุหน้าที่ขาดถูกตัว"
+assert sorted(c["_page"] for c in _classified) == [3, 5, 8, 20], \
+    "หน้า 5 ต้องถูกเติมเข้ามา (รอดรอบนี้) ส่วนหน้า 12 ยังพังอยู่ต้องไม่ถูกยัดเข้าไปมั่ว"
+
+# checkpoint ที่ครบทุกหน้าอยู่แล้ว ต้องไม่ยิงโมเดลซ้ำเลย (resume เร็วเหมือนเดิม)
+_calls2 = []
+_job_complete = {
+    "id": "test-complete",
+    "payload": {"pages": [{"page": n, "path": f"p{n}.png"} for n in [1, 2]]},
+    "result": {"files": [{"name": "pass0.json", "json": {"pages": [
+        {"sheet_code": "S-1", "_page": 1}, {"sheet_code": "S-2", "_page": 2}]}}],
+               "warnings": [], "timings": {}},
+}
+_classified2, _missing2 = _run_pass0_only(
+    _job_complete, lambda *a: (_calls2.append(1), (None, "ไม่ควรถูกเรียก"))[1])
+assert not _calls2, f"checkpoint ครบทุกหน้าแล้ว ต้องไม่ยิงโมเดลซ้ำเลย ได้ {_calls2}"
+assert not _missing2, "checkpoint ครบทุกหน้าแล้ว missing ต้องว่าง"
+
+# ไม่มี checkpoint เลย (งานใหม่) ต้องจำแนกครบทุกหน้าเหมือนเดิม (ไม่ regress เส้นทางปกติ)
+_calls3 = []
+_job_fresh = {"id": "test-fresh",
+             "payload": {"pages": [{"page": n, "path": f"p{n}.png"} for n in [7, 9]]}}
+_classified3, _missing3 = _run_pass0_only(
+    _job_fresh, lambda imgs, p: (_calls3.append(imgs[0]), ({"sheet_code": "ok"}, "raw"))[1],
+    fake_download=lambda path: int(path.strip("p.png")))
+assert _calls3 == [7, 9], f"งานใหม่ไม่มี checkpoint ต้องจำแนกครบทุกหน้า ได้ {_calls3}"
+
+print("OK — pass0 resume เติมเฉพาะหน้าที่ขาด ผ่านทุกข้อ "
+      "(เติมหน้าที่ขาด · ครบแล้วไม่ยิงซ้ำ · งานใหม่ไม่ regress)")
+
+
+# ── กู้ JSON ที่โดนตัดเพราะชนเพดาน token ───────────────────────────────────────
+# เจอจริง 23 ก.ย. 2026: หน้า S-01 ตอบยาว 15,910 ตัวอักษรจนชนเพดาน JSON ขาดกลางประโยค
+# ระบบเดิมโยนทิ้งทั้งไฟล์ → ชิ้นส่วนเข้าโปรเจกต์เหลือ 5 ตัว · กู้แล้วได้คืน 49 ตัว
+_head = '{"sheet_code": "S-01", "elements": ['
+_el = '{"element_id": "TB%d", "element_type": "tie_beam", "span_length_m": 3.2}'
+_whole = _head + ", ".join(_el % i for i in range(1, 6)) + ']}'
+
+# 1) JSON ปกติต้องผ่านโดยไม่ถูกทำเครื่องหมายว่าซ่อม — ห้ามไปแตะเส้นทางที่ดีอยู่แล้ว
+_d, _rep = worker.salvage_truncated_json(_whole)
+assert _d is not None and _rep is False and len(_d["elements"]) == 5,     "JSON ที่สมบูรณ์ต้องผ่านตรงๆ ไม่ถูกซ่อม"
+
+# 2) ตัดกลางชิ้นสุดท้าย → ต้องกู้ได้ และได้ชิ้นที่สมบูรณ์ครบทุกตัวก่อนหน้า
+_cut = _whole[:_whole.rindex('{"element_id": "TB5"')] + '{"element_id": "TB5", "element_ty'
+_d2, _rep2 = worker.salvage_truncated_json(_cut)
+assert _d2 is not None and _rep2 is True, "คำตอบที่โดนตัดต้องกู้ได้ ไม่ใช่ทิ้งทั้งไฟล์"
+assert len(_d2["elements"]) == 4, f"ต้องได้ชิ้นที่สมบูรณ์ 4 ตัว (ได้ {len(_d2['elements'])})"
+assert _d2["sheet_code"] == "S-01", "ข้อมูลส่วนหัวต้องไม่หายไปตอนกู้"
+
+# 3) กติกา "ไม่เดา" — ข้อความที่ไม่ใช่ JSON เลยต้องคืน None ห้ามยัดข้อมูลมั่ว
+_d3, _rep3 = worker.salvage_truncated_json("ข้อความมั่วที่ไม่ใช่ json")
+assert _d3 is None and _rep3 is False, "ข้อความที่กู้ไม่ได้ต้องคืน None ไม่ใช่เดา"
+
+# 4) วงเล็บที่อยู่ในสตริงห้ามถูกนับ ไม่งั้นตัดผิดตำแหน่ง
+_tricky = '{"note": "ขนาด {200x400} และ [เหล็ก]", "elements": [{"a": 1}, {"b": 2}, {"c"'
+_d4, _rep4 = worker.salvage_truncated_json(_tricky)
+assert _d4 is not None and len(_d4["elements"]) == 2 and "{200x400}" in _d4["note"],     "วงเล็บในสตริงต้องไม่ถูกนับเป็นโครงสร้าง"
+
+print("OK — กู้ JSON ที่โดนตัด ผ่านทุกข้อ (ปกติไม่แตะ · ตัดแล้วกู้ได้ · มั่วแล้วไม่เดา · วงเล็บในสตริงปลอดภัย)")
+
+# ── งานที่ยิงโมเดลไม่สำเร็จทุกหน้า ต้องขึ้น failed ไม่ใช่ done ────────────────────────
+# เจอจริง 23 ก.ย. 69 (job c2f4f69a): การ์ดหลุดกลางทาง ทั้ง 3 หน้าได้ ConnectionError
+# แต่ run_house_extract คืน files=[pass0.json] ออกมาเฉยๆ ผู้เรียกจึงประทับ done
+# → หน้าเว็บขึ้น "งานถอดแบบล่าสุดเสร็จแล้ว" พร้อมปุ่มดึงผลที่ไม่มีอะไรให้ดึง
+# ผลบางส่วนต้องยังผ่านตามเดิม — สเปกจากหน้าที่อ่านได้ก็มีค่าในตัวมันเอง
+_SIDECAR = ("cv15_", "cv25_")
+
+
+def _usable(names):
+    """ตรรกะเดียวกับที่ run_house_extract ใช้ตัดสิน — แก้ที่โน่นต้องแก้ที่นี่ด้วย"""
+    return [n for n in names
+            if n.endswith(".json")
+            and n not in ("pass0.json", "pass3_measure.json")
+            and not n.startswith(_SIDECAR)]
+
+
+_src = Path(__file__).with_name("worker.py").read_text(encoding="utf-8")
+assert ("ยิงโมเดลไม่สำเร็จสักหน้าเดียว" in _src), (
+    "run_house_extract ต้องมีด่านดักงานที่ไม่ได้ผลอะไรเลย")
+_guard_at = _src.index("SIDECAR_PREFIXES")
+_return_at = _src.index("return {" + chr(34) + "files" + chr(34) + ": files")
+assert _guard_at < _return_at, "ด่านต้องอยู่ก่อน return ไม่งั้นไม่มีผล"
+
+# ล้มทุกหน้า → ไม่มีไฟล์ที่ใช้ได้
+assert _usable(["pass0.json"]) == [], "งานที่ล้มทุกหน้าต้องนับว่าไม่มีผลที่ใช้ได้"
+
+# งานจริงที่สำเร็จ (cbb90abe) → ต้องผ่าน
+_real = ["pass0.json", "cv15_plan_footing_page_1_view1_cv.json", "grid_master.json",
+         "page_01_plan_footing.json", "page_01_plan_beam.raw.txt", "page_01_notes.json",
+         "page_02_section.json", "page_03_section.json",
+         "cv25_plan_beam_page_1_view2_cv25.json", "pass3_measure.json"]
+assert len(_usable(_real)) == 5, "งานจริงต้องนับได้ 5 ไฟล์ (ได้ %d)" % len(_usable(_real))
+
+# ผลบางส่วน (ได้แค่ grid) → ต้องยังผ่าน ห้ามประทับ failed
+assert _usable(["pass0.json", "grid_master.json"]) == ["grid_master.json"], (
+    "ผลบางส่วนต้องยังใช้ได้ ไม่ใช่โดนตัดทิ้ง")
+
+# ไฟล์ CV/วัดระยะล้วน ไม่นับว่าเป็นผลอ่านแบบ (ไม่มีเนื้อหาจากโมเดล)
+assert _usable(["pass0.json", "cv15_a_cv.json", "cv25_b_cv25.json", "pass3_measure.json"]) == [], (
+    "ไฟล์ CV/วัดระยะอย่างเดียวไม่นับว่าอ่านแบบสำเร็จ")
+
+print("OK — งานที่ไม่ได้ผลอะไรเลยต้องขึ้น failed ผ่านทุกข้อ "
+      "(ล้มทุกหน้า · งานจริงผ่าน · ผลบางส่วนผ่าน · CV ล้วนไม่นับ)")

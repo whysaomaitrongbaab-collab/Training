@@ -75,6 +75,59 @@ python serve_purson.py --base            # ไม่ใส่ adapter (เที
 `infer_house_t03.py` ที่รันผ่านจริงแล้ว 33 งาน — พูดภาษา OpenAI เหมือนเดิมทุกอย่าง
 worker ไม่รู้ความต่าง ถ้าวันหนึ่งแปลง adapter เป็นรูปแบบที่ vLLM รับได้ ก็สลับกลับได้ทันที
 
+### 🔴 ระเบิดเวลา 17 ก.ย. 2026 — `pip install -U unsloth` ทำให้ผลเป็นขยะเงียบๆ
+
+`unsloth-zoo` PR #1232/#1269 (merge 17 ก.ย. 2026) เปลี่ยนวิธีอ่าน `lora_B` ของชั้น MoE expert
+จาก **grouped_by_expert** (expert ช้าสุด) ไปเป็น **rank_major** (expert เร็วสุด ตาม PEFT)
+
+adapter ของเราทั้ง `t03` และ `destrier` อัปก่อนวันนั้น = **grouped_by_expert ทั้งคู่**
+(ดูได้จากที่ `adapter_config.json` ไม่มีคีย์ `lora_B_layout`) แต่ `onstart_cmd` ใช้
+`pip install -U unsloth` ไม่ pin เวอร์ชัน → **เครื่องที่เช่าหลัง 17 ก.ย. จะอ่าน adapter ผิดทันที
+ไม่ error แต่ expert ทุกตัวจับคู่กับ rank คอลัมน์ผิด ผลลัพธ์เป็นขยะ**
+
+แก้แล้ว (2026-09-20): `presentation.py` ส่ง `UNSLOTH_MOE_LORA_B_LAYOUT=grouped_by_expert`
+ตอนสั่งรันเซิร์ฟเวอร์เสมอ — เวอร์ชันเก่าไม่รู้จักตัวแปรนี้ก็แค่เมินทิ้ง ปลอดภัยทั้งสองทาง
+`python test_serve_presets.py` มีด่านตรวจข้อนี้ไว้แล้ว
+
+**นี่คือคำอธิบายจริงของบั๊ก "merge แล้วได้ขยะ" ที่ฆ่า GGUF ของ t01/t02 เมื่อ ก.ค. 2026** —
+ไม่ใช่เพราะ peft เวอร์ชันเก่าอย่างที่เคยเข้าใจ แต่เพราะ merge path เรียก PEFT `get_delta_weight`
+ซึ่งอ่าน rank_major ขณะที่ตอนเทรน forward เป็น grouped_by_expert (ไดอารี่ 2026-07-28 ข้อ 7
+วัดไว้เองว่า "ΔW รูปร่างถูก scaling ถูก แต่ค่าที่ใส่เข้าไปขนาดเล็กผิดปกติ" — ตรงกับอาการนี้เป๊ะ)
+
+## เส้นทางเร็ว (2026-09-20) — merge เป็น dense แล้วเสิร์ฟด้วย vLLM/SGLang
+
+วัดแล้วว่าความช้าตอนนี้ **97-98% เป็น software overhead ไม่ใช่การ์ดจอ**: ได้จริง ~6-8 token/วิ
+ทั้งที่การ์ดควรทำได้ ~300 token/วิ (HF `.generate()` ไม่มี CUDA graph + ชั้น MoE ไม่ fuse)
+→ ทางแก้ที่ได้ผลจริงคือเปลี่ยนตัวเสิร์ฟ ไม่ใช่เปลี่ยนการ์ด
+
+เหตุผลที่เคยตัด vLLM ทิ้งเป็นปัญหาของ **runtime LoRA loading** ล้วนๆ — พอ merge เข้า base แล้ว
+ไม่มี adapter เหลือให้ parse ผิด เช็คพอยต์กลายเป็น Qwen3.6-35B-A3B ธรรมดาที่เสิร์ฟได้ native
+
+```bash
+# 1) merge (ครั้งเดียว บนเครื่องเช่า ดิสก์ ≥250GB) — Training/tune_ai/
+python merge_lora_to_base.py --inspect-only          # ฟรี ไม่ใช้ GPU ทำก่อนเสมอ
+python merge_lora_to_base.py --push dacarokann/destrier-merged
+
+# 2) ตรวจว่า merge ถูกจริง — ⛔ ห้ามข้าม "รันจบไม่ error" ไม่ได้แปลว่าถูก
+python verify_merge.py --check-ab --base <hf-cache> --merged <dir> --adapter <dir>   # ฟรี
+python verify_merge.py --fingerprint adapter --adapter <dir> --out ref.pt            # ใช้ GPU
+python verify_merge.py --fingerprint merged  --merged <dir>  --out mrg.pt
+python verify_merge.py --fingerprint base    --base-repo unsloth/Qwen3.6-35B-A3B --out base.pt
+python verify_merge.py --compare ref.pt mrg.pt base.pt
+
+# 3) เสิร์ฟ — worker.py ไม่ต้องแก้อะไรเลยสักบรรทัด
+python presentation.py up --model destrier-sglang    # แนะนำ (prefix cache ช่วยงานเรามาก)
+python presentation.py up --model destrier-vllm      # ทางเลือก
+```
+
+**ทำไม SGLang น่าจะดีกว่าสำหรับงานนี้:** `worker.py` ยิงทีละหน้าโดยใช้ instruction prompt
+ก้อนเดิม (~1,000 token) ซ้ำทุกหน้า → RadixAttention cache prefix ข้าม request ได้
+= ลด latency **ต่อคำขอเดี่ยว** ตรงๆ ไม่ใช่แค่ throughput รวม
+
+⚠️ ทั้งสองทางยังไม่เคยรันจริงบนการ์ด — ตัวเลข `--max-model-len 40960` / `--mem-fraction-static
+0.78` คำนวณจากงานหนักสุด (gridline 4 ภาพ) แต่ยังไม่ได้วัด VRAM จริง ถ้า OOM ตอนเปิด
+**ให้ลด `--gpu-memory-utilization` ก่อน อย่าลด context** (จะพังเฉพาะงานหนักซึ่ง smoke test มองไม่เห็น)
+
 **t04 (InternVL3-78B) ยังใช้ไม่ได้** — เทรนด้วย LLaMA-Factory ไม่ใช่ Unsloth
 `presentation.py up --model t04` จะปฏิเสธพร้อมบอกเหตุผล ต้อง port ตัวโหลดจาก
 `infer_house_t04.py` (transformers+peft) เข้ามาใน serve_purson.py ก่อน
