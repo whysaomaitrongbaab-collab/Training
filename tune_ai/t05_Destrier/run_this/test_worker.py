@@ -443,3 +443,307 @@ assert _usable(["pass0.json", "cv15_a_cv.json", "cv25_b_cv25.json", "pass3_measu
 
 print("OK — งานที่ไม่ได้ผลอะไรเลยต้องขึ้น failed ผ่านทุกข้อ "
       "(ล้มทุกหน้า · งานจริงผ่าน · ผลบางส่วนผ่าน · CV ล้วนไม่นับ)")
+
+
+# ── pass3 รอบแก้ 2026-09-26 (D3/M3/M11): cv_mark ต้องถูกตรวจก่อนเชื่อ · pass1.5 เกินเวลาห้ามทิ้งครอป ──
+import copy as _copy
+import subprocess as _subprocess
+
+_FIX = Path(__file__).resolve().parent / "test_fixtures"
+
+
+def _fake_workroot(fx, page, stem):
+    """workroot จิ๋วที่มี manifest + ครอป 1 ใบ + _cv.json จริงจาก production (ไม่มีภาพจริง — ไม่ต้องใช้)"""
+    root = Path(_tempfile.mkdtemp(prefix="purson_cvmark_"))
+    sub_dir = root / "pass2" / "plan_footing"
+    (sub_dir / "images").mkdir(parents=True)
+    (sub_dir / "cv").mkdir(parents=True)
+    (sub_dir / "images" / f"{stem}.png").write_bytes(b"\x89PNG\r\n\x1a\nfake")
+    (sub_dir / "manifest.json").write_text(_json.dumps({"sources": [
+        {"image": f"images/{stem}.png", "png": str(page), "cropped": False}]}), encoding="utf-8")
+    (sub_dir / "cv" / f"{stem}_cv.json").write_text(_json.dumps(
+        {"counts": fx.get("cv_counts"), "elements": fx["cv_scan"]["elements"]}), encoding="utf-8")
+    return root
+
+
+# M3: cv_mark 1..N ตามลำดับรายการ (เจอ 5/5 หน้าจริง) = ไม่ได้ชี้กล่อง CV จริง → ห้ามผูกพิกัด
+for _name, _page, _stem in (("real_83b8e52c_p19", 19, "page_19_view1"),
+                            ("real_83b8e52c_p23", 23, "page_23_view1")):
+    _fx = _json.loads((_FIX / f"{_name}.json").read_text(encoding="utf-8"))
+    _root = _fake_workroot(_fx, _page, _stem)
+    try:
+        _notes = []
+        _pre = _copy.deepcopy(_fx["doc_pre_merge"])
+        _out = worker.merge_cv_marks(_copy.deepcopy(_pre), _root, "plan_footing", _page, notes=_notes)
+        assert not any("cv_position" in e for e in _out["elements"]), \
+            f"{_name}: cv_mark ที่เป็นแค่เลขลำดับ ต้องไม่ถูกผูกพิกัด"
+        assert any("ลำดับ" in n for n in _notes), f"{_name}: ต้องบอกเหตุผลว่าทำไมไม่ใช้ cv_mark ({_notes})"
+        assert _out.get("warnings") == _pre.get("warnings"), \
+            "ข้อความของระบบต้องไปที่ warnings ระดับงาน ไม่ใช่ doc (doc.warnings = โมเดลพูด)"
+    finally:
+        _shutil.rmtree(_root, ignore_errors=True)
+
+# M3/M16: cv_mark ที่ชี้กล่องคนละชนิดกับ element (ฐานราก→กล่องคาน, detail→อะไรก็ตาม) ห้ามผูก
+_fx = _json.loads((_FIX / "real_267d1989_p08.json").read_text(encoding="utf-8"))
+_root = _fake_workroot(_fx, 8, "page_8_view2")
+try:
+    _notes = []
+    _doc = {"elements": [
+        {"element_id": "F1", "element_type": "footing", "grid_refs": ["B1"], "cv_mark": 6},       # footing box
+        {"element_id": "dim", "element_type": "dimension_chain", "grid_refs": ["A1"], "cv_mark": 7},
+        {"element_id": "C1", "element_type": "column", "grid_refs": ["A1"], "cv_mark": 2}]}       # column box
+    _out = worker.merge_cv_marks(_doc, _root, "plan_footing", 8, notes=_notes)
+    assert _out["elements"][0].get("cv_position", {}).get("class") == "footing"
+    assert "cv_position" not in _out["elements"][1], "dimension_chain ห้ามผูกกับกล่องฐานราก"
+    assert _out["elements"][2].get("cv_position", {}).get("class") == "column"
+    assert any("dim" in n for n in _notes), _notes
+finally:
+    _shutil.rmtree(_root, ignore_errors=True)
+print("OK — merge_cv_marks ไม่เชื่อ cv_mark ที่เป็นเลขลำดับ/ผิดชนิด ผ่านทุกข้อ")
+
+# M11: เวลาของ cv_scan ต้องโตตามจำนวนภาพ (มีพื้น/เพดาน) และ timeout ต้องไม่ throw
+_wr = Path(_tempfile.mkdtemp(prefix="purson_cvto_"))
+try:
+    assert worker.cv_scan_timeout_s(_wr) == worker.CV_SCAN_MIN_S, "ไม่มีภาพ = ใช้พื้น"
+    _img = _wr / "pass2" / "plan_beam" / "images"
+    _img.mkdir(parents=True)
+    for _i in range(10):
+        (_img / f"page_{_i}_view1.png").write_bytes(b"x")
+        (_img / f"page_{_i}_view1_marked.png").write_bytes(b"x")     # ภาพมาร์คของ cv_scan ไม่นับ
+    assert worker.cv_scan_timeout_s(_wr) == 10 * worker.CV_SCAN_PER_IMAGE_S, worker.cv_scan_timeout_s(_wr)
+    for _i in range(10, 60):
+        (_img / f"page_{_i}_view1.png").write_bytes(b"x")
+    assert worker.cv_scan_timeout_s(_wr) == worker.CV_SCAN_MAX_S, "เกินเพดาน = ใช้เพดาน"
+    assert worker.CV_SCAN_MIN_S >= 300 and worker.CV_SCAN_MAX_S <= 3600
+
+    if worker.CV_SCAN_PY.exists():
+        _seen = {}
+        _real_run = worker.subprocess.run
+
+        def _run_timeout(args, **kw):
+            _seen["timeout"] = kw.get("timeout")
+            raise _subprocess.TimeoutExpired(args, kw.get("timeout"))
+        worker.subprocess.run = _run_timeout
+        try:
+            assert worker.run_cv_scan(_wr) is False, "เกินเวลาต้องคืน False ตาม docstring ไม่ใช่ throw"
+        finally:
+            worker.subprocess.run = _real_run
+        assert _seen["timeout"] == worker.CV_SCAN_MAX_S, _seen
+finally:
+    _shutil.rmtree(_wr, ignore_errors=True)
+print("OK — cv_scan timeout โตตามจำนวนภาพ + เกินเวลาไม่ throw ผ่านทุกข้อ")
+
+# M11 + D3 + C1/C2 ต่อสายจริงทั้งงาน: pass1.5 เกินเวลาต้องไม่ทิ้งครอปของ pass1 · pass3 ต้องไม่แก้ doc
+# ของ pass2 · pass3_measure.json เป็น v2 · grid_master.json ได้ validation (organize.py/cv_scan.py จริง)
+if worker.ORGANIZE_PY.exists() and worker.CV_SCAN_PY.exists():
+    import io as _io
+    from PIL import Image as _Image, ImageDraw as _ImageDraw
+
+    _im = _Image.new("L", (400, 300), 255)
+    _ImageDraw.Draw(_im).rectangle([10, 10, 390, 290], outline=0, width=3)
+    _buf = _io.BytesIO()
+    _im.save(_buf, format="PNG")
+    _png = _buf.getvalue()
+    _grid = {"x_lines": [{"id": "1", "type": "named", "pos_m": 0.0},
+                         {"id": "2", "type": "named", "pos_m": 4.0}],
+             "y_lines": [{"id": "A", "type": "named", "pos_m": 0.0},
+                         {"id": "A", "type": "named", "pos_m": 3.0},     # id ซ้ำ → ต้องขึ้น issue
+                         {"id": "B", "type": "named", "pos_m": 6.0}]}
+    _answer = {"sheet_code": "S-01", "elements": [
+        {"element_id": "F1", "element_type": "footing", "count": 2, "grid_refs": ["B1", "B2"]},
+        {"element_id": "B1", "element_type": "beam", "grid_ref_start": "B1", "grid_ref_end": "B2",
+         "span_length_m": None}]}
+    _pass0 = {"sheet_code": "S-01", "sheet_name": "แปลนฐานราก", "building": "main",
+              "views": [{"subtask": "plan_footing", "where": "full", "also_gridline": True}]}
+    _grid_prompt = worker.subtask_prompt("gridline")
+    _foot_prompt = worker.subtask_prompt("plan_footing")
+
+    def _fake_call(imgs, prompt):
+        if prompt == worker.PASS0_PROMPT:
+            return _copy.deepcopy(_pass0), "raw"
+        if prompt == _grid_prompt:
+            return {"grid": _copy.deepcopy(_grid)}, "raw"
+        if prompt.startswith(_foot_prompt):
+            return _copy.deepcopy(_answer), "raw"
+        return None, "ไม่ได้เตรียมคำตอบ"
+
+    _crops = []
+    _real = (worker.call_purson_safe, worker.download_image, worker.set_progress,
+             worker.save_checkpoint, worker.crop_for_task, worker.subprocess.run)
+
+    def _crop_spy(workroot, sub, page):
+        r = _real[4](workroot, sub, page)
+        _crops.append((sub, page, r[0] is not None))
+        return r
+
+    def _run_p15_timeout(args, **kw):
+        if "cv_scan.py" in " ".join(map(str, args)) and "--pass25" not in args:
+            raise _subprocess.TimeoutExpired(args, kw.get("timeout"))
+        return _real[5](args, **kw)
+    worker.call_purson_safe = _fake_call
+    worker.download_image = lambda path: _png
+    worker.set_progress = lambda *a, **k: None
+    worker.save_checkpoint = lambda *a, **k: None
+    worker.crop_for_task = _crop_spy
+    worker.subprocess.run = _run_p15_timeout
+    try:
+        _res = worker.run_house_extract({"id": "test-p15-timeout", "payload": {
+            "pages": [{"page": 1, "path": "p1.png"}]}})
+    finally:
+        (worker.call_purson_safe, worker.download_image, worker.set_progress,
+         worker.save_checkpoint, worker.crop_for_task, worker.subprocess.run) = _real
+    _w = _res["warnings"]
+    _by = {f["name"]: f["json"] for f in _res["files"]}
+    assert not any("pass1/1.5 ล้ม" in w for w in _w), f"pass1.5 เกินเวลาห้ามทิ้งครอปทั้งงาน: {_w}"
+    assert any("เกินเวลา" in w for w in _w), f"ต้องบอกว่า pass1.5 เกินเวลา: {_w}"
+    assert ("plan_footing", 1, True) in _crops, f"ครอปของ pass1 ต้องยังถูกใช้: {_crops}"
+    _expect = worker.sanitize_elements(_copy.deepcopy(_answer))
+    _expect.setdefault("pattern", "footing_plan")
+    assert _by["page_01_plan_footing.json"] == _expect, \
+        "D3: pass3 ต้องไม่แก้ doc ของ pass2 (ไม่เติม ref/span/element/warning)"
+    _p3f = _by["pass3_measure.json"]
+    assert _p3f["version"] == 2 and _p3f["mode"] == "report_only", _p3f
+    assert "page_01_plan_footing" in _p3f["pages"], _p3f
+    _v = _by["grid_master.json"].get("validation")
+    assert _v and any(i["code"] == "duplicate_id" for i in _v["issues"]), _v
+    assert _p3f["grid_validation"] == _v
+    assert any("grid master" in w and "ซ้ำ" in w for w in _w), _w
+    assert any(w.startswith("pass3") and "รายงานอย่างเดียว" in w for w in _w), _w
+    print("OK — pass1.5 เกินเวลาไม่ทิ้งครอป · pass3 รายงานอย่างเดียว · v2 + grid validation ผ่านทุกข้อ")
+
+    # rev_worker major/minor: C2 (grid_validation ทั้งก้อน) และ merge_cv_marks ต่อหน้า เดิมไม่มี
+    # try เลย — ถ้าฟังก์ชันข้างในโยน exception ที่ isinstance guard ของมันเองไม่ครอบ (บั๊กในอนาคต
+    # ก็นับด้วย) งานที่ยิงโมเดลครบทุกหน้าแล้วจะล่มตรงนี้ ทดสอบด้วยการบังคับให้โยนจริง (ไม่ใช่แค่
+    # ป้อนอินพุตพังที่ isinstance guard เดิมกันไว้อยู่แล้ว ซึ่งไม่ผ่านถึง except ใหม่เลย)
+    worker.call_purson_safe = _fake_call
+    worker.download_image = lambda path: _png
+    worker.set_progress = lambda *a, **k: None
+    worker.save_checkpoint = lambda *a, **k: None
+    _real_gv, _real_mcm = worker.grid_validation, worker.merge_cv_marks
+
+    def _boom_gv(*a, **k):
+        raise ValueError("boom-C2")
+    worker.grid_validation = _boom_gv
+    try:
+        _res2 = worker.run_house_extract({"id": "test-c2-crash-guard", "payload": {
+            "pages": [{"page": 1, "path": "p1.png"}]}})
+    finally:
+        worker.grid_validation = _real_gv
+    assert any("C2" in w and "boom-C2" in w for w in _res2["warnings"]), _res2["warnings"]
+    assert any(f["name"] == "pass0.json" for f in _res2["files"]), "งานต้องยังคืนผลอ่านแบบได้ แม้ C2 ล้ม"
+    assert not any(f["name"] == "pass3_measure.json" for f in _res2["files"]), \
+        "C2 ล้มก่อนเขียน pass3_measure.json ไม่ควรมีไฟล์นี้ค้างจากรอบก่อน"
+
+    def _boom_mcm(*a, **k):
+        raise TypeError("unhashable type: 'list' (boom-merge)")
+    worker.merge_cv_marks = _boom_mcm
+    try:
+        _res3 = worker.run_house_extract({"id": "test-mergecv-crash-guard", "payload": {
+            "pages": [{"page": 1, "path": "p1.png"}]}})
+    finally:
+        worker.merge_cv_marks = _real_mcm
+        (worker.call_purson_safe, worker.download_image, worker.set_progress,
+         worker.save_checkpoint) = _real[:4]
+    assert any("merge_cv_marks ล้ม" in w and "boom-merge" in w for w in _res3["warnings"]), _res3["warnings"]
+    assert any(f["name"] == "page_01_plan_footing.json" for f in _res3["files"]), \
+        "merge_cv_marks ล้มไม่ควรทำให้แถวที่โมเดลตอบมาแล้วหายไปด้วย"
+    print("OK — C2 และ merge_cv_marks ต่อหน้า ไม่ทำให้ทั้งงานพังเมื่อโยน exception ที่ไม่คาดคิด ผ่านทุกข้อ")
+else:
+    print("SKIP pass3 wiring test: organize.py/cv_scan.py ไม่มีบนเครื่องนี้")
+
+
+# ── ไม้บรรทัดเวกเตอร์ (2026-09-26): sidecar จากเว็บ → vector_ruler → รายงานอย่างเดียว ──────────────
+# รันทั้งงานจริง (run_house_extract) ปลอมแค่โมเดล/Supabase — ไม่ต้องมี organize/cv_scan เพราะไม้บรรทัด
+# เวกเตอร์ไม่พึ่งครอป/CV/หมุดเลย (นี่คือจุดที่ต่างจาก pass3 แบบหมุด)
+import copy as _vcopy
+import struct as _vstruct
+
+_vfx = _json.loads((Path(__file__).parent / "test_fixtures" / "vectors" /
+                    "house01_p19_pdfjs_2views.json").read_text(encoding="utf-8"))
+_vfr = _vfx["sidecar"]["frame"]
+
+
+def _fake_png(w, h):
+    return b"\x89PNG\r\n\x1a\n" + b"\x00\x00\x00\x0dIHDR" + _vstruct.pack(">II", w, h) + b"\x08\x02\x00\x00\x00"
+
+
+assert worker.png_size(_fake_png(2104, 1488)) == (2104, 1488)
+assert worker.png_size(b"not a png") is None and worker.png_size(None) is None
+
+_vbundle = {"schema": "constistant.vector_sidecar", "v": 1, "pages": {"1": _vfx["sidecar"]}}
+_vgrid_prompt = worker.subtask_prompt("gridline")
+_vfoot_prompt = worker.subtask_prompt("plan_footing")
+_vanswer = {"elements": [{"element_id": "F1", "element_type": "footing", "grid_refs": ["A1"], "count": 1}]}
+
+
+def _vcall(imgs, prompt):
+    if prompt == worker.PASS0_PROMPT:
+        return {"views": [{"subtask": "plan_footing", "where": "full", "also_gridline": True}]}, "raw"
+    if prompt.startswith(_vgrid_prompt):
+        return {"grid": _vcopy.deepcopy(_vfx["grid_master"])}, "raw"
+    if prompt.startswith(_vfoot_prompt):
+        return _vcopy.deepcopy(_vanswer), "raw"
+    return None, "ไม่ได้เตรียมคำตอบ"
+
+
+class _VResp:
+    def __init__(self, body, status=200):
+        self.content, self.status = body, status
+
+    def raise_for_status(self):
+        if self.status != 200:
+            raise RuntimeError(f"HTTP {self.status}")
+
+
+def _vrun(payload, png, get_mode="ok"):
+    def _get(url, headers=None, timeout=None, **k):
+        if get_mode == "404":
+            return _VResp(b"", 404)
+        return _VResp(_json.dumps(_vbundle).encode("utf-8"))
+    real = (worker.call_purson_safe, worker.download_image, worker.set_progress, worker.save_checkpoint,
+            worker.run_pass1_organize, worker.requests.get, worker.time.sleep)
+    worker.call_purson_safe, worker.download_image = _vcall, (lambda path: png)
+    worker.set_progress = worker.save_checkpoint = (lambda *a, **k: None)
+    worker.run_pass1_organize = lambda *a, **k: None       # ไม่มีครอป/CV — ไม้บรรทัดต้องยังทำงาน
+    worker.requests.get, worker.time.sleep = _get, (lambda s: None)
+    try:
+        return worker.run_house_extract({"id": "test-vector", "payload": payload})
+    finally:
+        (worker.call_purson_safe, worker.download_image, worker.set_progress, worker.save_checkpoint,
+         worker.run_pass1_organize, worker.requests.get, worker.time.sleep) = real
+
+
+_vpages = [{"page": 1, "path": "p1.png"}]
+_vpng = _fake_png(_vfr["png_w"], _vfr["png_h"])
+
+# 1) มี sidecar กรอบตรงกับ PNG → วัดได้ ผลอยู่ใน vector_pages + validation · doc ของ pass2 ไม่ถูกแตะ
+_r1 = _vrun({"pages": _vpages, "vectors": "u/j/vectors_v1.json"}, _vpng)
+_f1 = {f["name"]: f["json"] for f in _r1["files"]}
+assert "pass3_measure.json" in _f1, [f["name"] for f in _r1["files"]]
+_vp = _f1["pass3_measure.json"]["vector_pages"]["page_01"]
+assert _vp["ok"] == _vfx["expect"]["ok"] and _vp["source"] == "vector_grid", _vp
+assert _vp["ok"] is True and _vp["views"], "fixture บ้าน01 หน้า19 ต้องวัดได้"
+assert "pages" in _f1["pass3_measure.json"], "รายงาน CV (pages) ต้องยังอยู่ แม้จะว่าง"
+assert "validation" in _f1["grid_master.json"]
+assert any(w.startswith("ไม้บรรทัดเส้นกริดเวกเตอร์") for w in _r1["warnings"]), _r1["warnings"]
+assert _f1["page_01_plan_footing.json"]["elements"] == worker.sanitize_elements(_vcopy.deepcopy(_vanswer))["elements"], \
+    "รายงานอย่างเดียว — ห้ามแก้ element ที่โมเดลตอบ"
+
+# 2) ขนาด PNG ไม่ตรงกับ frame (เช่นเรนเดอร์คนละ scale) → ไม่ใช้หน้านั้น + เตือน · งานยังเดินครบ
+_r2 = _vrun({"pages": _vpages, "vectors": "u/j/vectors_v1.json"}, _fake_png(_vfr["png_w"] + 1, _vfr["png_h"]))
+_f2 = {f["name"]: f["json"] for f in _r2["files"]}
+assert any("กรอบพิกัดไม่ตรง" in w for w in _r2["warnings"]), _r2["warnings"]
+assert "vector_pages" not in _f2.get("pass3_measure.json", {}), "กรอบไม่ตรงห้ามวัด"
+assert "page_01_plan_footing.json" in _f2
+
+# 3) โหลด sidecar ไม่ได้ (404) → เตือนแล้วทำต่อ ไม่ล้มงาน
+_r3 = _vrun({"pages": _vpages, "vectors": "u/j/vectors_v1.json"}, _vpng, get_mode="404")
+assert any("vector sidecar โหลดไม่ได้" in w for w in _r3["warnings"]), _r3["warnings"]
+assert any(f["name"] == "page_01_plan_footing.json" for f in _r3["files"])
+
+# 4) งานแบบเดิม (ไม่มี key vectors) → ไม่มีร่องรอยของไม้บรรทัดเลย พฤติกรรมเหมือนก่อนเพิ่มฟีเจอร์
+_r4 = _vrun({"pages": _vpages}, _vpng)
+_f4 = {f["name"]: f["json"] for f in _r4["files"]}
+assert "vector_pages" not in _f4.get("pass3_measure.json", {})
+assert not any("vector" in w or "เวกเตอร์" in w for w in _r4["warnings"]), _r4["warnings"]
+print("OK — ไม้บรรทัดเวกเตอร์: วัดได้เมื่อกรอบตรง · กรอบไม่ตรง/โหลดไม่ได้ = ข้ามไม่ล้ม · งานเดิมไม่เปลี่ยน · ไม่แตะ pass2 ผ่านทุกข้อ")

@@ -1,0 +1,133 @@
+{
+  "_about": "Shared grid-ref contract. BOTH js/drawing/raw-extraction-adapter.js (parseGridRef/resolveGridPoint/spanFromGrid) and server/purson-worker/pass3_measure.py (parse_grid_ref/ref_to_metre) must reproduce every case here exactly. Tests on both sides load this one file so the two parsers can never drift apart again (they did: 2026-09-24 the JS parser learned number-first refs, the Python one never did). Rules: a ref is a point = one letter part (row) + one digit part (col), in either order, with or without a dash. The letter part is ALWAYS the row, the digit part ALWAYS the col - decided by character class, never by position (spec section 0.8). Primes: ' (also the typographic prime, normalised to '); a double prime written as two primes, a straight double quote or the typographic double prime is normalised to two primes. Digits are ASCII 0-9 only. Letters are A-Z, a-z or Thai ก-ฮ, 1 to 3 characters. A leading ~ means approximate = not a point. A dash between two letters or two digits is a range, not a point. Resolution is axis-aware: each part is looked up on whichever axis contains that id; it must be found on exactly one axis and the two parts must land on different axes, otherwise null (never guess). A ref whose whole literal text is itself a grid-line id (a dummy line such as 3A) names a line, not a point, so it does not resolve as a point. Spans: two endpoints sharing their row compare cols (and vice versa); only the varying part must exist on a grid axis, the shared part only has to be equal (lenient, same as before). Line ids (added 2026-09-26 fix-up after the JS/Python differential fuzz): a line id is prime-normalised exactly like a ref (a line written 1\" is the line 1''), and an integer id means its decimal string. An id that appears on one axis more than once at DIFFERENT positions is ambiguous: a point or span that needs that line resolves to null (never take the first one); the same id repeated at the same position is just one line.",
+  "parse": [
+    {"ref": "C1", "expect": {"row": "C", "col": "1"}},
+    {"ref": "E1'", "expect": {"row": "E", "col": "1'"}},
+    {"ref": "B'2", "expect": {"row": "B'", "col": "2"}},
+    {"ref": "A-1", "expect": {"row": "A", "col": "1"}},
+    {"ref": "A - 1", "expect": {"row": "A", "col": "1"}},
+    {"ref": " A1 ", "expect": {"row": "A", "col": "1"}},
+    {"ref": "1C", "expect": {"row": "C", "col": "1"}},
+    {"ref": "1ค", "expect": {"row": "ค", "col": "1"}},
+    {"ref": "3ง", "expect": {"row": "ง", "col": "3"}},
+    {"ref": "10ก", "expect": {"row": "ก", "col": "10"}},
+    {"ref": "12A'", "expect": {"row": "A'", "col": "12"}},
+    {"ref": "1'A", "expect": {"row": "A", "col": "1'"}},
+    {"ref": "1-จ", "expect": {"row": "จ", "col": "1"}},
+    {"ref": "2-ค", "expect": {"row": "ค", "col": "2"}},
+    {"ref": "C1''", "expect": {"row": "C", "col": "1''"}},
+    {"ref": "C1\"", "expect": {"row": "C", "col": "1''"}},
+    {"ref": "C1″", "expect": {"row": "C", "col": "1''"}},
+    {"ref": "C′1", "expect": {"row": "C'", "col": "1"}},
+    {"ref": "AB12", "expect": {"row": "AB", "col": "12"}},
+    {"ref": "a1", "expect": {"row": "a", "col": "1"}},
+    {"ref": "~B2", "expect": null},
+    {"ref": "", "expect": null},
+    {"ref": "   ", "expect": null},
+    {"ref": "D-C", "expect": null},
+    {"ref": "1-3", "expect": null},
+    {"ref": "A", "expect": null},
+    {"ref": "1", "expect": null},
+    {"ref": "ก๑", "expect": null},
+    {"ref": "A１", "expect": null},
+    {"ref": "X1Y1", "expect": null},
+    {"ref": "ABCD1", "expect": null},
+    {"ref": "A-1-2", "expect": null},
+    {"ref": null, "expect": null},
+    {"ref": 5, "expect": null}
+  ],
+  "grids": {
+    "std": {
+      "x_lines": [{"id": "1", "pos_m": 0.0}, {"id": "2", "pos_m": 4.0}, {"id": "3", "pos_m": 7.0}, {"id": "3'", "pos_m": 7.6}],
+      "y_lines": [{"id": "A", "pos_m": 0.0}, {"id": "B", "pos_m": 3.0}, {"id": "C", "pos_m": 8.0}]
+    },
+    "thai": {
+      "x_lines": [{"id": "1", "pos_m": 0.0}, {"id": "2", "pos_m": 6.0}, {"id": "3", "pos_m": 12.0}],
+      "y_lines": [{"id": "ก", "pos_m": 0.0}, {"id": "ข", "pos_m": 1.5}, {"id": "ค", "pos_m": 5.5}]
+    },
+    "swapped": {
+      "x_lines": [{"id": "A", "pos_m": 0.0}, {"id": "B", "pos_m": 5.0}, {"id": "C", "pos_m": 9.0}],
+      "y_lines": [{"id": "1", "pos_m": 0.0}, {"id": "2", "pos_m": 3.5}]
+    },
+    "mixed": {
+      "x_lines": [{"id": "1", "pos_m": 0.0}, {"id": "2", "pos_m": 3.0}, {"id": "ก", "pos_m": 0.0}, {"id": "ข", "pos_m": 4.0}],
+      "y_lines": [{"id": "1", "pos_m": 0.0}, {"id": "2", "pos_m": 3.0}]
+    },
+    "dummyid": {
+      "x_lines": [{"id": "1", "pos_m": 0.0}, {"id": "3", "pos_m": 7.0}, {"id": "3A", "pos_m": 8.2}],
+      "y_lines": [{"id": "A", "pos_m": 0.0}, {"id": "B", "pos_m": 4.0}]
+    },
+    "dup": {
+      "x_lines": [{"id": "1", "pos_m": 0.0}, {"id": "2", "pos_m": 3.2}],
+      "y_lines": [{"id": "จ", "pos_m": 0.0}, {"id": "จ", "pos_m": 4.0}, {"id": "ง", "pos_m": 6.0}]
+    },
+    "duprepeat": {
+      "x_lines": [{"id": "1", "pos_m": 0.0}, {"id": "1", "pos_m": 0.0}, {"id": "2", "pos_m": 4.0}],
+      "y_lines": [{"id": "A", "pos_m": 0.0}, {"id": "B", "pos_m": 3.0}]
+    },
+    "primeids": {
+      "x_lines": [{"id": "1", "pos_m": 0.0}, {"id": "1\"", "pos_m": 0.9}, {"id": "2′", "pos_m": 4.6}, {"id": "2", "pos_m": 4.0}],
+      "y_lines": [{"id": "A", "pos_m": 0.0}, {"id": "B", "pos_m": 3.0}]
+    },
+    "numeric": {
+      "x_lines": [{"id": 1, "pos_m": 0.0}, {"id": 2, "pos_m": 5.0}],
+      "y_lines": [{"id": "A", "pos_m": 0.0}, {"id": "B", "pos_m": 3.0}]
+    }
+  },
+  "resolve": [
+    {"grid": "std", "ref": "B2", "expect": [4.0, 3.0]},
+    {"grid": "std", "ref": "2B", "expect": [4.0, 3.0]},
+    {"grid": "std", "ref": "2-B", "expect": [4.0, 3.0]},
+    {"grid": "std", "ref": "B-2", "expect": [4.0, 3.0]},
+    {"grid": "std", "ref": "C3'", "expect": [7.6, 8.0]},
+    {"grid": "std", "ref": "D1", "expect": null},
+    {"grid": "std", "ref": "B9", "expect": null},
+    {"grid": "std", "ref": "~B2", "expect": null},
+    {"grid": "std", "ref": "b2", "expect": null},
+    {"grid": "thai", "ref": "ค2", "expect": [6.0, 5.5]},
+    {"grid": "thai", "ref": "2ค", "expect": [6.0, 5.5]},
+    {"grid": "thai", "ref": "3-ข", "expect": [12.0, 1.5]},
+    {"grid": "swapped", "ref": "B2", "expect": [5.0, 3.5]},
+    {"grid": "swapped", "ref": "2B", "expect": [5.0, 3.5]},
+    {"grid": "swapped", "ref": "C1", "expect": [9.0, 0.0]},
+    {"grid": "mixed", "ref": "ข1", "expect": null},
+    {"grid": "mixed", "ref": "ก2", "expect": null},
+    {"grid": "dummyid", "ref": "3A", "expect": null},
+    {"grid": "dummyid", "ref": "A3", "expect": [7.0, 0.0]},
+    {"grid": "dummyid", "ref": "B1", "expect": [0.0, 4.0]},
+    {"grid": "dup", "ref": "1-จ", "expect": null},
+    {"grid": "dup", "ref": "จ2", "expect": null},
+    {"grid": "dup", "ref": "ง2", "expect": [3.2, 6.0]},
+    {"grid": "duprepeat", "ref": "A1", "expect": [0.0, 0.0]},
+    {"grid": "duprepeat", "ref": "B2", "expect": [4.0, 3.0]},
+    {"grid": "primeids", "ref": "A1\"", "expect": [0.9, 0.0]},
+    {"grid": "primeids", "ref": "A1''", "expect": [0.9, 0.0]},
+    {"grid": "primeids", "ref": "A1″", "expect": [0.9, 0.0]},
+    {"grid": "primeids", "ref": "B2'", "expect": [4.6, 3.0]},
+    {"grid": "primeids", "ref": "B2", "expect": [4.0, 3.0]},
+    {"grid": "numeric", "ref": "A1", "expect": [0.0, 0.0]},
+    {"grid": "numeric", "ref": "2-B", "expect": [5.0, 3.0]}
+  ],
+  "span": [
+    {"grid": "std", "start": "A1", "end": "A3", "expect": 7.0},
+    {"grid": "std", "start": "1A", "end": "3A", "expect": 7.0},
+    {"grid": "std", "start": "1-A", "end": "3-A", "expect": 7.0},
+    {"grid": "std", "start": "A1", "end": "C1", "expect": 8.0},
+    {"grid": "std", "start": "B3", "end": "B3'", "expect": 0.6},
+    {"grid": "std", "start": "A1", "end": "B2", "expect": null},
+    {"grid": "std", "start": "A1", "end": "A1", "expect": null},
+    {"grid": "std", "start": "A1", "end": "A9", "expect": null},
+    {"grid": "std", "start": "Z1", "end": "Z3", "expect": 7.0},
+    {"grid": "std", "start": "1", "end": "3", "expect": null},
+    {"grid": "thai", "start": "1ค", "end": "3ค", "expect": 12.0},
+    {"grid": "thai", "start": "2-ก", "end": "2-ค", "expect": 5.5},
+    {"grid": "swapped", "start": "B1", "end": "B2", "expect": 3.5},
+    {"grid": "swapped", "start": "A1", "end": "C1", "expect": 9.0},
+    {"grid": "mixed", "start": "ก1", "end": "ก2", "expect": null},
+    {"grid": "dup", "start": "1-จ", "end": "1-ง", "expect": null},
+    {"grid": "dup", "start": "ง1", "end": "ง2", "expect": 3.2},
+    {"grid": "duprepeat", "start": "A1", "end": "A2", "expect": 4.0},
+    {"grid": "primeids", "start": "A1", "end": "A1\"", "expect": 0.9},
+    {"grid": "numeric", "start": "A1", "end": "A2", "expect": 5.0}
+  ]
+}
