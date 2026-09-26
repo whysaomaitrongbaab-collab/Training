@@ -150,6 +150,26 @@ python presentation.py tunnel          # ต่อ tunnel ใหม่ถ้า�
 python presentation.py down            # destroy + ปิด tunnel + ยืนยันคืนครบ
 ```
 
+### แผน A (2026-09-27) — worker.py รันบนการ์ดเช่าเอง ไม่ใช่บนคอมเรา
+
+เมนู GO.bat ข้อ 1/3 เปิดตัวรับงาน**บนการ์ด**ให้เองแล้ว (`presentation.py worker-up`) — ยิงโมเดลที่
+localhost ของการ์ด คุยกับ Supabase ด้วยเน็ตของการ์ด คอมเราแค่สั่งเปิด **เน็ตคอมหลุดกลางงานก็ไม่สะดุด**
+ส่งขึ้นไปก้อนเดียว ~0.14 MB: worker + prompt จาก `PURSON_PROMPTS_DIR` ชุดเดียวกับที่คอมนี้ใช้ +
+organize.py/cv_scan.py/แม่แบบ CV (วางโครงเลียน Training repo) + config ที่เปลี่ยนแค่ GPU URL/path
+
+```bash
+python presentation.py worker-up     # ส่ง+เปิด (กดซ้ำได้ ไม่เปิดซ้อน) — dependency ลงแยกที่ /workspace/wdeps
+python presentation.py worker-log    # ไม่มีหน้าต่างให้ดู ดู log ตรงนี้ (เมนู 9 → 8)
+python presentation.py worker-down   # หยุดตัวบนการ์ด (คืนการ์ดไม่ต้องสั่งก่อน เครื่องหายทั้งก้อนอยู่แล้ว)
+```
+
+- เปิดบนการ์ดไม่สำเร็จ → เมนูสั่ง `worker-down` แล้วถอยไปเปิดหน้าต่างบนคอมแบบเดิมเอง
+- มีหน้าต่างรับงานบนคอมเปิดค้างอยู่แล้ว → ใช้ตัวนั้น ไม่เปิดบนการ์ดซ้อน — **ตัวรับงานสองตัวยิง
+  Unsloth พร้อมกัน = ค้าง** (ตัวเสิร์ฟรับทีละคำขอ)
+- ไม่มีเสียงตอนงานเสร็จ (ตัวรับงานไม่ได้อยู่บนคอมเรา) — ดูความคืบหน้าที่หน้าเว็บ
+- ตรวจแล้วแบบไม่ต้องเช่าการ์ด: `python test_worker_remote.py` (import worker จาก bundle จริง,
+  pgrep ไม่เจอตัวเอง, setsid --fork) · **ยังไม่เคยรันบนการ์ดจริง**
+
 ทำไม `PURSON_GPU_URL` ใน worker_config.json ตั้งเป็น `http://localhost:8000` แล้วไม่ต้องแก้อีกเลย:
 tunnel (`ssh -N -L 8000:localhost:8000`) แปลงให้ทุกรอบเช่า — IP เครื่องเช่าเปลี่ยนก็กระทบแค่
 คำสั่ง ssh ที่ presentation.py สร้างเองจาก `vastai show instances` ไม่แตะ config ไหนทั้งนั้น
@@ -161,5 +181,8 @@ tunnel (`ssh -N -L 8000:localhost:8000`) แปลงให้ทุกรอบ
 
 ## ความปลอดภัย
 - service role key อยู่ในเครื่องที่รัน worker เท่านั้น ไม่เคยเข้า browser/repo
+- ⚠️ แผน A = key ขึ้นไปอยู่บนเครื่องของโฮสต์เช่าด้วย (ไฟล์ chmod 600) — คืนการ์ดแบบ destroy
+  ดิสก์หายทั้งก้อน แต่ระหว่างเช่าโฮสต์เข้าถึงดิสก์ได้ในทางเทคนิค · ไม่อยากรับความเสี่ยงนี้กับงานไหน
+  ให้ใช้หน้าต่างรับงานบนคอมแทน (`python worker.py`)
 - browser เขียนได้แค่ job ของตัวเอง (RLS) และห้าม update สถานะ (worker เท่านั้น)
 - bucket `purson-jobs` เป็น private, path ขึ้นต้นด้วย uid เจ้าของ
