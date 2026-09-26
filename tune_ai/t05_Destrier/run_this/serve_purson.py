@@ -149,12 +149,22 @@ def check_expert_lora(model, tok, src):
         warm = tok(None, "ok", add_special_tokens=False, return_tensors="pt").to("cuda")
         with torch.no_grad():
             model.generate(**warm, max_new_tokens=1, do_sample=False)
+        # ตัวแปะไม่ได้ติดตั้ง = forward เป็นของ PEFT = rank_major เสมอ · ต้องเช็คเอง เพราะ layout_for
+        # ตอบตาม env (ไม่ใช่ตามของที่รันจริง) เมื่อยังไม่มีผลวัด (รีวิว 27 ก.ย.: ไม่เช็คข้อนี้ = กรณีที่ด่าน
+        # สร้างมาจับหลุดผ่านเป็น "ยังไม่ได้วัด") · มีตัวแปะแล้ว layout_for คิดผลวัด False ให้เองแล้ว
+        # ดู __code__ ไม่ใช่ __name__ (functools.wraps เปลี่ยนชื่อได้ แต่ code เป็นของตัวแปะเสมอ) + มีผลวัดตัวไหน
+        # ก็ตาม = ตัวแปะรันแล้ว (ผลวัดเขียนจากตัวแปะเท่านั้น zoo 9.7 moe_utils.py:2663) — พลาดข้อนี้ = ปฏิเสธเครื่องดี
+        code = getattr(getattr(ParamWrapper.forward, "__code__", None), "co_name", "")
+        patched = (code == "_patched_param_wrapper_forward"
+                   or any(applies_stash(w) is not None for _, w in wrappers))
         bad, unmeasured = [], 0
         for name, w in wrappers:
-            lay, st = layout_for(w), applies_stash(w)
-            if lay != want or st is False:
-                bad.append(f"{name.split('language_model.')[-1]}: อ่านแบบ {lay} · ทาง Unsloth={st}")
-            elif st is None:     # Unsloth ยังไม่ได้วัด ≠ ผิด — ปฏิเสธทุกคำขอเพราะเดา = พังวันสาธิต
+            lay = layout_for(w) if patched else "rank_major"
+            st = applies_stash(w) if patched else None
+            if lay != want:
+                bad.append(f"{name.split('language_model.')[-1]}: อ่านแบบ {lay} · "
+                           f"ตัวแปะ Unsloth={'ติด' if patched else 'ไม่ติด'} · วัดได้={st}")
+            elif patched and st is None:   # ติดตัวแปะแต่ยังไม่ได้วัด ≠ ผิด — ปฏิเสธเพราะเดา = พังวันสาธิต
                 unmeasured += 1
     except Exception as e:
         print(f"⚠️ ตรวจ LoRA ของ expert ไม่สำเร็จ ({type(e).__name__}: {e}) — ไปต่อแบบไม่ยืนยัน",
@@ -172,7 +182,8 @@ def check_expert_lora(model, tok, src):
               f"{unmeasured}/{len(wrappers)} ตัว — ไปต่อแบบไม่ยืนยัน · ยิงหน้าที่รู้คำตอบเทียบด้วยตาก่อนเชื่อผล",
               flush=True)
         return None
-    print(f"✅ LoRA ของ expert ทั้ง {len(wrappers)} ตัว อ่านแบบ {want} ผ่านทางของ Unsloth", flush=True)
+    via = "ผ่านทางของ Unsloth" if patched else "ผ่านทางของ PEFT (ตัวแปะ Unsloth ไม่ติด — ช้ากว่า)"
+    print(f"✅ LoRA ของ expert ทั้ง {len(wrappers)} ตัว อ่านแบบ {want} {via}", flush=True)
     return None
 
 

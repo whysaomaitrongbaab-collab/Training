@@ -7,6 +7,10 @@
 
 ข้อจำกัดที่ต้องรู้: นี่คือ self-consistency test — พิสูจน์ว่า "ด่านแยกออก"
 ไม่ได้พิสูจน์ว่า "merge จะถูก" (พิสูจน์ไม่ได้จนกว่าจะมีโมเดล merged จริง)
+
+⚠️ 27 ก.ย. 2026: ไฟล์นี้ **ผ่าน** กับ dacarokann/destrier rev e229403 ทั้งที่ไฟล์นั้น LoRA ของ expert
+ปนผิดทั้งไฟล์ (proof/03) — เพราะ "ความจริง" ที่ใช้สังเคราะห์มาจากไฟล์ที่ตรวจเอง ผ่าน ≠ ไฟล์ถูก
+การตรวจว่าไฟล์ถูกต้องเทียบกับ fold ต้นทาง: fix_destrier_layout.py --check-folds / test_soup_layout.py
 """
 import glob, json, os, sys
 import torch

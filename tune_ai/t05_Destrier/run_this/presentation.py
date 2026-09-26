@@ -1058,6 +1058,14 @@ def cmd_smoke(_a):
             return
         except Exception as e:
             last_err = e
+            if isinstance(e, urllib.error.HTTPError):
+                # 500 จากด่านเช็ค LoRA ของ serve_purson.py มีเหตุผลอยู่ใน body — ไม่พิมพ์ = คนเห็นแค่
+                # "HTTP 500" แล้วคืนการ์ดดีทิ้ง ทั้งที่แก้แค่ env (รีวิว 27 ก.ย.)
+                err_body = e.read().decode("utf-8", "replace")[:600]   # ห้ามชื่อ body — ทับ payload ของรอบถัดไป
+                print(f"  ตัวเสิร์ฟตอบ {e.code}: {err_body}")
+                if "LoRA ของ MoE expert ถูกอ่านผิดแบบ" in err_body:      # ข้อความของ check_expert_lora เท่านั้น
+                    sys.exit("⛔ ตัวเสิร์ฟปฏิเสธเพราะอ่าน LoRA ผิดแบบ (ข้างบน) — การ์ดไม่ได้เสีย ห้าม down --bad"
+                             "\n   แก้ตามข้อความแล้วเปิดตัวเสิร์ฟใหม่")
             if attempt < 3:
                 print(f"  ...smoke ครั้งที่ {attempt}/3 ไม่ผ่าน ({type(e).__name__}) "
                       f"ลองใหม่ใน 10 วิ")

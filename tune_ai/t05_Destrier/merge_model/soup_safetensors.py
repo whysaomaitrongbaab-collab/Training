@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """
+⛔ สำเนาประวัติ (ห้ามรัน) — ตัวนี้คือรุ่นที่สร้าง dacarokann/destrier rev e229403 ซึ่ง LoRA ของ MoE expert ปนผิด
+   (proof/03_destrier_expert_LoRA_ปนผิด.md) · รวม fold ใช้ tune_ai/soup_safetensors.py ตัวที่แก้แล้วเท่านั้น
+
 soup_safetensors.py — รวม LoRA adapter หลาย fold เป็น "destrier" ด้วยเลขล้วน ๆ
 
 ทำไมไม่ใช้ PEFT add_weighted_adapter (merge_adapters_soup.py):
@@ -29,6 +32,9 @@ import json
 import os
 import shutil
 import sys
+
+if __name__ == "__main__":
+    sys.exit("⛔ สำเนาประวัติของรุ่นที่ปนผิด — ใช้ tune_ai/soup_safetensors.py แทน (ดูหัวไฟล์)")
 
 import torch
 from huggingface_hub import HfApi, snapshot_download

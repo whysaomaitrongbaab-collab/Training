@@ -17,7 +17,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import serve_purson as S  # noqa: E402
 
 
+def _patched_param_wrapper_forward(self, *a, **k):   # ชื่อเดียวกับตัวแปะของ unsloth_zoo
+    pass
+
+
+def _peft_forward(self, *a, **k):
+    pass
+
+
 class ParamWrapper:                      # ปลอมของ peft.tuners.lora.layer.ParamWrapper
+    forward = _patched_param_wrapper_forward
+
     def __init__(self, num_experts, layout, stash):
         self.num_experts, self.layout, self.stash = num_experts, layout, stash
 
@@ -32,7 +42,8 @@ def install_fakes(zoo_ok=True):
         sys.modules[name] = types.ModuleType(name)
     mu = types.ModuleType("unsloth_zoo.temporary_patches.moe_utils")
     if zoo_ok:
-        mu.moe_lora_b_layout_for_wrapper = lambda w: w.layout
+        # เหมือนของจริง (zoo 9.7 moe_utils.py:2270): วัดได้ False = ตกไปทาง PEFT = rank_major
+        mu.moe_lora_b_layout_for_wrapper = lambda w: RM if w.stash is False else w.layout
         mu._wrapper_forward_applies_stash = lambda w: w.stash
     sys.modules["unsloth_zoo.temporary_patches.moe_utils"] = mu
 
@@ -94,6 +105,35 @@ m = Model([ParamWrapper(256, G, True), ParamWrapper(256, G, None)])
 assert S.check_expert_lora(m, tok, adapter_dir()) is None
 print("OK  3b. Unsloth ยังไม่ได้วัด -> เตือนแล้วไปต่อ (ไม่ปฏิเสธเพราะเดา)")
 
+# 3c. ตัวแปะของ Unsloth ไม่ได้ติดตั้งเลย (forward ยังเป็นของ PEFT) -> PEFT อ่าน rank_major เสมอ
+#     ทั้งที่ layout_for ตอบตาม env ว่า grouped และวัดได้ None — ต้องปฏิเสธ (รีวิว 27 ก.ย.)
+ParamWrapper.forward = _peft_forward
+m = Model([ParamWrapper(256, G, None), ParamWrapper(256, G, None)])
+why = S.check_expert_lora(m, tok, adapter_dir())
+assert why and "2/2" in why and "ไม่ติด" in why, why
+#     กลับกัน: adapter เป็น rank_major + ไม่มีตัวแปะ = PEFT อ่านถูก -> ไปต่อ
+assert S.check_expert_lora(m, tok, adapter_dir(RM)) is None
+ParamWrapper.forward = _patched_param_wrapper_forward
+print("OK  3c. ตัวแปะ Unsloth ไม่ติดตั้ง -> ปฏิเสธ adapter grouped · ปล่อย adapter rank_major")
+
+# 3d. ติดตัวแปะแต่ experts forward ส่งกลับให้ PEFT (วัดได้ False) + adapter rank_major = ถูก ห้ามปฏิเสธ
+m = Model([ParamWrapper(256, RM, False)])
+assert S.check_expert_lora(m, tok, adapter_dir(RM)) is None
+print("OK  3d. วัดได้ False กับ adapter rank_major -> ไปต่อ (ไม่ปฏิเสธของที่ถูก)")
+
+# 3e. zoo รุ่นหน้าห่อตัวแปะด้วย functools.wraps (ชื่อกลายเป็นของ PEFT) -> ยังต้องรู้ว่าติด ไม่ปฏิเสธเครื่องดี
+import functools  # noqa: E402
+_wrapped = types.FunctionType(_patched_param_wrapper_forward.__code__, {})
+ParamWrapper.forward = functools.wraps(_peft_forward)(_wrapped)
+assert ParamWrapper.forward.__name__ == "_peft_forward"
+m = Model([ParamWrapper(256, G, None), ParamWrapper(256, G, None)])   # ยังไม่มีผลวัดเลย ดูจาก code อย่างเดียว
+assert S.check_expert_lora(m, tok, adapter_dir()) is None
+ParamWrapper.forward = _peft_forward
+m = Model([ParamWrapper(256, G, True), ParamWrapper(256, G, True)])   # code ไม่ตรง แต่มีผลวัด = ตัวแปะรันแล้ว
+assert S.check_expert_lora(m, tok, adapter_dir()) is None
+ParamWrapper.forward = _patched_param_wrapper_forward
+print("OK  3e. ตัวแปะโดน wraps เปลี่ยนชื่อ / ชื่อไม่ตรงแต่มีผลวัด -> รู้ว่าติด ไม่ปฏิเสธเครื่องดี")
+
 # 4. adapter ประกาศ rank_major เอง (soup/เทรนรุ่นใหม่) + ตัวเสิร์ฟอ่าน rank_major -> ถูก
 m = Model([ParamWrapper(256, RM, True)])
 assert S.check_expert_lora(m, tok, adapter_dir(RM)) is None
@@ -126,5 +166,40 @@ assert '_state.get("refuse")' in chat, "chat ต้องเช็ค refuse ก
 main = src[src.index("def main("):]
 assert "refuse=refuse" in main and "check_expert_lora(model, tok, src)" in main
 print("OK  8. อ่านผิด -> ปฏิเสธทุกคำขอพร้อมเหตุผล (ไม่ปิดเซิร์ฟเวอร์ ไม่ให้การ์ดดีโดนทิ้ง)")
+
+
+
+# 9. presentation.py smoke: 500 ธรรมดารอบแรก -> รอบสองต้องส่ง payload เดิม (เคยโดนตัวแปร body ทับ) ·
+#    500 ที่เป็นเหตุผลจากด่านนี้ -> หยุดทันทีพร้อมบอกว่าการ์ดไม่ได้เสีย
+import io  # noqa: E402
+import urllib.error  # noqa: E402
+import presentation as P  # noqa: E402
+
+sent = []
+
+
+def fake_urlopen(responses):
+    def _open(req, timeout=None):
+        sent.append(req.data)
+        code, text = responses.pop(0)
+        if code != 200:
+            raise urllib.error.HTTPError(req.full_url, code, "err", {}, io.BytesIO(text.encode("utf-8")))
+        return io.BytesIO(json.dumps({"choices": [{"message": {"content": text}}]}).encode())
+    return _open
+
+
+P.time.sleep = lambda s: None
+P.urllib.request.urlopen = fake_urlopen([(500, "CUDA OOM"), (200, '{"ok": true}')])
+P.cmd_smoke(None)
+assert len(sent) == 2 and sent[0] == sent[1] and isinstance(sent[1], bytes), sent
+sent.clear()
+P.urllib.request.urlopen = fake_urlopen([(500, '{"error": {"message": "LoRA ของ MoE expert ถูกอ่านผิดแบบ (80/80 ตัว)"}}')])
+try:
+    P.cmd_smoke(None)
+    raise AssertionError("ต้องหยุด")
+except SystemExit as e:
+    assert "ห้าม down --bad" in str(e) and len(sent) == 1, (e, sent)
+print("OK  9. smoke: 500 ธรรมดาลองใหม่ด้วย payload เดิม · 500 จากด่าน LoRA หยุดทันที บอกว่าการ์ดไม่เสีย")
+
 
 print("\nok — ด่านตรวจ LoRA ของ expert แยก ถูก/ผิด/ตรวจไม่ได้ ครบ")
