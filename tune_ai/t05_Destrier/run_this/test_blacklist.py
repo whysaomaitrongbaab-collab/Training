@@ -113,6 +113,9 @@ def test_cmd_up_structure():
     check("cmd_up คืนเครื่องที่เจ๊งทิ้ง ไม่ปล่อยเผาเงิน", "scrap_instance(" in up)
     check("cmd_up ไปลองเครื่องถัดไปต่อ", "continue" in up)
     check("cmd_up จำ machine_id ลง state (ไว้ใช้ตอน down --bad)", '"machine_id"' in up)
+    q = up[up.index('res.get("success") is False'):up.index("เช่าแล้ว instance")]
+    check("cmd_up เครื่องที่ vast เข้าคิว (success false) = คืนทันที ไม่นับรอบ ไม่แบน",
+          '"destroy"' in q and "attempt -= 1" in q and "blacklist_add" not in q)
 
     # ทางที่ล้มแล้วต้องกู้ได้ ห้ามกลับไปเป็น sys.exit อีก
     for fn_name, needle in (("wait_running", "เครื่องไม่ขึ้นใน 15 นาที"),

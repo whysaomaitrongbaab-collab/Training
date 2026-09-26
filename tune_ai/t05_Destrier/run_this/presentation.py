@@ -70,7 +70,7 @@ MODELS = {
         # ทุกครั้งที่เช่าใหม่ ค่าเน็ตช้าจึงกินเวลาที่เราจ่ายเป็นรายชั่วโมง: 343Mbps ≈ 27 นาที
         # vs 888Mbps ≈ 11 นาที → offer ที่ $0.935 เน็ตช้า แพงกว่า offer $1.095 เน็ตเร็วจริง
         "search": ("gpu_ram>=90 num_gpus=1 reliability>0.99 inet_down>500 "
-                   "rentable=true verified=true"),
+                   "rentable=true verified=true direct_port_count>=1"),
         "deps": "unsloth xgrammar fastapi uvicorn pillow",
     },
     "t04": {
@@ -90,9 +90,13 @@ MODELS = {
         # 2) max_pixels 6912*1024 ไม่ใช่ 7680 — ลดตอนเทรนจริงหลัง OOM, เสิร์ฟคนละค่ากับที่เทรน
         #    = บั๊กคลาสเดียวกับที่ฆ่า t01/t04 (ภาพโดนย่อ/ขยายผิดเงียบๆ)
         # ⚠️ คุณภาพผลลัพธ์ยังไม่ผ่านเกณฑ์ — pure-power test recall ต่ำ ดูไดอารี่วันเดียวกัน
+        # 🔴 27 ก.ย. 2026: rev e229403 ตัวนี้ LoRA ของ MoE expert ปนผิดตั้งแต่ตอนรวม fold (ถูกคู่แค่
+        #    17/12288 ตอนเสิร์ฟ) — ตัวซ่อม: Training/tune_ai/fix_destrier_layout.py · หลักฐาน + แผนทดสอบ:
+        #    Training/tune_ai/t05_Destrier/proof/03_destrier_expert_LoRA_ปนผิด.md · ยังไม่เปลี่ยน adapter
+        #    ตรงนี้จนกว่าตัวที่ซ่อมจะผ่านการทดสอบบนการ์ด (serve_purson.py เตือนทุกครั้งที่โหลดตัวนี้)
         "adapter": "dacarokann/destrier",
         "search": ("gpu_ram>=90 num_gpus=1 reliability>0.99 inet_down>500 "
-                   "rentable=true verified=true"),
+                   "rentable=true verified=true direct_port_count>=1"),
         "deps": "unsloth xgrammar fastapi uvicorn pillow 'peft>=0.20'",
         "max_pixels": 6912 * 1024,
     },
@@ -106,7 +110,7 @@ MODELS = {
     "destrier-vllm": {
         "model_repo": "dacarokann/destrier-merged",
         "search": ("gpu_ram>=90 num_gpus=1 reliability>0.99 inet_down>500 "
-                   "rentable=true verified=true"),
+                   "rentable=true verified=true direct_port_count>=1"),
         "deps": "vllm",
         "serve": "vllm",
         "max_pixels": 6912 * 1024,
@@ -117,7 +121,7 @@ MODELS = {
         # = ลด latency ต่อคำขอเดี่ยวตรงๆ ไม่ใช่แค่ throughput รวม
         "model_repo": "dacarokann/destrier-merged",
         "search": ("gpu_ram>=90 num_gpus=1 reliability>0.99 inet_down>500 "
-                   "rentable=true verified=true"),
+                   "rentable=true verified=true direct_port_count>=1"),
         "deps": "sglang[all]",
         "serve": "sglang",
         "max_pixels": 6912 * 1024,
@@ -279,9 +283,11 @@ def cmd_up(a):
 
     # ลองทีละเครื่องจนกว่าจะได้เครื่องที่ใช้ได้จริง — เครื่องที่ล้มถูกคืน+จำไว้ทันที
     # ไม่ต้องมีคนมานั่งกดเมนูใหม่ทุกรอบ (บทเรียน 23 ก.ย.: เสีย 4 เครื่องติดกัน)
-    for attempt in range(1, MAX_RENT_TRIES + 1):
+    attempt = 0
+    while attempt < MAX_RENT_TRIES:
         if not offers:
             sys.exit("offer หมดแล้ว — ลองใหม่ทีหลัง หรือผ่อนเงื่อนไขใน MODELS[...]['search']")
+        attempt += 1
         offer = offers.pop(0)
         price = offer.get("dph_total", 0)
         print(f"\n[เครื่องที่ {attempt}/{MAX_RENT_TRIES}] offer {offer['id']} "
@@ -300,10 +306,24 @@ def cmd_up(a):
             sys.exit("ยกเลิก")
 
         r = sh(["vastai", "create", "instance", str(offer["id"]), "--image", IMAGE,
-                "--disk", str(DISK_GB), "--ssh", "--onstart-cmd", onstart_cmd(m), "--raw"])
+                # --direct: เจอสด 27 ก.ย. 69 — เช่าแบบ ssh_proxy (ค่าเริ่มต้นของ --ssh) ได้ running
+                # แต่พร็อกซีของ vast ตอบ "Permission denied (publickey)" นาน 13+ นาที ทั้งที่ key
+                # ตรงกันทุกตัว (เช็ค fingerprint แล้ว) และ vast บอก "already associated" — 3 เครื่อง
+                # 3 ประเทศติดกัน · ทางตรงไม่ผ่านพร็อกซี (pick_ssh_endpoint ลองทางตรงก่อนอยู่แล้ว)
+                "--disk", str(DISK_GB), "--ssh", "--direct", "--onstart-cmd", onstart_cmd(m), "--raw"])
         if r.returncode != 0:
             sys.exit(f"เช่าไม่สำเร็จ: {r.stderr.strip()}\n{r.stdout.strip()}")
-        new_id = json.loads(r.stdout).get("new_contract")
+        res = json.loads(r.stdout)
+        new_id = res.get("new_contract")
+        if res.get("success") is False and new_id:
+            # เจอสด 27 ก.ย. 69 (3 ใน 4 เครื่อง): offer ขึ้นว่าว่างแต่การ์ดไม่ว่างจริง — vast สร้าง
+            # สัญญาไว้แต่ตั้ง intended_status=stopped ("Required resources are currently
+            # unavailable, state change queued") ค้าง loading ไม่มีวัน running · เดิมนั่งรอ
+            # wait_running ครบ 15 นาทีแล้วแบนเครื่องดีทิ้ง — คืนทันที ไม่นับเป็นรอบ ไม่แบน
+            print(f"  เครื่องนี้ไม่ว่างจริง (vast เข้าคิวไว้ ไม่เปิดให้) — คืนทันที ไปตัวถัดไป")
+            sh(["vastai", "destroy", "instance", str(new_id)], input="y\n")
+            attempt -= 1                     # ไม่ได้เช่าจริง ไม่นับรอบ (offer ถูก pop ไปแล้ว ไม่วนซ้ำ)
+            continue
         print(f"เช่าแล้ว instance {new_id} — รอเครื่องขึ้น...")
         save_state({"instance_id": new_id, "model": a.model, "price_per_hr": price,
                     "machine_id": offer.get("machine_id"),

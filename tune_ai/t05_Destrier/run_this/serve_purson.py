@@ -58,6 +58,124 @@ def load(src, max_pixels=MAX_PIXELS):
     return model, tok
 
 
+GROUPED = "grouped_by_expert"
+
+
+def adapter_b_layout(src):
+    """layout ของ lora_B ที่ adapter นี้ต้องการ — คีย์ lora_B_layout ใน adapter_config
+    ไม่มีคีย์ = เทรนด้วย Unsloth ก่อน 18 ก.ย. 2026 = grouped_by_expert · อ่านไม่ได้ = None"""
+    import json
+    import os
+    try:
+        if os.path.isdir(src):
+            p = os.path.join(src, "adapter_config.json")
+        else:
+            from huggingface_hub import hf_hub_download
+            p = hf_hub_download(src, "adapter_config.json")
+        return json.load(open(p, encoding="utf-8")).get("lora_B_layout") or GROUPED
+    except Exception:
+        return None
+
+
+def has_layout_key(src):
+    """adapter ประกาศ lora_B_layout เองไหม (ตัวที่ซ่อม/soup รุ่นใหม่ประกาศ · destrier e229403 ไม่ประกาศ)"""
+    import json
+    import os
+    try:
+        if os.path.isdir(src):
+            p = os.path.join(src, "adapter_config.json")
+        else:
+            from huggingface_hub import hf_hub_download
+            p = hf_hub_download(src, "adapter_config.json")
+        return "lora_B_layout" in json.load(open(p, encoding="utf-8"))
+    except Exception:
+        return False
+
+
+def print_versions():
+    """เวอร์ชันที่ใช้เสิร์ฟจริง — เดิมไม่มีบันทึกเลย ย้อนดูไม่ได้ว่ารอบไหนใช้ Unsloth รุ่นไหน
+    (สำคัญ: วิธีอ่าน LoRA ของ expert เปลี่ยนตามรุ่น unsloth_zoo)"""
+    import os
+    from importlib import metadata
+    vs = []
+    for pkg in ("unsloth", "unsloth_zoo", "peft", "transformers", "torch"):
+        try:
+            vs.append(f"{pkg} {metadata.version(pkg)}")
+        except Exception:
+            vs.append(f"{pkg} ?")
+    print("เวอร์ชัน: " + " · ".join(vs), flush=True)
+    print(f"UNSLOTH_MOE_LORA_B_LAYOUT={os.environ.get('UNSLOTH_MOE_LORA_B_LAYOUT', '<ไม่ได้ตั้ง>')}",
+          flush=True)
+
+
+def check_expert_lora(model, tok, src):
+    """LoRA ของ MoE expert ถูกอ่านแบบที่ adapter ต้องการจริงไหม — คืนเหตุผลถ้า "ผิดแน่" ไม่งั้น None
+
+    ทำไมต้องมี (พบ 2026-09-27, หลักฐานใน Training/tune_ai/t05_Destrier/proof/03_…):
+    lora_B ของ expert อ่านได้สองแบบที่รูปร่างเท่ากันเป๊ะ อ่านผิดแบบ = expert ได้ชิ้นส่วนของ
+    expert ตัวอื่น ตอบเป็น JSON สวยงามแต่เนื้อเพี้ยน ไม่มี error สักตัว · และต่อให้ตั้ง env
+    UNSLOTH_MOE_LORA_B_LAYOUT ถูก ถ้าตัวแปะของ Unsloth ติดตั้งไม่สำเร็จ (มันกลืน error เงียบ)
+    LoRA จะตกไปทางของ PEFT ซึ่งอ่านแบบ rank_major เสมอ — ต้องถาม Unsloth หลังรันจริงหนึ่งครั้ง
+
+    ตรวจไม่ได้ (API เปลี่ยน/ไม่มี expert LoRA) = เตือนแล้วไปต่อ · ผิดแน่ = คืนเหตุผล
+    ผู้เรียกไม่ปิดเซิร์ฟเวอร์ (presentation.py จะตีว่าเครื่องเสีย คืนการ์ดดีทิ้ง + ขึ้นบัญชีดำ)
+    แต่ปฏิเสธทุกคำขอพร้อมเหตุผลนี้แทน — ไม่มีผลขยะหลุดไปถึงผู้ใช้"""
+    import os
+    import torch
+    try:
+        from peft.tuners.lora.layer import ParamWrapper
+    except Exception as e:
+        print(f"⚠️ ตรวจ LoRA ของ expert ไม่ได้ (import peft: {e}) — ไปต่อแบบไม่ยืนยัน", flush=True)
+        return None
+    wrappers = [(n, m) for n, m in model.named_modules()
+                if isinstance(m, ParamWrapper) and int(getattr(m, "num_experts", 1) or 1) > 1]
+    if not wrappers:
+        print("ไม่มี LoRA ของ MoE expert (เสิร์ฟ base หรือ adapter ไม่แตะ expert) — ข้ามการตรวจ layout",
+              flush=True)
+        return None
+    want = adapter_b_layout(src)
+    env = os.environ.get("UNSLOTH_MOE_LORA_B_LAYOUT", "<ไม่ได้ตั้ง = rank_major>")
+    print(f"LoRA ของ expert {len(wrappers)} ตัว · adapter ต้องการ {want or '?'} · env {env}", flush=True)
+    try:
+        from unsloth_zoo.temporary_patches import moe_utils as mu
+        layout_for = mu.moe_lora_b_layout_for_wrapper
+        applies_stash = mu._wrapper_forward_applies_stash
+    except Exception as e:
+        print(f"⚠️ unsloth_zoo รุ่นนี้ไม่มีฟังก์ชันที่ใช้ตรวจ ({type(e).__name__}) — ไปต่อแบบไม่ยืนยัน"
+              f" · ก่อนเชื่อผล ยิงหน้าที่รู้คำตอบเทียบด้วยตาหนึ่งหน้า", flush=True)
+        return None
+    try:
+        # วัดได้หลังมี forward จริงหนึ่งครั้ง — Unsloth ตัดสินว่าจะใช้ทางของตัวเองหรือยกให้ PEFT ตอนนั้น
+        warm = tok(None, "ok", add_special_tokens=False, return_tensors="pt").to("cuda")
+        with torch.no_grad():
+            model.generate(**warm, max_new_tokens=1, do_sample=False)
+        bad, unmeasured = [], 0
+        for name, w in wrappers:
+            lay, st = layout_for(w), applies_stash(w)
+            if lay != want or st is False:
+                bad.append(f"{name.split('language_model.')[-1]}: อ่านแบบ {lay} · ทาง Unsloth={st}")
+            elif st is None:     # Unsloth ยังไม่ได้วัด ≠ ผิด — ปฏิเสธทุกคำขอเพราะเดา = พังวันสาธิต
+                unmeasured += 1
+    except Exception as e:
+        print(f"⚠️ ตรวจ LoRA ของ expert ไม่สำเร็จ ({type(e).__name__}: {e}) — ไปต่อแบบไม่ยืนยัน",
+              flush=True)
+        return None
+    if want is None:
+        print("⚠️ อ่าน adapter_config ไม่ได้ — ไม่รู้ว่า adapter ต้องการแบบไหน ไปต่อแบบไม่ยืนยัน", flush=True)
+        return None
+    if bad:
+        return (f"LoRA ของ MoE expert ถูกอ่านผิดแบบ ({len(bad)}/{len(wrappers)} ตัว) — ผลจะเพี้ยนเงียบๆ "
+                f"จึงไม่ตอบ · adapter ต้องการ {want} · env={env} · ตัวอย่าง: {bad[0]} · "
+                f"แก้: ตั้ง UNSLOTH_MOE_LORA_B_LAYOUT={want} ก่อนเปิด และเช็คว่า Unsloth แปะ MoE forward ได้")
+    if unmeasured:
+        print(f"⚠️ LoRA ของ expert อ่านแบบ {want} แต่ Unsloth ยังไม่ได้วัดว่าใช้ทางของตัวเอง "
+              f"{unmeasured}/{len(wrappers)} ตัว — ไปต่อแบบไม่ยืนยัน · ยิงหน้าที่รู้คำตอบเทียบด้วยตาก่อนเชื่อผล",
+              flush=True)
+        return None
+    print(f"✅ LoRA ของ expert ทั้ง {len(wrappers)} ตัว อ่านแบบ {want} ผ่านทางของ Unsloth", flush=True)
+    return None
+
+
 def build_grammar(model, tok):
     """xgrammar builtin JSON — คืน factory (LogitsProcessor มี state ต้องสร้างใหม่ทุกครั้ง)
     ใช้ไม่ได้ก็รันต่อแบบไม่ constrain ดีกว่าล้มทั้งเซิร์ฟเวอร์"""
@@ -146,6 +264,9 @@ def make_app():
             elif c.get("type") == "text":
                 texts.append(c["text"])
 
+        if _state.get("refuse"):
+            # ตั้งตอนเปิดเครื่องเมื่อ LoRA ของ expert ถูกอ่านผิดแบบ — ตอบ error ดีกว่าตอบขยะเนียนๆ
+            return JSONResponse(status_code=500, content={"error": {"message": _state["refuse"]}})
         want_json = (body.get("response_format") or {}).get("type") == "json_object"
         t0 = time.time()
         try:
@@ -201,7 +322,17 @@ def main():
             print(f"⚠️ โหลดโมเดลล้มครั้งที่ {attempt}/3 ({type(e).__name__}: {e})"
                   f" — รอ 20 วิแล้วลองต่อจากไฟล์ที่โหลดไว้แล้ว", flush=True)
             time.sleep(20)
-    _state.update(model=model, tok=tok, grammar=build_grammar(model, tok),
+    print_versions()
+    refuse = None if a.base else check_expert_lora(model, tok, src)
+    if refuse:
+        print("\n" + "!" * 72 + f"\n⛔ {refuse}\n   เซิร์ฟเวอร์เปิดไว้ แต่ทุกคำขอจะได้ error นี้แทนคำตอบ\n"
+              + "!" * 72 + "\n", flush=True)
+    if (not a.base and src.rstrip("/") == "dacarokann/destrier"
+            and adapter_b_layout(src) == GROUPED and not has_layout_key(src)):
+        print("⚠️ dacarokann/destrier ตัวนี้ (rev e229403) คือตัวที่ LoRA ของ expert ปนผิด (ยืนยัน 27 ก.ย.)"
+              " — ใช้เพื่อเทียบเท่านั้น ตัวที่ซ่อมแล้วสร้างด้วย Training/tune_ai/fix_destrier_layout.py",
+              flush=True)
+    _state.update(model=model, tok=tok, grammar=build_grammar(model, tok), refuse=refuse,
                   name=a.name if not a.base else f"{a.name}-base")
     print(f"✅ พร้อมรับงานที่ port {a.port} — worker ยิงมาที่ /v1/chat/completions ได้เลย",
           flush=True)

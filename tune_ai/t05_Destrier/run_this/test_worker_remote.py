@@ -117,4 +117,4 @@ try:
 finally:
     shutil.rmtree(tmp, ignore_errors=True)
 
-print("\nok — แผน A ตรวจครบทุกข้อ (ยังไม่ได้ทดสอบบนการ์ดจริง)")
+print("\nok — แผน A ตรวจครบทุกข้อ (รันจริงบนการ์ดผ่านแล้ว 27 ก.ย. 69)")
