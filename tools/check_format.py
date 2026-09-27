@@ -83,6 +83,46 @@ def load_grid(house_dir):
     return rows, cols
 
 
+def _line_id(v):
+    # house 25-28 write the 2nd dummy as 1" (one double-quote) -- same line as 1'' (JS normalizeRef)
+    return str(v).strip().replace('′', "'").replace('″', "''").replace('"', "''")
+
+
+def grid_tick_notes(name, grid):
+    """section 4 rule 4 (2026-09-27): every tick of an anchored x/y chain is a line, and dummy
+    primes run 1,2,3.. along the axis. NOTES, not FAILs -- every master written before the rule
+    breaks it, so a hard fail would only teach people to ignore the gate (same call as line ~121)."""
+    out = []
+    if 'dimension_chains' in grid and not grid['dimension_chains']:
+        # every drawing set prints dimension rows on its plans -- an empty array is an unread set
+        # (houses 01-19, audit 2026-09-24), not a clean one
+        out.append(('grid master dimension_chains[] is empty -- set not dimension-swept (section 4)', name))
+    ids = {ax: {_line_id(l['id']) for l in grid.get(f'{ax}_lines') or []
+                if isinstance(l, dict) and 'id' in l} for ax in 'xy'}
+    for ch in grid.get('dimension_chains') or []:
+        ax = ch.get('axis') if isinstance(ch, dict) else None
+        if ax not in ids:
+            continue
+        ends = [_line_id(s.get(k)) for s in ch.get('segments') or [] if isinstance(s, dict)
+                for k in ('from', 'to')]
+        if 'edge' in ends and any(e in ids[ax] for e in ends):
+            out.append(('anchored chain end left as "edge" -- should be a dummy line (section 4 rule 4)',
+                        f'{name}: {ax} axis, {ch.get("source_image")}'))
+    for ax in 'xy':
+        seqs = collections.defaultdict(list)
+        for l in grid.get(f'{ax}_lines') or []:
+            if isinstance(l, dict) and l.get('type') == 'dummy' and isinstance(l.get('pos_m'), (int, float)):
+                i = _line_id(l.get('id'))
+                base = i.rstrip("'")
+                seqs[base].append((l['pos_m'], len(i) - len(base), i))
+        for base, seq in seqs.items():
+            got = [n for _, n, _ in sorted(seq)]
+            if got != list(range(1, len(got) + 1)):
+                out.append(('dummy primes out of order along the axis (section 4 Dummy grid)',
+                            f'{name}: {ax} {[i for _, _, i in sorted(seq)]}'))
+    return out
+
+
 def check_house(house_dir):
     fails = collections.defaultdict(list)
     soft = []
@@ -125,6 +165,7 @@ def check_house(house_dir):
                 # everyone learns to ignore. It stays visible; it no longer blocks.
                 soft.append(('grid master not dimension-swept yet (section 4 -- absent != empty)',
                              f'{name}: {",".join(miss)}'))
+            soft.extend(grid_tick_notes(name, doc.get('grid') or {}))
         if doc.get('pattern') == 'notes':
             bad = sorted(k for k in doc if k in NOTES_ONEOFF)
             if bad:

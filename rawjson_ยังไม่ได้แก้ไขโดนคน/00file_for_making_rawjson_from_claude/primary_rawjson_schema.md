@@ -99,7 +99,7 @@ Whenever you convert something the drawing printed (a size string, a rebar callo
 
 - **The word `grid`/`dummy` never appears inside a `grid_ref` value.** Write `"D-C"`, not `"gridD-gridC"`; `"beyond 3"`, not `"beyond grid 3"`.
 - Row letters keep the drawing's own alphabet — Thai `ก`/`ข`/`ค` stays Thai, it is what is printed.
-- Every point ref must resolve against that house's `หน้า00_gridline.json`. If it doesn't, the grid master is missing a line (§4 beam-endpoint rule) — fix the master, don't invent a ref.
+- Every point ref must resolve against that house's `หน้า00_gridline.json`. If it doesn't, the grid master is missing a line (§4 beam-endpoint rule / rule 4) — fix the master, don't invent a ref.
 
 ### 0.9 `pattern` must be one of the 19 in §1
 
@@ -121,6 +121,7 @@ Never coin a new one. House 07 invented `detail`, `diagram` and `elevation` and 
 - [ ] grid master nests `x_lines`/`y_lines` under `grid{}` (§0.1)
 - [ ] every sheet that prints a level contributed to `z_levels[]`, and every sheet that prints a dimension row contributed to `dimension_chains[]` (§4) — a sheet with printed numbers and no contribution is an unread sheet, not a clean one
 - [ ] every printed number that landed in neither is in `unassigned_dimensions[]` (§4)
+- [ ] every tick of an x/y chain that touches a known line is a line in `x_lines[]`/`y_lines[]`, and `"edge"` is left only on chains that touch none (§4 rule 4, 2026-09-27)
 - [ ] a `notes` file uses only `sections[]` + `notes{}` — no `notes_sections`/`spec_notes`/`raw_text`/per-topic one-off key (§4a)
 - [ ] `notes{}`'s four flat fields match the nested values they alias, and `cover` is in **mm** not metres (§4a, §0.5)
 - [ ] no rebar left as a string (§0.6)
@@ -288,10 +289,11 @@ A page may contain multiple views/patterns — **inventory every view first with
   - `scaled_from_grid` added 2026-08-29 — measured by proportion against the grid, per the amendment above. Kept distinct from `grid_table` deliberately: `grid_table` means the number was read off the grid, `scaled_from_grid` means it was derived from it, and a consumer must be able to tell those apart.
 
 ### Dummy grid
-- A structural line not on a named/printed main grid → name it with a **prime** appended to the main grid **above it (y-axis) / to its left (x-axis)** — **not** the nearest one (corrected by Makham 2026-07-24, สิ่งที่ต้องแก้ item 51; the earlier wording here said "nearest" and was wrong). E.g. a line at 5.2 between named `2`(5.0) and `3`(8.5) is `2'`, even though it is far closer to `2` than to `3` — the rule is direction, not distance, so it stays stable when a grid is later re-based.
+- A line not on a named/printed main grid (structural, or any dimension tick per the 2026-09-27 rule below) → name it with a **prime** appended to the main grid **above it (y-axis) / to its left (x-axis)** — **not** the nearest one (corrected by Makham 2026-07-24, สิ่งที่ต้องแก้ item 51; the earlier wording here said "nearest" and was wrong). E.g. a line at 5.2 between named `2`(5.0) and `3`(8.5) is `2'`, even though it is far closer to `2` than to `3` — the rule is direction, not distance, so it stays stable when a grid is later re-based.
 - **Exception — a label the user supplies by hand is recorded exactly as given, never normalized.** House #04's master carries `A'`(1.6) and `E'''`(4.2) both sitting in the E-to-C range, matching neither the above/left rule nor the nearest rule. They are kept verbatim and flagged, on the standing "record as given, don't guess" rule — do not silently rename a user-supplied label to satisfy this section.
 - **Prime ordering when more than one dummy line falls in the same gap:** scan in standard reading direction — x-axis left→right, y-axis top→bottom. First line found = 1 prime (`A'`), next one = 2 primes (`A''`), and so on (`A'` must always sit left of/above `A''`)
 - **Origin (0,0)** must always be the leftmost/topmost main grid (`type:"named"`) — a dummy grid must never take over the origin position. If a dummy grid falls before the origin (further left/up than the first main grid), use a **negative** `pos_m` instead, e.g. `{"id":"1'","pos_m":-0.80,"type":"dummy"}`
+- **Before-origin dummies share the first main grid's prime sequence** (written down 2026-09-27 from what houses 04/05/17/22/33/39/40 already do): dummies before the first main grid and dummies in the gap after it are *one* sequence, primed in reading order. So `1'` = -0.60, `1''` = 1.10, `1'''` = 2.30 — never a second `1'` on the far side. House 17's x axis runs `1'` through `1'''''''` (7 dummies) this way.
 - `pos_m` is always read from an actually-printed dimension line — never guessed
 
 ### The grid master records EVERY printed dimension in the whole set (added 2026-08-21, Makham)
@@ -331,11 +333,11 @@ Before this section the grid master held only `x_lines[]`/`y_lines[]` — the **
     "axis": "x",
     "source_image": "..._หน้า15.png",
     "segments": [
-      {"from": "edge", "to": "1", "value_m": 1.30},
+      {"from": "1'", "to": "1", "value_m": 1.30},
       {"from": "1", "to": "2", "value_m": 4.00},
       {"from": "2", "to": "3", "value_m": 3.00},
-      {"from": "3", "to": "edge", "value_m": 0.60},
-      {"from": "edge", "to": "edge", "value_m": 0.70}
+      {"from": "3", "to": "3'", "value_m": 0.60},
+      {"from": "3'", "to": "3''", "value_m": 0.70}
     ]
   },
   {
@@ -350,8 +352,9 @@ Before this section the grid master held only `x_lines[]`/`y_lines[]` — the **
 ]
 ```
 
+- The x chain above uses house #01's figures (1.30 before grid `1`, then 0.60 + 0.70 past grid `3`). Under rule 4 below, its three non-grid ends are lines: `1'` at -1.30, `3'` at 7.60 and `3''` at 8.30. Before 2026-09-27 this example wrote them as `"edge"`, which is how those points got lost.
 - `axis` is `x`, `y`, or `z`.
-- `from`/`to` reference a grid `id` (or a `z_levels[]` `id` on the z axis) when that end sits on one, or the literal `"edge"` when it's a building/slab edge with no grid — **never invent a grid id just to have something to put here.**
+- `from`/`to` reference a grid `id` (or a `z_levels[]` `id` on the z axis). On the x/y axes every end of a chain that hangs off a known line is itself a line (the 2026-09-27 rule below), so it has an `id` — use it. The literal `"edge"` is left for one case only: a chain that touches **no** known line anywhere, so none of its ends can be given a position. **Never invent an id for a point you could not position.**
 - Record **every** row actually printed, including the cumulative/total row (the `3.75` above, the `7.00` on the x chain). Redundant arithmetically, but printed — and a mismatch between the detail row and the total row is exactly the extraction error this array exists to catch.
 - One entry per printed row per sheet; the same chain reprinted on three sheets gets three entries with three different `source_image` values. Do not deduplicate across sheets.
 
@@ -370,9 +373,24 @@ Every printed number that did **not** land in a chain or a level goes here, with
 - **This array is the reason the rule holds.** If a number doesn't fit anywhere else, it goes here — it never gets skipped. A page with numbers and an empty `unassigned_dimensions[]` means every number found a home, not that the page wasn't read.
 - These are *not* grid data and nothing downstream uses them for span calculation; they exist so a later reader can see the full picture without re-reading the sheet.
 
+#### 4. Every dimension tick is a line — even one nothing uses (added 2026-09-27, Makham)
+
+**The rule: every point a printed x/y dimension marks gets a line in `x_lines[]`/`y_lines[]`.** It doesn't matter whether any element sits on it, or which kind of sheet printed it — plan, `side_profile`, section, roof. Makham's words: *"gridmaster จดจำระยะทุก ๆ ระยะ ในทุกหน้า แม้ระยะเหล่านั้นจะไม่ได้ใช้ก็ตาม"*.
+
+- For each printed segment on the x or y axis, look at both of its ends. If an end sits on a line the master already has, reuse that line. Otherwise that end becomes a **new dummy line**.
+- Its `pos_m` = the known line it hangs off ± the printed segments between them, added up. That is arithmetic on printed numbers, so it still counts as "read off a printed dimension line" (above). Before the origin, `pos_m` goes negative, same as any dummy.
+- **Count example:** a `side_profile` prints the A–B gap split into 10 segments. The two outer ends are `A` and `B`, which already exist, so the 9 ticks inside become 9 dummies. They're primed off whichever of `A`/`B` is the upper line, e.g. `A'` … `A'''''''''`. If the 10 numbers are instead 10 separate distances measured from `A`, they mark 10 different points, so that's 10 dummies. The rule is one dummy per distinct point — count the points, not the numbers.
+- **Which axis:** a chain belongs to the axis whose grid markers it runs between. Numbers (`1`,`2`,`3`) → x. Letters (`A`,`B` / `ก`,`ข`) → y. A front elevation usually carries x and a side elevation usually carries y — check the markers, not the sheet title.
+- **One point = one line.** A tick at the same `pos_m` as an existing line (compare to the millimetre — some sets print 3 decimals, e.g. 1.725) *is* that line, even when another sheet printed it too. Two ticks with different `pos_m` are two lines. If two are within 0.05 m and look like the same edge printed twice, keep both and say so in `warnings[]` — don't pick one. `dimension_chains[]` still keeps every sheet's row separately (above) — that's where the per-sheet evidence lives, not here.
+- **Not an axis tick:** a dimension inside one element's own detail. That means a section's width/depth, a pile cap's pile spacing (§6b) or a rebar spacing. It stays on the element as it always has. Rule 4 is about dimension rows that run along the building's grid axes.
+- Naming, prime order and the before-origin rule are unchanged (§ Dummy grid). What this rule changes is how many dummies there are, not how they're written. With a lot of them, count the primes carefully — `check_format.py` flags a sequence whose primes are out of order along the axis.
+- A chain that touches no known line at all (a floating detail dimension) can't be positioned, so it makes no line. Its row stays in `dimension_chains[]` with `"edge"` ends.
+- **z axis:** same idea, already covered by `z_levels[]` — every tick on a z chain is a level. Use `type: "dummy"` when the drawing prints no label for it.
+- **Why keep lines nothing uses:** a beam or footing read later — by a person or by the model on another sheet — can land on any of these points, and until now those were exactly the points the master had thrown away (house #04's 20 missing beams all sat on lines the master didn't have yet). A consumer that wants only structural lines can still derive them: they are the lines some element's `grid_ref` actually points at.
+
 #### Relationship to the resolved axes
 
-`x_lines`/`y_lines`/`z_levels` stay the **resolved, deduplicated** registry — that's what the pipeline consumes. The three arrays above are the **raw transcript** proving where each resolved value came from, and holding everything that has no resolved home. Both live in the same master file; neither replaces the other.
+`x_lines`/`y_lines`/`z_levels` stay the **resolved, deduplicated** registry — that's what the pipeline consumes — and since 2026-09-27 they hold **every positioned point**, not only structural lines (rule 4 above). The three arrays above are the **raw transcript** proving where each resolved value came from, and holding everything that has no resolved home. Both live in the same master file; neither replaces the other.
 
 All three arrays are optional in the sense that a sheet printing no dimensions contributes nothing — but a sheet that *does* print dimensions and contributes an empty array is an extraction failure, not a clean file.
 
@@ -400,7 +418,9 @@ Work the plan sheet this way:
 
 Real cases: house #04's S-04 (หน้า33) was missing **8** beams and had 2 position-less placeholder entries; its S-05 (หน้า34) was missing **12** more, including a whole bay window recorded only as `"1.75m wide, not clearly grid-aligned"`. Every one of them sat on a line the grid master didn't have yet (`1'`, `1''`, `1'''`, `1''''`, `3'`, `E''`). Once those dummy lines existed, all 20 beams had exact grid refs.
 
-**Conversely — do NOT invent a dummy for a slab-only edge.** A dashed slab/room boundary, a roof-overhang line, or an eave edge with **no beam label and no columns at its corners** is not a structural line and gets no dummy grid (house #3's `E'` at the S0 bay-window box is exactly this case — slab edge only, no beam, so nothing was added). The trigger is a **beam endpoint**, not any line on the drawing.
+**A slab edge, overhang or eave line — superseded 2026-09-27.** This paragraph used to say such a line never gets a dummy (house #3's `E'` at the S0 bay-window box was left out that way). Under rule 4 above, **if a dimension is printed to it, it gets a dummy** like any other tick — whether it's structural no longer matters. Several houses (28, 39, 40: roof eaves, gable overhangs) already had these before the rule was written. What's still forbidden: making up a line that has **neither** a printed dimension **nor** a beam endpoint on it. There is nothing to take its `pos_m` from, so it can't be traced.
+
+The beam-endpoint rule above is still how you find the dummies a dimension chain never prints (measured by proportion, §4 Span amendment). Rule 4 is how you find the ones it does print. Use both.
 
 ### Master file
 Create/update `<house>_หน้า00_gridline.json` **before** extracting any other page — it holds every main grid + dummy grid + every level (`z_levels[]`) + every printed dimension in the set (`dimension_chains[]`, `unassigned_dimensions[]`, §4) for the whole house in one place. Other plan/section pages reference it via the `grid_source` field instead of re-writing the grid. Keep this as a separate companion file — never re-embed the full grid inline inside every view.

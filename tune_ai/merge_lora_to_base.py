@@ -18,6 +18,11 @@ LoRA ของชั้น MoE expert เก็บ lora_B เป็นเมท�
 default ไป rank_major + เพิ่มคีย์นั้น) ⇒ ไฟล์นี้ตั้ง env `UNSLOTH_MOE_LORA_B_LAYOUT=
 grouped_by_expert` **ก่อน import unsloth** ห้ามลบบรรทัดนั้น ห้ามย้ายลงไปใต้ import
 
+🔴 อัปเดต 27 ก.ย. 2026: ไฟล์ `dacarokann/destrier` rev e229403 **ปนผิดตั้งแต่ตอนรวม fold** — อ่านแบบไหน
+ก็ผิด (t05_Destrier/proof/03_destrier_expert_LoRA_ปนผิด.md) ⇒ merge ตัวนั้นได้โมเดลขยะแน่นอน
+ต้องใช้ตัวที่ซ่อมด้วย fix_destrier_layout.py (config มีคีย์ lora_B_layout=grouped_by_expert)
+main() ปฏิเสธการ merge ตัวเดิมให้เองแล้ว (--inspect-only ยังใช้ได้)
+
 นี่คือคำอธิบายจริงของบั๊ก "merge แล้วได้ขยะ" ที่ฆ่า GGUF ของ t01/t02 เมื่อ ก.ค. 2026
 (ไดอารี่ 2026-07-28 ข้อ 7: ΔW ที่ peft คำนวณ "รูปร่างถูก" scaling "ถูก" แต่ค่าที่ใส่เข้าไป
 ขนาดเล็กผิดปกติ) — ไม่ใช่เพราะ peft เวอร์ชันเก่าอย่างที่เคยเข้าใจ แต่เพราะ **merge path
@@ -190,6 +195,13 @@ def main():
     adapter_dir, cfg, r_file = inspect(a.adapter)
     if a.inspect_only:
         return 0
+    if a.adapter.rstrip("/") == "dacarokann/destrier" and not cfg.get("lora_B_layout"):
+        sys.exit("⛔ dacarokann/destrier ตัวนี้ (rev e229403) LoRA ของ expert ปนผิด — merge แล้วได้โมเดลขยะ\n"
+                 "   ซ่อมก่อน: python fix_destrier_layout.py --src dacarokann/destrier --out ./destrier_fixed\n"
+                 "   แล้วรันใหม่ด้วย --adapter ./destrier_fixed (ดู t05_Destrier/proof/03_…)")
+    if cfg.get("lora_B_layout") and cfg["lora_B_layout"] != os.environ["UNSLOTH_MOE_LORA_B_LAYOUT"]:
+        sys.exit(f"⛔ adapter ประกาศ lora_B_layout={cfg['lora_B_layout']} แต่ env ตั้งเป็น "
+                 f"{os.environ['UNSLOTH_MOE_LORA_B_LAYOUT']} — merge แล้วจะปน ต้องตั้งให้ตรงกันก่อน")
     check_versions()
     target = merge(adapter_dir, a.out, a.push, a.max_mem)
     if not a.push:

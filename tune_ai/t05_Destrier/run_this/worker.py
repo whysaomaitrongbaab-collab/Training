@@ -23,11 +23,11 @@ Pipeline per house_extract job (pass numbering = tune_ai/t04_Purson/pass_io_tabl
                                          exactly as build_dataset_t03.py did at train time
   pass2.5 CV self-harvest sidecar       -> local CPU subprocess (tools/cv_scan.py --pass25);
                                           จุดที่คลังกลาง template ข้ามซีรีส์จับไม่ติด
-  pass3   วัดระยะจริงจากพิกเซล            -> pass3_measure.py (pure, stdlib): หมุด = element ที่มี
-                                          ทั้ง grid_ref (โมเดลอ่านได้) และพิกัด CV → fit px ต่อเมตร
-                                          → เติม cv_measure (ตำแหน่งเมตร) ทุก element, snap grid
-                                          ref ให้ตัวที่โมเดลไม่ได้ตอบ, รายงานจุดที่ CV เห็นแต่โมเดล
-                                          ไม่พูดถึง · ต้องรันหลัง pass2.5 เพราะกินจุด self-harvest
+  pass3   วัดระยะจริงจากพิกเซล            -> pass3_measure.py (pure, stdlib): หมุด = grid_ref ที่
+                                          โมเดลอ่านได้ + พิกัด CV → fit px ต่อเมตร (ลอง 4 ทิศแกน
+                                          กำกวม = ปฏิเสธ) · **รายงานอย่างเดียว** (ตัดสิน 2026-09-26):
+                                          ไม่แก้ doc ของ pass2 เลย ผลอยู่ใน pass3_measure.json v2 +
+                                          grid_master.json "validation" + warnings ระดับงาน
   result: raw-JSON file set, same shape qt_importRawExtractionFiles() already accepts,
           บวก sidecar (cv15_*/cv25_*/pass3_measure.json) ที่ฝั่งเว็บกรองออกจากหน้าติ๊กเลือก
           แล้วสรุปเป็นบรรทัดเดียวแทน (drawing-purson.js: isSidecar/renderPass3Summary)
@@ -49,6 +49,7 @@ import base64
 import json
 import os
 import re
+import struct
 import subprocess
 import sys
 import tempfile
@@ -60,7 +61,10 @@ import requests
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from pass3_measure import measure_page, merge_into_pass2  # noqa: E402  (pure, stdlib)
+from pass3_measure import (cv_class_fits, grid_validation, marks_look_enumerated,  # noqa: E402
+                           measure_page, pass3_file, summary_warnings)  # (pure, stdlib)
+from vector_ruler import measure_page_vectors, merge_validation  # noqa: E402  (pure, stdlib)
+from vector_ruler import summary_line as vector_summary_line     # noqa: E402
 import notify  # noqa: E402  (เสียงบอกเหตุ — ไม่มี dependency ภายนอก)
 
 
@@ -343,6 +347,50 @@ def download_image(path):
     return _retry(once, f"โหลดภาพ {path}")
 
 
+def png_size(png_bytes):
+    """(w, h) จาก IHDR — signature 8 ไบต์ แล้ว len+type แล้ว w,h big-endian"""
+    if not isinstance(png_bytes, (bytes, bytearray)) or png_bytes[:8] != b"\x89PNG\r\n\x1a\n" \
+            or png_bytes[12:16] != b"IHDR":
+        return None
+    return struct.unpack(">II", png_bytes[16:24])
+
+
+def load_vectors(payload, images, warnings):
+    """vector sidecar v1 ที่เว็บอัปคู่กับ PNG (js/drawing/pdf-vector-sidecar.js) → {page: page_sidecar}
+    ใช้เฉพาะหน้าที่กรอบพิกัดตรงกับ PNG ที่โหลดมาจริง (ขนาดไม่ตรง = คนละเฟรม ห้ามใช้)
+    ไม่มี/โหลดไม่ได้/เวอร์ชันแปลก = {} + คำเตือน งานเดินต่อเหมือนเดิมทุกอย่าง (ไม่เดา ไม่ล้มงาน)"""
+    path = (payload or {}).get("vectors")
+    if not path:
+        return {}                                          # เว็บรุ่นเก่า / PDF ภาพสแกน
+    def once():
+        r = requests.get(f"{STORAGE}/object/{requests.utils.quote('purson-jobs/' + path)}",
+                         headers=SB_HEADERS, timeout=60)
+        r.raise_for_status()
+        return r.content
+    try:
+        doc = json.loads(_retry(once, f"โหลด vector sidecar {path}", tries=2))
+    except Exception as e:                                 # 404/เน็ต/JSON เสีย — ห้ามล้มงาน
+        warnings.append(f"vector sidecar โหลดไม่ได้ ({type(e).__name__}) — ข้าม ใช้ภาพอย่างเดียว")
+        return {}
+    if not isinstance(doc, dict) or doc.get("schema") != "constistant.vector_sidecar" or doc.get("v") != 1:
+        warnings.append("vector sidecar เวอร์ชันไม่รู้จัก — ข้าม")
+        return {}
+    out = {}
+    for key, pg in (doc.get("pages") or {}).items():
+        try:
+            page, fr = int(key), pg["frame"]
+            want = (int(fr["png_w"]), int(fr["png_h"]))
+        except Exception:
+            warnings.append(f"vector sidecar หน้า {key}: frame เสีย — ข้ามหน้านี้")
+            continue
+        got = png_size(images.get(page, b""))
+        if got != want:
+            warnings.append(f"vector sidecar หน้า {page}: ขนาดภาพ {got} ≠ {want} — กรอบพิกัดไม่ตรง ไม่ใช้")
+            continue
+        out[page] = pg
+    return out
+
+
 def now_iso():
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
@@ -563,16 +611,42 @@ def run_pass1_organize(house, classified, images):
     return workroot if workroot.is_dir() else None
 
 
-def run_cv_scan(workroot, pass25=False):
+# เพดานเวลา cv_scan ต่อรอบ — โตตามจำนวนภาพ (เดิม 300 วิคงที่ทั้งงาน: 83b8e52c มี 10 ครอป ใช้จริง
+# 430-590 วิ ชนเพดานทั้ง pass1.5 และ 2.5) · วัดจริง ~29-43 วิ/ครอป (เครื่องว่าง/มีโหลด) → เผื่อ 90 วิ
+# · พื้น 300 = ค่าเดิม (งานเล็กไม่เปลี่ยน) · เพดาน 30 นาทีกันค้างไม่รู้จบ (GPU เช่ารออยู่ระหว่าง pass1.5)
+CV_SCAN_MIN_S, CV_SCAN_PER_IMAGE_S, CV_SCAN_MAX_S = 300, 90, 1800
+CV_SCAN_SUBTASKS = ("plan_footing", "plan_column", "plan_beam", "plan_slab")   # = cv_scan.py PLAN_SUBTASKS
+
+
+def cv_scan_timeout_s(workroot):
+    """เพดานเวลาของ cv_scan --manifest = จำนวนภาพที่มันจะสแกน × ต่อภาพ (มีพื้น/เพดาน)"""
+    n = sum(1 for sub in CV_SCAN_SUBTASKS
+            for p in (Path(workroot) / "pass2" / sub / "images").glob("*.png") if "_marked" not in p.stem)
+    return max(CV_SCAN_MIN_S, min(CV_SCAN_MAX_S, n * CV_SCAN_PER_IMAGE_S))
+
+
+def run_cv_scan(workroot, pass25=False, notes=None):
     """pass1.5 (pass25=False) หรือ pass2.5 (pass25=True) — subprocess cv_scan.py --manifest
-    คืน True/False สำเร็จ; ไม่ throw — ผู้เรียกอ่านผลจากไฟล์เอง ไม่มีไฟล์ = ไม่มี hint แค่นั้น"""
+    คืน True/False สำเร็จ; ไม่ throw (รวมถึงตอนเกินเวลา — เดิม TimeoutExpired หลุดออกไปทำให้ผู้เรียก
+    ทิ้งครอปของ pass1 ทั้งงาน) · notes (list) รับเหตุผลภาษาไทยเมื่อไม่สำเร็จ
+    ผู้เรียกอ่านผลจากไฟล์เอง ไม่มีไฟล์ = ไม่มี hint แค่นั้น (ภาพที่สแกนเสร็จก่อนหมดเวลายังมีไฟล์ครบ)"""
     if not CV_SCAN_PY.exists():
+        if notes is not None:
+            notes.append("ไม่พบ cv_scan.py")
         return False
     args = [sys.executable, str(CV_SCAN_PY), "--manifest", str(workroot)]
     if pass25:
         args.append("--pass25")
-    r = subprocess.run(args, capture_output=True, text=True, encoding="utf-8",
-                       errors="replace", timeout=300)
+    timeout = cv_scan_timeout_s(workroot)
+    try:
+        r = subprocess.run(args, capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", timeout=timeout)
+    except subprocess.TimeoutExpired:
+        if notes is not None:
+            notes.append(f"เกินเวลา {timeout} วินาที")
+        return False
+    if r.returncode != 0 and notes is not None:
+        notes.append(f"ล้ม (exit {r.returncode})")
     return r.returncode == 0
 
 
@@ -680,32 +754,52 @@ def cv_scan_for_task(workroot, sub, page):
     return out or None
 
 
-def merge_cv_marks(doc, workroot, sub, page):
+def merge_cv_marks(doc, workroot, sub, page, notes=None):
     """ปิดวง cv_mark: element ที่โมเดล pass2 ตอบพร้อม cv_mark → เติม cv_position (พิกัด
-    pixel จริงจากบัญชี #n ของ pass1.5) เข้าไป — จับคู่โดยตรงด้วยเลข #n ไม่ใช่ปัญหา spatial
-    matching แบบตอนสร้างชุดเทรน (นั่นคือจับคู่ GT กับ CV ที่ไม่มีเลขร่วมกัน อันนี้ทั้งสอง
-    ฝั่งอ้างเลข #n เดียวกันอยู่แล้วจาก hint — เทียบตรงๆ พอ) cv_mark ที่ไม่มีเลขนี้จริง
-    (โมเดลหลอน) ติดธงใน warnings[] ไม่ทิ้งเงียบ ไม่ทำให้ pass2 ล้ม"""
+    pixel จริงจากบัญชี #n ของ pass1.5) เข้าไป — จับคู่โดยตรงด้วยเลข #n
+
+    ⚠️ cv_mark คือ "คำอ้าง" ของโมเดล ไม่ใช่ความจริง (ตรวจ 2026-09-26): ภาพที่ส่งไปไม่มีเลขกำกับ
+    โมเดลจึงตอบ 1..N ตามลำดับรายการ (เจอ 5/5 หน้าจริง) → ถ้าทั้งหน้าดูเป็นเลขลำดับ ไม่ผูกเลยสักตัว
+    และ mark ที่ชี้กล่อง CV คนละชนิดกับ element (ฐานราก→กล่องคาน, detail_view→อะไรก็ตาม) ไม่ผูก
+    cv_mark ที่ไม่มีเลขนี้จริง (โมเดลหลอน) ติดธงไม่ทิ้งเงียบ ไม่ทำให้ pass2 ล้ม
+
+    ข้อความไปที่ notes (list) ถ้าส่งมา — worker ส่ง warnings ระดับงาน เพราะ doc.warnings ฝั่งเว็บ
+    แสดงเป็น "[โมเดล] …" (นี่คือระบบพูด ไม่ใช่โมเดล) · ไม่ส่ง = เขียนลง doc.warnings แบบเดิม"""
     els = doc.get("elements")
     if not isinstance(els, list):
         return doc
     marks = cv_mark_lookup(workroot, sub, page)
     if marks is None:
         return doc
-    stray = []
-    for el in els:
-        n = el.get("cv_mark")
-        if n is None:
-            continue
-        m = marks.get(n)
-        if m is None:
-            stray.append(n)
-            continue
-        el["cv_position"] = {"cx": m["cx"], "cy": m["cy"], "w": m["w"], "h": m["h"],
-                             "class": m["class"]}
-    if stray:
-        doc.setdefault("warnings", []).append(
-            f"cv_mark ที่ไม่มีจริงในบัญชี pass1.5: {stray} — โมเดลอาจหลอนเลข ไม่ผูกพิกัดให้")
+    msgs = []
+    if marks_look_enumerated(els):
+        k = sum(1 for el in els if isinstance(el, dict) and el.get("cv_mark") is not None)
+        msgs.append(f"ไม่ใช้ cv_mark ของหน้านี้ ({k} ตัว): เลขเรียงตามลำดับรายการที่ตอบ ไม่ได้ชี้กล่อง "
+                    f"CV จริง — ไม่ผูกพิกัดให้")
+    else:
+        stray, wrong = [], []
+        for el in els:
+            if not isinstance(el, dict):
+                continue
+            n = el.get("cv_mark")
+            if n is None:
+                continue
+            m = marks.get(n)
+            if m is None:
+                stray.append(n)
+                continue
+            if not cv_class_fits(el.get("element_type"), m.get("class")):
+                wrong.append(f"{el.get('element_id') or el.get('id') or '?'} "
+                             f"({el.get('element_type')}) → #{n} {m.get('class')}")
+                continue
+            el["cv_position"] = {"cx": m["cx"], "cy": m["cy"], "w": m["w"], "h": m["h"],
+                                 "class": m["class"]}
+        if stray:
+            msgs.append(f"cv_mark ที่ไม่มีจริงในบัญชี pass1.5: {stray} — โมเดลอาจหลอนเลข ไม่ผูกพิกัดให้")
+        if wrong:
+            msgs.append(f"cv_mark ชี้กล่อง CV คนละชนิดกับ element: {', '.join(wrong)} — ไม่ผูกพิกัดให้")
+    if msgs:
+        (notes if notes is not None else doc.setdefault("warnings", [])).extend(msgs)
     return doc
 
 
@@ -771,6 +865,11 @@ def run_house_extract(job):
     for i, p in enumerate(pages, 1):
         images[p["page"]] = download_image(p["path"])
         set_progress(job_id, "download", i, len(pages), **meta)
+    vectors = {}   # โหลดใหม่ทุกรอบเหมือนภาพ (เล็ก + ไม้บรรทัดเป็น pure ใช้ไม่กี่ ms ไม่ต้อง checkpoint)
+    try:
+        vectors = load_vectors(job["payload"], images, warnings)
+    except Exception as e:   # loader ห่อเองแล้ว — กันเผื่อ ห้ามล้มงานเพราะ sidecar
+        warnings.append(f"vector sidecar ล้ม ({type(e).__name__}) — ข้าม")
 
     # pass0 — จำแนกทีละหน้า (resume: ถ้า checkpoint มี pass0.json ครบทุกหน้าแล้ว ใช้ของเดิม
     # ไม่ยิงซ้ำ — เดิมเช็คแค่ "มีไฟล์ pass0.json ไหม" ไม่ได้เช็คว่าครบทุกหน้าไหม พอหน้าไหน
@@ -810,27 +909,35 @@ def run_house_extract(job):
     timings["pass0_s"] = round(time.time() - t0, 1)
     save_checkpoint(job_id, files, warnings, timings)
 
-    # pass1 + pass1.5 — local CPU, ล้มได้โดยไม่ล้มทั้งงาน (fallback = เต็มหน้า ไม่มี hint)
+    # pass1 + pass1.5 — local CPU, ล้มได้โดยไม่ล้มทั้งงาน
+    # pass1 ล้ม = ไม่มีครอป → เต็มหน้า · pass1.5 ล้ม/เกินเวลา = **ยังใช้ครอปของ pass1 ต่อ** แค่ไม่มี hint
+    # (เดิม try เดียวครอบทั้งคู่ TimeoutExpired ของ cv_scan เลยทำ workroot=None ทิ้งครอปที่ตัดสำเร็จ
+    # ไปทั้งงาน ทุกหน้าเลยส่งเต็มหน้า — เจอจริง 83b8e52c 10 ครอป cv_scan ใช้ ~570 วิ เกินเพดาน 300)
     workroot = None
     try:
         workroot = run_pass1_organize(job_id, classified, images)
-        if workroot:
-            if run_cv_scan(workroot, pass25=False):
+        if not workroot:
+            warnings.append("pass1 (organize.py) ล้ม — ส่งเต็มหน้าทุกงานเหมือนเดิม")
+    except Exception as e:
+        warnings.append(f"pass1 ล้ม ({type(e).__name__}: {e}) — ส่งเต็มหน้าแทน")
+        workroot = None
+    if workroot:
+        try:
+            why = []
+            if run_cv_scan(workroot, pass25=False, notes=why):
                 # เก็บบัญชี #n+พิกัดไว้ — โมเดล pass2 ตอบ cv_mark อ้างเลขพวกนี้ ไม่เก็บ
-                # ไว้ = เลขที่โมเดลตอบไม่มีอะไรให้จับคู่กลับเลย (ยังไม่มีตัวจับคู่จริง = pass3)
+                # ไว้ = เลขที่โมเดลตอบไม่มีอะไรให้จับคู่กลับเลย
                 cv15_files, n_cv15 = collect_pass15_files(workroot)
                 files.extend(cv15_files)
                 if cv15_files:
                     warnings.append(
                         f"pass1.5: CV เห็น {n_cv15} จุด ({len(cv15_files)} ไฟล์) — "
-                        f"เก็บไว้ให้ pass3 จับคู่กับ cv_mark ที่โมเดลตอบ (ยังไม่มีตัวจับคู่จริง)")
+                        f"เก็บไว้ให้ pass3 ใช้วัดระยะ")
             else:
-                warnings.append("pass1.5 (cv_scan.py) ล้ม — plan_* ไม่มี CV hint แนบ")
-        else:
-            warnings.append("pass1 (organize.py) ล้ม — ส่งเต็มหน้าทุกงานเหมือนเดิม")
-    except Exception as e:
-        warnings.append(f"pass1/1.5 ล้ม ({type(e).__name__}: {e}) — ส่งเต็มหน้าแทน")
-        workroot = None
+                warnings.append(f"pass1.5 (cv_scan.py) {'/'.join(why) or 'ล้ม'} — ใช้ครอปจาก pass1 "
+                                f"ต่อตามปกติ ครอปที่ CV ยังสแกนไม่ถึงจะไม่มี CV hint แนบ")
+        except Exception as e:
+            warnings.append(f"pass1.5 ล้ม ({type(e).__name__}: {e}) — ใช้ครอปจาก pass1 ต่อ ไม่มี CV hint")
     save_checkpoint(job_id, files, warnings, timings)
 
     # วางแผนงาน pass2: (page, subtask) ไม่ซ้ำ + หน้าที่ติดธง gridline
@@ -860,13 +967,14 @@ def run_house_extract(job):
     meta["tasks"] = len(tasks)
     gm_text = None
     grid_master = None   # dict จริง (ไม่ใช่ข้อความ) — pass3 ใช้เป็นไม้บรรทัดวัดเมตร
+    grid_doc = None      # ตัวไฟล์ grid_master.json (ใน files[]) — ท้ายงานเขียน "validation" ลงไป
     # นับ gridline เป็นงานที่ 1 ถ้ามีจริง — เดิม total บวก 1 แต่ตัวนับวิ่งแค่ 1..len(tasks)
     # ทำให้แถบไม่มีวันถึง 100% เมื่อมีหน้ากริด (ไม่เคยเห็นเพราะงานทดสอบไม่มีหน้ากริด)
     grid_step = 1 if grid_pages else 0
     pass2_total = len(tasks) + grid_step
     if "grid_master.json" in prev_by_name:
         # resume — gridline ตอบสำเร็จไปแล้วรอบก่อน ไม่ยิงซ้ำ
-        doc = prev_by_name["grid_master.json"]["json"]
+        doc = grid_doc = prev_by_name["grid_master.json"]["json"]
         files.append(prev_by_name["grid_master.json"])
         grid = doc.get("grid")
         if isinstance(grid, dict):
@@ -889,6 +997,7 @@ def run_house_extract(job):
             else:
                 doc.setdefault("pattern", SUBTASK_PATTERN["gridline"])
                 files.append({"name": "grid_master.json", "json": doc})
+                grid_doc = doc
                 grid = doc.get("grid")
                 if isinstance(grid, dict):
                     grid_master = grid
@@ -901,8 +1010,8 @@ def run_house_extract(job):
 
     # pass2 ราย (page, subtask)
     n_elements = 0
-    plan_docs = []   # [(sub, page, doc)] — pass3 กลับมาเติมผลวัดทีหลัง (dict ตัวเดียวกับใน
-                     # files[] เพราะเป็น reference — แก้ตรงนี้ = ผลที่ส่งกลับเว็บเปลี่ยนด้วย)
+    plan_docs = []   # [(sub, page, doc)] — pass3 อ่านไปวัด (อ่านอย่างเดียว ห้ามแก้: dict ตัวเดียวกับ
+                     # ใน files[] แก้ตรงนี้ = ผลที่ส่งกลับเว็บเปลี่ยนด้วย — D3 ห้าม pass3 แตะ)
     for i, (page, sub) in enumerate(tasks, 1):
         name = f"page_{page:02d}_{sub}"
         if f"{name}.json" in prev_by_name:
@@ -936,7 +1045,16 @@ def run_house_extract(job):
             doc = sanitize_elements(doc)
             doc.setdefault("pattern", SUBTASK_PATTERN.get(sub, sub))
             if workroot and sub in PLAN_SUBTASKS:
-                doc = merge_cv_marks(doc, workroot, sub, page)
+                cvm_notes = []
+                try:
+                    doc = merge_cv_marks(doc, workroot, sub, page, notes=cvm_notes)
+                except Exception as e:
+                    # merge_cv_marks เป็นแค่การ "ผูกพิกัด CV" เพิ่ม (D3-adjacent) — แถวที่โมเดล
+                    # ตอบมาแล้วต้องรอดแม้ผูกไม่สำเร็จ ไม่งั้นข้อมูลรูปที่แบบพัง (เจอจริง: element_type
+                    # เป็น list/dict) จะฆ่าทั้ง run_house_extract กลางคัน แทนที่จะข้ามแค่การผูก cv_mark
+                    warnings.append(f"{name}: merge_cv_marks ล้ม ({type(e).__name__}: {e}) — "
+                                     f"ไม่ผูกพิกัด CV ให้หน้านี้ (ผลอ่านแบบยังใช้ได้)")
+                warnings.extend(f"{name}: {m}" for m in cvm_notes)
                 plan_docs.append((sub, page, doc))
             els = doc.get("elements")
             n_elements += len(els) if isinstance(els, list) else 0
@@ -952,55 +1070,89 @@ def run_house_extract(job):
     # pass2.5 — self-harvest sidecar, local CPU (จุดที่คลังกลางจับข้ามซีรีส์ไม่ติด)
     if workroot:
         try:
-            if run_cv_scan(workroot, pass25=True):
+            why = []
+            if run_cv_scan(workroot, pass25=True, notes=why):
                 cv25_files, added = collect_pass25_files(workroot)
                 files.extend(cv25_files)
                 if cv25_files:
                     warnings.append(
                         f"pass2.5: self-harvest {len(cv25_files)} ไฟล์ (+{added} จุด)")
+            else:
+                warnings.append(f"pass2.5 (cv_scan.py) {'/'.join(why) or 'ล้ม'} — ข้าม ไม่กระทบผลหลัก")
         except Exception as e:
             warnings.append(f"pass2.5 ล้ม ({type(e).__name__}: {e}) — ข้าม ไม่กระทบผลหลัก")
     save_checkpoint(job_id, files, warnings, timings)
 
-    # pass3 — วัดระยะจริง: หมุด (grid_ref ที่โมเดลอ่านได้ + พิกัด CV) → px ต่อเมตร →
-    # เติมตำแหน่งเมตรให้ทุก element, snap grid ref ให้ตัวที่โมเดลไม่ได้ตอบ, และรายงาน
-    # จุดที่ CV เห็นแต่โมเดลไม่พูดถึง · ต้องรันหลัง pass2.5 เพราะกินจุด self-harvest ด้วย
+    # pass3 — วัดระยะจริง: หมุด (grid_ref ที่โมเดลอ่านได้ + พิกัด CV) → px ต่อเมตร · ต้องรันหลัง
+    # pass2.5 เพราะกินจุด self-harvest ด้วย · **รายงานอย่างเดียว** (D3, 2026-09-26): ไม่แก้ doc ของ
+    # pass2 เลย ผลอยู่ใน pass3_measure.json v2 + grid_master.json "validation" + warnings ระดับงาน
+    reports = {}
     if workroot and plan_docs:
         t3 = time.time()
         if not isinstance(grid_master, dict):
             warnings.append("pass3 ข้าม: ไม่มี grid master (ไม่มีหน้ากริด หรือ gridline JSON เสีย)")
         else:
-            reports, ok_pages = {}, 0
-            fill_totals = {"grid_refs": 0, "span": 0, "elements": 0}
             set_progress(job_id, "pass3", 0, len(plan_docs), "วัดระยะเทียบผังกริด",
                          elements=n_elements, warnings=len(warnings), **meta)
             for sub, page, doc in plan_docs:
                 try:
-                    rep = measure_page(doc, grid_master, cv_scan_for_task(workroot, sub, page))
+                    rep = measure_page(doc, grid_master, cv_scan_for_task(workroot, sub, page), sub)
                 except Exception as e:
                     warnings.append(f"pass3 หน้า {page} ({sub}) ล้ม ({type(e).__name__}: {e})")
                     continue
-                # เติมของที่ขาดกลับเข้า doc ของ pass2 — กฎมะขาม: เติมได้ ห้ามเอาออก
-                # (doc เป็น reference ตัวเดียวกับใน files[] ผลที่ส่งกลับเว็บจึงได้ของเติมด้วย)
-                filled = merge_into_pass2(doc, rep, grid_master, sub)
-                rep["filled"] = filled
-                for k in ("grid_refs", "span", "elements"):
-                    fill_totals[k] += filled[k]
                 reports[f"page_{page:02d}_{sub}"] = rep
-                ok_pages += 1 if rep.get("ok") else 0
                 set_progress(job_id, "pass3", len(reports), len(plan_docs),
                              note=f"หน้า {page} · {SUBTASK_TH.get(sub, sub)}",
                              elements=n_elements, warnings=len(warnings), **meta)
-            files.append({"name": "pass3_measure.json",
-                          "json": {"pages": reports, "grid_master_used": True}})
-            n_cv_only = sum(len(r.get("cv_only") or []) for r in reports.values())
-            n_off = sum(len(r.get("grid_check") or []) for r in reports.values())
-            warnings.append(
-                f"pass3: วัดได้ {ok_pages}/{len(plan_docs)} หน้า · เติม grid_ref "
-                f"{fill_totals['grid_refs']} · เติมความยาวคาน {fill_totals['span']} · "
-                f"เพิ่ม element จาก CV {fill_totals['elements']} · ref ตำแหน่งไม่ตรง {n_off} ตัว "
-                f"(จุดที่ CV เห็นทั้งหมด {n_cv_only})")
         timings["pass3_s"] = round(time.time() - t3, 1)
+    elif not workroot and any(sub in PLAN_SUBTASKS for _, sub in tasks):
+        warnings.append("pass3 ข้าม: pass1 (organize.py) ไม่สำเร็จ — ไม่มีครอป/ผล CV ให้วัด")
+
+    # pass3 (เวกเตอร์) — ไม้บรรทัดจากเส้นกริดใน PDF · ไม่ต้องมีครอป/CV/หมุดจากโมเดล จึงรันได้แม้
+    # pass1/1.5 ล้ม และได้หน้าแปลนคานด้วย (pass3 แบบหมุดทำไม่ได้โดยโครงสร้าง) · **รายงานอย่างเดียว**:
+    # ไม่แก้ doc ของ pass2 ไม่แนบอะไรเข้า prompt
+    vector_reports = {}
+    if vectors and isinstance(grid_master, dict):
+        t3v = time.time()
+        plan_pages = sorted({doc["_page"] for doc in classified
+                             if any(isinstance(v, dict) and str(v.get("subtask") or "").startswith("plan_")
+                                    for v in doc.get("views") or [])})
+        for page in plan_pages:
+            if page in vectors:
+                try:
+                    vector_reports[f"page_{page:02d}"] = measure_page_vectors(vectors[page], grid_master)
+                except Exception as e:   # โมดูลไม่ raise เอง (fuzz 3000 รอบ) — กันเผื่อ
+                    warnings.append(f"ไม้บรรทัดเวกเตอร์ หน้า {page} ล้ม ({type(e).__name__}) — ข้าม")
+        timings["pass3_vector_s"] = round(time.time() - t3v, 1)
+    elif vectors:
+        warnings.append("ไม้บรรทัดเวกเตอร์ข้าม: ไม่มี grid master")
+
+    # C2: ตรวจ grid master (ชื่อเส้นซ้ำ/ปนแกน/อยู่สองแกน + ทิศ origin + scale ที่ pass3 เห็น) — เขียน
+    # "validation" ลง grid_master.json ให้เว็บเตือนข้างผังกริด · เขียนทุกครั้งที่มี grid master แม้ pass3
+    # ไม่ได้รัน (ปัญหาจากตัวไฟล์เองยังเห็นได้) · คำนวณใหม่ทุกรอบ (resume ทับของเก่าได้ไม่เสียอะไร)
+    # rev_worker major: ขั้นนี้เป็น report-only ทั้งก้อน (ไม่แก้ elements/pass2) แต่ไม่มี try เลย —
+    # อินพุตแปลกที่ยังหลุดผ่านด่าน isinstance ของ pass3_measure.py เอง (เช่น grid_master พังรูปที่
+    # ยังไม่เคยเจอ) จะทำให้งานที่ยิงโมเดลครบทุกหน้าแล้วล่มตรงนี้ **หลังใช้ GPU ไปหมดแล้ว** —
+    # ห่อทั้งก้อนไว้ ให้อย่างแย่ที่สุดคือไม่มี validation/pass3_measure.json แต่ผลอ่านแบบยังคืนได้
+    if isinstance(grid_master, dict):
+        try:
+            validation = grid_validation(grid_master, reports)
+            if vector_reports:
+                validation = merge_validation(validation, vector_reports)
+            if isinstance(grid_doc, dict):
+                grid_doc["validation"] = validation
+            if reports or vector_reports:
+                p3 = pass3_file(reports, validation)
+                if vector_reports:
+                    # key แยกระดับบน ไม่ใส่ใน "pages" — เว็บ (pass3Stats) ถือทุกตัวใน pages เป็นรายงาน CV
+                    p3["vector_pages"] = vector_reports
+                files.append({"name": "pass3_measure.json", "json": p3})
+            line = vector_summary_line(vector_reports)
+            if line:
+                warnings.append(line)
+            warnings.extend(summary_warnings(reports, validation))
+        except Exception as e:
+            warnings.append(f"C2 (ตรวจ grid master) ล้ม ({type(e).__name__}: {e}) — ข้าม ไม่กระทบผลอ่านแบบ")
 
     # งานที่ยิงโมเดลไม่สำเร็จ "ทุกหน้า" ยังคืน files=[pass0.json] ออกไปตามปกติ แล้วผู้เรียก
     # ประทับ status=done ทับ — หน้าเว็บจึงขึ้น "งานถอดแบบล่าสุดเสร็จแล้ว" พร้อมปุ่มดึงผล

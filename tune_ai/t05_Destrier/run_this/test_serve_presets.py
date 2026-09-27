@@ -93,43 +93,49 @@ print(f"OK  เมนู GO.bat ตรงกับ preset ({len(menu)} รุ่
 import subprocess as _sp  # noqa: E402
 
 
-def _run_bring_up(rent_ok, smoke_ok):
+def _run_bring_up(rent_ok, smoke_ok, remote_ok=True, local_running=False):
+    """คืน (ลำดับคำสั่งที่ยิงไป presentation.py, จำนวนครั้งที่เปิดหน้าต่างรับงานบนคอม)"""
     calls, started = [], []
-    real_run, real_clear, real_pick, real_start = (
-        go.run, go.clear_stuck_card, go.pick_model, go.start_worker)
+    saved = (go.run, go.clear_stuck_card, go.pick_model, go.start_worker,
+             go.local_worker_running)
 
     def fake_run(cmd):
         calls.append(list(cmd))
-        if cmd[0] == "up":
-            return _sp.CompletedProcess(cmd, 0 if rent_ok else 1)
-        if cmd[0] == "smoke":
-            return _sp.CompletedProcess(cmd, 0 if smoke_ok else 1)
-        return _sp.CompletedProcess(cmd, 0)
+        ok = {"up": rent_ok, "smoke": smoke_ok, "worker-up": remote_ok}.get(cmd[0], True)
+        return _sp.CompletedProcess(cmd, 0 if ok else 1)
 
-    go.run, go.clear_stuck_card, go.pick_model, go.start_worker = (
+    go.run, go.clear_stuck_card, go.pick_model, go.start_worker, go.local_worker_running = (
         fake_run, (lambda keep=None: True), (lambda: "destrier"),
-        (lambda: started.append(True)))
+        (lambda: started.append(True)), (lambda: local_running))
     try:
         go.bring_up(None)
     finally:
-        go.run, go.clear_stuck_card, go.pick_model, go.start_worker = (
-            real_run, real_clear, real_pick, real_start)
-    return calls, started
+        (go.run, go.clear_stuck_card, go.pick_model, go.start_worker,
+         go.local_worker_running) = saved
+    return [c[0] for c in calls], len(started)
 
 
-_calls, _started = _run_bring_up(rent_ok=True, smoke_ok=False)
-assert _started, "เช่าสำเร็จแต่ smoke ล้ม -> ต้องเปิด worker อยู่ดี (นี่คือบั๊กที่แก้ 23 ก.ย.)"
-assert [c[0] for c in _calls] == ["up", "smoke"], _calls
-print("OK  smoke ล้มไม่ปิดกั้นการเปิด worker (เช่าสำเร็จแล้ว = เปิดเสมอ)")
+_c, _n = _run_bring_up(rent_ok=True, smoke_ok=False)
+assert _c == ["up", "smoke", "worker-up"] and _n == 0, (_c, _n)
+print("OK  smoke ล้มไม่ปิดกั้นการเปิด worker (เช่าสำเร็จแล้ว = เปิดเสมอ — บั๊กที่แก้ 23 ก.ย.)")
 
-_calls2, _started2 = _run_bring_up(rent_ok=False, smoke_ok=False)
-assert not _started2, "เช่าไม่สำเร็จ ห้ามเปิด worker เด็ดขาด"
-assert [c[0] for c in _calls2] == ["up"], f"เช่าล้มต้องไม่ไปถึง smoke เลย ได้ {_calls2}"
+_c, _n = _run_bring_up(rent_ok=False, smoke_ok=False)
+assert _c == ["up"] and _n == 0, f"เช่าล้มต้องไม่ไปถึง smoke/ไม่เปิด worker เลย ได้ {_c} เปิด {_n}"
 print("OK  เช่าไม่สำเร็จ -> ไม่เปิด worker และไม่ไปถึง smoke")
 
-_calls3, _started3 = _run_bring_up(rent_ok=True, smoke_ok=True)
-assert _started3 and [c[0] for c in _calls3] == ["up", "smoke"], (_calls3, _started3)
-print("OK  ทางปกติ (เช่าสำเร็จ + smoke ผ่าน) -> เปิด worker เหมือนเดิม")
+_c, _n = _run_bring_up(rent_ok=True, smoke_ok=True)
+assert _c == ["up", "smoke", "worker-up"] and _n == 0, (_c, _n)
+print("OK  ทางปกติ -> เปิดตัวรับงานบนการ์ด (แผน A) ไม่เปิดหน้าต่างบนคอมซ้อน")
+
+# แผน A พัง -> ต้องสั่งหยุดตัวบนการ์ดก่อน แล้วค่อยถอยไปเปิดบนคอม (ห้ามมีสองตัวยิงโมเดลพร้อมกัน)
+_c, _n = _run_bring_up(rent_ok=True, smoke_ok=True, remote_ok=False)
+assert _c == ["up", "smoke", "worker-up", "worker-down"] and _n == 1, (_c, _n)
+print("OK  เปิดบนการ์ดไม่สำเร็จ -> หยุดตัวบนการ์ดก่อน แล้วถอยไปหน้าต่างบนคอม 1 ตัว")
+
+# มีหน้าต่างรับงานบนคอมค้างอยู่แล้ว (ลืมปิดจากรอบก่อน) -> ใช้ตัวนั้น ไม่เปิดบนการ์ดซ้อน
+_c, _n = _run_bring_up(rent_ok=True, smoke_ok=True, local_running=True)
+assert _c == ["up", "smoke"] and _n == 0, (_c, _n)
+print("OK  มีตัวรับงานบนคอมอยู่แล้ว -> ไม่เปิดตัวที่สองซ้อน")
 
 # 10. cmd_smoke ต้องทนสะดุดได้ 1-2 ครั้งก่อนยอมแพ้ (ไม่ใช่ throw รอบเดียวจบ)
 _src = Path(__file__).with_name("presentation.py").read_text(encoding="utf-8")

@@ -168,3 +168,76 @@
 - **Not yet proven:** whether the VLM measures pixels accurately at all — the first GPU run must
   compare every `scaled_from_grid` span against GT before trusting any; if the error routinely
   exceeds ~0.1 m, fall back to `unresolved` (recorded in WORKFLOW_INTERN ข้อ 4).
+
+## 2026-09-27 — §4 rule 4: every dimension tick is a line, even one nothing uses (Makham's order)
+
+- **Who:** Claude (Opus 5.5, Claude Code), on Makham's order: "ผมอยากให้ gridmaster มันจดจำระยะ
+  ทุก ๆ ระยะ ในทุกหน้าอ่ะ แม้ระยะเหล่านั้นจะไม่ได้ใช้ก็ตาม เช่นระยะ between A-B ที่เจอในหน้า
+  side profile … เจอ 10 ระยะ ก็ต้องมี dummy 10 ตัว".
+- **Why:** since 2026-08-21 the master already *transcribed* every printed number
+  (`dimension_chains[]`), but `x_lines`/`y_lines` only got a dummy at a beam endpoint, and chain
+  ends with no line on them were written `"edge"`. So the points were recorded as prose but had
+  no position anything could land on.
+- **What changed in §4:**
+  - New **rule 4**: every end of every printed x/y segment on any sheet becomes a line. Existing
+    line → reused; otherwise → new dummy with `pos_m` = anchor ± printed segments. One point = one
+    line, deduplicated at 2 dp. A floating chain with no known line stays unpositioned.
+  - `dimension_chains` `from`/`to`: `"edge"` is now allowed only on a chain that touches no known
+    line.
+  - "Do NOT invent a dummy for a slab-only edge" is **superseded**. A printed dimension to it
+    now makes a dummy. Still forbidden: a line with neither a printed dimension nor a beam
+    endpoint.
+  - Dummy grid: the before-origin naming (one prime sequence across both sides of the first main
+    grid) is now written down. It was already the de facto convention in houses
+    04/05/17/22/33/39/40.
+  - §0.10: new checklist line for rule 4.
+  - The "Relationship to the resolved axes" paragraph now says the axes hold every positioned
+    point.
+- **Count semantics, decided:** one dummy per distinct *point*, not per number. So 10 segments
+  inside A–B give 9 dummies, because both outer ends are A and B. 10 distances each measured
+  from A give 10 dummies.
+- **Checker:** `tools/check_format.py` has 3 new NOTEs (soft — no current master was written
+  under this rule, so a FAIL would only train people to ignore the gate):
+  - an anchored chain end left as `"edge"` (34 on the current tree);
+  - dummy primes out of order along an axis (houses 12, 13, 30 — real, e.g. house 13's `1''` at
+    -1.3 before `1'` at -1.1);
+  - `dimension_chains[]` present-but-empty (0 today, guards the lie §4 already forbids).
+  - Before and after: exit 0, no FAIL changed.
+- **Not changed, on purpose:**
+  - The live prompt `tune_ai/t04_Purson/pass2/gridline/prompt_gridline.md`, and its identical
+    copy under t05_Destrier. The worker requires prompts identical to training, and Destrier was
+    trained on the old rule. Editing it now puts a train/inference mismatch on every live job, and
+    teaching it without backfilled GT would train the model to ignore the prompt.
+  - **Backlog, owed together:**
+    - (a) sweep houses 01-19 (no `dimension_chains` at all) and promote houses 20-40's `"edge"`
+      ends to dummies, page by page from the images;
+    - (b) then rewrite `prompt_gridline.md`: rule 4, the slab-edge paragraph, the `"edge"`
+      bullet, and naming `side_profile` explicitly (09-24 audit fix #2);
+    - (c) re-measure `vector_ruler.py`'s false-accept rate, because guard (ข) counts dummies as
+      "explained" drawn lines, and denser dummies weaken it (0 false accepts was measured on
+      today's sparse masters).
+  - The stale older copy `json_แก้ไขแล้ว/00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`
+    (624 lines, last touched 2026-08-24) was not synced. Nothing in the repo references it; op01's
+    skill points at the canonical copy.
+- **Process slip, recorded honestly:** the first round of these edits was made **before reading
+  `rule_of_tune.md`**, without the Lesson 7 statement and without the Rule 2 warning. Makham caught
+  it ("อ่าน rule of tune ก่อนด้วย"). Both were then given out loud in the conversation, and Makham
+  ordered the fix to continue ("แก้ primary ก่อน").
+  - Lesson 7 statement: this file is a `.md` doc, so Rule 1 does not cover it.
+  - Rule 2 warning: it still defines what every future house's ground truth looks like, so it
+    affects fine-tuning data.
+- **Second round, same day (refinements after re-reading the whole spec):**
+  - The §4 `dimension_chains` example had still used `"edge"` on ends that hang off grids `1` and
+    `3`, which violates rule 4. They are now `1'`/`3'`/`3''`, with a note that these are
+    -1.30 / 7.60 / 8.30. House #01's real master does have `3'` at 7.6.
+  - Rule 4 dedupe now compares to the millimetre, not "2 decimals": house 25 prints 1.725.
+  - Rule 4 gained two bullets:
+    - which axis a chain belongs to is decided by its markers (numbers → x, letters → y), not by
+      the sheet title;
+    - dimensions inside one element's own detail (section size, §6b cap pile spacing, rebar
+      spacing) are not axis ticks.
+  - Rule 4 now says two ticks within 0.05 m are both kept, with a `warnings[]` note, never merged
+    by guess.
+  - The count example now names primes off whichever of A/B is the upper line, instead of assuming
+    `A'`.
+  - §0.8's "missing a line" pointer now cites rule 4 as well as the beam-endpoint rule.

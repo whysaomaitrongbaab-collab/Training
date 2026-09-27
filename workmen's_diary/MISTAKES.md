@@ -9347,7 +9347,7 @@ By theme:
 
 *Training runs, data splits, prompts, merges, and inference that did not do what was intended.*
 
-**75 entries** · 18 critical · 34 high
+**76 entries** · 19 critical · 34 high
 
 #### 🔴 CRITICAL · 2026-07-24 · MAX_LENGTH sized from a single-image example would have truncated away the labels of every gridmaster example
 
@@ -9600,6 +9600,20 @@ By theme:
 **→ Rule.** A simulator must import or exactly mirror the real code paths, not re-implement 'what it probably does'. Any shortcut in a simulator becomes an overstatement in its results — and someone will quote those numbers.
 
 <sub>`2026-09-01.md` · testing-methodology</sub>
+
+#### 🔴 CRITICAL · 2026-09-27 · The destrier LoRA soup scrambled every MoE expert — and every check passed because it re-read the file with the writer's own convention
+
+**What happened.** `dacarokann/destrier` (rev e229403, the adapter used by every production job since 2026-08-31) was built by `soup_safetensors.py` from folds Courser_a/c/d. The folds stored expert `lora_B` as Unsloth's grouped_by_expert (column e·r+q), but the soup reshaped it as PEFT's rank_major (column q·E+e), and `convert_expert_pair` did the same when flipping Courser_a (peft 0.18.1) to the peft 0.20 orientation. As served (grouped_by_expert forced), only 17 of 12,288 rank-1 components per expert tensor paired with the right partner; experts carried 97.6% of the trained parameters. Found by an offline audit (4 independent lenses + 3 adversarial reviewers, real tensor statistics, real fold bytes via HTTP range reads, upstream unsloth_zoo 2026.8.16/2026.9.7 source).
+
+**Root cause.** Two readings of the same flat matrix have identical shapes, so nothing errors. The soup's `diagnose()` and its conversion check reconstructed ΔW with the same (wrong) convention the writer used, so they printed 1.000 / 0.00e+00 regardless of correctness; `verify_merge_selftest.py` only proves the checker can tell layouts apart. The layout the training forward actually used was never written down or asserted.
+
+**Impact.** Every destrier measurement (op04, 83b8e52c, the presentation) reflects a model whose expert LoRA was effectively noise; conclusions that blamed training data for its misreads are on hold. No retraining is needed — the folds were correct and the soup is a lossless permutation away from correct.
+
+**Fix.** `tune_ai/fix_destrier_layout.py` permutes destrier back (verified against real fold bytes; negative control fails on the original); `soup_safetensors.py` now normalises every fold to grouped_by_expert from `adapter_config` and checks all experts under the serving reading with a control that must fail (`test_soup_layout.py`); `serve_purson.py` asks Unsloth after a warm-up forward whether every expert wrapper is read with the adapter's layout through Unsloth's own path, and refuses requests if not. Behavioural confirmation on a GPU (teacher-forced loss, fixed vs as-is vs single fold) is still pending — see `t05_Destrier/proof/03_destrier_expert_LoRA_ปนผิด.md`.
+
+**→ Rule.** A check must read the artefact the way the consumer will read it, independently of how the producer wrote it — and it must be shown to FAIL on a known-bad input before its pass means anything. For any flat tensor with two possible layouts, write the layout into the artefact and assert it at load time. Second occurrence of the t02 GGUF class (2026-07-28): structurally valid, behaviourally wrong, check shares the bug.
+
+<sub>`2026-09-27.md` · model-merge</sub>
 
 #### 🟠 HIGH · 2026-07-20 · Random page-level train/val split would have leaked across the split
 
@@ -16343,6 +16357,10 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 - 🟡 MEDIUM RB1/RB2 appear twice with different sizes; BOQ silently uses only the first occurrence
 - 🟡 MEDIUM pass3 finds zero CV anchors on steel C-channel drawings — an entire drawing style it can never measure
 - ⚪ LOW npm test was skipped for the session on the reasoning that only an untested file changed
+
+**2026-09-27** — 1 entry
+
+- 🔴 CRITICAL The destrier LoRA soup scrambled every MoE expert — and every check passed because it re-read the file with the writer's own convention
 
 **undated** — 9 entries
 

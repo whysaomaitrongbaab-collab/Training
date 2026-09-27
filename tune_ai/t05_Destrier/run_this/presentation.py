@@ -18,10 +18,13 @@ IP เครื่องเช่าเปลี่ยนทุกรอบก�
 ต้องมีบนเครื่องนี้: vastai CLI (login แล้ว), ssh.exe — ทั้งคู่ทีมใช้ประจำอยู่แล้ว
 """
 import argparse
+import io
 import json
 import os
 import subprocess
 import sys
+import tarfile
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -67,7 +70,7 @@ MODELS = {
         # ทุกครั้งที่เช่าใหม่ ค่าเน็ตช้าจึงกินเวลาที่เราจ่ายเป็นรายชั่วโมง: 343Mbps ≈ 27 นาที
         # vs 888Mbps ≈ 11 นาที → offer ที่ $0.935 เน็ตช้า แพงกว่า offer $1.095 เน็ตเร็วจริง
         "search": ("gpu_ram>=90 num_gpus=1 reliability>0.99 inet_down>500 "
-                   "rentable=true verified=true"),
+                   "rentable=true verified=true direct_port_count>=1"),
         "deps": "unsloth xgrammar fastapi uvicorn pillow",
     },
     "t04": {
@@ -87,9 +90,13 @@ MODELS = {
         # 2) max_pixels 6912*1024 ไม่ใช่ 7680 — ลดตอนเทรนจริงหลัง OOM, เสิร์ฟคนละค่ากับที่เทรน
         #    = บั๊กคลาสเดียวกับที่ฆ่า t01/t04 (ภาพโดนย่อ/ขยายผิดเงียบๆ)
         # ⚠️ คุณภาพผลลัพธ์ยังไม่ผ่านเกณฑ์ — pure-power test recall ต่ำ ดูไดอารี่วันเดียวกัน
+        # 🔴 27 ก.ย. 2026: rev e229403 ตัวนี้ LoRA ของ MoE expert ปนผิดตั้งแต่ตอนรวม fold (ถูกคู่แค่
+        #    17/12288 ตอนเสิร์ฟ) — ตัวซ่อม: Training/tune_ai/fix_destrier_layout.py · หลักฐาน + แผนทดสอบ:
+        #    Training/tune_ai/t05_Destrier/proof/03_destrier_expert_LoRA_ปนผิด.md · ยังไม่เปลี่ยน adapter
+        #    ตรงนี้จนกว่าตัวที่ซ่อมจะผ่านการทดสอบบนการ์ด (serve_purson.py เตือนทุกครั้งที่โหลดตัวนี้)
         "adapter": "dacarokann/destrier",
         "search": ("gpu_ram>=90 num_gpus=1 reliability>0.99 inet_down>500 "
-                   "rentable=true verified=true"),
+                   "rentable=true verified=true direct_port_count>=1"),
         "deps": "unsloth xgrammar fastapi uvicorn pillow 'peft>=0.20'",
         "max_pixels": 6912 * 1024,
     },
@@ -103,7 +110,7 @@ MODELS = {
     "destrier-vllm": {
         "model_repo": "dacarokann/destrier-merged",
         "search": ("gpu_ram>=90 num_gpus=1 reliability>0.99 inet_down>500 "
-                   "rentable=true verified=true"),
+                   "rentable=true verified=true direct_port_count>=1"),
         "deps": "vllm",
         "serve": "vllm",
         "max_pixels": 6912 * 1024,
@@ -114,7 +121,7 @@ MODELS = {
         # = ลด latency ต่อคำขอเดี่ยวตรงๆ ไม่ใช่แค่ throughput รวม
         "model_repo": "dacarokann/destrier-merged",
         "search": ("gpu_ram>=90 num_gpus=1 reliability>0.99 inet_down>500 "
-                   "rentable=true verified=true"),
+                   "rentable=true verified=true direct_port_count>=1"),
         "deps": "sglang[all]",
         "serve": "sglang",
         "max_pixels": 6912 * 1024,
@@ -276,9 +283,11 @@ def cmd_up(a):
 
     # ลองทีละเครื่องจนกว่าจะได้เครื่องที่ใช้ได้จริง — เครื่องที่ล้มถูกคืน+จำไว้ทันที
     # ไม่ต้องมีคนมานั่งกดเมนูใหม่ทุกรอบ (บทเรียน 23 ก.ย.: เสีย 4 เครื่องติดกัน)
-    for attempt in range(1, MAX_RENT_TRIES + 1):
+    attempt = 0
+    while attempt < MAX_RENT_TRIES:
         if not offers:
             sys.exit("offer หมดแล้ว — ลองใหม่ทีหลัง หรือผ่อนเงื่อนไขใน MODELS[...]['search']")
+        attempt += 1
         offer = offers.pop(0)
         price = offer.get("dph_total", 0)
         print(f"\n[เครื่องที่ {attempt}/{MAX_RENT_TRIES}] offer {offer['id']} "
@@ -297,10 +306,24 @@ def cmd_up(a):
             sys.exit("ยกเลิก")
 
         r = sh(["vastai", "create", "instance", str(offer["id"]), "--image", IMAGE,
-                "--disk", str(DISK_GB), "--ssh", "--onstart-cmd", onstart_cmd(m), "--raw"])
+                # --direct: เจอสด 27 ก.ย. 69 — เช่าแบบ ssh_proxy (ค่าเริ่มต้นของ --ssh) ได้ running
+                # แต่พร็อกซีของ vast ตอบ "Permission denied (publickey)" นาน 13+ นาที ทั้งที่ key
+                # ตรงกันทุกตัว (เช็ค fingerprint แล้ว) และ vast บอก "already associated" — 3 เครื่อง
+                # 3 ประเทศติดกัน · ทางตรงไม่ผ่านพร็อกซี (pick_ssh_endpoint ลองทางตรงก่อนอยู่แล้ว)
+                "--disk", str(DISK_GB), "--ssh", "--direct", "--onstart-cmd", onstart_cmd(m), "--raw"])
         if r.returncode != 0:
             sys.exit(f"เช่าไม่สำเร็จ: {r.stderr.strip()}\n{r.stdout.strip()}")
-        new_id = json.loads(r.stdout).get("new_contract")
+        res = json.loads(r.stdout)
+        new_id = res.get("new_contract")
+        if res.get("success") is False and new_id:
+            # เจอสด 27 ก.ย. 69 (3 ใน 4 เครื่อง): offer ขึ้นว่าว่างแต่การ์ดไม่ว่างจริง — vast สร้าง
+            # สัญญาไว้แต่ตั้ง intended_status=stopped ("Required resources are currently
+            # unavailable, state change queued") ค้าง loading ไม่มีวัน running · เดิมนั่งรอ
+            # wait_running ครบ 15 นาทีแล้วแบนเครื่องดีทิ้ง — คืนทันที ไม่นับเป็นรอบ ไม่แบน
+            print(f"  เครื่องนี้ไม่ว่างจริง (vast เข้าคิวไว้ ไม่เปิดให้) — คืนทันที ไปตัวถัดไป")
+            sh(["vastai", "destroy", "instance", str(new_id)], input="y\n")
+            attempt -= 1                     # ไม่ได้เช่าจริง ไม่นับรอบ (offer ถูก pop ไปแล้ว ไม่วนซ้ำ)
+            continue
         print(f"เช่าแล้ว instance {new_id} — รอเครื่องขึ้น...")
         save_state({"instance_id": new_id, "model": a.model, "price_per_hr": price,
                     "machine_id": offer.get("machine_id"),
@@ -780,6 +803,195 @@ def wait_healthy(st=None, timeout_s=60 * 60):
     raise BadMachine("เกิน 1 ชม. ยังไม่พร้อม")
 
 
+# ── แผน A: worker.py รันบนการ์ดเช่าเอง (2026-09-27) ─────────────────────────────
+# เดิม worker รันบนคอมเราแล้วยิงหาการ์ดผ่าน tunnel ทุกหน้า — คอมต้องเปิดค้างทั้งงาน (หลายชั่วโมง)
+# และเน็ตคอมกระตุกเมื่อไหร่ คำขอที่ค้างอยู่ก็พังตาม · ย้ายไปรันข้างตัวเสิร์ฟ: ยิง localhost ของ
+# การ์ดเอง คุยกับ Supabase ด้วยเน็ตของการ์ด คอมเราแค่สั่งเปิด — เว็บไม่ต้องแก้เลย เพราะเว็บคุยกับ
+# คิวใน Supabase ไม่เคยคุยกับ worker ตรงๆ
+# ⚠️ ราคาของแผนนี้: worker_config.json (มี Supabase service key) ต้องขึ้นไปอยู่บนเครื่องของโฮสต์
+#    เช่าด้วย · ลดความเสี่ยงได้ส่วนหนึ่งเพราะเราคืนการ์ดแบบ destroy (ดิสก์หายทั้งก้อน) ไม่ใช่ stop
+REMOTE_WK = "/workspace/wk"
+REMOTE_PROMPTS = f"{REMOTE_WK}/training/tune_ai/t04_Purson"
+REMOTE_WDEPS = "/workspace/wdeps"
+REMOTE_WORKER_LOG = "/workspace/worker.log"
+WORKER_DEPS = "requests opencv-python-headless"
+WORKER_CODE = ("worker.py", "pass3_measure.py", "vector_ruler.py", "notify.py")
+# วงเล็บรอบจุด = pgrep/pkill ไม่เจอ bash ที่ ssh เปิดขึ้นมารันคำสั่งเช็คนี้เอง
+# (กับดักเดียวกับ '[p]ip install' ที่วนรอ 17 นาทีเมื่อ 31 ส.ค.)
+WORKER_PATTERN = "python -u worker[.]py"
+
+
+def worker_bundle_sources(cfg):
+    """(ต้นทางบนคอมนี้, ชื่อใน bundle) ของทุกไฟล์ที่ worker.py เปิดจริง
+
+    ใน bundle วางโครงเลียน Training repo เป๊ะ เพราะ worker หา organize.py/cv_scan.py จาก
+    PROMPTS_DIR.parent/... (ดู ORGANIZE_PY/CV_SCAN_PY ใน worker.py) — วางผิดชั้นเมื่อไหร่ CV
+    หายเงียบ (worker ถอยไปส่งเต็มหน้าเองโดยไม่ error) · หยิบจาก PURSON_PROMPTS_DIR ตัวเดียวกับที่
+    worker บนคอมนี้ใช้ ของบนการ์ดจึงเป็นชุดเดียวกับที่รันอยู่จริง ไม่มีสำเนาที่สองให้เพี้ยน"""
+    prompts = Path(cfg["PURSON_PROMPTS_DIR"])
+    train = prompts.parent.parent
+    picks = [prompts / "_common.md", prompts / "pass0" / "prompt.md",
+             *sorted((prompts / "pass2").glob("*/prompt_*.md")),
+             prompts.parent / "t03" / "pass1_organize" / "organize.py",
+             train / "tools" / "cv_scan.py", train / "tools" / "pattern_recognition.py",
+             *sorted((train / "tools" / "templates").glob("tpl_*.png"))]
+    out = [(HERE / n, f"worker/{n}") for n in WORKER_CODE]
+    out += [(p, "training/" + p.relative_to(train).as_posix()) for p in picks]
+    missing = [str(p) for p, _ in out if not p.is_file()]
+    if missing:
+        sys.exit("ไฟล์ที่ worker ต้องใช้หายจากคอมนี้ — ส่งขึ้นการ์ดไม่ได้:\n   " + "\n   ".join(missing))
+    return out
+
+
+def worker_start_script():
+    """สคริปต์เปิด worker บนการ์ด — ส่งไปเป็นไฟล์ใน bundle ไม่ส่งแบบ `ssh host "<คำสั่ง>"`
+    เพราะบรรทัดคำสั่งของ bash ตัวนั้นจะมีคำว่า worker.py อยู่ แล้ว pgrep ข้างในเจอตัวเองทุกรอบ
+
+    dependency ลงแยกไว้ที่ REMOTE_WDEPS ด้วย --target — ไม่แตะ /venv/main ที่ตัวเสิร์ฟกำลังใช้
+    (pip ทับ env ที่มีงานรันอยู่ = ของพังกลางงาน · --target ดึง numpy ของตัวเองมาด้วย ไม่ชนกัน)
+    ไม่มี opencv ก็ยังเปิดได้ — worker ถอยไปส่งเต็มหน้าโดยไม่มี hint (บอก NOCV ให้รู้)"""
+    return f"""#!/bin/bash
+# สร้างโดย presentation.py worker-up — อย่าแก้บนการ์ด แก้ที่ worker_start_script() แทน
+cd {REMOTE_WK}/worker || exit 1
+if pgrep -f '{WORKER_PATTERN}' > /dev/null; then echo LIVE; exit 0; fi
+PY={VENV_PY}
+W="env PYTHONPATH={REMOTE_WDEPS} PYTHONIOENCODING=utf-8 PURSON_QUIET=1 $PY"
+if ! $W -c 'import requests, cv2' 2> /dev/null; then
+  "$PY" -m pip install --upgrade --target {REMOTE_WDEPS} {WORKER_DEPS} > /workspace/pip_worker.log 2>&1
+fi
+if ! $W -c 'import requests' 2> /dev/null; then
+  echo NODEPS; tail -20 /workspace/pip_worker.log; exit 1
+fi
+$W -c 'import cv2' 2> /dev/null || echo NOCV
+setsid --fork nohup $W -u worker.py > {REMOTE_WORKER_LOG} 2>&1 < /dev/null &
+sleep 8
+if pgrep -f '{WORKER_PATTERN}' > /dev/null; then echo STARTED; exit 0; fi
+echo DIED; tail -30 {REMOTE_WORKER_LOG}; exit 1
+"""
+
+
+def worker_live_cmd():
+    return f"pgrep -f '{WORKER_PATTERN}' > /dev/null && echo LIVE || echo DEAD"
+
+
+def worker_stop_cmd():
+    return (f"pkill -f '{WORKER_PATTERN}'; sleep 2; "
+            f"pgrep -f '{WORKER_PATTERN}' > /dev/null && echo STILL || echo STOPPED")
+
+
+def worker_deploy_cmd():
+    """แตก bundle ทับของเก่าทั้งโฟลเดอร์ แล้วสั่งเปิด — เรียกเฉพาะตอนไม่มี worker รันอยู่
+    (worker อ่าน prompt จากดิสก์ทุกคำขอ แตกทับกลางงาน = prompt หายชั่วขณะ)"""
+    return (f"rm -rf {REMOTE_WK} && mkdir -p {REMOTE_WK} && "
+            f"tar -xzf /workspace/wk.tar.gz -C {REMOTE_WK} && rm -f /workspace/wk.tar.gz && "
+            f"chmod 600 {REMOTE_WK}/worker/worker_config.json && "
+            f"bash {REMOTE_WK}/start_worker.sh")
+
+
+def build_worker_bundle(out_path, cfg):
+    """รวมทุกอย่างที่ worker ต้องใช้เป็น tar.gz ก้อนเดียว (~1 MB) — คืนรายชื่อไฟล์ใน bundle
+
+    config บนการ์ดสร้างใหม่ในหน่วยความจำจากของคอมนี้ (ค่าที่จูนไว้ตามไปครบ) เปลี่ยนแค่ GPU URL
+    เป็น localhost ของการ์ด กับ path ของ prompt · ไม่เขียนเป็นไฟล์แยกและไม่พิมพ์ออกจอ (มี key)"""
+    rcfg = {**cfg, "PURSON_GPU_URL": f"http://localhost:{LOCAL_PORT}",
+            "PURSON_PROMPTS_DIR": REMOTE_PROMPTS}
+    generated = [("worker/worker_config.json", json.dumps(rcfg, ensure_ascii=False, indent=2), 0o600),
+                 ("start_worker.sh", worker_start_script(), 0o755)]
+    names = []
+    with tarfile.open(out_path, "w:gz") as t:
+        for src, arc in worker_bundle_sources(cfg):
+            t.add(src, arcname=arc, recursive=False)
+            names.append(arc)
+        for arc, text, mode in generated:
+            data = text.encode("utf-8")
+            ti = tarfile.TarInfo(arc)
+            ti.size, ti.mode, ti.mtime = len(data), mode, int(time.time())
+            t.addfile(ti, io.BytesIO(data))
+            names.append(arc)
+    return names
+
+
+def need_card():
+    st = load_state()
+    if not st.get("ssh_host"):
+        sys.exit("ยังไม่มีการ์ดที่ต่อไว้ — เปิดการ์ดก่อน (เมนูข้อ 1 หรือ 3)")
+    return st
+
+
+def remote_worker_alive(st):
+    """True/False = เข้าไปดูได้จริง · None = ssh ไม่ตอบ (ไม่ใช่หลักฐานว่าตาย)"""
+    try:
+        r = sh(["ssh", *ssh_base(st), worker_live_cmd()], timeout=60)
+    except subprocess.TimeoutExpired:
+        return None
+    out = (r.stdout or "").strip()
+    return {"LIVE": True, "DEAD": False}.get(out)
+
+
+def cmd_worker_up(_a):
+    """ส่ง worker + prompt + CV ขึ้นการ์ดแล้วสั่งรันข้างตัวเสิร์ฟ — กดซ้ำได้ ไม่เปิดซ้อน"""
+    st = need_card()
+    cfg_file = HERE / "worker_config.json"
+    if not cfg_file.exists():
+        sys.exit("ไม่เจอ worker_config.json ข้างไฟล์นี้ — worker บนการ์ดใช้ค่าชุดเดียวกับคอมนี้")
+    alive = remote_worker_alive(st)
+    if alive is None:
+        sys.exit("ssh เข้าการ์ดไม่ได้ตอนนี้ — เช็คเน็ตแล้วลองใหม่")
+    if alive:
+        print("✅ ตัวรับงานบนการ์ดรันอยู่แล้ว — ไม่ส่งซ้ำ ไม่เปิดซ้อน")
+        return
+    fd, name = tempfile.mkstemp(prefix="purson_wk_", suffix=".tar.gz")
+    os.close(fd)
+    tar = Path(name)
+    try:
+        names = build_worker_bundle(tar, json.loads(cfg_file.read_text(encoding="utf-8")))
+        print(f"ส่ง worker ขึ้นการ์ด: {len(names)} ไฟล์ ({tar.stat().st_size / 1e6:.1f} MB)")
+        try:
+            r = sh(["scp", "-P", str(st["ssh_port"]), "-o", "StrictHostKeyChecking=accept-new",
+                    "-o", "BatchMode=yes", "-o", "ConnectTimeout=15",
+                    str(tar), f"root@{st['ssh_host']}:/workspace/wk.tar.gz"], timeout=5 * 60)
+        except subprocess.TimeoutExpired:
+            sys.exit("ส่งไฟล์ขึ้นการ์ดค้างเกิน 5 นาที — เน็ตคอมนี้ช้า/หลุด ลองใหม่อีกรอบ")
+        if r.returncode != 0:
+            sys.exit(f"ส่งไฟล์ขึ้นการ์ดไม่สำเร็จ: {r.stderr.strip()}")
+    finally:
+        tar.unlink(missing_ok=True)      # ในนั้นมี service key — ไม่ทิ้งค้างไว้ใน %TEMP%
+    print("สั่งเปิดตัวรับงานบนการ์ด (ครั้งแรกต้องลง opencv ก่อน ~1-2 นาที)...")
+    try:
+        r = sh(["ssh", *ssh_base(st), worker_deploy_cmd()], timeout=10 * 60,
+               encoding="utf-8", errors="replace")
+    except subprocess.TimeoutExpired:
+        sys.exit("สั่งเปิดค้างเกิน 10 นาที — ดู log: python presentation.py worker-log")
+    out = (r.stdout or "").strip()
+    if "NOCV" in out.split():
+        print("⚠️ ลง opencv บนการ์ดไม่สำเร็จ — ถอดแบบได้ แต่ไม่มี hint จาก CV (ส่งเต็มหน้าทุกหน้า)")
+    if r.returncode != 0 or not ({"STARTED", "LIVE"} & set(out.split())):
+        print(out[-2000:] or (r.stderr or "").strip()[-2000:])
+        sys.exit("⛔ เปิดตัวรับงานบนการ์ดไม่สำเร็จ (ดู log ข้างบน)")
+    print("✅ ตัวรับงานรันบนการ์ดแล้ว — log: python presentation.py worker-log")
+
+
+def cmd_worker_log(_a):
+    st = need_card()
+    r = sh(["ssh", *ssh_base(st), f"tail -n 60 {REMOTE_WORKER_LOG}"], timeout=60,
+           encoding="utf-8", errors="replace")
+    print(r.stdout if r.returncode == 0 else "(ยังไม่มี log — ยังไม่เคยเปิดตัวรับงานบนการ์ดนี้)")
+
+
+def cmd_worker_down(_a):
+    """หยุดตัวรับงานบนการ์ด (การ์ดยังเปิดอยู่) — งานที่ทำค้างจะถูกดีดกลับคิวเองใน 45 นาที
+    หรือกดปลดงานค้างในเมนูซ่อม · คืนการ์ด (down) ไม่ต้องเรียกนี้ก่อน เครื่องหายทั้งก้อนอยู่แล้ว"""
+    st = need_card()
+    try:
+        r = sh(["ssh", *ssh_base(st), worker_stop_cmd()], timeout=60)
+    except subprocess.TimeoutExpired:
+        sys.exit("ssh เข้าการ์ดค้าง — หยุดตัวรับงานไม่ได้")
+    if (r.stdout or "").strip().endswith("STOPPED"):
+        print("หยุดตัวรับงานบนการ์ดแล้ว")
+        return
+    sys.exit(f"⚠️ หยุดไม่สำเร็จ: {((r.stdout or '') + (r.stderr or '')).strip()}")
+
+
 def cmd_status(_a):
     st = load_state()
     if not st.get("instance_id"):
@@ -794,6 +1006,10 @@ def cmd_status(_a):
             print_ready()
         else:
             print("tunnel/vLLM: ❌ ไม่ตอบ — ลอง: python presentation.py tunnel")
+        if st.get("ssh_host"):
+            print({True: "ตัวรับงานบนการ์ด (แผน A): ✅ ทำงานอยู่ — ไม่พึ่ง tunnel/เน็ตคอมนี้",
+                   False: "ตัวรับงานบนการ์ด (แผน A): ไม่ได้รัน (ถ้าใช้หน้าต่างรับงานบนคอมอยู่ = ปกติ)",
+                   None: "ตัวรับงานบนการ์ด (แผน A): เช็คไม่ได้ (ssh ไม่ตอบ)"}[remote_worker_alive(st)])
     user = vastai_json(["show", "user"])
     print(f"เครดิตคงเหลือ: ${user.get('credit', '?')}")
 
@@ -842,6 +1058,14 @@ def cmd_smoke(_a):
             return
         except Exception as e:
             last_err = e
+            if isinstance(e, urllib.error.HTTPError):
+                # 500 จากด่านเช็ค LoRA ของ serve_purson.py มีเหตุผลอยู่ใน body — ไม่พิมพ์ = คนเห็นแค่
+                # "HTTP 500" แล้วคืนการ์ดดีทิ้ง ทั้งที่แก้แค่ env (รีวิว 27 ก.ย.)
+                err_body = e.read().decode("utf-8", "replace")[:600]   # ห้ามชื่อ body — ทับ payload ของรอบถัดไป
+                print(f"  ตัวเสิร์ฟตอบ {e.code}: {err_body}")
+                if "LoRA ของ MoE expert ถูกอ่านผิดแบบ" in err_body:      # ข้อความของ check_expert_lora เท่านั้น
+                    sys.exit("⛔ ตัวเสิร์ฟปฏิเสธเพราะอ่าน LoRA ผิดแบบ (ข้างบน) — การ์ดไม่ได้เสีย ห้าม down --bad"
+                             "\n   แก้ตามข้อความแล้วเปิดตัวเสิร์ฟใหม่")
             if attempt < 3:
                 print(f"  ...smoke ครั้งที่ {attempt}/3 ไม่ผ่าน ({type(e).__name__}) "
                       f"ลองใหม่ใน 10 วิ")
@@ -917,6 +1141,9 @@ def main():
     attach.add_argument("--model", choices=list(MODELS), default="destrier")
     for name in ("status", "tunnel", "smoke"):
         sub.add_parser(name)
+    sub.add_parser("worker-up", help="แผน A — ส่ง worker ขึ้นการ์ดแล้วรันข้างตัวเสิร์ฟ (กดซ้ำได้)")
+    sub.add_parser("worker-log", help="ดู log ตัวรับงานบนการ์ด 60 บรรทัดล่าสุด")
+    sub.add_parser("worker-down", help="หยุดตัวรับงานบนการ์ด (การ์ดยังเปิดอยู่)")
     down = sub.add_parser("down")
     down.add_argument("--bad", metavar="เหตุผล",
                       help="คืนเพราะเครื่องมีปัญหา — ขึ้นบัญชีดำไม่ให้เช่าซ้ำ")
@@ -926,7 +1153,9 @@ def main():
     bl.add_argument("--reason", default="")
     a = ap.parse_args()
     {"up": cmd_up, "attach": cmd_attach, "status": cmd_status, "tunnel": cmd_tunnel,
-     "smoke": cmd_smoke, "down": cmd_down, "blacklist": cmd_blacklist}[a.cmd](a)
+     "smoke": cmd_smoke, "down": cmd_down, "blacklist": cmd_blacklist,
+     "worker-up": cmd_worker_up, "worker-log": cmd_worker_log,
+     "worker-down": cmd_worker_down}[a.cmd](a)
 
 
 if __name__ == "__main__":
