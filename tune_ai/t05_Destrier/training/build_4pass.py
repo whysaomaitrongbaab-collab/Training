@@ -22,7 +22,7 @@ k-fold (2026-08-31 ตอนดึก — convention เดียวกับ bu
 
 ผลลัพธ์ (ต่อ fold):
   t05_Courser/train_fold{k}.jsonl · val_fold{k}.jsonl              (สาย Unsloth message-parts)
-  t44_Voldemort/train_fold{k}_lf.json · val_fold{k}_lf.json · dataset_info.json  (สาย LF sharegpt)
+  t06_Voldemort/train_fold{k}_lf.json · val_fold{k}_lf.json · dataset_info.json  (สาย LF sharegpt)
 **เนื้อข้อมูลเหมือนกันเป๊ะทั้งสองแขนทุก fold** — ต่างแค่รูปแบบ serialize เท่านั้น จงใจ: t04
 เปลี่ยนทั้งโมเดลและ precision พร้อมกันจนแยกไม่ออกว่าอะไรทำให้ผลต่าง (confound) รอบนี้ข้อมูล
 ตรึงเท่ากัน ผลต่างที่เห็นจึงมาจากโมเดลจริง ๆ
@@ -46,7 +46,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 TRAINING = HERE.parent.parent
-T44 = TRAINING / "tune_ai" / "t44_Voldemort"
+T06 = TRAINING / "tune_ai" / "t06_Voldemort"
 DATA_T04 = TRAINING / "tune_ai" / "t04_Purson" / "data_before_tune"
 IMG_ROOT = TRAINING / "image"
 
@@ -173,8 +173,8 @@ def write_split(name, split):
     (HERE / f"{name}.jsonl").write_text(
         "".join(json.dumps({k: v for k, v in r.items() if k != "pass"},
                            ensure_ascii=False) + "\n" for r in split), encoding="utf-8")
-    T44.mkdir(exist_ok=True)
-    (T44 / f"{name}_lf.json").write_text(
+    T06.mkdir(exist_ok=True)
+    (T06 / f"{name}_lf.json").write_text(
         json.dumps([to_lf(r) for r in split], ensure_ascii=False, indent=2), encoding="utf-8")
 
 
@@ -258,8 +258,8 @@ def main():
 
         write_split(f"train_fold{k}", train)
         write_split(f"val_fold{k}", val)
-        info[f"t44_train_fold{k}"] = {"file_name": f"train_fold{k}_lf.json", **LF_ENTRY}
-        info[f"t44_val_fold{k}"] = {"file_name": f"val_fold{k}_lf.json", **LF_ENTRY}
+        info[f"t06_train_fold{k}"] = {"file_name": f"train_fold{k}_lf.json", **LF_ENTRY}
+        info[f"t06_val_fold{k}"] = {"file_name": f"val_fold{k}_lf.json", **LF_ENTRY}
 
         print(f"fold{k}: train {len(train)} / val {len(val)}  (บ้าน val: {len(vh)} — {sorted(vh)[:3]}...)")
         print(f"  train ราย pass: {bypass(train)}")
@@ -271,10 +271,10 @@ def main():
             print("   -", p)
         sys.exit(1)
 
-    (T44 / "dataset_info.json").write_text(json.dumps(info, ensure_ascii=False, indent=2),
+    (T06 / "dataset_info.json").write_text(json.dumps(info, ensure_ascii=False, indent=2),
                                            encoding="utf-8")
     print(f"\n→ Courser: {HERE}/train_fold{{0,1}}.jsonl · val_fold{{0,1}}.jsonl")
-    print(f"→ Voldemort: {T44}/train_fold{{0,1}}_lf.json · val_fold{{0,1}}_lf.json · dataset_info.json")
+    print(f"→ Voldemort: {T06}/train_fold{{0,1}}_lf.json · val_fold{{0,1}}_lf.json · dataset_info.json")
     if not PASS0_ALL_HOUSES:
         print("\nℹ pass0 ใช้สโคป 5 บ้านตามที่เคาะไว้ — ตั้ง PASS0_ALL_HOUSES=True "
               "เพื่อใช้ label ที่ derive ไว้แล้วครบทั้ง 40 บ้าน")

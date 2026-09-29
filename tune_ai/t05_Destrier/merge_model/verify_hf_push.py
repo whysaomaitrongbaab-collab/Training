@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-verify_hf_push.py — Day-of-Shame guard สำหรับรอบที่ใช้ push_to_hub:true (t05_Courser/t44_Voldemort)
+verify_hf_push.py — Day-of-Shame guard สำหรับรอบที่ใช้ push_to_hub:true (t05_Courser/t06_Voldemort)
 
 ต่างจาก pull_and_verify_t03.py (scp adapter ลงเครื่องเรา แล้วเทียบ sha256 local-vs-remote)
 รอบนี้ Trainer อัปตรงจากเครื่องเช่าขึ้น HF เอง (push_to_hub:true) — ไม่มีขั้น "pull ลงเครื่องเรา"

@@ -1,5 +1,5 @@
-# t44 "Voldemort" — InternVL3-78B QLoRA 4-bit, 4 pass, fold1/2 — การ์ดใบเดียว
-# รัน (จากโฟลเดอร์นี้):  llamafactory-cli train train_t44_internvl3_fold1.yaml
+# t06 "Voldemort" — InternVL3-78B QLoRA 4-bit, 4 pass, fold0/2 — การ์ดใบเดียว
+# รัน (จากโฟลเดอร์นี้):  llamafactory-cli train train_t06_internvl3_fold0.yaml
 #
 # ⛔ ห้ามรันไฟล์นี้เต็มก่อนผ่าน "ประตู go/no-go ~$2" (internvl_arm_dossier.md §4 ทาง ก):
 #    โหลด base 4-bit + tiling เต็ม โดยไม่มี adapter แล้วให้อ่านแบบจริง 3-5 หน้า
@@ -46,9 +46,9 @@ lora_target: all    # [W] LoRA Without Regret — แปะทุก layer ไ�
 
 ### dataset — 4 pass (pass0 + pass1 + pass2.4 + pass3) เนื้อเดียวกับแขน Courser เป๊ะ
 # k-fold 2 (มะขามสั่ง 2026-08-31 ค่ำ): k=5 จริง (8 บ้าน/fold จาก 40 บ้าน) รันแค่ fold0+fold1
-# = train/val 4:1 ต่อ fold — ไฟล์นี้คือ **fold1** เท่านั้น fold0 อยู่ train_t44_internvl3_fold0.yaml
-dataset: t44_train_fold1     # ลงทะเบียนใน dataset_info.json โดย ../t05_Courser/build_4pass.py
-eval_dataset: t44_val_fold1
+# = train/val 4:1 ต่อ fold — ไฟล์นี้คือ **fold0** เท่านั้น fold1 อยู่ train_t06_internvl3_fold1.yaml
+dataset: t06_train_fold0     # ลงทะเบียนใน dataset_info.json โดย ../t05_Courser/build_4pass.py
+eval_dataset: t06_val_fold0
 template: intern_vl          # ยืนยันจาก constants.py: InternVL3-*-hf ทั้งตระกูล → intern_vl
 dataset_dir: .               # dataset_info.json + train_lf.json/val_lf.json อยู่โฟลเดอร์นี้
 # path รูปใน train_lf.json เทียบ "รากรีโป Training" (image/<บ้าน>/… และ tune_ai/…/marked_t5/…)
@@ -61,7 +61,7 @@ preprocessing_num_workers: 8
 dataloader_num_workers: 4
 
 ### output
-output_dir: outputs_t44_fold1/lora
+output_dir: outputs_t06_fold0/lora
 logging_steps: 5
 save_steps: 25
 save_strategy: steps
@@ -74,7 +74,7 @@ report_to: none
 # หลังเทรนครบ รวม fold0+fold1 เป็น adapter เดียวด้วย PEFT model soup
 # (../merge_adapters_soup.py, add_weighted_adapter linear 0.5/0.5) — ไม่ deploy แยก 2 adapter
 push_to_hub: true
-hub_model_id: dacarokann/Voldemort_b   # a=fold0 (fold0.yaml), b=fold1
+hub_model_id: dacarokann/Voldemort_a   # a=fold0, b=fold1 (fold1.yaml)
 hub_strategy: checkpoint
 # export HF_TOKEN=hf_...XCRE (token ชื่อ "t44", FINEGRAINED) ก่อนรัน — llamafactory-cli
 # อ่าน env HF_TOKEN เอง ไม่ต้อง huggingface-cli login แยก

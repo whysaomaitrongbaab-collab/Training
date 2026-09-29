@@ -1,4 +1,4 @@
-# t44 "Voldemort" — InternVL3-78B แก้มือ, 4 pass
+# t06 "Voldemort" — InternVL3-78B แก้มือ, 4 pass
 
 > **สโคป: InternVL3-78B เท่านั้น** — แขน Qwen3.6-35B-A3B อยู่ที่ [`../t05_Courser/`](../t05_Courser/)
 > แยกกันเด็ดขาด กันข้อมูลสองโมเดลปนกัน (มะขามสั่งแยก 2026-08-31)
@@ -6,10 +6,10 @@
 ## ไฟล์ในโฟลเดอร์นี้
 | ไฟล์ | คืออะไร |
 |---|---|
-| [`train_t44_internvl3_fold0.yaml`](train_t44_internvl3_fold0.yaml) | config เทรน fold0 — มี `crop_to_patches: true` (บรรทัดที่ฆ่า t04) |
-| [`train_t44_internvl3_fold1.yaml`](train_t44_internvl3_fold1.yaml) | config เทรน fold1 — เหมือน fold0 ทุกอย่าง ต่างแค่ dataset/output_dir |
+| [`train_t06_internvl3_fold0.yaml`](train_t06_internvl3_fold0.yaml) | config เทรน fold0 — มี `crop_to_patches: true` (บรรทัดที่ฆ่า t04) |
+| [`train_t06_internvl3_fold1.yaml`](train_t06_internvl3_fold1.yaml) | config เทรน fold1 — เหมือน fold0 ทุกอย่าง ต่างแค่ dataset/output_dir |
 | `train_fold{0,1}_lf.json` / `val_fold{0,1}_lf.json` | dataset 4 pass รูปแบบ sharegpt ต่อ fold (สร้างโดย `../t05_Courser/build_4pass.py`) |
-| `dataset_info.json` | ลงทะเบียน `t44_train_fold{0,1}` / `t44_val_fold{0,1}` ให้ LLaMA-Factory |
+| `dataset_info.json` | ลงทะเบียน `t06_train_fold{0,1}` / `t06_val_fold{0,1}` ให้ LLaMA-Factory |
 | [`internvl_arm_dossier.md`](internvl_arm_dossier.md) | dossier เต็ม: กลไก root cause t04, ทางเลือก, งบ, ประตู go/no-go |
 
 ## dataset (2026-08-31 ค่ำ) — k-fold 2, เนื้อเดียวกับแขน Courser เป๊ะทุก fold
@@ -81,7 +81,7 @@ InfographicVQA 50→69% เมื่อไต่จาก 1MP ไป 6.2MP)
 - [ ] เครดิตยังไม่พอเช่า (ดู dossier §6) — ตอนนี้ต้องเผื่อ **4 การ์ดพร้อมกัน** ไม่ใช่ใบเดียว
 - [ ] export HF_TOKEN (token "t44") บนเครื่องเช่าทุกใบก่อนรัน — ยังไม่เคยลอง push_to_hub จริง
 - [ ] merge_adapters_soup.py ยังไม่เคยรันจริง — รอ Voldemort_a/_b เทรนจบทั้งคู่ก่อน
-- [x] `onstart.sh` — เขียนแล้ว (`t44_Voldemort/onstart.sh`, LLaMA-Factory flavor)
+- [x] `onstart.sh` — เขียนแล้ว (`t06_Voldemort/onstart.sh`, LLaMA-Factory flavor)
 - [ ] `../verify_hf_push.py` (Day-of-Shame guard สำหรับ push_to_hub) — เขียนแล้ว ยังไม่เคยรันจริง
 - [x] `att1235` — มะขามมอบให้ Claude สำหรับรอบนี้แล้ว 2026-08-31 (ตัดสิน/destroy เองได้ ไม่ต้อง
   เด้งถาม — Day-of-Shame verify-after-push ยังบังคับก่อน destroy เสมอ, ยังต้อง log ทุกก้าว)

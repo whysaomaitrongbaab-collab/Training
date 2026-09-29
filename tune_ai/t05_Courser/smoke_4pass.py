@@ -14,7 +14,7 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
-T44 = REPO / "tune_ai" / "t44_Voldemort"
+T06 = REPO / "tune_ai" / "t06_Voldemort"
 MAX_PIXELS = 7680 * 1024
 FOLDS = [0, 1, 2, 3]
 
@@ -94,7 +94,7 @@ for k in FOLDS:
 
     print(f"\n=== Voldemort (LLaMA-Factory sharegpt) ===")
     for name in (f"train_fold{k}", f"val_fold{k}"):
-        lf = json.loads((T44 / f"{name}_lf.json").read_text(encoding="utf-8"))
+        lf = json.loads((T06 / f"{name}_lf.json").read_text(encoding="utf-8"))
         print(f"  {name}_lf.json: {len(lf)} แถว")
         check(len(lf) == len(splits[name]), f"fold{k}/{name}: จำนวนแถว LF ไม่ตรงกับ jsonl")
         for i, r in enumerate(lf):
@@ -116,8 +116,8 @@ print(f"  รูปไม่ซ้ำ {len(seen_img_global)} ใบ · เปิ
 if ok_imgs:
     print(f"  ใหญ่สุด {ok_imgs[-1] / 1e6:.2f} MP · median {ok_imgs[len(ok_imgs) // 2] / 1e6:.2f} MP")
 
-info = json.loads((T44 / "dataset_info.json").read_text(encoding="utf-8"))
-expected_keys = {f"t44_train_fold{k}" for k in FOLDS} | {f"t44_val_fold{k}" for k in FOLDS}
+info = json.loads((T06 / "dataset_info.json").read_text(encoding="utf-8"))
+expected_keys = {f"t06_train_fold{k}" for k in FOLDS} | {f"t06_val_fold{k}" for k in FOLDS}
 check(expected_keys <= set(info), f"dataset_info.json ขาด key: {expected_keys - set(info)}")
 print(f"\ndataset_info.json: {sorted(info)}")
 
