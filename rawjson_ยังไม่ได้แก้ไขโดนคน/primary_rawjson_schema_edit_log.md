@@ -241,3 +241,21 @@
   - The count example now names primes off whichever of A/B is the upper line, instead of assuming
     `A'`.
   - §0.8's "missing a line" pointer now cites rule 4 as well as the beam-endpoint rule.
+
+## 2026-09-29 — §4 Dummy grid: hand-supplied dummy labels are renamed into the rule too (Makham's order)
+
+**Why this file could be edited:** `primary_rawjson_schema.md` is a `.md` doc, not raw JSON, so Rule 1 of
+`rule_of_tune.md` doesn't protect it — but Lesson 7 still requires saying so and logging it here. Rule 2
+applies: this changes how ground truth is named, so it changes training data. Makham's order carried `att1235`.
+
+- **What changed:** the "Exception — a label the user supplies by hand is recorded exactly as given, never
+  normalized" bullet (house #04's `A'`/`E'''`) is replaced. Makham's answer to the op_fix open question
+  (2026-09-29): *"เรียงให้เลย อย่าลืมแก้ชื่อ dummy ในหน้าอื่นๆด้วย"* — order them, and rename the dummies in
+  the other pages too. Dummy labels — including ones he gave or confirmed (`confidence_score: 1`) — now
+  always follow the direction + reading-order rule; grid refs in every page of the house follow the rename.
+- **What did not change:** a grid name *printed on the drawing* (house #12's `ง'`/`ค'` bubbles) is a named
+  line and is never renamed; a dummy whose rule name would collide with one keeps its name and is flagged.
+- **Applied in the same session** to the 11 masters of `json_แก้ไขแล้ว/` that broke the rule (houses 01–05,
+  10, 12, 13, 27, 30): 125 renames, refs followed in every page, `check_format.py` "primes out of order"
+  22 → 2 (the two left are house 12's printed-name case). Tool: `tools/gridfix.py`; procedure:
+  `.claude/skills/op_fix/SKILL.md`.

@@ -16,13 +16,13 @@
   "grid": {
     "x_lines": [
       {
-        "id": "1''",
+        "id": "1'",
         "pos_m": -1.3,
         "type": "dummy",
         "source": "หน้า34 (S-07 แปลนโครงสร้างหลังคา) — แปเหล็ก (purlin) ยื่นเลยกริด 1 ไปทางซ้าย 1.30ม. (คนละระบบกับคาน B2 ที่ 1'=-1.10; ยืนยันด้วยตาตรงจากภาพจริงโดย coordinating session เอง, ตัวเลข '1.30' พิมพ์ชัดเจนบนหน้า)"
       },
       {
-        "id": "1'",
+        "id": "1''",
         "pos_m": -1.1,
         "type": "dummy",
         "source": "หน้า31 (S-04) และหน้า32 (S-05) — คาน B2 ยื่นเลยกริด 1 ไปทางซ้าย 1.10ม. ทั้งสองชั้น (ระเบียง/ชายคา), ยืนยันตรงกัน 2 ชั้น"
@@ -211,6 +211,8 @@
     "NEW 2026-08-05 — dummy grids E' (y=-1.50), 1'' (x=-1.30), 3'' (x=8.30), และ A' (y=12.20, ชื่อใหม่ที่เพิ่งว่าง): มาจากหน้า34 (S-07 แปลนโครงสร้างหลังคา) ซึ่งเป็นคนละระบบโครงสร้างจากคาน B2 พื้น — แปเหล็ก (purlin, วิ่งแนวนอน E-W) ยื่นเลยกริด 1/3 ไป 1.30ม., จันทันเหล็ก (rafter, วิ่งแนวตั้ง N-S) ยื่นเลยกริด E/A ไป 1.50ม. — ระยะยื่นชายคาหลังคา ไม่เท่ากับระยะยื่นระเบียง/ที่จอดรถที่ชั้นล่าง จึงต้องมี dummy grid แยกต่างหาก ไม่ใช้ร่วมกับ 1'/3'/A'' — coordinating session ยืนยันด้วยตาตรงจากภาพจริงสำหรับ 1.30 (x-axis) และ 1.50 ฝั่งเหนือ (E') แล้ว; 1.50 ฝั่งใต้ (จุด A' ใหม่) อ้างอิงจากรายงาน agent ที่อ่านหน้า 34 เป็นหลัก ยังไม่ตรวจซ้ำด้วยตาตัวเอง 100% — สมเหตุสมผลเพราะหลังคาเป็นทรงสมมาตร (จั่ว/ปั้นหยา) แต่ยังคงเปิด confidence ไว้ที่ 0.8 ไม่ใช่ 1.0 ด้วยเหตุนี้",
     "**เหตุผลของการเปลี่ยนชื่อ A'→A'' (prime-ordering มี 2 จุดในช่องเดียวกันครั้งแรกของบ้านหลังนี้):** สเปค §4 กำหนดว่าจุดที่ scan เจอก่อน (ในทิศทางมาตรฐาน, ใกล้ named grid ที่ผูกด้วยที่สุด) ได้ prime เดียว จุดที่ไกลกว่าได้ prime คู่ — จุดใหม่ (จันทันหลังคา, 12.20) อยู่ใกล้กริด A (10.70) กว่าจุดเดิม (พื้นจอดรถ, 12.75) จึงต้องเป็น A' และจุดเดิมขยับเป็น A'' นี่คือกรณีตรงข้ามกับฝั่ง x-axis (1''=−1.30 ไกลกว่า 1'=−1.10 อยู่แล้ว ไม่ต้องเปลี่ยนชื่อ) — **ตรวจสอบแล้วว่าไม่มีไฟล์ element ใดในบ้านนี้อ้าง grid_ref เป็น 'A'' ตรงๆ เลยสักไฟล์** (grep ทั้งโฟลเดอร์ 2026-08-05, ทุก element ใกล้บริเวณนี้ใช้ grid_ref แบบประมาณ/plain แทน ตามคำสั่งที่ให้ agent ห้ามคิด dummy grid เอง) — การเปลี่ยนชื่อครั้งนี้จึงกระทบเฉพาะไฟล์ grid master นี้ไฟล์เดียว ไม่ต้องแก้ไฟล์ element อื่น",
     "บ้านหลังนี้มีแบบฐานราก 2 ทางเลือก ใช้กริดเดียวกันทั้งคู่: S-02 แปลนฐานรากแผ่ (ใช้เมื่อดินรับน้ำหนัก ≥10 ตัน/ตร.ม.) และ S-03 แปลนฐานรากเสาเข็ม (ใช้เมื่อดินรับน้ำหนัก <10 ตัน/ตร.ม., ตามเงื่อนไขที่ระบุใน S-01) — downstream (BOQ/rebar) ต้องบันทึกว่าใช้ทางเลือกไหน ไม่ใช่ผสมทั้งสองแบบ",
-    "z_levels[] and the z dimension_chain built 2026-08-28 from this house's own already-extracted sheets (A-13 หน้า15 carries the fullest set; ระดับพื้นชานพัก +2.35 comes from หน้า22's stair section). The sheets recorded all six levels as ONE prose element_type:'datum' description instead of one element per level -- split out verbatim here, nothing computed. Two readings the sheets themselves disagree on are kept as recorded, not silently averaged: หน้า11 prints ระดับพื้นชั้น 2 as +3.15 against six sheets' +3.75 (flagged on the level), and the printed 1.15 top segment does not close against the levels' own 1.20 (8.15-6.95) -- both the printed 1.15 and the printed 1.45 total are recorded as printed, per section 4's 'record every row, a mismatch is exactly what this array exists to catch'. ระดับทางเท้า/ระดับถนน on หน้า25 are site levels with no number tied to this datum and are deliberately NOT here. unassigned_dimensions[] still un-swept."
+    "z_levels[] and the z dimension_chain built 2026-08-28 from this house's own already-extracted sheets (A-13 หน้า15 carries the fullest set; ระดับพื้นชานพัก +2.35 comes from หน้า22's stair section). The sheets recorded all six levels as ONE prose element_type:'datum' description instead of one element per level -- split out verbatim here, nothing computed. Two readings the sheets themselves disagree on are kept as recorded, not silently averaged: หน้า11 prints ระดับพื้นชั้น 2 as +3.15 against six sheets' +3.75 (flagged on the level), and the printed 1.15 top segment does not close against the levels' own 1.20 (8.15-6.95) -- both the printed 1.15 and the printed 1.45 total are recorded as printed, per section 4's 'record every row, a mismatch is exactly what this array exists to catch'. ระดับทางเท้า/ระดับถนน on หน้า25 are site levels with no number tied to this datum and are deliberately NOT here. unassigned_dimensions[] still un-swept.",
+    "op_fix 2026-09-29 (Makham ruling, att1235): every dummy renamed to its canonical name — primed off the main grid to its left/above, before-origin joins the first main grid, primes 1..n in reading order — including labels Makham gave or confirmed himself; grid refs in every page follow",
+    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 1'' -> 1', 1' -> 1''; grid refs in every file of the house follow; prose in older warnings still uses the old names"
   ]
 }

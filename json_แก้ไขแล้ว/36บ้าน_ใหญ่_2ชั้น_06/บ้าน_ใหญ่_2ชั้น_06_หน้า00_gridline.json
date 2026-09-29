@@ -21,19 +21,20 @@
     "The upper-floor beam plan (หน้า21) and the roof structural plan (หน้า22) both show a LARGER bow/bay-window turret at the same NW corner, projecting further out than the ground-floor footprint (an upper-floor cantilevered bay, consistent with the architectural floor plans). Its exact facet coordinates were not independently re-derived into new dummy grid lines within the time available for this house — elements on that turret (หน้า21/หน้า22) use approximate '~' grid_refs anchored to the nearest resolved point (1',A ) rather than invented precise dummy positions; flagged at lower confidence on those specific elements rather than silently guessed, matching the precedent set by house #29's bay-window plan_beam files.",
     "Additional small sub-bay dimension ticks appear on the beam plans (หน้า20: 0.70 near grid3, 1.70/1.90/1.00 near grid4; หน้า21: 2.80 near grid3) that were not resolved to new dummy grid lines — no clear beam endpoint was confidently traced to justify a new dummy within the time available, so these are recorded in unassigned_dimensions rather than invented as grid points, per the beam-endpoint rule (only add a dummy when a beam/footing endpoint actually needs it).",
     "z_levels left empty: this house's structural sheets print no named building-wide reference level (no 'ระดับพื้นชั้น1'-style label on any Pass-2 sheet) — every level encountered is either a per-beam soffit offset printed directly on the beam mark (e.g. 'B1(+0.40)') or a per-slab-marker offset, both recorded on the element's own level_m field rather than in this registry, matching the treatment used for house #29 (same drawing series).",
-    "z_levels[] and the z dimension_chain read 2026-08-28 off รูปตัด A-A (หน้า12) plus one turret-roof level off รูปด้าน 4 (หน้า09) -- both architectural sheets OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. The sheet prints in MILLIMETRES (the drawing's own convention for this แบบบ้านยิ้มเพื่อประชาชน series); level_m is the same number in metres, not a conversion judgement. The chain closes exactly: 0.500+3.600 = 4.100, +3.000 = 7.100, +3.550 = 10.650, and 3.800+3.050 = 6.850. Six room-floor levels (ซักล้าง/จอดรถ/ชานพัก/ห้องน้ำ2 etc.) are printed as bare numbers with no ระดับ label and carry id null per section 4, with the printed text kept in level_m_printed_as. Only หน้า09 and หน้า12 were read -- รูปด้าน 1/2/3 and any other รูปตัด may print further levels, so this is the z axis as of those two sheets, not a full sweep. unassigned_dimensions[] still un-swept."
+    "z_levels[] and the z dimension_chain read 2026-08-28 off รูปตัด A-A (หน้า12) plus one turret-roof level off รูปด้าน 4 (หน้า09) -- both architectural sheets OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. The sheet prints in MILLIMETRES (the drawing's own convention for this แบบบ้านยิ้มเพื่อประชาชน series); level_m is the same number in metres, not a conversion judgement. The chain closes exactly: 0.500+3.600 = 4.100, +3.000 = 7.100, +3.550 = 10.650, and 3.800+3.050 = 6.850. Six room-floor levels (ซักล้าง/จอดรถ/ชานพัก/ห้องน้ำ2 etc.) are printed as bare numbers with no ระดับ label and carry id null per section 4, with the printed text kept in level_m_printed_as. Only หน้า09 and หน้า12 were read -- รูปด้าน 1/2/3 and any other รูปตัด may print further levels, so this is the z axis as of those two sheets, not a full sweep. unassigned_dimensions[] still un-swept.",
+    "op_fix 2026-09-29 (Claude, att1235): old \"edge\" ends of chains that hang off known lines promoted to lines per spec section 4 rule 4 -- pos_m = anchor +/- the printed segments; no page re-swept"
   ],
   "grid": {
     "x_lines": [
       {
-        "id": "1",
-        "pos_m": 0.0,
-        "type": "named"
-      },
-      {
         "id": "1'",
         "pos_m": -1.3,
         "type": "dummy"
+      },
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named"
       },
       {
         "id": "2",
@@ -208,7 +209,7 @@
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_06/บ้าน_ใหญ่_2ชั้น_06_หน้า19.png",
         "segments": [
           {
-            "from": "edge",
+            "from": "1'",
             "to": "1",
             "value_m": 1.3
           },

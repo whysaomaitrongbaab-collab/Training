@@ -20,17 +20,21 @@
     "x-axis dummy grids: a local dimension row under grid row E (S-02, หน้า27) reads 1.50 then 3.50 (sum 5.00, matching the coarse 1-2 chain) — this places one dummy line at x=1.50 ('1\\''). A SEPARATE local dimension at row A' (the dummy footing row, same sheet) reads 3.35 from grid 1 to footing C0,F4 — a second, different dummy position in the same 1-2 gap. Per the prime-ordering rule (scan left→right, first found = 1 prime) these are '1\\'' (1.50) and '1\\'\\'' (3.35).",
     "y-axis dummy grid: footings C0,F3/C0,F4/C0,F2/C0,F2 sit on their own row 1.50m below main grid A (S-02, หน้า27), confirmed by an explicit witness-line dimension distinct from the main E-D-C-B-A chain (4.00+2.50+4.00+2.50=13.00, cross-checked against the printed '13.00' outer bracket total — exact match, no mismatch on this house). Named 'A\\'' per the above/left convention (main grid above it in reading order = A). No beam (B-mark) was found spanning to this row on S-03/S-04 — only footings/pedestals sit there; per §4 this does not disqualify it as a real grid line since footings are point elements that also need a resolvable grid_ref, independent of the beam-endpoint trigger.",
     "z_levels are sparse for this house: op04 scope excludes the elevation/side_profile sheets (A-07/A-08 etc., architectural) where most level callouts would normally appear. Only two floor levels are printed on the structural sheets actually extracted in this pass, both on S-15 (หน้า40, ramp/stair-nosing detail): '+0.40' (upper ramp landing / main floor) and '+0.10' (lower landing near beam BA/B1). Both are unlabeled numeric levels (no Thai id text next to them) so id=null.",
-    "dimension_chains/unassigned_dimensions below are transcribed from the grid-bearing sheets actually in scope (S-02 plan_footing, S-03 plan_beam+slab, S-04 plan_beam ring-beam, S-05 plan_beam roof-frame) plus S-15's two level callouts — this is not an exhaustive sweep of every printed number across all 17 structural sheets (op04 scope), so section-only dimensions (e.g. individual footing/beam rebar-detail measurements on S-06..S-17) are captured in their own section files' element fields rather than duplicated here."
+    "dimension_chains/unassigned_dimensions below are transcribed from the grid-bearing sheets actually in scope (S-02 plan_footing, S-03 plan_beam+slab, S-04 plan_beam ring-beam, S-05 plan_beam roof-frame) plus S-15's two level callouts — this is not an exhaustive sweep of every printed number across all 17 structural sheets (op04 scope), so section-only dimensions (e.g. individual footing/beam rebar-detail measurements on S-06..S-17) are captured in their own section files' element fields rather than duplicated here.",
+    "op_fix 2026-09-29 (Claude, att1235): old \"edge\" ends of chains that hang off known lines promoted to lines per spec section 4 rule 4 -- pos_m = anchor +/- the printed segments; no page re-swept",
+    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 1' -> 1'', 1'' -> 1'''; grid refs in every file of the house follow; prose in older warnings still uses the old names"
   ],
   "grid": {
     "x_lines": [
+      { "id": "1'", "pos_m": -1.20, "type": "dummy", "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า30.png" },
       { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "1'", "pos_m": 1.50, "type": "dummy" },
-      { "id": "1''", "pos_m": 3.35, "type": "dummy" },
+      { "id": "1''", "pos_m": 1.50, "type": "dummy" },
+      { "id": "1'''", "pos_m": 3.35, "type": "dummy" },
       { "id": "2", "pos_m": 5.00, "type": "named" },
       { "id": "3", "pos_m": 9.00, "type": "named" },
       { "id": "4", "pos_m": 13.00, "type": "named" },
-      { "id": "4'", "pos_m": 14.10, "type": "dummy" }
+      { "id": "4'", "pos_m": 14.10, "type": "dummy" },
+      { "id": "4''", "pos_m": 14.20, "type": "dummy", "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า30.png" }
     ],
     "y_lines": [
       { "id": "E", "pos_m": 0.00, "type": "named" },
@@ -60,15 +64,15 @@
         "axis": "x",
         "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า27.png",
         "segments": [
-          { "from": "1", "to": "1'", "value_m": 1.50 },
-          { "from": "1'", "to": "2", "value_m": 3.50 }
+          { "from": "1", "to": "1''", "value_m": 1.50 },
+          { "from": "1''", "to": "2", "value_m": 3.50 }
         ]
       },
       {
         "axis": "x",
         "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า27.png",
         "segments": [
-          { "from": "1", "to": "1''", "value_m": 3.35 }
+          { "from": "1", "to": "1'''", "value_m": 3.35 }
         ]
       },
       {
@@ -93,11 +97,11 @@
         "axis": "x",
         "source_image": "image/บ้าน_ใหญ่_1ชั้น_03/บ้าน_ใหญ่_1ชั้น_03_หน้า30.png",
         "segments": [
-          { "from": "edge", "to": "1", "value_m": 1.20 },
+          { "from": "1'", "to": "1", "value_m": 1.20 },
           { "from": "1", "to": "2", "value_m": 5.00 },
           { "from": "2", "to": "3", "value_m": 4.00 },
           { "from": "3", "to": "4", "value_m": 4.00 },
-          { "from": "4", "to": "edge", "value_m": 1.20 },
+          { "from": "4", "to": "4''", "value_m": 1.20 },
           { "from": "1", "to": "4", "value_m": 13.00 }
         ]
       }

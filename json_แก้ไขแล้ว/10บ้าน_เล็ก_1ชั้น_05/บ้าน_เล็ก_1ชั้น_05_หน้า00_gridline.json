@@ -31,7 +31,7 @@
         "source": "S-02"
       },
       {
-        "id": "2'",
+        "id": "1''",
         "pos_m": 1.9,
         "type": "dummy",
         "source": "A-04 sub-chain 1.90|1.30 inside bay 1-2; the B1 partition beam (S-04) runs E->D on this line (WC.1 east wall)"
@@ -99,7 +99,7 @@
         "source": "S-02"
       },
       {
-        "id": "F'",
+        "id": "E'",
         "pos_m": 13.65,
         "type": "dummy",
         "source": "A-04 prints 3.10 from grid E up to the kitchen north wall; the B2 beam (S-04) runs on this line from grid 1 to grid 2 only"
@@ -249,6 +249,8 @@
     "Y-ORIGIN CONVENTION: A = 0.00 at the BOTTOM edge of every plan as drawn, increasing upward to F = 14.55 (same convention as house 07's grid master, where row A is also the south edge). x origin: grid 1 = 0.00 at the left edge, increasing right to grid 4 = 9.60.",
     "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed.",
     "2026-08-24 §4-upgrade: z_levels[] derived from this house's human-reviewed per-page extractions (element_type level/datum with level_m), deduplicated by (label, level_m) — not a fresh image sweep; source_image on each entry names the reviewed file's page",
-    "2026-08-24 §4-upgrade: dimension_chains[]/unassigned_dimensions[] deliberately ABSENT — they require a page-by-page image transcription sweep (§4 2026-08-21) that has not been done for this house; absence means not-yet-swept, per spec. Do not backfill them from resolved pos_m values."
+    "2026-08-24 §4-upgrade: dimension_chains[]/unassigned_dimensions[] deliberately ABSENT — they require a page-by-page image transcription sweep (§4 2026-08-21) that has not been done for this house; absence means not-yet-swept, per spec. Do not backfill them from resolved pos_m values.",
+    "op_fix 2026-09-29 (Makham ruling, att1235): every dummy renamed to its canonical name — primed off the main grid to its left/above, before-origin joins the first main grid, primes 1..n in reading order — including labels Makham gave or confirmed himself; grid refs in every page follow",
+    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 2' -> 1'', F' -> E'; grid refs in every file of the house follow; prose in older warnings still uses the old names"
   ]
 }

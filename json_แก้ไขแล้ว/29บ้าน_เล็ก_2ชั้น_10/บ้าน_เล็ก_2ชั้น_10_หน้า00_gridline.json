@@ -23,22 +23,28 @@
     "S-03 (หน้า21, pile-footing alternate plan) and S-06 (roof plan, หน้า24) each print only TWO row circles on the y-axis ('A' at the top and a second circle literally labelled 'B' at the very bottom, 5.40m down), omitting the middle row's circle entirely. The printed y-dimension chain on both sheets (3.60 then 1.80, totalling 5.40) is numerically identical to S-02/S-04/S-05's confirmed 3-row A(0.00)/B(3.60)/C(5.40) chain, and the footing/roof-post pattern at that bottom row (no member at column 1, matching S-02's row-C pattern exactly) confirms the bottom row is the master grid's row C, not a second 'B'. Resolved per the standing 'more sheets agreeing beats fewer' rule (S-02/S-04/S-05 = 3 sheets with an explicit 3rd row) against 2 sheets with a drafting omission; treated as row C throughout this house's extraction and flagged here rather than silently renamed.",
     "Footing plans (S-02/S-03) draw the corner footings at A1/B1 with a pointed/chamfered outline instead of a plain rectangle (vs. the plain square outline used for every other footing on the same sheets) — no legend explains this; interpreted as a drafting rendering of a corner condition (adjacent to the stair/open bay), not a different footing geometry, since the printed size label (F0.90x0.90x0.30 / F3) and section details on S-07/S-08 are identical to the non-chamfered footings of the same mark.",
     "Roof plan (S-06/หน้า24) prints a continuous perimeter note 'ปิดด้วยเหล็ก C-100x50x20x3.2 มม.' (closed off with C-100x50x20x3.2mm steel) around all 4 roof edges, and 'แปเหล็ก C-100x50x20x3.2มม.@1.00ม.หรือน้อยกว่า' (steel purlins @1.00m or closer) across each roof plane — both are spacing/perimeter-based repeated members with no individual grid_ref marks, so no dummy grid lines were added for the roof overhang edges themselves (no discrete marked beam/post lands exactly on those edges); the four overhang values are recorded in unassigned_dimensions instead, per the established 'overhang reach is not on its own a reason for a dummy grid' rule.",
-    "Roof plan (S-06) row B members are annotated 'BS3(บน-ล่าง)' (upper-lower) at every grid1-2/2-3/3-4 span, i.e. two separate BS3 members stacked at that row (interpreted as the hip/ridge-transition edge beam pair, one for each of the two roof planes meeting there) — both recorded as separate atomic BS3 entries on the relevant plan_beam file, distinguished by a 'note' field rather than a schema field of their own, since the spec has no top/bottom-of-two-separate-instances concept (main_bar.top/bottom is for one beam's own rebar faces, not two physically distinct beams)."
+    "Roof plan (S-06) row B members are annotated 'BS3(บน-ล่าง)' (upper-lower) at every grid1-2/2-3/3-4 span, i.e. two separate BS3 members stacked at that row (interpreted as the hip/ridge-transition edge beam pair, one for each of the two roof planes meeting there) — both recorded as separate atomic BS3 entries on the relevant plan_beam file, distinguished by a 'note' field rather than a schema field of their own, since the spec has no top/bottom-of-two-separate-instances concept (main_bar.top/bottom is for one beam's own rebar faces, not two physically distinct beams).",
+    "op_fix 2026-09-29 (Claude, att1235): old \"edge\" ends of chains that hang off known lines promoted to lines per spec section 4 rule 4 -- pos_m = anchor +/- the printed segments; no page re-swept",
+    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 1' -> 1'', A' -> A''; grid refs in every file of the house follow; prose in older warnings still uses the old names"
   ],
   "grid": {
     "x_lines": [
+      { "id": "1'", "pos_m": -1.20, "type": "dummy", "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png" },
       { "id": "1", "pos_m": 0.00, "type": "named" },
-      { "id": "1'", "pos_m": 1.10, "type": "dummy" },
+      { "id": "1''", "pos_m": 1.10, "type": "dummy" },
       { "id": "2", "pos_m": 2.70, "type": "named" },
       { "id": "3", "pos_m": 4.20, "type": "named" },
-      { "id": "4", "pos_m": 6.60, "type": "named" }
+      { "id": "4", "pos_m": 6.60, "type": "named" },
+      { "id": "4'", "pos_m": 7.80, "type": "dummy", "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png" }
     ],
     "y_lines": [
+      { "id": "A'", "pos_m": -1.20, "type": "dummy", "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png" },
       { "id": "A", "pos_m": 0.00, "type": "named" },
-      { "id": "A'", "pos_m": 2.40, "type": "dummy" },
+      { "id": "A''", "pos_m": 2.40, "type": "dummy" },
       { "id": "B", "pos_m": 3.60, "type": "named" },
       { "id": "B'", "pos_m": 4.65, "type": "dummy" },
-      { "id": "C", "pos_m": 5.40, "type": "named" }
+      { "id": "C", "pos_m": 5.40, "type": "named" },
+      { "id": "C'", "pos_m": 6.40, "type": "dummy", "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png" }
     ],
     "z_levels": [
       { "id": "ระดับพื้นชั้นล่าง", "level_m": 0.00, "type": "datum", "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า30.png" },
@@ -59,18 +65,18 @@
         "axis": "x",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า22.png",
         "segments": [
-          { "from": "1'", "to": "2", "value_m": 1.60 }
+          { "from": "1''", "to": "2", "value_m": 1.60 }
         ]
       },
       {
         "axis": "x",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png",
         "segments": [
-          { "from": "edge", "to": "1", "value_m": 1.20 },
+          { "from": "1'", "to": "1", "value_m": 1.20 },
           { "from": "1", "to": "2", "value_m": 2.70 },
           { "from": "2", "to": "3", "value_m": 1.50 },
           { "from": "3", "to": "4", "value_m": 2.40 },
-          { "from": "4", "to": "edge", "value_m": 1.20 },
+          { "from": "4", "to": "4'", "value_m": 1.20 },
           { "from": "1", "to": "4", "value_m": 6.60 }
         ]
       },
@@ -87,18 +93,18 @@
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า23.png",
         "segments": [
-          { "from": "A", "to": "A'", "value_m": 2.40 }
+          { "from": "A", "to": "A''", "value_m": 2.40 }
         ]
       },
       {
         "axis": "y",
         "source_image": "image/บ้าน_เล็ก_2ชั้น_10/บ้าน_เล็ก_2ชั้น_10_หน้า24.png",
         "segments": [
-          { "from": "edge", "to": "A", "value_m": 1.20 },
+          { "from": "A'", "to": "A", "value_m": 1.20 },
           { "from": "A", "to": "B", "value_m": 3.60 },
           { "from": "B", "to": "B'", "value_m": 1.05 },
           { "from": "B", "to": "C", "value_m": 1.80 },
-          { "from": "C", "to": "edge", "value_m": 1.00 }
+          { "from": "C", "to": "C'", "value_m": 1.00 }
         ]
       },
       {

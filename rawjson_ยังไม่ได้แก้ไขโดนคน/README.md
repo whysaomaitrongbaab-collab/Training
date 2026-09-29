@@ -223,6 +223,10 @@ A folder holding 38 of a house's 107 pages looks exactly like a finished house t
 
 When the house has to be **whole**: a reference/demo house, or one that will be scored against AI output across all patterns (a partial ground truth would count the missing pages as failures). `op4` grows the training set cheaply; `op1` produces a complete house.
 
+## Quick command: `op_fix <house | NN-NN>` — retrofit an old grid master to §4 rule 4
+
+Added 2026-09-29 (Makham, att1235). Houses finished before rule 4 (every printed dimension tick is a line) get their grid master swept and their `"edge"` ticks promoted to dummy lines. **Unlike op1–op4 it works in `json_แก้ไขแล้ว/`, not in this folder** — this folder stays Rule-1 protected. The procedure lives in one place only, `.claude/skills/op_fix/SKILL.md`; the mechanical half (naming, prime re-sequencing, house-wide rename, arithmetic checks) is `tools/gridfix.py`.
+
 ## Step 1 — Extract a new house into raw JSON
 
 1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full before starting — it's the only spec needed (13 patterns, grid/dummy-grid rules, `main_bar` top/bottom shape, spec join, etc). The full original with history/rationale lives at `wait_for_ทิ้ง/No_touch_box/docs/20260708draft of prime rawjson.md` (moved to archive 2026-08-04, still readable) if you need more context.

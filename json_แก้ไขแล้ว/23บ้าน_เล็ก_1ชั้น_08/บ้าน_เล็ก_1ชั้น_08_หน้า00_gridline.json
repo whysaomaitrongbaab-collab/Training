@@ -24,17 +24,26 @@
     "No soil_boring_log sheet in this set (op04 subtask absent), and no dedicated plan_column sheet (op04 subtask absent) — the single column type C1 appears only as a marker on the footing plans (S-02/S-03) and in its own rebar detail on S-15, matching op04's own note that this is the expected/common case.",
     "This house prints BOTH a pile-footing design (S-02, S-07..S-10, BOQ page 51) and a spread-footing design (S-03, S-11..S-14, BOQ page 41) for the identical building — two alternate foundation options depending on site soil, not two different buildings. Both are recorded (plan_footing_pile and plan_footing_spread) rather than picking one.",
     "Dummy y-line A' at -1.20 added 2026-08-28: the อะเส/roof-beam sheet (หน้า22) records two BS1 eave beams A'1->A1 and A'3->A3 with span 1.20 and span_source grid_table, i.e. they were computed against a line the master never carried — the checker's 'ref not in grid master' failure. It is the eave overhang on the A side, the mirror of the already-present C''(6.30) eave 1.20 past C(5.10). Negative pos_m per section 4's origin rule: grid A stays the 0.00 origin, the dummy sits before it. Value comes from the recorded span, not from a printed dimension read off the sheet -- flagged on the line itself.",
-    "z_levels[] and the z dimension_chain read 2026-08-28 off A-08 (หน้า10, 'รูปด้าน 3 / รูปด้าน 4') -- an architectural elevation sheet OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. Three levels, all labelled, all in metres: 0.80 + 2.40 = 3.20 closes exactly. Same sheet independently CONFIRMS this master's plan axes: its รูปด้าน 3 prints 3.60 / 2.40 = 6.00 across grids 3-2-1 and its รูปด้าน 4 prints 2.70 / 2.40 = 5.10 across C-B-A, both matching x_lines 1(0.00) 2(2.40) 3(6.00) and y_lines A(0.00) B(2.40) C(5.10) already read from the structural set. unassigned_dimensions[] still un-swept."
+    "z_levels[] and the z dimension_chain read 2026-08-28 off A-08 (หน้า10, 'รูปด้าน 3 / รูปด้าน 4') -- an architectural elevation sheet OUTSIDE this house's recorded op04 pass-2 scope, opened specifically because the master carried an empty z_levels[]. Three levels, all labelled, all in metres: 0.80 + 2.40 = 3.20 closes exactly. Same sheet independently CONFIRMS this master's plan axes: its รูปด้าน 3 prints 3.60 / 2.40 = 6.00 across grids 3-2-1 and its รูปด้าน 4 prints 2.70 / 2.40 = 5.10 across C-B-A, both matching x_lines 1(0.00) 2(2.40) 3(6.00) and y_lines A(0.00) B(2.40) C(5.10) already read from the structural set. unassigned_dimensions[] still un-swept.",
+    "op_fix 2026-09-29 (Claude, att1235): old \"edge\" ends of chains that hang off known lines promoted to lines per spec section 4 rule 4 -- pos_m = anchor +/- the printed segments; no page re-swept",
+    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 1' -> 1''; grid refs in every file of the house follow; prose in older warnings still uses the old names"
   ],
   "grid": {
     "x_lines": [
+      {
+        "id": "1'",
+        "pos_m": -1.0,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png"
+      },
       {
         "id": "1",
         "pos_m": 0.0,
         "type": "named"
       },
       {
-        "id": "1'",
+        "id": "1''",
         "pos_m": 1.2,
         "type": "dummy"
       },
@@ -56,6 +65,13 @@
         "id": "3",
         "pos_m": 6.0,
         "type": "named"
+      },
+      {
+        "id": "3'",
+        "pos_m": 7.0,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png"
       }
     ],
     "y_lines": [
@@ -160,7 +176,7 @@
         "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png",
         "segments": [
           {
-            "from": "edge",
+            "from": "1'",
             "to": "1",
             "value_m": 1.0
           },
@@ -176,7 +192,7 @@
           },
           {
             "from": "3",
-            "to": "edge",
+            "to": "3'",
             "value_m": 1.0
           }
         ]
@@ -186,7 +202,7 @@
         "source_image": "image/บ้าน_เล็ก_1ชั้น_08/บ้าน_เล็ก_1ชั้น_08_หน้า23.png",
         "segments": [
           {
-            "from": "edge",
+            "from": "A'",
             "to": "A",
             "value_m": 1.2
           },
@@ -202,12 +218,12 @@
           },
           {
             "from": "C",
-            "to": "edge",
+            "to": "C''",
             "value_m": 1.2
           },
           {
-            "from": "edge",
-            "to": "edge",
+            "from": "A'",
+            "to": "C''",
             "value_m": 7.5
           }
         ]

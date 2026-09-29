@@ -21,14 +21,17 @@
     "x-axis dummy '3'' at 10.10 (grid 3 + 1.10m) is printed on every structural plan sheet's top dimension row (S-02 lacks it but S-03/S-05/S-06 all show it) and is directly used as a beam endpoint: B7X's own cross-section (S-14, หน้า39) is dimensioned '1.10 / B7X', matching exactly. Confidence high.",
     "y-axis dummies E' (14.00) and E'' (14.50) cover the small ซักล้าง (laundry) appendage that projects north of row E, at grid columns roughly 1-2: E'' is the laundry room's own beam line (B3X's cross-section on S-11, หน้า36, is dimensioned '1.50 / B3X', matching a wall/beam line 1.50m past E); E' is the separate small lean-to roof canopy 'แปลนหลังคาคลุมซักล้าง' on S-06 (หน้า31), dimensioned '1.00' past E for its own purlin/CX-post line. These are two different structural lines (room beam vs. canopy roof edge) that happen to sit in the same gap beyond the last main grid E, ordered by distance from E per the prime-ordering rule (closer=E', farther=E''). Could not find a printed sub-dimension for the laundry room's WIDTH (x-extent of B3X/B4X within the 1-2 bay) on the structural sheets in scope -- recorded with reduced confidence on the affected elements, not guessed as a new x dummy.",
     "The x-axis roof overhang (1.20 m beyond grid 1 and beyond grid 3, printed on S-05/S-06 หน้า30-31) is a plain eave overhang with no individual rafter/purlin mark tied specifically to its outer tip (จันทันเหล็ก run continuous from ridge to eave) -- per the beam-endpoint dummy-grid rule's own exception (no beam label at that edge), no dummy grid was created for it; recorded instead in unassigned_dimensions.",
-    "No cover (ระยะหุ้มคอนกรีต) value is printed anywhere on the S-01 general-notes sheet (หน้า26) -- see the notes file's own warning."
+    "No cover (ระยะหุ้มคอนกรีต) value is printed anywhere on the S-01 general-notes sheet (หน้า26) -- see the notes file's own warning.",
+    "op_fix 2026-09-29 (Claude, att1235): old \"edge\" ends of chains that hang off known lines promoted to lines per spec section 4 rule 4 -- pos_m = anchor +/- the printed segments; no page re-swept"
   ],
   "grid": {
     "x_lines": [
+      { "id": "1'", "pos_m": -1.20, "type": "dummy", "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า30.png" },
       { "id": "1", "pos_m": 0.00, "type": "named" },
       { "id": "2", "pos_m": 5.00, "type": "named" },
       { "id": "3", "pos_m": 9.00, "type": "named" },
-      { "id": "3'", "pos_m": 10.10, "type": "dummy" }
+      { "id": "3'", "pos_m": 10.10, "type": "dummy" },
+      { "id": "3''", "pos_m": 10.20, "type": "dummy", "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)", "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า30.png" }
     ],
     "y_lines": [
       { "id": "A", "pos_m": 0.00, "type": "named" },
@@ -73,10 +76,10 @@
         "axis": "x",
         "source_image": "image/บ้าน_ใหญ่_1ชั้น_02/บ้าน_ใหญ่_1ชั้น_02_หน้า30.png",
         "segments": [
-          { "from": "edge", "to": "1", "value_m": 1.20 },
+          { "from": "1'", "to": "1", "value_m": 1.20 },
           { "from": "1", "to": "2", "value_m": 5.00 },
           { "from": "2", "to": "3", "value_m": 4.00 },
-          { "from": "3", "to": "edge", "value_m": 1.20 },
+          { "from": "3", "to": "3''", "value_m": 1.20 },
           { "from": "1", "to": "3", "value_m": 9.00 }
         ]
       },
