@@ -80,12 +80,25 @@ came after most houses were finished. So every older master is wrong in one of t
    ```
 
    `chain_fixes` replaces the segments of an **existing** chain (by its index in the master) — that's how
-   an old `"edge"` becomes a placeholder without re-transcribing the page.
+   an old `"edge"` becomes a placeholder without re-transcribing the page. Optional keys: `add_lines`
+   (a line no chain prints, e.g. a beam centreline derived from a printed face — house 04 B2),
+   `merge_lines` (below), `eyeball_ok` (below).
 5. **Dry-run:** `python tools/gridfix.py wait_for_ทิ้ง/opfix_staging/<file>.json` — prints the new dummies,
    every rename, and **every segment whose printed value disagrees with the line positions**. A mismatch is
    a misread digit or a wrong anchor: go back to the image and fix the staging. Don't apply over a mismatch
    you can't explain; if one is genuinely printed that way (the drawing itself doesn't close), keep it and
    say so in `warnings`.
+   Three kinds of line stop `--apply`, each needs a decision, not a retry:
+   - **`ERROR … a line the master did not have`** — a page ref already named a line that didn't exist
+     (house 11 bathroom `"A-B x 1-1'"`, footprint 2.30), and a new line would now give it a position nobody
+     checked. Read that page, then edit the ref by hand: if the line it means is created by this run, first
+     take the name out (`"A-B x 1-(2.30 wall)"`), apply, then put the new line's real name in; if it means
+     nothing on the grid, leave it prose. Say what you did in the master's `warnings`.
+   - **`CHECK BY HAND`** — a non-ref field equals a renamed id; decide what it is and fix it.
+   - **`EYEBALL`** — a ref the tokenizer can't read with certainty (quoted label, glued Thai like
+     `แนวข'-ค`, possessive) that involves a name this run renames or creates. Neither renamed nor
+     position-checked. Fix it by hand, or, if it really is prose (box labels `'1 +0.60 1'`), copy the exact
+     string into the staging's `eyeball_ok` list.
 6. **Apply:** same command with `--apply`. Then `python tools/check_format.py json_แก้ไขแล้ว/<NN><house>` —
    every check PASS, and the house's "not dimension-swept"/"edge" NOTEs gone.
 7. **Log:** one entry under "บันทึกการแก้ไข" in `json_แก้ไขแล้ว/README.md` (pages swept/skipped, lines added,
@@ -111,22 +124,35 @@ before the next round trains on swept houses.
   the wrong base (Makham, 2026-09-29: "เรียงให้เลย"). `1'`(1.2) becomes `1''` when a new line at -1.0 takes `1'`.
   A staging with no chains is a pure re-sequence run.
 - **Printed grid names never move:** when a rule name would equal a grid name printed on the drawing (house 12's
-  `ง'`/`ค'` bubbles are named lines), that base keeps its names and a warning says so.
-- **`merge_lines`** (`[{"axis": "x", "id": "2'", "into_pos": 4.7}]`): removes a wrong line and moves every ref
-  that used it to the line at `into_pos` — the only case where a ref is allowed to change position
-  (house 03's `2'`, Makham 2026-09-29).
+  `ง'`/`ค'` bubbles are named lines), that base keeps its names and a warning says so — and so does any base
+  whose rule names hit a name kept that way. A **new** tick in such a base has no name to keep: it gets the
+  next free prime on its letter (house 12: `ง'''''`), flagged. It never keeps its `@pos` placeholder.
+- **`merge_lines`** (`[{"axis": "x", "id": "2'", "into_pos": 4.7}]`): removes a wrong **dummy** and moves every
+  ref that used it to the line at `into_pos` — the only case where a ref is allowed to change position
+  (house 03's `2'`, Makham 2026-09-29). `into_pos` may be a point this same run creates (a pos-less dummy
+  finally printed, house 06 `ข'`). A printed line is refused: renaming a bare `2` would reach `2nd floor`,
+  `+2.70` in prose refs.
 - **Absent stays absent:** a run never creates an empty `dimension_chains`/`z_levels` on an unswept master —
   empty would claim "swept, found nothing".
 - **Rename propagation:** every rename is applied to every grid ref in every file of the house
   (`grid_ref`, `grid_ref_start`, `grid_ref_end`, `grid_refs`, and the per-page `grid_columns`/`grid_rows`
   lists; point, range and prose-ish forms like `~bay 1''-2`) and to chain ends — then it re-resolves every
-  ref before/after and aborts unless each one still points at the same position. Any *other* field whose
+  ref before/after — on every run, renames or not — and aborts unless each one still points at the same
+  position, and unless no ref that pointed at nothing now points at something. Any *other* field whose
   value equals a renamed id stops the apply ("CHECK BY HAND") until someone decides what it is. `element_id`
   marks like `B1'` are printed member names, not grid ids — never renamed. A quoted label inside a prose-ish
-  ref (`labels '1'/'2'`, `box '3 +0.50 3'`) and an English apostrophe (`see view1's warnings`) are not primes
-  and are left alone (houses 02, 03, 13 — 2026-09-29).
-- **After every apply, read the prose-ish refs by eye** — the independent check can't parse them, so it lists
-  them for a human; the one real slip of the first run was hiding there.
+  ref (`labels '1'/'2'`, `box '3 +0.50 3'`) and an English possessive `'s` (`see view1's warnings`) are not
+  primes and are left alone (houses 02, 03, 13 — 2026-09-29); `1'x2` is a ref. Because the position check
+  reads strings the same way, it can't see what the tokenizer skipped — those come out as EYEBALL (step 5).
+- **Refuses what it can't sequence safely:** an id already twice on an axis of the input master; a staging
+  whose every chain and unassigned entry is already in the master (applied already — one identical chain is
+  fine, a plan often prints the same row above and below).
+- **Every file or none:** texts are built first, written to temp files, then swapped in (master last); a
+  failed swap puts back what was already swapped. A half-applied house re-ran as APPLIED with its skipped
+  pages one line off (review 2026-09-29).
 - **Writes keep the file's own format** (number literals like `4.00`, one-line objects, CRLF) and re-type
   only the values that changed, so `git diff` shows the fix and nothing else. Verify with `git diff --numstat`.
+  An axis the run doesn't touch keeps its order (pos-less dummies keep their slot); staging numbers are
+  rounded to the millimetre on read (`2.8 + 0.15` is `2.95`, not `2.9499999999999997`).
 - Prose inside old `warnings[]` is **not** rewritten; the master gets one warning listing the renames.
+- `--selftest` covers every case above, including the 13 of the adversarial review (2026-09-29).
