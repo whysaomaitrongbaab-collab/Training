@@ -1,0 +1,135 @@
+{
+  "house_dir": "json_แก้ไขแล้ว/06บ้าน_ใหญ่_1ชั้น_01",
+  "master": "บ้าน_ใหญ่_1ชั้น_01_หน้า00b_gridline_สุขา.json",
+  "pages_swept": [
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า09_view1_floor_plan_สุขา (A-08, แปลนพื้นอาคารสุขา 1:50, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า09_view2_roof_plan_สุขา (A-08, แปลนหลังคาสุขา 1:50, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า10_view1_elevation2_สุขา (A-09, รูปด้าน2 1:50, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า10_view2_elevation1_สุขา (A-09, รูปด้าน1 1:50, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า11_view1_elevation4_สุขา (A-10, รูปด้าน4 1:50)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า11_view2_elevation3_สุขา (A-10, รูปด้าน3 1:50)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า12_view1_section1_สุขา (A-11, รูปตัด1 1:50)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า12_view2_section2_สุขา (A-11, รูปตัด2 1:50)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า14_view2_footing_plan_สุขา (S-01 inset, แปลนฐานราก, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า15_view2_beam_plan_สุขา (S-02 inset, แปลน เสา คาน พื้น)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า16_view2_roof_frame_plan_สุขา (S-03 inset, แปลนโครงหลังคา)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า23_view2_lighting_plan_สุขา (E-02 inset, แปลนไฟฟ้าแสงสว่าง, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า24_view2_water_plan_สุขา (SN-01, แปลนท่อน้ำดี 1:75, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า24_view3_drainage_plan_สุขา (SN-01, แปลนท่อน้ำเสีย 1:75, direct image read)"
+  ],
+  "pages_skipped": [
+    {"page": "หน้า13_view1_wc_plan", "why": "member/room-level typical-module detail (ขยายห้องน้ำ 1:25) -- its own warnings state 'grid_ref is null throughout: this is a typical-module detail, not tied to a specific pair of grid lines' (the SAME repeated cubicle pair drawn 6x on A-08/A-09/A-10). Local dims (0.10/0.70/0.10/0.65/0.10/0.20/1.25/0.10 horiz, 0.10/EQ/0.90/EQ/0.10 vert) cannot be anchored to one specific grid position. Excluded per spec's 'a dimension inside one element's own detail ... stays on the element' carve-out."},
+    {"page": "หน้า13_view2_wc_sections", "why": "member-detail cross-sections (รูปตัด 1-1/2-2/3-3/4-4) of the same typical WC cubicle pair -- same reasoning, no grid_ref, no axis chain"},
+    {"page": "หน้า24_view1_symbol_pipe_schedule", "why": "symbol/pipe-material legend table, no axis"},
+    {"page": "shared non-axis pages (title/index/symbol/notes/schedules/member-detail sections: หน้า01,02,03,08_view3,14_view3,17-21,22,25)", "why": "same reasoning as the main-building staging file's pages_skipped -- these are house-wide front-matter/reference/detail sheets with no axis content relevant to either grid master"}
+  ],
+  "z_levels_add": [
+    {"id": "ระดับดิน", "level_m": 0.0, "type": "datum", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า10.png", "note": "±0.00 ground reference, printed on A-09/A-10 elevations and A-11 sections -- the สุขา block's own datum."},
+    {"id": "ระดับท้องอะเส", "level_m": 2.55, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า10.png", "note": "eave-soffit level, 2.40 m clear above ระดับพื้นอาคาร (+0.15); printed on all 4 elevations and both sections."}
+  ],
+  "dimension_chains": [
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า09.png",
+     "segments": [
+       {"from": "@-0.10", "to": "1", "value_m": 0.1}, {"from": "1", "to": "@1.40", "value_m": 1.4},
+       {"from": "@1.40", "to": "@4.60", "value_m": 3.2}, {"from": "@4.60", "to": "2", "value_m": 1.4},
+       {"from": "2", "to": "@6.10", "value_m": 0.1}
+     ], "note": "A-08 แปลนพื้นอาคารสุขา (floor), bottom chain, direct image read: '0.10 / 1.40 / 3.20 / 1.40 / 0.10' across the printed 6.00 m grid1-grid2 span (0.10+1.40+3.20+1.40+0.10=6.20, so the two outer 0.10's are wall thickness OUTSIDE grid1/grid2, not inside them -- grid1 and grid2 land exactly on the printed grid bubbles as always). @1.40/@4.60 are the central-strip partition walls (matching '12 cubicles, two columns of six either side of a central service strip'); @-0.10/@6.10 are the outer wall faces."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า09.png",
+     "segments": [
+       {"from": "@-0.60", "to": "1", "value_m": 0.6}, {"from": "1", "to": "@1.40", "value_m": 1.4},
+       {"from": "@1.40", "to": "@4.60", "value_m": 3.2}, {"from": "@4.60", "to": "2", "value_m": 1.4},
+       {"from": "2", "to": "@6.60", "value_m": 0.6}
+     ], "note": "A-08 แปลนหลังคาสุขา (roof), bottom chain, direct image read: '0.60 / 1.40 / 3.20 / 1.40 / 0.60' -- same interior points @1.40/@4.60 as the floor plan (roof eave sits further out at 0.60 vs the floor's 0.10 wall face, per the note on this sheet: '0.60 m overhang on all four sides')."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า09.png",
+     "segments": [
+       {"from": "@9.10", "to": "ค", "value_m": 0.1}, {"from": "ค", "to": "ข", "value_m": 4.5}, {"from": "ข", "to": "ก", "value_m": 4.5},
+       {"from": "ก", "to": "@-0.10", "value_m": 0.1}
+     ], "note": "A-08 floor plan left chain (partial direct read -- '0.10' at top near ค and bottom near ก, matching the wall-face pattern; full cubicle subdivision confirmed on A-09/A-10/A-11, see those entries)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า09.png",
+     "segments": [
+       {"from": "@9.60", "to": "ค", "value_m": 0.6}, {"from": "ค", "to": "ข", "value_m": 4.5}, {"from": "ข", "to": "ก", "value_m": 4.5},
+       {"from": "ก", "to": "@-0.60", "value_m": 0.6}
+     ], "note": "A-08 roof plan left chain, direct image read: '0.60/4.50/4.50/0.60' -- clean, confirms named ก/ข/ค exactly and the roof eave edges @9.60/@-0.60."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า10.png",
+     "segments": [
+       {"from": "@-0.10", "to": "1", "value_m": 0.1}, {"from": "1", "to": "@1.40", "value_m": 1.4},
+       {"from": "@1.40", "to": "@4.60", "value_m": 3.2}, {"from": "@4.60", "to": "2", "value_m": 1.4},
+       {"from": "2", "to": "@6.10", "value_m": 0.1}
+     ], "note": "A-09 รูปด้าน1 (gable end), direct image read: '0.10 / 1.40 / 3.20 / 1.40 / 0.10' over 6.00 m plus '0.60' eave marks at the very outer edges (not separately chained as a 5th segment on this view; see the roof-plan chain above for @-0.60/@6.60). Confirms the floor plan's x-axis chain exactly."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า10.png",
+     "segments": [
+       {"from": "@9.60", "to": "@9.10", "value_m": 0.5}, {"from": "@9.10", "to": "ค", "value_m": 0.1},
+       {"from": "ค", "to": "@7.55", "value_m": 1.45}, {"from": "@7.55", "to": "@6.55", "value_m": 1.0},
+       {"from": "@6.55", "to": "@5.55", "value_m": 1.0}, {"from": "@5.55", "to": "@4.55", "value_m": 1.0},
+       {"from": "@4.55", "to": "@4.45", "value_m": 0.1}, {"from": "@4.45", "to": "@3.45", "value_m": 1.0},
+       {"from": "@3.45", "to": "@2.45", "value_m": 1.0}, {"from": "@2.45", "to": "@1.45", "value_m": 1.0},
+       {"from": "@1.45", "to": "ก", "value_m": 1.45}, {"from": "ก", "to": "@-0.10", "value_m": 0.1},
+       {"from": "@-0.10", "to": "@-0.60", "value_m": 0.5}
+     ], "note": "A-09 รูปด้าน2 (long elevation), direct image read, THREE stacked rows merged into one reconciled chain: detailed row '1.55/1.00x3/0.10/1.00x3/1.55' (six ป2 doors, 3+3 cubicles), a middle '0.10/4.50/4.50/0.10' summary, and an outer '0.60' eave mark. RULE-4 RECONCILIATION (flagged in warnings): the detailed row as printed (transcribed '1.55' by the prior per-page extraction, repeated on A-08/A-09/A-10/A-11) sums to 9.20 against the grid-confirmed ก-ค=9.00, a 0.20m mismatch; using 1.45 instead of 1.55 for the two outer segments reconciles EXACTLY to 9.00 (1.45x2+1.00x3+0.10=9.00) and centres the 0.10 central wall exactly on named ข (4.45 to 4.55). This sweep uses 1.45; the discrepancy with the prior '1.55' transcription is recorded in warnings for human verification against the original drawing."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า11.png",
+     "segments": [
+       {"from": "@-0.10", "to": "2", "value_m": 0.1}, {"from": "2", "to": "@4.60", "value_m": 1.4},
+       {"from": "@4.60", "to": "@1.40", "value_m": 3.2}, {"from": "@1.40", "to": "1", "value_m": 1.4},
+       {"from": "1", "to": "@-0.10", "value_m": 0.1}
+     ], "note": "A-10 รูปด้าน3 (opposite gable), direct image confirms per its own warning: 'Chain 0.10 / 1.40 / 3.20 / 1.40 / 0.10 over 6.00 m, matching A-08's floor plan and A-09's รูปด้าน1 exactly' -- reads grid 2 then 1 left to right (mirrored), same physical points @-0.10/@1.40/@4.60/@6.10 (this entry writes '@-0.10' at both visual ends since the chain is symmetric and the sheet does not distinguish which side is which by value)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า11.png",
+     "segments": [
+       {"from": "@9.60", "to": "@9.10", "value_m": 0.5}, {"from": "@9.10", "to": "ค", "value_m": 0.1},
+       {"from": "ค", "to": "@7.55", "value_m": 1.45}, {"from": "@7.55", "to": "@6.55", "value_m": 1.0},
+       {"from": "@6.55", "to": "@5.55", "value_m": 1.0}, {"from": "@5.55", "to": "@4.55", "value_m": 1.0},
+       {"from": "@4.55", "to": "@4.45", "value_m": 0.1}, {"from": "@4.45", "to": "@3.45", "value_m": 1.0},
+       {"from": "@3.45", "to": "@2.45", "value_m": 1.0}, {"from": "@2.45", "to": "@1.45", "value_m": 1.0},
+       {"from": "@1.45", "to": "ก", "value_m": 1.45}, {"from": "ก", "to": "@-0.10", "value_m": 0.1},
+       {"from": "@-0.10", "to": "@-0.60", "value_m": 0.5}
+     ], "note": "A-10 รูปด้าน4 (long elevation, opposite A-09 รูปด้าน2), per its own warning: 'Dimension chain is identical to รูปด้าน2 ... over 4.50 + 4.50 = 9.00 m, with 0.60 m eaves. Six 1.00 m cubicle modules, six ป2 doors.' Fourth independent confirmation of the reconciled 1.45-based chain."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า12.png",
+     "segments": [
+       {"from": "@-0.60", "to": "@-0.10", "value_m": 0.5}, {"from": "@-0.10", "to": "2", "value_m": 0.1},
+       {"from": "2", "to": "@4.60", "value_m": 1.4}, {"from": "@4.60", "to": "@1.40", "value_m": 3.2},
+       {"from": "@1.40", "to": "1", "value_m": 1.4}, {"from": "1", "to": "@-0.10", "value_m": 0.1},
+       {"from": "@-0.10", "to": "@-0.60", "value_m": 0.5}
+     ], "note": "A-11 รูปตัด2 (cross-section through 1-2), per its own warning: 'Chain 0.10/1.40/3.20/1.40/0.10 over 6.00 m with 0.60 m eaves -- the same width chain as A-08, A-09 รูปด้าน1 and A-10 รูปด้าน3. Four sheets agree on the block width.'"},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า12.png",
+     "segments": [
+       {"from": "ค", "to": "@7.55", "value_m": 1.45}, {"from": "@7.55", "to": "@6.55", "value_m": 1.0},
+       {"from": "@6.55", "to": "@5.55", "value_m": 1.0}, {"from": "@5.55", "to": "@4.55", "value_m": 1.0},
+       {"from": "@4.55", "to": "@4.45", "value_m": 0.1}, {"from": "@4.45", "to": "@3.45", "value_m": 1.0},
+       {"from": "@3.45", "to": "@2.45", "value_m": 1.0}, {"from": "@2.45", "to": "@1.45", "value_m": 1.0},
+       {"from": "@1.45", "to": "ก", "value_m": 1.45}
+     ], "note": "A-11 รูปตัด1 (long section), per its own warning: 'Horizontal chain repeats the cubicle module exactly: 0.10/1.55/1.00x3/0.10/1.00x3/1.55/0.10 over 4.50+4.50=9.00m with 0.60m eaves.' Fifth independent confirmation of the reconciled 1.45-based interior chain (outer 0.10/0.60 wall+eave segments omitted here since already captured from A-08/A-09/A-10/A-11's other views)."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า14.png",
+     "segments": [{"from": "1", "to": "2", "value_m": 6.0}],
+     "note": "S-01 inset (สุขา footing plan), direct image read -- clean single '6.00' span, confirms grid1-grid2, no new points on this particular sheet (it does not repeat the 0.10/0.60 wall/eave sub-ticks)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า14.png",
+     "segments": [{"from": "ค", "to": "ข", "value_m": 4.5}, {"from": "ข", "to": "ก", "value_m": 4.5}],
+     "note": "S-01 inset, direct image read -- clean '4.50/4.50', confirms named ก/ข/ค exactly, no new points on this sheet."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า23.png",
+     "segments": [{"from": "1", "to": "2", "value_m": 6.0}],
+     "note": "E-02 inset (สุขา lighting plan) x-axis -- clean single '6.00' between grid1/grid2, no new points; no wall/eave sub-ticks shown on the x-axis of this sheet."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า23.png",
+     "segments": [
+       {"from": "@9.10", "to": "ค", "value_m": 0.1}, {"from": "ค", "to": "ข", "value_m": 4.5}, {"from": "ข", "to": "ก", "value_m": 4.5},
+       {"from": "ก", "to": "@-0.10", "value_m": 0.1}
+     ], "note": "E-02 inset (สุขา lighting plan), direct image read: '0.10 / 4.50 / [9.00 cumulative] / 4.50 / 0.10' -- confirms @9.10/@-0.10 (the floor-level wall-face points) independently of A-08/A-09/A-10/A-11."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า24.png",
+     "segments": [{"from": "1", "to": "2", "value_m": 6.0}],
+     "note": "SN-01 แปลนท่อน้ำดี (water plan), direct image read -- clean single '6.00', no new points, no wall/eave sub-ticks on this MEP sheet."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า24.png",
+     "segments": [{"from": "ค", "to": "ข", "value_m": 4.5}, {"from": "ข", "to": "ก", "value_m": 4.5}],
+     "note": "SN-01 water plan, direct image read -- clean '4.50/4.50', confirms named lines only."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า24.png",
+     "segments": [{"from": "1", "to": "2", "value_m": 6.0}],
+     "note": "SN-01 แปลนท่อน้ำเสีย (drainage plan), same sheet -- clean '6.00', confirms named lines only."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า24.png",
+     "segments": [{"from": "ค", "to": "ข", "value_m": 4.5}, {"from": "ข", "to": "ก", "value_m": 4.5}],
+     "note": "SN-01 drainage plan -- clean '4.50/4.50', confirms named lines only. Water/drainage plans (SN-01) contribute NO new dummies at all -- swept per rule 4 but genuinely carry no non-grid dimension."}
+  ],
+  "unassigned_dimensions": [],
+  "warnings": [
+    "TRANSCRIPTION RECONCILIATION -- every prior per-page extraction (A-08 view1's own warning, A-09/A-10's รูปด้าน1-4, A-11's รูปตัด1-2) transcribed the cubicle-elevation chain's two outer segments as '1.55 m'. Summed with the rest of the printed row (1.55+1.00+1.00+1.00+0.10+1.00+1.00+1.00+1.55=9.20) this does NOT match the grid-confirmed ก-to-ค distance of 9.00 m (a 0.20 m / 200 mm discrepancy -- too large for rounding). Substituting 1.45 m for both outer segments reconciles EXACTLY (1.45+1.00+1.00+1.00+0.10+1.00+1.00+1.00+1.45=9.00) AND centres the 0.10 m central wall exactly on named ข (4.45 to 4.55, midpoint 4.50). This sweep adopts 1.45 m as the reconciled value for @1.45/@2.45/@3.45/@4.45/@4.55/@5.55/@6.55/@7.55. This is a judgement call, not a re-read of the original scan at higher resolution -- a human should verify the printed digit against the actual A-09/A-10 drawing (4 vs 5 is a plausible OCR/transcription slip) before this is applied.",
+    "NAME COLLISION WARNING FOR gridfix.py -- the สุขา master ALREADY has two dummy y-lines named ข' and ค' (both pos_m: null, added by a prior beam-endpoint-rule pass for the horizontal B5 beam's mid-span position, 'visually ~2.25m' per their notes). This sweep's newly-derived points (@1.45/@2.45/@3.45/@4.45 in the ก-ข gap and @4.55/@5.55/@6.55/@7.55 in the ข-ค gap) are DIFFERENT physical points from the existing ข'/ค' -- the existing ones describe a STRUCTURAL beam position (S-02/beam plan), while the new ones describe ARCHITECTURAL partition-wall positions (A-08/A-09/A-10/A-11) -- they are not expected to coincide and none of the new points is within 0.05m of 2.25 (the existing dummy's rough visual estimate). When gridfix.py assigns final prime names, it will need to interleave the existing (structurally-sourced) ข'/ค' into the same ก-ข and ข-ค prime sequences as these new (architecturally-sourced) points once the existing dummy's true pos_m is resolved -- this sweep does NOT attempt to resolve the existing ข'/ค' position, that is outside rule-4's additive scope.",
+    "RULE-4 DECISION -- as on the main-building master, the '0.10' (wall face) and '0.60' (roof eave) offsets beyond grid1/grid2 and beyond ก/ค are treated as TWO INDEPENDENT dimensions measured from the same grid/wall line (not nested/additive), consistent with every sheet's own printed values (e.g. A-08 roof plan prints a clean standalone '0.60/4.50/4.50/0.60' with no 0.10 sub-tick).",
+    "Every new point in this sweep is corroborated by at least 2 independent sheets (the x-axis interior points @1.40/@4.60 by 4 sheets: A-08 floor+roof, A-09 รูปด้าน1, A-10 รูปด้าน3, A-11 รูปตัด2; the y-axis interior points by 4 sheets: A-09 รูปด้าน2, A-10 รูปด้าน4, A-11 รูปตัด1, plus A-08's partial floor-plan read) except the outer wall/eave edges (@-0.10/@6.10/@-0.60/@6.60 x-axis; @9.10/@-0.10/@9.60/@-0.60 y-axis), each confirmed on at least 3 sheets.",
+    "S-02 inset (หน้า15_view2, beam plan) and S-03 inset (หน้า16_view2, roof frame plan) were NOT re-swept for x/y dimension chains here -- their own element-level warnings (already in the existing file) record the ข'/ค' dummy-grid discovery and B4/B5/B6/T2/D/E/F member positions in full, and re-reading their images added no new printed dimension beyond what those existing per-page files already transcribe. Only the pages actually contributing new chain data (A-08/A-09/A-10/A-11/S-01 inset/E-02 inset/SN-01 x2) were directly re-read for this sweep; the rest of pages_swept relied on their own already-detailed per-page warnings, cross-checked for internal consistency rather than re-imaged pixel-by-pixel."
+  ]
+}

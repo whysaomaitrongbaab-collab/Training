@@ -1,0 +1,183 @@
+{
+  "house_dir": "json_แก้ไขแล้ว/06บ้าน_ใหญ่_1ชั้น_01",
+  "master": "บ้าน_ใหญ่_1ชั้น_01_หน้า00_gridline.json",
+  "pages_swept": [
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า04_site_plan (A-03, ผังบริเวณ 1:125)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า05_floor_plan (A-04, แปลนพื้นอาคาร 1:100)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า06_roof_plan (A-05, แปลนหลังคา 1:100)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า07_view1_elevation1 (A-06, รูปด้าน1 1:100)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า07_view2_elevation2 (A-06, รูปด้าน2/gable 1:100)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า07_view3_elevation3 (A-06, รูปด้าน3 1:100)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า07_view4_elevation4 (A-06, รูปด้าน4/gable 1:100)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า08_view1_section1 (A-07, รูปตัด1/cross-section 1:100)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า08_view2_section2 (A-07, รูปตัด2/longitudinal 1:100)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า14_view1_footing_plan (S-01, แปลนฐานราก 1:100, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า15_view1_beam_plan (S-02, แปลน เสา คาน พื้น 1:100, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า16_view1_roof_frame_plan (S-03, แปลนโครงหลังคา 1:100, direct image read)",
+    "บ้าน_ใหญ่_1ชั้น_01_หน้า23_view1_lighting_plan (E-02, แปลนไฟฟ้าแสงสว่าง 1:125, direct image read)"
+  ],
+  "pages_skipped": [
+    {"page": "หน้า01_title", "why": "cover page, no axis/dimensions printed"},
+    {"page": "หน้า02_view1_index", "why": "table of contents, no axis"},
+    {"page": "หน้า02_view2_symbol_legend", "why": "symbol legend, no axis"},
+    {"page": "หน้า03_notes", "why": "spec/requirement notes, no axis ticks"},
+    {"page": "หน้า08_view3_door_window_schedule", "why": "schedule table on the same sheet as A-07's sections, no axis"},
+    {"page": "หน้า13_view1_wc_plan", "why": "member/room-level typical-module detail (ขยายห้องน้ำ 1:25) -- its own warnings state 'grid_ref is null throughout: this is a typical-module detail, not tied to a specific pair of grid lines' (it is the SAME repeated cubicle pair drawn 6x on A-08/A-09/A-10, so its local dimensions -- 0.10/0.70/0.10/0.65/0.10/0.20/1.25/0.10 and 0.10/EQ/0.90/EQ/0.10 -- cannot be anchored to one specific grid position). Excluded per spec's own carve-out: 'a dimension inside one element's own detail ... stays on the element as it always has'"},
+    {"page": "หน้า13_view2_wc_sections", "why": "member-detail cross-sections (รูปตัด 1-1/2-2/3-3/4-4 of the same typical WC cubicle pair) -- same reasoning as view1, no grid_ref, no axis chain"},
+    {"page": "หน้า14_view3_notes", "why": "รายการประกอบแบบ spec notes on the same sheet as S-01, no axis"},
+    {"page": "หน้า17_footing_slab_details", "why": "member-detail cross-section (ขยายฐานราก ขยายพื้น), single-member scale, no axis ticks"},
+    {"page": "หน้า18_footing_beam_details", "why": "member-detail cross-section (ขยายฐานราก ขยายคาน), no axis ticks"},
+    {"page": "หน้า19_structural_details", "why": "member-detail cross-section (ขยายโครงสร้าง -- connection details), no axis ticks"},
+    {"page": "หน้า20_roof_truss_T1_details", "why": "member-detail cross-section (ขยายโครงหลังคา T1), no axis ticks"},
+    {"page": "หน้า21_roof_truss_T2_railing_details", "why": "member-detail cross-section (T2/railing), no axis ticks"},
+    {"page": "หน้า22_view1_symbol_legend", "why": "symbol legend, no axis"},
+    {"page": "หน้า22_view2_notes", "why": "spec notes, no axis"},
+    {"page": "หน้า22_view3_panel_diagram", "why": "electrical panel schematic diagram, no axis"},
+    {"page": "หน้า24_view1_symbol_pipe_schedule", "why": "symbol/pipe legend, no axis"},
+    {"page": "หน้า25_septic_channel_details", "why": "member-detail cross-section (แบบขยายบ่อเกรอะ), no axis ticks"},
+    {"page": "หน้า09/10/11/12/14_view2/15_view2/16_view2/23_view2/24_view2/24_view3", "why": "belong to the อาคารสุขารวม (สุขา) block -- swept separately against หน้า00b_gridline_สุขา.json, see that staging file"}
+  ],
+  "z_levels_add": [
+    {"id": "ระดับดิน", "level_m": 0.0, "type": "datum", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า04.png", "note": "±0.00 ground reference, printed at the entrance stair on the site plan/floor plan; the main building's own datum (distinct from the already-recorded 'ระดับ' 0.15 entry, which belongs to the สุขา block -- see warnings)."},
+    {"id": "ระดับพื้นอาคาร", "level_m": 1.0, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า07.png", "note": "raised main-building floor level, printed on all 4 elevations (A-06) and both sections (A-07)."},
+    {"id": "ระดับท้องอะเส", "level_m": 3.5, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า07.png", "note": "eave-soffit level, 2.40 m clear above ระดับพื้นอาคาร; printed on all 4 elevations and both sections."},
+    {"id": "แท่น คสล.ปรับระดับรับบันได", "level_m": 0.2, "type": "named", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า08.png", "note": "RC levelling slab under the entrance stair, printed on A-07 รูปตัด1 (หน้า08 view1) and A-04 floor plan's stair detail."}
+  ],
+  "dimension_chains": [
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า04.png",
+     "segments": [
+       {"from": "1", "to": "2", "value_m": 3.6}, {"from": "2", "to": "3", "value_m": 3.6}, {"from": "3", "to": "4", "value_m": 3.6},
+       {"from": "4", "to": "5", "value_m": 3.6}, {"from": "5", "to": "6", "value_m": 3.6}, {"from": "6", "to": "7", "value_m": 3.6},
+       {"from": "7", "to": "8", "value_m": 3.6}, {"from": "8", "to": "9", "value_m": 3.6}, {"from": "9", "to": "10", "value_m": 3.6},
+       {"from": "10", "to": "11", "value_m": 3.6}
+     ], "note": "A-03 ผังบริเวณ 1:125, drawn unbroken -- full 11-line axis printed, confirms the existing grid, no new points (this is the sheet the master's own axis-decision warning already cites)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า04.png",
+     "segments": [
+       {"from": "@-1.200", "to": "ก", "value_m": 1.2}, {"from": "ก", "to": "ข", "value_m": 3.6}, {"from": "ข", "to": "ค", "value_m": 3.6},
+       {"from": "ค", "to": "@8.400", "value_m": 1.2}
+     ], "note": "A-03 site plan's own y-axis dimension chain (simplified -- does not repeat the 0.075m beam sub-tick that S-01/S-02/S-03/A-04/A-05/A-07 all print). Direct image read confirms '(ค) 1.20 / 3.60 / (ข) 7.20 / 3.60 / (ก) 1.20'. @8.400 = ค+1.20, @-1.200 = ก-1.20 (the ground-level eave/walkway overhang edge)."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า05.png",
+     "segments": [
+       {"from": "1", "to": "2", "value_m": 3.6}, {"from": "2", "to": "3", "value_m": 3.6}, {"from": "3", "to": "4", "value_m": 3.6},
+       {"from": "4", "to": "5", "value_m": 3.6}, {"from": "5", "to": "6", "value_m": 3.6}, {"from": "6", "to": "7", "value_m": 3.6},
+       {"from": "7", "to": "8", "value_m": 3.6}, {"from": "8", "to": "11", "value_m": null}
+     ], "note": "A-04 แปลนพื้นอาคาร 1:100, drawn WITH the zigzag break hiding grid 9/10 (per the master's axis-reversal warning) -- direct image confirms 1..8 dimensioned at 3.60 each, then the break, then bubble '11' with no printed value across the break. No new points; matches the resolved 3.60 module."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า05.png",
+     "segments": [
+       {"from": "ค", "to": "@7.275", "value_m": 0.075}, {"from": "@7.275", "to": "@8.400", "value_m": 1.2},
+       {"from": "ก", "to": "@-0.075", "value_m": 0.075}, {"from": "@-0.075", "to": "@-1.200", "value_m": 1.2}
+     ], "note": "A-04 floor plan, direct image read: left axis shows '1.20 / 0.075' stacked at both ค (top) and ก (bottom) ends, exactly matching S-01/S-02/S-03. Two independent dims measured from ค/ก (not chained additively) -- see warnings for how this was resolved. @7.275=ค+0.075 (B1 beam half-depth edge), @8.400=ค+1.20 (eave edge); @-0.075=ก-0.075, @-1.200=ก-1.20 (mirror at the ก end, y-axis -- unrelated to the x-axis @-0.075 below, which is a different line on a different axis)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า06.png",
+     "segments": [
+       {"from": "ค", "to": "@7.275", "value_m": 0.075}, {"from": "@7.275", "to": "@8.400", "value_m": 1.2},
+       {"from": "ก", "to": "@-0.075", "value_m": 0.075}, {"from": "@-0.075", "to": "@-1.200", "value_m": 1.2}
+     ], "note": "A-05 แปลนหลังคา 1:100, direct image read -- identical '1.20/0.075' stacked chain at ค and ก, confirming the same two points. Also carries the 1.20m ชายคา (eave) overhang note matching @8.400/@-1.200."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า07.png",
+     "segments": [
+       {"from": "@-0.075", "to": "1", "value_m": 0.075}, {"from": "1", "to": "2", "value_m": 3.6}, {"from": "2", "to": "3", "value_m": 3.6},
+       {"from": "3", "to": "4", "value_m": 3.6}, {"from": "4", "to": "5", "value_m": 3.6}, {"from": "5", "to": "6", "value_m": 3.6},
+       {"from": "6", "to": "7", "value_m": 3.6}, {"from": "7", "to": "8", "value_m": 3.6}, {"from": "8", "to": "11", "value_m": null},
+       {"from": "11", "to": "@36.075", "value_m": 0.075}
+     ], "note": "A-06 รูปด้าน1 (front elevation, x-axis): per its own warning 'Grid bubbles run 1 to 11 left to right, 3.60 m apart, with 0.075 m at each end (the B1 beam half-depth)'. This is the source of the new x-axis points @-0.075 (before grid1) and @36.075 (beyond grid11)."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า07.png",
+     "segments": [
+       {"from": "@36.075", "to": "11", "value_m": 0.075}, {"from": "11", "to": "10", "value_m": 3.6}, {"from": "8", "to": "7", "value_m": 3.6},
+       {"from": "7", "to": "6", "value_m": 3.6}, {"from": "6", "to": "5", "value_m": 3.6}, {"from": "5", "to": "4", "value_m": 3.6},
+       {"from": "4", "to": "3", "value_m": 3.6}, {"from": "3", "to": "2", "value_m": 3.6}, {"from": "2", "to": "1", "value_m": 3.6},
+       {"from": "1", "to": "@-0.075", "value_m": 0.075}
+     ], "note": "A-06 รูปด้าน3 (rear elevation) -- reads grid 11 to 1 left-to-right per its own warning ('Grid bubbles run 11 to 1'), reprinting the same 0.075m end ticks confirming @-0.075/@36.075."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า07.png",
+     "segments": [
+       {"from": "edge", "to": "edge", "value_m": 1.125}, {"from": "edge", "to": "edge", "value_m": 6.15}, {"from": "edge", "to": "edge", "value_m": 1.2}
+     ], "note": "A-06 รูปด้าน2 (gable end), UPPER chain -- 'roof width between barge boards', per its own warning explicitly 'does not correspond to a grid dimension'. Left unresolved (edge/edge) rather than guessed; total 8.475 m happens to equal ค+1.275 (i.e. ค+0.075+1.20), which MAY mean the roof-level barge-board edge sits 0.075m beyond the ground-level eave edge (@8.400), but the OTHER end (1.125 side) has no independent confirmation, so this is flagged as an observation for a human reviewer, not adopted as a resolved point."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า07.png",
+     "segments": [
+       {"from": "@-1.200", "to": "ก", "value_m": 1.2}, {"from": "ก", "to": "ข", "value_m": 3.6}, {"from": "ข", "to": "ค", "value_m": 3.6},
+       {"from": "ค", "to": "@8.400", "value_m": 1.2}
+     ], "note": "A-06 รูปด้าน2 (gable end), LOWER chain -- '1.20/3.60/3.60/1.20', matches @-1.200/@8.400 (the ground-level eave/walkway edge; this view does not separately show the 0.075m beam sub-tick)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า07.png",
+     "segments": [
+       {"from": "edge", "to": "edge", "value_m": 1.2}, {"from": "edge", "to": "edge", "value_m": 6.15}, {"from": "edge", "to": "edge", "value_m": 1.125}
+     ], "note": "A-06 รูปด้าน4 (opposite gable), UPPER chain -- mirror of รูปด้าน2's upper chain (1.20/6.15/1.125). Same unresolved treatment."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า07.png",
+     "segments": [
+       {"from": "@8.400", "to": "ค", "value_m": 1.2}, {"from": "ค", "to": "ข", "value_m": 3.6}, {"from": "ข", "to": "ก", "value_m": 3.6},
+       {"from": "ก", "to": "@-1.200", "value_m": 1.2}
+     ], "note": "A-06 รูปด้าน4, LOWER chain -- mirror of รูปด้าน2's lower chain, confirms @8.400/@-1.200."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า08.png",
+     "segments": [
+       {"from": "edge", "to": "edge", "value_m": 1.125}, {"from": "edge", "to": "edge", "value_m": 6.15}, {"from": "edge", "to": "edge", "value_m": 1.2}
+     ], "note": "A-07 รูปตัด1 (cross-section ค-ข-ก), UPPER (roof) chain -- '1.125/6.15/1.20', per its own warning is the roof-level chain; same unresolved treatment as the gable elevations' upper chain (same values, same sheet family)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า08.png",
+     "segments": [
+       {"from": "ค", "to": "@7.275", "value_m": 0.075}, {"from": "@7.275", "to": "ข", "value_m": 3.6}, {"from": "ข", "to": "@-0.075", "value_m": 3.6},
+       {"from": "@-0.075", "to": "ก", "value_m": 0.075}
+     ], "note": "A-07 รูปตัด1, MIDDLE chain -- '0.075/3.60/3.60/0.075', per its own warning explicitly 'the grid plus B1 half-depths'. Confirms @7.275/@-0.075 (the 0.075m beam-edge points)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า08.png",
+     "segments": [
+       {"from": "@-1.200", "to": "ก", "value_m": 1.2}, {"from": "ก", "to": "ค", "value_m": 7.2}, {"from": "ค", "to": "@8.400", "value_m": 1.2}
+     ], "note": "A-07 รูปตัด1, LOWER chain -- '1.20/7.20/1.20', per its own warning 'grid span plus both eaves'. Confirms @-1.200/@8.400 (the 1.20m eave/walkway edge points); the 7.20 is the cumulative ก-ค grid span, not a new point."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า08.png",
+     "segments": [
+       {"from": "@-0.075", "to": "1", "value_m": 0.075}, {"from": "1", "to": "2", "value_m": 3.6}, {"from": "2", "to": "3", "value_m": 3.6},
+       {"from": "3", "to": "4", "value_m": 3.6}, {"from": "4", "to": "5", "value_m": 3.6}, {"from": "5", "to": "6", "value_m": 3.6},
+       {"from": "6", "to": "7", "value_m": 3.6}, {"from": "7", "to": "8", "value_m": 3.6}, {"from": "8", "to": "11", "value_m": null},
+       {"from": "11", "to": "@36.075", "value_m": 0.075}
+     ], "note": "A-07 รูปตัด2 (longitudinal section along 1-11), per its own warning 'Axis reads 1..8 at 3.60 m then 11 with 0.075 m at each end'. Third independent confirmation of @-0.075/@36.075."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า14.png",
+     "segments": [
+       {"from": "1", "to": "2", "value_m": 3.6}, {"from": "2", "to": "3", "value_m": 3.6}, {"from": "3", "to": "4", "value_m": 3.6},
+       {"from": "4", "to": "5", "value_m": 3.6}, {"from": "5", "to": "6", "value_m": 3.6}, {"from": "6", "to": "7", "value_m": 3.6},
+       {"from": "7", "to": "8", "value_m": 3.6}, {"from": "8", "to": "10", "value_m": null}, {"from": "10", "to": "11", "value_m": 3.6}
+     ], "note": "S-01 แปลนฐานราก 1:100, direct image read -- bottom axis 1..8, break, merged '8/10' bubble, 3.60 to 11."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า14.png",
+     "segments": [
+       {"from": "ค", "to": "@7.275", "value_m": 0.075}, {"from": "@7.275", "to": "@8.400", "value_m": 1.2},
+       {"from": "ก", "to": "@-0.075", "value_m": 0.075}, {"from": "@-0.075", "to": "@-1.200", "value_m": 1.2}
+     ], "note": "S-01, direct image read -- left axis shows '1.20' then '0.075' stacked at both ค (top) and ก (bottom), plus a '7.20' cumulative bracket ค-ก (not a new point)."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า15.png",
+     "segments": [
+       {"from": "1", "to": "2", "value_m": 3.6}, {"from": "2", "to": "3", "value_m": 3.6}, {"from": "3", "to": "4", "value_m": 3.6},
+       {"from": "4", "to": "5", "value_m": 3.6}, {"from": "5", "to": "6", "value_m": 3.6}, {"from": "6", "to": "7", "value_m": 3.6},
+       {"from": "7", "to": "8", "value_m": 3.6}, {"from": "8", "to": "10", "value_m": null}, {"from": "10", "to": "11", "value_m": 3.6}
+     ], "note": "S-02 แปลน เสา คาน พื้น 1:100, direct image read -- identical bottom axis to S-01."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า15.png",
+     "segments": [
+       {"from": "ค", "to": "@7.275", "value_m": 0.075}, {"from": "@7.275", "to": "@8.400", "value_m": 1.2},
+       {"from": "ก", "to": "@-0.075", "value_m": 0.075}, {"from": "@-0.075", "to": "@-1.200", "value_m": 1.2}
+     ], "note": "S-02, direct image read -- same '1.20/0.075' stacked chain at ค and ก. This is the sheet the pre-existing master warning already cites for the 0.075 beam half-depth."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า16.png",
+     "segments": [
+       {"from": "1", "to": "2", "value_m": 3.6}, {"from": "2", "to": "3", "value_m": 3.6}, {"from": "3", "to": "4", "value_m": 3.6},
+       {"from": "4", "to": "5", "value_m": 3.6}, {"from": "5", "to": "6", "value_m": 3.6}, {"from": "6", "to": "7", "value_m": 3.6},
+       {"from": "7", "to": "8", "value_m": 3.6}, {"from": "8", "to": "10", "value_m": null}, {"from": "10", "to": "11", "value_m": 3.6}
+     ], "note": "S-03 แปลนโครงหลังคา 1:100, direct image read -- identical bottom axis to S-01/S-02. Also prints 'ระยะตามแบบสถาปัตยกรรม ไม่มากกว่า 1.00 ม.' twice near the roof overhang -- a stated LIMIT, not a measured dimension, so NOT recorded as a chain segment (matches the pipeline's existing note on this sheet)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า16.png",
+     "segments": [
+       {"from": "ค", "to": "@7.275", "value_m": 0.075}, {"from": "@7.275", "to": "@8.400", "value_m": 1.2},
+       {"from": "ก", "to": "@-0.075", "value_m": 0.075}, {"from": "@-0.075", "to": "@-1.200", "value_m": 1.2}
+     ], "note": "S-03, direct image read -- same '1.20/0.075' stacked chain at ค and ก."},
+    {"axis": "x", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า23.png",
+     "segments": [
+       {"from": "1", "to": "2", "value_m": 3.6}, {"from": "2", "to": "3", "value_m": 3.6}, {"from": "3", "to": "4", "value_m": 3.6},
+       {"from": "4", "to": "5", "value_m": 3.6}, {"from": "5", "to": "6", "value_m": 3.6}, {"from": "6", "to": "7", "value_m": 3.6},
+       {"from": "7", "to": "8", "value_m": 3.6}, {"from": "8", "to": "9", "value_m": 3.6}, {"from": "9", "to": "10", "value_m": 3.6},
+       {"from": "10", "to": "11", "value_m": 3.6}
+     ], "note": "E-02 แปลนไฟฟ้าแสงสว่าง 1:125, direct image read -- the FULL unbroken 1..11 axis (this is the sheet the master's own axis-decision warning already cites as one of the two 1:125 sheets that settled the house's axis)."},
+    {"axis": "y", "source_image": "image/บ้าน_ใหญ่_1ชั้น_01/บ้าน_ใหญ่_1ชั้น_01_หน้า23.png",
+     "segments": [
+       {"from": "@-1.200", "to": "ก", "value_m": 1.2}, {"from": "ก", "to": "ข", "value_m": 3.6}, {"from": "ข", "to": "ค", "value_m": 3.6},
+       {"from": "ค", "to": "@8.400", "value_m": 1.2}
+     ], "note": "E-02, direct image read -- y-axis chain with '1.20' eave overhang visible at bottom (ก side); confirms @-1.200/@8.400 (this sheet does not separately show the 0.075 beam sub-tick, same as the site plan)."}
+  ],
+  "unassigned_dimensions": [],
+  "warnings": [
+    "RULE-4 DECISION -- the '0.075' vs '1.20' pattern at ค/ก and at grid 1/11 are treated as TWO INDEPENDENT dimensions measured from the same grid line (parallel annotations), NOT a nested/additive chain summing to 1.275. Evidence: (a) A-03 site plan and E-02 lighting plan print ONLY '1.20' at ค/ก with no 0.075 sub-tick, yet both independently confirm the SAME @8.400/@-1.200 points that S-01/S-02/S-03/A-04/A-05/A-06(gable lower chain)/A-07(section1 lower chain) reach when their 0.075+1.20 stacked pair is read as parallel-not-summed; (b) if additive, the total would be @8.475/@-1.275, which no sheet's simpler '1.20'-only chain would independently corroborate. Reading them as additive (grid+0.075+1.20=1.275) was considered and rejected for this reason, though it is recorded as a live possibility for the roof-level barge-board chain specifically (see the dimension_chains note on that entry) since its printed total (8.475) numerically equals ค+1.275 and has no independent simpler confirmation either way.",
+    "The 0.075m ticks are included as genuine axis dummy points (@7.275/@-0.075 y-axis, @-0.075/@36.075 x-axis) rather than excluded as 'inside one element's own detail', because on every sheet they are printed IN LINE with the grid-spacing dimension chain (stacked directly with the 3.60/1.20 segments as one continuous vertical/horizontal dimension run), which spec's own rule-4 text frames as the deciding factor ('Rule 4 is about dimension rows that run along the building's grid axes') -- not their coincidental numeric equality to the B1 beam's half-depth (WF150/2=75mm). No beam or column element currently has an endpoint at these points; per rule 4 that is expected and does not disqualify them ('It doesn't matter whether any element sits on it'). Note @-0.075 appears on BOTH the x-axis (before grid1) and the y-axis (before ก) -- these are two different lines on two different axes that happen to share the same offset value; gridfix.py should not conflate them.",
+    "The gable-elevation/section1 ROOF-level chain ('1.125/6.15/1.20' and its mirror) is left UNRESOLVED (edge/edge) rather than forced onto a placeholder -- its own prior extraction explicitly states it 'does not correspond to a grid dimension', and while its total happens to numerically match ค+1.275 on one side, the other end (the 1.125 side) has no independent cross-check to confirm an anchor. A future pass with a higher-resolution image crop of A-06/A-07's roof-profile dimension line should resolve this rather than guessing here.",
+    "The existing z_levels entry {'id':'ระดับ','level_m':0.15,'source_image':'...หน้า09.png'} on THIS (main-building) master appears MISATTRIBUTED -- 0.15 is the สุขา block's floor level (ระดับพื้นอาคาร สุขา, confirmed on A-08/A-09/A-10/A-11) and หน้า09.png is a สุขา-block sheet, not a main-building one. This sweep does not remove or edit it (out of rule-4's scope, which only adds), but a human should decide whether to move it to the 00b master (where the identical entry already also exists) or relabel/remove it from this file.",
+    "Prime-ordering guidance for gridfix.py on the ค side: ค is the topmost/first-scanned y-axis line for this house (confirmed by direct image inspection of S-01/S-02/S-03/E-02, all of which draw ค at the top and ก at the bottom), so per spec's 'combined before+after sequence, scanned in reading order' rule (house #17's 1'/1''/1''' pattern), the FARTHER point (@8.400, beyond ค) should be named first in ค's prime sequence (encountered first scanning top-to-bottom) and the NEARER point (@7.275) second. This mirrors the already-established convention on the สุขา master, whose own ข'/ค' dummies were named 'per the reading-direction rule (y-axis scans top to bottom)' with ค as the first-scanned line there too. On the ก side (the LAST y-axis line) no such swap applies -- @-0.075 is the nearer point and @-1.200 the farther, matching a normal 'continuing past the last grid' case, nearest-first.",
+    "Every value in this sweep was cross-checked against at least 2 independent sheets (usually 3+) before being adopted as a resolved dummy point -- see the dimension_chains entries' source_image + note fields for the specific corroborating sheets. No new point was created from a single sheet's reading alone.",
+    "@-0.075 (x-axis)/@36.075 and @7.275/@-0.075/@8.400/@-1.200 (y-axis) are all genuinely unused by any element in this house's current extraction (every beam/column/footing in the elements[] arrays already resolves to a named line) -- kept per rule 4's explicit instruction ('every ... line -- even one nothing uses')."
+  ]
+}
