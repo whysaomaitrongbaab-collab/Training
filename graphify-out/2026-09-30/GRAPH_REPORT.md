@@ -1,16 +1,16 @@
-# Graph Report - Training  (2026-09-30)
+# Graph Report - Training  (2026-09-02)
 
 ## Corpus Check
-- 5398 files · ~203,821,154 words
+- 5305 files · ~203,151,602 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 5082 nodes · 5858 edges · 390 communities (347 shown, 43 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 62 edges (avg confidence: 0.58)
+- 2855 nodes · 3208 edges · 292 communities (252 shown, 40 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6b85d361`
+- Built from commit: `e2ee287c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -95,6 +95,7 @@
 - PROMPT START
 - วิจัย: ใช้ Qwen grounding (pixel/bbox) เทียบกับ gridmaster เพื่อตรวจสอบคาน
 - 🚨 คู่มือฉุกเฉิน Purson — ใช้ตอนคุยกับ Claude ไม่ได้
+- t04_Purson/README.md
 - destrier_test_house/op04_score.py
 - proof/op04_score.py
 - 03บ้าน_เล็ก_2ชั้น_01 (รอบตรวจภาพต้นฉบับ 2026-07-20)
@@ -186,7 +187,6 @@
 - t05_Courser/worker_page.py
 - worker_page_raw_pratyad.py
 - t05_Destier — ทุกอย่างที่ "ใช้จริง" ของ Destrier รวมไว้ที่เดียว
-- training/audit_inline.py
 - training/worker_page.py
 - index.ts
 - 5. Rebar spec — รวมโครงสร้างใหม่ (breaking change จากทั้ง 2 ฝั่งเดิม แต่มีเหตุผลจากหลักฐานจริง)
@@ -280,138 +280,41 @@
 - pass1/README.md
 - pass2.5_harvest/README.md
 - results/README.md
-- merge_model/merge_adapters_soup.py
-- merge_model/verify_hf_push.py
 - vast-template/onstart.sh
 - 2026-07-19.md
-- training/gtq.py
-- training/pass0_material_list_batch.py
-- บทที่ 9: ตอน "ใช้งานจริง" โมเดลทำอะไร: Decoding, Sampling, Quantization, GGUF, llama.cpp, vLLM
-- (b) Findings
-- destrier ที่ใช้งานอยู่: LoRA ของ MoE expert ปนผิดทั้งไฟล์ — ซ่อมได้โดยไม่ต้องเทรนใหม่
-- _fit
-- _trusted_cv_positions
-- crop_for_task
-- 2026-09-23
-- บทที่ 2: โครงข่ายประสาทเทียม (Neural Networks): ทำไมต่อ "เซลล์" เข้าด้วยกันแล้วฉลาดขึ้น
-- บทที่ 10: วัดผลอย่างไรไม่ให้หลอกตัวเอง และคิดแบบนักวิจัย AI
-- Constistant Financial Model — Triple-Agent Validation Summary
-- Quick command: `op2 <house_name>` — staged run with automatic model switching
-- merge_model/soup_safetensors.py
-- training/pass0_derive.py
-- training/train_t05_courser.py
-- โรงเรียน AI สำหรับวิศวกรโยธา — เริ่มอ่านที่นี่
-- 2026-09-02
-- 2026-09-26
-- op_fix — bring an old house up to §4 rule 4
-- _shape_pairs
-- training/smoke_destrier.py
-- pursonVision.js
-- 2.6 Optimizer: จาก SGD ถึง AdamW
-- 2.8 อ่าน loss curve และ regularization
-- 9.10 GGUF, Q4_K_M และหลักการ "วัดซ้ำหลัง quantize"
-- 9.9 Quantization: fp32 → bf16 → int8 → int4
-- 10.12 การอ่าน paper
-- บทที่ 12: อภิธานศัพท์ AI/ML/CV สำหรับวิศวกรโยธา
-- Pass 3 — ถอดระยะ/เหล็ก จากบัญชี element ที่ยืนยันแล้ว
-- Destrier บนบ้านจริงที่ไม่อยู่ในชุดเทรน — บ้านครอบครัวไทยเป็นสุข 3 (งาน 83b8e52c)
-- t05_Destrier — ทุกอย่างที่ "ใช้จริง" ของ Destrier รวมไว้ที่เดียว
-- training/worker_page.py
-- index.ts
-- 2.11 ทำไมต้อง GPU และ precision ของตัวเลข
-- 2.1 เซลล์หนึ่งตัว: ผลรวมถ่วงน้ำหนัก + ฟังก์ชันกระตุ้น
-- 2.2 ต่อเป็นชั้น: Multilayer Perceptron และ forward pass ด้วยเมทริกซ์
-- 2.4 Backpropagation: กฎลูกโซ่ที่ไล่ย้อนจากความผิดพลาด
-- 2.7 Batch, step, epoch และ learning rate schedule
-- 2.9 ทำไมโครงข่ายลึกเทรนยาก: initialization, vanishing/exploding gradient
-- 9.11 mmproj, การ merge LoRA ก่อน convert และการพิสูจน์ว่า merge จริง
-- 9.13 ต้นทุน: token/วินาที, VRAM, GPU เช่า และ monitoring
-- 9.4 Top-k, Top-p (nucleus) และ min-p: ตัดหางของการแจกแจง
-- 9.8 Batching และ continuous batching
-- 10.13 การตั้งคำถามวิจัยและการเขียนรายงานผล
-- 10.2 Confusion matrix, precision, recall, F1
-- 10.3 IoU และ mAP สำหรับ bounding box
-- 10.5 การแบ่งข้อมูล: leave-one-out, k-fold และ data leakage
-- 10.6 Baseline และการพิสูจน์ว่า "ทูนติดจริง"
-- _common.md - shared rule block
-- Pass 0 - page classification
-- pass2_gridline.md - the grid master
-- pass2_material_list.md - bill of quantities (BOQ)
-- pass2_notes.md - project-level specifications
-- pass2_plan_beam.md - beam plan (floor beams and roof framing)
-- pass2_plan_column.md - column plan (not wired into training - see note)
-- pass2_plan_footing.md - footing / pile-cap plan
-- pass2_plan_slab.md - floor slab plan
-- pass2_schedule.md - summary tables
-- pass2_section.md - detail sections (rebar specs)
-- pass2_soil_boring_log.md - soil investigation / borehole log
-- run_cv_scan
-- training/run_cv_batch.py
-- training/run_queue.sh
-- training/run_queue_elements.sh
-- training/run_queue_gpuA.sh
-- 2026-09-29
-- 12. เหตุการณ์สับสน "ทำไม log ไฟล์ที่สั่งไว้ถึงไม่มี" — บทเรียนเรื่อง terminal คิวคำสั่ง
-- 13. เหตุการณ์ "เทรนเสร็จแล้วดันพัง" — บทเรียนเรื่อง "environment ใช้ร่วมกัน"
-- 6. บทเรียนเรื่อง "ตัวเลข 90% ที่เราเชื่อมาตลอด"
-- 2.10 Residual connection และ Layer Norm: ปูทางไป Transformer
-- 2.3 ทำไมต่อชั้นแล้ว "อะไรก็ได้": Universal Approximation
-- 2.5 Autograd: ให้ PyTorch ทำ backprop แทนเรา
-- 9.1 Inference คือ forward pass ทีละ token (autoregressive)
-- 9.2 Greedy vs Sampling และทำไม greedy ทำให้วนซ้ำ
-- 9.3 Temperature: หมุนปุ่ม "ความมั่นใจ" ของโมเดล
-- 9.5 Repetition penalty, no_repeat_ngram และเกณฑ์หยุด
-- 9.6 Constrained decoding: บังคับรูปแบบด้วยการ mask logits
-- 9.7 KV cache, prefill vs decode และทำไม classify เร็วกว่าถอดเต็ม
-- 10.10 Data-centric iteration loop
-- 10.11 Reproducibility: seed, version pin และ "ค่า default พลิกผล"
-- 10.14 Roadmap การเรียนต่อระดับ PhD จากงานของเรา
-- 10.1 Ground truth และการ annotate
-- 10.4 Exact match vs field-level metric สำหรับ JSON
-- 10.7 ความแปรปรวนจาก seed และ sampling: รายงาน mean ± std
-- 10.8 นัยสำคัญทางสถิติเบื้องต้น: bootstrap และปัญหา n=8 บ้าน
-- 10.9 Error analysis เชิงคุณภาพ และการอ่านผลที่ "ดีเกินจริง"
-- proof/op04_gpu_setup.sh
-- proof/op04_run.py
-- training/onstart.sh
-- t06_Voldemort/onstart.sh
-- 2026-09-03
-- 2026-09-21
-- t07_Palfrey/README.md
-- t07_workflow.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `T13 — Process, Planning & Wasted Work` - 232 edges
-2. `T04 — Data Quality, Integrity & Loss` - 144 edges
-3. `T07 — Infrastructure, GPU Rental & Cost` - 125 edges
-4. `T03 — Measurement & Evaluation Methodology` - 95 edges
-5. `T06 — Config, Environment & Dependency Traps` - 88 edges
-6. `T01 — Verification & False Confidence` - 84 edges
-7. `T09 — Model Training & ML Methodology` - 77 edges
-8. `T08 — Tooling Traps & Vendor Behaviour` - 59 edges
-9. `T10 — Code Bugs & Logic Errors` - 54 edges
-10. `T05 — Schema, Contract & Convention Drift` - 41 edges
+1. `2026-08-30` - 26 edges
+2. `Performance & Quantization` - 23 edges
+3. `Primary Raw JSON Schema` - 21 edges
+4. `Primary Raw JSON Schema` - 20 edges
+5. `t02 workflow — Qwen3-VL-30B-A3B vs Qwen3.6-35B-A3B (A/B ตัวต่อตัว)` - 20 edges
+6. `Pass 1 — Input/Output contract, per pattern` - 19 edges
+7. `t01 workflow — Qwen3.6-35B-A3B → Local GGUF, No Ongoing GPU Rental` - 18 edges
+8. `01บ้าน_เล็ก_1ชั้น_01` - 18 edges
+9. `เช่า 4 การ์ดพร้อมกัน — เริ่มรอบเทรนจริง (att1235 มอบแล้ว 2026-08-31 ดึก)` - 18 edges
+10. `t03 workflow — per-subtask multi-pass fine-tune` - 17 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `check_house()` --indirect_call--> `scan()`  [INFERRED]
   tools/check_format.py → tune_ai/t04_Purson/data_before_tune/measure_id_ceiling.py
-- `absolutize_images()` --indirect_call--> `fix()`  [INFERRED]
-  tools/md_to_book_pdf.py → tune_ai/fix_destrier_layout.py
-- `check_b()` --calls--> `unpack_a()`  [INFERRED]
-  tune_ai/t05_Destrier/merge_model/verify_merge.py → tune_ai/t05_Destrier/merge_model/verify_merge_selftest.py
-- `check_b()` --calls--> `unpack_b()`  [INFERRED]
-  tune_ai/t05_Destrier/merge_model/verify_merge.py → tune_ai/t05_Destrier/merge_model/verify_merge_selftest.py
-- `_fit()` --calls--> `fail()`  [INFERRED]
-  tune_ai/t05_Destrier/run_this/pass3_measure.py → tune_ai/t05_Destrier/run_this/notify.py
+- `generate()` --calls--> `grammar_setup()`  [INFERRED]
+  tune_ai/t04_Purson/data_before_tune/infer_house_t04.py → tune_ai/t02/data_before_tune/run_house_batch.py
+- `main()` --calls--> `log_action()`  [EXTRACTED]
+  No_touch_box/log_claude_analysis.py → No_touch_box/log_utils.py
+- `generate()` --calls--> `grammar_setup()`  [INFERRED]
+  tune_ai/t01/data_before_tune/run_house_batch_t01.py → tune_ai/t02/data_before_tune/run_house_batch.py
+- `generate()` --calls--> `grammar_setup()`  [INFERRED]
+  tune_ai/t04_Purson/data_before_tune/infer_house_t03.py → tune_ai/t02/data_before_tune/run_house_batch.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (390 total, 43 thin omitted)
+## Communities (292 total, 40 thin omitted)
 
 ### Community 0 - "CV Scan Detection Pipeline"
 Cohesion: 0.06
-Nodes (67): cv_hint_text(), demo(), draw_som_marks(), find_image(), main(), number_elements(), page_hint(), แปลง scan → บล็อกข้อความแปะท้าย prompt pass 2.4 (แขน 2.4a ข้อความล้วน — 2.4b ยกเ (+59 more)
+Nodes (65): cv_hint_text(), demo(), draw_som_marks(), number_elements(), page_hint(), แปลง scan → บล็อกข้อความแปะท้าย prompt pass 2.4 (แขน 2.4a ข้อความล้วน — 2.4b ยกเ, เอา detection ของหน้านี้เอง (ทุกตัวที่ผ่านคลังกลาง) เป็น template กวาดซ้ำเข้ม 0., ลายนิ้วมือหยาบๆ จากจำนวนที่เจอ — ไว้เช็คขวางป้าย pass0 ไม่ใช่แทนที่มัน (+57 more)
 
 ### Community 1 - "Harvest Report - Template Match QA"
 Cohesion: 0.04
@@ -430,8 +333,8 @@ Cohesion: 0.04
 Nodes (46): 10. ลองเองได้เลย — คำสั่งทั้งหมด, 11. สรุปแบบสั้นที่สุด, 12.1 ตัวที่เก่งแต่ใช้ไม่ได้ — Pixtral-Large, 12.2 ทำไมตัวอื่นก็ตกรอบเหมือนกัน, 12.3 อัปเดต — เช็คซ้ำอีก 2 ตัวที่เหลือค้าง, 12.4 ตามหาตัวแทน NVLM-D-72B ต่อ — ยังไม่เจอตัวที่แทนได้เป๊ะ, 12. ภาคผนวก — ลองหาโมเดล AI ตัวอื่นนอกจาก Qwen, 1.1 t03 เทรนเสร็จแล้ว แต่ยังไม่ชนะ (+38 more)
 
 ### Community 5 - "T03 GT-vs-AI Overlay Renderer"
-Cohesion: 0.05
-Nodes (51): discover_pages(), generate(), load_model(), log(), main(), variant='tuned' -> base+adapter (PEFT); variant='base' -> base เพียวๆ ไม่มี adap, xgrammar builtin JSON grammar — เหมือน t02's run_house_batch.py (rule_of_tune.md, StoppingCriteria แบบ duck-typed (import transformers.StoppingCriteria ตรงๆ ในฟัง (+43 more)
+Cohesion: 0.08
+Nodes (33): discover_pages(), generate(), load_model(), log(), main(), variant='tuned' -> base+adapter (PEFT); variant='base' -> base เพียวๆ ไม่มี adap, xgrammar builtin JSON grammar — เหมือน t02's run_house_batch.py (rule_of_tune.md, StoppingCriteria แบบ duck-typed (import transformers.StoppingCriteria ตรงๆ ในฟัง (+25 more)
 
 ### Community 6 - "T02 House09 Export & Inference Runs"
 Cohesion: 0.05
@@ -458,16 +361,16 @@ Cohesion: 0.06
 Nodes (33): 10. Tonight's lessons — 6 things worth remembering, 11. What to do tomorrow — in order, 12. Questions still without answers, 1. What happened tonight — in chronological order, 2. How is it "awful" — but let's be fair first, 3. 🔑 The key clue: "broken in a way that is unnatural for a model that has actually been tuned", 4. 🔑 The evidence that raises the suspicion that the LoRA is not in the GGUF, 5.1 Training and inference see the image at resolutions 14× apart (+25 more)
 
 ### Community 12 - "T01 Single-House Local Extraction Script"
-Cohesion: 0.01
-Nodes (232): 🔴 CRITICAL · 2026-07-06 · Same Label Studio bug repeated: multiple $variables crammed into one Text/Header value, failing 10/10 task imports, 🔴 CRITICAL · 2026-07-07 · t1 BOQ recorded 137/294 sq.m of floor tile for a 70 sq.m house, 🔴 CRITICAL · 2026-07-14 · All review corrections live only in the corrected-copy folder; the tuning original was never synced, 🔴 CRITICAL · 2026-07-19 · Beam B5's main '3-Ø16' rebar label dropped entirely from the data in two separate houses, 🔴 CRITICAL · 2026-07-28 · The standing advice 'always upload the adapter first' was wrong — the code uploads GGUF first and the adapter last, 🔴 CRITICAL · 2026-07-28 · train_qwen3vl.py carried five bugs because it was written when the dataset was 221 examples and had never actually been executed, 🔴 CRITICAL · 2026-08-02 · Root cause of the whole format mess: the spec never locked the shape of the file, only the fields, 🔴 CRITICAL · 2026-08-21 · material_list consumed 435 files / 37% of all annotation effort and yields zero elements (+224 more)
+Cohesion: 0.11
+Nodes (30): _beam_span_m(), build_transform(), collect_anchors(), _cv_only_points(), demo(), _element_refs(), _fit_line(), grid_pos() (+22 more)
 
 ### Community 13 - "T01 Multi-House Local Extraction Script"
 Cohesion: 0.13
 Nodes (29): bare(), build_pass0(), build_pass24(), build_pass3(), cluster1d(), elements_flat(), expand_pool(), fit_axis() (+21 more)
 
 ### Community 14 - "T03 Common Rules Header"
-Cohesion: 0.01
-Nodes (144): 🔴 CRITICAL · 2026-07-02 · Model systematically misread main_bar_type DB↔RB while reading the same symbol correctly for stirrups on the same page, 🔴 CRITICAL · 2026-07-05 · Concrete strength conflict 210 vs 240 ksc between fresh read and old Gen 1 data, never resolved, 🔴 CRITICAL · 2026-07-09 · An order to rename raw/ to 'old data no longer in use' would have broken the live pipeline in 5 scripts, 🔴 CRITICAL · 2026-07-10 · Running the task generator for house 2 would have silently overwritten house 1's output files, 🔴 CRITICAL · 2026-07-19 · The 10-house price table was misread in many rows across all five houses' copies, not just the one row that triggered the sweep, 🔴 CRITICAL · 2026-07-21 · Instance destroyed before any result file was downloaded — adapter, merged model and GGUF all lost, 🔴 CRITICAL · 2026-07-21 · Rented instance destroyed before the LoRA adapter, merged model and GGUF were copied off, 🔴 CRITICAL · 2026-07-24 · House 5's two beam-plan sheets were missing 31 beams, all supplied by the human rather than found by extraction or review (+136 more)
+Cohesion: 0.13
+Nodes (29): bare(), build_pass0(), build_pass24(), build_pass3(), cluster1d(), elements_flat(), expand_pool(), fit_axis() (+21 more)
 
 ### Community 15 - "T03 Pass1 Page Organizer"
 Cohesion: 0.07
@@ -486,16 +389,16 @@ Cohesion: 0.08
 Nodes (24): 2026-08-02 — sync `json_แก้ไขแล้ว/` กลับเข้า raw ครั้งแรกของโปรเจกต์ (362 ไฟล์), 2026-08-09 (2) — สาเหตุจริงของ pattern ไม่ตรงกัน: `check_format.py` เช็คลมเงียบๆ เมื่อได้ path ผิด (แก้แล้ว), 2026-08-09 — แก้ `png`/`doc_page` สลับขั้วในกริดมาสเตอร์บ้าน 14-18 (5 ไฟล์), Activity log อัตโนมัติ (เพิ่ม 2026-07-03) — `pipeline_activity_log.json`, Architecture — 2 generation ของ logic (สำคัญ: ใช้ generation ล่าสุด), CLAUDE.md — No_touch_box/, Convention, Generation ปัจจุบัน (ใช้จริง) — `run_pipeline.py` + `build_document_map.py` (+16 more)
 
 ### Community 19 - "T03 Pass0 Classifier (current vs superseded)"
-Cohesion: 0.02
-Nodes (125): 🔴 CRITICAL · 2026-07-15 · additional_bars recorded on the wrong face of the beam — the same bug found in all five houses, 🔴 CRITICAL · 2026-07-19 · A cross-house price-table 'fix' was itself a misread and corrupted four files before being reverted, 🔴 CRITICAL · 2026-07-28 · A HuggingFace write token was pasted into chat and was still not revoked at end of day, 🔴 CRITICAL · 2026-07-28 · Phase 8 export failed: merging the LoRA adapter into the MoE base produced a model outputting the wrong schema entirely, 🔴 CRITICAL · 2026-08-02 · The 2026-07-21 'Mark of Shame' — a machine shut down while work only looked done, costing a 7.5GB LoRA and a 21GB GGUF, 🔴 CRITICAL · 2026-08-04 · Pass 2 is dead code that still costs money — N API calls per run, result never used, errors swallowed, 🔴 CRITICAL · 2026-09-01 · requeue_stale() used claim time as heartbeat, so every real job qualified as dead while still running, 🟠 HIGH · 2026-07-09 · A day of config fixes lived only on disk; the live Label Studio projects still ran the old broken config (+117 more)
+Cohesion: 0.08
+Nodes (24): Purson worker — ต่อโมเดลของเราเข้า Constistant, ความปลอดภัย, ติดตั้ง (เครื่องที่จะรัน worker), ⚠️ ทำไมไม่ใช้ vLLM (ตรวจจริง 2026-08-30 — ก่อนเช่าการ์ด), วันพรีเซนต์ (เปิด GPU เฉพาะตอนใช้) — `presentation.py`, เปิด GPU endpoint (บนเครื่องเช่า) — `serve_purson.py`, โหมด A vs B — ต่างกันแค่ "worker.py รันที่ไหน" โค้ดชุดเดียวกันทุกไฟล์, 1. ยิงพร้อมกัน 2 งาน → เซิร์ฟเวอร์ค้างทั้งระบบ (+16 more)
 
 ### Community 20 - "T03 Dataset Pull & Verify Script"
-Cohesion: 0.11
-Nodes (18): Arm the dead-man's switch first — before step 1, Folder structure + naming convention, Full workflow summary, `op1` is a standing order — decide, don't ask, Quick command: `op1 <house_name>`, Quick command: `op3 <house_name>` — `op1`, then shut the laptop down, Quick command: `op4 <house_name>` — Pass 2 subtasks only (~38 pages instead of ~107), Quick command: `op_fix <house | NN-NN>` — retrofit an old grid master to §4 rule 4 (+10 more)
+Cohesion: 0.08
+Nodes (25): Arm the dead-man's switch first — before step 1, Escalation rule, Folder structure + naming convention, Full workflow summary, Handoff contract between stages, `op1` is a standing order — decide, don't ask, Quick command: `op1 <house_name>`, Quick command: `op2 <house_name>` — staged run with automatic model switching (+17 more)
 
 ### Community 21 - "Markdown-to-PDF Book Builder"
-Cohesion: 0.06
-Nodes (49): grid_validation(), pass3_file(), validation ของ grid master ทั้งบ้าน = ปัญหาจากตัวไฟล์ + สิ่งที่ pass3 เห็นจากภาพ, เนื้อไฟล์ pass3_measure.json รุ่น 2 (C1) — เว็บยังอ่านรุ่น 1 เก่าได้ (ไม่มี vers, ข้อความถึงคน (warnings ระดับงาน ไม่ใช่ doc.warnings ที่แปลว่าโมเดลพูด) — บอกสิ่ง, summary_warnings(), merge_validation(), validation เดิม + {"page_NN": report ของ measure_page_vectors} → validation ใหม่ (+41 more)
+Cohesion: 0.12
+Nodes (18): call_purson(), claim_next_job(), download_image(), _element_is_garbage(), load_prompt_file(), main(), now_iso(), คืน prompt เต็มของ subtask หรือ None ถ้าไม่มีไฟล์ prompt (= ยังไม่รองรับ)     d (+10 more)
 
 ### Community 22 - "T03 Visual Token Capacity Measurement"
 Cohesion: 0.08
@@ -514,8 +417,8 @@ Cohesion: 0.09
 Nodes (22): 1. Recap: what question does t02 answer, 2. A new bug never seen in the t01 round — because "the library version drifted", 3. Reading the loss curve during training — what is loss, what does it tell us, 4. VRAM going up and down during training — why, 5. Why Qwen3-VL is 2.9x slower than Qwen3.6, with all settings identical, 6. The real Phase 7 results — t02 loses to t01 on every metric, 7. Why Phase 7.5 has to load the whole model again — what a LoRA adapter really is, 8. New vocabulary today (continuing from the glossary at the end of the 07-24 file) (+14 more)
 
 ### Community 26 - "Format Validation Gate"
-Cohesion: 0.13
-Nodes (15): 10. วิธีอ่านผลลัพธ์ตอนเทรน/วัดผล — ตัวเลขพวกนี้แปลว่าอะไร, 11. สรุปคำศัพท์ท้ายเล่ม (เปิดดูเร็วๆ ได้), 14. ผลวัดคุณภาพจริง — การทูนได้ผลไหม (คำตอบ: ได้ผลชัดเจน), 15. ทำไม "แปลงเป็น GGUF" ถึงมีหลายขั้นตอน + เจอปัญหาอะไรบ้าง, 16. บทเรียนสุดท้ายของคืนนี้ — ทำลาย instance ก่อนสำรองไฟล์ออกมา, 1. ภาพรวม: วันนี้ทำอะไรอยู่ (เส้นทางเดินทั้งหมด), 2. ทำไมต้อง "เช่า" คอมพิวเตอร์ (GPU) แทนใช้คอมตัวเอง, 3. SSH คืออะไร ทำไมไม่ใช้เว็บ (Jupyter) (+7 more)
+Cohesion: 0.09
+Nodes (23): 10. วิธีอ่านผลลัพธ์ตอนเทรน/วัดผล — ตัวเลขพวกนี้แปลว่าอะไร, 11. สรุปคำศัพท์ท้ายเล่ม (เปิดดูเร็วๆ ได้), 12. เหตุการณ์สับสน "ทำไม log ไฟล์ที่สั่งไว้ถึงไม่มี" — บทเรียนเรื่อง terminal คิวคำสั่ง, 13. เหตุการณ์ "เทรนเสร็จแล้วดันพัง" — บทเรียนเรื่อง "environment ใช้ร่วมกัน", 14. ผลวัดคุณภาพจริง — การทูนได้ผลไหม (คำตอบ: ได้ผลชัดเจน), 15. ทำไม "แปลงเป็น GGUF" ถึงมีหลายขั้นตอน + เจอปัญหาอะไรบ้าง, 16. บทเรียนสุดท้ายของคืนนี้ — ทำลาย instance ก่อนสำรองไฟล์ออกมา, 1. ภาพรวม: วันนี้ทำอะไรอยู่ (เส้นทางเดินทั้งหมด) (+15 more)
 
 ### Community 27 - "Qwen Export Converter"
 Cohesion: 0.10
@@ -530,16 +433,16 @@ Cohesion: 0.10
 Nodes (21): 1. `gridline` — ใช้หน้า 00 ของทุกบ้านตรงๆ ✅ ตัดสินใจแล้ว, 2. `title` / `site_plan` / `bbs_schedule` / `soil_boring_log` — แก้ที่ dataset ตรงๆ ✅ ตัดสินใจแล้ว, 3. Pass 0 — เขียนออกมาก่อน แม้ยังไม่จบ ✅ เขียนแล้ว (draft v1), 4. Token budget — ยังไม่ทำ รอทุกอย่างนิ่งก่อน ✅ ตัดสินใจแล้ว, input, output, output ที่ต้องได้ (§2 + §3), Pass 0 — จำแนกหน้า + wrapper (+13 more)
 
 ### Community 30 - "T02 Eval Fields Script"
-Cohesion: 0.02
-Nodes (95): 🔴 CRITICAL · 2026-07-28 · The entire A/B experiment was invalid: t01 trained on ~14x blurrier images because its collator was called with pure defaults and the parity table had no row for it, 🔴 CRITICAL · 2026-07-28 · The silent-512px-resize bug was fixed only in t02's script, so t01 trained on ~14× blurrier images, 🔴 CRITICAL · 2026-07-29 · After a full training round, GGUF export and real usage, rebar extraction — the actual goal — had never been tested once, 🔴 CRITICAL · 2026-07-29 · The 90% / 28.2% headline numbers were measured on an artifact nobody actually runs, 🔴 CRITICAL · 2026-08-21 · t02 saw only ~13 beam-plan pages in training and scored 11% element recall on them, 🔴 CRITICAL · 2026-08-24 · Benchmark house 08 was sitting in t03's training set — cross-round comparison would have been meaningless, 🔴 CRITICAL · 2026-08-25 · Eval scored ids with raw exact string match, so trailing whitespace or case scored a correct answer as 0, 🔴 CRITICAL · 2026-08-25 · Ground truth element_id mixed real printed marks with names the annotator invented, teaching the model to guess the unguessable (+87 more)
+Cohesion: 0.17
+Nodes (18): apply_arm(), element_ids(), generate(), hide_grid_lines(), load_model(), main(), norm_id(), eval เท่านั้น — สืบมาจาก infer_house_t03.py ตรงๆ ห้ามใช้กับงานสกัดจริง (+10 more)
 
 ### Community 31 - "T02 GPU Rental Onstart Script"
-Cohesion: 0.02
-Nodes (88): 🔴 CRITICAL · 2026-07-21 · CUDA OOM on a 95GB card because LORA_R=64 is multiplied by 256 MoE experts, 🔴 CRITICAL · 2026-07-21 · Parallel `pip install` for llama.cpp downgraded transformers and torch under a running training job, 🔴 CRITICAL · 2026-07-21 · pip install in a second terminal overwrote transformers and crashed the still-running training script, 🔴 CRITICAL · 2026-07-24 · MAX_LENGTH=9216 silently truncated the answers of the 5 grid-master training examples, 🔴 CRITICAL · 2026-07-24 · MAX_LENGTH of 9,216 was derived from a 1-image example, silently truncating the 5 multi-image gridmaster examples that carry the answers, 🔴 CRITICAL · 2026-07-28 · Bug 1: t02's max_length of 10240/13312 would have truncated gridmaster examples down to 42%/39%, cutting the JSON label off the tail, 🔴 CRITICAL · 2026-07-28 · Three more bugs found only by comparing t02's hyperparameters against t01 one by one — a check the diary says should have been done from the start, 🔴 CRITICAL · 2026-07-28 · transformers 5.5.0 removed ip.max_pixels/min_pixels entirely, crashing Phase 4 on the paid machine (+80 more)
+Cohesion: 0.10
+Nodes (21): merge_into_pass2(), เติมของที่ขาดใน doc ของ pass2 จากผล pass3 — คืนสรุปว่าเติมอะไรไปบ้าง      เติม, collect_pass15_files(), collect_pass25_files(), crop_for_task(), _crop_image_path(), cv_mark_lookup(), cv_scan_for_task() (+13 more)
 
 ### Community 32 - "T03 Beam Grounding Research"
-Cohesion: 0.02
-Nodes (84): 🔴 CRITICAL · 2026-07-09 · A tool call reported 'rejected' but .gitignore had actually been modified on disk, 🔴 CRITICAL · 2026-07-13 · Wrong dummy grid value 8.5 defended with evidence that was actually a circular reference back to itself, 🔴 CRITICAL · 2026-07-15 · Columns modelled with beam-style top/bottom rebar, double-counting main bars 4 as 8, 🔴 CRITICAL · 2026-07-20 · House 3's structural sheets under-extracted by 60% — page32 went from 20 to 32 elements, 🔴 CRITICAL · 2026-07-24 · Declared the model 'ready to use' when it still could not read images at all — the project's entire job, 🔴 CRITICAL · 2026-07-28 · A main roof ridge was recorded that does not exist, because two sheets appeared to confirm each other while reading two different look-alike lines, 🔴 CRITICAL · 2026-07-29 · export_gguf.py's tuned-model sanity gate checked for words the prompt itself supplies, so an untuned model passes, 🔴 CRITICAL · 2026-07-29 · The GGUF sanity check was passable by a completely untuned model (+76 more)
+Cohesion: 0.24
+Nodes (20): cmd_down(), cmd_smoke(), cmd_status(), cmd_tunnel(), cmd_up(), healthy(), load_state(), main() (+12 more)
 
 ### Community 33 - "T01 GPU Rental Onstart Script"
 Cohesion: 0.10
@@ -550,8 +453,8 @@ Cohesion: 0.10
 Nodes (20): [15:00-15:25] Claude — session with Makham: teaching PDF for today's work (ตอนที่ 4), [15:30-16:00] Claude — session with Makham: item 3 (max token) followed through — 2 real findings, 1 bug fixed, [16:00-16:20] Claude — session with Makham: "เพิ่ม VRAM" → measured first, raised resolution without changing cards, [16:20-17:00] Claude — session with Makham: "section 0% — can pattern recognition fix it?" → diagnosed first, answer is no (and why matters), [17:00-17:25] Claude — teaching PDF (ตอนที่ 4) brought up to date; one stale claim corrected, [18:30-18:50] Claude — session with Makham: metric fix applied ("ไปหาในเน็ตและแก้มาซะ"), [19:00] Claude — ปิดวัน: สรุปงานค้างทั้งหมด (มะขามสั่งจด), [19:20-19:50] Claude — มะขามอนุมัติ att1235 ข้อ 1: แก้ convention element_id ของ section แล้วจริง (+12 more)
 
 ### Community 35 - "T01 Training Script (train_qwen3vl.py)"
-Cohesion: 0.20
-Nodes (9): ~~grid ref ใน hint~~ — แก้เป็นแถว/ช่องเชิงลำดับ (พบตอนลงมือ 2026-08-26), § hint design — pass 2.4 ป้อนอะไรให้ Qwen, กฎกันหลอน 4 ข้อ ที่ต้องอยู่ในบล็อก hint, การทดลอง: 3 แขน ไม่ใช่ 2, ทางออก: ส่ง 2 ช่องทางพร้อมกัน — มาร์คบนภาพ + ตารางข้อความ, ปัญหา: จำนวนอย่างเดียวไร้ประโยชน์, ❌ สิ่งที่ห้ามใส่ใน hint เด็ดขาด: ระยะ, § สถานะลงมือ 2026-08-26 (GO รอบแรก) (+1 more)
+Cohesion: 0.10
+Nodes (19): 3 ข้อที่ต้องเคาะก่อนเริ่ม, ~~grid ref ใน hint~~ — แก้เป็นแถว/ช่องเชิงลำดับ (พบตอนลงมือ 2026-08-26), § hint design — pass 2.4 ป้อนอะไรให้ Qwen, t03 pass design v2 — 2026-08-26 (มะขามสั่ง reset การนับ pass), กฎกันหลอน 4 ข้อ ที่ต้องอยู่ในบล็อก hint, การทดลอง: 3 แขน ไม่ใช่ 2, ของที่มีอยู่แล้ว ไม่ต้องเริ่มจาก 0, งานที่ต้องทำ เรียงตามลำดับ (+11 more)
 
 ### Community 36 - "T02 Training Script (train_qwen3vl.py)"
 Cohesion: 0.10
@@ -578,8 +481,8 @@ Cohesion: 0.19
 Nodes (18): as_text_parts(), bare(), build_house_folds(), bypass(), collect_pass024(), fix_pass1_paths(), house_of_image(), main() (+10 more)
 
 ### Community 42 - "T02 Environment Verification"
-Cohesion: 0.03
-Nodes (77): 🔴 CRITICAL · 2026-07-24 · JSON valid dropped to 0% because the inference chat template enabled reasoning mode that training never used, 🔴 CRITICAL · 2026-07-24 · MAX_LENGTH sized from a single-image example would have truncated away the labels of every gridmaster example, 🔴 CRITICAL · 2026-07-25 · Nearly fed 28%-accurate model output back into the folder that is used as training ground truth, 🔴 CRITICAL · 2026-07-28 · merge_and_unload() silently fails on MoE ParamWrapper LoRA — tensors changed only 0.67%, 🔴 CRITICAL · 2026-07-29 · 0/6 pages used the trained schema — three different key vocabularies emitted at random, 🔴 CRITICAL · 2026-07-29 · Model hallucinated 59 elements on a page where ground truth has 17, 🔴 CRITICAL · 2026-07-29 · Model output matched the trained schema on 0 of 6 pages and used three different key styles, 🔴 CRITICAL · 2026-07-29 · Model reversed the grid letters and invented all interior grid distances; only the total happened to match (+69 more)
+Cohesion: 0.19
+Nodes (18): as_text_parts(), bare(), build_house_folds(), bypass(), collect_pass024(), fix_pass1_paths(), house_of_image(), main() (+10 more)
 
 ### Community 43 - "T02 Inference Script (infer_t02.py)"
 Cohesion: 0.11
@@ -590,8 +493,8 @@ Cohesion: 0.11
 Nodes (18): apply_arm() — ตัวสลับแขนทดลอง (อยู่ใน infer_house_t03.py ไม่ใช่ไฟล์แยก), pass0/README.md → ชี้ไป tune_ai/t03/pass0_classify/, pass1.5_cv/README.md → ชี้ไป tools/cv_scan.py, pass1/README.md → ชี้ไป tune_ai/t03/pass1_organize/organize.py, pass2.4_hint/assembled_example.md, pass2.4_hint/prompt.md, pass2.5_harvest/README.md → ชี้ไป tools/cv_scan.py (--pass25), pass2/README.md → ชี้ไป tune_ai/t03/pass2_used/ (prompt 7 ตัว) (+10 more)
 
 ### Community 45 - "T02 XGrammar Inference"
-Cohesion: 0.06
-Nodes (69): BadMachine, blacklist_add(), build_worker_bundle(), check_model_available(), check_ssh_mode(), cmd_attach(), cmd_blacklist(), cmd_down() (+61 more)
+Cohesion: 0.11
+Nodes (16): 1. สถาปัตยกรรม (ยืนยันจาก config.json + paper arXiv 2504.10479), 2. ไขปริศนา t04 ครบทุกข้อ (ตอนนี้รู้กลไกจริงแล้ว ไม่ใช่แค่อาการ), 3. 🔴 การค้นพบใหม่ — อาจเป็น "สาเหตุที่สอง" ของคืนที่แล้ว ซ้อนอยู่ใต้เรื่อง tile, 4. ทางเลือกของแขน InternVL (เรียงตามความเสี่ยง×ราคา), 5. YAML แก้มือ (ต่างจาก t04 สามบรรทัด + ข้อควรระวัง), 6. งบรวม 2 แขนขนาน, InternVL3-78B — dossier ฉบับเต็มสำหรับแขนขนาน (arm B) ของ t05, dataset (2026-08-31 ค่ำ) — k-fold 2, เนื้อเดียวกับแขน Courser เป๊ะทุก fold (+8 more)
 
 ### Community 46 - "T02 Collator Diagnostic Script"
 Cohesion: 0.11
@@ -618,19 +521,19 @@ Cohesion: 0.12
 Nodes (15): 2026-08-29, Claude (op04 บ้านเล็ก 1 ชั้น ×2 หลังใหม่ — ไทยพอเพียง 1+2), Claude กะดึก (มะขามไปนอน สั่ง att1235 ตัดสินใจเองทั้งหมด), Claude (คำสั่งมะขาม: ยกเลิก pass 4 · ล้าง prompt · ยกเลิกแขน 2.4b · workflow intern), Claude (บ้าน 51/52 → GT เป็น 39/40 · ย้าย t03→t04_Purson · บ้าน 08 เข้า dataset · k-fold infra), Claude (มะขามเคาะ: t04 เปลี่ยนโมเดลเป็น InternVL3-78B), xgrammar เปิดทุก pass (มะขามสั่ง "ใส่ x gramma ทุก pass ตามความเหมาะสม"), กฎใหม่: วัดสัดส่วนเทียบ gridmaster (มะขามสั่ง — "นั่นคือจุดประสงค์ของการมีอยู่ของ gridmaster") (+7 more)
 
 ### Community 52 - "ตอนที่ 4 (2026-07-29) — คืนนี้เจอว่า "ของที่เราภูมิใจที่สุด" อาจไม่เคยถูกทูนเลย"
-Cohesion: 0.10
-Nodes (20): 10. สรุปบทเรียนคืนนี้ — 6 ข้อที่ควรจำ, 11. พรุ่งนี้ทำอะไรต่อ — เรียงตามลำดับ, 12. คำถามที่ยังไม่มีคำตอบ, 1. เกิดอะไรขึ้นคืนนี้ — เรียงตามเวลา, 2. "ห่วย" ห่วยยังไง — แต่ต้องพูดให้แฟร์ก่อน, 5.1 เทรนกับตอนใช้ เห็นภาพคนละความละเอียด 14 เท่า, 5.2 การบีบอัด (quantization) ที่เจ้าของโมเดลเตือนเองว่าอย่าทำ, 5. สาเหตุรองอีก 2 ข้อ (จริงทั้งคู่ แต่ไม่ใช่ตัวหลัก) (+12 more)
+Cohesion: 0.12
+Nodes (16): 10. สรุปบทเรียนคืนนี้ — 6 ข้อที่ควรจำ, 12. คำถามที่ยังไม่มีคำตอบ, 1. เกิดอะไรขึ้นคืนนี้ — เรียงตามเวลา, 2. "ห่วย" ห่วยยังไง — แต่ต้องพูดให้แฟร์ก่อน, 5.1 เทรนกับตอนใช้ เห็นภาพคนละความละเอียด 14 เท่า, 5.2 การบีบอัด (quantization) ที่เจ้าของโมเดลเตือนเองว่าอย่าทำ, 5. สาเหตุรองอีก 2 ข้อ (จริงทั้งคู่ แต่ไม่ใช่ตัวหลัก), 6. บทเรียนเรื่อง "ตัวเลข 90% ที่เราเชื่อมาตลอด" (+8 more)
 
 ### Community 53 - "finetune_output_contract — what the fine-tune model must output for Constistant"
-Cohesion: 0.15
+Cohesion: 0.14
 Nodes (13): Acceptance checklist for a model-output house, Field flow per pattern, finetune_output_contract — what the fine-tune model must output for Constistant, Fixed 2026-08-28 — no longer gaps, Folder contents, `grid_master` (one file per building, `หน้า00`) — renamed from `gridline` 2026-08-28, How Constistant consumes these files, How to check your own output against this contract (+5 more)
 
 ### Community 54 - "Rules for Touching Raw Training JSON"
-Cohesion: 0.13
-Nodes (15): 2026-07-21 — "DAY OF SHAME" — Tuned model files (LoRA/GGUF) permanently lost from not warning before instance destroy, BOQ (`categories[].items[]`), Ground Truth JSON Format (reference — this project only, Constistant/Destrier), Lessons Learned (condensed), Mark of Shame (this project's incident log — Constistant/Destrier), Override code — `att1235`, Priority order (Asimov-style), Rule 1 (highest priority) (+7 more)
+Cohesion: 0.14
+Nodes (14): 2026-07-21 — "DAY OF SHAME" — Tuned model files (LoRA/GGUF) permanently lost from not warning before instance destroy, BOQ (`categories[].items[]`), Ground Truth JSON Format (reference), Lessons Learned (condensed), Mark of Shame, Override code — `att1235`, Priority order (Asimov-style), Rule 1 (highest priority) (+6 more)
 
 ### Community 55 - "t01 — dataset + สคริปต์เทรน (พร้อมใช้)"
-Cohesion: 0.15
+Cohesion: 0.14
 Nodes (13): 1 ภาพ = 1 example, รวมทุก view, ① ใช้ Qwen ไหม? ตัวไหน?, ② เช่าเครื่องไหน, ③ ต้องทำยังไง (ทำตามนี้ทีละข้อ), ④ มีอะไรในโฟลเดอร์นี้, instruction ~1,020 tok — ความยาวถ่วงน้ำหนักตามความถี่ที่เคยผิดจริง, t01 — dataset + สคริปต์เทรน (พร้อมใช้), การตัดสินใจที่ฝังอยู่ในชุดนี้ (มะขามสั่งเปลี่ยนได้ทุกข้อ) (+5 more)
 
 ### Community 56 - "0.4 — re-check สคริปต์บรรทัดต่อบรรทัด ✅ ผ่าน (เจอ+แก้บั๊ก 8 ข้อ, มะขามสั่งทำ+ติ๊ก 2026-07-28)"
@@ -662,8 +565,8 @@ Cohesion: 0.35
 Nodes (12): call_model(), classify_page(), extract_page(), image_data_uri(), load_classify(), log(), main(), patterns_from_existing_extract() (+4 more)
 
 ### Community 63 - "drawing-purson.js"
-Cohesion: 0.03
-Nodes (59): 🔴 CRITICAL · 2026-07-24 · mmproj extraction failed because the tooling did not support the model, and it was only discovered with the job nearly done, 🔴 CRITICAL · 2026-08-02 · The checker's first version would have merged away 4 footing groups carrying different confidence_flags, 🟠 HIGH · 2026-07-06 · Lack of a zoom/crop tool made the new extraction rounds less accurate than the older Gen 2 that had real image zooming, 🟠 HIGH · 2026-07-10 · A background agent was killed mid-task having written zero files, leaving 10 BOQ pages empty for two days, 🟠 HIGH · 2026-07-28 · Whether Unsloth can export GGUF for this MoE VL model at all was never established — and a known corrupted-GGUF issue existed upstream, 🟠 HIGH · 2026-07-29 · REQUEST_TIMEOUT_S=1200 killed genuinely-running work at page 03, 🟠 HIGH · 2026-08-02 · The new §0.1 rule was too broad — it flagged 106 files and 104 of them were legitimate, 🟠 HIGH · 2026-08-10 · check_format.py hardcoded 'letters = rows, digits = columns' — true for 18 houses, wrong on the 19th (+51 more)
+Cohesion: 0.31
+Nodes (12): ensureProgressCss(), estimateRemainingSec(), fmtDuration(), notifyDone(), pass3Stats(), PURSON_STEPS, qt_runPurson(), renderPagesToPngBlobs() (+4 more)
 
 ### Community 64 - "🚀 Quick Start — 5 Minutes to First Annotation"
 Cohesion: 0.15
@@ -674,8 +577,8 @@ Cohesion: 0.15
 Nodes (12): 1. Element ordering direction reversed: **vertical before horizontal** (had been written the wrong direction the first time), 1. Went through and fixed the grid_ref format convention in 12 files, 2. Added 7 more missing beams + fixed B4X 3'/3'' back to correct, 2. Found the same additional_bars wrong-side bug again (exactly like house 1) — pages 25/28, 3. Found a real mislabel in หน้า26_tie_beam_plan.json (RB1A that's actually RB1), 3. Synced page20 + page21 to match page19 (same mark/spec), 4. Page22 — rejected incorrect advice from an external AI, 4. Page29_column_schedule — confirmed the column rule uses a single main_bar.count (answering the open question from house 1) (+4 more)
 
 ### Community 66 - "บันทึกการแก้ไข"
-Cohesion: 0.13
-Nodes (14): 01บ้าน_เล็ก_1ชั้น_01, 02บ้าน_เล็ก_1ชั้น_02, 03บ้าน_เล็ก_2ชั้น_01 และ 04บ้าน_เล็ก_2ชั้น_02, 05บ้าน_เล็ก_2ชั้น_03, 06-11 (บ้าน_ใหญ่_1ชั้น_01, บ้าน_ใหญ่_2ชั้น_01, บ้าน_เล็ก_1ชั้น_03/04/05/06), 2026-08-24 — schema-normalize ทุกหลัง (Claude, ภายใต้ att1235 ระหว่างมะขามออกไปข้างนอก), 2026-08-25 — normalize ทั้ง 2 tree ให้ตรงสเปกปัจจุบัน + อัปเกรด checker (Claude, att1235), 2026-09-29 — op_fix รอบแรก: สเปก §4 กฎ 4 "ทุก tick ของระยะที่พิมพ์ = เส้น" (Claude, att1235) (+6 more)
+Cohesion: 0.17
+Nodes (11): 01บ้าน_เล็ก_1ชั้น_01, 02บ้าน_เล็ก_1ชั้น_02, 03บ้าน_เล็ก_2ชั้น_01 และ 04บ้าน_เล็ก_2ชั้น_02, 05บ้าน_เล็ก_2ชั้น_03, 06-11 (บ้าน_ใหญ่_1ชั้น_01, บ้าน_ใหญ่_2ชั้น_01, บ้าน_เล็ก_1ชั้น_03/04/05/06), 2026-08-24 — schema-normalize ทุกหลัง (Claude, ภายใต้ att1235 ระหว่างมะขามออกไปข้างนอก), 2026-08-25 — normalize ทั้ง 2 tree ให้ตรงสเปกปัจจุบัน + อัปเกรด checker (Claude, att1235), Convention (+3 more)
 
 ### Community 67 - "manifest.json"
 Cohesion: 0.17
@@ -729,13 +632,17 @@ Nodes (10): Sources, ข้อเสนอที่ใช้ได้จริ�
 Cohesion: 0.18
 Nodes (10): 1️⃣ เช็คว่าเทรนถึงไหนแล้ว, 2️⃣ ถ้าเทรนพัง (OOM / error), 3️⃣ เทรนเสร็จแล้ว — ต้องทำอะไร (⚠️ สำคัญที่สุด), 4️⃣ 💰 คืนการ์ด (ทำเมื่อมั่นใจว่าไฟล์ปลอดภัยแล้วเท่านั้น), 5️⃣ เช็คเงิน, 6️⃣ ค่าที่ใช้อยู่ (ไว้อ้างอิงตอนต้องตัดสินใจ), 7️⃣ ขั้นถัดไปหลังได้ adapter ครบ 4 ตัว (ไม่ต้องรีบ ทำทีหลังได้), 🚨 คู่มือฉุกเฉิน Purson — ใช้ตอนคุยกับ Claude ไม่ได้ (+2 more)
 
+### Community 80 - "t04_Purson/README.md"
+Cohesion: 0.25
+Nodes (4): `{{ELEMENT_ACCOUNT}}` — รูปแบบบัญชีที่ป้อนเข้า prompt, Pass 3 — ถอดระยะ/เหล็ก จากบัญชี element ที่ยืนยันแล้ว, PROMPT END, PROMPT START
+
 ### Community 81 - "destrier_test_house/op04_score.py"
 Cohesion: 0.35
 Nodes (10): elements_of(), main(), mark_base(), norm_id(), norm_ref(), F4,C1" → "f4" — mark ในแบบพิมพ์ติดกันเป็นคู่ (ฐานราก,เสา) แต่ธรรมเนียม GT     แ, 1-A" / "A-1" / "A1" / "a 1" → ("A","1") — ตัวอักษรขึ้นก่อนเสมอ, score_page() (+2 more)
 
 ### Community 82 - "proof/op04_score.py"
-Cohesion: 0.04
-Nodes (54): 🔴 CRITICAL · 2026-07-28 · Bug 4: enable_thinking=False was missing again — the identical bug that had already made t01 measure 0/3, 🔴 CRITICAL · 2026-08-21 · Greedy decoding with no repetition guard made the model loop until the token cap, destroying whole pages of valid output, 🔴 CRITICAL · 2026-08-21 · parseGridMaster could not read a single current grid file since 2026-08-02 — every import silently produced an empty grid, 🔴 CRITICAL · 2026-08-21 · parseGridRef accepted only the dashed grid-ref form, but the spec mandates no-dash — every beam span was null, 🔴 CRITICAL · 2026-08-28 · Dedup by NCC similarity broke real detection coverage in 4 houses — similarity ≠ interchangeability, 🔴 CRITICAL · 2026-08-29 · Dataset builder still filtered old pattern names after a rename — plan_footing/plan_beam/gridline were 0 examples for a full day, 🟠 HIGH · 2026-07-09 · The Label Studio pinned column silently cut off content instead of scrolling, 🟠 HIGH · 2026-07-19 · RB2 recorded at a guessed position with confidence 0.4 that turned out to be entirely wrong (+46 more)
+Cohesion: 0.35
+Nodes (10): elements_of(), main(), mark_base(), norm_id(), norm_ref(), F4,C1" → "f4" — mark ในแบบพิมพ์ติดกันเป็นคู่ (ฐานราก,เสา) แต่ธรรมเนียม GT     แ, 1-A" / "A-1" / "A1" / "a 1" → ("A","1") — ตัวอักษรขึ้นก่อนเสมอ, score_page() (+2 more)
 
 ### Community 83 - "03บ้าน_เล็ก_2ชั้น_01 (รอบตรวจภาพต้นฉบับ 2026-07-20)"
 Cohesion: 0.18
@@ -766,8 +673,8 @@ Cohesion: 0.20
 Nodes (5): AGENTS.md — No_touch_box/, File naming (recommended), How to use, Note, 📥 Raw PDF Upload Folder
 
 ### Community 90 - "check_house"
-Cohesion: 0.23
-Nodes (10): check_house(), grid_tick_notes(), _line_id(), load_grid(), main(), section 4 rule 4 (2026-09-27): every tick of an anchored x/y chain is a line, an, walk(), gt_of() (+2 more)
+Cohesion: 0.29
+Nodes (7): check_house(), load_grid(), main(), walk(), gt_of(), คืน {subtask: (total_ids, printed_ids, [ตัวอย่างที่คนตั้งเอง])}, scan()
 
 ### Community 91 - "ทดลองถอดแบบบ้าน 01/03/04 ด้วย t02 (LoRA adapter, ไม่ใช่ tuning round ใหม่)"
 Cohesion: 0.20
@@ -782,16 +689,16 @@ Cohesion: 0.33
 Nodes (9): bare(), build_label(), find_pages(), main(), page_key(), หา (house, page) ที่มีไฟล์ GT pattern=material_list พอดี 2 ไฟล์ และเป็นไฟล์ทั้งห, คืน label หรือ None ถ้าเลขแผ่นอ่านไม่ได้/ซ้ำ (ไม่เดา — ปล่อยเข้าคิวมือ), read_jsonl() (+1 more)
 
 ### Community 94 - "go.py"
-Cohesion: 0.07
-Nodes (50): done(), fail(), _play(), โมเดลพร้อมรับงานแล้ว — จังหวะที่รอนานสุด (20-45 นาที), มีอะไรล้มจนต้องมาดู — เสียงต่างจากสองอันบน ไม่ต้องเดินมาดูจอถึงจะรู้, ready(), check(), main() (+42 more)
+Cohesion: 0.42
+Nodes (9): current_instance(), do_start(), do_stop(), main(), pick_model(), เรียก presentation.py — cwd ล็อกที่โฟลเดอร์นี้เสมอ ไม่ว่าจะถูกเรียกจากไหน, id ของการ์ดที่เปิดอยู่ **จริง** (None ถ้าไม่มี)      เช็คกับ vast.ai เสมอ ไม่เ, เลือกรุ่นโมเดล — destrier เป็นค่าเริ่มต้น (รุ่นที่ทีมใช้อยู่จริงตอนนี้)      เ (+1 more)
 
 ### Community 95 - "serve_purson.py"
-Cohesion: 0.04
-Nodes (48): 5.0 คำถามเปิด (ผูกกับงานจริงของเรา), 5.10.1 แนวคิด: ไม่ต้องใช้ทุกส่วนกับทุก token, 5.10.2 ลำดับพัฒนาการ (state of the art เปลี่ยนเร็ว), 5.10.3 ทำไม VRAM ต้องโหลดทั้ง 35B, 5.10.4 ทำไม MoE ทำ OOM และเทรนยาก (บั๊กข้อ 7), 5.10 Mixture of Experts: 35B ที่คิดเร็วเหมือน 3B แต่กิน VRAM เท่า 35B, 5.11 จำนวนพารามิเตอร์ → VRAM: สูตรที่ควรคิดในหัวได้, 5.12 เชื่อมกับงานของเรา (+40 more)
+Cohesion: 0.29
+Nodes (7): build_grammar(), _Deadline, generate(), load(), main(), make_app(), xgrammar builtin JSON — คืน factory (LogitsProcessor มี state ต้องสร้างใหม่ทุกคร
 
 ### Community 96 - "training/pass0_material_list_batch.py"
-Cohesion: 0.09
-Nodes (37): _affine_worst(), _all_intersections(), asymmetric_bottom_origin_is_accepted_flipped_with_issue(), asymmetric_mirror_survivor_is_never_a_wrong_accept(), cv_from(), cv_mark_fit_from_clustered_anchors_is_refused(), cv_only_points_reported_not_added(), degenerate_class_is_skipped_not_pooled() (+29 more)
+Cohesion: 0.33
+Nodes (9): bare(), build_label(), find_pages(), main(), page_key(), หา (house, page) ที่มีไฟล์ GT pattern=material_list พอดี 2 ไฟล์ และเป็นไฟล์ทั้งห, คืน label หรือ None ถ้าเลขแผ่นอ่านไม่ได้/ซ้ำ (ไม่เดา — ปล่อยเข้าคิวมือ), read_jsonl() (+1 more)
 
 ### Community 97 - "[Continuing from the July 7 session] Makham (working together with Claude Code — same session, crossing midnight)"
 Cohesion: 0.20
@@ -806,8 +713,8 @@ Cohesion: 0.20
 Nodes (9): [00:30–03:30] Claude — session with Makham (continuing from the night of the 28th), 1. Continued the house 01 extraction run — got 4 new pages, then stopped as ordered, 2026-07-29, 2. ⛔ The results really are unusable — all 6 pages checked against ground truth, 3. ★★ The most likely cause — **the LoRA may not be in t01's GGUF at all**, 4. Two secondary causes (real, but not the main one), 5. ⚠️ Caveats when interpreting tonight's results, 6. Real speed numbers (measured from the log) (+1 more)
 
 ### Community 100 - "ตอนที่ 3 (2026-07-28) — วันนี้ t02 ลงมือเช่าจริง เกิดอะไรขึ้นบ้าง"
-Cohesion: 0.13
-Nodes (15): 1. ทบทวน: t02 ตอบคำถามอะไร, 2. เจอบั๊กใหม่ที่ไม่เคยเจอในรอบ t01 — เพราะ "เวอร์ชันไลบรารีขยับ", 3. อ่านกราฟ loss ตอนเทรน — loss คืออะไร บอกอะไรเรา, 4. VRAM ขึ้นๆ ลงๆ ระหว่างเทรน — ทำไม, 5. ทำไม Qwen3-VL ช้ากว่า Qwen3.6 ถึง 2.9 เท่า ทั้งที่ตั้งค่าเหมือนกันหมด, 6. ผลจริงของ Phase 7 — t02 แพ้ t01 ทุกตัวชี้วัด, 7. ทำไม Phase 7.5 ต้องโหลดโมเดลใหม่ทั้งก้อน — LoRA adapter คืออะไรกันแน่, 8. คำศัพท์ใหม่วันนี้ (ต่อจากท้ายเล่มในตอนที่ 2) (+7 more)
+Cohesion: 0.20
+Nodes (10): 1. ทบทวน: t02 ตอบคำถามอะไร, 3. อ่านกราฟ loss ตอนเทรน — loss คืออะไร บอกอะไรเรา, 4. VRAM ขึ้นๆ ลงๆ ระหว่างเทรน — ทำไม, 5. ทำไม Qwen3-VL ช้ากว่า Qwen3.6 ถึง 2.9 เท่า ทั้งที่ตั้งค่าเหมือนกันหมด, 6. ผลจริงของ Phase 7 — t02 แพ้ t01 ทุกตัวชี้วัด, 7. ทำไม Phase 7.5 ต้องโหลดโมเดลใหม่ทั้งก้อน — LoRA adapter คืออะไรกันแน่, 8. คำศัพท์ใหม่วันนี้ (ต่อจากท้ายเล่มในตอนที่ 2), ตอนที่ 3 (2026-07-28) — วันนี้ t02 ลงมือเช่าจริง เกิดอะไรขึ้นบ้าง (+2 more)
 
 ### Community 101 - "Stage B2 — Spec / Notes Reader"
 Cohesion: 0.22
@@ -858,16 +765,16 @@ Cohesion: 0.32
 Nodes (6): callQwenAPINative(), callQwenDirect(), callQwenViaSupabase(), fs, https, path
 
 ### Community 114 - "Primary Raw JSON Schema — Edit Log"
-Cohesion: 0.20
-Nodes (10): 2026-08-25 — §0.2: unmarked elements now take `element_id: null` + `element_name_assigned`, 2026-08-28 (6) — §1 plan family: four classification traps recorded, 2026-08-28 (7) — §0.4 / §6a element_type contradiction closed: purlin/truss added, 2026-08-29 — §1 stale claim corrected: pass 2 prompt already teaches the plan-family split, 2026-08-29 — §4 span rule amended + `scaled_from_grid` added to `span_source` (Makham's order), 2026-09-27 — §4 rule 4: every dimension tick is a line, even one nothing uses (Makham's order), 2026-09-29 — §4 Dummy grid: hand-supplied dummy labels are renamed into the rule too (Makham's order), Primary Raw JSON Schema — Edit Log (+2 more)
+Cohesion: 0.25
+Nodes (8): 2026-08-25 — §0.2: unmarked elements now take `element_id: null` + `element_name_assigned`, 2026-08-28 (6) — §1 plan family: four classification traps recorded, 2026-08-28 (7) — §0.4 / §6a element_type contradiction closed: purlin/truss added, 2026-08-29 — §1 stale claim corrected: pass 2 prompt already teaches the plan-family split, 2026-08-29 — §4 span rule amended + `scaled_from_grid` added to `span_source` (Makham's order), Primary Raw JSON Schema — Edit Log, รายการแก้ไข, วิธีเพิ่มแถวใหม่
 
 ### Community 115 - "ocr_titleblock"
 Cohesion: 0.43
 Nodes (7): crop_titleblock(), get_reader(), main(), ocr_titleblock(), img: PIL.Image หน้าเต็ม -> PIL.Image ครอปมุมกรอบชื่อแบบ ขยาย+ปรับ contrast แล้ว, คืน (hint_text, raw_lines) — hint_text ว่างถ้า OCR ไม่เจออะไรจริงจัง, write_hint()
 
 ### Community 116 - "tune_ai/soup_safetensors.py"
-Cohesion: 0.11
-Nodes (31): b_from_grouped(), b_key(), b_to_grouped(), check_soup(), detect_layout(), eta2(), fold_layout(), fold_orientation() (+23 more)
+Cohesion: 0.39
+Nodes (7): convert_expert_pair(), diagnose(), expert_delta_e0(), main(), ΔW ของ expert ตัวแรก ตาม peft ParamWrapper.get_delta_weight        A (E·r, X) →, สลับข้างการแยกตัวประกอบของชั้น MoE ให้ตรงอีก convention หนึ่งของ peft — **ไม่เสี, เช็คว่าพจน์ไขว้ไม่ได้กลบของจริง: ‖ΔW_รวม‖ ควรใกล้ ‖ค่าเฉลี่ย ΔW‖        ตรวจทั้
 
 ### Community 117 - "Phase 0 — เตรียมบนเครื่องตัวเอง ก่อนเช่าอะไรทั้งนั้น ($0)"
 Cohesion: 0.25
@@ -890,16 +797,16 @@ Cohesion: 0.25
 Nodes (4): load_split(), jsonl → PIL Image objects (Unsloth ต้องการ object ไม่ใช่ path)     คืน subtask_, xgrammar builtin JSON grammar — มะขามสั่ง 2026-08-24: หน้า beam plan ต้องแนบ xgr, setup_grammar()
 
 ### Community 122 - "merge_model/soup_safetensors.py"
-Cohesion: 0.04
-Nodes (44): 8.0 คำถามเปิด (ผูกกับงานจริงของเรา), 8.10.1 loss คืออะไรตอนทูน, 8.10.2 รูปร่าง loss curve ที่ควรเห็น, 8.10.3 การพิสูจน์ที่เราเคยละเลย: base vs tuned บนชุดเดียวกัน, 8.10 อ่าน loss และพิสูจน์ว่าทูน "ติด", 8.11 catastrophic forgetting และวิธีกัน, 8.12 การเลือก base model, 8.13 เชื่อมกับงานของเรา (+36 more)
+Cohesion: 0.39
+Nodes (7): convert_expert_pair(), diagnose(), expert_delta_e0(), main(), ΔW ของ expert ตัวแรก ตาม peft ParamWrapper.get_delta_weight        A (E·r, X) →, สลับข้างการแยกตัวประกอบของชั้น MoE ให้ตรงอีก convention หนึ่งของ peft — **ไม่เสี, เช็คว่าพจน์ไขว้ไม่ได้กลบของจริง: ‖ΔW_รวม‖ ควรใกล้ ‖ค่าเฉลี่ย ΔW‖        ตรวจทั้
 
 ### Community 123 - "training/pass0_derive.py"
-Cohesion: 0.09
-Nodes (44): _aspect(), _class_sets(), collect_anchors(), demo(), _element_refs(), _extent(), _grid_index(), _grid_positions() (+36 more)
+Cohesion: 0.46
+Nodes (7): building_of(), elements_of(), has_grid_refs(), main(), page_key(), คืน list ของ view dict หรือ None ถ้า derive ไม่ได้ (เข้าคิวมือ), views_for()
 
 ### Community 124 - "training/train_t05_courser.py"
-Cohesion: 0.05
-Nodes (41): 🔴 CRITICAL · 2026-07-08 · The task generator was never updated for the Gen 4 schema, so every beam showed empty grid_ref and no rebar in the labeling UI, 🔴 CRITICAL · 2026-08-25 · standards-config.js carried wrong lap and cover values; real BBS cut lengths changed once corrected against มยผ., 🔴 CRITICAL · 2026-09-01 · normalizeMainBar() only understood top/middle/bottom, so all column rebar came out null ('DBnull'), 🔴 CRITICAL · 2026-09-01 · worker.py wrote result files without the `pattern` field, so the adapter could not read the grid master and every beam lost its quantity, 🟠 HIGH · 2026-07-06 · Beam grid_ref was modelled as a rough aggregate count instead of atomic spans, losing per-span data, 🟠 HIGH · 2026-07-06 · Gen 2 and the self-done extraction had swapped the meaning of the grid axis labels, 🟠 HIGH · 2026-07-06 · span_source field had been dropped from the spec and had to be added back after it caused a low-confidence extraction, 🟠 HIGH · 2026-07-06 · Two agents spelled the same schema key differently (element vs elements), and the fix was to tolerate the drift rather than eliminate it (+33 more)
+Cohesion: 0.25
+Nodes (4): load_split(), jsonl → PIL Image objects (Unsloth ต้องการ object ไม่ใช่ path)     คืน subtask_, xgrammar builtin JSON grammar — มะขามสั่ง 2026-08-24: หน้า beam plan ต้องแนบ xgr, setup_grammar()
 
 ### Community 125 - "Things To Fix"
 Cohesion: 0.25
@@ -926,15 +833,15 @@ Cohesion: 0.29
 Nodes (7): 4. Grid, Atomic segments (span elements) vs merged entries (point elements), Documenting genuine ambiguity in the grid master (optional, added 2026-08-09), Dummy grid, Element ordering within `elements[]`, 🔎 How to FIND dummy grids: the beam-endpoint rule (Makham, 2026-07-19), Master file
 
 ### Community 131 - "md_to_book_pdf.py"
-Cohesion: 0.08
-Nodes (33): absolutize_images(), append_to_book(), find_browser(), md_to_pdf(), Path, แปลง src ของรูปที่เขียนเป็น path สัมพัทธ์ ให้เป็น file:// เต็ม      จำเป็นเพรา, build_perms(), check_folds() (+25 more)
+Cohesion: 0.52
+Nodes (6): absolutize_images(), append_to_book(), find_browser(), md_to_pdf(), Path, แปลง src ของรูปที่เขียนเป็น path สัมพัทธ์ ให้เป็น file:// เต็ม      จำเป็นเพรา
 
 ### Community 132 - "ผล Qwen t02 บ้าน 09 — ไฟล์สำหรับนำเข้า Constistant"
 Cohesion: 0.29
 Nodes (6): ข้อจำกัดที่เหลือ ระบุตรงๆ, ผล Qwen t02 บ้าน 09 — ไฟล์สำหรับนำเข้า Constistant, ผลจริงตอนนำเข้า (รันผ่าน adapter จริงแล้ว ไม่ใช่คาดเดา), วิธีใช้, สร้างใหม่ยังไง, ไฟล์มาจากไหน — อ่านก่อนใช้
 
 ### Community 133 - "Dataset sizing — ควรมีกี่หลัง และ annotate อะไรบ้าง"
-Cohesion: 0.33
+Cohesion: 0.29
 Nodes (6): Dataset sizing — ควรมีกี่หลัง และ annotate อะไรบ้าง, ตัวเลขที่ตอบว่าทำไมหน้า beam ถึงพัง, ⚠️ ปัญหาที่ต้องตัดสินใจก่อนวาง t03, วิธีนับซ้ำ, ⚠️ อย่า annotate ทุก pattern เท่ากัน — จุดที่ประหยัดได้จริง, เป้า
 
 ### Community 134 - "convert_split"
@@ -1014,16 +921,16 @@ Cohesion: 0.53
 Nodes (5): gt_marks(), gt_text(), main(), pick_rows(), ดึง mark จาก GT: ค่า string สั้น ๆ ของคีย์ mark/name ใน JSON GT
 
 ### Community 153 - "anchors_by_shape"
-Cohesion: 0.12
-Nodes (36): a3_set_printed_on_a4_snaps_to_141(), clean_grid_gives_exact_scale_and_transform(), _corrupt(), doubled_x_master_flags_x_ratio_2_not_y(), doubled_y_master_flags_y(), dummy_lines_drawn_count_as_explained(), _fixtures(), G() (+28 more)
+Cohesion: 0.33
+Nodes (6): anchors_by_shape(), _mutual_nearest(), _normalize(), ย่อชุดจุดลงกรอบ [0,1] ของตัวเอง — เทียบรูปทรงการกระจายตัวข้ามหน่วย (เมตร vs พิกเ, คู่ที่ "ต่างฝ่ายต่างเห็นกันเป็นเพื่อนบ้านใกล้สุด" เท่านั้น → [(i, j)]      ใช้, ทางสำรองเมื่อโมเดลไม่ตอบ cv_mark (ซึ่งเป็นกรณีปกติ — destrier เห็น cv_mark
 
 ### Community 154 - "training/smoke_destrier.py"
-Cohesion: 0.05
-Nodes (38): 3.0 คำถามเปิด (ผูกกับงานจริงของเรา), 3.10 ขีดจำกัดและจุดแข็งของ CV แบบดั้งเดิม → ทำไมต้อง hybrid กับ VLM, 3.11 เชื่อมกับงานของเรา, 3.12 ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 3.13 แบบฝึกหัด, 3.1 ภาพ = อาร์เรย์ตัวเลข, 3.2 OpenCV คืออะไร มาจากไหน และทำไมชื่อ cv2, 3.3 Pixel operations: threshold และ blur (+30 more)
+Cohesion: 0.53
+Nodes (5): gt_marks(), gt_text(), main(), pick_rows(), ดึง mark จาก GT: ค่า string สั้น ๆ ของคีย์ mark/name ใน JSON GT
 
 ### Community 155 - "pursonVision.js"
-Cohesion: 0.05
-Nodes (38): 6.0 คำถามเปิด (ผูกกับงานจริงของเรา), 6.10 การประเมิน LLM: benchmark, LLM-as-judge, human eval และข้อจำกัด, 6.11 เชื่อมกับงานของเรา, 6.12 ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 6.13 แบบฝึกหัด, 6.1.1 base model ทำอะไรได้, 6.1.2 Instruct model คืออะไร, 6.1 Base model vs Instruct model: เขียนต่อ กับ ตอบคำถาม (+30 more)
+Cohesion: 0.60
+Nodes (5): getSupabaseClient(), purson_analyzeSingle(), purson_getJob(), purson_submitHouseExtract(), purson_waitForJob()
 
 ### Community 156 - "Pilot comparison: Claude vs Qwen — บ้าน_เล็ก_1ชั้น_01 (4 หน้า)"
 Cohesion: 0.33
@@ -1050,8 +957,8 @@ Cohesion: 0.33
 Nodes (5): Afternoon round — cascading B'/E' turned into a full-sheet image check for pages 31+32, Claude — Qwen3.6-35B-A3B fine-tune session (Constistant repo, `tune_ai/t01/data_before_tune/`), Evening round — B' correction, deleting elements per instruction, full-sheet check of page33, Late-night round — sweeping every pattern=plan file in house3 against the gridline master, Makham + Claude Code — house 3 dummy grids continued + footing dedup + answering fine-tune questions (continuing from 2026-07-19.md)
 
 ### Community 162 - "2026-09-01"
-Cohesion: 0.22
-Nodes (8): 2026-09-01, Claude (session with Makham — live demo debugging + pass1/1.5/2.5 wiring), Claude (session with Makham — pass3 วัดระยะจากผังกริด + เชื่อมเข้าเว็บ), Claude (session with Makham — จำลองรันบ้านจริงทั้งหลังโดยไม่เช่าการ์ด + เอกสารสอนมะขาม), Claude (session with Makham — แก้ 2 บั๊กค้าง + พิสูจน์ pass3 กับแบบจริง), รอบดึก — จำลองบ้าน02 แบบเข้มกว่าเดิม + เจอบั๊กจริง 1 ตัวใน Constistant (claude), รอบเย็น — จัดระเบียบ + ทำระบบให้ทนเน็ตหลุด (claude), แก้ต่อ — footing dowel_bar join (claude, ตามที่มะขามสั่ง "แก้เลย")
+Cohesion: 0.33
+Nodes (5): 2026-09-01, Claude (session with Makham — live demo debugging + pass1/1.5/2.5 wiring), Claude (session with Makham — pass3 วัดระยะจากผังกริด + เชื่อมเข้าเว็บ), Claude (session with Makham — จำลองรันบ้านจริงทั้งหลังโดยไม่เช่าการ์ด + เอกสารสอนมะขาม), Claude (session with Makham — แก้ 2 บั๊กค้าง + พิสูจน์ pass3 กับแบบจริง)
 
 ### Community 163 - "Workmen's Diary"
 Cohesion: 0.33
@@ -1066,8 +973,8 @@ Cohesion: 0.40
 Nodes (4): Prompt Library — Thai RC Drawing Pipeline, การใช้งาน Label Studio, โครงสร้าง Pipeline, ไฟล์
 
 ### Community 166 - "The grid master records EVERY printed dimension in the whole set (added 2026-08-21, Makham)"
-Cohesion: 0.33
-Nodes (6): 1. `z_levels[]` — the vertical axis, same role as `x_lines`/`y_lines`, 2. `dimension_chains[]` — every printed dimension row, on any axis, 3. `unassigned_dimensions[]` — the catch-all, so nothing is ever dropped, 4. Every dimension tick is a line — even one nothing uses (added 2026-09-27, Makham), Relationship to the resolved axes, The grid master records EVERY printed dimension in the whole set (added 2026-08-21, Makham)
+Cohesion: 0.40
+Nodes (5): 1. `z_levels[]` — the vertical axis, same role as `x_lines`/`y_lines`, 2. `dimension_chains[]` — every printed dimension row, on any axis, 3. `unassigned_dimensions[]` — the catch-all, so nothing is ever dropped, Relationship to the resolved axes, The grid master records EVERY printed dimension in the whole set (added 2026-08-21, Makham)
 
 ### Community 167 - "4a. `notes` pattern — the `notes{}` object (added 2026-08-21)"
 Cohesion: 0.40
@@ -1090,20 +997,16 @@ Cohesion: 0.70
 Nodes (4): build_messages_house(), build_messages_val(), load_val_row(), main()
 
 ### Community 173 - "t05_Destier — ทุกอย่างที่ "ใช้จริง" ของ Destrier รวมไว้ที่เดียว"
-Cohesion: 0.11
-Nodes (36): all_strings(), dump(), _flat(), _inline(), is_dummy(), _items(), norm(), not_a_ref() (+28 more)
-
-### Community 174 - "training/audit_inline.py"
-Cohesion: 0.10
-Nodes (35): bring_up(), _check_model_menu(), clear_blacklist(), clear_stuck_card(), current_instance(), do_attach(), do_stop(), do_worker() (+27 more)
+Cohesion: 0.40
+Nodes (4): t05_Destier — ทุกอย่างที่ "ใช้จริง" ของ Destrier รวมไว้ที่เดียว, ถ้าจะรันจริงจากที่นี่, สิ่งที่ **ไม่** เอามาใส่ (ตัดใจแล้ว ไม่ใช่ลืม), โครงสร้าง
 
 ### Community 175 - "training/worker_page.py"
-Cohesion: 0.06
-Nodes (35): 🔴 CRITICAL · 2026-07-21 · Known permanent-data-loss risk was never raised as a hard-block warning, 🔴 CRITICAL · 2026-07-24 · Files were lost on the rented GPU because the 'not backed up yet' warning was phrased softly instead of as a blocking stop, 🔴 CRITICAL · 2026-08-21 · The notes → Constistant path produces nothing: the adapter reads fields the schema never defined, 🟠 HIGH · 2026-07-10 · Condensing the schema silently dropped 3 real operational rules, 🟠 HIGH · 2026-07-21 · Assistant warned too weakly about the missing backup and declared the model ready while it could not read images, 🟠 HIGH · 2026-07-21 · Called the GGUF 'ready to use' when it could not read images at all, 🟠 HIGH · 2026-07-28 · Workflow files for different tuning rounds shared the same name, so a previous round's ✅ could be mistaken for this round's completion, 🟠 HIGH · 2026-08-21 · The vertical axis had no field anywhere in the schema despite levels being printed on every elevation and section (+27 more)
+Cohesion: 0.70
+Nodes (4): build_messages_house(), build_messages_val(), load_val_row(), main()
 
 ### Community 176 - "index.ts"
-Cohesion: 0.06
-Nodes (33): 7.0 คำถามเปิด (ผูกกับงานจริงของเรา), 7.10 คำนวณ token budget ของภาพ 3309×2339 ให้ดู, 7.11 เชื่อมกับงานของเรา, 7.12 ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 7.13 แบบฝึกหัด, 7.1 ปัญหาต้นทาง: LLM รับได้แต่ token ข้อความ, 7.2.1 contrastive loss ด้วยตัวอย่าง 3 คู่, 7.2.2 ทำไม CLIP ถึงสำคัญกับ VLM (+25 more)
+Cohesion: 0.40
+Nodes (3): corsHeaders, endpointKey, endpointUrl
 
 ### Community 177 - "5. Rebar spec — รวมโครงสร้างใหม่ (breaking change จากทั้ง 2 ฝั่งเดิม แต่มีเหตุผลจากหลักฐานจริง)"
 Cohesion: 0.40
@@ -1130,12 +1033,12 @@ Cohesion: 0.40
 Nodes (4): [00:02] makham — house 37 GT correction (reconstructed from git log, not a live session), [12:18–13:00] Claude Opus 5 (1M context) — graphify knowledge-graph setup, [18:58] makham — house 50 milestone (reconstructed from git log, not a live session), 2026-08-27
 
 ### Community 183 - "11. พรุ่งนี้ทำอะไรต่อ — เรียงตามลำดับ"
-Cohesion: 0.09
-Nodes (21): dict, adapter_b_layout(), build_grammar(), check_expert_lora(), _Deadline, generate(), has_layout_key(), load() (+13 more)
+Cohesion: 0.40
+Nodes (5): 11. พรุ่งนี้ทำอะไรต่อ — เรียงตามลำดับ, ⛔ สิ่งที่ยังไม่ควรทำ, 🔴 อันดับ 1 (ฟรี, ~20 นาที) — พิสูจน์ว่า LoRA อยู่ใน GGUF ไหม, 🟠 อันดับ 2 (ฟรี, ไม่กี่นาที) — แก้ด่านตรวจใน `export_gguf.py`, 🟡 อันดับ 3 — ค่อยเลือกทางแก้ ตามผลของอันดับ 1
 
 ### Community 184 - "2. เจอบั๊กใหม่ที่ไม่เคยเจอในรอบ t01 — เพราะ "เวอร์ชันไลบรารีขยับ""
-Cohesion: 0.06
-Nodes (31): Purson worker — ต่อโมเดลของเราเข้า Constistant, ความปลอดภัย, ติดตั้ง (เครื่องที่จะรัน worker), ⚠️ ทำไมไม่ใช้ vLLM (ตรวจจริง 2026-08-30 — ก่อนเช่าการ์ด), 🔴 ระเบิดเวลา 17 ก.ย. 2026 — `pip install -U unsloth` ทำให้ผลเป็นขยะเงียบๆ, วันพรีเซนต์ (เปิด GPU เฉพาะตอนใช้) — `presentation.py`, เปิด GPU endpoint (บนเครื่องเช่า) — `serve_purson.py`, เส้นทางเร็ว (2026-09-20) — merge เป็น dense แล้วเสิร์ฟด้วย vLLM/SGLang (+23 more)
+Cohesion: 0.40
+Nodes (5): 2. เจอบั๊กใหม่ที่ไม่เคยเจอในรอบ t01 — เพราะ "เวอร์ชันไลบรารีขยับ", ทำไมไม่มีใครรู้ล่วงหน้า, ปัญหา, วิธีแก้จริง, อธิบายง่ายๆ ว่าเกิดอะไรขึ้น
 
 ### Community 185 - "4. 🔑 หลักฐานที่ทำให้สงสัยว่า LoRA ไม่ได้อยู่ใน GGUF"
 Cohesion: 0.40
@@ -1222,68 +1125,68 @@ Cohesion: 0.67
 Nodes (3): LD_LIBRARY_PATH, run_one(), run_queue_gpuA.sh script
 
 ### Community 209 - "_common.md - shared rule block"
-Cohesion: 0.06
-Nodes (31): 4.0 คำถามเปิด (ผูกกับงานจริงของเรา), 4.10 ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 4.11 แบบฝึกหัด, 4.1 Convolution layer = filter ที่เรียนรู้ได้, 4.2 Pooling และ receptive field: ทำไมชั้นลึกจึง "เห็นกว้าง", 4.3 ประวัติย่อ: LeNet → AlexNet → VGG → ResNet, 4.4 Feature hierarchy: edge → texture → part → object, 4.5 Transfer learning: ทำไมไม่ต้องเทรนจากศูนย์ (+23 more)
+Cohesion: 0.50
+Nodes (3): BLOCK END, BLOCK START, _common.md - shared rule block
 
 ### Community 210 - "Pass 0 - page classification"
-Cohesion: 0.06
-Nodes (30): 1.0 คำถามเปิด (ผูกกับงานจริงของเรา), 1.10 เชื่อมกับงานของเรา, 1.11 ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 1.12 แบบฝึกหัด, 1.1 AI, ML, DL คืออะไร และมาจากไหน, 1.2 โมเดล = ฟังก์ชันที่มีพารามิเตอร์, 1.3 สี่แบบของ "การเรียนรู้" ที่จะเจอตลอดหลักสูตร, 1.4 สมการถดถอยเชิงเส้น: กำลังอัดคอนกรีตกับอายุ (+22 more)
+Cohesion: 0.50
+Nodes (3): Pass 0 - page classification, PROMPT END, PROMPT START
 
 ### Community 211 - "pass2_gridline.md - the grid master"
-Cohesion: 0.13
-Nodes (29): bare(), build_pass0(), build_pass24(), build_pass3(), cluster1d(), elements_flat(), expand_pool(), fit_axis() (+21 more)
+Cohesion: 0.50
+Nodes (3): pass2_gridline.md - the grid master, PROMPT END, PROMPT START
 
 ### Community 212 - "pass2_material_list.md - bill of quantities (BOQ)"
-Cohesion: 0.08
-Nodes (9): _fake_workroot(), ตัดเฉพาะท่อน pass0 ของ run_house_extract ออกมารันเดี่ยว ๆ — ท่อนถัดไป (pass1+), ตรรกะเดียวกับที่ run_house_extract ใช้ตัดสิน — แก้ที่โน่นต้องแก้ที่นี่ด้วย, workroot จิ๋วที่มี manifest + ครอป 1 ใบ + _cv.json จริงจาก production (ไม่มีภาพจ, _run_pass0_only(), _usable(), _vcall(), _VResp (+1 more)
+Cohesion: 0.50
+Nodes (3): pass2_material_list.md - bill of quantities (BOQ), PROMPT END, PROMPT START
 
 ### Community 213 - "pass2_notes.md - project-level specifications"
-Cohesion: 0.09
-Nodes (23): 🔴 CRITICAL · 2026-07-05 · Background agent stalled twice, was killed mid-task, and pages 41-47 of the spread-footing BOQ were never extracted at all, 🔴 CRITICAL · 2026-07-28 · Bug 2: the collator's default resize='min' silently fell back to 512px — a 25x resolution loss — while VRAM deceptively looked comfortable, 🔴 CRITICAL · 2026-08-25 · t01 silently trained at the library default 512px / ~266 tokens per image and tanked accuracy, 🔴 CRITICAL · 2026-08-25 · The one guard against the project's most expensive bug was 4x too lenient and would have waved it through, 🔴 CRITICAL · 2026-08-29 · pass 0 mislabelled roof structure pages in 8 of 11 houses, silently deleting all roof beams from the BOQ, 🔴 CRITICAL · 2026-08-30 · Web importer recognised only spec pattern names (`plan`/`gridline`) that appear in ZERO real files — import silently produced 0 elements, 🔴 CRITICAL · 2026-09-01 · Footings with no rebar size produced '(DBnull)' and ฿0 steel with no warning flag — reading as if the footing genuinely has no reinforcement, 🟠 HIGH · 2026-07-05 · npm test ran a single file, so an entire test suite had never been executed and was silently broken (+15 more)
+Cohesion: 0.50
+Nodes (3): pass2_notes.md - project-level specifications, PROMPT END, PROMPT START
 
 ### Community 214 - "pass2_plan_beam.md - beam plan (floor beams and roof framing)"
-Cohesion: 0.10
-Nodes (20): 1. เวลารวมที่จดไว้ผิด — ~4 ชม. 50 นาที ไม่ใช่ 3 ชม. 50 นาที, 2026-09-25, 21:30-22:30 — อิม + Claude — วางแผนแผน A (worker.py บนเครื่องเช่า): ชนกับเอกสาร "โหมด A" ของมะขาม เลื่อนลงมือจนกว่าจะมี Python, 22:45-23:45 — อิม + Claude — ทำไมถอดแบบช้า + ช่องโหว่ใน workflow การอ่านแบบ: สรุปส่งต่อให้มะขาม (ยังไม่มีโค้ดเปลี่ยน), 2. เวลาหายไปไหน, 3. ต้นเหตุ — ตัวเสิร์ฟเขียนได้ ~4-8 token/วิ ทั้งที่การ์ดทำได้ ~300, 4. เรื่อง notes — อิมตัดสินใจ "ไม่แตะ" (รันครบเหมือนเดิม), 5. แผนเร่งความเร็วขั้นที่ 1 (เสนอ ยังไม่ทำ) — ลง kernel + ล็อกเวอร์ชัน + วัดจริง (+12 more)
+Cohesion: 0.50
+Nodes (3): pass2_plan_beam.md - beam plan (floor beams and roof framing), PROMPT END, PROMPT START
 
 ### Community 215 - "pass2_plan_column.md - column plan (not wired into training - see note)"
-Cohesion: 0.10
-Nodes (19): 11.0 คำถามเปิด (ผูกกับงานจริงของเรา), 11.10 สาย (i): ความละเอียดและการแบ่งภาพ (tiling) สำหรับภาพใหญ่, 11.11 สาย (j): benchmark ที่เราควรสร้างเอง, 11.12 เชื่อมกับงานของเรา, 11.13 ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 11.14 ถ้าออกแบบระบบใหม่ด้วยความรู้ทั้งหมดในหลักสูตรนี้, 11.15 แบบฝึกหัด, 11.1 ทำไมแบบก่อสร้างไม่เหมือนภาพถ่ายธรรมชาติ (+11 more)
+Cohesion: 0.50
+Nodes (3): pass2_plan_column.md - column plan (not wired into training - see note), PROMPT END, PROMPT START
 
 ### Community 216 - "pass2_plan_footing.md - footing / pile-cap plan"
-Cohesion: 0.10
-Nodes (19): 10. MEDIUM — Self-serve channel is flat (no ramp) and identical for 3 years, 11. LOW — Driver plausibility of Channel 1 (the defensible part), 12. LOW — LTV:CAC 78.6x internally inconsistent, 13. Source spot-check (positive finding), 1. CRITICAL — Base Year-1 customer count is 99.5% a goal-seeked guess, 2. CRITICAL — Lead volume exceeds the entire addressable universe, 3. CRITICAL — Best case breaches the SOM ceiling every single year, 4. CRITICAL — Investor-facing "active scenario" is Best, not Base (+11 more)
+Cohesion: 0.50
+Nodes (3): pass2_plan_footing.md - footing / pile-cap plan, PROMPT END, PROMPT START
 
 ### Community 217 - "pass2_plan_slab.md - floor slab plan"
-Cohesion: 0.10
-Nodes (20): 🔴 CRITICAL · 2026-07-10 · Someone force-rewrote the whole Constistant repo history, forcing a local hard reset, 🔴 CRITICAL · 2026-07-11 · Reading pages 50-51 in parallel then writing from memory swapped data between three BOQ sheets, 🟠 HIGH · 2026-07-07 · An entire pipeline folder existed as a stale duplicate in a second repo for 5 days, 🟠 HIGH · 2026-07-10 · Four days of work (t4 onward) went uncommitted, still pending as of July 11, 🟠 HIGH · 2026-09-02 · Work committed to `main` was invisible to Makham, who was working on the diverged `Presentation-demo` branch, ⚪ LOW · 2026-07-05 · A killed agent left a scratch file in the ground-truth folder that was never cleaned up, ⚪ LOW · 2026-07-05 · Repo accumulated empty scaffolding folders, empty files, temp scripts and duplicate test directories, ⚪ LOW · 2026-07-08 · The cancelled migration script was left on disk with no owner and no decision (+12 more)
+Cohesion: 0.50
+Nodes (3): pass2_plan_slab.md - floor slab plan, PROMPT END, PROMPT START
 
 ### Community 218 - "pass2_schedule.md - summary tables"
-Cohesion: 0.20
-Nodes (18): check(), main(), source guard — path นี้ต้องมีการ์ดจริงถึงจะวิ่ง เทสต์ยูนิตจึงแตะไม่ถึง     ตรวจ, 23 ก.ย. 69: ตัวโหลดของ HuggingFace (Xet) พังที่ 9.1/72 GB ตัวเสิร์ฟตายทั้ง proce, เครื่องที่เช่าเองจากเว็บแล้วเลือกโหมด Jupyter จะไม่มี sshd เลย — ต่อไม่ได้ทั้งทา, 23 ก.ย. 69 ตรวจโค้ดเจอ: cmd_down เดิมนับ instance คงเหลือ **ข้างใน** if st.get(i, 23 ก.ย. 69 ตรวจโค้ดเจอ: upload_and_start_server ไม่เคยเช็คว่าเครื่องมีตัวเสิร์ฟร, กัน test เขียนทับ blacklist.json ตัวจริงของมะขาม (+10 more)
+Cohesion: 0.50
+Nodes (3): pass2_schedule.md - summary tables, PROMPT END, PROMPT START
 
 ### Community 219 - "pass2_section.md - detail sections (rebar specs)"
-Cohesion: 0.19
-Nodes (18): as_text_parts(), bare(), build_house_folds(), bypass(), collect_pass024(), fix_pass1_paths(), house_of_image(), main() (+10 more)
+Cohesion: 0.50
+Nodes (3): pass2_section.md - detail sections (rebar specs), PROMPT END, PROMPT START
 
 ### Community 220 - "pass2_soil_boring_log.md - soil investigation / borehole log"
-Cohesion: 0.11
-Nodes (16): 1. สถาปัตยกรรม (ยืนยันจาก config.json + paper arXiv 2504.10479), 2. ไขปริศนา t04 ครบทุกข้อ (ตอนนี้รู้กลไกจริงแล้ว ไม่ใช่แค่อาการ), 3. 🔴 การค้นพบใหม่ — อาจเป็น "สาเหตุที่สอง" ของคืนที่แล้ว ซ้อนอยู่ใต้เรื่อง tile, 4. ทางเลือกของแขน InternVL (เรียงตามความเสี่ยง×ราคา), 5. YAML แก้มือ (ต่างจาก t04 สามบรรทัด + ข้อควรระวัง), 6. งบรวม 2 แขนขนาน, InternVL3-78B — dossier ฉบับเต็มสำหรับแขนขนาน (arm B) ของ t05, dataset (2026-08-31 ค่ำ) — k-fold 2, เนื้อเดียวกับแขน Courser เป๊ะทุก fold (+8 more)
+Cohesion: 0.50
+Nodes (3): pass2_soil_boring_log.md - soil investigation / borehole log, PROMPT END, PROMPT START
 
 ### Community 221 - "training/run_cv_batch.py"
-Cohesion: 0.19
-Nodes (15): check_a(), check_b(), compare(), fingerprint(), fixed_input(), get_tensor(), main(), input ตายตัว ไม่สุ่ม — ต้องได้ชุดเดิมเป๊ะทุก process ไม่งั้นเทียบไม่ได้ (+7 more)
+Cohesion: 0.83
+Nodes (3): collect_targets(), house_of(), main()
 
 ### Community 222 - "training/run_queue.sh"
-Cohesion: 0.19
-Nodes (15): check_a(), check_b(), compare(), fingerprint(), fixed_input(), get_tensor(), main(), input ตายตัว ไม่สุ่ม — ต้องได้ชุดเดิมเป๊ะทุก process ไม่งั้นเทียบไม่ได้ (+7 more)
+Cohesion: 0.67
+Nodes (3): LD_LIBRARY_PATH, run_one(), run_queue.sh script
 
 ### Community 223 - "training/run_queue_elements.sh"
-Cohesion: 0.31
-Nodes (12): ensureProgressCss(), estimateRemainingSec(), fmtDuration(), notifyDone(), pass3Stats(), PURSON_STEPS, qt_runPurson(), renderPagesToPngBlobs() (+4 more)
+Cohesion: 0.67
+Nodes (3): LD_LIBRARY_PATH, run_one(), run_queue_elements.sh script
 
 ### Community 224 - "training/run_queue_gpuA.sh"
-Cohesion: 0.15
-Nodes (12): Appendix — chronological index, How to use this document, Irreversible things get a hard stop, Learning must become machinery, Measure the right thing, Nothing may fail quietly, One authority per fact, Proof, not vibes (+4 more)
+Cohesion: 0.67
+Nodes (3): LD_LIBRARY_PATH, run_one(), run_queue_gpuA.sh script
 
 ### Community 225 - "2026-07-05.md"
 Cohesion: 0.50
@@ -1305,10 +1208,6 @@ Nodes (4): 3. 🔑 เบาะแสสำคัญ: "พังในแบบ�
 Cohesion: 0.50
 Nodes (3): ตารางสรุปทั้งหมด, ผลชี้ขาด, แคตตาล็อก AI — ทางเลือกโมเดล Vision ขนาด 100-200B (นอกจาก Qwen)
 
-### Community 230 - "json_แก้ไขแล้ว/สิ่งที่ต้องแก้.md"
-Cohesion: 0.40
-Nodes (4): 64. บ้าน 46-49 — ไล่ผังคานทุกแผ่น (run ยาวตามคำสั่งมะขาม), 65. ⭐ กฎใหม่: `~` กระทบแค่ "ตำแหน่ง" ไม่กระทบ "ความยาว" — เติม span ได้อีก 85 ตัว, 66. เจอจากการตรวจ pass3 อัตโนมัติ (2026-09-26, Claude) — ต้องให้คนยืนยันก่อนแก้ ห้ามแก้อัตโนมัติ, 67. ฐานรากใน GT ใช้ field มิติสามธรรมเนียมที่ขัดกัน + ส่วนใหญ่ไม่มีความหนา (2026-09-26, Claude) — ฝั่งเว็บแก้แล้ว ฝั่ง GT ยังไม่แก้
-
 ### Community 231 - "1. Pattern taxonomy — 19 types"
 Cohesion: 0.67
 Nodes (3): 1. Pattern taxonomy — 19 types, ⚠️ `roof_plan` vs `plan` — a real, live data-loss bug (found 2026-08-21), The plan family — `beam_plan` · `footing_plan` · `roof_frame_plan` · `etc_plan` (split 2026-08-28)
@@ -1317,400 +1216,28 @@ Nodes (3): 1. Pattern taxonomy — 19 types, ⚠️ `roof_plan` vs `plan` — a 
 Cohesion: 0.67
 Nodes (3): 0.0 ตารางคุมตัวแปร — หัวใจของรอบนี้, ทำไม 30B-A3B ไม่ใช่ 8B หรือ 32B, เกณฑ์ตัดสิน — ตัวเลขที่ต้องเอาชนะ
 
-### Community 242 - "proof/op04_gpu_setup.sh"
-Cohesion: 0.17
-Nodes (11): 2026-09-27, [Claude — session with makham] destrier: LoRA ของ MoE expert ปนผิดตอนรวม fold + ตัวซ่อม · ทดสอบแผน A บนการ์ดจริงผ่าน, [Claude — session with makham] grid master: ทุกระยะที่พิมพ์ = เส้น dummy แม้ไม่มีอะไรใช้ (สเปก §4 rule 4), [Claude — session with makham] ที่มาชื่อ Palfrey + คำศัพท์ม้ายุคกลาง (คั่นเวลา), [Claude — session with makham] ปิดข้อค้างของ 26 ก.ย. ทุกข้อ: render 200 dpi · ไม่นับหน้าแบบขยายซ้ำ · pattern นอกคำศัพท์ · ธงแปลนหลายชั้น · sync run_this, [Claude — session with makham] ร่างรอบทูนถัดไป: t07_Palfrey (ไม่มี t06), [Claude — session with makham] หน้าเว็บ admin เปิด/ปิด/ดูการ์ดจอ (Constistant repo, commit `761a8c6`), [Claude — session with makham] อัปเดต INVENTORY.csv ทั้ง 3 รีโป (Training / Constistant / ku_project_jop) — สร้างใหม่ 2 รีโปที่ไม่เคยมี (+3 more)
-
-### Community 243 - "proof/op04_run.py"
-Cohesion: 0.18
-Nodes (10): (a) VERDICT: **DOES NOT MATCH the VC-standard template** (strong in provenance discipline, structurally incomplete as a fundraising model), Agent 2 — Workbook Organization & VC-Template Conformance Audit, (b) Numbered Findings, (c) Proposed Target Sheet Structure, CRITICAL, (d) Checklist to reach "appendix-grade" explainability, (e) Investor Dashboard — presentation-layer check, HIGH (+2 more)
-
-### Community 244 - "training/onstart.sh"
-Cohesion: 0.27
-Nodes (10): bake_image_config(), check_versions(), inspect(), main(), merge(), เตือนเรื่องเวอร์ชัน — ไม่บังคับ เพราะ env var ข้างบนกันไว้ทั้งสองทางแล้ว, เขียนค่าความละเอียดลง preprocessor_config.json ของ repo ที่ merge แล้ว      ทำ, อ่าน **เฉพาะ header** ของ safetensors ผ่าน HTTP Range — ได้ shape/dtype ครบทุกเท (+2 more)
-
-### Community 245 - "t44_Voldemort/onstart.sh"
-Cohesion: 0.27
-Nodes (10): bake_image_config(), check_versions(), inspect(), main(), merge(), เตือนเรื่องเวอร์ชัน — ไม่บังคับ เพราะ env var ข้างบนกันไว้ทั้งสองทางแล้ว, เขียนค่าความละเอียดลง preprocessor_config.json ของ repo ที่ merge แล้ว      ทำ, อ่าน **เฉพาะ header** ของ safetensors ผ่าน HTTP Range — ได้ shape/dtype ครบทุกเท (+2 more)
-
 ### Community 261 - "7. ทำไมมันช้า — เลขจริงและเหตุผล"
-Cohesion: 0.35
-Nodes (10): elements_of(), main(), mark_base(), norm_id(), norm_ref(), F4,C1" → "f4" — mark ในแบบพิมพ์ติดกันเป็นคู่ (ฐานราก,เสา) แต่ธรรมเนียม GT     แ, 1-A" / "A-1" / "A1" / "a 1" → ("A","1") — ตัวอักษรขึ้นก่อนเสมอ, score_page() (+2 more)
-
-### Community 275 - "merge_model/merge_adapters_soup.py"
-Cohesion: 0.18
-Nodes (10): 01:00-01:25 — makham + Claude — MAX_NEW_TOKENS raised; grid-master dimension audit across all 40 houses, 01:45-05:50 — Claude (makham asleep, att1235) — overnight run finished clean, card returned, 08:30-10:00 — makham + Claude — getting the finished result onto the screen: 3 real bugs on the import path, 10:00-10:30 — makham + Claude — the 97 warnings had one root cause: grid refs written back-to-front, 2026-09-24, 21:30-22:45 — อิม + Claude — บั๊ก 2 กับ 3 บนเส้นทางนำผล Destrier เข้าเว็บ ปิดแล้วทั้งคู่, 22:00 (Sep 23) – 00:55 (Sep 24) — makham + Claude — 3 pipeline blockers closed, pass0 resume bug fixed, then used live on a real stuck job, [Claude — session with Mail (Mel), continuing from the earlier entry above] BBS/BOQ rebar cut-length fixes — column hooks (bottom + top), dense stirrup zones wired in, two external reviews checked against real code and mostly rejected (+2 more)
-
-### Community 276 - "merge_model/verify_hf_push.py"
-Cohesion: 0.20
-Nodes (10): 3 ข้อที่ต้องเคาะก่อนเริ่ม, t03 pass design v2 — 2026-08-26 (มะขามสั่ง reset การนับ pass), ของที่มีอยู่แล้ว ไม่ต้องเริ่มจาก 0, งานที่ต้องทำ เรียงตามลำดับ, สายพานใหม่, เฟส A — เปลี่ยนเลข (ถูก ทำก่อนกันสับสน), เฟส B — pass 1.5 ให้ใช้งานได้จริง, เฟส C — pass 2 vs 2.4 (การทดลอง) (+2 more)
-
-### Community 291 - "training/gtq.py"
-Cohesion: 0.27
-Nodes (10): _eid(), measure_page(), _new_report(), orientation_of(), ทิศแกนจากเครื่องหมาย slope: + = pos_m โตไปทางขวา/ลงล่าง (origin ซ้ายบนตาม prompt, ด่านหลักฐานจากภาพ (ใช้ทั้งทาง cv_mark และทางรูปทรง) · ผ่าน = None · ไม่ผ่าน = เต, ลองทั้ง 4 ทิศแกน · ยอมรับเฉพาะเมื่อมีคำตอบเดียวที่ผ่านด่าน (ซ้ำกันเองนับเป็นหนึ่, รายงานผลวัดของแผ่นนี้ — **ไม่แก้ doc / grid / cv_scan ที่รับมาเลย** (D3) (+2 more)
-
-### Community 292 - "training/pass0_material_list_batch.py"
-Cohesion: 0.33
-Nodes (9): bare(), build_label(), find_pages(), main(), page_key(), หา (house, page) ที่มีไฟล์ GT pattern=material_list พอดี 2 ไฟล์ และเป็นไฟล์ทั้งห, คืน label หรือ None ถ้าเลขแผ่นอ่านไม่ได้/ซ้ำ (ไม่เดา — ปล่อยเข้าคิวมือ), read_jsonl() (+1 more)
-
-### Community 293 - "บทที่ 9: ตอน "ใช้งานจริง" โมเดลทำอะไร: Decoding, Sampling, Quantization, GGUF, llama.cpp, vLLM"
-Cohesion: 0.22
-Nodes (8): 9.0 คำถามเปิด (ผูกกับงานจริงของเรา), 9.12 เลือกเอนจิน: transformers vs llama.cpp vs vLLM, 9.x เชื่อมกับงานของเรา, 9.y ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 9.z แบบฝึกหัด, ที่มาและอ่านต่อ, บทที่ 9: ตอน "ใช้งานจริง" โมเดลทำอะไร: Decoding, Sampling, Quantization, GGUF, llama.cpp, vLLM, สรุปบทนี้ใน 5 บรรทัด
-
-### Community 294 - "(b) Findings"
-Cohesion: 0.22
-Nodes (8): (a) Verdict: **UNSOUND** (as a coherent whole), Agent 3 — Formula Integrity & Internal Consistency Audit, (b) Findings, (c) Independently recomputed metrics vs model, CRITICAL, HIGH, LOW, MEDIUM
-
-### Community 295 - "destrier ที่ใช้งานอยู่: LoRA ของ MoE expert ปนผิดทั้งไฟล์ — ซ่อมได้โดยไม่ต้องเทรนใหม่"
-Cohesion: 0.22
-Nodes (8): destrier ที่ใช้งานอยู่: LoRA ของ MoE expert ปนผิดทั้งไฟล์ — ซ่อมได้โดยไม่ต้องเทรนใหม่, กลไก, ขั้นต่อไป — ต้องใช้การ์ด (รอเน็ตดี), ที่ทำแล้ว (27 ก.ย. ในเครื่อง ยังไม่ขึ้นการ์ด ยังไม่อัป), ทำไมไม่มีใครจับได้, ผลกระทบ, สรุป, หลักฐาน (สืบ 4 มุมแยกกัน + หักล้าง 3 ตัว ไม่มีตัวไหนหาจุดผิดเจอ)
-
-### Community 296 - "_fit"
-Cohesion: 0.22
-Nodes (9): build_transform(), _edge_error_m(), _fit(), _fit_line(), least squares  v = a*u + b  จาก [(u, v)] · None ถ้า u ไม่กระจาย (ทุกจุดอยู่เส้นเ, หมุด [(px, py, ref)] → {"ok","reason","reason_code","transform","fit","scale","n, ความคลาด (เมตร) ที่คาดได้ ณ เส้นกริดที่ไกลจากหมุดที่สุด — ช่วงทำนาย 95% ของ leas, หมุด [(px, py, ref)] + grid master → (transform, None, None) เมื่อใช้ได้ · (+1 more)
-
-### Community 297 - "_trusted_cv_positions"
-Cohesion: 0.28
-Nodes (9): cv_class_fits(), _flags(), _mark(), marks_look_enumerated(), cv_mark ที่เป็นแค่ "เลขลำดับรายการ" ไม่ใช่เลขกล่อง CV — เจอ 5/5 หน้าจริงใน produ, [(index, cv_position)] ที่เชื่อได้: หน้าไม่ได้ตอบ cv_mark แบบเลขลำดับ + ชนิดกล่อ, _trusted_cv_positions(), merge_cv_marks() (+1 more)
-
-### Community 298 - "crop_for_task"
-Cohesion: 0.22
-Nodes (9): crop_for_task(), _crop_image_path(), cv_mark_lookup(), cv_scan_for_task(), หา crop + hint ของ (page, sub) นี้จาก manifest ที่ organize.py เขียนไว้     คืน, ตัวหา path ของ crop เดียวใช้ร่วมกันระหว่าง crop_for_task และ cv_mark_lookup —, คืน {n: element} ของ crop นี้จาก pass1.5's _cv.json (n = เลข #n ที่ hint บอกโมเด, ผล CV ของ crop นี้รวมสองรอบ: elements (#n จาก pass1.5) + self_harvest_points (pa (+1 more)
-
-### Community 299 - "2026-09-23"
-Cohesion: 0.22
-Nodes (8): 14:00-15:00 Claude — session with Makham, 16:20-17:10 Claude — session with Makham, 17:00-18:00 Claude — session with Makham, 2026-09-23, 20:00-20:45 — makham + Claude — rented-machine blacklist + auto-retry, 20:45-21:10 — makham + Claude — audible notifications, 21:30-23:00 — makham + Claude — end-to-end test of the whole extraction chain, [session, exact clock time not logged] Tonton (Claude Code session)
-
-### Community 300 - "บทที่ 2: โครงข่ายประสาทเทียม (Neural Networks): ทำไมต่อ "เซลล์" เข้าด้วยกันแล้วฉลาดขึ้น"
-Cohesion: 0.25
-Nodes (7): 2.0 คำถามเปิด (ผูกกับงานจริงของเรา), 2.12 เชื่อมกับงานของเรา, 2.13 ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 2.14 แบบฝึกหัด, ที่มาและอ่านต่อ, บทที่ 2: โครงข่ายประสาทเทียม (Neural Networks): ทำไมต่อ "เซลล์" เข้าด้วยกันแล้วฉลาดขึ้น, สรุปบทนี้ใน 5 บรรทัด
-
-### Community 301 - "บทที่ 10: วัดผลอย่างไรไม่ให้หลอกตัวเอง และคิดแบบนักวิจัย AI"
-Cohesion: 0.25
-Nodes (7): 10.0 คำถามเปิด (ผูกกับงานจริงของเรา), 10.x เชื่อมกับงานของเรา, 10.y ระดับนักวิจัย: คำถามที่ยังเปิดอยู่, 10.z แบบฝึกหัด, ที่มาและอ่านต่อ, บทที่ 10: วัดผลอย่างไรไม่ให้หลอกตัวเอง และคิดแบบนักวิจัย AI, สรุปบทนี้ใน 5 บรรทัด
-
-### Community 302 - "Constistant Financial Model — Triple-Agent Validation Summary"
-Cohesion: 0.25
-Nodes (7): Constistant Financial Model — Triple-Agent Validation Summary, Cross-confirmed CRITICAL defects (found independently by 2–3 agents), Fix order (highest leverage first), Headline metrics to repair before any pitch, Overall verdict: NOT investor-ready yet — but fixable, and the foundation is genuinely good, Structure vs industry template (your concern #2) — answer, The user-number problem (your concern #1) — answer
-
-### Community 303 - "Quick command: `op2 <house_name>` — staged run with automatic model switching"
-Cohesion: 0.25
-Nodes (8): Escalation rule, Handoff contract between stages, Quick command: `op2 <house_name>` — staged run with automatic model switching, Stage 3 contradiction checklist, The 4 stages, The invariant that fixes the stage order, When to use `op1` instead, Why stage it at all — the measured split
-
-### Community 304 - "merge_model/soup_safetensors.py"
-Cohesion: 0.39
-Nodes (7): convert_expert_pair(), diagnose(), expert_delta_e0(), main(), ΔW ของ expert ตัวแรก ตาม peft ParamWrapper.get_delta_weight        A (E·r, X) →, สลับข้างการแยกตัวประกอบของชั้น MoE ให้ตรงอีก convention หนึ่งของ peft — **ไม่เสี, เช็คว่าพจน์ไขว้ไม่ได้กลบของจริง: ‖ΔW_รวม‖ ควรใกล้ ‖ค่าเฉลี่ย ΔW‖        ตรวจทั้
-
-### Community 305 - "training/pass0_derive.py"
-Cohesion: 0.46
-Nodes (7): building_of(), elements_of(), has_grid_refs(), main(), page_key(), คืน list ของ view dict หรือ None ถ้า derive ไม่ได้ (เข้าคิวมือ), views_for()
-
-### Community 306 - "training/train_t05_courser.py"
-Cohesion: 0.25
-Nodes (4): load_split(), jsonl → PIL Image objects (Unsloth ต้องการ object ไม่ใช่ path)     คืน subtask_, xgrammar builtin JSON grammar — มะขามสั่ง 2026-08-24: หน้า beam plan ต้องแนบ xgr, setup_grammar()
-
-### Community 307 - "โรงเรียน AI สำหรับวิศวกรโยธา — เริ่มอ่านที่นี่"
-Cohesion: 0.29
-Nodes (6): ความต่างจาก `workmen's_diary/สอนมะขาม_รวม.md`, บั๊กจริงของเราที่หลักสูตรนี้อธิบายด้วยทฤษฎี, ลำดับการอ่าน (แผนที่หลักสูตร), วิธีใช้หลักสูตรนี้, แผนขั้นต่อไป (หลัง review), โรงเรียน AI สำหรับวิศวกรโยธา — เริ่มอ่านที่นี่
-
-### Community 308 - "2026-09-02"
-Cohesion: 0.29
-Nodes (6): 2026-09-02, checkpoint/resume จริง — เก็บผลทุก pass ระหว่างทาง ไม่ต้องเริ่ม 0 (มะขามสั่ง), Vast.ai workflow — ยังไม่ได้สอนมะขามทำเองรอบนี้, จับตางาน house_extract จริง (claude, เฝ้าตาม op คำสั่ง มะขาม, att1235 เต็มสิทธิ์), รันบ้าน09 ผ่านระบบ pass+Destrier บนการ์ดจอเช่าจริง (มะขามสั่ง: เน้นจับเวลา), หลังงานบ้าน09 — มะขามลองใช้ปุ่ม attach เอง เจอ 2 เหตุการณ์
-
-### Community 309 - "2026-09-26"
-Cohesion: 0.29
-Nodes (6): 2026-09-26, [Claude — session with Ark] Built and wired Phase 1 of the mobile field-checklist app onto Mail's placeholder page, then found and fixed two real bugs during live testing over Tailscale, [Claude — session with Mail (Mel)] Traced the untracked `training-data/` folder to its exact cause, restored it under a proper `.gitignore` rule; confirmed BOQ/BBS/Planner/3D genuinely share one AI-extraction data path; found and fixed the root cause of "no grid position from live drawing reading", [Claude — session with makham, 25 ก.ย. ค่ำ → 26 ก.ย.] pass3 ใช้ไม่ได้จริง (0/9 หน้าใน production) → แก้แบบ report-only + เว็บใช้ความยาวคานจากแบบ + เจอทางใหม่จาก opentakeoff (ไม้บรรทัดจากเวกเตอร์ PDF) — ยังไม่ commit, [Claude — session with makham, 26 ก.ย. ต่อ] ไม้บรรทัดเวกเตอร์ต่อสายครบ + เฉลยบ้านจริง 83b8e52c + แก้มิติฐานรากทั้งระบบ, [Mail (Mel)] Got a real phone able to open the Constistant web app via Tailscale, and created a blank placeholder page for the mobile site-checklist feature — the tab is now open for Ark/Im to build the mobile-specific pipeline features and UX/UI
-
-### Community 310 - "op_fix — bring an old house up to §4 rule 4"
-Cohesion: 0.33
-Nodes (5): op_fix — bring an old house up to §4 rule 4, Standing order — decide, don't ask, Steps, What gridfix.py does (so nobody does it by hand), Why this exists
-
-### Community 311 - "_shape_pairs"
-Cohesion: 0.33
-Nodes (6): _mutual_nearest(), _normalize(), ย่อชุดจุดลงกรอบ [0,1] ของตัวเอง — เทียบรูปทรงการกระจายตัวข้ามหน่วย (เมตร vs พิกเ, คู่ที่ "ต่างฝ่ายต่างเห็นกันเป็นเพื่อนบ้านใกล้สุด" เท่านั้น → [(i, j)]     จำนวน, ทิศแกนสมมติ (sx, sy): กลับเครื่องหมายเมตรของโมเดลก่อนย่อ [0,1] → คู่ที่ mutual n, _shape_pairs()
-
-### Community 312 - "training/smoke_destrier.py"
-Cohesion: 0.53
-Nodes (5): gt_marks(), gt_text(), main(), pick_rows(), ดึง mark จาก GT: ค่า string สั้น ๆ ของคีย์ mark/name ใน JSON GT
-
-### Community 313 - "pursonVision.js"
-Cohesion: 0.60
-Nodes (5): getSupabaseClient(), purson_analyzeSingle(), purson_getJob(), purson_submitHouseExtract(), purson_waitForJob()
-
-### Community 314 - "2.6 Optimizer: จาก SGD ถึง AdamW"
-Cohesion: 0.40
-Nodes (5): 2.6.1 SGD กับ learning rate, 2.6.2 Momentum: สะสมความเร็ว, 2.6.3 Adam: learning rate ต่อพารามิเตอร์, 2.6.4 AdamW: weight decay ที่แยกออกมา, 2.6 Optimizer: จาก SGD ถึง AdamW
-
-### Community 315 - "2.8 อ่าน loss curve และ regularization"
-Cohesion: 0.40
-Nodes (5): 2.8.1 loss ที่เราเห็นคืออะไร, 2.8.2 train loss กับ validation loss, 2.8.3 Dropout, 2.8.4 Weight decay, 2.8 อ่าน loss curve และ regularization
-
-### Community 316 - "9.10 GGUF, Q4_K_M และหลักการ "วัดซ้ำหลัง quantize""
-Cohesion: 0.40
-Nodes (5): 9.10 GGUF, Q4_K_M และหลักการ "วัดซ้ำหลัง quantize", ขั้นที่ 1: GGUF คืออะไร, ขั้นที่ 2: อ่านชื่อ Q4_K_M, ขั้นที่ 3: ผลต่อคุณภาพและทำไมบางตระกูลตกมาก, ขั้นที่ 4: กฎ "วัดซ้ำหลัง quantize"
-
-### Community 317 - "9.9 Quantization: fp32 → bf16 → int8 → int4"
-Cohesion: 0.40
-Nodes (5): 9.9 Quantization: fp32 → bf16 → int8 → int4, ขั้นที่ 1: ตัวเลขในโมเดลเก็บอย่างไร, ขั้นที่ 2: quantize ทำอย่างไร (absmax แบบพื้นฐาน), ขั้นที่ 3: PTQ vs QAT, ขั้นที่ 4: ตระกูลเครื่องมือ
-
-### Community 318 - "10.12 การอ่าน paper"
-Cohesion: 0.40
-Nodes (5): 10.12 การอ่าน paper, ขั้นที่ 1: โครงมาตรฐาน, ขั้นที่ 2: อ่านสามรอบ (Keshav), ขั้นที่ 3: สิ่งที่ต้องดูเสมอ, ขั้นที่ 4: แหล่งหา paper
-
-### Community 319 - "บทที่ 12: อภิธานศัพท์ AI/ML/CV สำหรับวิศวกรโยธา"
-Cohesion: 0.40
-Nodes (4): ตารางตัวย่อ, ตารางศัพท์, ที่มาและอ่านต่อ, บทที่ 12: อภิธานศัพท์ AI/ML/CV สำหรับวิศวกรโยธา
-
-### Community 320 - "Pass 3 — ถอดระยะ/เหล็ก จากบัญชี element ที่ยืนยันแล้ว"
-Cohesion: 0.40
-Nodes (4): `{{ELEMENT_ACCOUNT}}` — รูปแบบบัญชีที่ป้อนเข้า prompt, Pass 3 — ถอดระยะ/เหล็ก จากบัญชี element ที่ยืนยันแล้ว, PROMPT END, PROMPT START
-
-### Community 321 - "Destrier บนบ้านจริงที่ไม่อยู่ในชุดเทรน — บ้านครอบครัวไทยเป็นสุข 3 (งาน 83b8e52c)"
-Cohesion: 0.40
-Nodes (4): Destrier บนบ้านจริงที่ไม่อยู่ในชุดเทรน — บ้านครอบครัวไทยเป็นสุข 3 (งาน 83b8e52c), เทียบยอด BOQ (ผ่าน pipeline จริงของ Constistant), เทียบระดับชิ้นส่วน, โจทย์สำหรับรอบทูนหน้า (แก้ที่ข้อมูลเทรนหรือ prompt ไม่ใช่ที่เว็บ)
-
-### Community 322 - "t05_Destrier — ทุกอย่างที่ "ใช้จริง" ของ Destrier รวมไว้ที่เดียว"
-Cohesion: 0.40
-Nodes (4): t05_Destrier — ทุกอย่างที่ "ใช้จริง" ของ Destrier รวมไว้ที่เดียว, ถ้าจะรันจริงจากที่นี่, สิ่งที่ **ไม่** เอามาใส่ (ตัดใจแล้ว ไม่ใช่ลืม), โครงสร้าง
-
-### Community 324 - "training/worker_page.py"
-Cohesion: 0.70
-Nodes (4): build_messages_house(), build_messages_val(), load_val_row(), main()
-
-### Community 325 - "index.ts"
-Cohesion: 0.40
-Nodes (3): corsHeaders, endpointKey, endpointUrl
-
-### Community 326 - "2.11 ทำไมต้อง GPU และ precision ของตัวเลข"
-Cohesion: 0.50
-Nodes (4): 2.11.1 ทุกอย่างคือการคูณเมทริกซ์, 2.11.2 fp32 / fp16 / bf16 / int4, 2.11.3 Gradient checkpointing: แลกเวลากับ VRAM, 2.11 ทำไมต้อง GPU และ precision ของตัวเลข
-
-### Community 327 - "2.1 เซลล์หนึ่งตัว: ผลรวมถ่วงน้ำหนัก + ฟังก์ชันกระตุ้น"
-Cohesion: 0.50
-Nodes (4): 2.1.1 neuron คืออะไรในเชิงคณิตศาสตร์, 2.1.2 ทำไมต้องมี activation ที่ไม่เป็นเส้นตรง, 2.1.3 activation ที่ใช้จริง 4 ตัว, 2.1 เซลล์หนึ่งตัว: ผลรวมถ่วงน้ำหนัก + ฟังก์ชันกระตุ้น
-
-### Community 328 - "2.2 ต่อเป็นชั้น: Multilayer Perceptron และ forward pass ด้วยเมทริกซ์"
-Cohesion: 0.50
-Nodes (4): 2.2.1 ชั้นหนึ่ง = การคูณเมทริกซ์หนึ่งครั้ง, 2.2.2 คำนวณ forward pass ให้ดู: โครงข่าย 2-2-1, 2.2.3 มิติของโมเดลจริง, 2.2 ต่อเป็นชั้น: Multilayer Perceptron และ forward pass ด้วยเมทริกซ์
-
-### Community 329 - "2.4 Backpropagation: กฎลูกโซ่ที่ไล่ย้อนจากความผิดพลาด"
-Cohesion: 0.50
-Nodes (4): 2.4.1 ปัญหา: มีพารามิเตอร์เป็นล้าน จะรู้ได้ไงว่าแก้ตัวไหนเท่าไร, 2.4.2 กฎลูกโซ่, 2.4.3 คำนวณจริงกับโครงข่าย 2-2-1 จากหัวข้อ 2.2, 2.4 Backpropagation: กฎลูกโซ่ที่ไล่ย้อนจากความผิดพลาด
-
-### Community 330 - "2.7 Batch, step, epoch และ learning rate schedule"
-Cohesion: 0.50
-Nodes (4): 2.7.1 mini-batch และ gradient accumulation, 2.7.2 step กับ epoch, 2.7.3 Learning rate schedule: warmup แล้ว cosine, 2.7 Batch, step, epoch และ learning rate schedule
-
-### Community 331 - "2.9 ทำไมโครงข่ายลึกเทรนยาก: initialization, vanishing/exploding gradient"
-Cohesion: 0.50
-Nodes (4): 2.9.1 gradient คือผลคูณยาว ๆ, 2.9.2 Initialization: เริ่มให้ $a \approx 1$, 2.9.3 สองสิ่งที่แก้ปัญหานี้จริงในโมเดลสมัยใหม่, 2.9 ทำไมโครงข่ายลึกเทรนยาก: initialization, vanishing/exploding gradient
-
-### Community 332 - "9.11 mmproj, การ merge LoRA ก่อน convert และการพิสูจน์ว่า merge จริง"
-Cohesion: 0.50
-Nodes (4): 9.11 mmproj, การ merge LoRA ก่อน convert และการพิสูจน์ว่า merge จริง, ขั้นที่ 1: โมเดล vision ใน llama.cpp ต้องมีสองไฟล์, ขั้นที่ 2: ทำไมต้อง merge LoRA ก่อน convert, ขั้นที่ 3: วิธีพิสูจน์ว่า adapter merge จริง
-
-### Community 333 - "9.13 ต้นทุน: token/วินาที, VRAM, GPU เช่า และ monitoring"
-Cohesion: 0.50
-Nodes (4): 9.13 ต้นทุน: token/วินาที, VRAM, GPU เช่า และ monitoring, ขั้นที่ 1: ตัวเลขที่ต้องรู้ก่อนสั่งงาน, ขั้นที่ 2: GPU เช่าแบบ interruptible, ขั้นที่ 3: monitoring และคำเตือนตอนโหลดโมเดล
-
-### Community 334 - "9.4 Top-k, Top-p (nucleus) และ min-p: ตัดหางของการแจกแจง"
-Cohesion: 0.50
-Nodes (4): 9.4 Top-k, Top-p (nucleus) และ min-p: ตัดหางของการแจกแจง, ขั้นที่ 1: top-k คือเก็บแค่ k ตัวบนสุด, ขั้นที่ 2: top-p (nucleus sampling) คือเก็บตัวบนสุดจนสะสม probability ถึง p, ขั้นที่ 3: min-p (งานใหม่ 2024-2025)
-
-### Community 335 - "9.8 Batching และ continuous batching"
-Cohesion: 0.50
-Nodes (4): 9.8 Batching และ continuous batching, ขั้นที่ 1: ทำไมต้อง batch, ขั้นที่ 2: static batching เสียเวลารอ, ขั้นที่ 3: PagedAttention จัดการ KV cache เหมือน OS จัดการ RAM
-
-### Community 336 - "10.13 การตั้งคำถามวิจัยและการเขียนรายงานผล"
-Cohesion: 0.50
-Nodes (4): 10.13 การตั้งคำถามวิจัยและการเขียนรายงานผล, ขั้นที่ 1: คำถามวิจัยที่ดีต้องพิสูจน์ผิดได้ (falsifiable), ขั้นที่ 2: เขียนรายงานแบบนักวิจัย, ขั้นที่ 3: จริยธรรมและข้อจำกัด
-
-### Community 337 - "10.2 Confusion matrix, precision, recall, F1"
-Cohesion: 0.50
-Nodes (4): 10.2 Confusion matrix, precision, recall, F1, ขั้นที่ 1: นับสี่ช่อง, ขั้นที่ 2: สามสูตร [1], ขั้นที่ 3: ทำไมงานเราเน้น recall
-
-### Community 338 - "10.3 IoU และ mAP สำหรับ bounding box"
-Cohesion: 0.50
-Nodes (4): 10.3 IoU และ mAP สำหรับ bounding box, ขั้นที่ 1: "ตรงกัน" สำหรับกล่องแปลว่าอะไร, ขั้นที่ 2: จาก precision/recall ที่ threshold เดียว ไปสู่ AP, ขั้นที่ 3: งานเราวัดอะไรกันแน่
-
-### Community 339 - "10.5 การแบ่งข้อมูล: leave-one-out, k-fold และ data leakage"
-Cohesion: 0.50
-Nodes (4): 10.5 การแบ่งข้อมูล: leave-one-out, k-fold และ data leakage, ขั้นที่ 1: ทำไมต้องแบ่ง train / validation / test, ขั้นที่ 2: หน่วยของการแบ่งต้องเป็น "บ้าน" ไม่ใช่ "หน้า", ขั้นที่ 3: leave-one-out เมื่อบ้านมีน้อย
-
-### Community 340 - "10.6 Baseline และการพิสูจน์ว่า "ทูนติดจริง""
-Cohesion: 0.50
-Nodes (4): 10.6 Baseline และการพิสูจน์ว่า "ทูนติดจริง", ขั้นที่ 1: ตัวเลขเดี่ยว ๆ ไม่มีความหมาย ต้องมีตัวเทียบ, ขั้นที่ 2: บทเรียน t01 "90%", ขั้นที่ 3: Ablation study
-
-### Community 341 - "_common.md - shared rule block"
-Cohesion: 0.50
-Nodes (3): BLOCK END, BLOCK START, _common.md - shared rule block
-
-### Community 342 - "Pass 0 - page classification"
-Cohesion: 0.50
-Nodes (3): Pass 0 - page classification, PROMPT END, PROMPT START
-
-### Community 343 - "pass2_gridline.md - the grid master"
-Cohesion: 0.50
-Nodes (3): pass2_gridline.md - the grid master, PROMPT END, PROMPT START
-
-### Community 344 - "pass2_material_list.md - bill of quantities (BOQ)"
-Cohesion: 0.50
-Nodes (3): pass2_material_list.md - bill of quantities (BOQ), PROMPT END, PROMPT START
-
-### Community 345 - "pass2_notes.md - project-level specifications"
-Cohesion: 0.50
-Nodes (3): pass2_notes.md - project-level specifications, PROMPT END, PROMPT START
-
-### Community 346 - "pass2_plan_beam.md - beam plan (floor beams and roof framing)"
-Cohesion: 0.50
-Nodes (3): pass2_plan_beam.md - beam plan (floor beams and roof framing), PROMPT END, PROMPT START
-
-### Community 347 - "pass2_plan_column.md - column plan (not wired into training - see note)"
-Cohesion: 0.50
-Nodes (3): pass2_plan_column.md - column plan (not wired into training - see note), PROMPT END, PROMPT START
-
-### Community 348 - "pass2_plan_footing.md - footing / pile-cap plan"
-Cohesion: 0.50
-Nodes (3): pass2_plan_footing.md - footing / pile-cap plan, PROMPT END, PROMPT START
-
-### Community 349 - "pass2_plan_slab.md - floor slab plan"
-Cohesion: 0.50
-Nodes (3): pass2_plan_slab.md - floor slab plan, PROMPT END, PROMPT START
-
-### Community 350 - "pass2_schedule.md - summary tables"
-Cohesion: 0.50
-Nodes (3): pass2_schedule.md - summary tables, PROMPT END, PROMPT START
-
-### Community 351 - "pass2_section.md - detail sections (rebar specs)"
-Cohesion: 0.50
-Nodes (3): pass2_section.md - detail sections (rebar specs), PROMPT END, PROMPT START
-
-### Community 352 - "pass2_soil_boring_log.md - soil investigation / borehole log"
-Cohesion: 0.50
-Nodes (3): pass2_soil_boring_log.md - soil investigation / borehole log, PROMPT END, PROMPT START
-
-### Community 353 - "run_cv_scan"
-Cohesion: 0.50
-Nodes (4): cv_scan_timeout_s(), เพดานเวลาของ cv_scan --manifest = จำนวนภาพที่มันจะสแกน × ต่อภาพ (มีพื้น/เพดาน), pass1.5 (pass25=False) หรือ pass2.5 (pass25=True) — subprocess cv_scan.py --mani, run_cv_scan()
-
-### Community 354 - "training/run_cv_batch.py"
-Cohesion: 0.83
-Nodes (3): collect_targets(), house_of(), main()
-
-### Community 355 - "training/run_queue.sh"
 Cohesion: 0.67
-Nodes (3): LD_LIBRARY_PATH, run_one(), run_queue.sh script
-
-### Community 356 - "training/run_queue_elements.sh"
-Cohesion: 0.67
-Nodes (3): LD_LIBRARY_PATH, run_one(), run_queue_elements.sh script
-
-### Community 357 - "training/run_queue_gpuA.sh"
-Cohesion: 0.67
-Nodes (3): LD_LIBRARY_PATH, run_one(), run_queue_gpuA.sh script
-
-### Community 358 - "2026-09-29"
-Cohesion: 0.50
-Nodes (3): 2026-09-29, [Claude — session with makham] 13:50 มะขามตัดสิน 6 ข้อที่ค้างจาก op_fix เมื่อคืน (att1235), [Claude — session with makham] op_fix: ย้อนแก้ grid master บ้านเก่าตามสเปก §4 กฎ 4 (att1235, มะขามไปนอน)
-
-### Community 359 - "12. เหตุการณ์สับสน "ทำไม log ไฟล์ที่สั่งไว้ถึงไม่มี" — บทเรียนเรื่อง terminal คิวคำสั่ง"
-Cohesion: 0.50
-Nodes (4): 12. เหตุการณ์สับสน "ทำไม log ไฟล์ที่สั่งไว้ถึงไม่มี" — บทเรียนเรื่อง terminal คิวคำสั่ง, ทำไมถึงงงแบบนี้ได้ — เปรียบเทียบง่ายๆ, บทเรียน, วิธีตรวจสอบ (สืบสวนแบบนักสืบ)
-
-### Community 360 - "13. เหตุการณ์ "เทรนเสร็จแล้วดันพัง" — บทเรียนเรื่อง "environment ใช้ร่วมกัน""
-Cohesion: 0.50
-Nodes (4): 13. เหตุการณ์ "เทรนเสร็จแล้วดันพัง" — บทเรียนเรื่อง "environment ใช้ร่วมกัน", บทเรียนสำคัญ, สาเหตุ — ความผิดพลาดของ Claude เอง, เปรียบเทียบง่ายๆ
-
-### Community 361 - "6. บทเรียนเรื่อง "ตัวเลข 90% ที่เราเชื่อมาตลอด""
-Cohesion: 0.50
-Nodes (4): 6. บทเรียนเรื่อง "ตัวเลข 90% ที่เราเชื่อมาตลอด", ⚠️ ข้อสำคัญที่ต้องไม่เข้าใจผิด, เส้นทางรันโมเดลมี 2 เส้น ไม่ใช่เส้นเดียว, แล้ว GGUF เคยถูกทดสอบไหม — เคย แต่ทดสอบผิดเรื่อง
-
-### Community 362 - "2.10 Residual connection และ Layer Norm: ปูทางไป Transformer"
-Cohesion: 0.67
-Nodes (3): 2.10.1 Residual: ให้ชั้นเรียน "ส่วนต่าง" แทน "ทั้งหมด", 2.10.2 Layer Norm: ตั้งสเกลใหม่ทุกชั้น, 2.10 Residual connection และ Layer Norm: ปูทางไป Transformer
-
-### Community 363 - "2.3 ทำไมต่อชั้นแล้ว "อะไรก็ได้": Universal Approximation"
-Cohesion: 0.67
-Nodes (3): 2.3.1 ทฤษฎีบทพูดว่าอะไร, 2.3.2 สิ่งที่ทฤษฎีบท "ไม่ได้" พูด, 2.3 ทำไมต่อชั้นแล้ว "อะไรก็ได้": Universal Approximation
-
-### Community 364 - "2.5 Autograd: ให้ PyTorch ทำ backprop แทนเรา"
-Cohesion: 0.67
-Nodes (3): 2.5.1 กราฟการคำนวณ, 2.5.2 ตัวอย่าง 10 บรรทัด ที่ให้ผลตรงกับมือ, 2.5 Autograd: ให้ PyTorch ทำ backprop แทนเรา
-
-### Community 365 - "9.1 Inference คือ forward pass ทีละ token (autoregressive)"
-Cohesion: 0.67
-Nodes (3): 9.1 Inference คือ forward pass ทีละ token (autoregressive), ขั้นที่ 1: โมเดลไม่ได้ "เขียนประโยค" มันทำนายแค่ token ถัดไป, ขั้นที่ 2: logits → softmax → probability
-
-### Community 366 - "9.2 Greedy vs Sampling และทำไม greedy ทำให้วนซ้ำ"
-Cohesion: 0.67
-Nodes (3): 9.2 Greedy vs Sampling และทำไม greedy ทำให้วนซ้ำ, ขั้นที่ 1: greedy คือเลือกตัวที่ probability สูงสุดเสมอ, ขั้นที่ 2: sampling คือสุ่มตาม probability
-
-### Community 367 - "9.3 Temperature: หมุนปุ่ม "ความมั่นใจ" ของโมเดล"
-Cohesion: 0.67
-Nodes (3): 9.3 Temperature: หมุนปุ่ม "ความมั่นใจ" ของโมเดล, ขั้นที่ 1: สูตร, ขั้นที่ 2: คำนวณให้ดูจริงด้วย 3 token เดิม $z = [2.0, 1.0, 0.5]$
-
-### Community 368 - "9.5 Repetition penalty, no_repeat_ngram และเกณฑ์หยุด"
-Cohesion: 0.67
-Nodes (3): 9.5 Repetition penalty, no_repeat_ngram และเกณฑ์หยุด, ขั้นที่ 1: ลงโทษ token ที่เคยออกแล้ว, ขั้นที่ 2: เกณฑ์หยุด (stopping criteria)
-
-### Community 369 - "9.6 Constrained decoding: บังคับรูปแบบด้วยการ mask logits"
-Cohesion: 0.67
-Nodes (3): 9.6 Constrained decoding: บังคับรูปแบบด้วยการ mask logits, ขั้นที่ 1: หลักการ, ขั้นที่ 2: ขีดจำกัดที่ต้องรู้
-
-### Community 370 - "9.7 KV cache, prefill vs decode และทำไม classify เร็วกว่าถอดเต็ม"
-Cohesion: 0.67
-Nodes (3): 9.7 KV cache, prefill vs decode และทำไม classify เร็วกว่าถอดเต็ม, ขั้นที่ 1: KV cache คือการไม่คำนวณซ้ำ, ขั้นที่ 2: prefill กับ decode เป็นคนละงาน
-
-### Community 371 - "10.10 Data-centric iteration loop"
-Cohesion: 0.67
-Nodes (3): 10.10 Data-centric iteration loop, ขั้นที่ 1: วงจร, ขั้นที่ 2: บันทึกทุกรอบเป็นตาราง
-
-### Community 372 - "10.11 Reproducibility: seed, version pin และ "ค่า default พลิกผล""
-Cohesion: 0.67
-Nodes (3): 10.11 Reproducibility: seed, version pin และ "ค่า default พลิกผล", ขั้นที่ 1: ทำซ้ำได้คือขั้นต่ำของวิทยาศาสตร์, ขั้นที่ 2: สิ่งที่ต้องบันทึกตาม rule_of_tune ของเรา
-
-### Community 373 - "10.14 Roadmap การเรียนต่อระดับ PhD จากงานของเรา"
-Cohesion: 0.67
-Nodes (3): 10.14 Roadmap การเรียนต่อระดับ PhD จากงานของเรา, ขั้นที่ 1: ลำดับที่แนะนำ (พื้นฐานที่ไม่เปลี่ยน), ขั้นที่ 2: หัวข้อวิจัยที่ต่อยอดจากงานเราได้ (state of the art ที่เปลี่ยนเร็ว)
-
-### Community 374 - "10.1 Ground truth และการ annotate"
-Cohesion: 0.67
-Nodes (3): 10.1 Ground truth และการ annotate, ขั้นที่ 1: ไม่มี ground truth ก็ไม่มีการวัดผล, ขั้นที่ 2: inter-annotator agreement บอกว่า GT เชื่อได้แค่ไหน
-
-### Community 375 - "10.4 Exact match vs field-level metric สำหรับ JSON"
-Cohesion: 0.67
-Nodes (3): 10.4 Exact match vs field-level metric สำหรับ JSON, ขั้นที่ 1: exact match โหดเกินไป, ขั้นที่ 2: จับคู่องค์อาคารก่อน แล้วค่อยให้คะแนนราย field
-
-### Community 376 - "10.7 ความแปรปรวนจาก seed และ sampling: รายงาน mean ± std"
-Cohesion: 0.67
-Nodes (3): 10.7 ความแปรปรวนจาก seed และ sampling: รายงาน mean ± std, ขั้นที่ 1: ตัวเลขเดียวกันรันสองครั้งได้ไม่เท่ากัน, ขั้นที่ 2: รันหลายรอบ รายงานค่าเฉลี่ยและส่วนเบี่ยงเบน
-
-### Community 377 - "10.8 นัยสำคัญทางสถิติเบื้องต้น: bootstrap และปัญหา n=8 บ้าน"
-Cohesion: 0.67
-Nodes (3): 10.8 นัยสำคัญทางสถิติเบื้องต้น: bootstrap และปัญหา n=8 บ้าน, ขั้นที่ 1: bootstrap คือการ "สุ่มซ้ำจากตัวอย่างที่มี", ขั้นที่ 2: ทำไม n=8 บ้านสรุปยาก
-
-### Community 378 - "10.9 Error analysis เชิงคุณภาพ และการอ่านผลที่ "ดีเกินจริง""
-Cohesion: 0.67
-Nodes (3): 10.9 Error analysis เชิงคุณภาพ และการอ่านผลที่ "ดีเกินจริง", ขั้นที่ 1: ตัวเลขบอกว่า "เท่าไร" ภาพบอกว่า "ทำไม", ขั้นที่ 2: รายการตรวจสอบเมื่อผล "ดีเกินคาด"
+Nodes (3): 7. ทำไมมันช้า — เลขจริงและเหตุผล, ทำไม classify เร็วกว่าถอดเต็ม 7 เท่า ทั้งที่ดูภาพเดียวกัน, เหตุผล — เลขคณิตง่าย ๆ
 
 ## Knowledge Gaps
-- **3087 isolated node(s):** `project`, `phase`, `scope`, `focus`, `datasets` (+3082 more)
+- **1530 isolated node(s):** `project`, `phase`, `scope`, `focus`, `datasets` (+1525 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **43 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `The Mistakes Ledger` connect `training/run_queue_gpuA.sh` to `T03 Beam Grounding Research`, `T02 Environment Verification`, `T01 Single-House Local Extraction Script`, `T03 Common Rules Header`, `training/worker_page.py`, `proof/op04_score.py`, `T03 Pass0 Classifier (current vs superseded)`, `pass2_notes.md - project-level specifications`, `pass2_plan_slab.md - floor slab plan`, `training/train_t05_courser.py`, `drawing-purson.js`, `T02 Eval Fields Script`, `T02 GPU Rental Onstart Script`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
-- **Why does `T13 — Process, Planning & Wasted Work` connect `T01 Single-House Local Extraction Script` to `training/run_queue_gpuA.sh`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `T04 — Data Quality, Integrity & Loss` connect `T03 Common Rules Header` to `training/run_queue_gpuA.sh`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+- **Why does `t03 prompt design — 2 passes, per-pattern extraction` connect `T01 Eval Fields Script` to `rule_of_tune.md`?**
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **Why does `Rules for Touching Raw Training JSON` connect `Rules for Touching Raw Training JSON` to `rule_of_tune.md`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
+- **Why does `rawjson_ยังไม่ได้แก้ไขโดนคน` connect `T03 Dataset Pull & Verify Script` to `rule_of_tune.md`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `project`, `phase`, `scope` to the rest of the system?**
-  _3087 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1530 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CV Scan Detection Pipeline` be split into smaller, more focused modules?**
-  _Cohesion score 0.0563165905631659 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.058385093167701865 - nodes in this community are weakly interconnected._
 - **Should `Harvest Report - Template Match QA` be split into smaller, more focused modules?**
   _Cohesion score 0.041666666666666664 - nodes in this community are weakly interconnected._
 - **Should `T01 Batch House Extraction (GPU-Rental)` be split into smaller, more focused modules?**
