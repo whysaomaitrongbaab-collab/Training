@@ -1,0 +1,466 @@
+<title>Destrier บน vLLM กับ SGLang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: รายงานคอลัมน์เดียว อ่านจากบนลงล่าง — คำตอบ 3 ข้อก่อน แล้วหลักฐานทีละเรื่อง · โทเค็นจากระบบ Constistant (Instrument Blue + เทาอมฟ้า) */
+:root {
+  --bg: hsl(200, 8%, 98%);
+  --surface: #ffffff;
+  --row: hsl(200, 5%, 95.5%);
+  --line: hsl(200, 8%, 88%);
+  --ink: hsl(200, 8%, 12%);
+  --ink-2: hsl(200, 8%, 38%);
+  --ink-3: hsl(200, 8%, 58%);
+  --accent: hsl(218, 75%, 50%);
+  --accent-soft: hsl(218, 70%, 95%);
+  --good: hsl(152, 55%, 30%);
+  --good-soft: hsl(152, 45%, 93%);
+  --warn: hsl(34, 85%, 36%);
+  --warn-soft: hsl(40, 90%, 92%);
+  --bad: hsl(0, 62%, 44%);
+  --bad-soft: hsl(0, 70%, 95%);
+  --bar-old: hsl(200, 8%, 72%);
+  --f-thai: "Sarabun", "Noto Sans Thai", "Leelawadee UI", Tahoma, sans-serif;
+  --f-num: "Sora", "Sarabun", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --r: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: hsl(200, 8%, 9%);
+    --surface: hsl(200, 8%, 12.5%);
+    --row: hsl(200, 8%, 15%);
+    --line: hsl(200, 8%, 22%);
+    --ink: hsl(200, 10%, 92%);
+    --ink-2: hsl(200, 8%, 70%);
+    --ink-3: hsl(200, 6%, 52%);
+    --accent: hsl(218, 85%, 68%);
+    --accent-soft: hsl(218, 40%, 20%);
+    --good: hsl(150, 50%, 60%);
+    --good-soft: hsl(150, 30%, 17%);
+    --warn: hsl(38, 85%, 62%);
+    --warn-soft: hsl(38, 40%, 17%);
+    --bad: hsl(0, 75%, 68%);
+    --bad-soft: hsl(0, 35%, 19%);
+    --bar-old: hsl(200, 6%, 40%);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: hsl(200, 8%, 9%);
+  --surface: hsl(200, 8%, 12.5%);
+  --row: hsl(200, 8%, 15%);
+  --line: hsl(200, 8%, 22%);
+  --ink: hsl(200, 10%, 92%);
+  --ink-2: hsl(200, 8%, 70%);
+  --ink-3: hsl(200, 6%, 52%);
+  --accent: hsl(218, 85%, 68%);
+  --accent-soft: hsl(218, 40%, 20%);
+  --good: hsl(150, 50%, 60%);
+  --good-soft: hsl(150, 30%, 17%);
+  --warn: hsl(38, 85%, 62%);
+  --warn-soft: hsl(38, 40%, 17%);
+  --bad: hsl(0, 75%, 68%);
+  --bad-soft: hsl(0, 35%, 19%);
+  --bar-old: hsl(200, 6%, 40%);
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-thai);
+  font-size: 16px;
+  line-height: 1.65;
+  padding: 0 20px;
+}
+.wrap { max-width: 920px; margin: 0 auto; padding-block: 40px 72px; display: flex; flex-direction: column; gap: 48px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.3; }
+h1 { font-size: clamp(28px, 4.2vw, 38px); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 22px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 600; }
+p { margin: 0; max-width: 66ch; }
+.num { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--f-mono); font-size: 0.86em; }
+.muted { color: var(--ink-2); }
+.small { font-size: 14px; }
+.label {
+  font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+section { display: flex; flex-direction: column; gap: 16px; }
+.sec-head { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--line); padding-top: 20px; }
+
+/* header */
+header { display: flex; flex-direction: column; gap: 14px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink-2); font-size: 14px; }
+.meta b { color: var(--ink); font-weight: 600; }
+
+/* verdict strip */
+.verdicts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.verdict {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 18px; display: flex; flex-direction: column; gap: 10px;
+}
+.verdict .q { font-size: 14px; color: var(--ink-2); }
+.verdict .a { font-size: 21px; font-weight: 700; line-height: 1.3; }
+.verdict .a .num { font-size: 30px; font-weight: 600; color: var(--accent); }
+.verdict p { font-size: 14px; color: var(--ink-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; border-radius: 999px;
+  padding: 2px 10px; font-size: 13px; font-weight: 600; white-space: nowrap;
+}
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.ok { color: var(--good); background: var(--good-soft); }
+.warn { color: var(--warn); background: var(--warn-soft); }
+.no { color: var(--bad); background: var(--bad-soft); }
+
+/* speed bars */
+.bars { display: flex; flex-direction: column; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; }
+.bar-row { display: grid; grid-template-columns: 200px 1fr; gap: 14px; align-items: center; }
+.bar-name { font-weight: 600; font-size: 15px; line-height: 1.35; }
+.bar-name small { display: block; font-weight: 400; color: var(--ink-3); font-size: 12.5px; }
+.bar-track { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.bar { height: 22px; border-radius: 3px; background: var(--accent); flex: none; min-width: 3px; }
+.bar.old { background: var(--bar-old); }
+.bar-val { font-family: var(--f-num); font-variant-numeric: tabular-nums; font-size: 14px; white-space: nowrap; }
+.bar-val b { font-weight: 600; }
+.axis-note { font-size: 13px; color: var(--ink-3); }
+
+/* tables */
+.tbl-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { padding: 10px 14px; text-align: left; vertical-align: top; }
+thead th { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--line); white-space: nowrap; }
+tbody tr + tr td { border-top: 1px solid var(--line); }
+td.r, th.r { text-align: right; }
+td.num, td .num { font-variant-numeric: tabular-nums; }
+tr.hl td { background: var(--row); }
+.best { color: var(--accent); font-weight: 600; }
+
+/* page matrix */
+.cell { display: inline-flex; align-items: baseline; gap: 2px; font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+.cell .of { color: var(--ink-3); font-size: 12px; }
+.cell.full { color: var(--good); font-weight: 600; }
+.cell.low { color: var(--bad); font-weight: 600; }
+
+/* two-up */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.panel ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+
+/* dot plot */
+.plot svg { width: 100%; height: auto; display: block; }
+.plot .ax { stroke: var(--line); stroke-width: 1; }
+.plot .tick { fill: var(--ink-3); font-family: var(--f-num); font-size: 11px; }
+.plot .rowlab { fill: var(--ink-2); font-family: var(--f-thai); font-size: 12.5px; }
+.plot .truth { stroke: var(--good); stroke-width: 2; stroke-dasharray: 4 3; }
+.plot .truthlab { fill: var(--good); font-family: var(--f-thai); font-size: 11.5px; }
+.plot .dot { fill: var(--accent); }
+.plot .dotlab { fill: var(--ink); font-family: var(--f-num); font-size: 11.5px; }
+
+/* loop evidence */
+.loop {
+  font-family: var(--f-mono); font-size: 13px; line-height: 1.6;
+  background: var(--row); border-radius: 6px; padding: 12px 14px;
+  overflow-x: auto; white-space: pre; color: var(--ink-2);
+}
+.loop mark { background: var(--bad-soft); color: var(--bad); border-radius: 2px; padding: 0 2px; }
+.stat-line { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.stat-line div { display: flex; flex-direction: column; }
+.stat-line .num { font-size: 26px; font-weight: 600; line-height: 1.2; }
+
+/* next */
+.next { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.next li { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; padding: 14px 18px; align-items: baseline; }
+.next li + li { border-top: 1px solid var(--line); }
+.next .n { font-family: var(--f-num); color: var(--ink-3); font-weight: 600; }
+.next .who { font-size: 13px; color: var(--ink-3); white-space: nowrap; }
+footer { font-size: 13px; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 4px; }
+
+/* story: ทำไมถึงเร็วขึ้น */
+.story { display: flex; flex-direction: column; gap: 16px; }
+.lead { font-size: 17px; }
+.kitchens { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.kitchen { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.kitchen.new { border-color: var(--accent); background: var(--accent-soft); }
+.kitchen ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; }
+.kitchen li small { display: block; font-family: var(--f-mono); font-size: 11.5px; color: var(--ink-3); letter-spacing: 0.02em; }
+.pace { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+.pace .num { font-size: 22px; font-weight: 600; color: var(--ink); }
+.kitchen.new .pace .num { color: var(--accent); }
+.facts { display: flex; flex-direction: column; gap: 8px; font-size: 15px; }
+.facts b { font-weight: 600; }
+
+@media print {
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    color-scheme: light;
+    --bg: #ffffff; --surface: #ffffff; --row: hsl(200, 5%, 95.5%); --line: hsl(200, 8%, 85%);
+    --ink: hsl(200, 8%, 12%); --ink-2: hsl(200, 8%, 34%); --ink-3: hsl(200, 8%, 50%);
+    --accent: hsl(218, 75%, 46%); --accent-soft: hsl(218, 70%, 96%);
+    --good: hsl(152, 55%, 28%); --good-soft: hsl(152, 45%, 93%);
+    --warn: hsl(34, 85%, 34%); --warn-soft: hsl(40, 90%, 92%);
+    --bad: hsl(0, 62%, 42%); --bad-soft: hsl(0, 70%, 95%);
+    --bar-old: hsl(200, 8%, 70%);
+  }
+  @page { size: A4; margin: 14mm 12mm; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { padding: 0; font-size: 13.5px; }
+  .wrap { padding-block: 0; gap: 26px; max-width: none; }
+  .verdict, .panel, .kitchen, .bars, .tbl-wrap, .next li, tr, .loop, .plot { break-inside: avoid; }
+  .sec-head { break-after: avoid; }
+  h2 { font-size: 19px; }
+}
+
+@media (max-width: 720px) {
+  .verdicts, .two, .kitchens { grid-template-columns: 1fr; }
+  .bar-row { grid-template-columns: 1fr; gap: 6px; }
+  .next li { grid-template-columns: 24px 1fr; }
+  .next .who { grid-column: 2; }
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="label">GO.bat ข้อ 2 / 3 · ทดสอบบนการ์ดจริงครั้งแรก</span>
+  <h1>Destrier บน vLLM กับ SGLang</h1>
+  <p class="muted">โมเดลเดียวกับที่ใช้อยู่ (Destrier + adapter ที่ซ่อมแล้ว) รวมเป็นไฟล์เดียวแล้วเสิร์ฟด้วยตัวเสิร์ฟที่เร็วกว่า Unsloth ทดสอบด้วยโค้ด worker ตัวจริง กับบ้านที่มีเฉลย 1 หลัง และบ้านจากเน็ตที่โมเดลไม่เคยเห็น 3 หลัง</p>
+  <div class="meta">
+    <span>วันที่ <b>3 ต.ค. 69</b></span>
+    <span>การ์ด <b>RTX PRO 6000</b> 96 GB</span>
+    <span>เปิด <b>12:36–15:03</b></span>
+    <span>ค่าใช้จ่าย <b class="num">~$3.81</b></span>
+    <span>คืนการ์ดแล้ว <b>0 instance</b></span>
+  </div>
+</header>
+
+<section aria-label="คำตอบ 3 ข้อ">
+  <div class="verdicts">
+    <div class="verdict">
+      <span class="q">1 · เปิดได้จริงไหม</span>
+      <span class="a">เปิดได้ทั้งคู่</span>
+      <div class="chips"><span class="chip ok">ทางแก้ production พิสูจน์แล้ว</span><span class="chip no">ยังใช้วันงานไม่ได้</span></div>
+      <p>ตอนแรกเปิดไม่ขึ้นเพราะชุด CUDA บนการ์ดไม่ตรงรุ่น แก้ใน presentation.py แล้ว ที่ยังใช้ไม่ได้เพราะโมเดลที่รวมแล้วยังไม่อยู่บน HuggingFace</p>
+    </div>
+    <div class="verdict">
+      <span class="q">2 · เร็วขึ้นกี่เท่า</span>
+      <span class="a"><span class="num">~57×</span> vLLM</span>
+      <div class="chips"><span class="chip ok">SGLang ~44×</span></div>
+      <p>บ้าน 83b8e52c ทั้งหลังเหลือ 5 นาที จากเดิม 4 ชม. 43 นาที เทียบบนการ์ดเดียวกันต่อคำขอ pass0 เร็วขึ้น ~10 เท่า section ~20 เท่า</p>
+    </div>
+    <div class="verdict">
+      <span class="q">3 · ผลอ่านเท่าเดิมไหม</span>
+      <span class="a">ไม่แย่กว่าเดิม</span>
+      <div class="chips"><span class="chip ok">อ่านผิดน้อยลงชัด</span><span class="chip warn">ผลแกว่งมาก</span></div>
+      <p>เจอมาร์คพอๆ เดิม แต่ precision ขึ้นจาก 0.63 เป็น 0.83–0.85 แยกไม่ได้ว่าดีขึ้นเพราะ adapter ที่ซ่อมหรือเพราะตัวเสิร์ฟ</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>ความเร็ว: บ้าน 83b8e52c ทั้งหลัง</h2>
+    <p class="muted small">29 หน้า ผ่าน worker ตัวจริงทุกขั้น (pass0 → ครอป → CV → gridline → pass2 → pass3) ความยาวแท่งตามเวลาจริงสเกลเดียวกัน</p>
+  </div>
+  <div class="bars">
+    <div class="bar-row">
+      <span class="bar-name">Unsloth + adapter<small>production เดิม</small></span>
+      <div class="bar-track"><div class="bar old" style="width: calc((100% - 132px) * 1)"></div><span class="bar-val"><b>4 ชม. 43 นาที</b></span></div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-name">vLLM<small>destrier-vllm</small></span>
+      <div class="bar-track"><div class="bar" style="width: calc((100% - 132px) * 0.0176)"></div><span class="bar-val"><b>5.0 นาที</b> · 57×</span></div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-name">SGLang<small>destrier-sglang</small></span>
+      <div class="bar-track"><div class="bar" style="width: calc((100% - 132px) * 0.0225)"></div><span class="bar-val"><b>6.4 นาที</b> · 44×</span></div>
+    </div>
+    <span class="axis-note">16,964 วิ · 298.6 วิ · 382.1 วิ</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>ต่อคำขอ · การ์ดเดียวกัน</th><th class="r">Unsloth</th><th class="r">vLLM</th><th class="r">SGLang</th></tr></thead>
+      <tbody>
+        <tr><td>pass0 จัดประเภทหน้า (ต่อหน้า)</td><td class="r num">18.5 วิ</td><td class="r num best">1.6 วิ</td><td class="r num">2.7 วิ</td></tr>
+        <tr><td>section หน้า 22</td><td class="r num">170 วิ</td><td class="r num best">~8 วิ</td><td class="r num">8.7 วิ</td></tr>
+        <tr><td>เขียนข้อความ</td><td class="r num">~20 ตัวอักษร/วิ</td><td class="r num">~440 ตัวอักษร/วิ</td><td class="r num best">~460 ตัวอักษร/วิ</td></tr>
+        <tr><td>เปิดจนพร้อมรับงาน</td><td class="r num">80 วิ</td><td class="r num">170 วิ<br><span class="muted small">576 วิ ถ้าเครื่องใหม่</span></td><td class="r num best">65 วิ</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted small">ตัวเลข 57× รวมโชคการ์ดด้วย รอบ production ได้การ์ดที่ pass0 ช้ากว่าการ์ดนี้ 4.7 เท่า ส่วน vLLM เร็วกว่า SGLang ทั้งหลังเพราะอ่านภาพเข้าเร็วกว่า ข้อดีที่เคยคาดไว้ของ SGLang (cache ส่วนต้นของ prompt) ใช้กับงานเราไม่ได้ เพราะ prompt ขึ้นต้นด้วยภาพซึ่งต่างกันทุกหน้า cache โดนแค่ 6 จาก 292 ครั้ง</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>ทำไมถึงเร็วขึ้น เล่าแบบเด็กอนุบาล</h2>
+    <p class="muted small">ข้อความสีเทาตัวเล็กใต้แต่ละข้อคือชื่อจริงของเทคนิคนั้น</p>
+  </div>
+  <div class="story">
+    <p class="lead">ลองนึกว่าโมเดลคือ <b>แม่ครัว</b> คนหนึ่ง เวลาตอบคำถาม แม่ครัวต้องวางคำตอบลงจานทีละคำ ทีละคำ เหมือนวางขนมทีละชิ้น ยิ่งวางแต่ละชิ้นเร็ว จานก็เสร็จเร็ว</p>
+    <div class="kitchens">
+      <div class="kitchen">
+        <span class="label">ครัวเก่า · Unsloth</span>
+        <ul>
+          <li>แม่ครัวมีผู้ช่วยตั้ง <b>256 คน</b> ทุกคำต้องเลือกผู้ช่วยมาช่วยไม่กี่คน แล้ว<b>เดินไปถามทีละคน</b></li>
+          <li>สมุดสูตรทุกหน้ามี<b>กระดาษโน้ตแปะ</b>ไว้แก้สูตร ต้องหยิบโน้ตมาอ่านทุกครั้ง</li>
+          <li>ทำเสร็จแต่ละขั้น ต้อง<b>หยุดรอหัวหน้า</b>บอกว่าขั้นต่อไปทำอะไร</li>
+        </ul>
+        <p class="pace">วางได้ราว <span class="num">20</span> ตัวอักษรต่อวินาที</p>
+      </div>
+      <div class="kitchen new">
+        <span class="label">ครัวใหม่ · vLLM / SGLang</span>
+        <ul>
+          <li><b>ลอกโน้ตลงสมุดสูตรเลย</b> ไม่ต้องหยิบโน้ตมาอ่านอีก<small>merge LoRA เข้าตัวโมเดล</small></li>
+          <li>ผู้ช่วยที่เลือกมา<b>ทำงานพร้อมกันบนโต๊ะใหญ่ตัวเดียว</b> ไม่ต้องเดินไปถามทีละคน<small>fused MoE kernel</small></li>
+          <li>แม่ครัว<b>จำท่าทั้งหมดได้แล้ว</b> ทำต่อเนื่องได้เลย ไม่ต้องรอหัวหน้าสั่ง<small>CUDA graph</small></li>
+        </ul>
+        <p class="pace">วางได้ราว <span class="num">440</span> ตัวอักษรต่อวินาที</p>
+      </div>
+    </div>
+    <div class="facts">
+      <p><b>แล้วทำไมถึง 57 เท่า</b> วันที่บ้าน 83b8e52c ถูกถอดแบบครั้งแรก ครัวที่เช่ามาบังเอิญเป็นครัวช้า (การ์ดช้ากว่าวันนี้ 4.7 เท่า) ตัวเลข 57 เท่าจึงรวมโชคด้วย ถ้าเทียบในครัวเดียวกัน ครัวใหม่เร็วขึ้นราว 10–20 เท่า</p>
+      <p><b>บางงานไม่ได้เร็วขึ้น</b> งานที่ไม่ได้ใช้แม่ครัว เช่น ตัดภาพ หรือหาเส้นด้วย CV ยังใช้เวลาเท่าเดิม ทั้งบ้านจึงเร็วขึ้นน้อยกว่าตัวแม่ครัว</p>
+      <p><b>รสชาติยังเหมือนเดิม</b> แม่ครัวคนเดิม สูตรเดิม แค่ครัวทำงานเก่งขึ้น ด่านตรวจ C และ D ยืนยันว่าคำตอบที่ได้แทบเหมือนเดิม</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>ผลอ่านเทียบเฉลย</h2>
+    <p class="muted small">บ้าน 83b8e52c หน้า 19–25 นับมาร์คที่อ่านเจอเทียบเฉลย 52 มาร์ค ไม่ดูสเปกหรือขนาด</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>ชุด</th><th class="r">JSON ผ่าน</th><th class="r">มาร์คเจอ</th><th class="r">มาร์คเกินมา</th><th class="r">recall</th><th class="r">precision</th></tr></thead>
+      <tbody>
+        <tr><td>production<br><span class="muted small">Unsloth + adapter เดิมที่ปนผิด</span></td><td class="r num">16/16</td><td class="r num">42/52</td><td class="r num">25</td><td class="r num">0.81</td><td class="r num">0.63</td></tr>
+        <tr class="hl"><td>vLLM</td><td class="r num">16/16</td><td class="r num">41/52</td><td class="r num best">7</td><td class="r num">0.79</td><td class="r num best">0.85</td></tr>
+        <tr class="hl"><td>SGLang</td><td class="r num">18/18</td><td class="r num best">43/52</td><td class="r num">9</td><td class="r num best">0.83</td><td class="r num">0.83</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>หน้า</th><th>ประเภท</th><th class="r">production</th><th class="r">vLLM</th><th class="r">SGLang</th><th>ที่ขาดบ่อย</th></tr></thead>
+      <tbody>
+        <tr><td class="num">19</td><td>แปลนฐานราก</td><td class="r"><span class="cell low">4<span class="of">/10</span></span></td><td class="r"><span class="cell">8<span class="of">/10</span></span></td><td class="r"><span class="cell">8<span class="of">/10</span></span></td><td class="mono">C1 C2</td></tr>
+        <tr><td class="num">20</td><td>แปลนคาน</td><td class="r"><span class="cell">11<span class="of">/15</span></span></td><td class="r"><span class="cell">11<span class="of">/15</span></span></td><td class="r"><span class="cell">13<span class="of">/15</span></span></td><td class="mono">CN ST1</td></tr>
+        <tr><td class="num">21</td><td>แปลนหลังคา</td><td class="r"><span class="cell full">2<span class="of">/2</span></span></td><td class="r"><span class="cell low">0<span class="of">/2</span></span></td><td class="r"><span class="cell">1<span class="of">/2</span></span></td><td class="mono">B1 BX</td></tr>
+        <tr><td class="num">22</td><td>รูปตัด</td><td class="r"><span class="cell full">6<span class="of">/6</span></span></td><td class="r"><span class="cell full">6<span class="of">/6</span></span></td><td class="r"><span class="cell full">6<span class="of">/6</span></span></td><td class="muted">—</td></tr>
+        <tr><td class="num">23</td><td>รูปตัด</td><td class="r"><span class="cell full">3<span class="of">/3</span></span></td><td class="r"><span class="cell full">3<span class="of">/3</span></span></td><td class="r"><span class="cell full">3<span class="of">/3</span></span></td><td class="muted">—</td></tr>
+        <tr><td class="num">24</td><td>แบบขยายคาน</td><td class="r"><span class="cell full">12<span class="of">/12</span></span></td><td class="r"><span class="cell">9<span class="of">/12</span></span></td><td class="r"><span class="cell">10<span class="of">/12</span></span></td><td class="mono">B7 B7A</td></tr>
+        <tr><td class="num">25</td><td>ตารางเสา</td><td class="r"><span class="cell full">4<span class="of">/4</span></span></td><td class="r"><span class="cell full">4<span class="of">/4</span></span></td><td class="r"><span class="cell low">2<span class="of">/4</span></span></td><td class="mono">C1 C2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="two">
+    <div class="panel">
+      <h3>ยิงซ้ำ 3 รอบ ภาพเดิม เซิร์ฟเวอร์เดิม</h3>
+      <div class="plot">
+        <svg viewBox="0 0 400 128" role="img" aria-label="แปลนคานหน้า 20 ยิงซ้ำ 3 รอบได้ 56 51 และ 22 ชิ้น เฉลย 59 ชิ้น">
+          <text class="rowlab" x="0" y="16">แปลนคานหน้า 20 · จำนวนชิ้น</text>
+          <line class="ax" x1="20" y1="70" x2="380" y2="70"></line>
+          <line class="truth" x1="374" y1="34" x2="374" y2="84"></line>
+          <text class="truthlab" x="374" y="30" text-anchor="end">เฉลย 59</text>
+          <circle class="dot" cx="152" cy="62" r="6"></circle>
+          <circle class="dot" cx="326" cy="62" r="6"></circle>
+          <circle class="dot" cx="356" cy="62" r="6"></circle>
+          <text class="dotlab" x="152" y="50" text-anchor="middle">22</text>
+          <text class="dotlab" x="322" y="50" text-anchor="middle">51</text>
+          <text class="dotlab" x="356" y="50" text-anchor="middle">56</text>
+          <text class="tick" x="20" y="100" text-anchor="middle">0</text>
+          <text class="tick" x="140" y="100" text-anchor="middle">20</text>
+          <text class="tick" x="260" y="100" text-anchor="middle">40</text>
+          <text class="tick" x="380" y="100" text-anchor="middle">60</text>
+          <line class="ax" x1="20" y1="70" x2="20" y2="76"></line>
+          <line class="ax" x1="140" y1="70" x2="140" y2="76"></line>
+          <line class="ax" x1="260" y1="70" x2="260" y2="76"></line>
+          <line class="ax" x1="380" y1="70" x2="380" y2="76"></line>
+        </svg>
+      </div>
+      <ul class="small">
+        <li>section หน้า 22: มาร์คตรง <span class="num">6/6 · 4/6 · 4/6</span></li>
+        <li>แปลนฐานรากหน้า 19: <span class="num">8/10</span> ทุกรอบ</li>
+      </ul>
+      <p class="muted small">ความต่างรายหน้าระหว่าง vLLM กับ SGLang ด้านบนจึงอยู่ในช่วงที่ sampling แกว่งเองอยู่แล้ว (temperature 0.7)</p>
+    </div>
+    <div class="panel">
+      <h3>ด่านตรวจว่าโมเดลที่รวมไฟล์ยังเป็นตัวเดิม</h3>
+      <div class="tbl-wrap" style="border: none;">
+        <table>
+          <tbody>
+            <tr><td>A · expert ถูกแก้</td><td class="r"><span class="chip ok">80/82</span></td></tr>
+            <tr><td>B · ค่าน้ำหนักตรงสูตร</td><td class="r"><span class="chip ok">ตรงเป๊ะ</span></td></tr>
+            <tr><td>C · ผลลัพธ์เทียบ Unsloth</td><td class="r"><span class="chip ok">0.9956</span></td></tr>
+            <tr><td>D · vLLM</td><td class="r"><span class="chip warn">top-1 สลับ</span></td></tr>
+            <tr><td>D · SGLang</td><td class="r"><span class="chip ok">ผ่าน</span></td></tr>
+            <tr><td>D · vLLM แบบ production</td><td class="r"><span class="chip ok">ผ่าน</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted small">C ผ่านเพราะค่าคลาดพื้นฐานระหว่าง Unsloth กับ transformers เองคือ 0.9945 ส่วน D ของ vLLM สลับระหว่าง <span class="mono">{"</span> กับ <span class="mono">```</span> ซึ่งไม่มีผลเมื่อบังคับ JSON</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>บ้านจากเน็ตที่โมเดลไม่เคยเห็น</h2>
+    <p class="muted small">แบบบ้านเพื่อประชาชน กรมโยธาธิการฯ ตรวจลายนิ้วมือภาพเทียบ 53 หลังในชุดเทรนแล้ว ไม่ซ้ำ ไม่มีเฉลย จึงวัดเวลา JSON ที่ผ่าน และอาการชนเพดาน token</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>บ้าน</th><th class="r">vLLM</th><th>vLLM อาการ</th><th class="r">SGLang</th><th>SGLang อาการ</th><th class="r">มาร์คตรงกัน</th></tr></thead>
+      <tbody>
+        <tr><td>แบบประหยัด 1<br><span class="muted small">1 ชั้น · 14 หน้า</span></td><td class="r num">218 วิ<br><span class="muted">21/22</span></td><td><span class="chip no">gridline วน</span></td><td class="r num">192 วิ<br><span class="muted">21/21</span></td><td><span class="chip ok">ปกติ</span></td><td class="r num">0.45</td></tr>
+        <tr><td>แบบประหยัด 2<br><span class="muted small">1 ชั้นยกใต้ถุน · 18 หน้า</span></td><td class="r num">530 วิ<br><span class="muted">31/32</span></td><td><span class="chip no">gridline วน</span></td><td class="r num">282 วิ<br><span class="muted">29/30</span></td><td><span class="chip no">gridline วน</span></td><td class="r num">0.55</td></tr>
+        <tr><td>ไทยเป็นสุข 4<br><span class="muted small">2 ชั้น · 25 หน้า</span></td><td class="r num">557 วิ<br><span class="muted">40/41</span></td><td><span class="chip warn">ชนเพดาน 3 ตัว</span></td><td class="r num">469 วิ<br><span class="muted">41/41</span></td><td><span class="chip warn">ชนเพดาน 1 ตัว</span></td><td class="r num">0.57</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted small">ตัวเลขใต้เวลาคือ JSON ที่ผ่านต่อคำขอทั้งหมด · มาร์คตรงกันคือสัดส่วนมาร์คที่ทั้งสองตัวเสิร์ฟอ่านได้เหมือนกัน (Jaccard) · gridline วน = ไม่มี grid master ทั้งบ้าน ขั้นวัดระยะ (pass3) ถูกข้าม</p>
+
+  <div class="panel">
+    <h3>ทำไมถึงวน: ต้นเหตุอยู่ที่ข้อมูลเทรน ไม่ใช่ตัวเสิร์ฟ</h3>
+    <p class="small">ท้ายคำตอบ gridline ของแบบประหยัด 1 ที่โดนตัดที่ 9,000 token (เขียนไป 18,473 ตัวอักษร) โมเดลไล่นับหน้าของบ้านเทรนหลังที่ 17 ไปถึงหน้า 317 ทั้งที่บ้านจริงมี 14 หน้า</p>
+    <div class="loop">… "image/<mark>บ้าน_เล็ก_1ชั้น_17</mark>/บ้าน_เล็ก_1ชั้น_17_<mark>หน้า315</mark>.png",
+  "image/<mark>บ้าน_เล็ก_1ชั้น_17</mark>/บ้าน_เล็ก_1ชั้น_17_<mark>หน้า316</mark>.png",
+  "image/<mark>บ้าน_เล็ก_1ชั้น_17</mark>/บ้าน_เล็ก_1ชั้น_17_<mark>หน้า317</mark>   ← โดนตัดตรงนี้</div>
+    <p class="small">คำตอบที่ใช้สอน Destrier มี path ไฟล์ที่มีชื่อบ้านเทรนติดอยู่ และ prompt ก็สั่งให้เขียนฟิลด์ <span class="mono">source_image</span> พอเจอบ้านที่ไม่รู้จัก โมเดลจึงแต่งชื่อบ้านเทรนขึ้นมาแล้ววน เกิดบนทั้งสองตัวเสิร์ฟแต่ไม่ทุกครั้ง</p>
+    <div class="stat-line">
+      <div><span class="num">938<span class="muted" style="font-size: 16px;">/1034</span></span><span class="small muted">คำตอบที่สอน มีชื่อบ้านเทรน</span></div>
+      <div><span class="num">335<span class="muted" style="font-size: 16px;">/1034</span></span><span class="small muted">มีบันทึกสคริปต์แก้ข้อมูลหลุดมา</span></div>
+      <div><span class="num">183</span><span class="small muted">ไฟล์ GT ที่มีบันทึกนี้ใน warnings</span></div>
+    </div>
+    <p class="muted small">จดเป็นข้อ 68 ใน json_แก้ไขแล้ว/สิ่งที่ต้องแก้.md แก้ได้ที่ตัวสร้างชุดเทรนโดยไม่ต้องแตะไฟล์ GT</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>ที่เหลือให้ตัดสิน</h2>
+    <p class="muted small">เรียงตามที่คิดว่าคุ้มที่สุดก่อน</p>
+  </div>
+  <ol class="next">
+    <li><span class="n">1</span><span>แก้ตัวสร้างชุดเทรนตามข้อ 68 (ตัด source_image และบันทึกสคริปต์ออก) แล้วเทรนใหม่ วัดซ้ำด้วยบ้านจากเน็ตชุดเดิม เกณฑ์คือ gridline ไม่ชนเพดาน</span><span class="who">ต้องเช่าการ์ดเทรน</span></li>
+    <li><span class="n">2</span><span>ทำ Stage 1 ของ adapter ที่ซ่อมแล้ว เพื่อแยกว่าที่อ่านผิดน้อยลงมาจาก adapter หรือจากตัวเสิร์ฟ</span><span class="who">ต้องเช่าการ์ด</span></li>
+    <li><span class="n">3</span><span>รวมโมเดลใหม่แล้ว push ขึ้น dacarokann/destrier-merged ให้ GO.bat ข้อ 2/3 ใช้วันงานได้</span><span class="who">ต้องมี HF write token · ~45 นาที</span></li>
+    <li><span class="n">4</span><span>ลอง temperature ต่ำลง ให้ผลอ่านนิ่งขึ้น (ตอนนี้แปลนคานหน้าเดียวแกว่ง 22–56 ชิ้น)</span><span class="who">แก้ worker บรรทัดเดียว ต้องวัดผล</span></li>
+  </ol>
+</section>
+
+<footer>
+  <span>รายงานเต็มและข้อมูลดิบ: Training · tune_ai/t05_Destrier/proof/04_vllm_sglang_บนการ์ด.md</span>
+  <span>commit: Constistant 9d4ba6b · Training 9fdbe6d</span>
+</footer>
+
+</div>
