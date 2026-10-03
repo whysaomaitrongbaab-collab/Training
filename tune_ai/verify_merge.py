@@ -18,13 +18,19 @@ proven it worked" — บั๊ก merge ของ MoE ไม่มีวัน 
     python verify_merge.py --fingerprint adapter --adapter <dir> --out ref.pt
     python verify_merge.py --fingerprint merged  --merged ./destrier_merged --out mrg.pt
     python verify_merge.py --fingerprint base    --base-repo unsloth/Qwen3.6-35B-A3B --out base.pt
-    python verify_merge.py --compare ref.pt mrg.pt base.pt
+    python verify_merge.py --fingerprint base-unsloth --base-repo unsloth/Qwen3.6-35B-A3B --out base_u.pt
+    python verify_merge.py --compare ref.pt mrg.pt base.pt base_u.pt   # base_u = เกณฑ์จากค่าคลาดพื้นฐานจริง
 """
 import argparse
 import glob
 import json
 import os
 import sys
+
+# ⛔ ต้องตรงกับ merge_lora_to_base.py — ด่าน C (--fingerprint adapter) โหลด adapter ผ่าน Unsloth
+# ซึ่งตั้งแต่ unsloth_zoo 2026.9.6 อ่าน lora_B ของ expert แบบ rank_major เป็นค่าเริ่มต้น ถ้าไม่ตั้ง
+# ตัวอ้างอิงจะอ่านผิดแบบเอง แล้วด่าน C จะเทียบ merged กับตัวอ้างอิงที่ผิด (ไดอารี่ 25 ก.ย. ข้อ 6.3)
+os.environ.setdefault("UNSLOTH_MOE_LORA_B_LAYOUT", "grouped_by_expert")
 
 NUM_EXPERTS = 256
 MAX_PIXELS = 6912 * 1024
@@ -101,7 +107,7 @@ def check_b(base_dir, merged_dir, adapter_dir, n_experts_probe):
           f"(ทดสอบ {n_experts_probe} expert แรก เพื่อประหยัด RAM)")
 
     dW_full = (get_tensor(merged_dir, wm_m, name).float()
-               - get_tensor(base_dir, wm_b, name).float())      # [E, in, out]
+               - get_tensor(base_dir, wm_b, name).float())      # [E, in, out] หรือ [E, out, in]
     E = dW_full.shape[0]
     p = min(n_experts_probe, E)
 
@@ -114,26 +120,36 @@ def check_b(base_dir, merged_dir, adapter_dir, n_experts_probe):
     #    ตรวจของจริงแล้ว (2026-09-20): gate_up_proj ถูกเซฟเป็น `...experts.base_layer.lora_A`
     #    ส่วน down_proj เป็น `...experts.lora_A` — grep หา "gate_up_proj" ในคีย์ adapter ไม่มีวันเจอ
     #    รูปร่างไม่โกหก: A ต้องเป็น [E*r, in] และ B ต้องเป็น [out, E*r] ของเทนเซอร์ปลายทางตัวนั้น
+    # ⚠️ แกนของเทนเซอร์ expert มีได้สองแบบ — เดิมรับแค่ [E, in, out] เจอของจริง (Qwen3.6, transformers 5.5)
+    #    เป็น [E, out, in] (gate_up_proj 256×1024×2048) ด่านนี้เลย "ข้าม" แล้วยังขึ้นว่า A+B ผ่าน (3 ต.ค. 69)
+    #    ตอนนี้ลองทั้งสองแบบ และหาคู่ไม่เจอ = ไม่ผ่าน ไม่ใช่ข้ามเงียบ
     layer = next((s for s in name.split(".") if s.isdigit()), None)
-    in_dim, out_dim = dW_full.shape[1], dW_full.shape[2]
     with safe_open(af[0], framework="pt") as f:
         cand = [k for k in f.keys()
                 if k.endswith("lora_A.weight") and "experts" in k
                 and (layer is None or f".layers.{layer}." in k)]
         ka = kb = None
-        for k in cand:
-            kb_try = k[: -len("lora_A.weight")] + "lora_B.weight"
-            if kb_try not in f.keys():
-                continue
-            sa, sb = f.get_slice(k).get_shape(), f.get_slice(kb_try).get_shape()
-            if len(sa) == 2 and len(sb) == 2 and sa[1] == in_dim and sb[0] == out_dim \
-                    and sa[0] == sb[1]:
-                ka, kb = k, kb_try
+        for transposed in (False, True):
+            in_dim, out_dim = ((dW_full.shape[2], dW_full.shape[1]) if transposed
+                               else (dW_full.shape[1], dW_full.shape[2]))
+            for k in cand:
+                kb_try = k[: -len("lora_A.weight")] + "lora_B.weight"
+                if kb_try not in f.keys():
+                    continue
+                sa, sb = f.get_slice(k).get_shape(), f.get_slice(kb_try).get_shape()
+                if len(sa) == 2 and len(sb) == 2 and sa[1] == in_dim and sb[0] == out_dim \
+                        and sa[0] == sb[1]:
+                    ka, kb = k, kb_try
+                    break
+            if ka:
                 break
         if ka is None:
-            print(f"⚠️  B ข้าม: หาคู่ lora_A/B ที่รูปร่างเข้ากับ [{in_dim}→{out_dim}] ไม่เจอ")
+            print(f"⛔ B ไม่ผ่าน: หาคู่ lora_A/B ที่รูปร่างเข้ากับ {tuple(dW_full.shape)} ไม่เจอทั้งสองแกน")
             print(f"    (ผู้สมัครในชั้นนี้: {[k.split('language_model.')[-1] for k in cand]})")
-            return True
+            return False
+        if transposed:
+            dW_full = dW_full.transpose(1, 2)                     # → [E, in, out]
+            print("   เทนเซอร์ expert เก็บเป็น [E, out, in] — สลับแกนก่อนเทียบ")
         print(f"   จับคู่กับ {ka.split('language_model.')[-1]} (ด้วยรูปร่าง ไม่ใช่ชื่อ)")
         A = f.get_tensor(ka).float()          # [E*r, in]
         B = f.get_tensor(kb).float()          # [out, E*r]
@@ -169,6 +185,23 @@ def check_b(base_dir, merged_dir, adapter_dir, n_experts_probe):
         return False
     best_err, best = min(results)
     print(f"   → ตรงที่สุด: {best} ({best_err:.4f})")
+    # ตัวเทียบที่ยุติธรรม: ไฟล์ merged เป็น bf16 = round(W + ΔW) ซึ่งปัดทิ้งได้ ~0.4% ของ |W| ขณะที่ ΔW ของ LoRA
+    # เล็กกว่า W หลายเท่า → แค่การปัดก็คลาดหลายสิบ % ของ |ΔW| ได้ (เจอจริง 3 ต.ค. 69: 0.119 แม้ merge ถูก)
+    # จึงจำลอง merge แบบ bf16 ด้วยแบบที่ตรงที่สุดแล้วเทียบ byte ต่อ byte — ตรง = merge ทำตามสูตรนั้นเป๊ะ
+    ma, mb = best.replace("A=", "").replace("B=", "").split()
+    base_p = get_tensor(base_dir, wm_b, name).float()[:p]
+    if base_p.shape != dW.shape:
+        base_p = base_p.transpose(1, 2)
+    a = unpack_a(ma)[:p].transpose(1, 2).contiguous()
+    b = unpack_b(mb)[:p].contiguous()
+    sim = (base_p + scale * torch.bmm(a, b)).to(torch.bfloat16).float() - base_p
+    exact = ((dW - sim).norm() / ref).item()
+    floor = ((sim - scale * torch.bmm(a, b)).norm() / ref).item()
+    print(f"   เทียบกับ merge จำลองแบบ bf16 ({best}): คลาด {exact:.4f} · "
+          f"ค่าคลาดที่การปัด bf16 ทำเองได้ {floor:.4f}")
+    if exact <= 0.01:
+        print(f"✅ B ผ่าน: ไฟล์ merged = round_bf16(W + ΔW แบบ {best}) — ที่คลาด {best_err:.4f} มาจากการปัด bf16 ล้วน")
+        return True
     if best_err > 0.05:
         print("⛔ B ไม่ผ่าน: ไม่มี packing แบบไหนตรงเลย")
         print("   แปลว่าปัญหาไม่ได้อยู่ที่ขั้น merge แต่อยู่ที่ขั้น **รวม 4 fold**")
@@ -180,8 +213,10 @@ def check_b(base_dir, merged_dir, adapter_dir, n_experts_probe):
 
 
 # ── C: ผลลัพธ์เหมือน production path ไหม ────────────────────────────────────
-def fixed_input(processor):
-    """input ตายตัว ไม่สุ่ม — ต้องได้ชุดเดิมเป๊ะทุก process ไม่งั้นเทียบไม่ได้"""
+FIXED_TEXT = "อ่านแบบนี้ตอบเป็น JSON"
+
+
+def fixed_image():
     from PIL import Image, ImageDraw
     img = Image.new("RGB", (768, 576), "white")
     d = ImageDraw.Draw(img)
@@ -189,13 +224,19 @@ def fixed_input(processor):
         d.rectangle([20 + k * 34, 20 + k * 24, 340 + k * 28, 240 + k * 34],
                     outline="black", width=2)
         d.text((44 + k * 22, 260 + k * 12), f"B{k + 1} 200x400 DB16", fill="black")
+    return img
+
+
+def fixed_input(processor):
+    """input ตายตัว ไม่สุ่ม — ต้องได้ชุดเดิมเป๊ะทุก process ไม่งั้นเทียบไม่ได้"""
+    img = fixed_image()
     ip = getattr(processor, "image_processor", None)
     if ip is not None:
         ip.size["longest_edge"] = MAX_PIXELS
         ip.size["shortest_edge"] = MIN_PIXELS
     text = processor.apply_chat_template(
         [{"role": "user", "content": [{"type": "image", "image": img},
-                                      {"type": "text", "text": "อ่านแบบนี้ตอบเป็น JSON"}]}],
+                                      {"type": "text", "text": FIXED_TEXT}]}],
         add_generation_prompt=True, enable_thinking=False)
     return processor([img], text, add_special_tokens=False, return_tensors="pt")
 
@@ -203,12 +244,13 @@ def fixed_input(processor):
 def fingerprint(mode, args):
     """logits ของ token ถัดไป 1 ตัว — deterministic ล้วน ไม่ generate ไม่ sample"""
     import torch
-    if mode == "adapter":
+    if mode in ("adapter", "base-unsloth"):
         from unsloth import FastVisionModel
-        if not args.adapter:
-            sys.exit("⛔ --fingerprint adapter ต้องใส่ --adapter")
+        src = args.adapter if mode == "adapter" else args.base_repo
+        if not src:
+            sys.exit(f"⛔ --fingerprint {mode} ต้องใส่ {'--adapter' if mode == 'adapter' else '--base-repo'}")
         model, processor = FastVisionModel.from_pretrained(
-            model_name=args.adapter, load_in_4bit=False, dtype=torch.bfloat16)
+            model_name=src, load_in_4bit=False, dtype=torch.bfloat16)
         FastVisionModel.for_inference(model)
     else:
         from transformers import AutoModelForImageTextToText, AutoProcessor
@@ -228,19 +270,29 @@ def fingerprint(mode, args):
     print(f"✅ เซฟ logits ({mode}) → {args.out}  [{logits.shape[0]} ค่า]")
 
 
-def compare(ref_p, mrg_p, base_p):
+def compare(ref_p, mrg_p, base_p, base_unsloth_p=None):
     """mrg ต้องเหมือน ref และต้องต่างจาก base ชัดเจน
 
     ข้อหลังคือกับดักที่ขาดไม่ได้ — ถ้า mrg เหมือน base มากกว่าเหมือน ref แปลว่า merge
-    ไม่ติด ได้โมเดลที่ไม่เคย fine-tune (เคสที่ฆ่า t01 และมองไม่เห็นถ้าไม่เทียบ base)"""
+    ไม่ติด ได้โมเดลที่ไม่เคย fine-tune (เคสที่ฆ่า t01 และมองไม่เห็นถ้าไม่เทียบ base)
+
+    เกณฑ์ "ใกล้พอ": ref มาจาก Unsloth ส่วน mrg มาจาก transformers — คนละ kernel ต่อให้น้ำหนักเหมือนกัน
+    ทุกบิตก็ไม่ได้ cosine 1.0 · วัดจริง 3 ต.ค. 69: base เปล่าสองเส้นทางนี้ได้แค่ 0.9945 ทั้งที่ไม่มี LoRA
+    เลย ส่วน merged vs ref ได้ 0.9956 — เกณฑ์ 0.999 เดิมจึงไม่มีวันผ่านไม่ว่า merge จะถูกแค่ไหน
+    ใส่ base_unsloth (--fingerprint base-unsloth) = ใช้ค่าคลาดพื้นฐานที่วัดจริงเป็นเกณฑ์แทนตัวเลขตายตัว"""
     import torch
+    cos = torch.nn.functional.cosine_similarity
     ref, mrg = torch.load(ref_p).float(), torch.load(mrg_p).float()
-    cos_rm = torch.nn.functional.cosine_similarity(ref, mrg, dim=0).item()
+    cos_rm = cos(ref, mrg, dim=0).item()
     top_same = int(ref.argmax()) == int(mrg.argmax())
     max_d = (ref - mrg).abs().max().item()
     print(f"\nC: merged เทียบ production path (base+adapter)")
     print(f"   cosine {cos_rm:.6f} · token อันดับ 1 ตรงกัน {top_same} · ต่างสุด {max_d:.4f}")
-    ok = cos_rm >= 0.999 and top_same
+    need = 0.999
+    if base_unsloth_p and base_p and os.path.exists(base_unsloth_p):
+        need = cos(torch.load(base_unsloth_p).float(), torch.load(base_p).float(), dim=0).item()
+        print(f"   ค่าคลาดพื้นฐาน (base เปล่า Unsloth vs transformers) {need:.6f} → ใช้เป็นเกณฑ์")
+    ok = cos_rm >= need and top_same
     if base_p and os.path.exists(base_p):
         base = torch.load(base_p).float()
         cos_bm = torch.nn.functional.cosine_similarity(base, mrg, dim=0).item()
@@ -255,6 +307,56 @@ def compare(ref_p, mrg_p, base_p):
     return ok
 
 
+# ── D: ตัวเสิร์ฟ (vLLM/SGLang) คำนวณได้เท่ากับ merged ที่ผ่านด่าน C ไหม ──────────────────
+def probe_server(url, ref_p, tok_dir, top=10):
+    """ยิงภาพ+ข้อความชุดเดียวกับ fixed_input ไปที่ /v1/chat/completions ขอ logprobs ของ token แรก
+    แล้วเทียบกับ logits อ้างอิง (mrg.pt จาก --fingerprint merged ที่ผ่านด่าน C แล้ว)
+
+    ด่าน C พิสูจน์ว่าไฟล์ merged ถูกเมื่อโหลดด้วย transformers — ด่านนี้พิสูจน์ว่า **engine เสิร์ฟ**
+    โหลดไฟล์เดียวกันแล้วคำนวณได้เท่ากัน (ชื่อเทนเซอร์/kernel MoE/chat template/การแปลงภาพ)
+    ไม่ใช่ตัวเลขเป๊ะ: bf16 คนละ kernel ต่างกันได้เล็กน้อย — เกณฑ์คือ token อันดับ 1 ตรงกัน
+    และ top-5 ซ้อนกันอย่างน้อย 4 ตัว"""
+    import base64
+    import io
+    import requests
+    import torch
+    from transformers import AutoTokenizer
+    buf = io.BytesIO()
+    fixed_image().save(buf, format="PNG")
+    b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+    body = {"model": "purson", "max_tokens": 1, "temperature": 0.0,
+            "logprobs": True, "top_logprobs": 20,
+            "chat_template_kwargs": {"enable_thinking": False},
+            "messages": [{"role": "user", "content": [
+                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64}"}},
+                {"type": "text", "text": FIXED_TEXT}]}]}
+    r = requests.post(f"{url.rstrip('/')}/v1/chat/completions", json=body, timeout=300)
+    r.raise_for_status()
+    got = r.json()["choices"][0]["logprobs"]["content"][0]["top_logprobs"]
+    srv = [(g["token"], float(g["logprob"])) for g in got][:top]
+
+    tok = AutoTokenizer.from_pretrained(tok_dir)
+    ref = torch.log_softmax(torch.load(ref_p).float(), dim=0)
+    vals, ids = ref.topk(top)
+    want = [(tok.decode([int(i)]), float(v)) for v, i in zip(vals, ids)]
+
+    print(f"\nD: {url} เทียบ merged (transformers)")
+    print(f"   {'อันดับ':6} {'ตัวเสิร์ฟ':>24} {'อ้างอิง':>24}")
+    for k in range(top):
+        s = srv[k] if k < len(srv) else ("-", float("nan"))
+        w = want[k]
+        print(f"   {k + 1:<6} {repr(s[0]):>16} {s[1]:7.3f} {repr(w[0]):>16} {w[1]:7.3f}")
+    top1 = bool(srv) and srv[0][0] == want[0][0]
+    overlap5 = len({t for t, _ in srv[:5]} & {t for t, _ in want[:5]})
+    common = {t: v for t, v in srv}
+    diffs = [abs(common[t] - v) for t, v in want[:5] if t in common]
+    print(f"   token อันดับ 1 ตรงกัน {top1} · top-5 ซ้อนกัน {overlap5}/5 · "
+          f"|Δlogprob| สูงสุดใน top-5 {max(diffs) if diffs else float('nan'):.3f}")
+    ok = top1 and overlap5 >= 4
+    print("✅ D ผ่าน" if ok else "⛔ D ไม่ผ่าน — engine นี้คำนวณไม่เท่ากับไฟล์ merged อย่าใช้ผลจากมัน")
+    return ok
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check-ab", action="store_true", help="ตรวจ A+B (ฟรี ไม่ใช้ GPU)")
@@ -262,11 +364,19 @@ def main():
     ap.add_argument("--merged", help="โฟลเดอร์โมเดลที่ merge แล้ว")
     ap.add_argument("--adapter", help="โฟลเดอร์ adapter")
     ap.add_argument("--experts", type=int, default=8, help="ทดสอบ B กี่ expert (ประหยัด RAM)")
-    ap.add_argument("--fingerprint", choices=["adapter", "merged", "base"])
+    ap.add_argument("--fingerprint", choices=["adapter", "merged", "base", "base-unsloth"])
     ap.add_argument("--base-repo", help="repo/โฟลเดอร์ base สำหรับ --fingerprint base")
     ap.add_argument("--out", default="fp.pt")
     ap.add_argument("--compare", nargs="+", metavar=("REF MRG", "BASE"))
+    ap.add_argument("--probe-server", metavar="URL",
+                    help="ด่าน D: เทียบ logprobs จากตัวเสิร์ฟ (vLLM/SGLang) กับ --ref (mrg.pt) · tokenizer จาก --merged")
+    ap.add_argument("--ref", help="logits อ้างอิงของ merged (ผลจาก --fingerprint merged)")
     a = ap.parse_args()
+
+    if a.probe_server:
+        if not (a.ref and a.merged):
+            sys.exit("⛔ --probe-server ต้องใส่ --ref mrg.pt และ --merged <โฟลเดอร์ merged> (เอา tokenizer)")
+        return 0 if probe_server(a.probe_server, a.ref, a.merged) else 1
 
     if a.check_ab:
         for k in ("base", "merged", "adapter"):
@@ -284,7 +394,8 @@ def main():
         if len(a.compare) < 2:
             sys.exit("⛔ --compare ต้องมีอย่างน้อย ref.pt mrg.pt (ควรใส่ base.pt ด้วย)")
         return 0 if compare(a.compare[0], a.compare[1],
-                            a.compare[2] if len(a.compare) > 2 else None) else 1
+                            a.compare[2] if len(a.compare) > 2 else None,
+                            a.compare[3] if len(a.compare) > 3 else None) else 1
     ap.print_help()
     return 1
 

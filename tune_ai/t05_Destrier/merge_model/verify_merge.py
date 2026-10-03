@@ -26,6 +26,11 @@ import json
 import os
 import sys
 
+# ⛔ ต้องตรงกับ merge_lora_to_base.py — ด่าน C (--fingerprint adapter) โหลด adapter ผ่าน Unsloth
+# ซึ่งตั้งแต่ unsloth_zoo 2026.9.6 อ่าน lora_B ของ expert แบบ rank_major เป็นค่าเริ่มต้น ถ้าไม่ตั้ง
+# ตัวอ้างอิงจะอ่านผิดแบบเอง แล้วด่าน C จะเทียบ merged กับตัวอ้างอิงที่ผิด (ไดอารี่ 25 ก.ย. ข้อ 6.3)
+os.environ.setdefault("UNSLOTH_MOE_LORA_B_LAYOUT", "grouped_by_expert")
+
 NUM_EXPERTS = 256
 MAX_PIXELS = 6912 * 1024
 MIN_PIXELS = 256 * 1024

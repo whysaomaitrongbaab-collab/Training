@@ -83,19 +83,24 @@ def inspect(adapter):
     ทำไมต้องอ่าน shape เอง: r ที่ config บอกกับ r ที่อยู่ในไฟล์จริงไม่ตรงกันได้ (สคริปต์
     รวม fold เขียน r ใหม่) และ **r ผิด = สูตรแกะ expert ผิดทั้งหมด**"""
     from huggingface_hub import hf_hub_download
-    cfg_path = hf_hub_download(adapter, "adapter_config.json")
+    local = os.path.isdir(adapter)      # ตัวที่ซ่อมแล้ว (fix_destrier_layout.py --out) เป็นโฟลเดอร์ ไม่ใช่ repo
+    cfg_path = (os.path.join(adapter, "adapter_config.json") if local
+                else hf_hub_download(adapter, "adapter_config.json"))
     cfg = json.load(open(cfg_path, encoding="utf-8"))
     layout = cfg.get("lora_B_layout", "<<ไม่มีคีย์ → legacy grouped_by_expert>>")
     print(f"adapter: {adapter}")
     print(f"   r={cfg.get('r')} alpha={cfg.get('lora_alpha')} layout={layout}")
     print(f"   target_parameters={cfg.get('target_parameters')}")
 
-    hdr = safetensors_header(adapter)
-    d = None
-    if hdr is None:                       # ถอยไปโหลดเต็ม (บนเครื่องเช่าที่ cache อยู่แล้วก็ไม่ช้า)
-        from huggingface_hub import snapshot_download
+    hdr = None if local else safetensors_header(adapter)
+    # d = สิ่งที่ส่งต่อให้ merge() โหลด — repo id ก็ได้ โฟลเดอร์ก็ได้ · **ห้ามเป็น None**: เดิมทางที่อ่าน
+    # header แบบ Range สำเร็จคืน d=None แล้ว merge() เรียก from_pretrained(model_name=None) (ไดอารี่ 25 ก.ย. 6.2)
+    d = adapter
+    if hdr is None:                       # โฟลเดอร์ในเครื่อง หรืออ่าน Range ไม่ได้ → เปิดไฟล์จริง
         from safetensors import safe_open
-        d = snapshot_download(adapter, allow_patterns=["*.json", "*.safetensors"])
+        if not local:
+            from huggingface_hub import snapshot_download
+            d = snapshot_download(adapter, allow_patterns=["*.json", "*.safetensors"])
         with safe_open(os.path.join(d, "adapter_model.safetensors"), framework="pt") as f:
             hdr = {k: {"shape": f.get_slice(k).get_shape(),
                        "dtype": f.get_slice(k).get_dtype()} for k in f.keys()}
@@ -129,13 +134,14 @@ def inspect(adapter):
 
 def check_versions():
     """เตือนเรื่องเวอร์ชัน — ไม่บังคับ เพราะ env var ข้างบนกันไว้ทั้งสองทางแล้ว"""
-    try:
-        import unsloth_zoo
-        print(f"unsloth_zoo {getattr(unsloth_zoo, '__version__', '?')}")
-    except ImportError:
-        sys.exit("⛔ ไม่มี unsloth_zoo — ลง: pip install unsloth unsloth_zoo")
-    import peft
-    print(f"peft {peft.__version__}")
+    # อ่านเลขจาก metadata ไม่ import ตรงๆ — unsloth_zoo รุ่นใหม่ (2026.9.9) โยน ImportError ถ้า import ก่อน
+    # unsloth เลยขึ้น "ไม่มี unsloth_zoo" ทั้งที่มีอยู่ (เจอบนการ์ดจริง 3 ต.ค. 69)
+    from importlib import metadata
+    for pkg in ("unsloth", "unsloth_zoo", "peft", "transformers"):
+        try:
+            print(f"{pkg} {metadata.version(pkg)}")
+        except metadata.PackageNotFoundError:
+            sys.exit(f"⛔ ไม่มี {pkg} — ลง: pip install unsloth unsloth_zoo")
 
 
 def merge(adapter_dir, out, push, max_mem):
@@ -165,16 +171,25 @@ def bake_image_config(out):
 
     ทำไมสำคัญ: ถ้าไม่อบไว้ ทุกคนที่เสิร์ฟต้องจำส่ง --mm-processor-kwargs เองทุกครั้ง
     ลืมเมื่อไหร่ = เสิร์ฟคนละความละเอียดกับที่เทรน = บั๊กเงียบคลาสเดิม (ฆ่า t01/t04 มาแล้ว)"""
-    p = os.path.join(out, "preprocessor_config.json")
-    if not os.path.exists(p):
-        print(f"⚠️  ไม่เจอ {p} — ข้ามการอบค่า (ต้องส่ง --mm-processor-kwargs ตอนเสิร์ฟเอง)")
-        return
-    cfg = json.load(open(p, encoding="utf-8"))
-    cfg.setdefault("size", {})
-    cfg["size"]["longest_edge"] = MAX_PIXELS
-    cfg["size"]["shortest_edge"] = MIN_PIXELS
-    json.dump(cfg, open(p, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
-    print(f"✅ อบ size.longest_edge={MAX_PIXELS} / shortest_edge={MIN_PIXELS} ลง {p}")
+    # transformers 5.x เซฟค่าภาพไว้ใน processor_config.json (คีย์ image_processor) แทน preprocessor_config.json
+    # (เจอจริง 3 ต.ค. 69 — เดิมขึ้นเตือน "ไม่เจอไฟล์ ข้ามการอบค่า" ทั้งที่ค่าถูกอยู่ในอีกไฟล์)
+    done = False
+    for name, key in (("preprocessor_config.json", None), ("processor_config.json", "image_processor")):
+        p = os.path.join(out, name)
+        if not os.path.exists(p):
+            continue
+        cfg = json.load(open(p, encoding="utf-8"))
+        tgt = cfg.get(key) if key else cfg
+        if not isinstance(tgt, dict):
+            continue
+        tgt.setdefault("size", {})
+        tgt["size"]["longest_edge"] = MAX_PIXELS
+        tgt["size"]["shortest_edge"] = MIN_PIXELS
+        json.dump(cfg, open(p, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+        print(f"✅ อบ size.longest_edge={MAX_PIXELS} / shortest_edge={MIN_PIXELS} ลง {p}")
+        done = True
+    if not done:
+        print(f"⚠️  ไม่เจอไฟล์ค่าภาพใน {out} — ข้ามการอบค่า (ต้องส่ง --mm-processor-kwargs ตอนเสิร์ฟเอง)")
 
 
 def main():
