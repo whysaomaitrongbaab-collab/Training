@@ -1,0 +1,143 @@
+
+=== 2026-10-03 06:52:17 [vllm] เปิดตัวเสิร์ฟ
+1 MiB
+พร้อมใน 170 วิ
+89588 MiB
+
+=== 2026-10-03 06:55:08 [vllm] ด่าน D (logprobs เทียบ merged)
+The tokenizer you are loading from '/workspace/destrier_merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+D: http://localhost:8000 เทียบ merged (transformers)
+   อันดับ                ตัวเสิร์ฟ                  อ้างอิง
+   1                  '{"'  -1.295            '```'  -1.285
+   2                 '```'  -1.607             '{"'  -1.973
+   3                 'คุณ'  -2.545             'ดู'  -2.723
+   4                  'ดู'  -2.857            'คุณ'  -2.910
+   5                   '{'  -2.982              '{'  -3.098
+   6                 'ฉัน'  -4.107            'ฉัน'  -3.848
+   7              'อธิบาย'  -4.295         'อธิบาย'  -4.223
+   8                 'นี่'  -4.482            'นี่'  -4.348
+   9           'เนื่องจาก'  -4.732           'ต้อง'  -4.348
+   10               'ต้อง'  -4.795      'เนื่องจาก'  -4.473
+   token อันดับ 1 ตรงกัน False · top-5 ซ้อนกัน 5/5 · |Δlogprob| สูงสุดใน top-5 0.678
+⛔ D ไม่ผ่าน — engine นี้คำนวณไม่เท่ากับไฟล์ merged อย่าใช้ผลจากมัน
+
+=== 2026-10-03 06:55:12 [vllm] วัด micro (pass0 5 หน้า + section 1 หน้า)
+--- DONE vllm_micro 06:55:25
+  "chars": 2411,
+  "tok_per_s": 69.2,
+  "chars_per_s": 198.8
+ },
+ "by_kind": {
+  "pass0": {
+   "n": 5,
+   "seconds": 9.1,
+   "json_ok": 5,
+   "completion_tokens": 489,
+   "chars": 1393,
+   "tok_per_s": 53.6,
+   "chars_per_s": 152.7
+  },
+  "section": {
+   "n": 1,
+   "seconds": 3.0,
+   "json_ok": 1,
+   "completion_tokens": 350,
+   "chars": 1018,
+   "tok_per_s": 116.3,
+   "chars_per_s": 338.2
+  }
+ }
+}
+
+=== 2026-10-03 06:55:25 [vllm] วัดทั้งบ้าน 83b8e52c (29 หน้า, worker ตัวจริง)
+--- DONE vllm_house 07:00:23
+   "chars_per_s": 184.9
+  },
+  "plan_beam": {
+   "n": 2,
+   "seconds": 24.1,
+   "json_ok": 2,
+   "completion_tokens": 3676,
+   "chars": 10548,
+   "tok_per_s": 152.3,
+   "chars_per_s": 437.1
+  },
+  "plan_footing": {
+   "n": 1,
+   "seconds": 5.7,
+   "json_ok": 1,
+   "completion_tokens": 779,
+   "chars": 2416,
+   "tok_per_s": 137.1,
+   "chars_per_s": 425.4
+  },
+  "schedule": {
+   "n": 2,
+   "seconds": 16.2,
+   "json_ok": 2,
+   "completion_tokens": 2400,
+   "chars": 7043,
+   "tok_per_s": 148.2,
+   "chars_per_s": 435.0
+  },
+  "section": {
+   "n": 10,
+   "seconds": 65.4,
+   "json_ok": 10,
+   "completion_tokens": 9482,
+   "chars": 26560,
+   "tok_per_s": 145.1,
+   "chars_per_s": 406.3
+  }
+ }
+}
+
+=== 2026-10-03 07:00:23 [vllm] วัดบ้านจากเน็ต dpt13226_1fl
+--- DONE vllm_dpt13226_1fl 07:04:01
+  },
+  "section": {
+   "n": 3,
+   "seconds": 29.4,
+   "json_ok": 3,
+   "completion_tokens": 4448,
+   "chars": 11504,
+   "tok_per_s": 151.4,
+   "chars_per_s": 391.7
+  }
+ }
+}
+
+=== 2026-10-03 07:04:01 [vllm] วัดบ้านจากเน็ต dpt13244_1fl
+--- DONE vllm_dpt13244_1fl 07:12:52
+  },
+  "section": {
+   "n": 7,
+   "seconds": 121.3,
+   "json_ok": 7,
+   "completion_tokens": 19113,
+   "chars": 61226,
+   "tok_per_s": 157.5,
+   "chars_per_s": 504.6
+  }
+ }
+}
+
+=== 2026-10-03 07:12:52 [vllm] วัดบ้านจากเน็ต dpt13250_2fl
+--- DONE vllm_dpt13250_2fl 07:22:08
+  },
+  "section": {
+   "n": 8,
+   "seconds": 201.6,
+   "json_ok": 7,
+   "completion_tokens": 32249,
+   "chars": 71291,
+   "tok_per_s": 160.0,
+   "chars_per_s": 353.6
+  }
+ }
+}
+
+=== 2026-10-03 07:22:08 [vllm] ปิดตัวเสิร์ฟ
+1 MiB
+--- DONE phaseB_vllm 07:22:28

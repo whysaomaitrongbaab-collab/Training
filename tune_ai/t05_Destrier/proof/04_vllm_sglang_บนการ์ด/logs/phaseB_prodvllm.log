@@ -1,0 +1,55 @@
+
+=== 2026-10-03 07:47:36 [prodvllm] เปิดตัวเสิร์ฟ
+1 MiB
+พร้อมใน 576 วิ
+89104 MiB
+
+=== 2026-10-03 07:57:12 [prodvllm] ด่าน D (logprobs เทียบ merged)
+The tokenizer you are loading from '/workspace/destrier_merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+D: http://localhost:8000 เทียบ merged (transformers)
+   อันดับ                ตัวเสิร์ฟ                  อ้างอิง
+   1                 '```'  -1.406            '```'  -1.285
+   2                  '{"'  -1.843             '{"'  -1.973
+   3                 'คุณ'  -2.718             'ดู'  -2.723
+   4                  'ดู'  -2.718            'คุณ'  -2.910
+   5                   '{'  -3.156              '{'  -3.098
+   6                 'ฉัน'  -3.843            'ฉัน'  -3.848
+   7              'อธิบาย'  -4.031         'อธิบาย'  -4.223
+   8           'เนื่องจาก'  -4.156            'นี่'  -4.348
+   9                'ต้อง'  -4.468           'ต้อง'  -4.348
+   10                'ตอบ'  -4.468      'เนื่องจาก'  -4.473
+   token อันดับ 1 ตรงกัน True · top-5 ซ้อนกัน 5/5 · |Δlogprob| สูงสุดใน top-5 0.192
+✅ D ผ่าน
+
+=== 2026-10-03 07:57:16 [prodvllm] วัด micro (pass0 5 หน้า + section 1 หน้า)
+--- DONE prodvllm_micro 07:59:19
+   "completion_tokens": 12197,
+   "chars": 36800,
+   "tok_per_s": 162.4,
+   "chars_per_s": 489.9
+  },
+  "plan_footing": {
+   "n": 3,
+   "seconds": 18.3,
+   "json_ok": 3,
+   "completion_tokens": 2824,
+   "chars": 9077,
+   "tok_per_s": 154.5,
+   "chars_per_s": 496.6
+  },
+  "section": {
+   "n": 3,
+   "seconds": 24.5,
+   "json_ok": 3,
+   "completion_tokens": 3853,
+   "chars": 10715,
+   "tok_per_s": 157.1,
+   "chars_per_s": 436.8
+  }
+ }
+}
+
+=== 2026-10-03 07:59:19 [prodvllm] ปิดตัวเสิร์ฟ
+1 MiB
+--- DONE phaseB_prodvllm 07:59:39

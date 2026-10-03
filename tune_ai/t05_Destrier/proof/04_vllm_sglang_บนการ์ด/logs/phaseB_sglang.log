@@ -1,0 +1,143 @@
+
+=== 2026-10-03 07:22:28 [sglang] เปิดตัวเสิร์ฟ
+1 MiB
+พร้อมใน 65 วิ
+79206 MiB
+
+=== 2026-10-03 07:23:33 [sglang] ด่าน D (logprobs เทียบ merged)
+The tokenizer you are loading from '/workspace/destrier_merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+D: http://localhost:8000 เทียบ merged (transformers)
+   อันดับ                ตัวเสิร์ฟ                  อ้างอิง
+   1                 '```'  -1.544            '```'  -1.285
+   2                  '{"'  -1.606             '{"'  -1.973
+   3                 'คุณ'  -2.481             'ดู'  -2.723
+   4                  'ดู'  -2.544            'คุณ'  -2.910
+   5                   '{'  -2.981              '{'  -3.098
+   6              'อธิบาย'  -4.294            'ฉัน'  -3.848
+   7                 'ฉัน'  -4.419         'อธิบาย'  -4.223
+   8                 'นี่'  -4.419            'นี่'  -4.348
+   9           'เนื่องจาก'  -4.544           'ต้อง'  -4.348
+   10                  '#'  -4.731      'เนื่องจาก'  -4.473
+   token อันดับ 1 ตรงกัน True · top-5 ซ้อนกัน 5/5 · |Δlogprob| สูงสุดใน top-5 0.429
+✅ D ผ่าน
+
+=== 2026-10-03 07:23:41 [sglang] วัด micro (pass0 5 หน้า + section 1 หน้า)
+--- DONE sglang_micro 07:24:45
+  "chars": 5481,
+  "tok_per_s": 30.7,
+  "chars_per_s": 86.0
+ },
+ "by_kind": {
+  "pass0": {
+   "n": 5,
+   "seconds": 55.0,
+   "json_ok": 5,
+   "completion_tokens": 501,
+   "chars": 1425,
+   "tok_per_s": 9.1,
+   "chars_per_s": 25.9
+  },
+  "section": {
+   "n": 1,
+   "seconds": 8.8,
+   "json_ok": 1,
+   "completion_tokens": 1455,
+   "chars": 4056,
+   "tok_per_s": 166.3,
+   "chars_per_s": 463.5
+  }
+ }
+}
+
+=== 2026-10-03 07:24:45 [sglang] วัดทั้งบ้าน 83b8e52c (29 หน้า, worker ตัวจริง)
+--- DONE sglang_house 07:31:07
+   "chars_per_s": 110.5
+  },
+  "plan_beam": {
+   "n": 2,
+   "seconds": 41.8,
+   "json_ok": 2,
+   "completion_tokens": 6677,
+   "chars": 19769,
+   "tok_per_s": 159.7,
+   "chars_per_s": 472.9
+  },
+  "plan_footing": {
+   "n": 1,
+   "seconds": 8.1,
+   "json_ok": 1,
+   "completion_tokens": 1019,
+   "chars": 3066,
+   "tok_per_s": 126.4,
+   "chars_per_s": 380.4
+  },
+  "schedule": {
+   "n": 1,
+   "seconds": 10.3,
+   "json_ok": 1,
+   "completion_tokens": 1449,
+   "chars": 4538,
+   "tok_per_s": 141.1,
+   "chars_per_s": 441.9
+  },
+  "section": {
+   "n": 13,
+   "seconds": 99.3,
+   "json_ok": 13,
+   "completion_tokens": 12618,
+   "chars": 35326,
+   "tok_per_s": 127.1,
+   "chars_per_s": 355.8
+  }
+ }
+}
+
+=== 2026-10-03 07:31:07 [sglang] วัดบ้านจากเน็ต dpt13226_1fl
+--- DONE sglang_dpt13226_1fl 07:34:19
+  },
+  "section": {
+   "n": 3,
+   "seconds": 30.4,
+   "json_ok": 3,
+   "completion_tokens": 4271,
+   "chars": 10852,
+   "tok_per_s": 140.3,
+   "chars_per_s": 356.5
+  }
+ }
+}
+
+=== 2026-10-03 07:34:19 [sglang] วัดบ้านจากเน็ต dpt13244_1fl
+--- DONE sglang_dpt13244_1fl 07:39:02
+  },
+  "section": {
+   "n": 7,
+   "seconds": 60.6,
+   "json_ok": 7,
+   "completion_tokens": 8114,
+   "chars": 21451,
+   "tok_per_s": 134.0,
+   "chars_per_s": 354.2
+  }
+ }
+}
+
+=== 2026-10-03 07:39:02 [sglang] วัดบ้านจากเน็ต dpt13250_2fl
+--- DONE sglang_dpt13250_2fl 07:46:51
+  },
+  "section": {
+   "n": 8,
+   "seconds": 81.6,
+   "json_ok": 8,
+   "completion_tokens": 11855,
+   "chars": 33805,
+   "tok_per_s": 145.2,
+   "chars_per_s": 414.1
+  }
+ }
+}
+
+=== 2026-10-03 07:46:51 [sglang] ปิดตัวเสิร์ฟ
+1 MiB
+--- DONE phaseB_sglang 07:47:11

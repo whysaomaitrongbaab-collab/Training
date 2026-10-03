@@ -1,0 +1,244 @@
+[
+ {
+  "page": 1,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "doc_page": 10,
+   "sheet_code": null,
+   "sheet_name": "บ้านครอบครัวไทยเป็นสุข ๓ (ภาพประกอบปก/หน้าโฆษณา)",
+   "discipline": "misc",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "misc",
+     "where": "full",
+     "also_gridline": false
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า02.png",
+   "doc_page": 2,
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "discipline": "structural",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "plan_footing",
+     "where": "full",
+     "also_gridline": true
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า04.png",
+   "doc_page": 4,
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสาคานพื้นชั้นล่าง, ชั้นบน",
+   "discipline": "structural",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "plan_beam",
+     "where": "full",
+     "also_gridline": true
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า06.png",
+   "doc_page": 6,
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "discipline": "structural",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "section",
+     "where": "full",
+     "also_gridline": false
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 25,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า09.png",
+   "doc_page": 9,
+   "sheet_code": "S-07",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "discipline": "structural",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "section",
+     "where": "full",
+     "also_gridline": false
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "json": {
+   "png": "12",
+   "doc_page": 12,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า12.png",
+   "confidence_score": 0.75,
+   "confidence_flags": [],
+   "warnings": [
+    "F2's section shows a 2-pile cap with the pile dowel bars (4-Ø12mm) running straight down through the footing into the piles — no stirrup is drawn for the dowel bars, unlike F3/F4/F5 which show a 1-Ø9mm tie around them. Recorded as printed (no stirrup), not assumed absent.",
+    "F3 is a pentagonal/isolated footing (not a simple rectangle) — width/height are not single values; recorded as a single approximate footprint dimension (1.10m) with a flag rather than forcing a misleading width_mm/height_mm pair.",
+    "F4 and F5 are both recorded with 8 piles each (8+8 and 7+7, both read as 8+8 by symmetry of the two leaders), matching the pile count on S-01's plan — see that file's warnings for the reading note.",
+    "S0 is a ground-slab edge detail (not a structural member) — recorded with element_type 'slab' and no element_id, per §0.3's rule that an unmarked detail takes a descriptive id; kept minimal since it is a construction detail, not a member schedule entry.",
+    "CN column dowel detail and the SP joint-sealant detail are construction details, not members — recorded with element_id null and element_type 'connection_detail'/'installation_detail'."
+   ],
+   "elements": [
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 550,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "4-Ø12mm dowel bars, straight through footing into 2 piles — no stirrup drawn"
+     },
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "pile_dowel_bar_has_no_stirrup_drawn"
+     ]
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1000,
+     "main_bar": {
+      "count": 5,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "stirrup": {
+      "dia_mm": 9,
+      "spacing_mm": 150
+     },
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "pentagonal_footing_width_height_not_a_simple_rectangle"
+     ]
+    },
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1100,
+     "main_bar": {
+      "count": 8,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "8+8Ø12mm — two leaders, read as 8 piles total"
+     },
+     "stirrup": {
+      "dia_mm": 9,
+      "spacing_mm": null
+     },
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "pile_count_read_as_8_from_two_leaders"
+     ]
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "width_mm": 1350,
+     "height_mm": 1350,
+     "main_bar": {
+      "count": 8,
+      "dia_mm": 16,
+      "type": "RB",
+      "note": "7+7Ø16mm — two leaders, read as 8 piles total"
+     },
+     "stirrup": {
+      "dia_mm": 9,
+      "spacing_mm": null
+     },
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "pile_count_read_as_8_from_two_leaders"
+     ]
+    },
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "thickness_mm": 100,
+     "note": "veneer joint 1\" filled with foam or asphalt-sand mix, sand fill 0.10m thick, Ø9mm@0.25m rebar",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "CN",
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200
+     },
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "connection_detail",
+     "note": "SILICONE BUILDING SEALANTS at SP floor joint, 0.015m wide",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ }
+]

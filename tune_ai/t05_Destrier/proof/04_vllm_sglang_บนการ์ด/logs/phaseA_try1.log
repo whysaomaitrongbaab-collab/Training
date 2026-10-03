@@ -1,0 +1,136 @@
+
+=== 2026-10-03 05:38:57 รอ pip ของ onstart
+
+Successfully installed accelerate-1.15.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.3 aiosignal-1.4.0 annotated-doc-0.0.5 annotated-types-0.8.0 apache-tvm-ffi-0.1.14.post1 attrs-26.1.0 bitsandbytes-0.50.2 charset_normalizer-3.5.2 cut_cross_entropy-25.1.1 datasets-4.3.0 diffusers-0.40.0 dill-0.4.0 docstring-parser-0.18.0 fastapi-0.142.2 frozenlist-1.8.0 fsspec-2025.9.0 hf_transfer-0.1.9 importlib_metadata-9.0.1 markdown-it-py-4.2.0 mdurl-0.1.2 msgspec-0.22.0 multidict-6.9.1 multiprocess-0.70.16 nest-asyncio-1.6.0 opentelemetry-api-1.45.0 pandas-3.0.6 peft-0.21.2 propcache-0.5.4 protobuf-7.36.2 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 regex-2026.9.29 requests-2.34.2 rich-15.0.0 safetensors-0.8.0 sentencepiece-0.2.2 shellingham-1.5.4 starlette-1.7.0 structlog-26.1.0 tokenizers-0.22.2 torchao-0.18.0 transformers-5.5.0 trl-0.24.0 typeguard-4.6.0 typer-0.27.2 typing-inspection-0.4.4 tyro-1.0.16 unsloth-2026.9.14 unsloth_zoo-2026.9.9 urllib3-2.8.0 uvicorn-0.54.0 xformers-0.0.35 xgrammar-0.2.8 xxhash-4.0.1 yarl-1.25.1 zipp-4.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Failed to load /venv/main/lib/python3.12/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /venv/main/lib/python3.12/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /venv/main/lib/python3.12/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /venv/main/lib/python3.12/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+/venv/main/lib/python3.12/site-packages/unsloth/__init__.py:1606: UserWarning: WARNING: Unsloth should be imported before [transformers, peft] to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
+
+Please restructure your imports with 'import unsloth' at the top of your file.
+  from ._gpu_init import *
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+torch 2.11.0+cu128 cuda 12.8 | transformers 5.5.0 | peft 0.21.2 | unsloth 2026.9.14 | zoo 2026.9.9
+name, memory.total [MiB], driver_version
+NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 97887 MiB, 590.48.01
+overlay         400G  2.5G  398G   1% /
+
+=== 2026-10-03 05:39:07 โหลด base + destrier
+Fetching 42 files:   0%|          | 0/42 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 42 files:   2%|▏         | 1/42 [00:00<00:22,  1.79it/s]Fetching 42 files:   5%|▍         | 2/42 [00:00<00:14,  2.67it/s]Fetching 42 files:  12%|█▏        | 5/42 [00:01<00:08,  4.40it/s]Fetching 42 files:  14%|█▍        | 6/42 [00:01<00:07,  5.06it/s]Fetching 42 files:  19%|█▉        | 8/42 [00:01<00:04,  7.36it/s]Fetching 42 files:  19%|█▉        | 8/42 [00:19<00:04,  7.36it/s]Error while downloading from https://huggingface.co/unsloth/Qwen3.6-35B-A3B/resolve/2ab40a9acc6d567889ca4d4e59feb2da56121454/model-00003-of-00026.safetensors: The read operation timed out
+Trying to resume download...
+Error while downloading from https://huggingface.co/unsloth/Qwen3.6-35B-A3B/resolve/2ab40a9acc6d567889ca4d4e59feb2da56121454/model-00012-of-00026.safetensors: The read operation timed out
+Trying to resume download...
+Error while downloading from https://huggingface.co/unsloth/Qwen3.6-35B-A3B/resolve/2ab40a9acc6d567889ca4d4e59feb2da56121454/model-00015-of-00026.safetensors: The read operation timed out
+Trying to resume download...
+Error while downloading from https://huggingface.co/unsloth/Qwen3.6-35B-A3B/resolve/2ab40a9acc6d567889ca4d4e59feb2da56121454/model-00005-of-00026.safetensors: The read operation timed out
+Trying to resume download...
+Fetching 42 files:  19%|█▉        | 8/42 [04:16<18:11, 32.11s/it]
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/venv/main/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/venv/main/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/venv/main/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/venv/main/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: _ssl.c:993: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/_snapshot_download.py", line 522, in snapshot_download
+    hf_thread_map(
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/utils/tqdm.py", line 441, in hf_thread_map
+    results[future_to_index[future]] = future.result()
+                                       ^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/venv/main/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/_snapshot_download.py", line 502, in _inner_hf_hub_download
+    hf_hub_download(  # type: ignore
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1028, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1251, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1992, in _download_to_tmp_and_move
+    http_get(
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 459, in http_get
+    return http_get(
+           ^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 377, in http_get
+    with http_stream_backoff(
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 681, in http_stream_backoff
+    yield from _http_backoff_base(
+  File "/venv/main/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 502, in _http_backoff_base
+    with client.stream(method=method, url=url, **kwargs) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpx/_client.py", line 868, in stream
+    response = self.send(
+               ^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/venv/main/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: _ssl.c:993: The handshake operation timed out
+!!! FAIL download

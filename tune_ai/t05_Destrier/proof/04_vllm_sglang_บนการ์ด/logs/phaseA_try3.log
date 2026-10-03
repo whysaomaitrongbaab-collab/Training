@@ -1,0 +1,62 @@
+
+=== 2026-10-03 06:06:58 รอ pip ของ onstart
+
+Successfully installed accelerate-1.15.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.3 aiosignal-1.4.0 annotated-doc-0.0.5 annotated-types-0.8.0 apache-tvm-ffi-0.1.14.post1 attrs-26.1.0 bitsandbytes-0.50.2 charset_normalizer-3.5.2 cut_cross_entropy-25.1.1 datasets-4.3.0 diffusers-0.40.0 dill-0.4.0 docstring-parser-0.18.0 fastapi-0.142.2 frozenlist-1.8.0 fsspec-2025.9.0 hf_transfer-0.1.9 importlib_metadata-9.0.1 markdown-it-py-4.2.0 mdurl-0.1.2 msgspec-0.22.0 multidict-6.9.1 multiprocess-0.70.16 nest-asyncio-1.6.0 opentelemetry-api-1.45.0 pandas-3.0.6 peft-0.21.2 propcache-0.5.4 protobuf-7.36.2 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 regex-2026.9.29 requests-2.34.2 rich-15.0.0 safetensors-0.8.0 sentencepiece-0.2.2 shellingham-1.5.4 starlette-1.7.0 structlog-26.1.0 tokenizers-0.22.2 torchao-0.18.0 transformers-5.5.0 trl-0.24.0 typeguard-4.6.0 typer-0.27.2 typing-inspection-0.4.4 tyro-1.0.16 unsloth-2026.9.14 unsloth_zoo-2026.9.9 urllib3-2.8.0 uvicorn-0.54.0 xformers-0.0.35 xgrammar-0.2.8 xxhash-4.0.1 yarl-1.25.1 zipp-4.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Failed to load /venv/main/lib/python3.12/site-packages/torchao/_C_cutlass_90a.abi3.so: Could not load this library: /venv/main/lib/python3.12/site-packages/torchao/_C_cutlass_90a.abi3.so
+Failed to load /venv/main/lib/python3.12/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so: Could not load this library: /venv/main/lib/python3.12/site-packages/torchao/_C_mxfp8.cpython-310-x86_64-linux-gnu.so
+/venv/main/lib/python3.12/site-packages/unsloth/__init__.py:1606: UserWarning: WARNING: Unsloth should be imported before [transformers, peft] to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
+
+Please restructure your imports with 'import unsloth' at the top of your file.
+  from ._gpu_init import *
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+torch 2.11.0+cu128 cuda 12.8 | transformers 5.5.0 | peft 0.21.2 | unsloth 2026.9.14 | zoo 2026.9.9
+name, memory.total [MiB], driver_version
+NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 97887 MiB, 590.48.01
+overlay         400G   90G  311G  23% /
+
+=== 2026-10-03 06:07:04 โหลด destrier e229403 (16 ช่วงขนาน + ตรวจ sha256)
+README.md
+adapter_config.json
+chat_template.jinja
+parts
+tokenizer.json
+tokenizer_config.json
+size=11342828768 sha=044ac78bdf8b9ba2cec4c8e36458a9ffd31723ce736f7bad5405b2aafe270a3d
+sha256 044ac78bdf8b9ba2cec4c8e36458a9ffd31723ce736f7bad5405b2aafe270a3d
+SHA_OK
+
+=== 2026-10-03 06:10:32 ซ่อม destrier (fix_destrier_layout.py)
+selftest E=32 fold ที่แปลง=0: ก่อนซ่อมคลาด 1.38 · หลังซ่อม 2.8e-16
+✅ ลายนิ้วมือตรงกับ destrier rev e229403
+คัดลอก adapter_model.safetensors ทั้งก้อน (11 GB) …
+   เสร็จใน 2 วิ
+   เขียนแล้ว 10/80 คู่ (2 วิ)
+   เขียนแล้ว 20/80 คู่ (3 วิ)
+   เขียนแล้ว 30/80 คู่ (4 วิ)
+   เขียนแล้ว 40/80 คู่ (5 วิ)
+   เขียนแล้ว 50/80 คู่ (5 วิ)
+   เขียนแล้ว 60/80 คู่ (6 วิ)
+   เขียนแล้ว 70/80 คู่ (7 วิ)
+   เขียนแล้ว 80/80 คู่ (8 วิ)
+ตรวจไฟล์ที่เขียนแล้ว (อ่านกลับทุกเทนเซอร์) …
+   ✅ expert 80 คู่ตรงตามสูตร · อีก 700 เทนเซอร์เหมือนเดิมทุกค่า
+
+✅ ซ่อมเสร็จ → /workspace/destrier_fixed
+   ต่อไป: python fix_destrier_layout.py --check-folds /workspace/destrier_fixed
+7e57a635edbc8d25821011aff69cecba1af11afd8cfc2bfb9f154915e68337ea  /workspace/destrier_fixed/adapter_model.safetensors
+--- DONE fix 06:10:49
+
+=== 2026-10-03 06:10:49 merge (merge_lora_to_base.py)
+adapter: /workspace/destrier_fixed
+   r=48 alpha=96 layout=grouped_by_expert
+   target_parameters=['mlp.experts.gate_up_proj', 'mlp.experts.down_proj']
+   ไฟล์จริง layers.0.mlp.experts.base_layer.lora_A.weight [12288, 2048] F32
+   → r ที่คำนวณจาก shape = 48 (E=256)
+   เทนเซอร์ของชั้น expert 160 ตัว · ทั้งหมด 860 ตัว
+   ขนาดรวมที่คำนวณจาก header ≈ 11.3 GB (dtype F32)
+
+✅ adapter ประกาศ layout เอง: grouped_by_expert
+⛔ ไม่มี unsloth_zoo — ลง: pip install unsloth unsloth_zoo
+!!! FAIL merge
