@@ -1,0 +1,2458 @@
+[
+ {
+  "page": 1,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า14.png",
+   "doc_page": 14,
+   "sheet_code": null,
+   "sheet_name": "บ้านครอบครัวไทยเป็นสุข ๓ (ภาพประกอบปก/หน้าโฆษณา)",
+   "discipline": "misc",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "misc",
+     "where": "full",
+     "also_gridline": false
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_03_หน้า04.png",
+   "doc_page": 4,
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "discipline": "structural",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "plan_footing",
+     "where": "full",
+     "also_gridline": true
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "rep": 0,
+  "json": {
+   "png": "11",
+   "doc_page": 11,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_02/บ้าน_ใหญ่_2ชั้น_02_หน้า11.png",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "F2/F3/F4/F5 are 2-pile/4-pile/5-pile spread-footing types (pedestal + pile cap over driven piles, 'เสาเข็มจำนวน N ต้น' per section) — the pile count is read directly from each section's own label, not from the plan sheet (S-01/S-02) which only marks the footing type symbol per location; cross-checked against S-01/S-02's own pile-count callouts and they agree.",
+    "S0 (slab-on-grade, 1:25) is a generic ground-slab detail, not tied to a specific footing mark — recorded as its own element.",
+    "CN column detail (0.15x0.15m, 4-Ø12mm main, ป Ø6@0.20) is a small non-structural column (likely a short fence/railing post or small interior column) — recorded as element_type 'column' per §0.4, consistent with how house #3's S-04 handled the same CN mark.",
+    "The 'ลักษณะการวางพื้น SP บริเวณรอยตัดขาด 1:25' (SP precast plank joint detail) and 'ลักษณะพื้น S ระดับสูงกว่าหลังคาน 1:25' (raised floor S detail) are construction details, not structural members — recorded as element_type 'precast_plank_detail' and 'slab' respectively per §0.4, with no rebar/size fields since they are joint/leveling details, not a member spec."
+   ],
+   "elements": [
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "depth_mm": 550,
+     "pile_count": 2,
+     "main_bar": {
+      "count": 9,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "9-Ø9mm, printed as '9Ø9'"
+     },
+     "stirrup": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "4-Ø12mm, printed as '4Ø12'"
+     },
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "depth_mm": 1000,
+     "pile_count": 2,
+     "main_bar": {
+      "count": 5,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "5-Ø12mm, printed as '5Ø12'"
+     },
+     "stirrup": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "4-Ø12mm, printed as '4Ø12มม.'"
+     },
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "depth_mm": 1100,
+     "pile_count": 4,
+     "main_bar": {
+      "count": 8,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "8+8-Ø12mm, printed as '8+8Ø12'"
+     },
+     "stirrup": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "1-Ø9mm รัดรอบ (tie around), printed as '1Ø9 รัดรอบ'"
+     },
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "width_mm": 1350,
+     "depth_mm": 1350,
+     "pile_count": 5,
+     "main_bar": {
+      "count": 7,
+      "dia_mm": 16,
+      "type": "RB",
+      "note": "7+7-Ø16mm, printed as '7+7Ø16'"
+     },
+     "stirrup": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "1-Ø9mm รัดรอบ (tie around), printed as '1Ø9 รัดรอบ'"
+     },
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "thickness_mm": 100,
+     "note": "veneer 1\" insulated with foam or asphalt-sand mix, granular fill 0.10m thick",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "CN",
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "plan_beam",
+  "rep": 0,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง, ชั้นบน",
+   "pattern": "beam_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.65,
+   "confidence_flags": [],
+   "warnings": [
+    "This sheet shows BOTH the ground-floor and upper-floor beam plans side-by-side (แปลนเสา คาน พื้น ชั้นล่าง on the left, ชั้นบน on the right), each with its own title block. Extracted as one file with a level_m field to distinguish them, per the same convention used for house #2's S-02.",
+    "The upper-floor plan (right) adds a B5 beam running north-south at grid 2 between rows ข and ก, and replaces the ground-floor's B4/B1/B1 bay with a B2 beam at row ก plus a B1 inside the new S1 slab bay — consistent with the upper floor having a different room layout (no ซักล้าง room on the upper floor).",
+    "The ground-floor plan shows a small 0.20m offset dimension near row ข/grid1, matching the dummy grid 1' (0.20m west of grid 1) already recorded in the grid master — the B1 beam there runs on grid 1' rather than grid 1.",
+    "The upper-floor plan shows B1(ขพ.) and Bx(ขพ.) labels near the stairwell area (row ข, grid 1 side) — the '(ขพ.)' suffix likely means 'ข.พ.' (ระเบียงพัก/พัก) per house #2's precedent, i.e. a balcony/rest-area beam, not a different structural mark. Recorded as the plain mark (B1/Bx) with the suffix in the label field, same treatment as house #2.",
+    "The 0.90/0.95/1.30/0.50 sub-dimensions near row ง/grid2 (stairwell/landing area) are printed identically on both floors and match house #2's equivalent dimensions exactly — these locate the stair/landing beam offsets, not new grid lines.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 22 beam-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "count": 2,
+     "grid_refs": [],
+     "level_m": 0.0,
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "marker_only_not_a_line_element",
+      "two S0 circles printed above row จ (north of the main building footprint) — likely a small roof/awning slab over the entrance area, not tied to a grid point"
+     ]
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "จ1-จ2",
+      "จ2-จ3"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ง1-จ1",
+      "ง3-จ3"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7",
+     "element_type": "beam",
+     "count": 1,
+     "grid_refs": [
+      "ง2-จ2"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "ค1"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "vertical beam at grid 1, row ง to ค, with CN (column) markers at both ends"
+     ]
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "vertical beam at grid 3, row ง to ค, with CN (column) markers at both ends"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "count": 4,
+     "grid_refs": [
+      "ง1-ง2",
+      "ง2-ง3",
+      "ค1-ค2",
+      "ค2-ค3"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "count": 4,
+     "grid_refs": [
+      "ง1-ค1",
+      "ง2-ค2",
+      "ง3-ค3",
+      "ค1'-ค1"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "the 4th B1 (ค1'-ค1) is the short segment near the stairwell, running on dummy grid 1' between rows ค and ง — see grid master warnings"
+     ]
+    },
+    {
+     "element_id": "B7A",
+     "element_type": "beam",
+     "count": 1,
+     "grid_refs": [
+      "ง2-ค2"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "count": 1,
+     "grid_refs": [],
+     "level_m": 0.0,
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "marker_only_not_a_line_element",
+      "single S1 slab circle in the right-side bay (grid 2-3, row ง-ค) — likely a small covered patio/terrace slab"
+     ]
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ค1'-ข1'",
+      "ค2-ข2"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ข1'-ข2'",
+      "ข1'-ค1'"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "small beam(s) near the ซักล้าง (laundry) bay at the south end, running on dummy grid 1' — see grid master warnings"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "count": 4,
+     "grid_refs": [
+      "ข1'-ข2'",
+      "ข2'-ข2",
+      "ค1'-ค1",
+      "ค2'-ค2"
+     ],
+     "level_m": 0.0,
+     "confidence_score": 0.5,
+     "confidence_flags": [
+      "additional B1 segments framing the ซักล้าง bay and the S1 slab bay at the south end — exact grid positions approximate, see grid master warnings"
+     ]
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "count": 1,
+     "grid_refs": [],
+     "level_m": 0.0,
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "marker_only_not_a_line_element",
+      "second S1 slab circle in the ซักล้าง bay (south end, grid 1'-2', row ข-ก)"
+     ]
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "count": 1,
+     "grid_refs": [],
+     "level_m": null,
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "marker_only_not_a_line_element",
+      "third S1 slab circle on the UPPER floor plan (right side of the sheet), in the bay grid 2-3, row ข-ก — the upper floor's S1 is in a different location than the ground floor's"
+     ]
+    },
+    {
+     "element_id": "B5",
+     "element_type": "beam",
+     "count": 1,
+     "grid_refs": [
+      "ข2-ก2"
+     ],
+     "level_m": null,
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "only on the UPPER floor plan — a new north-south beam at grid 2 between rows ข and ก, not present on the ground floor"
+     ]
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ก1-ก2",
+      "ก2-ก3"
+     ],
+     "level_m": null,
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "only on the UPPER floor plan — replaces the ground floor's B1/B1 bay at row ก"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "count": 1,
+     "grid_refs": [
+      "ข2-ก2"
+     ],
+     "level_m": null,
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "only on the UPPER floor plan, inside the new S1 slab bay (grid 2-3, row ข-ก)"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ข1'-ข2'",
+      "ข1'-ค1'"
+     ],
+     "level_m": null,
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "only on the UPPER floor plan, same small beam cluster near the stairwell as the ground floor, but with the B1(ขพ.)/Bx(ขพ.) suffix labels"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ข1'-ข1",
+      "ข2'-ข2"
+     ],
+     "level_m": null,
+     "confidence_score": 0.5,
+     "confidence_flags": [
+      "only on the UPPER floor plan, framing the south end bay — exact positions approximate"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "count": 2,
+     "grid_refs": [
+      "ค1'-ค1",
+      "ค2'-ค2"
+     ],
+     "level_m": null,
+     "confidence_score": 0.5,
+     "confidence_flags": [
+      "only on the UPPER floor plan, same as ground floor's equivalent segments"
+     ]
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "plan_footing",
+  "rep": 0,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_03_หน้า13.png",
+   "doc_page": 13,
+   "discipline": "structural",
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "pattern": "footing_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_03/บ้าน_ใหญ่_2ชั้น_03_หน้า13.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_03_หน้า00_gridline.json",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "Footing marks on this sheet are printed as combined labels (e.g. 'C1,F4') — the C-number is the footing mark, the F-number is the column mark sitting on it. Extracted per §4's point-element merge rule (one entry per footing mark, count + grid_refs array).",
+    "F10 appears at TWO different grid positions (row ง, col 2 and row ค, col 2) — both are real distinct footings, not a duplicate; merged into one F10 entry with 2 grid_refs per §4's point-element rule.",
+    "F3 is drawn as a triangular footing shape (unlike the square/rectangular/hexagonal ones) at row บ, col 3 — recorded as-is, no rebar spec available on this sheet.",
+    "Pattern re-read 2026-08-24 after the schema change that folded column_data/footing_types into elements[]. Only the fold happened — no content change, re-verified the whole sheet against the PNG at 4x zoom.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 8 footing-family elements. Nothing else on this sheet changed."
+   ],
+   "elements": [
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "จ1",
+      "จ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "จ2",
+      "บ1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F7",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "บ2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F10",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง2",
+      "ค2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F6",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F8",
+     "element_type": "footing",
+     "count": 1,
+     "grid_refs": [
+      "ค1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "count": 1,
+     "grid_refs": [
+      "บ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ก1",
+      "ก2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "rep": 1,
+  "json": {
+   "png": "11",
+   "doc_page": 11,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า11.png",
+   "view_title": "แบบขยายโครงสร้าง -- F2/F3/F4/F5/Footprint/S0/CN/SP joint details",
+   "elements": [
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 550,
+     "pile_count": 2,
+     "main_bar": {
+      "count": 9,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "9-Ø9mm"
+     },
+     "additional_bars": [
+      {
+       "count": 4,
+       "dia_mm": 12,
+       "type": "RB",
+       "position": "column dowel"
+      }
+     ],
+     "stirrup": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "1-Ø9mm รัดรอบ (tie around the pile cap perimeter)"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1000,
+     "pile_count": 3,
+     "main_bar": {
+      "count": 5,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "5-Ø12mm"
+     },
+     "additional_bars": [
+      {
+       "count": 4,
+       "dia_mm": 12,
+       "type": "RB",
+       "note": "4-Ø12mm มุม (corner bars)"
+      },
+      {
+       "count": null,
+       "dia_mm": 9,
+       "type": "RB",
+       "spacing_mm": 150,
+       "note": "Ø9@0.15m mesh, count not printed"
+      }
+     ],
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1100,
+     "pile_count": 4,
+     "main_bar": {
+      "count": 8,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "8+8-Ø12mm (two-way mesh)"
+     },
+     "additional_bars": [
+      {
+       "count": 1,
+       "dia_mm": 9,
+       "type": "RB",
+       "note": "1-Ø9mm รัดรอบ"
+      }
+     ],
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "width_mm": 1350,
+     "height_mm": 1350,
+     "pile_count": 5,
+     "main_bar": {
+      "count": 7,
+      "dia_mm": 16,
+      "type": "RB",
+      "note": "7+7-Ø16mm (two-way mesh)"
+     },
+     "additional_bars": [
+      {
+       "count": 1,
+       "dia_mm": 9,
+       "type": "RB",
+       "note": "1-Ø9mm รัดรอบ"
+      }
+     ],
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "thickness_mm": 100,
+     "main_bar": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "1+1-Ø9mm มุม (corner bars)"
+     },
+     "additional_bars": [
+      {
+       "count": null,
+       "dia_mm": 9,
+       "type": "RB",
+       "spacing_mm": 250,
+       "note": "Ø9@0.25m mesh"
+      }
+     ],
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "needs_human_review_zoom_required"
+     ],
+     "note": "Slab-on-grade detail at a level higher than the roof eave line (ระดับสูงกว่าหลังคาน) -- a small raised concrete pad, 0.10m thick, over 0.10m sand fill, with a 1\" pipe sleeve filled with foam or asphalt-sand mortar. Printed at 1:25."
+    },
+    {
+     "element_id": "CN",
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "confidence_score": 0.8,
+     "confidence_flags": [],
+     "note": "Small 0.15x0.15m column, 4-Ø12mm main bars, Ø6mm ties @0.20m. Shown as a plan view with a section cut labeled 'ขยายรอยต่อเสา CN และคานคสล.' (CN column-to-RC-beam joint detail) -- a short tie column, likely at a roof or balcony edge."
+    },
+    {
+     "element_id": "SP",
+     "element_type": "precast_plank_detail",
+     "description": "ลักษณะการวางพื้น SP บริเวณรอยตัดขาด 1:25 -- precast plank (SP) placement detail at a cut/joint line, with 0.015m concrete topping and silicone building sealants at the joint",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    }
+   ],
+   "confidence_score": 0.73,
+   "confidence_flags": [],
+   "warnings": [
+    "This is the most information-dense sheet in the set -- 4 pile-footing types (F2-F5), a slab-on-grade detail (S0), a small tie column (CN), and a precast-plank joint detail (SP), all at 1:25 scale, plus a soil-bearing-capacity note at the top right ('SOIL BEARING 8 Ton/m² / เสาเข็ม 工-0.18x6.00ม. - 2.5 Ton/Pile').",
+    "F2's pile count (2) is the only footing type with fewer than 3 piles -- consistent with it being the smallest/lightest footing, used at the lightest column positions (per S-01/S-02/S-03 plans).",
+    "F3's pile count (3) is the only footing type with an odd pile count -- consistent with its trapezoidal/irregular plan shape, which is also the only non-rectangular footing on this sheet.",
+    "S0 and CN are both drawn at 1:25 scale and both have their own separate section cut labels printed below them ('ลักษณะพื้น S ระดับสูงกว่าหลังคาน 1:25' and 'ขยายรอยต่อเสา CN และคานคสล.') -- these are genuine separate detail views, not duplicates.",
+    "SP (precast plank joint detail) is drawn without a circled mark on this sheet (unlike S0 and CN which are both in circles) -- recorded as element_id 'SP' descriptively since no printed mark exists for it, consistent with the precedent set for similarly-unmarked elements on other sheets in this project.",
+    "NORMALIZED_2026-08-02: a packed size string (e.g. \"0.20x0.40\") was replaced by numeric width_mm/height_mm per schema 0.5; the printed text is kept in the matching *_printed_as field."
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "plan_beam",
+  "rep": 1,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_03_หน้า11.png",
+   "doc_page": 11,
+   "discipline": "structural",
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง, ชั้นบน",
+   "pattern": "beam_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_03/บ้าน_ใหญ่_2ชั้น_03_หน้า11.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_03_หน้า00_gridline.json",
+   "confidence_score": 0.7,
+   "confidence_flags": [],
+   "warnings": [
+    "This sheet is printed as TWO side-by-side plans on one sheet: 'แปลนเสา คาน พื้น ชั้นล่าง' (ground floor, left) and 'แปลนเสา คาน พื้น ชั้นบน' (upper floor, right), both at 1:100.0 Elements are recorded with a 'level' field ('F1'/'F2') rather than duplicated into two separate files, since the two floors share the same grid and most beam marks are identical between them — only the slab layout and a few local beam additions differ.",
+    "Ground-floor-specific beams (not present on the upper floor): B4 runs along the full 4.00m span of the ซักล้าง (laundry) extension between rows ข and ก at both grid columns 1 and 2 (2 segments); B1 also appears as a short segment along row ก between columns 1 and 2 (bottom edge of the extension); Bx (small beam, likely a stair/landing edge beam) appears twice along the ข row inside the ซักล้าง extension, flanking the B1 segment. These are all recorded with level 'F1' only.",
+    "Upper-floor-specific beams (not present on the ground floor): B5 runs vertically between rows ค and ข at grid column 2 (1 segment); B2 appears along the bottom edge row ก between columns 1 and 2 (1 segment); B1 appears as an additional interior segment inside the right-hand room (grid 2-3, rows ค-ข) — likely a small partition/landing beam not present on the ground floor. These are recorded with level 'F2' only.",
+    "The Bx mark appears on BOTH floors but in different locations: on the ground floor it is inside the ซักล้าง extension (near row ข), on the upper floor it is near the stairwell (row ง, columns 1-2 area) — treated as the same mark used in two different contexts, flagged rather than split into separate element_ids since no distinct printed sub-mark exists.",
+    "The 'CN' labels at the B3A/B3B beam ends near row ง/grid columns 1 and 3 are read as a column/footing reference marker (not a beam mark) — not recorded as an element.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 26 beam-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "count": 2,
+     "grid_refs": [
+      "~จ1",
+      "~จ2"
+     ],
+     "level": "F1",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "marker_only_not_a_line_element",
+      "S0 slab marker (likely precast plank zone) appears twice at the top edge of the ground-floor plan, north of row จ — exact extent not dimensioned"
+     ]
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "count": 2,
+     "grid_refs": [
+      "~ค2-3",
+      "~ข1-2"
+     ],
+     "level": "F1",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "marker_only_not_a_line_element",
+      "S1 slab marker (likely cast-in-place zone) appears twice on the ground-floor plan — once in the right-hand room (grid 2-3, row ค) and once in the ซักล้าง extension (grid 1-2, row ข)"
+     ]
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "ง1'",
+     "grid_ref_end": "จ1'",
+     "span_length_m": 0.9,
+     "span_source": "local_dimension",
+     "level": "F1",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "beam_end_on_dummy_grid_1' (0.90m west of grid 1), same offset as the ground-floor plan"
+     ]
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "ง3'",
+     "grid_ref_end": "จ3'",
+     "span_length_m": 0.5,
+     "span_source": "local_dimension",
+     "level": "F1",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "beam_end_on_dummy_grid_3' (0.50m east of grid 3), same offset as the ground-floor plan"
+     ]
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ง1'",
+     "grid_ref_end": "ง1",
+     "span_length_m": 0.9,
+     "span_source": "local_dimension",
+     "level": "F1",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "horizontal beam at row ง, from dummy grid 1' to grid 1"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7",
+     "element_type": "beam",
+     "grid_ref_start": "ง1.95",
+     "grid_ref_end": "จ1.95",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "vertical beam 0.95m east of grid 1 (dummy grid), between rows ง and จ — exact x-position not independently dimensioned, inferred from the 0.95/1.30 split dimension printed at row ง"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ง3'",
+     "span_length_m": 0.5,
+     "span_source": "local_dimension",
+     "level": "F1",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "horizontal beam at row ง, from grid 3 to dummy grid 3'"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง1'",
+     "grid_ref_end": "ค1'",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "vertical beam along dummy grid 1' (0.90m west of grid 1), between rows ง and ค"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7A",
+     "element_type": "beam",
+     "grid_ref_start": "ง1.95",
+     "grid_ref_end": "ค1.95",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "vertical beam 0.95m east of grid 1 (dummy grid), between rows ง and ค — stairwell edge beam"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง3'",
+     "grid_ref_end": "ค3'",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "vertical beam along dummy grid 3' (0.50m east of grid 3), between rows ง and ค"
+     ]
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ค1'",
+     "grid_ref_end": "ค1",
+     "span_length_m": 0.9,
+     "span_source": "local_dimension",
+     "level": "F1",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "horizontal beam at row ค, from dummy grid 1' to grid 1"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ค2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ค3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ค3",
+     "grid_ref_end": "ค3'",
+     "span_length_m": 0.5,
+     "span_source": "local_dimension",
+     "level": "F1",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "horizontal beam at row ค, from grid 3 to dummy grid 3'"
+     ]
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ข2",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 0.2,
+     "span_source": "local_dimension",
+     "level": "F1",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "short beam segment near row ข, left side of ซักล้าง extension — exact extent/role not fully legible at this scan resolution, recorded with low confidence"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ข2",
+     "span_length_m": 0.2,
+     "span_source": "local_dimension",
+     "level": "F1",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "short beam segment near row ข, right side of ซักล้าง extension — exact extent/role not fully legible at this scan resolution, recorded with low confidence"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "level": "F1",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "plan_footing",
+  "rep": 1,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "pattern": "footing_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "Footing marks are printed as combined labels (e.g. 'C1,F4') — element_id is the footing mark (F4/F5/F6/F7/F8/F10) per §0.3, with the column mark kept in column_mark.",
+    "F10 appears twice at grid position (2,ง) and (2,ค) — same mark, two separate grid_refs, merged into one count=2 entry per §4 point-element rule.",
+    "F8 is the only footing with a non-standard (rectangular, not square) plan shape among the 11 footings — recorded as printed, no shape override.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 1 footing-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ1",
+      "จ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ2",
+      "บ1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F7",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "บ2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F10",
+     "element_type": "footing",
+     "column_mark": "C2",
+     "count": 2,
+     "grid_refs": [
+      "ง2",
+      "ค2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F6",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F8",
+     "element_type": "footing",
+     "column_mark": "C2",
+     "count": 1,
+     "grid_refs": [
+      "ค1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 1,
+     "grid_refs": [
+      "บ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ก1",
+      "ก2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "rep": 2,
+  "json": {
+   "png": "10",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_07_หน้า00_gridline.json",
+   "view_title": "ขยายรอยต่อเสา CN และคานคสล.",
+   "scale": "1:25",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "This is the only sheet in the set that details the CN column (the short 0.15x0.15m pedestal shown on S-03's F2/F3/F4/F5 footings) and the SP precast-plank joint detail — both are new element types not present on any other sheet, so they are recorded here rather than duplicated from S-03.",
+    "CN's own rebar callout (4-Ø12mm main, ป Ø6@0.20 tie) is read directly from this sheet's small detail box, not from S-03's footing plans where CN appears only as a plan symbol.",
+    "The SP joint detail is a construction-method note (SILICONE BUILDING SEALANTS at the plank-to-beam joint) rather than a structural member, recorded as element_type 'installation_detail' with no rebar."
+   ],
+   "elements": [
+    {
+     "element_id": "CN",
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "DB"
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "concrete_grade": "fc210",
+     "steel_grade": "SD40",
+     "note": "Short pedestal column, 0.15x0.15m, used at F2/F3/F4/F5 footings on S-03.",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "installation_detail",
+     "description": "SP precast plank joint detail at beam — SILICONE BUILDING SEALANTS applied at the plank-to-beam joint, 0.015m wide.",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "plan_beam",
+  "rep": 2,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_03_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสาคานพื้น ชั้นล่าง, ชั้นบน",
+   "pattern": "beam_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_03/บ้าน_ใหญ่_2ชั้น_03_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_03_หน้า00_gridline.json",
+   "confidence_score": 0.75,
+   "confidence_flags": [],
+   "warnings": [
+    "This sheet prints TWO floor plans on one page — ชั้นล่าง (ground floor, left) and ชั้นบน (upper floor, right) — both sharing the same grid. Extracted as two separate element sets distinguished by floor_level, per the same convention used in house #2's equivalent sheet (หน้า10).",
+    "The upper floor adds a small balcony/terrace slab (S1, 1.30m deep, south of grid ข) not present on the ground floor, and replaces the ground-floor B4/B1 perimeter beams there with a B2 beam instead — consistent with the upper floor's larger footprint (the south extension is full-width at this level, unlike the ground floor's partial one).",
+    "Bx (ช.พ.) callouts appear on the upper-floor plan only (west of the stair, near grid 1) — 'ช.พ.' abbreviates 'ชานพัก' (landing), confirming Bx is the stair-landing beam. Not printed on the ground-floor plan, which instead shows CN (concrete post) markers at the same location — likely the ground floor's stair opening has no landing beam there (directly to the lower floor or a different configuration).",
+    "S0/S1/SI slab markers: S0 appears only on the ground-floor plan (north of grid จ, outside the main footprint — likely a small roof/awning slab over the entrance/stair landing area); S1 appears on both floors (ground floor: east of grid ค, upper floor: south of grid ข); SI appears on both floors (ground floor: west of grid ค near the stair, upper floor: same position).",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 28 beam-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "ง1",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "จ3",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7A",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ค2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ค3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ค3",
+     "grid_ref_end": "ข3",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ข2",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ก1",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ก2",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข1'",
+     "span_length_m": 0.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "dummy_grid_1_prime_added_to_page00_master_for_this_beam"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ข2'",
+     "span_length_m": 0.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "dummy_grid_2_prime_added_to_page00_master_for_this_beam"
+     ]
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ข3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B5",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ก2",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ข3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ข3",
+     "grid_ref_end": "ก3",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก2",
+     "grid_ref_end": "ก3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก1'",
+     "span_length_m": 0.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "dummy_grid_1_prime_added_to_page00_master_for_this_beam"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "ก2",
+     "grid_ref_end": "ก2'",
+     "span_length_m": 0.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "dummy_grid_2_prime_added_to_page00_master_for_this_beam"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก2",
+     "grid_ref_end": "ก3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "plan_footing",
+  "rep": 2,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า14.png",
+   "doc_page": 14,
+   "discipline": "structural",
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "pattern": "footing_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "Footing marks printed as 'C1,F4' etc. (column,footing) — element_id kept as the footing mark per §4's point-element merge rule (one entry per mark). Column mark recorded in column_id.",
+    "Footing shapes vary by position (square, hexagon, triangle) — sizes not dimensioned on this sheet; section details (S-03/S-04) carry the actual dimensions.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 1 footing-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "column_id": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ1",
+      "จ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "column_id": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ2",
+      "บ1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F7",
+     "element_type": "footing",
+     "column_id": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "บ2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F10",
+     "element_type": "footing",
+     "column_id": "C2",
+     "count": 2,
+     "grid_refs": [
+      "ง2",
+      "ค2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F6",
+     "element_type": "footing",
+     "column_id": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F8",
+     "element_type": "footing",
+     "column_id": "C2",
+     "count": 1,
+     "grid_refs": [
+      "ค1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "column_id": "C1",
+     "count": 1,
+     "grid_refs": [
+      "บ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "column_id": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ก1",
+      "ก2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "rep": 3,
+  "json": {
+   "png": "10",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_02/บ้าน_ใหญ่_2ชั้น_02_หน้า10.png",
+   "confidence_score": 0.8,
+   "confidence_flags": [],
+   "warnings": [
+    "F2/F3/F4/F5 are pile-footing types (2/3/4/5 piles each), detailed with section + plan + rebar; S0 is a plain spread footing (no pile, 1.10x0.55m, 9ø9mm mat + 4ø12mm dowels) — all four share the same 1.50m pedestal and ±0.00 reference.",
+    "SILICONE BUILDING SEALANTS joint detail at SP floor level (0.015m gap between precast planks) — recorded as its own element_type 'installation_detail' since it is a construction joint specification, not a structural member.",
+    "CN column detail (0.15x0.15m, 4ø12mm main + ปø6@0.20 tie) is a small standalone column (likely a short fence/railing post or light structural column) — element_type kept as 'column' per §0.4 since it carries main_bar/stirrup like a column, not a beam.",
+    "S-level floor detail (ระดับสูงกว่าหลังคาน) shows a 0.40m step-down slab edge with 1+1ø9mm dowel + ø9mm@0.20 mat — recorded as element_type 'slab' since it is a floor-slab edge detail, not a beam/column."
+   ],
+   "elements": [
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 550,
+     "pile_count": 2,
+     "main_bar": {
+      "count": 9,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "mat reinforcement, printed as '9ø9'"
+     },
+     "dowel_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "tie": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "รัดรอบ (wrap tie)"
+     },
+     "pedestal_depth_m": 1.5,
+     "concrete_grade": "ค.3",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1000,
+     "pile_count": 3,
+     "main_bar": {
+      "count": 5,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "printed as '5ø12'"
+     },
+     "tie": {
+      "dia_mm": 9,
+      "spacing_mm": 150,
+      "type": "RB",
+      "note": "ø9@0.15"
+     },
+     "additional_bars": [
+      {
+       "count": 4,
+       "dia_mm": 12,
+       "position": "bottom mat",
+       "note": "printed as '4ø12มม.'"
+      }
+     ],
+     "pedestal_depth_m": 1.5,
+     "concrete_grade": "ค.3",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1100,
+     "pile_count": 4,
+     "main_bar": {
+      "count": 8,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "printed as '8+8ø12' — 8 per direction"
+     },
+     "tie": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "รัดรอบ (wrap tie)"
+     },
+     "pedestal_depth_m": 1.5,
+     "concrete_grade": "ค.3",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "width_mm": 1350,
+     "height_mm": 1350,
+     "pile_count": 5,
+     "main_bar": {
+      "count": 7,
+      "dia_mm": 16,
+      "type": "RB",
+      "note": "printed as '7+7ø16' — 7 per direction"
+     },
+     "tie": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "รัดรอบ (wrap tie)"
+     },
+     "pedestal_depth_m": 1.5,
+     "concrete_grade": "ค.3",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "S0",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 550,
+     "pile_count": 0,
+     "main_bar": {
+      "count": 9,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "mat reinforcement, printed as '9ø9'"
+     },
+     "dowel_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "tie": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "รัดรอบ (wrap tie)"
+     },
+     "pedestal_depth_m": 1.5,
+     "concrete_grade": "ค.3",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "slab",
+     "thickness_mm": 100,
+     "main_bar": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "printed as '1+1ø9 มม.' — dowel bar at slab edge"
+     },
+     "additional_bars": [
+      {
+       "count": 1,
+       "dia_mm": 9,
+       "spacing_mm": 200,
+       "type": "RB",
+       "note": "printed as 'ø9 มม.@0.20' — mat reinforcement"
+      }
+     ],
+     "note": "ระดับสูงกว่าหลังคาน — floor level higher than beam top, 0.40m step-down detail",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "installation_detail",
+     "note": "SILICONE BUILDING SEALANTS joint at SP precast-plank floor level, 0.015m gap, between two precast planks",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "CN",
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "tie": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "concrete_grade": "ค.3",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "plan_beam",
+  "rep": 3,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_03_หน้า11.png",
+   "doc_page": 11,
+   "discipline": "structural",
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง, ชั้นบน",
+   "pattern": "beam_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_03/บ้าน_ใหญ่_2ชั้น_03_หน้า11.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_03_หน้า00_gridline.json",
+   "confidence_score": 0.75,
+   "confidence_flags": [],
+   "warnings": [
+    "This sheet shows BOTH the ground-floor and upper-floor beam plans side by side (แปลนเสา คาน พื้น ชั้นล่าง on the left, ชั้นบน on the right), each with its own title block. Extracted as one file with pattern 'beam_plan' since both are the same structural element type (beams) at different levels — the floor_level field distinguishes them. Both share the same grid (1-3, ก-ข-ค-ง-จ) and the same overall footprint.",
+    "The upper-floor plan (right) adds a small 1.30m-deep extension south of grid ข (visible in the right-hand plan's bottom portion, between grid 2-3, with a B5 beam running east-west at its south edge and B4 beams on its east/west sides) that is NOT present on the ground-floor plan (left) — the ground-floor plan's south edge stops at grid ข. This matches the architectural floor plan (หน้า05) which also shows this small room (ห้องน้ำ/ซักล้าง) only on the upper floor. Recorded as atomic segments per §4.",
+    "The small extension south of grid ข on the upper floor is bounded by a B2 beam at its south edge (grid ข-2 to grid ข-3) and has B4 beams on its east/west sides (grid ข-3 to grid ข+1.30-3 and grid ข-2 to grid ข+1.30-2). The B5 beam runs east-west at the south edge of this extension. The 1.30m dimension is printed on the sheet. This extension's footprint matches the architectural floor plan's upper-floor-only bathroom/laundry room.",
+    "Bx (แปลนขยาย, 'detailed plan' beam) appears on both floors in the stair-landing area (near grid ง-1, ข-1, ข-2) — a small detail beam whose exact grid position is not independently dimensioned on this sheet (it sits inside the stair opening area). Recorded with approximate grid_ref (~ง1, ~ข1, ~ข2) and flagged as approximate rather than invented precise coordinates.",
+    "B7A is a short vertical beam running between grid ง and grid ค at grid 2 (between the two B3 beams on each floor) — only appears on this sheet, not on the architectural floor plan's room layout (it's a structural beam, not a room boundary).",
+    "B3A and B3B are the two ends of the B3 beam (printed as 'B3A' at the west end near grid 1 and 'B3B' at the east end near grid 3) — recorded as separate element_ids since they are printed as distinct marks, though they likely represent the same beam type with different end conditions. Both sit at grid ง and grid ค.",
+    "CN (column note, 'เสาเอ็น' — structural column tie) appears at grid ง-1 and grid ค-1 on the ground floor only (not on the upper floor) — recorded as a note-level element_type rather than a beam/column, since it's a column-tie detail callout, not a structural member with its own grid position.",
+    "S0 (slab-on-grade, printed as 'S0' in circles at the top of both plans, north of grid จ) and S1 (slab, printed as 'S1' in circles in the stairwell and the small south room) are slab-type markers, not beams — recorded as element_type 'slab' with their approximate grid positions. S0 appears twice (two small rooms north of grid จ, between grid 1-2 and 2-3).",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 27 beam-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "count": 2,
+     "grid_refs": [
+      "~จ1",
+      "~จ2"
+     ],
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "approximate_position"
+     ]
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "จ1",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7A",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ค2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ค3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ค3",
+     "grid_ref_end": "ค2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ข2",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "Bx_detail_beam_near_this_segment"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ก2",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ก1",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "count": 2,
+     "grid_refs": [
+      "~ง2",
+      "~ข2"
+     ],
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "approximate_position"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ง1",
+     "grid_ref_end": "~ค1",
+     "span_length_m": null,
+     "span_source": "unresolved",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "approximate_position",
+      "detail_beam_not_independently_dimensioned"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ข1",
+     "grid_ref_end": "~ข2",
+     "span_length_m": null,
+     "span_source": "unresolved",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "approximate_position",
+      "detail_beam_not_independently_dimensioned"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ข2",
+     "grid_ref_end": "~ข1",
+     "span_length_m": null,
+     "span_source": "unresolved",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "approximate_position",
+      "detail_beam_not_independently_dimensioned"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ข1",
+     "grid_ref_end": "~ก1",
+     "span_length_m": null,
+     "span_source": "unresolved",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "approximate_position",
+      "detail_beam_not_independently_dimensioned"
+     ]
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "plan_footing",
+  "rep": 3,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า15.png",
+   "doc_page": 15,
+   "discipline": "structural",
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "pattern": "footing_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า15.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "F10 appears at TWO grid positions (ง2 and ค2) — both are genuine, distinct footings of the same mark, not a duplicate. Recorded as one merged entry per §4's point-element rule.",
+    "F3 (pentagon/trapezoid-shaped footing, marked at row บ column 3) is a genuinely unusual shape not matching any other footing on the sheet — recorded as printed, not forced into a standard shape.",
+    "F4/F5/F6/F7/F8 are all single-count footings (one per mark) — each recorded as a single grid_ref, not merged across multiple positions.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 10 footing-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "count": 1,
+     "grid_refs": [
+      "จ1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "จ2",
+      "บ1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "count": 1,
+     "grid_refs": [
+      "จ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F7",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "บ2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F10",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง2",
+      "ค2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F6",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F8",
+     "element_type": "footing",
+     "count": 1,
+     "grid_refs": [
+      "ค1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "count": 1,
+     "grid_refs": [
+      "บ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ก1",
+      "ก2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ }
+]

@@ -1,0 +1,87 @@
+
+=== 2026-10-03 11:35:39 venv vLLM แบบ production (uv, คนละ venv กับ /venv/main) — ขนานกับ phase A
+
+=== 2026-10-03 11:35:39 deps ของ worker + เรนเดอร์บ้านเน็ต (หลัง pip ของ onstart จบ)
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+dpt13226_1fl 14 หน้า 4631x3473
+dpt13244_1fl 18 หน้า 4631x3473
+
+=== 2026-10-03 11:35:50 phase A (โหลด → ซ่อม → merge → ตรวจ A+B) — ข้าม C เพราะด่าน D เทียบ mrg.pt รอบเช้าแทน
+   A=grp  B=grp   ความคลาดเคลื่อน 0.1194
+   A=grp  B=rank  ความคลาดเคลื่อน 3.4625
+   A=rank B=grp   ความคลาดเคลื่อน 3.4890
+   A=rank B=rank  ความคลาดเคลื่อน 1.3912
+   → ตรงที่สุด: A=grp B=grp (0.1194)
+   เทียบกับ merge จำลองแบบ bf16 (A=grp B=grp): คลาด 0.0000 · ค่าคลาดที่การปัด bf16 ทำเองได้ 0.1194
+✅ B ผ่าน: ไฟล์ merged = round_bf16(W + ΔW แบบ A=grp B=grp) — ที่คลาด 0.1194 มาจากการปัด bf16 ล้วน
+
+✅ A+B ผ่าน — ไปต่อข้อ C (เทียบพฤติกรรม) ได้
+--- DONE verifyAB 11:46:40
+
+=== 2026-10-03 11:46:40 phase A จบ
+
+=== 2026-10-03 11:46:40 เปิด vLLM (คำสั่งจาก presentation.launch_cmd ตัวจริง)
+พร้อมใน 532 วิ
+
+=== 2026-10-03 11:55:32 ด่าน D เทียบ fingerprint ของ merged รอบเช้า (ผ่าน = merge ซ้ำได้โมเดลเดิม + ตัวเสิร์ฟคำนวณถูก)
+The tokenizer you are loading from '/workspace/destrier_merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+D: http://localhost:8000 เทียบ merged (transformers)
+   อันดับ                ตัวเสิร์ฟ                  อ้างอิง
+   1                  '{"'  -1.295            '```'  -1.285
+   2                 '```'  -1.607             '{"'  -1.973
+   3                 'คุณ'  -2.545             'ดู'  -2.723
+   4                  'ดู'  -2.857            'คุณ'  -2.910
+   5                   '{'  -2.982              '{'  -3.098
+   6                 'ฉัน'  -4.107            'ฉัน'  -3.848
+   7              'อธิบาย'  -4.295         'อธิบาย'  -4.223
+   8                 'นี่'  -4.482            'นี่'  -4.348
+   9           'เนื่องจาก'  -4.732           'ต้อง'  -4.348
+   10               'ต้อง'  -4.795      'เนื่องจาก'  -4.473
+   token อันดับ 1 ตรงกัน False · top-5 ซ้อนกัน 5/5 · |Δlogprob| สูงสุดใน top-5 0.678
+⛔ D ไม่ผ่าน — engine นี้คำนวณไม่เท่ากับไฟล์ merged อย่าใช้ผลจากมัน
+
+=== 2026-10-03 11:55:35 micro T=0.7 (section 22 · plan_beam 20 · plan_footing 19 × 4 รอบ)
+--- DONE micro_T0.7 11:57:58
+  }
+ }
+}
+
+=== 2026-10-03 11:57:58 micro T=0.4 (section 22 · plan_beam 20 · plan_footing 19 × 4 รอบ)
+--- DONE micro_T0.4 11:59:55
+  }
+ }
+}
+
+=== 2026-10-03 11:59:55 micro T=0.2 (section 22 · plan_beam 20 · plan_footing 19 × 4 รอบ)
+--- DONE micro_T0.2 12:01:54
+  }
+ }
+}
+
+=== 2026-10-03 12:01:54 micro T=0.0 (section 22 · plan_beam 20 · plan_footing 19 × 4 รอบ)
+--- DONE micro_T0.0 12:04:37
+  }
+ }
+}
+
+=== 2026-10-03 12:04:37 ทั้งบ้าน 83b8e52c T=0.2
+--- DONE house_T0.2 12:12:26
+
+=== 2026-10-03 12:12:26 บ้านเน็ต dpt13226_1fl T=0.2
+--- DONE dpt13226_1fl_T0.2 12:16:12
+
+=== 2026-10-03 12:16:12 บ้านเน็ต dpt13244_1fl T=0.2
+--- DONE dpt13244_1fl_T0.2 12:20:02
+
+=== 2026-10-03 12:20:02 ทั้งบ้าน 83b8e52c T=0.4
+--- DONE house_T0.4 12:26:16
+
+=== 2026-10-03 12:26:16 บ้านเน็ต dpt13226_1fl T=0.4
+--- DONE dpt13226_1fl_T0.4 12:31:02
+
+=== 2026-10-03 12:31:02 บ้านเน็ต dpt13244_1fl T=0.4
+--- DONE dpt13244_1fl_T0.4 12:38:03
+
+=== 2026-10-03 12:38:03 ปิดตัวเสิร์ฟ
+--- DONE runT 12:38:18

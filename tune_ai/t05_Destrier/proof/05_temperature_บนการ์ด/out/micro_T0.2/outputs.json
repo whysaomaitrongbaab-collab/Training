@@ -1,0 +1,2624 @@
+[
+ {
+  "page": 1,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า14.png",
+   "doc_page": 14,
+   "sheet_code": null,
+   "sheet_name": "บ้านครอบครัวไทยเป็นสุข ๓ (ภาพประกอบปก/หน้าโฆษณา)",
+   "discipline": "misc",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "misc",
+     "where": "full",
+     "also_gridline": false
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "pass0",
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า04.png",
+   "doc_page": 4,
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "discipline": "structural",
+   "building": "main",
+   "views": [
+    {
+     "subtask": "plan_footing",
+     "where": "full",
+     "also_gridline": true
+    }
+   ],
+   "confidence_score": 1.0,
+   "warnings": []
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "rep": 0,
+  "json": {
+   "png": "10",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า10.png",
+   "confidence_score": 0.8,
+   "confidence_flags": [],
+   "warnings": [
+    "F2/F3/F4/F5 are the four spread-footing types (2/3/4/5 piles each) — no pile count printed per mark on this sheet; the pile count is recorded here as the number of piles shown in each plan view (2/3/4/5), matching the pile-cap plan view count, not an independent printed spec.",
+    "S0 (slab-on-grade edge detail) and the SP joint detail are generic construction details, not tied to a specific structural mark — recorded with element_id null as per §7's treatment of generic details.",
+    "CN column detail (0.15x0.15, 4-Ø12, ป Ø6@0.20) is a small interior/column-type member, not a fence post — recorded as element_type 'column' per §0.4's column definition (vertical structural member supporting beams/floors), consistent with how CN appears on S-01/S-02/S-03 plans as an interior column mark, not a fence element."
+   ],
+   "elements": [
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 550,
+     "pile_count": 2,
+     "main_bar": {
+      "count": 9,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "9-Ø9mm, 4-Ø12mm corner bars, 1-Ø9mm รัดรอบ (tie around)"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1000,
+     "pile_count": 3,
+     "main_bar": {
+      "count": 5,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "5-Ø12mm, 4-Ø12mm มุม (corner), Ø9@0.15 mesh"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1100,
+     "pile_count": 4,
+     "main_bar": {
+      "count": 8,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "8+8-Ø12mm (16 total, 2-way mat), 1-Ø9mm รัดรอบ"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "width_mm": 1350,
+     "height_mm": 1350,
+     "pile_count": 5,
+     "main_bar": {
+      "count": 7,
+      "dia_mm": 16,
+      "type": "RB",
+      "note": "7+7-Ø16mm (14 total, 2-way mat), 1-Ø9mm รัดรอบ"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "slab",
+     "thickness_mm": 100,
+     "main_bar": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "1+1-Ø9mm มุม (corner), Ø9mm@0.20m"
+     },
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "generic slab-on-grade edge detail, not a marked element"
+     ]
+    },
+    {
+     "element_id": null,
+     "element_type": "precast_plank_detail",
+     "description": "ลักษณะการวางพื้น SP บริเวณรอยตัดขาด — SP precast plank joint at expansion/cut joint, 0.015m silicone building sealants, คอนกรีตปรับระดับ (leveling concrete)",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "generic construction detail, not a marked element"
+     ]
+    },
+    {
+     "element_id": null,
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "note": "CN column detail — small interior/column-type member, 0.15x0.15m, 4-Ø12mm main, ป Ø6@0.20m ties",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "plan_beam",
+  "rep": 0,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง, ชั้นบน",
+   "pattern": "beam_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.75,
+   "confidence_flags": [],
+   "warnings": [
+    "This sheet shows BOTH the ground-floor and upper-floor beam plans side by side (แปลนเสา คาน พื้น ชั้นล่าง on the left, ชั้นบน on the right), each with its own grid dimension chain (identical chains: x 1-2-3 = 3.00+3.00=6.00m, y จ-ง-ค-ข-ก = 3.00+2.20+4.00+1.50=10.70m). Extracted as two separate pattern entries (floor_level 'F1' and 'F2') per the multi-view sheet convention, since the two floors have genuinely different beam layouts (e.g. the lower floor has a B4/B1 extension south of grid ข down to grid ก with an S1 slab, while the upper floor does not — the south end of the upper floor is open/roofed instead).",
+    "The upper-floor plan adds Bx(ขพ.) and B1(ขพ.) members at the west edge (grid 1, rows ง/ค) that are NOT present on the lower-floor plan at the same position — these appear to be a small porch/veranda (ชานพัก/ชานพัก) extension beam, consistent with the 'ชพ.' (ชานพัก) annotation. Recorded as separate elements since they exist only on the upper floor.",
+    "The lower-floor plan shows a B1 beam running south of grid ข (rows ข-ก, columns 1-2) forming a small enclosed room with an S1 slab marker inside — this room does not appear on the upper floor (the same area is open/roofed there, with only B2 beams at row ก). Flagged as a genuine floor-level difference, not a transcription error.",
+    "S0 (two small slabs north of row จ, columns 1 and 2) appears only on the lower-floor plan — likely a small roofed porch/awning over the entrance area, consistent with the architectural ground-floor plan showing a small covered entry.",
+    "B7A (a short vertical beam between rows ง and ค at grid 2) appears on both floors, same as B7 on the main grid-2 line — likely a stair-landing support beam, consistent with the ST1 stairwell being centered on grid 2.",
+    "B3A/B3B are the short beam stubs at the west/east ends of rows ง and ค (near grid 1 and grid 3) — recorded as atomic segments per the beam-endpoint rule, with the exact endpoint position (e.g. 0.90m west of grid 1) kept in the printed_as field rather than invented as a dummy grid, since the sheet dimensions these stubs directly.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 28 beam-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "count": 2,
+     "grid_refs": [
+      "~จ1",
+      "~จ2"
+     ],
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "small_porch_slab_north_of_row_จ_only_on_ground_floor"
+     ]
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "~จ1",
+     "grid_ref_end": "~ง1",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "west_edge_beam_of_the_north_room"
+     ]
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "~จ3",
+     "grid_ref_end": "~ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "east_edge_beam_of_the_north_room"
+     ]
+    },
+    {
+     "element_id": "B7",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": [
+      "west_edge_beam_of_the_stairwell_room"
+     ]
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": [
+      "east_edge_beam_of_the_S1_room"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": [
+      "west_edge_beam_of_the_S1_room"
+     ]
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ค3",
+     "grid_ref_end": "ข3",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": [
+      "east_edge_beam_of_the_S1_room"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ค2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ค3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ก1",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "south_extension_beam_only_on_ground_floor"
+     ]
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ก2",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "south_extension_beam_only_on_ground_floor"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ข3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "south_end_beam_of_the_ground-floor_S1_room"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก2",
+     "grid_ref_end": "ก3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "south_end_beam_of_the_ground-floor_S1_room"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ข1",
+     "grid_ref_end": "~ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "small_beam_at_the_entrance_step_area"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ข2",
+     "grid_ref_end": "~ข3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "small_beam_at_the_entrance_step_area"
+     ]
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "count": 2,
+     "grid_refs": [
+      "~ง3",
+      "~ข2"
+     ],
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "S1_slab_marker_in_the_east_room_and_the_south_extension_room"
+     ]
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "count": 1,
+     "grid_refs": [
+      "~ข2"
+     ],
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "S1_slab_marker_in_the_south_extension_room_only_on_ground_floor"
+     ]
+    },
+    {
+     "element_id": "ST1",
+     "element_type": "stair",
+     "count": 1,
+     "grid_refs": [
+      "~ง1"
+     ],
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "stairwell_marker_centered_on_grid_2"
+     ]
+    },
+    {
+     "element_id": "CN",
+     "element_type": "column",
+     "count": 2,
+     "grid_refs": [
+      "~ง1",
+      "~ค1"
+     ],
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "CN_column_markers_at_the_west_edge_of_the_stairwell_room"
+     ]
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "plan_footing",
+  "rep": 0,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_03_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "pattern": "footing_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_03/บ้าน_ใหญ่_2ชั้น_03_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_03_หน้า00_gridline.json",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "Footing marks are printed as combined labels (e.g. 'C1,F4') — element_id is the footing mark (F4/F5/F6/F7/F8/F10), with the column mark (C1/C2) recorded in column_mark. This is the same convention used in houses #1/#2's footing plans.",
+    "F10 appears twice (at ง2 and ค2) — merged into one entry per §4's point-element rule, count 2.",
+    "F3 (at row บ, col 3) is drawn as a small triangle (not a square/hexagon like the others) — shape noted but not used as a separate type; recorded as footing type F3 per the printed mark.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 1 footing-family elements. Nothing else in this file changed."
+   ],
+   "specs": {
+    "F4": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "spec_source": "S-02",
+     "spec_confidence_score": 0.85
+    },
+    "F5": {
+     "width_mm": 800,
+     "height_mm": 800,
+     "thickness_mm": 200,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "spec_source": "S-02",
+     "spec_confidence_score": 0.85
+    },
+    "F6": {
+     "width_mm": 800,
+     "height_mm": 800,
+     "thickness_mm": 200,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "spec_source": "S-02",
+     "spec_confidence_score": 0.85
+    },
+    "F7": {
+     "width_mm": 800,
+     "height_mm": 800,
+     "thickness_mm": 200,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "spec_source": "S-02",
+     "spec_confidence_score": 0.85
+    },
+    "F8": {
+     "width_mm": 1000,
+     "height_mm": 1000,
+     "thickness_mm": 200,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "spec_source": "S-02",
+     "spec_confidence_score": 0.85
+    },
+    "F10": {
+     "width_mm": 1000,
+     "height_mm": 1000,
+     "thickness_mm": 200,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 16,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "spec_source": "S-02",
+     "spec_confidence_score": 0.85
+    },
+    "F3": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "spec_source": "S-02",
+     "spec_confidence_score": 0.85
+    }
+   },
+   "elements": [
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ1",
+      "จ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ2",
+      "บ1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F7",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "บ2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F6",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F8",
+     "element_type": "footing",
+     "column_mark": "C2",
+     "count": 1,
+     "grid_refs": [
+      "ค1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F10",
+     "element_type": "footing",
+     "column_mark": "C2",
+     "count": 2,
+     "grid_refs": [
+      "ง2",
+      "ค2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ก1",
+      "ก2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 1,
+     "grid_refs": [
+      "บ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "rep": 1,
+  "json": {
+   "png": "10",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า10.png",
+   "view_title": "ขยายรอยต่อเสา CN และคานคสล.",
+   "elements": [
+    {
+     "element_id": "CN",
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "beam",
+     "description": "SILICONE BUILDING SEALANTS joint between two RC beams at a precast-plank expansion joint, 0.015m wide",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    }
+   ],
+   "confidence_score": 0.8,
+   "confidence_flags": [],
+   "warnings": [
+    "op1 direct read (house 07). This is the 4th of 7 structural sheets on this page (S-01 to S-07)."
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "plan_beam",
+  "rep": 1,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง, ชั้นบน",
+   "pattern": "beam_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.6,
+   "confidence_flags": [],
+   "warnings": [
+    "This sheet shows BOTH the ground-floor and upper-floor beam plans side by side (two separate 1:100 plans, each with its own grid reference frame) — extracted as one file with pattern 'beam_plan' per the existing house-04 convention of grouping both floors' beam plans together on one sheet (S-02), consistent with how house 03 handled its equivalent sheet.",
+    "The upper-floor plan (right side of the sheet) is the one with genuine structural difference from the ground floor: it adds a B5 beam running along grid 2 from row ข down to row ก (the ground floor has no beam there — that area is open/uncovered on the ground floor plan), and replaces the ground-floor B4/B1 perimeter with B2 along the bottom edge (row ก). The ground-floor plan (left side) has the B4 verticals along grid 1 and grid 2 from row ค to row ข, and a B1 horizontal at row ข — these are ABSENT from the upper floor.",
+    "Both plans share the same upper block (rows จ to ค): B2 along row จ, B6/B7/B3A/B3A/B3B/B3B verticals, B1/B7A/B1/B1/B1/B3 horizontal cluster around the stair (ST) and S1 slab, and the same 0.90/0.95/1.30/0.50 offset dimensions. The S0 slab markers at the top (above row จ, between grids 1 and 2) appear on both floors.",
+    "The 'Bx (ขพ.)' labels near the stair area on the upper-floor plan appear to be a different notation from the plain 'Bx' seen on the ground-floor plan's lower section — possibly indicating a beam at a different level or with different reinforcement (ขพ. may abbreviate a reinforcement note), but this is not fully legible at this scan resolution; recorded as printed with the parenthetical preserved.",
+    "The 0.20m offset dimension (small extension beyond grid ก on the left side) and the 1.30m offset on the right side of the upper-floor plan's lower section are small cantilever/overhang dimensions, not full grid lines — not treated as dummy grid entries since they are minor local offsets rather than a structural grid line position.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 26 beam-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "ง1",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "จ3",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ก1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ข2",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค3",
+     "grid_ref_end": "ข3",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ก1",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ก2",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข3",
+     "grid_ref_end": "ก3",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก2",
+     "grid_ref_end": "ก3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "ground_floor_plan_only_not_present_on_upper_floor_plan"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "ground_floor_plan_only_not_present_on_upper_floor_plan"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "ground_floor_plan_only_not_present_on_upper_floor_plan"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ค2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "ground_floor_plan_only_not_present_on_upper_floor_plan"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ค3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "ground_floor_plan_only_not_present_on_upper_floor_plan"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "ground_floor_plan_only_not_present_on_upper_floor_plan"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ข3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "ground_floor_plan_only_not_present_on_upper_floor_plan"
+     ]
+    },
+    {
+     "element_id": "B5",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ก2",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": [
+      "upper_floor_plan_only_not_present_on_ground_floor_plan"
+     ]
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "plan_footing",
+  "rep": 1,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "pattern": "footing_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "Footing marks are printed as combined labels (e.g. 'C1,F4') — element_id is the footing mark (F4/F5/F6/F7/F8/F10), with the column mark (C1/C2) recorded in column_mark.",
+    "F10 appears twice (grid_refs 'ง2' and 'ค2') — merged into one entry per §4 point-element rule.",
+    "F8 is drawn as a RECTANGLE (not square) at 'ค1' — width_mm/height_mm not separately dimensioned on this sheet, recorded as printed shape only.",
+    "F3 at 'ข3' is drawn as a TRAPEZOID — an unusual footing shape, recorded as printed, no dimension available.",
+    "F2 at 'ก1' and 'ก2' are drawn as small RECTANGLES — likely a lighter/edge footing, recorded as printed.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 1 footing-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ1",
+      "จ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ2",
+      "ข1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F7",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "ข2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F6",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F10",
+     "element_type": "footing",
+     "column_mark": "C2",
+     "count": 2,
+     "grid_refs": [
+      "ง2",
+      "ค2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F8",
+     "element_type": "footing",
+     "column_mark": "C2",
+     "count": 1,
+     "grid_refs": [
+      "ค1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 1,
+     "grid_refs": [
+      "ข3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ก1",
+      "ก2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "rep": 2,
+  "json": {
+   "png": "10",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_07/บ้าน_ใหญ่_2ชั้น_07_หน้า10.png",
+   "confidence_score": 0.8,
+   "confidence_flags": [],
+   "warnings": [
+    "F2/F3/F4/F5 are spread-footing types (no piles) — the only footing type on this sheet that is NOT pile-supported, consistent with S-03's own note that pile footings are used 'where soil bearing capacity is less than 8 ton/sqm' while this sheet's own header states 'SOIL BEARING 8 Ton/m²' as the baseline.",
+    "S0 (slab-on-grade edge detail) and the CN column splice detail are generic construction details, not tied to a specific grid position — recorded as element_id null per §0.3's rule for unmarked generic details.",
+    "The 'ลักษณะการวางพื้น SP บริเวณรอยตัดขาด 1:25' (SP precast plank joint detail) and 'ลักษณะพื้น S ระดับสูงกว่าหลังคาน 1:25' (raised slab detail) are generic floor-construction details, not tied to a specific grid position — recorded as element_id null."
+   ],
+   "elements": [
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 550,
+     "pile_count": 2,
+     "main_bar": {
+      "count": 9,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "9-Ø9mm, 4-Ø12mm dowel bars, 1-Ø9mm tie around"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1000,
+     "pile_count": 3,
+     "main_bar": {
+      "count": 5,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "5-Ø12mm, 4-Ø12mm ม. (mat), Ø9@0.15mm mesh"
+     },
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1100,
+     "pile_count": 4,
+     "main_bar": {
+      "count": 16,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "8+8-Ø12mm"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "width_mm": 1350,
+     "height_mm": 1350,
+     "pile_count": 5,
+     "main_bar": {
+      "count": 14,
+      "dia_mm": 16,
+      "type": "RB",
+      "note": "7+7-Ø16mm"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "detail_view",
+     "description": "S0 slab-on-grade edge detail: เวนรอง 1\" อุดด้วยโฟม หรือแอสฟัลท์ผสมทราย, ทับด้วยซีเมนต์หนา 0.10ม., ø9@0.25mm, 0.10m depth",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "detail_view",
+     "description": "ลักษณะพื้น S ระดับสูงกว่าหลังคาน: 1+1-Ø9mm ม. (mat), ø9mm@0.20mm",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "detail_view",
+     "description": "ลักษณะการวางพื้น SP บริเวณรอยตัดขาด: คอนกรีตปรับระดับ 0.015m, SILICONE BUILDING SEALANTS",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": null,
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "spacing_mm": 200,
+      "type": "RB"
+     },
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "plan_beam",
+  "rep": 2,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า11.png",
+   "doc_page": 11,
+   "discipline": "structural",
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง, ชั้นบน",
+   "pattern": "beam_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า11.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.75,
+   "confidence_flags": [],
+   "warnings": [
+    "This sheet shows BOTH the ground-floor and upper-floor beam plans side by side (แปลนเสา คาน พื้น ชั้นล่าง on the left, ชั้นบน on the right) — extracted as two separate pattern entries (floor_level 'F1' and 'F2') sharing one elements[] array, since they are one physical sheet. This matches the precedent set by house #2's S-02 (หน้า09), which also carried both floors on one sheet and was extracted the same way.",
+    "The upper-floor plan (right) adds a B5 beam running north-south along grid 2 from row ข down to row ก, and replaces the ground-floor's B4/B1 south extension with a B2 beam along row ก — consistent with the upper floor having a different room layout (no ซักล้าง extension, different room division).",
+    "Bx (small beam, likely a stair-landing or slab-edge beam) appears on both floors near the stairwell (row ข, near grid 1) and is labeled '(ขพ.)' on the upper floor — 'ขพ.' is not defined in the S-01 steel section list; likely a local abbreviation (possibly 'ขอบพื้น' / slab edge) rather than a steel member, so Bx is recorded as element_type 'beam' with steel_section null rather than guessed as a steel mark.",
+    "B1 is labeled '(ขพ.)' on the upper floor's west edge (row ง-ค, grid 1) — same abbreviation, same uncertainty. Recorded as a regular beam, not as a steel member.",
+    "B3A and B3B are printed as two distinct marks (not B3 with a suffix) — kept as separate element_ids per §0.3, since they are literally different printed labels, even though they are almost certainly just B3 at the CN (column-no-foundation) locations.",
+    "S0/S1/SI slab markers and stair (ST) symbols are not itemized as elements here — per the established convention for this house series (see house #2's equivalent sheet), slab/stair markers are captured on the dedicated slab/stair plan sheets (S-03/S-04 for this house), not duplicated on the beam plan.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 26 beam-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.8,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "ง1",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "จ3",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "at_CN_location"
+     ]
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "at_CN_location"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "at_CN_location"
+     ]
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ค3",
+     "grid_ref_end": "ข3",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "at_CN_location"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ค2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ค3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ก1",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "near_stairwell"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ข3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "near_stairwell"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก2",
+     "grid_ref_end": "ก3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7A",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "near_stairwell"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ข2",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "near_stairwell"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "near_S1_slab"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ค3",
+     "grid_ref_end": "ข3",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.65,
+     "confidence_flags": [
+      "near_S1_slab"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ก1",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข3",
+     "grid_ref_end": "ก3",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "plan_footing",
+  "rep": 2,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "pattern": "footing_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "Footing marks are printed as combined labels (e.g. 'C1,F4') — element_id is the footing mark (F4/F5/F6/F7/F8/F10), column mark kept in column_mark. This is the only sheet where the two are printed together; the column schedule (หน้า11) and beam plans (หน้า12-13) carry them separately.",
+    "F10 appears twice (row ง/ก, column 2) — merged into one entry with count 2 per §4's point-element merge rule, same convention already used for the B1/B2 beam marks on หน้า12.",
+    "F3 (row บ, column 3) is drawn as a triangle (not a square/hexagon like the others) — recorded as-is, shape not otherwise specified anywhere in the spec text.",
+    "The spec text (รายการประกอบแบบโครงสร้าง) on this sheet states the soil bearing capacity must be >= 8 ตัน/ตร.ม. to use this spread-footing design; if not, driven piles are required instead — a site-condition-dependent design choice, not a drawing ambiguity.",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 11 footing-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ1",
+      "จ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "จ2",
+      "บ1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F7",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "บ2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F6",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F8",
+     "element_type": "footing",
+     "column_mark": "C2",
+     "count": 1,
+     "grid_refs": [
+      "ค1"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F10",
+     "element_type": "footing",
+     "column_mark": "C2",
+     "count": 2,
+     "grid_refs": [
+      "ง2",
+      "ค2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 1,
+     "grid_refs": [
+      "บ3"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "column_mark": "C1",
+     "count": 2,
+     "grid_refs": [
+      "ก1",
+      "ก2"
+     ],
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 22,
+  "kind": "section",
+  "rep": 3,
+  "json": {
+   "png": "10",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-04",
+   "sheet_name": "แบบขยายโครงสร้าง",
+   "pattern": "section",
+   "schema_generation": "primary_rawjson_schema.md (2026-07-10 compiled)",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_01/บ้าน_ใหญ่_2ชั้น_01_หน้า10.png",
+   "view_title": "แบบขยายโครงสร้าง (footing/pile-cap/pedestal details, S0 slab-on-grade, CN column splice)",
+   "elements": [
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 550,
+     "pile_count": 2,
+     "main_bar": {
+      "count": 9,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "9-Ø9mm"
+     },
+     "additional_bars": [
+      {
+       "count": 4,
+       "dia_mm": 12,
+       "type": "RB",
+       "position": "pedestal dowel"
+      }
+     ],
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1000,
+     "pile_count": 3,
+     "main_bar": {
+      "count": 5,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "5-Ø12mm"
+     },
+     "additional_bars": [
+      {
+       "count": 4,
+       "dia_mm": 12,
+       "type": "RB",
+       "position": "pedestal dowel"
+      }
+     ],
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "width_mm": 1100,
+     "height_mm": 1100,
+     "pile_count": 4,
+     "main_bar": {
+      "count": 8,
+      "dia_mm": 12,
+      "type": "RB",
+      "note": "8+8-Ø12mm"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "width_mm": 1350,
+     "height_mm": 1350,
+     "pile_count": 5,
+     "main_bar": {
+      "count": 7,
+      "dia_mm": 16,
+      "type": "RB",
+      "note": "7+7-Ø16mm"
+     },
+     "confidence_score": 0.75,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "thickness_mm": 100,
+     "main_bar": {
+      "count": 1,
+      "dia_mm": 9,
+      "type": "RB",
+      "note": "1+1-Ø9mm"
+     },
+     "additional_bars": [
+      {
+       "count": 1,
+       "dia_mm": 9,
+       "type": "RB",
+       "spacing_mm": 250,
+       "position": "mesh"
+      }
+     ],
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "CN",
+     "element_type": "column",
+     "width_mm": 150,
+     "height_mm": 150,
+     "main_bar": {
+      "count": 4,
+      "dia_mm": 12,
+      "type": "RB"
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    }
+   ],
+   "confidence_score": 0.74,
+   "confidence_flags": [],
+   "warnings": [
+    "op1 direct read (house 08). F2/F3/F4/F5 are spread footings on 2/3/4/5 piles respectively, matching the pile-cap pattern seen on S-03's plan (F2/F3/F4/F5 marks used there too) -- cross-checked, consistent. F5's 7+7-Ø16mm main bar is the heaviest callout on this sheet.",
+    "S0 is a slab-on-grade detail (100mm thick, 1+1-Ø9mm bars) with a 1\" pipe sleeve filled with foam or asphalt -- a generic slab detail, not tied to a specific grid position on this sheet.",
+    "CN is a small 150x150mm column (4-Ø12mm main, Ø6mm@0.20 ties) used for the column splice/continuation detail shown at the bottom-right of the sheet -- matches the 'เสา CN' label in the 'ขยายรอยต่อเสา CN และคานคสล.' detail.",
+    "SOIL BEARING 8 Ton/m² / เสาเข็ม I-0.18x6.00ม. - 2.5 Ton/Pile printed at the top of the sheet -- same soil bearing and pile spec as S-03, cross-consistent.",
+    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: S0.0 Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the underscore name IS the mark)."
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 20,
+  "kind": "plan_beam",
+  "rep": 3,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "doc_page": 10,
+   "discipline": "structural",
+   "sheet_code": "S-02",
+   "sheet_name": "แปลนเสา คาน พื้น ชั้นล่าง, ชั้นบน",
+   "pattern": "beam_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า10.png",
+   "grid_source": "บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.65,
+   "confidence_flags": [],
+   "warnings": [
+    "This sheet shows BOTH the ground-floor and upper-floor beam plans side by side (แปลนเสา คาน พื้น ชั้นล่าง on the left, ชั้นบน on the right), each with its own title block. Extracted as one file with pattern 'beam_plan' per the schema's rule that a sheet showing multiple floor levels of the same element kind uses one file with a level field on each element — but since this sheet's own title block names it as covering both floors (not split across S-02/S-03), both floor levels' beams are recorded here rather than split into two files.",
+    "The upper-floor plan (right side) shows a different layout from the ground floor: the south extension (rows ข-ก) is absent on the upper floor, and the B5 beam appears only on the upper floor (spanning row ค-ข between grids 2-3). The B1 beam also appears in the south extension on the upper floor where it was absent on the ground floor — this is a genuine difference between floors, not a transcription error.",
+    "Bx (small beam, labeled 'Bx (ขพ.)' — ขอบพื้นสำเร็จรูป/precast plank edge beam) appears on both floors in the stair/entrance area near grid 1, and again in the south extension on the ground floor. Recorded as element_type 'beam' since it is drawn as a beam mark (Bx) with its own dimensioned position (0.90m offset from grid 1 on the ground floor, 0.20m offset on the south extension).",
+    "B7A (a variant of B7, drawn as a short vertical beam near the stair opening between grids 1-2) appears on both floors. Its exact grid-to-grid span is not independently dimensioned on this sheet beyond the 0.95/1.30m offsets shown near the stair opening — recorded with the best available grid_ref estimate and a lower confidence_score.",
+    "B3A/B3B (beam variants at the CN column positions near grid 1, rows ง-ค) appear on both floors. The 'CN' label at those positions likely denotes a column (เสาเอ็น/column) position distinct from the main grid columns — not fully resolved, recorded as printed.",
+    "The 'S0' slab markers at the top of the ground-floor plan (above row จ, grids 1-2 and 2-3) and 'S1' slab markers in the stairwell and south extension are slab-type markers, not beams — recorded as element_type 'slab' with approximate grid_refs.",
+    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 28 beam-family elements. Nothing else in this file changed."
+   ],
+   "elements": [
+    {
+     "element_id": "S0",
+     "element_type": "slab",
+     "grid_refs": [
+      "~จ1",
+      "~จ2"
+     ],
+     "confidence_score": 0.5,
+     "confidence_flags": [
+      "marker_only_not_a_line_element"
+     ]
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "grid_refs": [
+      "~ค2",
+      "~ข1",
+      "~ข2"
+     ],
+     "confidence_score": 0.5,
+     "confidence_flags": [
+      "marker_only_not_a_line_element"
+     ]
+    },
+    {
+     "element_id": "S1",
+     "element_type": "slab",
+     "grid_refs": [
+      "~ค3"
+     ],
+     "confidence_score": 0.5,
+     "confidence_flags": [
+      "marker_only_not_a_line_element"
+     ]
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ1",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B2",
+     "element_type": "beam",
+     "grid_ref_start": "จ2",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.7,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "จ1",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B6",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "จ3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "จ2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "variant_mark"
+     ]
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "variant_mark"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ง2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ง3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง1",
+     "grid_ref_end": "ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ง3",
+     "grid_ref_end": "ค3",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B7A",
+     "element_type": "beam",
+     "grid_ref_start": "ง2",
+     "grid_ref_end": "ค2",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.5,
+     "confidence_flags": [
+      "variant_mark"
+     ]
+    },
+    {
+     "element_id": "B3A",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "variant_mark"
+     ]
+    },
+    {
+     "element_id": "B3B",
+     "element_type": "beam",
+     "grid_ref_start": "ค3",
+     "grid_ref_end": "ข3",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.55,
+     "confidence_flags": [
+      "variant_mark"
+     ]
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ค2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B3",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ค3",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค1",
+     "grid_ref_end": "ข1",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B4",
+     "element_type": "beam",
+     "grid_ref_start": "ค2",
+     "grid_ref_end": "ข2",
+     "span_length_m": 4.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ข1",
+     "grid_ref_end": "~ข2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "position_approximate",
+      "small_edge_beam_not_fully_dimensioned"
+     ]
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข1",
+     "grid_ref_end": "ก1",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ข2",
+     "grid_ref_end": "ก2",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "B1",
+     "element_type": "beam",
+     "grid_ref_start": "ก1",
+     "grid_ref_end": "ก2",
+     "span_length_m": 3.0,
+     "span_source": "grid_table",
+     "confidence_score": 0.6,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ง1",
+     "grid_ref_end": "~ค1",
+     "span_length_m": 2.2,
+     "span_source": "grid_table",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "position_approximate",
+      "small_edge_beam_not_fully_dimensioned"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ข1",
+     "grid_ref_end": "~ก1",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "position_approximate",
+      "small_edge_beam_not_fully_dimensioned"
+     ]
+    },
+    {
+     "element_id": "Bx",
+     "element_type": "beam",
+     "grid_ref_start": "~ข2",
+     "grid_ref_end": "~ก2",
+     "span_length_m": 1.5,
+     "span_source": "grid_table",
+     "confidence_score": 0.45,
+     "confidence_flags": [
+      "position_approximate",
+      "small_edge_beam_not_fully_dimensioned"
+     ]
+    }
+   ]
+  },
+  "raw": null
+ },
+ {
+  "page": 19,
+  "kind": "plan_footing",
+  "rep": 3,
+  "json": {
+   "png": "บ้าน_ใหญ่_2ชั้น_04_หน้า13.png",
+   "doc_page": 13,
+   "discipline": "structural",
+   "sheet_code": "S-01",
+   "sheet_name": "แปลนฐานราก",
+   "pattern": "footing_plan",
+   "source_image": "image/บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า13.png",
+   "grid_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า00_gridline.json",
+   "confidence_score": 0.85,
+   "confidence_flags": [],
+   "warnings": [
+    "Footing marks printed as paired labels (e.g. 'C1,F4') — element_id kept as the footing mark per §0.3 (C1/F1/F2/F3/F4/F5/F6/F7/F8), column mark carried in column_mark.",
+    "F10 appears twice on this sheet (row ง/ข, column 2) — merged into one entry with count 2, grid_refs ['ง2','ข2'].",
+    "F3 (row บ, column 3) is drawn as a triangle (not a square/rectangle/hexagon like the others) — shape recorded as 'triangle' with a flag; no rebar/size spec is printed on this sheet (only the pile spec, §5, is given in the notes).",
+    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 1 footing-family elements. Nothing else in this file changed."
+   ],
+   "specs": {
+    "F2": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "spec_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14_footing_sections.json",
+     "spec_confidence_score": 0.85
+    },
+    "F3": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "spec_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14_footing_sections.json",
+     "spec_confidence_score": 0.85
+    },
+    "F4": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "spec_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14_footing_sections.json",
+     "spec_confidence_score": 0.85
+    },
+    "F5": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "spec_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14_footing_sections.json",
+     "spec_confidence_score": 0.85
+    },
+    "F6": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "spec_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14_footing_sections.json",
+     "spec_confidence_score": 0.85
+    },
+    "F7": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "spec_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14_footing_sections.json",
+     "spec_confidence_score": 0.85
+    },
+    "F8": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "spec_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14_footing_sections.json",
+     "spec_confidence_score": 0.85
+    },
+    "F10": {
+     "width_mm": 600,
+     "height_mm": 600,
+     "thickness_mm": 150,
+     "main_bar": {
+      "top": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      },
+      "bottom": {
+       "count": 2,
+       "dia_mm": 12,
+       "type": "RB"
+      }
+     },
+     "stirrup": {
+      "dia_mm": 6,
+      "type": "RB",
+      "spacing_mm": 200
+     },
+     "spec_source": "rawjson_ยังไม่ได้แก้ไขโดนคน/14บ้าน_ใหญ่_2ชั้น_04/บ้าน_ใหญ่_2ชั้น_04_หน้า14_footing_sections.json",
+     "spec_confidence_score": 0.85
+    }
+   },
+   "elements": [
+    {
+     "element_id": "F4",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "จ1",
+      "จ3"
+     ],
+     "column_mark": "C1",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F5",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "จ2",
+      "บ1"
+     ],
+     "column_mark": "C1",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F7",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง1",
+      "บ2"
+     ],
+     "column_mark": "C1",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F10",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง2",
+      "ข2"
+     ],
+     "column_mark": "C2",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F6",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ง3",
+      "ค3"
+     ],
+     "column_mark": "C1",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F8",
+     "element_type": "footing",
+     "count": 1,
+     "grid_refs": [
+      "ค1"
+     ],
+     "column_mark": "C2",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    },
+    {
+     "element_id": "F3",
+     "element_type": "footing",
+     "count": 1,
+     "grid_refs": [
+      "บ3"
+     ],
+     "column_mark": "C1",
+     "confidence_score": 0.7,
+     "confidence_flags": [
+      "footing_shape_drawn_as_triangle_not_square"
+     ]
+    },
+    {
+     "element_id": "F2",
+     "element_type": "footing",
+     "count": 2,
+     "grid_refs": [
+      "ก1",
+      "ก2"
+     ],
+     "column_mark": "C1",
+     "confidence_score": 0.85,
+     "confidence_flags": []
+    }
+   ]
+  },
+  "raw": null
+ }
+]
