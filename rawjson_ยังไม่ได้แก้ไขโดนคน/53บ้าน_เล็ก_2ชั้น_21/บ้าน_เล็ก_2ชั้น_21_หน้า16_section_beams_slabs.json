@@ -1,0 +1,399 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบขยายการเสริมเหล็ก คาน,พื้น",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_21/บ้าน_เล็ก_2ชั้น_21_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_21_หน้า00_gridline.json",
+  "view_title": "แบบขยายพื้นและแบบขยายคาน",
+  "scale": "1:25",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "All bars are ø (round bar SR-24 per S-01 ข้อ 2), including ø15 — a real SR-24 size, read as 15 (not 16) at 6× zoom.",
+    "B2's longitudinal elevation (B2 3.00 + B2x 1.20) shows the top: 2-ø12 run through, and the extra 2-ø12 over the column extend 1.20 back into B2 — that is why section 2x-2x prints 4-ø12 top. Bottom of B2: 3-ø12 at mid-span with 2 of them continuing to the supports (the third stops 0.375 = L/8 from each support).",
+    "B6 is stepped: cut 6.1-6.1 is 0.20×0.50 and cut 6.2-6.2 is 0.20×0.40; the elevation shows the top stepping down 0.10 over the 1.20 part nearer one support (1.80|1.20, 6.1 cut 0.50 from the step). Kept as two entries with section_ref. ⚠ The elevation draws 3-ø15 plus 2-ø15 bottom bars overlapping through the 6.1 position, but section 6.1-6.1 prints only 3-ø15 bottom (6.2-6.2 prints 5-ø15). Sections are recorded as printed; the conflict is not resolved.",
+    "RB1 and RB1x share one printed section ('RB1,RB1x'); recorded as two entries so each mark joins its own spec.",
+    "Slab bars: S1 prints one callout 'ø9 มม.@ 0.15 ม.# ตรง 1 คอม้า 1' (both ways). S2 and S3 print two callouts each; the 'ตรง 1 คอม้า 1' (alternating straight/bent-up) set is taken as main_bar and the other as distribution_bar — which bar runs which way is read from the section drawing, not stated.",
+    "No B3* section exists on this sheet (see the S-02 beam plan)."
+  ],
+  "elements": [
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10 (ขอบเพิ่ม 0.10 = หนารวม 0.20 ที่ขอบ)",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "ø9 มม.@ 0.25 ม.#"
+      },
+      "span_printed_m": 1.0,
+      "note": "พื้นบนดินชานพักบันได ขอบหนาขึ้นเป็นคานขอบในตัว",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15 มม."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "3-ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.20 ม."
+      },
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "section_ref": "2-2",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "3-ø12 มม.",
+          "note": "2 เส้นต่อเนื่องถึงที่รองรับ + 1 เส้นหยุดห่างที่รองรับ 0.375 (L/8)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.20 ม."
+      },
+      "span_printed_m": 3.0,
+      "note": "เหล็กบนเสริม 2-ø12 จาก B2x ยื่นกลับเข้า B2 1.20 ม. เหนือที่รองรับฝั่งคานยื่น",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2x",
+      "element_type": "beam",
+      "section_ref": "2x-2x",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม. + 2-ø12 มม.",
+          "note": "2 เส้นต่อเนื่องจาก B2 + 2 เส้นเสริม ยื่นกลับเข้า B2 1.20 ม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.20 ม."
+      },
+      "span_printed_m": 1.2,
+      "note": "คานยื่นต่อจาก B2",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15 มม."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "4-ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 175,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.175 ม."
+      },
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.20 ม."
+      },
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ø9 มม.@ 0.15 ม.# ตรง 1 คอม้า 1"
+      },
+      "span_printed_m": 3.0,
+      "note": "เหล็กคอม้าดัดขึ้นที่ 0.60 จากที่รองรับ",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "ø9 มม.@ 0.25 ม. ตรง 1 คอม้า 1"
+      },
+      "distribution_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ø9 มม.@ 0.20 ม."
+      },
+      "span_printed_m": 1.9,
+      "note": "เหล็กคอม้าดัดขึ้นที่ 0.50 จากที่รองรับ",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "main_vs_distribution_read_from_section_geometry"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "section_ref": "6.1-6.1",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15 มม."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "3-ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 175,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.175 ม."
+      },
+      "note": "ช่วงลึก 0.50 (1.80 จากที่รองรับด้านหนึ่ง)",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "elevation_vs_section_bottom_bar_count_conflict"
+      ]
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "ø9 มม.@ 0.25 ม. ตรง 1 คอม้า 1"
+      },
+      "distribution_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "ø9 มม.@ 0.25 ม."
+      },
+      "span_printed_m": 1.1,
+      "note": "เหล็กคอม้าดัดขึ้นที่ 0.30 จากที่รองรับ",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "main_vs_distribution_read_from_section_geometry"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15 มม."
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "5-ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 175,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.175 ม."
+      },
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "section_ref": "6.2-6.2",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15 มม."
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "5-ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 175,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.175 ม."
+      },
+      "note": "ช่วงตื้น 0.40 หลังคานลดลง 0.10 (1.20 ด้านใกล้ที่รองรับอีกด้าน)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "section_ref": "RB1,RB1x",
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.20 ม."
+      },
+      "note": "อะเส คสล.",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1x",
+      "element_type": "beam",
+      "section_ref": "RB1,RB1x",
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@ 0.20 ม."
+      },
+      "note": "อะเสยื่นรับชายหลังคาหน้าจั่ว",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    }
+  ]
+}

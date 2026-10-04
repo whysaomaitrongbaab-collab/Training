@@ -1,0 +1,149 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก,เสา,คาน และพื้น ชั้นล่าง",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_21/บ้าน_เล็ก_2ชั้น_21_หน้า12.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_21_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "คานคอดินและพื้นชั้นใต้ถุน (เหมือนกันทั้งแบบตอกเข็มและแบบฐานแผ่)",
+  "scale": "1:75",
+  "views": [
+    "รายการประกอบแบบโครงสร้าง",
+    "ผังฐานราก,เสา,คานคอดิน และพื้นชั้นใต้ถุน (แบบตอกเข็ม) 1:75",
+    "ผังฐานราก,เสา,คานคอดิน และพื้นชั้นใต้ถุน (แบบฐานแผ่) 1:75"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Both S-01 drawings (pile and spread) draw the identical ground-beam/slab layout: B5, B4, B5, B6, B6, B2 and slabs S2, S3, S3, plus the stair slab. Recorded once here instead of twice, so the beams are not double-counted.",
+    "The two B5 lines are both marked B5 on the drawing: one on row ค (between the columns) and one on the interior line ค''' (1.90 below ค) — the interior one rests on B6 at both ends, not on columns. B4 is the short beam on line 1'''''' (2.30 from grid 1) between the two B5s.",
+    "B2 here (row ข, ground beam) carries the same mark as the upper-floor B2 on S-02; S-05 has one B2 section (2-2), which the drawing applies to both.",
+    "B6 is a stepped beam: S-05 gives two cuts, 6.1-6.1 (0.20×0.50) and 6.2-6.2 (0.20×0.40), with the top stepping down 0.10 over the 1.20 portion nearer one support — see the section file.",
+    "Stair slab: the pile drawing labels it 'S0 +0.10' clearly; in the spread drawing the same circle reads like 'S4' because the dashed outline of footing F1 runs through the second character. There is no S4 detail anywhere on S-05 (only S0-S3), so it is read as S0 in both drawings.",
+    "The open ground under the house is marked 'ใต้ถุนถมดินอัดแน่น' (compacted fill) — no slab there. The wooden stair is architectural (A-08) and not an element here."
+  ],
+  "elements": [
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "ค1",
+      "grid_ref_end": "ข1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "stepped section 6.1/6.2 (S-05)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "ค1",
+      "grid_ref_end": "ค2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "ค1''''''",
+      "grid_ref_end": "ค'''1''''''",
+      "span_length_m": 1.9,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:B5(start)",
+        "bears_on_beam:B5(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "ค2",
+      "grid_ref_end": "ข2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "stepped section 6.1/6.2 (S-05)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "ค'''1",
+      "grid_ref_end": "ค'''2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B6(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ข1",
+      "grid_ref_end": "ข2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "ค1",
+        "ค2",
+        "ข1",
+        "ข2",
+        "ก1",
+        "ก2"
+      ],
+      "note": "ground-storey columns (ใต้ถุน), printed as the ',C1' half of every footing mark in both S-01 drawings — recorded once here, not in the two alternative footing files",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "grid_refs": [
+        "ค-ค''' x 1-1''''''"
+      ],
+      "note": "ห้องครัว area (A-04)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "grid_refs": [
+        "ค-ค''' x 1''''''-2",
+        "ค'''-ข x 1-2"
+      ],
+      "note": "ห้องน้ำ area and the strip between ค''' and ข",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "grid_refs": [
+        "ก-ก' x 1'-1"
+      ],
+      "level_m": 0.1,
+      "level_m_printed_as": "+0.10",
+      "note": "พื้นชานพักบันไดบนดิน (S-05 แบบขยาย S0)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "label_obscured_in_spread_view_read_as_S0"
+      ]
+    }
+  ]
+}

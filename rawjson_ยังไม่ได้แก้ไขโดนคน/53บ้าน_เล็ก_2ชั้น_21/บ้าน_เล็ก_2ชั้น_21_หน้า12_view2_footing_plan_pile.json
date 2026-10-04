@@ -1,0 +1,64 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก,เสา,คาน และพื้น ชั้นล่าง",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_21/บ้าน_เล็ก_2ชั้น_21_หน้า12.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_21_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "foundation_system": "pile",
+  "view_title": "ผังฐานราก,เสา,คานคอดิน และพื้นชั้นใต้ถุน (แบบตอกเข็ม)",
+  "scale": "1:75",
+  "views": [
+    "รายการประกอบแบบโครงสร้าง",
+    "ผังฐานราก,เสา,คานคอดิน และพื้นชั้นใต้ถุน (แบบตอกเข็ม) 1:75",
+    "ผังฐานราก,เสา,คานคอดิน และพื้นชั้นใต้ถุน (แบบฐานแผ่) 1:75"
+  ],
+  "confidence_score": 0.93,
+  "confidence_flags": [],
+  "warnings": [
+    "S-01 draws the same building twice: once on piles (แบบตอกเข็ม, this file, foundation_system 'pile') and once on spread footings (แบบฐานแผ่, view3, 'spread_footing'). The notes on this sheet (ข้อ 3) pick one by soil bearing: ≥ 8 t/m² spread, < 8 t/m² piles. Only one system is ever built — a consumer must take one file, never sum both.",
+    "Footing marks are printed 'F<n>,C1' — ',C1' names the column each footing carries. The six C1 columns are recorded once, in the ground beam plan (view4), not in either footing file: there is one set of columns whichever footing system is built, and listing them in both footing files would double them. Pile counts from the S-03/S-04 details: F3 = 3 piles, F4 = 4, F6 = 6.",
+    "The footing boxes are drawn to the detail sizes: F4 0.90 square, F6 0.75 along x × 1.20 along y (its S-04 detail is drawn rotated 90°), F3 0.75 along x × 0.90 along y. All boxes are centred on their column.",
+    "Row ก carries isolated footings with columns but no ground beam (the stair side); ground beams exist only on rows ค, ค''' and ข (beam_plan view4)."
+  ],
+  "elements": [
+    {
+      "element_id": "F4",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "ค1",
+        "ค2"
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F6",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "ข1",
+        "ข2"
+      ],
+      "note": "rectangular cap, long side 1.20 along the y axis (dashed box on plan)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "ก1",
+        "ก2"
+      ],
+      "note": "3-pile cap, 0.75 along x × 0.90 along y on plan",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    }
+  ]
+}

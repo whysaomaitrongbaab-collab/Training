@@ -1,0 +1,166 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนเสา,คาน,พื้นชั้นบน แปลน โครงหลังคา",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_21/บ้าน_เล็ก_2ชั้น_21_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_21_หน้า00_gridline.json",
+  "floor_level": "F2",
+  "view_title": "ผังโครงสร้างพื้นชั้นบน",
+  "scale": "1:75",
+  "views": [
+    "ผังโครงสร้างพื้นชั้นบน 1:75",
+    "ผังโครงหลังคา 1:75"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Upper-floor frame: B1 on row ค, B3 on rows ข and ก, B2 on grids 1 and 2 (four spans), all column-to-column; six C1 columns labeled at the grid intersections.",
+    "Stair-head landing south of row ก: a 1.20 × 1.20 box (S1) between line 1''''''' (2.40) and grid 2, framed by B3 (row ก), B2x (cantilever on grid 2, 1.20 past ก to ก'') and a beam labeled 'B3*' on line 1'''''''. The sheet's note reads 'หมายเหตุ B3* — ให้ฝังเหล็กเข้าไปในคาน B3 และ B2x เป็นระยะไม่น้อยกว่า 0.60 ม.' (anchor B3*'s bars ≥ 0.60 m into B3 and into B2x). Since it anchors into B2x, B3* must reach B2x: it is read as an L running down line 1''''''' from B3 to ก'' and turning along ก'' to the tip of B2x. The turned leg along ก'' carries no label of its own — assigned to B3* from the note, at lower confidence.",
+    "'B3*' is kept exactly as printed (§0.3); the star is the drawing's note marker. S-05 has no B3* section, so no spec is joined to it — it is not assumed to equal B3.",
+    "Slab S1 covers all three upper bays: ห้องนอน (+2.50), เอนกประสงค์ (+2.40 per A-04/A-07 — 0.10 lower than the bedroom, same mark) and the stair-head landing box.",
+    "บันได ดูแบบสถาปัตย์ — the wooden stair (x 0 … 2.40 below row ก) is architectural and not an element here."
+  ],
+  "elements": [
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค1",
+      "grid_ref_end": "ข1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ค1",
+      "grid_ref_end": "ค2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค2",
+      "grid_ref_end": "ข2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ข1",
+      "grid_ref_end": "ก1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "ข1",
+      "grid_ref_end": "ข2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ข2",
+      "grid_ref_end": "ก2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "ก1",
+      "grid_ref_end": "ก2",
+      "span_length_m": 3.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3*",
+      "element_type": "beam",
+      "grid_ref_start": "ก1'''''''",
+      "grid_ref_end": "ก''1'''''''",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "note": "ฝังเหล็กเข้าคาน B3 ≥ 0.60 ม. (หมายเหตุบนแผ่น)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)"
+      ]
+    },
+    {
+      "element_id": "B2x",
+      "element_type": "beam",
+      "grid_ref_start": "ก2",
+      "grid_ref_end": "ก''2",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "note": "cantilever past column ก2 (S-05 elevation: B2 3.00 + B2x 1.20)",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "B3*",
+      "element_type": "beam",
+      "grid_ref_start": "ก''1'''''''",
+      "grid_ref_end": "ก''2",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "note": "turned leg along ก'' to the B2x tip; anchors ≥ 0.60 ม. into B2x per the note",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "segment_unlabeled_mark_inferred_from_note",
+        "bears_on_beam:B2x(end)"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "ค1",
+        "ค2",
+        "ข1",
+        "ข2",
+        "ก1",
+        "ก2"
+      ],
+      "note": "C1 printed at all six main-grid intersections on this plan",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "ค-ข x 1-2",
+        "ข-ก x 1-2",
+        "ก-ก'' x 1'''''''-2"
+      ],
+      "note": "ห้องนอน / เอนกประสงค์ / stair-head landing",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "scope": "pass2_only",
+  "op": "op04",
+  "date": "2026-10-04",
+  "house_design": "บ้านผู้ประสบภัย 2 (บ้าน 2 ชั้น ใต้ถุนสูง 43.50 ตร.ม.) — โครงการแบบอาคารเพื่อประชาชน 'ไทยช่วยไทย', กรมโยธาธิการและผังเมือง, เลขที่แบบ ม.บ. 462098 ลงวันที่ 21 พ.ย. 2546; ดาวน์โหลดจาก office.dpt.go.th (house01 id 13242) 2026-10-04 — ตรวจซ้ำกับคลังด้วยลายนิ้วมือหน้า (fp_index.py) แล้วไม่ซ้ำ; ตระกูล 'บ้านผู้ประสบภัย' มีในคลังแล้วหนึ่งหลัง (06บ้าน_ใหญ่_1ชั้น_01 = บ้านผู้ประสบภัย ๓) แต่เป็นคนละแบบ; ไม่ใช่ตระกูลของบ้านทดสอบ t07 (ประหยัด 13226/13244, ไทยเป็นสุข 13250) และไม่ใช่บ้านสาธิตวันงาน (ไทยเป็นสุข 2) — เลือกแบบนี้แทน 13245 (บ้านแบบประหยัด ๓) เพื่อไม่ให้ตระกูลเดียวกับบ้านทดสอบรั่วเข้าชุดเทรน",
+  "subtasks_done": [
+    "gridline",
+    "plan_footing",
+    "plan_beam",
+    "section",
+    "schedule",
+    "notes"
+  ],
+  "subtasks_absent_from_this_house": [
+    "plan_column (no column-plan sheet — the six C1 columns are markers on S-01 ('F..,C1') and S-02; spec is the แปลนขยาย C1 on S-03/S-04, no column schedule table)",
+    "plan_slab (no slab-plan sheet — slab marks S0/S1/S2/S3 are markers inside the combined plans S-01/S-02)",
+    "soil_boring_log (standard DPT catalog design, no site-specific soil sheet)",
+    "material_list (this 18-page set has no BOQ pages: A-01..A-10, S-01..S-05, sanitary, electrical)"
+  ],
+  "deliberately_skipped": [
+    "index",
+    "site_plan",
+    "side_profile",
+    "title",
+    "symbol",
+    "roof_plan",
+    "misc",
+    "bbs_schedule"
+  ],
+  "pages_extracted": 6,
+  "pages_in_house": 18,
+  "note": "Pass 2 subtasks only — this house is NOT fully extracted. Skipped pages were skipped on purpose (tune_ai/t03/dataset_sizing.md), not missed. All 5 structural sheets (S-01..S-05, PDF pages 12-16) were read in full and extracted, plus A-10 (page 11, door/window details) as the schedule. A-04, A-05, A-06, A-07, A-08 (pages 5-9) and A-09 (page 10) were additionally READ, not extracted as files, to dimension-sweep the grid master (source_image recorded per entry in หน้า00_gridline.json). The source PDF is a raster scan (structural pages 1667×1250 px); PNGs were rendered at 200 dpi like every other house, so they are upscaled, not sharper."
+}

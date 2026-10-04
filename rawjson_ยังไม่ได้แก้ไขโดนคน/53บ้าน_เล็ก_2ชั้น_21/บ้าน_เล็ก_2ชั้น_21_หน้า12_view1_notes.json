@@ -1,0 +1,94 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก,เสา,คาน และพื้น ชั้นล่าง",
+  "pattern": "notes",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_21/บ้าน_เล็ก_2ชั้น_21_หน้า12.png",
+  "view_title": "รายการประกอบแบบโครงสร้าง",
+  "views": [
+    "รายการประกอบแบบโครงสร้าง",
+    "ผังฐานราก,เสา,คานคอดิน และพื้นชั้นใต้ถุน (แบบตอกเข็ม) 1:75",
+    "ผังฐานราก,เสา,คานคอดิน และพื้นชั้นใต้ถุน (แบบฐานแผ่) 1:75"
+  ],
+  "confidence_score": 0.93,
+  "confidence_flags": [],
+  "warnings": [
+    "This sheet prints only round bar: 'ให้ใช้เหล็กเส้นกลม SR-24 (fy=2400 ksc.)' for all reinforcement, and no deformed bar at all. So the flat fy_main_ksc follows the sheet (2400, round bar) instead of the deformed-bar convention, and steel.deformed_bar is absent rather than defaulted (§4a 'follow the sheet and flag it'). This also means every ø callout on S-02..S-05 (ø6 … ø15) is genuinely RB, with none of the RB-vs-SD40 conflict seen on houses 14/17.",
+    "Concrete is ค.1 at fc' 150 ksc (cylinder) — lower than the ค.3/210 ksc of most houses in the set. Recorded as printed.",
+    "No concrete cover is printed anywhere on S-01..S-05; cover.default_mm and cover_mm are null (a real gap in this drawing set, not a convention-based default).",
+    "The reference standard is printed with the old abbreviation 'มยธ.101-106' (pre-กรมโยธาธิการและผังเมือง naming); kept verbatim."
+  ],
+  "sections": [
+    {
+      "heading": "รายการประกอบแบบโครงสร้าง",
+      "items": [
+        "ให้ใช้ มยธ.101-106 เป็นรายการประกอบแบบและมีรายการเฉพาะแบบ ดังนี้"
+      ]
+    },
+    {
+      "heading": "1.",
+      "items": [
+        "คอนกรีตให้ใช้ ค.1 (fc'ทรงกระบอก=150 ksc.)"
+      ]
+    },
+    {
+      "heading": "2.",
+      "items": [
+        "เหล็กเสริมคอนกรีต ให้ใช้เหล็กเส้นกลม SR-24 (fy=2400 ksc.)"
+      ]
+    },
+    {
+      "heading": "3. ฐานราก",
+      "items": [
+        "3.1 ในกรณีที่ดินบริเวณก่อสร้าง รับน้ำหนักปลอดภัยได้ไม่น้อยกว่า 8 ตัน ต่อตารางเมตร ให้ใช้ฐานรากแผ่",
+        "3.2 ในกรณีที่ดินบริเวณก่อสร้าง รับน้ำหนักปลอดภัยได้น้อยกว่า 8 ตัน ต่อตารางเมตร ให้ใช้ฐานรากแบบตอกเข็ม และหากใช้ฐานรากแบบตอกเข็ม เสาเข็มที่จะนำมาใช้จะต้องมีคุณสมบัติ ดังต่อไปนี้",
+        "3.2.1 เป็นเสาเข็มหกเหลี่ยมกลวง ขนาด 0.15x0.15 เมตร มีความยาว 6.00 เมตร",
+        "3.2.2 รับน้ำหนักปลอดภัยได้ไม่น้อยกว่า 1.7 ตัน ต่อต้น"
+      ]
+    },
+    {
+      "heading": "4.",
+      "items": [
+        "รายละเอียดหรือคุณลักษณะของวัสดุ หรืออุปกรณ์ในแบบ หรือในรายการประกอบแบบ ทั้งที่ระบุหรือมิได้ระบุไว้ หากมีการกำหนดมาตรฐานผลิตภัณฑ์อุตสาหกรรมแล้ว ให้เป็นไปตามมาตรฐานนั้น"
+      ]
+    }
+  ],
+  "notes": {
+    "reference_standard": "มยธ.101-106",
+    "concrete": {
+      "grade_label": "ค.1",
+      "fc_ksc": 150,
+      "printed_as": "คอนกรีตให้ใช้ ค.1 (fc'ทรงกระบอก=150 ksc.)"
+    },
+    "steel": {
+      "round_bar": {
+        "notation": "RB",
+        "grade": "SR-24",
+        "fy_ksc": 2400,
+        "applies_to_dia_mm": "all",
+        "printed_as": "เหล็กเสริมคอนกรีต ให้ใช้เหล็กเส้นกลม SR-24 (fy=2400 ksc.)"
+      }
+    },
+    "cover": {
+      "default_mm": null,
+      "by_condition": []
+    },
+    "foundation_selection": {
+      "spread_footing_if_soil_safe_bearing_t_per_m2_at_least": 8,
+      "pile_footing_if_soil_safe_bearing_t_per_m2_below": 8
+    },
+    "pile": {
+      "type": "เสาเข็มหกเหลี่ยมกลวง",
+      "size_mm": 150,
+      "size_printed_as": "0.15x0.15 เมตร",
+      "length_m": 6.0,
+      "safe_load_t_per_pile": 1.7
+    },
+    "fc_ksc": 150,
+    "fy_main_ksc": 2400,
+    "fy_stirrup_ksc": 2400,
+    "cover_mm": null
+  }
+}
