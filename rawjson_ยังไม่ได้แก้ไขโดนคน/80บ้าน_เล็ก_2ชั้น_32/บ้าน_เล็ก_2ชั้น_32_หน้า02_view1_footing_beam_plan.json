@@ -1,0 +1,171 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "บ้านพักครู แบบ สปช. 301-26",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_32/บ้าน_เล็ก_2ชั้น_32_หน้า02.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_32_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานรากและคานคอดิน",
+  "scale": "1:100",
+  "views": [
+    "แปลนฐานรากและคานคอดิน 1:100",
+    "แปลนคาน ตง 1:100",
+    "แปลนโครงหลังคา 1:100",
+    "รูปตัดคาน G1-B1, G2, G3, B2, B1', B3, B4",
+    "C-F 1:20",
+    "S1 1:10"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Each column point is lettered 'CF' (column + footing together — one combined mark); recorded as footing 'CF' and as column 'C' (assigned name — the C half of the combined mark) on the same points, so the two never share an id.",
+    "G3 runs 1.00 past row B on grids 1 and 2 (no footing at its end) and carries the rear G1 beside the septic tank — recorded as cantilevers.",
+    "The septic tank and soak pit circles ('บ่อเกรอะ-บ่อซึม ดูแบบขยาย') are sanitary items, not recorded."
+  ],
+  "elements": [
+    {
+      "element_id": "CF",
+      "element_type": "footing",
+      "count": 6,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "confidence_score": 0.84,
+      "confidence_flags": [],
+      "element_name_assigned": true,
+      "note": "ตัว C ของป้ายรวม CF — เสา 0.15x0.15"
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.9,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.9,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.9,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B'1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B'2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:G3(start)",
+        "bears_on_beam:G3(end)"
+      ]
+    }
+  ]
+}

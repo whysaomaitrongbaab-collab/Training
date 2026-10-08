@@ -1,0 +1,87 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "architectural",
+  "sheet_code": "A-09",
+  "sheet_name": "ขยายประตู-หน้าต่าง",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_18/บ้าน_เล็ก_1ชั้น_18_หน้า10.png",
+  "view_title": "แบบขยายประตู (ป1, ป2) + แบบขยายหน้าต่าง (น1, น2)",
+  "scale": "1:50",
+  "views": [
+    "แบบขยายประตู 1:50",
+    "แบบขยายหน้าต่าง 1:50",
+    "แบบขยายราวระเบียง 1:25"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [
+    "this_is_a_TYPE_schedule_not_an_as-built_count_-_count_left_null_deliberately"
+  ],
+  "warnings": [
+    "Marks kept as printed (ป/น prefixes keep doors and windows apart, §0.3).",
+    "น1: the note says 'หน้าต่างไม้บานเปิด 1.20x1.20 ม.' but the drawing is dimensioned 0.90 wide × 1.20 tall. Kept the drawn width (0.90) as width_m and the note verbatim in printed_as; flagged.",
+    "น2 is a 2.80 m ventilation strip of bamboo slats (ไม้ไผ่) in a timber frame above 2.00 m, not an opening window. The railing view (แบบขยายราวระเบียง) is outside op04 schedule scope and not extracted."
+  ],
+  "elements": [
+    {
+      "element_id": "ป1",
+      "element_type": "door",
+      "opening_type": "ประตูบานเปิดเดี่ยว",
+      "leaf_material": "ประตูไม้อัดยาง",
+      "frame": "วงกบไม้ 2\"x4\"",
+      "hardware": "ติดบานพับ 3 อัน/บาน, ติดกลอนภายใน",
+      "width_m": 0.8,
+      "height_m": 2.0,
+      "printed_as": "ประตูไม้อัดยาง 0.80x2.00 ม.",
+      "count": null,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ป2",
+      "element_type": "door",
+      "opening_type": "ประตูบานเปิดเดี่ยว",
+      "leaf_material": "ประตูไม้อัดยางกันน้ำ",
+      "frame": "วงกบไม้ 2\"x4\"",
+      "hardware": "ติดบานพับ 3 อัน/บาน, ติดกลอนภายใน",
+      "width_m": 0.7,
+      "height_m": 2.0,
+      "printed_as": "ประตูไม้อัดยางกันน้ำ 0.70x2.00 ม.",
+      "count": null,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "น1",
+      "element_type": "window",
+      "opening_type": "หน้าต่างไม้บานเปิด",
+      "leaf_material": "หน้าต่างไม้",
+      "frame": "วงกบไม้ 2\"x4\"",
+      "hardware": "ติดบานพับบน 2 อัน, ติดกลอนภายใน 2 ข้าง",
+      "width_m": 0.9,
+      "height_m": 1.2,
+      "sill_height_m": 0.8,
+      "printed_as": "หน้าต่างไม้บานเปิด 1.20x1.20 ม. (drawing dimensioned 0.90 wide)",
+      "count": null,
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "note_size_1.20x1.20_conflicts_with_drawn_width_0.90"
+      ]
+    },
+    {
+      "element_id": "น2",
+      "element_type": "window",
+      "opening_type": "ช่องระบายอากาศไม้ไผ่ในวงกบไม้",
+      "frame": "วงกบไม้ 2\"x4\", ไม้ 1\"x1\"",
+      "leaf_material": "ไม้ไผ่ ø ไม่น้อยกว่า 2\" ระยะห่าง 0.10 ม.",
+      "width_m": 2.8,
+      "width_breakdown": "0.10 + 2.80 + 0.10 = 3.00 ระหว่างเสา",
+      "height_m": 0.6,
+      "sill_height_m": 2.0,
+      "height_printed_as": "0.60, ล่าง 2.00, รวม 2.60 จากระดับพื้น",
+      "count": null,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}
