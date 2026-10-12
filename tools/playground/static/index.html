@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destrier Lab Playground — Blueprint AI Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Global Top Bar -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-badge">⚡ Destrier Lab</div>
+      <div class="brand-sub">Blueprint AI White-Box Diagnostic Studio</div>
+    </div>
+
+    <!-- Active Endpoint Configuration -->
+    <div class="endpoint-bar">
+      <div class="input-group">
+        <label for="endpoint-url">GPU / API Endpoint</label>
+        <input type="text" id="endpoint-url" value="http://localhost:8000/v1" placeholder="http://ip:8000/v1">
+      </div>
+      <div class="input-group">
+        <label for="endpoint-model">Model ID</label>
+        <input type="text" id="endpoint-model" value="purson" placeholder="purson or qwen-vl-max">
+      </div>
+      <div class="input-group">
+        <label for="endpoint-key">API Key (Optional)</label>
+        <input type="password" id="endpoint-key" placeholder="Bearer token...">
+      </div>
+      <button id="btn-test-endpoint" class="btn btn-secondary">
+        <span class="icon">🔌</span> Ping Endpoint
+      </button>
+      <div id="endpoint-status" class="status-badge status-disconnected">
+        Disconnected
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tabs-nav">
+    <button class="tab-btn active" data-tab="tab-pipeline">
+      <span class="tab-icon">🔄</span> End-to-End Pipeline
+    </button>
+    <button class="tab-btn" data-tab="tab-prompt-opt">
+      <span class="tab-icon">🎯</span> Prompt Optimizer Lab
+    </button>
+    <button class="tab-btn" data-tab="tab-cv-inspector">
+      <span class="tab-icon">👁️</span> CV & Crop Inspector (P1 & 1.5)
+    </button>
+    <button class="tab-btn" data-tab="tab-spatial-ruler">
+      <span class="tab-icon">📏</span> Spatial Calibration (Pass 3)
+    </button>
+    <button class="tab-btn" data-tab="tab-architecture">
+      <span class="tab-icon">📚</span> Architecture & Logic Guide
+    </button>
+  </nav>
+
+  <!-- Document & Page Selector Ribbon -->
+  <section class="doc-ribbon">
+    <div class="ribbon-item">
+      <label for="select-house">🏠 เลือกโครงการบ้าน (House):</label>
+      <select id="select-house">
+        <option value="">กำลังโหลดรายชื่อบ้าน...</option>
+      </select>
+    </div>
+    <div class="ribbon-item">
+      <label for="select-page">📄 เลือกหน้าแบบ (Page):</label>
+      <select id="select-page">
+        <option value="">เลือกบ้านก่อน</option>
+      </select>
+    </div>
+    <div class="ribbon-actions">
+      <span id="page-metadata" class="meta-tag">0 หน้า</span>
+      <button id="btn-reload-house" class="btn btn-sm btn-outline">🔄 รีเฟรช</button>
+    </div>
+  </section>
+
+  <!-- Main Content Areas -->
+  <main class="content-container">
+
+    <!-- TAB 1: END-TO-END PIPELINE STEPPER -->
+    <section id="tab-pipeline" class="tab-pane active">
+      <!-- Logic Explainer Box -->
+      <div class="logic-box">
+        <div class="logic-header" onclick="toggleLogic(this)">
+          <div class="logic-title">
+            <span class="logic-icon">💡</span> 
+            <strong>Logic Blueprint: End-to-End Multi-Pass Architecture</strong>
+          </div>
+          <span class="logic-toggle-icon">▼</span>
+        </div>
+        <div class="logic-content">
+          <div class="logic-grid">
+            <div class="logic-card">
+              <h4>🎯 สิ่งที่กระบวนการนี้ทำ (What it does)</h4>
+              <p>ถอดแบบก่อสร้างสถาปัตย์-วิศวกรรมไทยแบบ Multi-Pass ทีละสเต็ป โดยนำภาพมาจำแนกประเภทหน้า (Pass 0) $\rightarrow$ ครอปรูปแยกมุมมอง (Pass 1) $\rightarrow$ สแกนสัญลักษณ์ด้วย CV (Pass 1.5) $\rightarrow$ ดึงผังกริด (Pass 2 Grid) $\rightarrow$ สกัดชิ้นส่วนคาน/ฐานราก/เหล็กเสริม (Pass 2 Subtasks) $\rightarrow$ เทียบสเกลจริง (Pass 3)</p>
+            </div>
+            <div class="logic-card">
+              <h4>⚙️ ทำไมต้องแยกหลาย Pass (Why Multi-Pass)</h4>
+              <p>แบบแปลน 1 หน้ามีความหนาแน่นของข้อมูลสูงมาก ถ้าสั่งให้ AI ดึงทุกอย่างในครั้งเดียว (Zero-Shot) จะเกิดอาการหลอน (Hallucination) และสับสนพิกัด การแยกให้ AI รู้ผังกริด (GRID MASTER) ก่อน จะทำให้การระบุตำแหน่งคานแม่นยำขึ้นกว่า 80%</p>
+            </div>
+            <div class="logic-card">
+              <h4>⚠️ กับดักที่เคยพัง (Known Traps)</h4>
+              <p>1. <strong>Temperature 0 (Greedy) พัง</strong>: หลุดภาษาจีนและวนลูปจนชนเพดาน Token (ต้องใช้ 0.7)<br>
+                 2. <strong>Token Limit ชนเพดาน</strong>: ต้องเปิดใช้ Salvage Logic เพื่อกู้ชิ้นส่วนที่ตัดกลางคัน<br>
+                 3. <strong>Negative Dimension</strong>: ตัวเลขขนาดติดลบต้องถูกล้างทิ้ง</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stepper-controls-bar">
+        <div class="step-chips">
+          <button class="step-chip active" data-step="0">0. Pass 0: Classifier</button>
+          <button class="step-chip" data-step="1">1. Pass 1 & 1.5: Crop/CV</button>
+          <button class="step-chip" data-step="2">2. Pass 2: Grid Master</button>
+          <button class="step-chip" data-step="3">3. Pass 2: Subtasks</button>
+          <button class="step-chip" data-step="4">4. Pass 3: Calibration</button>
+        </div>
+        <div class="stepper-actions">
+          <button id="btn-run-current-step" class="btn btn-primary">▶ รันสเต็ปนี้ (Run Step)</button>
+          <button id="btn-run-all-steps" class="btn btn-secondary">⏩ รันต่อเนื่อง (Auto Run)</button>
+        </div>
+      </div>
+
+      <!-- Split Viewer Layout -->
+      <div class="split-view">
+        <!-- Left: Visual Blueprint Canvas -->
+        <div class="viewer-pane">
+          <div class="pane-header">
+            <span>🖼️ ภาพแบบแปลน (Blueprint Canvas)</span>
+            <div class="canvas-toggles">
+              <label><input type="checkbox" id="chk-overlay-crop" checked> Crop</label>
+              <label><input type="checkbox" id="chk-overlay-cv" checked> CV Boxes</label>
+              <label><input type="checkbox" id="chk-overlay-grid" checked> Grid Axis</label>
+            </div>
+          </div>
+          <div class="canvas-viewport" id="canvas-viewport">
+            <div class="canvas-stage" id="canvas-stage">
+              <img id="blueprint-img" src="" alt="เลือกหน้าแบบเพื่อแสดงภาพ">
+              <canvas id="overlay-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Inspector & Step Outputs -->
+        <div class="inspector-pane">
+          <div class="pane-header">
+            <span>📊 ข้อมูลผลลัพธ์ของสเต็ป (Step Output Data)</span>
+            <span id="step-timer" class="badge">0.0s</span>
+          </div>
+
+          <div class="inspector-content">
+            <!-- Dynamic Step Result Card -->
+            <div id="step-result-card" class="result-card">
+              <div class="placeholder-text">
+                กดปุ่ม <strong>[▶ รันสเต็ปนี้]</strong> เพื่อเริ่มต้นรันกระบวนการจำลอง
+              </div>
+            </div>
+
+            <!-- Defensive Interception Badges -->
+            <div id="defensive-badges" class="defensive-section hidden">
+              <h5>🛡️ Defensive Interceptor Status</h5>
+              <div class="badge-list" id="badge-list"></div>
+            </div>
+
+            <!-- Raw JSON Output Collapsible -->
+            <details class="json-details">
+              <summary>📄 ดู Raw JSON / Parsed Document</summary>
+              <pre id="json-viewer">{}</pre>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PROMPT OPTIMIZATION LAB -->
+    <section id="tab-prompt-opt" class="tab-pane">
+      <!-- Logic Explainer Box -->
+      <div class="logic-box">
+        <div class="logic-header" onclick="toggleLogic(this)">
+          <div class="logic-title">
+            <span class="logic-icon">💡</span> 
+            <strong>Logic Blueprint: Prompt Assembly & Format Optimization</strong>
+          </div>
+          <span class="logic-toggle-icon">▼</span>
+        </div>
+        <div class="logic-content">
+          <div class="logic-grid">
+            <div class="logic-card">
+              <h4>🎯 การประกอบ Prompt (Assembly Rule)</h4>
+              <p>Prompt ที่โมเดลเห็นถูกประกอบด้วย 3 ส่วนหลักแบบ Byte-identical: <br>
+              1. <code>COMMON BLOCK</code>: กฎร่วม สัจธรรมเรื่องหน่วย ห้ามเดา<br>
+              2. <code>PROMPT BLOCK</code>: นิยามฟิลด์ JSON ของ Subtask นั้น ๆ<br>
+              3. <code>GRID MASTER TAIL</code>: แกน X, Y ที่อ่านได้ นำมาปะท้ายเพื่อให้โมเดลผูกช่วงคาน</p>
+            </div>
+            <div class="logic-card">
+              <h4>📐 สัญญาข้อมูล (Output Contract)</h4>
+              <p>Constistant Adapter รับเฉพาะฟิลด์ตามข้อตกลง <code>finetune_output_contract</code> เท่านั้น ถ้า AI ตอบผิดรูปทรง เช่น ไม่มี <code>grid_ref_start/end</code> คานตัวนั้นจะกลายเป็น 0 ใน BOQ ทันที</p>
+            </div>
+            <div class="logic-card">
+              <h4>🧪 การทดสอบ A/B Testing</h4>
+              <p>สามารถแก้คำอธิบาย Prompt ในหน้านี้แล้วยิงเปรียบเทียบดูความเร็ว (Tokens/sec), ความสอดคล้องกับ Contract และการตัดแบ่งชิ้นส่วนได้แบบ Real-time</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-lab-container">
+        <!-- Prompt Editor Panel -->
+        <div class="prompt-editor-card">
+          <div class="card-header">
+            <span>📝 Prompt Configuration</span>
+            <div class="header-controls">
+              <label for="select-subtask">Subtask:</label>
+              <select id="select-subtask">
+                <option value="plan_beam">plan_beam (แปลนคาน)</option>
+                <option value="plan_footing">plan_footing (แปลนฐานราก)</option>
+                <option value="gridline">gridline (ผังกริด)</option>
+                <option value="section">section (รูปตัด/แบบขยาย)</option>
+                <option value="schedule">schedule (ตารางเหล็ก)</option>
+                <option value="notes">notes (รายการประกอบแบบ)</option>
+                <option value="pass0">pass0 (จำแนกหน้า)</option>
+              </select>
+              <button id="btn-load-preset" class="btn btn-sm btn-outline">โหลดแม่แบบเดิม</button>
+            </div>
+          </div>
+
+          <!-- Variable Injection Toggles -->
+          <div class="injection-toggles">
+            <label><input type="checkbox" id="chk-inc-common" checked> แนบ Common Rules</label>
+            <label><input type="checkbox" id="chk-inc-grid" checked> จำลอง GRID MASTER Tail</label>
+            <label><input type="checkbox" id="chk-inc-cv" checked> จำลอง CV Hint</label>
+            <label><input type="checkbox" id="chk-enable-thinking"> ปิด Thinking (CoT)</label>
+          </div>
+
+          <!-- Prompt Parameters -->
+          <div class="param-grid">
+            <div class="param-item">
+              <label>Temperature: <span id="val-temp">0.7</span></label>
+              <input type="range" id="param-temp" min="0" max="1.0" step="0.05" value="0.7">
+            </div>
+            <div class="param-item">
+              <label>Top P: <span id="val-topp">0.8</span></label>
+              <input type="range" id="param-topp" min="0.1" max="1.0" step="0.05" value="0.8">
+            </div>
+            <div class="param-item">
+              <label>Max Tokens: <span id="val-max-tokens">6000</span></label>
+              <input type="number" id="param-max-tokens" value="6000" step="500">
+            </div>
+          </div>
+
+          <!-- Prompt Text Area -->
+          <textarea id="prompt-editor-text" class="code-editor" rows="16" placeholder="พิมพ์หรือปรับแต่ง Prompt ที่นี่..."></textarea>
+
+          <div class="card-footer">
+            <button id="btn-assemble-preview" class="btn btn-secondary">🔍 ตรวจสอบ Prompt เต็ม</button>
+            <button id="btn-run-prompt-test" class="btn btn-primary">🚀 ยิงทดสอบกับหน้านี้ (Run AI)</button>
+          </div>
+        </div>
+
+        <!-- Prompt Evaluation & Contract Checker -->
+        <div class="prompt-eval-card">
+          <div class="card-header">
+            <span>📊 ผลการทดสอบ & Contract Validation</span>
+            <div id="eval-metrics" class="metrics-row">
+              <span class="metric">Tokens: <strong id="metric-tokens">-</strong></span>
+              <span class="metric">Speed: <strong id="metric-speed">- tok/s</strong></span>
+              <span class="metric">Time: <strong id="metric-time">- s</strong></span>
+            </div>
+          </div>
+
+          <!-- Contract Compliance Badge Area -->
+          <div id="contract-status-box" class="contract-status-box">
+            <div class="contract-banner">รอการยิงทดสอบ Prompt</div>
+          </div>
+
+          <!-- Response Viewer -->
+          <div class="eval-response-area">
+            <h4>Parsed Elements List:</h4>
+            <div id="eval-elements-container" class="elements-table-box">
+              <div class="placeholder-text">ยังไม่มีข้อมูลผลลัพธ์</div>
+            </div>
+
+            <h4>Raw Output:</h4>
+            <pre id="eval-raw-output" class="raw-box">// Raw response text will appear here...</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: CV & CROP INSPECTOR (P1 & 1.5) -->
+    <section id="tab-cv-inspector" class="tab-pane">
+      <div class="logic-box">
+        <div class="logic-header" onclick="toggleLogic(this)">
+          <div class="logic-title">
+            <span class="logic-icon">💡</span> 
+            <strong>Logic Blueprint: Pass 1 (Crop) & Pass 1.5 (CV Template Matcher)</strong>
+          </div>
+          <span class="logic-toggle-icon">▼</span>
+        </div>
+        <div class="logic-content">
+          <div class="logic-grid">
+            <div class="logic-card">
+              <h4>✂️ Pass 1: View Cropping (`organize.py`)</h4>
+              <p>ทำงานบน <strong>Local CPU (0 บาท)</strong> แยกแผ่นงานที่มีหลาย View เป็นรูปภาพย่อย เพื่อคุมความหนาแน่นของ Visual Token ให้ตรงกับขนาด 6912*1024 ที่โมเดลเคยเรียนมา</p>
+            </div>
+            <div class="logic-card">
+              <h4>🎯 Pass 1.5: Template Matching (`cv_scan.py`)</h4>
+              <p>ใช้ OpenCV MatchTemplate สแกนหาสัญลักษณ์ฐานราก/เสา/คาน เพื่อสร้างดัชนีกล่อง <code>#n</code> และส่ง Hint ไปช่วย AI ใน Pass 2 ถ้าหาไม่เจอจะ Fallback ให้ AI อ่านเอง</p>
+            </div>
+            <div class="logic-card">
+              <h4>🛡️ Fallback Rule (กฎความปลอดภัย)</h4>
+              <p>หากการตัดแบ่งหรือ CV ขัดข้อง ระบบจะไม่ทำให้ทั้งงานล่ม แต่จะสลับกลับไปส่งภาพเต็มหน้าเดิมให้ AI อ่านทันที (ไม่เดา ไม่ทิ้งงาน)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-lab-layout">
+        <div class="cv-controls-card">
+          <h3>เครื่องมือจำลอง CV Scan</h3>
+          <p>ทดสอบการสแกนหาสัญลักษณ์โครงสร้างบนหน้าปัจจุบันด้วย OpenCV</p>
+          <div class="btn-group">
+            <button id="btn-run-mock-cv" class="btn btn-primary">🔍 รัน CV Scan บนหน้านี้</button>
+            <button id="btn-show-cv-crops" class="btn btn-secondary">🖼️ ดูภาพมุมมองที่ถูกตัด (Crops)</button>
+          </div>
+          <div class="cv-summary-card" id="cv-summary-card">
+            <h4>ผลลัพธ์การสแกนสัญลักษณ์:</h4>
+            <div id="cv-counts-list">ยังไม่ได้สแกน</div>
+          </div>
+        </div>
+        <div class="cv-preview-card">
+          <h3>กล่องคำใบ้ CV Hint Text ที่จะถูกแนบเข้า Prompt:</h3>
+          <pre id="cv-hint-preview" class="hint-preview-box">-- ยังไม่มี Hint Text --</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: SPATIAL CALIBRATION & VECTOR RULER (P3) -->
+    <section id="tab-spatial-ruler" class="tab-pane">
+      <div class="logic-box">
+        <div class="logic-header" onclick="toggleLogic(this)">
+          <div class="logic-title">
+            <span class="logic-icon">💡</span> 
+            <strong>Logic Blueprint: Pass 3 (Spatial Measurement & Vector Ruler)</strong>
+          </div>
+          <span class="logic-toggle-icon">▼</span>
+        </div>
+        <div class="logic-content">
+          <div class="logic-grid">
+            <div class="logic-card">
+              <h4>📐 Pass 3: Fit พิกเซลต่อเมตร</h4>
+              <p>นำจุดหมุด (Grid Ref ที่ AI อ่านได้ + พิกัด CV Bounding Box) มาคำนวณ Fit หาอัตราส่วนพิกเซลต่อเมตร เพื่อตรวจสอบว่าขนาดตัวอาคารที่ AI ถอดได้ สอดคล้องกับพิกัดจริงหรือไม่</p>
+            </div>
+            <div class="logic-card">
+              <h4>📏 Vector Ruler จาก PDF</h4>
+              <p>สกัดเวกเตอร์เส้นตรงจากไฟล์ PDF โดยตรงเพื่อหาแนวเส้นกริด เป็นไม้บรรทัดบริสุทธิ์ที่รันได้โดยไม่ต้องพึ่งพา AI หรือ CV</p>
+            </div>
+            <div class="logic-card">
+              <h4>🛡️ D3 Rule: Report-Only</h4>
+              <p>Pass 3 ทำหน้าที่เป็น <strong>รายงานตรวจสอบอย่างเดียว (Report-Only)</strong> จะไม่มีการเขียนทับหรือแก้องค์ประกอบที่ AI สกัดได้ใน Pass 2 เด็ดขาด เพื่อป้องกันความคลาดเคลื่อนสะสม</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spatial-lab-layout">
+        <div class="spatial-card">
+          <h3>C2 Grid Validation & Health Checks</h3>
+          <p>ตรวจจับความผิดปกติของผังกริด เช่น ชื่อเส้นซ้ำ, ทิศทางแกนกลับด้าน หรือระยะสเกลผิดปกติ</p>
+          <div id="grid-health-report" class="health-report-box">
+            <div class="report-row report-ok">✅ ทิศทางแกน X-Y ถูกต้องตามระนาบ</div>
+            <div class="report-row report-ok">✅ ไม่มีชื่อเส้นกริดซ้ำซ้อน</div>
+            <div class="report-row report-info">ℹ️ สเกลเฉลี่ยประมาณ: ~150 - 200 px/เมตร</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: ARCHITECTURE & ENGINEERING GUIDE -->
+    <section id="tab-architecture" class="tab-pane">
+      <div class="guide-container">
+        <h2>📚 คู่มือสถาปัตยกรรมระบบ AI ถอดแบบก่อสร้าง (Destrier / Purson Architecture)</h2>
+        <p class="subtitle">สรุปประวัติศาสตร์ ลำดับการพัฒนา และบทเรียนที่พิสูจน์แล้วจากข้อมูลจริง</p>
+
+        <div class="timeline-section">
+          <h3>🧬 ลำดับวิวัฒนาการของโมเดล (Model Family Lineage)</h3>
+          <div class="timeline-cards">
+            <div class="t-card">
+              <h4>t01 / t02</h4>
+              <p>ทดลอง Qwen2-VL และ Qwen3.6 เริ่มต้นทำ Schema Contract และทดสอบ LoRA Adapter</p>
+            </div>
+            <div class="t-card">
+              <h4>t03 / t04_Purson</h4>
+              <p>ออกแบบระบบ Multi-Pass สกัดแยกผังกริดและแบ่ง Subtask (สร้างรากฐาน Prompts ทั้งหมด)</p>
+            </div>
+            <div class="t-card active-t">
+              <h4>t05_Destrier (Production ปัจจุบัน)</h4>
+              <p>เทรน Qwen3.6-35B-A3B ด้วย LoRA 4 Folds รวมด้วย Model Soup และเปิดเสิร์ฟด้วย vLLM/SGLang (เร็วขึ้น 57 เท่า)</p>
+            </div>
+            <div class="t-card next-t">
+              <h4>t07_Palfrey (Next Iteration)</h4>
+              <p>ล้าง Label ข้อมูลเทรน (ชื่อบ้านเทรน 938 $\rightarrow$ 0) ป้องกันอาการโมเดลหลอนวนลูป 9,000 token</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rules-section">
+          <h3>📌 กฎเหล็กทางวิศวกรรมที่ค้นพบ (Critical Engineering Rules)</h3>
+          <ul class="rule-list">
+            <li><strong>ห้ามใช้ Greedy (Temperature 0)</strong>: ทำให้ Qwen หลุดพ่นอักษรจีนและวนลูปจน Token ชนเพดาน ต้องใช้ Temperature 0.7 เสมอ</li>
+            <li><strong>ปิด Thinking (CoT)</strong>: ต้องส่ง <code>chat_template_kwargs: {"enable_thinking": False}</code> เสมอ ไม่เช่นนั้นความคิดในแท็ก <code>&lt;think&gt;</code> จะกินงบ Token จน JSON ขาดครึ่ง</li>
+            <li><strong>Salvage Truncated JSON</strong>: เมื่อ Token ชนเพดาน 6,000 อย่าโยนไฟล์ทิ้ง ให้ตัดย้อนกลับไปหาชิ้นส่วนสมบูรณ์ตัวสุดท้ายแล้วปิด Bracket แทน (กู้คืนได้หลายสิบชิ้นส่วน)</li>
+            <li><strong>GRID MASTER มาก่อนเสมอ</strong>: แปลนคานจะหาความยาวช่วงไม่ได้เลยถ้าไม่มีผังกริด ดังนั้น Pass 2 ต้องยิง Gridline ให้เสร็จก่อนแล้วส่งต่อให้ทุกแปลน</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>Destrier Lab Workbench v1.0.0 · Stecon Engineering AI</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
