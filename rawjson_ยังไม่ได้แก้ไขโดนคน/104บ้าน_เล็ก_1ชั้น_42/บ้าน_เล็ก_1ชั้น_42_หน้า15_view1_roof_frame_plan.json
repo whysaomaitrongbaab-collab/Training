@@ -1,0 +1,756 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_42/บ้าน_เล็ก_1ชั้น_42_หน้า15.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_42_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan — this file)",
+    "view2: TRUSS T1 1:75 (section)",
+    "view3: TRUSS T3 1:75 (section)"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel roof in three parts, read together with A-04/A-07/A-08: a main gable over grids 2-4 (ridge = T5 along grid 3, trusses T2 along x on rows A, B, D, eaves at A' -1.00, D' 8.00 and 4' 9.50); a left wing over grids 1-2 (ridge = T4 along y 3.50, trusses T3 along grids 1 and 2, eaves at 1' -1.00, A' and D'); two valleys (ตะเข้ราง) meet the T4 ridge on grid 3; and a porch roof over E2-E3 (truss T1 along row E, ridge on 2'' 4.00, eave at E' 9.50). Roofing หลังคามุงกระเบื้องซีแพคโมเนีย (not structural, not recorded).",
+    "Line styles from the sheet's หมายเหตุ legend; marks T1-T5 are printed on the plan. Where two styles look alike (T1 vs ตะเข้ราง, อกไก่ vs T5) the member was identified by its printed label and by the truss elevations (T2's อกไก่ callouts at 1.50 from each end = x 4.00 and 7.00; T5's length 9.00 = A' to D' on grid 3; T3's apex T4 at 3.50).",
+    "Trusses are split at the named grid lines they cross and at their overhang ends (top_chord_only); dummy lines that are only panel/load points on them (B' on T3, A''/C' on T3, 2''/3'' on T2) do not split them. Supports follow the elevations: T2 sits on T3 at its left end, T4 on T3 at grids 1 and 2 and on T5 at grid 3, T5 on the three T2 apexes.",
+    "อกไก่ 2C-150x50x20x3.2 members run along x 2'' (4.00, A' to E' — also the porch ridge), x 3'' (7.00, A' to D) and, on the left wing, along y A'' (2.00) and C' (5.00) from grid 1 to the valley at x ≈ 4.00. Lines 3'', A'' and C' are not printed on any plan chain (measured by proportion, see the grid master) — those segments carry line_position_scaled_from_grid and confidence 0.75.",
+    "Unmarked members (อกไก่, ตะเข้ราง, จันทัน, แป): element_id null with element_name_assigned (section 0.2). Valleys are diagonal — span_source unresolved, ends given as approximate refs. Rafter count 14 is counted from the drawn solid lines (truss top chords not counted); purlins are drawn only inside the two cut-away symbols, so their count is null.",
+    "The T1 top chord is drawn past both supports to x ≈ 1.50 and 6.50 (porch eave) but no dimension is printed for it, so no dummy line was made and only E2-E3 is recorded as a segment (the overhang is in the T1 note)."
+  ],
+  "elements": [
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'2''",
+      "grid_ref_end": "A2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'3''",
+      "grid_ref_end": "A3''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "line_position_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:T3(start)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A2''",
+      "grid_ref_end": "B2''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:T2(start)",
+        "bears_on_beam:T2(end)"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A3''",
+      "grid_ref_end": "B3''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "line_position_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A4'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A''2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "line_position_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''2''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "line_position_scaled_from_grid"
+      ],
+      "note": "ปลายขวาจบที่ตะเข้ราง (x ≈ 4.00)"
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:T3(start)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B2''",
+      "grid_ref_end": "C2''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:T2(start)"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B3''",
+      "grid_ref_end": "C3''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "line_position_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B4'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "B'1'",
+      "grid_ref_end": "B'1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่น 1.00 ม. ทางซ้ายถึงชายคาจั่ว (รูป TRUSS T4 พิมพ์ 1.00; แปลน S-04 พิมพ์ 1' ที่ -1.00)"
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:T3(start)",
+        "bears_on_beam:T3(end)"
+      ]
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "B'2",
+      "grid_ref_end": "B'3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:T5(end)",
+        "top_chord_only"
+      ],
+      "note": "ช่วงนี้มีเฉพาะสมาชิกบน (อกไก่) ไปแขวนที่ T5 — รูป TRUSS T4"
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "B'3",
+      "grid_ref_end": "~A'1''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "element_name_assigned": "ตะเข้ราง",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้ราง  C-150x50x20x3.2 mm."
+      },
+      "note": "ตะเข้รางเส้นบน: แนวทแยง 45° จากจุดตัดสันที่กริด 3 / y 3.50 ขึ้นไปทางซ้าย ปลายประมาณ x 1.50, y -0.55 (วัดจากรูป) — แนวทแยงจึงไม่คำนวณช่วง",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "B'3",
+      "grid_ref_end": "~D'1''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "element_name_assigned": "ตะเข้ราง",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้ราง  C-150x50x20x3.2 mm."
+      },
+      "note": "ตะเข้รางเส้นล่าง: แนวทแยง 45° จากจุดตัดสันที่กริด 3 / y 3.50 ลงไปทางซ้าย ปลายประมาณ x 1.50, y 7.50 (วัดจากรูป)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C2''",
+      "grid_ref_end": "D2''",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:T2(end)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C3''",
+      "grid_ref_end": "D3''",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "line_position_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C'1",
+      "grid_ref_end": "C'2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "line_position_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C'2",
+      "grid_ref_end": "C'2''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "line_position_scaled_from_grid"
+      ],
+      "note": "ปลายขวาจบที่ตะเข้ราง (x ≈ 4.00)"
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D'1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D'2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:T3(start)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "D2''",
+      "grid_ref_end": "E2''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "สันหลังคาคลุมทางเข้า"
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D'3",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "D4'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ],
+      "note": "ส่วนยื่นคอร์ดบน 1.00 ม. ถึงชายคา (โซ่มิติ 1.00 บนแปลน S-04)"
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": [],
+      "note": "โครงถักหลังคาคลุมทางเข้า; คอร์ดบนยื่นเลยเสาข้างละประมาณ 1.00 (เส้นบนแปลนลากถึง x ≈ 1.50 และ 6.50) แต่ไม่มีระยะพิมพ์ จึงไม่สร้างกริดย่อย"
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "E2''",
+      "grid_ref_end": "E'2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "note": "สันหลังคาคลุมทางเข้า"
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000,
+      "count": 14,
+      "grid_refs": [
+        "A'-E' x 1'-4'"
+      ],
+      "note": "เส้นทึบที่วาดบนแปลน: หลังคาใหญ่ 9 เส้นตามแนว x (y ≈ -1.00, 0.82, 1.66, 3.40, 4.29, 5.20, 6.10, 8.00 จากตะเข้ราง/x 1.50 ถึงชายคา 4' และ y 9.50 ชายคาหลังคาคลุมทางเข้า x 1.50-6.50) + ปีกซ้าย 5 เส้นตามแนว y (x ≈ -1.00, 0.85, 1.69 ยาวเต็ม และ 3.52, 4.50 สั้นระหว่างตะเข้ราง); ไม่นับคอร์ดบนของ T2/T3/T4/T5 ที่ทำหน้าที่จันทันด้วย; ระยะที่วาดจริง ≈0.85-0.95 ม. แม้พิมพ์ @1.00 ม.",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "เหล็กกล่อง",
+        "d_mm": 25,
+        "b_mm": 25,
+        "t_mm": 1.6,
+        "printed_as": "แป เหล็กกล่อง-25x25x1.6 mm. @0.32-0.34 m. (น้ำหนัก 1.12 กก./ม.) หรือ แป ชุบกัลวาไนท์ ตราช้าง หนา 7 มม. @0.32-0.34 m."
+      },
+      "spacing_mm": 320,
+      "variable_spacing": true,
+      "spacing_printed_as": "@0.32-0.34 m.",
+      "count": null,
+      "grid_refs": [
+        "A'-E' x 1'-4'"
+      ],
+      "note": "แปวางบนจันทันขวางทิศจันทัน; วาดเส้นประเฉพาะในช่องตัดแสดง 2 จุดด้านซ้าย จึงไม่นับจำนวน; ทางเลือกตามป้าย: แปชุบกัลวาไนท์ ตราช้าง หนา 7 มม. ระยะเท่ากัน",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_drawn"
+      ]
+    }
+  ]
+}

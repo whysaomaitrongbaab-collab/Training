@@ -1,0 +1,129 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา ระดับ +4.29",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_42/บ้าน_เล็ก_1ชั้น_42_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_42_หน้า00_gridline.json",
+  "view_title": "TRUSS T2, TRUSS T4, TRUSS T5",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา ระดับ +4.29 1:75 (beam_plan, separate file)",
+    "view2: TRUSS T2 1:75 (this file)",
+    "view3: TRUSS T4 1:75 (this file)",
+    "view4: TRUSS T5 1:75 (this file)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Three truss elevations on one sheet, recorded in one section file (each is one element). steel_section is the web/chord section the callout leaders point at; the other printed member sizes on each truss are kept verbatim in other_members_printed_as (the leaders, not a table, give the roles — flagged).",
+    "The panel chains print no grid markers; they are in the grid master as floating chains. Supports are read from the post labels (T3 under T2's left end, T3 under T4, T2 under T5) and match the plan positions on S-04.",
+    "Heights printed: T2 1.89, T4 1.00, T5 1.00."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "2C-100x50x20x3.2 mm."
+      },
+      "height_mm": 1890,
+      "height_mm_printed_as": "1.89",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "2",
+        "3",
+        "4"
+      ],
+      "panel_lengths_printed_as": "0.75 x 8 = 6.00",
+      "other_members_printed_as": [
+        "อกไก่ 2C-150x50x20x3.2 mm. (2 จุดบนคอร์ดบน 1.50 จากปลายแต่ละข้าง)",
+        "อะเส 2C-150x50x20x3.2 mm. (คอร์ดล่าง)"
+      ],
+      "note": "โครงถักหลักของหลังคาจั่วใหญ่ (สันตามแนว y บนกริด 3) วางตามแนวแกน x ที่แถว A, B, D; ปลายซ้ายวางบน T3 (ป้าย T3 ที่เสาซ้าย) เสากลางใต้ยอดที่มี T5 ปลายขวาบนเสา; คอร์ดบนยื่นเลยปลายขวาไปถึงชายคา (ไม่พิมพ์ระยะในรูปนี้ — แปลน S-04 พิมพ์ 1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "member_roles_from_leader_lines"
+      ]
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "C-100x50x20x3.2 mm."
+      },
+      "height_mm": 1000,
+      "height_mm_printed_as": "1.00",
+      "spans_m": [
+        2.5,
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.00 | 1.25 | 1.25 | 3.00 = 6.50",
+      "top_chord_overhang_m": 1.0,
+      "other_members_printed_as": [
+        "อกไก่ 2C-150x50x20x3.2 mm. (คอร์ดบน/สัน)"
+      ],
+      "note": "โครงถักสันของปีกหลังคาซ้าย วางตามแนวแกน x ที่ระดับ y 3.50 (B'); ปลายยื่น 1.00 ทางซ้ายถึง 1'; เสารับเป็น T3 ที่กริด 1 และ 2 (ป้าย T3); ช่วงกริด 2 ถึง 3 (3.00) มีเฉพาะสมาชิกบน (อกไก่) ไปแขวนที่ T5 ไม่มีโครงย่อย",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "member_roles_from_leader_lines"
+      ]
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "C-100x50x20x3.2 mm."
+      },
+      "height_mm": 1000,
+      "height_mm_printed_as": "1.00",
+      "spans_m": [
+        4.5,
+        2.5
+      ],
+      "supports": [
+        "D",
+        "B",
+        "A"
+      ],
+      "panel_lengths_printed_as": "1.00 | 1.50 | 1.50 | 1.50 | 1.25 | 1.25 | 1.00 = 9.00",
+      "top_chord_overhang_m": 1.0,
+      "other_members_printed_as": [
+        "อกไก่ 2C-150x50x20x3.2 mm. (คอร์ดบน = สันหลังคา)"
+      ],
+      "note": "โครงถักสันหลังคาจั่วใหญ่ตามแนวแกน y บนกริด 3 จาก D' (8.00) ถึง A' (-1.00); เสารับ 3 จุดมีป้าย T2 (= T2 ที่แถว D, B, A) ยื่นปลายละ 1.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "member_roles_from_leader_lines"
+      ]
+    }
+  ]
+}

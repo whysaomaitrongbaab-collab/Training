@@ -1,0 +1,88 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_42/บ้าน_เล็ก_1ชั้น_42_หน้า15.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_42_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T3",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 (roof_frame_plan, separate file)",
+    "view2: TRUSS T1 1:75 (this file)",
+    "view3: TRUSS T3 1:75 (this file)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Two truss elevations recorded in one section file. steel_section is the web section the leaders point at (2C-100x50x20x3.2 mm.); the other printed members stay verbatim in other_members_printed_as.",
+    "Panel chains print no grid markers (floating chains in the grid master). T3's middle post is 3.00 from the left end, so the elevation is drawn from D (left) to A (right): spans 3.00 (D-C) + 4.00 (C-A). T1 height printed 1.03; T3 prints no height."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "2C-100x50x20x3.2 mm."
+      },
+      "height_mm": 1030,
+      "height_mm_printed_as": "1.03",
+      "spans_m": [
+        3.0
+      ],
+      "supports": [
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "0.75 x 4 = 3.00",
+      "other_members_printed_as": [
+        "อะเส 2C-150x50x20x3.2 mm. (คอร์ดล่าง)"
+      ],
+      "note": "โครงถักหลังคาคลุมทางเข้าตามแถว E วางบนเสา E2 และ E3; คอร์ดบนยื่นเลยเสาทั้งสองข้าง (ไม่พิมพ์ระยะ)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "member_roles_from_leader_lines"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "2C-100x50x20x3.2 mm."
+      },
+      "spans_m": [
+        3.0,
+        4.0
+      ],
+      "supports": [
+        "D",
+        "C",
+        "A"
+      ],
+      "panel_lengths_printed_as": "1.00 | 1.00 | 1.00 | 0.50 | 0.50 | 1.00 | 1.00 | 1.00 = 7.00",
+      "other_members_printed_as": [
+        "อกไก่ 2C-150x50x20x3.2 mm. (2 จุดบนคอร์ดบน 1.50 จากยอด)",
+        "อะเส 2C-150x50x20x3.2 mm. (คอร์ดล่าง)"
+      ],
+      "note": "โครงถักปีกหลังคาซ้ายตามแนวแกน y บนกริด 1 และ 2; เสารับ 3 ต้น (ปลาย D, กลางที่ 3.00 = C, ปลาย A); T4 อยู่ที่ยอด (3.50 จากปลาย = B'); ความสูงโครงถักไม่ได้พิมพ์",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "member_roles_from_leader_lines"
+      ]
+    }
+  ]
+}
