@@ -1,0 +1,283 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_40/บ้าน_เล็ก_1ชั้น_40_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_40_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "confidence_score": 0.78,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel hip roof over the L-shaped plan, 1.00 overhang on every edge (eave corners A'1', A'4'', D'4'', 3'/D' re-entrant, E''3', E''1'). Members from the sheet's หมายเหตุ legend: dashed = แป C-75x45x15x2.3 @1.00, solid = จันทัน C-100x50x20x3.2 @1.00, dash-dot-dot = ตะเข้ราง C-150x50x20x3.2, dash-dot = ตะเข้สัน 2C-150x50x20x3.2, long dash = อกไก่ 2C-150x50x20x3.2. Roofing หลังคามุงกระเบื้องลอนคู่สี (not structural, not recorded). No marks on any member: element_id null with element_name_assigned (section 0.2).",
+    "Two ridges: the upper wing's ridge along y = 3.75 (posts at 2'/2'' on S-03, 0.90 apart; S-04 draws the ridge line ~1.00 between the hip intersections) and the lower wing's ridge along x = 3.25 from B''' (4.25) to the post at C' (5.73). Hips and valley are 45-degree diagonals — span_length_m null / unresolved per section 4.",
+    "Four member ends sit on points that no chain prints: the lower ridge's north end B''' (4.25), the re-entrant eave corner 3'/D' (7.50 / 8.50) and the east-wing eave corner D'4''. Those grid-master lines were scaled from the vector geometry of this sheet (each carries its own lower confidence there), and the members using them carry a lower confidence_score.",
+    "Hip ends at the upper ridge are recorded at the printed ตั้ง post positions 2'/2'' (3.80 / 4.70); the drawn intersections are ~0.05 further out (3.75 / 4.75) — flagged end_snapped_to_post.",
+    "Rafter count 46 counted from the drawn solid lines on the vector sheet; purlins are drawn only inside the cut-away detail, so their count is left null."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'1'",
+      "grid_ref_end": "B''2'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวทแยง 45 องศาในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); จากมุมชายคา A'1' ผ่านเสาตั้ง B'1'''' ถึงปลายอกไก่ด้านตะวันตก (วาดถึง ~3.75 ม., บันทึกที่เสาตั้ง 2' = 3.80 ซึ่งเป็นตำแหน่งที่พิมพ์)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal",
+        "end_snapped_to_post"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'4''",
+      "grid_ref_end": "B''2''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวทแยง 45 องศาในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); จากมุมชายคา A'4'' ถึงปลายอกไก่ด้านตะวันออก (วาดถึง ~4.75 ม., บันทึกที่เสาตั้ง 2'' = 4.70)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal",
+        "end_snapped_to_post"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B''2'",
+      "grid_ref_end": "B''2''",
+      "span_length_m": 0.9,
+      "span_source": "grid_table",
+      "note": "อกไก่ปีกบนตามแนว y = 3.75 ระหว่างเสาตั้งสองต้น (0.90 ตามโซ่มิติ S-03); S-04 วาดเส้นอกไก่ยาว ~1.00 ม. จากจุดตัดตะเข้สัน ~3.75 ถึง ~4.75",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "ridge_drawn_beyond_posts"
+      ],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B''2'",
+      "grid_ref_end": "B'''1''''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวทแยง 45 องศาในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); ตะเข้สันสั้นเชื่อมปลายอกไก่ปีกบนกับปลายเหนือของอกไก่ปีกล่าง (B''' วัดจากรูป)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "diagonal",
+        "end_snapped_to_post"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B''2''",
+      "grid_ref_end": "D'4''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวทแยง 45 องศาในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); จากปลายอกไก่ด้านตะวันออกถึงมุมชายคาปีกขวา (D' = 8.50 วัดจากรูป ไม่พิมพ์ระยะ)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "diagonal",
+        "end_snapped_to_post"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B'''1''''",
+      "grid_ref_end": "C'1''''",
+      "span_length_m": 1.48,
+      "span_source": "scaled_from_grid",
+      "note": "อกไก่ปีกล่างตามแนว x = 3.25 จากจุดรวมตะเข้ (B''' = 4.25 วัดจากรูป) ถึงเสาตั้ง C'1'''' (5.73)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "end_not_dimensioned"
+      ],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B'''1''''",
+      "grid_ref_end": "D'3'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวทแยง 45 องศาในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); ตะเข้รางจากปลายเหนือของอกไก่ปีกล่างถึงมุมหักชายคา 3'/D' (7.50, 8.50 วัดจากรูป)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "diagonal"
+      ],
+      "element_name_assigned": "ตะเข้ราง",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้ราง C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C'1''''",
+      "grid_ref_end": "E''1'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวทแยง 45 องศาในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); จากเสาตั้งปลายใต้ของอกไก่ปีกล่างถึงมุมชายคา E''1'",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C'1''''",
+      "grid_ref_end": "E''3'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวทแยง 45 องศาในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); จากเสาตั้งปลายใต้ของอกไก่ปีกล่างถึงมุมชายคา E''3' (3' = 7.50 วัดจากรูป)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "diagonal"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ท่อน/ม.)"
+      },
+      "spacing_mm": 1000,
+      "count": 46,
+      "grid_refs": [
+        "A'-E'' x 1'-4''"
+      ],
+      "note": "เส้นทึบที่วาดในแปลน 46 เส้น บนหลังคาปั้นหยารูปตัว L ทั้งสี่ด้าน (จันทันหลัก + จันทันพราง ยาวไม่เท่ากัน) — บางเส้นวาดต่อเนื่องข้ามแนวอกไก่/ตะเข้ราง จึงอาจนับเป็นจำนวนท่อนจริงต่างไปบ้าง; บางเส้นถูกบังด้วยพื้นที่ลายกระเบื้องด้านบน",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "แป เหล็ก C-75x45x15x2.3 mm. @1.00 m. (น้ำหนัก 3.25 กก./ท่อน/ม.)"
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [
+        "A'-E'' x 1'-4''"
+      ],
+      "note": "แปวางบนจันทัน @1.00 ม.; วาดเส้นประเฉพาะในช่องตัดแสดงด้านล่าง (และพื้นที่ลายกระเบื้องด้านบน) จึงไม่นับจำนวน",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "count_not_drawn"
+      ]
+    }
+  ]
+}
