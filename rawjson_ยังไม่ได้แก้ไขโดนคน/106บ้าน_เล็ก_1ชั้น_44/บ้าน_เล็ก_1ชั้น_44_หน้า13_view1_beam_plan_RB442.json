@@ -1,0 +1,205 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา ระดับ +4.42, ระดับ +5.58, ระดับ +6.36",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_44/บ้าน_เล็ก_1ชั้น_44_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_44_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา ระดับ +4.42",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา ระดับ +4.42 1:75 (beam_plan - RC roof beams RB1/RB2 + posts C1)",
+    "view2: แบบโครงสร้างหลังคา ระดับ +5.58 1:75 (beam_plan - ridge beam RB1)",
+    "view3: แบบโครงสร้างหลังคา ระดับ +6.36 1:75 (beam_plan - ridge beam RB1)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "RC roof (ring) beams at ระดับหลังอะเส +4.42 around OPEN panels (no slab). Classified beam_plan, not roof_frame_plan: they are RC beams with marks; the steel roof frame (จันทัน/แป/ตะเข้) is the separate sheet S-04 (section 1 trap list).",
+    "The middle beam row is A'''' (3.35, printed 3.35 + 0.35), not grid B - there is no roof beam on row B. The main columns C1 at the grid points carry the grid-1/2/3 and row A/C/D beams (beams split at those columns only).",
+    "Each panel prints the mark of each of its edges once: grid 1 and grid 2 are RB2 (A to D), grid 3 is RB1 (A to C), rows A, A'''' (3.35), C (bay 2-3) and D (bay 1-2) and the 1''' (2.00) line are RB2.",
+    "Four small hatched posts printed 'C1' stand on these beams and carry the ridge beams of views 2 and 3; recorded here as a column entry at level 4.42 (the mark is the same as the main column - S-06 has only one C1 detail, 0.20 x 0.20).",
+    "The bay C-D x 2-3 (stair / porch) has no roof beam on this view."
+  ],
+  "elements": [
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "note": "รับคาน RB2 แนว A'''' ที่ A''''1 (ไม่แบ่งช่วง)",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A''''1",
+      "grid_ref_end": "A''''2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานแถว A'''' (0.35 เหนือแนว B) ไม่มีเสาที่ปลาย; รับเสาตุ๊กตา C1 ที่ 1''' และ 1''''",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:RB2(start)",
+        "bears_on_beam:RB2(end)"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A''''1'''",
+      "grid_ref_end": "D1'''",
+      "span_length_m": 4.35,
+      "span_source": "grid_table",
+      "note": "คานแนว 1''' (2.00 จากกริด 1) จากแถว A'''' ถึงแนว D ไม่มีเสาที่ปลาย; รับเสาตุ๊กตา C1 ที่ A''''1''' และ B'1'''",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:RB2(start)",
+        "bears_on_beam:RB2(end)"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "A''''3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "รับเสาตุ๊กตา C1 ที่ 2'",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:RB2(start)",
+        "bears_on_beam:RB1(end)"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "D1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "รับคาน RB2 แนว C ที่ C2 (ไม่แบ่งช่วง)",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:RB2(start)"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "level_m": 4.42,
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 4,
+      "grid_refs": [
+        "A''''1'''",
+        "A''''1''''",
+        "A''''2'",
+        "B'1'''"
+      ],
+      "level_m": 4.42,
+      "note": "เสาตุ๊กตาบนคานระดับ +4.42 รับคานอกไก่ RB1 (+5.58 ที่ A''''1''' / B'1''' และ +6.36 ที่ A''''1'''' / A''''2') - มาร์คที่พิมพ์คือ C1 เหมือนเสาหลัก",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "post_on_beam_same_mark_as_main_column"
+      ]
+    }
+  ]
+}

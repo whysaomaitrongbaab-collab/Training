@@ -1,0 +1,287 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้าง",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_44/บ้าน_เล็ก_1ชั้น_44_หน้า12.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_44_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แบบโครงสร้าง",
+  "scale": "1:50",
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "Floor beams carry no level mark except the stub 'B2 ระดับ +0.13'; the floor is ระดับพื้นห้อง +1.00 (A-07/A-08).",
+    "Grid 1 and grid 2 are B3 for their whole length (A-B and B-D); grid 3 and rows A, B, C, D and A''' are B2; B1 is the 0.50 cantilever-strip edge beam on A'' and the stub on 1'' between A and A'''. Beams are split at columns only; a beam that frames in at a point with no column carries bears_on_beam and does not split the beam it lands on (same convention as houses 93/95).",
+    "The A'' strip (0.50 above A, bay 2-3) is carried by two 0.50 cantilevers: B3 on grid 2 and B2 on grid 3 (marks printed at the two outer corners) - no column or footing at A''2/A''3.",
+    "The 'B2 ระดับ +0.13' stub along row D from D2 under stair ST-01 has no printed length and no support at its east end; its end line 2'' (5.40) was measured by proportion against the grid (span_source scaled_from_grid, confidence 0.70).",
+    "Stair mark ST-01 on the plan vs ST-1 on the S-06 section - kept as printed on each sheet; stair ref is the approximate nearest point (section 10a)."
+  ],
+  "elements": [
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 0.5,
+      "span_source": "grid_table",
+      "note": "คานยื่นแนวกริด 2 จาก A ขึ้นไป 0.50 (รับคาน B1 ที่แนว A'')",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานริมแนว A'' (0.50 เหนือ A) ช่วงกริด 2-3 วางบนปลายคานยื่น B3 / B2",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''3",
+      "grid_ref_end": "A3",
+      "span_length_m": 0.5,
+      "span_source": "grid_table",
+      "note": "คานยื่นแนวกริด 3 จาก A ขึ้นไป 0.50",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "รับคาน B1 ที่ 1'' (ไม่แบ่งช่วง - ไม่มีเสาที่จุดนั้น)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1''",
+      "grid_ref_end": "A'''1''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานซอยระหว่างพื้น PS กับ S1 ไม่มีเสาที่แนว 1''",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:B2(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "note": "รับคาน B2 แนว A''' (ไม่แบ่งช่วง)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "A'''2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานแนว A''' (1.50 จาก A) ช่วงกริด 1-2 ไม่มีเสาที่ปลาย",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "D1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสา/ฐานรากที่ C1 - ช่วงเดียว B ถึง D",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสา/ฐานรากที่ C2 - ช่วงเดียว B ถึง D; รับคาน B2 แนว C ที่ C2",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานแนว C ช่วง 2-3 ปลายที่ C2 วางบนคาน B3 แนวกริด 2",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D2''",
+      "span_length_m": 1.4,
+      "span_source": "scaled_from_grid",
+      "note": "คานรับเชิงบันได ST-01 ระดับ +0.13 ต่อจากเสา D2 ไปทางขวา ไม่มีเสาที่ปลาย ความยาวไม่ได้พิมพ์ - วัดตามสัดส่วนกริด (1.40)",
+      "level_m": 0.13,
+      "level_m_printed_as": "B2 ระดับ +0.13",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "cantilever",
+        "span_scaled_not_printed"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 9,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C3",
+        "D1",
+        "D2"
+      ],
+      "note": "เสาทุกจุดที่มีฐานราก (พิมพ์ร่วมกับมาร์คฐานราก 'F1,C1' / 'F2,C1' บน S-01)",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A''-A x 2-3",
+        "A-A''' x 1-1''",
+        "A'''-B x 1-2",
+        "B-D x 1-2",
+        "A-B x 2-3"
+      ],
+      "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป (ลูกศรบอกทิศวางแผ่นตามแนวแกน x)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-A''' x 1''-2",
+        "B-C x 2-3"
+      ],
+      "note": "พื้นหล่อในที่ (เส้นทแยง X) - A-A''' x 1''-2 = ห้องน้ำ; B-C x 2-3 = ระเบียง",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~D2",
+      "note": "บันไดขึ้นระเบียง ในช่อง C-D x 2-2''; ปลายล่างวางบนคาน B2 ระดับ +0.13; รายละเอียดคือ ST-1 บน S-06",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}
