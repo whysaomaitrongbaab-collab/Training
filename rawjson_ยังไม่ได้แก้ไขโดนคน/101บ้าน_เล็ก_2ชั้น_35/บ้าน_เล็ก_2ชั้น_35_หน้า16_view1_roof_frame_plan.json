@@ -1,0 +1,501 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_35/บ้าน_เล็ก_2ชั้น_35_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_35_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan, this file)",
+    "view2: TRUSS T1 1:75 (section)"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel roof: a main gable over grids 1-3 with its ridge (อกไก่) on grid 2 from A'' to C', and a cross gable over bay 3-4 between rows A and B with its ridge along y = 1.75 (A''''') from the valley junction to the 1.00 overhang at 4'. Members from the sheet's หมายเหตุ legend: dashed = แป C-75x45x15x2.3 @1.00, solid = จันทัน C-100x50x20x3.2 @1.00, dash-dot-dot = ตะเข้ราง C-100x50x20x3.2, dash-dot = อะเส 2C-150x50x20x3.2, long dash-short dash = อกไก่ 2C-150x50x20x3.2, short dash-dot = Truss T1. Roofing หลังคามุงกระเบื้องไตรลอน (not structural, not recorded).",
+    "อะเส run on grids 1 (A'' to C') and 3 (B to C', the A-B stretch of grid 3 carries Truss T1 instead) and on rows A and B from grid 3 to 4'. They and the main ridge are split at the column rows/grids (C1 stands at every grid point of the frame); the 1.00 overhang ends are their own segments (span from the printed 1.00 chain, drawn to the roof edge, lower confidence).",
+    "The cross-gable ridge starts at the valley junction, which no sheet dimensions: grid master line 2'' (4.25) was derived from the printed levels and the vector geometry, so that first segment is scaled_from_grid. The two valleys are diagonal in plan (section 4: a diagonal span stays unresolved) and are recorded as one counted entry with their derived plan length in the note, not as atomic segments.",
+    "Rafters, purlins and valleys carry no mark: element_id null with element_name_assigned (section 0.2). Rafter counts come from the drawn lines; purlins are drawn only inside the cut-away detail, so their count is null."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นชายคา 1.00 ม. (โซ่มิติ 1.00 บนแปลนหลังคา) ลากถึงขอบหลังคา",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นชายคา 1.00 ม. (โซ่มิติ 1.00 บนแปลนหลังคา) ลากถึงขอบหลังคา",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 ตามแนวกริด 3 ช่วง A-B วางบนเสา A3/B3 รับสันหลังคาจั่วขวาง (รายละเอียดรูป TRUSS T1)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A4'",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นชายคา 1.00 ม. (โซ่มิติ 1.00 บนแปลนหลังคา) ลากถึงขอบหลังคา",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'''''2''",
+      "grid_ref_end": "A'''''3",
+      "span_length_m": 1.75,
+      "span_source": "scaled_from_grid",
+      "note": "สันหลังคาจั่วขวางเริ่มที่จุดบรรจบตะเข้ราง (x ≈ 4.25 ไม่มีระยะพิมพ์ — ดู grid master 2'') ถึงกริด 3",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "start_point_not_printed"
+      ],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'''''3",
+      "grid_ref_end": "A'''''4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'''''4",
+      "grid_ref_end": "A'''''4'",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นชายคา 1.00 ม. (โซ่มิติ 1.00 บนแปลนหลังคา) ลากถึงขอบหลังคา",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B4'",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นชายคา 1.00 ม. (โซ่มิติ 1.00 บนแปลนหลังคา) ลากถึงขอบหลังคา",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C'1",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นชายคา 1.00 ม. (โซ่มิติ 1.00 บนแปลนหลังคา) ลากถึงขอบหลังคา",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C'2",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นชายคา 1.00 ม. (โซ่มิติ 1.00 บนแปลนหลังคา) ลากถึงขอบหลังคา",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ],
+      "element_name_assigned": "อกไก่",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C'3",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นชายคา 1.00 ม. (โซ่มิติ 1.00 บนแปลนหลังคา) ลากถึงขอบหลังคา",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m."
+      },
+      "spacing_mm": 1000,
+      "count": 10,
+      "grid_refs": [
+        "A''-C' x 1'-3"
+      ],
+      "note": "หลังคาจั่วหลัก (สันที่กริด 2): จันทันเส้นทึบวิ่งตามแนว x จากชายคา 1' ข้ามสันกริด 2 ถึงชายคาด้านขวา/ตะเข้ราง; 10 เส้นที่ y = -1.00, 0, 0.87, 1.75, 2.62, 3.50, 4.50, 5.50, 6.50, 7.50 (นับจากเส้นที่วาด ระยะจริง 0.87-1.00 แม้พิมพ์ @1.00 ม.); เส้นช่วง A-B สั้นลงตามแนวตะเข้ราง",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m."
+      },
+      "spacing_mm": 1000,
+      "count": 5,
+      "grid_refs": [
+        "A''-B x 3-4'"
+      ],
+      "note": "หลังคาจั่วขวาง (สันตามแนว x ที่ A'''''): จันทันวิ่งตามแนว y จากชายคาเหนือ A ถึงชายคาด้าน B; 4 เส้นเต็มที่ x ≈ 6.9, 7.75, 8.62, 9.50 (เส้นริมจั่วที่ 4') + 1 เส้นสั้นระหว่างตะเข้รางที่ x ≈ 5.1 — นับจากเส้นที่วาด",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "แป C-75x45x15x2.3 mm. @1.00 m."
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [
+        "A''-C' x 1'-4'"
+      ],
+      "note": "แปวางบนจันทัน @1.00 ม.; วาดเส้นประเฉพาะในช่องตัดแสดง (มุมซ้าย) จึงไม่นับจำนวน",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_drawn"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ตะเข้ราง",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้ราง C-100x50x20x3.2 mm."
+      },
+      "count": 2,
+      "grid_refs": [
+        "A''-B x 2''-3"
+      ],
+      "span_source": "unresolved",
+      "note": "ตะเข้ราง 2 เส้นเฉียง 45° ในแปลน จากมุมชายคา (x ≈ 7.00, y -1.00) และ (x ≈ 7.00, y ≈ 4.50) มาบรรจบที่ปลายสันจั่วขวาง (x ≈ 4.25, y 1.75) — เส้นเฉียงไม่มีระยะพิมพ์ ความยาวในแปลนราว 2.75 x √2 ≈ 3.9 ม. ต่อเส้น (คำนวณ ไม่ได้อ่าน)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal_span_unresolved"
+      ]
+    }
+  ]
+}

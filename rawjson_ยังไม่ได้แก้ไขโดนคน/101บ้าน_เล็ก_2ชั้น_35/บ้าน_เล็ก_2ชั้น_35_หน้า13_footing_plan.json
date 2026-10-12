@@ -1,0 +1,99 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_35/บ้าน_เล็ก_2ชั้น_35_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_35_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก",
+  "scale": "1:50",
+  "confidence_score": 0.93,
+  "confidence_flags": [],
+  "warnings": [
+    "Every footing is printed 'F<n>,C1' — footing mark + the column C1 standing on it (C1 = 0.20x0.20, 4-DB12 on S-06). C1 is recorded here once (14 points); footing sizes on S-05: F1 0.50, F2 1.00, F3 1.20, F4 1.40 (all square) — the drawn boxes on this sheet measure the same at 1:50.",
+    "Three small F1 (0.50 x 0.50) post footings sit off the column grid: one above row A on line A'' (-1.00) at x 5.35 (foot of the back stair ST-02) and two below row C on line C' (7.50) at x 3.20 and 5.80 (foot of the front stair ST-01; the S-05 detail ST-1, ST-2 lands the lower end of the stair on a B3 beam over a post). Their y lines are printed (S-04 1.00 overhang ticks, matched to the millimetre in the vector data); their x positions are printed nowhere and were scaled from the S-01 vector geometry — grid master lines 2', 2''', 2'''' carry scaled_from_grid, so F1 confidence is lowered.",
+    "No footing at C4: the plan is L-shaped (bay B-C x 3-4 is outside the building)."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 3,
+      "grid_refs": [
+        "A''2'''",
+        "C'2'",
+        "C'2''''"
+      ],
+      "note": "ฐานรากเสาตอม่อเล็กใต้ตีนบันได: ST-02 (หลังบ้าน เหนือแนว A) 1 ฐาน และ ST-01 (หน้าบ้าน ใต้แนว C) 2 ฐาน — ตำแหน่งแกน x วัดสเกลจากแบบ ไม่มีระยะพิมพ์",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "x_position_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 5,
+      "grid_refs": [
+        "A1",
+        "A4",
+        "B4",
+        "C1",
+        "C3"
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F4",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": [
+        "A2",
+        "A3",
+        "B2",
+        "B3"
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "B1",
+        "C2"
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 14,
+      "grid_refs": [
+        "A''2'''",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "C1",
+        "C2",
+        "C3",
+        "C'2'",
+        "C'2''''"
+      ],
+      "note": "เสาที่ตั้งบนฐานราก (พิมพ์ร่วมกับมาร์คฐานราก 'F1,C1' ... 'F4,C1'); 3 ต้นบนฐาน F1 เป็นเสาเตี้ยรับตีนบันได",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    }
+  ]
+}

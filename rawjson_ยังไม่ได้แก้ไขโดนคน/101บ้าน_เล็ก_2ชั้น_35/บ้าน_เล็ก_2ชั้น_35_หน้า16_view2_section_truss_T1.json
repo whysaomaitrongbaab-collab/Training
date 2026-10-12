@@ -1,0 +1,52 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_35/บ้าน_เล็ก_2ชั้น_35_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_35_หน้า00_gridline.json",
+  "view_title": "TRUSS T1",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T1 1:75 (section, this file)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "One callout '2C-100x50x20x3.2 mm.' has four leaders (both top chords and the members at the apex), so every T1 member is recorded with that one section.",
+    "The truss chain (B -> 1.75 -> 1.75 -> A, total 3.50) and the levels beside it (ระดับหลังอะเส +5.40, ระดับหลังอกไก่ +6.87, 1.47 between, 0.35 from the ridge down to the collar tie) are in the grid master (dimension_chains / z_levels, view TRUSS T1)."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "2C-100x50x20x3.2 mm."
+      },
+      "height_mm": 1470,
+      "height_mm_printed_as": "1.47 (ระดับหลังอะเส +5.40 ถึงระดับหลังอกไก่ +6.87)",
+      "spans_m": [
+        1.75,
+        1.75
+      ],
+      "span_total_m": 3.5,
+      "supports": [
+        "B",
+        "A"
+      ],
+      "collar_tie_below_apex_mm": 350,
+      "note": "โครงถักจั่ว 3.50 ม. (B ถึง A ตามแนวกริด 3) ยอดอยู่กึ่งกลาง 1.75; วางบนเสาสองข้างที่ระดับหลังอะเส +5.40; มีคานคอดใต้ยอด 0.35 ม.",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}
