@@ -1,0 +1,93 @@
+{
+  "png": "11",
+  "doc_page": 11,
+  "discipline": "architectural",
+  "sheet_code": "A-11",
+  "sheet_name": "แบบขยาย ประตู, หน้าต่าง",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_39/บ้าน_เล็ก_1ชั้น_39_หน้า11.png",
+  "view_title": "น5, น6, น7",
+  "scale": null,
+  "columns": [
+    "ชนิดบาน",
+    "กรอบบาน",
+    "ลูกฟัก",
+    "วงกบ",
+    "จำนวน",
+    "หมายเหตุ"
+  ],
+  "field_map": {
+    "ชนิดบาน": "opening_type",
+    "กรอบบาน": "sash",
+    "ลูกฟัก": "leaf_material",
+    "วงกบ": "frame",
+    "จำนวน": "count",
+    "หมายเหตุ": "note"
+  },
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Continuation of A-10 (same table layout); count is the printed จำนวน.",
+    "น6 prints an overall width of 0.70 above two panel widths 0.60 + 0.60 (= 1.20), and is drawn as a two-panel window clearly wider than the 0.70 windows น5/น7 beside it. Taken width_m = 1.20 (sum of the two printed panels) -- the 0.70 reads like the overall copied from the neighbouring windows; both prints kept in width_printed_as, flagged. Its sill is not printed (head 2.05, window 1.10).",
+    "น7 prints sill 1.60 + window 0.45 against an overall 2.15 (adds to 2.05) -- kept the printed values, flagged."
+  ],
+  "elements": [
+    {
+      "element_id": "น5",
+      "element_type": "window",
+      "opening_type": "หน้าต่างบานเปิด",
+      "sash": "ไม้เนื้อแข็ง",
+      "leaf_material": "กระจกใส หนา 6 มม.",
+      "frame": "ไม้เนื้อแข็ง",
+      "width_m": 0.7,
+      "height_m": 1.65,
+      "sill_height_m": 0.4,
+      "head_height_m": 2.05,
+      "panel_note": "1 บาน",
+      "count": 3,
+      "note": "-",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "น6",
+      "element_type": "window",
+      "opening_type": "หน้าต่างบานเกล็ดปรับมุม",
+      "sash": "ไม้เนื้อแข็ง",
+      "leaf_material": "เกล็ดกระจกสีชา หนา 5 มม.",
+      "frame": "ไม้เนื้อแข็ง",
+      "width_m": 1.2,
+      "height_m": 1.1,
+      "width_printed_as": "0.70 (รวม) / 0.60 + 0.60 (2 บาน)",
+      "head_height_m": 2.05,
+      "panel_note": "2 บาน กว้างบานละ 0.60",
+      "count": 1,
+      "note": "-",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "printed_overall_width_not_equal_sum_of_panels"
+      ]
+    },
+    {
+      "element_id": "น7",
+      "element_type": "window",
+      "opening_type": "หน้าต่างบานกระทุ้ง",
+      "sash": "ไม้เนื้อแข็ง",
+      "leaf_material": "กระจกฝ้า หนา 5 มม.",
+      "frame": "ไม้เนื้อแข็ง",
+      "width_m": 0.7,
+      "height_m": 0.45,
+      "leaf_width_m": 0.6,
+      "width_printed_as": "0.70 (วงกบ) / 0.60 (บาน)",
+      "sill_height_m": 1.6,
+      "head_height_m": 2.15,
+      "height_printed_as": "1.60 + 0.45, รวมพิมพ์ 2.15 (บวกได้ 2.05)",
+      "count": 1,
+      "note": "-",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "printed_overall_height_not_equal_sill_plus_height"
+      ]
+    }
+  ]
+}
