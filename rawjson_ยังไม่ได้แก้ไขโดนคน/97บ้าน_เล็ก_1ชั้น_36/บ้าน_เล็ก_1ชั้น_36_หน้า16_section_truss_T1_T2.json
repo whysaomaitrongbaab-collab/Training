@@ -1,0 +1,78 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_36_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T2",
+  "scale": "1:50",
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Both truss elevations print their panel chains with no grid markers, so the chains stay on the elements (panel_lengths_printed_as) and are not grid lines (section 4 rule 4, element-internal).",
+    "All members of T1 and T2 point to the same callout 2C-100x50x20x3.2 mm. (top chord, bottom chord, verticals, diagonals); T2's tall end is a square tube 150x150x3.2 mm post. The supports drawn under T1 (3) and T2 (2) are the steel posts / RB beams of S-03."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "2C-100x50x20x3.2 mm."
+      },
+      "height_mm": 940,
+      "height_mm_printed_as": "0.94 (ช่วงซ้าย) / 0.70 (ช่วงขวา)",
+      "spans_m": [
+        5.0,
+        3.51
+      ],
+      "supports_count": 3,
+      "panel_lengths_printed_as": "1.58 | 1.14 1.14 1.14 | 1.17 1.17 1.17 | 0.90 0.90 (รวม 10.31)",
+      "note": "โครงถักคอร์ดขนาน มีเสาตั้งและค้ำทแยง: ช่วงแรกจากจุดรองรับปลายซ้าย 5.00 ม. ลึก 0.94 (คอร์ดบนลาดลงยื่นเลยจุดรองรับไปชายคา), ช่วงที่สอง 3.51 ม. และปลายยื่น 1.80 ม. ลึก 0.70; จุดรองรับ 3 จุดที่ 0 / 5.00 / 8.51",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "2C-100x50x20x3.2 mm."
+      },
+      "height_mm": 2900,
+      "height_mm_printed_as": "2.90",
+      "spans_m": [
+        2.12,
+        4.95
+      ],
+      "supports_count": 2,
+      "panel_lengths_printed_as": "1.06 1.06 | 0.99 0.99 0.99 0.99 0.99 (รวม 7.07)",
+      "end_post": {
+        "material": "steel",
+        "steel_section": {
+          "designation": "square tube",
+          "d_mm": 150,
+          "b_mm": 150,
+          "t_mm": 3.2,
+          "printed_as": "square tube ▢-150x150x3.2 mm."
+        }
+      },
+      "note": "โครงถักทรงสามเหลี่ยมด้านเดียว (ตามแนวตะเข้) ปลายสูง 2.90 ที่เสา square tube 150x150; จุดรองรับที่ 2.12 และ 7.07 จากปลายสูง คอร์ดบนยื่นเลยจุดรองรับปลายต่ำ",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}

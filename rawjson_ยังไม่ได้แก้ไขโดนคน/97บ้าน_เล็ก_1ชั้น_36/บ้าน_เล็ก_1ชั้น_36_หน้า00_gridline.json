@@ -1,0 +1,1085 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized from S-01, S-02, S-03, S-04, A-07, A-08)",
+  "pattern": "grid_master",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png",
+    "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png",
+    "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png",
+    "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า15.png",
+    "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png",
+    "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า08.png",
+    "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า17.png"
+  ],
+  "confidence_score": 0.94,
+  "confidence_flags": [],
+  "warnings": [
+    "Axes: x = 1-2-2'-3-4-5-6-7 at 2.00 + 1.50 + 0.50 + 1.00 + 0.83 + 2.67 + 3.50 (12.00); y = A-B-C-D-E-F-G at 3.50 + 2.67 + 0.83 + 1.00 + 2.00 + 2.00 (12.00). Origin A1. The same main chains print on S-01, S-02, S-03, S-04 and on the A-07/A-08 building sections. Vector CAD PDF with no text layer — every value read off the rendered page; positions were cross-checked against the vector geometry (footing caps, column squares, beam outlines, grid bubbles all land on these pos_m within 0.01 m).",
+    "Grid 2' is a printed bubble (named line), not a dummy — it is drawn raised above the 1..7 bubble row on every plan sheet. No dummy falls between 2 and 3, so no rule name collides with it.",
+    "Dummy lines come from three sources: S-01/S-02 (A' -1.50 porch row, A''' 2.00, B'' 5.60, 5' 6.85, 6' 9.90 — beam lines), S-03/S-04 (A'' 1.75, B' 5.00, C' 6.50, D' 7.91, 3' 4.09, 4' 5.50, 5'' 7.00, 6'' 10.25 — roof post and truss lines). Every printed tick became a line (section 4 rule 4). Close pairs kept apart because they are different printed points: A'' 1.75 vs A''' 2.00 (0.25), 5' 6.85 vs 5'' 7.00 (0.15), 6' 9.90 vs 6'' 10.25 (0.35).",
+    "z: ±0.00 = ระดับถนน (A-07/A-08, and the A-01 notes). Two levels carry the same printed label 'ระดับหลังอกไก่' (+5.28 and +7.14), so their ids carry the printed value as well. ระดับดินเดิม (S-06 footing details) prints no value: kept with level_m null; the 1.00 / 0.50 / 0.05 / 0.05 footing depths stay on the footing elements (S-06 file), not as z ticks.",
+    "Dimension sweep covers the structural plans S-01..S-04 plus the building sections A-07/A-08 (grid chains + levels). S-05 truss panel chains (T1 1.58 | 1.14 x3 | 1.17 x3 | 0.90 x2, T2 1.06 x2 | 0.99 x5) are printed with no grid markers, so they stay on the truss elements as element-internal dimensions (rule 4, 'not an axis tick'). S-06..S-08 print only member-internal dimensions (cap sizes, section sizes, slab/stair thicknesses), which stay on their elements. The other architectural/MEP sheets (A-03..A-06, A-09..A-11, E-01, SN-01, SN-02) were not dimension-swept in this op04 (pass2-only) run, and the room tags on A-07/A-08 are not recorded.",
+    "The GS slab outside grid 7 (rows A-B) and the roof eave/overhang outline on S-03/S-04 carry no printed dimension on the swept sheets — no line was invented for them."
+  ],
+  "grid": {
+    "x_lines": [
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "2",
+        "pos_m": 2.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "2'",
+        "pos_m": 3.5,
+        "type": "named",
+        "note": "printed grid bubble '2'' on S-01..S-04 and A-07 (raised above the 1-7 bubble row): a NAMED line, not a dummy. S-01 chain 2.00 | 1.50 | 0.50 puts it 1.50 right of grid 2. Footing row A' (F1 at A'2') and beam B2 A'2'-A2' sit on it",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "3",
+        "pos_m": 4.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "3'",
+        "pos_m": 4.09,
+        "type": "dummy",
+        "note": "S-03/S-04 chain 0.09 right of grid 3: roof posts (square tube 100x100) at B3' and C3' carrying the ridge line along x = 4.09",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png"
+      },
+      {
+        "id": "4",
+        "pos_m": 5.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "4'",
+        "pos_m": 5.5,
+        "type": "dummy",
+        "note": "S-03/S-04 chain 0.50 right of grid 4: roof post at B4'",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png"
+      },
+      {
+        "id": "5",
+        "pos_m": 5.83,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "5'",
+        "pos_m": 6.85,
+        "type": "dummy",
+        "note": "S-02 chain 1.02 + 1.65 (= 2.67) between 5 and 6: beam B3 A5'-B5' between the S2/PS panels",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png"
+      },
+      {
+        "id": "5''",
+        "pos_m": 7.0,
+        "type": "dummy",
+        "note": "S-03/S-04 chain 1.17 + 1.50 (= 2.67) between 5 and 6: roof beam RB2 B5''-C5'' and the 150x150 post at B'5''",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png"
+      },
+      {
+        "id": "6",
+        "pos_m": 8.5,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "6'",
+        "pos_m": 9.9,
+        "type": "dummy",
+        "note": "S-02 chain 1.40 + 2.10 (= 3.50) between 6 and 7: beam B1 B''6'-D6' between two PS panels",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png"
+      },
+      {
+        "id": "6''",
+        "pos_m": 10.25,
+        "type": "dummy",
+        "note": "S-03/S-04 chain 1.75 + 1.75 (= 3.50) between 6 and 7: roof posts at B6''/D6'' and the Truss T1 line along x = 10.25 (S-04)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png"
+      },
+      {
+        "id": "7",
+        "pos_m": 12.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      }
+    ],
+    "y_lines": [
+      {
+        "id": "A'",
+        "pos_m": -1.5,
+        "type": "dummy",
+        "note": "S-01 and S-02 chain 1.50 above A: footings F1 at A'1/A'2' and the B2 beams around slab S1 (front porch)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "A''",
+        "pos_m": 1.75,
+        "type": "dummy",
+        "note": "S-03/S-04 chain 1.75 + 1.75 (= 3.50) between A and B: roof posts at A''4/A''6 and the Truss T1 line along y = 1.75 (S-04)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png"
+      },
+      {
+        "id": "A'''",
+        "pos_m": 2.0,
+        "type": "dummy",
+        "note": "S-02 chain 2.00 + 1.50 (= 3.50) between A and B: beams B1 A'''4-A'''5'-A'''6 between the S2 and PS panels",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png"
+      },
+      {
+        "id": "B",
+        "pos_m": 3.5,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "B'",
+        "pos_m": 5.0,
+        "type": "dummy",
+        "note": "S-03/S-04 chain 1.50 + 1.17 (= 2.67) between B and C: the 150x150 post at B'5'' (hip/valley junction of the roof frame, top of Truss T2)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png"
+      },
+      {
+        "id": "B''",
+        "pos_m": 5.6,
+        "type": "dummy",
+        "note": "S-02 chain 2.10 + 0.57 (= 2.67) between B and C: beam B2 B''6-B''7",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png"
+      },
+      {
+        "id": "C",
+        "pos_m": 6.17,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "C'",
+        "pos_m": 6.5,
+        "type": "dummy",
+        "note": "S-03/S-04 chain 0.50 above D: roof post at C'6",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png"
+      },
+      {
+        "id": "D",
+        "pos_m": 7.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "D'",
+        "pos_m": 7.91,
+        "type": "dummy",
+        "note": "S-03/S-04 chain 0.09 above E: roof posts at D'5 and D'6 carrying the ridge line along y = 7.91",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png"
+      },
+      {
+        "id": "E",
+        "pos_m": 8.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "F",
+        "pos_m": 10.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      },
+      {
+        "id": "G",
+        "pos_m": 12.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png"
+      }
+    ],
+    "z_levels": [
+      {
+        "id": "ระดับถนน",
+        "level_m": 0.0,
+        "type": "datum",
+        "note": "A-07/A-08 print 'ระดับถนน ±0.00'; the A-01 general notes define ระดับ ± 0.00 as the road level inside the project",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png"
+      },
+      {
+        "id": "ระดับพื้นห้อง",
+        "level_m": 0.64,
+        "type": "named",
+        "note": "ground-floor room level +0.64 (A-07/A-08)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png"
+      },
+      {
+        "id": "ระดับหลังอะเส",
+        "level_m": 4.24,
+        "type": "named",
+        "note": "top of the RC roof beams RB1-RB3; S-03 is titled 'แบบโครงสร้างหลังคา ระดับ +4.24'",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png"
+      },
+      {
+        "id": "ระดับหลังอกไก่ +5.28",
+        "level_m": 5.28,
+        "type": "named",
+        "note": "printed label 'ระดับหลังอกไก่ +5.28' — the same label is printed twice at two heights (lower ridge +5.28, main ridge +7.14), so the value is kept in the id to keep the two levels apart",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png"
+      },
+      {
+        "id": "ระดับหลังอกไก่ +7.14",
+        "level_m": 7.14,
+        "type": "named",
+        "note": "printed label 'ระดับหลังอกไก่ +7.14' — main ridge",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png"
+      },
+      {
+        "id": "ระดับดินเดิม",
+        "level_m": null,
+        "type": "named",
+        "note": "S-06 F1/F2 details print this label with no value; 1.00 from it down to the top of the pile cap. Not equated with ระดับถนน ±0.00 (different printed label, no number given)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า17.png"
+      }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png",
+        "view": "แปลนฐานราก",
+        "segments": [
+          {
+            "from": "1",
+            "to": "7",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png",
+        "view": "แปลนฐานราก",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.0
+          },
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.5
+          },
+          {
+            "from": "2'",
+            "to": "3",
+            "value_m": 0.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 1.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 0.83
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 2.67
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png",
+        "view": "แปลนฐานราก",
+        "segments": [
+          {
+            "from": "A",
+            "to": "G",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png",
+        "view": "แปลนฐานราก",
+        "segments": [
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.5
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 2.67
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 0.83
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "value_m": 1.0
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "value_m": 2.0
+          },
+          {
+            "from": "F",
+            "to": "G",
+            "value_m": 2.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า12.png",
+        "view": "แปลนฐานราก",
+        "segments": [
+          {
+            "from": "A'",
+            "to": "A",
+            "value_m": 1.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png",
+        "view": "แบบโครงสร้าง",
+        "segments": [
+          {
+            "from": "1",
+            "to": "7",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png",
+        "view": "แบบโครงสร้าง",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.0
+          },
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.5
+          },
+          {
+            "from": "2'",
+            "to": "3",
+            "value_m": 0.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 1.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 0.83
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 2.67
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png",
+        "view": "แบบโครงสร้าง",
+        "segments": [
+          {
+            "from": "5",
+            "to": "5'",
+            "value_m": 1.02
+          },
+          {
+            "from": "5'",
+            "to": "6",
+            "value_m": 1.65
+          },
+          {
+            "from": "6",
+            "to": "6'",
+            "value_m": 1.4
+          },
+          {
+            "from": "6'",
+            "to": "7",
+            "value_m": 2.1
+          }
+        ],
+        "note": "third row: two printed groups (5-6 and 6-7) on one row"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png",
+        "view": "แบบโครงสร้าง",
+        "segments": [
+          {
+            "from": "A",
+            "to": "G",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png",
+        "view": "แบบโครงสร้าง",
+        "segments": [
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.5
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 2.67
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 0.83
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "value_m": 1.0
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "value_m": 2.0
+          },
+          {
+            "from": "F",
+            "to": "G",
+            "value_m": 2.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า13.png",
+        "view": "แบบโครงสร้าง",
+        "segments": [
+          {
+            "from": "A'",
+            "to": "A",
+            "value_m": 1.5
+          },
+          {
+            "from": "A",
+            "to": "A'''",
+            "value_m": 2.0
+          },
+          {
+            "from": "A'''",
+            "to": "B",
+            "value_m": 1.5
+          },
+          {
+            "from": "B",
+            "to": "B''",
+            "value_m": 2.1
+          },
+          {
+            "from": "B''",
+            "to": "C",
+            "value_m": 0.57
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png",
+        "view": "แบบโครงสร้างหลังคา ระดับ +4.24",
+        "segments": [
+          {
+            "from": "1",
+            "to": "7",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png",
+        "view": "แบบโครงสร้างหลังคา ระดับ +4.24",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.0
+          },
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.5
+          },
+          {
+            "from": "2'",
+            "to": "3",
+            "value_m": 0.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 1.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 0.83
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 2.67
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png",
+        "view": "แบบโครงสร้างหลังคา ระดับ +4.24",
+        "segments": [
+          {
+            "from": "3",
+            "to": "3'",
+            "value_m": 0.09
+          },
+          {
+            "from": "4",
+            "to": "4'",
+            "value_m": 0.5
+          },
+          {
+            "from": "5",
+            "to": "5''",
+            "value_m": 1.17
+          },
+          {
+            "from": "5''",
+            "to": "6",
+            "value_m": 1.5
+          },
+          {
+            "from": "6",
+            "to": "6''",
+            "value_m": 1.75
+          },
+          {
+            "from": "6''",
+            "to": "7",
+            "value_m": 1.75
+          }
+        ],
+        "note": "third row: 0.09 and 0.50 are short dimensions printed with outside arrows next to grids 3 and 4"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png",
+        "view": "แบบโครงสร้างหลังคา ระดับ +4.24",
+        "segments": [
+          {
+            "from": "A",
+            "to": "G",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png",
+        "view": "แบบโครงสร้างหลังคา ระดับ +4.24",
+        "segments": [
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.5
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 2.67
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 0.83
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "value_m": 1.0
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "value_m": 2.0
+          },
+          {
+            "from": "F",
+            "to": "G",
+            "value_m": 2.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า14.png",
+        "view": "แบบโครงสร้างหลังคา ระดับ +4.24",
+        "segments": [
+          {
+            "from": "A",
+            "to": "A''",
+            "value_m": 1.75
+          },
+          {
+            "from": "A''",
+            "to": "B",
+            "value_m": 1.75
+          },
+          {
+            "from": "B",
+            "to": "B'",
+            "value_m": 1.5
+          },
+          {
+            "from": "B'",
+            "to": "C",
+            "value_m": 1.17
+          },
+          {
+            "from": "C'",
+            "to": "D",
+            "value_m": 0.5
+          },
+          {
+            "from": "D'",
+            "to": "E",
+            "value_m": 0.09
+          }
+        ],
+        "note": "third column: 0.50 and 0.09 are short dimensions printed above D and above E"
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า15.png",
+        "view": "แบบโครงสร้างหลังคา",
+        "segments": [
+          {
+            "from": "1",
+            "to": "7",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า15.png",
+        "view": "แบบโครงสร้างหลังคา",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.0
+          },
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.5
+          },
+          {
+            "from": "2'",
+            "to": "3",
+            "value_m": 0.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 1.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 0.83
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 2.67
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า15.png",
+        "view": "แบบโครงสร้างหลังคา",
+        "segments": [
+          {
+            "from": "3",
+            "to": "3'",
+            "value_m": 0.09
+          },
+          {
+            "from": "4",
+            "to": "4'",
+            "value_m": 0.5
+          },
+          {
+            "from": "5",
+            "to": "5''",
+            "value_m": 1.17
+          },
+          {
+            "from": "5''",
+            "to": "6",
+            "value_m": 1.5
+          },
+          {
+            "from": "6",
+            "to": "6''",
+            "value_m": 1.75
+          },
+          {
+            "from": "6''",
+            "to": "7",
+            "value_m": 1.75
+          }
+        ],
+        "note": "third row: 0.09 and 0.50 are short dimensions printed with outside arrows next to grids 3 and 4"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า15.png",
+        "view": "แบบโครงสร้างหลังคา",
+        "segments": [
+          {
+            "from": "A",
+            "to": "G",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า15.png",
+        "view": "แบบโครงสร้างหลังคา",
+        "segments": [
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 3.5
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 2.67
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 0.83
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "value_m": 1.0
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "value_m": 2.0
+          },
+          {
+            "from": "F",
+            "to": "G",
+            "value_m": 2.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า15.png",
+        "view": "แบบโครงสร้างหลังคา",
+        "segments": [
+          {
+            "from": "A",
+            "to": "A''",
+            "value_m": 1.75
+          },
+          {
+            "from": "A''",
+            "to": "B",
+            "value_m": 1.75
+          },
+          {
+            "from": "B",
+            "to": "B'",
+            "value_m": 1.5
+          },
+          {
+            "from": "B'",
+            "to": "C",
+            "value_m": 1.17
+          },
+          {
+            "from": "C'",
+            "to": "D",
+            "value_m": 0.5
+          },
+          {
+            "from": "D'",
+            "to": "E",
+            "value_m": 0.09
+          }
+        ],
+        "note": "third column: 0.50 and 0.09 are short dimensions printed above D and above E"
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png",
+        "view": "รูปตัด A",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.0
+          },
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.5
+          },
+          {
+            "from": "2'",
+            "to": "3",
+            "value_m": 0.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 1.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 0.83
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 2.67
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png",
+        "view": "รูปตัด A",
+        "segments": [
+          {
+            "from": "1",
+            "to": "7",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png",
+        "view": "รูปตัด A",
+        "segments": [
+          {
+            "from": "ระดับถนน",
+            "to": "ระดับพื้นห้อง",
+            "value_m": 0.64
+          },
+          {
+            "from": "ระดับพื้นห้อง",
+            "to": "ระดับหลังอะเส",
+            "value_m": 3.6
+          },
+          {
+            "from": "ระดับหลังอะเส",
+            "to": "ระดับหลังอกไก่ +5.28",
+            "value_m": 1.04
+          },
+          {
+            "from": "ระดับหลังอกไก่ +5.28",
+            "to": "ระดับหลังอกไก่ +7.14",
+            "value_m": 1.86
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า07.png",
+        "view": "รูปตัด A",
+        "segments": [
+          {
+            "from": "ระดับถนน",
+            "to": "ระดับหลังอกไก่ +7.14",
+            "value_m": 7.14
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า08.png",
+        "view": "รูปตัด B",
+        "segments": [
+          {
+            "from": "G",
+            "to": "F",
+            "value_m": 2.0
+          },
+          {
+            "from": "F",
+            "to": "E",
+            "value_m": 2.0
+          },
+          {
+            "from": "E",
+            "to": "D",
+            "value_m": 1.0
+          },
+          {
+            "from": "D",
+            "to": "C",
+            "value_m": 0.83
+          },
+          {
+            "from": "C",
+            "to": "B",
+            "value_m": 2.67
+          },
+          {
+            "from": "B",
+            "to": "A",
+            "value_m": 3.5
+          }
+        ],
+        "note": "printed left to right from G to A (section looks from the other side)"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า08.png",
+        "view": "รูปตัด B",
+        "segments": [
+          {
+            "from": "G",
+            "to": "A",
+            "value_m": 12.0
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า08.png",
+        "view": "รูปตัด B",
+        "segments": [
+          {
+            "from": "ระดับถนน",
+            "to": "ระดับพื้นห้อง",
+            "value_m": 0.64
+          },
+          {
+            "from": "ระดับพื้นห้อง",
+            "to": "ระดับหลังอะเส",
+            "value_m": 3.6
+          },
+          {
+            "from": "ระดับหลังอะเส",
+            "to": "ระดับหลังอกไก่ +5.28",
+            "value_m": 1.04
+          },
+          {
+            "from": "ระดับหลังอกไก่ +5.28",
+            "to": "ระดับหลังอกไก่ +7.14",
+            "value_m": 1.86
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_36/บ้าน_เล็ก_1ชั้น_36_หน้า08.png",
+        "view": "รูปตัด B",
+        "segments": [
+          {
+            "from": "ระดับถนน",
+            "to": "ระดับหลังอกไก่ +7.14",
+            "value_m": 7.14
+          }
+        ]
+      }
+    ],
+    "unassigned_dimensions": []
+  },
+  "dummy_grid_rule_check": {
+    "negative_pos_m": "y A' (-1.50) sits before the origin (front porch row of footings/beams on S-01/S-02); it shares A's prime sequence with the dummies after A (A' -1.50, A'' 1.75, A''' 2.00).",
+    "prime_ordering": "x: 3' 4.09; 4' 5.50; 5' 6.85, 5'' 7.00; 6' 9.90, 6'' 10.25. y: A' -1.50, A'' 1.75, A''' 2.00; B' 5.00, B'' 5.60; C' 6.50; D' 7.91.",
+    "named_prime_line": "2' (3.50) is a printed bubble, kept as named; no dummy was placed in the 2-3 gap."
+  }
+}
