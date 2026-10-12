@@ -1,0 +1,164 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_37/บ้าน_เล็ก_1ชั้น_37_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_37_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel hip roof. Members from the sheet's หมายเหตุ legend: dashed = แป C-75x45x15x2.3 @1.00, solid = จันทัน C-100x50x20x3.2 @1.00, double-dot = ตะเข้ราง C-150x50x20x3.2, dash-dot = ตะเข้สัน 2C-150x50x20x3.2, long dash-short dash = อกไก่ 2C-150x50x20x3.2. Roofing หลังคามุงกระเบื้องลอนคู่สี (not structural, not recorded).",
+    "Two ridges: C3-C4 at +5.72 and C'4'-C'5'' at +6.01 (levels from A-07/A-08). The C' ridge ends are not dimensioned; they were measured by proportion and agree with the king posts on S-03 and the posts on A-07 — span_source scaled_from_grid, lower confidence.",
+    "Eaves: 1.00 overhang printed above A (A' -1.00) and right of 7 (7' 15.00). The left eave (x 1.00 = grid 2 - 1.00) and south eaves (y 7.00 for x 1-4, y 8.00 for x 4-15) are drawn but not dimensioned, so the diagonal hip/valley ends that sit on them are described in notes, not as grid refs; roof members carry the area ref A'-F x 1-7' (the lines that enclose the roof outline).",
+    "All members are unmarked: element_id null with element_name_assigned (section 0.2). Hip/valley counts are counted from the drawn lines; rafter and purlin counts are not recorded (jack rafters of varying length / purlins drawn only in the cut-away).",
+    "The ridge, hip and valley members are printed with section sizes only — no rafter/truss marks; the king posts are on S-03 (ring-beam plan) and are recorded there."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "อกไก่",
+      "element_type": "beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 3,
+      "span_source": "grid_table",
+      "level_m": 5.72,
+      "note": "อกไก่ต่ำ (ระดับหลังอกไก่ +5.72) รับด้วยดั่งที่ C3 / C4",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "อกไก่",
+      "element_type": "beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "grid_ref_start": "C'4'",
+      "grid_ref_end": "C'5''",
+      "span_length_m": 2.0,
+      "span_source": "scaled_from_grid",
+      "level_m": 6.01,
+      "note": "อกไก่สูง (ระดับหลังอกไก่ +6.01) แนว C' ปลายทั้งสองไม่มีระยะพิมพ์ — วัดจากแบบเทียบกริด (8.50 / 10.50) ตรงกับดั่งบน S-03",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "endpoints_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ตะเข้สัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-150x50x20x3.2 mm."
+      },
+      "count": 6,
+      "grid_refs": [
+        "A'-F x 1-7'"
+      ],
+      "note": "เส้นขีด-จุด 6 เส้น (แนวทแยง 45°): มุมชายคา (x 1.00, y -1.00) → C3; มุมชายคา (x 1.00, y 7.00) → C3; A'7' → C'5''; มุมชายคา (x 15.00, y 8.00) → C'5''; มุมชายคา (x 4.00, y 8.00) → C'4'; และเส้นสั้น C4 → C'4' เชื่อมปลายอกไก่สองระดับ — แนวทแยงจึงไม่บันทึกความยาว",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal_span_unresolved"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ตะเข้ราง",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้ราง C-150x50x20x3.2 mm."
+      },
+      "count": 1,
+      "grid_refs": [
+        "A'-F x 1-7'"
+      ],
+      "note": "เส้นคู่มีจุด 1 เส้น จากมุมหักชายคา (x 4.00, y 7.00) ขึ้นไปปลายอกไก่ต่ำที่ C4 (แนวทแยง 45°)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal_span_unresolved"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ทอน/ม.)"
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [
+        "A'-F x 1-7'"
+      ],
+      "note": "เส้นทึบ @1.00 ม. วางตั้งฉากชายคาทั้งสี่ด้าน ส่วนใหญ่เป็นจันทันพราง (ยาวไม่เท่ากัน ชนตะเข้สัน/ตะเข้ราง) จึงไม่นับจำนวน",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "count_not_recorded"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "แป เหล็ก C-75x45x15x2.3 mm. @1.00 m. (น้ำหนัก 3.25 กก./ทอน/ม.)"
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [
+        "A'-F x 1-7'"
+      ],
+      "note": "แปวิ่งขนานชายคา วางบนจันทัน @1.00 ม.; วาดเส้นประเฉพาะในช่องตัดแสดง (ครึ่งวงกลมด้านบน) จึงไม่นับจำนวน",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_drawn"
+      ]
+    }
+  ]
+}
