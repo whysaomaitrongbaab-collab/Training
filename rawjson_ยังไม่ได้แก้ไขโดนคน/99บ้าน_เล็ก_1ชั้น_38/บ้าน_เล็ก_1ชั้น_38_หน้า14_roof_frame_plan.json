@@ -1,0 +1,144 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_38/บ้าน_เล็ก_1ชั้น_38_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_38_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "confidence_score": 0.74,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel hip roof (ปั้นหยา) over an L/T plan. Members from the sheet's หมายเหตุ legend: dashed = แป เหล็กกล่อง 25x25x1.6 @0.50 (or galvanised purlin), solid = จันทัน C-100x50x20x3.2 @1.00, dash-dot-dot double line = ตะเข้ราง C-100x50x20x3.2, dash-dot = ตะเข้สัน 2C-100x50x20x3.2, long dash-short dash = อกไก่ 2C-150x50x20x3.2. The wall plates (อะเส), king posts and RB1 below this frame are on S-03 (separate file).",
+    "No member on this sheet carries a mark, so every entry is element_id null with element_name_assigned (section 0.2), grouped per member type. Hips and valleys are diagonal (spans unresolved per section 4); ridge ends at the hip junctions do not sit on printed ticks, so the ridge is recorded as covering ranges, not atomic spans. Hip/valley counts are counted from the drawn lines (flagged); rafter and purlin counts are not recorded.",
+    "'เหล็กกล่อง 25x25x1.6' is recorded with designation SHS (square box section); the print is kept verbatim in printed_as."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "อกไก่",
+      "element_type": "beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+      },
+      "grid_refs": [
+        "A'''' x 1-5'",
+        "A''''-C'''' x 5'",
+        "C'''' x 2'''-5'",
+        "C''-C''''' x 2'''",
+        "B' x 3-4"
+      ],
+      "note": "เส้นอกไก่ (เส้นยาวสลับเส้นสั้น): แนว A'''' จากจุดรวมตะเข้ด้านตะวันตก (≈0.75 ซ้ายของกริด 2 ไม่มีระยะพิมพ์) ถึง 5'; แนว 5' จาก A'''' ลงถึง C''''; แนว C'''' จาก 2''' ถึง 5'; แนว 2''' จากจุดรวมตะเข้/ตะเข้ราง (≈6.00 ไม่มีระยะพิมพ์) ถึง C'''''; ช่วงสั้นแนว B' รอบแนว 3' (ปลายไม่ตรงระยะที่พิมพ์) — grid_refs เป็นช่วงที่ครอบตำแหน่ง ไม่ได้วัดความยาว",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "ends_not_on_printed_ticks"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ตะเข้สัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      },
+      "count": 8,
+      "grid_refs": [
+        "A''-E' x 1'-6'"
+      ],
+      "note": "เส้นประจุด (ตะเข้สัน) แนวทแยง 45° นับได้ 8 เส้นตามที่วาด: มุมตะวันตกเฉียงเหนือ, มุมตะวันตกเฉียงใต้ของปีกตะวันตก, จากจุดรวมอกไก่แนว A'''' ลงถึงอกไก่สั้นแนว B', จากอกไก่สั้นแนว B' ลงไปจุดรวมแนว 2''', มุมตะวันออกเฉียงเหนือ, มุมตะวันออกเฉียงใต้ของปีกตะวันออก, และสองมุมใต้ของปีกใต้ (จาก C'''''2''' ไปมุม E2/E4 ชายคา) — แนวทแยงจึงไม่มีระยะช่วงจากกริด",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "count_from_drawn_lines",
+        "diagonal_span_unresolved"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ตะเข้ราง",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้ราง C-100x50x20x3.2 mm."
+      },
+      "count": 2,
+      "grid_refs": [
+        "A''''-C'' x 1''-2'''",
+        "C''-D' x 2'''-5"
+      ],
+      "note": "เส้นคู่ (ตะเข้ราง) 2 เส้น: (1) จากจุดรวมอกไก่แนว A'''' (≈5.25 ไม่มีระยะพิมพ์) ลงไปมุมในของชายคาที่ C''1'' (ชายคายื่น 1.00 จากกริด 2 และแนว C); (2) จากจุดรวมแนว 2''' (≈6.00) ลงไปมุมในของชายคาที่ D'5 (ชายคายื่น 1.00 จากกริด 4 และแนว D) — grid_refs เป็นช่วงที่ครอบเส้นทแยง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "count_from_drawn_lines",
+        "diagonal_span_unresolved"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ท่อน/ม.)"
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [
+        "A''-E' x 1'-6'"
+      ],
+      "note": "เส้นทึบวางตั้งฉากกับชายคาทุกด้าน (หลังคาทรงปั้นหยา) ยาวไม่เท่ากันเพราะไปชนตะเข้สัน/ตะเข้ราง จึงไม่นับจำนวน; ชายคายื่น 1.00 ม. รอบอาคาร (1', 6', A'', E')",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_recorded"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "SHS",
+        "d_mm": 25,
+        "b_mm": 25,
+        "t_mm": 1.6,
+        "printed_as": "แป เหล็กกล่อง-25x25x1.6 mm. @0.50 m. (น้ำหนัก 1.12 กก./ม.) หรือ แป ชุบกัลวาไนท์ ตราช้าง หนา 7 มม. @0.50 m."
+      },
+      "spacing_mm": 500,
+      "count": null,
+      "grid_refs": [
+        "A''-E' x 1'-6'"
+      ],
+      "note": "แปวางขนานชายคาบนจันทัน @0.50 ม.; วาดเส้นประเฉพาะในช่องตัดแสดง (ปีกใต้) จึงไม่นับจำนวน; ทางเลือกแปชุบกัลวาไนท์ ตราช้าง หนา 7 มม.",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_drawn"
+      ]
+    }
+  ]
+}
