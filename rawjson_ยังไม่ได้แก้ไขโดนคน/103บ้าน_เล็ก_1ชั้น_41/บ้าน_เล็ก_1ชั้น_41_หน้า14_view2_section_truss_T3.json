@@ -1,0 +1,90 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา ระดับ +4.09",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_41/บ้าน_เล็ก_1ชั้น_41_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_41_หน้า00_gridline.json",
+  "view_title": "TRUSS T3",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา ระดับ +4.09 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T3 1:75 (section)",
+    "view3: TRUSS T1 1:75 (section)"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Half (hip-end) truss: from the D end the top chord slopes up for the first 2.00 (1.00 + 1.00), then runs flat at 1.15 to the T2 end (the elevation labels that end 'T2'). The flat top is the wing ridge ระดับหลังอกไก่ +5.24 (4.09 + 1.15).",
+    "Four section callouts: sloped top chord 2C-100x50x20x3.2, flat top chord 2C-150x50x20x3.2, verticals and diagonals C-100x50x20x3.2 (one callout, two leaders), bottom chord อะเส 2C-150x50x20x3.2 — kept per member in truss_members (no single steel_section).",
+    "Panel chain 1.00 + 1.00 + 0.92 x 3 adds to 4.76 against the printed 4.75 (rounding). It is printed with no grid markers (floating chain in the grid master); read against S-03/S-04 the truss lies on 1'' from D to A'''."
+  ],
+  "elements": [
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "height_mm": 1150,
+      "height_mm_printed_as": "1.15",
+      "spans_m": [
+        4.75
+      ],
+      "supports": [
+        "D",
+        "A'''"
+      ],
+      "panel_lengths_printed_as": "1.00 | 1.00 | 0.92 | 0.92 | 0.92 (รวม 4.75)",
+      "truss_members": [
+        {
+          "member": "คอร์ดบนช่วงลาด",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 100,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "2C-100x50x20x3.2 mm."
+          }
+        },
+        {
+          "member": "คอร์ดบนช่วงราบ",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 150,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "2C-150x50x20x3.2 mm."
+          }
+        },
+        {
+          "member": "เสาตั้งและค้ำทแยง",
+          "steel_section": {
+            "designation": "C",
+            "d_mm": 100,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "C-100x50x20x3.2 mm."
+          }
+        },
+        {
+          "member": "คอร์ดล่าง (อะเส)",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 150,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+          }
+        }
+      ],
+      "note": "โครงถักปลายตะเข้ (half truss) สูง 1.15 ม. ยาว 4.75 ม. วางบนอะเสแถว D และแขวน/วางบน T2; คอร์ดบนช่วงลาดยื่นเลยจุดรองรับฝั่ง D ออกไปเป็นชายคา",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}

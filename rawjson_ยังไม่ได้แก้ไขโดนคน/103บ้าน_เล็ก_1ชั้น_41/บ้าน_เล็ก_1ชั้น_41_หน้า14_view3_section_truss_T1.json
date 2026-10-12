@@ -1,0 +1,81 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา ระดับ +4.09",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_41/บ้าน_เล็ก_1ชั้น_41_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_41_หน้า00_gridline.json",
+  "view_title": "TRUSS T1",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา ระดับ +4.09 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T3 1:75 (section)",
+    "view3: TRUSS T1 1:75 (section)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Main truss along grid 2: three supports drawn (left end = D, middle = B, right end = A); the apex vertical is labelled 'T2' at 4.75 from the D end (= A''' 3.75 from A), where T2 crosses. On the D side the top chord ends near C (under the wing roof); on the A side it runs past the support to the eave (1.00 on the S-04/A-04 plans, not dimensioned on this elevation).",
+    "Three section callouts: ridge อกไก่ 2C-150x50x20x3.2, top chord + verticals + diagonals 2C-100x50x20x3.2 (one callout, three leaders), bottom chord อะเส 2C-150x50x20x3.2 — kept per member in truss_members. Height 2.17 = 6.26 - 4.09 (main ridge).",
+    "Panel chain 1.00 + 1.25 x 6 = 8.50 is printed with no grid markers (floating chain in the grid master)."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "height_mm": 2170,
+      "height_mm_printed_as": "2.17",
+      "spans_m": [
+        4.5,
+        4.0
+      ],
+      "supports": [
+        "D",
+        "B",
+        "A"
+      ],
+      "panel_lengths_printed_as": "1.00 | 1.25 | 1.25 | 1.25 | 1.25 | 1.25 | 1.25 (รวม 8.50)",
+      "truss_members": [
+        {
+          "member": "อกไก่",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 150,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+          }
+        },
+        {
+          "member": "คอร์ดบน เสาตั้ง และค้ำทแยง",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 100,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "2C-100x50x20x3.2 mm."
+          }
+        },
+        {
+          "member": "คอร์ดล่าง (อะเส)",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 150,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+          }
+        }
+      ],
+      "note": "โครงถักหลักแนวกริด 2 สูง 2.17 ม. ยาว 8.50 ม. (D ถึง A) วางบนจุดรองรับ 3 จุด D, B, A; ยอดตรงแนว A''' ตัดกับ T2",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา ระดับ +4.09",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_41/บ้าน_เล็ก_1ชั้น_41_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_41_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา ระดับ +4.09",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา ระดับ +4.09 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T3 1:75 (section)",
+    "view3: TRUSS T1 1:75 (section)"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Members from the sheet's หมายเหตุ legend: dash-dot line = อะเส 2C-150x50x20x3.2 mm., post marker = ตั้ง 2C-150x50x20x3.2 mm. The plan is the +4.09 layer (ระดับหลังอะเส): every dash-dot line is recorded as drawn, split at the 9 columns (small squares at A1, A2, A3, B1, B2, B3, C3, D1, D2).",
+    "Three of the dash-dot lines are not wall plates but the bottom chords of the trusses — grid 2 (T1), A''' (T2, the ridge line) and 1'' (T3); the T1/T2/T3 elevations label their bottom chord 'อะเส 2C-150x50x20x3.2 mm.'. They carry truss_bottom_chord:<mark>. The truss elements on S-04 include these chords, so a consumer summing steel must not add both. Grid 2 between C and D is both the outer plate of the L and part of T1's chord — recorded once, inside B2-D2.",
+    "T2's chord bears on the grid-1 and grid-3 plates at A''' (0.25 short of columns B1/B3); T3's chord runs from T2 (A'''1'') to the row-D plate at D1'' (no column there).",
+    "Posts (ตั้ง): 11 markers — on grid 2 at 1.25 / 2.50 / 3.75 / 5.00 / 6.25 from A, on A''' at 2.00 / 6.00 from grid 1, on 1'' at 4.66 / 5.58 / 6.50 / 7.50 from A. They sit exactly on the T1/T2/T3 panel points, but those panel chains are printed only on the truss elevations with no grid markers (floating, section 4 rule 4), so the entry carries the three member lines as ranges, not point refs.",
+    "Spec conflict, decided: the S-03 legend calls the posts 2C-150x50x20x3.2, while the truss elevations (same sheet and S-04) print the verticals as 2C-100x50x20x3.2 (T1, T2) and C-100x50x20x3.2 (T3). Detail beats plan (op01 precedence 2): the member spec lives on the truss section files; the post entry keeps only this sheet's legend text in printed_as, flagged."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ส่วนนี้รับปลาย T2 ที่แนว A''' (ห่างเสา B1 0.25)",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "truss_bottom_chord:T1"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ส่วนนี้รับปลาย T2 ที่แนว A''' (ห่างเสา B3 0.25)",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "A'''2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "วางบนอะเสแนว 1 ที่จุดเริ่ม และตัด T1 ที่แนว 2",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "truss_bottom_chord:T2"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'''1''",
+      "grid_ref_end": "D1''",
+      "span_length_m": 4.75,
+      "span_source": "grid_table",
+      "note": "จาก T2 ลงไปวางบนอะเสแถว D (ไม่มีเสาที่ D1'')",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "truss_bottom_chord:T3"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A'''3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "จาก T1 ไปวางบนอะเสแนว 3",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "truss_bottom_chord:T2"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "D1",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่ C1 — ช่วงเดียว B ถึง D",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "ช่วง C-D เป็นทั้งขอบนอกของรูปตัว L และคอร์ดล่างของ T1",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "truss_bottom_chord:T1"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ขอบนอกแถว C ช่วง 2-3 ปลาย C2 ชนคอร์ดล่าง T1 (ไม่มีเสาที่ C2)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)"
+      ],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "รับปลายล่างของ T3 ที่ D1''",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ตั้ง",
+      "element_type": "steel_member",
+      "material": "steel",
+      "printed_as": "ตั้ง 2C-150x50x20x3.2 mm.",
+      "count": 11,
+      "grid_refs": [
+        "A-C x 2",
+        "A''' x 1''-3",
+        "A'''-C x 1''"
+      ],
+      "note": "เสาตั้งของโครงถัก 11 จุด: แนว 2 ที่ 1.25/2.50/3.75/5.00/6.25 จาก A (T1), แนว A''' ที่ 2.00/6.00 จากกริด 1 (T2), แนว 1'' ที่ 4.66/5.58/6.50/7.50 จาก A (T3) — จุดที่ 3.75 บนแนว 2 นับครั้งเดียว",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "spec_conflict_plan_legend_vs_truss_elevation",
+        "positions_from_floating_truss_chains"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_41/บ้าน_เล็ก_1ชั้น_41_หน้า15.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_41_หน้า00_gridline.json",
+  "view_title": "TRUSS T2",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Ridge truss along A''': supports drawn at both ends and at the middle, where the vertical is labelled 'T1' (T1 crosses at grid 2); the vertical 2.00 from the left end is labelled 'T3' (T3 meets it on 1''). The top chord runs past both end supports toward the eaves.",
+    "Three section callouts: ridge อกไก่ 2C-150x50x20x3.2, top chord + verticals + diagonals 2C-100x50x20x3.2 (one callout, three leaders), bottom chord อะเส 2C-150x50x20x3.2 — kept per member in truss_members. Height 2.17 = 6.26 - 4.09.",
+    "Panel chain 2.00 x 4 = 8.00 is printed with no grid markers (floating chain in the grid master); read against S-03/S-04 the truss runs from grid 1 to grid 3."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "height_mm": 2170,
+      "height_mm_printed_as": "2.17",
+      "spans_m": [
+        4.0,
+        4.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "2.00 | 2.00 | 2.00 | 2.00 (รวม 8.00)",
+      "truss_members": [
+        {
+          "member": "อกไก่",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 150,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "อกไก่ 2C-150x50x20x3.2 mm."
+          }
+        },
+        {
+          "member": "คอร์ดบน เสาตั้ง และค้ำทแยง",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 100,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "2C-100x50x20x3.2 mm."
+          }
+        },
+        {
+          "member": "คอร์ดล่าง (อะเส)",
+          "steel_section": {
+            "designation": "2C",
+            "d_mm": 150,
+            "b_mm": 50,
+            "lip_mm": 20,
+            "t_mm": 3.2,
+            "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+          }
+        }
+      ],
+      "note": "โครงถักสันหลังคาแนว A''' สูง 2.17 ม. ยาว 8.00 ม. (กริด 1 ถึง 3) ยอดตรงแนว 2 ตัดกับ T1; T3 มาชนที่ระยะ 2.00 จากกริด 1",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}
