@@ -1,0 +1,86 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_45/บ้าน_เล็ก_1ชั้น_45_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_45_หน้า00_gridline.json",
+  "view_title": "GS1, ST-1",
+  "scale": "1:25",
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Stair section is titled ST-1 here but marked ST-01 on the S-01/S-02 plans — kept as printed on each sheet (house-95 precedent); its two ends land on B4 (top landing) and B2 (foot, at ระดับดิน), matching grid 2 at +2.35 and grid 3 C-D at +0.00 on the plans.",
+    "Leaders: DB12@0.10 m. points to the bar lines (main bars along the run, top and bottom of the landing and the waist), DB12@0.20 m. to the bar dots (transverse) — recorded in bar_layers. Landing and waist both print 0.200 thick.",
+    "GS1 (slab on grade) is detailed here but appears on neither structure plan; its own thickness is not printed (only lean concrete 0.05 and sand 0.05) — thickness_mm null."
+  ],
+  "elements": [
+    {
+      "element_id": "GS1",
+      "element_type": "slab",
+      "thickness_mm": null,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB9@0.20m#"
+      },
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "note": "พื้นวางบนดิน ตะแกรงชั้นเดียว บนคอนกรีตหยาบ 1:3:5 หนา 0.05 และทรายหยาบอัดแน่นหนา 0.05; ขอบพื้นฝากเข้าคาน; ความหนาพื้นไม่ได้พิมพ์; มาร์ค GS1 ไม่ปรากฏบนแปลน S-01/S-02",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "mark_not_found_on_plans"
+      ]
+    },
+    {
+      "element_id": "ST-1",
+      "element_type": "stair",
+      "thickness_mm": 200,
+      "thickness_mm_printed_as": "0.200",
+      "landing_thickness_mm": 200,
+      "landing_thickness_printed_as": "0.200",
+      "tread_mm": 250,
+      "riser_mm": 185,
+      "riser_mm_printed_as": "0.185",
+      "bar_layers": [
+        {
+          "location": "เหล็กหลักตามแนวช่วงบันได — ผิวบนและล่างของพื้นพัก และท้องบันได",
+          "dia_mm": 12,
+          "spacing_mm": 100,
+          "type": "DB",
+          "printed_as": "DB12@0.10 m."
+        },
+        {
+          "location": "เหล็กกระจายตามขวาง (พื้นพัก และท้องบันได)",
+          "dia_mm": 12,
+          "spacing_mm": 200,
+          "type": "DB",
+          "printed_as": "DB12@0.20 m."
+        },
+        {
+          "location": "ผิวบนลูกนอน",
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "RB9@0.20 m."
+        },
+        {
+          "location": "ทุกมุมขั้นบันได",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "RB9 ทุกมุม"
+        }
+      ],
+      "bears_on": "B4 (ปลายบน พื้นพัก) / B2 (ปลายล่าง ระดับดิน)",
+      "note": "บันไดคอนกรีตช่วงเดียวขึ้นชั้นบน: พื้นพักบนฝากคาน B4 (แนว 2 ที่ +2.35) ปลายล่างลงคาน B2 (แนว 3 ช่วง C-D ที่ระดับดิน); บนแปลน S-01/S-02 ใช้มาร์ค ST-01. จำนวนขั้นไม่ได้นับจากแบบ",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}
