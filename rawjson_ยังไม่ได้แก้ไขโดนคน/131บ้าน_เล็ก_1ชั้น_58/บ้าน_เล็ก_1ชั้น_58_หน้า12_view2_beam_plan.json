@@ -1,0 +1,378 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานรากและคานคอดิน",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_58/บ้าน_เล็ก_1ชั้น_58_หน้า12.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_58_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานรากและคานคอดิน",
+  "scale": "1:50",
+  "views": [
+    "view1: แปลนฐานรากและคานคอดิน — footings + columns (footing_plan)",
+    "view2: same drawing — ground beams G1-G5 + floor slabs (beam_plan)"
+  ],
+  "pattern": "beam_plan",
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "grid_label_assigned_not_printed",
+    "scanned_rotated_set"
+  ],
+  "warnings": [
+    "Ground beams (คานคอดิน) of a single-storey toilet block. G1 runs along row A and along both edge lines A''' / B'' (top and bottom), G4 along row B; G2 on lines 1 and 4 between A and B, G3 on lines 2 and 3; G2/1 and G3/1 are 1.20 cantilevers from rows A and B out to the edge beams (S-03 elevations dimension them 1.20 from the column). G5 joins the four C0 posts on line A'.",
+    "The edge beams G1 on A''' and B'' have no columns — every segment bears on the tips of the cantilevers G2/1 / G3/1 (flagged bears_on_beam).",
+    "The S-01 1.20 ticks land on the outer face of the edge beam, not its centre (about 0.10 m by scale); the edge beam is recorded on the tick line A''' / B'' and the cantilever spans as the printed 1.20.",
+    "Slabs: the nine panels inside the beam grid carry the precast-plank symbol (no mark, ⊕+0.32 structure / ⊕+X.XX finish) and span along x between the G2 / G3 lines; the band outside the beams is SO at ⊕+0.20 (8 cm slab on compacted sand, S-03). Legend: พื้นสำเร็จรูปชนิดแผ่นตัน มอก. 828-2546 รับ น.น บรรทุกปลอดภัย 300 กก/ตร.ม, คอนกรีตทับหน้าหนา 5 ซม. ตะแกรงเหล็กสำเร็จรูป Ø4มม.@0.20ม. หรือเหล็กตะแกรง Ø6 มม.@0.25 ม."
+  ],
+  "elements": [
+    {
+      "element_id": "G5",
+      "element_type": "beam",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A'2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G5",
+      "element_type": "beam",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A'3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G5",
+      "element_type": "beam",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "A'4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "note": "ปลายยื่นรับคาน G1 ริมนอก",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "A'''2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:G2/1(start)",
+        "bears_on_beam:G3/1(end)"
+      ]
+    },
+    {
+      "element_id": "G3/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A'''3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:G3/1(start)",
+        "bears_on_beam:G3/1(end)"
+      ]
+    },
+    {
+      "element_id": "G3/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''3",
+      "grid_ref_end": "A'''4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:G3/1(start)",
+        "bears_on_beam:G2/1(end)"
+      ]
+    },
+    {
+      "element_id": "G2/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''4",
+      "grid_ref_end": "A4",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2/1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B''1",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "G4",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3/1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B''2",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "G4",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3/1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B''3",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "G4",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2/1",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B''4",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever_free_end"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B''1",
+      "grid_ref_end": "B''2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:G2/1(start)",
+        "bears_on_beam:G3/1(end)"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B''2",
+      "grid_ref_end": "B''3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:G3/1(start)",
+        "bears_on_beam:G3/1(end)"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B''3",
+      "grid_ref_end": "B''4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:G3/1(start)",
+        "bears_on_beam:G2/1(end)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "พื้นสำเร็จรูปชนิดแผ่นตัน",
+      "element_type": "slab",
+      "count": 9,
+      "grid_refs": [
+        "A'''-A x 1-2",
+        "A'''-A x 2-3",
+        "A'''-A x 3-4",
+        "A-B x 1-2",
+        "A-B x 2-3",
+        "A-B x 3-4",
+        "B-B'' x 1-2",
+        "B-B'' x 2-3",
+        "B-B'' x 3-4"
+      ],
+      "level_m": 0.32,
+      "level_m_printed_as": "⊕+0.32 ระดับโครงสร้างพื้นคอนกรีตทับหน้า",
+      "span_direction": "x",
+      "precast": true,
+      "topping_thickness_mm": 50,
+      "note": "พื้นสำเร็จรูปชนิดแผ่นตัน มอก. 828-2546 รับ น.น บรรทุกปลอดภัย 300 กก/ตร.ม — คอนกรีตทับหน้าหนา 5 ซม. ตะแกรงเหล็กสำเร็จรูป Ø4มม.@0.20ม. หรือเหล็กตะแกรง Ø6 มม.@0.25 ม.; ลูกศรวางแผ่นตามแนว x (พาดระหว่างแนวคาน G2/G3)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "no_printed_mark"
+      ]
+    },
+    {
+      "element_id": "SO",
+      "element_type": "slab",
+      "count": 4,
+      "grid_refs": [
+        "A''-A''' x 1''-4''",
+        "A'''-B'' x 1''-1",
+        "A'''-B'' x 4-4''",
+        "B''-B''' x 1''-4''"
+      ],
+      "level_m": 0.2,
+      "level_m_printed_as": "⊕+0.20",
+      "note": "พื้นรอบอาคาร 4 ด้าน (ป้าย SO 4 จุด) นอกแนวคาน — ตามรายละเอียด S-03 วางบนทรายอัดแน่น",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}
