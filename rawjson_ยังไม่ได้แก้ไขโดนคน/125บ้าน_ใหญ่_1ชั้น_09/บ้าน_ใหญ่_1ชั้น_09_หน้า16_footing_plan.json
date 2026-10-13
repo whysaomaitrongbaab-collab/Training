@@ -1,0 +1,108 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก ตอม่อ",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_09/บ้าน_ใหญ่_1ชั้น_09_หน้า16.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_09_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก ตอม่อ",
+  "scale": "1:100",
+  "confidence_score": 0.9,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "handwritten_takeoff_marks_on_sheet"
+  ],
+  "warnings": [
+    "Every footing is printed with its mark pair 'F1 / C1' (rows A and B) or 'F2 / C1' (row C) — footing mark over the column (ตอม่อ) mark.",
+    "Row C conflict: the plan prints 'F2 / C1' at all 7 row-C points, but someone has struck the printed C1 through in pen and written a circled 'C2' beside each one. Took C2: the S-05 detail sheet (member-spec precedence, op01) draws C2 0.20x0.20 'จากฐานราก ถึง คานคอดิน' standing on footing F2, while C1 below the ground beam is 0.25x0.25 — and section A-A (หน้า09) shows the row-C post above the ground beam is a steel pipe 'เสาเหล็ก LG ø 3\"x3\" หรือ ø3\" ภายในกรอกคอนกรีตให้เต็ม', not C1. Two sheets plus the pen correction agree against the plan's printed C1. Confidence on C2 lowered; the printed text is kept in element_id_printed_as.",
+    "Rows A and B: F1 (1.00x1.00, 5 piles) + C1; row C: F2 (0.70x0.45, 2 piles). No footing at any dummy line."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 14,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ],
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 7,
+      "grid_refs": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 14,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ],
+      "note": "ตอม่อ C1 (0.25x0.25 จากฐานรากถึงคานคอดิน, 0.20x0.20 จากคานคอดินถึงหลังคา — S-05)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 7,
+      "grid_refs": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "element_id_printed_as": "C1 (ขีดฆ่าด้วยปากกา เขียน C2 วงกลมกำกับ)",
+      "note": "ตอม่อ C2 0.20x0.20 จากฐานราก F2 ถึงคานคอดิน (S-05); เหนือคานคอดินเป็นเสาเหล็ก ø3\" กรอกคอนกรีต (รูปตัด A-A)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "printed_mark_C1_overridden_by_detail_sheet_and_pen_correction"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "png": "21",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "ขยายหน้าตัดพื้น, ขยายหน้าตัดคาน",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_09/บ้าน_ใหญ่_1ชั้น_09_หน้า21.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_09_หน้า00_gridline.json",
+  "view_title": "S, G1, G2, R1, R2, ทับหลังประตู-หน้าต่าง, เอ็นใต้หน้าต่าง, เสาเอ็น + หมายเหตุ",
+  "scale": "1:20",
+  "confidence_score": 0.9,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "All bars printed 'ø' — type RB (section 0.6). All stirrups ป-ø6@0.15ม.",
+    "Bent-up bars printed '(คมL/5)' (คอม้า, bent up at L/5) sit in the bottom cluster on G1, G2 and R2; merged into main_bar.bottom.count (G1 2+1=3, G2 2+2=4, R2 2+1=3) with the split kept in printed_as/note (section 7).",
+    "Lintel, sill beam and wall-stiffener column carry no mark: element_id null with element_name_assigned. The stiffener is drawn 0.07x0.15 while note 2 gives 0.07x0.10 as the default 'ถ้าไม่ระบุในแบบ' — not a conflict (the default applies only where none is drawn).",
+    "Slab S is a slab on ground (0.08 thick on 0.15 compacted sand/laterite), mesh ø6@0.25#, plus ø9@0.50 top bars 0.50 each side over the ground-beam line."
+  ],
+  "elements": [
+    {
+      "element_id": "S",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "ø6มม @0.25ม#",
+        "note": "ตะแกรง 2 ทาง"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 500,
+          "type": "RB",
+          "printed_as": "ø9มม @0.50ม",
+          "position": "เหล็กเสริมบนเหนือแนวคาน ยื่นข้างละ 0.50 ม."
+        }
+      ],
+      "base_fill": "ทรายหยาบหรือลูกรังอัดแน่น หนา 0.15ม",
+      "note": "พื้นวางบนดิน",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12มม"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12มม + 1-ø12มม(คมL/5)",
+          "note": "2 เส้นตรง + 1 เส้นคอม้า (ดัดขึ้นที่ L/5)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม + 2-ø15มม(คมL/5)",
+          "note": "2 เส้นตรง + 2 เส้นคอม้า (ดัดขึ้นที่ L/5)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 200,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12มม"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12มม"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม + 1-ø15มม(คมL/5)",
+          "note": "2 เส้นตรง + 1 เส้นคอม้า (ดัดขึ้นที่ L/5)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "ทับหลังประตู-หน้าต่าง",
+      "width_mm": 100,
+      "height_mm": 250,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9มม"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9มม"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "tie_beam",
+      "element_name_assigned": "เอ็นใต้หน้าต่าง",
+      "width_mm": 150,
+      "height_mm": 100,
+      "main_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "2-ø9มม"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "column",
+      "element_name_assigned": "เสาเอ็น",
+      "width_mm": 70,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "2-ø9มม"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "note": "หมายเหตุ 2: เอ็นผนังถ้าไม่ระบุในแบบ ให้ใช้ขนาด 0.07x0.10ม",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "note",
+      "element_name_assigned": "หมายเหตุ S-06",
+      "text": [
+        "1. ทับหลังที่อยู่เหนือ ประตู หน้าต่าง และเอ็น ค.ส.ล ที่อยู่ใต้หน้าต่างให้จัดทำตามแบบ",
+        "2. เอ็นผนังถ้าไม่ระบุในแบบ ให้ใช้ ขนาด 0.07x0.10ม และเมื่อฉาบปูนเรียบ ให้มีความหนาเท่ากับผนัง",
+        "หมายเหตุ หรือรายการการเสริมเหล็กให้เป็นไปตามข้อกำหนดในหนังสือมาตรฐานประกอบแบบก่อสร้าง"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}

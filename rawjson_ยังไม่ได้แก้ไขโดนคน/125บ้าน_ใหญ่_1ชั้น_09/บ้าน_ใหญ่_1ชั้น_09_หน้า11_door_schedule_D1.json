@@ -1,0 +1,81 @@
+{
+  "png": "11",
+  "doc_page": 11,
+  "discipline": "architectural",
+  "sheet_code": "A-09",
+  "sheet_name": "ขยาย D1, รายการประกอบแบบประตู",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_09/บ้าน_ใหญ่_1ชั้น_09_หน้า11.png",
+  "columns": [
+    "ลักษณะการเปิด",
+    "วงกบ",
+    "บาน-กรอบบาน",
+    "อุปกรณ์",
+    "หมายเหตุ"
+  ],
+  "field_map": {
+    "ลักษณะการเปิด": "opening_type",
+    "วงกบ": "frame",
+    "บาน-กรอบบาน": "leaf_material",
+    "อุปกรณ์": "hardware",
+    "หมายเหตุ": "note"
+  },
+  "view_title": "ขยาย D1 ประตูบานเปิดเดี่ยวพร้อมช่องแสง",
+  "scale": "1:25",
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Door detail sheet with a property list per opening part (ลักษณะการเปิด / วงกบ / บาน-กรอบบาน / อุปกรณ์) plus รายการประตู D1 — recorded as a one-row schedule for D1, the transom (ช่องแสง) above it nested in transom{}.",
+    "The lintel over D1 is printed here as 0.15x0.25 with ø9 4 bars and ø6@0.15 stirrups, while S-06 'ขยายทับหลังประตู-หน้าต่าง' details 0.10x0.25 (2-ø9 top + 2-ø9 bottom = the same 4 bars). Width differs (0.15 here vs 0.10 on S-06; W1 on A-10 prints 0.10). Not resolved into the structural spec — the S-06 section wins for the generic lintel (op01 member-spec precedence); the D1-specific print is kept on this element only.",
+    "'RB2' is printed above the door head on the elevation and the section ก-ก — no RB2 exists in the structural set (roof beams are R1/R2 on S-03); recorded nothing for it, flagged here.",
+    "Count of D1 is not printed on this sheet (no จำนวน column) — count omitted."
+  ],
+  "elements": [
+    {
+      "element_id": "D1",
+      "element_type": "door",
+      "opening_type": "ประตูบานเปิดเดี่ยว",
+      "frame": "วงกบเหล็ก ทำจากแผ่นเหล็กพับขึ้นรูปวงกบ ขนาด 2\"x4\" หนา 1.5 มม. พร้อมบานพับ ขนาด4\"-4ตัว",
+      "leaf_material": "บานไม้อัดยาง มอก.192-2528",
+      "hardware": "อุปกรณ์ติดตั้ง และอุปกรณ์ล็อคครบชุด (ดูรายการประตู)",
+      "width_m": 0.9,
+      "height_m": 2.0,
+      "bay_width_m": 4.5,
+      "transom": {
+        "opening_type": "ช่องแสงลวดตาข่ายระบายอากาศ และช่องแสงกระจกใส หนา 5มม.",
+        "frame": "วงกบเหล็ก ทำจากแผ่นเหล็กพับขึ้นรูปวงกบ ขนาด 1 1/2\"x3\" หนา 1.5 มม.",
+        "leaf_material": "ช่องแสงกระจกใส หนา 5มม. / ช่องลมด้านบน ลวดตาข่าย ขนาด 3มม. ชุบสังกะสี ถักขึ้นรูปเป็นช่องสี่เหลี่ยมจตุรัส ขนาดช่อง 1 5/8\"x 1 5/8\"",
+        "height_m": 0.6
+      },
+      "lintel": {
+        "width_mm": 150,
+        "height_mm": 250,
+        "main_bar": {
+          "count": 4,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "เหล็กเสริม ø9มม 4เส้น"
+        },
+        "stirrup": {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ปลอก ø6มม @0.15มม"
+        },
+        "printed_as": "ทับหลัง ค.ส.ล ขนาด0.15x0.25ม ฉาบเรียบ เหล็กเสริม ø9มม 4เส้น ปลอก ø6มม @0.15มม"
+      },
+      "door_list": [
+        "ประตูไม้อัดยาง มอก. 192-2528 ขนาด 0.90x2.00 ม. วงกบเหล็กพับขึ้นรูป 2\"x4\" หนา 1.5 มม. หรือไม้เนื้อแข็ง 2\"x4\" ติดบานพับ 5\"x5\"-4 อัน ติดกลอน 4\"-1 อัน (กลางบานด้านใน)",
+        "กลอน 6\"-1 อัน (มุมบานด้านล่าง) กุญแจก้านบิดชนิดมีมาสเตอร์คีห้องละ 1 ชุด",
+        "บานที่เหลือติด มือจับ 5\"-2 อัน (ด้านในด้านนอก)",
+        "ติดกุญแจพร้อมสายยู 1 ชุด (1 ห้องติดเพียง 1 ประตู)",
+        "ที่จับยึดบานประตู แบบเหล็ก 1\"x3/8\" งอฝังในผนัง ยื่นปลายเจาะรู สำหรับสอดกลอน ประตูอันบนยึดบาน 1 ชุด"
+      ],
+      "note": "การเคลือบผิวกันสนิมและการเคลือบสี วงกบเหล็ก และบานหน้าต่างเหล็กทั้งหมดต้องผ่านขบวนการล้างคราบน้ำมันและสิ่งสกปรกด้วยน้ำยาเคมี และเคลือบสารกันสนิม ซิงค์ ฟอสเฟส โค้ตติ้ง เคลือบทับด้วยสีผงโพลีเอสเตอร์ (โพลีเอสเตอร์ พาวเดอร์ โค้ตติ้ง) อบด้วยความร้อนจนเนื้อสีติดแน่นและมีผิวเรียบ",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}
