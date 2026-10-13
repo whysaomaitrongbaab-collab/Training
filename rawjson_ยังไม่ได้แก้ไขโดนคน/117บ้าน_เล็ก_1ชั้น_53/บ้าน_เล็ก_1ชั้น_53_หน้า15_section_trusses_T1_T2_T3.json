@@ -1,0 +1,124 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_53/บ้าน_เล็ก_1ชั้น_53_หน้า15.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_53_หน้า00_gridline.json",
+  "view_title": "TRUSS T1 / TRUSS T2 / TRUSS T3",
+  "scale": "1:75",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Three truss elevations at 1:75. Panel chains carry no grid bubbles; anchored by the T2/T3 labels at the T1 posts and by the sub-totals (T1 8.50 = D-C-B-A, T2/T3 7.00 = 1-2-3) — the panel points are lines in the grid master (section 4 rule 4).",
+    "T1's member callout prints a slashed-rectangle symbol before 100x50x2.3 with the words 'rectangular tube' — designation RHS, print kept in printed_as.",
+    "T2/T3 web members carry their own printed section; kept as web_section beside steel_section (chords). web_section is a new key — no existing field holds a truss web profile; reuse it for the next truss with a different web."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube Ø-100x50x2.3 mm."
+      },
+      "height_mm": 1156,
+      "height_mm_printed_as": "1.156",
+      "spans_m": [
+        3.0,
+        3.0,
+        2.5
+      ],
+      "supports": [
+        "D",
+        "C",
+        "B",
+        "A"
+      ],
+      "panel_lengths_printed_as": "1.000 1.000 1.000 | 1.000 1.000 1.000 | 0.833 0.833 0.833; 3.00 | 3.00 | 2.50; 8.50",
+      "note": "โครงถักหลังคาเพิงลาดเดียว คอร์ดบนลาด คอร์ดล่างระนาบ มีเสาตั้งทุกช่วง (ไม่มีค้ำทแยง) ลึก 1.156 ม. ที่ปลายสูง (แนว D ซึ่งมี T3) ลดลงถึงแนว A; วางบนเสา 4 จุด D, C, B, A; T2 วางที่จุด 6.00 จาก D (แนว B); คอร์ดบนยื่นเลยจุดรองรับทั้งสองปลาย (ระยะยื่น 1.00 พิมพ์บนแปลน S-03 ไม่ได้พิมพ์บนรูปนี้); ทุกชิ้นส่วนใช้ท่อเหลี่ยมขนาดเดียว (ลูกศร 3 เส้นจากป้ายเดียว)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "C-100x50x20x2.3 mm."
+      },
+      "web_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "C-75x45x15x2.3 mm."
+      },
+      "height_mm": 316,
+      "height_mm_printed_as": "0.316",
+      "spans_m": [
+        3.5,
+        3.5
+      ],
+      "supports": [
+        "T1",
+        "T1",
+        "T1"
+      ],
+      "panel_lengths_printed_as": "0.875 x 8; 3.50 | 3.50; 7.00",
+      "note": "โครงถักแนวราบ คอร์ดบน-ล่าง C-100x50x20x2.3 (ลูกศร 2 เส้น) เสาตั้ง C-75x45x15x2.3 ไม่มีค้ำทแยง; วางบน T1 สามแนว (กริด 1, 2, 3) ตามแนว B",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "C-100x50x20x2.3 mm."
+      },
+      "web_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "C-75x45x15x2.3 mm."
+      },
+      "height_mm": 1053,
+      "height_mm_printed_as": "1.053",
+      "spans_m": [
+        3.5,
+        3.5
+      ],
+      "supports": [
+        "T1",
+        "T1",
+        "T1"
+      ],
+      "panel_lengths_printed_as": "1.167 x 6; 3.50 | 3.50; 7.00",
+      "note": "โครงถักแนวราบ คอร์ดบน-ล่าง C-100x50x20x2.3 (ลูกศร 2 เส้น) เสาตั้งและค้ำทแยง C-75x45x15x2.3 (ลูกศร 2 เส้น); วางบน T1 สามแนว (กริด 1, 2, 3) ตามแนว D",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}

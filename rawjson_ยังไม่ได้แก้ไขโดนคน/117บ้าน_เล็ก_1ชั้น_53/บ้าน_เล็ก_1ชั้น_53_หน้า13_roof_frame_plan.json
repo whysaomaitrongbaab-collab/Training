@@ -1,0 +1,353 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_53/บ้าน_เล็ก_1ชั้น_53_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_53_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา (หลังคาหลัก)",
+  "scale": "1:75",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Main mono-pitch steel roof over rows A'-D'. Legend (หมายเหตุ): thin line = แป C-100x50x20x2.3 @1.50, solid = อะเส C-100x50x20x2.3, dashed = TRUSS T1, long-dash = TRUSS T2, dash-dot = TRUSS T3. Truss sections are on S-05.",
+    "T1 runs along grids 1, 2 and 3 (y direction) and is split at its four supports A, B, C, D (the S-05 T1 elevation draws four posts with column breaks; columns C1 stand on every one of those points). The plan draws T1 from A' to D'; the 1.00 ends beyond A and D are the top chord only (the S-05 elevation shows the chord running past the end posts), recorded as their own segments with span_source local_dimension.",
+    "T2 (row B) and T3 (row D) span between the T1 lines and are recorded 1-2 and 2-3 (bears_on_beam:T1). On the plan their line style continues out to the roof edge 1' / 3', but the S-05 T2 / T3 elevations end at the outer T1 posts (7.00 = 3.50 + 3.50) — took the elevation (detail sheet wins over plan for member geometry); the plan's extension is read as the drawn line running to the edge, not as an extra member.",
+    "อะเส (wall plate) is drawn solid on rows A and C, grids 1 to 3, with the leader 'อะเส C-100x50x20x2.3 mm. หลังอะเสระดับ(+3.60)'. Unmarked members (อะเส, แป) have element_id null with element_name_assigned (section 0.2).",
+    "T3 on row D also appears on S-04 (verandah roof); it is recorded here once and not repeated in the S-04 file, so a consumer summing both sheets does not count it twice.",
+    "Purlin positions are not dimensioned (only @1.50 m); recorded as one area entry with the counted 8 lines instead of 8 point-less segments."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ปลายคอร์ดบนยื่นเลยจุดรองรับ 1.00 ม. ถึงขอบหลังคา (ระยะ 1.00 บนแบบโครงสร้างหลังคา) — โครงถักเต็มลึกอยู่ระหว่าง A ถึง D",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_overhang_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ปลายคอร์ดบนยื่นเลยจุดรองรับ 1.00 ม. ถึงขอบหลังคา (ระยะ 1.00 บนแบบโครงสร้างหลังคา) — โครงถักเต็มลึกอยู่ระหว่าง A ถึง D",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_overhang_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ปลายคอร์ดบนยื่นเลยจุดรองรับ 1.00 ม. ถึงขอบหลังคา (ระยะ 1.00 บนแบบโครงสร้างหลังคา) — โครงถักเต็มลึกอยู่ระหว่าง A ถึง D",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_overhang_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "หลังอะเสระดับ(+3.60)",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "หลังอะเสระดับ(+3.60)",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "หลังอะเสระดับ(+3.60)",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "หลังอะเสระดับ(+3.60)",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D'1",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ปลายคอร์ดบนยื่นเลยเสาแนว D 1.00 ม. ถึงชายหลังคาด้านต่ำ (ระยะ 1.00 + 1.50 ในช่วง D-E บนแบบโครงสร้างหลังคา)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_overhang_only"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D'2",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ปลายคอร์ดบนยื่นเลยเสาแนว D 1.00 ม. ถึงชายหลังคาด้านต่ำ (ระยะ 1.00 + 1.50 ในช่วง D-E บนแบบโครงสร้างหลังคา)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_overhang_only"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D'3",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ปลายคอร์ดบนยื่นเลยเสาแนว D 1.00 ม. ถึงชายหลังคาด้านต่ำ (ระยะ 1.00 + 1.50 ในช่วง D-E บนแบบโครงสร้างหลังคา)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_overhang_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "purlin",
+      "grid_refs": [
+        "A'-D' x 1'-3'"
+      ],
+      "count": 8,
+      "spacing_mm": 1500,
+      "note": "แป 8 แนว นับจากเส้นบนแบบ (ระยะ -1.00 ถึง 9.50 ห่าง 1.50) วางขวางจันทัน T1 ตลอดความกว้าง 1' ถึง 3' (9.00 ม.); ลูกศรบนแบบชี้ทิศลาดหลังคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ],
+      "element_name_assigned": "แป",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "แป C-100x50x20x2.3 mm. @1.50 m."
+      }
+    }
+  ]
+}
