@@ -1,0 +1,126 @@
+{
+  "png": "24",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_17/บ้าน_ใหญ่_2ชั้น_17_หน้า24.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_17_หน้า00_gridline.json",
+  "view_title": "ST-1 (สองรูปตัด), PS",
+  "scale": "1:25",
+  "confidence_score": 0.87,
+  "confidence_flags": [],
+  "views": [
+    "view1: ST-1 ช่วงล่างที่แนว 1 (1.80, สูง 0.538)",
+    "view2: ST-1 ช่วงหลักแนว 1-2 (1.150 + 2.850, สูง 2.153)",
+    "view3: PS แผ่นพื้นสำเร็จรูป"
+  ],
+  "warnings": [
+    "Both stair sections are titled ST-1 (two flights of one stair, plans mark it ST-01) — recorded as one stair element with flights[]; the shared reinforcement callouts (DB12@0.10 / DB12@0.20 / RB9@0.20 / RB9 ทุกมุม) are identical on both views.",
+    "Waist slab thickness is not printed on either stair section — left null, not scaled.",
+    "The x chains under the stair views (1.80 from grid 1; 1.150 + 2.850 = 4.00 between grids 1 and 2) are recorded in the grid master's dimension_chains.",
+    "PS (precast plank floor of S-03) follows the same detail as the other houses of this series: plank 0.05 + topping 0.05; the 0.16 edge dimension is printed but its meaning is not stated."
+  ],
+  "elements": [
+    {
+      "element_id": "ST-1",
+      "element_type": "stair",
+      "grid_refs": [
+        "~E1"
+      ],
+      "thickness_mm": null,
+      "tread_mm": 250,
+      "tread_mm_printed_as": "0.250",
+      "riser_mm": 179,
+      "riser_mm_printed_as": "0.1794",
+      "flights": [
+        {
+          "view": "ST-1 (ซ้าย) — ช่วงล่างที่แนว 1",
+          "run_m": 1.8,
+          "run_printed_as": "1.80 (จากกริด 1)",
+          "rise_m": 0.538,
+          "rise_printed_as": "0.538",
+          "riser_count_drawn": 3,
+          "bears_on": [
+            "B2",
+            "B1"
+          ],
+          "note": "ชานพักบนฝากคาน B2 ที่แนว 1 ปลายล่างฝากคาน B1"
+        },
+        {
+          "view": "ST-1 (ขวา) — ช่วงหลักแนว 1-2",
+          "run_m": 4.0,
+          "run_printed_as": "1.150 + 2.850 = 4.00 (กริด 1 ถึง 2)",
+          "rise_m": 2.153,
+          "rise_printed_as": "2.153",
+          "riser_count_drawn": 12,
+          "bears_on": [
+            "B2",
+            "B3"
+          ],
+          "note": "ชานพัก 1.150 จากกริด 1 ฝากคาน B2 แล้วขึ้น 2.850 ถึงคาน B3 ที่ชั้นสอง"
+        }
+      ],
+      "bar_layers": [
+        {
+          "location": "ท้องบันไดและชานพัก — เหล็กหลัก (ป้ายชี้เส้นเหล็ก)",
+          "dia_mm": 12,
+          "spacing_mm": 100,
+          "type": "DB",
+          "printed_as": "DB12@0.10 m."
+        },
+        {
+          "location": "ท้องบันไดและชานพัก — เหล็กกระจาย (ป้ายชี้จุดเหล็ก)",
+          "dia_mm": 12,
+          "spacing_mm": 200,
+          "type": "DB",
+          "printed_as": "DB12@0.20 m."
+        },
+        {
+          "location": "ผิวบนลูกนอน",
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "RB9@0.20 m."
+        },
+        {
+          "location": "ทุกมุมขั้นบันได",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "RB9 ทุกมุม"
+        }
+      ],
+      "note": "บันได คสล. สองช่วง วาดเป็นสองรูปตัดชื่อ ST-1 ทั้งคู่ (บนแปลน S-02/S-03 เขียน ST-01); ความหนาท้องบันไดไม่ได้พิมพ์; 0.538 / 0.1794 = 3 และ 2.153 / 0.1794 = 12 ลูกตั้ง ตรงกับที่วาด (ตรวจทานเท่านั้น)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "waist_thickness_not_printed"
+      ]
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.05 + 0.05",
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB 6 mm. @ 0.20 M. หรือ WIREMESH 4 MM."
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 400,
+          "type": "RB",
+          "position": "slab end over the edge beam, L-bar 0.50 x 0.25",
+          "printed_as": "RB 9 mm. @ 0.40 M."
+        }
+      ],
+      "topping_thickness_min_mm": 50,
+      "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป รับน้ำหนักบรรทุกจรได้ไม่น้อยกว่า 200 กก./ตร.ม. วางพาดบนคานไม่น้อยกว่า 5 ซม.; คอนกรีตทับหน้า หนา 5 ซม. (แผ่นพื้น 0.05 + ทับหน้า 0.05); เหนือคานกลางมีเหล็กรูปตัว L 0.25 x 0.25 ยาว L/4 ทั้งสองข้าง (ไม่พิมพ์ขนาดเหล็กแยก); คานกลางพิมพ์ 0.05+0.05+0.05; ระยะ 0.16 ที่ขอบพื้นพิมพ์ไว้แต่ไม่ได้ตีความ",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

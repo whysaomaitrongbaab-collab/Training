@@ -1,0 +1,149 @@
+{
+  "png": "21",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_17/บ้าน_ใหญ่_2ชั้น_17_หน้า21.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_17_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T2, TRUSS T3, TRUSS T4",
+  "scale": "1:75",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "views": [
+    "view1: TRUSS T1",
+    "view2: TRUSS T2",
+    "view3: TRUSS T3",
+    "view4: TRUSS T4"
+  ],
+  "warnings": [
+    "All four truss elevations are one section sheet; each truss's members share one callout (top chord, bottom chord, verticals, diagonals). The printed symbol before 100x50 is a slashed rectangle with the words 'rectangular tube' — designation RHS, print kept in printed_as. T1 is 3.2 mm wall; T2/T3/T4 are 2.3 mm.",
+    "The elevations print no grid markers; their panel chains are recorded in the grid master as floating chains ('edge' ends). Span totals agree with the S-05 plan (T1 8.00 = grid 1-3, T3 10.00 = A-D, T2 4.00 = 2-3, T4 6.50 = C-E); positions live on the S-05 roof_frame_plan elements.",
+    "Eave overhang lengths are not printed on these elevations (S-05 dimensions them at 1.00); left off the spec.",
+    "อะเส 2C-150x50x20x3.2 is labelled under every truss; recorded once as an unmarked steel beam spec (element_id null, element_name_assigned อะเส) matching the S-04 wall-plate plan."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 3.2,
+        "printed_as": "rectangular tube ▯-100x50x3.2 mm."
+      },
+      "height_mm": 2470,
+      "height_mm_printed_as": "2.47",
+      "spans_m": [
+        4.0,
+        4.0
+      ],
+      "span_printed_as": "4.00 + 4.00 = 8.00",
+      "panel_lengths_printed_as": "1.00 x 8",
+      "supports_count_drawn": 3,
+      "note": "โครงถักจั่ว สูง 2.47 ม. วางบนเสา 3 จุด (ช่วง 4.00 + 4.00) แนวรับ T3 ที่กึ่งกลาง (ป้าย T3 ที่เสาตั้งกลาง); คอร์ดบนยื่นเลยจุดรองรับทั้งสองปลาย (ความยาวส่วนยื่นไม่ได้พิมพ์ในรูปนี้); ทุกชิ้นส่วนขนาดเดียว (ป้ายเดียวชี้ คอร์ดบน/ล่าง/ตั้ง/ทแยง)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "height_mm": 1320,
+      "height_mm_printed_as": "1.32",
+      "spans_m": [
+        4.0
+      ],
+      "span_printed_as": "4.00",
+      "panel_lengths_printed_as": "1.00 x 4",
+      "supports_count_drawn": 2,
+      "note": "โครงถักจั่วเล็ก สูง 1.32 ม. ช่วงเดียว 4.00 วางบนเสา 2 จุด รับ T4 ที่กึ่งกลาง; คอร์ดบนยื่นเลยจุดรองรับด้านเดียวในรูป",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "height_mm": 2350,
+      "height_mm_printed_as": "1.75 + 0.60 = 2.35",
+      "spans_m": [
+        4.0,
+        2.0,
+        4.0
+      ],
+      "span_printed_as": "4.00 + 2.00 + 4.00 = 10.00",
+      "panel_lengths_printed_as": "1.33 1.33 1.33 | 1.00 1.00 | 1.33 1.33 1.33",
+      "supports_count_drawn": 4,
+      "note": "โครงถักยาว 10.00 วางบนเสา 4 จุด ช่วงกลาง 2.00 เป็นโครงสี่เหลี่ยมคางหมูสูง 0.60 วางบน T1 สองตัว (ป้าย T1 ที่เสาตั้งสองต้น); สองข้างเป็นจั่ว สูงถึงคอร์ดบนช่วงกลาง 1.75; คอร์ดบนยื่นเลยจุดรองรับด้านเดียวในรูป",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "height_mm": 1190,
+      "height_mm_printed_as": "0.59 + 0.60 = 1.19",
+      "spans_m": [
+        2.5,
+        4.0
+      ],
+      "span_printed_as": "2.50 + 4.00 = 6.50",
+      "panel_lengths_printed_as": "0.83 0.83 0.83 | 1.00 1.00 1.00 1.00",
+      "supports_count_drawn": 3,
+      "note": "โครงถักคอร์ดขนาน 3 คอร์ด (ล่าง / กลางสูง 0.59 / บนสูงอีก 0.60) วางบนจุดรองรับ 3 จุด ป้าย T2, T2 ที่สองจุดแรกและ T1 ที่ปลาย (T4 วางบน T2 สองตัวและ T1); คอร์ดบนยื่นเลยจุดแรกเล็กน้อย",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "อะเส",
+      "element_type": "beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      },
+      "note": "อะเสเหล็กใต้คอร์ดล่างของโครงถักทุกตัว (ป้ายเดียวกันทั้ง 4 รูป) — แนวอะเสอยู่ในแปลน S-04",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}
