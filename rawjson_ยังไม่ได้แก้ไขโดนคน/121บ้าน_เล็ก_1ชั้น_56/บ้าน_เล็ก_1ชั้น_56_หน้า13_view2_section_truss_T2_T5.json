@@ -1,0 +1,78 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้าง, TRUSS T2, TRUSS T5",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_56/บ้าน_เล็ก_1ชั้น_56_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_56_หน้า00_gridline.json",
+  "view_title": "TRUSS T5, TRUSS T2",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้าง (หลังคาต่ำ) 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T5 1:75 (section)",
+    "view3: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.83,
+  "confidence_flags": [],
+  "warnings": [
+    "All members carry 'rectangular tube Ø-100x50x1.7 mm.' (slashed rectangle read as a box section). The 1.000 panel chains are in the grid master; vertical dimensions are kept verbatim — T5's three stacked values are not tied to named chord points, so no depth is derived; T2's single 1.516 spans bottom chord to the high top chord at the T3 post."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "spans_m": [
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2"
+      ],
+      "max_height_mm": 1516,
+      "max_height_mm_printed_as": "1.516",
+      "panel_lengths_printed_as": "1.000 1.000 1.000 (3.00)",
+      "note": "โครงถักหลังคาสูงแนว C และ E วางบนอะเสแนว 1 (หลังอะเสระดับ+3.56) และเสา T3 แนว 2 ลึกสุด 1.516 ที่แนว 2 คอร์ดบนยื่นเลยทั้งสองด้านประมาณ 1.00 ม.",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "spans_m": [
+        3.0
+      ],
+      "supports": [
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.000 1.000 1.000 (3.00)",
+      "vertical_dims_printed_as": "0.368 | 0.922 | 0.553",
+      "note": "โครงถักหลังคาต่ำแนว D วางบน T3 (แนว 2) และเสาแนว 3 คอร์ดบนลาดลงจาก T3 ไป T4 ยื่นเลยแนว 3 ประมาณ 1.00 ม.",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "symbol_read_as_box_section",
+        "truss_height_not_resolved"
+      ]
+    }
+  ]
+}

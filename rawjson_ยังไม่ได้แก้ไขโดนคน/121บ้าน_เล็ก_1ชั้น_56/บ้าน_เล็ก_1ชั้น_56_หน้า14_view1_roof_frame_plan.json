@@ -1,0 +1,98 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้าง, TRUSS T3, TRUSS T4",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_56/บ้าน_เล็ก_1ชั้น_56_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_56_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้าง (หลังคากันสาด)",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้าง (หลังคากันสาด D-E) 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T3 1:75 (section)",
+    "view3: TRUSS T4 1:75 (section)"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "Members from the S-02 หมายเหตุ legend (reprinted on S-03 / S-04): thin = แป C-75x45x15x1.6mm. @1.50 m., solid = จันทัน C-100x50x20x2.3 mm., heavy dash-dot = อะเส C-100x50x20x3.2 mm., and one line style each for TRUSS T1-T5. Truss members are the 'rectangular tube Ø-100x50x1.7 mm.' of the truss elevations (slashed-rectangle symbol read as a box section, designation RHS, print kept).",
+    "Porch roof over D-E x 2-3, sloping from T5 (row D, recorded in the S-03 file) down to the อะเส on row E (หลังอะเสระดับ+3.31), overhanging 1.00 beyond E and beyond grid 3.",
+    "Rafters on grids 2, 2''' and 3 are placed by the printed chain 1.50 + 1.50; purlin positions print no dimension and stay in the note only."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "อะเส (หลังอะเสระดับ+3.31)",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส C-100x50x20x3.2 mm."
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส"
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      },
+      "count": 3,
+      "grid_refs": [
+        "D-E' x 2",
+        "D-E' x 2'''",
+        "D-E' x 3"
+      ],
+      "note": "เส้นทึบ 3 เส้นวิ่งตามแนว y จาก T5 (แนว D) ถึงชายคา E' บนแนวกริด 2, 2''' (4.50) และ 3 (โซ่มิติ 1.50 + 1.50)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 1.6,
+        "printed_as": "แป C-75x45x15x1.6mm. @1.50 m."
+      },
+      "spacing_mm": 1500,
+      "count": 3,
+      "grid_refs": [
+        "D-E' x 2-3'"
+      ],
+      "note": "เส้นบาง 3 เส้นวิ่งตามแนว x จากแนว 2 ถึงชายคา 3' (≈D+0.10, ≈7.75 และขอบ 9.00) ไม่มีระยะพิมพ์",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_from_drawn_lines",
+        "drawn_spacing_differs_from_printed"
+      ]
+    }
+  ]
+}

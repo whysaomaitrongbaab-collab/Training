@@ -1,0 +1,53 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้าง, TRUSS T1",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_56/บ้าน_เล็ก_1ชั้น_56_หน้า12.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_56_หน้า00_gridline.json",
+  "view_title": "TRUSS T1",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้าง (หลังคาสูง) 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T1 1:75 (section)"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "All truss members carry the one callout 'rectangular tube Ø-100x50x1.7 mm.' (slashed rectangle read as a box section). The อะเส callout (C-100x50x20x3.2 mm., หลังอะเสระดับ+3.56) points at the support on grid 1.",
+    "The elevation prints vertical dimensions 0.594 / 1.516 / 0.553 and 0.368 without saying which chord points they measure between; kept verbatim in vertical_dims_printed_as, no truss depth derived. The 1.000 panel chain and its 3.00 / 6.00 sub-totals are in the grid master (Truss T1 view) and made the x dummies 1'', 1''', 2', 2''''."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.000 1.000 1.000 | 1.000 1.000 1.000 (3.00 + 3.00 = 6.00)",
+      "vertical_dims_printed_as": "0.594 | 1.516 | 0.553 (left chain) ; 0.368",
+      "note": "โครงถักวางบนเสาแนวกริด 1, 2, 3 (แถว A และ B) — ช่วง 1-2 เป็นหลังคาสูงลาดขึ้นจากอะเสแนว 1 ถึงเสา T3 แนว 2 คอร์ดบนยื่นเลยแนว 1 ประมาณ 1.00 ม. และเลยแนว 2 ประมาณ 1.00 ม.; ช่วง 2-3 เป็นหลังคาต่ำจากเสา T3 ลาดลงถึงเสา T4 แนว 3 ยื่นเลยแนว 3 ประมาณ 1.00 ม.",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "symbol_read_as_box_section",
+        "truss_height_not_resolved"
+      ]
+    }
+  ]
+}
