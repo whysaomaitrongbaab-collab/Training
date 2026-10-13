@@ -1,0 +1,107 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_50/บ้าน_เล็ก_1ชั้น_50_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_50_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T5, TRUSS T2",
+  "scale": "1:75",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Every truss member (top chord, bottom chord, verticals, diagonals — one callout with several leaders) is rectangular tube ▯-100x50x2.0 mm.; the bottom chord sits on the อะเส rectangular tube ▯-150x75x2.8 mm. (second callout, same as S-02). The slashed-rectangle symbol is read as a rectangular hollow section, designation RHS.",
+    "Support chains and panel ticks are in the grid master (dimension_chains, S-04) and became x dummies per section 4 rule 4. The eave overhang of the top chord is drawn but its length is not printed on this sheet (S-03 prints 1.00 to the roof edge).",
+    "Each elevation tags the crossing truss at its apex/panel post: T1 carries 'T3' at the apex (correct — T3 runs along x = 3.25). T5 and T2 both carry 'T5' at x = 5.00, where the S-03 plan and the S-05 T4 elevation (ends tagged T2 / T5) put Truss T4 — read as a labelling slip for T4, kept as printed in note."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.0,
+        "printed_as": "rectangular tube ▯-100x50x2.0 mm."
+      },
+      "height_mm": 2020,
+      "height_mm_printed_as": "2.02",
+      "spans_m": [
+        3.5,
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.00 1.00 1.00 + 0.25 | 0.25 + 1.00 1.00 1.00 (3.50 + 3.00 = 6.50)",
+      "bears_on": "อะเส rectangular tube ▯-150x75x2.8 mm.",
+      "note": "โครงถักจั่วสูง 2.02 ม. วางบนอะเส 3 จุด (แนว 1, 2, 3) ยอดจั่วที่ x = 3.25 (0.25 ซ้ายของแนว 2) ป้าย T3 ที่ยอด = Truss T3 วางผ่าน; ใช้ที่แนว A และ B (S-03)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.0,
+        "printed_as": "rectangular tube ▯-100x50x2.0 mm."
+      },
+      "height_mm": 2020,
+      "height_mm_printed_as": "2.02",
+      "spans_m": [
+        3.5,
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.00 1.00 1.00 + 0.25 | 0.25 + 0.75 0.75 0.75 0.75 (3.50 + 3.00 = 6.50)",
+      "bears_on": "อะเส rectangular tube ▯-150x75x2.8 mm.",
+      "note": "รูปเหมือน T1 แต่ช่วง 2-3 แบ่ง 0.75 x 4 เพื่อรับ Truss T4 ที่ x = 5.00 (ป้ายในรูปพิมพ์ว่า 'T5' — แปลน S-03 ให้เป็น T4); ใช้ที่แนว D, ปลายแนว 3 วางบนอะเส 200x100 (ไม่มีเสาที่ D3)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "crossing_tag_printed_T5_read_as_T4"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.0,
+        "printed_as": "rectangular tube ▯-100x50x2.0 mm."
+      },
+      "height_mm": 1010,
+      "height_mm_printed_as": "1.01",
+      "spans_m": [
+        3.0
+      ],
+      "supports": [
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "0.75 0.75 0.75 0.75 (3.00)",
+      "bears_on": "อะเส rectangular tube ▯-150x75x2.8 mm.",
+      "note": "โครงถักจั่วเล็กหลังคาโรงจอดรถ สูง 1.01 ม. ยอดที่ x = 5.00; ป้ายที่ยอดพิมพ์ว่า 'T5' — แปลน S-03 และรูป T4 ให้เป็น T4 ที่จุดนี้; ใช้ที่แนว E (เสา E2, E3)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "crossing_tag_printed_T5_read_as_T4"
+      ]
+    }
+  ]
+}
