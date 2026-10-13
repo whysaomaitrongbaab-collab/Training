@@ -1,0 +1,171 @@
+{
+  "png": "33",
+  "doc_page": 33,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "แบบขยายพื้น",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_07/บ้าน_ใหญ่_1ชั้น_07_หน้า33.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_07_หน้า00_gridline.json",
+  "view_title": "S1, S2, S3, S4, GS, แบบขยายการเสริมเหล็กพื้นสำเร็จรูป",
+  "scale": "1:25",
+  "confidence_score": 0.85,
+  "confidence_flags": [
+    "scanned_set"
+  ],
+  "warnings": [
+    "S1 and S3 each print a short-span and a long-span section with the same RB9@0.20 bottom mesh and top bars — one entry per mark.",
+    "S2 prints no thickness; its '0.05' is a level step at the slab edge (toilet floor dropped 5 cm), kept as level_step_mm, thickness_mm null.",
+    "S4 (front step, 1.00) prints RB 12 mm. @0.15 m., top +0.15 and a 0.30 brick riser (ก่ออิฐชูขอบทำขั้นบันได); no thickness printed.",
+    "Conflict, decided: the precast-plank topping mesh is 'WIRE MESH Ø 4 @0.25 m#' on this detail but 'Wire Mesh Ø 4 mm# @0.20 m หรือเหล็ก RB Ø 6 มม. # @0.20 ม.' in the S-03 plan note. The detail sheet wins over the plan note (op01 precedence: detail > plan) → 250 recorded, flagged; the S-03 reading is kept in the note.",
+    "The precast detail is written 'พื้นสำเร็จรูป' with no mark; it is the plank marked SP on S-03 (PS in S-03's note), so element_id SP."
+  ],
+  "elements": [
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB 9 mm. @ 0.20 m."
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "RB 9 mm. @ 0.20 m.",
+          "position": "top over supports: 0.70 from each support (short span 2.10), 1.35 from each support (long span 4.00)"
+        }
+      ],
+      "note": "รูปตัดด้านสั้น 2.10 / ด้านยาว 4.00",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": null,
+      "level_step_mm": 50,
+      "level_step_printed_as": "0.05",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB 9 mm. @ 0.20 m."
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "RB 9 mm. @ 0.20 m.",
+          "position": "top over both supports, 0.25 from the support (span 0.70)"
+        }
+      ],
+      "note": "ช่วงพื้น 0.70",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "thickness_not_printed"
+      ]
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB 9 mm. @ 0.20 m."
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "RB 9 mm. @ 0.20 m.",
+          "position": "top over supports: 0.55 from each support (short span 1.65), 1.35 from each support (long span 4.00)"
+        }
+      ],
+      "note": "รูปตัดด้านสั้น 1.65 / ด้านยาว 4.00",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S4",
+      "element_type": "slab",
+      "thickness_mm": null,
+      "main_bar": {
+        "dia_mm": 12,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "RB 12 mm. @ 0.15 m."
+      },
+      "level_m": 0.15,
+      "level_printed_as": "+0.15",
+      "note": "พื้นขั้นบันไดหน้าอาคาร กว้าง 1.00 ก่ออิฐชูขอบทำขั้นบันได 0.30, 0.15",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "thickness_not_printed"
+      ]
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 4,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "WIRE MESH Ø 4 mm@0.20 m#",
+        "note": "ตะแกรงลวด (wire mesh)"
+      },
+      "level_m": 0.15,
+      "level_printed_as": "+0.15",
+      "note": "พื้นวางบนดิน บนทรายถมอัดแน่น พื้นดินให้ใช้เครื่องตบดินในการบดอัด; ตัด Joint (กั้นด้วยโฟม หนา 1/2\") ชิดคาน B; ระดับดินเดิม +0.00",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SP",
+      "element_type": "precast_plank_detail",
+      "description": "แบบขยายการเสริมเหล็กพื้นสำเร็จรูป — แผ่นพื้นสำเร็จรูปชนิดท้องเรียบ ขนาดหน้าตัด 0.05 X 0.35 m รับน้ำหนักปลอดภัย 300 Kg/m2, Topping 0.05",
+      "topping_mesh": {
+        "dia_mm": 4,
+        "spacing_mm": 250,
+        "printed_as": "WIRE MESH Ø 4 @0.25 m#"
+      },
+      "topping_thickness_min_mm": 50,
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 300,
+          "type": "RB",
+          "position": "edge, over the edge support beam (คานSUPPORTช่วงริม), 0.60 long",
+          "printed_as": "RB6 @0.30 m"
+        },
+        {
+          "dia_mm": 6,
+          "spacing_mm": 200,
+          "type": "RB",
+          "position": "over the interior support beam (คานSUPPORTช่วงใน), 0.60 each side",
+          "printed_as": "RB6 @0.20 m.(เสริมพิเศษ)"
+        }
+      ],
+      "bearing_mm": 60,
+      "bearing_printed_as": "0.06",
+      "level_step_mm": null,
+      "note": "แผ่นวางบนคานรองรับ 0.06; คานรองรับลึก 0.30 ในรูป; S-03 note เขียนตะแกรงทับหน้า Wire Mesh Ø4 mm# @0.20 m หรือ RB Ø6 มม. # @0.20 ม.",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "spec_conflict_detail_vs_plan_note"
+      ]
+    }
+  ]
+}

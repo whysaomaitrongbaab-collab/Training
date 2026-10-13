@@ -1,0 +1,117 @@
+{
+  "png": "29",
+  "doc_page": 29,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แปลนโครงหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_07/บ้าน_ใหญ่_1ชั้น_07_หน้า29.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_07_หน้า00_gridline.json",
+  "view_title": "B12, การเสริมเหล็ก B12 กลางจั่ว, แบบขยายครอบ คสล., แบบขยายการยึดอกไก่เหล็กกับ คาน คสล.",
+  "scale": null,
+  "views": [
+    "view1: แปลนโครงหลังคา 1:100 (roof_frame_plan, this file)",
+    "view2: B12 section, การเสริมเหล็ก B12 กลางจั่ว, B12-on-B7 section, แบบขยายครอบ คสล., แบบขยายการยึดอกไก่เหล็กกับ คาน คสล. (section, _view2 file)"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "scanned_set"
+  ],
+  "warnings": [
+    "B12 is an L-shaped edge beam: a 0.20 x 0.30 body plus an upstand lip (0.20 + 0.20 wide, 0.08 thick) that receives the roof sheet. Body bars printed '4 DB 12 mm.' above and below the stirrup label; recorded as top 4 / bottom 4. The lip prints '3 DB 12 mm.' with its own 'ป RB 6 mm. @ 0.15 m.'; a steel '⊏ - 150x75x75x4mm.' is shown fixed to the body (callout only).",
+    "The B12-over-B7 section shows B12 sitting on B7 (B7 dashed below) at the gable.",
+    "ครอบ คสล. (concrete ridge/coping cap) detail: 0.10 / 0.15 / 0.15, RB Ø9 bars, RB Ø9 @0.15 ties — no mark, element_id null."
+  ],
+  "elements": [
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "4 DB 12 mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "4 DB 12 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป RB 6 mm. @ 0.15 m."
+      },
+      "additional_bars": [
+        {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "upstand lip (0.20 + 0.20 x 0.08) on top of the beam",
+          "printed_as": "3 DB 12 mm. / ป RB 6 mm. @ 0.15 m."
+        }
+      ],
+      "embedded_steel_printed_as": "เหล็ก USE 1 -⊏ - 150x75x75x4mm.",
+      "note": "คานขอบรูปตัว L รับแผ่นหลังคา; ส่วนบน 0.08 / 0.08, กว้าง 0.20 + 0.20, ระยะ 0.10; วางบน B7 ที่กลางจั่ว",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "bar_split_read_from_label_order"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครอบ คสล.",
+      "element_type": "detail_view",
+      "width_mm": 100,
+      "height_mm": 150,
+      "main_bar": {
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "RB Ø 9 มม.",
+        "note": "จำนวนเส้นไม่พิมพ์ (ในรูปเห็น 3 จุด: 2 ที่มุมซ้ายบน 1 ที่ปลายปีก)"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "RB Ø 9 มม.@ 0.15 ม."
+      },
+      "note": "แบบขยายครอบ คสล. 0.10 + ปีกเอียง 0.15, สูง 0.15",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "bar_count_not_printed"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "การยึดอกไก่เหล็กกับคาน คสล.",
+      "element_type": "connection_detail",
+      "connects": [
+        "อกไก่เหล็ก รางน้ำ",
+        "B7"
+      ],
+      "plate": {
+        "width_mm": 250,
+        "height_mm": 400,
+        "thickness_mm": 12,
+        "printed_as": "PL 0.25 x 0.40 ม. PL หนา 12 มม."
+      },
+      "bolts": {
+        "count": 7,
+        "dia_mm": 12,
+        "type": "เคมีคอลโบลท์",
+        "printed_as": "เคมีคอลโบลท์ 7 -Bolt Ø 12 mm."
+      },
+      "weld_printed_as": "PL ยึดหนา 6 มม.",
+      "note": "end view prints the plate 0.40 x 0.30 (bolt layout)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    }
+  ]
+}

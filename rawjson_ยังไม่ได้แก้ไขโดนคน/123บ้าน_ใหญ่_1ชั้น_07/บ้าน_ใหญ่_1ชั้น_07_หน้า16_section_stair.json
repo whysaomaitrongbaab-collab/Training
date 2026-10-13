@@ -1,0 +1,68 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "architectural",
+  "sheet_code": "A-14",
+  "sheet_name": "แบบขยายบันได",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_07/บ้าน_ใหญ่_1ชั้น_07_หน้า16.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_07_หน้า00_gridline.json",
+  "view_title": "แบบขยายบันได + รูปตัด A + แบบขยายแม่บันได",
+  "scale": "1:50 / 1:20",
+  "views": [
+    "view1: แบบขยายบันได 1:50 (plan) — this file",
+    "view2: รูปตัด A 1:50 — this file",
+    "view3: แบบขยายแม่บันได 1:20 — this file",
+    "view4: รูปตัด B / แบบขยายที่นั่งเล่นเด็ก (children's bench, timber/steel furniture) — not extracted (op04)"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "scanned_set"
+  ],
+  "warnings": [
+    "Extracted because the stair is a steel structure (stringers ⊏-150x50x50x4.5, landing beam I-150x75 = T1 on S-04, angle tread supports) whose only detail is this architectural sheet. Two identical stairs: on S-04 they sit between grid 3 and T1 (3') and between T1 (5') and grid 6, rising from row A toward B.",
+    "The stair has no printed mark: element_id null, element_name_assigned 'บันได'. Stringer count is not printed (two drawn per flight); count left null.",
+    "Rise is printed '16 @ 0.1625 = 2.60' from ระดับพื้นชั้น 1 +0.50 to ระดับพื้นชั้นลอย +3.10 — those two levels and the rise chain are in the grid master. The plan's 0.50 / 0.50 / 0.90 and 1.00 / 2.75 chains carry no grid marker and stay on the element.",
+    "The stringer section prints '150x50x50x4.5' — four numbers that do not fit the channel order; only d/b parsed, print kept."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "บันได",
+      "element_type": "stair",
+      "count": 2,
+      "grid_refs": [
+        "A-B x 3-3'",
+        "A-B x 5'-6"
+      ],
+      "riser_count": 16,
+      "riser_mm": 162,
+      "riser_mm_printed_as": "16 @ 0.1625 = 2.60",
+      "rise_total_m": 2.6,
+      "run_printed_as": "2.75 + ชานพัก 1.00",
+      "railing_height_m": 0.9,
+      "stringer": {
+        "material": "steel",
+        "steel_section": {
+          "designation": "C",
+          "d_mm": 150,
+          "b_mm": 50,
+          "printed_as": "แม่บันไดเหล็ก ⊏ - 150x50x50x4.5มม."
+        }
+      },
+      "tread_support": {
+        "material": "steel",
+        "printed_as": "เหล็กฉาก 50 x 50 มม. หนา 4.0 มม. รับขั้นบันได"
+      },
+      "landing_beam_printed_as": "คานเหล็ก I- 150x75",
+      "tread_material": "ลูกนอนไม้เนื้อแข็ง 2\"x10\"",
+      "riser_material": "ไม้เนื้อแข็ง 1\" x 8\"",
+      "handrail": "ราวบันไดไม้เนื้อแข็ง 2\"x4\", เสาราวบันไดไม้เนื้อแข็ง 2\"x4\", ลูกกรงไม้เนื้อแข็ง 1 1/2\"x1 1/2\" หรือ กลึงลายสำเร็จรูป",
+      "note": "บันไดโครงเหล็ก ลูกนอนไม้ จากระดับพื้นชั้น 1 +0.50 ถึงระดับพื้นชั้นลอย +3.10",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "steel_section_numbers_ambiguous"
+      ]
+    }
+  ]
+}
