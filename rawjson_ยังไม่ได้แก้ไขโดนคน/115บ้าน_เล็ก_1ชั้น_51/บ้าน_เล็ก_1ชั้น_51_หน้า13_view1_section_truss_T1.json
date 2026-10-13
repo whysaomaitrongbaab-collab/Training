@@ -1,0 +1,64 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_51/บ้าน_เล็ก_1ชั้น_51_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_51_หน้า00_gridline.json",
+  "view_title": "TRUSS T1",
+  "scale": "1:75",
+  "views": [
+    "view1: TRUSS T1 1:75 (section) — truss elevation with panel chain",
+    "view2: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan) — steel ring beams / ties"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "The callout 'rectangular tube Ø-100x50x2.3 mm.' has three leaders — to the top chord and to web members; the bottom chord carries its own callout 'อะเส rectangular tube Ø-150x75x2.8 mm. หลังอะเสระดับ +3.51'. So T1's bottom chord IS the row-B steel ring beam: steel_section holds the top-chord/web section and the bottom chord is kept in bottom_chord_steel_section. The printed Ø before the size is the drawing's own symbol; the text says rectangular tube, so designation RHS.",
+    "Diagonals are drawn only in bays 2-3 and 4-5; bays 1-2 and 3-4 have verticals only (read as drawn). The top chord runs past grids 1 and 5 by about 1.0 m on the elevation without a printed dimension — the S-04 roof plans print the same overhang as 1.00.",
+    "Panel chain (1.000 x3 | 0.900 x5 | 1.000 x3 | 0.833 x3) and the 1-5 markers under it are recorded in the grid master (dimension_chains, view TRUSS T1); the panel points became x dummies per section 4 rule 4."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube Ø-100x50x2.3 mm."
+      },
+      "bottom_chord_steel_section": {
+        "designation": "RHS",
+        "d_mm": 150,
+        "b_mm": 75,
+        "t_mm": 2.8,
+        "printed_as": "อะเส rectangular tube Ø-150x75x2.8 mm."
+      },
+      "height_mm": 832,
+      "height_mm_printed_as": "0.832",
+      "spans_m": [
+        3.0,
+        4.5,
+        3.0,
+        2.5
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "bottom_chord_level_m": 3.51,
+      "panel_lengths_printed_as": "1.000 1.000 1.000 | 0.900 0.900 0.900 0.900 0.900 | 1.000 1.000 1.000 | 0.833 0.833 0.833",
+      "note": "โครงถักเหล็กยาว 13.00 ม. วางบนเสา 5 ต้นตามแนวกริด 1-5 (แนว B ตาม S-04) ลึก 0.832 ม.; คอร์ดล่าง = อะเส 150x75x2.8 หลังอะเส +3.51, คอร์ดบนและท่อนในเป็น 100x50x2.3; ค้ำทแยงเฉพาะช่วง 2-3 และ 4-5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

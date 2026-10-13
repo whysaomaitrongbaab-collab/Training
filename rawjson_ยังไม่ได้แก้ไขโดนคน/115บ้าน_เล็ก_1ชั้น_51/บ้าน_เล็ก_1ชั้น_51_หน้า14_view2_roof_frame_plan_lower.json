@@ -1,0 +1,74 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_51/บ้าน_เล็ก_1ชั้น_51_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_51_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา (หลังคาล่าง B-C)",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา — upper roof over A-B (roof_frame_plan)",
+    "view2: แบบโครงสร้างหลังคา — lower roof over B-C (roof_frame_plan)"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "Legend (หมายเหตุ): dashed = แป เหล็ก C-75x45x15x2.3 mm. @1.00 m., thin solid = จันทัน C-100x50x20x3.2 mm. @1.50 m., dash-dot = TRUSS T1 (row B). Rafters and purlins carry no mark: element_id null with element_name_assigned (section 0.2). T1 is recorded in the S-03 files, not repeated here.",
+    "The 11 rafter lines are drawn at 1.50 m from the roof edge 1' (-1.00) to 5' (14.00) — their positions are not dimensioned, only the @1.50 spacing, so no grid lines were made for them; the area ref names the roof extent. Purlins are drawn only inside the cut-away detail, so their count is left null.",
+    "Lower roof (lean-to over the terrace side): from row B down to row C (+3.08) with a 1.00 overhang below C and 1.00 past grids 1 and 5 (grid master C', 1', 5')."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.50 m."
+      },
+      "spacing_mm": 1500,
+      "count": 11,
+      "grid_refs": [
+        "B-C' x 1'-5'"
+      ],
+      "note": "จันทัน 11 เส้นวิ่งตามแนว y จากแนว B ถึงชายคา C' (1.00 ใต้ C) พาดอะเสแนว C (+3.08)",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "แป เหล็ก C-75x45x15x2.3 mm. @1.00 m."
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [
+        "B-C' x 1'-5'"
+      ],
+      "note": "แปวิ่งตามแนว x วางบนจันทัน @1.00 ม.",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_drawn"
+      ]
+    }
+  ]
+}
