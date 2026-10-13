@@ -1,0 +1,240 @@
+{
+  "png": "05",
+  "doc_page": 5,
+  "discipline": "structural",
+  "sheet_code": "4",
+  "sheet_name": "แบบแปลนฐานรากเข็มคอนกรีต",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_12/บ้าน_ใหญ่_1ชั้น_12_หน้า05.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_12_หน้า00_gridline.json",
+  "view_title": "ขยาย C1, C2, G1, G2, G3, G4",
+  "scale": "1:10 / 1:20",
+  "views": [
+    "view1: แปลนฐานรากและคานคอดิน 1:100 — footing_plan",
+    "view2: same drawing — beam_plan",
+    "view3: แปลนขยายฐานราก F1 1:10 — section",
+    "view4: รูปตัด 1-1 + แบบขยายฐานรากแผ่ F1 1:20 — section",
+    "view5: ขยาย C1, C2 1:20; ขยาย G1, G2 1:10; ขยาย G3, G4 1:20 — section",
+    "view6: รายการประกอบการตอกเข็ม — notes"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "hand_lettered_set"
+  ],
+  "warnings": [
+    "All bars print Ø → type RB (section 0.6/6). No steel grade or concrete strength is printed anywhere in the set.",
+    "Beam bars labelled 'คอม้า L/5' (bent-up bars) are merged into main_bar.bottom (they lie at the bottom over mid-span) with a note, per section 7.",
+    "Each column has two sections by height (ระดับฐานราก - หลังคานคอดิน below, ระดับหลังคานคอดิน - หลังคา above) — one entry per level (section 8). C2 tie spacing is blurred at the sheet edge and read as @0.15 (same as every other tie on the sheet).",
+    "Sheet 3 (page 04) prints identical G1-G4 and C1/C2 sections; this revised sheet 4 is treated as the governing source."
+  ],
+  "elements": [
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ระดับหลังคานคอดิน - หลังคา",
+      "width_mm": 250,
+      "height_mm": 250,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "4-Ø15มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6มม. @0.15 ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ระดับฐานราก - หลังคานคอดิน",
+      "width_mm": 300,
+      "height_mm": 300,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "6-Ø15 มม"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6มม.@0.15ม.คู่",
+        "note": "ปลอกคู่"
+      },
+      "note": "พิมพ์ '0.05 ม.โดยรอบ' — ส่วนตอม่อใต้คานคอดินขยายหน้าตัดโดยรอบ",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "ระดับหลังคานคอดิน - หลังคา",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "4-Ø12 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6มม @ 0.15ม"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "spacing_digit_partially_legible"
+      ]
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "ระดับฐานราก - หลังคานคอดิน",
+      "width_mm": 250,
+      "height_mm": 250,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "4-Ø12 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6มม @ 0.15ม"
+      },
+      "note": "พิมพ์ '0.05ม.โดยรอบ'",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "spacing_digit_partially_legible"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 ม.ม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 ม.ม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 ม.ม.@ 0.15 ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 มม."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 มม. + 2-Ø19 มม. L/5 คม",
+          "note": "2 เส้นตรง + 2 เส้นคอม้า (ดัดขึ้นที่ L/5)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป Ø6 มม.@ 0.15 ม."
+      },
+      "note": "ระยะหุ้ม 0.025 (ขยาย G2 1:10)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 มม"
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 มม + 3-Ø19 มม.คอม้า L/5",
+          "note": "2 เส้นตรง + 3 เส้นคอม้า L/5"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G4",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม. + 2-Ø15 มม คอม้า L/5",
+          "note": "2 เส้นตรง + 2 เส้นคอม้า L/5"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ปØ 6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}

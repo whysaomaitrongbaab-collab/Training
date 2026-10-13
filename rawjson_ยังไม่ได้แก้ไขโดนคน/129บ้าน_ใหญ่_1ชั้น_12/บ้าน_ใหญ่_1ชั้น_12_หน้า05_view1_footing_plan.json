@@ -1,0 +1,123 @@
+{
+  "png": "05",
+  "doc_page": 5,
+  "discipline": "structural",
+  "sheet_code": "4",
+  "sheet_name": "แบบแปลนฐานรากเข็มคอนกรีต",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_12/บ้าน_ใหญ่_1ชั้น_12_หน้า05.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_12_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานรากและคานคอดิน",
+  "scale": "1:100",
+  "pattern": "footing_plan",
+  "views": [
+    "view1: แปลนฐานรากและคานคอดิน 1:100 — footings + columns (this split: footing_plan)",
+    "view2: แปลนฐานรากและคานคอดิน 1:100 — ground beams + slab marks (this split: beam_plan)",
+    "view3: แปลนขยายฐานราก F1 1:10 (pile cap on 1 pile) — section",
+    "view4: รูปตัด 1-1 + แบบขยายฐานรากแผ่ F1 1:20 (alternative spread footing) — section",
+    "view5: ขยาย C1, C2 1:20; ขยาย G1, G2 1:10; ขยาย G3, G4 1:20 — section",
+    "view6: รายการประกอบการตอกเข็ม — notes"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "hand_lettered_set",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "One combined drawing (แปลนฐานรากและคานคอดิน) carrying footings, columns, ground beams and slab marks. Split by member kind into two files per section 3 / section 1: footings + columns here (footing_plan), ground beams + slab marks in _view2_beam_plan.json.",
+    "Every column position is printed 'C1 F1' or 'C2 F1' (column, footing). F1 is the only footing mark on the plan: 29 positions = 18 C1 (rows A and E, grids 1-9) + 11 C2 (interior row C on grids 2-8, and B/D on the end walls 1 and 9).",
+    "Plan note (หมายเหตุ): 'ให้ริมเสา C2 ด้านริมนอกหัว-ท้ายอาคาร จำนวน 4 เสา เสมอริมเสา C1 ด้านริมนอก และเลื่อนศูนย์ฐานราก-เสา F1C2 ตาม' — the four end-wall C2 (B1, D1, B9, D9) are set flush with the outer face of C1, so their centres sit slightly inside grid 1 / grid 9; recorded on the grid line with a note.",
+    "F1 has two details on this sheet: the governing pile cap 0.60 x 0.60 on one prestressed pile (แปลนขยายฐานราก F1 1:10) and an alternative spread footing 1.50 x 1.90 (แบบขยายฐานรากแผ่ F1) to be used only where piles cannot be driven (notes item 7). See the two section files.",
+    "No grid bubbles are printed; grid labels 1-9 / A-E were assigned in the grid master. Sheet 3 also prints a foundation plan with F1/F2 on piles, but it is struck out 'ยกเลิก' and was not extracted."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 29,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "B1",
+        "B9",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "D1",
+        "D9",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "note": "B1, D1, B9, D9: ศูนย์ฐานรากเลื่อนเข้าให้ริมเสา C2 เสมอริมนอกเสา C1 (หมายเหตุแปลน)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 18,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 11,
+      "grid_refs": [
+        "B1",
+        "B9",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "D1",
+        "D9"
+      ],
+      "note": "B1, D1, B9, D9 = เสา C2 ด้านหัว-ท้ายอาคาร 4 ต้น ริมนอกเสมอริมนอกเสา C1; ที่เหลือคือเสากลางแถว C",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

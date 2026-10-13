@@ -1,0 +1,541 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "structural",
+  "sheet_code": "3",
+  "sheet_name": "แบบโครงหลังคา พื้น ฐานราก คาน เสา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_12/บ้าน_ใหญ่_1ชั้น_12_หน้า04.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_12_หน้า00_gridline.json",
+  "view_title": "แบบโครงหลังคา A, แบบขยาย A/B/C, ด้านสกัด, คาน R1-R3, พื้น S1-S3, คาน G1-G4, เสา C1/C2",
+  "scale": "1:25 / 1:50",
+  "views": [
+    "view1: แปลนคานโครงหลังคา 1:100 — roof_frame_plan",
+    "view2: member sections (this file)",
+    "view3: แปลนฐานรากและคานคอดิน (ยกเลิก) — not extracted",
+    "view4: ฐานราก F1/F2 (ยกเลิก) — not extracted"
+  ],
+  "confidence_score": 0.76,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "hand_lettered_set"
+  ],
+  "warnings": [
+    "The sheet-3 foundation plan and the footings F1 (1.40 x 1.40 on a pile group) and F2 are struck out 'ยกเลิก' and replaced by sheet 4 — not extracted. The G1-G4 and C1/C2 sections on this sheet are not struck out and match sheet 4 exactly; they are recorded here as printed, sheet 4 governs.",
+    "Truss A members are hand-lettered; the top-chord callout reads '2⊏-150 × 50 × 50 × 3.2 มม. (คู่)' (the third number does not fit a standard lipped channel and may be 20) — kept verbatim; only d/b are put in steel_section. The extra per-member list uses a new attribute key 'member_sections' (sub-list of one element, not drawing elements).",
+    "R1's top-bar callout is faint ('? Ø 12 มม.'); the section drawing shows two top dots, recorded 2 with a flag.",
+    "Slab details: S1 Ø12@0.10 straight alternating with bent-up (ตรงสลับคอม้า L/5), S2/S3 Ø9; distribution Ø6@0.15 on all three; extra top bars over supports. The detail spans (S2 2.00, S3 3.00) do not equal the plan bays (1.75 and 3.25) — kept as printed in span_m and noted. Slab bars are main_bar + additional_bars (a slab has no top/bottom faces here).",
+    "R4 is printed only as a thickness (หนา 0.15 ม.) on the gable elevation; no reinforcement detail exists.",
+    "Unlabelled members (purlin, vent-tile frame, the gable vent post) take element_id null with element_name_assigned (section 0.2)."
+  ],
+  "elements": [
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "printed_as": "เหล็ก 2⊏-150 × 50 × 50 × 3.2 มม. (คู่)"
+      },
+      "member_sections": [
+        {
+          "role": "จันทัน/คอร์ดบน",
+          "printed_as": "เหล็ก 2⊏-150 × 50 × 50 × 3.2 มม. (คู่)"
+        },
+        {
+          "role": "ขื่อ/คอร์ดล่าง และชายคา",
+          "printed_as": "เหล็ก ⊔-150 × 50 × 50 × 4.5 มม."
+        },
+        {
+          "role": "ครอบสัน",
+          "printed_as": "เหล็ก ⊓ 150 × 50 × 50 × 4.5 มม."
+        },
+        {
+          "role": "ค้ำ/ตั้ง",
+          "printed_as": "เหล็ก 2L-50 × 50 × 3.2 มม. (คู่)"
+        },
+        {
+          "role": "ค้ำ/ตั้ง",
+          "printed_as": "เหล็ก 2L-60 × 60 × 3.2 มม. (คู่)"
+        },
+        {
+          "role": "แผ่นประกับ",
+          "printed_as": "เหล็กประกับหนา 3.2 มม. ประกับ 2 ด้าน"
+        },
+        {
+          "role": "จุดรองรับบนหัวเสา (แบบขยาย C)",
+          "printed_as": "แผ่นเหล็กบนขนาด 25 × 25 ม หนา 9 มม. เชื่อมติดกับโครงหลังคาเหล็ก เจาะรูสำหรับยึดน๊อต Ø 3/4\" - 4 รู / แผ่นเหล็กล่างขนาด 25 × 25 ม หนา 9 มม ยึดติดกับหัวเสาด้วยน๊อต 4 Ø 3/4\" × 12\""
+        }
+      ],
+      "span_m": 10.0,
+      "height_mm": 3300,
+      "height_mm_printed_as": "3.30",
+      "note": "โครงหลังคาเหล็ก ช่วงพาด 10.00 ม. ชายคายื่น 2.50 ม. สองข้าง สูง 3.30 ม. + หลังคาช่องลมบน 1.00 ม.; ชายคาลดลง 1.00 ม.",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "steel_section_dimensions_hand_lettered"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แปเหล็ก",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "แปเหล็ก ⊏ หรือ ⌐ 100 × 50 × 20 × 3.2 มม @ 1.00 ม."
+      },
+      "spacing_mm": 1000,
+      "note": "บางจุดพิมพ์ @ 1.01 ม.",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กยึดเกล็ดกระเบื้อง",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 50,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก L-50 × 50 × 3.2 มม / 2 L-50 × 50 × 3.2 มม (คู่)"
+      },
+      "note": "โครงยาว 4.00 สูงประมาณ 0.70 ม.",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2 Ø 12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2 Ø 12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ปØ6 มม. @ .15 ม"
+      },
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "top_bar_count_faint"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2 Ø 15 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2 Ø 15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ปØ6 มม. @ .15 ม"
+      },
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R3",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2 Ø 12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2 Ø 12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ปØ 6 มม. @ .15 ม."
+      },
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "thickness_mm": 150,
+      "thickness_mm_printed_as": "R4 หนา 0.15 ม.",
+      "note": "ส่วนยื่นชายคา ค.ส.ล. ของผนังสกัด — แบบพิมพ์เพียงความหนา ไม่มีรายละเอียดเหล็กเสริม",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "no_rebar_detail_printed"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เสา ค.ส.ล. ผนังสกัด (ช่องลมบน)",
+      "element_type": "column",
+      "width_mm": 150,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "4 Ø12มม"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ปØ6 มม @ .20 ม"
+      },
+      "note": "พิมพ์ \"เสา ค.ส.ล. .15 x .15 ม. เหล็กเสริม 4Ø12มม. ปØ6มม@.20ม\" ในรูปด้านสกัด",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": ".10",
+      "span_m": 4.0,
+      "main_bar": {
+        "dia_mm": 12,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "Ø 12 มม. @ .10 ม. ตรงสลับคอม้า L/5",
+        "note": "เหล็กตรงสลับคอม้า"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø 6 มม. @ .15 ม.",
+          "position": "เหล็กกันร้าว (ตั้งฉากกับเหล็กหลัก)"
+        },
+        {
+          "dia_mm": 12,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "เหล็กเสริมพิเศษ Ø 12 มม. @ .20 ม.",
+          "position": "บน เหนือคาน ยื่น 1.00 จากศูนย์คาน"
+        }
+      ],
+      "note": "คอม้าดัดที่ 0.80 จากศูนย์คาน; พื้นวางบนคาน ช่วง 4.00",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": ".10",
+      "span_m": 2.0,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "Ø 9 มม. @ .15 ม. ตรงสลับคอม้า L/5",
+        "note": "เหล็กตรงสลับคอม้า"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø 6 มม. @ .15 ม.",
+          "position": "เหล็กกันร้าว (ตั้งฉากกับเหล็กหลัก)"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 300,
+          "type": "RB",
+          "printed_as": "เหล็กเสริมพิเศษ Ø 9 มม. @ .30 ม.",
+          "position": "บน เหนือคาน ยื่น 0.60 / 0.75"
+        }
+      ],
+      "note": "แบบขยายพิมพ์ช่วง 2.00; ในแปลน S2 อยู่ในช่อง 1.75 (B-C, C-D)",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": ".10",
+      "span_m": 3.0,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "Ø 9 มม. @ .10 ม. ตรงสลับคอม้า L/5",
+        "note": "เหล็กตรงสลับคอม้า"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø 6 มม. @ .15 ม.",
+          "position": "เหล็กกันร้าว (ตั้งฉากกับเหล็กหลัก)"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "เหล็กเสริมพิเศษ Ø 9 มม. @ .20 ม.",
+          "position": "บน เหนือคาน ยื่น 0.75"
+        }
+      ],
+      "note": "แบบขยายพิมพ์ช่วง 3.00; ในแปลน S3 อยู่ในช่อง 3.25 (A-B, D-E)",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 ม.ม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 ม.ม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 ม.ม.@ 0.15 ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 มม."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 มม. + 2-Ø19 มม. L/5 คม",
+          "note": "2 เส้นตรง + 2 เส้นคอม้า (ดัดขึ้นที่ L/5)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป Ø6 มม.@ 0.15 ม."
+      },
+      "note": "ระยะหุ้ม 0.025 (คาน G2 1:25)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 มม"
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 มม + 3-Ø19 มม.คอม้า L/5",
+          "note": "2 เส้นตรง + 3 เส้นคอม้า L/5"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G4",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม. + 2-Ø15 มม คอม้า L/5",
+          "note": "2 เส้นตรง + 2 เส้นคอม้า L/5"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ปØ 6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ระดับหลังคานคอดิน - หลังคา",
+      "width_mm": 250,
+      "height_mm": 250,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "4-Ø15มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6มม. @0.15 ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ระดับฐานราก - หลังคานคอดิน",
+      "width_mm": 300,
+      "height_mm": 300,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "6-Ø15 มม"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6มม.@0.15ม.คู่",
+        "note": "ปลอกคู่"
+      },
+      "note": "พิมพ์ '0.05 ม.โดยรอบ' — ส่วนตอม่อใต้คานคอดินขยายหน้าตัดโดยรอบ",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "ระดับหลังคานคอดิน - หลังคา",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "4-Ø12 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6มม @ 0.15ม"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "spacing_digit_partially_legible"
+      ]
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "ระดับฐานราก - หลังคานคอดิน",
+      "width_mm": 250,
+      "height_mm": 250,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "4-Ø12 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6มม @ 0.15ม"
+      },
+      "note": "พิมพ์ '0.05ม.โดยรอบ'",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "spacing_digit_partially_legible"
+      ]
+    }
+  ]
+}

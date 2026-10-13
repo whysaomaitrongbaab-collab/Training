@@ -1,0 +1,64 @@
+{
+  "png": "05",
+  "doc_page": 5,
+  "discipline": "structural",
+  "sheet_code": "4",
+  "sheet_name": "แบบแปลนฐานรากเข็มคอนกรีต",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_12/บ้าน_ใหญ่_1ชั้น_12_หน้า05.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_12_หน้า00_gridline.json",
+  "view_title": "รูปตัด 1-1 / แบบขยายฐานรากแผ่ F1",
+  "scale": "1:20",
+  "views": [
+    "view1: แปลนฐานรากและคานคอดิน 1:100 — footing_plan",
+    "view2: same drawing — beam_plan",
+    "view3: แปลนขยายฐานราก F1 1:10 — section",
+    "view4: รูปตัด 1-1 + แบบขยายฐานรากแผ่ F1 1:20 — section",
+    "view5: ขยาย C1, C2 1:20; ขยาย G1, G2 1:10; ขยาย G3, G4 1:20 — section",
+    "view6: รายการประกอบการตอกเข็ม — notes"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "hand_lettered_set"
+  ],
+  "warnings": [
+    "Alternative F1 for sites where the prestressed piles cannot be driven (notes item 7: ให้ทำฐานรากแผ่ ทั้งนี้ต้องได้รับอนุมัติจากผู้มีอำนาจก่อน). Same mark F1 as the governing pile cap, so it is kept in its own file to avoid an element_id collision; the plan does not say which positions use it.",
+    "Plan 1.50 (0.75 + 0.75) x 1.90 (0.95 + 0.95) — not square, so depth_mm is given. Section 1-1 prints the thickness as '0.30' at the edge with '0.10' above it (the sloped top rising to the pedestal): height_mm = 400 at the pedestal face, 300 at the edge, both kept in printed_as.",
+    "Bars '11-Ø15 มม. ด้านยาว' and '16-Ø15 มม. ด้านสั้น' — count = 27 (11 + 16), printed text kept; which direction each set runs is as printed, not re-interpreted.",
+    "Underside 1.20 below ระดับดินเดิม ±0.00; 0.05 cover, lean concrete 1:3:5 0.10, ทรายหยาบอัดแน่น 0.10."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "footing_type": "ฐานรากแผ่ (ทางเลือกเมื่อตอกเข็มไม่ได้)",
+      "width_mm": 1500,
+      "width_mm_printed_as": "0.75 + 0.75 = 1.50",
+      "depth_mm": 1900,
+      "depth_mm_printed_as": "0.95 + 0.95 = 1.90",
+      "height_mm": 400,
+      "height_mm_printed_as": "0.30 (ขอบ) + 0.10 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "count": 27,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "11-Ø15 มม. ด้านยาว / 16-Ø15 มม. ด้านสั้น",
+        "count_printed_as": "11+16"
+      },
+      "concrete_mix": "1:2:4",
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1 : 3 : 5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "ground_reference": "ท้องฐานรากต่ำกว่าระดับดินเดิม ±0.00 = 1.20 ม.",
+      "note": "ฐานรากคสล. 1:2:4 หลังลาด; เสาตอม่อ คสล. ดูแบบขยาย",
+      "confidence_score": 0.74,
+      "confidence_flags": [
+        "alternative_design_not_assigned_to_positions"
+      ]
+    }
+  ]
+}

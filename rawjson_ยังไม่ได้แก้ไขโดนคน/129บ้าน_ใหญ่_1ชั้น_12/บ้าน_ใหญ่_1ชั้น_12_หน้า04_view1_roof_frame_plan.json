@@ -1,0 +1,601 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "structural",
+  "sheet_code": "3",
+  "sheet_name": "แบบโครงหลังคา พื้น ฐานราก คาน เสา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_12/บ้าน_ใหญ่_1ชั้น_12_หน้า04.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_12_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แปลนคานโครงหลังคา",
+  "scale": "1:100",
+  "views": [
+    "view1: แปลนคานโครงหลังคา 1:100 — roof_frame_plan (this file)",
+    "view2: แบบโครงหลังคา A 1:50, แบบขยาย A/B/C 1:25, แบบโครงหลังคา ค.ส.ล. ด้านสกัด 1:50, คาน R1/R2/R3, โครงเหล็กยึดเกล็ดกระเบื้อง, แบบขยายพื้น S1/S2/S3 1:25, คาน G1-G4 1:25, เสา C1/C2 — section",
+    "view3: แปลนฐานรากและคานคอดิน 1:100 — struck out (ยกเลิก), not extracted",
+    "view4: ฐานราก F1 / F2 1:25 (ฐานรากตอกเข็มแบบเข็มกลุ่ม) — struck out (ยกเลิก), not extracted",
+    "view5: หมายเหตุ (revision note: steel truss revised per circular 2529) — not a spec sheet"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "hand_lettered_set",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "Concrete roof beams R1 run along rows A and E (all 8 bays) and frame the store/toilet bay 5-6 (grids 5 and 6 from A to E, split at row C, plus R1 on row C between 5 and 6).",
+    "The gable end walls (grids 1 and 9) carry stacked labels: 'R2/R2' in A-B and D-E and 'R3/R2/R2' in B-D. Per the gable elevation (แบบโครงหลังคา ค.ส.ล. ด้านสกัด) these are a horizontal R2 at the truss-bearing level and a sloped R2 following the roof, plus the R3 beams of the raised ridge-vent roof. Each is recorded as its own segment; the sloped R2 is split at the C2 posts (B, D) and at the ridge (row C, change of direction, section 5). Spans are plan projections — sloped members are flagged.",
+    "R3 extent (2.15 m either side of the ridge) comes from the 0.90 + 1.25 ridge-vent chain; the plan prints the R3 label only once per gable, so the two R3 segments per gable carry a lowered score.",
+    "R4 is printed outside rows A and E on the gable lines — the gable's eave overhang to the 2.50 roof edge (A', E''); the gable elevation calls it 'R4 หนา 0.15 ม.'.",
+    "Steel trusses type A (triangle symbol A on row C) on grids 2-8 (7 trusses), spanning the 10.00 building width with 2.50 overhangs. Their members are in the section file. Purlins (แปเหล็ก @1.00) are not drawn on this plan.",
+    "Plan note: 'เหนือห้องพักครูและห้องเก็บวัสดุ ปิดด้วยลวดตาข่าย ขนาดตา 1½\" กรอบเหล็กแป๊บ Ø 1½\"' (hatched area over bay 5-6)."
+  ],
+  "elements": [
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นชายคาของผนังสกัด (รูปด้านสกัด: R4 หนา 0.15 ม.)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "position_from_roof_plan_line"
+      ]
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "E''2",
+      "span_length_m": 15.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก แบบ A (สัญลักษณ์สามเหลี่ยม A บนแนว C) ช่วงพาด 10.00 + ชายคา 2.50 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "E''3",
+      "span_length_m": 15.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก แบบ A (สัญลักษณ์สามเหลี่ยม A บนแนว C) ช่วงพาด 10.00 + ชายคา 2.50 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'4",
+      "grid_ref_end": "E''4",
+      "span_length_m": 15.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก แบบ A (สัญลักษณ์สามเหลี่ยม A บนแนว C) ช่วงพาด 10.00 + ชายคา 2.50 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'5",
+      "grid_ref_end": "E''5",
+      "span_length_m": 15.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก แบบ A (สัญลักษณ์สามเหลี่ยม A บนแนว C) ช่วงพาด 10.00 + ชายคา 2.50 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'6",
+      "grid_ref_end": "E''6",
+      "span_length_m": 15.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก แบบ A (สัญลักษณ์สามเหลี่ยม A บนแนว C) ช่วงพาด 10.00 + ชายคา 2.50 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'7",
+      "grid_ref_end": "E''7",
+      "span_length_m": 15.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก แบบ A (สัญลักษณ์สามเหลี่ยม A บนแนว C) ช่วงพาด 10.00 + ชายคา 2.50 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'8",
+      "grid_ref_end": "E''8",
+      "span_length_m": 15.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก แบบ A (สัญลักษณ์สามเหลี่ยม A บนแนว C) ช่วงพาด 10.00 + ชายคา 2.50 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "grid_ref_start": "A'9",
+      "grid_ref_end": "A9",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นชายคาของผนังสกัด",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "position_from_roof_plan_line"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.25,
+      "span_source": "grid_table",
+      "note": "R2 ตัวล่าง แนวนอน ระดับใต้โครงหลังคา (รูปด้านสกัด)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.25,
+      "span_source": "grid_table",
+      "note": "R2 ตัวบน เอียงตามลาดหลังคา — span เป็นระยะในแปลน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "C5",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "C6",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "A9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "B9",
+      "span_length_m": 3.25,
+      "span_source": "grid_table",
+      "note": "R2 ตัวล่าง แนวนอน ระดับใต้โครงหลังคา (รูปด้านสกัด)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "B9",
+      "span_length_m": 3.25,
+      "span_source": "grid_table",
+      "note": "R2 ตัวบน เอียงตามลาดหลังคา — span เป็นระยะในแปลน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "R2 ตัวบน เอียงตามลาดหลังคา — span เป็นระยะในแปลน (ขึ้นถึงสันที่แถว C)",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "R2 ตัวล่าง แนวนอน ระดับใต้โครงหลังคา (รูปด้านสกัด)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "B9",
+      "grid_ref_end": "C9",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "R2 ตัวบน เอียงตามลาดหลังคา — span เป็นระยะในแปลน (ขึ้นถึงสันที่แถว C)",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "B9",
+      "grid_ref_end": "D9",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "R2 ตัวล่าง แนวนอน ระดับใต้โครงหลังคา (รูปด้านสกัด)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.15,
+      "span_source": "grid_table",
+      "note": "คานหลังคาช่องลมบน (เกล็ด) — ป้าย R3 อยู่ในช่วง B-D ของแปลน ขอบเขต 2.15 ม. จากสันตามรูปตัด",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "sloped_member_plan_span",
+        "extent_from_ridge_vent_chain"
+      ]
+    },
+    {
+      "element_id": "R3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''9",
+      "grid_ref_end": "C9",
+      "span_length_m": 2.15,
+      "span_source": "grid_table",
+      "note": "คานหลังคาช่องลมบน (เกล็ด)",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "sloped_member_plan_span",
+        "extent_from_ridge_vent_chain"
+      ]
+    },
+    {
+      "element_id": "R3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D'1",
+      "span_length_m": 2.15,
+      "span_source": "grid_table",
+      "note": "คานหลังคาช่องลมบน (เกล็ด)",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "sloped_member_plan_span",
+        "extent_from_ridge_vent_chain"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "R2 ตัวบน เอียงตามลาดหลังคา — span เป็นระยะในแปลน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R3",
+      "element_type": "beam",
+      "grid_ref_start": "C9",
+      "grid_ref_end": "D'9",
+      "span_length_m": 2.15,
+      "span_source": "grid_table",
+      "note": "คานหลังคาช่องลมบน (เกล็ด)",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "sloped_member_plan_span",
+        "extent_from_ridge_vent_chain"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "C9",
+      "grid_ref_end": "D9",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "R2 ตัวบน เอียงตามลาดหลังคา — span เป็นระยะในแปลน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "E5",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "C6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "E6",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 3.25,
+      "span_source": "grid_table",
+      "note": "R2 ตัวล่าง แนวนอน ระดับใต้โครงหลังคา (รูปด้านสกัด)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 3.25,
+      "span_source": "grid_table",
+      "note": "R2 ตัวบน เอียงตามลาดหลังคา — span เป็นระยะในแปลน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "D9",
+      "grid_ref_end": "E9",
+      "span_length_m": 3.25,
+      "span_source": "grid_table",
+      "note": "R2 ตัวล่าง แนวนอน ระดับใต้โครงหลังคา (รูปด้านสกัด)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "D9",
+      "grid_ref_end": "E9",
+      "span_length_m": 3.25,
+      "span_source": "grid_table",
+      "note": "R2 ตัวบน เอียงตามลาดหลังคา — span เป็นระยะในแปลน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "E5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E5",
+      "grid_ref_end": "E6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E6",
+      "grid_ref_end": "E7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E7",
+      "grid_ref_end": "E8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E8",
+      "grid_ref_end": "E9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E''1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นชายคาของผนังสกัด",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "position_from_roof_plan_line"
+      ]
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "grid_ref_start": "E9",
+      "grid_ref_end": "E''9",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นชายคาของผนังสกัด",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "position_from_roof_plan_line"
+      ]
+    }
+  ]
+}
