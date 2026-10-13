@@ -1,0 +1,143 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_52/บ้าน_เล็ก_1ชั้น_52_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_52_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา (คาน RB / พื้น RS)",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา — RC roof beams RB1/RB2 + slabs RS1/RS2 (beam_plan, this file)",
+    "view2: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Roof-level RC beams RB1/RB2 carrying the flat concrete roof slabs RS1/RS2 over the carport, the west strip and the south terrace (the rest of the roof is the steel truss frame on S-04). Beam top level is not printed on this sheet (elevations print ระดับหลังอะเส +3.60 and +4.16).",
+    "RS1 east extents (F-F' to about grid 3, G-G'' to about 0.10 past grid 4) and the narrow west strip are drawn but not dimensioned in x — refs name the bays.",
+    "View 2 on this sheet (Truss T2 elevation) is in the _view2_section_truss_T2 file."
+  ],
+  "elements": [
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "F1'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "F end: the corner at F1' has no C1 label; the column below is at F1 (grid 1, 0.20 west) — a small unlabelled mark is drawn at the corner",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "corner_on_unlabelled_mark"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "F2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "G3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "grid_ref_start": "F1'",
+      "grid_ref_end": "F2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "corner_on_unlabelled_mark"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "F2",
+      "grid_ref_end": "F3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:RB2(end)"
+      ]
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "grid_ref_start": "G3",
+      "grid_ref_end": "G4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "C1'",
+        "C2",
+        "D3",
+        "F2",
+        "G3",
+        "G4"
+      ],
+      "note": "columns continuing to the flat-roof beams",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RS1",
+      "element_type": "slab",
+      "grid_refs": [
+        "C-F x 1-1'",
+        "F-F' x 1-3",
+        "G-G'' x 3-4"
+      ],
+      "note": "พื้นหลังคา คสล. RS1: แถบแคบด้านตะวันตกของ RB1 (กว้างประมาณ 0.20 ไม่พิมพ์ระยะ), กันสาด F-F' (1.10) จากขอบตะวันตกถึงกริด 3, และ G-G'' (1.10) ช่วง 3-4",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "slab_extent_not_dimensioned"
+      ]
+    },
+    {
+      "element_id": "RS2",
+      "element_type": "slab",
+      "grid_refs": [
+        "C-F x 1'-2"
+      ],
+      "note": "พื้นหลังคา คสล. RS2 เหนือที่จอดรถ",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}
