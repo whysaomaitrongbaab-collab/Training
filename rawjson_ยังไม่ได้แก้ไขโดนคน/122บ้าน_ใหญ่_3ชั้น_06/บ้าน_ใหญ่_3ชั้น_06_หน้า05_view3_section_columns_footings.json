@@ -1,0 +1,390 @@
+{
+  "png": "05",
+  "doc_page": 5,
+  "discipline": "structural",
+  "sheet_code": "5",
+  "sheet_name": "แปลนคาน-พื้นชั้น 2, แปลนฐานรากคานคอดิน, แบบขยายเสา, ขยายฐานราก, รายการประกอบแบบฐานราก",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+  "grid_source": "บ้าน_ใหญ่_3ชั้น_06_หน้า00_gridline.json",
+  "view_title": "แบบขยายเสา C1, C2, C3, C4 1:20 + ขยายฐานราก F1, F2",
+  "scale": "1:20",
+  "views": [
+    "view1: แปลนคาน-พื้นชั้น 2 1:100 (beam_plan, F2)",
+    "view2: แปลนฐานรากคานคอดิน 1:100 (footing_plan, F1)",
+    "view3: แบบขยายเสา C1-C4 1:20 + ขยายฐานราก F1, F2 (section)",
+    "view4: รายการประกอบแบบฐานราก (notes)"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "hand_lettered"
+  ],
+  "warnings": [
+    "Column details are drawn per height range (one cross-section per range); one entry per mark per range with the printed range in `level` (§8). Ranges differ between marks (C3 changes at พื้นชั้น 2, the others at พื้นชั้น 3) — recorded as printed.",
+    "Bar symbols: this set's legend (printed on sheet 5 beside the footing details) reads '⊕ — เหล็กข้ออ้อย, ø — เหล็กกลม' — the hatched/crossed circle used for every main bar is the deformed-bar symbol, so main bars are type DB; the plain ø used for every stirrup/slab bar is RB. No steel grade or fy is printed anywhere in the set.",
+    "C1 upper range prints '2-⊕16 มม.' and '4-⊕16 มม.' on two leaders (6 bars: 4 corners + 2 at mid-width) — recorded as one count of 6; the lower two ranges print 6-⊕16 directly.",
+    "F1 is a deep single-pile cap 0.70 x 0.70 x 0.70 reinforced as a cage — 8-⊕16 vertical bars plus 4-ø9 horizontal ties — not a bottom mat; main_bar carries the vertical bars, stirrup the 4 ties (count, no spacing printed).",
+    "F2 (two piles at 1.00) prints two 9-⊕16 lines; the qualifier on the first reads '(ล่าง) ยาว 10/4' and on the second is illegible. Read as a two-way bottom mat 9+9 (one dot row along the long section + the long bar), flagged.",
+    "Both footings: concrete 1:2:4, lean concrete 1:3:5, compacted coarse sand; piles 0.22 x 0.22 prestressed, 21.00 m (see the notes view for the TIS standards)."
+  ],
+  "elements": [
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "จากระดับพื้นชั้น 3 ถึงคานหลังคา",
+      "width_mm": 250,
+      "height_mm": 300,
+      "width_mm_printed_as": "0.25 x 0.30",
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "2-⊕16 มม. + 4-⊕16 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "note": "เหล็ก 4 มุม + 2 เส้นกลางด้านยาว; มีเหล็กรัดกลาง (เส้นคู่ในรูปตัด)",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "จากระดับพื้นชั้นที่ 1 ถึงระดับพื้นชั้น 3",
+      "width_mm": 250,
+      "height_mm": 300,
+      "width_mm_printed_as": "0.25 x 0.30",
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "6-⊕16 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15 คู่",
+        "note": "ปลอกคู่ (พิมพ์ 'คู่' ต่อท้าย)"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "จากระดับฐานราก ถึงระดับท้องคานคอดิน",
+      "width_mm": 300,
+      "height_mm": 350,
+      "width_mm_printed_as": "0.30 x 0.35",
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "6-⊕16 มม. (แกนเสาเท่าชั้นบน ไม่ต้องดุ้งเหล็ก)"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15 คู่",
+        "note": "ปลอกคู่ (พิมพ์ 'คู่' ต่อท้าย)"
+      },
+      "note": "ตอม่อ — 'แกนเสาเท่าชั้นบน ไม่ต้องดุ้งเหล็ก'",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "จากพื้นชั้น 3 ถึงคานหลังคา",
+      "width_mm": 250,
+      "height_mm": 250,
+      "width_mm_printed_as": "0.25 x 0.25",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 20,
+        "type": "DB",
+        "printed_as": "4-⊕20 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "จากพื้นชั้น 1 ถึงพื้นชั้น 3",
+      "width_mm": 250,
+      "height_mm": 250,
+      "width_mm_printed_as": "0.25 x 0.25",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 20,
+        "type": "DB",
+        "printed_as": "4-⊕20 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "จากฐานราก ถึงท้องคานคอดิน",
+      "width_mm": 300,
+      "height_mm": 300,
+      "width_mm_printed_as": "0.30 x 0.30",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 20,
+        "type": "DB",
+        "printed_as": "4-⊕20 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C3",
+      "element_type": "column",
+      "level": "จากระดับฐานราก ถึงระดับท้องคานคอดิน",
+      "width_mm": 300,
+      "height_mm": 300,
+      "width_mm_printed_as": "0.30 x 0.30",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "4-⊕16 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C3",
+      "element_type": "column",
+      "level": "จากพื้นชั้น 1 ถึงพื้นชั้น 2",
+      "width_mm": 250,
+      "height_mm": 250,
+      "width_mm_printed_as": "0.25 x 0.25",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "4-⊕16 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C3",
+      "element_type": "column",
+      "level": "จากพื้นชั้น 2 ถึงคานหลังคา",
+      "width_mm": 250,
+      "height_mm": 250,
+      "width_mm_printed_as": "0.25 x 0.25",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "4-⊕16 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C4",
+      "element_type": "column",
+      "level": "จากพื้นชั้น 3 ถึงคานหลังคา",
+      "width_mm": 250,
+      "height_mm": 300,
+      "width_mm_printed_as": "0.25 x 0.30",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "4-⊕16 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C4",
+      "element_type": "column",
+      "level": "จากพื้นชั้น 1 ถึงพื้นชั้น 3",
+      "width_mm": 250,
+      "height_mm": 300,
+      "width_mm_printed_as": "0.25 x 0.30",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "4-⊕16 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C4",
+      "element_type": "column",
+      "level": "จากฐานราก ถึงท้องคานคอดิน",
+      "width_mm": 250,
+      "height_mm": 350,
+      "width_mm_printed_as": "0.25 x 0.35",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "4-⊕16 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "width_mm": 700,
+      "width_mm_printed_as": "0.35+0.35 = 0.70",
+      "height_mm": 700,
+      "height_mm_printed_as": "0.70",
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "8-⊕16 มม.",
+        "note": "เหล็กยืนรอบฐาน (กรงตั้ง) ไม่ใช่ตะแกรงล่าง"
+      },
+      "stirrup": {
+        "count": 4,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "4-ø9 มม.",
+        "note": "ปลอกรัดรอบนอนในฐาน 4 ชั้น"
+      },
+      "pile_count": 1,
+      "pile": {
+        "type": "เข็มคอนกรีตอัดแรง",
+        "width_mm": 220,
+        "length_m": 21.0,
+        "printed_as": "เข็ม 1 ต้น # 0.22x0.22 ยาว 21.00 ม. หรือเข็มแรงเหวี่ยง ø 0.25x21.00 ม. 2 ท่อนต่อ 10.50x2 ม.",
+        "alternative": "เข็มแรงเหวี่ยง ø0.25 ม. ยาว 21.00 ม. (2 ท่อนต่อ ท่อนละ 10.50 ม.)"
+      },
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "concrete_mix": "1:2:4",
+      "footing_type": "ฐานรากเข็ม 1 ต้น",
+      "note": "มิติ 0.35 พิมพ์ภายในรูปตัดจากท้องฐานขึ้นไป (ช่วงที่หัวเข็มฝังในฐาน); ทรายหยาบอัดแน่น 0.10",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "pile_alternative_text_partially_legible"
+      ]
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "width_mm": 1500,
+      "depth_mm": 750,
+      "width_mm_printed_as": "0.25+1.00+0.25 = 1.50",
+      "depth_mm_printed_as": "0.75",
+      "height_mm": 700,
+      "height_mm_printed_as": "0.70",
+      "main_bar": {
+        "count": 18,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "9-⊕16 มม.(ล่าง) ยาว 10/4 + 9-⊕16 มม.(…)",
+        "note": "ตะแกรงล่าง 2 ทิศทาง ทิศละ 9 เส้น; คำในวงเล็บของบรรทัดที่สองและ 'ยาว 10/4' อ่านไม่ชัด",
+        "count_printed_as": "9+9"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "1-⊕12 มม. รัดรอบ",
+        "note": "เหล็กรัดรอบขอบฐาน 1 เส้น"
+      },
+      "pile_count": 2,
+      "pile": {
+        "type": "เข็มคอนกรีตอัดแรง",
+        "width_mm": 220,
+        "length_m": 21.0,
+        "spacing_m": 1.0,
+        "printed_as": "เข็มคอนกรีตอัดแรง 2 # 0.22x0.22x21.00 ม. (2 ท่อนต่อ) หรือเข็มแรงเหวี่ยง ø.25x21.00 ม. (2 ท่อนต่อ ท่อนละ 10.50 ม. โดยวิธีเชื่อม)"
+      },
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "concrete_mix": "1:2:4",
+      "footing_type": "ฐานรากเข็ม 2 ต้น",
+      "note": "หัวเข็มยื่นเข้าฐาน 0.05 (พิมพ์ 0.05 / 0.10 / 0.10 ใต้ฐาน); ทรายหยาบอัดแน่น 0.10",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "bar_label_partially_legible"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,416 @@
+{
+  "png": "06",
+  "doc_page": 6,
+  "discipline": "structural",
+  "sheet_code": "6",
+  "sheet_name": "แปลนคานหลังคา, แปลนคานพื้นชั้น 3, แบบขยายพื้น S1-S6, ขยายคาน RB1-RB7",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png",
+  "grid_source": "บ้าน_ใหญ่_3ชั้น_06_หน้า00_gridline.json",
+  "view_title": "แบบขยายพื้น S1-S6 + คาน RB1, RB3-RB7",
+  "views": [
+    "view1: แปลนคานหลังคา (beam_plan, RF)",
+    "view2: แปลนคาน พื้นชั้น 3 (beam_plan, F3)",
+    "view3: แบบขยายพื้น S1-S6 + คาน RB1-RB7 (section)"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "hand_lettered"
+  ],
+  "warnings": [
+    "Bar symbols: this set's legend (printed on sheet 5 beside the footing details) reads '⊕ — เหล็กข้ออ้อย, ø — เหล็กกลม' — the hatched/crossed circle used for every main bar is the deformed-bar symbol, so main bars are type DB; the plain ø used for every stirrup/slab bar is RB. No steel grade or fy is printed anywhere in the set.",
+    "Slabs: main_bar = the short-direction bottom bars (or the only bottom bar line); the long-direction bars, the L/4 top bars and the ø6 distribution bars are in additional_bars with their positions. 'ทาง 1 ค.ม. 1' = alternate bars cranked (คอม้า) at L/5.",
+    "An RB2 section was drawn and erased (ghost outline between RB1 and RB3) — not recorded; no RB2 appears on the roof beam plan either.",
+    "S3 is detailed here but its mark appears on none of the three plans — recorded as printed, flagged.",
+    "RB6/RB7 bottom: the bent-up (คอม้า) bar is counted with the bottom face, matching how this dataset counts extra bottom bars (printed text kept)."
+  ],
+  "elements": [
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 140,
+      "thickness_mm_printed_as": "0.14",
+      "main_bar": {
+        "dia_mm": 12,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ø12 มม.@0.15 ทาง 1 ค.ม. 1 L/5 (ทางสั้น)"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ø9 มม.@0.15 ทาง 1 ค.ม. 1 L/5 (ทางยาว)",
+          "position": "bottom, long direction (alternate bars bent up at L/5)"
+        },
+        {
+          "dia_mm": 12,
+          "spacing_mm": 300,
+          "type": "RB",
+          "printed_as": "ø12 มม.@0.30 (เสริมพิเศษ L/4)",
+          "position": "top over supports, short direction, L/4"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 300,
+          "type": "RB",
+          "printed_as": "ø9 มม.@0.30 (เสริมพิเศษ) L/4 (ทางยาว)",
+          "position": "top over supports, long direction, L/4"
+        }
+      ],
+      "span_printed_as": "3.50 x 8.20",
+      "top_bar_extent_m": 0.7,
+      "note": "พื้นห้องน้ำ 3.50 x 8.20; ทางสั้น ø12@0.15 สลับคอม้า L/5 — ระยะ 0.15 ของบรรทัด ø9 ทางยาวเขียนซ้อน อ่านไม่ชัด",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "spacing_partially_legible"
+      ]
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 140,
+        "type": "RB",
+        "printed_as": "ø9 มม.@0.14 ทาง 1 ค.ม. 1 L/5 (ทางสั้น)"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 160,
+          "type": "RB",
+          "printed_as": "ø9 มม.@0.16 ทาง 1 ค.ม. 1 L/5 (ทางยาว)",
+          "position": "bottom, long direction (alternate bars bent up at L/5)"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 280,
+          "type": "RB",
+          "printed_as": "ø9 มม.@0.28 (เสริมพิเศษ L/4)",
+          "position": "top over supports, short direction, L/4"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 320,
+          "type": "RB",
+          "printed_as": "ø9 มม.@0.32 (เสริมพิเศษ) L/4 ทางยาว",
+          "position": "top over supports, long direction, L/4"
+        }
+      ],
+      "span_printed_as": "3.00 x 3.50",
+      "top_bar_extent_m": 0.6,
+      "note": "แผ่นพื้น 3.00 x 3.50; เหล็กบนยื่น 0.60 จากขอบ",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ø9 มม.@0.15 ทาง 1 ค.ม. 1 L/5"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 300,
+          "type": "RB",
+          "printed_as": "ø9 มม.@0.30 (เสริมพิเศษ L/4)",
+          "position": "top over supports, L/4"
+        },
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ø6 มม.@0.15 ม.",
+          "position": "distribution bars"
+        }
+      ],
+      "span_printed_as": "2.33",
+      "top_bar_extent_m": 0.45,
+      "note": "ช่วง 2.33; เหล็กบนยื่น 0.45 — มาร์ค S3 ไม่ปรากฏบนแปลนคานแผ่นใด",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "mark_not_found_on_any_plan"
+      ]
+    },
+    {
+      "element_id": "S4",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 120,
+        "type": "RB",
+        "printed_as": "ø9 มม.@0.12"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ø6 มม.@0.15",
+          "position": "distribution bars"
+        }
+      ],
+      "span_printed_as": "1.80",
+      "note": "ช่วง 1.80 (ชานพักปลายปีกบันได)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S5",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ø9 มม.@0.15"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ø6 มม.@0.15",
+          "position": "distribution bars"
+        }
+      ],
+      "span_printed_as": "1.20",
+      "note": "ช่วง 1.20 (พื้นในบล็อกห้องน้ำ)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S6",
+      "element_type": "slab",
+      "thickness_mm": 120,
+      "thickness_mm_printed_as": "0.12 / 0.08",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 120,
+        "type": "RB",
+        "printed_as": "ø9 มม.@0.12"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ø6 มม.@0.15",
+          "position": "distribution bars"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 240,
+          "type": "RB",
+          "printed_as": "ø9@0.24 ม.",
+          "position": "bottom"
+        },
+        {
+          "count": 3,
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "3 ø6 มม.",
+          "position": "curb (ขอบ ค.ส.ล.) longitudinal bars"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 120,
+          "type": "RB",
+          "printed_as": "ø9 มม. 0.12",
+          "position": "curb vertical bars"
+        }
+      ],
+      "span_printed_as": "1.20",
+      "note": "พื้นยื่น (ทางเดิน) กว้าง 1.20; หนา 0.12 (ปลายขอบ 0.08); ขอบ ค.ส.ล. สูง 0.40 หนา 0.08 ที่ปลาย",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "thickness_varies_0.12_to_0.08"
+      ]
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 350,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-⊕12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-⊕12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB3",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 350,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-⊕12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-⊕12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB4",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 350,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-⊕16 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-⊕16 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB5",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 350,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "4-⊕16 มม. ฝังเข้าคาน RB4 = 1.20",
+          "note": "ฝังเข้าคาน RB4 ยาว 1.20 (คานยื่น)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-⊕16 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB6",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 350,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-⊕12 มม."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-⊕12 มม. + 1-⊕12 มม. ค.ม. L/5",
+          "note": "2 เส้นตรง + 1 เส้นคอม้าที่ L/5"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB7",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 350,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-⊕16 มม."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-⊕16 มม. + 1-⊕16 มม. ค.ม. L/5",
+          "note": "2 เส้นตรง + 1 เส้นคอม้าที่ L/5"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป ø6 มม.@0.15"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    }
+  ]
+}

@@ -1,0 +1,936 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized from แบบแผ่นที่ 5, 6 + รูปตัด/แปลนขยายห้องน้ำ แผ่นที่ 2)",
+  "pattern": "grid_master",
+  "source_pages": [
+    "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+    "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png",
+    "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "grid_labels_assigned_not_printed",
+    "two_dummy_lines_from_architectural_sheet",
+    "one_dummy_scaled_from_grid",
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "This drawing set prints NO grid bubbles anywhere (structural or architectural) — only dimension chains. Labels were assigned here: numbers 1-12 on the 12 column lines along x (11 bays × 3.50 = 38.50, left to right as drawn on the S-plans), letters A-D on the column rows along y (A top = the side the toilet blocks project from, B +4.00, C +7.00, D +9.20 = the stair-wing footings). Origin A1 (top-left).",
+    "Scanned set, sheets drawn rotated 90° on portrait paper; read rotated. Hand lettering: the 3rd x bay on แปลนฐานรากคานคอดิน and the 8th on แปลนคานหลังคา read like '3.60', but every other chain prints 3.50 and all four totals print 38.50 = 11 × 3.50 — taken as 3.50, printed_as kept.",
+    "Beam B1 (the partition beam inside each toilet block) and beam B12 (the block's inner wall) are drawn on the F2/F3 beam plans but not dimensioned there. Their lines come from the architectural sheet 2: the toilet plan prints the ห้องส้วมครู partition 1.50 right of grid 2 (2' = 5.00) and the cross section through the stair/toilet bay prints 0.80 + 1.20 (A'' = 0.80 below row A). Scaling the S-plans gives ≈1.3 and ≈0.55-0.70 — hand-drawn plans are not to scale in that tight corner; the printed values were taken (structural sheets print nothing to contradict them).",
+    "The right toilet block's B1 (10' = 33.50) is printed on no sheet; the toilet plan is drawn for the left block only. 33.50 = x11 − 1.50 (mirror of the printed left value) and agrees with the scaled 2.0-2.1 from grid 10 on both beam plans; flagged.",
+    "The S6 cantilever slab along row C (outside the stair wings) and the roof eave below row C are drawn but not dimensioned on any swept sheet, so no line was made for their outer edges; the roof eave on the A side coincides with A' (1.20).",
+    "z_levels come from the cross section (รูปตัดตามขวาง, sheet 2). ชานพักชั้น 3 is labelled there but its height is not dimensioned (the 3.15 row spans พื้นชั้น 2 → พื้นชั้น 3 in one segment), so it has no z_levels entry. Both upper floors are also labelled ระดับพื้นห้องนอน on the right; the left labels พื้นชั้น 2 / พื้นชั้น 3 were used as ids.",
+    "Dimension sweep (op04 pass2-only): every chain on the structural sheets 5-7 (sheet 7 prints only member-internal dimensions — section sizes, bar cut-offs, slab spans — which stay on the elements), plus the cross section and the 1.50 partition chain of the toilet plan on sheet 2. NOT swept: sheet 1 floor plans/elevations (they reprint the same 3.50 / 4.00 / 3.00 / 2.20 / 1.80 chains), the remaining fixture dimensions of the sheet-2 toilet plan (1.20 stall, 0.20 / 0.60 counter, 0.45 shaft), sheets 3, 4, 8 and the furniture sheets 9-11."
+  ],
+  "grid": {
+    "x_lines": [
+      {
+        "id": "1'",
+        "pos_m": -1.0,
+        "type": "dummy",
+        "note": "roof edge, 1.00 left of grid 1 (แปลนคานหลังคา, p6)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png"
+      },
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 1 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "2",
+        "pos_m": 3.5,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 2 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "2'",
+        "pos_m": 5.0,
+        "type": "dummy",
+        "note": "1.50 right of grid 2 — partition of ห้องส้วมครู on the toilet plan (แปลนขยายห้องน้ำ-ส้วม, p2); the line beam B1 runs on (S-plans draw B1 here but do not dimension it — scaled ≈1.3 there)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "confidence_score": 0.7,
+        "confidence_flags": [
+          "beam_B1_placed_on_architectural_dimension"
+        ]
+      },
+      {
+        "id": "3",
+        "pos_m": 7.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 3 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "4",
+        "pos_m": 10.5,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 4 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "5",
+        "pos_m": 14.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 5 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "6",
+        "pos_m": 17.5,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 6 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "7",
+        "pos_m": 21.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 7 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "8",
+        "pos_m": 24.5,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 8 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "9",
+        "pos_m": 28.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 9 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "10",
+        "pos_m": 31.5,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 10 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "10'",
+        "pos_m": 33.5,
+        "type": "dummy",
+        "note": "beam B1 of the right toilet block — not dimensioned on any sheet; scaled ≈2.0-2.1 right of grid 10 on the F2 and F3 beam plans, = mirror of the printed 1.50 left of grid 11 (toilet plan p2 drawn for the left block only)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_score": 0.6,
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
+      },
+      {
+        "id": "11",
+        "pos_m": 35.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 11 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "12",
+        "pos_m": 38.5,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column line 12 of 12 (11 bays × 3.50 = 38.50)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "12'",
+        "pos_m": 39.5,
+        "type": "dummy",
+        "note": "roof edge, 1.00 right of grid 12 (p6 roof beam plan)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png"
+      }
+    ],
+    "y_lines": [
+      {
+        "id": "A'",
+        "pos_m": -1.2,
+        "type": "dummy",
+        "note": "outer edge of the toilet blocks / S6 cantilever and roof eave, 1.20 above row A (S-plans p5/p6, cross section p2)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png"
+      },
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column row A (top)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "A''",
+        "pos_m": 0.8,
+        "type": "dummy",
+        "note": "0.80 below row A — toilet-block wall / beam B12 (cross section p2 prints 0.80 + 1.20); S-plans draw B12 here undimensioned (scales ≈0.55-0.70)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "confidence_score": 0.75,
+        "confidence_flags": [
+          "beam_B12_placed_on_architectural_dimension"
+        ]
+      },
+      {
+        "id": "B",
+        "pos_m": 4.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column row B",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "C",
+        "pos_m": 7.0,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column row C",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "D",
+        "pos_m": 9.2,
+        "type": "named",
+        "note": "label assigned — the drawing prints no grid bubbles; column row of the two stair wings (F1,C2 footings), 2.20 below C",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "confidence_flags": [
+          "grid_label_assigned_not_printed"
+        ]
+      },
+      {
+        "id": "D'",
+        "pos_m": 11.0,
+        "type": "dummy",
+        "note": "end of the stair wings (beam B15 / RB6), 1.80 below D",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png"
+      }
+    ],
+    "z_levels": [
+      {
+        "id": "±0.00",
+        "level_m": 0.0,
+        "type": "datum",
+        "note": "natural ground '±0.00' (รูปตัดตามขวาง p2)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      },
+      {
+        "id": "+0.15",
+        "level_m": 0.15,
+        "type": "named",
+        "note": "outside step at the toilet side '+0.15'",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      },
+      {
+        "id": "ระดับพื้นชั้นล่าง",
+        "level_m": 0.25,
+        "type": "named",
+        "note": "printed 'พื้นชั้นล่าง +0.25', 0.25 above ±0.00",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      },
+      {
+        "id": "ชานพักชั้น 2",
+        "level_m": 1.825,
+        "type": "named",
+        "note": "stair landing, 1.575 above the ground floor",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      },
+      {
+        "id": "พื้นชั้น 2",
+        "level_m": 3.4,
+        "type": "named",
+        "note": "also labelled ระดับพื้นห้องนอน; 1.575 + 1.575 = 3.15 above the ground floor",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      },
+      {
+        "id": "พื้นชั้น 3",
+        "level_m": 6.55,
+        "type": "named",
+        "note": "also labelled ระดับพื้นห้องนอน; 3.15 above พื้นชั้น 2",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      },
+      {
+        "id": null,
+        "level_m": 8.75,
+        "type": "dummy",
+        "note": "top of the stair-wing roof (2.20 above พื้นชั้น 3; outer chain 8.50 from the ground floor) — no label printed",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      },
+      {
+        "id": "ระดับหัวเสา",
+        "level_m": 9.7,
+        "type": "named",
+        "note": "3.15 above พื้นชั้น 3 (right chain)",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      },
+      {
+        "id": "สันโครงหลังคา",
+        "level_m": 11.05,
+        "type": "named",
+        "note": "1.35 above ระดับหัวเสา",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png"
+      }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "view": "แปลนฐานรากคานคอดิน",
+        "segments": [
+          {
+            "from": "1",
+            "to": "12",
+            "value_m": 38.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "view": "แปลนฐานรากคานคอดิน",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.5
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 3.5,
+            "printed_as": "3.60 (5/6 ambiguous — the 38.50 total needs 3.50)"
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 3.5
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 3.5
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          },
+          {
+            "from": "7",
+            "to": "8",
+            "value_m": 3.5
+          },
+          {
+            "from": "8",
+            "to": "9",
+            "value_m": 3.5
+          },
+          {
+            "from": "9",
+            "to": "10",
+            "value_m": 3.5
+          },
+          {
+            "from": "10",
+            "to": "11",
+            "value_m": 3.5
+          },
+          {
+            "from": "11",
+            "to": "12",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "view": "แปลนฐานรากคานคอดิน",
+        "segments": [
+          {
+            "from": "A",
+            "to": "C",
+            "value_m": 7.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "view": "แปลนฐานรากคานคอดิน",
+        "segments": [
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 4.0
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 3.0
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 2.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "view": "แปลนคาน-พื้นชั้น 2",
+        "segments": [
+          {
+            "from": "1",
+            "to": "12",
+            "value_m": 38.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "view": "แปลนคาน-พื้นชั้น 2",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.5
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 3.5
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 3.5
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 3.5
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          },
+          {
+            "from": "7",
+            "to": "8",
+            "value_m": 3.5
+          },
+          {
+            "from": "8",
+            "to": "9",
+            "value_m": 3.5
+          },
+          {
+            "from": "9",
+            "to": "10",
+            "value_m": 3.5
+          },
+          {
+            "from": "10",
+            "to": "11",
+            "value_m": 3.5
+          },
+          {
+            "from": "11",
+            "to": "12",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "view": "แปลนคาน-พื้นชั้น 2",
+        "segments": [
+          {
+            "from": "A",
+            "to": "C",
+            "value_m": 7.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า05.png",
+        "view": "แปลนคาน-พื้นชั้น 2",
+        "segments": [
+          {
+            "from": "A'",
+            "to": "A",
+            "value_m": 1.2
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 4.0
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 3.0
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 2.2
+          },
+          {
+            "from": "D",
+            "to": "D'",
+            "value_m": 1.8
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png",
+        "view": "แปลนคานหลังคา",
+        "segments": [
+          {
+            "from": "1",
+            "to": "12",
+            "value_m": 38.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png",
+        "view": "แปลนคานหลังคา",
+        "segments": [
+          {
+            "from": "1'",
+            "to": "1",
+            "value_m": 1.0
+          },
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.5
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 3.5
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 3.5
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 3.5
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          },
+          {
+            "from": "7",
+            "to": "8",
+            "value_m": 3.5
+          },
+          {
+            "from": "8",
+            "to": "9",
+            "value_m": 3.5,
+            "printed_as": "3.60 (5/6 ambiguous — the 38.50 total needs 3.50)"
+          },
+          {
+            "from": "9",
+            "to": "10",
+            "value_m": 3.5
+          },
+          {
+            "from": "10",
+            "to": "11",
+            "value_m": 3.5
+          },
+          {
+            "from": "11",
+            "to": "12",
+            "value_m": 3.5
+          },
+          {
+            "from": "12",
+            "to": "12'",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png",
+        "view": "แปลนคานหลังคา",
+        "segments": [
+          {
+            "from": "A'",
+            "to": "A",
+            "value_m": 1.2
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 4.0
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 3.0
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 2.2
+          },
+          {
+            "from": "D",
+            "to": "D'",
+            "value_m": 1.8
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png",
+        "view": "แปลนคาน พื้นชั้น 3",
+        "segments": [
+          {
+            "from": "1",
+            "to": "12",
+            "value_m": 38.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png",
+        "view": "แปลนคาน พื้นชั้น 3",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.5
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 3.5
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 3.5
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 3.5
+          },
+          {
+            "from": "6",
+            "to": "7",
+            "value_m": 3.5
+          },
+          {
+            "from": "7",
+            "to": "8",
+            "value_m": 3.5
+          },
+          {
+            "from": "8",
+            "to": "9",
+            "value_m": 3.5
+          },
+          {
+            "from": "9",
+            "to": "10",
+            "value_m": 3.5
+          },
+          {
+            "from": "10",
+            "to": "11",
+            "value_m": 3.5
+          },
+          {
+            "from": "11",
+            "to": "12",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า06.png",
+        "view": "แปลนคาน พื้นชั้น 3",
+        "segments": [
+          {
+            "from": "A'",
+            "to": "A",
+            "value_m": 1.2
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 4.0
+          },
+          {
+            "from": "B",
+            "to": "C",
+            "value_m": 3.0
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "value_m": 2.2
+          },
+          {
+            "from": "D",
+            "to": "D'",
+            "value_m": 1.8
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "view": "รูปตัดตามขวาง",
+        "segments": [
+          {
+            "from": "D'",
+            "to": "D",
+            "value_m": 1.8
+          },
+          {
+            "from": "D",
+            "to": "C",
+            "value_m": 2.2
+          },
+          {
+            "from": "C",
+            "to": "B",
+            "value_m": 3.0
+          },
+          {
+            "from": "B",
+            "to": "A",
+            "value_m": 4.0
+          },
+          {
+            "from": "A",
+            "to": "A'",
+            "value_m": 1.2
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "view": "รูปตัดตามขวาง",
+        "segments": [
+          {
+            "from": "A''",
+            "to": "A",
+            "value_m": 0.8
+          },
+          {
+            "from": "A",
+            "to": "A'",
+            "value_m": 1.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "view": "แปลนขยายห้องน้ำ-ส้วม",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 3.5
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "view": "แปลนขยายห้องน้ำ-ส้วม",
+        "segments": [
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.5
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "view": "รูปตัดตามขวาง",
+        "segments": [
+          {
+            "from": "±0.00",
+            "to": "ระดับพื้นชั้นล่าง",
+            "value_m": 0.25
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "view": "รูปตัดตามขวาง",
+        "segments": [
+          {
+            "from": "ระดับพื้นชั้นล่าง",
+            "to": "ชานพักชั้น 2",
+            "value_m": 1.575
+          },
+          {
+            "from": "ชานพักชั้น 2",
+            "to": "พื้นชั้น 2",
+            "value_m": 1.575
+          },
+          {
+            "from": "พื้นชั้น 2",
+            "to": "พื้นชั้น 3",
+            "value_m": 3.15
+          },
+          {
+            "from": "พื้นชั้น 3",
+            "to": null,
+            "value_m": 2.2,
+            "note": "to the unlabelled stair-wing roof level +8.75"
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "view": "รูปตัดตามขวาง",
+        "segments": [
+          {
+            "from": "ระดับพื้นชั้นล่าง",
+            "to": null,
+            "value_m": 8.5,
+            "note": "outer row to the unlabelled +8.75 level"
+          }
+        ]
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_3ชั้น_06/บ้าน_ใหญ่_3ชั้น_06_หน้า02.png",
+        "view": "รูปตัดตามขวาง",
+        "segments": [
+          {
+            "from": "ระดับพื้นชั้นล่าง",
+            "to": "พื้นชั้น 2",
+            "value_m": 3.15
+          },
+          {
+            "from": "พื้นชั้น 2",
+            "to": "พื้นชั้น 3",
+            "value_m": 3.15
+          },
+          {
+            "from": "พื้นชั้น 3",
+            "to": "ระดับหัวเสา",
+            "value_m": 3.15
+          },
+          {
+            "from": "ระดับหัวเสา",
+            "to": "สันโครงหลังคา",
+            "value_m": 1.35
+          }
+        ]
+      }
+    ],
+    "unassigned_dimensions": []
+  },
+  "dummy_grid_rule_check": {
+    "negative_pos_m": "x 1' = -1.00 (roof edge before grid 1); y A' = -1.20 (toilet blocks / eave above row A).",
+    "prime_ordering": "y: A' (-1.20) before the origin and A'' (+0.80) after it share one sequence in reading order; x: 1' -1.00, 2' 5.00, 10' 33.50, 12' 39.50; y: D' 11.00."
+  }
+}
