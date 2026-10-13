@@ -1,0 +1,243 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "structural",
+  "sheet_code": "1",
+  "sheet_name": "แปลนพื้น, แปลนฐานรากและคานคอดิน, แปลนโครงหลังคา, รูปตัด ก-ก, รูปด้าน, ขยายทับหลัง, ขยายหัวเสา",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_57/บ้าน_เล็ก_1ชั้น_57_หน้า02.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_57_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานรากและคานคอดิน",
+  "scale": "1:100",
+  "views": [
+    "view1: แปลนพื้น 1:100 (etc_plan, architectural — not extracted, op04 scope; dimensions swept into the grid master)",
+    "view2: แปลนฐานรากและคานคอดิน 1:100 (footing_plan)",
+    "view3: แปลนโครงหลังคา 1:100 (roof_frame_plan)",
+    "view4: รูปตัด ก-ก 1:50 (side_profile — not extracted; levels/dimensions swept into the grid master)",
+    "view5: ขยายทับหลัง A และ B 1:10 (section)",
+    "view6: ขยายหัวเสา ก และ ข (section — steel truss seat details)",
+    "view7: รูปด้านข้าง / รูปด้านหน้า 1:75 (side_profile — not extracted)",
+    "view8: สัญลักษณ์ไฟฟ้า + หมายเหตุ (symbol — not extracted)"
+  ],
+  "confidence_score": 0.87,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "handwritten_drawing"
+  ],
+  "warnings": [
+    "Tags are printed 'C1F' / 'C2F' = column mark + footing F (one footing type, detail F on แผ่นที่ 3: 1.00 x 1.00, 6 hollow hexagonal piles). C1F sits under the T1 trusses (A2, A3, D2, D3); C2F at the four corners and on the gable walls (B1, C1, B4, C4). Rows B/C have no column on grids 2-3 — the 10.00 m span is a steel truss.",
+    "Ground beams are all printed 'G' (detail G 0.15 x 0.35 on แผ่นที่ 3); they run only round the perimeter (rows A, D and grids 1, 4) — 12 grid-to-grid segments.",
+    "The floor is one slab-on-grade panel with no mark — element_id null, name in element_name_assigned. The ทางเท้า ค.ส.ล. walkway (0.08 m, Ø6 @0.25 #) is printed only on the architectural แปลนพื้น (view1, not extracted).",
+    "Grid labels 1-4 / A-D are assigned (no bubbles printed) — see the grid master."
+  ],
+  "elements": [
+    {
+      "element_id": "F",
+      "element_type": "footing",
+      "count": 12,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "B1",
+        "B4",
+        "C1",
+        "C4",
+        "D1",
+        "D2",
+        "D3",
+        "D4"
+      ],
+      "element_id_printed_as": "'C1F' / 'C2F' (column mark + footing F, detail F on แผ่นที่ 3)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 4,
+      "grid_refs": [
+        "A2",
+        "A3",
+        "D2",
+        "D3"
+      ],
+      "element_id_printed_as": "'C1F'",
+      "note": "เสาใต้โครงหลังคา T1 (แนว 2 และ 3)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 8,
+      "grid_refs": [
+        "A1",
+        "A4",
+        "B1",
+        "B4",
+        "C1",
+        "C4",
+        "D1",
+        "D4"
+      ],
+      "element_id_printed_as": "'C2F'",
+      "note": "เสามุมและเสาผนังสกัด (แนว 1 และ 4)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "D4",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน รอบอาคาร",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "slab",
+      "grid_refs": [
+        "A-D x 1-4"
+      ],
+      "thickness_mm": 100,
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "เหล็ก Ø 6 มม. @ 0.25 #"
+      },
+      "note": "พื้น ค.ส.ล. หนา 0.10 ม. วางบนทรายหยาบอัดแน่น (ขยายพื้น ค.ส.ล. แผ่นที่ 3); # = ตะแกรง 2 ทาง",
+      "printed_as": "พื้น ค.ส.ล. หนา 0.10 ม เหล็ก Ø 6 มม. @ 0.25 #",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "พื้น ค.ส.ล."
+    }
+  ]
+}

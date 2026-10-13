@@ -1,0 +1,130 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "structural",
+  "sheet_code": "3",
+  "sheet_name": "แผงกันแดด, ขยายโครงหลังคา T1, ขยายคานรับแปด้านสกัด T2, ขยายครีบ ค.ส.ล., ขยายคาน R1, ขยายฐานราก F, เสา C1 C2, คาน G, พื้น ค.ส.ล., ทับหลัง/R2/เอ็น, รายละเอียดโครงหลังคาเหล็ก",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_57/บ้าน_เล็ก_1ชั้น_57_หน้า04.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_57_หน้า00_gridline.json",
+  "view_title": "ขยายโครงหลังคา T1",
+  "scale": "1:50",
+  "views": [
+    "view1: แผงกันแดด แบบ สปช 201,202,203,204 + ขยาย 1-5 (architectural sun-shade panel — not extracted)",
+    "view2: ขยายโครงหลังคา T1 1:50 + ขยายรอยต่อขื่อ-จันทัน + ขยายรอยต่อแปเหล็ก (section)",
+    "view3: ขยายคานรับแปด้านสกัด 1:50 (T2) (section)",
+    "view4: ขยายครีบ ค.ส.ล. 1:25 + ขยายคาน R1 (section)",
+    "view5: ฐานราก F + เสา C1 / C2 + คาน G + ขยายพื้น ค.ส.ล. (section)",
+    "view6: แบบขยายทับหลังเหนือหน้าต่าง, R2, แบบขยายเอ็นใต้หน้าต่าง (section)",
+    "view7: รูปตัด ข-ข / แสดงการต่อเชื่อมเหล็กโครงหลังคา (steel joint sketch — summarised in view2 warnings, not extracted separately)",
+    "view8: รายละเอียดโครงหลังคาเหล็ก + ข้อกำหนดเข็ม + หมายเหตุ (notes)"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "handwritten_drawing",
+    "small_handwritten_text"
+  ],
+  "warnings": [
+    "Steel members printed with channel glyphs (⊓ / ⊔ / ⊐⊏) and four numbers '100x50x50x3.2' — recorded designation C (2C for the back-to-back pair) with d 100 / b 50 / t 3.2; the third number (50) has no key in §6a for this family and stays only in printed_as.",
+    "Purlin spacing printed @0.90-1.00 m: spacing_mm = the smaller (900) + variable_spacing (§0.5). A trailing alternative after \"หรือ\" is illegible.",
+    "Truss members have no printed marks — element_id null with element_name_assigned. The รูปตัด ข-ข / แสดงการต่อเชื่อม sketch at the right edge repeats ⊐ 100x50x50x3.2, L-40x40x3.2 สลับข้าง and a 4 mm gusset — no new member, not extracted separately.",
+    "Truss heights / spans (2.05, 1.60, 10.00, 1.20, 0.35) are also transcribed in the grid master."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "span_length_m": 10.0,
+      "rise_m": 2.05,
+      "eave_overhang_m": 1.6,
+      "note": "โครงถักเหล็กหน้าจั่ว ช่วง 10.00 ม. (แถว A ถึง D) สูง 2.05 ม. จากระดับหัวเสาถึงระดับสันหลังคา ยื่นชายคา 1.60 ม.; ปลายชายคาลึก 0.35 ม.; วางบนแผ่นเหล็กหัวเสา (ขยายหัวเสา ก/ข แผ่นที่ 1); แผ่นเหล็กประกับ 4 มม.; ค้ำยัน ⊔-100x50x50x3.2 + แป้นเหล็กหนา 4 มม. ที่ชายคา",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 3.2,
+        "printed_as": "เหล็ก ⊓ 100x50x50x3.2 มม."
+      },
+      "note": "leader ชี้ที่คอร์ดบน",
+      "confidence_score": 0.75,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน (คอร์ดบน) T1"
+    },
+    {
+      "element_id": null,
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 3.2,
+        "printed_as": "เหล็ก ⊔-100x50x50x3.2 มม."
+      },
+      "note": "leader ชี้ที่คอร์ดล่าง; ขยายรอยต่อขื่อ-จันทัน: ขื่อหรือจันทัน ⊔-100x50x50x3.2 มม. ต่อด้วยเหล็ก ⊓ 40x40x3.2 มม. ระยะ 0.20",
+      "confidence_score": 0.75,
+      "confidence_flags": [],
+      "element_name_assigned": "ขื่อ (คอร์ดล่าง) T1"
+    },
+    {
+      "element_id": null,
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 40,
+        "b_mm": 40,
+        "t_mm": 3.2,
+        "printed_as": "เหล็กค้ำยัน L-40x40x3.2มม. สลับข้าง"
+      },
+      "note": "สลับข้าง",
+      "confidence_score": 0.75,
+      "confidence_flags": [],
+      "element_name_assigned": "ค้ำยัน (เอว) T1"
+    },
+    {
+      "element_id": null,
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 3.2,
+        "printed_as": "เหล็ก ⊐⊏-100x50x50x3.2 มม."
+      },
+      "note": "เหล็กคู่ประกบหลังที่สันหลังคา",
+      "confidence_score": 0.75,
+      "confidence_flags": [],
+      "element_name_assigned": "เสาดั้งกลาง T1"
+    },
+    {
+      "element_id": null,
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "แปเหล็ก C-100x50x20x3.2 มม. @ 0.90-1.00 ม. หรือ ?"
+      },
+      "spacing_mm": 900,
+      "variable_spacing": true,
+      "note": "ปลายข้อความ \"หรือ ...\" อ่านไม่ออก; ขยายรอยต่อแปเหล็ก: เหล็กตามหลังแป C-100x50x20x3.2 มม. ทาบ 0.15",
+      "confidence_score": 0.75,
+      "confidence_flags": [],
+      "element_name_assigned": "แป"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "structural",
+  "sheet_code": "1",
+  "sheet_name": "แปลนพื้น, แปลนฐานรากและคานคอดิน, แปลนโครงหลังคา, รูปตัด ก-ก, รูปด้าน, ขยายทับหลัง, ขยายหัวเสา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_57/บ้าน_เล็ก_1ชั้น_57_หน้า02.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_57_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนโครงหลังคา",
+  "scale": "1:100",
+  "views": [
+    "view1: แปลนพื้น 1:100 (etc_plan, architectural — not extracted, op04 scope; dimensions swept into the grid master)",
+    "view2: แปลนฐานรากและคานคอดิน 1:100 (footing_plan)",
+    "view3: แปลนโครงหลังคา 1:100 (roof_frame_plan)",
+    "view4: รูปตัด ก-ก 1:50 (side_profile — not extracted; levels/dimensions swept into the grid master)",
+    "view5: ขยายทับหลัง A และ B 1:10 (section)",
+    "view6: ขยายหัวเสา ก และ ข (section — steel truss seat details)",
+    "view7: รูปด้านข้าง / รูปด้านหน้า 1:75 (side_profile — not extracted)",
+    "view8: สัญลักษณ์ไฟฟ้า + หมายเหตุ (symbol — not extracted)"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "handwritten_drawing"
+  ],
+  "warnings": [
+    "Gable roof, ridge (สันหลังคา) along the middle of bay B-C parallel to x. T1 = steel trusses on grids 2 and 3 spanning A to D (10.00 m, eave 1.60 each side). T2 (both gable ends, grids 1 and 4) = คานรับแปด้านสกัด: per its detail on แผ่นที่ 3 it is the gable wall whose inclined beam is R1 (labelled R1 along the rake), supported by the C2 columns at A, B, C, D.",
+    "R1 is printed three times along each gable wall (A-B, B-C, C-D) and is recorded as those three plan segments; R1 is inclined, so span_length_m is the horizontal projection, and the B-C segment rises to the ridge at mid-bay and falls again (the ridge line is not dimensioned, so no grid line is invented there). The T2 entries carry no own concrete — their member is R1 — so a consumer must not price T2 again.",
+    "R2 runs along rows A and D at the column heads (รูปตัด ก-ก shows R2 under the truss seat, ขยายหัวเสา). Its section (0.10 x 0.20, 2-Ø12, ลูกโซ่ Ø6 @0.15) is printed on แผ่นที่ 3.",
+    "Purlins (แปเหล็ก C-100x50x20x3.2 @0.90-1.00) are not drawn on this plan — they are specified on the truss details and are recorded there, not as plan elements."
+  ],
+  "elements": [
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. เอียงตามลาดหลังคาบนผนังสกัด (เป็นคานของโครง T2); ช่วงที่วัดในแปลนเป็นระยะราบ",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "inclined_member_plan_span_is_horizontal_projection"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. รัดหัวเสา (รองรับโครงหลังคา T1/ปลายโครงที่ระดับหัวเสา)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "D1",
+      "span_length_m": 10.0,
+      "span_source": "grid_table",
+      "note": "คานรับแปด้านสกัด (ขยาย T2 แผ่นที่ 3) = ผนังจั่ว ค.ส.ล. ที่มีคาน R1 เอียงตามลาด รับแปบนเสา C2 ที่ A, B, C, D — เนื้อคอนกรีต/เหล็กของ T2 คือ R1 ที่บันทึกแยกเป็นช่วงแล้ว อย่านับซ้ำ",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "assembly_mark_member_recorded_as_R1"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. รัดหัวเสา (รองรับโครงหลังคา T1/ปลายโครงที่ระดับหัวเสา)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "D2",
+      "span_length_m": 10.0,
+      "span_source": "grid_table",
+      "material": "steel",
+      "note": "โครงหลังคาเหล็ก (ขยายโครงหลังคา T1 แผ่นที่ 3) วางบนเสา C1 ที่แถว A และ D; ยื่นชายคา 1.60 ม. ทั้งสองข้าง",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. รัดหัวเสา (รองรับโครงหลังคา T1/ปลายโครงที่ระดับหัวเสา)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "D3",
+      "span_length_m": 10.0,
+      "span_source": "grid_table",
+      "material": "steel",
+      "note": "โครงหลังคาเหล็ก (ขยายโครงหลังคา T1 แผ่นที่ 3) วางบนเสา C1 ที่แถว A และ D; ยื่นชายคา 1.60 ม. ทั้งสองข้าง",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. เอียงตามลาดหลังคาบนผนังสกัด (เป็นคานของโครง T2); ช่วงที่วัดในแปลนเป็นระยะราบ",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "inclined_member_plan_span_is_horizontal_projection"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "D4",
+      "span_length_m": 10.0,
+      "span_source": "grid_table",
+      "note": "คานรับแปด้านสกัด (ขยาย T2 แผ่นที่ 3) = ผนังจั่ว ค.ส.ล. ที่มีคาน R1 เอียงตามลาด รับแปบนเสา C2 ที่ A, B, C, D — เนื้อคอนกรีต/เหล็กของ T2 คือ R1 ที่บันทึกแยกเป็นช่วงแล้ว อย่านับซ้ำ",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "assembly_mark_member_recorded_as_R1"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. เอียงตามลาดหลังคาบนผนังสกัด (เป็นคานของโครง T2); ช่วงที่วัดในแปลนเป็นระยะราบ — ช่วงนี้ขึ้นไปถึงสันหลังคากลางช่วง แล้วลาดลง",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "inclined_member_plan_span_is_horizontal_projection",
+        "changes_slope_at_ridge_mid_bay"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. เอียงตามลาดหลังคาบนผนังสกัด (เป็นคานของโครง T2); ช่วงที่วัดในแปลนเป็นระยะราบ — ช่วงนี้ขึ้นไปถึงสันหลังคากลางช่วง แล้วลาดลง",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "inclined_member_plan_span_is_horizontal_projection",
+        "changes_slope_at_ridge_mid_bay"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. เอียงตามลาดหลังคาบนผนังสกัด (เป็นคานของโครง T2); ช่วงที่วัดในแปลนเป็นระยะราบ",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "inclined_member_plan_span_is_horizontal_projection"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "D4",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. เอียงตามลาดหลังคาบนผนังสกัด (เป็นคานของโครง T2); ช่วงที่วัดในแปลนเป็นระยะราบ",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "inclined_member_plan_span_is_horizontal_projection"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. รัดหัวเสา (รองรับโครงหลังคา T1/ปลายโครงที่ระดับหัวเสา)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. รัดหัวเสา (รองรับโครงหลังคา T1/ปลายโครงที่ระดับหัวเสา)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คาน ค.ส.ล. รัดหัวเสา (รองรับโครงหลังคา T1/ปลายโครงที่ระดับหัวเสา)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}

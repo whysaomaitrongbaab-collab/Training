@@ -1,0 +1,88 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "structural",
+  "sheet_code": "1",
+  "sheet_name": "แปลนพื้น, แปลนฐานรากและคานคอดิน, แปลนโครงหลังคา, รูปตัด ก-ก, รูปด้าน, ขยายทับหลัง, ขยายหัวเสา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_57/บ้าน_เล็ก_1ชั้น_57_หน้า02.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_57_หน้า00_gridline.json",
+  "view_title": "ขยายหัวเสา ก และ ข",
+  "scale": null,
+  "views": [
+    "view1: แปลนพื้น 1:100 (etc_plan, architectural — not extracted, op04 scope; dimensions swept into the grid master)",
+    "view2: แปลนฐานรากและคานคอดิน 1:100 (footing_plan)",
+    "view3: แปลนโครงหลังคา 1:100 (roof_frame_plan)",
+    "view4: รูปตัด ก-ก 1:50 (side_profile — not extracted; levels/dimensions swept into the grid master)",
+    "view5: ขยายทับหลัง A และ B 1:10 (section)",
+    "view6: ขยายหัวเสา ก และ ข (section — steel truss seat details)",
+    "view7: รูปด้านข้าง / รูปด้านหน้า 1:75 (side_profile — not extracted)",
+    "view8: สัญลักษณ์ไฟฟ้า + หมายเหตุ (symbol — not extracted)"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "handwritten_drawing",
+    "small_handwritten_text"
+  ],
+  "warnings": [
+    "Two truss-seat details at the column heads: ก (slotted holes — the sliding end) and ข (round holes — the fixed end); otherwise identical: 2 plates 3/16\", Ø15 mm threaded bars embedded 30 cm in the column, L-40x40x3.2 and ⊔-100x50x50x3.2 members. The detail prints no scale.",
+    "element_type connection_detail (§0.4 list). The plate thickness is printed in inches and kept as printed (thickness_in) rather than converted."
+  ],
+  "elements": [
+    {
+      "element_id": "ก",
+      "element_type": "connection_detail",
+      "description": "ที่นั่งโครงหลังคาเหล็กบนหัวเสา ค.ส.ล. — เจาะรูยาว (slotted hole)",
+      "plate": {
+        "thickness_in": "3/16",
+        "count": 2,
+        "printed_as": "แผ่นเหล็กหนา 3/16\" - 2 แผ่น"
+      },
+      "anchor_bar": {
+        "dia_mm": 15,
+        "type": "RB",
+        "embed_mm": 300,
+        "threaded": true,
+        "printed_as": "เหล็ก Ø15 มม. ทำเกลียว ฝังในเสา 30 ซม."
+      },
+      "members": [
+        "เหล็ก L-40x40x3.2 มม.",
+        "เหล็ก ⊔-100x50x50x3.2 มม.",
+        "เหล็กแผ่นหัวเสา ยึดติด / แผ่นกับหัวเสา"
+      ],
+      "note": "R2 อยู่ใต้ที่นั่งนี้ (รูปตัด ก-ก)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "small_handwritten_text"
+      ]
+    },
+    {
+      "element_id": "ข",
+      "element_type": "connection_detail",
+      "description": "ที่นั่งโครงหลังคาเหล็กบนหัวเสา ค.ส.ล. — เจาะรูกลม (round hole)",
+      "plate": {
+        "thickness_in": "3/16",
+        "count": 2,
+        "printed_as": "แผ่นเหล็กหนา 3/16\" - 2 แผ่น"
+      },
+      "anchor_bar": {
+        "dia_mm": 15,
+        "type": "RB",
+        "embed_mm": 300,
+        "threaded": true,
+        "printed_as": "เหล็ก Ø15 มม. ทำเกลียว ฝังในเสา 30 ซม."
+      },
+      "members": [
+        "เหล็ก L-40x40x3.2 มม.",
+        "เหล็ก ⊔-100x50x50x3.2 มม.",
+        "เหล็กแผ่นหัวเสา ยึดติด / แผ่นกับหัวเสา"
+      ],
+      "note": "R2 อยู่ใต้ที่นั่งนี้ (รูปตัด ก-ก)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "small_handwritten_text"
+      ]
+    }
+  ]
+}
