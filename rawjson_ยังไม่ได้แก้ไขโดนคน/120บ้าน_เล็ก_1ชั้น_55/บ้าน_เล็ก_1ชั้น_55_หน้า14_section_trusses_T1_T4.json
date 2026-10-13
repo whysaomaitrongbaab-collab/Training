@@ -1,0 +1,169 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_55/บ้าน_เล็ก_1ชั้น_55_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_55_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T2, TRUSS T3, TRUSS T4",
+  "scale": "1:75",
+  "views": [
+    "view1: TRUSS T1",
+    "view2: TRUSS T4",
+    "view3: TRUSS T3",
+    "view4: TRUSS T2 — all four are truss elevations of the same kind, kept in one section file (one element per truss)"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Every truss has two callouts: 'rectangular tube Ø-100x50x1.8 mm.' with two arrows on the top and bottom chords, and 'rectangular tube Ø-75x38x1.7 mm.' on a vertical. Chords recorded in steel_section, verticals in web_steel_section. The designation is kept as printed ('rectangular tube'); the slashed-rectangle symbol in the callout is in printed_as.",
+    "TRUSS T2 and TRUSS T3 both print 'ระดับหลังคา +3.67' at their top-chord line, but T3 (along C, the high side of the mono-pitch roof) is drawn 0.787 deep against T2's 0.418 and T1 rises from A toward C; both top chords cannot sit at +3.67 if the bottom chords share the อะเส level (+3.30). Kept as printed on each detail and T3 flagged — the drawing does not say which reading is meant.",
+    "Panel chains (1.000 ticks) carry no grid bubbles; they are placed on the grid by their supports (T-labels at the posts) and recorded in the grid master's dimension_chains. Top-chord overhangs are not dimensioned on these elevations; the roof plan's 1.00 roof-edge ticks are used for the overhang segments in the roof frame plan file."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "rectangular tube",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.8,
+        "printed_as": "rectangular tube Ø-100x50x1.8 mm."
+      },
+      "web_steel_section": {
+        "designation": "rectangular tube",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 840,
+      "height_mm_printed_as": "0.840",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "C (T3)",
+        "B (T2)",
+        "A (อะเส)"
+      ],
+      "panel_lengths_printed_as": "1.000 x 6 | 3.00 + 3.00 | 6.00",
+      "top_chord_overhang_m": null,
+      "note": "โครงถักหลังคาเพิงแหงน ลึก 0.840 ที่ปลาย T3 (แนว C) ลาดลงถึงอะเสที่แนว A; มีเสาตั้งทุก 1.000 ม.; คอร์ดบนยื่นเลยจุดรองรับทั้งสองปลาย (ส่วนยื่นไม่พิมพ์ระยะในรูปนี้ — แปลนหลังคาให้ 1.00 ม.); วางตามแนวกริด 2, 3, 4",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "rectangular tube",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.8,
+        "printed_as": "rectangular tube Ø-100x50x1.8 mm."
+      },
+      "web_steel_section": {
+        "designation": "rectangular tube",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 418,
+      "height_mm_printed_as": "0.418",
+      "spans_m": [
+        2.0,
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "1 (T4)",
+        "2 (T1)",
+        "3 (T1)",
+        "4 (T1)"
+      ],
+      "panel_lengths_printed_as": "1.000 x 8 | 2.00 + 3.00 + 3.00 | 8.00",
+      "level_printed_as": "ระดับหลังคา +3.67",
+      "note": "โครงถักคอร์ดขนาน ลึก 0.418 วางตามแนว B จากแนว 1 ถึงแนว 4 มีเสาตั้งทุก 1.000 ม.; ป้ายระดับหลังคา +3.67 ชี้ที่เส้นคอร์ดบน",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "rectangular tube",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.8,
+        "printed_as": "rectangular tube Ø-100x50x1.8 mm."
+      },
+      "web_steel_section": {
+        "designation": "rectangular tube",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 787,
+      "height_mm_printed_as": "0.787",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "2 (T1)",
+        "3 (T1)",
+        "4 (T1)"
+      ],
+      "panel_lengths_printed_as": "1.000 x 6 | 3.00 + 3.00 | 6.00",
+      "level_printed_as": "ระดับหลังคา +3.67",
+      "note": "โครงถักคอร์ดขนาน ลึก 0.787 วางตามแนว C จากแนว 2 ถึงแนว 4 มีเสาตั้งทุก 1.000 ม.; ป้ายระดับหลังคา +3.67 ชี้ที่เส้นคอร์ดบน",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "level_mark_inconsistent_with_depth"
+      ]
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "rectangular tube",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.8,
+        "printed_as": "rectangular tube Ø-100x50x1.8 mm."
+      },
+      "web_steel_section": {
+        "designation": "rectangular tube",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 472,
+      "height_mm_printed_as": "0.472",
+      "spans_m": [
+        3.0
+      ],
+      "supports": [
+        "B (T2)",
+        "A (อะเส)"
+      ],
+      "panel_lengths_printed_as": "1.000 x 3 | 3.00",
+      "top_chord_overhang_m": null,
+      "note": "โครงถักลาด ลึก 0.472 ที่ปลาย T2 (แนว B) ลาดลงถึงอะเสที่แนว A; วางตามแนวกริด 1; คอร์ดบนยื่นเลยจุดรองรับทั้งสองปลาย (แปลนหลังคาให้ 1.00 ม.)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

@@ -1,0 +1,500 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_55/บ้าน_เล็ก_1ชั้น_55_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_55_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 (main roof frame plan, left) + หมายเหตุ legend (roof_frame_plan — this file)",
+    "view2: รูปขยายหลังคาระเบียงช่วง C-D x 2-3 (right of the sheet, lower porch roof at +3.10) (roof_frame_plan — _view2 file)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Mono-pitch steel roof. Members identified by the sheet's หมายเหตุ line-type legend: thin grey = แป C-75x45x15x1.6 @1.50, solid = จันทัน C-100x50x20x2.3, dash-dot = อะเส C-100x50x20x2.3, and four truss line types T1 (dash-dot-dash), T2 (heavy long dash-short dash), T3 (thin dashed), T4 (heavy long-short-short). Each line was matched to the legend by its dash pattern; the T-labels printed next to the lines agree.",
+    "Trusses split at their supports: T1 on grids 2, 3, 4 bears at A (อะเส), B (T2) and C (T3) — the TRUSS T1 elevation draws posts at those three points — and its top chord runs on 1.00 to A'' and to C' (the plan lines end at the 1.00 roof-edge ticks), recorded as overhang segments. T2 runs along B from grid 1 to 4 (posts at 1, 2, 3, 4), T3 along C from 2 to 4 (posts at 2, 3, 4), T4 along grid 1 from A to B with 1.00 overhangs to A'' and B'.",
+    "อะเส along A from grid 1 to 4 sits on the columns C1 at A1-A4 (S-02), split at each column. หลังอะเสระดับ+3.30.",
+    "Rafters (จันทัน) carry no mark: element_id null with element_name_assigned (section 0.2). Their x positions are the printed 1.50 + 1.50 ticks (2'' and 3''); split where they cross อะเส (A), T2 (B) and T3 (C).",
+    "Purlins are recorded as one aggregated entry (count of drawn lines, printed spacing) because their individual positions are not dimensioned; the drawn spacing in the upper part (about 1.25) does not match the printed @1.50.",
+    "Truss member sections and depths are on the S-04 truss details (section file)."
+  ],
+  "elements": [
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (คอร์ดบนยื่นเลยจุดรองรับ ตามรูป TRUSS)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (คอร์ดบนยื่นเลยจุดรองรับ ตามรูป TRUSS)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''2''",
+      "grid_ref_end": "A2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A''3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (คอร์ดบนยื่นเลยจุดรองรับ ตามรูป TRUSS)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''3''",
+      "grid_ref_end": "A3''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A''4",
+      "grid_ref_end": "A4",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (คอร์ดบนยื่นเลยจุดรองรับ ตามรูป TRUSS)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-100x50x20x2.3 mm. (หลังอะเสระดับ+3.30)"
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-100x50x20x2.3 mm. (หลังอะเสระดับ+3.30)"
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A2''",
+      "grid_ref_end": "B2''",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:อะเส(start)",
+        "bears_on_beam:T2(end)"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-100x50x20x2.3 mm. (หลังอะเสระดับ+3.30)"
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A3''",
+      "grid_ref_end": "B3''",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:อะเส(start)",
+        "bears_on_beam:T2(end)"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B'1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (คอร์ดบนยื่นเลยจุดรองรับ ตามรูป TRUSS)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "B2''",
+      "grid_ref_end": "C2''",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:T2(start)",
+        "bears_on_beam:T3(end)"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "B3''",
+      "grid_ref_end": "C3''",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:T2(start)",
+        "bears_on_beam:T3(end)"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C'2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (คอร์ดบนยื่นเลยจุดรองรับ ตามรูป TRUSS)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "C2''",
+      "grid_ref_end": "C'2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:T3(start)"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C'3",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (คอร์ดบนยื่นเลยจุดรองรับ ตามรูป TRUSS)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "C3''",
+      "grid_ref_end": "C'3''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:T3(start)"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "C'4",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (คอร์ดบนยื่นเลยจุดรองรับ ตามรูป TRUSS)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "purlin",
+      "grid_ref": "A''-C' x 1''-4'",
+      "count": 7,
+      "spacing_mm": 1500,
+      "note": "เส้นบาง 7 เส้นวิ่งตามแนว x: 5 เส้นในช่วง A''-B' ยาวจาก 1'' ถึง 4' และ 2 เส้นในช่วง B'-C' ยาวจาก 1'''' ถึง 4'; ระยะที่วาดจริงช่วงบน ≈1.25 ม. (5 เส้นในช่วง 5.00 ม.) ช่วงล่าง ≈1.50 ม. แม้ป้ายพิมพ์ @1.50 ม.; ตำแหน่งแต่ละเส้นไม่พิมพ์ระยะ จึงไม่บันทึกเป็นรายเส้น",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_from_drawn_lines",
+        "drawn_spacing_differs_from_printed"
+      ],
+      "element_name_assigned": "แป",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 1.6,
+        "printed_as": "แป C-75x45x15x1.6mm. @1.50 m."
+      }
+    }
+  ]
+}
