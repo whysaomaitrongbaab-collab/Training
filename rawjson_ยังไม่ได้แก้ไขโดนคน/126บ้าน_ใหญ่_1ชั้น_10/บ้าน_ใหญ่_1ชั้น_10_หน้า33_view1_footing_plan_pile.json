@@ -1,0 +1,110 @@
+{
+  "png": "33",
+  "doc_page": 33,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก-เสาตอม่อ",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า33.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_10_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก-เสาตอม่อ — ระบบฐานรากตอกเสาเข็ม",
+  "scale": "1:100",
+  "views": [
+    "view1: แปลนฐานราก-เสาตอม่อ — ระบบที่ 1 ฐานรากตอกเสาเข็ม (ป้าย 'F1,C1' / 'F1,C2' / 'F1,C3' ที่ทุกจุด) — this file _view1",
+    "view2: ระบบที่ 2 ฐานรากแผ่ (ป้ายในกรอบ [F1] / [F2] ใต้ป้ายเดียวกัน) — file _view2",
+    "view3: รายการประกอบแบบฐานราก + หมายเหตุ ระดับ ±0.00 — folded into warnings / grid master z_levels"
+  ],
+  "confidence_score": 0.92,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "S-01 prints every footing twice: 'F1,C1' (footing system 1 = pile footing, ฐานรากตอกเสาเข็ม, detail S-05) and a boxed '[F1]'/'[F2]' (system 2 = spread footing, ฐานรากแผ่ 'กรณีสภาพดินไม่สามารถตอกเสาเข็มได้', detail S-06) — per its own legend 'รายการประกอบแบบฐานราก'. Two alternative systems on one sheet = two views (section 1 #2), one file each; this file is the pile system.",
+    "The mark F1 means a DIFFERENT footing in each system (pile cap 0.60 x 0.60 vs spread footing 1.50 x 1.50); kept as printed, the two systems live in separate files and separate section files (S-05 / S-06).",
+    "Columns are recorded once, here: C1 at A1-A4 and E1-E4, C2 at B/C/D on rows 1 and 4, C3 at B/C/D on rows 2 and 3 (column sizes per level are on the S-05 table). Small columns Cx1/Cx2 are on the beam plan S-02.",
+    "Grid: letters A-E along x (5.00, 20.00), numbers 1-4 along y (4.00, 12.00) — see grid master."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 20,
+      "grid_refs": [
+        "A1",
+        "B1",
+        "C1",
+        "D1",
+        "E1",
+        "A2",
+        "B2",
+        "C2",
+        "D2",
+        "E2",
+        "A3",
+        "B3",
+        "C3",
+        "D3",
+        "E3",
+        "A4",
+        "B4",
+        "C4",
+        "D4",
+        "E4"
+      ],
+      "footing_type": "ฐานรากตอกเสาเข็ม (ฐานรากแบบที่ 1, S-05)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 8,
+      "grid_refs": [
+        "A1",
+        "E1",
+        "A2",
+        "E2",
+        "A3",
+        "E3",
+        "A4",
+        "E4"
+      ],
+      "note": "เสาตอม่อ/เสา C1 ที่แนว A และ E (ป้าย 'F1,C1')",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "B1",
+        "C1",
+        "D1",
+        "B4",
+        "C4",
+        "D4"
+      ],
+      "note": "ป้าย 'F1,C2' แนว 1 และ 4 ที่ B, C, D — วาดเยื้องจากเส้นกริด 0.05 (มิติ 0.05 บนแปลน)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C3",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "B2",
+        "C2",
+        "D2",
+        "B3",
+        "C3",
+        "D3"
+      ],
+      "note": "ป้าย 'F1,C3' แนว 2 และ 3 ที่ B, C, D — ตารางเสา S-05: C3 มีเฉพาะช่วงฐานราก→หลังคานชั้น 1",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    }
+  ]
+}

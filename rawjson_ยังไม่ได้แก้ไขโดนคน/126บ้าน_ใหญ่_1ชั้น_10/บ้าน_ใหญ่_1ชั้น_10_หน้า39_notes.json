@@ -1,0 +1,118 @@
+{
+  "png": "39",
+  "doc_page": 39,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "ข้อกำหนดขยายคาน / รายการประกอบแบบโครงสร้าง",
+  "pattern": "notes",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า39.png",
+  "view_title": "ข้อกำหนดขยายคาน, เหล็กเสริม, คอนกรีต, หมายเหตุ",
+  "views": [
+    "view1: ข้อกำหนดขยายคาน 1:25 (lap-zone elevation + double-layer bar detail) — transcribed in sections[]",
+    "view2: กรณีคานสัมผัสกับดิน (beam on lean concrete 1:3:5 0.05) — transcribed in sections[]",
+    "view3: steel / concrete / cover notes — sections[] + notes{}"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Steel is specified by grade name only (SR24 round, SD40 deformed); no ksc value is printed anywhere on this sheet, so fy_ksc and the flat fy_main_ksc / fy_stirrup_ksc stay null (section 4a: a value not in the transcript does not go in the object). The grade names are kept in steel.*.grade.",
+    "Concrete prints both 240 ksc (cube) and 210 ksc (cylinder) at 28 days; fc_ksc takes the cylinder value 210 (fc' convention), both kept in printed_as.",
+    "Cover is printed per member type only (beams 3 cm, slabs 2 cm) — no unqualified default, so cover.default_mm and the flat cover_mm are null; the two values are in by_condition. Footing/column covers (~0.08 / 0.03 m) are printed on the S-05 / S-06 details, recorded there.",
+    "Other spec text lives on other sheets and is recorded where printed: slab/precast notes on S-02 (beam-plan file), pile notes on S-05, spread-footing notes on S-06, roof steel and paint notes on S-12. The architectural specification pages A-03/A-04 were not transcribed (op04 budget)."
+  ],
+  "sections": [
+    {
+      "heading": "ข้อกำหนดขยายคาน",
+      "items": [
+        "ระยะห้ามทาบเหล็กบน = L/4 (ที่ปลายคาน)",
+        "ระยะอนุญาตให้ต่อทาบเหล็กบน (กลางคาน)",
+        "ระยะทาบเหล็ก 40 เท่าของ ø",
+        "ระยะให้ทาบเหล็กล่างได้ = L/4",
+        "ไม่อนุญาตให้ต่อทาบเหล็กล่างบริเวณนี้ (กลางคาน)",
+        "เหล็กลูกคัด DB 12 มม. ระยะ EQ; 0.025 ระยะห่างผิวเหล็ก"
+      ]
+    },
+    {
+      "heading": "เหล็กเสริมสำหรับงานคอนกรีตเสริมเหล็ก เหล็กจะต้องมีคุณสมบัติตามมาตรฐานผลิตภัณฑ์อุตสาหกรรมของกระทรวงอุตสาหกรรม (มอก.)",
+      "items": [
+        "ก. เหล็กกลมผิวเรียบ ให้ใช้คุณภาพ SR24",
+        "ข. เหล็กข้ออ้อย ให้ใช้คุณภาพ SD40",
+        "ค. เหล็กในคาน การต่อทาบเหล็กในคาน ยอมให้ต่อทาบเหล็กบนที่กึ่งกลางคาน ส่วนเหล็กล่าง ให้ต่อทาบที่เสาหรือ จุดที่มีคานรองรับ ระยะทาบเหล็กข้ออ้อยจะต้องไม่น้อยกว่า 40 เท่าของเส้นผ่าศูนย์กลางของเหล็ก",
+        "ง. เหล็กในเสา ระยะทาบเหล็กข้ออ้อย ไม่น้อยกว่า 40 เท่าของเส้นผ่าศูนย์กลางในการต่อเสาจะต้องต่อที่บริเวณโคนเสาเท่านั้น",
+        "จ. เหล็กในพื้น,บันได การต่อทาบเหล็กในพื้น,บันได ยอมให้ต่อทาบเหล็กบนที่กึ่งกลางพื้น ส่วนเหล็กล่าง ให้ต่อทาบที่เสาหรือจุดที่มีคานรองรับ ระยะทาบเหล็กจะต้องไม่น้อยกว่า 40 เท่าของเส้นผ่าศูนย์กลางของเหล็กข้ออ้อย และ 50 เท่าของเส้นผ่าศูนย์กลางสำหรับเหล็กกลม"
+      ]
+    },
+    {
+      "heading": "กรณีคานสัมผัสกับดิน",
+      "items": [
+        "คอนกรีตหยาบ 1:3:5 หนา 0.05 ยื่นข้างละ 0.10"
+      ]
+    },
+    {
+      "heading": "**หมายเหตุ",
+      "items": [
+        "1.) คานทั่วไปให้มีระยะหุ้มคอนกรีต 3 Cm",
+        "2.) กรณีคานเสริมเหล็ก 2 ชั้นขึ้นไป ให้ผิวเหล็กห่างกัน 2.5 Cm",
+        "3.) กรณีคานเสริมเหล็ก 2 ชั้นขึ้นไป ให้ใส่เหล็กลูกคัด บังคับให้แข็งแรง",
+        "4.) พื้นคอนกรีตเสริมเหล็ก เทในที่ทั่วไป ระยะหุ้มคอนกรีต 2 Cm",
+        "5.) พื้นคอนกรีตเสริมเหล็ก ส่วนใดที่ยังไม่ได้ระดับตามแบบเพื่องานทางสถาปัตยกรรม ให้ปรับระดับพื้นด้วยปูนทราย ด้วยอัตราส่วน 1 : 2"
+      ]
+    },
+    {
+      "heading": "งานคอนกรีต",
+      "items": [
+        "งานคอนกรีตที่ใช้สำหรับงานโครงสร้างทั่วๆไป ให้ใช้ความต้านทานแรงอัดประลัยของคอนกรีต เมื่ออายุ 28 วัน จะต้องไม่น้อยกว่า 240 กก./ตร.ซม(รูปลูกบาศก์) หรือ 210 กก./ตร.ซม.(รูปทรงกระบอก)และ หรือ ตาม มอก.213-2520",
+        "หมายเหตุ รายละเอียดมาตรฐานงานก่อสร้างทั้งหมดถ้าไม่ปรากฏในแบบรูปรายการ ให้ยึดตามหนังสือรายการมาตรฐานประกอบแบบก่อสร้าง สำนักงานคณะกรรมการการศึกษาขั้นพื้นฐาน กระทรวงศึกษาธิการ ประกอบการทำงานอย่างเคร่งครัด"
+      ]
+    }
+  ],
+  "notes": {
+    "reference_standard": "มอก. (เหล็กเสริม), มอก.213-2520 (คอนกรีต), หนังสือรายการมาตรฐานประกอบแบบก่อสร้าง สพฐ.",
+    "concrete": {
+      "grade_label": null,
+      "fc_ksc": 210,
+      "curing_days": 28,
+      "printed_as": "ไม่น้อยกว่า 240 กก./ตร.ซม(รูปลูกบาศก์) หรือ 210 กก./ตร.ซม.(รูปทรงกระบอก) เมื่ออายุ 28 วัน"
+    },
+    "steel": {
+      "round_bar": {
+        "notation": null,
+        "grade": "SR24",
+        "fy_ksc": null,
+        "applies_to_dia_mm": null,
+        "printed_as": "ก. เหล็กกลมผิวเรียบ ให้ใช้คุณภาพ SR24"
+      },
+      "deformed_bar": {
+        "notation": null,
+        "grade": "SD40",
+        "fy_ksc": null,
+        "applies_to_dia_mm": null,
+        "printed_as": "ข. เหล็กข้ออ้อย ให้ใช้คุณภาพ SD40"
+      }
+    },
+    "cover": {
+      "default_mm": null,
+      "by_condition": [
+        {
+          "condition": "คานทั่วไป",
+          "cover_mm": 30
+        },
+        {
+          "condition": "พื้นคอนกรีตเสริมเหล็ก เทในที่ทั่วไป",
+          "cover_mm": 20
+        }
+      ]
+    },
+    "lap": {
+      "deformed_bar_d": 40,
+      "round_bar_slab_d": 50,
+      "printed_as": "ไม่น้อยกว่า 40 เท่า (ข้ออ้อย) และ 50 เท่า (เหล็กกลม ในพื้น/บันได)"
+    },
+    "fc_ksc": 210,
+    "fy_main_ksc": null,
+    "fy_stirrup_ksc": null,
+    "cover_mm": null
+  }
+}
