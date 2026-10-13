@@ -1,0 +1,179 @@
+{
+  "png": "17",
+  "doc_page": 17,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_36/บ้าน_เล็ก_2ชั้น_36_หน้า17.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_36_หน้า00_gridline.json",
+  "view_title": "F1, F2, C1, C2, PS",
+  "scale": "1:25",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Footing heights: 0.50 cap, 0.05 lean concrete 1:3:5, 0.05 compacted sand; 1.00 from ระดับดินเดิม to the top of the cap (pedestal_height_m). height_mm = the 0.50 cap only (section 6b).",
+    "Footing and column main bars are printed DB12 (deformed) while the A-01 notes say footing-column-beam steel is SR24 — member spec follows the detail sheet (op01 precedence); recorded in the notes file.",
+    "PS: the interior-support top bar is drawn without its own callout; read as the same RB9 @0.40 as the edge bar (lower confidence on that additional_bars entry)."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "width_mm": 360,
+      "width_mm_printed_as": "0.18+0.18 = 0.36 (ทั้งสองทิศ)",
+      "height_mm": 500,
+      "main_bar": {
+        "count": 12,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "6+6-DB12",
+        "count_printed_as": "6+6"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "pile": {
+        "type": "เสาเข็มคอนกรีตรูปตัวไอ I-18",
+        "size_mm": 180,
+        "length_m": null,
+        "safe_load_t_per_pile": 13,
+        "dowel_bar": true,
+        "printed_as": "เสาเข็มรูปตัวไอ I 0.18 x 0.18 m. มี Dowel Bar จำนวน 1 ต้น (SAFE LOAD 13 ตัน/ต้น)"
+      },
+      "pile_count": 1,
+      "footing_type": "ฐานรากเสาเข็ม",
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "ground_reference": "ระดับดินเดิม; 1.00 ลงถึงหลังฐานราก",
+      "pedestal_height_m": 1.0,
+      "note": "เสาตอม่อ C2 ตั้งกลางฐาน",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "width_mm": 900,
+      "depth_mm": 360,
+      "width_mm_printed_as": "0.18+0.27+0.27+0.18 = 0.90",
+      "depth_mm_printed_as": "0.18+0.18 = 0.36",
+      "height_mm": 500,
+      "main_bar": {
+        "count": 15,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "8-DB12, 7-DB12",
+        "count_printed_as": "8 + 7"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "pile": {
+        "type": "เสาเข็มคอนกรีตรูปตัวไอ I-18",
+        "size_mm": 180,
+        "length_m": null,
+        "safe_load_t_per_pile": 13,
+        "dowel_bar": true,
+        "printed_as": "เสาเข็มรูปตัวไอ I 0.18 x 0.18 m. มี Dowel Bar จำนวน 2 ต้น (SAFE LOAD 13 ตัน/ต้น)"
+      },
+      "pile_count": 2,
+      "footing_type": "ฐานรากเสาเข็ม",
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "ground_reference": "ระดับดินเดิม; 1.00 ลงถึงหลังฐานราก",
+      "pedestal_height_m": 1.0,
+      "note": "ป้าย 8-DB12 และ 7-DB12 ชี้เหล็กล่างสองทิศ; เสาเข็ม 2 ต้นห่างศูนย์กลาง 0.27 + 0.18 = 0.45 ม. ข้างละต้น เสา C2 อยู่กลาง",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bar_direction_from_leader"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "4-DB12"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.15 m."
+      },
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "6-DB12"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.15 m."
+      },
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "thickness_mm": null,
+      "topping_thickness_min_mm": 50,
+      "topping_printed_as": "คอนกรีตทับหน้า หนา 5 ซม.",
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB 6 mm. @ 0.20 M. หรือ WIREMESH 4 MM."
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 400,
+          "type": "RB",
+          "position": "top, at the beam edge, hooked 0.50 x 0.25 into the beam",
+          "printed_as": "RB 9 mm. @ 0.40 M."
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 400,
+          "type": "RB",
+          "position": "top, over an interior beam, L/4 each side, hooked 0.25 x 0.25",
+          "printed_as": "L/4 | L/4 (bar callout shared with the edge bar)"
+        }
+      ],
+      "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป รับน้ำหนักบรรทุกจรได้ไม่น้อยกว่า 200 กก./ตร.ม. วางพาดบนคานไม่น้อยกว่า 5 ซม.; มิติ 0.16 ที่ขอบคือความลึกคานด้านข้าง/ช่วงวางแผ่น ไม่ได้พิมพ์ความหนาแผ่นพื้นสำเร็จรูปแยก",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "plank_thickness_not_printed"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "png": "09",
+  "doc_page": 9,
+  "discipline": "architectural",
+  "sheet_code": "A-09",
+  "sheet_name": "แบบขยาย บันได",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_36/บ้าน_เล็ก_2ชั้น_36_หน้า09.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_36_หน้า00_gridline.json",
+  "view_title": "รูปตัด A + แปลนบันได",
+  "scale": "1:25 (รูปตัด A), 1:50 (แปลนบันได)",
+  "views": [
+    "view1: รูปตัด A 1:25 (this file)",
+    "view2: แปลนบันได 1:50 (this file)",
+    "view3: ลายลูกกรงบันได (decorative balusters ลายแจกัน / ลายเรียบ / ลายสองตอน) — not extracted"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "ST-01 is the stair marked on both S-02 views in bay D-E x 1-2 (grid_ref ~D1, same as the plans). Its only detail is this architectural sheet, extracted because it carries the stair's own members (timber stringers and treads); the plan and section are two views of one stair, so they share this file — same handling as the sibling siamplan house 95 (ST-04).",
+    "The sheet carries no grid marker and no level label, so neither the vertical chain (15@0.197 m = 2.95 m) nor the horizontal chain (0.98 + 0.85 = 1.83) can be positioned on the building grid; both stay on the ST-01 element, not in the grid master (section 4 rule 4: a chain touching no known line makes no line).",
+    "Stringer and tread sizes are printed in inches (1½\" x 8\"). width_mm/height_mm are the plain inch-to-mm conversion (38 / 203), printed text kept verbatim. The stringer callout prints no count, so count is null — the plan shows two flights but the number of stringers per flight is not drawn as a mark.",
+    "Landing (step 10) height is not printed on the section — not computed into a field."
+  ],
+  "elements": [
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~D1",
+      "riser_count": 15,
+      "riser_mm": 197,
+      "riser_mm_printed_as": "15@0.197 m",
+      "tread_mm": 200,
+      "tread_mm_printed_as": "0.200",
+      "rise_total_m": 2.95,
+      "rise_printed_as": "15@0.197 m = 2.95 m.",
+      "run_printed_as": "0.98 + 0.85 = 1.83",
+      "landing_step": 10,
+      "tread_material": "ลูกนอนไม้เนื้อแข็ง 1½\" x 8\"",
+      "railing": "ราวกั้นไม้เนื้อแข็งตามแบบเจ้าของบ้านเลือก",
+      "note": "บันไดไม้ 2 ช่วง: ขั้น 1-9 วิ่งแนวหนึ่ง ชานพักที่ขั้น 10 (ตั้งบนเสาไม้) แล้วขั้น 11-15 หักฉากขึ้นถึงพื้นชั้นสอง; 15 x 0.197 = 2.955 พิมพ์ปัดเป็น 2.95; ในรูปตัด 0.98 คือช่วงบันไดขั้น 11-15 และ 0.85 คือชานพัก",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "คานแม่บันได ST-01",
+      "element_type": "beam",
+      "material": "timber",
+      "width_mm": 38,
+      "height_mm": 203,
+      "size_printed_as": "คานแม่บันไดไม้เนื้อแข็ง 1½\" x 8\"",
+      "count": null,
+      "note": "แม่บันไดไม้เนื้อแข็งเฉียงจากชานพักขึ้นพื้นชั้นสอง จำนวนไม่ได้พิมพ์",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "count_not_printed"
+      ]
+    }
+  ]
+}

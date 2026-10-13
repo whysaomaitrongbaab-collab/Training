@@ -1,0 +1,107 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_36/บ้าน_เล็ก_2ชั้น_36_หน้า15.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_36_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Legend: TRUSS T1 dash-dot, T2 long-dash-dot, T3 long dash — the plan places T3 on row B, T2 on row C, T1 on row D, which A-08 รูปตัด B confirms (T1 over D, T2 over C, T3 over B).",
+    "Each truss is one 6.00 element from 1 to 3 (S-05 draws it as one continuous truss over three supports); not split at grid 2.",
+    "Roof overhang chain 1.00 + 3.00 + 3.00 + 1.00 (x) and 1.00 before A / 1.00 after E (y) recorded as dummies 1', 3', A', E'; D' (9.00) is the edge of the lower stair-roof sheet (1.00 + 1.00 between D and E).",
+    "หลังคาเมทัลชีท (roof sheeting leader) is roofing material, not a structural member — not recorded."
+  ],
+  "elements": [
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B3",
+      "span_length_m": 6.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "material": "steel",
+      "note": "โครงถักวางบนอะเสตลอดแนว 1-3 (รายละเอียดบน S-05)"
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C3",
+      "span_length_m": 6.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "material": "steel",
+      "note": "โครงถักวางบนอะเสตลอดแนว 1-3 (รายละเอียดบน S-05)"
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D3",
+      "span_length_m": 6.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [],
+      "material": "steel",
+      "note": "โครงถักวางบนอะเสตลอดแนว 1-3 (รายละเอียดบน S-05)"
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000,
+      "count": 7,
+      "grid_refs": [
+        "A'-E' x 1-3"
+      ],
+      "note": "เส้นทึบ 7 เส้นวิ่งตามแนว y ที่ x = 0.00 ถึง 6.00 ทุก 1.00 ม.; เส้นที่ x ≤ 4.00 ยาวลงถึงชายคาหลังคาบันได (E') ส่วนที่เหลือหยุดที่ D'",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "แป เหล็ก C-75x45x15x2.3 mm. @1.50 m. หรือตามเจ้าของผลิตภัณฑ์กำหนด"
+      },
+      "spacing_mm": 1500,
+      "count": null,
+      "grid_refs": [
+        "A'-E' x 1'-3'"
+      ],
+      "note": "แปวิ่งตามแนว x วางบนจันทัน @1.50 ม.; วาดเส้นประเฉพาะในช่องตัดแสดง (บนสุด) จึงไม่นับจำนวน",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_drawn"
+      ]
+    }
+  ]
+}
