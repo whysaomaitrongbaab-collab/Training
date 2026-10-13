@@ -3,7 +3,7 @@
   "doc_page": null,
   "discipline": "structural",
   "sheet_code": null,
-  "sheet_name": "Grid master (synthesized from S-01, S-02, S-03, S-04, A-03, A-04, A-05, A-06, A-07, A-08)",
+  "sheet_name": "Grid master (synthesized from S-01, S-02, S-03, S-04, S-05, S-06, A-03, A-04, A-05, A-06, A-07, A-08, A-09)",
   "pattern": "grid_master",
   "source_pages": [
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า03.png",
@@ -12,21 +12,26 @@
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า06.png",
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า07.png",
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า08.png",
+    "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า09.png",
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า11.png",
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า12.png",
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า13.png",
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า14.png",
+    "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
     "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า16.png"
   ],
   "confidence_score": 0.95,
   "confidence_flags": [],
   "warnings": [
     "Axes: x = 1-3 at 4.00 + 4.00 (8.00); y = A-F at 1.50 + 3.00 + 3.00 + 3.00 + 2.00 (12.50). Origin A1. Clean CAD vector PDF; every structural and architectural sheet reprints the same chains and they all close.",
-    "Rule 4 dummies: x 1' (-1.00) / 3' (9.00) and y A'' (-1.00) / F' (13.50) are the roof overhang edges on A-04 / S-04; x 1'' (2.90) and 2' (5.00) and y A' (-2.10) / B' (3.00) come from the S-02 / A-03 chains; y E' (11.50) is the 1.00 + 1.00 split of E-F on A-04 / S-04. Only 2' (beam B1) and B' (beam B2) and A' / 2' (GS slab edges) carry structural members.",
-    "Before-origin dummies share the first main grid's prime sequence: x 1' = -1.00 then 1'' = 2.90; y A' = -2.10 then A'' = -1.00 (reading order top to bottom).",
+    "Rule 4 dummies: x 1' (-1.00) / 3' (9.00) and y A'' (-1.00) / F' (13.50) are the roof overhang edges on A-04 / S-04; x 1'''' (2.90) and 2' (5.00) and y A' (-2.10) / B''' (3.00) come from the S-02 / A-03 chains; y E' (11.50) is the 1.00 + 1.00 split of E-F on A-04 / S-04 (and the TRUSS T3 chain); x 2'' (5.10) comes from the A-09 bathroom chain; x 1'' / 1''' / 1''''' / 2''' / 2'''' and y A''' / B' / B'' / B'''' / C' / C'' / D' / D'' are the S-05 truss panel ticks. Only 2' (beam B1) and B''' (beam B2) and A' / 2' (GS slab edges) carry structural members.",
+    "Before-origin dummies share the first main grid's prime sequence: x 1' = -1.00 then 1'' = 1.00, 1''' = 2.00, 1'''' = 2.90, 1''''' = 3.00; y A' = -2.10, A'' = -1.00 then A''' = 0.90 (reading order).",
     "S-03 leader prints 'หลังอะเสระดับ +4.44' for the 150x100x3.2 plate, while the view title and all four elevations / two sections print +4.45 — z_levels takes +4.45 (six sheets against one); +4.44 kept in unassigned_dimensions.",
-    "Truss panel chains (S-05: T1 8 x 1.00, T2 1.00 x 6 + 0.90 x 5, T3 1.00 + 1.00), door/window sizes (A-10), footing plan sizes and depths (S-06) and stair risers/treads (S-07) are dimensions inside one element's own detail — kept on those elements, not made into grid lines.",
-    "Footing sections reference 'ระดับดินเดิม', which no sheet ties to the ±0.00 road datum — footing depths are not placed on the z axis."
+    "Truss panel chains (S-05: T1 8 x 1.00 = 4.00 + 4.00 = 8.00, T2 1.00 x 3 + 1.00 x 3 + 0.90 x 5 = 3.00 + 3.00 + 4.50 = 10.50, T3 1.00 + 1.00 = 2.00): REVERSED on resume. The first pass kept them on the truss elements as element detail because the S-05 elevations print no grid bubbles. On re-check every row closes exactly on the grid (T1 = grid 1 to 3 with 4.00 + 4.00 landing on 2; T2 supports = T1 at E, D, C, A per S-04; T3 = E to F), so they are rows along the building axes, and the batch precedents (houses 95 and 111, same siamplan designer) promote truss panel ticks to lines under section 4 rule 4 — every tick became a line. Door/window sizes (A-10), footing plan sizes and depths (S-06) and stair risers/treads (S-07) are still dimensions inside one element's own detail — kept on those elements.",
+    "Footing sections reference 'ระดับดินเดิม', which no sheet ties to the ±0.00 road datum — footing depths are not placed on the z axis.",
+    "A-09 bathroom enlargement prints 2.90 from grid 3 to the bathroom's left wall (= 5.10), while S-02 / A-03 put the bathroom's beam line 2' at 5.00 (1.00 from grid 2). The two ticks are 0.10 apart, so both are kept as lines (2' = 5.00 structural, 2'' = 5.10 from A-09 only); the A-09 figure most likely runs to a wall face rather than the beam centreline. Its A-B 1.50 agrees with the grid.",
+    "Dimension sweep covers the structural sheets S-01..S-07 plus A-03..A-10. Sanitary-fixture install heights on A-09, the electrical plan E-01 and the sanitary sheets SN-01 / SN-02 were not dimension-swept in this op04 (pass2-only) run; door/window sizes on A-10 stay on the schedule elements.",
+    "Resume 2026-10-14: adding the truss ticks re-sequenced two existing dummies into reading order (spec section 4 Dummy grid, done with tools/gridfix.py) -- x 1'' (2.90) -> 1'''', y B' (3.00) -> B'''; the S-02 beam-plan refs (beam B2 B'''1-B'''2, PS panels A-B''' / B'''-C) follow, and every warning above is rewritten with the new names."
   ],
   "grid": {
     "x_lines": [
@@ -45,10 +50,31 @@
       },
       {
         "id": "1''",
+        "pos_m": 1.0,
+        "type": "dummy",
+        "note": "S-05 TRUSS T1 panel tick 1.00 right of grid 1 (8 x 1.00 between grids 1 and 3)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
+        "id": "1'''",
+        "pos_m": 2.0,
+        "type": "dummy",
+        "note": "S-05 TRUSS T1 panel tick 2.00 right of grid 1",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
+        "id": "1''''",
         "pos_m": 2.9,
         "type": "dummy",
         "note": "tick 2.90 right of grid 1 on S-02 / A-03 chain (2.90 + 1.10 = 4.00); no structural member sits on it",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า12.png"
+      },
+      {
+        "id": "1'''''",
+        "pos_m": 3.0,
+        "type": "dummy",
+        "note": "S-05 TRUSS T1 panel tick 3.00 right of grid 1 (0.10 right of the 2.90 S-02 / A-03 tick, kept as its own line)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
       },
       {
         "id": "2",
@@ -62,6 +88,27 @@
         "type": "dummy",
         "note": "beam B1 between the PS and S1 panels in bay A-B, and GS slab right edge; S-02 chain 1.00 + 3.00",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า12.png"
+      },
+      {
+        "id": "2''",
+        "pos_m": 5.1,
+        "type": "dummy",
+        "note": "A-09 แบบขยายห้องน้ำ: chain 2.90 measured back from grid 3 to the bathroom's left wall (8.00 - 2.90 = 5.10); 0.10 right of 2' (5.00, the S-02 / A-03 tick) — kept as its own line, nothing structural sits on it",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า09.png"
+      },
+      {
+        "id": "2'''",
+        "pos_m": 6.0,
+        "type": "dummy",
+        "note": "S-05 TRUSS T1 panel tick 2.00 right of grid 2",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
+        "id": "2''''",
+        "pos_m": 7.0,
+        "type": "dummy",
+        "note": "S-05 TRUSS T1 panel tick 3.00 right of grid 2",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
       },
       {
         "id": "3",
@@ -99,6 +146,13 @@
         "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า11.png"
       },
       {
+        "id": "A'''",
+        "pos_m": 0.9,
+        "type": "dummy",
+        "note": "S-05 TRUSS T2 panel tick (0.90 x 5 between T1 at C and A), 0.90 below A",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
         "id": "B",
         "pos_m": 1.5,
         "type": "named",
@@ -106,10 +160,31 @@
       },
       {
         "id": "B'",
+        "pos_m": 1.8,
+        "type": "dummy",
+        "note": "S-05 TRUSS T2 panel tick, 1.80 below A",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
+        "id": "B''",
+        "pos_m": 2.7,
+        "type": "dummy",
+        "note": "S-05 TRUSS T2 panel tick, 2.70 below A",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
+        "id": "B'''",
         "pos_m": 3.0,
         "type": "dummy",
         "note": "beam B2 in bay 1-2, 1.50 below B (S-02 / A-03 chain 1.50 + 1.50)",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า12.png"
+      },
+      {
+        "id": "B''''",
+        "pos_m": 3.6,
+        "type": "dummy",
+        "note": "S-05 TRUSS T2 panel tick, 0.90 above C",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
       },
       {
         "id": "C",
@@ -118,10 +193,38 @@
         "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า11.png"
       },
       {
+        "id": "C'",
+        "pos_m": 5.5,
+        "type": "dummy",
+        "note": "S-05 TRUSS T2 panel tick (1.00 x 3 between T1 at C and D), 1.00 below C",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
+        "id": "C''",
+        "pos_m": 6.5,
+        "type": "dummy",
+        "note": "S-05 TRUSS T2 panel tick, 2.00 below C",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
         "id": "D",
         "pos_m": 7.5,
         "type": "named",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า11.png"
+      },
+      {
+        "id": "D'",
+        "pos_m": 8.5,
+        "type": "dummy",
+        "note": "S-05 TRUSS T2 panel tick (1.00 x 3 between T1 at D and E), 1.00 below D",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
+      },
+      {
+        "id": "D''",
+        "pos_m": 9.5,
+        "type": "dummy",
+        "note": "S-05 TRUSS T2 panel tick, 2.00 below D",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png"
       },
       {
         "id": "E",
@@ -133,7 +236,7 @@
         "id": "E'",
         "pos_m": 11.5,
         "type": "dummy",
-        "note": "tick 1.00 below E on S-04 / A-04 (1.00 + 1.00 = E-F 2.00) — main roof / porch roof step",
+        "note": "tick 1.00 below E on S-04 / A-04 (1.00 + 1.00 = E-F 2.00) — main roof / porch roof step; S-05 TRUSS T3 prints the same tick (1.00 + 1.00 between T1 at E and F)",
         "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า14.png"
       },
       {
@@ -311,11 +414,11 @@
         "segments": [
           {
             "from": "1",
-            "to": "1''",
+            "to": "1''''",
             "value_m": 2.9
           },
           {
-            "from": "1''",
+            "from": "1''''",
             "to": "2",
             "value_m": 1.1
           },
@@ -387,11 +490,11 @@
         "segments": [
           {
             "from": "B",
-            "to": "B'",
+            "to": "B'''",
             "value_m": 1.5
           },
           {
-            "from": "B'",
+            "from": "B'''",
             "to": "C",
             "value_m": 1.5
           }
@@ -433,11 +536,11 @@
         "segments": [
           {
             "from": "1",
-            "to": "1''",
+            "to": "1''''",
             "value_m": 2.9
           },
           {
-            "from": "1''",
+            "from": "1''''",
             "to": "2",
             "value_m": 1.1
           },
@@ -509,11 +612,11 @@
         "segments": [
           {
             "from": "B",
-            "to": "B'",
+            "to": "B'''",
             "value_m": 1.5
           },
           {
-            "from": "B'",
+            "from": "B'''",
             "to": "C",
             "value_m": 1.5
           }
@@ -1306,6 +1409,231 @@
             "value_m": 6.76
           }
         ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า09.png",
+        "view": "แบบขยายห้องน้ำ",
+        "segments": [
+          {
+            "from": "2''",
+            "to": "3",
+            "value_m": 2.9
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า09.png",
+        "view": "แบบขยายห้องน้ำ",
+        "segments": [
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 1.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
+        "view": "TRUSS T1",
+        "segments": [
+          {
+            "from": "1",
+            "to": "1''",
+            "value_m": 1.0
+          },
+          {
+            "from": "1''",
+            "to": "1'''",
+            "value_m": 1.0
+          },
+          {
+            "from": "1'''",
+            "to": "1'''''",
+            "value_m": 1.0
+          },
+          {
+            "from": "1'''''",
+            "to": "2",
+            "value_m": 1.0
+          },
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.0
+          },
+          {
+            "from": "2'",
+            "to": "2'''",
+            "value_m": 1.0
+          },
+          {
+            "from": "2'''",
+            "to": "2''''",
+            "value_m": 1.0
+          },
+          {
+            "from": "2''''",
+            "to": "3",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
+        "view": "TRUSS T1",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 4.0
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 4.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
+        "view": "TRUSS T1",
+        "segments": [
+          {
+            "from": "1",
+            "to": "3",
+            "value_m": 8.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
+        "view": "TRUSS T2",
+        "segments": [
+          {
+            "from": "E",
+            "to": "D''",
+            "value_m": 1.0
+          },
+          {
+            "from": "D''",
+            "to": "D'",
+            "value_m": 1.0
+          },
+          {
+            "from": "D'",
+            "to": "D",
+            "value_m": 1.0
+          },
+          {
+            "from": "D",
+            "to": "C''",
+            "value_m": 1.0
+          },
+          {
+            "from": "C''",
+            "to": "C'",
+            "value_m": 1.0
+          },
+          {
+            "from": "C'",
+            "to": "C",
+            "value_m": 1.0
+          },
+          {
+            "from": "C",
+            "to": "B''''",
+            "value_m": 0.9
+          },
+          {
+            "from": "B''''",
+            "to": "B''",
+            "value_m": 0.9
+          },
+          {
+            "from": "B''",
+            "to": "B'",
+            "value_m": 0.9
+          },
+          {
+            "from": "B'",
+            "to": "A'''",
+            "value_m": 0.9
+          },
+          {
+            "from": "A'''",
+            "to": "A",
+            "value_m": 0.9
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
+        "view": "TRUSS T2",
+        "segments": [
+          {
+            "from": "E",
+            "to": "D",
+            "value_m": 3.0
+          },
+          {
+            "from": "D",
+            "to": "C",
+            "value_m": 3.0
+          },
+          {
+            "from": "C",
+            "to": "A",
+            "value_m": 4.5
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
+        "view": "TRUSS T2",
+        "segments": [
+          {
+            "from": "E",
+            "to": "A",
+            "value_m": 10.5
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
+        "view": "TRUSS T3",
+        "segments": [
+          {
+            "from": "E",
+            "to": "E'",
+            "value_m": 1.0
+          },
+          {
+            "from": "E'",
+            "to": "F",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_49/บ้าน_เล็ก_1ชั้น_49_หน้า15.png",
+        "view": "TRUSS T3",
+        "segments": [
+          {
+            "from": "E",
+            "to": "F",
+            "value_m": 2.0
+          }
+        ]
       }
     ],
     "unassigned_dimensions": [
@@ -1373,6 +1701,6 @@
   },
   "dummy_grid_rule_check": {
     "negative_pos_m": "x 1' = -1.00 and y A' = -2.10 / A'' = -1.00 lie before the origin",
-    "prime_ordering": "x: 1' (-1.00), 1'' (2.90) one sequence off grid 1; 2' (5.00); 3' (9.00). y: A' (-2.10), A'' (-1.00); B' (3.00); E' (11.50); F' (13.50)."
+    "prime_ordering": "x: 1' (-1.00), 1'' (1.00), 1''' (2.00), 1'''' (2.90), 1''''' (3.00) one sequence off grid 1; 2' (5.00), 2'' (5.10), 2''' (6.00), 2'''' (7.00); 3' (9.00). y: A' (-2.10), A'' (-1.00), A''' (0.90); B' (1.80), B'' (2.70), B''' (3.00), B'''' (3.60); C' (5.50), C'' (6.50); D' (8.50), D'' (9.50); E' (11.50); F' (13.50)."
   }
 }

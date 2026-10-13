@@ -1,8 +1,7 @@
 {
   "scope": "pass2_only",
   "op": "op04",
-  "in_progress": true,
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "house_design": "แบบบ้านฟรี อยู่แล้วดีใจ (รหัส FP032) — siamplan.com, 1 ชั้น (3 ห้องนอน 1 ห้องน้ำ), พื้นที่ใช้สอย 100 ตร.ม. (ที่ดินขั้นต่ำ 12.00 x 17.00 ม. ตามเว็บ), ฐานรากแผ่ F1-F3 (ไม่มีเสาเข็ม); ดาวน์โหลด 2026-10-12 จาก http://www.siamplan.com/index.php/freeplan/99-fp032, PDF เวกเตอร์, fp_index ไม่ซ้ำคลัง (คำซ้ำดิบ 0.69 มาจากหัวกระดาษ siamplan — ดู notes)",
   "subtasks_done": [
     "gridline",
@@ -13,6 +12,23 @@
     "schedule",
     "notes"
   ],
+  "subtasks_absent_from_this_house": [
+    "plan_column (columns are marks on the plans)",
+    "soil_boring_log"
+  ],
+  "subtasks_not_yet_reached": [],
+  "deliberately_skipped": [
+    "material_list",
+    "index",
+    "site_plan",
+    "side_profile",
+    "title",
+    "symbol",
+    "roof_plan",
+    "misc",
+    "bbs_schedule"
+  ],
+  "pages_extracted": 9,
   "pages_in_house": 20,
-  "note": "IN PROGRESS — not finished."
+  "note": "Pass 2 subtasks only — all Pass 2 subtasks listed in subtasks_done were extracted; this house is NOT fully extracted (skipped pages were skipped on purpose). 9 page files (02, 10, 11, 12, 13 x2 views, 14, 15, 16, 17) + the หน้า00 grid master, which also swept the levels and dimension chains on A-03..A-09. plan_slab lives inside the S-02 beam plan (PS / S1 / GS markers), as in the example houses. Resumed after an interrupted run: every existing file was re-checked against the page images before finalising; the resume added the A-09 bathroom chain (dummy 2'') and the S-05 truss panel ticks (13 dummy lines, rule 4) to the grid master, renaming x 1''->1'''' and y B'->B''' house-wide with tools/gridfix.py."
 }
