@@ -1,0 +1,119 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_37/บ้าน_เล็ก_2ชั้น_37_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_37_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา (หลังคาบันได/ทางเข้า D-E x 1-2)",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan, main roof)",
+    "view2: แบบโครงสร้างหลังคาบันได/ทางเข้า D-E x 1-2 1:75 (roof_frame_plan)"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Lower mono-pitch roof over the stair/entrance bay D-E x 1-2: Truss T4 on grids 1 and 2 from D (where it meets T3 on row D, small post squares at D1 / D2) to E, rafter/top chord continuing 1.00 past E to the roof edge E' (chain E + 1.00).",
+    "เสริมรัดหัว C-100x50x20x2.3 on row E 1-2, top at +5.82 (printed on this view). T3 on row D is drawn here as the continuation of the main roof (view1) and is not recorded twice.",
+    "Roof edges 1.00 left of grid 1 and 1.00 right of grid 2 (chain 1.00 | 3.00 | 1.00) — grid master lines 1' and 2'."
+  ],
+  "elements": [
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "E2",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E'1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถักถึงขอบหลังคาบนแปลน (โซ่มิติ 1.00 ของแปลนหลังคา) — โครงถักเต็มลึกอยู่ระหว่างจุดรองรับเท่านั้น",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "element_name_assigned": "เสริมรัดหัว",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "เสริมรัดหัว C-100x50x20x2.3 mm."
+      },
+      "level_m": 5.82,
+      "level_printed_as": "หลังเสริมรัดหัว ระดับ +5.82",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E'2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถักถึงขอบหลังคาบนแปลน (โซ่มิติ 1.00 ของแปลนหลังคา) — โครงถักเต็มลึกอยู่ระหว่างจุดรองรับเท่านั้น",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "purlin",
+      "element_name_assigned": "แป",
+      "grid_ref": "D-E' x 1'-2'",
+      "count": 4,
+      "spacing_mm": 1500,
+      "spacing_mm_printed_as": "@1.50 m.",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "แป C-100x50x20x2.3 mm. @1.50 m."
+      },
+      "note": "แปตามแนวแกน x ของหลังคาบันได -1.00 ถึง 4.00 นับเส้นที่วาดได้ 4 เส้น",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    }
+  ]
+}
