@@ -1,12 +1,35 @@
 {
   "scope": "pass2_only",
   "op": "op04",
-  "in_progress": true,
+  "date": "2026-10-14",
+  "house_design": "แบบบ้านฟรี อยู่ดีกินดี (รหัส FP029) — siamplan.com, 1 ชั้น (1 ห้องนอน 1 ห้องน้ำ), พื้นที่ใช้สอย 45 ตร.ม. (ที่ดินขั้นต่ำ 11.00 x 12.00 ม. ตามเว็บ), ฐานรากบนเสาเข็ม I 0.18x0.18 ม. (safe load 13 ตัน); ดาวน์โหลด 2026-10-12 จาก http://www.siamplan.com/index.php/freeplan/75-fp029, PDF เวกเตอร์, fp_index ไม่ซ้ำคลัง (คำซ้ำดิบ 0.65 มาจากหัวกระดาษ siamplan — ดู notes)",
   "subtasks_done": [
     "gridline",
     "plan_footing",
-    "plan_beam (S-02 + S-03 อะเส + S-04 roof_frame_plan)"
+    "plan_beam (S-02 floor beams + S-03 อะเส ring beams + S-04 roof_frame_plan)",
+    "plan_slab (slab markers PS/S1/S2 on the S-02 plan — no separate slab sheet)",
+    "section (S-05 trusses, S-06 F1/F2, S-07 beams/columns/stair, S-08 slabs)",
+    "schedule (A-10 door/window)",
+    "notes (A-01 view3 รายการประกอบแบบก่อสร้าง)"
   ],
+  "subtasks_absent_from_this_house": [
+    "plan_column (columns are marks on the S-01/S-02 plans)",
+    "soil_boring_log"
+  ],
+  "subtasks_not_yet_reached": [],
+  "deliberately_skipped": [
+    "material_list (no BOQ sheet in this set; A-01 รายการวัสดุ is a finish legend)",
+    "index",
+    "site_plan (A-02 is listed in the index but not in the PDF)",
+    "side_profile",
+    "title",
+    "symbol",
+    "roof_plan",
+    "misc",
+    "bbs_schedule",
+    "architectural/MEP layouts and details (A-03 แปลนพื้น, A-09 sanitary standard + fixture list, E-01, SN-01, SN-02)"
+  ],
+  "pages_extracted": 10,
   "pages_in_house": 21,
-  "note": "IN PROGRESS — not finished."
+  "note": "Pass 2 subtasks only — all Pass 2 subtasks present in this set were extracted; this house is NOT fully extracted (skipped pages were skipped on purpose). 10 pages carry their own file (02, 10-18) plus the grid master (which also reads A-07 รูปตัด A for levels); 11 JSON files. The grid master, footing/beam/roof/section files from an interrupted earlier run were spot-checked against the drawings and kept; this session added S-08 slabs, A-10 schedule and A-01 notes and corrected three sheet_name values to the printed title blocks."
 }
