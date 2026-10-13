@@ -1,0 +1,390 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_46/บ้าน_เล็ก_1ชั้น_46_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_46_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel hip roof. Members from the sheet's หมายเหตุ legend: thin dashed = แป C-75x45x15x2.3 @1.00, thin grey solid = จันทัน C-100x50x20x2.3 @1.50, heavy dashed = ตะเข้สัน 2C-100x50x20x3.2, solid double line = ตะเข้ราง C-100x50x20x2.3, four dash-dot styles = TRUSS T1-T4. One more callout, เสริมรับจันทัน 2C-100x50x20x3.2, points at a single solid line near grid 1. Roofing หลังคามุงกระเบื้องลอน... (not structural, not recorded).",
+    "Truss segments are split at the supports drawn on the S-05 truss elevations (T1: A, B, D; T2: 2, 3; T3: 1, 2, 3; T4: B', E). Top-chord overhangs to the eave are their own segments (1.00 from this sheet's chains), flagged top_chord_only. Member sections of the trusses are on S-05 (section file).",
+    "Hips and the valley are diagonal: span left unresolved (section 4 Span). Where a hip meets the ridge at a point no dimension positions (about x 2.80 and x 4.20 on B', from the 45-degree geometry), the end is written as an approximate ref (~) instead of inventing a dummy line.",
+    "T1's dash-dot line on this plan continues from D to E (meeting T2), but the TRUSS T1 elevation only covers A to D. The D-E piece is recorded from the plan with low confidence.",
+    "Rafters and purlins carry no mark: element_id null with element_name_assigned (section 0.2); counts left null (rafters are cut by the hips into pieces, purlins only drawn in the cut-away)."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'1'",
+      "grid_ref_end": "~B'2",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้สันแนวทแยง 45° จากมุมชายคา A'1' ขึ้นไปชนสันหลังคา (Truss T3 แนว B') ที่ประมาณ 0.20 ม. ซ้ายของกริด 2 — จุดชนไม่มีระยะพิมพ์",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "diagonal_span_unresolved",
+        "end_point_not_on_grid"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นคอร์ดบนถึงชายคา 1.00 ม. (โซ่มิติ 1.00 ของแผ่นนี้ + รูป Truss)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A'3''",
+      "grid_ref_end": "~B'2'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้สันแนวทแยงจากมุมชายคา A'3'' ลงมาชนสันหลังคาแนว B' ที่ประมาณ x 4.20 ม. (ระหว่างเส้น 2' กับ 2'') — จุดชนไม่มีระยะพิมพ์",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "diagonal_span_unresolved",
+        "end_point_not_on_grid"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "~A''1''",
+      "grid_ref_end": "~C''''1''",
+      "span_length_m": 4.0,
+      "span_source": "scaled_from_grid",
+      "note": "เส้นทึบเดี่ยวแนวดิ่งห่างกริด 1 ประมาณ 0.80 ม. วิ่งระหว่างตะเข้สันสองเส้น (ราว y 0.80 ถึง 4.80) — ตำแหน่งไม่มีระยะพิมพ์ วัดสัดส่วนจากกริด",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "position_scaled_not_printed"
+      ],
+      "element_name_assigned": "เสริมรับจันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "เสริมรับจันทัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "Truss T1 วางบนเสา/อะเสที่ A และ B (รูป Truss T1)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.1,
+      "span_source": "grid_table",
+      "note": "ช่วง B ถึง D (1.10 + 2.00) ไม่มีเสาที่ C — รูป Truss T1 มีเสารองรับที่ D (บนอะเสแนว D)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B'1'",
+      "grid_ref_end": "B'1",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นคอร์ดบนถึงชายคา 1.00 ม. (โซ่มิติ 1.00 ของแผ่นนี้ + รูป Truss)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "สันหลังคาแนว B' (0.30 ใต้กริด B) วางบนอะเสแนว B' ที่ 1, 2, 3 (รูป Truss T3)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B'2",
+      "grid_ref_end": "B'3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B'3",
+      "grid_ref_end": "B'3''",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นคอร์ดบนถึงชายคา 1.00 ม. (โซ่มิติ 1.00 ของแผ่นนี้ + รูป Truss)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "~B'2'",
+      "grid_ref_end": "C2'''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้สันช่วงสั้นจากปลายสันแนว B' (ราว x 4.20) ลงมาชนหัว Truss T4 ที่ C2''' ซึ่งเป็นต้นตะเข้ราง",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "diagonal_span_unresolved",
+        "end_point_not_on_grid"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "B'2'''",
+      "grid_ref_end": "E2'''",
+      "span_length_m": 3.7,
+      "span_source": "grid_table",
+      "note": "แนวสันปีกล่างที่ 2''' (5.00 ม.) จากสัน T3 แนว B' ถึง T2 แนว E; รูป Truss T4 ระบุ 0.30 + 0.93 x4 = 4.02 เทียบระยะรวม 4.00 (B ถึง E) — เส้นบนแปลนลากเลย E ไปเล็กน้อย ไม่บันทึกส่วนนั้น",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "C2'''",
+      "grid_ref_end": "E'1'''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้ราง (เส้นคู่) แนวทแยงจากหัว T4 ที่ C2''' ลงไปมุมใน L ของชายคาที่ E'1''' (x 2.00 / y 6.60)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal_span_unresolved"
+      ],
+      "element_name_assigned": "ตะเข้ราง",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "ตะเข้ราง C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "E2",
+      "span_length_m": 0.9,
+      "span_source": "grid_table",
+      "note": "เส้น T1 บนแปลนลากต่อจาก D ถึง E (ชน T2) แต่รูป Truss T1 แสดงเฉพาะช่วง A ถึง D",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "plan_line_beyond_truss_elevation"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "Truss T2 วางบนเสาที่ 2 และ 3 แนว E (รูป Truss T2) ยอดจั่วที่ 2''' รับ T4",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E''1'''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้สันสั้นจากปลาย T2 ที่ E2 ลงไปมุมชายคาปีกล่าง E''1'''",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal_span_unresolved"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E3''",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "note": "ส่วนยื่นคอร์ดบนถึงชายคา 1.00 ม. (โซ่มิติ 1.00 ของแผ่นนี้ + รูป Truss)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E''3''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้สันสั้นจาก E3 ลงไปมุมชายคา E''3''",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal_span_unresolved"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "E'1'",
+      "grid_ref_end": "~B'2",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้สันแนวทแยงจากมุมชายคาปีกซ้าย E'1' (ชายคา 0.10 ใต้ E) ขึ้นไปชนสันแนว B' ที่จุดเดียวกับเส้นจาก A'1'",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "diagonal_span_unresolved",
+        "end_point_not_on_grid"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm. @1.50 m."
+      },
+      "spacing_mm": 1500,
+      "count": null,
+      "grid_refs": [
+        "A'-E'' x 1'-3''"
+      ],
+      "note": "เส้นบางสีเทาวิ่งทั้งสองทิศตั้งฉากชายคา ถูกตะเข้ตัดเป็นท่อน ๆ จึงไม่นับจำนวน; ระยะที่วาดจริงราว 1.25-1.30 ม. แม้พิมพ์ @1.50 ม.",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "count_not_reliable_from_drawing"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "แป เหล็ก C-75x45x15x2.3 mm. @1.00 m. (น้ำหนัก 3.25 กก./ม.)"
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [
+        "A'-E'' x 1'-3''"
+      ],
+      "note": "วาดเส้นประเฉพาะในช่องตัดแสดงหลังคา (มุมขวา) จึงไม่นับจำนวน",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_drawn"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_48/บ้าน_เล็ก_1ชั้น_48_หน้า12.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_48_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel hip roof. หมายเหตุ legend: แป C-75x45x15x2.3 @1.00 (3.25 กก./ม.), จันทัน C-100x50x20x2.3 @1.50, ตะเข้สัน 2C-100x50x20x3.2, ตะเข้ราง C-100x50x20x3.2, TRUSS T1-T4. Roofing หลังคามุงกระเบื้องลอนคู่สี (not structural, not recorded). Truss member sizes are on S-04 (section file).",
+    "Trusses are split only at their supports (the S-04 elevations): T1 on rows B and C sits on posts at grids 1, 2, 3 (split again at C2' on row C where T4 lands); T3 spans B2-C2 between the two T1; T4 spans C2' to E2' in one piece (4.50, no post at row D). The dash-dot T1/T2 lines run on to the eaves on the plan — those tails are rafter overhang, not truss span, and are not recorded.",
+    "T2 position conflict, decided: the S-03 plan draws the porch ridge T2 about 0.25 above row E (no dimension), but the S-04 Truss T2 elevation spans 3.00 between two อะเส posts with T4 at its centre, and the T4 elevation spans exactly 4.50 = C to E. Two printed spans agree on row E (E2-E3, both columns exist), against one undimensioned drawn position -> T2 recorded on E2-E3, confidence 0.8. The porch hips then land on E2/E3 at exactly 45 degrees.",
+    "Valley section conflict, decided: the legend prints 'ตะเข้ราง C-100x50x20x3.2 mm.' but the leader on the valley itself prints 'ตะเข้ราง C-100x50x20x2.3 mm.'. The member's own callout is taken (2.3) — confidence 0.65 and flag section_conflict_legend_vs_callout; the hip leader agrees with its legend (3.2).",
+    "Hip/valley rafters carry no mark: element_id null with element_name_assigned (section 0.2); spans of the diagonal members are left unresolved per section 4 (plan lengths from the grid ends given in note only)."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'1'",
+      "grid_ref_end": "B2",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "diagonal (45 degree hip/valley) — span not computed (section 4: a diagonal span stays unresolved); plan length from the grid ends ≈ 5.66 m",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal_member"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'3'",
+      "grid_ref_end": "B2",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "diagonal (45 degree hip/valley) — span not computed (section 4: a diagonal span stays unresolved); plan length from the grid ends ≈ 5.66 m",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal_member"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C'2'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "diagonal (45 degree hip/valley) — span not computed (section 4: a diagonal span stays unresolved); plan length from the grid ends ≈ 2.12 m; upper end where it meets the T4 ridge (C' scaled, not printed)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal_member",
+        "end_on_scaled_dummy"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D'1'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "diagonal (45 degree hip/valley) — span not computed (section 4: a diagonal span stays unresolved); plan length from the grid ends ≈ 5.66 m",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "diagonal_member"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C2'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C2'",
+      "grid_ref_end": "C3",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "C2'",
+      "grid_ref_end": "E2'",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "S-04 Truss T4 spans 4.50 (5 panels of 0.90) from T2 to T1, with no support at row D — kept as one segment",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T2(end)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "C'2'",
+      "grid_ref_end": "D'1''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "diagonal (45 degree hip/valley) — span not computed (section 4: a diagonal span stays unresolved); plan length from the grid ends ≈ 3.54 m; valley between the main roof and the left wing",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "diagonal_member",
+        "end_on_scaled_dummy",
+        "section_conflict_legend_vs_callout"
+      ],
+      "element_name_assigned": "ตะเข้ราง",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "ตะเข้ราง C-100x50x20x2.3 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E'1''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "diagonal (45 degree hip/valley) — span not computed (section 4: a diagonal span stays unresolved); plan length from the grid ends ≈ 1.41 m; porch hip down to the 11.50 eave",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal_member"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "porch truss (S-04: span 3.00, 1.50 + 1.50, on two อะเส posts; T4 lands at its centre)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "position_from_truss_elevation"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E'3'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "diagonal (45 degree hip/valley) — span not computed (section 4: a diagonal span stays unresolved); plan length from the grid ends ≈ 1.41 m; porch hip down to the 11.50 eave",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal_member"
+      ],
+      "element_name_assigned": "ตะเข้สัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "ตะเข้สัน 2C-100x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "count": null,
+      "spacing_mm": 1500,
+      "note": "จันทัน C-100x50x20x2.3 mm. @1.50 m. — drawn as thin lines over the whole roof; not counted or positioned (legend spacing 1.50, lines drawn at about 1.33)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_not_read"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm. @1.50 m."
+      }
+    },
+    {
+      "element_id": null,
+      "element_type": "purlin",
+      "count": null,
+      "spacing_mm": 1000,
+      "note": "แป เหล็ก C-75x45x15x2.3 mm. @1.00 m. (น้ำหนัก 3.25 กก./ม.) — drawn only in the cut-away detail at the top of the plan",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "count_not_read"
+      ],
+      "element_name_assigned": "แป",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "แป เหล็ก C-75x45x15x2.3 mm. @1.00 m. (น้ำหนัก 3.25 กก./ม.)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_48/บ้าน_เล็ก_1ชั้น_48_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_48_หน้า00_gridline.json",
+  "view_title": "F1, F2",
+  "scale": "1:25",
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "Spread footings, no piles: F1 1.00 x 1.00 x 0.25, F2 1.20 x 1.20 x 0.30, each on คอนกรีตหยาบ 1:3:5 0.05 over ทรายหยาบอัดแน่น 0.05; top of footing 1.00 below ระดับดินเดิม. main_bar.count is the two-way total (6+6 = 12, 8+8 = 16).",
+    "Column mark conflict, decided: both footing details label the stub 'C2' (plan view and section), but the S-01 footing plan prints 'F1, C1' / 'F2, C1' at all 14 footings, the S-01 structure plan prints C1 at every column, and S-06 details only C1 (0.20 x 0.20, 4-DB12). Three sheets against one -> the column is C1 everywhere; C2 kept only as a flag here (no C2 section exists anywhere in the set).",
+    "Footing depths (1.00, 0.25/0.30, 0.05, 0.05) are member-internal dimensions, kept on the footing elements and not in the grid master z_levels (ระดับดินเดิม prints no value)."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "width_mm": 1000,
+      "width_mm_printed_as": "0.50+0.50 = 1.00 (square on plan)",
+      "height_mm": 250,
+      "height_mm_printed_as": "0.25",
+      "main_bar": {
+        "count": 12,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "6+6-DB12",
+        "count_printed_as": "6+6",
+        "note": "bottom mat, two-way"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "footing_type": "ฐานรากแผ่ (no pile drawn)",
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "ground_reference": "ระดับดินเดิม; 1.00 from ระดับดินเดิม down to the top of the footing",
+      "note": "the column stub drawn on the footing's plan view and section carries the mark C2 (the S-01 plan prints C1 at every footing) — see warnings",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "column_mark_conflict_C2_vs_C1"
+      ]
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "width_mm": 1200,
+      "width_mm_printed_as": "0.60+0.60 = 1.20 (square on plan)",
+      "height_mm": 300,
+      "height_mm_printed_as": "0.30",
+      "main_bar": {
+        "count": 16,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "8+8-DB12",
+        "count_printed_as": "8+8",
+        "note": "bottom mat, two-way"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "footing_type": "ฐานรากแผ่ (no pile drawn)",
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "ground_reference": "ระดับดินเดิม; 1.00 from ระดับดินเดิม down to the top of the footing",
+      "note": "the column stub drawn on the footing's plan view and section carries the mark C2 (the S-01 plan prints C1 at every footing) — see warnings",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "column_mark_conflict_C2_vs_C1"
+      ]
+    }
+  ]
+}

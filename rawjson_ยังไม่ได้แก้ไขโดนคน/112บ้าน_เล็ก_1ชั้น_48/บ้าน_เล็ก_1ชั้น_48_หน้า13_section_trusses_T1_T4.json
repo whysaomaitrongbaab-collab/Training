@@ -1,0 +1,139 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_48/บ้าน_เล็ก_1ชั้น_48_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_48_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T2, TRUSS T3, TRUSS T4",
+  "scale": "1:75",
+  "views": [
+    "view1: TRUSS T1 1:75",
+    "view2: TRUSS T3 1:75",
+    "view3: TRUSS T2 1:75",
+    "view4: TRUSS T4 1:75"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Four truss elevations on one sheet, all the same pattern (section): kept in one file, one element per truss mark, rather than split per view.",
+    "Every truss member (chords, posts, diagonals) carries one callout 'rectangular tube Ø-100x50x2.0 mm.'; the slashed symbol is read as a rectangular hollow section (designation RHS), print kept in printed_as. The member the trusses sit on is called out 'อะเส rectangular tube Ø-150x50x2.0 mm.' (the S-02 ring at +3.41), recorded as bottom_chord_printed_as.",
+    "The truss panel chains (1.50 x4 / 1.50 x2 / 1.00 x3 / 0.90 x5) print no grid bubble under them, so per section 4 rule 4 they are floating detail dimensions: kept on the truss elements (panel_lengths_printed_as), not in the grid master. Supports are named from the S-03 plan positions."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.0,
+        "printed_as": "rectangular tube Ø-100x50x2.0 mm."
+      },
+      "bottom_chord_printed_as": "อะเส rectangular tube Ø-150x50x2.0 mm.",
+      "height_mm": 1540,
+      "height_mm_printed_as": "1.54",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "panel_lengths_printed_as": "1.50 | 1.50 | 1.50 | 1.50 ; 3.00 | 3.00 ; 6.00",
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "note": "pitched truss on three อะเส posts (grids 1, 2, 3 on rows B and C), rise 1.54; T3 frames in at the centre post; top chord runs past both supports as rafter overhang",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.0,
+        "printed_as": "rectangular tube Ø-100x50x2.0 mm."
+      },
+      "bottom_chord_printed_as": "อะเส rectangular tube Ø-150x50x2.0 mm.",
+      "height_mm": 840,
+      "height_mm_printed_as": "0.84",
+      "spans_m": [
+        3.0
+      ],
+      "panel_lengths_printed_as": "1.50 | 1.50 ; 3.00",
+      "supports": [
+        "2",
+        "3"
+      ],
+      "note": "porch truss, rise 0.84, on two posts 3.00 apart; T4 lands at its centre",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.0,
+        "printed_as": "rectangular tube Ø-100x50x2.0 mm."
+      },
+      "bottom_chord_printed_as": "อะเส rectangular tube Ø-150x50x2.0 mm.",
+      "height_mm": 1420,
+      "height_mm_printed_as": "0.92 + 0.50 = 1.42",
+      "spans_m": [
+        3.0
+      ],
+      "panel_lengths_printed_as": "1.00 | 1.00 | 1.00 ; 3.00",
+      "supports": [
+        "T1",
+        "T1"
+      ],
+      "note": "parallel-chord truss between the two T1 trusses (rows B and C), depth 0.92 + 0.50",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.0,
+        "printed_as": "rectangular tube Ø-100x50x2.0 mm."
+      },
+      "bottom_chord_printed_as": "อะเส rectangular tube Ø-150x50x2.0 mm.",
+      "height_mm": 720,
+      "height_mm_printed_as": "0.50 + 0.22 = 0.72",
+      "spans_m": [
+        4.5
+      ],
+      "panel_lengths_printed_as": "0.90 | 0.90 | 0.90 | 0.90 | 0.90 ; 4.50",
+      "supports": [
+        "T2",
+        "T1"
+      ],
+      "note": "parallel-chord truss from T2 (porch) to T1 (row C), five 0.90 panels, depth 0.50 with a 0.22 drop to the support; total 0.72",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:T2(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    }
+  ]
+}
