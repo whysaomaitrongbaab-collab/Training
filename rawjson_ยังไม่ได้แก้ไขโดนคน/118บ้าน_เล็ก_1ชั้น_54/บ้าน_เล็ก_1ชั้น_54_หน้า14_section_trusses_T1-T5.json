@@ -1,0 +1,182 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_54/บ้าน_เล็ก_1ชั้น_54_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_54_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T2, TRUSS T3, TRUSS T4, TRUSS T5",
+  "scale": "1:75",
+  "confidence_score": 0.87,
+  "confidence_flags": [],
+  "warnings": [
+    "Section callouts print a slashed-rectangle symbol before the size (rectangular tube ▯-100x50x2.3 mm.) — read as a rectangular hollow (box) section, designation RHS (section 6a), the print kept in printed_as.",
+    "Chords on every truss are rectangular tube 100x50x2.3 (each callout has leaders to the top chord, bottom chord and a vertical). T3 and T5 also print a separate rectangular tube 75x45x2.3 callout on their verticals — kept as web_steel_section, a new key (no existing field holds a second section on one member).",
+    "T1 and T4 are mono-pitch: the depth grows along the span. T1 prints 0.670 at the T3 end and 1.474 (= 0.670 + 0.804) at the T2 end; height_mm is the largest printed depth. T2, T3, T5 print one depth each; T4 prints 0.796 at its T5 end.",
+    "The elevations print no grid bubbles; supports were matched to the S-03 plan from the T-marks and piers drawn on them (see the grid master warnings). Panel chains are recorded in the grid master dimension_chains[].",
+    "อะเส C-100x50x20x2.3 mm. (หลังอะเสระดับ+3.36) is called out on Trusses T2 and T4 at rows A and B — the member itself is recorded on the S-03 view-2 plan."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "height_mm": 1474,
+      "height_mm_printed_as": "1.474 = 0.670 + 0.804",
+      "spans_m": [
+        3.0
+      ],
+      "supports": [
+        "T3 (grid 1)",
+        "T2 (grid 2)"
+      ],
+      "panel_lengths_printed_as": "1.000 | 1.000 | 1.000 = 3.00",
+      "note": "โครงถักหลังคาเพิงหมาแหงน ลึก 0.670 ที่ปลาย T3 ถึง 1.474 ที่ปลาย T2; คอร์ดบน/จันทันยื่นเลยจุดรองรับประมาณ 1.00 ทั้งสองข้าง (ไม่พิมพ์ระยะบนรูปนี้ — ระยะ 1.00 อ่านจากแปลน S-03); ใช้ที่แถว A, B, C, E",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "height_mm": 1424,
+      "height_mm_printed_as": "1.424",
+      "spans_m": [
+        3.0,
+        1.5,
+        3.0
+      ],
+      "supports": [
+        "E",
+        "C",
+        "B",
+        "A"
+      ],
+      "panel_lengths_printed_as": "0.750 x6 | 1.000 x3; 3.00 | 1.50 | 3.00 = 7.50",
+      "note": "โครงถักขนานตามแนวกริด 2 ลึก 1.424 วางบนเสา 4 จุด (E, C, B, A); รับ T1 ที่ E, C, B, A และ T5 ที่ D; วาดโดยให้ E อยู่ซ้าย",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "web_steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 45,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-75x45x2.3 mm."
+      },
+      "height_mm": 620,
+      "height_mm_printed_as": "0.620",
+      "spans_m": [
+        3.0,
+        1.5,
+        3.0
+      ],
+      "supports": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ],
+      "panel_lengths_printed_as": "1.000 x3 | 0.750 x2 | 1.000 x3; 3.00 | 1.50 | 3.00 = 7.50",
+      "note": "โครงถักขนานตามแนวกริด 1 (ด้านต่ำของหลังคา) ลึก 0.620 วางบนเสา 4 จุด รับ T1 ที่ A, B, C, E",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "height_mm": 796,
+      "height_mm_printed_as": "0.796",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "D",
+        "B",
+        "A"
+      ],
+      "panel_lengths_printed_as": "1.000 x6; 3.00 | 3.00 = 6.00",
+      "note": "โครงถักหลังคาเพิงตามแนวกริด 3 ลึก 0.796 ที่ปลาย T5 (แถว D) ลดลงไปทาง A; วางบนเสา D, B, A (ไม่มีเสาที่ C3); คอร์ดบน/จันทันยื่นเลย D และ A ประมาณ 1.00",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "web_steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 45,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-75x45x2.3 mm."
+      },
+      "height_mm": 746,
+      "height_mm_printed_as": "0.746",
+      "spans_m": [
+        2.5
+      ],
+      "supports": [
+        "T2 (grid 2)",
+        "T4 (grid 3)"
+      ],
+      "panel_lengths_printed_as": "0.833 x3 = 2.50",
+      "note": "โครงถักแถว D ระหว่าง T2 กับ T4 ลึก 0.746",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    }
+  ]
+}

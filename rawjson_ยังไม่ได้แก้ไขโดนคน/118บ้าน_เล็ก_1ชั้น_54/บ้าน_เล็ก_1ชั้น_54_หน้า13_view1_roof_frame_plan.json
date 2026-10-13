@@ -1,0 +1,271 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_54/บ้าน_เล็ก_1ชั้น_54_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_54_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 — main mono-pitch roof (T1/T2/T3), with the หมายเหตุ line-type legend",
+    "view2: untitled 1:75 plan of the lean-to roof over grid 2-3 (T2/T4/T5, อะเส)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Line types from the sheet's หมายเหตุ legend: thin = แป C-75x45x15x2.3 mm. @1.50 m., heavy dash-dot = อะเส C-100x50x20x2.3 mm., and one line pattern each for TRUSS T1-T5. Main roof is a mono-pitch steel roof: T3 on grid 1 (low side), T2 on grid 2 (high side), T1 across rows A, B, C and E.",
+    "T1 segments are split at the T3/T2 supports; the 1.00 overhangs to the eave 1' and to the roof edge 2'' are the truss top chord / rafter only (Truss T1 on S-04 draws the top chord running about 1.00 past both ends) — recorded as their own T1 segments flagged top_chord_only.",
+    "T2 is drawn from E up to the eave A' on both S-03 views, but the Truss T2 elevation spans only E to A (7.50). The A'-A piece is kept as a low-confidence T2 segment (never dropped) — on the T2 elevation the line overhanging A is the lean-to roof's sloping rafter, so the member is unclear.",
+    "T2 lies on grid 2 between the two roofs and is drawn on both views; it is recorded only in this view-1 file so the BOQ does not count it twice.",
+    "Purlins carry no mark: element_id null with element_name_assigned (section 0.2). Their individual positions are not dimensioned, so they are one element with count + area ref, not grid lines."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "เส้น T2 บนแปลนลากต่อจาก A ขึ้นไปถึงชายคา A' แต่รูป Truss T2 (S-04) ช่วงเต็ม E-A 7.50 ไม่มีส่วนยื่น — เส้นที่ยื่นเลย A บนรูป T2 คือจันทันของหลังคาเพิงที่พาดผ่าน ระบุชิ้นส่วนไม่ชัด",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "top_chord_only",
+        "member_unclear_plan_line_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A1'",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถัก 1.00 ม. ถึงขอบหลังคา (เส้นบนแปลนลากถึงชายคา; รูป Truss บน S-04 แสดงคอร์ดบนยื่นเลยจุดรองรับ ~1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถัก 1.00 ม. ถึงขอบหลังคา (เส้นบนแปลนลากถึงชายคา; รูป Truss บน S-04 แสดงคอร์ดบนยื่นเลยจุดรองรับ ~1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1'",
+      "grid_ref_end": "B1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถัก 1.00 ม. ถึงขอบหลังคา (เส้นบนแปลนลากถึงชายคา; รูป Truss บน S-04 แสดงคอร์ดบนยื่นเลยจุดรองรับ ~1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถัก 1.00 ม. ถึงขอบหลังคา (เส้นบนแปลนลากถึงชายคา; รูป Truss บน S-04 แสดงคอร์ดบนยื่นเลยจุดรองรับ ~1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถัก 1.00 ม. ถึงขอบหลังคา (เส้นบนแปลนลากถึงชายคา; รูป Truss บน S-04 แสดงคอร์ดบนยื่นเลยจุดรองรับ ~1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "E1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสา/ไม่มี T1 ที่แถว D — T3 ช่วง C-E ต่อเนื่อง (รูป Truss T3 จุดรองรับที่ A, B, C, E)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "E2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถัก 1.00 ม. ถึงขอบหลังคา (เส้นบนแปลนลากถึงชายคา; รูป Truss บน S-04 แสดงคอร์ดบนยื่นเลยจุดรองรับ ~1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "E1'",
+      "grid_ref_end": "E1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถัก 1.00 ม. ถึงขอบหลังคา (เส้นบนแปลนลากถึงชายคา; รูป Truss บน S-04 แสดงคอร์ดบนยื่นเลยจุดรองรับ ~1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/จันทันของโครงถัก 1.00 ม. ถึงขอบหลังคา (เส้นบนแปลนลากถึงชายคา; รูป Truss บน S-04 แสดงคอร์ดบนยื่นเลยจุดรองรับ ~1.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "แป C-75x45x15x2.3 mm. @1.50 m."
+      },
+      "spacing_mm": 1500,
+      "count": 5,
+      "grid_refs": [
+        "A'-E' x 1'-2''"
+      ],
+      "note": "เส้นบาง 5 เส้นวิ่งตามแนว y จากชายคา A' ถึง E' ที่ x = ชายคา 1', ~0.25, ~1.50, ~2.75 และขอบ 2'' (วาดห่าง ~1.25 ม.; หมายเหตุพิมพ์ @1.50 m.) — ตำแหน่งแต่ละเส้นไม่ได้พิมพ์ระยะ จึงไม่ได้เป็นเส้นกริด",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "positions_not_dimensioned"
+      ]
+    }
+  ]
+}
