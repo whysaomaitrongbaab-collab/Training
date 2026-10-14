@@ -1,0 +1,551 @@
+{
+  "png": "13",
+  "doc_page": 13,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_43/บ้าน_เล็ก_2ชั้น_43_หน้า13.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_43_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + ***หมายเหตุ*** legend (roof_frame_plan, this file)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel gable roof, main ridge along grid 2 (Truss T4, A-C), plus a C-D wing over bay 2-3 with its own ridge on 2' (Truss T5). Members from the sheet's หมายเหตุ legend: thin = แป C-75x45x15x1.6 @1.00, solid = จันทัน C-100x50x20x2.3, heavy dash-dot = อะเส 2C-100x50x20x2.3 (หลังอะเสระดับ+5.85), and five truss line types T1-T5. Roofing (กระเบื้องลอนคู่, A-07) is not structural and not recorded.",
+    "Trusses: T1 on rows A and B (supports at columns 1, 2, 3 — the T1 elevation draws three posts), T2 on row C, T3 on row D between 2 and 3, T4 on grid 2 from A to C bearing on T1/T1/T2 (the T4 elevation labels its supports T2, T1, T1), T5 on 2' from C to D bearing on T2/T3. Each is split at its supports; the 1.00 roof overhangs drawn past the end supports are their own segments (top chord only, lower confidence — the truss elevations draw the overhang but print no length).",
+    "อะเส lines: grid 1 (A' to C''), grid 3 (A' to D') and grid 2 below C (C to D'), split at the columns; the parts drawn past the end columns to the roof edge are recorded as their own 1.00 segments with a flag. No element mark is printed for อะเส, จันทัน or แป: element_id null + element_name_assigned (section 0.2).",
+    "The C-D wing's left edge is drawn about 1.00 left of grid 2 (x ≈ 2.00) with no printed dimension, so it is not a grid line and no segment ends there."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ตามเส้นที่ลากถึงขอบหลังคาบนแปลน (โซ่มิติ 1.00 ของแปลนหลังคา)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T4 (แนวสันหลังคาตามกริด 2) ถึงขอบหลังคาด้านจั่ว — รูป T4 วาดคอร์ดบนยื่นเลยจุดรองรับแต่ไม่พิมพ์ระยะ",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ตามเส้นที่ลากถึงขอบหลังคาบนแปลน (โซ่มิติ 1.00 ของแปลนหลังคา)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A1'",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/ชายคา 1.00 ม. ถึงขอบหลังคา (แปลนหลังคา) — รูป Truss ไม่ได้พิมพ์ระยะยื่น",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "Truss T1 ช่วงซ้าย (รูป T1: ช่วง 3.00 + 3.00 วางบนเสา 3 จุด)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "Truss T4 (สันหลังคา) วางบน T1 แนว A และ T1 แนว B",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A3'''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/ชายคา 1.00 ม. ถึงขอบหลังคา (แปลนหลังคา) — รูป Truss ไม่ได้พิมพ์ระยะยื่น",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1'",
+      "grid_ref_end": "B1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/ชายคา 1.00 ม. ถึงขอบหลังคา (แปลนหลังคา) — รูป Truss ไม่ได้พิมพ์ระยะยื่น",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "Truss T4 ช่วงที่สอง วางบน T1 แนว B และ T2 แนว C",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T2(end)"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B3'''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/ชายคา 1.00 ม. ถึงขอบหลังคา (แปลนหลังคา) — รูป Truss ไม่ได้พิมพ์ระยะยื่น",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/ชายคา 1.00 ม. ถึงขอบหลังคา (แปลนหลังคา) — รูป Truss ไม่ได้พิมพ์ระยะยื่น",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C''1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ของเส้นอะเสแนวกริด 1 เลย C ถึงขอบหลังคาหลัก (C'' = 8.00, โซ่มิติ 1.00 + 1.00 ของ C-D) — ไม่มีเสาที่ D1",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "อะเสแนวกริด 2 ช่วง C-D (ปีกหลังคา C-D x 2-3 สันตามแนว 2')",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "grid_ref_start": "C2'",
+      "grid_ref_end": "D2'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "Truss T5 (สันปีกหลังคา C-D) แนว 2' = 4.50 วางบน T2 แนว C และ T3 แนว D (รูป T5 ช่วง 2.00)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:T2(start)",
+        "bears_on_beam:T3(end)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C3'''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/ชายคา 1.00 ม. ถึงขอบหลังคา (แปลนหลังคา) — รูป Truss ไม่ได้พิมพ์ระยะยื่น",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D'2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ตามเส้นที่ลากถึงขอบหลังคาบนแปลน (โซ่มิติ 1.00 ของแปลนหลังคา)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "Truss T3 ช่วง 3.00 (กริด 2-3) แนว D; เส้น T3 บนแปลนยื่นไปทางซ้ายถึงขอบหลังคาปีก C-D ที่ x ≈ 2.00 (1.00 ซ้ายของกริด 2) — ไม่มีระยะพิมพ์ จึงไม่บันทึกเป็นช่วงแยก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T5",
+      "element_type": "truss",
+      "grid_ref_start": "D2'",
+      "grid_ref_end": "D'2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นสันของ T5 ถึงขอบหลังคาด้านจั่ว D' (1.00 ม.)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+      },
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D'3",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่น 1.00 ม. ตามเส้นที่ลากถึงขอบหลังคาบนแปลน (โซ่มิติ 1.00 ของแปลนหลังคา)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D3'''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบน/ชายคา 1.00 ม. ถึงขอบหลังคา (แปลนหลังคา) — รูป Truss ไม่ได้พิมพ์ระยะยื่น",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "top_chord_only",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "จันทัน",
+      "element_type": "rafter",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "จันทัน C-100x50x20x2.3 mm."
+      },
+      "count": 5,
+      "grid_refs": [
+        "A'-C'' x 1'-3'''",
+        "C''-D' x 2-3'''"
+      ],
+      "note": "เส้นทึบแนวแกน x 5 เส้น: A' (ขอบหลังคา), A'' (1.75), B' (5.25), C'' (8.00), D' (10.00 ปีก C-D) — กึ่งกลางระหว่างโครงถัก; ลูกศรชี้ของป้ายจันทันชี้ 4 เส้น (A'', B', C'', D') ส่วนเส้น A' เป็นเส้นขอบหลังคา",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "count_from_drawn_lines"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 1.6,
+        "printed_as": "แป C-75x45x15x1.6mm. @1.00 m."
+      },
+      "spacing_mm": 1000,
+      "count": null,
+      "grid_refs": [
+        "A'-C'' x 1'-3'''",
+        "C''-D' x 2-3'''"
+      ],
+      "note": "แปวิ่งตามแนวแกน y (ขนานสันหลังคาแนวกริด 2) วางบนจันทัน/โครงถัก; พิมพ์ @1.00 ม. แต่เส้นที่วาดห่างประมาณ 0.77 ม. จึงไม่นับจำนวน",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "count_not_reliable_from_drawing"
+      ]
+    }
+  ]
+}
