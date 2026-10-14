@@ -1,0 +1,181 @@
+{
+  "png": "18",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "ขยายหน้าตัดเสา, ขยายหน้าตัดพื้น",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า18.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_59_หน้า00_gridline.json",
+  "view_title": "C1, GS, S1, S2, S3",
+  "confidence_score": 0.85,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "C1 is printed with two sections, one per height range ('ฐานราก ถึง พื้น' 0.20x0.20 and 'พื้น ถึง หลังคา' 0.15x0.15) - kept as two entries with a level field (section 8). The 0.055 / 0.03 printed on each is the distance from the face to the bar (cover_mm).",
+    "Slabs: main_bar = the bottom mesh both ways; the top bars over the supports go in additional_bars with their printed extension lengths. S1 and S2 differ only in panel size - see the S-02 beam plan warning: the 1.00 x 2.60 panels the S1 section describes are marked S2 on the plan.",
+    "S3 prints two Ø9@0.15 callouts, one to the top bar row and one to the bottom row; top recorded as main_bar (cantilever)."
+  ],
+  "elements": [
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ฐานราก ถึง พื้น",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "4-DB12มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "1ป-ø6@0.15ม."
+      },
+      "cover_mm": 55,
+      "cover_mm_printed_as": "0.055",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "พื้น ถึง หลังคา",
+      "width_mm": 150,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "4-DB12มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "1ป-ø6@0.15ม."
+      },
+      "cover_mm": 30,
+      "cover_mm_printed_as": "0.03",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "ø9มม.@0.25ม.#",
+        "note": "ตะแกรง 2 ทาง"
+      },
+      "additional_bars": [
+        {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "1-ø9มม.",
+          "position": "เหล็กขอบพื้นในส่วนหนาขึ้นที่ขอบ (ขอบลึกลง 0.10 กว้าง 0.05+0.05)"
+        }
+      ],
+      "sand_bed_thickness_m": 0.1,
+      "note": "พื้นวางบนดิน หนา 0.08 บนทรายหยาบอัดแน่น 0.10; ขอบพื้นหนาลงไปอีก 0.10",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ø9มม.@0.20",
+        "note": "เหล็กล่าง ทั้งสองทิศทาง"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "ø9มม.@0.20",
+          "position": "บน เหนือที่รองรับ ด้านสั้น — ยื่นเข้าช่วง 0.35 ม. จากที่รองรับ (ช่วงสั้น 1.00)"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "ø9มม.@0.20ม.",
+          "position": "บน เหนือที่รองรับ ด้านยาว — ยื่นเข้าช่วง 0.90 ม. จากที่รองรับ (ช่วงยาว 2.60)"
+        }
+      ],
+      "note": "รูปตัดด้านสั้น 1.00 / ด้านยาว 2.60 — มาร์ค S1 ไม่ปรากฏบนแปลน S-02 (ช่องขนาด 1.00 x 2.60 บนแปลนพิมพ์ S2)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "mark_not_on_plan"
+      ]
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ø9มม.@0.20",
+        "note": "เหล็กล่าง ทั้งสองทิศทาง"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "ø9มม.@0.20",
+          "position": "บน เหนือที่รองรับ ด้านสั้น — ยื่นเข้าช่วง 0.45 ม. (ฝั่งซ้าย) / 0.35 ม. (ฝั่งขวา) (ช่วงสั้น 1.30)"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "ø9มม.@0.20ม.",
+          "position": "บน เหนือที่รองรับ ด้านยาว — ยื่นเข้าช่วง 0.60 ม. ทั้งสองฝั่ง (ช่วงยาว 1.80)"
+        }
+      ],
+      "note": "รูปตัดด้านสั้น 1.30 / ด้านยาว 1.80",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "thickness_mm": 120,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ø9มม.@0.15ม.",
+        "note": "เหล็กบน (พื้นยื่น)"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ø9มม.@0.15ม.",
+          "position": "เหล็กล่าง"
+        }
+      ],
+      "note": "พื้นยื่น 0.50 ม. จากแนวศูนย์กลางคาน มีขอบตั้งที่ปลาย",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}

@@ -1,0 +1,531 @@
+{
+  "png": "00",
+  "doc_page": null,
+  "discipline": "structural",
+  "sheet_code": null,
+  "sheet_name": "Grid master (synthesized from S-01, S-02, S-03, S-06; A-03 consulted for one tick)",
+  "pattern": "grid_master",
+  "source_pages": [
+    "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png",
+    "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+    "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png",
+    "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า19.png",
+    "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า05.png"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "one_line_from_member_elevation"
+  ],
+  "warnings": [
+    "Axes: x = grids 1, 2, 3 at 2.60 + 2.60 (5.20); y = rows A (top) and B printed top-to-bottom, A-B 2.80. Origin A1 (top-left). Scanned สพฐ. set; every sheet is stored rotated in the PDF (read upright).",
+    "S-01, S-02 and S-03 all print the same outer x chain 1.20 / 2.60 / 2.60 / 1.20 (+ 5.20 total) - three sheets agree; each sheet's row is kept in dimension_chains.",
+    "S-02 adds an x chain 1.30 x 4 (grids 1-1''-2-2'-3): 1'' (1.30) and 2' (3.90) are the B1 beam lines between the toilet cubicles.",
+    "A''''' (1.80 below A) is the B2 beam line. S-02 prints 1.00 from it down to row B on its right-hand side, but its ticks sit on the edges of the side 'wing' boxes, so the 1.00 was cross-checked on A-03 (แปลนพื้นห้องน้ำ), where its lower extension line lands on grid B - taken as B minus 1.00 = 1.80 from A. The B4 elevation on S-06 independently prints its first span as 1.80, which agrees.",
+    "A'''' (-0.875) is the end of the two short north stubs (B4 at grid 2 carrying the cantilever slab S3, and B3-1 at grid 3). Its position comes from the B4 elevation on S-06, which prints the cantilever as 0.875 from the support dot on grid A. S-02 prints both stubs as 0.80, but the lower tick of each 0.80 sits on the outer face of the row-A beam B5, not on grid A (checked on a 260-dpi crop) - so 0.80 is face-to-end, and 0.80 + ~0.075 half beam = 0.875 is the same point. No separate line at -0.80 was created; both 0.80 prints are kept in unassigned_dimensions.",
+    "S-02's 0.50 (x) runs from the west edge of slab S3 to grid 2 (the S3 section on S-05 prints the same 0.50 from the beam centre line) -> 1''' at 2.10.",
+    "S-02's 0.30 at the bottom-left measures the side wing box from its outer edge to the outer face of beam B3 - it touches no grid line, so it makes no line (kept in unassigned_dimensions).",
+    "S-03 (roof framing) prints a y chain 2.00 / 2.80 / 2.00 to the roof edge (A', B''') and an inner chain 1.00 above A and below B (A''', B') where the steel braces end.",
+    "Sweep scope (op04): every structural sheet (S-01..S-06) was swept; of the architectural sheets only A-03 was consulted, for the single 1.00 tick above. Architectural/sanitary sheets were not swept.",
+    "No ±0.00 datum is printed on the structural sheets; S-04 measures the footings down from ระดับดินเดิม, which has no printed value - recorded with level_m null."
+  ],
+  "grid": {
+    "x_lines": [
+      {
+        "id": "1'",
+        "pos_m": -1.2,
+        "type": "dummy",
+        "note": "edge of the dashed slab/roof outline, 1.20 left of grid 1 (S-01, S-02, S-03)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      },
+      {
+        "id": "1",
+        "pos_m": 0.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      },
+      {
+        "id": "1''",
+        "pos_m": 1.3,
+        "type": "dummy",
+        "note": "B1 beam line between the cubicles, 1.30 right of grid 1 (S-02 1.30 chain)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png"
+      },
+      {
+        "id": "1'''",
+        "pos_m": 2.1,
+        "type": "dummy",
+        "note": "west edge of cantilever slab S3, 0.50 left of grid 2 (S-02)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png"
+      },
+      {
+        "id": "2",
+        "pos_m": 2.6,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      },
+      {
+        "id": "2'",
+        "pos_m": 3.9,
+        "type": "dummy",
+        "note": "B1 beam line, 1.30 right of grid 2 (S-02 1.30 chain)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png"
+      },
+      {
+        "id": "3",
+        "pos_m": 5.2,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      },
+      {
+        "id": "3'",
+        "pos_m": 6.4,
+        "type": "dummy",
+        "note": "edge of the dashed slab/roof outline, 1.20 right of grid 3 (S-01, S-02, S-03)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      }
+    ],
+    "y_lines": [
+      {
+        "id": "A'",
+        "pos_m": -2.0,
+        "type": "dummy",
+        "note": "roof edge, 2.00 above row A (S-03)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png"
+      },
+      {
+        "id": "A''",
+        "pos_m": -1.6,
+        "type": "dummy",
+        "note": "edge of the dashed GS slab outline, 1.60 above row A (S-01, S-02)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      },
+      {
+        "id": "A'''",
+        "pos_m": -1.0,
+        "type": "dummy",
+        "note": "end of the steel braces, 1.00 above row A (S-03)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png"
+      },
+      {
+        "id": "A''''",
+        "pos_m": -0.875,
+        "type": "dummy",
+        "note": "end of the north stubs B4 (grid 2) and B3-1 (grid 3): B4 cantilever 0.875 from grid A (S-06 B4 elevation)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า19.png",
+        "confidence_score": 0.8,
+        "confidence_flags": [
+          "position_from_member_elevation"
+        ]
+      },
+      {
+        "id": "A",
+        "pos_m": 0.0,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      },
+      {
+        "id": "A'''''",
+        "pos_m": 1.8,
+        "type": "dummy",
+        "note": "B2 beam line: 1.00 above row B (S-02 / A-03) = 1.80 below row A (S-06 B4 span 1.80)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png"
+      },
+      {
+        "id": "B",
+        "pos_m": 2.8,
+        "type": "named",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      },
+      {
+        "id": "B'",
+        "pos_m": 3.8,
+        "type": "dummy",
+        "note": "end of the steel braces, 1.00 below row B (S-03)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png"
+      },
+      {
+        "id": "B''",
+        "pos_m": 4.4,
+        "type": "dummy",
+        "note": "edge of the dashed GS slab outline, 1.60 below row B (S-01, S-02)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png"
+      },
+      {
+        "id": "B'''",
+        "pos_m": 4.8,
+        "type": "dummy",
+        "note": "roof edge, 2.00 below row B (S-03)",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png"
+      }
+    ],
+    "z_levels": [
+      {
+        "id": "ระดับดินเดิม",
+        "level_m": null,
+        "type": "named",
+        "note": "S-04 F1/F2/F3 details print this label with no value; 1.20 from it down to the underside of the footing. No ±0.00 on the structural sheets.",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า17.png"
+      }
+    ],
+    "dimension_chains": [
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png",
+        "view": "แปลนฐานราก (กรณีฐานรากแผ่และฐานเข็ม)",
+        "segments": [
+          {
+            "from": "1",
+            "to": "3",
+            "value_m": 5.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png",
+        "view": "แปลนฐานราก (กรณีฐานรากแผ่และฐานเข็ม)",
+        "segments": [
+          {
+            "from": "1'",
+            "to": "1",
+            "value_m": 1.2
+          },
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.6
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 2.6
+          },
+          {
+            "from": "3",
+            "to": "3'",
+            "value_m": 1.2
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า14.png",
+        "view": "แปลนฐานราก (กรณีฐานรากแผ่และฐานเข็ม)",
+        "segments": [
+          {
+            "from": "A''",
+            "to": "A",
+            "value_m": 1.6
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 2.8
+          },
+          {
+            "from": "B",
+            "to": "B''",
+            "value_m": 1.6
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "view": "แปลนคาน พื้น เสา",
+        "segments": [
+          {
+            "from": "1",
+            "to": "3",
+            "value_m": 5.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "view": "แปลนคาน พื้น เสา",
+        "segments": [
+          {
+            "from": "1'",
+            "to": "1",
+            "value_m": 1.2
+          },
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.6
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 2.6
+          },
+          {
+            "from": "3",
+            "to": "3'",
+            "value_m": 1.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "view": "แปลนคาน พื้น เสา",
+        "segments": [
+          {
+            "from": "1",
+            "to": "1''",
+            "value_m": 1.3
+          },
+          {
+            "from": "1''",
+            "to": "2",
+            "value_m": 1.3
+          },
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.3
+          },
+          {
+            "from": "2'",
+            "to": "3",
+            "value_m": 1.3
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "view": "แปลนคาน พื้น เสา",
+        "segments": [
+          {
+            "from": "1'''",
+            "to": "2",
+            "value_m": 0.5
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "view": "แปลนคาน พื้น เสา",
+        "segments": [
+          {
+            "from": "A''",
+            "to": "A",
+            "value_m": 1.6
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 2.8
+          },
+          {
+            "from": "B",
+            "to": "B''",
+            "value_m": 1.6
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "view": "แปลนคาน พื้น เสา",
+        "segments": [
+          {
+            "from": "A'''''",
+            "to": "B",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png",
+        "view": "แปลนโครงหลังคา",
+        "segments": [
+          {
+            "from": "1",
+            "to": "3",
+            "value_m": 5.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png",
+        "view": "แปลนโครงหลังคา",
+        "segments": [
+          {
+            "from": "1'",
+            "to": "1",
+            "value_m": 1.2
+          },
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.6
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 2.6
+          },
+          {
+            "from": "3",
+            "to": "3'",
+            "value_m": 1.2
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png",
+        "view": "แปลนโครงหลังคา",
+        "segments": [
+          {
+            "from": "A'",
+            "to": "A",
+            "value_m": 2.0
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "value_m": 2.8
+          },
+          {
+            "from": "B",
+            "to": "B'''",
+            "value_m": 2.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png",
+        "view": "แปลนโครงหลังคา",
+        "segments": [
+          {
+            "from": "A'''",
+            "to": "A",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า16.png",
+        "view": "แปลนโครงหลังคา",
+        "segments": [
+          {
+            "from": "B",
+            "to": "B'",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า19.png",
+        "view": "B2 elevation",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.6
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 2.6
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า19.png",
+        "view": "B4 elevation",
+        "segments": [
+          {
+            "from": "A'''''",
+            "to": "A",
+            "value_m": 1.8
+          },
+          {
+            "from": "A",
+            "to": "A''''",
+            "value_m": 0.875
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า19.png",
+        "view": "B5 elevation",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 2.6
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 2.6
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า05.png",
+        "view": "แปลนพื้นห้องน้ำ",
+        "segments": [
+          {
+            "from": "A'''''",
+            "to": "B",
+            "value_m": 1.0
+          }
+        ]
+      }
+    ],
+    "unassigned_dimensions": [
+      {
+        "value_m": 0.8,
+        "label": "0.80",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "note": "north stub of B4 / slab S3 at grid 2, measured from the outer face of beam B5 to the stub end (= 0.875 from grid A, S-06)"
+      },
+      {
+        "value_m": 0.8,
+        "label": "0.80",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "note": "north stub B3-1 at grid 3, same face-to-end measurement as the B4 stub"
+      },
+      {
+        "value_m": 0.3,
+        "label": "0.30",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+        "note": "side wing box west of grid 1 at bay A-B: from its outer edge to the outer face of beam B3 - touches no grid line"
+      },
+      {
+        "value_m": 1.2,
+        "label": "1.20",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า17.png",
+        "note": "S-04 F1/F2/F3: ระดับดินเดิม down to the underside of the footing (footing 0.25, lean concrete 0.05, sand 0.10 are member detail on the footing elements)"
+      },
+      {
+        "value_m": 1.0,
+        "label": "1.00",
+        "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า19.png",
+        "note": "B2 / B5 elevations: extra top bar 1.00 each side of the grid-2 support - rebar extent, recorded on the beam spec"
+      }
+    ]
+  },
+  "dummy_grid_rule_check": {
+    "negative_pos_m": "x: 1' at -1.20. y: A' -2.00, A'' -1.60, A''' -1.00, A'''' -0.875 (before origin A).",
+    "prime_ordering": "x read left to right, one sequence per main grid incl. before-origin: 1' -1.20, 1'' 1.30, 1''' 2.10; 2' 3.90; 3' 6.40. y read top to bottom: A' -2.00, A'' -1.60, A''' -1.00, A'''' -0.875, A''''' 1.80; B' 3.80, B'' 4.40, B''' 4.80."
+  }
+}

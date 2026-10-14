@@ -1,0 +1,305 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนคาน พื้น เสา",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_59/บ้าน_เล็ก_1ชั้น_59_หน้า15.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_59_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนคาน พื้น เสา",
+  "scale": "1:50",
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Single-storey toilet block: this one sheet carries the floor beams, the floor slabs and the column marks (no separate slab or column plan in the set). Beam widths/sections are on S-06; slab sections on S-05.",
+    "Beam lines: row A = B5, row A''''' (1.80 below A) = B2, row B = B6, grids 1 and 3 = B3, grid 2 = B4, the cubicle partitions at 1'' and 2' = B1 (row A to the B2 line only). Two short stubs run north of row A: B4 at grid 2 (carries slab S3) and B3-1 at grid 3.",
+    "S-06 draws B2 and B5 as two 2.60 spans continuous over columns at grids 1, 2, 3. They are split here at 1'' and 2' only because B1 lands there (section 5 atomic segments); the spec is the same on both halves.",
+    "Columns: S-02 draws a column box at all six grid intersections without printing a mark; the mark C1 is taken from S-01, which prints 'F1 , C1' / 'F2 , C1' / 'F3 , C1' at the same six points.",
+    "The lower two panels (A'''''-B x 1-2 and 2-3, 2.60 x 1.00) are marked S2 on S-02, but the S-05 section titled S1 is dimensioned 1.00 (short) x 2.60 (long) - exactly these panels - while the S2 section is 1.30 x 1.80, the cubicle panels. S1 appears nowhere on the plan. Kept the plan's printed mark S2 (section 0.3); both S1 and S2 sections are 0.08 thick with Ø9@0.20 both ways, so the spec join gives the same slab either way. Likely a plan labelling slip.",
+    "The two small boxes outside grids 1 and 3 at A'''''-B (side entry steps on A-03) carry no mark on S-02 and are not recorded."
+  ],
+  "elements": [
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 0.875,
+      "span_source": "local_dimension",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "cantilever"
+      ],
+      "note": "ช่วงยื่น (cantilever) ไปทางทิศเหนือ รับพื้นยื่น S3 — ยาว 0.875 ม. จากรูปด้าน B4 (S-06); แปลน S-02 พิมพ์ 0.80 วัดจากผิวคาน B5"
+    },
+    {
+      "element_id": "B3-1",
+      "element_type": "beam",
+      "grid_ref_start": "A''''3",
+      "grid_ref_end": "A3",
+      "span_length_m": 0.875,
+      "span_source": "local_dimension",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "cantilever",
+        "stub_length_not_detailed"
+      ],
+      "note": "คานยื่นสั้นที่กริด 3 ไปทางทิศเหนือ; แปลนพิมพ์ 0.80 (จากผิวคาน B5) เหมือนช่วงยื่นของ B4 — ใช้ปลายเดียวกัน A'''' (0.875 จากกริด A); ไม่มีรูปด้านของ B3-1 และเส้นที่วาดสั้นกว่าเส้นมิติเล็กน้อย"
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A'''''1",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A1''",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1''",
+      "grid_ref_end": "A'''''1''",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:B5(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A1''",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A'''''2",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A2'",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "A'''''2'",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:B5(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A'''''3",
+      "span_length_m": 1.8,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''1",
+      "grid_ref_end": "B1",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''1",
+      "grid_ref_end": "A'''''1''",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''1''",
+      "grid_ref_end": "A'''''2",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''2",
+      "grid_ref_end": "B2",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "segment_not_in_member_elevation"
+      ],
+      "note": "S-02 พิมพ์ B4 ที่ช่วงนี้ แต่รูปด้าน B4 บน S-06 แสดงเฉพาะช่วง 1.80 กับช่วงยื่น 0.875"
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''2",
+      "grid_ref_end": "A'''''2'",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''2'",
+      "grid_ref_end": "A'''''3",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''3",
+      "grid_ref_end": "B3",
+      "span_length_m": 1.0,
+      "span_source": "local_dimension",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.6,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "note": "เสาที่จุดตัดกริดทั้ง 6 จุด (ช่วงฐานราก-พื้น 0.20x0.20 / พื้น-หลังคา 0.15x0.15 ตาม S-05); S-02 วาดกล่องเสาโดยไม่พิมพ์มาร์ค — มาร์ค C1 มาจาก S-01 ที่จุดเดียวกัน",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "mark_from_other_sheet"
+      ]
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-A''''' x 1-1''",
+        "A-A''''' x 1''-2",
+        "A-A''''' x 2-2'",
+        "A-A''''' x 2'-3",
+        "A'''''-B x 1-2",
+        "A'''''-B x 2-3"
+      ],
+      "note": "พื้นห้องส้วม 4 ช่อง (1.30 x 1.80) + พื้นทางเดินหน้าห้อง 2 ช่อง (2.60 x 1.00)",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "plan_mark_vs_section_dimensions"
+      ]
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "grid_refs": [
+        "A''''-A x 1'''-2"
+      ],
+      "note": "พื้นยื่นกว้าง 0.50 ม. ทางทิศเหนือ ยื่นจากคาน B4 (ช่องเก็บของ)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A''-A x 1'-3'",
+        "A-B x 1'-1",
+        "A-B x 3-3'",
+        "B-B'' x 1'-3'"
+      ],
+      "note": "พื้นวางบนดิน (ทางเท้า) รอบอาคาร ถึงเส้นขอบประ 1.20 / 1.60 ม. — แปลนพิมพ์ GS 5 ตำแหน่ง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}
