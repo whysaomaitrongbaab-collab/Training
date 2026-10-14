@@ -1,0 +1,332 @@
+{
+  "png": "11",
+  "doc_page": 11,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก, แบบโครงสร้าง",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_61/บ้าน_เล็ก_1ชั้น_61_หน้า11.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_61_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แบบโครงสร้าง",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนฐานราก 1:75 (footing_plan)",
+    "view2: แบบโครงสร้าง 1:75 + legend BX (+X.XX) = แจ้งขนาดคาน / แจ้งระดับหลังคาน (beam_plan)"
+  ],
+  "confidence_score": 0.93,
+  "confidence_flags": [],
+  "warnings": [
+    "19 RC beam segments, each mark printed with its top-of-beam level (legend: BX = beam size mark, (+X.XX) = แจ้งระดับหลังคาน); the level is kept as level_m with the print in level_m_printed_as. Labels were also cross-checked against the PDF text layer (positions of every B1/B2/C1/GS/S1 tag).",
+    "Two infill beams sit on no column: B1(+0.41) on x = 1.90 (1'''') from A to A'''' and B2(+0.41) on y = 1.50 (A'''') from grid 1 to grid 2 (S-01 chains 1.90 + 1.10 and 1.50 + 1.50). A''''1-A''''2 is kept as one segment: the 1'''' beam lands on it, it is not a support of it (section 5 splits only at supports).",
+    "Mixed levels at one joint: B1(+0.41) on 1'''' bears on the row-A B2 printed (+0.31) — recorded as printed.",
+    "Columns C1 at all 12 grid points (same points as the footing plan's 'F1, C1').",
+    "A thin unlabelled outline left of grid 1 between A and B (a window/sill projection — window น2 of A-03 sits there) is not a structural element and is not recorded.",
+    "Step marks on the plan are ST-01/ST-02 while the S-05 sections are titled ST-1/ST-2 — kept as printed on each sheet; each section names the beam it lands on (B2 / B1), matching the plan positions (row-A beam 1-2 is B2, row-D beam 1-2 is B1). Stair refs are approximate nearest points (section 10a)."
+  ],
+  "elements": [
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.31,
+      "level_m_printed_as": "B2(+0.31)",
+      "note": "แนวกริด 1 ช่วง A-B; ป้ายอยู่ด้านนอกอาคารข้างเส้นกรอบหน้าต่าง น2",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.31,
+      "level_m_printed_as": "B2(+0.31)",
+      "note": "แนว A ช่วง 1-2 (ขอบห้องน้ำ/ทางเดินด้านลานซักล้าง); ST-01 วางชิดคานนี้",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1''''",
+      "grid_ref_end": "A''''1''''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B1(+0.41)",
+      "note": "คานซอยแนว x = 1.90 (1'''') ระหว่างพื้น S1 กับ GS วางบนคาน B2 แนว A และคาน B2 แนว A''''",
+      "confidence_score": 0.93,
+      "confidence_flags": [
+        "bears_on_beam:B2(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B2(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B2(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B1(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''''1",
+      "grid_ref_end": "A''''2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B2(+0.41)",
+      "note": "คานซอยแนว y = 1.50 (A'''') ช่วง 1-2 วางบนคาน B2 แนวกริด 1 และแนวกริด 2; รับคาน B1 แนว 1'''' ที่ A''''1''''",
+      "confidence_score": 0.93,
+      "confidence_flags": [
+        "bears_on_beam:B2(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B2(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B1(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B2(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B1(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B1(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "level_m": 0.31,
+      "level_m_printed_as": "B1(+0.31)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B1(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "level_m": 0.31,
+      "level_m_printed_as": "B1(+0.31)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.41,
+      "level_m_printed_as": "B1(+0.41)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "level_m": 0.31,
+      "level_m_printed_as": "B1(+0.31)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.31,
+      "level_m_printed_as": "B1(+0.31)",
+      "note": "ST-02 วางชิดคานนี้ด้านนอกแนว D",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "level_m": 0.31,
+      "level_m_printed_as": "B1(+0.31)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 12,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3",
+        "C1",
+        "C2",
+        "C3",
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~A1'''''",
+      "note": "ขั้นบันไดนอกแนว A ช่วง 1''''-2 (เส้นประ) ลงจากทางเดินไปลานซักล้าง; รายละเอียดคือ ST-1 บน S-05 (ลงบนคาน B2)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-02",
+      "element_type": "stair",
+      "grid_ref": "~D1'''",
+      "note": "ขั้นบันไดนอกแนว D ช่วง 1-2 (เส้นประ) ขึ้นระเบียง; รายละเอียดคือ ST-2 บน S-05 (ลงบนคาน B1)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-A'''' x 1-1''''"
+      ],
+      "note": "พื้น คสล. หนา 0.10 (ห้องน้ำ F2 +0.36 บน A-03)",
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A'-A x 1-2",
+        "A-A'''' x 1''''-2",
+        "A''''-B x 1-2",
+        "A-B x 2-3",
+        "B-C x 1-2",
+        "B-C x 2-3",
+        "C-D x 1-2",
+        "C-D x 2-3"
+      ],
+      "note": "พื้นวางบนดิน 8 ช่อง; ช่อง A'-A x 1-2 คือลานซักล้างนอกแนว A ลึก 1.60 (ระยะจาก A-03/A-08 ไม่ได้พิมพ์บน S-01), ช่อง C-D x 1-2 คือระเบียงโล่ง",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    }
+  ]
+}
