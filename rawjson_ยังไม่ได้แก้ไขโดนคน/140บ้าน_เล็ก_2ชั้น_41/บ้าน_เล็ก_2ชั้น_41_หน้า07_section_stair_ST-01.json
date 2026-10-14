@@ -1,0 +1,57 @@
+{
+  "png": "07",
+  "doc_page": 7,
+  "discipline": "architectural",
+  "sheet_code": "A-07",
+  "sheet_name": "แบบขยายบันได",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_41/บ้าน_เล็ก_2ชั้น_41_หน้า07.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_41_หน้า00_gridline.json",
+  "view_title": "แปลนบันได ST-01, รูปตัด A",
+  "scale": "1:25",
+  "views": [
+    "view1: แปลนบันได ST-01 1:25",
+    "view2: รูปตัด A 1:25 — both describe the one stair, recorded as one element"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Steel stair, no RC: the stringer (คานแม่บันได) section goes in steel_section; the tread-support tube has no schema field of its own and is kept in tread_support_steel_section.",
+    "Plan chains (1.000 + 0.100 = 1.100 to grid 1; 1.100 + 0.600 + 1.200 = 2.900 from B) are in the grid master; they put the stringer edge at 1''' (-0.10) and the top of the run at A'''' (1.30).",
+    "0.225 tread is printed as 0.200 + 0.025 (nosing); tread_mm takes the 0.200 going. The 14@0.20 = 2.80 rise matches ground +0.10 to floor +2.90 on A-06."
+  ],
+  "elements": [
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "material": "steel",
+      "grid_ref": "~B1'",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 150,
+        "b_mm": 50,
+        "t_mm": 2.0,
+        "printed_as": "คานแม่บันได rectangular tube Ø-150x50x2.0 mm."
+      },
+      "tread_support_steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.4,
+        "printed_as": "rectangular tube Ø-75x38x1.4 mm."
+      },
+      "width_mm": 1000,
+      "width_mm_printed_as": "1.000 (+ 0.100 ถึงกริด 1)",
+      "riser_count": 14,
+      "riser_mm": 200,
+      "riser_printed_as": "14@0.20 m. = 2.80 m.",
+      "tread_mm": 200,
+      "tread_printed_as": "0.225 = 0.200 + 0.025",
+      "run_printed_as": "1.100 | 0.600 | 1.200 = 2.900 (จากแนว B)",
+      "landing_length_mm": 600,
+      "note": "บันไดเหล็กช่วงเดียวมีชานพัก: ขั้น 1-6 ในช่วง 1.100 จากแนว B, ชานพัก 0.600, ขั้น 8-13 ในช่วง 1.200 ถึงขั้น 14 ที่ระดับชั้นสอง; ลูกนอนรองด้วย rectangular tube 75x38x1.4 (2 ป้าย); ราวบันไดและราวกันตก เหล็กรูปพรรณ เลือกแบบภายหลัง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}
