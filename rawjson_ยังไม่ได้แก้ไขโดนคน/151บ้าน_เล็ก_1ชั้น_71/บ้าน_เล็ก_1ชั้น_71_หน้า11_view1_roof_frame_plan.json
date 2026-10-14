@@ -1,0 +1,291 @@
+{
+  "png": "11",
+  "doc_page": 11,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_71/บ้าน_เล็ก_1ชั้น_71_หน้า11.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_71_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 — main mono-pitch roof over grids 1-3 / rows A-D + หมายเหตุ legend (roof_frame_plan)",
+    "view2: untitled lean-to (porch) roof framing over grids 1-2 / rows C-D' (roof_frame_plan)"
+  ],
+  "view_title": "แบบโครงสร้างหลังคา",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Main roof: steel mono-pitch frame, high at row C (T2) and low at row A (รูปตัด B, A-07). Members from the หมายเหตุ legend and leaders: TRUSS T1 on grids 1, 2, 3 (dashed, labelled T1 three times), TRUSS T2 on row C (heavy long-dash, labelled), rectangular tube Ø-100x50x2.3 on rows A and B (thin dash-dot = the legend linetype; the leader arrow lands on row B), แป C-100x50x20x2.3 @1.50 (thin solid lines).",
+    "T1 is split at its supports A, B, C (the three posts in the S-03 TRUSS T1 elevation); its top chord runs on to the roof edges A' (-1.00) and D (7.00) on the plan, so those 1.00 overhangs are their own segments, flagged top_chord_only. T2 and the two tube lines run grid 1 to grid 3 only (no overhang) and are split at grid 2.",
+    "The rectangular-tube lines carry no mark: element_id null with element_name_assigned (section 0.2), element_type beam with material steel. The printed symbol before 100x50x2.3 is a slashed rectangle — read as RHS (house 95/134 precedent), the print kept in printed_as.",
+    "No member level is printed on this sheet; the frame levels (column tops +3.04 / +3.46, roof +4.36) are in the grid master z_levels only."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T1 1.00 ม. ถึงขอบหลังคา (ระยะจากแปลน S-02; รูป Truss T1 วาดคอร์ดบนยื่นแต่ไม่พิมพ์ระยะ)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T1 1.00 ม. ถึงขอบหลังคา (ระยะจากแปลน S-02; รูป Truss T1 วาดคอร์ดบนยื่นแต่ไม่พิมพ์ระยะ)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T1 1.00 ม. ถึงขอบหลังคา (ระยะจากแปลน S-02; รูป Truss T1 วาดคอร์ดบนยื่นแต่ไม่พิมพ์ระยะ)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "แนว A (หัวเสาด้านต่ำของหลังคา) — linetype ตาม legend rectangular tube",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "rectangular tube 100x50x2.3",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube Ø-100x50x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "แนว A (หัวเสาด้านต่ำของหลังคา) — linetype ตาม legend rectangular tube",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "rectangular tube 100x50x2.3",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube Ø-100x50x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "แนว B — ลูกศร leader \"rectangular tube Ø-100x50x2.3 mm.\" ชี้ที่เส้นนี้",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "rectangular tube 100x50x2.3",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube Ø-100x50x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "แนว B — ลูกศร leader \"rectangular tube Ø-100x50x2.3 mm.\" ชี้ที่เส้นนี้",
+      "confidence_score": 0.88,
+      "confidence_flags": [],
+      "element_name_assigned": "rectangular tube 100x50x2.3",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube Ø-100x50x2.3 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนเลย Truss T2 (แนว C) 1.00 ม. ถึงขอบหลังคาแนว D (แปลน S-02 วาดเส้น T1 ถึง D; รูป Truss T1 วาดคอร์ดบนยื่นราว 1.00 ม. แต่ไม่พิมพ์ระยะ)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนเลย Truss T2 (แนว C) 1.00 ม. ถึงขอบหลังคาแนว D (แปลน S-02 วาดเส้น T1 ถึง D; รูป Truss T1 วาดคอร์ดบนยื่นราว 1.00 ม. แต่ไม่พิมพ์ระยะ)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนเลย Truss T2 (แนว C) 1.00 ม. ถึงขอบหลังคาแนว D (แปลน S-02 วาดเส้น T1 ถึง D; รูป Truss T1 วาดคอร์ดบนยื่นราว 1.00 ม. แต่ไม่พิมพ์ระยะ)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แป",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "แป C-100x50x20x2.3 mm. @1.50 m."
+      },
+      "spacing_mm": 1500,
+      "spacing_mm_printed_as": "@1.50 m.",
+      "count": 7,
+      "grid_refs": [
+        "A'-D x 1'-3'"
+      ],
+      "note": "เส้นบาง 7 เส้นตามแนว x จากขอบหลังคา A' ถึงแนว D (ยื่นถึง 1' และ 3') วางบน Truss T1; ระยะที่วาดบนแปลน ≈1.33 ม. (6 ช่วงเท่ากันใน 8.00 ม.) แม้พิมพ์ @1.50 ม.",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "count_from_drawn_lines",
+        "drawn_spacing_not_equal_printed"
+      ]
+    }
+  ]
+}

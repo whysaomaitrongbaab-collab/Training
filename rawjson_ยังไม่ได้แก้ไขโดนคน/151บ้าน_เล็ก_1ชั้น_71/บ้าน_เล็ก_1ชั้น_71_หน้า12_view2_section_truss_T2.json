@@ -1,0 +1,60 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_71/บ้าน_เล็ก_1ชั้น_71_หน้า12.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_71_หน้า00_gridline.json",
+  "scale": "1:75",
+  "views": [
+    "view1: TRUSS T1 1:75 (section)",
+    "view2: TRUSS T2 1:75 (section)"
+  ],
+  "view_title": "TRUSS T2",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Two callouts: \"C-100x50x20x2.3 mm.\" with two arrows (top chord and bottom chord) and \"C-75x45x15x2.3 mm.\" with one arrow (a vertical). The chord section is steel_section; the verticals go in vertical_steel_section — a role-prefixed key following house 108's bottom_chord_steel_section / diagonal_steel_section precedent, because steel_section must stay a single object (section 0.6).",
+    "Parallel-chord truss 0.746 deep, verticals at every 1.000, on three supports 3.00 | 3.00 (grids 1, 2, 3 along row C on the roof plan). The panel chain is in the grid master (TRUSS T2 view); its panel points became x dummies per section 4 rule 4."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "C-100x50x20x2.3 mm."
+      },
+      "vertical_steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "t_mm": 2.3,
+        "printed_as": "C-75x45x15x2.3 mm."
+      },
+      "height_mm": 746,
+      "height_mm_printed_as": "0.746",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.000 x 6 (3.00 | 3.00 = 6.00)",
+      "note": "โครงถักคอร์ดขนาน ลึก 0.746 ม. คอร์ดบน/ล่าง C-100x50x20x2.3 เสาตั้ง C-75x45x15x2.3 ทุก 1.00 ม. วางบนเสา 3 จุด (กริด 1, 2, 3 ตามแนว C) เป็นปลายสูงของ Truss T1",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}
