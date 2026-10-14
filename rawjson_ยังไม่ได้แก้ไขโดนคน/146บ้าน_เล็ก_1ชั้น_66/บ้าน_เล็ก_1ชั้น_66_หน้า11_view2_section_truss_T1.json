@@ -1,0 +1,50 @@
+{
+  "png": "11",
+  "doc_page": 11,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_66/บ้าน_เล็ก_1ชั้น_66_หน้า11.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_66_หน้า00_gridline.json",
+  "view_title": "TRUSS T1",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: TRUSS T1 1:75 (section)",
+    "view3: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Gable truss spanning B to A (4.00), apex over A''' (2.00); panel chain 1.00 x 4 is in the grid master (TRUSS T1 view). Printed heights from the bottom chord: 0.87 (first panel point) and 1.57 (apex) — kept on the element as height_mm; A-06/A-07 print +4.70 to +6.12 = 1.42 between ระดับหลังอะเส and ระดับหลังอกไก่ (different reference points, both kept as printed).",
+    "Both leaders (top chord/webs and bottom chord/posts) read '⊠ 100x50x3.2 mm. (น้ำหนัก 7.01 กก./ม.)'. The ridge truss T2 is cut at the apex. The อะเส 2C-150x50x20x2.3 is cut at both supports."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 3.2,
+        "printed_as": "⊠ 100x50x3.2 mm. (น้ำหนัก 7.01 กก./ม.)"
+      },
+      "height_mm": 1570,
+      "height_mm_printed_as": "1.57 (0.87 ที่จุดต่อแรก)",
+      "span_m": 4.0,
+      "supports": [
+        "B",
+        "A"
+      ],
+      "panel_lengths_printed_as": "1.00 x 4 = 4.00",
+      "note": "โครงถักจั่ว พาด B-A 4.00 ม. บนอะเส 2C-150x50x20x2.3 ที่แนว A และ B; คอร์ดบนยื่นเลยจุดรองรับเป็นชายคา (ไม่พิมพ์ระยะในรูปนี้)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    }
+  ]
+}

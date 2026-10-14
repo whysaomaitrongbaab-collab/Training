@@ -1,0 +1,243 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก, แบบโครงสร้าง",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_66/บ้าน_เล็ก_1ชั้น_66_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_66_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แบบโครงสร้าง",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนฐานราก 1:75 (footing_plan)",
+    "view2: แบบโครงสร้าง 1:75 (beam_plan)"
+  ],
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "15 RC floor-beam segments (floor at ระดับพื้นห้อง +1.30). Marks B1 / B2 / B3 read off the plan; B1' (stair-foot beam) appears only in the S-03 ST-1 detail and the S-04 sections, not on this plan, so it has no plan segment.",
+    "Two infill beams sit on no column: B2 on row A''' (y = 2.00, chains 2.00 + 2.00) between grids 2 and 3, bearing on the B3 beams of lines 2 and 3; and B1 on line 2' (x = 5.50, chains 1.50 + 1.50) from row A to row A''', bearing on the row-A B2 and the A''' B2. The B3 beams on lines 2 and 3 (A to B) are kept as one segment each — the A''' beam lands on them, it is not a support (section 5).",
+    "Row-A and row-B beams between grids 2 and 3 are kept as one segment: the B1 on 2' lands on the row-A beam and nothing lands on row B at 2'.",
+    "Columns C1: 10 printed on this plan (A1-A4, B1-B4, C2, C3). The footing plan also prints 'F1,C1' at C'2' under the stair foot, where this plan draws only the dashed stair — that 11th C1 is taken from the footing plan (structural sheet, explicit label) and included in the count; confidence lowered for it in the note.",
+    "Slab marks: S1 in the bathroom/veranda core (4 panels between grids 2 and 3), PS (precast plank, span arrow along y) in the two bedroom bays. Stair ST-01 drawn dashed beyond row C; its ref is the approximate nearest point (section 10a)."
+  ],
+  "elements": [
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 2 ช่วง A-B; รับคาน B2 แนว A''' ที่กึ่งกลาง",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "รับคาน B1 แนว 2' ที่กึ่งกลาง",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "A'''2'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานซอยแนว x = 5.50 (2') ระหว่างพื้น S1 ห้องน้ำ 1 และห้องน้ำ 2 วางบนคาน B2 แนว A และคาน B2 แนว A'''",
+      "confidence_score": 0.93,
+      "confidence_flags": [
+        "bears_on_beam:B2(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 3 ช่วง A-B; รับคาน B2 แนว A''' ที่กึ่งกลาง",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A'''3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานซอยแนว y = 2.00 (A''') ระหว่างห้องน้ำกับระเบียง วางบนคาน B3 แนวกริด 2 และ 3",
+      "confidence_score": 0.93,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานขอบระเบียงด้านบันได ST-01",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 11,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "C2",
+        "C3",
+        "C'2'"
+      ],
+      "note": "10 ต้นพิมพ์บนแบบโครงสร้างนี้; ต้นที่ C'2' (ใต้ตีนบันได) มาจากป้าย 'F1,C1' บนแปลนฐานรากเท่านั้น",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~C'2'",
+      "note": "บันไดขึ้นระเบียงนอกแนว C ช่วง 2-3 (เส้นประ) ยาว 1.35 ถึงปลาย; รายละเอียดคือ ST-1 บน S-03 (ตีนบันไดบนคาน B1' หัวบันไดบนคาน B2)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-A''' x 2-2'",
+        "A-A''' x 2'-3",
+        "A'''-B x 2-3",
+        "B-C x 2-3"
+      ],
+      "note": "พื้น คสล. 4 ช่อง: ห้องน้ำ 1, ห้องน้ำ 2 (A-A'''), ห้องโถงหน้าห้องน้ำ (A'''-B) และระเบียง (B-C)",
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-B x 1-2",
+        "A-B x 3-4"
+      ],
+      "note": "พื้นสำเร็จรูป ห้องนอน 1 และห้องนอน 2; ลูกศรทิศทางแผ่นพื้นวางตามแนว y (พาดจากแนว A ไปแนว B)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    }
+  ]
+}
