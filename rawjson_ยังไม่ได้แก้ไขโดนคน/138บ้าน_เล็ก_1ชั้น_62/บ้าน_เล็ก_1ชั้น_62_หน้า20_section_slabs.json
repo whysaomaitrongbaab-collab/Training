@@ -1,0 +1,114 @@
+{
+  "png": "20",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_62/บ้าน_เล็ก_1ชั้น_62_หน้า20.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_62_หน้า00_gridline.json",
+  "view_title": "GS, S1, S2, PS",
+  "scale": "1:25",
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Slab sections are detail views (spans written as L, L/3, L/4); thicknesses and bar callouts are member-internal and stay on the elements.",
+    "S2 is printed twice under the same title 'S2(ด้านสั้น)' — the right-hand view is evidently the long direction (S1 shows ด้านสั้น / ด้านยาว in the same layout). Both views carry identical bars, so nothing depends on which is which; flagged on S2."
+  ],
+  "elements": [
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB9@0.20m#"
+      },
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "base_fill": "ทรายหยาบอัดแน่น",
+      "note": "พื้นวางบนดิน ตะแกรง RB9@0.20m# ชั้นเดียว รองด้วยคอนกรีตหยาบ 1:3:5 หนา 0.05 บนทรายหยาบอัดแน่น; ขอบพื้นยึดเข้าคาน",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB9@0.20m#"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "position": "top, over supports: L/3 from one side, L/4 from the other",
+          "printed_as": "RB9@0.20m"
+        }
+      ],
+      "note": "ตะแกรงล่าง RB9@0.20m#; เหล็กบน RB9@0.20m เหนือคานยาว L/3 และ L/4 ทั้งด้านสั้นและด้านยาว (รูปตัด S1(ด้านสั้น) และ S1(ด้านยาว) เหมือนกัน)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "RB9@0.15m#"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "position": "top, over supports: L/3 from one side, L/4 from the other",
+          "printed_as": "RB9@0.20m"
+        }
+      ],
+      "note": "ตะแกรงล่าง RB9@0.15m#; เหล็กบน RB9@0.20m เหนือคานยาว L/3 และ L/4 — ทั้งสองรูปตัดพิมพ์ชื่อ \"S2(ด้านสั้น)\" (รูปขวาน่าจะเป็นด้านยาว) และเหล็กเหมือนกัน",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "duplicate_view_title_on_sheet"
+      ]
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "topping_thickness_mm": 50,
+      "topping_thickness_mm_printed_as": "คอนกรีตทับหน้า หนา 5 ซม.",
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB 6 mm. @ 0.20 M. หรือ WIREMESH 4 MM."
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 400,
+          "type": "RB",
+          "position": "edge bar at the beam, bent 0.50 x 0.25",
+          "printed_as": "RB 9 mm. @ 0.40 M."
+        }
+      ],
+      "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป รับน้ำหนักบรรทุกจรได้ไม่น้อยกว่า 200 กก./ตร.ม. วางพาดบนคานไม่น้อยกว่า 5 ซม.; คอนกรีตทับหน้าหนา 5 ซม. เหล็กตะแกรง RB6@0.20 หรือ wiremesh 4 มม.; เหนือคานกลางมีเหล็กบน L/4 ทั้งสองข้าง (งอ 0.25); ระยะ 0.16 พิมพ์ที่ขอบพื้นริมคาน",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}
