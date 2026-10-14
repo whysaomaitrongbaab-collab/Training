@@ -1,0 +1,130 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบขยายโครงหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_39/บ้าน_เล็ก_2ชั้น_39_หน้า15.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_39_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T2, TRUSS T3",
+  "scale": "1:75",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Each truss uses two printed sections: rectangular tube 100x50x1.7 (chords / end posts) and 75x38x1.7 (the other members, per the leader lines). The first goes in steel_section; the second is recorded as web_steel_section (new key — section 6a allows only one steel_section object per member; reuse this name for a second truss section).",
+    "The printed symbol before both sizes is a slashed rectangle, read as a rectangular hollow section (RHS); the print is kept in printed_as.",
+    "T1's 0.893 depth is printed at its high (row C) end; the truss slopes down towards row A where it sits on the อะเส. T3 prints 0.790 and T2 0.421 — kept as printed, not reconciled against T1.",
+    "The 1.000 x 6 panel chains under all three trusses are recorded in the grid master (dimension_chains); their ticks became x/y dummy lines per section 4 rule 4."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "web_steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 893,
+      "height_mm_printed_as": "0.893",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "C",
+        "B",
+        "A"
+      ],
+      "panel_lengths_printed_as": "1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 (3.00 + 3.00 = 6.00)",
+      "note": "โครงถักหลังคาลาดเดียว วางตามแนวกริด 1, 2, 3 (y): ปลาย C รับ T3, กลางรับ T2 ที่แนว B, ปลาย A วางบนอะเส 2C-100x50x20x2.3 (หลังอะเสระดับ+5.96); ลึก 0.893 ที่ปลาย C แล้วลาดลงหาปลาย A; คอร์ดบนยื่นพ้นจุดรองรับทั้งสองข้าง; ป้าย 100x50x1.7 ชี้คอร์ดบน, ป้าย 75x38x1.7 ชี้คอร์ดล่างและเสาตั้ง",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "web_steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 421,
+      "height_mm_printed_as": "0.421",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 (3.00 + 3.00 = 6.00)",
+      "note": "โครงถักแนว B วางระหว่าง T1 ที่กริด 1, 2, 3; ลึก 0.421; ป้าย 100x50x1.7 ชี้คอร์ดบน คอร์ดล่าง และเสาตั้งปลาย, ป้าย 75x38x1.7 ชี้เสาตั้งกลางช่วง",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "web_steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 790,
+      "height_mm_printed_as": "0.790",
+      "spans_m": [
+        3.0,
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 (3.00 + 3.00 = 6.00)",
+      "note": "โครงถักแนว C วางระหว่าง T1 ที่กริด 1, 2, 3; ลึก 0.790; ป้าย 100x50x1.7 ชี้คอร์ดบน คอร์ดล่าง และเสาตั้งปลาย, ป้าย 75x38x1.7 ชี้เสาตั้งกลางช่วง",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบขยายโครงสร้าง",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_39/บ้าน_เล็ก_2ชั้น_39_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_39_หน้า00_gridline.json",
+  "view_title": "F1, C1, B1, B2, B3 (กลางช่วงคาน / ช่วงเสา, คานยื่น), ST-2",
+  "scale": "1:25",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Each beam has a mid-span and a support/cantilever section; both recorded with section_ref (same mark twice on one sheet is intended, not a collision). B1/B2 are 0.20 x 0.40 with ป.1RB6@0.20; B3 is 0.20 x 0.50 with ป.1RB6@0.15.",
+    "F1 prints 9+9-DB16 on a 0.50 x 0.50 cap while the cut section draws only about 7 bar dots in one direction — the printed callout is kept (count 18 = two-way total) and the element confidence lowered; the drawing gives no other figure.",
+    "F1 cap height 0.60; 1.00 from ระดับดินเดิม down to the top of the cap; lean concrete 0.05 + sand 0.05 under it. Pile I 0.22 x 0.22, one per cap, SAFE LOAD 23 t.",
+    "ST-2: the 6-RB9 leader points at the hatched step body and RB9@0.10 at its top edge; read as 6 longitudinal bars (6 dots in the cut) with RB9 ties @0.10 — role of the second callout not stated, flagged. Plan mark is ST-02.",
+    "Steel grade conflict with the notes (A-01 says SR24 for footing-column-beam) is recorded in the notes file; member bars here follow the printed DB/RB notation."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "width_mm": 500,
+      "width_mm_printed_as": "0.25 + 0.25 = 0.50 (สี่เหลี่ยมจัตุรัส)",
+      "height_mm": 600,
+      "main_bar": {
+        "count": 18,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "9+9-DB16",
+        "count_printed_as": "9+9"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "footing_type": "ฐานรากเสาเข็ม",
+      "pile": {
+        "type": "เสาเข็มคอนกรีตรูปตัวไอ",
+        "size_mm": 220,
+        "length_m": null,
+        "safe_load_t_per_pile": 23,
+        "printed_as": "เสาเข็มรูปตัวไอ I 0.22 x 0.22  m. มี Dowel Bar จำนวน 1 ต้น (SAFE LOAD 23 ตัน/ต้น)"
+      },
+      "pile_count": 1,
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "ground_reference": "ระดับดินเดิม; 1.00 ลงถึงหลังฐานราก",
+      "note": "ตอม่อ C1 ต่อจากฐานรากขึ้นถึงระดับดินเดิม (ยาว 1.00 ตามรูป); มี Dowel Bar จากเสาเข็มเข้าฐานราก",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bar_count_vs_drawn_dots"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "width_mm": 200,
+      "depth_mm": 200,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "6-DB12"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.1RB9@0.15 m."
+      },
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "กลางช่วงคาน",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12+ ส.พ.ศ. 2-DB12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.20 m."
+      },
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "ช่วงเสา, คานยื่น",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12+ ส.พ.ศ. 2-DB12"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.20 m."
+      },
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "section_ref": "กลางช่วงคาน",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12"
+        },
+        "bottom": {
+          "count": 6,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12+ ส.พ.ศ. 4-DB12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.20 m."
+      },
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "section_ref": "ช่วงเสา, คานยื่น",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 6,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12+ ส.พ.ศ. 4-DB12"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.20 m."
+      },
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "section_ref": "กลางช่วงคาน",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16+ ส.พ.ศ. 2-DB16"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.15 m."
+      },
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "section_ref": "ช่วงเสา, คานยื่น",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16+ ส.พ.ศ. 2-DB16"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.15 m."
+      },
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-2",
+      "element_type": "stair",
+      "tread_mm": 250,
+      "riser_mm": 150,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "6-RB9"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "RB9@0.10 m."
+      },
+      "note": "ขั้นบันได คสล. วางบนดินที่ระดับ ± 0.00 ต่อเข้าคาน B1; รูปตัดพิมพ์ 0.25 (ลูกนอน), 0.15 (จากหลังขั้นถึงหลังคาน B1) และ 0.25 (จากระดับ ± 0.00 ถึงหลังขั้น)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "leader_role_ambiguous"
+      ]
+    }
+  ]
+}
