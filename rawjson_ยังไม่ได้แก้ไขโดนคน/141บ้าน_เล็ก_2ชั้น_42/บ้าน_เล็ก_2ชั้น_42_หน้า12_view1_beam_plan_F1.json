@@ -1,0 +1,150 @@
+{
+ "png": "12",
+ "doc_page": 12,
+ "discipline": "structural",
+ "sheet_code": "S-02",
+ "sheet_name": "แบบโครงสร้างชั้นล่าง, แบบโครงสร้างชั้นสอง",
+ "pattern": "beam_plan",
+ "source_image": "image/บ้าน_เล็ก_2ชั้น_42/บ้าน_เล็ก_2ชั้น_42_หน้า12.png",
+ "grid_source": "บ้าน_เล็ก_2ชั้น_42_หน้า00_gridline.json",
+ "floor_level": "F1",
+ "view_title": "แบบโครงสร้างชั้นล่าง",
+ "scale": "1:75",
+ "views": [
+  "view1: แบบโครงสร้างชั้นล่าง 1:75 (beam_plan, F1)",
+  "view2: แบบโครงสร้างชั้นสอง 1:75 (beam_plan, F2)",
+  "legend: BX (+X.XX) = แจ้งขนาดคาน / แจ้งระดับหลังคาน"
+ ],
+ "confidence_score": 0.92,
+ "confidence_flags": [],
+ "warnings": [
+  "Every ground-floor beam is printed B1(+0.10): mark B1, top of beam +0.10 (legend BX(+X.XX) under the two views). The ground floor is an open undercroft (โถงเปิดโล่ง F3 +0.10 on A-03) carried by slab GS.",
+  "The row-C beam continues 1.20 past grid 1 to 1'' (-1.20), carrying the foot of steel stair ST-01; there is no column or footing at 1'' (S-01), so the segment is a cantilever from C1.",
+  "Stair ST-01 (dashed, bay B-C left of grid 1) is a steel stair detailed on A-08 (extracted as a section); its ref is the approximate nearest point (section 10a)."
+ ],
+ "elements": [
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "A1",
+   "grid_ref_end": "B1",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "level_m": 0.1,
+   "level_m_printed_as": "(+0.10)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "A1",
+   "grid_ref_end": "A2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "level_m": 0.1,
+   "level_m_printed_as": "(+0.10)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "A2",
+   "grid_ref_end": "B2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "level_m": 0.1,
+   "level_m_printed_as": "(+0.10)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "B1",
+   "grid_ref_end": "C1",
+   "span_length_m": 3.0,
+   "span_source": "grid_table",
+   "level_m": 0.1,
+   "level_m_printed_as": "(+0.10)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "B2",
+   "grid_ref_end": "C2",
+   "span_length_m": 3.0,
+   "span_source": "grid_table",
+   "level_m": 0.1,
+   "level_m_printed_as": "(+0.10)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "C1''",
+   "grid_ref_end": "C1",
+   "span_length_m": 1.2,
+   "span_source": "grid_table",
+   "level_m": 0.1,
+   "level_m_printed_as": "(+0.10)",
+   "note": "คานยื่นรับเชิงบันได ST-01 ไม่มีเสา/ฐานรากที่แนว 1'' (S-01)",
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "cantilever_from:C1"
+   ]
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "C1",
+   "grid_ref_end": "C2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "level_m": 0.1,
+   "level_m_printed_as": "(+0.10)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "C1",
+   "element_type": "column",
+   "count": 6,
+   "grid_refs": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "confidence_score": 0.95,
+   "confidence_flags": [],
+   "note": "เสาชั้นล่าง (ฐานราก F1/F2 ถึงคานชั้นสอง)"
+  },
+  {
+   "element_id": "GS",
+   "element_type": "slab",
+   "grid_refs": [
+    "A-C x 1-2"
+   ],
+   "level_m": 0.1,
+   "level_m_printed_as": "F3 +0.10 (A-03 room tag)",
+   "note": "พื้นวางบนดินใต้ถุนโล่ง เต็มช่อง A-C x 1-2",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ST-01",
+   "element_type": "stair",
+   "grid_ref": "~C1",
+   "note": "บันไดเหล็กขึ้นชั้นสอง อยู่นอกแนว 1 ช่วง B-C (x -1.20 ถึง -0.10), เชิงบันไดฝั่ง C บนคาน B1(+0.10) ยื่น; รายละเอียดคือ A-08 แปลนบันได ST-01 / รูปตัด A",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  }
+ ]
+}

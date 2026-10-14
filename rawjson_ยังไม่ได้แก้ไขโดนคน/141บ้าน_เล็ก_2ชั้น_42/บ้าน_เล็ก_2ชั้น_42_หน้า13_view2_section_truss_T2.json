@@ -1,0 +1,80 @@
+{
+ "png": "13",
+ "doc_page": 13,
+ "discipline": "structural",
+ "sheet_code": "S-03",
+ "sheet_name": "แบบโครงสร้างหลังคา",
+ "source_image": "image/บ้าน_เล็ก_2ชั้น_42/บ้าน_เล็ก_2ชั้น_42_หน้า13.png",
+ "grid_source": "บ้าน_เล็ก_2ชั้น_42_หน้า00_gridline.json",
+ "views": [
+  "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan)",
+  "view2: TRUSS T2 1:75 (section)",
+  "view3: TRUSS T1 1:75 (section)"
+ ],
+ "pattern": "section",
+ "view_title": "TRUSS T2",
+ "scale": "1:75",
+ "confidence_score": 0.85,
+ "confidence_flags": [],
+ "warnings": [
+  "The truss uses two sections: top chord rectangular tube 100x50x1.4; the 75x38x1.4 leader has two arrowheads, one on the bottom chord and one on a vertical. steel_section holds the top chord and every member is listed in member_sections[] (new key — a truss is not one section; noted so the next house can reuse it).",
+  "Panel chain 0.875 x4 = 3.50 between grids 1 and 2 is in the grid master (dimension_chains, TRUSS T2); the panel points became x dummies per section 4 rule 4."
+ ],
+ "elements": [
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "material": "steel",
+   "steel_section": {
+    "designation": "RHS",
+    "d_mm": 100,
+    "b_mm": 50,
+    "t_mm": 1.4,
+    "printed_as": "rectangular tube Ø-100x50x1.4 mm."
+   },
+   "member_sections": [
+    {
+     "member": "top chord",
+     "steel_section": {
+      "designation": "RHS",
+      "d_mm": 100,
+      "b_mm": 50,
+      "t_mm": 1.4,
+      "printed_as": "rectangular tube Ø-100x50x1.4 mm."
+     }
+    },
+    {
+     "member": "bottom chord",
+     "steel_section": {
+      "designation": "RHS",
+      "d_mm": 75,
+      "b_mm": 38,
+      "t_mm": 1.4,
+      "printed_as": "rectangular tube Ø-75x38x1.4 mm."
+     }
+    },
+    {
+     "member": "verticals",
+     "steel_section": {
+      "designation": "RHS",
+      "d_mm": 75,
+      "b_mm": 38,
+      "t_mm": 1.4,
+      "printed_as": "rectangular tube Ø-75x38x1.4 mm."
+     }
+    }
+   ],
+   "height_mm": 549,
+   "height_mm_printed_as": "0.549",
+   "span_length_m": 3.5,
+   "supports": [
+    "1",
+    "2"
+   ],
+   "panel_lengths_printed_as": "0.875 | 0.875 | 0.875 | 0.875 = 3.50",
+   "note": "โครงถักหลังคาเพิงแหงน วางบนอะเส 2C-100x50x20x2.3 (หลังอะเสระดับ +5.85) ที่แนว 1 และฝากเข้า TRUSS T1 ที่แนว 2; ลึก 0.549 ม. ที่ปลายสูง (แนว 2); คอร์ดบนยื่นเลยจุดรองรับทั้งสองข้างถึงขอบหลังคา (ไม่พิมพ์ระยะบนรูปนี้ — 1.30 จากแปลน)",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  }
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "png": "11",
+ "doc_page": 11,
+ "discipline": "structural",
+ "sheet_code": "S-01",
+ "sheet_name": "แปลนฐานราก",
+ "pattern": "footing_plan",
+ "source_image": "image/บ้าน_เล็ก_2ชั้น_42/บ้าน_เล็ก_2ชั้น_42_หน้า11.png",
+ "grid_source": "บ้าน_เล็ก_2ชั้น_42_หน้า00_gridline.json",
+ "floor_level": "F1",
+ "view_title": "แปลนฐานราก",
+ "scale": "1:75",
+ "confidence_score": 0.85,
+ "confidence_flags": [
+  "spec_sheet_missing_from_set"
+ ],
+ "warnings": [
+  "Every footing is printed 'F<n>, C1' — footing mark + the column C1 standing on it (C1 = 0.20 x 0.20, 4-DB12 on S-06). C1 is recorded here once (6 points).",
+  "Spec conflict, not resolved by renaming: the plan marks only F1 and F2, but the only footing detail sheet in the set (S-05) details F3 and F4. The sheet numbering jumps S-03 -> S-05, and the downloaded set has no S-04 — the sheet that would detail F1/F2. Scaled on the plan (A-B = 3.50 as the ruler): F1 measures about 1.20 x 1.20 with 3 x 3 = 9 pile symbols, F2 about 1.65 x 1.20 with 4 x 3 = 12 pile symbols — the same sizes and pile layouts S-05 gives for F3 (1.20 x 1.20, 9 piles) and F4 (1.65 x 1.20, 12 piles). Marks are kept exactly as printed (F1/F2 here, F3/F4 on S-05); a spec join by element_id will find nothing for F1/F2, which is the honest state of this set. The geometric match is recorded in each note for a later reader, not used to invent a spec.",
+  "F2 is drawn with its long side (≈1.65) along x at A1, B1 and B2."
+ ],
+ "elements": [
+  {
+   "element_id": "F2",
+   "element_type": "footing",
+   "count": 3,
+   "grid_refs": [
+    "A1",
+    "B1",
+    "B2"
+   ],
+   "note": "วาดขนาดราว 1.65 x 1.20 ม. (ด้านยาวตามแกน x) เสาเข็ม 12 ต้น (4 x 3) — ขนาดและผังเข็มตรงกับ F4 บน S-05; แผ่นรายละเอียด F1/F2 (S-04) ไม่มีในชุดแบบ",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "spec_sheet_missing_from_set"
+   ]
+  },
+  {
+   "element_id": "F1",
+   "element_type": "footing",
+   "count": 3,
+   "grid_refs": [
+    "A2",
+    "C1",
+    "C2"
+   ],
+   "note": "วาดขนาดราว 1.20 x 1.20 ม. เสาเข็ม 9 ต้น (3 x 3) — ขนาดและผังเข็มตรงกับ F3 บน S-05; แผ่นรายละเอียด F1/F2 (S-04) ไม่มีในชุดแบบ",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "spec_sheet_missing_from_set"
+   ]
+  },
+  {
+   "element_id": "C1",
+   "element_type": "column",
+   "count": 6,
+   "grid_refs": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "note": "เสาบนฐานราก (พิมพ์ร่วมกับมาร์คฐานราก 'F1, C1' / 'F2, C1')",
+   "confidence_score": 0.95,
+   "confidence_flags": []
+  }
+ ]
+}

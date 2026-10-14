@@ -1,0 +1,324 @@
+{
+ "png": "13",
+ "doc_page": 13,
+ "discipline": "structural",
+ "sheet_code": "S-03",
+ "sheet_name": "แบบโครงสร้างหลังคา",
+ "source_image": "image/บ้าน_เล็ก_2ชั้น_42/บ้าน_เล็ก_2ชั้น_42_หน้า13.png",
+ "grid_source": "บ้าน_เล็ก_2ชั้น_42_หน้า00_gridline.json",
+ "views": [
+  "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan)",
+  "view2: TRUSS T2 1:75 (section)",
+  "view3: TRUSS T1 1:75 (section)"
+ ],
+ "pattern": "roof_frame_plan",
+ "floor_level": "RF",
+ "view_title": "แบบโครงสร้างหลังคา",
+ "scale": "1:75",
+ "confidence_score": 0.85,
+ "confidence_flags": [],
+ "warnings": [
+  "Steel mono-pitch roof (หลังคาเมทัลชีท บุฉนวนโฟม PU), low side grid 1, high side grid 2 (A-04 slope arrows, A-07 section A). Members from the sheet's หมายเหตุ legend: dash-dot = อะเส 2C-100x50x20x2.3 (grid 1, top +5.85), long dash-short = TRUSS T1 (grid 2), heavy long dash-dot = TRUSS T2 (rows A, B, C), solid = จันทัน C-100x50x20x2.3, thin grey = Square Tubes 50x50x1.2 @1.50 (purlins).",
+  "T2 trusses span grid 1 (bearing on the อะเส over columns A1/B1/C1) to grid 2 (framing into T1 — the T1 elevation draws T2 at its three supports). T2 top chords overhang 1.30 to both roof edges (1' / 2'), recorded as their own top-chord segments.",
+  "อะเส (grid 1) and the T1 line (grid 2) are drawn to the roof edges A' / C' (1.00 overhangs). The อะเส overhangs carry the edge rafters; the T1 elevation shows no overhang, so the two T1-line overhang segments are kept at confidence 0.6 and flagged rather than dropped or promoted.",
+  "Rafters (จันทัน) are the four solid lines along x — the two roof edges A' / C' and the lines at A''''' (1.75) and B''' (5.00) printed by the 1.75 + 1.75 / 1.50 + 1.50 chains; the arrowed leader marks each one. Purlins are the thin lines along y: 6 drawn (incl. both roof-edge lines) at about 1.22 m spacing although the legend prints @1.50 m — count is the drawn number, spacing is the printed one.",
+  "Rafters and purlins carry no mark: element_id null with element_name_assigned (section 0.2). Square Tubes / rectangular tube are recorded with designation SHS / RHS and the print kept in printed_as."
+ ],
+ "elements": [
+  {
+   "element_id": null,
+   "element_type": "beam",
+   "grid_ref_start": "A'1",
+   "grid_ref_end": "A1",
+   "span_length_m": 1.0,
+   "span_source": "local_dimension",
+   "note": "เส้นอะเสบนแปลนลากต่อถึงขอบหลังคา 1.00 ม. (โซ่มิติ 1.00) รับจันทันริมหลังคา — ไม่มีเสาที่ปลาย",
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "drawn_to_roof_edge_on_plan"
+   ],
+   "element_name_assigned": "อะเส",
+   "material": "steel",
+   "steel_section": {
+    "designation": "2C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+   },
+   "level_m": 5.85,
+   "level_m_printed_as": "หลังอะเสระดับ+5.85"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A'2",
+   "grid_ref_end": "A2",
+   "span_length_m": 1.0,
+   "span_source": "local_dimension",
+   "note": "เส้นแบบ TRUSS T1 บนแปลนลากต่อถึงขอบหลังคา 1.00 ม. แต่รูป TRUSS T1 แสดงเฉพาะช่วง A-C (ไม่มีส่วนยื่น) — บันทึกตามเส้นบนแปลน ความมั่นใจต่ำ",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "plan_linetype_only_not_in_T1_elevation"
+   ]
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "A1'",
+   "grid_ref_end": "A1",
+   "span_length_m": 1.3,
+   "span_source": "local_dimension",
+   "note": "ส่วนยื่นคอร์ดบนของ TRUSS T2 ถึงขอบหลังคา 1.30 ม. (แปลนหลังคา/โซ่มิติ 1.30) — โครงถักเต็มลึกอยู่ระหว่างกริด 1 ถึง 2 เท่านั้น",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "top_chord_only"
+   ]
+  },
+  {
+   "element_id": null,
+   "element_type": "beam",
+   "grid_ref_start": "A1",
+   "grid_ref_end": "B1",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.88,
+   "confidence_flags": [],
+   "element_name_assigned": "อะเส",
+   "material": "steel",
+   "steel_section": {
+    "designation": "2C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+   },
+   "level_m": 5.85,
+   "level_m_printed_as": "หลังอะเสระดับ+5.85"
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "A1",
+   "grid_ref_end": "A2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A2",
+   "grid_ref_end": "B2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "A2",
+   "grid_ref_end": "A2'",
+   "span_length_m": 1.3,
+   "span_source": "local_dimension",
+   "note": "ส่วนยื่นคอร์ดบนของ TRUSS T2 ถึงขอบหลังคา 1.30 ม. (แปลนหลังคา/โซ่มิติ 1.30) — โครงถักเต็มลึกอยู่ระหว่างกริด 1 ถึง 2 เท่านั้น",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "top_chord_only"
+   ]
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "B1'",
+   "grid_ref_end": "B1",
+   "span_length_m": 1.3,
+   "span_source": "local_dimension",
+   "note": "ส่วนยื่นคอร์ดบนของ TRUSS T2 ถึงขอบหลังคา 1.30 ม. (แปลนหลังคา/โซ่มิติ 1.30) — โครงถักเต็มลึกอยู่ระหว่างกริด 1 ถึง 2 เท่านั้น",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "top_chord_only"
+   ]
+  },
+  {
+   "element_id": null,
+   "element_type": "beam",
+   "grid_ref_start": "B1",
+   "grid_ref_end": "C1",
+   "span_length_m": 3.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.88,
+   "confidence_flags": [],
+   "element_name_assigned": "อะเส",
+   "material": "steel",
+   "steel_section": {
+    "designation": "2C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+   },
+   "level_m": 5.85,
+   "level_m_printed_as": "หลังอะเสระดับ+5.85"
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "B1",
+   "grid_ref_end": "B2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "B2",
+   "grid_ref_end": "C2",
+   "span_length_m": 3.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "B2",
+   "grid_ref_end": "B2'",
+   "span_length_m": 1.3,
+   "span_source": "local_dimension",
+   "note": "ส่วนยื่นคอร์ดบนของ TRUSS T2 ถึงขอบหลังคา 1.30 ม. (แปลนหลังคา/โซ่มิติ 1.30) — โครงถักเต็มลึกอยู่ระหว่างกริด 1 ถึง 2 เท่านั้น",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "top_chord_only"
+   ]
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "C1'",
+   "grid_ref_end": "C1",
+   "span_length_m": 1.3,
+   "span_source": "local_dimension",
+   "note": "ส่วนยื่นคอร์ดบนของ TRUSS T2 ถึงขอบหลังคา 1.30 ม. (แปลนหลังคา/โซ่มิติ 1.30) — โครงถักเต็มลึกอยู่ระหว่างกริด 1 ถึง 2 เท่านั้น",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "top_chord_only"
+   ]
+  },
+  {
+   "element_id": null,
+   "element_type": "beam",
+   "grid_ref_start": "C1",
+   "grid_ref_end": "C'1",
+   "span_length_m": 1.0,
+   "span_source": "local_dimension",
+   "note": "เส้นอะเสบนแปลนลากต่อถึงขอบหลังคา 1.00 ม. (โซ่มิติ 1.00) รับจันทันริมหลังคา — ไม่มีเสาที่ปลาย",
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "drawn_to_roof_edge_on_plan"
+   ],
+   "element_name_assigned": "อะเส",
+   "material": "steel",
+   "steel_section": {
+    "designation": "2C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "อะเส 2C-100x50x20x2.3 mm. (หลังอะเสระดับ+5.85)"
+   },
+   "level_m": 5.85,
+   "level_m_printed_as": "หลังอะเสระดับ+5.85"
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "C1",
+   "grid_ref_end": "C2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "C2",
+   "grid_ref_end": "C'2",
+   "span_length_m": 1.0,
+   "span_source": "local_dimension",
+   "note": "เส้นแบบ TRUSS T1 บนแปลนลากต่อถึงขอบหลังคา 1.00 ม. แต่รูป TRUSS T1 แสดงเฉพาะช่วง A-C (ไม่มีส่วนยื่น) — บันทึกตามเส้นบนแปลน ความมั่นใจต่ำ",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "plan_linetype_only_not_in_T1_elevation"
+   ]
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "C2",
+   "grid_ref_end": "C2'",
+   "span_length_m": 1.3,
+   "span_source": "local_dimension",
+   "note": "ส่วนยื่นคอร์ดบนของ TRUSS T2 ถึงขอบหลังคา 1.30 ม. (แปลนหลังคา/โซ่มิติ 1.30) — โครงถักเต็มลึกอยู่ระหว่างกริด 1 ถึง 2 เท่านั้น",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "top_chord_only"
+   ]
+  },
+  {
+   "element_id": null,
+   "element_name_assigned": "จันทัน",
+   "element_type": "rafter",
+   "material": "steel",
+   "steel_section": {
+    "designation": "C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "จันทัน C-100x50x20x2.3 mm."
+   },
+   "count": 4,
+   "grid_refs": [
+    "A'-C' x 1'-2'"
+   ],
+   "note": "เส้นทึบ 4 เส้นวิ่งตามแนว x จาก 1' ถึง 2' ที่แนว A' (ขอบหลังคา), A''''' (1.75), B''' (5.00) และ C' (ขอบหลังคา); วางบนอะเสแนว 1 และ TRUSS T1 แนว 2 สลับกับ TRUSS T2 ที่แนว A, B, C",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "count_from_drawn_lines"
+   ]
+  },
+  {
+   "element_id": null,
+   "element_name_assigned": "แป",
+   "element_type": "purlin",
+   "material": "steel",
+   "steel_section": {
+    "designation": "SHS",
+    "d_mm": 50,
+    "b_mm": 50,
+    "t_mm": 1.2,
+    "printed_as": "Square Tubes-Ø50x50x1.2 mm. @1.50 m."
+   },
+   "spacing_mm": 1500,
+   "count": 6,
+   "grid_refs": [
+    "A'-C' x 1'-2'"
+   ],
+   "note": "เส้นบาง 6 เส้นวิ่งตามแนว y ขวางจันทัน รวมเส้นขอบหลังคาที่ 1' และ 2'; ระยะที่วาดจริง ≈1.22 ม. แม้พิมพ์ @1.50 ม.",
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "count_from_drawn_lines",
+    "drawn_spacing_differs_from_printed"
+   ]
+  }
+ ]
+}

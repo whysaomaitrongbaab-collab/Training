@@ -1,0 +1,75 @@
+{
+ "png": "08",
+ "doc_page": 8,
+ "discipline": "architectural",
+ "sheet_code": "A-08",
+ "sheet_name": "แบบขยายบันได",
+ "pattern": "section",
+ "source_image": "image/บ้าน_เล็ก_2ชั้น_42/บ้าน_เล็ก_2ชั้น_42_หน้า08.png",
+ "grid_source": "บ้าน_เล็ก_2ชั้น_42_หน้า00_gridline.json",
+ "view_title": "แปลนบันได ST-01, รูปตัด A",
+ "scale": "1:25",
+ "views": [
+  "view1: แปลนบันได ST-01 1:25",
+  "view2: รูปตัด A 1:25"
+ ],
+ "confidence_score": 0.85,
+ "confidence_flags": [],
+ "warnings": [
+  "Steel stair on an architectural sheet, extracted as a section because it carries the member sizes of ST-01 (S-02 marks ST-01 and no structural sheet details it).",
+  "Orientation conflict, decided in the grid master: this sheet starts the 2.900 run (1.100 + 0.600 + 1.200) at the B marker with step 1 there, while S-02, A-03 and elevation 2 (A-05) draw the stair in bay B-C rising from the C side to row B. Location taken from the three sheets (bay B-C, x -1.20 to -0.10); the run lengths are this sheet's. Which end is the foot is left as drawn on each sheet.",
+  "Handrails/guards: ราวบันได และราวกันตก เหล็กรูปพรรณ เลือกแบบภายหลัง — no size printed, not recorded as a member."
+ ],
+ "elements": [
+  {
+   "element_id": "ST-01",
+   "element_type": "stair",
+   "material": "steel",
+   "steel_section": {
+    "designation": "RHS",
+    "d_mm": 150,
+    "b_mm": 50,
+    "t_mm": 2.0,
+    "printed_as": "คานแม่บันได rectangular tube Ø-150x50x2.0 mm."
+   },
+   "member_sections": [
+    {
+     "member": "คานแม่บันได (stringer)",
+     "steel_section": {
+      "designation": "RHS",
+      "d_mm": 150,
+      "b_mm": 50,
+      "t_mm": 2.0,
+      "printed_as": "คานแม่บันได rectangular tube Ø-150x50x2.0 mm."
+     }
+    },
+    {
+     "member": "โครงรับลูกนอนและโครงชานพัก",
+     "steel_section": {
+      "designation": "RHS",
+      "d_mm": 75,
+      "b_mm": 38,
+      "t_mm": 1.4,
+      "printed_as": "rectangular tube Ø-75x38x1.4 mm."
+     }
+    }
+   ],
+   "riser_mm": 200,
+   "riser_mm_printed_as": "14@0.20 m. = 2.80 m.",
+   "riser_count": 14,
+   "total_rise_mm": 2800,
+   "tread_mm": 200,
+   "tread_mm_printed_as": "0.225 = 0.200 + 0.025",
+   "nosing_mm": 25,
+   "width_mm": 1100,
+   "width_mm_printed_as": "1.100 (+ 0.100 ถึงแนว 1) = 1.200",
+   "run_printed_as": "1.100 + 0.600 + 1.200 = 2.900",
+   "landing_mm": 600,
+   "note": "บันไดเหล็กสองช่วง: ลูกนอน 1-7 ในช่วง 1.10 ม., ชานพัก 0.60 ม., ลูกนอน 8-14 ในช่วง 1.20 ม.; สูงรวม 2.80 ม. จากพื้นชั้นล่าง +0.10 ถึงพื้นชั้นสอง +2.90; ปลายบนฝากเข้าโครงสร้างพื้นชั้นสอง",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "stair_sheet_orientation_conflict"
+   ]
+  }
+ ]
+}

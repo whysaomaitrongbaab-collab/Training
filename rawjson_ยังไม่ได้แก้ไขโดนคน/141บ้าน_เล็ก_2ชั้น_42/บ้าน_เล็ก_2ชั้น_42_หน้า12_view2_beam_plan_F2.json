@@ -1,0 +1,247 @@
+{
+ "png": "12",
+ "doc_page": 12,
+ "discipline": "structural",
+ "sheet_code": "S-02",
+ "sheet_name": "แบบโครงสร้างชั้นล่าง, แบบโครงสร้างชั้นสอง",
+ "pattern": "beam_plan",
+ "source_image": "image/บ้าน_เล็ก_2ชั้น_42/บ้าน_เล็ก_2ชั้น_42_หน้า12.png",
+ "grid_source": "บ้าน_เล็ก_2ชั้น_42_หน้า00_gridline.json",
+ "floor_level": "F2",
+ "view_title": "แบบโครงสร้างชั้นสอง",
+ "scale": "1:75",
+ "views": [
+  "view1: แบบโครงสร้างชั้นล่าง 1:75 (beam_plan, F1)",
+  "view2: แบบโครงสร้างชั้นสอง 1:75 (beam_plan, F2)",
+  "legend: BX (+X.XX) = แจ้งขนาดคาน / แจ้งระดับหลังคาน"
+ ],
+ "confidence_score": 0.9,
+ "confidence_flags": [],
+ "warnings": [
+  "Beam marks/levels as printed: B1/B2/B3 (+2.75) = top of beam +2.75 (floor ระดับพื้นห้องชั้นสอง +2.90).",
+  "Cantilevered bay left of grid 1, rows A-B: no column or footing at 1''' (S-01 has only grids 1 and 2). B2 along A and B3 along B are cantilevers from columns A1 / B1 to 1''' (-1.10, S-02 chain 1.10); the outer edge beam B2 along 1''' bears on their tips; B1 at A'''''' (1.90, chain 1.90 + 1.60) bears on the outer B2 and on the grid-1 B2. The beams along 1''' and grid 1 are split at A'''''' where that B1 frames in (section 5).",
+  "A-03 prints 1.20 (not 1.10) to the same bay on its second-floor plan — read as the wall/finish face; the beams follow S-02's 1.10 (structural plan wins).",
+  "The 1.50 tick on the x chain (1''''''') has no beam on it — recorded in the grid master only.",
+  "ST-01 is drawn arriving at row B left of grid 1 (wavy break line); approximate ref (section 10a)."
+ ],
+ "elements": [
+  {
+   "element_id": "B2",
+   "element_type": "beam",
+   "grid_ref_start": "A1'''",
+   "grid_ref_end": "A''''''1'''",
+   "span_length_m": 1.9,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "note": "คานริมนอกของช่องยื่น ปลายบนฝากบนปลายคานยื่น B2 แนว A",
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "bears_on_beam:B2(start)"
+   ]
+  },
+  {
+   "element_id": "B2",
+   "element_type": "beam",
+   "grid_ref_start": "A1'''",
+   "grid_ref_end": "A1",
+   "span_length_m": 1.1,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "note": "คานยื่นจากเสา A1 ไม่มีเสาที่ 1'''",
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "cantilever_from:A1"
+   ]
+  },
+  {
+   "element_id": "B2",
+   "element_type": "beam",
+   "grid_ref_start": "A1",
+   "grid_ref_end": "A''''''1",
+   "span_length_m": 1.9,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B2",
+   "element_type": "beam",
+   "grid_ref_start": "A1",
+   "grid_ref_end": "A2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "A2",
+   "grid_ref_end": "B2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B2",
+   "element_type": "beam",
+   "grid_ref_start": "A''''''1'''",
+   "grid_ref_end": "B1'''",
+   "span_length_m": 1.6,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "note": "คานริมนอกของช่องยื่น ปลายล่างฝากบนปลายคานยื่น B3 แนว B",
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "bears_on_beam:B3(end)"
+   ]
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "A''''''1'''",
+   "grid_ref_end": "A''''''1",
+   "span_length_m": 1.1,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "note": "คานซอยระหว่างพื้น S1 สองแผ่น (ไม่มีเสา)",
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "bears_on_beam:B2(start)",
+    "bears_on_beam:B2(end)"
+   ]
+  },
+  {
+   "element_id": "B2",
+   "element_type": "beam",
+   "grid_ref_start": "A''''''1",
+   "grid_ref_end": "B1",
+   "span_length_m": 1.6,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B3",
+   "element_type": "beam",
+   "grid_ref_start": "B1'''",
+   "grid_ref_end": "B1",
+   "span_length_m": 1.1,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "note": "คานยื่นจากเสา B1 ไม่มีเสาที่ 1'''",
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "cantilever_from:B1"
+   ]
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "B1",
+   "grid_ref_end": "C1",
+   "span_length_m": 3.0,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B3",
+   "element_type": "beam",
+   "grid_ref_start": "B1",
+   "grid_ref_end": "B2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B1",
+   "element_type": "beam",
+   "grid_ref_start": "B2",
+   "grid_ref_end": "C2",
+   "span_length_m": 3.0,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B2",
+   "element_type": "beam",
+   "grid_ref_start": "C1",
+   "grid_ref_end": "C2",
+   "span_length_m": 3.5,
+   "span_source": "grid_table",
+   "level_m": 2.75,
+   "level_m_printed_as": "(+2.75)",
+   "confidence_score": 0.92,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "C1",
+   "element_type": "column",
+   "count": 6,
+   "grid_refs": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "confidence_score": 0.95,
+   "confidence_flags": [],
+   "note": "เสาชั้นสอง (ระดับพื้นห้องชั้นสอง +2.90 ถึงอะเส/โครงหลังคา)"
+  },
+  {
+   "element_id": "S1",
+   "element_type": "slab",
+   "grid_refs": [
+    "A-A'''''' x 1'''-1",
+    "A''''''-B x 1'''-1"
+   ],
+   "note": "พื้นหล่อในที่ 2 แผ่นในช่องยื่นซ้ายแนว 1 (ห้องน้ำ F2 +2.80 บน A-03)",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "PS",
+   "element_type": "slab",
+   "grid_refs": [
+    "A-B x 1-2",
+    "B-C x 1-2"
+   ],
+   "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป ลูกศรบอกทิศวางแผ่นตามแนวแกน y",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "ST-01",
+   "element_type": "stair",
+   "grid_ref": "~B1",
+   "note": "ปลายบนบันไดเหล็ก ST-01 ถึงชั้นสองที่แนว B ซ้ายแนว 1",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  }
+ ]
+}
