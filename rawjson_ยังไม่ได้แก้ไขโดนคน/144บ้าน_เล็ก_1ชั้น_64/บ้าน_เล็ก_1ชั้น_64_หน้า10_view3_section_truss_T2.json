@@ -1,0 +1,49 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_64/บ้าน_เล็ก_1ชั้น_64_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_64_หน้า00_gridline.json",
+  "view_title": "TRUSS T2",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + ***หมายเหตุ*** legend (roof_frame_plan)",
+    "view2: TRUSS T1 1:75 (section)",
+    "view3: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Parallel-chord ridge truss, 5 panels of 1.00 (total 5.00) between the T1 trusses labelled at both ends (it sits on the T1 apex posts, which stand over the columns). Its depth is not printed — height_mm null. The top chord runs past both T1 posts to the gable eaves (1.00 on the S-02 plan).",
+    "One leader 'rectangular tube ▯-100x50x2.3 mm.' with four arrows to top chord, diagonals, post and bottom chord — every member is the same RHS 100 x 50 x 2.3. The panel chain is in the grid master (TRUSS T2 view) and its panel points are the y dummies the rafters sit on."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "height_mm": null,
+      "span_length_m": 5.0,
+      "panel_lengths_printed_as": "1.00 x 5 (5.00)",
+      "supports": [
+        "T1",
+        "T1"
+      ],
+      "note": "โครงถักสันหลังคาคอร์ดขนาน 5 ช่วง ช่วงละ 1.00 ม. วางบน T1 ทั้งสองปลาย (แนว A และแนว B ที่ x = 2.50) คอร์ดบนยื่นเลยออกไปถึงขอบหลังคาด้านจั่ว ไม่ได้พิมพ์ความลึกของโครงถัก",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    }
+  ]
+}

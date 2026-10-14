@@ -1,0 +1,181 @@
+{
+  "png": "09",
+  "doc_page": 9,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก, แบบโครงสร้าง",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_64/บ้าน_เล็ก_1ชั้น_64_หน้า09.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_64_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แบบโครงสร้าง",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนฐานราก 1:75 (footing_plan)",
+    "view2: แบบโครงสร้าง 1:75 (beam_plan)"
+  ],
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "8 RC beam segments at floor level (the only RC beam plan in the set; the roof is a steel frame on S-02). No beam level is printed on this sheet; the floor is +0.64 (A-04).",
+    "The 4 perimeter beams run column to column (B6 on rows A and B, B3 on grid 1, B4 on grid 2), 5.00 each. The 4 infill beams sit on no column: B5 on 1'' (x 2.00) from row A to row B, the short B1 on 1''''' (x 3.20) from row A to the B2 line, B2 on A''' (y 1.50) from B5 to grid 2, and the long B1 on A'''''' (y 3.60) from grid 1 to B5 (S-01 chains 2.00 | 1.20 | 1.80 and 1.50 | 2.10 | 1.40). Section 5 splits only at supports, so a perimeter beam that only receives an infill beam stays one segment.",
+    "B5: the printed 2.00 tick touches its left face; its centre is ~2.10 by scale. Recorded on 1'' (the printed line); the two spans ending on B5 (B2 3.00, long B1 2.00) are face-referenced at that end, so their confidence is lowered to 0.85.",
+    "Mark B1 is used for two different infill beams (vertical at x 3.20 and horizontal at y 3.60) — same mark, same section on S-04, so both keep element_id B1 (one member type, two positions; not a collision).",
+    "Step marks on the plan are ST-01 / ST-02 while the S-03 details are titled ST-1 / ST-2. Matched by riser: ST-1 has 3 x 0.213 = 0.64 (the รับแขก floor +0.64 down to ±0.00 at the row-A exit marked ลง on A-03) and ST-2 has 3 x 0.18 = 0.54 (ระเบียง +0.54, marked ขึ้น on A-03). Stair refs are approximate nearest points (section 10a).",
+    "Slab marks: PS = precast prestressed plank (spans along x — the span arrows are horizontal in all three PS fields), S1 = cast-in-place two-way slab (drawn with an X). The S1 fields are the two +0.54 rooms (ห้องน้ำ top right, ระเบียง bottom left on A-03)."
+  ],
+  "elements": [
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 1 ช่วง A-B; รับคาน B1 แนว A'''''' ที่ A''''''1",
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "แนว A ช่วง 1-2; รับคาน B5 และ B1 (แนว 1''''') ; ST-01 อยู่นอกแนวนี้",
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A1''",
+      "grid_ref_end": "B1''",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานซอยแนว x = 2.00 (1'') วางบนคาน B6 แนว A และแนว B; ระยะ 2.00 บนแบบวัดถึงผิวซ้ายของคาน (ศูนย์กลาง ~2.10 ตามมาตราส่วน)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B6(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1'''''",
+      "grid_ref_end": "A'''1'''''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานซอยแนว x = 3.20 (1''''') ระหว่างพื้น PS ช่องเล็กกับ S1 (ห้องน้ำ) วางบนคาน B6 แนว A และคาน B2 แนว A'''",
+      "confidence_score": 0.92,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 2 ช่วง A-B; รับคาน B2 ที่ A'''2",
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1''",
+      "grid_ref_end": "A'''2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานซอยแนว y = 1.50 (A''') จากคาน B5 ถึงคาน B4 แนวกริด 2 (1.20 + 1.80); รับคาน B1 แนว 1'''''",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B5(start)",
+        "bears_on_beam:B4(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A''''''1",
+      "grid_ref_end": "A''''''1''",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานซอยแนว y = 3.60 (A'''''') จากคาน B3 แนวกริด 1 ถึงคาน B5 ระหว่างพื้น PS (รับแขก) กับ S1 (ระเบียง)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B5(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "แนว B ช่วง 1-2; รับคาน B5 ; ST-02 อยู่นอกแนวนี้",
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 4,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "B1",
+        "B2"
+      ],
+      "confidence_score": 0.96,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~A1'''",
+      "note": "ขั้นบันไดนอกแนว A ช่วง x 2.00-3.05 (เส้นประ) ลงจากห้องรับแขกระดับ +0.64; รายละเอียดคือ ST-1 บน S-03",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-02",
+      "element_type": "stair",
+      "grid_ref": "~B1''",
+      "note": "ขั้นบันไดนอกแนว B ช่วงประมาณ x 1.00-2.00 (เส้นประ, ระยะไม่ได้พิมพ์) ขึ้นระเบียงระดับ +0.54; รายละเอียดคือ ST-2 บน S-03",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-A'''''' x 1-1''",
+        "A-A''' x 1''-1'''''",
+        "A'''-B x 1''-2"
+      ],
+      "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป 3 ช่อง ลูกศรแสดงทิศวางแผ่นตามแนว x ทุกช่อง (รับแขก, ช่องเล็กด้านบน, ห้องนอน)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-A''' x 1'''''-2",
+        "A''''''-B x 1-1''"
+      ],
+      "note": "พื้น คสล. หล่อในที่ 2 ช่อง (ห้องน้ำ และระเบียง ระดับ +0.54 บน A-03); ไม่มีแบบขยาย S1 ในชุดแบบ",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    }
+  ]
+}

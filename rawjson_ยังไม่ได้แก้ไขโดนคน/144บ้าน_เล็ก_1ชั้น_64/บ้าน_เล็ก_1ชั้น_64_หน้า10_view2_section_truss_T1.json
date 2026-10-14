@@ -1,0 +1,59 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_64/บ้าน_เล็ก_1ชั้น_64_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_64_หน้า00_gridline.json",
+  "view_title": "TRUSS T1",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + ***หมายเหตุ*** legend (roof_frame_plan)",
+    "view2: TRUSS T1 1:75 (section)",
+    "view3: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Symmetric gable truss, 1.66 high at the apex, spanning 5.00 between the two column heads (column stubs drawn under both end posts); panel chain printed 0.83 x 6 against a total of 5.00 (0.83 is 5.00 / 6 rounded — the row sums to 4.98). The T2 ridge truss is drawn at the apex.",
+    "Two leaders: 'rectangular tube ▯-100x50x2.3 mm.' with three arrows to the top chord and web members, and 'อะเส 2C-150x50x20x3.2 mm.' to the bottom chord — so the bottom chord of T1 is the อะเส section. The tube symbol prints as a box (▯); read as a rectangular hollow section 100 x 50 x 2.3.",
+    "The top chord is drawn past both end posts to the eave (1.00 overhang on the S-02 plan; not dimensioned on this elevation)."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "rectangular tube ▯-100x50x2.3 mm."
+      },
+      "bottom_chord_steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      },
+      "height_mm": 1660,
+      "height_mm_printed_as": "1.66",
+      "span_length_m": 5.0,
+      "panel_lengths_printed_as": "0.83 x 6 (5.00)",
+      "supports": [
+        "1",
+        "2"
+      ],
+      "note": "โครงถักจั่วรูปสามเหลี่ยม สูง 1.66 ม. ช่วง 5.00 ม. วางบนหัวเสาแนวกริด 1 และ 2 (บนแนว A และแนว B) คอร์ดบนและโครงย่อยเป็นเหล็กกล่อง 100x50x2.3 คอร์ดล่างเป็นอะเส 2C-150x50x20x3.2; รับ T2 ที่จุดยอด",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    }
+  ]
+}

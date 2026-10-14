@@ -1,0 +1,160 @@
+{
+  "png": "11",
+  "doc_page": 11,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_64/บ้าน_เล็ก_1ชั้น_64_หน้า11.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_64_หน้า00_gridline.json",
+  "view_title": "F1, ST-1, ST-2, PS",
+  "scale": "1:25",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "F1 is a rectangular pile cap, not square: plan 1.65 (0.15 + 0.45 + 0.45 + 0.45 + 0.15) along the 4-pile direction by 1.20 (0.15 + 0.45 + 0.45 + 0.15) along the 3-pile direction; on the S-01 footing plan the long side runs along x at every point. width_mm = 1650, depth_mm = 1200.",
+    "F1 mat printed as two separate callouts, 18-DB12 (leader to a bar seen in section, i.e. bars running the 1.20 way, spaced across the 1.65 side) and 13-DB12 (leader to the bar drawn along the section, i.e. bars running the 1.65 way). main_bar.count is the two-way total 31 with count_printed_as '18+13'; the two directions have different bar lengths (1.20 vs 1.65 cap sides), which one count cannot carry — see note.",
+    "Thickness 0.30; below it 0.05 lean concrete 1:3:5 and 0.05 compacted sand; top of cap 1.00 below ระดับดินเดิม. 12 piles 'เสาเข็มหกเหลี่ยมกลวง Dia. 0.15 x 6.00 m. จำนวน 12 ต้น' at 0.45 spacing. The column C1 runs down into the cap (drawn with its ties); no separate pedestal size is printed.",
+    "Step sections ST-1 / ST-2 here are marked ST-01 / ST-02 on the S-01 plan; matched by riser (ST-1: 0.213 x 3 = 0.64 = รับแขก floor; ST-2: 0.18 x 3 = 0.54 = ระเบียง floor). Each is a cranked waist slab with DB12@0.20 m.# mesh, RB9@0.20 m. along the treads and one RB9 at every corner (bar_layers).",
+    "PS is the precast prestressed plank floor detail: planks bear at least 5 cm on the beams (0.05 printed at both ends), 5 cm topping (คอนกรีตทับหน้า หนา 5 ซม.) with RB 6 mm. @0.20 M. หรือ WIREMESH 4 MM., end L-bars RB 9 mm. @0.40 M. (0.50 x 0.25) at the edge beam and 0.25 x 0.25 bars plus L/4 top bars each side over an interior beam. The two stacked 0.05 at the right end read as topping 0.05 over a 0.05 plank edge; the plank's own depth is not otherwise printed. The 0.16 at the left end is the drop of the end bar into the edge beam."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "width_mm": 1650,
+      "width_mm_printed_as": "0.15+0.45+0.45+0.45+0.15 = 1.65",
+      "depth_mm": 1200,
+      "depth_mm_printed_as": "0.15+0.45+0.45+0.15 = 1.20",
+      "height_mm": 300,
+      "height_mm_printed_as": "0.30",
+      "main_bar": {
+        "count": 31,
+        "dia_mm": 12,
+        "type": "DB",
+        "count_printed_as": "18+13",
+        "printed_as": "18-DB12 / 13-DB12",
+        "note": "ตะแกรงล่าง 2 ทาง: 18-DB12 วางยาวตามด้าน 1.20 เรียงตลอดด้าน 1.65, 13-DB12 วางยาวตามด้าน 1.65 เรียงตลอดด้าน 1.20"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "pile_count": 12,
+      "pile": {
+        "type": "เสาเข็มหกเหลี่ยมกลวง",
+        "dia_mm": 150,
+        "length_m": 6.0,
+        "spacing_mm": 450,
+        "printed_as": "เสาเข็มหกเหลี่ยมกลวง Dia. 0.15 x6.00 m. จำนวน 12 ต้น"
+      },
+      "footing_type": "ฐานรากเสาเข็ม",
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "ground_reference": "ระดับดินเดิม; 1.00 ลงถึงหลังฐานราก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-1",
+      "element_type": "stair",
+      "tread_mm": 250,
+      "tread_mm_printed_as": "0.25",
+      "riser_mm": 213,
+      "riser_mm_printed_as": "0.213",
+      "thickness_mm": 150,
+      "thickness_mm_printed_as": "0.15",
+      "bar_layers": [
+        {
+          "location": "waist slab mesh",
+          "dia_mm": 12,
+          "spacing_mm": 200,
+          "type": "DB",
+          "printed_as": "DB12@0.20 m.#"
+        },
+        {
+          "location": "along the treads (top)",
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "RB9@0.20 m."
+        },
+        {
+          "location": "every corner",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "RB9 ทุกมุม"
+        }
+      ],
+      "note": "บันไดคอนกรีต 3 ลูกตั้ง ลูกนอน 0.25 ลูกตั้ง 0.213 ท้องพื้นหนา 0.15 (พิมพ์ 0.15 สองที่ ตั้งฉากกับท้องพื้น) ต่อจากพื้นห้องระดับ +0.64; บนแปลน S-01 ใช้มาร์ค ST-01",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-2",
+      "element_type": "stair",
+      "tread_mm": 250,
+      "tread_mm_printed_as": "0.25",
+      "riser_mm": 180,
+      "riser_mm_printed_as": "0.18",
+      "thickness_mm": 150,
+      "thickness_mm_printed_as": "0.15",
+      "bar_layers": [
+        {
+          "location": "waist slab mesh",
+          "dia_mm": 12,
+          "spacing_mm": 200,
+          "type": "DB",
+          "printed_as": "DB12@0.20 m.#"
+        },
+        {
+          "location": "along the treads (top)",
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "RB9@0.20 m."
+        },
+        {
+          "location": "every corner",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "RB9 ทุกมุม"
+        }
+      ],
+      "note": "บันไดคอนกรีต 3 ลูกตั้ง ลูกนอน 0.25 ลูกตั้ง 0.18 ท้องพื้นหนา 0.15 ต่อจากพื้นระเบียงระดับ +0.54; บนแปลน S-01 ใช้มาร์ค ST-02",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "precast_plank_detail",
+      "description": "พื้นคอนกรีตอัดแรงสำเร็จรูป วางพาดบนคาน",
+      "dowel_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 400,
+        "type": "RB",
+        "printed_as": "RB 9 mm. @ 0.40 M.",
+        "note": "เหล็กงอฉาก 0.50 x 0.25 ที่คานขอบ ปลายลงในคาน 0.16; เหนือคานกลางใช้เหล็ก 0.25 x 0.25 และเหล็กบนยาว L/4 ทั้งสองข้าง"
+      },
+      "topping_mesh": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB 6 mm. @ 0.20 M. หรือ WIREMESH 4 MM."
+      },
+      "topping_thickness_min_mm": 50,
+      "topping_printed_as": "คอนกรีตทับหน้า หนา 5 ซม.",
+      "bearing_min_mm": 50,
+      "live_load_min_kg_m2": 200,
+      "plank_printed_as": "พื้นคอนกรีตอัดแรงสำเร็จรูป รับน้ำหนักบรรทุกจรได้ไม่น้อยกว่า 200 กก./ตร.ม.วางพาดบนคานไม่น้อยกว่า 5 ซม.",
+      "level_step_mm": null,
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    }
+  ]
+}

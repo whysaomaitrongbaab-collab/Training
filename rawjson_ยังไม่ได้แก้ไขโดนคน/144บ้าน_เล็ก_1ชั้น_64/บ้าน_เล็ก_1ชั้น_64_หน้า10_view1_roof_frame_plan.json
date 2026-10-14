@@ -1,0 +1,758 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_64/บ้าน_เล็ก_1ชั้น_64_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_64_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + ***หมายเหตุ*** legend (roof_frame_plan)",
+    "view2: TRUSS T1 1:75 (section)",
+    "view3: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Gable steel roof, ridge along y at x = 2.50 (A-03 roof plan 2.50 + 2.50), eaves 1.00 all round. Members by the ***หมายเหตุ*** legend linetypes: dash-dot = อะเส 2C-150x50x20x3.2 (grids 1 and 2), dash-dot-dot = TRUSS T1 (rows A and B, gable trusses spanning 1-2 with the apex at 2.50), long-short dash = TRUSS T2 (the ridge truss on x 2.50, A to B), thin solid = จันทัน C-100x50x20x3.2 @1.00 (along x), dashed = แป @0.50 (along y, drawn only inside the cut-away roofing callout).",
+    "Rafter y positions are not dimensioned on the plan (only '@1.00 m.'); they sit at the TRUSS T2 panel points (S-02 chain 1.00 x 5 between the T1s) and at the eave edges A' / B' — exactly the y lines the grid master carries. Rows A and B carry T1, whose top chord takes the rafter's place there, so no separate rafter is recorded on A or B.",
+    "Rafters are split at the supports: อะเส on grids 1 and 2 and T2 at the ridge (section 5); the 1.00 eave overhangs are their own segments. T1 / T2 overhangs are top chord only (both truss elevations draw only the top chord past the end posts).",
+    "The T1 detail's 'อะเส 2C-150x50x20x3.2 mm.' leader points at the truss bottom chord, so on rows A and B the อะเส is the T1 bottom chord (recorded on the T1 section, not as a separate อะเส element here). The plan draws the grid-1 / grid-2 อะเส linework on to the eaves; รูปตัด B (A-06) shows it ending at the walls, so A-B (5.00) is recorded.",
+    "Rafters, อะเส and the purlin field carry no printed mark — element_id null with element_name_assigned (section 0.2)."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'1'",
+      "grid_ref_end": "A'1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทันแนวขอบหลังคาด้านจั่ว (ปลายยื่นเลยแนว T1 1.00); ส่วนยื่นชายคา",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A'1'''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทันแนวขอบหลังคาด้านจั่ว (ปลายยื่นเลยแนว T1 1.00); จากอะเสแนว 1 ถึงสันหลังคา (T2)",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A'1'''",
+      "grid_ref_end": "A1'''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T2 1.00 ม. ถึงขอบหลังคาด้านจั่ว (รูป Truss T2 วาดคอร์ดบนยื่นเลย T1)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'1'''",
+      "grid_ref_end": "A'2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทันแนวขอบหลังคาด้านจั่ว (ปลายยื่นเลยแนว T1 1.00); จากสันหลังคา (T2) ถึงอะเสแนว 2",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "A'2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทันแนวขอบหลังคาด้านจั่ว (ปลายยื่นเลยแนว T1 1.00); ส่วนยื่นชายคา",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A1'",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T1 1.00 ม. ถึงขอบหลังคา (โซ่มิติ 1.00 บน S-02)",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "อะเสเหล็ก แนวกริด 1 ช่วง A-B บนหัวเสา (ระดับหลังอะเส +3.89); บนแปลนเส้นอะเสลากยาวต่อถึงขอบหลังคา A'/B' แต่รูปตัด B แสดงอะเสสิ้นสุดที่ผนัง จึงบันทึกเฉพาะช่วง A-B",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "โครงถักจั่ว T1 แนว A ช่วงเสา 1-2 (5.00) จุดยอดที่แนว 1''' (2.50) รับ T2",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A1'''",
+      "grid_ref_end": "B1'''",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "โครงถักสันหลังคา T2 แนวสันที่ x = 2.50 ยาว 5.00 ระหว่าง T1 แนว A และแนว B",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:T1(start)",
+        "bears_on_beam:T1(end)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "อะเสเหล็ก แนวกริด 2 ช่วง A-B บนหัวเสา (ระดับหลังอะเส +3.89); บนแปลนเส้นอะเสลากยาวต่อถึงขอบหลังคา A'/B' แต่รูปตัด B แสดงอะเสสิ้นสุดที่ผนัง จึงบันทึกเฉพาะช่วง A-B",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "อะเส",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      }
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T1 1.00 ม. ถึงขอบหลังคา",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''1'",
+      "grid_ref_end": "A''1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; ส่วนยื่นชายคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A''1'''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; จากอะเสแนว 1 ถึงสันหลังคา (T2)",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''1'''",
+      "grid_ref_end": "A''2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; จากสันหลังคา (T2) ถึงอะเสแนว 2",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; ส่วนยื่นชายคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''''1'",
+      "grid_ref_end": "A''''1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; ส่วนยื่นชายคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''''1",
+      "grid_ref_end": "A''''1'''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; จากอะเสแนว 1 ถึงสันหลังคา (T2)",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''''1'''",
+      "grid_ref_end": "A''''2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; จากสันหลังคา (T2) ถึงอะเสแนว 2",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "A''''2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; ส่วนยื่นชายคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'''''1'",
+      "grid_ref_end": "A'''''1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; ส่วนยื่นชายคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'''''1",
+      "grid_ref_end": "A'''''1'''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; จากอะเสแนว 1 ถึงสันหลังคา (T2)",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'''''1'''",
+      "grid_ref_end": "A'''''2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; จากสันหลังคา (T2) ถึงอะเสแนว 2",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'''''2",
+      "grid_ref_end": "A'''''2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; ส่วนยื่นชายคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'''''''1'",
+      "grid_ref_end": "A'''''''1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; ส่วนยื่นชายคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'''''''1",
+      "grid_ref_end": "A'''''''1'''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; จากอะเสแนว 1 ถึงสันหลังคา (T2)",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'''''''1'''",
+      "grid_ref_end": "A'''''''2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; จากสันหลังคา (T2) ถึงอะเสแนว 2",
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "A'''''''2",
+      "grid_ref_end": "A'''''''2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทัน @1.00 ตรงจุดแผงของ Truss T2; ส่วนยื่นชายคา",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1'",
+      "grid_ref_end": "B1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T1 1.00 ม. ถึงขอบหลังคา (โซ่มิติ 1.00 บน S-02)",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "โครงถักจั่ว T1 แนว B ช่วงเสา 1-2 (5.00) จุดยอดที่แนว 1''' (2.50) รับ T2",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B1'''",
+      "grid_ref_end": "B'1'''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T2 1.00 ม. ถึงขอบหลังคาด้านจั่ว",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นคอร์ดบนของ Truss T1 1.00 ม. ถึงขอบหลังคา",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "top_chord_only"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "B'1'",
+      "grid_ref_end": "B'1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทันแนวขอบหลังคาด้านจั่ว (ปลายยื่นเลยแนว T1 1.00); ส่วนยื่นชายคา",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "B'1'''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทันแนวขอบหลังคาด้านจั่ว (ปลายยื่นเลยแนว T1 1.00); จากอะเสแนว 1 ถึงสันหลังคา (T2)",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "B'1'''",
+      "grid_ref_end": "B'2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "จันทันแนวขอบหลังคาด้านจั่ว (ปลายยื่นเลยแนว T1 1.00); จากสันหลังคา (T2) ถึงอะเสแนว 2",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "rafter",
+      "grid_ref_start": "B'2",
+      "grid_ref_end": "B'2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "จันทันแนวขอบหลังคาด้านจั่ว (ปลายยื่นเลยแนว T1 1.00); ส่วนยื่นชายคา",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "overhang"
+      ],
+      "element_name_assigned": "จันทัน",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "จันทัน C-100x50x20x3.2 mm. @1.00 m. (น้ำหนัก 5.50 กก./ม.)"
+      },
+      "spacing_mm": 1000
+    },
+    {
+      "element_id": null,
+      "element_type": "purlin",
+      "grid_refs": [
+        "A'-B' x 1'-2'"
+      ],
+      "spacing_mm": 500,
+      "material": "steel",
+      "steel_section": {
+        "designation": "เหล็กกล่อง",
+        "d_mm": 25,
+        "b_mm": 25,
+        "t_mm": 1.6,
+        "printed_as": "แป เหล็กกล่อง-25x25x1.6 mm. @0.50 m. (น้ำหนัก 1.12 กก./ม.)"
+      },
+      "alternative_printed_as": "หรือ แป ชุบกัลวาไนท์ ตราช้าง หนา 7 มม. @0.50 m.",
+      "note": "แปวางขนานสันหลังคา (แนว y) ทุก 0.50 ม. ทั่วทั้งหลังคา; บนแปลนวาดเฉพาะในรูปตัดเปิดมุมหลังคา (เส้นประตาม legend) ไม่ได้วาดทุกเส้น",
+      "confidence_score": 0.8,
+      "confidence_flags": [],
+      "element_name_assigned": "แป"
+    }
+  ]
+}
