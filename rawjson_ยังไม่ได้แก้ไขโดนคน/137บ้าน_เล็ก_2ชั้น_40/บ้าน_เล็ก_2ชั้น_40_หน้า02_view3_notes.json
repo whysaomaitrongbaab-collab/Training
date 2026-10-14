@@ -1,0 +1,122 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "general",
+  "sheet_code": "A-01",
+  "sheet_name": "รายการประกอบแบบ สารบัญแบบ",
+  "pattern": "notes",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_40/บ้าน_เล็ก_2ชั้น_40_หน้า02.png",
+  "view_title": "รายการประกอบแบบก่อสร้าง",
+  "scale": null,
+  "views": [
+    "view1: สารบัญแบบ (แบบสถาปัตยกรรม / แบบวิศวกรรมโครงสร้าง / แบบไฟฟ้า / แบบสุขาภิบาล) — index, not extracted (op04)",
+    "view2: สัญลักษณ์ประกอบแบบ — symbol legend, not extracted (op04)",
+    "view3: รายการประกอบแบบก่อสร้าง — notes (this file)",
+    "view4: ผนังก่ออิฐมวลเบา 7.5 / 20 cm hatch legend — not extracted (op04)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "The set has no separate structural notes sheet; the project-wide specification is this block on A-01, transcribed verbatim in sections[] for the general, structural, roof and paint headings. The trailing sanitary, electrical and general-site headings (งานประปา-สุขาภิบาล, งานไฟฟ้า, ทั่วไป) carry no structural specification and were not transcribed in this op04 pass.",
+    "Steel conflict, decided: the notes say footing-column-beam rebar is SR24 (2,400 ksc), but every member detail prints deformed bars in exactly those members (S-06 F1/F2 DB16 mats, S-07 B1-B6 DB12/DB16, C1/C2 6-DB12, S-09 stair DB12). Member spec follows the detail sheets (op01 precedence: detail beats general; several sheets against one), so main bars are deformed. The notes give deformed steel only as 'SD30 ,SD40 ... 3,000 ksc 4.000 ksc ตามลำดับ' without saying which grade the DB bars are, so deformed_bar.fy_ksc and the flat fy_main_ksc are null. '4.000' is printed with a period and read as 4,000.",
+    "fy_stirrup_ksc = 2400: every stirrup/tie in the details is RB6/RB9 (round) and the notes give round bar as SR24 2,400 ksc. Neither steel line prints the RB/DB notation itself, so notation is null on both.",
+    "fc 240 ksc is a CUBE strength (แท่งทดสอบลูกบาศก์มาตรฐาน) — kept as printed. Mix ratios, stripping times and the precast plank live load (>= 200 kg/m2, bearing >= 5 cm) are in the transcript only — section 4a defines no notes{} field for them.",
+    "No concrete cover is printed anywhere in the notes — cover_mm null, no cover object.",
+    "'หลังคาเหล็กสรรไท' is printed as is (probably a product name / misspelling); not corrected."
+  ],
+  "sections": [
+    {
+      "heading": "ลักษณะอาคาร",
+      "items": [
+        "เป็นอาคาร ค.ส.ล. หลังคาเหล็กสรรไท",
+        "ระดับ ± 0.00 เป็นระดับถนนภายในโครงการ"
+      ]
+    },
+    {
+      "heading": "งานพื้น",
+      "items": [
+        "- สำหรับพื้นทั่วไป ได้แก่ ระเบียงกันสาด ห้องน้ำ และส่วนที่สัมผัสกับความชื้น ให้ผสมน้ำยากันซึม โดยผสมในอัตราส่วนตาม มาตรฐานของผู้ผลิต",
+        "- พื้นคอนกรีตอัดแรงสำเร็จรูป รับน้ำหนักบรรทุกจร(ไม่รวม Toping และFinishing) ได้ไม่น้อยกว่า 200 กก./ตร.ม.วางพาด บนคานไม่น้อยกว่า 5 ซม."
+      ]
+    },
+    {
+      "heading": "งานผนัง",
+      "items": [
+        "ผนังอาคารเป็นผนังก่ออิฐมอญ ( ยกเว้นผู้ว่าจ้างจะระบุเป็นอย่างอื่น ) ฉาบเรียบทาสีน้ำอะครีลิค",
+        "ผนังในส่วนที่เป็นมุมสุด ช่องประตู หน้าต่าง หรือช่องเปิดโล่ง ให้ทำเสา-คานเอ็นคสล. ขนาด 0.10 x 0.10 ม. เสริมเหล็ก 2-RB 9 mm. ปลอกเหล็กลูกโซ่ RB 6 mm.@0.20 m. รวมทั้งผนังที่มีพื้นที่เกิน หรือ มากกว่า 5 ตร.ม.",
+        "สำหรับการก่ออิฐข้างเสาให้ใช้การก่อแบบประสาน หรือตามคำแนะนำของเจ้าของผลิตภัณฑ์ที่ใช้"
+      ]
+    },
+    {
+      "heading": "งานคอนกรีต",
+      "items": [
+        "ในกรณีที่ใช้คอนกรีตผสมเสร็จ ให้ใช้ผลิตภัณฑ์ของ บ.ปูนซิเมนต์ไทย C -PAC หรือเทียบเท่ามาตรฐานคอนกรีต รับกำลังอัด 240 ksc ( แท่งทดสอบลูกบาศก์มาตรฐาน )",
+        "ในกรณีผสมโม่ ให้ใช้อัตรส่วนผสมมวลรวมดังนี้ คอนกรีตหยาบให้ใช้อัตราส่วน 1:3:5 คอนกรีตโครงสร้างโดยทั่วไป ให้ใช้อัตราส่วน 1:2:4 ปูนซิเมนต์ที่ใช้ในส่วนของโครงสร้างทั้งหมด ใช้ปูนซิเมนต์ปอร์ตแลนด์ซีเมนต์ เช่น ปูนตราช้าง ปูนตราเพชร ปูนตราพญานาค หรือ มอก. 15 เล่ม 1-2514",
+        "ปูนซีเมนต์ที่ใช้ในการก่อ-ฉาบให้ใช้ปูนตราเสือ ปูนตรานกอินทรีย์ หรือปูนตรางูเห่า"
+      ]
+    },
+    {
+      "heading": "การถอดแบบ",
+      "items": [
+        "จะต้องถอดแบบตามเวลาที่กำหนด ดังต่อไปนี้",
+        "แบบข้างคาน ฐานราก ใช้เวลา 1 วัน",
+        "แบบข้างเสา ใช้เวลา 2 วัน",
+        "แบบท้องพื้น ท้องคาน ใช้เวลา 14 วัน",
+        "และเมื่อถอดแบบแล้วให้ทำการค้ำตามจุดต่าง ๆ ตามความเหมาะสมอีก 14 วัน และห้ามขึ้นทำงานบนแบบหล่อคอนกรีต จนกว่าจะครบกำหนด 48 ชั่วโมง"
+      ]
+    },
+    {
+      "heading": "งานเหล็กเสริมโครงสร้าง",
+      "items": [
+        "เหล็กเสริมโดยทั่วไปให้ใช้เหล็กเสริมที่ได้มาตรฐานอุตสาหกรรม ดังนี้",
+        "เหล็กเสริมสำหรับงานฐานราก-เสา-คาน ให้ใช้เหล็กเสริม SR24 รับแรงดึงประลัย 2,400 ksc.",
+        "เหล็กเสริมสำหรับงานพื้น-คานเอ็น-เสาเอ็น ให้ใช้เหล็กเสริม SR24 รับแรงดึงประลัย 2,400 ksc.",
+        "เหล็กเสริมอื่น ๆ ให้ใช้เหล็กเสริม SD30 ,SD40 รับแรงดึงประลัย 3,000 ksc 4.000 ksc ตามลำดับ"
+      ]
+    },
+    {
+      "heading": "งานโครงหลังคา",
+      "items": [
+        "โครงหลังคาใช้โครงหลังคาเหล็กรูปพรรณ ขนาดและระยะการติดตั้ง ตามแบบขยาย และต้องทาสีกันสนิม RED OXIDE TOA",
+        "การเชื่อมรอยต่อเหล็กโครงหลังคาให้เชื่อมโดยรอบ การเชื่อมแปให้เชื่อมจุดสัมผัสทั้งสองด้านตามแนวยาวให้เต็ม"
+      ]
+    },
+    {
+      "heading": "งานสี",
+      "items": [
+        "สีน้ำอะครีลิค ภายนอกใช้สีภายนอก TOA 4 SEASONS หรือเทียบเท่า โดยทาสีรองพื้นปูนกันด่าง 1 ครั้ง และสีจริง 2 ครั้ง",
+        "ภายในใช้สีภายใน TOA 4 SEASONS หรือเทียบเท่า โดยทาสีรองพื้นปูนกันด่าง 1 ครั้ง และสีจริง 2 ครั้ง",
+        "สีน้ำมัน ใช้ทาในส่วนของ วงกบไม้ บานประตู หน้าต่าง",
+        "สีกันสนิม ใช้ทาในส่วนของโครงสร้าง เหล็กรูปพรรณ เช่นโครงหลังคาเหล็ก ในส่วนตบแต่ง ให้ทาสีกันสนิม RED OXIDE ก่อนแล้วจึงทาด้วยสีน้ำมัน"
+      ]
+    }
+  ],
+  "notes": {
+    "concrete": {
+      "grade_label": null,
+      "fc_ksc": 240,
+      "curing_days": null,
+      "printed_as": "รับกำลังอัด 240 ksc ( แท่งทดสอบลูกบาศก์มาตรฐาน )"
+    },
+    "steel": {
+      "round_bar": {
+        "notation": null,
+        "grade": "SR24",
+        "fy_ksc": 2400,
+        "applies_to_dia_mm": null,
+        "printed_as": "เหล็กเสริมสำหรับงานฐานราก-เสา-คาน / เหล็กเสริมสำหรับงานพื้น-คานเอ็น-เสาเอ็น ให้ใช้เหล็กเสริม SR24 รับแรงดึงประลัย 2,400 ksc."
+      },
+      "deformed_bar": {
+        "notation": null,
+        "grade": "SD30 ,SD40",
+        "fy_ksc": null,
+        "applies_to_dia_mm": null,
+        "printed_as": "เหล็กเสริมอื่น ๆ ให้ใช้เหล็กเสริม SD30 ,SD40 รับแรงดึงประลัย 3,000 ksc 4.000 ksc ตามลำดับ"
+      }
+    },
+    "fc_ksc": 240,
+    "fy_main_ksc": null,
+    "fy_stirrup_ksc": 2400,
+    "cover_mm": null
+  }
+}

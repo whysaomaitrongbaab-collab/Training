@@ -1,0 +1,123 @@
+{
+  "png": "24",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_40/บ้าน_เล็ก_2ชั้น_40_หน้า24.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_40_หน้า00_gridline.json",
+  "view_title": "แปลนบันได ST-02, รูปตัด A, รูปตัด B, ST-1, ST-3",
+  "scale": "1:25 / 1:50",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "The ST-02 plan prints its own chains against grid 3 and rows B/C (1.800 / 0.550 + 1.250 on x, 4.000 / 2.850 + 1.150 on y) — those ticks are lines in the grid master. Section A/B run and rise chains are member detail and stay here.",
+    "ST-02: 16 numbered risers on the plan; section A lands on B1 at the bottom and B5 at the top; '0.22' printed perpendicular to the soffit is read as the waist thickness.",
+    "Step sections are titled ST-1 / ST-3 here and marked ST-01 / ST-03 on the S-02 plan — kept as printed; each names the beam it lands on (B2 / B1), matching the plan positions."
+  ],
+  "elements": [
+    {
+      "element_id": "ST-02",
+      "element_type": "stair",
+      "riser_mm": 200,
+      "tread_mm": 250,
+      "riser_count": 16,
+      "waist_thickness_mm": 220,
+      "waist_thickness_mm_printed_as": "0.22",
+      "run_m_printed_as": "1.150 + 2.850 = 4.000 (รูปตัด A); 0.400 + 1.150 = 1.550 (รูปตัด B)",
+      "rise_m_printed_as": "2.820 (รูปตัด A); 0.600 (รูปตัด B)",
+      "bar_layers": [
+        {
+          "location": "waist, main",
+          "dia_mm": 12,
+          "spacing_mm": 80,
+          "type": "DB",
+          "printed_as": "DB12@0.08 m. (รูปตัด A)"
+        },
+        {
+          "location": "waist, distribution",
+          "dia_mm": 12,
+          "spacing_mm": 200,
+          "type": "DB",
+          "printed_as": "DB12@0.20 m."
+        },
+        {
+          "location": "landing (รูปตัด B), main",
+          "dia_mm": 12,
+          "spacing_mm": 100,
+          "type": "DB",
+          "printed_as": "DB12@0.10 m. (รูปตัด B)"
+        },
+        {
+          "location": "steps",
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "RB9@0.20 m."
+        },
+        {
+          "location": "step corners",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "RB9 ทุกมุม"
+        }
+      ],
+      "supports": [
+        "B1",
+        "B5"
+      ],
+      "note": "บันไดหลัก ชานพักล่างที่แนว C (ขั้น 1-3 + ขั้นเลี้ยว 4) ขึ้นตรงถึงแนว B",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-1",
+      "element_type": "stair",
+      "riser_mm": 175,
+      "tread_mm": 250,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "6-RB9"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "RB9@0.10 m."
+      },
+      "supports": [
+        "B2"
+      ],
+      "note": "ขั้นบันไดเดี่ยวยื่นจากคาน B2 (ST-01 บนแปลน S-02); 0.20 ระดับต่าง",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-3",
+      "element_type": "stair",
+      "riser_mm": 175,
+      "tread_mm": 450,
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "8-RB9"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "RB9@0.10 m."
+      },
+      "supports": [
+        "B1"
+      ],
+      "note": "ขั้นบันไดเดี่ยวยื่นจากคาน B1 (ST-03 บนแปลน S-02); 0.20 ระดับต่าง",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

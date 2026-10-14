@@ -1,0 +1,60 @@
+{
+  "png": "19",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-04",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_40/บ้าน_เล็ก_2ชั้น_40_หน้า19.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_40_หน้า00_gridline.json",
+  "view_title": "TRUSS T2",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan, RF)",
+    "view2: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Chord and web sections are read from the two callouts on each elevation: rectangular tube Ø-100x50x1.7 (two leaders, top and bottom chord) and Ø-75x38x1.7 (web). The printed symbol is a slashed rectangle, read as a rectangular hollow section (designation RHS); the web section goes in web_steel_section.",
+    "Panel chain 0.583 x6 | 0.600 x5 under sub-totals 3.50 / 3.00 / 6.50; the supports are marked T5 / T6 / T5 (grids 1 / 2 / 3 on the S-04 plan)."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "web_steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 356,
+      "height_mm_printed_as": "0.356",
+      "spans_m": [
+        3.5,
+        3.0
+      ],
+      "supports": [
+        "T5",
+        "T6",
+        "T5"
+      ],
+      "panel_lengths_printed_as": "0.583 x6 | 0.600 x5",
+      "note": "โครงถักแนวแถว B ลึก 0.356 ม. วางบน T5 (แนว 1, 3) และ T6 (แนว 2)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    }
+  ]
+}
