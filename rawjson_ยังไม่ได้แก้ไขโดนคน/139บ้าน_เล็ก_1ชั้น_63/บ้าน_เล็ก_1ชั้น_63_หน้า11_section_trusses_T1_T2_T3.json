@@ -1,0 +1,124 @@
+{
+  "png": "11",
+  "doc_page": 11,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_63/บ้าน_เล็ก_1ชั้น_63_หน้า11.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_63_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T2, TRUSS T3",
+  "scale": "1:75",
+  "views": [
+    "view1: TRUSS T1 1:75",
+    "view2: TRUSS T2 1:75",
+    "view3: TRUSS T3 1:75 (+ ระดับหลังอกไก่ +4.11)"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [],
+  "warnings": [
+    "The printed symbol before 100x50x1.7 / 75x38x1.7 is a slashed rectangle and the text says 'rectangular tube' — designation RHS, print kept in printed_as.",
+    "T4 is printed only as a tag on the apex vertical of the T1/T2 elevations (and on A-06 section B); no separate size or detail anywhere in the set, so it is not recorded as its own element.",
+    "All three panel chains are recorded in the grid master (dimension_chains, TRUSS T1/T2/T3 views); the panel points became dummy lines per section 4 rule 4. The 1.072 rise does not close with +3.20 (อะเส) and +4.11 (ridge) — kept on the element and in unassigned_dimensions, not forced into a level.",
+    "Sheet code S-03 printed here and on the roof-framing plan (หน้า10); see the warning there."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "height_mm": 1072,
+      "height_mm_printed_as": "1.072",
+      "spans_m": [
+        2.0,
+        3.0
+      ],
+      "supports": [
+        "A",
+        "B",
+        "D"
+      ],
+      "panel_lengths_printed_as": "1.000 1.000 | 0.500 | 0.833 0.833 0.833; 2.00 | 3.00; 5.00",
+      "note": "โครงถักจั่ว (คอร์ดบนลาดสองข้าง คอร์ดล่างแนวราบ เสาตั้ง) สูงจากคอร์ดล่างถึงยอด 1.072 ม. วางบนเสา 3 จุด (A, B, D ตามแนวกริด 1); ลูกศร 3 หัวของป้าย 100x50x1.7 ชี้คอร์ดล่าง คอร์ดบน และเสาตั้ง; ยอดจั่วสัน 2.50 จาก A; ชิ้นตั้งกลางยอดติดป้าย T4; คอร์ดบนยื่นเลยเสาริมถึงชายคา ไม่พิมพ์ระยะยื่น",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "height_mm": 1072,
+      "height_mm_printed_as": "1.072",
+      "spans_m": [
+        3.0,
+        2.0
+      ],
+      "supports": [
+        "A",
+        "C",
+        "D"
+      ],
+      "panel_lengths_printed_as": "0.833 0.833 0.833 | 0.500 | 1.000 1.000; 3.00 | 2.00; 5.00",
+      "note": "โครงถักจั่วแบบเดียวกับ T1 แต่วางบนเสา A, C, D (แนวกริด 2 และ 3); ป้าย 100x50x1.7 ลูกศร 3 หัว; ชิ้นตั้งกลางยอดติดป้าย T4",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "web_steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 38,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-75x38x1.7 mm."
+      },
+      "height_mm": 750,
+      "height_mm_printed_as": "0.750",
+      "spans_m": [
+        1.5,
+        3.0
+      ],
+      "supports": [
+        "T1",
+        "T2",
+        "T2"
+      ],
+      "top_level_m": 4.11,
+      "top_level_printed_as": "ระดับหลังอกไก่ +4.11",
+      "panel_lengths_printed_as": "0.750 0.750 | 1.000 1.000 1.000; 1.50 | 3.00; 4.50",
+      "note": "โครงถักอกไก่ตามแนวสัน (แถว B') ลึก 0.750 ม. ใต้ระดับหลังอกไก่ +4.11 วางบน T1 (กริด 1), T2 (กริด 2), T2 (กริด 3); ป้าย 100x50x1.7 ลูกศรหัวเดียวชี้คอร์ดบน ป้าย 75x38x1.7 ลูกศร 3 หัวชี้เสาตั้ง คอร์ดล่าง และค้ำทแยง; คอร์ดบนยื่นเลย T1/T2 ทั้งสองปลาย ไม่พิมพ์ระยะยื่น",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "symbol_read_as_box_section",
+        "member_assignment_from_leader_arrows"
+      ]
+    }
+  ]
+}
