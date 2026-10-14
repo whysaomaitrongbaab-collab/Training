@@ -1,0 +1,53 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_65/บ้าน_เล็ก_1ชั้น_65_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_65_หน้า00_gridline.json",
+  "view_title": "TRUSS T1",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + ***หมายเหตุ*** legend (roof_frame_plan)",
+    "view2: TRUSS T1 1:75 (section)",
+    "view3: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Gable truss, posts at B and A (drawn B left, A right); panel chain 1.00 x 4 = 4.00 is in the grid master (TRUSS T1 view). Every member one section from the two leaders: Ø 100x50x2.3 mm. with a slashed-rectangle symbol — read as a rectangular tube (RHS).",
+    "Depth printed 1.57 (bottom chord to apex) with 0.87 at the outer panel posts. Sections A/B print ระดับหลังอะเส +4.70 to ระดับหลังอกไก่ +6.12 = 1.42 — the 1.57 here is the truss's own dimension line (to the top of the tube/roof line), kept as printed; the two are different dimension lines, not a conflict resolved either way.",
+    "The อะเส leader (2C-150x50x20x2.3) points to the end supports; the อะเส spec is recorded once, in the TRUSS T2 file of this sheet. 'T2' is printed at the king post (where the ridge truss T2 crosses)."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "Ø 100x50x2.3 mm. (slashed-rectangle symbol)"
+      },
+      "height_mm": 1570,
+      "height_mm_printed_as": "1.57 (0.87 ที่เสาตั้งช่องนอก)",
+      "spans_m": [
+        4.0
+      ],
+      "supports": [
+        "B",
+        "A"
+      ],
+      "panel_lengths_printed_as": "1.00 x 4 = 4.00",
+      "note": "โครงถักจั่ว 4 ช่อง ช่องละ 1.00 ม. วางบนอะเสแนว A และ B ตามแนวกริด 1, 2, 3, 4; คอร์ดบนยื่นเลยเสาทั้งสองข้าง (ยาวยื่นไม่พิมพ์ในรูปนี้ — 1.00 จากแปลนหลังคา)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    }
+  ]
+}

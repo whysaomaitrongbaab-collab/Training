@@ -1,0 +1,108 @@
+{
+  "png": "09",
+  "doc_page": 9,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก, แบบโครงสร้าง, แบบโครงสร้างระดับ +0.00",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_65/บ้าน_เล็ก_1ชั้น_65_หน้า09.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_65_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แบบโครงสร้างระดับ +0.00",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนฐานราก 1:75 (footing_plan)",
+    "view2: แบบโครงสร้างระดับ +0.00 1:75 — ground beams under the two stairs (beam_plan)",
+    "view3: แบบโครงสร้าง 1:75 — floor framing under ระดับพื้นห้อง +1.30 (beam_plan)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "Ground-level framing under the two stairs only: one B2 line on row A (grid 2 to 3) and one on row B (grid 2 to 3), each split at the middle C1. The mark B2 is printed once per row (row A above the 2' column, row B below the 2'' column), so both segments of a row take it. Level from the view title (+0.00).",
+    "The middle C1 sits at 1.20 from grid 2 on row A (chain 1.20 + 1.30, 2') but at 1.30 on row B (chain 1.30 + 1.20, 2'') — read as printed, two different points. On row A the middle column is drawn with a dashed outline.",
+    "Stairs ST-01 (A-A'''' x 2-2', inside row A) and ST-02 (A''''''-B x 2''-3, inside row B) are drawn dashed; the S-03 ST-1 section shows the stair foot sitting on a B2 at ระดับดิน and its head on a B2 at the floor. Stair refs are approximate nearest points (section 10a). Only ST-1 is detailed (S-03); ST-02 has no section of its own.",
+    "No footing is printed under the 2' / 2'' columns on the footing plan."
+  ],
+  "elements": [
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A2'",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "level_m": 0.0,
+      "level_m_printed_as": "แบบโครงสร้างระดับ +0.00",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "level_m": 0.0,
+      "level_m_printed_as": "แบบโครงสร้างระดับ +0.00",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B2''",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "level_m": 0.0,
+      "level_m_printed_as": "แบบโครงสร้างระดับ +0.00",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2''",
+      "grid_ref_end": "B3",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "level_m": 0.0,
+      "level_m_printed_as": "แบบโครงสร้างระดับ +0.00",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "A2",
+        "A2'",
+        "A3",
+        "B2",
+        "B2''",
+        "B3"
+      ],
+      "note": "C1 ที่ 2' (แนว A) และ 2'' (แนว B) เป็นเสาสั้นรับคานระดับ +0.00 ไม่มีฐานรากพิมพ์ใต้เสาสองต้นนี้",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~A2",
+      "note": "เส้นประในช่อง A-A'''' x 2-2' (รูปตัด ST-1 บน S-03)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-02",
+      "element_type": "stair",
+      "grid_ref": "~B3",
+      "note": "เส้นประในช่อง A''''''-B x 2''-3 (ไม่มีรูปตัดของตัวเอง)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}

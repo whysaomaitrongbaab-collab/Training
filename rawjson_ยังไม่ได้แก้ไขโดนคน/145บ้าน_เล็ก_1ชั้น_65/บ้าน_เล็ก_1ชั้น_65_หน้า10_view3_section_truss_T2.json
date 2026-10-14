@@ -1,0 +1,74 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_65/บ้าน_เล็ก_1ชั้น_65_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_65_หน้า00_gridline.json",
+  "view_title": "TRUSS T2",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา 1:75 + ***หมายเหตุ*** legend (roof_frame_plan)",
+    "view2: TRUSS T1 1:75 (section)",
+    "view3: TRUSS T2 1:75 (section)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Ridge truss along A''''' over grids 1-2-3-4 (chain 3.00 | 2.50 | 3.00 = 8.50 in the grid master), posts at each grid; one diagonal pair per bay meeting at mid-bay. All members Ø 100x50x2.3 mm. (slashed-rectangle symbol, read as RHS).",
+    "Depth printed 1.44 (อะเส top to top chord) with 0.70 between the two chords. อะเส 2C-150x50x20x2.3 is drawn continuous along the bottom over the columns."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 2.3,
+        "printed_as": "Ø 100x50x2.3 mm. (slashed-rectangle symbol)"
+      },
+      "height_mm": 1440,
+      "height_mm_printed_as": "1.44 (0.70 ระหว่างคอร์ดบน-ล่าง)",
+      "spans_m": [
+        3.0,
+        2.5,
+        3.0
+      ],
+      "supports": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "note": "โครงถักสันหลังคาแนว x ต่อเนื่อง 3 ช่องบนแนวกริด 1-4 ตัดกับ T1 ที่แต่ละกริด",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "symbol_read_as_box_section"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "อะเส",
+      "element_type": "beam",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส 2C-150x50x20x2.3 mm."
+      },
+      "level_m": 4.7,
+      "level_m_printed_as": "ระดับหลังอะเส +4.70 (A-06/A-07)",
+      "note": "อะเสเหล็กรางคู่บนหัวเสาตามแนว A และ B รับโครงถัก T1/T2",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

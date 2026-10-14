@@ -1,0 +1,237 @@
+{
+  "png": "09",
+  "doc_page": 9,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก, แบบโครงสร้าง, แบบโครงสร้างระดับ +0.00",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_65/บ้าน_เล็ก_1ชั้น_65_หน้า09.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_65_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แบบโครงสร้าง",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนฐานราก 1:75 (footing_plan)",
+    "view2: แบบโครงสร้างระดับ +0.00 1:75 — ground beams under the two stairs (beam_plan)",
+    "view3: แบบโครงสร้าง 1:75 — floor framing under ระดับพื้นห้อง +1.30 (beam_plan)"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "14 RC beam segments under the room floor (sections A/B on A-06/A-07 draw this framing directly under ระดับพื้นห้อง +1.30; the plan itself prints no level, so no level_m). Columns C1 at all 8 grid points A1..A4 / B1..B4.",
+    "Stair openings: row A has no beam between 2 and 2' (ST-01 drawn dashed there) and row B none between 2'' and 3 (ST-02). B2 on row A starts at 2' and B2 on row B ends at 2''.",
+    "B1 (A-A'''') is drawn on 2' (measured 1.20) and B1 (A''''''-B) on 2'' (measured 1.31) — matching the +0.00 plan's two chains (1.20 above row A, 1.30 below row B). The two B2 lines at A'''' (1.25) and A'''''' (2.75) run grid 2 to grid 3 and frame into B3 at both ends.",
+    "Joints A2' and B2'' have no column mark on this plan; each shows a small dashed square — the C1 printed there on the +0.00 plan — so B2 and B1 meet over that C1. Recorded without a bears_on flag at those ends; flagged as a note instead.",
+    "B3 on grids 2 and 3 is kept as one A-B segment: the A''''/A'''''' B2 beams land on it, they are not supports of it (section 5 splits only at supports).",
+    "Slab marks: PS (precast plank, arrow A-B) in the two bedroom bays; S1 in the three cast panels of the middle bay. Stair refs are approximate nearest points (section 10a)."
+  ],
+  "elements": [
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "A''''2'",
+      "span_length_m": 1.25,
+      "span_source": "grid_table",
+      "note": "คานซอยบนแนว 2' ระหว่าง ST-01 กับพื้น S1; ปลายบนพบ B2 แนว A ที่จุด A2' (มีกรอบเสา C1 เส้นประจากแปลนระดับ +0.00)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "note": "แนว A เริ่มที่ 2' (ช่อง 2-2' เป็นบันได ST-01)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "A''''3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''''''2",
+      "grid_ref_end": "A''''''3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A''''''2''",
+      "grid_ref_end": "B2''",
+      "span_length_m": 1.25,
+      "span_source": "grid_table",
+      "note": "คานซอยบนแนว 2'' ระหว่างพื้น S1 กับ ST-02; ปลายล่างพบ B2 แนว B ที่จุด B2'' (มีกรอบเสา C1 เส้นประจากแปลนระดับ +0.00)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B2(start)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B2''",
+      "span_length_m": 1.3,
+      "span_source": "grid_table",
+      "note": "แนว B สิ้นสุดที่ 2'' (ช่อง 2''-3 เป็นบันได ST-02)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 8,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ],
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-B x 1-2",
+        "A-B x 3-4"
+      ],
+      "note": "พื้นสำเร็จรูป ลูกศรทิศวางแผ่นแนว A-B",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-A'''' x 2'-3",
+        "A''''-A'''''' x 2-3",
+        "A''''''-B x 2-2''"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~A2",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-02",
+      "element_type": "stair",
+      "grid_ref": "~B3",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}
