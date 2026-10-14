@@ -1,0 +1,74 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก, แบบโครงสร้าง",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_69/บ้าน_เล็ก_1ชั้น_69_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_69_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนฐานราก 1:75 (footing_plan)",
+    "view2: แบบโครงสร้าง 1:75 (beam_plan — beams B1-B5, column C1, slab tags PS/S1/GS, steps ST-01/ST-02)"
+  ],
+  "confidence_score": 0.96,
+  "confidence_flags": [],
+  "warnings": [
+    "9 pile caps, one per column point. Tags read 'F1, C2' at A1, B5, C1, D2, D5 and 'F2, C2' at A3, C3, C5, D4 — every tag sits directly above its cap. F1 = single-pile cap 0.36 x 0.36, F2 = two-pile cap 0.90 x 0.36 (detail S-03); every F2 is drawn with its 0.90 side along x.",
+    "The plan is L-shaped plus an offset: no footing at A2, B1-B4, C2, C4 or D1 (row B has a column only at B5; the lower wing starts at grid 2).",
+    "C2 (printed with every footing) is the column stub from the cap to the ground beams (C2 = 0.20 x 0.20, 6-DB12 on S-04) — recorded here once (9 points); the floor-level column C1 is recorded in the structure-plan file (view2)."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 5,
+      "grid_refs": [
+        "A1",
+        "B5",
+        "C1",
+        "D2",
+        "D5"
+      ],
+      "note": "ฐานรากเสาเข็ม 1 ต้น (มาร์ค 'F1, C2')",
+      "confidence_score": 0.96,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": [
+        "A3",
+        "C3",
+        "C5",
+        "D4"
+      ],
+      "note": "ฐานรากเสาเข็ม 2 ต้น วางด้านยาว 0.90 ตามแนวแกน x (มาร์ค 'F2, C2')",
+      "confidence_score": 0.96,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 9,
+      "grid_refs": [
+        "A1",
+        "A3",
+        "B5",
+        "C1",
+        "C3",
+        "C5",
+        "D2",
+        "D4",
+        "D5"
+      ],
+      "note": "เสาตอม่อจากฐานรากถึงคาน (พิมพ์ร่วมกับมาร์คฐานราก 'F1, C2' / 'F2, C2')",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    }
+  ]
+}

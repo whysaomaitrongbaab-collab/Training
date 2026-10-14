@@ -1,0 +1,246 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก, แบบโครงสร้าง",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_69/บ้าน_เล็ก_1ชั้น_69_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_69_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แบบโครงสร้าง",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนฐานราก 1:75 (footing_plan)",
+    "view2: แบบโครงสร้าง 1:75 (beam_plan — beams B1-B5, column C1, slab tags PS/S1/GS, steps ST-01/ST-02)"
+  ],
+  "confidence_score": 0.93,
+  "confidence_flags": [],
+  "warnings": [
+    "13 RC beam segments; marks carry no level on this sheet (floor ระดับพื้นห้อง +0.54 on A-06/A-07). Mark split: grid 1 A-C, grid 2 C-D and grid 5 B-D are B2; row A 1-3 and the infill beam on 4' are B1; row D and grid 4 C-D are B3; grid 3 A-C and row B 3-5 are B4; row C (both bays) is B5.",
+    "Beams on no column are kept as one segment and flagged where they land: row B 3-5 (B4) starts on the grid-3 B4 at B3; grid 2 C-D (B2) and grid 4 C-D (B3) start on the row-C B5; B1 on 4' (5.60, chain 1.50 + 1.40) runs from the row-B B4 to the row-C B5. Grid 3 A-C and row C 3-5 stay single segments — the beams above land on them, they are not supports (section 5 splits only at supports).",
+    "A thin bracket line is drawn just below the row-C beam from grid 3 to grid 5, with the B5 label under it — read as the extent marker of that B5 label, not as a member.",
+    "The ลานซักล้าง ground slab GS (grids 3-5) runs from row B to about 1.00 beyond row A; there is no beam on row A in this bay and its outer edges are single lines — the overhang is not dimensioned on any sheet, so it is a range ref plus a note, no line invented (see grid master).",
+    "Step marks on the plan are ST-01/ST-02 while the S-04 detail is titled 'ST-1, ST-2' — kept as printed on each sheet; stair refs are approximate nearest points (section 10a).",
+    "Columns C1 at all 9 footing points are recorded here once."
+  ],
+  "elements": [
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 3 ช่วง A-C; คาน B4 แนว B วางบนคานนี้ที่ B3",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "แนว B ช่วง 3-5 (ขอบลานซักล้าง); รับคาน B1 แนว 4'",
+      "confidence_score": 0.93,
+      "confidence_flags": [
+        "bears_on_beam:B4(start)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B4'",
+      "grid_ref_end": "C4'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานซอยแนว x = 5.60 (4') ระหว่างพื้น PS (เตรียมอาหาร) กับพื้น S1 (ห้องน้ำ) — ไม่มีเสาที่ 4'",
+      "confidence_score": 0.93,
+      "confidence_flags": [
+        "bears_on_beam:B4(start)",
+        "bears_on_beam:B5(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "C5",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 2 ช่วง C-D; ไม่มีเสาที่ C2",
+      "confidence_score": 0.93,
+      "confidence_flags": [
+        "bears_on_beam:B5(start)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "แนว C ช่วง 3-5; รับคาน B3 แนว 4 และคาน B1 แนว 4'",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "D4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 4 ช่วง C-D (ระหว่างห้องรับแขกกับห้องนอน 1); ไม่มีเสาที่ C4",
+      "confidence_score": 0.93,
+      "confidence_flags": [
+        "bears_on_beam:B5(start)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "D5",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D4",
+      "span_length_m": 3.1,
+      "span_source": "grid_table",
+      "note": "แนว D ช่วง 2-4; ST-01 วางชิดคานนี้ด้านนอก",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "D5",
+      "span_length_m": 2.9,
+      "span_source": "grid_table",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 9,
+      "grid_refs": [
+        "A1",
+        "A3",
+        "B5",
+        "C1",
+        "C3",
+        "C5",
+        "D2",
+        "D4",
+        "D5"
+      ],
+      "note": "เสาที่ทุกจุดฐานราก (มาร์ค 'F1, C2' / 'F2, C2' บนแปลนฐานราก)",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-02",
+      "element_type": "stair",
+      "grid_ref": "~B3",
+      "note": "ขั้นบันได (เส้นประ) นอกแนว B ด้านลานซักล้าง ช่วงกริด 3-4 ลงจากเตรียมอาหาร +0.54 สู่ลานซักล้าง +0.00; รายละเอียดคือ ST-1, ST-2 บน S-04",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~D3",
+      "note": "ขั้นบันไดทางเข้า (เส้นประ) นอกแนว D ช่วงกริด 2-4 หน้าประตู ป1 ห้องรับแขก; รายละเอียดคือ ST-1, ST-2 บน S-04",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-C x 1-3",
+        "B-C x 3-4'",
+        "C-D x 2-4",
+        "C-D x 4-5"
+      ],
+      "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป 4 ช่อง (ห้องนอน 2, เตรียมอาหาร, ห้องรับแขก, ห้องนอน 1) — ลูกศรบอกทิศวางแผ่นตามแนวแกน x",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "B-C x 4'-5"
+      ],
+      "note": "พื้น คสล. หล่อในที่ (ห้องน้ำ F2 +0.44 บน A-03)",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-B x 3-5",
+        "beyond A x 3-5"
+      ],
+      "note": "พื้นวางบนดิน (ลานซักล้าง F3 +0.00 บน A-03) ช่องเดียวจากแนว B ยื่นเลยแนว A ออกไปราว 1.00 ม. ระหว่างกริด 3-5 — ระยะยื่นไม่ได้พิมพ์ (วัดจากภาพ ไม่ใช่ค่าที่อ่านได้) และไม่มีคานรอบขอบนอก",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "outer_edge_not_dimensioned"
+      ]
+    }
+  ]
+}
