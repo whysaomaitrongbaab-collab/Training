@@ -1,0 +1,59 @@
+{
+  "png": "10",
+  "doc_page": 10,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_68/บ้าน_เล็ก_1ชั้น_68_หน้า10.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_68_หน้า00_gridline.json",
+  "view_title": "TRUSS T1",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา ระดับ +4.09 1:75 + หมายเหตุ (อะเส layout, beam_plan)",
+    "view2: แบบโครงสร้างหลังคา 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view3: TRUSS T1 1:75 (section)"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [],
+  "warnings": [
+    "Two leaders: 'อะเส 2C-150x50x20x3.2 mm.' points at the bottom chord; '2C-100x50x20x3.2 mm.' (three arrows) points at the top chord and web members. steel_section holds the top-chord / web size; the bottom chord is kept in bottom_chord_steel_section (a new key - steel_section must stay a single object, section 0.6).",
+    "Panel chain 1.00 | 1.00 | 0.50 | 0.50 | 1.00 | 1.00 = 5.00 is recorded in the grid master (TRUSS T1 view); its panel points became x dummies 1'', 2'', 2'''' per section 4 rule 4. Rise 1.59 is printed from the top of the bottom chord to the apex."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "2C-100x50x20x3.2 mm."
+      },
+      "bottom_chord_steel_section": {
+        "designation": "2C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 3.2,
+        "printed_as": "อะเส 2C-150x50x20x3.2 mm."
+      },
+      "height_mm": 1590,
+      "height_mm_printed_as": "1.59",
+      "spans_m": [
+        5.0
+      ],
+      "supports": [
+        "1",
+        "3"
+      ],
+      "panel_lengths_printed_as": "1.00 | 1.00 | 0.50 | 0.50 | 1.00 | 1.00 (5.00)",
+      "note": "โครงถักจั่ว ยอดสูง 1.59 ม. จากหลังคอร์ดล่าง เสาตั้ง/ค้ำยันที่จุดแบ่ง 1.00, 2.00, 2.50, 3.00, 4.00 ม.; ปลายคอร์ดบนยื่นเลยเสาตั้งเป็นชายคา",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}
