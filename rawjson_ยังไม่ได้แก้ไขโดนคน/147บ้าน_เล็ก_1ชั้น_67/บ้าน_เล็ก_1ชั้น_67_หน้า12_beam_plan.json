@@ -1,0 +1,288 @@
+{
+  "png": "12",
+  "doc_page": 12,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบโครงสร้าง",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_67/บ้าน_เล็ก_1ชั้น_67_หน้า12.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_67_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แบบโครงสร้าง",
+  "scale": "1:50",
+  "confidence_score": 0.88,
+  "confidence_flags": [],
+  "warnings": [
+    "16 RC beam segments (B1-B5), split only at supports (section 5); every endpoint resolves on the grid master. Labels sit beside their beam line on the drawing; each was assigned to the nearest parallel beam band.",
+    "Kitchen bay (ครัวยื่น) 1.00 beyond row A between grids 2 and 2'': B5 (grid 2) and B2 (x = 5.65) cantilever out to y = -1.00 (A''') with B1 across their tips. No column is drawn at A'''2 or A'''2'' — recorded as cantilevers.",
+    "Column conflict, decided: S-01 prints 'F1, C1' at C'1' (footing + column) but S-02 draws no hatched column and no C1 label there. Taken as a column (the footing plan names it explicitly and F1 exists only to carry it); B1's C'1' end is therefore a support, not a beam-on-beam bearing.",
+    "Slab marks PS / S1 / GS are recorded here (no separate slab plan sheet). GS outer edge is not dimensioned on any sheet; its line A' (-1.60) is scaled from the grid.",
+    "No beam top-level is printed on S-02 (no BX(+X.XX) legend in this set)."
+  ],
+  "elements": [
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 2 ยื่นจากเสา A2 ออกไปรับครัวยื่น (ป้าย B5 อยู่ในช่องครัวยื่นข้างเส้นกริด 2); ไม่มีเสาที่ปลาย A'''2",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A'''2''",
+      "span_length_m": 2.15,
+      "span_source": "grid_table",
+      "note": "ขอบนอกครัวยื่น แนว 1.00 จากแนว A วางบนปลายคานยื่น B5 และ B2",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B5(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2''",
+      "grid_ref_end": "A2''",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "แนว x = 5.65 (2'') ส่วนยื่นออกไปรับครัวยื่น ต่อเนื่องจาก B2 ช่วง A-B ข้ามคาน B4 แนว A",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "cantilever",
+        "bears_on_beam:B4(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "C1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 1 ช่วง A-C ไม่มีเสาที่ B1",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "แนว A ช่วง 1-2",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 2 ช่วง A-B",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "แนว A ช่วง 2-3 (ป้าย B4 ใต้แนว A ในช่อง 2-2''); คาน B2 แนว 2'' ข้ามที่ A2'' ไม่ใช่จุดรองรับของคานนี้",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2''",
+      "grid_ref_end": "B2''",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานซอยแนว x = 5.65 (2'') ระหว่างครัว (PS) กับห้องน้ำ (S1) วางบน B4 แนว A และ B3 แนว B",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B4(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "แนวกริด 3 ช่วง A-B",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "แนวกริด 2 ช่วง B-D ไม่มีเสาที่ C2 (คาน B2 แนว C มาวางที่ C2) ป้าย B5 อยู่ช่วง C-C'",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "แนว B ช่วง 2-3",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "แนวกริด 3 ช่วง B-D ไม่มีเสาที่ C3",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "แนว C ช่วง 1-2 ปลาย C2 วางบนคาน B5 แนวกริด 2; คาน B1 แนว 1' มาวางที่ C1' ไม่ใช่จุดรองรับของคานนี้",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B5(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C'1'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานแนว 1' (0.75) ขอบระเบียงยื่น ช่วง C-C' วางบน B2 แนว C ปลาย C'1' ลงเสา C1 บนฐาน F1",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B2(start)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C'1'",
+      "grid_ref_end": "C'2",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "note": "แนว C' (6.00) ขอบระเบียง ช่วง 1'-2 ปลาย C'2 วางบนคาน B5 แนวกริด 2",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B5(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "แนว D ช่วง 2-3",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 9,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B2",
+        "B3",
+        "C1",
+        "C'1'",
+        "D2",
+        "D3"
+      ],
+      "note": "8 ตำแหน่งมีป้าย C1 และสัญลักษณ์เสาแรเงาบน S-02; ตำแหน่ง C'1' ไม่มีบน S-02 แต่ S-01 พิมพ์ 'F1, C1' ที่จุดนี้",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-01",
+      "element_type": "stair",
+      "grid_ref": "~C'1",
+      "note": "ขั้นบันได (เส้นประ) นอกแนว 1' ช่วง C-C' ขึ้นระเบียง; รายละเอียด ST-1 บน S-06 (ลงบนคาน B1)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST-02",
+      "element_type": "stair",
+      "grid_ref": "~A2",
+      "note": "ขั้นบันได (เส้นประ) ระหว่างลานซักล้าง GS กับครัว ชิดแนวกริด 2 นอกแนว A; รายละเอียด ST-2 บน S-06 (ลงบนคาน B4)",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-C x 1-2",
+        "A'''-A x 2-2''",
+        "A-B x 2-2''",
+        "B-D x 2-3"
+      ],
+      "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป 4 ช่อง (ห้องรับแขก, ครัวยื่น, ครัว, ห้องนอน) ลูกศรทิศวางแผ่นแนวนอน (ขนานแกน x); รายละเอียด PS บน S-05",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "A-B x 2''-3",
+        "C-C' x 1'-2"
+      ],
+      "note": "พื้น คสล. 2 ช่อง: ห้องน้ำ (F2 +0.72) และระเบียง (F1 +0.72); รายละเอียด S1 บน S-06",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "grid_refs": [
+        "A'-A x 1-2"
+      ],
+      "note": "พื้นวางบนดิน ลานซักล้าง (F3 +0.10) เส้นบาง ไม่มีคานรอบ ขอบนอกวาดห่างแนว A ราว 1.60 (วัดเทียบกริด ไม่ได้พิมพ์ระยะ)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "scaled_from_grid"
+      ]
+    }
+  ]
+}
