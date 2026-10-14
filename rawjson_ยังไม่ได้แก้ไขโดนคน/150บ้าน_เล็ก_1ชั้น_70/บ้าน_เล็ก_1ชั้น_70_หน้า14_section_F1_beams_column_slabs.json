@@ -1,0 +1,244 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_70/บ้าน_เล็ก_1ชั้น_70_หน้า14.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_70_หน้า00_gridline.json",
+  "view_title": "F1, B1, B2 (กลางช่วงคาน / ช่วงเสา, คานยื่น), C1, GS, S1(ด้านสั้น), S1(ด้านยาว)",
+  "scale": "1:25",
+  "views": [
+    "view1: F1 1:25 (plan + section)",
+    "view2: B1 กลางช่วงคาน / ช่วงเสา, คานยื่น 1:25",
+    "view3: B2 กลางช่วงคาน / ช่วงเสา, คานยื่น 1:25",
+    "view4: C1 1:25",
+    "view5: GS 1:25",
+    "view6: S1(ด้านสั้น) 1:25",
+    "view7: S1(ด้านยาว) 1:25"
+  ],
+  "confidence_score": 0.93,
+  "confidence_flags": [],
+  "warnings": [
+    "All views on this sheet are member details of one pattern (section) — kept in one file like the S-05 files of houses 93/151 (no id collision except the intended mid-span / support pairs of B1 and B2, told apart by section_ref).",
+    "F1: one spread footing type for all 15 points, 1.00 x 1.00 x 0.25 on soil (no piles), top 1.00 below ระดับดินเดิม, mat 6+6-DB12 (main_bar.count is the two-way total, section 6b) and one RB 9 รัดรอบ edge tie (count 1, no spacing). The two 0.05 layers below it carry no label on the F1 detail — recorded as lean concrete over sand by their drawn hatch, mix left null (the 1:3:5 label is printed only on the GS detail).",
+    "B1 and B2 are both 0.20 x 0.40 with ป.1RB6@0.20 m.; they differ only in the extra bars (ส.พ.ศ. 1-DB12 vs 2-DB12) — bottom at mid-span, top at the support. The drawn dot counts agree with the callouts (B1 mid-span 2 top / 3 bottom, B1 support 3 / 2, B2 mid-span 2 / 4, B2 support 4 / 2).",
+    "C1 = 0.20 x 0.20, 4-DB12, ป.1RB6@0.15 m. GS: 0.10 slab with one mesh RB9@0.20m# on 0.05 lean concrete 1:3:5 and compacted sand (sand thickness not printed). S1 prints a short-span and a long-span section with the same reinforcement — merged to one entry; top bars over supports in additional_bars, bottom mesh is main_bar.",
+    "Notes conflict, decided (see the A-01 notes file): A-01 specifies SR24 (2,400 ksc) for footing-column-beam steel, but this sheet prints DB12 main bars in F1, B1, B2 and C1 — member spec follows this detail sheet (detail beats general note); stirrups/ties RB6/RB9 match the notes' round bar."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "width_mm": 1000,
+      "width_mm_printed_as": "0.50+0.50 = 1.00 (ทั้งสองด้าน)",
+      "height_mm": 250,
+      "height_mm_printed_as": "0.25",
+      "main_bar": {
+        "count": 12,
+        "dia_mm": 12,
+        "type": "DB",
+        "count_printed_as": "6+6",
+        "printed_as": "6+6-DB12",
+        "note": "ตะแกรงล่าง 2 ทาง"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "footing_type": "ฐานรากแผ่ (ไม่มีเสาเข็ม)",
+      "lean_concrete": {
+        "mix": null,
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "ground_reference": "ระดับดินเดิม; 1.00 ลงถึงหลังฐานราก",
+      "note": "เสา C1 วางกึ่งกลางฐาน (แปลนฐานรากในรูปขยาย) เหล็กเสาเสียบลงงอฉากในฐาน; ใต้ฐานมีสองชั้น 0.05 + 0.05 ที่ไม่มีป้ายชื่อในรูป F1 — ชั้นบนวาดลายคอนกรีต (คอนกรีตหยาบ) ชั้นล่างลายทราย จึงไม่ระบุส่วนผสม",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "กลางช่วงคาน",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12+ ส.พ.ศ. 1-DB12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.20 m."
+      },
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "ช่วงเสา, คานยื่น",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12+ ส.พ.ศ. 1-DB12"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.20 m."
+      },
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "section_ref": "กลางช่วงคาน",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12+ ส.พ.ศ. 2-DB12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.20 m."
+      },
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "section_ref": "ช่วงเสา, คานยื่น",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12+ ส.พ.ศ. 2-DB12"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.20 m."
+      },
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "width_mm": 200,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "4-DB12"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.1RB6@0.15 m."
+      },
+      "note": "เสาจากฐานราก F1 ทุกจุด (มาร์ค 'F1, C1' บน S-01)",
+      "confidence_score": 0.95,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB9@0.20m#"
+      },
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "note": "พื้นวางบนดิน ตะแกรงชั้นเดียว บนคอนกรีตหยาบ 1:3:5 หนา 0.05 และทรายหยาบอัดแน่น (ไม่ระบุความหนาทราย); ขอบพื้นฝากเข้าคาน",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB9@0.20m#"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "position": "top, over supports: L/3 from one side, L/4 from the other, short and long direction",
+          "printed_as": "RB9@0.20m"
+        }
+      ],
+      "note": "ตะแกรงล่าง RB9@0.20m#; เหล็กบน RB9@0.20m เหนือคาน ยาว L/3 ด้านหนึ่งและ L/4 อีกด้าน ทั้งด้านสั้นและด้านยาว (รูปตัด S1(ด้านสั้น) และ S1(ด้านยาว) เหมือนกัน)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    }
+  ]
+}
