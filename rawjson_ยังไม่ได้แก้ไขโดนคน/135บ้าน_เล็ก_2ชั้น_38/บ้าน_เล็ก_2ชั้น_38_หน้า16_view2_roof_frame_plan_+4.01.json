@@ -1,0 +1,72 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบโครงสร้างหลังคา ระดับ +6.03, แบบโครงสร้างหลังคา ระดับ +4.01",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_38/บ้าน_เล็ก_2ชั้น_38_หน้า16.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_38_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แบบโครงสร้างหลังคา ระดับ +4.01",
+  "scale": "1:75",
+  "views": [
+    "view1: แบบโครงสร้างหลังคา ระดับ +6.03 1:75 + หมายเหตุ legend (roof_frame_plan)",
+    "view2: แบบโครงสร้างหลังคา ระดับ +4.01 1:75 (roof_frame_plan)"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "This small view prints grid markers 1, D and E with D-E 2.50 and 1.00 past E. The structural set has no grid E (S-01 footings stop at D; ten other views letter the rows A-D at 3.50 / 3.50 / 2.50). Decided by op01 precedence and geometry: printed D = structural C, printed E = structural D — the posts drawn here at D and E are the columns C1 at C1 and D1 (S-02 draws C1 alone at D1 over the open stair bay), and E + 1.00 is the roof edge D' (10.50) that S-03/S-04/A-04 print 1.00 past D. Refs are written in structural lettering; the losing reading (a real grid E 2.50 beyond D) would put this wall plate outside the roof drawn on S-04, so it is rejected.",
+    "Member: อะเส C-150x50x20x2.3 mm., top at +4.01 — the low support of Truss T3's left end over the stair bay (S-05 Truss T3)."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "อะเส",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-150x50x20x2.3 mm. (หลังอะเสระดับ+4.01)"
+      },
+      "note": "อะเสระดับ +4.01 แนว 1 ช่องบันได (พิมพ์มาร์คกริดเป็น D-E ในวิวนี้ = C-D ของแปลนโครงสร้าง) วางบนเสา C1 ที่ C1 และ D1",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "view_mislettered_D_E"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "อะเส",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D'1",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "t_mm": 2.3,
+        "printed_as": "อะเส C-150x50x20x2.3 mm. (หลังอะเสระดับ+4.01)"
+      },
+      "note": "ส่วนยื่น 1.00 ม. ถึงขอบหลังคา (พิมพ์เป็น 1.00 หลังมาร์ค E)",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "view_mislettered_D_E",
+        "drawn_to_roof_edge_on_plan"
+      ]
+    }
+  ]
+}

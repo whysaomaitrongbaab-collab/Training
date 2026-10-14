@@ -1,0 +1,112 @@
+{
+  "png": "20",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แบบขยายโครงสร้าง คสล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_38/บ้าน_เล็ก_2ชั้น_38_หน้า20.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_38_หน้า00_gridline.json",
+  "view_title": "F3, F4, PS",
+  "scale": "1:25",
+  "confidence_score": 0.92,
+  "confidence_flags": [],
+  "warnings": [
+    "Spread footings, no piles. main_bar.count is the two-way total (section 6b); each footing is square, so depth_mm is omitted.",
+    "Depths below ระดับดินเดิม (1.00 to the footing top, then the footing, 0.05 lean concrete 1:3:5 and 0.05 compacted coarse sand) are printed against a level with no value, so they stay on the elements.",
+    "PS (precast plank floor) detail: topping mesh is main_bar (RB6@0.20 or wiremesh 4 mm), the RB9@0.40 L-bars at the slab end are additional_bars. Total 0.05 + 0.05 read from the two stacked 0.05 dimensions at the right edge.",
+    "PS live load: this detail prints 'รับน้ำหนักบรรทุกจรได้ไม่น้อยกว่า 200 กก./ตร.ม.' while the A-01 general notes print 150 กก./ตร.ม. — the member detail wins (op01 precedence), 200 kept on PS; the conflict is recorded in the notes file too."
+  ],
+  "elements": [
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "width_mm": 1450,
+      "width_mm_printed_as": "0.725+0.725 = 1.45 (ทั้งสองทิศ)",
+      "height_mm": 350,
+      "height_mm_printed_as": "0.35",
+      "main_bar": {
+        "count": 22,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "11+11-DB12",
+        "count_printed_as": "11+11"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "footing_type": "ฐานรากแผ่",
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "base_fill": "ทรายหยาบอัดแน่น",
+      "ground_reference": "ระดับดินเดิม; 1.00 ลงถึงหลังฐานราก",
+      "note": "เสา C1 ตั้งกลางฐาน (รูปแปลนฐานระบุ C1); ฐานจัตุรัสจึงไม่ใส่ depth_mm",
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F4",
+      "element_type": "footing",
+      "width_mm": 1550,
+      "width_mm_printed_as": "0.775+0.775 = 1.55 (ทั้งสองทิศ)",
+      "height_mm": 350,
+      "height_mm_printed_as": "0.35",
+      "main_bar": {
+        "count": 24,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "12+12-DB12",
+        "count_printed_as": "12+12"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "note": "RB 9 รัดรอบ"
+      },
+      "footing_type": "ฐานรากแผ่",
+      "lean_concrete": {
+        "mix": "1:3:5",
+        "thickness_m": 0.05
+      },
+      "sand_bed_thickness_m": 0.05,
+      "base_fill": "ทรายหยาบอัดแน่น",
+      "ground_reference": "ระดับดินเดิม; 1.00 ลงถึงหลังฐานราก",
+      "note": "เสา C1 ตั้งกลางฐาน (รูปแปลนฐานระบุ C1); ฐานจัตุรัสจึงไม่ใส่ depth_mm",
+      "confidence_score": 0.94,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.05 + 0.05",
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "RB 6 mm. @ 0.20 M. หรือ WIREMESH 4 MM."
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 9,
+          "spacing_mm": 400,
+          "type": "RB",
+          "position": "slab end over the edge beam, L-bar 0.50 x 0.25",
+          "printed_as": "RB 9 mm. @ 0.40 M."
+        }
+      ],
+      "note": "พื้นคอนกรีตอัดแรงสำเร็จรูป รับน้ำหนักบรรทุกจรได้ไม่น้อยกว่า 200 กก./ตร.ม. วางพาดบนคานไม่น้อยกว่า 5 ซม.; คอนกรีตทับหน้า หนา 5 ซม. (แผ่นพื้น 0.05 + ทับหน้า 0.05 ตามมิติที่ขอบขวา); เหนือคานกลางมีเหล็กรูปตัว L 0.25 x 0.25 ยาว L/4 ทั้งสองข้าง (ไม่พิมพ์ขนาดเหล็กแยก); ระยะ 0.16 ที่ขอบพื้นซ้ายพิมพ์ไว้แต่ไม่ได้ตีความ",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "live_load_conflicts_with_general_notes"
+      ]
+    }
+  ]
+}

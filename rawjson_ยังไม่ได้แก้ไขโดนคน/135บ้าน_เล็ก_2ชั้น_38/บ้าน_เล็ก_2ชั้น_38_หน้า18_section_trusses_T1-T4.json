@@ -1,0 +1,127 @@
+{
+  "png": "18",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แบบโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_เล็ก_2ชั้น_38/บ้าน_เล็ก_2ชั้น_38_หน้า18.png",
+  "grid_source": "บ้าน_เล็ก_2ชั้น_38_หน้า00_gridline.json",
+  "view_title": "TRUSS T1, TRUSS T2, TRUSS T3, TRUSS T4",
+  "scale": "1:75",
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "All truss members are one section, printed 'rectangular tube Ø-100x50x1.7 mm.' (four leaders per truss) — designation RHS, print kept in printed_as.",
+    "Mark conflict, decided: the T3 elevation labels the member at its apex 'T6' and the T4 elevation labels its far support 'T5'. No T5 or T6 exists on S-03, S-04 or the A-09/A-10 sections (which show T1-T4 only). By position (S-04) the member at T3's apex is T4 and T4's far support is T3 — the plan marks win (more sheets); the printed T5/T6 are kept in supports_printed_as / note and flagged.",
+    "Panel chains under the elevations carry no grid bubbles, so they stay on these elements (panel_lengths_printed_as) rather than becoming grid ticks. T1/T3 spans 3.50 + 3.50 and T4's 2.50 agree with the grid (1-2-3 and C-D)."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "height_mm": 2193,
+      "height_mm_printed_as": "2.193",
+      "spans_m": [
+        3.5,
+        3.5
+      ],
+      "panel_lengths_printed_as": "0.875 x 8 (3.50 + 3.50 = 7.00)",
+      "supports": [
+        "1",
+        "2",
+        "3"
+      ],
+      "note": "โครงถักจั่ว (King post) ช่วง 7.00 ม. วางบนอะเส C-150x50x20x2.3 mm. (หลังอะเสระดับ+6.03) ที่กริด 1 และ 3 และเสาที่กริด 2; คอร์ดบนยื่นเลยจุดรองรับทั้งสองข้าง; T2 วางที่ยอด",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "height_mm": 600,
+      "height_mm_printed_as": "0.600",
+      "spans_m": [
+        3.5,
+        3.5
+      ],
+      "panel_lengths_printed_as": "1.167 x 6 (3.50 + 3.50 = 7.00)",
+      "supports": [
+        "T1",
+        "T1",
+        "T1"
+      ],
+      "level_m": 8.05,
+      "level_m_printed_as": "ระดับหลังอกไก่ +8.05",
+      "note": "โครงถักสัน (แนวกริด 2) ลึก 0.60 ใต้ระดับหลังอกไก่ +8.05 วางบน T1 สามตัว; คอร์ดบนยื่นเลย T1 ตัวริมทั้งสองข้าง",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "height_mm_printed_as": "1.921 + 1.183",
+      "spans_m": [
+        3.5,
+        3.5
+      ],
+      "panel_lengths_printed_as": "3.50 | 0.875 x 4 (= 7.00)",
+      "supports_printed_as": "อะเส C-150x50x20x2.3 mm. (หลังอะเสระดับ+4.01) | อะเส C-150x50x20x2.3 mm. (หลังอะเสระดับ+6.03) x2",
+      "note": "โครงถักไม่สมมาตรแนว D: ปลายซ้ายต่ำวางบนอะเส +4.01 (แนว 1) ลาดขึ้น 3.50 ม. ถึงอะเส +6.03 (แนว 2) แล้วเป็นโครงจั่ว 0.875 x 4 ถึงแนว 3; ยอดอยู่กึ่งกลางช่วง 2-3 (= แนว 2''); ระยะดิ่ง 1.921 ช่วงลาดล่าง และ 1.183 ส่วนจั่ว; ป้ายที่ยอดพิมพ์ว่า T6",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "printed_ridge_mark_T6_not_on_plan"
+      ]
+    },
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 1.7,
+        "printed_as": "rectangular tube Ø-100x50x1.7 mm."
+      },
+      "height_mm": 600,
+      "height_mm_printed_as": "0.600",
+      "spans_m": [
+        2.5
+      ],
+      "panel_lengths_printed_as": "1.250 + 1.250 = 2.50",
+      "supports_printed_as": "T5 | T1",
+      "level_m": 7.04,
+      "level_m_printed_as": "ระดับหลังอกไก่ +7.04",
+      "note": "โครงถักสันหลังคาช่อง C-D ลึก 0.60 ใต้ระดับหลังอกไก่ +7.04 ช่วง 2.50 ม. วางบน T1 และโครงถักที่พิมพ์ว่า T5 (ตามตำแหน่งบนแปลน S-04 คือ T3 แนว D); คอร์ดบนยื่นเลยปลายด้าน T5",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "printed_support_mark_T5_not_on_plan"
+      ]
+    }
+  ]
+}
