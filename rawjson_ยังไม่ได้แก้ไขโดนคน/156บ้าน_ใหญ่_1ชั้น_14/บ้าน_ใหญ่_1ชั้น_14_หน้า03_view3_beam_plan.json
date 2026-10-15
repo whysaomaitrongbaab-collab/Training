@@ -1,0 +1,578 @@
+{
+  "png": "03",
+  "doc_page": 3,
+  "discipline": "structural",
+  "sheet_code": "2",
+  "sheet_name": "แปลนคาน-โครงหลังคา, แปลนฐานราก คานคอดิน และโครงพื้นเวที, แบบขยายโครงสร้าง",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_14/บ้าน_ใหญ่_1ชั้น_14_หน้า03.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_14_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก คานคอดิน และโครงพื้นเวที",
+  "scale": "1:100",
+  "pattern": "beam_plan",
+  "views": [
+    "view1: แปลนคาน - โครงหลังคา 1:100 — roof_frame_plan",
+    "view2: แปลนฐานราก คานคอดิน และโครงพื้นเวที 1:100 — footings + columns (footing_plan)",
+    "view3: แปลนฐานราก คานคอดิน และโครงพื้นเวที 1:100 — ground beams + stage-floor beams + slab note (beam_plan)",
+    "view4: ขยายคาน B1-B5 (+ หมายเหตุ B3'), ขยายหูช้างรับตง, ขยายเสา C1/C2 สองระดับ, ขยาย F1C1 / F2C2 1:20, ขยายพื้น S1 1:20, ขยายเวที 1:20, ขยาย G1-G3, ขยายพื้น ค.ส.ล. 1:20 — section",
+    "view5: ข้อความลายมือท้ายแผ่น F1 / F2 ฐานรากสำหรับเข็มคอนกรีตอัดแรง (ทางเลือก) — section",
+    "view6: ข้อกำหนดเข็ม + หมายเหตุ / รายการประกอบแบบ (การตอกเข็มคอนกรีตอัดแรง) — notes"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "Ground beams (คานคอดิน) and the stage-floor framing of the combined footing/ground-beam plan; footings and columns are in _view2_footing_plan.json.",
+    "G1 runs along rows A and D in every bay; G2 is on grids 3-8 from A to D as ONE 14.00 span (no intermediate column — drawn that way); grid 9 carries G3 (A-B, C-D) and G1 (B-C between the end-wall C2 columns).",
+    "Grids 1 and 2 (the stage bay) carry stacked labels: grid 1 'B3/G3', 'B4/G1', 'B3/G3'; grid 2 'B3/G1', 'B4/G1', 'B3/G1' — the upper mark is the stage-floor beam (B3/B4, details on the same sheet, stage floor +1.20), the lower one the ground beam. Each is recorded as its own segment.",
+    "Stage cross beams G1: on rows B and C between grids 1 and 2 and on to the stage front (1.50 = ขยายเวที); two more at the stair edges, drawn about 2.1 m / 11.6 m from A — placed on the floor-plan stair ticks 2.00 (A'''') and 12.00 (C') with a lowered score and the flag row_position_by_proportion.",
+    "The stage front (G1 under the front wall) is straight at 1.50 from grid 2 between rows B and C (dummy line 2') and curves back toward grid 2 near the stairs. The curved/sloped parts have no printed dimension: recorded with approximate refs (~) and span_source unresolved rather than invented coordinates; the two beams from grid 2 that end on the curve are recorded the same way.",
+    "Hardwood joists of the stage floor ('ตงไม้เนื้อแข็ง ขนาด 2\"x6\" @0.50', 'ไม้ปิดหัวตงไม้เนื้อแข็ง ขนาด 1½\"x6\"') are drawn as dashed lines between grids 1 and 2 — timber, not recorded as elements. Plan note 'บริเวณช่องติดตั้งตู้สวิตช์ไฟ' (switch-board recess) at the stage — architectural.",
+    "Slab: the plan prints a note, not a slab mark — recorded once with element_id null (section 0.2)."
+  ],
+  "elements": [
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานรับพื้นเวที (ป้ายซ้อน 'B3/G3' บนแนวกริด 1 — B3 ตัวบน)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน (ป้ายซ้อน 'B3/G3' — G3 ตัวล่าง)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานรับพื้นเวที (ป้ายซ้อน 'B3/G1' บนแนวกริด 2 — B3 ตัวบน)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานคอดิน (ป้ายซ้อน 'B3/G1' — G1 ตัวล่าง)",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "D3",
+      "span_length_m": 14.0,
+      "span_source": "grid_table",
+      "note": "คานคอดินช่วงเดียวจากแถว A ถึง D ไม่มีเสากลาง (ตามที่เขียน)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "D4",
+      "span_length_m": 14.0,
+      "span_source": "grid_table",
+      "note": "คานคอดินช่วงเดียวจากแถว A ถึง D ไม่มีเสากลาง (ตามที่เขียน)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "D5",
+      "span_length_m": 14.0,
+      "span_source": "grid_table",
+      "note": "คานคอดินช่วงเดียวจากแถว A ถึง D ไม่มีเสากลาง (ตามที่เขียน)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "D6",
+      "span_length_m": 14.0,
+      "span_source": "grid_table",
+      "note": "คานคอดินช่วงเดียวจากแถว A ถึง D ไม่มีเสากลาง (ตามที่เขียน)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "D7",
+      "span_length_m": 14.0,
+      "span_source": "grid_table",
+      "note": "คานคอดินช่วงเดียวจากแถว A ถึง D ไม่มีเสากลาง (ตามที่เขียน)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "D8",
+      "span_length_m": 14.0,
+      "span_source": "grid_table",
+      "note": "คานคอดินช่วงเดียวจากแถว A ถึง D ไม่มีเสากลาง (ตามที่เขียน)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "A9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "B9",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A''''1",
+      "grid_ref_end": "A''''2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขวางเวทีที่ขอบบันไดขึ้นเวทีด้านบน — ในแปลนเขียนที่ราว 2.1 ม. จาก A วางบนเส้น 2.00 ของโซ่มิติแปลนพื้น",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "bears_on_beam:G3(start)",
+        "bears_on_beam:G1(end)",
+        "row_position_by_proportion"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "~A''''2'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ต่อจากกริด 2 ไปจรดแนวโค้งหน้าเวที ราว 1.1 ม. จากกริด 2 (ไม่มีระยะพิมพ์)",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "bears_on_beam:G1(start)",
+        "ends_on_curved_stage_front_no_printed_dimension"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานรับพื้นเวที (ป้ายซ้อน 'B4/G1' บนแนวกริด 1 — B4 ตัวบน)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B4/G1' — G1 ตัวล่าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางเวทีแนวเสา C2",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานรับพื้นเวที (ป้ายซ้อน 'B4/G1' บนแนวกริด 2)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B2'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "จากเสา C2 ที่ B2 ถึงหน้าเวที (ขยายเวที 1.50)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B2'",
+      "grid_ref_end": "C2'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คาน G1 ใต้ผนังหน้าเวทีช่วงตรง (ขยายเวที: G1 ใต้ผนังก่ออิฐหน้าเวที)",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "bears_on_beam:G1(start)",
+        "bears_on_beam:G1(end)"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B9",
+      "grid_ref_end": "C9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B3/G3' บนแนวกริด 1 — B3 ตัวบน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B3/G3' — G3 ตัวล่าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางเวทีแนวเสา C2",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B3/G1' บนแนวกริด 2 — B3 ตัวบน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B3/G1' — G1 ตัวล่าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C2'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "จากเสา C2 ที่ C2 ถึงหน้าเวที (ขยายเวที 1.50)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C9",
+      "grid_ref_end": "D9",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "C'1",
+      "grid_ref_end": "C'2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขวางเวทีที่ขอบบันไดขึ้นเวทีด้านล่าง — ในแปลนเขียนที่ราว 11.6 ม. จาก A วางบนเส้น 12.00 ของโซ่มิติแปลนพื้น",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "bears_on_beam:G3(start)",
+        "bears_on_beam:G1(end)",
+        "row_position_by_proportion"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "C'2",
+      "grid_ref_end": "~C'2'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ต่อจากกริด 2 ไปจรดแนวโค้งหน้าเวที (ไม่มีระยะพิมพ์)",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "bears_on_beam:G1(start)",
+        "ends_on_curved_stage_front_no_printed_dimension"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "D5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D5",
+      "grid_ref_end": "D6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D6",
+      "grid_ref_end": "D7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D7",
+      "grid_ref_end": "D8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D8",
+      "grid_ref_end": "D9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "~A''''2'",
+      "grid_ref_end": "B2'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวหน้าเวทีส่วนโค้ง/เฉียงด้านบน (ป้าย G1 สองที่ — ท่อนสั้นแนวตั้งใกล้บันไดและท่อนเฉียง) รวมเป็นรายการเดียว ไม่มีระยะพิมพ์",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "curved_stage_front_polyline_simplified"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "C2'",
+      "grid_ref_end": "~C'2'",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "แนวหน้าเวทีส่วนโค้ง/เฉียงด้านล่าง (ป้าย G1 สองที่) รวมเป็นรายการเดียว ไม่มีระยะพิมพ์",
+      "confidence_score": 0.45,
+      "confidence_flags": [
+        "curved_stage_front_polyline_simplified"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "พื้น ค.ส.ล. ผิวขัดมัน",
+      "element_type": "slab",
+      "grid_ref": "A-D x 2-9",
+      "thickness_mm": 100,
+      "note": "ข้อความในแปลน: 'พื้น ค.ส.ล. ผิวขัดมัน หนา 0.10 ม. เหล็ก Ø 6 มม. @0.25 #'; ช่องเวที (กริด 1-2) 'เฉพาะช่องนี้ไม่ต้องเทพื้น ค.ส.ล.' — ขอบเขตด้านกริด 2 คือแนวหน้าเวที",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "slab_extent_from_note_not_marked"
+      ]
+    }
+  ]
+}

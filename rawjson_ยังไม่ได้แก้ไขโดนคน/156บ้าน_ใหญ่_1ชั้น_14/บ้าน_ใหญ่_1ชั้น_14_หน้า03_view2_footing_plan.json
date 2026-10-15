@@ -1,0 +1,121 @@
+{
+  "png": "03",
+  "doc_page": 3,
+  "discipline": "structural",
+  "sheet_code": "2",
+  "sheet_name": "แปลนคาน-โครงหลังคา, แปลนฐานราก คานคอดิน และโครงพื้นเวที, แบบขยายโครงสร้าง",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_14/บ้าน_ใหญ่_1ชั้น_14_หน้า03.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_14_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก คานคอดิน และโครงพื้นเวที",
+  "scale": "1:100",
+  "pattern": "footing_plan",
+  "views": [
+    "view1: แปลนคาน - โครงหลังคา 1:100 — roof_frame_plan",
+    "view2: แปลนฐานราก คานคอดิน และโครงพื้นเวที 1:100 — footings + columns (footing_plan)",
+    "view3: แปลนฐานราก คานคอดิน และโครงพื้นเวที 1:100 — ground beams + stage-floor beams + slab note (beam_plan)",
+    "view4: ขยายคาน B1-B5 (+ หมายเหตุ B3'), ขยายหูช้างรับตง, ขยายเสา C1/C2 สองระดับ, ขยาย F1C1 / F2C2 1:20, ขยายพื้น S1 1:20, ขยายเวที 1:20, ขยาย G1-G3, ขยายพื้น ค.ส.ล. 1:20 — section",
+    "view5: ข้อความลายมือท้ายแผ่น F1 / F2 ฐานรากสำหรับเข็มคอนกรีตอัดแรง (ทางเลือก) — section",
+    "view6: ข้อกำหนดเข็ม + หมายเหตุ / รายการประกอบแบบ (การตอกเข็มคอนกรีตอัดแรง) — notes"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "One combined drawing (แปลนฐานราก คานคอดิน และโครงพื้นเวที) carrying footings, columns, ground beams, the stage-floor framing and a slab note. Split by member kind (section 3 / section 1): footings + columns here, beams + slab in _view3_beam_plan.json.",
+    "Every column position prints a combined mark 'F1C1' or 'F2C2' (footing + column), recorded as separate footing and column elements as in house 129. F1C1 = the 18 perimeter positions on rows A and D (grids 1-9); F2C2 = 6 positions: the end-wall columns on grids 1 and 9 at rows B and C, and the two stage columns on grid 2 at rows B and C.",
+    "Plan notes: 'C2: ใต้พื้นเวที สูงถึงคานรับพื้นเวที' (leader to the grid-2 stage columns — they stop at the stage-floor beam); 'เสานี้ให้ทำหูช้างรับตง (ดูแบบขยาย)' with a dashed circle around the column at B1 (corbel detail ขยายหูช้างรับตง on the same sheet). On the roof plan the end-wall C2 columns (B1, C1, B9, C9) continue to the roof.",
+    "The footing details (ขยาย F1C1, ขยาย F2C2) are the drawn design on hollow hexagonal piles 0.15 x 6.00; a handwritten alternative for prestressed piles (8 named provinces) redefines F1/F2 at the bottom of the sheet — see the two section files. The plan does not say which design a given site uses."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 18,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "note": "พิมพ์ 'F1C1' ทุกตำแหน่ง (ฐานราก F1 ใต้เสา C1)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 6,
+      "grid_refs": [
+        "B1",
+        "B2",
+        "B9",
+        "C1",
+        "C2",
+        "C9"
+      ],
+      "note": "พิมพ์ 'F2C2' ทุกตำแหน่ง (ฐานราก F2 ใต้เสา C2)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 18,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "B1",
+        "B2",
+        "B9",
+        "C1",
+        "C2",
+        "C9"
+      ],
+      "note": "B1, C1, B9, C9 = เสาผนังสกัดถึงหลังคา (แปลนคาน-โครงหลังคา); B2, C2 = เสาใต้พื้นเวที สูงถึงคานรับพื้นเวที (หมายเหตุแปลน); เสาที่ B1 มีวงกลมประ + หมายเหตุ 'เสานี้ให้ทำหูช้างรับตง (ดูแบบขยาย)'",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    }
+  ]
+}

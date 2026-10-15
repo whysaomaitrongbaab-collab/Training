@@ -1,0 +1,185 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "structural",
+  "sheet_code": "3",
+  "sheet_name": "ขยายโครงหลังคา T1, T2, ขยายคานด้านสกัดหัวท้าย B, รายการประกอบ, ขยายประตู ป1/ป2",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_14/บ้าน_ใหญ่_1ชั้น_14_หน้า04.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_14_หน้า00_gridline.json",
+  "view_title": "ขยายโครงหลังคา T1, ขยายโครงหลังคา T2, ขยายคานด้านสกัดหัวท้าย B",
+  "scale": "1:20",
+  "views": [
+    "view1: ขยายโครงหลังคา T1 1:20, ขยายโครงหลังคา T2 1:20, ขยายคานด้านสกัดหัวท้าย B 1:20 + รูปตัด ก-ก / ข-ข — section (this file)",
+    "view2: รายการประกอบโครงหลังคาเหล็ก + รายการประกอบแบบก่อสร้าง + หมายเหตุ (แก้ไขขนาดเหล็กรูปพรรณ) — notes",
+    "view3: ขยาย ป1 / ป2 1:20 (ประตู) — architectural details, not extracted (op04)"
+  ],
+  "confidence_score": 0.76,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "steel_section_dimensions_hand_lettered"
+  ],
+  "warnings": [
+    "T1 is drawn as a half truss (eave to just past the ridge): top chord 'จันทันเหล็ก ⊓⊓-150x50x50x4.5 มม.', bottom chord 'เหล็ก ⊔-150x50x50x4.5 มม.', webs 'ตุ๊กตาและค้ำยันเหล็ก 2L-50x50x3 มม. คู่', panels 1.00, eave 0.95 + 0.95. The third number of '150x50x50' does not fit a standard lipped channel (kept verbatim; only d/b go in steel_section), same oddity as house 129. Per-member list uses the attribute key member_sections (house 129 precedent).",
+    "T2 chord thickness glyph reads like 5 (the web label's 3 is drawn differently) — 'L-50x50x5' taken with the thickness left out of steel_section and the doubt flagged; T2 depth printed '≈0.80'.",
+    "Gable beam B: section ก-ก (mid-span) top 2Ø12, bottom 2Ø12 + 2Ø12 ค.ม. L/5; section ข-ข (support) top 4Ø12, bottom 2Ø12 — the 4Ø12 at the support are the 2 continuous + 2 bent-up bars. Bent-up bars merged into bottom (house 129 convention); the support reading kept in the note.",
+    "RC fin at the gable eave ('ครีบ ค.ส.ล. หนา 0.10', 1.90 long x 1.20 high, two Ø6 meshes @0.15 / @0.10) has no mark → element_id null.",
+    "Purlins are labelled on the T1 detail; the tail of the purlin callout (fixing) is illegible."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 50,
+        "printed_as": "จันทันเหล็ก ⊓⊓-150×50×50×4.5 มม."
+      },
+      "member_sections": [
+        {
+          "role": "จันทัน (คอร์ดบน)",
+          "printed_as": "จันทันเหล็ก ⊓⊓-150×50×50×4.5 มม."
+        },
+        {
+          "role": "คอร์ดล่าง",
+          "printed_as": "เหล็ก ⊔-150×50×50×4.5 มม."
+        },
+        {
+          "role": "ท่อนล่างช่วงชายคา",
+          "printed_as": "⊔-150×50×50×3.2 มม."
+        },
+        {
+          "role": "ตุ๊กตาและค้ำยัน",
+          "printed_as": "ตุ๊กตาและค้ำยันเหล็ก 2L-50×50×3 มม. คู่"
+        },
+        {
+          "role": "ขอบปลายชายคา",
+          "printed_as": "เหล็ก ⊔-150×50×50×4.5 มม."
+        },
+        {
+          "role": "จุดรองรับบนหัวเสา",
+          "printed_as": "แผ่นเหล็กหนา 6 มม. แผ่นบนเชื่อมติดกับโครงหลังคา ด้านหนึ่งเจาะรูกลม อีกด้านหนึ่งเจาะรูยาว"
+        },
+        {
+          "role": "สลักยึดหัวเสา",
+          "printed_as": "สกรูน็อต Ø 3/4\" ยาว 12\" จำนวน 4 ตัว ฝังลงในหัวเสา"
+        },
+        {
+          "role": "รอยต่อสัน",
+          "printed_as": "โครงหลังคา T1 ที่สันเชื่อมต่อด้วยแผ่นเหล็กหนา 6 มม. ประกับ 2 ด้าน (ข้อความต่อท้ายอ่านไม่ชัด)"
+        }
+      ],
+      "span_m": 14.0,
+      "note": "ช่วงพาดระหว่างเสา 14.00 ม. ชายคายื่น 1.90 (0.95 + 0.95) สองข้าง; ช่องโครงถัก 1.00; ปลายชายคา: ไม้เนื้อแข็ง 1½\"x3\", ไม้เชิงชาย ¾\"x8\", กระเบื้องแผ่นเรียบหนา 6 มม., โครงเหล็ก L-40x40x3.2 มม. ทางตั้ง @0.80 ทางนอน @0.60; หลังคากระเบื้องลอนคู่สีขาว 0.50x1.20 ม. ครอบกระเบื้องลอนคู่",
+      "confidence_score": 0.74,
+      "confidence_flags": [
+        "steel_section_dimensions_hand_lettered"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 50,
+        "b_mm": 50,
+        "printed_as": "เหล็ก L-50×50×5 มม."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน/ล่าง",
+          "printed_as": "เหล็ก L-50×50×5 มม."
+        },
+        {
+          "role": "ตุ๊กตาและค้ำยัน",
+          "printed_as": "ตุ๊กตาและค้ำยัน เหล็ก L-40×40×3 มม."
+        }
+      ],
+      "height_mm": 800,
+      "height_mm_printed_as": "≈0.80",
+      "span_m": 4.0,
+      "note": "โครงถักแนวยาว ช่อง 1.00 x 4 ระหว่างโครงหลังคา T1 (แนวชายคาแถว A/D และแนวสัน)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "chord_thickness_digit_uncertain_5_or_3"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แปเหล็ก",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "แปเหล็ก C-100×50×20×3.2 มม. @1.00 ม. (ข้อความเรื่องการยึดต่อท้ายอ่านไม่ออก)"
+      },
+      "spacing_mm": 1000,
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2Ø12 มม.",
+          "note": "รูปตัด ข-ข (ที่รองรับ) พิมพ์ 4Ø12 มม. ด้านบน = 2 เส้นต่อเนื่อง + 2 เส้นคอม้าที่ดัดขึ้น"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2Ø12 มม. + 2Ø12 มม. ค.ม. L/5",
+          "note": "2 เส้นตรง + 2 เส้นคอม้า L/5 (รูปตัด ก-ก กลางช่วง)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ปØ6 มม. @0.15"
+      },
+      "note": "คานด้านสกัดหัวท้าย เอียงตามลาดหลังคา บนผนังสกัดกริด 1 และ 9; ช่วงในแบบ 1.90 (ครีบ) + 5.00 + 2.00 + 2.00",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครีบ ค.ส.ล. ปลายชายคาผนังสกัด",
+      "element_type": "wall",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "หนา 0.10",
+      "bar_layers": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "เหล็ก Ø6 มม. @0.15",
+          "location": "ไม่ระบุทิศทางในแบบ"
+        },
+        {
+          "dia_mm": 6,
+          "spacing_mm": 100,
+          "type": "RB",
+          "printed_as": "เหล็ก Ø6 มม. @0.10",
+          "location": "ไม่ระบุทิศทางในแบบ"
+        }
+      ],
+      "note": "ครีบยาว 1.90 สูง 1.20 ต่อจากคาน B ที่ปลายชายคา",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    }
+  ]
+}
