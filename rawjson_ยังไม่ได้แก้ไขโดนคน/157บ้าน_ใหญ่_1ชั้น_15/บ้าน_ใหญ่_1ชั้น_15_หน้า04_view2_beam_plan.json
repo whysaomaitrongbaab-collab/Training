@@ -1,0 +1,723 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "structural",
+  "sheet_code": "3",
+  "sheet_name": "แปลนฐานราก, ผังฐานราก, ขยายฐานราก, คาน, พื้น, เสา (แบบ สปช. 206/26 แผ่นที่ 3)",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_15/บ้าน_ใหญ่_1ชั้น_15_หน้า04.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_15_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก, คานคอดิน, คาน ค.ส.ล., ตง, พื้น",
+  "scale": "1:100",
+  "pattern": "beam_plan",
+  "views": [
+    "view1: แปลนฐานราก, คานคอดิน, คาน ค.ส.ล., ตง, พื้น 1:100 — footings + columns (this split: footing_plan)",
+    "view2: same drawing — ground beams G1-G3 + stage beams B1, B2, B4, B5, B6 (this split: beam_plan)",
+    "view3: แปลนคาน โครงหลังคา 1:100 — roof_frame_plan (B7-B11, trusses A/B, canopy slabs S1)",
+    "view4: beam sections G1-G3, B1-B11, slab S1, แบบพื้นคอนกรีตติดดิน — section",
+    "view5: ฐานราก F1/F2/F3 (plan + section) and column sections C1/C2/C3 — section",
+    "view6: ข้อกำหนดเข็ม + หมายเหตุ (handwritten) — notes"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "Ground beams and stage beams of the combined foundation plan; footings and columns are in _view1_footing_plan.json.",
+    "G1 runs the perimeter of the long walls (rows A, E) and the stage end; G2 closes the right end wall (grid 10); G3 crosses the hall on grids 3-9 in two spans, A-C and C-E, on the interior short columns F2C2 (row C).",
+    "Stage (between grid 1 and the front edge B4): stacked labels 'B1/G1' (rows A/E, bay 1-2) and 'B2/G1' (grid 1 and grid 2) are two members on one line — G1 at ground-beam level, B1/B2 at stage-floor level — and are recorded as two atomic segments each. On grid 2 between the stage columns B2 and D2 the label is 'B2' alone, so no G1 is recorded there.",
+    "B4 is the stage front: printed chains 1.00 | .65 from grid 2 and 2.00 | 1.00 below row D fix the lower chamfer; the upper chamfer (rows A''''/A'''''') is drawn symmetric and carries the flag position_by_symmetry_with_printed_lower_chain. The two chamfer segments are diagonal; their span is the straight-line length between the two grid points (1.193). B4 is not split at row C (no column there).",
+    "Timber joists (ตงไม้เนื้อแข็ง 1½x8\" @0.50, ปลายตงวางบนคาน B4) and floorboards are unmarked timber and were not recorded as elements."
+  ],
+  "elements": [
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1' ตามผนังสกัดกริด 1: B2 ระดับพื้นเวที",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1': G1 คานคอดิน",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B1/G1' ช่องเวที: B1 ระดับพื้นเวที",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B1/G1': G1 คานคอดิน",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1' ตามกริด 2 (ขอบเวที) — G1 คานคอดิน ถึงเสา F2C2 ที่ B2",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A''''2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1' — B2 ระดับพื้นเวที; แยกช่วงที่คาน B4 มาชน",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "C3",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางอาคาร พาดถึงเสาสั้น C2 แนวกลาง (แถว C)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "C4",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางอาคาร พาดถึงเสาสั้น C2 แนวกลาง (แถว C)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "C5",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางอาคาร พาดถึงเสาสั้น C2 แนวกลาง (แถว C)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "C6",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางอาคาร พาดถึงเสาสั้น C2 แนวกลาง (แถว C)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "C7",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางอาคาร พาดถึงเสาสั้น C2 แนวกลาง (แถว C)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "C8",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางอาคาร พาดถึงเสาสั้น C2 แนวกลาง (แถว C)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "A9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "C9",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "note": "คานคอดินขวางอาคาร พาดถึงเสาสั้น C2 แนวกลาง (แถว C)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "A10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "A10",
+      "grid_ref_end": "B10",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ผนังสกัดกริด 10",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "B2 ระดับพื้นเวที ต่อจากจุดที่ B4 มาชนถึงเสา F2C2 ที่ B2",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "A''''2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "คานขอบเวที ช่วงตรงสั้นจากกริด 2 (ด้านบน แบบเขียนสมมาตรกับด้านล่างที่มีโซ่ระยะ)",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "position_by_symmetry_with_printed_lower_chain",
+        "bears_on_beam:B2(start)"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2'",
+      "grid_ref_end": "A''''''2''",
+      "span_length_m": 1.193,
+      "span_source": "grid_table",
+      "note": "ช่วงหักมุมเฉียง 1.00 x 0.65 — span = ความยาวแนวทแยงจากพิกัดกริด",
+      "confidence_score": 0.68,
+      "confidence_flags": [
+        "position_by_symmetry_with_printed_lower_chain",
+        "diagonal_member"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A''''''2''",
+      "grid_ref_end": "B2''",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "ขอบหน้าเวที",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "position_by_symmetry_with_printed_lower_chain"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "D1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1' (ตัว G อ่านคล้าย C) — B2 ระดับพื้นเวที",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member",
+        "label_g1_faint"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "D1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1' — G1 คานคอดิน",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member",
+        "label_g1_faint"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ระดับพื้นเวที",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "D2",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้าย 'B2' เดี่ยว (ไม่มี G1) ระหว่างเสา F2C2 สองต้นบนกริด 2",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B2''",
+      "span_length_m": 1.65,
+      "span_source": "grid_table",
+      "note": "จากเสา F2C2 ถึงคานขอบหน้าเวที B4",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B2''",
+      "grid_ref_end": "D2''",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ขอบหน้าเวที (ช่วงกลาง ไม่มีเสารองรับตรงแถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "B10",
+      "grid_ref_end": "D10",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "E3",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "E4",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "E5",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "E6",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C7",
+      "grid_ref_end": "E7",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C8",
+      "grid_ref_end": "E8",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "grid_ref_start": "C9",
+      "grid_ref_end": "E9",
+      "span_length_m": 10.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1'",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1'",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "E2",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1' ตามกริด 2",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D'''2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B2/G1' — B2 ระดับพื้นเวที ถึงจุดที่ B4 มาชน",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D2''",
+      "span_length_m": 1.65,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "D2''",
+      "grid_ref_end": "D'2''",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "ขอบหน้าเวที 2.00 (โซ่ระยะพิมพ์)",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "grid_ref_start": "D10",
+      "grid_ref_end": "E10",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "D'2''",
+      "grid_ref_end": "D'''2'",
+      "span_length_m": 1.193,
+      "span_source": "grid_table",
+      "note": "ช่วงหักมุมเฉียง 0.65 x 1.00 — span = ความยาวแนวทแยงจากพิกัดกริด",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "diagonal_member"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D'''2",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "B2 ระดับพื้นเวที ต่อจากจุดที่ B4 มาชน",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "D'''2",
+      "grid_ref_end": "D'''2'",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "ช่วงตรงสั้นจากกริด 2",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "bears_on_beam:B2(start)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B1/G1'",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B1/G1'",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "E5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E5",
+      "grid_ref_end": "E6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E6",
+      "grid_ref_end": "E7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E7",
+      "grid_ref_end": "E8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E8",
+      "grid_ref_end": "E9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "grid_ref_start": "E9",
+      "grid_ref_end": "E10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}

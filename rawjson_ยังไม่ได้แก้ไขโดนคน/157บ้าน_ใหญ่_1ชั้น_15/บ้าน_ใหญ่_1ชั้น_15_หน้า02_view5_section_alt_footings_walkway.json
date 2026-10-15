@@ -1,0 +1,152 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "structural",
+  "sheet_code": "1",
+  "sheet_name": "แปลน, รูปด้าน (แบบ สปช. 206/26 แผ่นที่ 1)",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_15/บ้าน_ใหญ่_1ชั้น_15_หน้า02.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_15_หน้า00_gridline.json",
+  "view_title": "ฐานรากสำหรับเข็มคอนกรีตอัดแรง (หมายเหตุ) + ทางเท้า ค.ส.ล. (แปลนพื้น)",
+  "scale": null,
+  "views": [
+    "view1: รูปด้านหลัง / รูปด้านหน้า / รูปด้านข้าง 1:100 — side_profile (not extracted)",
+    "view2: แปลนพื้น, ผังไฟฟ้า 1:100 — etc_plan (architectural, not extracted; swept for the grid master)",
+    "view3: แบบขยาย ป1 1:50 — architectural detail (not extracted)",
+    "view4: รายการประกอบแบบก่อสร้าง + หมายเหตุ (ฐานรากสำหรับเข็มคอนกรีตอัดแรง) — notes",
+    "view5: ฐานราก F1, F2, F3 สำหรับเข็มคอนกรีตอัดแรง (จากหมายเหตุ) + ทางเท้า ค.ส.ล. (จากแปลนพื้น) — section",
+    "view6: สัญลักษณ์ไฟฟ้า + หมายเหตุไฟฟ้า — symbol (not extracted)"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Alternative footings for sites that use prestressed piles (remark on sheet 1; sheet 3's handwritten note and sheet 2's province list say which sites). Same marks F1/F2/F3 as the pile-group footings on sheet 3 (หน้า04_view5), kept in their own file so the two designs never share an element_id within one file; the plans do not say which design applies where — sheet 3 governs the drawn footings.",
+    "F1: 0.75 x 1.50 (not square -> depth_mm), mat '7-Ø15 (ทางยาว) และ 10-Ø15 (ทางสั้น)' -> count 17 (section 0.5/6b). F2/F3: printed together as one spec; '5-Ø15 มม.#' read as 5 bars each way (# = two-way mesh) -> count 10, flagged.",
+    "The walkway slab spec is printed on the architectural floor plan and repeated on the cross-section; recorded here as an unmarked slab."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเข็มคอนกรีตอัดแรง (ทางเลือก ตามหมายเหตุแผ่นที่ 1)",
+      "width_mm": 750,
+      "depth_mm": 1500,
+      "width_mm_printed_as": "0.75 x 1.50 ม.",
+      "height_mm": 600,
+      "height_mm_printed_as": "0.60 ม.",
+      "main_bar": {
+        "count": 17,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "ตะแกรงเหล็ก 7-Ø15 มม. (ทางยาว) และ 10-Ø15 มม. (ทางสั้น)",
+        "count_printed_as": "7+10"
+      },
+      "pile_count": 2,
+      "pile": {
+        "type": "เข็มคอนกรีตอัดแรง",
+        "length_m": 21.0,
+        "printed_as": "เสาเข็มคอนกรีตอัดแรง จำนวน 2 ต้น แต่ละต้นยาวประมาณ 21.00 ม."
+      },
+      "pile_layout_printed_as": "ศูนย์เข็มอยู่ห่างกัน 1.00 ม.",
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5 หนา 0.10 ม."
+      },
+      "sand_bed_thickness_m": 0.1,
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "alternative_design_not_assigned_to_positions"
+      ]
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเข็มคอนกรีตอัดแรง (ทางเลือก ตามหมายเหตุแผ่นที่ 1)",
+      "width_mm": 500,
+      "width_mm_printed_as": "0.50 x 0.50 ม.",
+      "height_mm": 500,
+      "height_mm_printed_as": "0.50 ม.",
+      "main_bar": {
+        "count": 10,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "ตะแกรงเหล็ก 5-Ø15 มม.#",
+        "count_printed_as": "5-Ø15 มม.#",
+        "note": "อ่าน '#' เป็นตะแกรง 2 ทาง 5 เส้นต่อทาง"
+      },
+      "pile_count": 1,
+      "pile": {
+        "type": "เข็มคอนกรีตอัดแรง",
+        "length_m": 21.0,
+        "printed_as": "เสาเข็มคอนกรีตอัดแรง 1 ต้น"
+      },
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5 หนา 0.10 ม."
+      },
+      "sand_bed_thickness_m": 0.1,
+      "note": "หมายเหตุพิมพ์ 'F2 และ F3' รวมกันเป็นสเปกเดียว",
+      "confidence_score": 0.76,
+      "confidence_flags": [
+        "alternative_design_not_assigned_to_positions",
+        "two_way_count_from_hash_mark"
+      ]
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเข็มคอนกรีตอัดแรง (ทางเลือก ตามหมายเหตุแผ่นที่ 1)",
+      "width_mm": 500,
+      "width_mm_printed_as": "0.50 x 0.50 ม.",
+      "height_mm": 500,
+      "height_mm_printed_as": "0.50 ม.",
+      "main_bar": {
+        "count": 10,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "ตะแกรงเหล็ก 5-Ø15 มม.#",
+        "count_printed_as": "5-Ø15 มม.#",
+        "note": "อ่าน '#' เป็นตะแกรง 2 ทาง 5 เส้นต่อทาง"
+      },
+      "pile_count": 1,
+      "pile": {
+        "type": "เข็มคอนกรีตอัดแรง",
+        "length_m": 21.0,
+        "printed_as": "เสาเข็มคอนกรีตอัดแรง 1 ต้น"
+      },
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5 หนา 0.10 ม."
+      },
+      "sand_bed_thickness_m": 0.1,
+      "note": "หมายเหตุพิมพ์ 'F2 และ F3' รวมกันเป็นสเปกเดียว",
+      "confidence_score": 0.76,
+      "confidence_flags": [
+        "alternative_design_not_assigned_to_positions",
+        "two_way_count_from_hash_mark"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ทางเท้า ค.ส.ล.",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "thickness_mm_printed_as": "0.08",
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "เหล็กเสริม Ø6 มม. @0.25#",
+        "note": "ตะแกรง 2 ทาง"
+      },
+      "note": "แปลนพื้นพิมพ์ 'ทางเท้า ค.ส.ล. หนา 0.08 ม. เหล็กเสริม Ø6 มม. @0.25#' ทั้งสองด้านยาว (กว้าง 2.00 นอกแถว A และ E); รูปตัดขวางพิมพ์ 'ทางเท้า ค.ส.ล. เสริมเหล็ก Ø6 มม. @0.25#' ตรงกัน",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "png": "03",
+  "doc_page": 3,
+  "discipline": "structural",
+  "sheet_code": "2",
+  "sheet_name": "รูปตัด, ขยายโครงหลังคา (แบบ สปช. 206/26 แผ่นที่ 2)",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_15/บ้าน_ใหญ่_1ชั้น_15_หน้า03.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_15_หน้า00_gridline.json",
+  "view_title": "ขยายโครงหลังคา A, B, รูปตัด ก-ก, ขยายชายคา, ขยายโครงหลังคาตรงจุดหัวเสา + callouts บนรูปตัด",
+  "scale": "1:25",
+  "views": [
+    "view1: รูปตัดขวาง 1:50 / รูปตัดตามยาว 1:100 — side_profile (not extracted; swept for the grid master)",
+    "view2: ขยายโครงหลังคา A/B, รูปตัด ก-ก, ขยายชายคา, ขยายโครงหลังคาตรงจุดหัวเสา, member callouts — section (this split)",
+    "view3: ขยายเวที / ขยายบันไดขึ้นเวที — architectural details (not extracted)",
+    "view4: หมายเหตุ + รายการประกอบแบบ (การตอกเข็มคอนกรีตอัดแรง) + รายการประกอบแบบ (โครงหลังคาเหล็ก) — notes"
+  ],
+  "confidence_score": 0.76,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "hand_lettered_set"
+  ],
+  "warnings": [
+    "Steel profiles are kept verbatim in printed_as; '⊓-150x75x75x6' / '⊔-150x75x75x6' are read as a channel 150 x 75 (designation C) — the repeated 75 is printed as is. Only d/b are put in steel_section for truss A.",
+    "Truss B depth prints 0.87 between two small chord dimensions whose first digit is hidden by the chord line ('.?35'); height_mm is left null.",
+    "The RC lintel under the gable frame (long section) and the proscenium tile frame (cross-section) are unmarked; they take element_id null with element_name_assigned (section 0.2). The lintel prints 4-Ø9 without a top/bottom split — recorded 2 + 2 with a flag.",
+    "Not extracted: the RC panel 'แผง ค.ส.ล. ฉาบปูนเรียบ ติดเส้นตั้ง หนา 0.09' on the cross-section (bar diameter unclear at this scan), the tie column callout on the front elevation (sheet 1), stage/stair architectural details, eave timber trim."
+  ],
+  "elements": [
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "printed_as": "จันทันเหล็ก ⊓-150x75x75x6 มม."
+      },
+      "member_sections": [
+        {
+          "role": "จันทัน/คอร์ดบน",
+          "printed_as": "จันทันเหล็ก ⊓-150x75x75x6 มม."
+        },
+        {
+          "role": "คอร์ดล่าง",
+          "printed_as": "เหล็ก ⊔-150x75x75x6 มม."
+        },
+        {
+          "role": "ตุ๊กตา/ค้ำยัน",
+          "printed_as": "ตุ๊กตา, ค้ำยันเหล็ก 2 L-50x50x3.2 มม. (คู่) โดยเชื่อมแนบติดขอบเหล็ก ⊓"
+        },
+        {
+          "role": "รอยต่อสัน",
+          "printed_as": "แผ่นเหล็กหนา 9 มม. ประกับทั้งสองด้าน เชื่อมติดกับโครงหลังคาโดยรอบ"
+        },
+        {
+          "role": "จุดรองรับบนหัวเสา",
+          "printed_as": "แผ่นเหล็กหนา 9 มม. 2 แผ่น ขนาด 0.30x0.50 ม.; น๊อตสกรู 4-Ø1\" ยาว 0.50 ม.; เหล็ก 2 L-50x50x3.2 มม."
+        }
+      ],
+      "span_m": 21.0,
+      "panel_spacing_m": 1.05,
+      "panel_spacing_printed_as": "1.05 x 10 จากผนังถึงสัน (รูปตัดขวาง)",
+      "height_mm": 1000,
+      "height_mm_printed_as": "1.00 (รูปตัด ก-ก)",
+      "note": "โครงถักหลังคา A ทุกช่วงเสา พาด 21.00 ม. ชายคายื่น 3.00 สองข้าง; ความลึก 1.00 วัดที่รูปตัด ก-ก (โครงถักลึกไม่คงที่ตามความลาด)",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "steel_section_dimensions_hand_lettered"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 60,
+        "b_mm": 60,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก L-60x60x3.2 มม."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน/ล่าง",
+          "printed_as": "เหล็ก L-60x60x3.2 มม."
+        },
+        {
+          "role": "ตัวยึดโครง (เอว)",
+          "printed_as": "เหล็กยึดโครง L-50x50x3.2 มม."
+        },
+        {
+          "role": "การยึดกับโครงหลังคา A",
+          "printed_as": "โครงหลังคา B ยาวตลอดแนว ยึดติดแน่นกับแผ่นเหล็กรับด้วย เหล็ก L-50x50x3.2 มม. ทั้งสองจุด"
+        }
+      ],
+      "panel_spacing_m": 1.0,
+      "panel_spacing_printed_as": "1.00 / 1.00",
+      "height_mm": null,
+      "height_mm_printed_as": "0.?35 + 0.87 + 0.?35 (ตัวเลขชิดเส้น อ่านหลักแรกไม่ชัด)",
+      "note": "โครงถักตามยาว (ขยายโครงหลังคา B 1:25) วิ่งผ่านโครงหลังคา A",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "depth_digits_partly_illegible"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แปเหล็ก",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "แปเหล็ก C-100x50x20x3.2 มม. @1.00 ม."
+      },
+      "spacing_mm": 1000,
+      "note": "ขยายโครงหลังคา A พิมพ์ต่อท้าย '@1.00 หรือ ...' ส่วนท้ายอ่านไม่ชัด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กยึดกระเบื้องบังหน้าเวที",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 50,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "โครงตั้ง เหล็ก L-50x50x3.2 มม. @1.05 ม. โครงนอนเหล็ก L-50x50x3.2 มม. @0.60 ม."
+      },
+      "note": "กระเบื้องบังหน้าเวที กระเบื้องแผ่นเรียบหนา 6 มม. โครงเหล็กฉากยึดต่อจากโครงหลังคา (รูปตัดขวาง)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "คานทับหลัง ค.ส.ล. ใต้โครงจั่ว",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 200,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "เหล็ก 4-Ø9 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "เหล็ก 4-Ø9 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.20"
+      },
+      "note": "พิมพ์ 'คานทับหลัง ค.ส.ล. ขนาด 0.15x0.20 ม. เหล็ก 4-Ø9 มม. ป.Ø6 มม. @0.20 เอียงลาดใต้โครงจั่ว' (รูปตัดตามยาว ผนังสกัด) — 4 เส้นแบ่งบน 2 ล่าง 2 ตามมุม",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "top_bottom_split_assumed_from_4_bar_callout"
+      ]
+    }
+  ]
+}

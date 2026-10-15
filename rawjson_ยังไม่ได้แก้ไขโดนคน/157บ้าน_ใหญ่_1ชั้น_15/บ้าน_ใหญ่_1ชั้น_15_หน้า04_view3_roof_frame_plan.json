@@ -1,0 +1,1521 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "structural",
+  "sheet_code": "3",
+  "sheet_name": "แปลนฐานราก, ผังฐานราก, ขยายฐานราก, คาน, พื้น, เสา (แบบ สปช. 206/26 แผ่นที่ 3)",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_15/บ้าน_ใหญ่_1ชั้น_15_หน้า04.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_15_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แปลนคาน โครงหลังคา",
+  "scale": "1:100",
+  "pattern": "roof_frame_plan",
+  "views": [
+    "view1: แปลนฐานราก, คานคอดิน, คาน ค.ส.ล., ตง, พื้น 1:100 — footings + columns (this split: footing_plan)",
+    "view2: same drawing — ground beams G1-G3 + stage beams B1, B2, B4, B5, B6 (this split: beam_plan)",
+    "view3: แปลนคาน โครงหลังคา 1:100 — roof_frame_plan (B7-B11, trusses A/B, canopy slabs S1)",
+    "view4: beam sections G1-G3, B1-B11, slab S1, แบบพื้นคอนกรีตติดดิน — section",
+    "view5: ฐานราก F1/F2/F3 (plan + section) and column sections C1/C2/C3 — section",
+    "view6: ข้อกำหนดเข็ม + หมายเหตุ (handwritten) — notes"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "Roof-level plan: RC canopy beams/slabs and the end-wall beams (B7-B11, S1) plus the steel trusses A and B. Purlins (แปเหล็ก C-100x50x20x3.2 @1.00) are not drawn on this plan.",
+    "Canopies (กันสาด) along both long walls: B9 cantilevers 2.00 out from every column line (1-10) to the edge beam B7, slab S1 in each bay, B8 along the wall rows A and E. A third canopy (มุข) projects from the right end wall (grid 10) between rows B and D: B8 1.00 inside grid 10 (line 9'), B7 2.00 outside (line 10'), B9 on rows B, C and D, four S1 panels — chain 1.00 | 2.00 and 3.50 | 3.50.",
+    "End walls (grids 1 and 10): B11 in the outer bays (A-B, D-E) and B10 in the middle (B-D); on grid 10 the B10 is split at row C where the canopy B9 meets it.",
+    "Truss A: the leader 'โครงหลังคา A ทุกช่วงเสา' has arrow heads on all ten grid lines 1-10; the gable lines 1 and 10 carry a lowered score (the gable also has RC beams B10/B11 and a sloped RC lintel under the gable frame). Span = roof edge to roof edge (A' to E'', 27.00) as drawn on the cross-section.",
+    "Truss B: longitudinal trusses on row A ('โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A'), on the ridge row C and on row E, recorded atomically per bay between trusses A; the end segments 1'-1 and 10-10' are the cantilevers beyond the gables ('โครงหลังคา B ยื่นรับโครงเหล็กยึดกระเบื้องปั้นลม'), consistent with the longitudinal section where truss B runs past both gables.",
+    "Slab marks S1 are recorded as bay-range areas (plan_slab — this set has no separate slab plan). The ground floor is a slab on grade (แบบพื้นคอนกรีตติดดิน, unmarked) — see the section file."
+  ],
+  "elements": [
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "E''1",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง — บนแนวผนังสกัด (มีคานทับหลัง ค.ส.ล. เอียงลาดใต้โครงจั่ว)",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "gable_line_truss_inferred_from_leader_arrow"
+      ]
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "E''2",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "E''3",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'4",
+      "grid_ref_end": "E''4",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'5",
+      "grid_ref_end": "E''5",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'6",
+      "grid_ref_end": "E''6",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'7",
+      "grid_ref_end": "E''7",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'8",
+      "grid_ref_end": "E''8",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'9",
+      "grid_ref_end": "E''9",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "A",
+      "element_type": "truss",
+      "grid_ref_start": "A'10",
+      "grid_ref_end": "E''10",
+      "span_length_m": 27.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก A ทุกช่วงเสา (ลูกศรของป้าย \"โครงหลังคา A ทุกช่วงเสา\" ชี้ทุกกริด 1-10) พาดเต็มความกว้าง 21.00 + ชายคา 3.00 สองข้าง — บนแนวผนังสกัด (มีคานทับหลัง ค.ส.ล. เอียงลาดใต้โครงจั่ว)",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "gable_line_truss_inferred_from_leader_arrow"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A1",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A''2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''3",
+      "grid_ref_end": "A3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''3",
+      "grid_ref_end": "A''4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''4",
+      "grid_ref_end": "A4",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''4",
+      "grid_ref_end": "A''5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''5",
+      "grid_ref_end": "A5",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''5",
+      "grid_ref_end": "A''6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''6",
+      "grid_ref_end": "A6",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''6",
+      "grid_ref_end": "A''7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''7",
+      "grid_ref_end": "A7",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''7",
+      "grid_ref_end": "A''8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''8",
+      "grid_ref_end": "A8",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''8",
+      "grid_ref_end": "A''9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''9",
+      "grid_ref_end": "A9",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A''9",
+      "grid_ref_end": "A''10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''10",
+      "grid_ref_end": "A10",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00 (งอฉากเข้าเสาไม่น้อยกว่า 1.00 ม.)",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A1'",
+      "grid_ref_end": "A1",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A) — ช่วงยื่นเลยผนังสกัด 2.00 รับโครงเหล็กยึดกระเบื้องปั้นลม",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "cantilever_beyond_gable"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "คานผนังสกัด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "A9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "A9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "A10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "A10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A10",
+      "grid_ref_end": "B10",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "คานผนังสกัด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "A10",
+      "grid_ref_end": "A10'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ยาวตลอด ยึดติดกับโครงหลังคา A (แนวผนังแถว A) — ช่วงยื่นเลยผนังสกัด 2.00 รับโครงเหล็กยึดกระเบื้องปั้นลม",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "cantilever_beyond_gable"
+      ]
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "D1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "คานผนังสกัด ช่วงกลาง",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "B9'",
+      "grid_ref_end": "C9'",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "มุขกันสาดด้านสกัดขวา — ขอบใน 1.00 จากกริด 10",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "B9'",
+      "grid_ref_end": "B10",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "มุขกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "B10",
+      "grid_ref_end": "C10",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานผนังสกัดกริด 10 ในช่วงมุขกันสาด (แยกที่ B9 แถว C)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "B10",
+      "grid_ref_end": "B10'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คาน B9 ยื่น 2.00 — 'คาน B9 เหล็กวิ่งผ่านเสา'",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B10'",
+      "grid_ref_end": "C10'",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "ขอบนอกมุขกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C1'",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C) — ช่วงยื่นเลยผนังสกัด 2.00 รับโครงเหล็กยึดกระเบื้องปั้นลม",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "cantilever_beyond_gable"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "C5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "C6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "C7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C7",
+      "grid_ref_end": "C8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C8",
+      "grid_ref_end": "C9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C9",
+      "grid_ref_end": "C10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "C9'",
+      "grid_ref_end": "D9'",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "มุขกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "C9'",
+      "grid_ref_end": "C10",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "note": "มุขกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "C10",
+      "grid_ref_end": "D10",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "C10",
+      "grid_ref_end": "C10'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B ตามแนวสัน (แถว C) — ช่วงยื่นเลยผนังสกัด 2.00 รับโครงเหล็กยึดกระเบื้องปั้นลม",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "cantilever_beyond_gable"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "C10",
+      "grid_ref_end": "C10'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C10'",
+      "grid_ref_end": "D10'",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "คานผนังสกัด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "D9'",
+      "grid_ref_end": "D10",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "D10",
+      "grid_ref_end": "E10",
+      "span_length_m": 7.0,
+      "span_source": "grid_table",
+      "note": "คานผนังสกัด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "D10",
+      "grid_ref_end": "D10'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E1'",
+      "grid_ref_end": "E1",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E) — ช่วงยื่นเลยผนังสกัด 2.00 รับโครงเหล็กยึดกระเบื้องปั้นลม",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "cantilever_beyond_gable"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E'1",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E'2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E'3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "E'4",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "E5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "E5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E5",
+      "grid_ref_end": "E'5",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E5",
+      "grid_ref_end": "E6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E5",
+      "grid_ref_end": "E6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E6",
+      "grid_ref_end": "E'6",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E6",
+      "grid_ref_end": "E7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E6",
+      "grid_ref_end": "E7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E7",
+      "grid_ref_end": "E'7",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E7",
+      "grid_ref_end": "E8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E7",
+      "grid_ref_end": "E8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E8",
+      "grid_ref_end": "E'8",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E8",
+      "grid_ref_end": "E9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E8",
+      "grid_ref_end": "E9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E9",
+      "grid_ref_end": "E'9",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E9",
+      "grid_ref_end": "E10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "E9",
+      "grid_ref_end": "E10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "E10",
+      "grid_ref_end": "E'10",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด 2.00",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B",
+      "element_type": "truss",
+      "grid_ref_start": "E10",
+      "grid_ref_end": "E10'",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "โครงหลังคา B (แนวผนังแถว E) — ช่วงยื่นเลยผนังสกัด 2.00 รับโครงเหล็กยึดกระเบื้องปั้นลม",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "cantilever_beyond_gable"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'1",
+      "grid_ref_end": "E'2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'2",
+      "grid_ref_end": "E'3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'3",
+      "grid_ref_end": "E'4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'4",
+      "grid_ref_end": "E'5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'5",
+      "grid_ref_end": "E'6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'6",
+      "grid_ref_end": "E'7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'7",
+      "grid_ref_end": "E'8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'8",
+      "grid_ref_end": "E'9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "E'9",
+      "grid_ref_end": "E'10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบปลายกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 1-2",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 2-3",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 3-4",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 4-5",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 5-6",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 6-7",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 7-8",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 8-9",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A''-A x 9-10",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 1-2",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 2-3",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 3-4",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 4-5",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 5-6",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 6-7",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 7-8",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 8-9",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "E-E' x 9-10",
+      "note": "พื้นกันสาด",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "B-C x 9'-10",
+      "note": "พื้นมุขกันสาดด้านสกัดขวา",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "B-C x 10-10'",
+      "note": "พื้นมุขกันสาดด้านสกัดขวา",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "C-D x 9'-10",
+      "note": "พื้นมุขกันสาดด้านสกัดขวา",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "C-D x 10-10'",
+      "note": "พื้นมุขกันสาดด้านสกัดขวา",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "structural",
+  "sheet_code": "3",
+  "sheet_name": "แปลนฐานราก, ผังฐานราก, ขยายฐานราก, คาน, พื้น, เสา (แบบ สปช. 206/26 แผ่นที่ 3)",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_15/บ้าน_ใหญ่_1ชั้น_15_หน้า04.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_15_หน้า00_gridline.json",
+  "view_title": "ฐานราก F1, F2, F3 (แปลนขยาย + รูปตัด), หน้าตัดเสา C1, C2, C3",
+  "scale": null,
+  "views": [
+    "view1: แปลนฐานราก, คานคอดิน, คาน ค.ส.ล., ตง, พื้น 1:100 — footing_plan",
+    "view2: same drawing — beam_plan",
+    "view3: แปลนคาน โครงหลังคา 1:100 — roof_frame_plan",
+    "view4: beam sections G1-G3, B1-B11, slab S1, แบบพื้นคอนกรีตติดดิน — section",
+    "view5: ฐานราก F1/F2/F3 (plan + section) and column sections C1/C2/C3 — section",
+    "view6: ข้อกำหนดเข็ม + หมายเหตุ (handwritten) — notes"
+  ],
+  "confidence_score": 0.83,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Footings: plan sizes from the printed edge/pile-spacing chains (kept in *_printed_as); thickness from the section chain 0.10 (sloped top) + 0.30 / 0.20 (edge); lean concrete 1:3:5 0.10 and compacted sand 0.10 below; the 1.20 depth line runs from ระดับดินเดิม to the footing underside.",
+    "F1 and F3 print two different mat spacings (Ø9 @0.12 and Ø9 @0.08) for the two directions without saying which is which; spacing_mm takes the closer one and both are kept in printed_as/note. No bar count is printed, so main_bar has no count (section 6b).",
+    "Piles: hollow hexagonal concrete pile 0.15 x 6.00 (12 / 5 / 9 per F1 / F2 / F3); the pile substitution note (ข้อกำหนดเข็ม) is kept as pile.alternate_printed_as. Sheet 1 (หน้า02) prints a different footing set for prestressed piles under the same marks — kept in its own file.",
+    "Columns: one entry per level (section 8). C1/C3 below and above the ground floor, C2 footing to stage floor only (its plan note says the hall C2 run up to the ground-beam level). Ties marked คู่ (double) are noted on the stirrup."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเสาเข็ม (เข็มกลุ่ม)",
+      "width_mm": 1400,
+      "width_mm_printed_as": "0.20 + 0.50 + 0.50 + 0.20 = 1.40",
+      "depth_mm": 2200,
+      "depth_mm_printed_as": "0.20 + 0.60 + 0.60 + 0.60 + 0.20 = 2.20",
+      "height_mm": 400,
+      "height_mm_printed_as": "0.30 (ขอบ) + 0.10 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 80,
+        "type": "RB",
+        "printed_as": "Ø9 มม. @0.12 / Ø9 มม. @0.08",
+        "note": "ตะแกรง 2 ทาง: ทางหนึ่ง @0.12 อีกทาง @0.08 (แบบไม่ระบุว่าทางใด) — spacing_mm = ค่าที่ถี่กว่า"
+      },
+      "pile_count": 12,
+      "pile": {
+        "type": "เข็มคอนกรีตหกเหลี่ยมกลวง",
+        "size_mm": 150,
+        "length_m": 6.0,
+        "printed_as": "เข็มคอนกรีต ⬡ กลวง 0.15x6.00 (ม.) จำนวน 12 ต้น",
+        "alternate_printed_as": "ข้อกำหนดเข็ม: ในกรณีที่จัดหาเข็มคอนกรีต ⬡ กลวง 0.15 x 6.00 ตามรูปแบบกำหนดไม่ได้ อนุญาตให้ใช้เข็มคอนกรีต ⊠ ขนาด 0.12 x 0.12 x 6.00 ม. หรือเข็มคอนกรีตหน้าตัดอื่นที่มีเส้นรอบรูปมากกว่า ไม่เกิน 5 ซม. แทนได้"
+      },
+      "pile_layout_printed_as": "3 x 4 (0.50 x 0.60) ห่างขอบ 0.20",
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "ground_reference": "ระดับดินเดิม; 1.20 ลงถึงท้องฐานราก",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "mat_spacing_differs_by_direction"
+      ]
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเสาเข็ม (เข็มกลุ่ม)",
+      "width_mm": 900,
+      "width_mm_printed_as": "0.20 + 0.25 + 0.25 + 0.20 = 0.90 (ทั้งสองด้าน)",
+      "height_mm": 300,
+      "height_mm_printed_as": "0.20 (ขอบ) + 0.10 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "Ø9 มม. @0.10#",
+        "note": "ตะแกรง 2 ทาง"
+      },
+      "pile_count": 5,
+      "pile": {
+        "type": "เข็มคอนกรีตหกเหลี่ยมกลวง",
+        "size_mm": 150,
+        "length_m": 6.0,
+        "printed_as": "เข็มคอนกรีต ⬡ กลวง 0.15x6.00 (ม.) จำนวน 5 ต้น",
+        "alternate_printed_as": "ข้อกำหนดเข็ม: ในกรณีที่จัดหาเข็มคอนกรีต ⬡ กลวง 0.15 x 6.00 ตามรูปแบบกำหนดไม่ได้ อนุญาตให้ใช้เข็มคอนกรีต ⊠ ขนาด 0.12 x 0.12 x 6.00 ม. หรือเข็มคอนกรีตหน้าตัดอื่นที่มีเส้นรอบรูปมากกว่า ไม่เกิน 5 ซม. แทนได้"
+      },
+      "pile_layout_printed_as": "4 มุม + 1 กลาง (0.25 + 0.25) ห่างขอบ 0.20",
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "ground_reference": "ระดับดินเดิม; 1.20 ลงถึงท้องฐานราก",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเสาเข็ม (เข็มกลุ่ม)",
+      "width_mm": 1400,
+      "width_mm_printed_as": "0.20 + 0.50 + 0.50 + 0.20 = 1.40",
+      "depth_mm": 1900,
+      "depth_mm_printed_as": "0.25 + 0.70 + 0.70 + 0.25 = 1.90",
+      "height_mm": 400,
+      "height_mm_printed_as": "0.30 (ขอบ) + 0.10 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 80,
+        "type": "RB",
+        "printed_as": "Ø9 มม. @0.12 / Ø9 มม. @0.08",
+        "note": "ตะแกรง 2 ทาง: ทางหนึ่ง @0.12 อีกทาง @0.08 — spacing_mm = ค่าที่ถี่กว่า"
+      },
+      "pile_count": 9,
+      "pile": {
+        "type": "เข็มคอนกรีตหกเหลี่ยมกลวง",
+        "size_mm": 150,
+        "length_m": 6.0,
+        "printed_as": "เข็มคอนกรีต ⬡ กลวง 0.15x6.00 (ม.) จำนวน 9 ต้น",
+        "alternate_printed_as": "ข้อกำหนดเข็ม: ในกรณีที่จัดหาเข็มคอนกรีต ⬡ กลวง 0.15 x 6.00 ตามรูปแบบกำหนดไม่ได้ อนุญาตให้ใช้เข็มคอนกรีต ⊠ ขนาด 0.12 x 0.12 x 6.00 ม. หรือเข็มคอนกรีตหน้าตัดอื่นที่มีเส้นรอบรูปมากกว่า ไม่เกิน 5 ซม. แทนได้"
+      },
+      "pile_layout_printed_as": "3 x 3 (0.50 x 0.70) ห่างขอบ 0.20 / 0.25",
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "ground_reference": "ระดับดินเดิม; 1.20 ลงถึงท้องฐานราก",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "mat_spacing_differs_by_direction"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "พื้นชั้นล่าง ถึงหลังคา",
+      "width_mm": 300,
+      "height_mm": 500,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 25,
+        "type": "RB",
+        "printed_as": "เหล็กเสริม 6-Ø25 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø6 มม. @0.15 คู่",
+        "note": "ปลอกคู่"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ฐานราก ถึงพื้นชั้นล่าง",
+      "width_mm": 350,
+      "height_mm": 550,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 25,
+        "type": "RB",
+        "printed_as": "เหล็กเสริม 6-Ø25 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø6 มม. @0.15 คู่",
+        "note": "ปลอกคู่"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "ฐานราก ถึงพื้นเวที",
+      "width_mm": 250,
+      "height_mm": 250,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "เหล็กเสริม 4-Ø12 (มม.)"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.-Ø6 มม. @0.15"
+      },
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C3",
+      "element_type": "column",
+      "level": "พื้นชั้นล่าง ถึงหลังคา",
+      "width_mm": 300,
+      "height_mm": 300,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 15,
+        "type": "RB",
+        "printed_as": "เหล็กเสริม 6-Ø15 มม"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.-Ø6 มม. @0.15 คู่",
+        "note": "ปลอกคู่"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C3",
+      "element_type": "column",
+      "level": "ฐานราก ถึงพื้นชั้นล่าง",
+      "width_mm": 350,
+      "height_mm": 350,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 19,
+        "type": "RB",
+        "printed_as": "เหล็กเสริม 6-Ø19 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø6 มม. @0.15 คู่",
+        "note": "ปลอกคู่"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    }
+  ]
+}

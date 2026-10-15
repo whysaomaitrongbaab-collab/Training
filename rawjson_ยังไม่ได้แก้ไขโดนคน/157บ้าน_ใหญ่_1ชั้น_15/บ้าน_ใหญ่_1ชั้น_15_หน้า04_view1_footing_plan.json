@@ -1,0 +1,159 @@
+{
+  "png": "04",
+  "doc_page": 4,
+  "discipline": "structural",
+  "sheet_code": "3",
+  "sheet_name": "แปลนฐานราก, ผังฐานราก, ขยายฐานราก, คาน, พื้น, เสา (แบบ สปช. 206/26 แผ่นที่ 3)",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_15/บ้าน_ใหญ่_1ชั้น_15_หน้า04.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_15_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก, คานคอดิน, คาน ค.ส.ล., ตง, พื้น",
+  "scale": "1:100",
+  "pattern": "footing_plan",
+  "views": [
+    "view1: แปลนฐานราก, คานคอดิน, คาน ค.ส.ล., ตง, พื้น 1:100 — footings + columns (this split: footing_plan)",
+    "view2: same drawing — ground beams G1-G3 + stage beams B1, B2, B4, B5, B6 (this split: beam_plan)",
+    "view3: แปลนคาน โครงหลังคา 1:100 — roof_frame_plan (B7-B11, trusses A/B, canopy slabs S1)",
+    "view4: beam sections G1-G3, B1-B11, slab S1, แบบพื้นคอนกรีตติดดิน — section",
+    "view5: ฐานราก F1/F2/F3 (plan + section) and column sections C1/C2/C3 — section",
+    "view6: ข้อกำหนดเข็ม + หมายเหตุ (handwritten) — notes"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "One combined drawing carrying footings, columns, ground beams, stage beams and the stage's timber joists. Split by member kind (section 3 / section 1): footings + columns here (footing_plan), beams in _view2_beam_plan.json.",
+    "Every column position is printed as a footing+column pair ('F1C1', 'F3C3', 'F2 C2'): 33 positions = 16 F1C1 (long walls, grids 2-9) + 8 F3C3 (corners and the B/D rows of both end walls) + 9 F2C2 (stage columns B2, D2 and the seven interior short columns on row C).",
+    "The A1 corner label prints 'F303'; read as F3C3 — the other seven corner/end-wall marks all read F3C3 and the column table has no '03'.",
+    "Plan notes: '* ก่อนจะเทคาน G3 ให้ปรับพื้นภายในเฉลี่ยก่อน'; 'ตงไม้เนื้อแข็ง ขนาด 1½ x 8\"' and 'พื้นไม้เนื้อแข็ง ขนาด 1\"x4\" หรือ 1\"x6\" เข้าลิ้น' (stage timber floor, not extracted as elements — the joists are unmarked timber, drawn at ~0.50 spacing).",
+    "Footing details on this sheet: F1 1.40 x 2.20 on 12 piles, F2 0.90 x 0.90 on 5 piles, F3 1.40 x 1.90 on 9 piles (hollow hexagonal concrete piles 0.15 x 6.00) — see _view5. Sheet 1 prints an alternative footing set for prestressed piles under the same marks (หน้า02 section file)."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 16,
+      "grid_refs": [
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "note": "พิมพ์ 'F1C1' ทุกตำแหน่ง (ฐานราก F1 + เสา C1) แนวผนังยาวแถว A และ E กริด 2-9",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "count": 8,
+      "grid_refs": [
+        "A1",
+        "A10",
+        "B1",
+        "B10",
+        "D1",
+        "D10",
+        "E1",
+        "E10"
+      ],
+      "note": "พิมพ์ 'F3C3' ที่มุมอาคารและแถว B/D ของผนังสกัดกริด 1 และ 10; ตำแหน่ง A1 พิมพ์ 'F303' — อ่านเป็น F3C3",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 9,
+      "grid_refs": [
+        "B2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "D2"
+      ],
+      "note": "พิมพ์ 'F2 C2': B2/D2 = เสารับเวทีบนกริด 2; C3-C9 = เสาสั้นกลางอาคารรับคานคอดิน G3",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 16,
+      "grid_refs": [
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C3",
+      "element_type": "column",
+      "count": 8,
+      "grid_refs": [
+        "A1",
+        "A10",
+        "B1",
+        "B10",
+        "D1",
+        "D10",
+        "E1",
+        "E10"
+      ],
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 9,
+      "grid_refs": [
+        "B2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "D2"
+      ],
+      "note": "หมายเหตุบนแปลน: 'C2 ตรงช่องกลาง ทำถึงระดับ(ใต้)คานคอดิน' (คำก่อน 'คานคอดิน' อ่านไม่ชัด); ตารางเสา: C2 ฐานราก ถึงพื้นเวที",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    }
+  ]
+}
