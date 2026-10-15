@@ -1,0 +1,381 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "structural",
+  "sheet_code": "1",
+  "sheet_name": "แปลนพื้น, แปลนฐานราก-คานคอดิน, แปลนโครงหลังคา, รูปตัด, รูปด้าน (แบบ สปช. 201/26 แผ่นที่ 1)",
+  "pattern": "roof_frame_plan",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_13/บ้าน_ใหญ่_1ชั้น_13_หน้า02.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_13_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แปลนโครงหลังคา",
+  "scale": "1:100",
+  "views": [
+    "view1: แปลนพื้น 1:100 — etc_plan",
+    "view2: แปลนฐานราก — คานคอดิน 1:100 — footing_plan",
+    "view3: same drawing — beam_plan",
+    "view4: แปลนโครงหลังคา 1:100 — roof_frame_plan (this file)",
+    "view5: รูปตัด ก-ก 1:50 — side_profile, not extracted",
+    "view6: ขยายไม้ปิดหัวแป 1:10 — not extracted",
+    "view7: รูปด้านหน้า / หลัง / ข้าง 1:100 — side_profile, not extracted",
+    "view8: รูปตัด ข-ข 1:100 — side_profile, not extracted",
+    "view9: คานทับหลัง B, B1, ขยายหัวเสา ก / ข — section",
+    "view10: หมายเหตุ (revision note) — not extracted"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "Truss labels: T1 on grids 2, 3, 4 and 5 (steel trusses, ขยายโครงหลังคา T1 on sheet 3) and T2 on the gable ends, grids 1 and 6 (ขยายคานรับแปด้านสกัด (T2) on sheet 3 — an RC gable frame, not a steel truss). Both span the 10.00 width plus the 1.60 eaves (A' to D''). The T2 entries record the printed frame label only: the members of that frame are the R1 segments and the ครีบ ค.ส.ล. cantilevers listed separately in this file, so T2 is not an extra member.",
+    "R1 is printed three times along grid 1 and three times along grid 6 (A-B, just below the ridge in B-C, C-D) and is the sloped beam of the T2 gable frame (sheet 3: ขยายคาน R1 0.15 x 0.35, the same 2-Ø12 / ป-Ø6@0.20 callouts as the T2 elevation). It rises to the ridge line (แนวสันหลังคา, dummy B' at 5.00) and changes direction there, so the B-C bay is split at B' (section 5); the two 1.50 halves are scaled_from_grid because no tick is printed at the ridge. All R1 spans are plan projections of sloped members.",
+    "The thick gable-beam line continues over the 1.60 eaves at both ends of grids 1 and 6. Sheet 3's ขยายครีบ ค.ส.ล. shows that cantilever (the sloped R beam continuing past the column, with a 0.08 fin) — recorded as four unmarked segments (element_id null, element_name_assigned 'ครีบ ค.ส.ล.').",
+    "Grid 5 (the partition between the hall and the three rooms of bay 5-6) carries B1 in A-B, B-C (label just below the ridge line) and C-D: the คานทับหลัง B1 over the three roller doors (ประตูเหล็กม้วน, section ก-ก), at door-head level +2.45 although it is drawn on this roof plan.",
+    "Rows B and C between grids 5 and 6 carry a stacked label 'B/B1' (B over B1). Read as two beams on the same line — the คานทับหลัง B (0.07 x 0.25; the floor-plan note says the perforated block above the lintel runs up to 'ท้องคาน B', and section ก-ก labels 'คาน B' at the top of these partitions) and a B1 below it. Both are recorded as separate segments with a lowered score; the drawing does not say more.",
+    "R2 (sheet 3: 0.10 x 0.20) runs along rows A and D across bay 5-6 (the outer walls of the three rooms).",
+    "The front and rear elevations (side_profile, not extracted) also print B1 over the three gable-end openings of grid 1 and over the side bays of grid 6 (with a B over the rear window). No plan places those lintels, so they are not recorded as plan segments here.",
+    "Purlins (แปเหล็ก ⊏-100x50x20x3.2 @0.90-1.00) are not drawn on this plan; they are specified in the truss section file. Columns are drawn as small squares; they are recorded once in the footing-plan file."
+  ],
+  "elements": [
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "D''1",
+      "span_length_m": 13.2,
+      "span_source": "grid_table",
+      "note": "ป้ายโครง T2 = คานรับแปด้านสกัด ค.ส.ล. (ผนังสกัดกริด 1) — สมาชิกคือ R1 และครีบ ค.ส.ล. ที่บันทึกแยกในไฟล์นี้",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "frame_label_members_listed_separately"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครีบ ค.ส.ล.",
+      "element_type": "beam",
+      "grid_ref_start": "A'1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.6,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นชายคาของคาน R ที่ผนังสกัด (ขยายครีบ ค.ส.ล. แผ่นที่ 3) — เส้นคานหนาในแปลนยื่นถึงขอบหลังคา",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "unlabelled_on_plan_identified_from_detail"
+      ]
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'2",
+      "grid_ref_end": "D''2",
+      "span_length_m": 13.2,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก T1 ช่วง 10.00 + ชายคา 1.60 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "D''3",
+      "span_length_m": 13.2,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก T1 ช่วง 10.00 + ชายคา 1.60 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'4",
+      "grid_ref_end": "D''4",
+      "span_length_m": 13.2,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก T1 ช่วง 10.00 + ชายคา 1.60 สองข้าง",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "A'5",
+      "grid_ref_end": "D''5",
+      "span_length_m": 13.2,
+      "span_source": "grid_table",
+      "note": "โครงหลังคาเหล็ก T1 ช่วง 10.00 + ชายคา 1.60 สองข้าง (บนแนวผนังกั้นห้องกริด 5)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A'6",
+      "grid_ref_end": "D''6",
+      "span_length_m": 13.2,
+      "span_source": "grid_table",
+      "note": "ป้ายโครง T2 = คานรับแปด้านสกัด ค.ส.ล. (ผนังสกัดกริด 6) — สมาชิกคือ R1 และครีบ ค.ส.ล. ที่บันทึกแยกในไฟล์นี้",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "frame_label_members_listed_separately"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครีบ ค.ส.ล.",
+      "element_type": "beam",
+      "grid_ref_start": "A'6",
+      "grid_ref_end": "A6",
+      "span_length_m": 1.6,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นชายคาของคาน R ที่ผนังสกัด (ขยายครีบ ค.ส.ล.)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "unlabelled_on_plan_identified_from_detail"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานลาดของโครง T2 — span เป็นระยะในแปลน",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "B5",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานทับหลัง B1 เหนือประตูเหล็กม้วน (ระดับ +2.45)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "B6",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานลาดของโครง T2 — span เป็นระยะในแปลน",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B'1",
+      "span_length_m": 1.5,
+      "span_source": "scaled_from_grid",
+      "note": "คานลาดขึ้นถึงแนวสันหลังคา (B')",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span",
+        "split_at_ridge_position_scaled"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "C5",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานทับหลัง B1 เหนือประตูเหล็กม้วน (ป้ายอยู่ใต้แนวสันหลังคา)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "B6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B/B1' — ตัวบน B (คานทับหลัง B ที่หลังผนังกั้นห้อง)",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "stacked_label_two_beams_one_line"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "B6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B/B1' — ตัวล่าง B1",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "stacked_label_two_beams_one_line"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B6",
+      "grid_ref_end": "B'6",
+      "span_length_m": 1.5,
+      "span_source": "scaled_from_grid",
+      "note": "คานลาดขึ้นถึงแนวสันหลังคา (B')",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span",
+        "split_at_ridge_position_scaled"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B'1",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.5,
+      "span_source": "scaled_from_grid",
+      "note": "คานลาดลงจากแนวสันหลังคา — ป้าย R1 พิมพ์ใต้แนวสัน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span",
+        "split_at_ridge_position_scaled"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B'6",
+      "grid_ref_end": "C6",
+      "span_length_m": 1.5,
+      "span_source": "scaled_from_grid",
+      "note": "คานลาดลงจากแนวสันหลังคา — ป้าย R1 พิมพ์ใต้แนวสัน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "sloped_member_plan_span",
+        "split_at_ridge_position_scaled"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานลาดของโครง T2 — span เป็นระยะในแปลน",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "D5",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานทับหลัง B1 เหนือประตูเหล็กม้วน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "C6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B/B1' — ตัวบน B",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "stacked_label_two_beams_one_line"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "C6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B/B1' — ตัวล่าง B1",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "stacked_label_two_beams_one_line"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "D6",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "note": "คานลาดของโครง T2 — span เป็นระยะในแปลน",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "sloped_member_plan_span"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครีบ ค.ส.ล.",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D''1",
+      "span_length_m": 1.6,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นชายคาของคาน R ที่ผนังสกัด (ขยายครีบ ค.ส.ล.)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "unlabelled_on_plan_identified_from_detail"
+      ]
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "grid_ref_start": "D5",
+      "grid_ref_end": "D6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครีบ ค.ส.ล.",
+      "element_type": "beam",
+      "grid_ref_start": "D6",
+      "grid_ref_end": "D''6",
+      "span_length_m": 1.6,
+      "span_source": "grid_table",
+      "note": "ส่วนยื่นชายคาของคาน R ที่ผนังสกัด (ขยายครีบ ค.ส.ล.)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "unlabelled_on_plan_identified_from_detail"
+      ]
+    }
+  ]
+}

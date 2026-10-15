@@ -1,0 +1,101 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "structural",
+  "sheet_code": "1",
+  "sheet_name": "แปลนพื้น, แปลนฐานราก-คานคอดิน, แปลนโครงหลังคา, รูปตัด, รูปด้าน (แบบ สปช. 201/26 แผ่นที่ 1)",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_13/บ้าน_ใหญ่_1ชั้น_13_หน้า02.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_13_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก — คานคอดิน",
+  "scale": "1:100",
+  "views": [
+    "view1: แปลนพื้น 1:100 — etc_plan (floor slab / walkway notes)",
+    "view2: แปลนฐานราก — คานคอดิน 1:100 — footings + columns (this split: footing_plan)",
+    "view3: แปลนฐานราก — คานคอดิน 1:100 — ground beams G (this split: beam_plan)",
+    "view4: แปลนโครงหลังคา 1:100 — roof_frame_plan",
+    "view5: รูปตัด ก-ก 1:50 — side_profile, not extracted (dimensions/levels swept into the grid master)",
+    "view6: ขยายไม้ปิดหัวแป แบบที่ 1 / แบบที่ 2 1:10 — architectural details, not extracted",
+    "view7: รูปด้านหน้า / รูปด้านหลัง / รูปด้านข้าง 1:100 — side_profile, not extracted",
+    "view8: รูปตัด ข-ข 1:100 — side_profile, not extracted (10.00 chain swept)",
+    "view9: คานทับหลัง B, คานทับหลัง B1, ขยายหัวเสา ก / ข — section",
+    "view10: หมายเหตุ (revision note in the title column: steel sections revised to มอก. 1228-2537) — not a spec sheet, not extracted"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "One combined drawing (แปลนฐานราก — คานคอดิน) carrying footings, columns and ground beams. Split by member kind per section 3 / section 1: footings + columns here (footing_plan), ground beams in _view3_beam_plan.json.",
+    "Every column position is printed 'C1F1' or 'C2F1' (column mark + footing mark). F1 is the only footing mark: 18 positions = 12 C1 (rows A and D, grids 1-6) + 6 C2 (rows B and C on grids 1, 5 and 6).",
+    "No grid bubbles are printed; grid labels 1-6 / A-D were assigned in the grid master."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 18,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "B1",
+        "B5",
+        "B6",
+        "C1",
+        "C5",
+        "C6",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 12,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6"
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "B1",
+        "B5",
+        "B6",
+        "C1",
+        "C5",
+        "C6"
+      ],
+      "note": "B1/C1 = เสาผนังสกัดหัวอาคาร; B5/C5/B6/C6 = เสาผนังกั้นห้องในช่วง 5-6",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

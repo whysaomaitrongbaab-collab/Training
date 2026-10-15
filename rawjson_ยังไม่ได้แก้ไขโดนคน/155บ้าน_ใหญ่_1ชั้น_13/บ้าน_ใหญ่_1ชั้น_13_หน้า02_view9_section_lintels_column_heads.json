@@ -1,0 +1,128 @@
+{
+  "png": "02",
+  "doc_page": 2,
+  "discipline": "structural",
+  "sheet_code": "1",
+  "sheet_name": "แปลนพื้น, แปลนฐานราก-คานคอดิน, แปลนโครงหลังคา, รูปตัด, รูปด้าน (แบบ สปช. 201/26 แผ่นที่ 1)",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_13/บ้าน_ใหญ่_1ชั้น_13_หน้า02.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_13_หน้า00_gridline.json",
+  "view_title": "คานทับหลัง B, คานทับหลัง B1 เหนือประตูเหล็กม้วน, ขยายหัวเสา ก, ขยายหัวเสา ข",
+  "scale": null,
+  "views": [
+    "view1: แปลนพื้น 1:100 — etc_plan",
+    "view2: แปลนฐานราก — คานคอดิน 1:100 — footing_plan",
+    "view3: same drawing — beam_plan",
+    "view4: แปลนโครงหลังคา 1:100 — roof_frame_plan",
+    "view5: รูปตัด ก-ก 1:50 — side_profile, not extracted",
+    "view6: ขยายไม้ปิดหัวแป 1:10 — not extracted",
+    "view7: รูปด้านหน้า / หลัง / ข้าง 1:100 — side_profile, not extracted",
+    "view8: รูปตัด ข-ข 1:100 — side_profile, not extracted",
+    "view9: คานทับหลัง B, B1, ขยายหัวเสา ก / ข — section (this file)",
+    "view10: หมายเหตุ (revision note) — not extracted"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "All bars are printed with Ø → type RB (section 0.6 / 6). No concrete strength or steel grade is printed anywhere in the set.",
+    "B is 0.07 wide (the block-wall thickness) with one bar top and one bottom and a single vertical link; B1's bar diameter '12' is written in heavier pen over another figure (a correction on the original) — read as 12 on both faces, flagged.",
+    "ขยายหัวเสา ก (slotted holes, เจาะรูยาว) is called out at the column on the row-A side of section ก-ก and ขยายหัวเสา ข (round holes, เจาะรูกลม) at the row-D side — the truss seat is slotted at one end only. These are connection details without a printed mark: element_id null with element_name_assigned (section 0.2)."
+  ],
+  "elements": [
+    {
+      "element_id": "B",
+      "element_type": "beam",
+      "width_mm": 70,
+      "height_mm": 250,
+      "main_bar": {
+        "top": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "1-Ø 9 มม."
+        },
+        "bottom": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "1-Ø 9 มม"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 มม. @ 0.15",
+        "note": "เหล็กรัดขาเดียวคล้องเหล็กบน-ล่าง (คานกว้าง 0.07)"
+      },
+      "note": "คานทับหลัง B",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 มม"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 มม @ 0.20"
+      },
+      "note": "คานทับหลัง B1 เหนือประตูเหล็กม้วน",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dia_digits_overwritten_on_original"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ขยายหัวเสา ก",
+      "element_type": "connection_detail",
+      "member_sections": [
+        {"role": "ขื่อ/คอร์ดล่างโครงหลังคา", "printed_as": "เหล็ก ⊔-100x50x50x3.2 มม."},
+        {"role": "ค้ำยัน/ชายคา", "printed_as": "เหล็ก ⊔-100x50x50x3.2 มม."},
+        {"role": "ค้ำ", "printed_as": "เหล็ก L-40x40x3.2 มม"},
+        {"role": "แผ่นรอง", "printed_as": "แผ่นเหล็กหนา 3/16\" - 2 แผ่น (เจาะรูยาว)"},
+        {"role": "แผ่นล่าง", "printed_as": "แผ่นเหล็กตัวล่าง ยึดติดกับหัวเสา"},
+        {"role": "เหล็กยึด", "printed_as": "เหล็ก Ø 15 มม. ทำเกลียว ฝังในเสา 30 ซม."}
+      ],
+      "note": "จุดรองรับโครงหลังคาบนหัวเสาด้านแถว A (รูปตัด ก-ก: ดูขยายหัวเสา ก) — รูยาวให้เลื่อนได้",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ขยายหัวเสา ข",
+      "element_type": "connection_detail",
+      "member_sections": [
+        {"role": "ขื่อ/คอร์ดล่างโครงหลังคา", "printed_as": "เหล็ก ⊔-100x50x50x3.2 มม."},
+        {"role": "ค้ำยัน/ชายคา", "printed_as": "เหล็ก ⊔-100x50x50x3.2 มม."},
+        {"role": "ค้ำ", "printed_as": "เหล็ก L-40x40x3.2 มม."},
+        {"role": "แผ่นรอง", "printed_as": "แผ่นเหล็กหนา 3/16\" - 2 แผ่น (เจาะรูกลม)"},
+        {"role": "แผ่นล่าง", "printed_as": "แผ่นเหล็กตัวล่าง ยึดติดกับหัวเสา"},
+        {"role": "เหล็กยึด", "printed_as": "เหล็ก Ø 15 มม. ทำเกลียว ฝังในเสา 30 ซม."}
+      ],
+      "note": "จุดรองรับโครงหลังคาบนหัวเสาด้านแถว D (รูปตัด ก-ก: ดูขยายหัวเสา ข) — รูกลมยึดตาย",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ]
+}

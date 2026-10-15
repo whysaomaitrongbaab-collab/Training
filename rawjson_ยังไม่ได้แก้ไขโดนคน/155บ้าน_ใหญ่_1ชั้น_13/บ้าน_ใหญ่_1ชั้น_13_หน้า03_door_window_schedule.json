@@ -1,0 +1,82 @@
+{
+  "png": "03",
+  "doc_page": 3,
+  "discipline": "architectural",
+  "sheet_code": "2",
+  "sheet_name": "ขยายหน้าต่าง ประตู ช่องแสง และวงกบเหล็ก (แบบ สปช. 201/26 แผ่นที่ 2)",
+  "pattern": "schedule",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_13/บ้าน_ใหญ่_1ชั้น_13_หน้า03.png",
+  "view_title": "ขยาย น1 และช่องแสง ช1; ป1 และช่องแสง ช2",
+  "scale": "1:25",
+  "views": [
+    "view1: ขยาย น1 และช่องแสง ช1 1:25 + รูปตัด ก-ก — schedule rows (this file)",
+    "view2: ป1 และช่องแสง ช2 1:25 + รูปตัด ก-ก — schedule rows (this file)",
+    "view3: ขยาย 1-7, ขยาย 01-05, ขยายเหล็ก Z / t1 / t2, ขยายวงกบเหล็ก P / T / T-2 / C — steel-frame profile details, not extracted",
+    "view4: รายการประตู หน้าต่าง ช่องลม ช่องแสง วงกบเหล็ก (items 1-10) and รายการประกอบวงกบเหล็ก — specification lists, not transcribed in this op04 run"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Door/window detail sheet with no tabular schedule; recorded as schedule rows, one per printed mark (precedent: house 124's door/window detail sheets).",
+    "น1 and ช1 are drawn as one wall panel across a 4.00 column bay: wall ผ1 0.80 + sill 0.10, window น1 1.15, lintel band 0.25, glass light ช1 0.60, then a mesh vent band up to ระดับหัวเสา (total 3.70; the vent band's 0.80 is not printed). The opening widths are not dimensioned separately — width_mm carries the printed bay 4.00 and is flagged.",
+    "ป1 is the roller door (ประตูเหล็กม้วน) 2.72 x 2.25 under the lintel B1; its section prints the lintel as 'ทับหลัง ค.ส.ล. ขนาด 0.20x0.40 ม. … เหล็ก 4-Ø12 มม ลูกโซ่ Ø 6 มม @0.20 ม.', consistent with the B1 detail on sheet 1. ช2 is the mesh vent above it up to R2 — no height printed.",
+    "The numbered callouts (1-7, 01-05) refer to the sheet's specification list (รายการประตู หน้าต่าง ช่องลม ช่องแสง วงกบเหล็ก), which was not transcribed in this op04 run, so leaf/frame materials are given only where the elevation itself prints them."
+  ],
+  "elements": [
+    {
+      "element_id": "น1",
+      "element_type": "window",
+      "width_mm": 4000,
+      "width_mm_printed_as": "4.00 ม (ช่วงเสา)",
+      "height_mm": 1150,
+      "height_mm_printed_as": "1.15",
+      "sill_height_mm": 900,
+      "sill_height_mm_printed_as": "0.90 (ผนัง 0.80 + 0.10)",
+      "note": "หน้าต่างบานลูกฟัก 7 ช่อง เหนือผนังก่ออิฐหรือคอนกรีตบล็อค (ผ1) — ขยาย น1 และช่องแสง ช1 1:25",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "width_is_bay_dimension"
+      ]
+    },
+    {
+      "element_id": "ช1",
+      "element_type": "window",
+      "opening_type": "ช่องแสงกระจก + ช่องลมลวดตาข่าย",
+      "width_mm": 4000,
+      "width_mm_printed_as": "4.00 ม (ช่วงเสา)",
+      "height_mm": 600,
+      "height_mm_printed_as": "0.60 (กระจก)",
+      "leaf_material": "กระจก; ตอนบน ช่องลมลวดตาข่าย ขนาด 3 มม. ตาสี่เหลี่ยม 1 5/8\"",
+      "note": "เหนือ น1 ถัดจากแถบทับหลัง 0.25; แถบช่องลมลวดตาข่ายตอนบนสูงถึงระดับหัวเสา (ไม่ได้พิมพ์ตัวเลข)",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "width_is_bay_dimension"
+      ]
+    },
+    {
+      "element_id": "ป1",
+      "element_type": "door",
+      "opening_type": "ประตูเหล็กม้วน",
+      "width_mm": 2720,
+      "width_mm_printed_as": "2.72",
+      "height_mm": 2250,
+      "height_mm_printed_as": "2.25 (จากระดับพื้นห้องเรียน)",
+      "note": "ใต้คานทับหลัง B1 (ทับหลัง ค.ส.ล. 0.20x0.40 ม. เหล็ก 4-Ø12 มม ลูกโซ่ Ø6 มม @0.20 ม.)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ช2",
+      "element_type": "window",
+      "opening_type": "ช่องลมลวดตาข่าย",
+      "leaf_material": "ช่องลมลวดตาข่ายขนาด 3 มม. ตาสี่เหลี่ยม 1 5/8\"",
+      "note": "เหนือทับหลัง B1 ของประตู ป1 ถึงคาน R2 — ไม่ได้พิมพ์ขนาด",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "size_not_printed"
+      ]
+    }
+  ]
+}
