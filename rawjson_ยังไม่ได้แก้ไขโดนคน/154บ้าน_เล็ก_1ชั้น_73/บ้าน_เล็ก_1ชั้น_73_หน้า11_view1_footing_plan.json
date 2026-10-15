@@ -1,0 +1,71 @@
+{
+  "png": "11",
+  "doc_page": 11,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานรากและคานคอดิน",
+  "source_image": "image/บ้าน_เล็ก_1ชั้น_73/บ้าน_เล็ก_1ชั้น_73_หน้า11.png",
+  "grid_source": "บ้าน_เล็ก_1ชั้น_73_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานรากและคานคอดิน",
+  "scale": "1:50",
+  "pattern": "footing_plan",
+  "views": [
+    "view1: แปลนฐานรากและคานคอดิน 1:50 — footings + columns (this split: footing_plan)",
+    "view2: แปลนฐานรากและคานคอดิน 1:50 — ground beams G1-G4, G2/1, G3/1 + floor slabs (this split: beam_plan)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "grid_labels_assigned_not_printed",
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "One combined drawing (แปลนฐานรากและคานคอดิน, title block 'แปลนฐานราก คานคอดินและพื้น'). Split by member kind per section 3: footings + columns here, ground beams + slabs in _view2_beam_plan.json.",
+    "Every column position is printed '<column>-<footing>': 'C1-F2' at the four corners (A1, A3, B1, B3) and 'C1-F1' on the middle line 2 (A2, B2). The footing squares are drawn centred on the columns.",
+    "No grid bubbles are printed; labels 1-3 / A-B were assigned in the grid master."
+  ],
+  "elements": [
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 4,
+      "grid_refs": [
+        "A1",
+        "A3",
+        "B1",
+        "B3"
+      ],
+      "note": "ป้าย 'C1-F2' ที่มุมอาคาร 4 จุด (ฐานรากเสาเข็ม 5 ต้น ตาม S-03)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 6,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "note": "เสา C1 ทุกจุดตัดแถว A/B กับแนว 1-3 (ป้าย C1-F1 / C1-F2)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 2,
+      "grid_refs": [
+        "A2",
+        "B2"
+      ],
+      "note": "ป้าย 'C1-F1' แนวกลาง 2 (ฐานรากเสาเข็ม 9 ต้น ตาม S-03)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    }
+  ]
+}
