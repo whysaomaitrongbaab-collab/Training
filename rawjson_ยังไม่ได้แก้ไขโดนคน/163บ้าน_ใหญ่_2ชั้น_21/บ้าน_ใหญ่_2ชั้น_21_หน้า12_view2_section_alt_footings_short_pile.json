@@ -1,0 +1,111 @@
+{
+ "png": "12",
+ "doc_page": 12,
+ "discipline": "structural",
+ "sheet_code": "8",
+ "sheet_name": "แบบขยายฐานราก — ฐานรากแบบเข็มยาว F1/F2, ฐานรากแบบเข็มสั้น F1/F2, ขยาย C1/C2, รายการประกอบแบบฐานราก (แบบ 101ล/27 แผ่นที่ 8)",
+ "pattern": "section",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า12.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_21_หน้า00_gridline.json",
+ "building": "อาคารหลัก (โรงอาหาร-หอประชุม 101ล/27 พิเศษ)",
+ "view_title": "ฐานรากแบบเข็มสั้น F1, F2",
+ "scale": null,
+ "views": [
+  "view1: ฐานรากแบบเข็มยาว — F1 (0.75x0.75, 1 ต้น), F2 (0.75x1.50, 2 ต้น) + ขยาย C1, ขยาย C2 — section (this file: _view1)",
+  "view2: ฐานรากแบบเข็มสั้น — F1 (2.00x2.00, 16 ต้น), F2 (3.00x3.00, 36 ต้น) — section, alternative footing system (_view2)",
+  "view3: รายการประกอบแบบฐานรากชนิดเข็มยาว (ข้อ 1-7) + รายการประกอบแบบฐานรากชนิดเข็มสั้น (ข้อ 1-3) — notes (_view3)"
+ ],
+ "confidence_score": 0.74,
+ "confidence_flags": [
+  "low_resolution_scan"
+ ],
+ "warnings": [
+  "Alternative footing system printed on the same sheet (ฐานรากแบบเข็มสั้น: hollow hexagonal RC piles ø0.15 x 6.00) — kept in its own file because it reuses the marks F1/F2 for different members (section 0.3); the long-pile system in _view1 is the one the notes make current (21.00 m piles since FY2539).",
+  "Footing thickness is printed as an edge thickness plus a slope up to the pedestal (.25 + .15 for F1, .30 + .20 for F2); height_mm is the thickness at the pedestal face, both parts kept in printed_as (house 155 convention).",
+  "The pedestal (เสาตอม่อ .50x.50 with extra bars) is drawn only inside this detail with no mark of its own, so it stays on the footing as pedestal_printed_as (new field, flagged here for reuse) rather than an invented pedestal element (section 6b)."
+ ],
+ "elements": [
+  {
+   "element_id": "F1",
+   "element_type": "footing",
+   "footing_type": "ฐานรากเข็มสั้น (ทางเลือก)",
+   "width_mm": 2000,
+   "width_mm_printed_as": "0.25+0.50+0.50+0.50+0.25 = 2.00",
+   "height_mm": 400,
+   "height_mm_printed_as": ".25 (ขอบ) + .15 (ลาดขึ้นถึงตอม่อ)",
+   "main_bar": {
+    "dia_mm": 12,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ø 12 มม. @ .15 ม.*",
+    "note": "ตะแกรง 2 ทาง"
+   },
+   "stirrup": {
+    "dia_mm": 9,
+    "type": "RB",
+    "printed_as": "ø 9 มม. โดยรอบ",
+    "note": "ไม่ได้พิมพ์จำนวน"
+   },
+   "pedestal_printed_as": "เสาตอม่อ .50 x .50 เสริมพิเศษ 8 ø19 มม.",
+   "pile_count": 16,
+   "pile": {
+    "type": "เข็ม คสล. ชนิดหกเหลี่ยมกลวง",
+    "size_mm": 150,
+    "length_m": 6.0,
+    "printed_as": "เข็ม คสล. ชนิดหกเหลี่ยมกลวง ขนาด ø0.15x6.00 จำนวน 16 ต้น"
+   },
+   "pile_layout_printed_as": "4 x 4 ที่ระยะ 0.50 (0.25 จากขอบ)",
+   "lean_concrete": {
+    "thickness_mm": 100,
+    "mix": "1:3:5",
+    "printed_as": "คอนกรีตหยาบ 1:3:5"
+   },
+   "sand_bed_thickness_m": 0.1,
+   "ground_reference": "ท้องฐานรากลึก 1.50 ม. จากระดับดินเดิม",
+   "confidence_score": 0.78,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F2",
+   "element_type": "footing",
+   "footing_type": "ฐานรากเข็มสั้น (ทางเลือก)",
+   "width_mm": 3000,
+   "width_mm_printed_as": "0.25+0.50x5+0.25 = 3.00",
+   "height_mm": 500,
+   "height_mm_printed_as": ".30 (ขอบ) + .20 (ลาดขึ้นถึงตอม่อ)",
+   "main_bar": {
+    "count": 40,
+    "dia_mm": 15,
+    "type": "RB",
+    "printed_as": "ø 15 มม. ด้านละ 20 เส้น#",
+    "count_printed_as": "20 + 20 (ด้านละ 20 เส้น)"
+   },
+   "stirrup": {
+    "dia_mm": 12,
+    "type": "RB",
+    "printed_as": "ø 12 มม. โดยรอบ",
+    "note": "ไม่ได้พิมพ์จำนวน"
+   },
+   "pedestal_printed_as": "เสาตอม่อ 50 x 50 เหล็กเสริมพิเศษ ? ø19 มม. (จำนวนเส้นอ่านไม่ออก)",
+   "pile_count": 36,
+   "pile": {
+    "type": "เข็ม คสล. ชนิดหกเหลี่ยมกลวง",
+    "size_mm": 150,
+    "length_m": 6.0,
+    "printed_as": "เข็ม คสล. ชนิดหกเหลี่ยมกลวง ขนาด ø0.15x6.00 จำนวน 36 ต้น"
+   },
+   "pile_layout_printed_as": "6 x 6 ที่ระยะ 0.50 (0.25 จากขอบ)",
+   "lean_concrete": {
+    "thickness_mm": 100,
+    "mix": "1:3:5",
+    "printed_as": "คอนกรีตหยาบ 1:3:5"
+   },
+   "sand_bed_thickness_m": 0.1,
+   "ground_reference": "ท้องฐานรากลึก 1.50 ม. จากระดับดินเดิม",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "pedestal_bar_count_illegible"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,161 @@
+{
+ "png": "12",
+ "doc_page": 12,
+ "discipline": "structural",
+ "sheet_code": "8",
+ "sheet_name": "แบบขยายฐานราก — ฐานรากแบบเข็มยาว F1/F2, ฐานรากแบบเข็มสั้น F1/F2, ขยาย C1/C2, รายการประกอบแบบฐานราก (แบบ 101ล/27 แผ่นที่ 8)",
+ "pattern": "section",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า12.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_21_หน้า00_gridline.json",
+ "building": "อาคารหลัก (โรงอาหาร-หอประชุม 101ล/27 พิเศษ)",
+ "view_title": "ฐานรากแบบเข็มยาว F1, F2; ขยาย C1, C2",
+ "scale": null,
+ "views": [
+  "view1: ฐานรากแบบเข็มยาว — F1 (0.75x0.75, 1 ต้น), F2 (0.75x1.50, 2 ต้น) + ขยาย C1, ขยาย C2 — section (this file: _view1)",
+  "view2: ฐานรากแบบเข็มสั้น — F1 (2.00x2.00, 16 ต้น), F2 (3.00x3.00, 36 ต้น) — section, alternative footing system (_view2)",
+  "view3: รายการประกอบแบบฐานรากชนิดเข็มยาว (ข้อ 1-7) + รายการประกอบแบบฐานรากชนิดเข็มสั้น (ข้อ 1-3) — notes (_view3)"
+ ],
+ "confidence_score": 0.78,
+ "confidence_flags": [
+  "low_resolution_scan"
+ ],
+ "warnings": [
+  "Footing details of the main building, long-pile system (ฐานรากแบบเข็มยาว) — the system the notes make current: item 1 specifies prestressed piles 21.00 m and the handwritten item 7 says the department has required 21.00 m piles since FY2539. The short-pile alternative (same marks F1/F2, different members) is in _view2 so the marks never collide on one file (section 0.3).",
+  "All bars printed with ø → type RB (section 0.6). No concrete strength or steel grade printed on this sheet.",
+  "F2 prints two bar sets of different diameters (9 ø15 and 7 ø19) — recorded per section 0.5 (count = sum 16, dia_mm = first, mixed_dia_mm).",
+  "ขยาย C1 / ขยาย C2 are the column sections of this sheet (C2 0.50 x 0.30 'แกน = 6-ø25 มม.', handwritten — flagged)."
+ ],
+ "elements": [
+  {
+   "element_id": "F1",
+   "element_type": "footing",
+   "footing_type": "ฐานรากเข็มยาว",
+   "width_mm": 750,
+   "width_mm_printed_as": ".75 x .75",
+   "height_mm": 700,
+   "height_mm_printed_as": ".70",
+   "main_bar": {
+    "count": 6,
+    "dia_mm": 15,
+    "type": "RB",
+    "printed_as": "6 ø15 มม.*",
+    "note": "แสดงเป็นแถวเดียวในรูปตัด — ไม่ได้ระบุว่าต่อทิศทางหรือรวม"
+   },
+   "stirrup": {
+    "dia_mm": 12,
+    "type": "RB",
+    "printed_as": "ø 12 มม. โดยรอบ",
+    "note": "เหล็กรัดรอบ — ไม่ได้พิมพ์จำนวน"
+   },
+   "pile_count": 1,
+   "pile": {
+    "type": "เข็มคอนกรีตอัดแรง",
+    "length_m": 21.0,
+    "printed_as": "ให้ใช้เข็มคอนกรีตอัดแรง ขนาด ⊠ .22x.22 / I .26x.26 / ø .25 ยาว 21.00 เมตร (รายการประกอบแบบข้อ 1); ข้อ 7 (ลายมือ): ตั้งแต่ปีงบประมาณ 2539 กรมได้สั่งการให้ใช้ความยาวเสาเข็ม 21.00 เมตร",
+    "safe_load_printed_as": "รับน้ำหนักบรรทุกปลอดภัยได้ไม่น้อยกว่าต้นละ 25 ตัน",
+    "count_printed_as": "1 ต้น เข็มคอนกรีต"
+   },
+   "lean_concrete": {
+    "thickness_mm": 100,
+    "mix": "1:3:5",
+    "printed_as": "คอนกรีตหยาบ 1:3:5 (.10)"
+   },
+   "sand_bed_thickness_m": 0.1,
+   "ground_reference": "ท้องฐานรากต่ำกว่าระดับดิน 1.25 ม. (โซ่ 1.25 / .70); รายการข้อ 5: ไม่น้อยกว่า 1.25 ม. จากระดับ ±0.00",
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F2",
+   "element_type": "footing",
+   "footing_type": "ฐานรากเข็มยาว",
+   "width_mm": 750,
+   "width_mm_printed_as": ".375 + .375 = .75",
+   "depth_mm": 1500,
+   "depth_mm_printed_as": ".25 + 1.00 + .25 = 1.50",
+   "height_mm": 700,
+   "height_mm_printed_as": ".70",
+   "main_bar": {
+    "count": 16,
+    "dia_mm": 15,
+    "mixed_dia_mm": [
+     15,
+     19
+    ],
+    "type": "RB",
+    "count_printed_as": "9 + 7",
+    "dia_mm_printed_as": "9 ø15 มม. + 7 ø19 มม.",
+    "printed_as": "9 ø15 มม. / 7 ø19 มม."
+   },
+   "stirrup": {
+    "dia_mm": 12,
+    "type": "RB",
+    "printed_as": "ø 12 มม. โดยรอบ",
+    "note": "ไม่ได้พิมพ์จำนวน"
+   },
+   "pile_count": 2,
+   "pile": {
+    "type": "เข็มคอนกรีตอัดแรง",
+    "length_m": 21.0,
+    "printed_as": "ให้ใช้เข็มคอนกรีตอัดแรง ขนาด ⊠ .22x.22 / I .26x.26 / ø .25 ยาว 21.00 เมตร (รายการประกอบแบบข้อ 1); ข้อ 7 (ลายมือ): ตั้งแต่ปีงบประมาณ 2539 กรมได้สั่งการให้ใช้ความยาวเสาเข็ม 21.00 เมตร",
+    "safe_load_printed_as": "รับน้ำหนักบรรทุกปลอดภัยได้ไม่น้อยกว่าต้นละ 25 ตัน",
+    "count_printed_as": "2 ต้น เข็มคอนกรีต"
+   },
+   "lean_concrete": {
+    "thickness_mm": 100,
+    "mix": "1:3:5",
+    "printed_as": "คอนกรีตหยาบ 1:3:5 (.10)"
+   },
+   "sand_bed_thickness_m": 0.1,
+   "ground_reference": "ท้องฐานรากต่ำกว่าระดับดิน 1.25 ม.",
+   "confidence_score": 0.78,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "C1",
+   "element_type": "column",
+   "width_mm": 300,
+   "height_mm": 300,
+   "main_bar": {
+    "count": 8,
+    "dia_mm": 19,
+    "type": "RB",
+    "printed_as": "8 ø19 มม."
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "note": "ขยาย C1",
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "C2",
+   "element_type": "column",
+   "width_mm": 500,
+   "height_mm": 300,
+   "width_mm_printed_as": "0.50",
+   "height_mm_printed_as": ".30",
+   "main_bar": {
+    "count": 6,
+    "dia_mm": 25,
+    "type": "RB",
+    "printed_as": "แกน = 6-ø25 มม."
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป - ø6 มม. @0.15"
+   },
+   "note": "ขยาย C2 — ตัวเลข 25 เขียนด้วยลายมือ",
+   "confidence_score": 0.68,
+   "confidence_flags": [
+    "bar_dia_handwritten"
+   ]
+  }
+ ]
+}

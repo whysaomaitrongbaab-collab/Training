@@ -1,0 +1,603 @@
+{
+ "png": "10",
+ "doc_page": 10,
+ "discipline": "structural",
+ "sheet_code": "6",
+ "sheet_name": "แปลนคาน ขยายคาน — แปลนฐานรากและคานรับพื้นชั้น 1, แปลนคาน พื้นชั้น 2, ขยายคาน B12-B23, บันได (แบบ 101ล/27 แผ่นที่ 6)",
+ "pattern": "section",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า10.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_21_หน้า00_gridline.json",
+ "building": "อาคารหลัก (โรงอาหาร-หอประชุม 101ล/27 พิเศษ)",
+ "view_title": "ขยายคาน B12-B23, บันไดด้านหลัง, บันไดด้านหน้า",
+ "scale": null,
+ "views": [
+  "view1: แปลนฐานรากและคานรับพื้นชั้น 1 1:100 — footings + columns (this split: footing_plan)",
+  "view2: same drawing — ground-floor beams B9/B14/B15/B16/B20 + slab marks (this split: beam_plan)",
+  "view3: แปลนคาน พื้นชั้น 2 1:100 — beam_plan (2nd-floor beams B12-B23)",
+  "view4: ขยายคาน B12-B23 + บันไดด้านหลัง / ด้านหน้า + รูปตัด 1-1 — section",
+  "view5: ข้อความ 'ทดการเสริมเหล็กคาน' (bar substitution note) — notes"
+ ],
+ "confidence_score": 0.76,
+ "confidence_flags": [
+  "low_resolution_scan"
+ ],
+ "warnings": [
+  "Beam sections of sheet 6 (ขยายคาน B12-B23). All bars printed with ø → type RB (section 0.6); the sheet's own note 'ทดการเสริมเหล็กคาน' (in _view5_notes) substitutes RB15/RB19 by DB16/DB20 — recorded as printed, the substitution is not applied to these values.",
+  "'คอม้า L/5' bars (bent-up bars, bottom at mid-span) are merged into main_bar.bottom with the split kept in the note (section 7 precedent for curtailed/bent bars): e.g. B15 bottom = 3 ø25 straight + 3 ø25 bent = 6.",
+  "B12's bent-bar count digit is unclear (read 3; flagged). B13' is given only by reference ('= B13 แต่ขนาด 0.30x0.40'). B20's '3 ø19 มม. มีในคาน ตัดไป 1.00 ม.' is a curtailed top bar set — merged into main_bar.top with mixed_dia_mm.",
+  "The two stairs (บันไดด้านหลัง / บันไดด้านหน้า) carry no mark: element_id null with element_name_assigned (section 0.2); their bar callouts are kept as bar_layers with the location read from the leader position (flagged). Beam elevations beyond the B13 / B15 / B17 notes were not transcribed."
+ ],
+ "elements": [
+  {
+   "element_id": null,
+   "element_name_assigned": "บันไดด้านหลัง",
+   "element_type": "stair",
+   "thickness_mm": 100,
+   "thickness_mm_printed_as": ".10 (ท้องบันได)",
+   "riser_mm": 175,
+   "tread_mm": 275,
+   "run_m_printed_as": "2.475 (.275 x 9); ชานพัก 1.25",
+   "bar_layers": [
+    {
+     "dia_mm": 9,
+     "spacing_mm": 80,
+     "type": "RB",
+     "printed_as": "ø9 มม. @ .08 ม. ตรงสลับคอม้า L/5",
+     "location": "เหล็กหลักท้องบันได"
+    },
+    {
+     "dia_mm": 6,
+     "spacing_mm": 150,
+     "type": "RB",
+     "printed_as": "ø6 มม. @ .15 ม.",
+     "location": "เหล็กกระจาย"
+    },
+    {
+     "dia_mm": 6,
+     "spacing_mm": 100,
+     "type": "RB",
+     "printed_as": "ø6 มม. @ .10 ม.",
+     "location": "ขั้นบันได"
+    },
+    {
+     "dia_mm": 6,
+     "type": "RB",
+     "printed_as": "ø6 มม.",
+     "location": "จมูกขั้นบันได"
+    },
+    {
+     "dia_mm": 9,
+     "spacing_mm": 80,
+     "type": "RB",
+     "printed_as": "ø9 มม. @ .08 ม.",
+     "location": "ชานพัก"
+    },
+    {
+     "dia_mm": 6,
+     "spacing_mm": 150,
+     "type": "RB",
+     "printed_as": "ø6 มม. @ .15 ม.",
+     "location": "ชานพัก"
+    }
+   ],
+   "note": "ลูกตั้ง .175 ลูกนอน .275 — ปลายบนเข้าคาน B20",
+   "confidence_score": 0.66,
+   "confidence_flags": [
+    "layer_assignment_by_leader_position"
+   ]
+  },
+  {
+   "element_id": null,
+   "element_name_assigned": "บันไดด้านหน้า",
+   "element_type": "stair",
+   "thickness_mm": 100,
+   "thickness_mm_printed_as": ".10",
+   "riser_mm": 175,
+   "tread_mm": 275,
+   "run_m_printed_as": "2.75 (.275 x 10); ชานพัก 1.20 (.90)",
+   "bar_layers": [
+    {
+     "count": 1,
+     "dia_mm": 12,
+     "type": "RB",
+     "printed_as": "1 ø12 มม.",
+     "location": "ขอบบน (แนวขั้น)"
+    },
+    {
+     "count": 2,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม.",
+     "location": "แนวขั้น"
+    },
+    {
+     "dia_mm": 6,
+     "spacing_mm": 100,
+     "type": "RB",
+     "printed_as": "ø6 มม. @ .10 ม.",
+     "location": "ขั้นบันได"
+    },
+    {
+     "dia_mm": 9,
+     "spacing_mm": 150,
+     "type": "RB",
+     "printed_as": "ø9 มม. @ .15 ม.",
+     "location": "ท้องบันได"
+    },
+    {
+     "dia_mm": 15,
+     "spacing_mm": 150,
+     "type": "RB",
+     "printed_as": "ø15 มม. @ .15 ม.",
+     "location": "ชานพักบน"
+    },
+    {
+     "dia_mm": 6,
+     "spacing_mm": 100,
+     "type": "RB",
+     "printed_as": "ø6 มม. @ .10 ม.",
+     "location": "ชานพักบน"
+    }
+   ],
+   "note": "รูปตัด 1-1 ของชานพัก: 3 ø19 มม. บน/ล่าง, ø9 มม. @ .15 ม., ø6 มม. @ .10 ม. (หนา .10, กว้าง 1.10) — บันทึกเป็นหมายเหตุ",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "layer_assignment_by_leader_position"
+   ]
+  },
+  {
+   "element_id": "B12",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 400,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม."
+    },
+    "bottom": {
+     "count": 5,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม. + 3 ø15 มม. คอม้า L/5",
+     "note": "2 เส้นตรง + 3 เส้นคอม้า (ดัดขึ้น) ที่ L/5"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "note": "คานขอบระเบียง 0.15 x 0.40 มีบัวที่หลังคาน (.075/.075)",
+   "confidence_score": 0.66,
+   "confidence_flags": [
+    "bent_bar_count_digit_unclear"
+   ]
+  },
+  {
+   "element_id": "B13",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 750,
+   "main_bar": {
+    "top": {
+     "count": 6,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "3 ø25 มม. + 3 ø25 มม.",
+     "note": "2 แถว แถวละ 3"
+    },
+    "bottom": {
+     "count": 3,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "3 ø25 มม."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "note": "รูปด้าน B13: เหล็กล่าง 3 ø25 มม., เหล็กโค้ง 2 ø15 มม. ที่ช่องโค้ง (ระยะ 1.40 / 2.00 / 1.20 / .75)",
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B13'",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 400,
+   "main_bar": {
+    "top": {
+     "count": 6,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "(= B13)"
+    },
+    "bottom": {
+     "count": 3,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "(= B13)"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "(= B13)"
+   },
+   "note": "ป้ายบนแบบ: 'B13' = B13 แต่ขนาด = 0.30x0.40 ระดับชานพักบันได' — เหล็กเสริมตาม B13",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "spec_given_by_reference_to_B13"
+   ]
+  },
+  {
+   "element_id": "B14",
+   "element_type": "beam",
+   "width_mm": 200,
+   "height_mm": 450,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "3 ø15 มม."
+    },
+    "bottom": {
+     "count": 6,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "3 ø15 มม. + 3 ø15 มม. คอม้า L/5",
+     "note": "3 เส้นตรง + 3 เส้นคอม้าที่ L/5"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B15",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 750,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "3 ø25 มม."
+    },
+    "bottom": {
+     "count": 6,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "3 ø25 มม. + 3 ø25 มม. คอม้า L/5",
+     "note": "3 เส้นตรง + 3 เส้นคอม้า (รูปด้าน: ดัดขึ้นห่างหน้าเสา 1.60)"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "note": "รูปด้าน B15 ช่วง 8.00",
+   "confidence_score": 0.82,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B16",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 600,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "3 ø15 มม."
+    },
+    "bottom": {
+     "count": 6,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "3 ø15 มม. + 3 ø15 มม. คอม้า L/5",
+     "note": "3 เส้นตรง + 3 เส้นคอม้า"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B16'",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 750,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "2 ø25 มม."
+    },
+    "bottom": {
+     "count": 4,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "2 ø25 มม. + 2 ø25 มม. คอม้า L/5",
+     "note": "2 เส้นตรง + 2 เส้นคอม้า"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "confidence_score": 0.78,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B17",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 750,
+   "main_bar": {
+    "top": {
+     "count": 8,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "8 ø25 มม.",
+     "note": "2 แถว แถวละ 4"
+    },
+    "bottom": {
+     "count": 8,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "8 ø25 มม.",
+     "note": "2 แถว แถวละ 4"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม. คู่",
+    "note": "ปลอกคู่"
+   },
+   "additional_bars": [
+    {
+     "count": 2,
+     "dia_mm": 25,
+     "type": "RB",
+     "position": "เสริมพิเศษ ยาว 2.00 ม. (รูปด้าน B17)",
+     "printed_as": "2-ø25 มม. x 2.00 เสริมพิเศษ"
+    }
+   ],
+   "note": "รูปตัด B17 (a-a)",
+   "confidence_score": 0.76,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B18",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 750,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "3 ø25 มม."
+    },
+    "bottom": {
+     "count": 3,
+     "dia_mm": 25,
+     "type": "RB",
+     "printed_as": "3 ø25 มม."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B19",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 600,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม."
+    },
+    "bottom": {
+     "count": 5,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม. + 3 ø15 มม. คอม้า L/5",
+     "note": "2 เส้นตรง + 3 เส้นคอม้า"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "confidence_score": 0.78,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B20",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 600,
+   "main_bar": {
+    "top": {
+     "count": 5,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม. + 3 ø19 มม. มีในคาน ตัดไป 1.00 ม.",
+     "mixed_dia_mm": [
+      15,
+      19
+     ],
+     "note": "2 ø15 ตลอดคาน + 3 ø19 เสริมบน ตัดที่ 1.00 ม."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 100,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .10 ม."
+   },
+   "additional_bars": [
+    {
+     "dia_mm": 9,
+     "spacing_mm": 60,
+     "type": "RB",
+     "position": "เหล็กเสริมพิเศษ (รัดเพิ่ม)",
+     "printed_as": "เสริมพิเศษ ø9 มม. @ .06 ม."
+    }
+   ],
+   "note": "คานรับเสาเอ็นชานพักบันไดขวา",
+   "confidence_score": 0.72,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B21",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 600,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "3 ø15 มม."
+    },
+    "bottom": {
+     "count": 6,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "3 ø15 มม. + 3 ø15 มม. คอม้า L/5",
+     "note": "3 เส้นตรง + 3 เส้นคอม้า"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "confidence_score": 0.76,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B22",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 350,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 12,
+     "type": "RB",
+     "printed_as": "3 ø12 มม."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "RB",
+     "printed_as": "2 ø12 มม."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 100,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .10 ม."
+   },
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B23",
+   "element_type": "beam",
+   "width_mm": 200,
+   "height_mm": 600,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม."
+    },
+    "bottom": {
+     "count": 4,
+     "dia_mm": 15,
+     "type": "RB",
+     "printed_as": "2 ø15 มม. + 2 ø15 มม. คอม้า L/5",
+     "note": "2 เส้นตรง + 2 เส้นคอม้า"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ป ø6 มม. @ .15 ม."
+   },
+   "additional_bars": [
+    {
+     "count": 2,
+     "dia_mm": 9,
+     "type": "RB",
+     "position": "ในบ่า/สันบนคาน (.10 + .10, .05)",
+     "printed_as": "2 ø9 มม."
+    },
+    {
+     "count": 3,
+     "dia_mm": 9,
+     "type": "RB",
+     "position": "ตามโค้งช่องเปิดใต้คาน",
+     "printed_as": "3 ø9 มม. ดัดโค้ง"
+    }
+   ],
+   "note": "คานขอบแถว A / G — หน้าตัดมีบ่า (.20 = .10+.10, .05)",
+   "confidence_score": 0.76,
+   "confidence_flags": []
+  }
+ ]
+}
