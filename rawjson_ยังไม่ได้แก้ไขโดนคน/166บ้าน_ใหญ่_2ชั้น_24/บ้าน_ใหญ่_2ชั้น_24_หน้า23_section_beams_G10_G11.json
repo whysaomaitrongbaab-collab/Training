@@ -1,0 +1,211 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-11",
+  "sheet_name": "แบบแสดง แบบขยายคาน ค.ส.ล. (แบบอาคารสำนักงานเขตพื้นที่การศึกษา แบบที่ 4)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_24/บ้าน_ใหญ่_2ชั้น_24_หน้า23.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_24_หน้า00_gridline.json",
+  "view_title": "รูปขยายคาน G10/1-G10 และ G11 + หน้าตัด",
+  "scale": null,
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Title block reads 'แบบแสดง แบบขยายคาน ค.ส.ล.' sheet S-11 (same subtitle as S-10).",
+    "G10 elevation: two spans 2.50 (labelled G10/1) + 8.00 (labelled G10) - matches the plan (G10/1 C-D, G10 A-C). Cut 1-1 sits in the 2.50 span but its section is captioned 'G10'; recorded as printed (G10, section_ref 1-1) and flagged - it is effectively G10/1's section.",
+    "G10 3-3: elevation prints 'ป-ø6mm.@ 0.10m.' along the 8.00 span, section 3-3 prints @0.15 - section value taken (section is the member's own detail), flagged.",
+    "G11 elevation is ONE span of 10.50 (A to D) - confirms the plan's G11 has no support at row C (the beam-plan file splits it at C only where G8 frames in).",
+    "Steel grade SD40 per the sheet note; ø stirrups = RB."
+  ],
+  "elements": [
+    {
+      "element_id": "G10",
+      "element_type": "beam",
+      "section_ref": "1-1",
+      "note": "รอยตัด 1 อยู่ในช่วงซ้าย 2.50 ของรูปขยาย ซึ่งพิมพ์ป้าย 'G10/1' (= ช่วง C-D บนแปลน) แต่หน้าตัดพิมพ์ชื่อ 'G10'",
+      "width_mm": 250,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 20,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 20,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "main_bar_printed_as": "3-DB20mm. / 3-DB20mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "section_cut_in_span_labelled_G10/1"
+      ]
+    },
+    {
+      "element_id": "G10",
+      "element_type": "beam",
+      "section_ref": "2-2",
+      "note": "ใกล้ที่รองรับกลาง (แถว C) ด้านช่วง 8.00",
+      "width_mm": 250,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 20,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "main_bar_printed_as": "2-DB20mm. / 3-DB20mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G10",
+      "element_type": "beam",
+      "section_ref": "3-3",
+      "note": "กลางช่วง 8.00; รูปขยายพิมพ์ปลอก 'ป-ø6mm.@ 0.10m.' ตลอดช่วง 8.00 แต่หน้าตัด 3-3 พิมพ์ @0.15 — ใช้ค่าหน้าตัด",
+      "width_mm": 250,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 20,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "note": "2 แถว: 2-DB20mm. (กลางช่วง ยาว 5.00 ม.) + 3-DB20mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "main_bar_printed_as": "3-DB20mm. / 2-DB20mm. 3-DB20mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "stirrup_spacing_section_vs_elevation"
+      ]
+    },
+    {
+      "element_id": "G10",
+      "element_type": "beam",
+      "section_ref": "4-4",
+      "note": "ปลายช่วง 8.00 ด้านแถว A",
+      "width_mm": 250,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "note": "3-DB20mm. + 2-DB20mm. (เสริมบนยาว 2.20 จากหน้าที่รองรับปลาย)"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 20,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "main_bar_printed_as": "3-DB20mm. 2-DB20mm. / 3-DB20mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G11",
+      "element_type": "beam",
+      "section_ref": "1-1",
+      "note": "ปลายคาน — ปลอก @0.05 ช่วง 2.60 ทั้งสองปลาย; คานช่วงเดียว 10.50 (A ถึง D)",
+      "width_mm": 300,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 6,
+          "dia_mm": 25,
+          "type": "DB",
+          "note": "4-DB25mm. + 2-DB25mm. (เสริมบนยาว 2.60 จากที่รองรับ)"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 25,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 50,
+        "printed_as": "ป-ø9mm.@ 0.05m."
+      },
+      "main_bar_printed_as": "4-DB25mm. 2-DB25mm. / 4-DB25mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G11",
+      "element_type": "beam",
+      "section_ref": "2-2",
+      "note": "กลางช่วง",
+      "width_mm": 300,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 25,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 6,
+          "dia_mm": 25,
+          "type": "DB",
+          "note": "2-DB25mm. กลางช่วง 5.00ม. + 4-DB25mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "ป-ø9mm.@ 0.10m."
+      },
+      "main_bar_printed_as": "4-DB25mm. / 2-DB25mm. 4-DB25mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

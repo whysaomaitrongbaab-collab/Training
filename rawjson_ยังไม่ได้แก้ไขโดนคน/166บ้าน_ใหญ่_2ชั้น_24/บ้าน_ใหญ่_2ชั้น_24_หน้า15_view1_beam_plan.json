@@ -1,0 +1,1501 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แบบแสดง แปลนคานและพื้น ชั้นที่ 2 (แบบอาคารสำนักงานเขตพื้นที่การศึกษา แบบที่ 4)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_24/บ้าน_ใหญ่_2ชั้น_24_หน้า15.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_24_หน้า00_gridline.json",
+  "floor_level": "F2",
+  "view_title": "แปลนคานและพื้น ชั้นที่ 2",
+  "scale": "1:125",
+  "pattern": "beam_plan",
+  "views": [
+    "view1: แปลนคานและพื้น ชั้นที่ 2 1:125 — beams B1-B13 + cantilever/edge beams R1-R6 (this file: beam_plan)",
+    "view2: same drawing — slab marks RS1/S3 + precast hollow-core panels HC, น.น.บรรทุกปลอดภัย HC 400 kg/m² (etc_plan — this split: _view2_etc_plan_slab.json)"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [],
+  "warnings": [
+    "Second-floor beams. A 1.50 cantilever band runs along rows A and D (RS1 slabs): R6 cantilevers from every row-A column (and from the row-D columns of grids 2, 5-8, 11), carrying the R5 edge beams; at the building ends R3/R4 cantilever from grids 1/12 and R1, R1/1, R5/1 close the corner balconies along 1''/12' and D'.",
+    "Stair bays 3-4 and 9-10: B6 along row A, B3 on row B, landing beam B5 at 1.20 from row C (line B'' 6.80), B2 on row C, and the stair box below row D bounded by B11 and B13 at 1.60 (line D''). B7 is split where B5 frames in.",
+    "The grid-3/4/9/10 A-B beams print a stacked label 'B8/B6'; recorded as two members B8 and B6 on the same segment (precedent house 157 'B2/G1'), score lowered - the section sheets (not extracted in this run) would settle which is which.",
+    "B1 spans at C2, C5-C8, C11 end on B9 (no column there per S-01) - flagged bears_on_beam. B9 is split at row C; B12 (grids 1/12) runs A-C since nothing frames in at row B.",
+    "Beam sections (S-10..S-14) were not extracted in this op04 run (shutdown deadline) - no specs{} here."
+  ],
+  "elements": [
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A''2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''4",
+      "grid_ref_end": "A4",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''4",
+      "grid_ref_end": "A''5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''5",
+      "grid_ref_end": "A5",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''5",
+      "grid_ref_end": "A''6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''6",
+      "grid_ref_end": "A6",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''6",
+      "grid_ref_end": "A''7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''7",
+      "grid_ref_end": "A7",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''7",
+      "grid_ref_end": "A''8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''8",
+      "grid_ref_end": "A8",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''8",
+      "grid_ref_end": "A''9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''9",
+      "grid_ref_end": "A9",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''10",
+      "grid_ref_end": "A10",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''10",
+      "grid_ref_end": "A''11",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''11",
+      "grid_ref_end": "A11",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "A''11",
+      "grid_ref_end": "A''12",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว A",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "A''12",
+      "grid_ref_end": "A12",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 จากเสาแถว A รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "C1",
+      "span_length_m": 8.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่แถว B — คานต่อเนื่อง A ถึง C",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "C2",
+      "span_length_m": 8.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่แถว B/C — แบ่งช่วงที่แถว C ที่คาน B1 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B8/B6' ตามแนวกริดช่องบันไดช่วง A-B — บันทึกเป็นสองคาน (B8, B6) ตามแบบอย่าง 'B2/G1' ของบ้าน 157; แบบไม่บอกว่าตัวไหนอยู่บน/ล่าง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B8/B6' ตามแนวกริดช่องบันไดช่วง A-B — บันทึกเป็นสองคาน (B8, B6) ตามแบบอย่าง 'B2/G1' ของบ้าน 157; แบบไม่บอกว่าตัวไหนอยู่บน/ล่าง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B8/B6' ตามแนวกริดช่องบันไดช่วง A-B — บันทึกเป็นสองคาน (B8, B6) ตามแบบอย่าง 'B2/G1' ของบ้าน 157; แบบไม่บอกว่าตัวไหนอยู่บน/ล่าง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B8/B6' ตามแนวกริดช่องบันไดช่วง A-B — บันทึกเป็นสองคาน (B8, B6) ตามแบบอย่าง 'B2/G1' ของบ้าน 157; แบบไม่บอกว่าตัวไหนอยู่บน/ล่าง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "C5",
+      "span_length_m": 8.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่แถว B/C — แบ่งช่วงที่แถว C ที่คาน B1 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "C6",
+      "span_length_m": 8.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่แถว B/C — แบ่งช่วงที่แถว C ที่คาน B1 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "C7",
+      "span_length_m": 8.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่แถว B/C — แบ่งช่วงที่แถว C ที่คาน B1 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "C8",
+      "span_length_m": 8.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่แถว B/C — แบ่งช่วงที่แถว C ที่คาน B1 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "A9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "B9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B8/B6' ตามแนวกริดช่องบันไดช่วง A-B — บันทึกเป็นสองคาน (B8, B6) ตามแบบอย่าง 'B2/G1' ของบ้าน 157; แบบไม่บอกว่าตัวไหนอยู่บน/ล่าง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "B9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B8/B6' ตามแนวกริดช่องบันไดช่วง A-B — บันทึกเป็นสองคาน (B8, B6) ตามแบบอย่าง 'B2/G1' ของบ้าน 157; แบบไม่บอกว่าตัวไหนอยู่บน/ล่าง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A9",
+      "grid_ref_end": "A10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A10",
+      "grid_ref_end": "B10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B8/B6' ตามแนวกริดช่องบันไดช่วง A-B — บันทึกเป็นสองคาน (B8, B6) ตามแบบอย่าง 'B2/G1' ของบ้าน 157; แบบไม่บอกว่าตัวไหนอยู่บน/ล่าง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A10",
+      "grid_ref_end": "B10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ป้ายซ้อน 'B8/B6' ตามแนวกริดช่องบันไดช่วง A-B — บันทึกเป็นสองคาน (B8, B6) ตามแบบอย่าง 'B2/G1' ของบ้าน 157; แบบไม่บอกว่าตัวไหนอยู่บน/ล่าง",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "stacked_label_upper_lower_member"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A10",
+      "grid_ref_end": "A11",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A11",
+      "grid_ref_end": "C11",
+      "span_length_m": 8.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่แถว B/C — แบ่งช่วงที่แถว C ที่คาน B1 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A11",
+      "grid_ref_end": "A12",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "grid_ref_start": "A12",
+      "grid_ref_end": "C12",
+      "span_length_m": 8.0,
+      "span_source": "grid_table",
+      "note": "ไม่มีเสาที่แถว B — คานต่อเนื่อง A ถึง C",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B''3",
+      "span_length_m": 2.8,
+      "span_source": "grid_table",
+      "note": "พิมพ์ 'ทำหูช้างลดระดับ'; แบ่งช่วงที่ B'' ที่คาน B5 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B''4",
+      "span_length_m": 2.8,
+      "span_source": "grid_table",
+      "note": "พิมพ์ 'ทำหูช้างลดระดับ'; แบ่งช่วงที่ B'' ที่คาน B5 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B9",
+      "grid_ref_end": "B''9",
+      "span_length_m": 2.8,
+      "span_source": "grid_table",
+      "note": "พิมพ์ 'ทำหูช้างลดระดับ'; แบ่งช่วงที่ B'' ที่คาน B5 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "B9",
+      "grid_ref_end": "B10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B10",
+      "grid_ref_end": "B''10",
+      "span_length_m": 2.8,
+      "span_source": "grid_table",
+      "note": "พิมพ์ 'ทำหูช้างลดระดับ'; แบ่งช่วงที่ B'' ที่คาน B5 มาฝาก",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B''3",
+      "grid_ref_end": "C3",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B7 เดียวกัน",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B''3",
+      "grid_ref_end": "B''4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานพักบันได 1.20 จากแถว C (พิมพ์ 1.20)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B7(start)",
+        "bears_on_beam:B7(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B''4",
+      "grid_ref_end": "C4",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B7 เดียวกัน",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B''9",
+      "grid_ref_end": "C9",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B7 เดียวกัน",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B''9",
+      "grid_ref_end": "B''10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานพักบันได 1.20 จากแถว C (พิมพ์ 1.20)",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B7(start)",
+        "bears_on_beam:B7(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B''10",
+      "grid_ref_end": "C10",
+      "span_length_m": 1.2,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B7 เดียวกัน",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C1''",
+      "grid_ref_end": "D1''",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่นปลายอาคาร",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R3(start)",
+        "bears_on_beam:R4(end)"
+      ]
+    },
+    {
+      "element_id": "R3",
+      "element_type": "beam",
+      "grid_ref_start": "C1''",
+      "grid_ref_end": "C1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ปลายอาคารด้านกริด 1 แถว C",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(end)"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B9 เดียวกัน (ป้ายพิมพ์ครั้งเดียวที่ช่วง A-C)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(start)"
+      ]
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "D4",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "C5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(end)"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "D5",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B9 เดียวกัน (ป้ายพิมพ์ครั้งเดียวที่ช่วง A-C)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "C6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(start)",
+        "bears_on_beam:B9(end)"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "D6",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B9 เดียวกัน (ป้ายพิมพ์ครั้งเดียวที่ช่วง A-C)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "C7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(start)",
+        "bears_on_beam:B9(end)"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "C7",
+      "grid_ref_end": "D7",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B9 เดียวกัน (ป้ายพิมพ์ครั้งเดียวที่ช่วง A-C)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C7",
+      "grid_ref_end": "C8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(start)",
+        "bears_on_beam:B9(end)"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "C8",
+      "grid_ref_end": "D8",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B9 เดียวกัน (ป้ายพิมพ์ครั้งเดียวที่ช่วง A-C)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C8",
+      "grid_ref_end": "C9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(start)"
+      ]
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "C9",
+      "grid_ref_end": "D9",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "C9",
+      "grid_ref_end": "C10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "C10",
+      "grid_ref_end": "D10",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C10",
+      "grid_ref_end": "C11",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(end)"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "C11",
+      "grid_ref_end": "D11",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "ช่วงต่อของ B9 เดียวกัน (ป้ายพิมพ์ครั้งเดียวที่ช่วง A-C)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C11",
+      "grid_ref_end": "C12",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B9(start)"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "C12",
+      "grid_ref_end": "D12",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R3",
+      "element_type": "beam",
+      "grid_ref_start": "C12",
+      "grid_ref_end": "C12'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ปลายอาคารด้านกริด 12 แถว C",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C12'",
+      "grid_ref_end": "D12'",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่นปลายอาคาร",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R3(start)",
+        "bears_on_beam:R4(end)"
+      ]
+    },
+    {
+      "element_id": "R1/1",
+      "element_type": "beam",
+      "grid_ref_start": "D1''",
+      "grid_ref_end": "D'1''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่นมุมอาคาร",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R4(start)"
+      ]
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "grid_ref_start": "D1''",
+      "grid_ref_end": "D1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ปลายอาคารด้านกริด 1 แถว D",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D'1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ใต้แถว D ที่ปลายอาคาร",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D'2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ใต้แถว D รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D''3",
+      "span_length_m": 1.6,
+      "span_source": "grid_table",
+      "note": "ข้างกล่องบันได ยื่น 1.60 ใต้แถว D; คานขอบ R5 มาฝากที่ 1.50 (แนว D') ก่อนปลาย 0.10 — ไม่แบ่งช่วง 0.10",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "D''4",
+      "span_length_m": 1.6,
+      "span_source": "grid_table",
+      "note": "ข้างกล่องบันได ยื่น 1.60 ใต้แถว D; คานขอบ R5 มาฝากที่ 1.50 (แนว D') ก่อนปลาย 0.10 — ไม่แบ่งช่วง 0.10",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "D5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "D5",
+      "grid_ref_end": "D'5",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ใต้แถว D รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D5",
+      "grid_ref_end": "D6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "D6",
+      "grid_ref_end": "D'6",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ใต้แถว D รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D6",
+      "grid_ref_end": "D7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "D7",
+      "grid_ref_end": "D'7",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ใต้แถว D รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D7",
+      "grid_ref_end": "D8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "D8",
+      "grid_ref_end": "D'8",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ใต้แถว D รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D8",
+      "grid_ref_end": "D9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "D9",
+      "grid_ref_end": "D''9",
+      "span_length_m": 1.6,
+      "span_source": "grid_table",
+      "note": "ข้างกล่องบันได ยื่น 1.60 ใต้แถว D; คานขอบ R5 มาฝากที่ 1.50 (แนว D') ก่อนปลาย 0.10 — ไม่แบ่งช่วง 0.10",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D9",
+      "grid_ref_end": "D10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "D10",
+      "grid_ref_end": "D''10",
+      "span_length_m": 1.6,
+      "span_source": "grid_table",
+      "note": "ข้างกล่องบันได ยื่น 1.60 ใต้แถว D; คานขอบ R5 มาฝากที่ 1.50 (แนว D') ก่อนปลาย 0.10 — ไม่แบ่งช่วง 0.10",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D10",
+      "grid_ref_end": "D11",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "grid_ref_start": "D11",
+      "grid_ref_end": "D'11",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ใต้แถว D รับคานขอบ R5",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "D11",
+      "grid_ref_end": "D12",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "grid_ref_start": "D12",
+      "grid_ref_end": "D'12",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ใต้แถว D ที่ปลายอาคาร",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "grid_ref_start": "D12",
+      "grid_ref_end": "D12'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่น 1.50 ปลายอาคารด้านกริด 12 แถว D",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1/1",
+      "element_type": "beam",
+      "grid_ref_start": "D12'",
+      "grid_ref_end": "D'12'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่นมุมอาคาร",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R4(start)"
+      ]
+    },
+    {
+      "element_id": "R5/1",
+      "element_type": "beam",
+      "grid_ref_start": "D'1''",
+      "grid_ref_end": "D'1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานขอบมุมอาคาร",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R4(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'1",
+      "grid_ref_end": "D'2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:R4(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'2",
+      "grid_ref_end": "D'3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:B11(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'4",
+      "grid_ref_end": "D'5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "bears_on_beam:B11(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'5",
+      "grid_ref_end": "D'6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'6",
+      "grid_ref_end": "D'7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'7",
+      "grid_ref_end": "D'8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'8",
+      "grid_ref_end": "D'9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:B11(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'10",
+      "grid_ref_end": "D'11",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "bears_on_beam:B11(start)",
+        "bears_on_beam:R6(end)"
+      ]
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "grid_ref_start": "D'11",
+      "grid_ref_end": "D'12",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบพื้นยื่น RS1 ด้านแถว D (ขอบ 1.50)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:R6(start)",
+        "bears_on_beam:R4(end)"
+      ]
+    },
+    {
+      "element_id": "R5/1",
+      "element_type": "beam",
+      "grid_ref_start": "D'12",
+      "grid_ref_end": "D'12'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานขอบมุมอาคาร",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:R4(start)"
+      ]
+    },
+    {
+      "element_id": "B13",
+      "element_type": "beam",
+      "grid_ref_start": "D''3",
+      "grid_ref_end": "D''4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ขอบกล่องบันได (ระยะ 1.60 จากแถว D)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "bears_on_beam:B11(start)",
+        "bears_on_beam:B11(end)"
+      ]
+    },
+    {
+      "element_id": "B13",
+      "element_type": "beam",
+      "grid_ref_start": "D''9",
+      "grid_ref_end": "D''10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "ขอบกล่องบันได (ระยะ 1.60 จากแถว D)",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "bears_on_beam:B11(start)",
+        "bears_on_beam:B11(end)"
+      ]
+    }
+  ]
+}

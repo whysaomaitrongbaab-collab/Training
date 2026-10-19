@@ -1,0 +1,252 @@
+{
+  "png": "25",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-13",
+  "sheet_name": "แบบแสดง แบบขยายคาน ค.ส.ล. (แบบอาคารสำนักงานเขตพื้นที่การศึกษา แบบที่ 4)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_24/บ้าน_ใหญ่_2ชั้น_24_หน้า25.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_24_หน้า00_gridline.json",
+  "view_title": "รูปขยายคาน B9, B11-B10, B12 + หน้าตัด B9-B13",
+  "scale": null,
+  "confidence_score": 0.83,
+  "confidence_flags": [],
+  "warnings": [
+    "Title block reads 'แบบแสดง แบบขยายคาน ค.ส.ล.' sheet S-13.",
+    "Elevations confirm the plan reading: B9 one span 10.50 (A to D), B11 1.60 cantilever + B10 2.50 (stair-bay grid lines below row C), B12 one span 8.00 (A to C).",
+    "Conflict: B9 section 2-2 prints '4-DB25mm. กลางช่วง 5.00ม.' while the elevation prints '2-DB25mm. กลางช่วง 5.00ม.' for the same extra bottom bars - section value taken (member's own detail), score lowered; the twin ground beam G11 (S-11) prints 2 in both places, so the elevation reading is plausible.",
+    "B10/B11/B13 print a 2-DB12mm row at mid-depth with its own leader - recorded as main_bar.middle (section 6). Steel grade SD40 per the sheet note."
+  ],
+  "elements": [
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "section_ref": "1-1",
+      "note": "ปลายคาน — ปลอก @0.05 ช่วง 2.60 ทั้งสองปลาย; คานช่วงเดียว 10.50",
+      "width_mm": 300,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 6,
+          "dia_mm": 25,
+          "type": "DB",
+          "note": "4-DB25mm. + 2-DB25mm. (เสริมบนยาว 2.60 จากที่รองรับ)"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 25,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 50,
+        "printed_as": "ป-ø9mm.@ 0.05m."
+      },
+      "main_bar_printed_as": "4-DB25mm. 2-DB25mm. / 4-DB25mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "section_ref": "2-2",
+      "note": "กลางช่วง; หน้าตัด 2-2 พิมพ์ '4-DB25mm. กลางช่วง 5.00ม.' แต่รูปขยายพิมพ์ '2-DB25mm. กลางช่วง 5.00ม.' — ใช้ค่าหน้าตัด",
+      "width_mm": 300,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 25,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 8,
+          "dia_mm": 25,
+          "type": "DB",
+          "note": "4-DB25mm. กลางช่วง 5.00ม. + 4-DB25mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "ป-ø9mm.@ 0.10m."
+      },
+      "main_bar_printed_as": "4-DB25mm. / 4-DB25mm. กลางช่วง 5.00ม. 4-DB25mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "bar_count_section_vs_elevation"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "section_ref": "1-1",
+      "note": "คานยื่น 1.60 (รูปขยาย B11 1.60 ต่อ B10 2.50)",
+      "width_mm": 250,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "note": "3-DB20mm. + 2-DB20mm."
+        },
+        "middle": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "main_bar_printed_as": "3-DB20mm. 2-DB20mm. / 2-DB12mm. / 2-DB20mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "section_ref": "2-2",
+      "note": "ช่วง 2.50",
+      "width_mm": 250,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB",
+          "note": "2-DB20mm. + 2-DB20mm."
+        },
+        "middle": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "main_bar_printed_as": "2-DB20mm. 2-DB20mm. / 2-DB12mm. / 2-DB20mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B13",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB"
+        },
+        "middle": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "main_bar_printed_as": "2-DB16mm. / 2-DB12mm. / 2-DB16mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "section_ref": "1-1",
+      "note": "กลางช่วง (คานช่วงเดียว 8.00)",
+      "width_mm": 250,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "main_bar_printed_as": "2-DB20mm. / 4-DB20mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "section_ref": "2-2",
+      "note": "ปลายคาน — ปลอก @0.10 ช่วง 1.80 ทั้งสองปลาย, @0.15 กลางช่วง",
+      "width_mm": 250,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "note": "3-DB20mm. + 2-DB20mm. เสริมบนยาว 1.80 จากที่รองรับ"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "ป-ø6mm.@ 0.10m."
+      },
+      "main_bar_printed_as": "3-DB20mm. 2-DB20mm. / 4-DB20mm.",
+      "steel_grade": "SD40",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}
