@@ -1,0 +1,134 @@
+{
+  "png": "19",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก ตอม่อ, แสดงคานคอดิน พื้น เสา ชั้นล่าง (S-01)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_22/บ้าน_ใหญ่_2ชั้น_22_หน้า19.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_22_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก ตอม่อ",
+  "scale": "NO SCALE",
+  "pattern": "footing_plan",
+  "views": [
+    "view1: แปลนฐานราก ตอม่อ — footings F1/F2/F3 + column marks C1/C2/C3 (footing_plan)",
+    "view2: แสดงคานคอดิน พื้น เสา ชั้นล่าง — ground beams B1-B6, B4', slab marks S0/S1/S4 (beam_plan)"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "Each column position prints a footing+column pair ('F3,C3', 'F2,C1', 'F2,C2', 'F1,C1'): 24 positions = 8 F3C3 + 7 F2C1 + 2 F2C2 + 7 F1C1. Footings and their column marks are recorded as separate point elements (same positions).",
+    "Row ค has no footing at grids 4, 5, 6: the building edge steps in to line ข''' (0.60 above ค) there — confirmed on the ground-beam plan, where B4' stubs end at ข''' and no column is drawn on row ค.",
+    "Footing/column sizes are not printed on this plan; they come from the footing details (S-06/S-08) and column details."
+  ],
+  "elements": [
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "count": 8,
+      "grid_refs": [
+        "ก1",
+        "ก9",
+        "ค1",
+        "ค2",
+        "ค3",
+        "ค7",
+        "ค8",
+        "ค9"
+      ],
+      "note": "พิมพ์ 'F3,C3' ที่มุมอาคาร (ก1, ก9) และแถว ค กริด 1-3 กับ 7-9; แถว ค กริด 4-6 ไม่มีฐานราก (ระเบียงชั้นบนยื่น)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 9,
+      "grid_refs": [
+        "ก2",
+        "ก3",
+        "ก4",
+        "ก5",
+        "ก6",
+        "ก7",
+        "ก8",
+        "ข1",
+        "ข9"
+      ],
+      "note": "พิมพ์ 'F2,C1' แถว ก กริด 2-8 และ 'F2,C2' ที่ ข1, ข9",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 7,
+      "grid_refs": [
+        "ข2",
+        "ข3",
+        "ข4",
+        "ข5",
+        "ข6",
+        "ข7",
+        "ข8"
+      ],
+      "note": "พิมพ์ 'F1,C1' แถว ข กริด 2-8",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C3",
+      "element_type": "column",
+      "count": 8,
+      "grid_refs": [
+        "ก1",
+        "ก9",
+        "ค1",
+        "ค2",
+        "ค3",
+        "ค7",
+        "ค8",
+        "ค9"
+      ],
+      "note": "คู่กับ F3 ('F3,C3')",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 14,
+      "grid_refs": [
+        "ก2",
+        "ก3",
+        "ก4",
+        "ก5",
+        "ก6",
+        "ก7",
+        "ก8",
+        "ข2",
+        "ข3",
+        "ข4",
+        "ข5",
+        "ข6",
+        "ข7",
+        "ข8"
+      ],
+      "note": "คู่กับ F2 (แถว ก กริด 2-8) และ F1 (แถว ข กริด 2-8)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 2,
+      "grid_refs": [
+        "ข1",
+        "ข9"
+      ],
+      "note": "คู่กับ F2 ('F2,C2') ปลายแถว ข",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    }
+  ]
+}
