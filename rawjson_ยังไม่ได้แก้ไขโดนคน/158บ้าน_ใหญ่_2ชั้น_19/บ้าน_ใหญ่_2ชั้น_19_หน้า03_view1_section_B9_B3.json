@@ -1,0 +1,100 @@
+{
+  "png": "03",
+  "doc_page": 3,
+  "discipline": "structural",
+  "sheet_code": "2/6",
+  "sheet_name": "รูปตัด ก-ก, รูปตัด ข-ข, ขยายคานยื่น B9, ขยายคานต่อเนื่อง B3 + B9 (แบบอาคารฝึกงาน 204/27 แผ่นที่ 2/6)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_19/บ้าน_ใหญ่_2ชั้น_19_หน้า03.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_19_หน้า00_gridline.json",
+  "view_title": "ขยายคานยื่น B9 1:20, หน้าตัด B9 1:20, ขยายคานต่อเนื่อง B3 + B9 1:20",
+  "scale": "1:20",
+  "views": [
+    "view1: ขยายคานยื่น B9 1:20 + หน้าตัด B9 1:20 — section (this file)",
+    "view2: ขยายคานต่อเนื่อง B3 + B9 1:20 — section (this file)",
+    "view3: รูปตัด ก-ก 1:50 — side_profile (swept for the grid master only)",
+    "view4: รูปตัด ข-ข 1:50 — side_profile (swept for the grid master only)",
+    "view5: หมายเหตุ under the sections — notes (_view5_notes.json)"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "The two cantilever details referenced from the B9 section on sheet 5 ('ดูแบบขยายแผ่นที่ 2/6'). This sheet resolves what sheet 5 leaves illegible: B9 is 0.25 x 0.40 with 2 + 2 Ø25 top (two separate labels, both anchored ≥ 1.50 m into the column / the continuing B3) and 2-Ø25 bottom (≥ 1.00 m). Sheet 5's B9 entry keeps its own reading (top count null) — same mark, two section sources, no contradiction.",
+    "B3 here is only the end-of-span bar arrangement at the column where B3 continues into B9 (3 straight top, 3 straight bottom, two bent-up sets of 3-Ø25 at 2.50 / 2.00 from the column centre); its section size is on sheet 5 (0.30 x 0.80) and is not repeated here.",
+    "The หมายเหตุ text block under the two building sections is in _view5_notes.json."
+  ],
+  "elements": [
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø25 มม.",
+          "note": "ต่อเนื่องข้ามเสาเข้าคานยื่น B9 ไม่น้อยกว่า 1.50 ม."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø25 มม.",
+          "note": "ยึดเข้าเสา/ต่อทาบ ไม่น้อยกว่า 1.00 ม."
+        }
+      },
+      "additional_bars": [
+        {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "position": "คอม้า: วิ่งล่างกลางช่วง ดัดขึ้นเป็นเหล็กบนที่ระยะ 2.50 จากศูนย์เสา",
+          "printed_as": "3-Ø25 มม."
+        },
+        {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "position": "คอม้า ชุดที่สอง ดัดขึ้นที่ระยะ 2.00 จากศูนย์เสา",
+          "printed_as": "3-Ø25 มม."
+        }
+      ],
+      "note": "ขยายคานต่อเนื่อง B3 + B9 1:20 — ปลายคาน B3 ที่เสาแถว A/D ต่อเนื่องเป็นคานยื่น B9; ขนาดหน้าตัดดูหน้าตัด B3 แผ่นที่ 5 (0.30 x 0.80)",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-Ø25 มม. งอฉากเข้าเสา ยาว ≮ 1.50 ม. / 2-Ø25 มม. งอฉากเข้าเสายาว ≮ 1.50 ม.",
+          "note": "2 + 2 เส้น (สองป้ายแยก) — ในรายละเอียดต่อเนื่อง B3 + B9 พิมพ์ '2-Ø25 มม. ล้วงเข้าคานลึก ≮ 1.50 ม.' สองป้ายเช่นกัน"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-Ø25 มม. งอฉากเข้าเสายาว ≮ 1.00 ม.",
+          "note": "ในรายละเอียดต่อเนื่อง: 2-Ø25 มม. ล้วงเข้าคานลึก ≮ 1.00 ม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "note": "คานยื่นรับระเบียงทางเดิน: ยื่น 1.60 จากผิวเสา (ขยายคานยื่น B9 ที่เสาริม) / 1.80 (ขยายคานต่อเนื่อง B3 + B9); เสาเหนือ-ใต้คานยื่นพิมพ์ระยะยึดเหล็ก ≮ 1.50 / ≮ 1.00",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    }
+  ]
+}

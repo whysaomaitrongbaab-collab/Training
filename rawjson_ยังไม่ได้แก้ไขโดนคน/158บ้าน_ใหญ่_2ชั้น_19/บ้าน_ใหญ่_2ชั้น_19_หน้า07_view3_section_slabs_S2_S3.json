@@ -1,0 +1,139 @@
+{
+  "png": "07",
+  "doc_page": 7,
+  "discipline": "structural",
+  "sheet_code": "6/6",
+  "sheet_name": "แบบขยายโครงหลังคาเหล็ก, พื้น S2 / S3, พื้นทางเท้า ค.ส.ล., หลังคาด้านสกัด, บันได ค.ส.ล. (แบบอาคารฝึกงาน 204/27 แผ่นที่ 6/6)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_19/บ้าน_ใหญ่_2ชั้น_19_หน้า07.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_19_หน้า00_gridline.json",
+  "view_title": "S2 1:20, S3 1:20, แบบขยายพื้นทางเท้า ค.ส.ล. 1:25",
+  "scale": "1:20",
+  "views": [
+    "view1: แบบขยายโครงหลังคาเหล็ก 1:25 + ขยายรูปตัด B / C 1:10 + ขยายแป้นหัวเสา 1:10 + ขยายโครงเหล็กยึดกระเบื้อง 1:25 — section (_view1_section_steel_truss.json; the 1:10 connection sub-details not extracted)",
+    "view2: แบบขยายพื้นทางเท้า ค.ส.ล. 1:25 — section (this file)",
+    "view3: S2 1:20, S3 1:20 — section (this file)",
+    "view4: หลังคาด้านสกัด 1:50 (RC gable R1-R7) — section (_view4_section_gable_roof.json)",
+    "view5: แบบขยายบันได ค.ส.ล. 1:25 — section (_view5_section_stair.json)",
+    "view6: หมายเหตุ (revision note, handwritten) — notes"
+  ],
+  "confidence_score": 0.58,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Slab sections joined to the plan slab marks S2 / S3 (both floor beam plans). Several layers per slab, so the bars are in bar_layers[] (section 0.6) with the printed text kept verbatim; unreadable digits are '?'.",
+    "The ground-floor plan marks the walkway bands S2 and also notes 'พื้นทางเท้า ค.ส.ล. (ดูแบบขยาย)' under the bottom walkway; the walkway detail prints Ø6 @0.25 while S2 prints Ø9 @0.20 + Ø6 @0.20. Both kept as printed; the plan's S2 marks are left on the walkway band (section 7: the detail is a separate unmarked element, recorded with element_id null).",
+    "The steel roof truss and the RC gable section of this sheet are in their own files (_view1 / _view4); the RC stair is in _view5_section_stair.json."
+  ],
+  "elements": [
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "span_printed_as": "1.75 ~ 2.00",
+      "bar_layers": [
+        {
+          "location": "ล่าง ทางช่วงสั้น",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "Ø9 มม. @0.20 ม.",
+          "spacing_mm": 200
+        },
+        {
+          "location": "ทางขวาง (จุดเหล็กตามแนวยาว)",
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "Ø6 มม. @0.20 ม.",
+          "spacing_mm": 200
+        },
+        {
+          "location": "บน เสริมพิเศษ ตลอดช่วง",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "Ø9 มม. (เสริมพิเศษ)"
+        }
+      ],
+      "note": "พื้นระเบียงทางเดิน / พื้นกลุ่มห้องพักครู / ชานพัก (ป้าย S2 ในแปลนคานทั้งสองชั้น)",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10 (มิติเดียวกับ S2 พิมพ์ระหว่างสองรูป)",
+      "span_printed_as": "3.25 ~ 3.50",
+      "bar_layers": [
+        {
+          "location": "หลัก ทางช่วงสั้น สลับคอม้า (บนยาว L/4, ล่างดัดที่ L/5)",
+          "dia_mm": null,
+          "type": "RB",
+          "printed_as": "Ø? มม. @0.10 ม. สลับคอม้า L/? (ขนาดเลือน)",
+          "spacing_mm": 100
+        },
+        {
+          "location": "ทางขวาง",
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "Ø6 มม. @0.?5 ม. (ระยะเลือน)"
+        },
+        {
+          "location": "ล่าง เสริมพิเศษ",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "Ø9 มม. (เสริมพิเศษ)"
+        },
+        {
+          "location": "ล่าง ทางขวาง",
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "Ø6 มม. @0.15 ม.",
+          "spacing_mm": 150
+        },
+        {
+          "location": "บน เหนือคาน เสริมพิเศษ ยาว L/4",
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "Ø12 มม. @0.20 ม. (เสริมพิเศษ)",
+          "spacing_mm": 200
+        }
+      ],
+      "note": "พื้นห้องเรียน (ป้าย S3 ในแปลนคานทั้งสองชั้น)",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "พื้นทางเท้า ค.ส.ล.",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "width_mm": 1800,
+      "width_mm_printed_as": "1.80",
+      "bar_layers": [
+        {
+          "location": "ตะแกรง",
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "Ø6 มม. @.25 ม.",
+          "spacing_mm": 250
+        },
+        {
+          "location": "ขอบ เสริมพิเศษ",
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "Ø9 มม. (เสริมพิเศษ)"
+        }
+      ],
+      "note": "แบบขยายพื้นทางเท้า ค.ส.ล. 1:25 — แปลนชั้นล่างเขียน 'พื้นทางเท้า ค.ส.ล. (ดูแบบขยาย)'",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    }
+  ]
+}

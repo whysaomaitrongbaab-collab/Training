@@ -1,0 +1,133 @@
+{
+  "png": "06",
+  "doc_page": 6,
+  "discipline": "structural",
+  "sheet_code": "5/6",
+  "sheet_name": "แปลนคาน พื้นชั้นบน, แปลนคาน พื้น และฐานราก, แปลนคานรับโครงหลังคา, ขยายคาน-เสา-ฐานราก, รายการประกอบแบบ (การตอกเข็มคอนกรีต) (แบบอาคารฝึกงาน 204/27 แผ่นที่ 5/6)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_19/บ้าน_ใหญ่_2ชั้น_19_หน้า06.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_19_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนคาน พื้น และฐานราก",
+  "scale": "1:100",
+  "pattern": "footing_plan",
+  "views": [
+    "view1: แปลนคาน พื้น และฐานราก 1:100 — footings + columns (this split: footing_plan)",
+    "view2: same drawing — ground-floor beams B1-B10 + slab marks S2/S3 (beam_plan, F1)",
+    "view3: แปลนคาน พื้นชั้นบน 1:100 — upper-floor beams + slab marks (beam_plan, F2)",
+    "view4: แปลนคานรับโครงหลังคา 1:100 — roof_frame_plan (R1-R6 + steel truss lines)",
+    "view5: beam sections B1-B10, R1/R2/R5/R6 + column sections C1/C2 by level + หมายเหตุเสา (C0) — section",
+    "view6: ขยายฐานราก F1 / F2 1:20 (timber-pile groups) + their sections — section",
+    "view7: รูปตัด C1 / C2 1:20 + ขยายฐานราก F / F2 1:20 (prestressed-pile alternative) — section",
+    "view8: รายการประกอบแบบ (การตอกเข็มคอนกรีต) — notes"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "grid_labels_assigned_not_printed"
+  ],
+  "warnings": [
+    "One combined ground-floor drawing carrying footings, columns, ground-floor beams and slab marks. Split by member kind (section 3 / section 1): footings + columns here (footing_plan), beams and slab marks in _view2_beam_plan_F1.json.",
+    "Every column position is printed as a footing+column pair: 'F1C1' at the two end walls (grids 1 and 9, all four rows A-D = 8 positions) and 'F2C2' on the long rows A and D at grids 2-8 (14 positions). Rows B and C have no interior columns — the 10.00 m transverse beams B3/B4 carry the B2 beams there.",
+    "The label at A1 is lost in the scan noise; the column square is drawn there and the opposite end wall (grid 9) prints F1C1 on all four rows, so A1 is taken as F1C1 (lower score on that entry is reflected in the merged entry's score).",
+    "Small columns marked 'C₀' (arrows) at B'5 and B'6 — the corners of the teacher-room/tool-room block where the B2 partition beam on the ridge line meets the B4 transverse beams. They have no footing mark; recorded as columns only. Same marks on the upper-floor plan; the roof beam plan draws a column square at both points.",
+    "Footing details on this sheet: ขยายฐานราก F1 1:20 and F2 1:20 (pile-group plans) plus small ขยายฐานราก F / F2 1:20 and the footing sections under C1 / C2 — see _view5_section file."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 8,
+      "grid_refs": [
+        "A1",
+        "A9",
+        "B1",
+        "B9",
+        "C1",
+        "C9",
+        "D1",
+        "D9"
+      ],
+      "note": "พิมพ์ 'F1C1' ที่ผนังสกัดกริด 1 และ 9 ครบทั้ง 4 แถว; ป้ายที่ A1 เลือนจนอ่านไม่ได้ — ใช้ F1C1 ตามผนังสกัดอีกด้าน",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 14,
+      "grid_refs": [
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8"
+      ],
+      "note": "พิมพ์ 'F2C2' แถว A และ D กริด 2-8",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 8,
+      "grid_refs": [
+        "A1",
+        "A9",
+        "B1",
+        "B9",
+        "C1",
+        "C9",
+        "D1",
+        "D9"
+      ],
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 14,
+      "grid_refs": [
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8"
+      ],
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C0",
+      "element_type": "column",
+      "count": 2,
+      "grid_refs": [
+        "B'5",
+        "B'6"
+      ],
+      "note": "พิมพ์ 'C₀' พร้อมลูกศรชี้ที่มุมกลุ่มห้องพักครู/ห้องเก็บเครื่องมือบนแนวสันหลังคา (ทั้งแปลนชั้นล่างและชั้นบน) — ไม่มีป้ายฐานราก",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "no_footing_mark_printed"
+      ]
+    }
+  ]
+}

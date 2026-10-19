@@ -1,0 +1,116 @@
+{
+  "png": "07",
+  "doc_page": 7,
+  "discipline": "structural",
+  "sheet_code": "6/6",
+  "sheet_name": "แบบขยายโครงหลังคาเหล็ก, พื้น S2 / S3, พื้นทางเท้า ค.ส.ล., หลังคาด้านสกัด, บันได ค.ส.ล. (แบบอาคารฝึกงาน 204/27 แผ่นที่ 6/6)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_19/บ้าน_ใหญ่_2ชั้น_19_หน้า07.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_19_หน้า00_gridline.json",
+  "view_title": "แบบขยายโครงหลังคาเหล็ก 1:25",
+  "scale": "1:25",
+  "views": [
+    "view1: แบบขยายโครงหลังคาเหล็ก 1:25 + ขยายรูปตัด B / C 1:10 + ขยายแป้นหัวเสา 1:10 + ขยายโครงเหล็กยึดกระเบื้อง 1:25 — section (_view1_section_steel_truss.json; the 1:10 connection sub-details not extracted)",
+    "view2: แบบขยายพื้นทางเท้า ค.ส.ล. 1:25 — section (this file)",
+    "view3: S2 1:20, S3 1:20 — section (this file)",
+    "view4: หลังคาด้านสกัด 1:50 (RC gable R1-R7) — section (_view4_section_gable_roof.json)",
+    "view5: แบบขยายบันได ค.ส.ล. 1:25 — section (_view5_section_stair.json)",
+    "view6: หมายเหตุ (revision note, handwritten) — notes"
+  ],
+  "confidence_score": 0.62,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Steel roof truss detail (the unmarked 'โครงหลังคาเหล็ก (ดูแบบขยาย)' lines of the roof beam plan). No member carries a mark, so every entry has element_id null and element_name_assigned (section 0.2). Section keys follow section 6a; the '⊓ 150x50x50x4.5' family is not in the verified key list, so only d/b are keyed and the full designation stays in printed_as.",
+    "Truss geometry kept on the truss element (section 4 rule 4 exception): panel chain 1.25 x 8 = 10.00 between the column rows, 2.50 eave overhang each side, height 3.30 (+ 1.00 below to the roof-beam level per the section ก-ก level chain).",
+    "Only the callouts legible at this scan quality were recorded: the connection sub-details (ขยายรูปตัด B / C 1:10, ขยายแป้นหัวเสา 1:10: plates 0.30x0.30x9 มม., bolts 4-Ø3/4\") and the roofing/timber items (กระเบื้องลอนคู่ 0.50x1.20, ไม้เนื้อแข็ง 1½\"x6\" @0.50, เชิงชาย 1\"x8\") are not structural members and were not recorded as elements."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงหลังคาเหล็ก",
+      "element_type": "truss",
+      "material": "steel",
+      "span_printed_as": "1.25 x 8 = 10.00 (ช่วงรับระหว่างแถวเสา) + ชายคา 2.50 สองด้าน",
+      "height_printed_as": "3.30",
+      "note": "โครงถักวางบนคาน R1 แถว A และ D ทุกกริด 2, 3, 4, 7, 8 (แปลนคานรับโครงหลังคา)",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "unmarked_member"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แปเหล็ก",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "แปเหล็ก C ขนาด 100 x 50 x 20 x 3.2 มม. @ 1.00 ม."
+      },
+      "spacing_mm": 1000,
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "unmarked_member"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เหล็ก ⊓ 150x50x50x4.5 (คอร์ดโครงถัก)",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "⊓",
+        "d_mm": 150,
+        "b_mm": 50,
+        "printed_as": "เหล็ก ⊓ ขนาด 150 x 50 x 50 x 4.5 มม."
+      },
+      "note": "พิมพ์ซ้ำหลายจุดตามแนวขอบบนโครงถัก (ใต้แป)",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "unmarked_member"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เหล็ก 2L 60x60x3.2 (คู่)",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2L",
+        "d_mm": 60,
+        "b_mm": 60,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก 2L ขนาด 60 x 60 x 3.2 มม. (คู่)"
+      },
+      "note": "ชิ้นส่วนใกล้สันหลังคา",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "unmarked_member"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เหล็ก 2L 50x50x3.2",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "2L",
+        "d_mm": 50,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก 2L ขนาด 50 x 50 x 3.2 มม."
+      },
+      "note": "ชิ้นส่วนโครงถัก (ป้ายพิมพ์ '2⃝L' — ตัวเลขคู่เลือน)",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "unmarked_member"
+      ]
+    }
+  ]
+}

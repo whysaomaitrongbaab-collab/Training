@@ -1,0 +1,715 @@
+{
+  "png": "06",
+  "doc_page": 6,
+  "discipline": "structural",
+  "sheet_code": "5/6",
+  "sheet_name": "แปลนคาน พื้นชั้นบน, แปลนคาน พื้น และฐานราก, แปลนคานรับโครงหลังคา, ขยายคาน-เสา-ฐานราก, รายการประกอบแบบ (การตอกเข็มคอนกรีต) (แบบอาคารฝึกงาน 204/27 แผ่นที่ 5/6)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_19/บ้าน_ใหญ่_2ชั้น_19_หน้า06.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_19_หน้า00_gridline.json",
+  "view_title": "หน้าตัดคาน B1-B10, R1, R2, R5, R6 / หน้าตัดเสา 3 ระดับ / หมายเหตุเสา",
+  "scale": "1:20",
+  "views": [
+    "view1: แปลนคาน พื้น และฐานราก 1:100 — footings + columns (this split: footing_plan)",
+    "view2: same drawing — ground-floor beams B1-B10 + slab marks S2/S3 (beam_plan, F1)",
+    "view3: แปลนคาน พื้นชั้นบน 1:100 — upper-floor beams + slab marks (beam_plan, F2)",
+    "view4: แปลนคานรับโครงหลังคา 1:100 — roof_frame_plan (R1-R6 + steel truss lines)",
+    "view5: beam sections B1-B10, R1/R2/R5/R6 + column sections C1/C2 by level + หมายเหตุเสา (C0) — section",
+    "view6: ขยายฐานราก F1 / F2 1:20 (timber-pile groups) + their sections — section",
+    "view7: รูปตัด C1 / C2 1:20 + ขยายฐานราก F / F2 1:20 (prestressed-pile alternative) — section",
+    "view8: รายการประกอบแบบ (การตอกเข็มคอนกรีต) — notes"
+  ],
+  "confidence_score": 0.66,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Beam sections of sheet 5. 'คม. L/5' / 'คม. L/4' = คอม้า (bent-up bars); their leaders point into the bottom layer and they are kept in additional_bars (position noted), not merged into main_bar — the bend point is printed but the scan does not let the leader lines be verified bar by bar (section 7).",
+    "Scan quality is poor: B1 and R6 depths, the B2 top-bar size, the B8 section size and bottom bars, the B9 top-bar count and the R5 bottom count are partly or wholly illegible — recorded as null / printed_as with a lowered score, never filled from another mark. B9's depth is taken from the B9 cantilever detail on sheet 2 (0.40).",
+    "One beam section (bottom-left of the group: 2 Ø12 top, Ø6 @0.15) has an illegible mark — recorded with element_id null and element_name_assigned.",
+    "Printed note in the beam group: 'กรณีเหล็กต่อเนื่อง เหล็กเสริมขนาดเดียวกัน ให้ใช้เหล็กเสริม…ตลอด' (rest illegible).",
+    "Column sections are printed as two series side by side at three levels (ระดับพื้นชั้นที่ 2 ถึง ระดับหลังคา / ระดับท้องคานคอดิน ถึง ระดับพื้นชั้นที่ 2 / ระดับเสาตอม่อ ถึง ท้องคานคอดิน) without a legible series label. Taken: left series = C1, right series = C2 — the footing sections below them are labelled C1 (left) and C2 (right) in the same order, and the heavier right series (Ø25) matches the F2C2 columns that carry the 10 m B3/B4 beams. Plausible but not printed beside the sections — flagged column_series_label_not_legible.",
+    "Column note (หมายเหตุ), partly legible: 'เสา C1 ขนาดเท่า C2 เหล็กเสริมเหมือน C1' / 'เสา C1 ผิว…ติดเสมอ C1'' / 'เสา C₀ ขนาด 0.25x0.20 ม. 4-Ø12 มม. + ป.Ø6 มม. @0.15 ม.' — the first two lines are not interpretable with confidence and are kept here only."
+  ],
+  "elements": [
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": null,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "additional_bars": [
+        {
+          "count": 1,
+          "dia_mm": 15,
+          "type": "RB",
+          "position": "คอม้า (เหล็กดัดขึ้น) — ป้ายชี้ไปที่ชั้นเหล็กล่าง ดัดขึ้นที่ระยะตามป้าย",
+          "printed_as": "1-Ø15 มม. คม. L/5"
+        }
+      ],
+      "note": "ความลึกพิมพ์เลือนอ่านไม่ได้ — height_mm เว้นไว้",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 450,
+      "height_mm_printed_as": "0.?5 (เลือน; วัดตามสเกล ~0.45)",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": null,
+          "type": "RB",
+          "printed_as": "-2- ?? มม. (ขนาดเลือน)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม. (เลือน)"
+      },
+      "additional_bars": [
+        {
+          "count": 3,
+          "dia_mm": 15,
+          "type": "RB",
+          "position": "คอม้า (เหล็กดัดขึ้น) — ป้ายชี้ไปที่ชั้นเหล็กล่าง ดัดขึ้นที่ระยะตามป้าย",
+          "printed_as": "3-Ø15 มม. คม. L/5"
+        }
+      ],
+      "note": "ความลึกพิมพ์ '0.?5' (หลักแรกเลือน) — วัดตามสเกลเทียบหน้าตัด B5 (0.40) ได้ราว 0.45",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 800,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø25 มม."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø25 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.10 ม."
+      },
+      "additional_bars": [
+        {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "position": "คอม้า (เหล็กดัดขึ้น) — ป้ายชี้ไปที่ชั้นเหล็กล่าง ดัดขึ้นที่ระยะตามป้าย",
+          "printed_as": "3-Ø25 มม. คม. L/4"
+        },
+        {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "position": "คอม้า (เหล็กดัดขึ้น) — ป้ายชี้ไปที่ชั้นเหล็กล่าง ดัดขึ้นที่ระยะตามป้าย",
+          "printed_as": "3-Ø25 มม. คม. L/? (เลือน)"
+        }
+      ],
+      "note": "เหล็กล่างวาดเป็น 3 ชั้น ชั้นละ 3 เส้น: 3-Ø25 ตรง + 3-Ø25 คอม้า 2 ชุด",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 900,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "5-Ø25 มม."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø25 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.10 ม."
+      },
+      "additional_bars": [
+        {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "position": "คอม้า (เหล็กดัดขึ้น) — ป้ายชี้ไปที่ชั้นเหล็กล่าง ดัดขึ้นที่ระยะตามป้าย",
+          "printed_as": "3-Ø25 มม. คม. L/? (เลือน)"
+        },
+        {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "position": "คอม้า (เหล็กดัดขึ้น) — ป้ายชี้ไปที่ชั้นเหล็กล่าง ดัดขึ้นที่ระยะตามป้าย",
+          "printed_as": "3-Ø25 มม. คม. ? (เลือน)"
+        }
+      ],
+      "note": "ลึก 0.90 (มากกว่า B3) — คานขวางกริด 5/6 ที่มีเสา C0 ยืนอยู่",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "position": "คอม้า (เหล็กดัดขึ้น) — ป้ายชี้ไปที่ชั้นเหล็กล่าง ดัดขึ้นที่ระยะตามป้าย",
+          "printed_as": "2-Ø15 มม. คม. L/5"
+        }
+      ],
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "position": "คอม้า (เหล็กดัดขึ้น) — ป้ายชี้ไปที่ชั้นเหล็กล่าง ดัดขึ้นที่ระยะตามป้าย",
+          "printed_as": "2-Ø12 มม. คม. L/5"
+        }
+      ],
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "width_mm": null,
+      "height_mm": null,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "4-Ø12 มม. … B7 (ข้อความต่อท้ายเลือน)"
+        },
+        "bottom": {
+          "count": null,
+          "dia_mm": null,
+          "type": "RB",
+          "printed_as": "?-? 8 มม. (เลือน)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม. (เลือน)"
+      },
+      "note": "ขนาดหน้าตัดและเหล็กล่างอ่านไม่ได้",
+      "confidence_score": 0.4,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 400,
+      "height_mm_printed_as": "0.40 (แบบขยาย B9 แผ่นที่ 2)",
+      "main_bar": {
+        "top": {
+          "count": null,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "?-Ø25 มม. (จำนวนเลือน)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-Ø25 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "note": "คานยื่นรับระเบียงทางเดิน — ป้าย '(ดูแบบขยายแผ่นที่ 2/6)' (ขยายคานยื่น B9 และ ขยายคานต่อเนื่อง B3 + B9 แผ่นที่ 2); ความลึก 0.40 อ่านจากแบบขยายแผ่นที่ 2 (ในหน้าตัดแผ่นนี้ตัวเลขเลือน); จำนวนเหล็กบนในแผ่นนี้เลือน — แบบขยายแผ่นที่ 2 พิมพ์ 2-Ø25 + 2-Ø25 (ดูไฟล์ หน้า03)",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-Ø25 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-Ø25 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "4-Ø19 มม. งอฉากเข้าเสา เหมือน R6"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "4-Ø19 มม. งอฉากเข้าเสา เหมือน R6 (จำนวนเลือน)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": null,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "4-Ø19 มม. งอฉากเข้าชิดเหล็กแกนเสาด้านใน หรือล้วงเข้าคานลึกไม่น้อยกว่า 1.50 ม."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø12 มม. งอฉากเข้าชิดเหล็กแกนเสาด้านใน หรือล้วงเข้าคานลึกไม่น้อยกว่า 1.00 ม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "note": "ความลึกพิมพ์ '0.?0' เลือน — height_mm เว้นไว้",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "หน้าตัดคาน ป้ายอ่านไม่ได้ (แถวล่างซ้าย)",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": null,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2 Ø12 มม."
+        },
+        "bottom": {
+          "count": null,
+          "dia_mm": null,
+          "type": "RB",
+          "printed_as": "?Ø.. มม. (เลือน)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม. (เลือน)"
+      },
+      "note": "หน้าตัดแถวล่างซ้ายของกลุ่มหน้าตัดคาน — ป้ายชื่อใต้รูปอ่านไม่ได้",
+      "confidence_score": 0.3,
+      "confidence_flags": [
+        "label_partly_illegible",
+        "section_label_illegible"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ระดับพื้นชั้นที่ 2 ถึง ระดับหลังคา",
+      "width_mm": 250,
+      "height_mm": 250,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 19,
+        "type": "RB",
+        "printed_as": "4-Ø19 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.68,
+      "confidence_flags": [
+        "column_series_label_not_legible"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ระดับท้องคานคอดิน ถึง ระดับพื้นชั้นที่ 2",
+      "width_mm": 250,
+      "height_mm": 250,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 19,
+        "type": "RB",
+        "printed_as": "6-Ø19 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.68,
+      "confidence_flags": [
+        "column_series_label_not_legible"
+      ]
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ระดับเสาตอม่อ ถึง ท้องคานคอดิน",
+      "width_mm": 300,
+      "height_mm": 300,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 19,
+        "type": "RB",
+        "printed_as": "6-Ø19 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.66,
+      "confidence_flags": [
+        "column_series_label_not_legible"
+      ]
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "ระดับพื้นชั้นที่ 2 ถึง ระดับหลังคา",
+      "width_mm": 300,
+      "height_mm": 300,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 25,
+        "type": "RB",
+        "printed_as": "4-Ø25 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.68,
+      "confidence_flags": [
+        "column_series_label_not_legible"
+      ]
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "ระดับท้องคานคอดิน ถึง ระดับพื้นชั้นที่ 2",
+      "width_mm": 300,
+      "height_mm": 300,
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 25,
+        "type": "RB",
+        "printed_as": "8-Ø25 มม. (เลขหน้าเลือนคล้าย '3'; หน้าตัดวาดเหล็ก 8 เส้น)"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "label_partly_illegible",
+        "column_series_label_not_legible"
+      ]
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "level": "ระดับเสาตอม่อ ถึง ท้องคานคอดิน",
+      "width_mm": 350,
+      "height_mm": 350,
+      "main_bar": {
+        "count": 8,
+        "dia_mm": 25,
+        "type": "RB",
+        "printed_as": "?-Ø25 มม. (จำนวนเลือน; หน้าตัดวาดเหล็ก 8 เส้น)"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "note": "ความลึกพิมพ์ '0.3?' เลือน — ใช้ 0.35 ตามความกว้างที่พิมพ์",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "label_partly_illegible",
+        "column_series_label_not_legible"
+      ]
+    },
+    {
+      "element_id": "C0",
+      "element_type": "column",
+      "level": null,
+      "width_mm": 250,
+      "height_mm": 200,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "4-Ø12 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "note": "จากหมายเหตุ: 'เสา C₀ ขนาด 0.25x0.20 ม. 4-Ø12 มม. + ป.Ø6 มม. @0.15 ม.' (ตัวพิมพ์เล็ก เลือน)",
+      "confidence_score": 0.5,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    }
+  ]
+}

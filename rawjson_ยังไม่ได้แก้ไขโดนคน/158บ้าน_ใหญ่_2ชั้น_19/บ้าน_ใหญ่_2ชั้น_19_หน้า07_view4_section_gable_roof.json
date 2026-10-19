@@ -1,0 +1,84 @@
+{
+  "png": "07",
+  "doc_page": 7,
+  "discipline": "structural",
+  "sheet_code": "6/6",
+  "sheet_name": "แบบขยายโครงหลังคาเหล็ก, พื้น S2 / S3, พื้นทางเท้า ค.ส.ล., หลังคาด้านสกัด, บันได ค.ส.ล. (แบบอาคารฝึกงาน 204/27 แผ่นที่ 6/6)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_19/บ้าน_ใหญ่_2ชั้น_19_หน้า07.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_19_หน้า00_gridline.json",
+  "view_title": "หลังคาด้านสกัด 1:50 (โครงจั่ว ค.ส.ล. ผนังสกัด)",
+  "scale": "1:50",
+  "views": [
+    "view1: แบบขยายโครงหลังคาเหล็ก 1:25 + ขยายรูปตัด B / C 1:10 + ขยายแป้นหัวเสา 1:10 + ขยายโครงเหล็กยึดกระเบื้อง 1:25 — section (_view1_section_steel_truss.json; the 1:10 connection sub-details not extracted)",
+    "view2: แบบขยายพื้นทางเท้า ค.ส.ล. 1:25 — section (this file)",
+    "view3: S2 1:20, S3 1:20 — section (this file)",
+    "view4: หลังคาด้านสกัด 1:50 (RC gable R1-R7) — section (_view4_section_gable_roof.json)",
+    "view5: แบบขยายบันได ค.ส.ล. 1:25 — section (_view5_section_stair.json)",
+    "view6: หมายเหตุ (revision note, handwritten) — notes"
+  ],
+  "confidence_score": 0.6,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "RC gable frame of the end walls, drawn along the y axis (bottom chain 2.50 | 3.25 | 3.50 | 3.25 | 2.50 = rows A'-A-B-C-D-D'''). It explains the stacked plan labels of the roof beam plan: each 'R2/R2' is an inclined R2 rafter beam above a horizontal R2 at the wall-top level on the same plan line; 'R3' is the small ridge-vent roof beam; R5 / R6 are the joints at the column lines; R4 is the triangular eave fin. Member sizes of R2 / R5 / R6 are on the sheet-5 sections and are not repeated here.",
+    "Only R4 and the small RC posts under the ridge-vent roof carry their own rebar callouts in this view. Level label 'ระดับใต้โครงหลังคาเหล็ก' is printed without a number and is not added to the z master.",
+    "The ridge-vent cap chain 0.90 | 1.25 | 1.25 | 0.90 (first value printed faintly, reads like 0.80; the four sum to 4.30 = the 2.15 + 2.15 printed over the ridge on sheet 2) is kept with the grid master's unassigned dimensions as an element-internal size of the ridge-vent roof."
+  ],
+  "elements": [
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "width_mm": 150,
+      "width_mm_printed_as": "R4 หนา 0.15 ม.",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม. / 2-Ø15 มม."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø15 มม. / 2-Ø15 มม."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "note": "ปีกชายคาสามเหลี่ยม ยื่น 2.50 นอกแถว A/D (ขอบบนตามแนวลาดหลังคา); ปลายขวาพิมพ์อีกป้าย '4-Ø1? มม.' (เลือน)",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "label_partly_illegible"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เสา ค.ส.ล. รับหลังคาคอสอง (ช่องระบายอากาศสันหลังคา)",
+      "element_type": "column",
+      "width_mm": 150,
+      "height_mm": 150,
+      "width_mm_printed_as": "เสา ค.ส.ล. ขนาด 0.15 x 0.15 ม.",
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "RB",
+        "printed_as": "เสริมเหล็ก 4-Ø12 มม."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป.Ø6 มม. @0.15 ม."
+      },
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ]
+}

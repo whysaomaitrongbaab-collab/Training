@@ -1,0 +1,104 @@
+{
+  "png": "06",
+  "doc_page": 6,
+  "discipline": "structural",
+  "sheet_code": "5/6",
+  "sheet_name": "แปลนคาน พื้นชั้นบน, แปลนคาน พื้น และฐานราก, แปลนคานรับโครงหลังคา, ขยายคาน-เสา-ฐานราก, รายการประกอบแบบ (การตอกเข็มคอนกรีต) (แบบอาคารฝึกงาน 204/27 แผ่นที่ 5/6)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_19/บ้าน_ใหญ่_2ชั้น_19_หน้า06.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_19_หน้า00_gridline.json",
+  "view_title": "ขยายฐานราก F1 1:20, ขยายฐานราก F2 1:20 (เข็มกลุ่ม) + รูปตัด",
+  "scale": "1:20",
+  "views": [
+    "view1: แปลนคาน พื้น และฐานราก 1:100 — footings + columns (this split: footing_plan)",
+    "view2: same drawing — ground-floor beams B1-B10 + slab marks S2/S3 (beam_plan, F1)",
+    "view3: แปลนคาน พื้นชั้นบน 1:100 — upper-floor beams + slab marks (beam_plan, F2)",
+    "view4: แปลนคานรับโครงหลังคา 1:100 — roof_frame_plan (R1-R6 + steel truss lines)",
+    "view5: beam sections B1-B10, R1/R2/R5/R6 + column sections C1/C2 by level + หมายเหตุเสา (C0) — section",
+    "view6: ขยายฐานราก F1 / F2 1:20 (timber-pile groups) + their sections — section",
+    "view7: รูปตัด C1 / C2 1:20 + ขยายฐานราก F / F2 1:20 (prestressed-pile alternative) — section",
+    "view8: รายการประกอบแบบ (การตอกเข็มคอนกรีต) — notes"
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Pile-group footings on hardwood piles Ø6\" x 6.00 m (sections at the top right of the sheet, plans ขยายฐานราก F1 / F2 1:20 below them). Plan sizes from the printed edge/pile-spacing chains (kept in *_printed_as); thickness from the section chains 0.35 + 0.10 (F1) and 0.50 + 0.10 (F2); 0.10 lean concrete 1:3:5 and 0.10 compacted sand below; 1.20 from ระดับดินเดิม to the footing underside; 0.05 cover.",
+    "F1's pile-count text reads 'จำนวน 1? ต้น' with the second digit lost; the plan draws a 4 x 4 grid = 16 piles — taken from the plan. F2 prints 30 and draws 5 x 6 = 30.",
+    "The same marks also have a prestressed-pile alternative on this sheet (รูปตัด C1 / C2 1:20 with ขยายฐานราก F / F2) — recorded in its own file _view7_section_alt_footings_prestressed.json so the two designs of one mark do not collide in one file (house 157 precedent)."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเสาเข็ม (เข็มกลุ่ม)",
+      "width_mm": 2000,
+      "width_mm_printed_as": "0.25 + 0.50 + 0.50 + 0.50 + 0.25 = 2.00 (ทั้งสองด้าน)",
+      "height_mm": 450,
+      "height_mm_printed_as": "0.35 (ขอบ) + 0.10 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "count": 34,
+        "dia_mm": 12,
+        "type": "RB",
+        "count_printed_as": "17+17",
+        "printed_as": "17-Ø12 มม. / 17-Ø12 มม.",
+        "note": "ตะแกรง 2 ทาง"
+      },
+      "pile_count": 16,
+      "pile": {
+        "type": "เสาเข็มไม้เนื้อแข็ง",
+        "length_m": 6.0,
+        "printed_as": "เสาเข็มไม้เนื้อแข็ง Ø 6\" x 6.00 ม. จำนวน 1? ต้น (หลักหลังเลือน)",
+        "note": "ผังขยายวาดเข็ม 4 x 4 = 16 ต้น"
+      },
+      "pile_layout_printed_as": "4 x 4 @0.50 ห่างขอบ 0.25",
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "ground_reference": "ระดับดินเดิม; 1.20 ลงถึงท้องฐานราก",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "pile_count_from_plan_text_partly_illegible"
+      ]
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเสาเข็ม (เข็มกลุ่ม)",
+      "width_mm": 2500,
+      "width_mm_printed_as": "0.25 + 0.50 + 0.50 + 0.50 + 0.50 + 0.25 = 2.50",
+      "depth_mm": 3000,
+      "depth_mm_printed_as": "0.25 + 0.50 x 5 + 0.25 = 3.00",
+      "height_mm": 600,
+      "height_mm_printed_as": "0.50 (ขอบ) + 0.10 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "count": 62,
+        "dia_mm": 12,
+        "type": "RB",
+        "count_printed_as": "37+25",
+        "printed_as": "37-Ø12 มม. / 25-Ø12 มม.",
+        "note": "ตะแกรง 2 ทาง"
+      },
+      "pile_count": 30,
+      "pile": {
+        "type": "เสาเข็มไม้เนื้อแข็ง",
+        "length_m": 6.0,
+        "printed_as": "เสาเข็มไม้เนื้อแข็ง Ø 6\" x 6.00 ม. จำนวน 30 ต้น"
+      },
+      "pile_layout_printed_as": "5 x 6 @0.50 ห่างขอบ 0.25",
+      "lean_concrete": {
+        "thickness_mm": 100,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "ground_reference": "ระดับดินเดิม; 1.20 ลงถึงท้องฐานราก",
+      "confidence_score": 0.74,
+      "confidence_flags": []
+    }
+  ]
+}
