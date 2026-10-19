@@ -1,0 +1,126 @@
+{
+  "png": "26",
+  "doc_page": 26,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "ขยายคาน",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า26.png",
+  "view_title": "ขยายคาน B1 / B2 / B2A",
+  "scale": "1:25",
+  "views": [
+    "view1: ขยายคาน 1:25 — elevations + sections B1 (A-A, B-B), B2 (A-A, B-B, drawn twice), B2A (C-C) (this split: section)",
+    "view2: **หมายเหตุ ข้อ 1-6 (ระยะหุ้มคอนกรีตคาน/พื้น) + เหล็กลูกคัด + กรณีคานสัมผัสกับดิน (split: notes)"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [],
+  "warnings": [
+    "Beam details 'ขยายคาน' (S-10): B1, B2, B2A. main_bar.top is the support section (A-A) and main_bar.bottom the governing one, with the other section's count in each note — the drawing curtails top bars at mid-span (B1 5 -> 3, B2 3 -> 2) and adds bottom bars at mid-span for B2 (2 -> 4).",
+    "Stirrup spacing: smallest printed spacing in spacing_mm, both zones in printed_as (variable_spacing where the zones differ).",
+    "The B2 elevation and its sections are printed twice on the sheet with identical values; recorded once."
+  ],
+  "elements": [
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "3-DB25mm + 2-DB25mm",
+          "note": "รูปตัด A-A (ช่วงปลาย 2.55) 3+2 = 5 เส้น สองชั้น; รูปตัด B-B (กลางช่วง) เหลือ 3-DB25mm"
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "2-DB25mm + 3-DB25mm",
+          "note": "สองชั้น 2+3 ทั้งรูปตัด A-A และ B-B"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 100,
+        "printed_as": "1ป-RB9mm@0.10m (ช่วงปลาย 2.55) / 2ป-RB9mm@0.10m (ช่วงกลาง)",
+        "note": "ปลอกเดี่ยวที่ช่วงปลาย ปลอกคู่ (2 ชุด) ช่วงกลาง — รูปตัด B-B เขียนปลอก 2 ชุด"
+      },
+      "span_length_m": 9.0,
+      "note": "รูปด้านคาน B1 ยาว 9.00 (แถว A ถึง C) — ตรงกับ B1 บนแปลนชั้น 1/ชั้น 2 กริด 3-7; หมายเหตุลายมือใต้รูปตัด A-A: 'เหล็กปลอกหน้าตัดทางขวาใช้ 2ป แบบเดียวกับหน้าตัด B-B'",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "top_bars_curtailed_mid_span",
+        "handwritten_note_on_stirrups"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 700,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "3-DB20mm",
+          "note": "รูปตัด A-A (ปลายคาน); กลางช่วง B-B 2-DB20mm"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "4-DB20mm",
+          "note": "รูปตัด B-B (กลางช่วง); ปลายคาน A-A 2-DB20mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 100,
+        "variable_spacing": true,
+        "printed_as": "1ป-RB9mm@0.10m (ปลาย 1.50/1.55) / 1ป-RB9mm@0.15m (กลาง)"
+      },
+      "span_length_m": 6.0,
+      "note": "รูปด้าน B2 ยาว 6.00 (A ถึง B) เหล็กเสริมบนหยุด 2.05 จากหน้าเสา ล่างเว้น 1.10 — รูปด้าน B2 พิมพ์ซ้ำ 2 รูปเหมือนกันทุกตัวเลข",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "elevation_printed_twice_identical"
+      ]
+    },
+    {
+      "element_id": "B2A",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "type": "RB",
+        "spacing_mm": 100,
+        "variable_spacing": true,
+        "printed_as": "1ป-RB9mm@0.10m (ปลาย 1.00) / 1ป-RB9mm@0.15m"
+      },
+      "span_length_m": 3.0,
+      "note": "รูปตัด C-C; รูปด้าน B2A ยาว 3.00 (B ถึง C)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}

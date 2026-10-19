@@ -1,0 +1,87 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "ขยายเสา, ฐานราก F1 (ฐานรากตอกเสาเข็ม), รายการประกอบแบบฐานราก",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า23.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_23_หน้า00_gridline.json",
+  "view_title": "แปลน F1 / รูปตัด F1 / รูปตัด F1 A-A",
+  "scale": "1:25",
+  "views": [
+    "view1: ขยายเสา 1:25 — column table C1 / C2 / Cx by level (this split: schedule)",
+    "view2: แปลน F1 + รูปตัด F1 + รูปตัด F1 A-A 1:25 — pile footing F1 (split: section)",
+    "view3: รายการประกอบแบบฐานราก ข้อ 1-5 — pile notes (split: notes)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Two-pile cap F1 of the pile system (S-01 unboxed labels). Its section is detailed like a beam — 4-DB20 top, 5-DB20 bottom, 3x2-DB12 side bars, chain stirrups DB12@0.15 — so main_bar keeps top/middle/bottom faces (§6 'any member genuinely detailed with two longitudinal faces') instead of the single-count mat form of §6b; flagged.",
+    "Cap is not square: width_mm 1600 (along the two piles, 0.30+1.00+0.30) and depth_mm 700; height_mm 700 = cap thickness only (lean 0.05 and sand 0.10 kept in their own fields).",
+    "'~1.00' (cap top to fill level) is printed with a tilde and 'Varie' — recorded as pedestal_height_m with its printed text."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "footing_type": "pile",
+      "width_mm": 1600,
+      "depth_mm": 700,
+      "height_mm": 700,
+      "width_mm_printed_as": "0.30+1.00+0.30 = 1.60",
+      "depth_mm_printed_as": "0.35+0.35 = 0.70",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "4-DB20mm"
+        },
+        "middle": {
+          "count": 6,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "3x2 -DB12mm",
+          "note": "3 เส้นต่อข้าง x 2 ข้าง"
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "5-DB20mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 12,
+        "type": "DB",
+        "spacing_mm": 150,
+        "printed_as": "เหล็กปลอกลูกโซ่ DB12mm@0.15"
+      },
+      "pile_count": 2,
+      "pile": {
+        "type": "เสาเข็มคอนกรีตอัดแรงชนิดสี่เหลี่ยมตัน",
+        "width_mm": 260,
+        "length_m": 21.0,
+        "segments": 2,
+        "safe_load_ton": 35,
+        "standard": "มอก. 396-2549",
+        "alternative": "เสาเข็มคอนกรีตอัดแรงชนิดกลมแรงเหวี่ยง ø 0.30 ม ยาว 21.00 ม 2 ท่อนต่อเชื่อม มอก. 398-2537 รับ 35 ตัน/ต้น",
+        "printed_as": "เสาเข็มจำนวน 2 ต้น ขนาด ◻0.26X0.26 ม รับน้ำหนักปลอดภัยได้ไม่น้อยกว่า 35 ตัน/ต้น"
+      },
+      "pile_embed_mm": 70,
+      "lean_concrete": {
+        "thickness_m": 0.05,
+        "mix": "1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "pedestal_height_m": 1.0,
+      "pedestal_height_m_printed_as": "~1.00 (Varie)",
+      "note": "ฐานรากเข็มคู่ F1 (รูปตัด F1 + รูปตัด A-A 0.70x0.70); ระยะหุ้มคอนกรีตโครงสร้าง 0.09 ม; ความลึกฐานราก Varie",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "pile_cap_detailed_with_top_bottom_faces"
+      ]
+    }
+  ]
+}

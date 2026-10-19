@@ -1,0 +1,104 @@
+{
+  "png": "17",
+  "doc_page": 17,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก-เสาตอม่อ",
+  "pattern": "footing_plan",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า17.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_23_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก-เสาตอม่อ (ระบบฐานรากตอกเสาเข็ม)",
+  "scale": "1:100",
+  "views": [
+    "view1: แปลนฐานราก-เสาตอม่อ 1:100 — ป้ายไม่มีกรอบ 'F1,C1'/'F1,C2' = ระบบฐานรากตอกเสาเข็ม (this split: footing_plan, pile system)",
+    "view2: same drawing — ป้ายในกรอบ 'F1/F2/F3,C1/C2' = ระบบฐานรากแผ่ กรณีไม่สามารถตอกเสาเข็มได้ (this split: footing_plan, spread system)",
+    "หมายเหตุ ระดับ ±0.00 / ดินถม +0.30 + รายการประกอบแบบฐานราก — carried as warnings / grid master"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": [],
+  "warnings": [
+    "One foundation plan carrying two alternative footing systems (รายการประกอบแบบฐานราก): unboxed labels = pile footing F1 everywhere; boxed labels = spread footings F1/F2/F3 for a site where piles cannot be driven. Split into two footing_plan files (§1 / §3); this file is the pile system.",
+    "Columns (C1 x18, C2 x4) are recorded here only; the spread-system file repeats only the footing marks, so a consumer summing both files must not double-count columns.",
+    "22 footing positions: rows A and C at grids 1-9, row B only at grids 1, 2, 8, 9 (the B3-B7 positions carry no footing/column on this plan).",
+    "รายการประกอบแบบฐานราก: 1.) F1 เป็นฐานรากตอกเสาเข็ม 2.) [F1,F2,F3] เป็นฐานรากแผ่ (กรณีไม่สามารถตอกเสาเข็มได้)",
+    "หมายเหตุ: ระดับ ±0.00 ของอาคาร ผู้ควบคุมงานกำหนดตามความเหมาะสมของสถานที่ก่อสร้าง; ให้ถมดิน/ปรับระดับดินให้ได้ระดับ +0.30"
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 22,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "B1",
+        "B2",
+        "B8",
+        "B9",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "footing_type": "pile",
+      "note": "ป้ายไม่มีกรอบ 'F1,C1' (18 ตำแหน่ง แถว A และ C) / 'F1,C2' (B1, B2, B8, B9) — ฐานรากตอกเสาเข็ม ทุกตำแหน่งเป็น F1",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 18,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9"
+      ],
+      "note": "เสาตอม่อ C1 แถว A และ C กริด 1-9",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 4,
+      "grid_refs": [
+        "B1",
+        "B2",
+        "B8",
+        "B9"
+      ],
+      "note": "เสาตอม่อ C2 แถว B กริด 1, 2, 8, 9 (แถว B กริด 3-7 ไม่มีเสา)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    }
+  ]
+}
