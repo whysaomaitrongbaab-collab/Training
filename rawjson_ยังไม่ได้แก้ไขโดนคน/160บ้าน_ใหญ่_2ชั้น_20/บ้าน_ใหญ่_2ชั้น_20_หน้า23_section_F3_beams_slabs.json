@@ -1,0 +1,443 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "ขยายฐานราก F3, พื้น S1 S2, คาน B1-B5 RB1 RB2, ทับหลัง เอ็น (แบบ สปช. 104/26 แผ่น S-06)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_20/บ้าน_ใหญ่_2ชั้น_20_หน้า23.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_20_หน้า00_gridline.json",
+  "view_title": "ฐานราก F3, พื้น S1/S2, หน้าตัดคาน B1-B5 RB1 RB2, ทับหลัง/เอ็น/เสาเอ็น/บ่า ค.ส.ล.",
+  "scale": "1:20",
+  "views": [
+    "view1: ฐานราก F3 1:20 (รูปตัด + แปลนขยาย) — section",
+    "view2: ขยาย S1 / S2 1:20 + หมายเหตุ S2 — section",
+    "view3: ขยายทับหลังประตู-หน้าต่าง / เอ็นใต้หน้าต่าง / เสาเอ็น / บ่า ค.ส.ล. รับพื้นสำเร็จรูป 1:20 + หมายเหตุ 1-2 — section",
+    "view4: หน้าตัดคาน B1, B2, B3, B4, B5, RB1, RB2 1:20 — section"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "All bars print ø -> type RB. No concrete strength, steel grade or cover is printed on this sheet.",
+    "Bent-up bars labelled '(คมL/5)' (คอม้า) are merged into main_bar.bottom with the printed text kept, following houses 129/157 (same สพฐ. drafting convention): B1, B2, B4, B5 bottom = 2 straight + 2 bent-up = 4; RB1 bottom = 2 + 1 bent-up = 3.",
+    "B3 prints a second '2-ø15มม' bottom label without the คม mark (the other beams carry it); both leaders reach the bottom cluster, so bottom = 4 and the entry is flagged.",
+    "S2 span is printed as the formula 'L=6.50/3' (three panels per A-B bay) — span_m = 2.167 with the printed text kept; that same formula positions the B4 lines A''/A''' in the grid master.",
+    "Lintel, sill, wall-post and ledge details carry no mark — element_id null with element_name_assigned (section 0.2). The sill beam prints one 2-ø9 row, so it keeps a single count instead of an invented top/bottom split. The ledge (บ่า) is built only when precast planks replace S2.",
+    "The beams B6 and B6' are detailed on S-07, not here; GB (S-01) has no section anywhere in the set."
+  ],
+  "elements": [
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "footing_type": "ฐานรากเสาเข็ม (เข็มกลุ่ม)",
+      "width_mm": 1000,
+      "width_mm_printed_as": "0.15 + 0.35 + 0.35 + 0.15 = 1.00 (ทั้งสองด้าน)",
+      "height_mm": 200,
+      "height_mm_printed_as": "0.20",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "ø9มม @0.10ม#",
+        "note": "ตะแกรง 2 ทาง"
+      },
+      "pile_count": 5,
+      "pile": {
+        "type": "เข็มคอนกรีตหกเหลี่ยมกลวง",
+        "size_mm": 150,
+        "length_m": 6.0,
+        "printed_as": "เข็มคอนกรีตหกเหลี่ยมกลวง ⬡ 0.15x6.00ม จำนวน 5 ต้น",
+        "alternate_printed_as": "ข้อกำหนดเสาเข็ม: ในกรณีจัดหาเข็มคอนกรีต ⬡ 0.15x6.00ม ตามรูปแบบกำหนดไม่ได้ อนุญาตให้ใช้เข็มคอนกรีต ⊠ 0.12x0.12x6.00ม"
+      },
+      "pile_layout_printed_as": "4 มุม (0.70 x 0.70) + 1 กลาง ห่างขอบ 0.15",
+      "lean_concrete": {
+        "thickness_mm": 50,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5 (0.05)"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "ground_reference": "ระดับดินเดิม; 1.20 ลงถึงท้องฐานราก",
+      "note": "ข้อกำหนดเสาเข็มพิมพ์บนแผ่น S-05 (ใช้ร่วมกันทั้ง F1/F2/F3)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12มม"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12มม (คมL/5) + 2-ø12มม",
+          "note": "เส้นตรง + เหล็กคอม้า (ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่างตามแบบอย่างบ้าน 129/157"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.20ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม (คมL/5) + 2-ø15มม",
+          "note": "เส้นตรง + เหล็กคอม้า (ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่างตามแบบอย่างบ้าน 129/157"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม + 2-ø15มม",
+          "note": "สองป้ายใต้เหล็กปลอก ชี้กลุ่มเหล็กล่างทั้งคู่ (ไม่มีคำว่า คม)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.20ม"
+      },
+      "note": "ถ้าเลือกใช้พื้นสำเร็จรูปให้ทำบ่า ค.ส.ล. ที่คาน B3 ด้านระเบียงทางเดิน (ดูบ่า ค.ส.ล. ในไฟล์นี้)",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "second_bottom_label_without_bend_mark"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม (คมL/5) + 2-ø15มม",
+          "note": "เส้นตรง + เหล็กคอม้า (ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่างตามแบบอย่างบ้าน 129/157"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม (คมL/5) + 2-ø15มม",
+          "note": "เส้นตรง + เหล็กคอม้า (ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่างตามแบบอย่างบ้าน 129/157"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.20ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-ø15มม"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "1-ø15มม (คมL/5) + 2-ø15มม",
+          "note": "เส้นตรง + เหล็กคอม้า (ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่างตามแบบอย่างบ้าน 129/157"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "RB2",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 200,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12มม"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-ø12มม"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "span_m": 2.0,
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ø9มม@0.15"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "ø6มม@0.20",
+          "position": "เหล็กกันร้าว (ตั้งฉากเหล็กหลัก)"
+        }
+      ],
+      "note": "พื้นระเบียงทางเดิน ช่วง 2.00 ระหว่างคาน B3 กับ B1 (ขยาย S1 1:20)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "span_m": 2.167,
+      "span_printed_as": "L=6.50/3",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ø9มม@0.15ม(ตรง 1 คม1)",
+        "note": "เหล็กล่างสลับเส้นตรง 1 เส้น เหล็กคอม้า 1 เส้น"
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "ø6มม@0.20ม",
+          "position": "เหล็กกันร้าว (ตั้งฉากเหล็กหลัก)"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ø9มม@0.15ม",
+          "position": "เหล็กบนเหนือคานกลาง ยื่น 0.40 ทั้งสองข้าง"
+        },
+        {
+          "dia_mm": 9,
+          "spacing_mm": 300,
+          "type": "RB",
+          "printed_as": "ø9มม@0.30ม",
+          "position": "เหล็กบนที่คานริม ยื่น 0.40"
+        }
+      ],
+      "note": "หมายเหตุ S2: ให้ผู้รับจ้างเลือกทำพื้นหล่อในที่ ตามแบบ หรือ เลือกใช้พื้นสำเร็จรูป มอก. 828-2546 ซึ่งมีคุณสมบัติดังนี้ - รับน้ำหนักจร ได้ไม่น้อยกว่า 300 กก./ตรม - เท้คอนกรีตทับหน้า หนา 0.05 เสริมเหล็ก ø6 มม @0.20 ม# เสริมพิเศษ ø9 มม@0.20ม ยาว 0.50ม ตลอดแนวรอยต่อ",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "precast_alternative_allowed"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ทับหลังประตู-หน้าต่าง",
+      "element_type": "beam",
+      "width_mm": 100,
+      "height_mm": 250,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9มม"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9มม"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "note": "ขยายทับหลังประตู-หน้าต่าง 1:20; หมายเหตุ 1: ทับหลังที่อยู่เหนือ ประตู หน้าต่าง และเอ็น ค.ส.ล. ที่อยู่ใต้หน้าต่างให้จัดทำตามแบบ",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เอ็นใต้หน้าต่าง",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 100,
+      "main_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "2-ø9มม",
+        "note": "ชั้นเดียว 2 เส้นวางคู่ตามแนวราบ (ป้ายเดียว — ไม่ได้แยกบน/ล่าง)"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "note": "ขยายเอ็นใต้หน้าต่าง 1:20 (0.15 x 0.10)",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "single_bar_row_not_split_top_bottom"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เสาเอ็น",
+      "element_type": "column",
+      "width_mm": 70,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "2-ø9มม"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.15ม"
+      },
+      "note": "ขยายเสาเอ็น 1:20 (0.07 x 0.15); หมายเหตุ 2: เอ็นผนังถ้าไม่ระบุในแบบ ให้ใช้ ขนาด 0.07x0.10ม และเมื่อฉาบปูนเรียบ ให้มีความหนาเท่ากับผนัง",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "บ่า ค.ส.ล. รับพื้นสำเร็จรูป (คาน B3)",
+      "element_type": "beam",
+      "width_mm": 100,
+      "height_mm": 100,
+      "main_bar": {
+        "count": 3,
+        "dia_mm": 6,
+        "type": "RB",
+        "printed_as": "3-ø6มม",
+        "note": "เหล็กตามยาวในบ่า"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ø9มม@0.15ม",
+        "note": "เหล็กยึดบ่าเข้ากับคาน B3"
+      },
+      "note": "ขยายบ่า ค.ส.ล. รับพื้นสำเร็จรูป 1:20: ในกรณีที่เลือกใช้พื้นสำเร็จรูป ให้ทำบ่า ค.ส.ล. ที่คาน B3 ด้านระเบียงทางเดิน เพื่อปรับระดับพื้นระเบียงกับพื้นห้องเรียน และให้ทำบ่า ค.ส.ล. พร้อมกับคาน (ห้ามเสียบเหล็กแล้วทำตามหลังโดยเด็ดขาด)",
+      "confidence_score": 0.76,
+      "confidence_flags": [
+        "conditional_member_precast_only"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "png": "25",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "ขยายโครงหลังคาเหล็ก / โครงหลังคาไม้ TRUSS T1 (แบบ สปช. 104/26 แผ่น S-08)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_20/บ้าน_ใหญ่_2ชั้น_20_หน้า25.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_20_หน้า00_gridline.json",
+  "view_title": "ขยายโครงหลังคาเหล็ก TRUSS T1, ขยายโครงหลังคาไม้ (TRUSS T1)",
+  "scale": "1:50",
+  "views": [
+    "view1: ขยายโครงหลังคาเหล็ก TRUSS T1 1:50 — section",
+    "view2: ขยายโครงหลังคาไม้ (TRUSS T1) 1:50 — section (alternative)"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Two drawings of the same truss mark T1: a steel truss and a hardwood alternative (each sheet S-10 / S-11 carries the matching roof notes). The steel one keeps element_id T1 (the set's roof frame plan S-04 draws a steel frame: steel purlins C-100x50x20x3.2); the wood alternative takes element_id null so one sheet does not carry two members under one id (section 0.3).",
+    "Section symbols for the steel chord/king post print as a double angle (⊥⊥); designation recorded as L with the printed text kept (key mapping as in house 157's truss B). Whether the chord is one or two angles is left to printed_as.",
+    "Both drawings print the bearing chain 1.60 | 6.50 | 2.00 | 1.60 and the height '~1.35' between 'ระดับหัวเสา' and 'ระดับสันหลังคา' (recorded in the grid master); the '~' is printed, so the rise is approximate."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 50,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "จันทันเหล็ก ⊥⊥ 50x50x3.2มม (รอยต่อเหล็กให้เยื้องกัน)"
+      },
+      "member_sections": [
+        {
+          "role": "จันทัน/คอร์ดบน",
+          "printed_as": "จันทันเหล็ก ⊥⊥ 50x50x3.2มม (รอยต่อเหล็กให้เยื้องกัน)"
+        },
+        {
+          "role": "คอร์ดล่าง/ชายคา",
+          "printed_as": "เหล็ก ⊥⊥ 50x50x3.2มม"
+        },
+        {
+          "role": "ตั้ง (กลาง)",
+          "printed_as": "ตั้งเหล็ก ⊥⊥ 40x40x3.2มม"
+        },
+        {
+          "role": "โครงถัก/ค้ำยัน",
+          "printed_as": "โครงถัก L 40x40x3.2มม (ข้างใดข้างหนึ่งหรือสลับข้าง)"
+        },
+        {
+          "role": "แผ่นประกับ",
+          "printed_as": "แผ่นเหล็ก หนา 4มม"
+        },
+        {
+          "role": "แป",
+          "printed_as": "แปเหล็ก C-100x50x20x3.2มม @1.00-1.05ม"
+        }
+      ],
+      "span_m": 11.7,
+      "span_printed_as": "1.60 + 6.50 + 2.00 + 1.60",
+      "height_mm": 1350,
+      "height_mm_printed_as": "~1.35 (ระดับหัวเสา ถึง ระดับสันหลังคา)",
+      "roof_slope_deg": 15,
+      "roof_slope_printed_as": "15°",
+      "note": "ขยายโครงหลังคาเหล็ก TRUSS T1 1:50 — รองรับบนหัวเสาแถว A และ B (ช่วง 6.50) และเสาเหล็กระเบียงแถว C; ยื่นชายคา 1.60 ทั้งสองข้าง; แบบขยาย 1-6 อยู่แผ่น S-09; สัญลักษณ์หน้าตัดพิมพ์เป็นเหล็กฉากคู่ (⊥⊥) — คีย์ L ตาม house 157",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "double_angle_symbol_mapped_to_L"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "TRUSS T1 ทางเลือกโครงหลังคาไม้",
+      "element_type": "truss",
+      "material": "wood",
+      "member_sections": [
+        {
+          "role": "ตั้ง",
+          "printed_as": "ตั้งไม้เนื้อแข็ง 2\"x8\""
+        },
+        {
+          "role": "จันทัน",
+          "printed_as": "จันทันไม้เนื้อแข็ง 2\"x8\""
+        },
+        {
+          "role": "ค้ำยัน",
+          "printed_as": "ค้ำยันไม้เนื้อแข็ง 2\"x6\" สลับข้าง"
+        },
+        {
+          "role": "ขื่อ",
+          "printed_as": "ขื่อไม้เนื้อแข็ง 2\"x8\""
+        },
+        {
+          "role": "แป",
+          "printed_as": "แปไม้เนื้อแข็ง 2\"x5\" @1.00ม (วางทางตั้ง)"
+        },
+        {
+          "role": "พุก",
+          "printed_as": "พุกไม้เนื้อแข็ง หนา 2\""
+        },
+        {
+          "role": "สะพาน",
+          "printed_as": "สะพานไม้ยึดโครงหลังคา ขนาด 2\"x6\""
+        },
+        {
+          "role": "ประกับ",
+          "printed_as": "เหล็กประกับ หนา 4มม 2แผ่น; เหล็กประกับที่รอยต่อ หนา 4มม (ดูรายการประกอบแบบ); แผ่นเหล็ก หนา 4มม ยึดรอยต่อ (ด้านเฉียง)"
+        },
+        {
+          "role": "สลักเกลียว",
+          "printed_as": "น๊อตขนาด 1/2\" (จำนวนตามแบบ)"
+        }
+      ],
+      "span_m": 11.7,
+      "span_printed_as": "1.60 + 6.50 + 2.00 + 1.60",
+      "height_mm": 1350,
+      "height_mm_printed_as": "~1.35",
+      "roof_slope_deg": 15,
+      "roof_slope_printed_as": "15°",
+      "note": "ขยายโครงหลังคาไม้ (TRUSS T1) 1:50 — ทางเลือกของโครงหลังคา T1 เดียวกัน (รายการประกอบแบบโครงหลังคาไม้ แผ่น S-11); มาร์คเดียวกับโครงเหล็ก จึงใส่ element_id null กันชนกันในแผ่นเดียว",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "alternative_design_same_mark"
+      ]
+    }
+  ]
+}

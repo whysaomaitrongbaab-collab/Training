@@ -1,0 +1,171 @@
+{
+  "png": "24",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "ขยายคาน B6 & B6' และแบบขยายโครงสร้างบันได (แบบ สปช. 104/26 แผ่น S-07)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_20/บ้าน_ใหญ่_2ชั้น_20_หน้า24.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_20_หน้า00_gridline.json",
+  "view_title": "B6 & B6' 1:20, แบบขยายโครงสร้างบันได 1:20",
+  "scale": "1:20",
+  "views": [
+    "view1: B6 & B6' 1:20 (รูปขยายตามยาว) + หน้าตัด B6' / B6 1:20 — section",
+    "view2: แบบขยายโครงสร้างบันได 1:20 — section",
+    "view3: หมายเหตุ หรือรายการการเสริมเหล็กให้เป็นไปตามข้อกำหนดในหนังสือมาตรฐานประกอบแบบก่อสร้าง — one line, kept in warnings"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "All bars print ø -> type RB, including the large ø19/ø25 bars of B6/B6' (section 6: go by the printed symbol only).",
+    "Conflict B6' bottom bars: the cross-section 'B6' 1:20' prints 2-ø25มม at the bottom; the long elevation 'B6 & B6' 1:20' labels the cantilever's bottom bar 2-ø19มม. Taken: the cross-section (it is the mark's own section). The elevation reading is plausible (bottom steel of a cantilever is nominal), so B6' carries a lowered score and the alternative stays in the note.",
+    "B6 bottom = 2-ø25 continuous + 2-ø25 'เสริมกลางช่วง' + 2-ø19 'คมL/5' = 6 bars of mixed diameter (dia_mm = first, mixed_dia_mm = the list, section 0.5). The 1.40 dimensions on the elevation are bar cut-off / bend positions from the column centre lines (kept in the grid master's unassigned_dimensions).",
+    "Stair: one unmarked element (element_id null). Bar roles are read from leader positions on a 1:20 scan; two 'ø12มม@0.075' labels and two 'ø9มม@ 0.075' labels appear on the two flights — recorded once per printed callout type, not per occurrence.",
+    "Sheet note: 'หมายเหตุ หรือรายการการเสริมเหล็กให้เป็นไปตามข้อกำหนดในหนังสือมาตรฐานประกอบแบบก่อสร้าง'."
+  ],
+  "elements": [
+    {
+      "element_id": "B6'",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 650,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 25,
+          "mixed_dia_mm": [
+            25,
+            19
+          ],
+          "type": "RB",
+          "dia_mm_printed_as": "2-ø25มม + 2-ø19มม",
+          "printed_as": "2-ø25มม + 2-ø19มม",
+          "note": "เหล็กบนคานยื่น: 2-ø25 ต่อเนื่องเข้า B6 + 2-ø19 ชั้นที่สอง ยื่นเลยเสาแถว B เข้า B6 1.40 (รูปขยายตามยาว)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-ø25มม",
+          "note": "หน้าตัด B6' พิมพ์ 2-ø25มม; รูปขยายตามยาวพิมพ์เหล็กล่างช่วงยื่นเป็น 2-ø19มม (ขัดกัน — ยึดหน้าตัด)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.10ม"
+      },
+      "span_m": 2.0,
+      "note": "คานยื่นรับระเบียงทางเดิน 2.00 (ขยาย B6 & B6' 1:20)",
+      "confidence_score": 0.74,
+      "confidence_flags": [
+        "bottom_bar_conflict_section_vs_long_elevation"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 650,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-ø25มม"
+        },
+        "bottom": {
+          "count": 6,
+          "dia_mm": 25,
+          "mixed_dia_mm": [
+            25,
+            19
+          ],
+          "type": "RB",
+          "dia_mm_printed_as": "2-ø25มม + 2-ø25มม (เสริมกลางช่วง) + 2-ø19มม (คมL/5)",
+          "printed_as": "2-ø25มม (เสริมกลางช่วง) / 2-ø19มม (คมL/5) / 2-ø25มม",
+          "note": "เหล็กล่างต่อเนื่อง 2-ø25 + เสริมกลางช่วง 2-ø25 + เหล็กคอม้า 2-ø19 (ดัดขึ้นที่ L/5, รูปขยายตามยาวแสดงจุดดัดห่างเสา 1.40) — รวมเป็นเหล็กล่างตามแบบอย่างบ้าน 129/157"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6@0.20ม"
+      },
+      "span_m": 6.5,
+      "note": "คานหลักแนวเสา A-B ช่วง 6.50; ใกล้เสาแถว B มีเหล็กบน 2-ø19 ของ B6' ยื่นเข้ามา 1.40 (บันทึกไว้ที่ B6')",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "บันได ค.ส.ล.",
+      "element_type": "stair",
+      "thickness_mm": 120,
+      "thickness_mm_printed_as": "t=0.12",
+      "riser_mm": 175,
+      "riser_printed_as": "0.175",
+      "tread_mm": 250,
+      "tread_printed_as": "0.25",
+      "total_rise_m": 2.8,
+      "total_run_m": 4.5,
+      "landing_length_m": 1.0,
+      "landing_printed_as": "ชานพักบันได 1.00",
+      "bar_layers": [
+        {
+          "location": "พื้นท้องบันได — เหล็กหลัก",
+          "dia_mm": 12,
+          "spacing_mm": 75,
+          "type": "RB",
+          "printed_as": "ø12มม@0.075"
+        },
+        {
+          "location": "พื้นท้องบันได/ชานพัก — เหล็กเสริม",
+          "dia_mm": 9,
+          "spacing_mm": 75,
+          "type": "RB",
+          "printed_as": "ø9มม@ 0.075"
+        },
+        {
+          "location": "เหล็กกันร้าว",
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "ø6มม@0.15"
+        },
+        {
+          "location": "มุมขั้นบันได",
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "1-ø9มม ทุกมุม"
+        }
+      ],
+      "note": "แบบขยายโครงสร้างบันได 1:20 — 2 ช่วงบันไดกับชานพัก 1.00 กลางทาง ระยะราบรวม 4.50 (ระหว่างกริด 4-5) สูงรวม 2.80 (+0.20 ถึง +3.00); พิมพ์ 0.80 ตามแนวลาดใกล้หัว/ท้ายช่วงบันได และ 0.03 ที่จมูกขั้น",
+      "confidence_score": 0.74,
+      "confidence_flags": [
+        "bar_roles_from_leader_position"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "พื้นตีนบันได ค.ส.ล.",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "thickness_mm_printed_as": "0.08 (ขอบหนา 0.20)",
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "ø6มม@0.25"
+      },
+      "note": "พื้นยาว 1.00 ต่อจากตีนบันไดบนระดับดิน ขอบปลายหนา 0.20 — ตรงกับ 'พื้นทางเท้า ค.ส.ล.' 1.00 บนแปลนฐานราก S-01",
+      "confidence_score": 0.76,
+      "confidence_flags": []
+    }
+  ]
+}

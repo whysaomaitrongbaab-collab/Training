@@ -1,0 +1,32 @@
+{
+  "png": "18",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก ตอม่อ (แบบ สปช. 104/26 อาคารเรียน 4 ห้องเรียน ใต้ถุนโล่ง แผ่น S-01)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_20/บ้าน_ใหญ่_2ชั้น_20_หน้า18.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_20_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก ตอม่อ",
+  "scale": "1:125",
+  "pattern": "footing_plan",
+  "views": [
+    "view1: แปลนฐานราก ตอม่อ 1:125 — footings F1/F2/F3 + columns C1/C2 (this split: footing_plan)",
+    "view2: same drawing — the single ground beam GB under the stair (this split: beam_plan)"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": ["low_resolution_scan"],
+  "warnings": [
+    "Every column position prints a footing/column pair stacked beside the pedestal ('F2 / C1', 'F1 / C1', 'F3 / C2'): 21 positions = 9 F2/C1 on row A + 9 F1/C1 on row B + 3 F3/C2 on the stair-foot row C' (grids 3, 4, 5). Row C (corridor edge) has no footing — the corridor cantilevers from row B (B6' on S-02).",
+    "Row C' carries no grid bubble on this sheet; its 3.60 below row B equals C + 1.60 on S-02/A-03 (see the grid master). The C2 columns at C'3 and C'4 carry the stair landing (B5/B2 on S-02); C'5 is the stair foot where the plan draws the GB beam and the walkway slab.",
+    "Plan also shows 'พื้นทางเท้า ค.ส.ล.' (unmarked concrete walkway slab at the stair foot, 1.00 right of grid 5) and the hatched stair start between grids 4 and 5 — no mark and no spec on this sheet, not recorded as elements.",
+    "Footing details F1 (1.30 x 1.80, 12 piles) and F2 (1.30 x 1.30, 9 piles) are on S-05, F3 (1.00 x 1.00, 5 piles) on S-06; columns C1 0.25x0.25 (footing to roof) and C2 0.20x0.20 (footing to corridor level) on S-05."
+  ],
+  "elements": [
+    {"element_id": "F2", "element_type": "footing", "count": 9, "grid_refs": ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9"], "note": "พิมพ์ 'F2' คู่กับ 'C1' ทุกตำแหน่งแถว A (ผนังหลังห้องเรียน)", "confidence_score": 0.92, "confidence_flags": []},
+    {"element_id": "C1", "element_type": "column", "count": 18, "grid_refs": ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9"], "note": "เสา C1 บนฐานราก F2 (แถว A) และ F1 (แถว B) — จากฐานรากถึงหลังคา (S-05)", "confidence_score": 0.92, "confidence_flags": []},
+    {"element_id": "F1", "element_type": "footing", "count": 9, "grid_refs": ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9"], "note": "พิมพ์ 'F1' คู่กับ 'C1' ทุกตำแหน่งแถว B (ฐานรากผืนผ้า 1.30x1.80 รับคานยื่นระเบียง)", "confidence_score": 0.92, "confidence_flags": []},
+    {"element_id": "F3", "element_type": "footing", "count": 3, "grid_refs": ["C'3", "C'4", "C'5"], "note": "พิมพ์ 'F3' คู่กับ 'C2' — ฐานรากเสาชานพักบันได (C'3, C'4) และตีนบันได (C'5)", "confidence_score": 0.88, "confidence_flags": []},
+    {"element_id": "C2", "element_type": "column", "count": 3, "grid_refs": ["C'3", "C'4", "C'5"], "note": "เสา C2 จากฐานรากถึงระเบียง (S-05)", "confidence_score": 0.88, "confidence_flags": []}
+  ]
+}
