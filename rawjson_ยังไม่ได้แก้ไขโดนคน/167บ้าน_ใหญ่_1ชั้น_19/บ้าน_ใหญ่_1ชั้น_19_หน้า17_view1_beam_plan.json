@@ -1,0 +1,1423 @@
+{
+  "png": "17",
+  "doc_page": 17,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนเสา, คาน, พื้นชั้น 1",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_19/บ้าน_ใหญ่_1ชั้น_19_หน้า17.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_19_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนเสา, คาน, พื้นชั้น 1",
+  "scale": "1:100",
+  "pattern": "beam_plan",
+  "views": [
+    "view1: แปลนเสา, คาน, พื้นชั้น 1 1:100 — beams B1-B12, B5/1, B6/1 (this split: beam_plan)",
+    "view2: same drawing — slabs PS (แผ่นพื้นสำเร็จรูป), S1, S2, GS (this split: etc_plan)",
+    "view3: same drawing — column marks C1/CX at the 40 grid points (already recorded on the footing plan _view1, not repeated)",
+    "view4: รายการประกอบแบบพื้น คสล. ข้อ 1-5 (folded into the slab file specs)"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Primary beams run column to column: B3 on row A, B1 on rows B, C, D, B2 on row E, B5 on grids 1 and 8, B6 on grids 2-7 (all 4 bays each). Secondary beams B7 run on every mid-bay line (2.75) between the row beams and are recorded with bears_on_beam flags; the row beams are NOT split at the B7 junctions (B7 bears on them, section 5 rule 2) — their mark labels sit at the mid-bay only as label placement.",
+    "B11 (3.00 below row A) runs from grid 2 to the 7' mid-bay line, one segment per half-bay between B6/B7 supports (11 segments); bay 1-2 and half-bay 7'-8 have no B11 (dash-dot line only). B12 + B8 frame the small slab bay at 7'-8 x A-A''''.",
+    "Canopy strip above row A: cantilevers B6/1 (grids 2-7), B5/1 (grid 8), B9 (+0.10) on grid 1, B8 on line 1''''' (bears on B3); edge beams B10 (+0.10, dashed) from grid 1 to 1''''' and B4 from 1''''' to 8. The 1.50 stub of the edge beam between 1''''' and 2 carries no printed label (taken as B4, lowered score). Edge placed on A''' (-1.75) — see the grid master's 1.75 vs 1.85 conflict.",
+    "Beam sizes/rebar are on the section sheets S-08/S-09 (pages 23-24), not reached in this run."
+  ],
+  "elements": [
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "พิมพ์ B9 (+0.10) เส้นประ",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "A'''1'''''",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "พิมพ์ B10 (+0.10) เส้นประ — คานขอบกันสาดช่วงกริด 1 ถึงแนว B8",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1'''''",
+      "grid_ref_end": "A1'''''",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1'''''",
+      "grid_ref_end": "A'''2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "ช่วงสั้น 1.50 ไม่มีป้ายพิมพ์ — เส้นคู่ต่อเนื่องเดียวกับ B4 ช่วงถัดไป",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "unlabelled_segment_same_line_as_B4"
+      ]
+    },
+    {
+      "element_id": "B6/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A'''3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'''3",
+      "grid_ref_end": "A'''4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''4",
+      "grid_ref_end": "A4",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'''4",
+      "grid_ref_end": "A'''5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''5",
+      "grid_ref_end": "A5",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'''5",
+      "grid_ref_end": "A'''6",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''6",
+      "grid_ref_end": "A6",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'''6",
+      "grid_ref_end": "A'''7",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''7",
+      "grid_ref_end": "A7",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A'''7",
+      "grid_ref_end": "A'''8",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาด",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5/1",
+      "element_type": "beam",
+      "grid_ref_start": "A'''8",
+      "grid_ref_end": "A8",
+      "span_length_m": 1.75,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาด",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A1''''",
+      "grid_ref_end": "B1''''",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "B2'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A3'",
+      "grid_ref_end": "B3'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A4'",
+      "grid_ref_end": "B4'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "B5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A5'",
+      "grid_ref_end": "B5'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "B6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A7",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A6'",
+      "grid_ref_end": "B6'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "B7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A8",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A7'",
+      "grid_ref_end": "B7'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A7''",
+      "grid_ref_end": "A''''7''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B12(end)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A8",
+      "grid_ref_end": "B8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "grid_ref_start": "A''''7'",
+      "grid_ref_end": "A''''8",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "bears_on_beam:B7(start)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''2",
+      "grid_ref_end": "A'''''2'",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B7(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''2'",
+      "grid_ref_end": "A'''''3",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B7(start)",
+        "bears_on_beam:B6(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''3",
+      "grid_ref_end": "A'''''3'",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B7(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''3'",
+      "grid_ref_end": "A'''''4",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B7(start)",
+        "bears_on_beam:B6(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''4",
+      "grid_ref_end": "A'''''4'",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B7(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''4'",
+      "grid_ref_end": "A'''''5",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B7(start)",
+        "bears_on_beam:B6(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''5",
+      "grid_ref_end": "A'''''5'",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B7(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''5'",
+      "grid_ref_end": "A'''''6",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B7(start)",
+        "bears_on_beam:B6(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''6",
+      "grid_ref_end": "A'''''6'",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B7(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''6'",
+      "grid_ref_end": "A'''''7",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B7(start)",
+        "bears_on_beam:B6(end)"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''7",
+      "grid_ref_end": "A'''''7'",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B6(start)",
+        "bears_on_beam:B7(end)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B1''''",
+      "grid_ref_end": "C1''''",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B2'",
+      "grid_ref_end": "C2'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B3'",
+      "grid_ref_end": "C3'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B4'",
+      "grid_ref_end": "C4'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "C5",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "B6",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B5'",
+      "grid_ref_end": "C5'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B6",
+      "grid_ref_end": "C6",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B6",
+      "grid_ref_end": "B7",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B6'",
+      "grid_ref_end": "C6'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B7",
+      "grid_ref_end": "C7",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B7",
+      "grid_ref_end": "B8",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B7'",
+      "grid_ref_end": "C7'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B8",
+      "grid_ref_end": "C8",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C1''''",
+      "grid_ref_end": "D1''''",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C2'",
+      "grid_ref_end": "D2'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C3'",
+      "grid_ref_end": "D3'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "D4",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "C5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C4'",
+      "grid_ref_end": "D4'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "D5",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "C6",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C5'",
+      "grid_ref_end": "D5'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "D6",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "C7",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C6'",
+      "grid_ref_end": "D6'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C7",
+      "grid_ref_end": "D7",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C7",
+      "grid_ref_end": "C8",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C7'",
+      "grid_ref_end": "D7'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C8",
+      "grid_ref_end": "D8",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D1''''",
+      "grid_ref_end": "E1''''",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "E2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D2'",
+      "grid_ref_end": "E2'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "E3",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D3'",
+      "grid_ref_end": "E3'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "E4",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "D5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D4'",
+      "grid_ref_end": "E4'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "D5",
+      "grid_ref_end": "E5",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D5",
+      "grid_ref_end": "D6",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D5'",
+      "grid_ref_end": "E5'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "D6",
+      "grid_ref_end": "E6",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D6",
+      "grid_ref_end": "D7",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D6'",
+      "grid_ref_end": "E6'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "D7",
+      "grid_ref_end": "E7",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D7",
+      "grid_ref_end": "D8",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D7'",
+      "grid_ref_end": "E7'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "D8",
+      "grid_ref_end": "E8",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "E5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E5",
+      "grid_ref_end": "E6",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E6",
+      "grid_ref_end": "E7",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E7",
+      "grid_ref_end": "E8",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    }
+  ]
+}

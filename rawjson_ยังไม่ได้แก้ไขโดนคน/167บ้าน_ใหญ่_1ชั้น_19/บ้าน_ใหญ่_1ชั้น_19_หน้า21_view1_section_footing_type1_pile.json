@@ -1,0 +1,77 @@
+{
+  "png": "21",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "รายการประกอบแบบฐานราก, ฐานรากแบบที่ 1 (ตอกเสาเข็ม), ฐานรากแบบที่ 2 (ฐานรากแผ่)",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_19/บ้าน_ใหญ่_1ชั้น_19_หน้า21.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_19_หน้า00_gridline.json",
+  "view_title": "ฐานรากแบบที่ 1 (แปลน F1, รูปตัด F1)",
+  "scale": "1:25",
+  "pattern": "section",
+  "views": [
+    "view1: ฐานรากแบบที่ 1 — แปลน F1 + รูปตัด F1 1:25 (ฐานรากตอกเสาเข็ม) — section",
+    "view2: ฐานรากแบบที่ 2 — แปลน F1, F2 + รูปตัด F1, F2 1:25 (ฐานรากแผ่) — section",
+    "view3: รายการประกอบแบบฐานราก กรณีต้องใช้ฐานรากตอกเสาเข็ม ข้อ 1-4 + หมายเหตุ ฐานรากแผ่ — notes"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Pile-footing F1 (ฐานรากแบบที่ 1) is a different member from the spread footing F1 of ฐานรากแบบที่ 2 — both are printed 'F1' on this sheet, so the two systems are split into separate view files (same split as the footing plan, page 16).",
+    "Cap 0.60 x 0.60 (plan chain 0.30 + 0.30) and 0.60 thick (section chain 0.30 | 0.30, total 0.60 printed), one pile. The section prints '3x2-DB12mm(เหล็กตะแกรง)' (mat, count = 6 per schema 0.5), '4-DB12mm(เหล็กปลอก)' (ties, fixed count) and '8-DB16mm(เหล็กยืน)' (column dowels — kept in additional_bars, not a footing face)."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "footing_type": "pile_footing",
+      "width_mm": 600,
+      "width_mm_printed_as": "0.30+0.30 = 0.60 (0.60x0.60)",
+      "height_mm": 600,
+      "height_mm_printed_as": "0.30+0.30 = 0.60",
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 12,
+        "type": "DB",
+        "count_printed_as": "3x2",
+        "note": "3x2-DB12mm(เหล็กตะแกรง)"
+      },
+      "stirrup": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB",
+        "note": "4-DB12mm(เหล็กปลอก)"
+      },
+      "additional_bars": [
+        {
+          "count": 8,
+          "dia_mm": 16,
+          "type": "DB",
+          "position": "เหล็กยืน — dowel bars of the column/pedestal anchored in the cap",
+          "note": "8-DB16mm(เหล็กยืน)"
+        }
+      ],
+      "pile_count": 1,
+      "pile": {
+        "type": "precast prestressed concrete, square solid 0.22x0.22 m or spun round ø0.25 m",
+        "length_m": 21.0,
+        "safe_load_t": 25,
+        "printed_as": "เสาเข็มจำนวน 1 ต้น ขนาด▱ 0.22X0.22X21.00 ม หรือ ø 0.25 X 21.00 ม รับน้ำหนักบรรทุกปลอดภัยได้ไม่น้อยกว่า 25 ตัน/ต้น"
+      },
+      "lean_concrete": {
+        "thickness_m": 0.05,
+        "mix": "1:3:5",
+        "printed_as": "คอนกรีตหยาบ 1:3:5"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "pedestal_height_m": 1.0,
+      "pedestal_height_printed_as": "~1.00 / Varie",
+      "cover_mm": 75,
+      "cover_printed_as": "ระยะหุ้มคอนกรีตโครงสร้าง ~0.075 ม (ฐาน), 0.04 ม (เสา)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}

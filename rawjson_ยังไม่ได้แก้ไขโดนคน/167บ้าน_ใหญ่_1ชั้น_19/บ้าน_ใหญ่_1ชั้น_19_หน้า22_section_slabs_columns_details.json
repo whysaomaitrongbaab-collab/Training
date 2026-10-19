@@ -1,0 +1,316 @@
+{
+  "png": "22",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "ขยายพื้น, แบบขยายการเสริมเหล็กพื้นสำเร็จรูป, ขยายเสา, เสาเอ็น, เคาน์เตอร์, ทับหลัง",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_19/บ้าน_ใหญ่_1ชั้น_19_หน้า22.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_19_หน้า00_gridline.json",
+  "view_title": "ขยายพื้น / ขยายเสา",
+  "scale": "1:25",
+  "pattern": "section",
+  "views": [
+    "view1: แบบขยายการเสริมเหล็กพื้นสำเร็จรูป 1:25",
+    "view2: ขยายพื้น S2 (รูปด้าน + A-A), S1, GS 1:25",
+    "view3: ขยายเสา C1/CX 2 ระดับ 1:25",
+    "view4: เสาเอ็น, BT, รูปตัดขยายเคาน์เตอร์ขายอาหาร/อ่างล้างหน้า, เอ็นใต้หน้าต่าง, ทับหลังประตู-หน้าต่าง",
+    "(all kept in this one section file — every view is a member detail of the same kind)"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Column table: C1 is 0.30x0.40 from footing to floor 1 and 0.25x0.35 from floor 1 to the roof frame (two entries, level field per schema 8); CX 0.30x0.30 only below floor 1 (the upper cell prints '—'). All 6-DB16mm + 1-RB6mm@0.20m.",
+    "Unmarked details (stiffener columns, lintels, sill beam) take element_id null + element_name_assigned (schema 0.2). The sill-beam callout '2-ø9 mm' is split 1 top / 1 bottom from the drawing (lowered score).",
+    "S2 callouts: RB9@0.15 (two leaders) and DB12@0.15 — the DB12 is read as the bottom main bar along the slope, the RB9 as top / distribution (lowered score)."
+  ],
+  "elements": [
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "พื้นชั้นที่ 1 → โครงหลังคา",
+      "width_mm": 250,
+      "height_mm": 350,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 16,
+        "type": "DB",
+        "note": "6-DB16mm(เหล็กยืน)"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "1-RB6mm@0.20m(เหล็กปลอก)"
+      },
+      "cover_mm": 40,
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "level": "ฐานราก → พื้นชั้นที่ 1",
+      "width_mm": 300,
+      "height_mm": 400,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 16,
+        "type": "DB",
+        "note": "6-DB16mm(เหล็กยืน)"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "1-RB6mm@0.20m(เหล็กปลอก)"
+      },
+      "cover_mm": 75,
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "cover_printed_as": "ระยะหุ้มคอนกรีต ~0.075 m"
+    },
+    {
+      "element_id": "CX",
+      "element_type": "column",
+      "level": "ฐานราก → พื้นชั้นที่ 1",
+      "width_mm": 300,
+      "height_mm": 300,
+      "main_bar": {
+        "count": 6,
+        "dia_mm": 16,
+        "type": "DB",
+        "note": "6-DB16mm(เหล็กยืน)"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "1-RB6mm@0.20m(เหล็กปลอก)"
+      },
+      "cover_mm": 75,
+      "confidence_score": 0.85,
+      "confidence_flags": [],
+      "cover_printed_as": "ระยะหุ้มคอนกรีต ~0.075 m",
+      "note": "ช่องพื้นชั้นที่ 1 → โครงหลังคา ของ CX พิมพ์ '—' (เสา CX หยุดที่พื้นชั้น 1)"
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "bar_layers": [
+        {
+          "location": "bottom (main, short span L)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "printed_as": "RB 9 มม@ 0.20 ม"
+        },
+        {
+          "location": "top over supports (L/4 each side)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "printed_as": "RB 9 มม@ 0.20 ม"
+        }
+      ],
+      "note": "พื้นหล่อกับที่บนคาน B — L = ด้านสั้น, เหล็กบนยาว L/4 จากขอบคาน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 120,
+      "section_ref": "A-A",
+      "bar_layers": [
+        {
+          "location": "top",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "RB 9 มม@ 0.15 ม"
+        },
+        {
+          "location": "bottom (main, along the slope)",
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 150,
+          "printed_as": "DB 12 มม@ 0.15 ม"
+        },
+        {
+          "location": "bottom (distribution)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "RB 9 มม@ 0.15 ม"
+        }
+      ],
+      "note": "พื้นลาดกันสาดกริด 1: ช่วง 4.00 จากระดับ +0.10 ขึ้นไป +0.40 (ลูกศร Slope); ความกว้าง ~1.52 ในรูปตัด A-A",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "bar_layer_location_inferred_from_leader"
+      ]
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "bar_layers": [
+        {
+          "location": "mesh",
+          "dia_mm": 4,
+          "type": "wire_mesh",
+          "spacing_mm": 200,
+          "printed_as": "WIRE MESH ø 4 mm@0.20 m#"
+        }
+      ],
+      "note": "พื้นวางบนดิน ระดับ +0.00 (ระดับดินเดิม) บนทรายถมอัดแน่น พื้นดินให้ใช้เครื่องตบดินในการบดอัด; ตัด Joint (กั้นด้วยโฟม หนา 1/2\") ที่ชนคาน B",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "precast_plank_detail",
+      "description": "แบบขยายการเสริมเหล็กพื้นสำเร็จรูป: พื้นสำเร็จรูปชนิดท้องเรียบ ขนาดหน้าตัด 0.05 X 0.35 m รับน้ำหนักปลอดภัย 300 Kg/m2 + Topping 0.05",
+      "topping_mesh": {
+        "dia_mm": 4,
+        "spacing_mm": 250,
+        "printed_as": "WIRE MESH ø 4 @0.25 m#"
+      },
+      "topping_thickness_min_mm": 50,
+      "note": "เหล็กเสริมพิเศษ RB6 @0.20 m (ยาว 0.60+0.60 เหนือคาน SUPPORT ช่วงใน), RB6 @0.30 m (ยาว 0.30 ที่คาน SUPPORT ช่วงริม); กรณีแผ่นพื้นไม่เต็ม หล่อคอนกรีตเติม ระยะวางบนคาน 0.15 (MAXIMUM) เหล็กเสริมพิเศษ RB6 @0.30 m ยาว 0.45, WIRE MESH RB4 @0.25 m#",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BT",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "note": "คานเคาน์เตอร์ขายอาหาร (รูปตัดขยายเคาน์เตอร์ 0.40 | 0.15 | 0.65 พื้นเคาน์เตอร์ 0.08 เหล็ก RB6@0.20 / RB9@0.20)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เสาเอ็น ทั่วไป",
+      "element_type": "column",
+      "width_mm": 100,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 2,
+        "dia_mm": 12,
+        "type": "DB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "ป-RB 6 มม@ 0.20 ม"
+      },
+      "note": "เสาเอ็น ทั่วไป (เจาะเสียบจาก Topping)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เสาเอ็น (เสมอหลังคาน B)",
+      "element_type": "column",
+      "width_mm": 150,
+      "height_mm": 150,
+      "main_bar": {
+        "count": 4,
+        "dia_mm": 12,
+        "type": "DB"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 200,
+        "printed_as": "RB 6 มม@ 0.20 ม"
+      },
+      "note": "เสาเอ็น (เจาะเสียบจาก Topping) **(เสมอหลังคาน B)**",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เอ็นใต้หน้าต่าง",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 100,
+      "main_bar": {
+        "top": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB"
+        },
+        "note": "2-ø9 mm"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "1ป-ø6mm@0.15 m"
+      },
+      "note": "ขยายเอ็นใต้หน้าต่าง — 2-ø9 mm แบ่งบน/ล่างข้างละ 1 ตามภาพ",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "top_bottom_split_inferred"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ทับหลังประตู-หน้าต่าง",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 200,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "1ป-ø6mm@0.15 m"
+      },
+      "note": "ขยายทับหลังประตู - หน้าต่าง",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}

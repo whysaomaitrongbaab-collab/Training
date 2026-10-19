@@ -1,0 +1,158 @@
+{
+  "png": "26",
+  "doc_page": 26,
+  "discipline": "structural",
+  "sheet_code": "S-11",
+  "sheet_name": "ขยาย T4, T4/1 (ด้านสกัด), แบบขยายหัวเสา 1-2, ขยายโครงเคร่าเหล็กด้านหลัง, ขยายการยึดโครงเคร่า",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_19/บ้าน_ใหญ่_1ชั้น_19_หน้า26.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_19_หน้า00_gridline.json",
+  "view_title": "ขยาย T4 / T4/1 (ด้านสกัด)",
+  "scale": "1:50",
+  "pattern": "section",
+  "views": [
+    "view1: ขยาย T4 (ด้านสกัด) 1:50 + ขยาย T4/1 (ด้านสกัด) 1:50",
+    "view2: แบบขยายหัวเสา 1, 2 1:25",
+    "view3: ขยายโครงเคร่าเหล็กด้านหลัง 1:25",
+    "view4: ขยายการยึดโครงเคร่า กับ ค.ส.ล.ทั่วไป 1:5 + แปลนการยึดโครงเคร่า (all member/connection details — one section file)"
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Box sections are printed with a hollow-rectangle symbol: designation kept as '▯' with d/b/t in the printed order (schema 6a — family not seen before).",
+    "T4/1 is drawn as the low-end overhang of the end-wall frame, consistent with the T4/1 label beside the overhang on the roof-frame plan S-04 (page 19) — supports that file's split."
+  ],
+  "elements": [
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "▯",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 3.2,
+        "printed_as": "▯100x50 mm. t = 3.2 mm."
+      },
+      "members": [
+        {
+          "part": "girt / horizontal (leader)",
+          "steel_section": {
+            "designation": "▯",
+            "d_mm": 50,
+            "b_mm": 25,
+            "t_mm": 2.3,
+            "printed_as": "▯ 50x25 mm. t = 2.3 mm."
+          }
+        }
+      ],
+      "depth_m_printed_as": "2.70 (รวมที่ปลายสูง), 2.60, 2.51, 2.42, 2.33, 2.24, 2.20, 2.11, 2.02, 1.93, 1.84, 1.80, 1.71, 1.62, 1.53, 1.44, 1.40, 1.31, 1.21; ระยะคาดกลาง 1.32 / 1.12 / 0.92 / 0.72",
+      "panel_m_printed_as": "~1.13 x 12, ~1.17 x 3",
+      "note": "ขยาย T4 (ด้านสกัด) 1:50 — โครงผนังสกัดลาดเดียว วางบนคาน RB เหนือเสา C1; **ติดตั้งเสมอเสาริมนอก ให้มั่นคงแข็งแรง ยึดกับ เสา และคาน ค.ส.ล. ตามหลักวิชาช่างที่ดี**",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "member_part_from_leader_reading"
+      ]
+    },
+    {
+      "element_id": "T4/1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "▯",
+        "d_mm": 100,
+        "b_mm": 50,
+        "t_mm": 3.2,
+        "printed_as": "▯100x50 mm. t = 3.2 mm."
+      },
+      "members": [
+        {
+          "part": "secondary (leader)",
+          "steel_section": {
+            "designation": "▯",
+            "d_mm": 50,
+            "b_mm": 25,
+            "t_mm": 2.3,
+            "printed_as": "▯ 50x25 mm. t = 2.3 mm."
+          }
+        }
+      ],
+      "depth_m_printed_as": "~1.07 (0.50 / 0.40 ที่ปลาย)",
+      "panel_m_printed_as": "~0.90 + ~0.90 / ~1.10 + ~1.10",
+      "note": "ขยาย T4/1 (ด้านสกัด) 1:50 — ส่วนยื่นปลายต่ำของโครงด้านสกัด มีค้ำยันเหล็ก ดูขยายโครงเคร่า",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แบบขยายหัวเสา 1",
+      "element_type": "connection_detail",
+      "note": "เหล็ก ▯100x50 mm. t = 3.2 mm. บน Plate หนา 12 มม ขนาด 0.30x0.40 ม ยึดด้วย 2U-DB 12 mm ฝังในหัวเสา (~0.21)",
+      "plate_thickness_mm": 12,
+      "plate_width_mm": 300,
+      "plate_length_mm": 400,
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แบบขยายหัวเสา 2",
+      "element_type": "connection_detail",
+      "note": "โครง T4' เชื่อมตลอดแนวสัมผัส บน Plate หนา 12 มม ขนาด 0.30x0.40 ม + 2U-DB 12 mm เหนือคาน RB",
+      "plate_thickness_mm": 12,
+      "plate_width_mm": 300,
+      "plate_length_mm": 400,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ขยายโครงเคร่าเหล็กด้านหลัง",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "▯",
+        "d_mm": 75,
+        "b_mm": 45,
+        "t_mm": 3.2,
+        "printed_as": "เหล็ก ▯ 75x45x3.2 มม"
+      },
+      "members": [
+        {
+          "part": "คร่าว",
+          "steel_section": {
+            "designation": "▯",
+            "d_mm": 50,
+            "b_mm": 25,
+            "t_mm": 2.3,
+            "printed_as": "เหล็ก ▯ 3-50x25x2.3 มม / ▯ 50x25x2.3 มม @~1.00 ม"
+          },
+          "spacing_mm": 1000
+        },
+        {
+          "part": "ค้ำยัน (เชื่อมกับโครงเคร่า)",
+          "steel_section": {
+            "designation": "▯",
+            "d_mm": 75,
+            "b_mm": 45,
+            "t_mm": 3.2,
+            "printed_as": "ค้ำยันเหล็ก ▯ 75x45x3.2 มม"
+          }
+        }
+      ],
+      "note": "ระยะคร่าว ~0.57 / ~0.57",
+      "confidence_score": 0.7,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ขยายการยึดโครงเคร่า กับ ค.ส.ล.ทั่วไป",
+      "element_type": "connection_detail",
+      "note": "1-Chemical Bolt ø 3/8\" + แผ่น Plate เหล็ก หนา 6 มม เชื่อมตลอดแนวสัมผัส; ระยะขอบ 0.02 รอบโครงเคร่าเหล็ก C / เหล็กกล่อง (มาตราส่วน 1:5)",
+      "plate_thickness_mm": 6,
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ]
+}

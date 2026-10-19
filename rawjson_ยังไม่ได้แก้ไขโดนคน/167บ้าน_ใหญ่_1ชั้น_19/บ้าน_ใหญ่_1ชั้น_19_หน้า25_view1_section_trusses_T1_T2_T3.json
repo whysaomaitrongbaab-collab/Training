@@ -1,0 +1,111 @@
+{
+  "png": "25",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "ขยาย T1, T2, T3, รายการประกอบแบบโครงหลังคา, งานทาสีโครงหลังคา, หลังคาเหล็ก, รายการเหล็กเสริม/คอนกรีต",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_19/บ้าน_ใหญ่_1ชั้น_19_หน้า25.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_19_หน้า00_gridline.json",
+  "view_title": "ขยาย T1, T2, T3",
+  "scale": "1:50",
+  "pattern": "section",
+  "views": [
+    "view1: ขยาย T1 1:50 (โครงถักหลักลาดเดียว), ขยาย T2 1:50, ขยาย T3 1:50 — section",
+    "view2: รายการเหล็กเสริม/คอนกรีต + รายการประกอบแบบโครงหลังคา + ตารางเหล็กท่อกลมกลวง + งานทาสีโครงหลังคา + หลังคาเหล็ก — notes"
+  ],
+  "confidence_score": 0.75,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Truss members are round steel pipes printed 'ø-100 mm. t = 4.5 mm.' etc.: designation kept as the printed 'ø' (schema 6a, family not seen before — keys d_mm/t_mm follow the printed order). The leader-tagged section of each truss goes in steel_section; a second printed size on the same truss goes in members[] with the part it points to.",
+    "T1: span 19.00 printed between supports with ~1.00 panels (22 panels incl. overhangs), mono-pitch depths printed panel by panel 1.91 ... 0.39; T2 depth ~1.80 (0.90 + 0.90), T3 depth ~0.69, both with ~1.10 panels between T1 trusses on grids 2-4 (5.50 bays)."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "ø",
+        "d_mm": 100,
+        "t_mm": 4.5,
+        "printed_as": "ø-100 mm. t = 4.5 mm."
+      },
+      "members": [
+        {
+          "part": "web / secondary (leader)",
+          "steel_section": {
+            "designation": "ø",
+            "d_mm": 65,
+            "t_mm": 3.2,
+            "printed_as": "ø-65 mm. t = 3.2 mm."
+          }
+        }
+      ],
+      "span_m": 19.0,
+      "depth_m_printed_as": "1.03 (ปลายยื่น), 1.91, 1.83, 1.75, 1.67, 1.59, 1.51, 1.43, 1.35, 1.27, 1.19, 1.11, 1.03, 0.95, 0.87, 0.79, 0.71, 0.62, 0.54, 0.46, 0.39",
+      "note": "โครงถักลาดเดียว ช่องละ ~1.00 ม; รองรับ T2 และ T3 (ป้าย T2/T3 ℄ บนรูปด้าน); แบบขยาย 1 ที่หัวเสาฝั่งสูง",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "member_part_from_leader_reading"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "ø",
+        "d_mm": 40,
+        "t_mm": 2.9,
+        "printed_as": "ø 40 mm. t = 2.9 mm."
+      },
+      "members": [
+        {
+          "part": "web (diagonal)",
+          "steel_section": {
+            "designation": "ø",
+            "d_mm": 32,
+            "t_mm": 2.6,
+            "printed_as": "ø 32 mm t = 2.6 mm."
+          }
+        }
+      ],
+      "depth_m": 1.8,
+      "depth_m_printed_as": "~1.80 (0.90 + 0.90)",
+      "panel_m_printed_as": "~1.10",
+      "note": "พาดระหว่าง T1 (℄ ที่กริด 2, 3, 4 ในรูป) ช่วงละ 5.50",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "ø",
+        "d_mm": 40,
+        "t_mm": 2.9,
+        "printed_as": "ø 40 mm. t = 2.9 mm."
+      },
+      "members": [
+        {
+          "part": "web (diagonal)",
+          "steel_section": {
+            "designation": "ø",
+            "d_mm": 32,
+            "t_mm": 2.6,
+            "printed_as": "ø 32 mm t = 2.6 mm."
+          }
+        }
+      ],
+      "depth_m": 0.69,
+      "depth_m_printed_as": "~0.69",
+      "panel_m_printed_as": "~1.10",
+      "note": "พาดระหว่าง T1 ช่วงละ 5.50",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ]
+}
