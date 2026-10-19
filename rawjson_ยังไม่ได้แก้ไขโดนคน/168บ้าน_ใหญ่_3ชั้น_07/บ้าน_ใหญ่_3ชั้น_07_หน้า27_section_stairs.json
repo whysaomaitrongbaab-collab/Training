@@ -1,0 +1,257 @@
+{
+  "png": "27",
+  "doc_page": 27,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "แบบขยายบันได ST1 ST2, รูปตัดคาน B4A (แบบ สปช. 2/28 ปรับปรุง แผ่นที่ S-09)",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_07/บ้าน_ใหญ่_3ชั้น_07_หน้า27.png",
+  "pattern": "section",
+  "view_title": "บันได ST1 (ช่วงบน/ช่วงล่าง ชั้น 1-2), ST2, B4A",
+  "scale": null,
+  "views": [
+    "view1: ST1 ช่วงบน ชั้น 1",
+    "view2: B4A section + แบบขยายเสริมเหล็กขั้นบันได",
+    "view3: ST1 ช่วงบน ชั้น 2",
+    "view4: ST1 ช่วงล่าง ชั้น 1",
+    "view5: ST1 ช่วงล่าง ชั้น 2",
+    "view6: ST2 (all in this file)"
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [
+    "low_resolution_scan",
+    "small_print_spacing"
+  ],
+  "warnings": [
+    "B4A's section is on this stair sheet (it is missing from the beam-section sheet S-07); it is printed with DB bars, unlike the Ø/RB callouts of S-07.",
+    "ST1 appears four times (upper/lower flight x floor 1/2) with different spans and bar spacings — one element per flight with a level field (section 8 logic), not merged. Multi-layer stair reinforcement in bar_layers[] (section 0.6).",
+    "Floor-1 landing spacing reads 'DB 12 mm. @ 0.05 m.' — unusually dense; taken as printed, flagged small_print_spacing.",
+    "Step detail (แบบขยายเสริมเหล็กขั้นบันได): RB 9 mm. (ทุกมุม), RB 9 mm.@ 0.20 m. (ทุกขั้น), cover 0.025 — applies to every ST1 flight."
+  ],
+  "elements": [
+    {
+      "element_id": "B4A",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "DB",
+          "printed_as": "2- DB 19 mm. + 2- DB 19 mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "DB",
+          "printed_as": "2- DB 19 mm. + 2- DB 19 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-RB 6 mm.@0.20m."
+      },
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST1",
+      "element_type": "stair",
+      "level": "ช่วงบน ชั้น 1",
+      "thickness_mm": 160,
+      "landing_length_printed_as": "~2.65",
+      "flight_printed_as": "6 @ 0.25 = 1.50 (รวม 4.25)",
+      "rise_printed_as": "7 @ 0.175",
+      "bar_layers": [
+        {
+          "location": "landing top + bottom",
+          "dia_mm": 12,
+          "spacing_mm": 50,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @ 0.05 m."
+        },
+        {
+          "location": "flight top",
+          "dia_mm": 12,
+          "spacing_mm": 100,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @0.10 m."
+        },
+        {
+          "location": "flight bottom",
+          "dia_mm": 12,
+          "spacing_mm": 100,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @ 0.10 m."
+        },
+        {
+          "location": "distribution",
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "RB 9 mm. @0.15 m."
+        }
+      ],
+      "note": "รองรับด้วย B4A (ปลายชานพัก) และ B4 (ปลายบน); พิมพ์ระยะตั้ง '7@0.175 =1.235' ซึ่งคำนวณได้ 1.225",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "small_print_spacing"
+      ]
+    },
+    {
+      "element_id": "ST1",
+      "element_type": "stair",
+      "level": "ช่วงล่าง ชั้น 1",
+      "thickness_mm": 160,
+      "landing_length_printed_as": "~2.65",
+      "flight_printed_as": "12 @ 0.25 = 3.00 (รวม ~5.75)",
+      "rise_printed_as": "13 @ 0.175 = 2.275",
+      "bar_layers": [
+        {
+          "location": "landing top + bottom",
+          "dia_mm": 12,
+          "spacing_mm": 50,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @ 0.05 m."
+        },
+        {
+          "location": "flight top",
+          "dia_mm": 12,
+          "spacing_mm": 120,
+          "type": "DB",
+          "printed_as": "DB12 mm. @ 0.12 m."
+        },
+        {
+          "location": "flight bottom",
+          "dia_mm": 12,
+          "spacing_mm": 50,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @ 0.05 m."
+        },
+        {
+          "location": "distribution",
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "RB 9 mm. @ 0.15 m."
+        }
+      ],
+      "note": "ปลายล่างลงบน B4A",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "small_print_spacing"
+      ]
+    },
+    {
+      "element_id": "ST1",
+      "element_type": "stair",
+      "level": "ช่วงบน ชั้น 2",
+      "thickness_mm": 160,
+      "landing_length_printed_as": "~1.90",
+      "flight_printed_as": "9 @ 0.25 = 2.25 (รวม 4.25)",
+      "rise_printed_as": "10 @ 0.175 = 1.75",
+      "bar_layers": [
+        {
+          "location": "landing top + bottom",
+          "dia_mm": 12,
+          "spacing_mm": 80,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @ 0.08 m."
+        },
+        {
+          "location": "flight top + bottom",
+          "dia_mm": 12,
+          "spacing_mm": 80,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @ 0.08 m."
+        },
+        {
+          "location": "distribution",
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "RB 9 mm. @ 0.15 m."
+        }
+      ],
+      "note": "ปลายทั้งสองบน B4",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "small_print_spacing"
+      ]
+    },
+    {
+      "element_id": "ST1",
+      "element_type": "stair",
+      "level": "ช่วงล่าง ชั้น 2",
+      "thickness_mm": 160,
+      "landing_length_printed_as": "~1.90",
+      "flight_printed_as": "พิมพ์ '12 @ 0.25 =2.25' (รวม ~4.25)",
+      "rise_printed_as": "10 @ 0.175 = 1.75",
+      "bar_layers": [
+        {
+          "location": "landing top + bottom",
+          "dia_mm": 12,
+          "spacing_mm": 80,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @ 0.08 m."
+        },
+        {
+          "location": "flight top + bottom",
+          "dia_mm": 12,
+          "spacing_mm": 80,
+          "type": "DB",
+          "printed_as": "DB 12 mm. @ 0.08 m."
+        },
+        {
+          "location": "distribution",
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "RB 9 mm. @ 0.15 m."
+        }
+      ],
+      "note": "พิมพ์ 12 ลูกนอนแต่ผลรวม 2.25 = 9 x 0.25 — บันทึกตามที่พิมพ์",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "small_print_spacing",
+        "printed_tread_count_inconsistent"
+      ]
+    },
+    {
+      "element_id": "ST2",
+      "element_type": "stair",
+      "thickness_mm": 100,
+      "tread_mm": 300,
+      "rise_mm": 210,
+      "bar_layers": [
+        {
+          "location": "main",
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø9 mm.@0.15 m."
+        },
+        {
+          "location": "distribution",
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø6 mm.@0.15 m."
+        },
+        {
+          "location": "each step corner",
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "Ø6 mm.ทุกมุม"
+        }
+      ],
+      "note": "บันไดทางเข้า (ใต้แถว E) วางบน G4 / G5",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "small_print_dimensions"
+      ]
+    }
+  ]
+}
