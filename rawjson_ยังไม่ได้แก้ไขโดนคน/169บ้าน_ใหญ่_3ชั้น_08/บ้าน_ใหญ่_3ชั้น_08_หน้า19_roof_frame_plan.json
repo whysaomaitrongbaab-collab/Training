@@ -1,0 +1,612 @@
+{
+  "png": "19",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลนชั้นหลังคา (แบบ สปช. 2/28 ปรับปรุง แผ่นที่ 17/24)",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_08/บ้าน_ใหญ่_3ชั้น_08_หน้า19.png",
+  "grid_source": "บ้าน_ใหญ่_3ชั้น_08_หน้า00_gridline.json",
+  "floor_level": "RF",
+  "view_title": "แปลนชั้นหลังคา",
+  "scale": "1:150",
+  "pattern": "roof_frame_plan",
+  "views": [
+    "view1: แปลนชั้นหลังคา 1:150 — roof beams R1 + roof trusses T1/T2/T3/T4-1/T4-2 (this file)"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Structural roof-level plan carrying roof beams R1 (solid) and trusses T1-T4 (dashed) with marks -> roof_frame_plan (section 1: a roof sheet with structural marks is never roof_plan).",
+    "R1 runs the full perimeter of rows B and E (12 bays each) and the end-bay grid lines 1, 2, 12, 13 (B-C, C-D, D-E). R1 is typed beam; the T-marks are typed truss.",
+    "T1 on grids 3-11 and T2 on grids 2/12 are recorded between the column rows B and E; their dashed lines continue to the eaves 2.05 outside A/F (overhang not a separate element). T4-1 (row C) and T4-2 (row D) are recorded between grids 1-2 and 12-13; their dashed lines run out to the end eaves.",
+    "Hip trusses T3 are diagonal: from each corner column (B1, E1, B13, E13) to the end of the ridge line (แนวสันหลังคา). The ridge end is not dimensioned: it sits where 45-degree hips from the eave corners meet the ridge midway between the eaves (x 4.825 / 43.175, y 4.825; measured ~4.85 by scale) -> grid master lines 2', 11', C''' carry scaled_from_grid, and the T3 spans are straight-line lengths (scaled_from_grid).",
+    "Eave dimension 2.05 is printed on all four sides; read as hanging off the outer lines A/F (same convention as S-01/S-02, see grid master)."
+  ],
+  "elements": [
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "พิมพ์ '⊓ R1 ⊓'",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C'''2'",
+      "span_length_m": 6.736,
+      "span_source": "scaled_from_grid",
+      "note": "ตะเฆ่ T3 จากมุมเสา B1 ถึงปลายแนวสันหลังคา (เส้นประทแยงต่อจากมุมชายคา)",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "diagonal_hip",
+        "end_point_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "E2",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T2 แนวกริด 2/12 (เส้นประเต็มความกว้างถึงชายคา)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "E3",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "E4",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "E5",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "B6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B6",
+      "grid_ref_end": "E6",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B6",
+      "grid_ref_end": "B7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B7",
+      "grid_ref_end": "E7",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B7",
+      "grid_ref_end": "B8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B8",
+      "grid_ref_end": "E8",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B8",
+      "grid_ref_end": "B9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B9",
+      "grid_ref_end": "E9",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B9",
+      "grid_ref_end": "B10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B10",
+      "grid_ref_end": "E10",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B10",
+      "grid_ref_end": "B11",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "grid_ref_start": "B11",
+      "grid_ref_end": "E11",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T1 (เส้นประ) พาดแนวเสา B-E ยื่นถึงชายคาทั้งสองด้าน",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B11",
+      "grid_ref_end": "B12",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "B13",
+      "grid_ref_end": "C'''11'",
+      "span_length_m": 6.736,
+      "span_source": "scaled_from_grid",
+      "note": "ตะเฆ่ T3 จากมุมเสา B13 ถึงปลายแนวสันหลังคาด้านขวา",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "diagonal_hip",
+        "end_point_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B12",
+      "grid_ref_end": "C12",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "B12",
+      "grid_ref_end": "E12",
+      "span_length_m": 9.4,
+      "span_source": "grid_table",
+      "note": "โครงถัก T2 แนวกริด 2/12 (เส้นประเต็มความกว้างถึงชายคา)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B12",
+      "grid_ref_end": "B13",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "พิมพ์ '⊓ R1 ⊓'",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "B13",
+      "grid_ref_end": "C13",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4-1",
+      "element_type": "truss",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงถัก T4-1 แนว C ยื่นออกถึงชายคาด้านสกัด",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C12",
+      "grid_ref_end": "D12",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4-1",
+      "element_type": "truss",
+      "grid_ref_start": "C12",
+      "grid_ref_end": "C13",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงถัก T4-1 แนว C ยื่นออกถึงชายคาด้านสกัด",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "C13",
+      "grid_ref_end": "D13",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "C'''2'",
+      "span_length_m": 6.736,
+      "span_source": "scaled_from_grid",
+      "note": "ตะเฆ่ T3 จากมุมเสา E1 ถึงปลายแนวสันหลังคา",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "diagonal_hip",
+        "end_point_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "grid_ref_start": "E13",
+      "grid_ref_end": "C'''11'",
+      "span_length_m": 6.736,
+      "span_source": "scaled_from_grid",
+      "note": "ตะเฆ่ T3 จากมุมเสา E13 ถึงปลายแนวสันหลังคาด้านขวา",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "diagonal_hip",
+        "end_point_scaled_from_grid"
+      ]
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4-2",
+      "element_type": "truss",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงถัก T4-2 แนว D ยื่นออกถึงชายคาด้านสกัด",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "E2",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "D12",
+      "grid_ref_end": "E12",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4-2",
+      "element_type": "truss",
+      "grid_ref_start": "D12",
+      "grid_ref_end": "D13",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "โครงถัก T4-2 แนว D ยื่นออกถึงชายคาด้านสกัด",
+      "confidence_score": 0.72,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "D13",
+      "grid_ref_end": "E13",
+      "span_length_m": 2.4,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "E5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E5",
+      "grid_ref_end": "E6",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E6",
+      "grid_ref_end": "E7",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E7",
+      "grid_ref_end": "E8",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E8",
+      "grid_ref_end": "E9",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E9",
+      "grid_ref_end": "E10",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E10",
+      "grid_ref_end": "E11",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E11",
+      "grid_ref_end": "E12",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "grid_ref_start": "E12",
+      "grid_ref_end": "E13",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    }
+  ]
+}

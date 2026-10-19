@@ -1,0 +1,159 @@
+{
+  "png": "17",
+  "doc_page": 17,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลน คาน พื้นชั้น 1, แปลนเสา ฐานราก (แบบ สปช. 2/28 ปรับปรุง แผ่นที่ 15/24)",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_08/บ้าน_ใหญ่_3ชั้น_08_หน้า17.png",
+  "grid_source": "บ้าน_ใหญ่_3ชั้น_08_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนเสา ฐานราก",
+  "scale": null,
+  "pattern": "footing_plan",
+  "views": [
+    "view1: แปลน คาน พื้นชั้น 1 — beams (this split: beam_plan) + slab marks S1/S2/S5/ST2/GS (split: _view1_etc_plan_slab.json)",
+    "view2: แปลนเสา ฐานราก — footings F1/F2/F3 + columns C1/C1'/C2 (footing_plan)"
+  ],
+  "confidence_score": 0.86,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Every column position is printed as a footing+column pair ('F1,C1', 'F2,C2', 'F3,C2', 'F1,C1'', 'F2,C1''): 34 positions = 18 F1 (rows B and E, grids 3-11) + 8 F2 (grid 2 and 12, rows B-E) + 8 F3 (grid 1 and 13, rows B-E). Footings and columns are recorded as separate point elements with the same grid_refs.",
+    "Rows C and D carry columns only on the end-wall grids 1, 2, 12, 13; the classroom bays 3-11 span B-E with no interior column (the beam plan's B9/B11 run B-E unbroken).",
+    "Footing sizes / rebar are not printed on this plan (detail sheets S-03 onward, not extracted in this run).",
+    "Printed under the plan: 'กรณีที่ใช้ฐานรากแผ่ สภาพชั้นดินต้องรับน้ำหนักได้ไม่น้อยกว่า 8,000 กก./ตรม.'"
+  ],
+  "elements": [
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "count": 8,
+      "grid_refs": [
+        "B1",
+        "B13",
+        "C1",
+        "C13",
+        "D1",
+        "D13",
+        "E1",
+        "E13"
+      ],
+      "note": "พิมพ์ 'F3,C2' — มุมอาคารและแนวผนังสกัดกริด 1 / 13 แถว B-E",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C2",
+      "element_type": "column",
+      "count": 14,
+      "grid_refs": [
+        "B1",
+        "B2",
+        "B12",
+        "B13",
+        "C1",
+        "C2",
+        "C12",
+        "C13",
+        "D1",
+        "D2",
+        "D12",
+        "D13",
+        "E1",
+        "E13"
+      ],
+      "note": "คู่กับ F3 (8 ตำแหน่ง) และ F2 (6 ตำแหน่ง แถว B-D กริด 2 / 12)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "count": 8,
+      "grid_refs": [
+        "B2",
+        "B12",
+        "C2",
+        "C12",
+        "D2",
+        "D12",
+        "E2",
+        "E12"
+      ],
+      "note": "พิมพ์ 'F2,C2' (B/C/D) และ 'F2,C1'' (E2, E12)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 18,
+      "grid_refs": [
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11"
+      ],
+      "note": "ฐานรากใหญ่ แนวเสา B และ E กริด 3-11 (ไม่มีเสาที่แถว C, D ช่วงนี้)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 15,
+      "grid_refs": [
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "B11",
+        "E4",
+        "E5",
+        "E6",
+        "E7",
+        "E8",
+        "E10"
+      ],
+      "note": "พิมพ์ 'F1,C1'",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1'",
+      "element_type": "column",
+      "count": 5,
+      "grid_refs": [
+        "E2",
+        "E3",
+        "E9",
+        "E11",
+        "E12"
+      ],
+      "note": "พิมพ์ 'F1,C1'' (E3, E9, E11) และ 'F2,C1'' (E2, E12) — แถว E ตำแหน่งบันได/ทางเข้า",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "small_prime_mark_low_resolution"
+      ]
+    }
+  ]
+}
