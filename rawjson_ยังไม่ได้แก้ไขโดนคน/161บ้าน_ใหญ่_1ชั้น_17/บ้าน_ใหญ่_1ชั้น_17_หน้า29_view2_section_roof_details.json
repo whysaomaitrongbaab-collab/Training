@@ -1,0 +1,112 @@
+{
+  "png": "29",
+  "doc_page": 29,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แปลนโครงหลังคา (แบบแผ่นที่ S-06 แผ่นที่ 28/33)",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_17/บ้าน_ใหญ่_1ชั้น_17_หน้า29.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_17_หน้า00_gridline.json",
+  "view_title": "แบบขยายครอบ คสล.; B12; การเสริมเหล็ก B12 กลางจั่ว; แบบขยายการยึดอกไก่เหล็กกับ คาน คสล.",
+  "scale": null,
+  "views": [
+    "view1: แปลนโครงหลังคา 1:100 (หลังคาบน กริด 3-10) — roof_frame_plan (this file)",
+    "view2: แบบขยายครอบ คสล., B12, B7, การเสริมเหล็ก B12 กลางจั่ว, แบบขยายการยึดอกไก่เหล็กกับคาน คสล. — section (_view2)"
+  ],
+  "confidence_score": 0.72,
+  "confidence_flags": [],
+  "warnings": [
+    "B12 section prints '4 DB 12 mm.' twice (one leader to the upper bars, one to the lower bars) while six bar dots are drawn (two top, two mid-depth, two bottom). Recorded as printed, top 4 / bottom 4, flagged — the alternative (the two callouts overlapping at the mid row, 6 bars in all) is plausible.",
+    "B12 carries an RC eave flange (0.20 + 0.20 wide, 0.08 thick) with its own '3 DB 12 mm.' and 'ป RB 6 mm. @ 0.15 m.' — kept in additional_bars / note, not merged into the beam faces. The steel channel 'เหล็ก USE 1 - ⊏ - 150x75x75x4mm.' fixed to the side of B12 is noted on the element.",
+    "B7 is drawn here only as the 0.50-deep support of the ridge connection; its spec is on S-11."
+  ],
+  "elements": [
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "4 DB 12 mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "4 DB 12 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป RB 6 mm. @ 0.15 m."
+      },
+      "additional_bars": [
+        {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "position": "ปีกครอบชายคาบนหลังคาน B12 (กว้าง 0.20+0.20 หนา 0.08)",
+          "printed_as": "3 DB 12 mm.",
+          "note": "ปลอกปีก ป RB 6 mm. @ 0.15 m."
+        }
+      ],
+      "note": "คานลาดจั่ว (การเสริมเหล็ก B12 กลางจั่ว) — ติดเหล็ก USE 1 - ⊏ - 150x75x75x4mm. ด้านข้าง",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "callout_count_disagrees_with_drawn_dots"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครอบ คสล.",
+      "element_type": "beam",
+      "width_mm": 100,
+      "height_mm": 150,
+      "width_mm_printed_as": "0.10 (+ ปีกลาด 0.15)",
+      "main_bar": {
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "RB Ø 9 มม.",
+        "note": "วาด 3 เส้น"
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "RB Ø 9 มม.@ 0.15 ม."
+      },
+      "note": "แบบขยายครอบ คสล. (ครอบปลายจั่ว)",
+      "confidence_score": 0.68,
+      "confidence_flags": [
+        "detail_member_unmarked"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "การยึดอกไก่เหล็กกับคาน คสล.",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 150,
+        "b_mm": 75,
+        "tw_mm": 4.5,
+        "printed_as": "อกไก่เหล็ก รางน้ำ 2 - ][ - 150x75x75x4.5 mm.",
+        "note": "ราง 2 ตัว (double channel); เลขตัวที่สาม '75' ในชุด 150x75x75x4.5 ไม่ได้แปลงเป็นฟิลด์"
+      },
+      "plate_printed_as": "PL 0.25 x 0.40 ม. PL หนา 12 มม.; PL 0.30 x 0.40 ม. PL หนา 12 มม.; PL ยึดหนา 6 มม.",
+      "bolts_printed_as": "เคมีคอลโบลท์ 7 -Bolt Ø 12 mm.",
+      "bolt_count": 7,
+      "bolt_dia_mm": 12,
+      "note": "ยึดอกไก่เหล็กเข้าหัวคาน B7 (ลึก 0.50) ด้วยแผ่นเหล็กและเคมีคอลโบลท์",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ]
+}
