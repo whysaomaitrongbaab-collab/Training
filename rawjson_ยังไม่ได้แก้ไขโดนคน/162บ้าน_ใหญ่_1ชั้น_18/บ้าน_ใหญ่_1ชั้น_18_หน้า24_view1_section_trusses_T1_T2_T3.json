@@ -1,0 +1,125 @@
+{
+  "png": "24",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "ขยายโครงหลังคา T1, T2, T3 (S-10) — โรงอาหารขนาดเล็ก 260 ที่นั่ง",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_18/บ้าน_ใหญ่_1ชั้น_18_หน้า24.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_18_หน้า00_gridline.json",
+  "view_title": "ขยาย T1, T2, T3",
+  "scale": "1:50",
+  "views": [
+    "view1: ขยาย T1 1:50 (โครงถักท่อเหล็กหลัก) — section",
+    "view2: ขยาย T2 1:50 — section",
+    "view3: ขยาย T3 1:50 — section",
+    "view4: รายการประกอบแบบโครงหลังคา / โครงหลังคาเหล็ก / ตารางเหล็กท่อกลมกลวง / งานทาสีโครงหลังคา / หลังคาเหล็ก — notes"
+  ],
+  "confidence_score": 0.83,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Steel pipe trusses: sizes from the pipe table printed on this sheet (ø-32 = 1 1/4\" 42.4 x 2.6, ø-40 = 1 1/2\" 48.3 x 2.9, ø-65 = 2 1/2\" 60.3 x 3.2, ø-100 = 4\" 114.3 x 3.6). steel_section keeps the callout's nominal ø (Pipe, d_mm = nominal) with the printed text; the table's outside diameters are in the notes file.",
+    "T1 callouts: the 'ø-100 mm. t = 3.6 mm.' leader runs down through the truss to the bottom chord, the 'ø-65 mm. t = 3.2 mm.' leader points at a mid-span diagonal — chords 100, web members 65 as read from the leaders; flagged.",
+    "Panel chains (~1.00 x 19, ~1.10 x 10) and depths are truss-internal and stay here (section 4 rule 4 exception); the support-to-support 16.00 and the 5.50 bays are in the grid master."
+  ],
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "Pipe",
+        "d_mm": 100,
+        "tw_mm": 3.6,
+        "printed_as": "ø-100 mm. t = 3.6 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ด (ลูกศรลากผ่านถึงคอร์ดล่าง)",
+          "printed_as": "ø-100 mm. t = 3.6 mm."
+        },
+        {
+          "role": "ค้ำยัน/ตั้ง (ลูกศรชี้ท่อทแยงช่วงกลาง)",
+          "printed_as": "ø-65 mm. t = 3.2 mm."
+        }
+      ],
+      "span_m": 16.0,
+      "span_printed_as": "16.00 ระหว่างจุดรองรับ + ยื่น ~1.00 (ฝั่ง E) และ ~2.00 (ฝั่ง A)",
+      "panel_spacing_m": 1.0,
+      "panel_spacing_printed_as": "~1.00 x 19",
+      "height_mm": 2040,
+      "height_mm_printed_as": "~2.04 (ปลายสูงฝั่ง E); ความลึกช่องต่อช่อง 0.96, 1.78, 1.70, 1.61, 1.52, 1.43, 1.35, 1.26, 1.17, 1.08, 1.00, 0.91, 0.82, 0.73, 0.65, 0.56, 0.47, 0.39; ปลายต่ำ 0.38",
+      "note": "โครงถักหลังคาลาดเดียว — ตำแหน่ง T2 อยู่ห่างจุดรองรับฝั่ง E 2 ช่อง, T3 ห่างจุดรองรับฝั่ง A 3 ช่อง (แนวแถว B); แบบขยาย 1 / 2 ที่จุดรองรับทั้งสอง",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "member_role_from_leader_lines"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "Pipe",
+        "d_mm": 40,
+        "tw_mm": 2.9,
+        "printed_as": "ø 40 mm. t = 2.9 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน",
+          "printed_as": "ø 40 mm. t = 2.9 mm."
+        },
+        {
+          "role": "คอร์ดล่าง",
+          "printed_as": "ø 40 mm. t = 2.9 mm."
+        },
+        {
+          "role": "ค้ำยัน/ตั้ง",
+          "printed_as": "ø 32 mm t = 2.6 mm."
+        }
+      ],
+      "span_m": 5.5,
+      "span_printed_as": "5.50 + 5.50 ระหว่าง T1 สามตัว",
+      "panel_spacing_m": 1.1,
+      "panel_spacing_printed_as": "~1.10 x 10",
+      "height_mm": 1680,
+      "height_mm_printed_as": "~1.68 (0.84 + 0.84)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "Pipe",
+        "d_mm": 40,
+        "tw_mm": 2.9,
+        "printed_as": "ø 40 mm. t = 2.9 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน/ล่าง",
+          "printed_as": "ø 40 mm. t = 2.9 mm."
+        },
+        {
+          "role": "ค้ำยัน/ตั้ง",
+          "printed_as": "ø 32 mm t = 2.6 mm."
+        }
+      ],
+      "span_m": 5.5,
+      "span_printed_as": "5.50 + 5.50 ระหว่าง T1 สามตัว",
+      "panel_spacing_m": 1.1,
+      "panel_spacing_printed_as": "~1.10 x 10",
+      "height_mm": null,
+      "note": "ความลึกไม่พิมพ์ตัวเลข (โครงถักคอร์ดขนานตื้นกว่า T2)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "depth_not_printed"
+      ]
+    }
+  ]
+}

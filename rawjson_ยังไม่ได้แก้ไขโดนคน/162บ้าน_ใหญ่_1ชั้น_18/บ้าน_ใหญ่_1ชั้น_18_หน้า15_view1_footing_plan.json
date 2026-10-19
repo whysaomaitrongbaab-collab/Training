@@ -1,0 +1,110 @@
+{
+  "png": "15",
+  "doc_page": 15,
+  "discipline": "structural",
+  "sheet_code": "S-01",
+  "sheet_name": "แปลนฐานราก เสา (S-01) — โรงอาหารขนาดเล็ก 260 ที่นั่ง",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_18/บ้าน_ใหญ่_1ชั้น_18_หน้า15.png",
+  "pattern": "footing_plan",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_18_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนฐานราก-เสาตอม่อ (ฐานรากแบบที่ 1 — กรณีตอกเสาเข็ม)",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนฐานราก-เสาตอม่อ 1:75 — ป้าย 'F1,C1' / 'F1,CX' ทุกจุดตัดกริด = ฐานรากแบบที่ 1 (กรณีตอกเสาเข็ม) + เสา (this split: footing_plan, pile system)",
+    "view2: same drawing — ป้ายกรอบสี่เหลี่ยม [F1] / [F2] ใต้ป้ายเดิม = ฐานรากแบบที่ 2 (ฐานแผ่ กรณีดินรับน้ำหนักได้ไม่น้อยกว่า 8 ตัน/ตร.ม.) (footing_plan, spread system)",
+    "view3: รายการประกอบแบบฐานราก + หมายเหตุ — notes"
+  ],
+  "confidence_score": 0.9,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Two footing systems are drawn on the one plan: every grid point prints 'F1,C1' or 'F1,CX' (footing F1 + column) and, under it, a boxed mark [F1] or [F2]. The sheet's own legend (รายการประกอบแบบฐานราก) says '1.) F1 กรณีฐานรากตอกเสาเข็ม' and '2.) [F1,F2] กรณีดินใต้ฐานรากรับน้ำหนักบรรทุกปลอดภัยได้ไม่น้อยกว่า 8 ตัน / ตร.ม' — and the detail sheet S-06 titles them ฐานรากแบบที่ 1 (F1 on one pile) and ฐานรากแบบที่ 2 (spread footings F1 1.50x1.50, F2 2.00x2.00). Split into two files (section 1 #2 / section 3) so the two different F1 members never share a file: this file = pile system, _view2 = spread system.",
+    "Columns: C1 at the 16 perimeter points, CX at the 9 interior points (rows B-D x grids 2-4); the column marks belong to both footing systems and are recorded here only. The plan carries no separate column sheet (plan_column absent).",
+    "All 25 grid points carry a footing; read left-to-right, top-to-bottom off the plan."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "count": 25,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5"
+      ],
+      "footing_type": "ฐานรากแบบที่ 1 — กรณีตอกเสาเข็ม (เข็ม 1 ต้น)",
+      "note": "ป้าย 'F1,C1' / 'F1,CX' ทุกจุดตัดกริด",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "C1",
+      "element_type": "column",
+      "count": 16,
+      "grid_refs": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "B1",
+        "B5",
+        "C1",
+        "C5",
+        "D1",
+        "D5",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5"
+      ],
+      "note": "ป้าย 'F1,C1' — เสารอบนอกอาคาร (แถว A, E และกริด 1, 5)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "CX",
+      "element_type": "column",
+      "count": 9,
+      "grid_refs": [
+        "B2",
+        "B3",
+        "B4",
+        "C2",
+        "C3",
+        "C4",
+        "D2",
+        "D3",
+        "D4"
+      ],
+      "note": "ป้าย 'F1,CX' — เสาตอม่อภายในแถว B-D กริด 2-4 (ขยายเสา S-07: CX มีเฉพาะช่วงฐานราก→พื้นชั้นที่ 1)",
+      "confidence_score": 0.92,
+      "confidence_flags": []
+    }
+  ]
+}

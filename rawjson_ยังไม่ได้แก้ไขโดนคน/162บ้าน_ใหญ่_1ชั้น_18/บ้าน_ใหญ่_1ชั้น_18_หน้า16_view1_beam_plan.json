@@ -1,0 +1,1139 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนเสา คาน พื้นชั้น 1 (S-02) — โรงอาหารขนาดเล็ก 260 ที่นั่ง",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_18/บ้าน_ใหญ่_1ชั้น_18_หน้า16.png",
+  "pattern": "beam_plan",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_18_หน้า00_gridline.json",
+  "floor_level": "F1",
+  "view_title": "แปลนเสา, คาน, พื้นชั้น 1",
+  "scale": "1:75",
+  "views": [
+    "view1: แปลนเสา, คาน, พื้นชั้น 1 1:75 — beams B1-B12, B4', B6A, B7A + slab marks S1/S2/PS/GS (this file: beam_plan)",
+    "view2: รายการประกอบแบบพื้น คสล 1.)-5.) — notes"
+  ],
+  "confidence_score": 0.87,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Ground-floor (+0.50) suspended floor: beams on every column line plus secondary beams B8 at the mid-bay lines (2.75 from each column line), precast solid planks PS spanning between them (arrows on every PS mark), and the front canopy (กันสาดหน้า) beyond row A on cantilever beams B10 / B7A / B6A with edge beams B11 / B4' / B4.",
+    "Beams are split at their supports (columns, or the beam they bear on), not where a secondary beam lands on them — B1/B2/B3 run one segment per column bay even though B8 lands at mid-bay, matching the beam elevations on S-08 (sections per 5.50 bay). B8 is split at rows B/C/D where it bears on B1 (S-09 elevation shows supports there).",
+    "Canopy beam line: B4/B4'/B11 and the ends of B6A/B7A/B9/B10 are placed on y line A'''' (-1.50), the cantilever length printed on the B6/B7 elevations (S-09); the plan's 1.70 is the outer slab edge (A'''). B10/B11 print '(+0.10)' — they sit low, at the bottom of the sloped canopy slab S2.",
+    "Two different members both print B9: the canopy beam on line 4.00 (1'''''') and the short beam in the toilet bay on line 20.625 (4''') — same mark, same section (S-07 ขยาย B9), recorded as separate segments.",
+    "Slab marks are recorded as bay areas after the beams (this set has no separate slab plan): S1/S2 cast-in-place on beams, PS precast planks in every bay (31 PS marks + the PS below B12), GS slab on grade around the building (6 GS marks, recorded as three walkway strips). The steps (ขึ้น) on grids 1/5 (rows B-D) and row E (grids 2-4) are outlined but carry no mark."
+  ],
+  "elements": [
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "grid_ref_start": "A''''1",
+      "grid_ref_end": "A1",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาดหน้า ป้าย 'B10 (+0.10)' ตามกริด 1 (หลังคาน +0.10)",
+      "level_m": 0.1,
+      "level_m_printed_as": "(+0.10)",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "cantilever_from_column_A1"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "grid_ref_start": "A''''1",
+      "grid_ref_end": "A''''1''''''",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาด ป้าย 'B11 (+0.10)' เส้นประ ขอบพื้นลาด S2",
+      "level_m": 0.1,
+      "level_m_printed_as": "(+0.10)",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "bears_on_beam:B10(start)",
+        "bears_on_beam:B9(end)"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A''''1''''''",
+      "grid_ref_end": "A1''''''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คาน B9 ขวางกันสาดที่ 4.00 จากกริด 1 (ขอบ S2/S1)",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B4'",
+      "element_type": "beam",
+      "grid_ref_start": "A''''1''''''",
+      "grid_ref_end": "A''''2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาด ป้าย B4' (โซ่ 1.50 เหนือคาน)",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "bears_on_beam:B9(start)",
+        "bears_on_beam:B7A(end)"
+      ]
+    },
+    {
+      "element_id": "B7A",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "A2",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาดหน้า (ขยายคาน B7: ยื่น 1.50 เลยแถว A)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "cantilever_from_column_A2"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A''''2",
+      "grid_ref_end": "A''''3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาดหน้า",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B7A(start)",
+        "bears_on_beam:B7A(end)"
+      ]
+    },
+    {
+      "element_id": "B7A",
+      "element_type": "beam",
+      "grid_ref_start": "A''''3",
+      "grid_ref_end": "A3",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาดหน้า (ขยายคาน B7: ยื่น 1.50 เลยแถว A)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "cantilever_from_column_A3"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A''''3",
+      "grid_ref_end": "A''''4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาดหน้า",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B7A(start)",
+        "bears_on_beam:B7A(end)"
+      ]
+    },
+    {
+      "element_id": "B7A",
+      "element_type": "beam",
+      "grid_ref_start": "A''''4",
+      "grid_ref_end": "A4",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาดหน้า (ขยายคาน B7: ยื่น 1.50 เลยแถว A)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "cantilever_from_column_A4"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "A''''4",
+      "grid_ref_end": "A''''5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "note": "คานขอบกันสาดหน้า",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B7A(start)",
+        "bears_on_beam:B6A(end)"
+      ]
+    },
+    {
+      "element_id": "B6A",
+      "element_type": "beam",
+      "grid_ref_start": "A''''5",
+      "grid_ref_end": "A5",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คานยื่นกันสาดหน้าตามกริด 5 (ขยายคาน B6: ยื่น 1.50 เลยแถว A)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "cantilever_from_column_A5"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "B1",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A1'''''",
+      "grid_ref_end": "B1'''''",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "B2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A2'",
+      "grid_ref_end": "B2'",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "B3",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A3'",
+      "grid_ref_end": "B3'",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "B4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "A4'",
+      "grid_ref_end": "B4'",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "grid_ref_start": "A4'''",
+      "grid_ref_end": "A'''''4'''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "note": "คาน B9 ช่องห้องน้ำ ระหว่างแผ่นพื้น S1 สองแผ่น",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B12(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "B5",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "grid_ref_start": "A'''''4'",
+      "grid_ref_end": "A'''''5",
+      "span_length_m": 2.75,
+      "span_source": "grid_table",
+      "note": "คานใต้พื้น S1 ห้องน้ำ (โซ่ 1.50 | 1.50 ด้านขวา)",
+      "confidence_score": 0.84,
+      "confidence_flags": [
+        "bears_on_beam:B8(start)",
+        "bears_on_beam:B6(end)"
+      ]
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "B1'''''",
+      "grid_ref_end": "C1'''''",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "B2'",
+      "grid_ref_end": "C2'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "B3'",
+      "grid_ref_end": "C3'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "B4'",
+      "grid_ref_end": "C4'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "C5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "D1",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "C1'''''",
+      "grid_ref_end": "D1'''''",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "D2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "C2'",
+      "grid_ref_end": "D2'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "D3",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "C3'",
+      "grid_ref_end": "D3'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "D4",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "C5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "C4'",
+      "grid_ref_end": "D4'",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B1(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "D5",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "E1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D1",
+      "grid_ref_end": "D2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "D1'''''",
+      "grid_ref_end": "E1'''''",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "E2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D2",
+      "grid_ref_end": "D3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "D2'",
+      "grid_ref_end": "E2'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "E3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D3",
+      "grid_ref_end": "D4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "D3'",
+      "grid_ref_end": "E3'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "E4",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "D4",
+      "grid_ref_end": "D5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "grid_ref_start": "D4'",
+      "grid_ref_end": "E4'",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "note": "คานซอยกึ่งกลางช่วงเสา รับแผ่นพื้นสำเร็จรูป PS",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "bears_on_beam:B1(start)",
+        "bears_on_beam:B2(end)"
+      ]
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "grid_ref_start": "D5",
+      "grid_ref_end": "E5",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E1",
+      "grid_ref_end": "E2",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E2",
+      "grid_ref_end": "E3",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E3",
+      "grid_ref_end": "E4",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "E4",
+      "grid_ref_end": "E5",
+      "span_length_m": 5.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "grid_ref": "A'''-A x 1-1''''''",
+      "note": "พื้นกันสาดหน้า ป้าย 'Slope (S2)' — หล่อกับที่วางบนคาน ลาดจาก +0.10 (B10/B11) ขึ้นถึง +0.40",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A'''-A x 1''''''-2",
+      "note": "พื้นกันสาดหน้า ช่อง B9-B7A",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A'''-A x 2-3",
+      "note": "พื้นกันสาดหน้า",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A'''-A x 3-4",
+      "note": "พื้นกันสาดหน้า",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A'''-A x 4-5",
+      "note": "พื้นกันสาดหน้า",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A-A''''' x 4'-4'''",
+      "note": "พื้นห้องน้ำเหนือ B12 (ซ้ายของ B9)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_ref": "A-A''''' x 4'''-5",
+      "note": "พื้นห้องน้ำเหนือ B12 (ขวาของ B9)",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "A-B x 1-1'''''",
+      "note": "แผ่นพื้นสำเร็จรูป (SOLID PLANK) ท้องเรียบ หนา 0.05 ม. + คอนกรีตทับหน้า 0.05 ม.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "A-B x 1'''''-2",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "A-B x 2-2'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "A-B x 2'-3",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "A-B x 3-3'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "A-B x 3'-4",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "A-B x 4-4'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "A'''''-B x 4'-5",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "B-C x 1-1'''''",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "B-C x 1'''''-2",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "B-C x 2-2'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "B-C x 2'-3",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "B-C x 3-3'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "B-C x 3'-4",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "B-C x 4-4'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "B-C x 4'-5",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "C-D x 1-1'''''",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "C-D x 1'''''-2",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "C-D x 2-2'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "C-D x 2'-3",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "C-D x 3-3'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "C-D x 3'-4",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "C-D x 4-4'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "C-D x 4'-5",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "D-E x 1-1'''''",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "D-E x 1'''''-2",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "D-E x 2-2'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "D-E x 2'-3",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "D-E x 3-3'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "D-E x 3'-4",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "D-E x 4-4'",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "PS",
+      "element_type": "slab",
+      "grid_ref": "D-E x 4'-5",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "grid_ref": "A'''-E''' x 1''-1",
+      "note": "พื้นหล่อบนดินรอบอาคาร (ป้าย GS 2 จุดด้านกริด 1) — ช่วง B-D มีชานบันได 0.40 คั่น",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "grid_ref": "A'''-E''' x 5-5'''",
+      "note": "พื้นหล่อบนดินรอบอาคาร (ป้าย GS 2 จุดด้านกริด 5)",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "grid_ref": "E-E''' x 1''-5'''",
+      "note": "พื้นหล่อบนดินรอบอาคาร (ป้าย GS 2 จุดใต้แถว E ช่วง 1-2 และ 4-5) — ช่วงกริด 2-4 มีขั้นบันได 0.40 คั่น",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ]
+}

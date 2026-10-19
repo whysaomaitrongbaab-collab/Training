@@ -1,0 +1,169 @@
+{
+  "png": "25",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-11",
+  "sheet_name": "ขยายโครงหลังคาด้านสกัด T4, T4' และรายละเอียด (S-11) — โรงอาหารขนาดเล็ก 260 ที่นั่ง",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_18/บ้าน_ใหญ่_1ชั้น_18_หน้า25.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_18_หน้า00_gridline.json",
+  "view_title": "ขยาย T4 / T4' (ด้านสกัด), แบบขยายหัวเสา 1-2, โครงเคร่าเหล็ก, การยึดโครงเคร่า",
+  "scale": "1:50 / 1:25 / 1:5",
+  "views": [
+    "view1: ขยาย T4 (ด้านสกัด) 1:50 — section",
+    "view2: ขยาย T4' (ด้านสกัด) 1:50 — section",
+    "view3: แบบขยายหัวเสา 1, แบบขยายหัวเสา 2 1:25 — section",
+    "view4: ขยายโครงเคร่าเหล็กด้านหลัง 1:25 — section",
+    "view5: ขยายการยึดโครงเคร่า กับ ค.ส.ล.ทั่วไป 1:5 + แปลนการยึดโครงเคร่า — section"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "End-frame (ด้านสกัด) trusses on grids 1 and 5 in rectangular hollow sections ('⊠' -> RHS): T4 over the C1 columns E-A, T4' the ~2.00 front overhang (matches the S-04 plan labels).",
+    "Panel chains and the stepped depths are frame-internal and stay on the elements (section 4 rule 4 exception).",
+    "Connection details have no printed mark — element_id null with element_name_assigned (section 0.2)."
+  ],
+  "elements": [
+    {
+      "element_id": "T4",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "⊠100x50 mm. t = 3.2 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน/เสาตั้ง/คอร์ดล่าง",
+          "printed_as": "⊠100x50 mm. t = 3.2 mm."
+        },
+        {
+          "role": "เคร่านอน",
+          "printed_as": "⊠ 50x25 mm. t = 2.3 mm."
+        }
+      ],
+      "panel_spacing_printed_as": "~1.17 x 3 | ~1.13 x 4 | ~1.17 x 3 | ~1.25 x 2 (ช่วงเสา C1 แถว E-D-C-B-A)",
+      "height_mm": 2620,
+      "height_mm_printed_as": "2.62 (ปลายสูงฝั่ง E) ลดลงตามแนวลาด 2.51, 2.41, 2.30, 2.20, 2.16, 2.06, 1.96, 1.86, 1.76, 1.72, 1.62, 1.52, 1.41, 1.37, 1.26, 1.15",
+      "note": "โครงด้านสกัดบนคาน BX เหนือเสา C1 (กริด 1 และ 5) — '**ติดตั้งเสมอเสาริมนอก ให้มั่นคงแข็งแรง ยึดกับ เสา และคาน ค.ส.ล ตามหลักวิชาช่างที่ดี**'",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T4'",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "⊠100x50 mm. t = 3.2 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ด/เสาตั้ง",
+          "printed_as": "⊠100x50 mm. t = 3.2 mm."
+        },
+        {
+          "role": "เคร่า",
+          "printed_as": "⊠ 50x25 mm. t = 2.3 mm."
+        },
+        {
+          "role": "ค้ำยัน",
+          "printed_as": "ค้ำยันเหล็ก (ป้ายในรูป)"
+        }
+      ],
+      "panel_spacing_printed_as": "~1.10 | ~1.10 (โครงล่าง ~0.90 | ~0.90)",
+      "height_mm": 1070,
+      "height_mm_printed_as": "~1.07 (ปลายยื่น); 0.50 / 0.40 ที่แบบขยายหัวเสา 2",
+      "note": "ส่วนยื่นชายคาด้านหน้า ~2.00 เลยเสาแถว A",
+      "confidence_score": 0.76,
+      "confidence_flags": [
+        "low_resolution_small_text"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แบบขยายหัวเสา 1",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "plate_printed_as": "Plate หนา 12 มม ขนาด 0.30x0.40 ม",
+      "anchor_printed_as": "2U-DB 12 mm",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก ⊠100x50 mm. t = 3.2 mm."
+      },
+      "note": "ฐานโครง T4 บนหัวเสา ระยะ ~0.21",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แบบขยายหัวเสา 2",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "plate_printed_as": "Plate หนา 12 มม ขนาด 0.30x0.40 ม",
+      "anchor_printed_as": "2U-DB 12 mm",
+      "weld_printed_as": "เชื่อมตลอดแนวสัมผัส",
+      "note": "จุดต่อ T4' กับหัวเสาเหนือคาน BX",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเคร่าเหล็กด้านหลัง",
+      "element_type": "steel_member",
+      "material": "steel",
+      "steel_section": {
+        "designation": "RHS",
+        "d_mm": 75,
+        "b_mm": 45,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก ⊠75x45x3.2 มม"
+      },
+      "member_sections": [
+        {
+          "role": "เคร่าตั้ง",
+          "printed_as": "เหล็ก ⊠75x45x3.2 มม"
+        },
+        {
+          "role": "เคร่านอน",
+          "printed_as": "เหล็ก ⊠3-50x25x2.3 มม"
+        },
+        {
+          "role": "เคร่านอน @~1.00",
+          "printed_as": "เหล็ก ⊠50x25x2.3 มม @~1.00 ม"
+        },
+        {
+          "role": "ค้ำยัน",
+          "printed_as": "ค้ำยันเหล็ก ⊠75x45x3.2 มม เชื่อมกับโครงเคร่า"
+        }
+      ],
+      "spacing_mm": 1000,
+      "spacing_printed_as": "@~1.00 ม (เคร่านอน); ระยะตั้ง ~0.57 + ~0.57",
+      "confidence_score": 0.76,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "การยึดโครงเคร่า กับ ค.ส.ล.ทั่วไป",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "anchor_printed_as": "1-Chemical Bolt ø 3/8\"",
+      "plate_printed_as": "แผ่น Plate เหล็ก หนา 6 มม",
+      "weld_printed_as": "เชื่อมตลอดแนวสัมผัส",
+      "note": "แปลนการยึดโครงเคร่า: ระยะขอบ 0.02 รอบ (W x L), โครงเคร่าเหล็ก C / โครงเคร่าเหล็กกล่อง บนแผ่น Plate เหล็ก หนา 6 มม",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    }
+  ]
+}

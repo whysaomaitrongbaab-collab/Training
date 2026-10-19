@@ -1,0 +1,514 @@
+{
+  "png": "22",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "ขยายคาน (S-08) — โรงอาหารขนาดเล็ก 260 ที่นั่ง",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_18/บ้าน_ใหญ่_1ชั้น_18_หน้า22.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_18_หน้า00_gridline.json",
+  "view_title": "ขยายคาน B1, B2, B3, B11 (+ รูปด้าน B4'/B4)",
+  "scale": "1:25",
+  "views": [
+    "view1: ขยายคาน B1 (รูปด้านยาวตลอดกริด 1-5) + หน้าตัด B1 A-A ... F-F — section",
+    "view2: ขยายคาน B2 + หน้าตัด B2 A-A, B-B, C-C — section",
+    "view3: ขยายคาน B3 + หน้าตัด B3 A-A ... F-F — section",
+    "view4: ขยายคาน B11, B4', B4 (รูปด้านยาวกันสาดหน้า) + หน้าตัด B11 — section (หน้าตัด B4'/B4 อยู่ใน S-09)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Beam details with several cuts per mark: one entry per printed cut, element_id = the mark and the cut in section_ref (section 0.3) — the cuts differ in top/bottom bar counts along the span (supports vs mid-span).",
+    "Two-layer groups are printed as two stacked labels on one face ('3-DB20mm / 2-DB20mm' above the stirrup label) — summed into that face's count with the printed groups kept in printed_as.",
+    "The bar curtailment chains printed under each elevation are element-internal (rebar detailing) — kept on the element (curtailment_printed_as), not in the grid master (section 4 rule 4 exception). Read off the scan at elevation scale; individual values carry the same low-resolution risk as the rest of the sheet.",
+    "B1's sixth section is titled 'B1 E-E' a second time; taken as F-F (the elevation cuts F-F at the grid-3 support and no other F-F section of B1 exists) — flagged on that entry."
+  ],
+  "elements": [
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "A-A",
+      "width_mm": 300,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-RB9mm@0.20m"
+      },
+      "curtailment_printed_as": "บน 1.95|1.95, 1.85|1.85, 1.95|1.95; ล่าง 0.70|3.50|1.30|1.40|2.80|1.30|1.30|2.80|1.40|1.30|3.50|0.70",
+      "note": "รูปด้าน B1 ต่อเนื่องกริด 1-5 บนเสา (แถว B, C, D); ตำแหน่งตัดเหล็กพิมพ์: เหล็กบนเหนือกริด 2 1.95 | 1.95, กริด 3 1.85 | 1.85, กริด 4 1.95 | 1.95; โซ่ล่าง 0.70 | 3.50 | 1.30 | 1.40 | 2.80 | 1.30 | 1.30 | 2.80 | 1.40 | 1.30 | 3.50 | 0.70",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "B-B",
+      "width_mm": 300,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "3-DB20mm"
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm + 3-DB20mm",
+          "note": "2 ชั้น"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-RB9mm@0.20m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "C-C",
+      "width_mm": 300,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "3-DB20mm + 2-DB20mm",
+          "note": "2 ชั้น"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "3-DB20mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-RB9mm@0.20m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "D-D",
+      "width_mm": 300,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "3-DB20mm + 2-DB20mm",
+          "note": "2 ชั้น"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-RB9mm@0.20m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "E-E",
+      "width_mm": 300,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm + 2-DB20mm",
+          "note": "2 ชั้น"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-RB9mm@0.20m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "section_ref": "F-F",
+      "width_mm": 300,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm + 2-DB20mm",
+          "note": "2 ชั้น"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-RB9mm@0.20m"
+      },
+      "section_ref_printed_as": "E-E",
+      "note": "หัวรูปพิมพ์ 'B1 E-E' ซ้ำเป็นครั้งที่สอง — รูปด้าน B1 มีรอยตัด F-F ที่จุดรองรับกริด 3 และแผ่นนี้ไม่มีหน้าตัด F-F อื่น จึงอ่านรูปนี้เป็น F-F",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "section_title_printed_E-E_twice_read_as_F-F"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "section_ref": "A-A",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "curtailment_printed_as": "บน 1.85|1.85, 1.80|1.80, 1.85|1.85; ล่าง 0.90|3.25|1.35|1.35|2.90|1.30|1.30|2.90|1.35|1.35|3.25|0.90",
+      "note": "รูปด้าน B2 กริด 1-5 แถว E; ตัดเหล็กบน 1.85 | 1.85 (กริด 2), 1.80 | 1.80 (กริด 3), 1.85 | 1.85 (กริด 4); โซ่ล่าง 0.90 | 3.25 | 1.35 | 1.35 | 2.90 | 1.30 | 1.30 | 2.90 | 1.35 | 1.35 | 3.25 | 0.90",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "section_ref": "B-B",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "section_ref": "C-C",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "section_ref": "A-A",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "curtailment_printed_as": "บน 1.75|1.75 x3, 1.75; ล่าง 0.90|3.40|1.20|1.20|3.10|1.20|1.25|3.00|1.25|1.35|3.40|0.75",
+      "note": "รูปด้าน B3 กริด 1-5 แถว A; ตัดเหล็กบน 1.75 | 1.75 ที่กริด 2, 3, 4 และ 1.75 ที่กริด 5; โซ่ล่าง 0.90 | 3.40 | 1.20 | 1.20 | 3.10 | 1.20 | 1.25 | 3.00 | 1.25 | 1.35 | 3.40 | 0.75",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "section_ref": "B-B",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "section_ref": "C-C",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm + 2-DB16mm",
+          "note": "2 ชั้น"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "section_ref": "D-D",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm + 2-DB16mm",
+          "note": "2 ชั้น"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "section_ref": "E-E",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm + 2-DB16mm",
+          "note": "2 ชั้น"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "section_ref": "F-F",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm"
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "3-DB12mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "ป-RB6mm@0.10m"
+      },
+      "level_m": 0.1,
+      "level_m_printed_as": "+0.10",
+      "note": "รูปด้านกันสาดหน้า: B11 จากกริด 1 ถึง 4.00 (หลังคาน +0.10) มีผนังฉาบปูนปิดข้างลาดสูง 0.30 อยู่ด้านบน; B4' จาก 4.00 ถึงกริด 2 (โซ่ 4.00 | 1.50, เหล็กล่าง B4' ยาว 1.00 จากแนว 4.00), B4 กริด 2-5 (ตัดเหล็กบน 2.20, 1.55 | 1.55, 1.95 | 1.65; 1.15 | 4.35 ช่วงกริด 4-5)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}
