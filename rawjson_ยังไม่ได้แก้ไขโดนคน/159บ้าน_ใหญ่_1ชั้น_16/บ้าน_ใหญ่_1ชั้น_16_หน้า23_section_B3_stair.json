@@ -1,0 +1,137 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แบบขยายคาน B3 & B3' และโครงสร้างบันได (แบบ สปช. 103/26 อาคารเรียนชั้นเดียว 3 ห้องเรียน (พื้นยกสูง) แผ่นที่ S-07)",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_16/บ้าน_ใหญ่_1ชั้น_16_หน้า23.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_16_หน้า00_gridline.json",
+  "view_title": "B3 & B3', B3, B3', แบบขยายโครงสร้างบันได",
+  "scale": "1:20",
+  "views": [
+    "view1: B3 & B3' 1:20 (รูปด้านคาน) — section",
+    "view2: B3 1:20, B3' 1:20 (รูปตัด) — section",
+    "view3: แบบขยายโครงสร้างบันได 1:20 — section",
+    "footnote: หมายเหตุ (reference to หนังสือมาตรฐานประกอบแบบก่อสร้าง) — kept in warnings"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "B3 and B3' are one member line on every grid 1-7: B3 spans 6.50 between the columns on A and B, B3' cantilevers 2.00 to the corridor edge C; both 0.20 x 0.65. The elevation shows 2-Ø19 bent bars bending up 1.30 (= L/5) from each B3 support and continuing as top bars into B3'.",
+    "Conflict, B3' bottom bars: the B3' cross-section prints '2-Ø25มม' on the bottom face while the B3' elevation labels the bottom bar '2-Ø19มม'. Took the cross-section (the member's own section callout; spec precedence section/detail first) and lowered the score — the elevation reading (2-Ø19) is plausible for a compression face.",
+    "B3 stirrups: the cross-section prints ป-Ø6 @0.15 while the elevation shows @0.10 over the 1.30 zone next to the B support — spacing_mm takes the smaller with variable_spacing.",
+    "Sheet footnote: 'หมายเหตุ หรือรายการการเสริมเหล็กให้เป็นไปตามข้อกำหนดในหนังสือมาตรฐานประกอบแบบก่อสร้าง' — the referenced standard book is not part of this set.",
+    "The stair detail has no mark: element_id null with element_name_assigned; its tread/riser chain stays on the element (the 0.16 x 5 riser ticks are also z levels in the grid master)."
+  ],
+  "elements": [
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 650,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-Ø25มม"
+        },
+        "bottom": {
+          "count": 6,
+          "dia_mm": 25,
+          "mixed_dia_mm": [
+            25,
+            19
+          ],
+          "type": "RB",
+          "dia_mm_printed_as": "2-Ø25มม + 2-Ø25มม (เสริมกลางช่วง) + 2-Ø19มม (คมL/5)",
+          "note": "2-Ø25 ต่อเนื่อง + 2-Ø25 เสริมกลางช่วง + 2-Ø19 คอม้า ดัดขึ้นที่ L/5 (1.30 จากที่รองรับ ตามรูปด้านคาน)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "ป-Ø6@0.15ม (รูปตัด) / ป-Ø6มม@0.10ม (รูปด้านคาน ช่วงใกล้ที่รองรับแถว B)",
+        "variable_spacing": true,
+        "note": "รูปตัดพิมพ์ @0.15; รูปด้านคานพิมพ์ @0.10 ในช่วง 1.30 ใกล้ที่รองรับด้านคานยื่น และ @0.15 ที่เหลือ"
+      },
+      "note": "คานรับพื้นตามแนวกริด 1-7 ช่วง 6.50 ระหว่างเสาแถว A และ B (ลึก 0.65)",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 650,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 25,
+          "mixed_dia_mm": [
+            25,
+            19
+          ],
+          "type": "RB",
+          "dia_mm_printed_as": "2-Ø25มม + 2-Ø19มม",
+          "note": "2-Ø25 + 2-Ø19 (เหล็กคอม้าจาก B3 ต่อเลยมาเป็นเหล็กบนของคานยื่น)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "2-Ø25มม (รูปตัด B3')"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "ป-Ø6@0.10ม"
+      },
+      "note": "คานยื่น 2.00 จากเสาแถว B รับระเบียงทางเดิน",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "bottom_bar_section_vs_elevation_conflict"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "บันไดทางขึ้นระเบียงทางเดิน",
+      "element_type": "stair",
+      "riser_mm": 160,
+      "riser_count": 5,
+      "tread_mm": 300,
+      "tread_count": 3,
+      "dimension_printed_as": "ลูกตั้ง 0.16 x 5; ลูกนอน 0.30 x 3 + ชานพัก 1.00 = 1.90",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "main_bar": {
+        "dia_mm": 9,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "Ø9มม@0.20ม#",
+        "note": "ตะแกรงพื้นบันได/ชานพักวางบนดิน"
+      },
+      "bar_layers": [
+        {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-Ø9มม ป-(ลูกโซ่) Ø6มม@0.15ม",
+          "location": "คานจมูกขั้นบันไดแต่ละขั้น (ลึก 0.08 ที่จมูก)"
+        }
+      ],
+      "base": "ทรายหยาบอัดแน่น หนา 0.10ม; เสาเข็มไม้ Ø5\"x1.00ม @0.50ม# (รองรับพื้น)",
+      "note": "ลูกนอนก่ออิฐเต็มแผ่นรับลูกนอนบันได; ปลายบนถึง '▽ ระดับระเบียง' (+0.80); ตั้งที่แถว C ช่วง 1-1'' และ 6'-7 (แปลนพื้น)",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "detail_member_unmarked"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,825 @@
+{
+  "png": "18",
+  "doc_page": 18,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แปลนคาน พื้น เสา (แบบ สปช. 103/26 อาคารเรียนชั้นเดียว 3 ห้องเรียน (พื้นยกสูง) แผ่นที่ S-02)",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_ใหญ่_1ชั้น_16/บ้าน_ใหญ่_1ชั้น_16_หน้า18.png",
+  "grid_source": "บ้าน_ใหญ่_1ชั้น_16_หน้า00_gridline.json",
+  "view_title": "แปลนคาน พื้น เสา",
+  "scale": "1:100",
+  "views": [
+    "view1: แปลนคาน พื้น เสา 1:100 — floor beams B1-B4, B3' + the corridor steel posts (this split: beam_plan)",
+    "view2: same drawing — slab marks S1 / S2 (this split: etc_plan)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Floor framing of the raised classroom floor (+0.90) and the corridor (+0.80). Labels per bay: B2 on row A and on the two intermediate lines A''/A''' (one-way slab S2 between them), B4 on row B, B1 on the corridor edge row C; on every grid line 1-7 B3 spans A to B and B3' cantilevers B to C.",
+    "B3 is one continuous member between the columns on A and B (beam elevation S-07: span 6.50, bent bars at 1.30 from each support). The intermediate B2 beams frame into it at A'' and A''', so B3 is recorded atomically A-A''-A'''-B per section 5 (grid/beam intersection in between); the three pieces share the one B3 spec. The intermediate B2 segments carry bears_on_beam:B3 flags.",
+    "A''/A''' have no printed dimension tick; spans use the grid-master positions 6.50/3 (from slab S2 'L=6.50/3') — lowered score.",
+    "Beams are NOT split at the x dummy lines 1'' / 6' (stair edges on the floor plan): nothing frames into the beams there; those lines exist only because rule 4 records every printed tick.",
+    "Row C carries no footing (S-01): B1 sits on the ends of the cantilevers B3'. The small post squares drawn on C are the steel corridor posts identified from section A-A; recorded once here as an unmarked column entry.",
+    "Slab marks S1/S2 are in _view2_etc_plan_slab.json."
+  ],
+  "floor_level": "F1",
+  "elements": [
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A''1",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A1",
+      "grid_ref_end": "A2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังนอกแถว A",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A''2",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A2",
+      "grid_ref_end": "A3",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังนอกแถว A",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A''3",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A3",
+      "grid_ref_end": "A4",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังนอกแถว A",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A''4",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A4",
+      "grid_ref_end": "A5",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังนอกแถว A",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A''5",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A5",
+      "grid_ref_end": "A6",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังนอกแถว A",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A''6",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A6",
+      "grid_ref_end": "A7",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังนอกแถว A",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A7",
+      "grid_ref_end": "A''7",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A'''1",
+      "span_length_m": 2.166,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''1",
+      "grid_ref_end": "A''2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 1/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A'''2",
+      "span_length_m": 2.166,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''2",
+      "grid_ref_end": "A''3",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 1/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A''3",
+      "grid_ref_end": "A'''3",
+      "span_length_m": 2.166,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''3",
+      "grid_ref_end": "A''4",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 1/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A''4",
+      "grid_ref_end": "A'''4",
+      "span_length_m": 2.166,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''4",
+      "grid_ref_end": "A''5",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 1/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A''5",
+      "grid_ref_end": "A'''5",
+      "span_length_m": 2.166,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''5",
+      "grid_ref_end": "A''6",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 1/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A''6",
+      "grid_ref_end": "A'''6",
+      "span_length_m": 2.166,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A''6",
+      "grid_ref_end": "A''7",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 1/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A''7",
+      "grid_ref_end": "A'''7",
+      "span_length_m": 2.166,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "B1",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''1",
+      "grid_ref_end": "A'''2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 2/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "B2",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''2",
+      "grid_ref_end": "A'''3",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 2/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''3",
+      "grid_ref_end": "B3",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''3",
+      "grid_ref_end": "A'''4",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 2/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''4",
+      "grid_ref_end": "B4",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''4",
+      "grid_ref_end": "A'''5",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 2/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''5",
+      "grid_ref_end": "B5",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''5",
+      "grid_ref_end": "A'''6",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 2/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''6",
+      "grid_ref_end": "B6",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "A'''6",
+      "grid_ref_end": "A'''7",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คาน B2 กลางห้อง (แนวที่ 2/3 ของช่วง A-B) วางบนคาน B3",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B3(start)",
+        "bears_on_beam:B3(end)"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "grid_ref_start": "A'''7",
+      "grid_ref_end": "B7",
+      "span_length_m": 2.167,
+      "span_source": "grid_table",
+      "note": "คาน B3 ต่อเนื่องจากเสาแถว A ถึงเสาแถว B ช่วง 6.50 (รูปด้านคาน S-07) — แบ่งช่วงตามแนวคาน B2 ที่มาฝากตาม §5",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "split_at_joist_line_continuous_member",
+        "span_uses_derived_dummy_line"
+      ]
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "C1",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นรับระเบียงทางเดิน ต่อจาก B3 (S-07)",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B1",
+      "grid_ref_end": "B2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังด้านระเบียง (ทำหูช้างรับพื้นระเบียงเมื่อใช้พื้นสำเร็จรูป — S-06)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "C2",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นรับระเบียงทางเดิน ต่อจาก B3 (S-07)",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B2",
+      "grid_ref_end": "B3",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังด้านระเบียง (ทำหูช้างรับพื้นระเบียงเมื่อใช้พื้นสำเร็จรูป — S-06)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "C3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นรับระเบียงทางเดิน ต่อจาก B3 (S-07)",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B3",
+      "grid_ref_end": "B4",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังด้านระเบียง (ทำหูช้างรับพื้นระเบียงเมื่อใช้พื้นสำเร็จรูป — S-06)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "C4",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นรับระเบียงทางเดิน ต่อจาก B3 (S-07)",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B4",
+      "grid_ref_end": "B5",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังด้านระเบียง (ทำหูช้างรับพื้นระเบียงเมื่อใช้พื้นสำเร็จรูป — S-06)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "C5",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นรับระเบียงทางเดิน ต่อจาก B3 (S-07)",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B5",
+      "grid_ref_end": "B6",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังด้านระเบียง (ทำหูช้างรับพื้นระเบียงเมื่อใช้พื้นสำเร็จรูป — S-06)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "B6",
+      "grid_ref_end": "C6",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นรับระเบียงทางเดิน ต่อจาก B3 (S-07)",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "B6",
+      "grid_ref_end": "B7",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานแนวผนังด้านระเบียง (ทำหูช้างรับพื้นระเบียงเมื่อใช้พื้นสำเร็จรูป — S-06)",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3'",
+      "element_type": "beam",
+      "grid_ref_start": "B7",
+      "grid_ref_end": "C7",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "note": "คานยื่นรับระเบียงทางเดิน ต่อจาก B3 (S-07)",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "cantilever"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C1",
+      "grid_ref_end": "C2",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานขอบระเบียงทางเดิน วางบนปลายคานยื่น B3'",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B3'(start)",
+        "bears_on_beam:B3'(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C2",
+      "grid_ref_end": "C3",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานขอบระเบียงทางเดิน วางบนปลายคานยื่น B3'",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B3'(start)",
+        "bears_on_beam:B3'(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C3",
+      "grid_ref_end": "C4",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานขอบระเบียงทางเดิน วางบนปลายคานยื่น B3'",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B3'(start)",
+        "bears_on_beam:B3'(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C4",
+      "grid_ref_end": "C5",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานขอบระเบียงทางเดิน วางบนปลายคานยื่น B3'",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B3'(start)",
+        "bears_on_beam:B3'(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C5",
+      "grid_ref_end": "C6",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานขอบระเบียงทางเดิน วางบนปลายคานยื่น B3'",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B3'(start)",
+        "bears_on_beam:B3'(end)"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "C6",
+      "grid_ref_end": "C7",
+      "span_length_m": 4.5,
+      "span_source": "grid_table",
+      "note": "คานขอบระเบียงทางเดิน วางบนปลายคานยื่น B3'",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B3'(start)",
+        "bears_on_beam:B3'(end)"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เสาเหล็กระเบียงทางเดิน",
+      "element_type": "column",
+      "count": 7,
+      "grid_refs": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "material": "steel",
+      "steel_section": {
+        "designation": "Pipe",
+        "printed_as": "เสาเหล็ก LG ⊠ 3\"x3\" หรือ Ø3\" ภายในกรอกคอนกรีตให้เต็ม"
+      },
+      "note": "สี่เหลี่ยมเล็กที่แถว C ทุกกริดบนแปลนนี้และแปลนคานหลังคา ไม่มีป้ายบนแปลน — ขนาดอ่านจากรูปตัด A-A (หน้า 09); ตั้งบนปลายคานยื่น B3' ถึงระดับหลังคา; designation 'Pipe' = รูปกลม Ø3\" (ทางเลือกคือกล่องสี่เหลี่ยม 3\"x3\")",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "unlabelled_on_plan_identified_from_section"
+      ]
+    }
+  ]
+}
