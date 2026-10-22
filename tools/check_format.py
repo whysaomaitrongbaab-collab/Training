@@ -123,14 +123,23 @@ def grid_tick_notes(name, grid):
     return out
 
 
+def data_files(house_dir):
+    """The house's data JSON, i.e. every *.json except the '_'-prefixed markers (_scope.json)."""
+    return sorted(p for p in glob.glob(os.path.join(house_dir, '*.json'))
+                  if not os.path.basename(p).startswith('_'))
+
+
 def check_house(house_dir):
     fails = collections.defaultdict(list)
     soft = []
     rows, cols = load_grid(house_dir)
-    for path in sorted(glob.glob(os.path.join(house_dir, '*.json'))):
+    # A folder holding only _scope.json used to pass: the scope marker was skipped below and
+    # nothing was left to fail. House 153 was committed that way on 2026-10-15 (0 data files,
+    # all 7 subtasks not-yet-reached) and counted as a finished house. Fail it instead.
+    if not data_files(house_dir):
+        fails['no data files'].append(f'{os.path.basename(os.path.normpath(house_dir))}: has files but no data JSON (only _scope.json or similar)')
+    for path in data_files(house_dir):
         name = os.path.basename(path)
-        if name.startswith('_'):
-            continue
         try:
             doc = json.load(open(path, encoding='utf-8'))
         except Exception as e:
@@ -260,7 +269,8 @@ def main(argv):
         # house folders only: they start with the 2-digit house number (00file_... is the spec dir)
         targets = sorted(d for d in glob.glob(os.path.join(base, '*'))
                          if os.path.isdir(d) and os.path.basename(d)[:2].isdigit()
-                         and not os.path.basename(d).startswith('00'))
+                         and not os.path.basename(d).startswith('00')
+                         and os.listdir(d))  # a completely empty folder is not a house (e.g. 25บ้าน_ใหญ่_3ชั้น_02, never started)
     else:
         # A target that doesn't exist, or exists but has no .json files (e.g. the caller
         # forgot the 'rawjson_ยังไม่ได้แก้ไขโดนคน/' prefix), used to silently check 0 files
@@ -268,10 +278,11 @@ def main(argv):
         # 12-18's logged verification commands all used a bare folder name and were
         # vacuous; house 15's real pattern:'detail_view' / tie_bar defects went uncaught
         # as a direct result. Fail loudly instead of silently checking nothing.
-        bad_targets = [t for t in targets if not glob.glob(os.path.join(t, '*.json'))]
+        bad_targets = [t for t in targets if not data_files(t)]
         if bad_targets:
             for t in bad_targets:
-                reason = 'no such directory' if not os.path.isdir(t) else 'no .json files in it'
+                reason = ('no such directory' if not os.path.isdir(t)
+                          else 'no data .json files in it (a lone _scope.json does not count)')
                 print(f'ERROR: target {t!r} has {reason} -- did you forget the '
                       f"'rawjson_ยังไม่ได้แก้ไขโดนคน/' prefix?", file=sys.stderr)
             return 1
@@ -284,7 +295,7 @@ def main(argv):
         soft_all.extend(s)
 
     print(f'checked {len(targets)} house folder(s)\n')
-    order = ['parse', 'wrapper fields', 'pattern in 19', 'discipline vocabulary',
+    order = ['no data files', 'parse', 'wrapper fields', 'pattern in 19', 'discipline vocabulary',
              'phase_note left', 'element-kind array',
              'grid not nested', 'notes one-off container key', 'structural roof framing must be pattern roof_frame_plan',
              'rebar is a string', 'stirrup misnamed',
