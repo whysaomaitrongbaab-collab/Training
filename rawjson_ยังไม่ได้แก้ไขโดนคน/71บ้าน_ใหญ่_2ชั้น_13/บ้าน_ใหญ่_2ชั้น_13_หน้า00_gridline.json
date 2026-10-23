@@ -8,7 +8,10 @@
   "source_pages": [
     "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า20.png",
     "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า21.png",
-    "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png"
+    "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png",
+    "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png",
+    "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+    "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า25.png"
   ],
   "confidence_score": 0.84,
   "confidence_flags": [
@@ -20,7 +23,10 @@
     "A row of 4 shophouse units: x = grids 1-5 at 4.00 (16.00); y = Thai-lettered rows printed top-to-bottom จ, ง, ค, ข, ก. Origin = top-left จ1.",
     "Conflict: the floor-1 plan S-03 prints จ→ง = 4.25, but S-01 and S-02 both print 4.00. The grid follows the two footing plans; S-03's 4.25 is kept in unassigned_dimensions and its y chain is recorded from ง onwards only.",
     "จ'' (≈1.20, bathroom beam B1 in bay จ-ง) is scaled and flagged.",
-    "Architectural sheets were not dimension-swept (op04 time budget)."
+    "Architectural sheets were not dimension-swept (op04 time budget).",
+    "2026-10-23 op04 resume: dimension sweep of S-04 (ชั้นลอย), S-05 (ชั้น 2), S-06 (หลังคา) added. On S-05 the beams are drawn about half a beam width (≈0.10) beyond the printed ticks (the ticks dimension a beam face); beams are placed on the tick lines, the same reading S-03 used.",
+    "x lines 4.90/7.10/8.90/11.10/12.90/15.10 and 6.80/9.20/14.80 are typical-bay positions: the plan draws every unit identically but prints the dimension under bay 1-2 only. Added per spec section 4 Span amendment (2026-08-29, measured by proportion) and flagged position_scaled_from_grid_not_printed; risk accepted: if one unit differs, refs there are off by the drawing precision only.",
+    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 1' -> 1''', 2' -> 2'', 3' -> 3''', 4' -> 4'', จ'' -> จ'''; grid refs in every file of the house follow; prose in older warnings still uses the old names"
   ],
   "grid": {
     "x_lines": [
@@ -32,10 +38,31 @@
       },
       {
         "id": "1'",
+        "pos_m": 0.9,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png"
+      },
+      {
+        "id": "1''",
+        "pos_m": 1.2,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png"
+      },
+      {
+        "id": "1'''",
         "pos_m": 2.75,
         "type": "dummy",
         "note": "B5 / bathroom edge, 1.25 left of grid 2 (S-03)",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png"
+      },
+      {
+        "id": "1''''",
+        "pos_m": 3.1,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png"
       },
       {
         "id": "2",
@@ -45,10 +72,40 @@
       },
       {
         "id": "2'",
+        "pos_m": 4.9,
+        "type": "dummy",
+        "note": "C5 column / B1 (S-05) and short BR (S-06) line in bay 2-3: the 0.90/2.20/0.90 chain is printed under bay 1-2 only; this bay is drawn identically and scales to the same offset from grid 2 — typical-bay position, not printed here",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
+      },
+      {
+        "id": "2''",
         "pos_m": 5.25,
         "type": "dummy",
         "note": "B5 / bathroom edge, 1.25 right of grid 2 (S-03)",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png"
+      },
+      {
+        "id": "2'''",
+        "pos_m": 6.8,
+        "type": "dummy",
+        "note": "B4 / end of B1 (S-05), 1.20 left of grid 3 (bay 2-3): mirror of the 1.20 printed from grid 1 in bay 1-2; scales to 1.20 from the face, not printed in this bay",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
+      },
+      {
+        "id": "2''''",
+        "pos_m": 7.1,
+        "type": "dummy",
+        "note": "C5 column / B1 (S-05) and short BR (S-06) line in bay 2-3: the 0.90/2.20/0.90 chain is printed under bay 1-2 only; this bay is drawn identically and scales to the same offset from grid 2 — typical-bay position, not printed here",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
       },
       {
         "id": "3",
@@ -58,10 +115,40 @@
       },
       {
         "id": "3'",
+        "pos_m": 8.9,
+        "type": "dummy",
+        "note": "C5 column / B1 (S-05) and short BR (S-06) line in bay 3-4: the 0.90/2.20/0.90 chain is printed under bay 1-2 only; this bay is drawn identically and scales to the same offset from grid 3 — typical-bay position, not printed here",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
+      },
+      {
+        "id": "3''",
+        "pos_m": 9.2,
+        "type": "dummy",
+        "note": "B4 / end of B1 (S-05), 1.20 right of grid 3 (bay 3-4): mirror of the 1.20 printed from grid 1 in bay 1-2; scales to 1.20 from the face, not printed in this bay",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
+      },
+      {
+        "id": "3'''",
         "pos_m": 10.75,
         "type": "dummy",
         "note": "B5, 1.25 left of grid 4 (S-03)",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png"
+      },
+      {
+        "id": "3''''",
+        "pos_m": 11.1,
+        "type": "dummy",
+        "note": "C5 column / B1 (S-05) and short BR (S-06) line in bay 3-4: the 0.90/2.20/0.90 chain is printed under bay 1-2 only; this bay is drawn identically and scales to the same offset from grid 3 — typical-bay position, not printed here",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
       },
       {
         "id": "4",
@@ -71,10 +158,40 @@
       },
       {
         "id": "4'",
+        "pos_m": 12.9,
+        "type": "dummy",
+        "note": "C5 column / B1 (S-05) and short BR (S-06) line in bay 4-5: the 0.90/2.20/0.90 chain is printed under bay 1-2 only; this bay is drawn identically and scales to the same offset from grid 4 — typical-bay position, not printed here",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
+      },
+      {
+        "id": "4''",
         "pos_m": 13.25,
         "type": "dummy",
         "note": "B5, 1.25 right of grid 4 (S-03)",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png"
+      },
+      {
+        "id": "4'''",
+        "pos_m": 14.8,
+        "type": "dummy",
+        "note": "B4 / end of B1 (S-05), 1.20 left of grid 5 (bay 4-5): mirror of the 1.20 printed from grid 1 in bay 1-2; scales to 1.20 from the face, not printed in this bay",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
+      },
+      {
+        "id": "4''''",
+        "pos_m": 15.1,
+        "type": "dummy",
+        "note": "C5 column / B1 (S-05) and short BR (S-06) line in bay 4-5: the 0.90/2.20/0.90 chain is printed under bay 1-2 only; this bay is drawn identically and scales to the same offset from grid 4 — typical-bay position, not printed here",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "confidence_flags": [
+          "position_scaled_from_grid_not_printed"
+        ]
       },
       {
         "id": "5",
@@ -92,13 +209,20 @@
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png"
       },
       {
+        "id": "จ''",
+        "pos_m": -1.1,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png"
+      },
+      {
         "id": "จ",
         "pos_m": 0.0,
         "type": "named",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า20.png"
       },
       {
-        "id": "จ''",
+        "id": "จ'''",
         "pos_m": 1.2,
         "type": "dummy",
         "note": "bathroom beam B1 in bay จ-ง — not dimensioned; scaled from the grid on S-03 (≈1.20)",
@@ -106,6 +230,13 @@
         "confidence_flags": [
           "position_scaled_from_grid_not_printed"
         ]
+      },
+      {
+        "id": "จ''''",
+        "pos_m": 2.4,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png"
       },
       {
         "id": "ง",
@@ -121,10 +252,24 @@
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png"
       },
       {
+        "id": "ง''",
+        "pos_m": 5.5,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png"
+      },
+      {
         "id": "ค",
         "pos_m": 8.0,
         "type": "named",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า20.png"
+      },
+      {
+        "id": "ค'",
+        "pos_m": 11.0,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า25.png"
       },
       {
         "id": "ข",
@@ -133,10 +278,24 @@
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า20.png"
       },
       {
+        "id": "ข'",
+        "pos_m": 13.6,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png"
+      },
+      {
         "id": "ก",
         "pos_m": 14.5,
         "type": "named",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า20.png"
+      },
+      {
+        "id": "ก'",
+        "pos_m": 15.1,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png"
       }
     ],
     "z_levels": [
@@ -290,13 +449,13 @@
         "view": "แปลนเสา คาน พื้น ชั้นที่ 1",
         "segments": [
           {
-            "from": "1'",
+            "from": "1'''",
             "to": "2",
             "value_m": 1.25
           },
           {
             "from": "2",
-            "to": "2'",
+            "to": "2''",
             "value_m": 1.25
           }
         ]
@@ -307,13 +466,13 @@
         "view": "แปลนเสา คาน พื้น ชั้นที่ 1",
         "segments": [
           {
-            "from": "3'",
+            "from": "3'''",
             "to": "4",
             "value_m": 1.25
           },
           {
             "from": "4",
-            "to": "4'",
+            "to": "4''",
             "value_m": 1.25
           }
         ]
@@ -363,6 +522,351 @@
             "value_m": 1.4
           }
         ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png",
+        "view": "แปลนเสา คาน พื้น ชั้นลอย",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 4.0
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 4.0
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 4.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 4.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png",
+        "view": "แปลนเสา คาน พื้น ชั้นลอย",
+        "segments": [
+          {
+            "from": "1'''",
+            "to": "2",
+            "value_m": 1.25
+          },
+          {
+            "from": "2",
+            "to": "2''",
+            "value_m": 1.25
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png",
+        "view": "แปลนเสา คาน พื้น ชั้นลอย",
+        "segments": [
+          {
+            "from": "3'''",
+            "to": "4",
+            "value_m": 1.25
+          },
+          {
+            "from": "4",
+            "to": "4''",
+            "value_m": 1.25
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png",
+        "view": "แปลนเสา คาน พื้น ชั้นลอย",
+        "segments": [
+          {
+            "from": "จ''",
+            "to": "จ",
+            "value_m": 1.1
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png",
+        "view": "แปลนเสา คาน พื้น ชั้นลอย",
+        "segments": [
+          {
+            "from": "ง",
+            "to": "ค",
+            "value_m": 4.0
+          },
+          {
+            "from": "ค",
+            "to": "ข",
+            "value_m": 4.0
+          },
+          {
+            "from": "ข",
+            "to": "ก",
+            "value_m": 2.5
+          }
+        ],
+        "note": "printed chain 1.10 / 4.25 / 4.00 / 4.00 / 2.50; จ→ง 4.25 kept in unassigned_dimensions (grid follows S-01/S-02 4.00)"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png",
+        "view": "แปลนเสา คาน พื้น ชั้นลอย",
+        "segments": [
+          {
+            "from": "ง",
+            "to": "ง''",
+            "value_m": 1.5
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 4.0
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 4.0
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 4.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 4.0
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "1",
+            "to": "1''",
+            "value_m": 1.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "1'''",
+            "to": "2",
+            "value_m": 1.25
+          },
+          {
+            "from": "2",
+            "to": "2''",
+            "value_m": 1.25
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "1",
+            "to": "1'",
+            "value_m": 0.9
+          },
+          {
+            "from": "1'",
+            "to": "1''''",
+            "value_m": 2.2
+          },
+          {
+            "from": "1''''",
+            "to": "2",
+            "value_m": 0.9
+          }
+        ],
+        "note": "bottom chain under bay 1-2 only (C5 columns / B1)"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "จ''",
+            "to": "จ",
+            "value_m": 1.1
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "ง",
+            "to": "ค",
+            "value_m": 4.0
+          },
+          {
+            "from": "ค",
+            "to": "ข",
+            "value_m": 4.0
+          },
+          {
+            "from": "ข",
+            "to": "ก",
+            "value_m": 2.5
+          }
+        ],
+        "note": "printed chain 1.10 / 4.25 / 4.00 / 4.00 / 2.50; จ→ง 4.25 kept in unassigned_dimensions"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "จ",
+            "to": "จ'''",
+            "value_m": 1.2
+          }
+        ],
+        "note": "printed 1.20 but its dimension line is drawn only ≈0.90 long at the plan scale; the printed number is used"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "จ",
+            "to": "จ''''",
+            "value_m": 2.4
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "ข",
+            "to": "ข'",
+            "value_m": 1.6
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "view": "แปลนเสา คาน พื้น ชั้นที่ 2",
+        "segments": [
+          {
+            "from": "ก",
+            "to": "ก'",
+            "value_m": 0.6
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า25.png",
+        "view": "แปลนคาน หลังคา",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 4.0
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 4.0
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 4.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 4.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า25.png",
+        "view": "แปลนคาน หลังคา",
+        "segments": [
+          {
+            "from": "ง",
+            "to": "ค",
+            "value_m": 4.0
+          },
+          {
+            "from": "ค",
+            "to": "ข",
+            "value_m": 4.0
+          },
+          {
+            "from": "ข",
+            "to": "ก",
+            "value_m": 2.5
+          }
+        ],
+        "note": "printed chain 4.25 / 4.00 / 4.00 / 2.50; จ→ง 4.25 kept in unassigned_dimensions"
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า25.png",
+        "view": "แปลนคาน หลังคา",
+        "segments": [
+          {
+            "from": "ค'",
+            "to": "ข",
+            "value_m": 1.0
+          }
+        ]
+      },
+      {
+        "axis": "y",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า25.png",
+        "view": "แปลนคาน หลังคา",
+        "segments": [
+          {
+            "from": "ข",
+            "to": "ข'",
+            "value_m": 1.6
+          }
+        ]
       }
     ],
     "unassigned_dimensions": [
@@ -371,6 +875,24 @@
         "label": "4.25",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า22.png",
         "note": "S-03 prints จ→ง = 4.25, while both footing plans S-01/S-02 print 4.00 — not resolved; the grid uses the two footing sheets (4.00)"
+      },
+      {
+        "value_m": 4.25,
+        "label": "4.25",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า23.png",
+        "note": "S-04 prints จ→ง = 4.25, like S-03; the grid keeps 4.00 from the two footing plans S-01/S-02"
+      },
+      {
+        "value_m": 4.25,
+        "label": "4.25",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า24.png",
+        "note": "S-05 prints จ→ง = 4.25, like S-03; the grid keeps 4.00 from the two footing plans S-01/S-02"
+      },
+      {
+        "value_m": 4.25,
+        "label": "4.25",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_13/บ้าน_ใหญ่_2ชั้น_13_หน้า25.png",
+        "note": "S-06 prints จ→ง = 4.25, like S-03; the grid keeps 4.00 from the two footing plans S-01/S-02"
       }
     ]
   },

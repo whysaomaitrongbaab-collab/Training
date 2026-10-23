@@ -9,7 +9,8 @@
     "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า14.png",
     "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า15.png",
     "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า16.png",
-    "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า17.png"
+    "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า17.png",
+    "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png"
   ],
   "confidence_score": 0.86,
   "confidence_flags": [
@@ -17,19 +18,42 @@
   ],
   "warnings": [
     "Axes: x = numbered grids 1-6 (4.00/3.50/3.00/3.00/3.00 = 16.50); y = Thai-lettered rows printed top-to-bottom ซ, ช, ฉ, จ, ง, ค, ข, ก (1.00/1.00/1.00/2.00/1.00/3.00/1.50 = 10.50). Origin = top-left ซ1 (same convention as houses 53/65/66).",
-    "Two dummy x lines carry interior beams: 4' (B6) and 5' (B8).",
+    "Two dummy x lines carry interior beams: 4' (B6) and 5' (B8). [5' is now 5'' (15.00) after the S-05 sweep.]",
     "Only S-01/S-02 (floor-1 combined plans) were swept for this grid master; upper floor, roof and architectural sheets were not (op04 time budget).",
-    "S-03 floor-2 plan (หน้า16) swept 2026-10-23 via tools/gridfix.py: new x dummies 2' 5.80 (2+1.80), 3' 9.00 (2+1.80+1.70+1.50, = 3+1.50), 5'' 15.50 (5+2.00); 4' 11.50 re-confirmed (5-2.00). New y dummies จ' 3.50 (จ+0.50), จ'' 4.50 (ง-0.50), ค' 7.45 (ค+1.45) — renamed ค'' when S-04 (หน้า17) added 7.10. No existing line was renamed, so no earlier ref moved.",
+    "S-03 floor-2 plan (หน้า16) swept 2026-10-23 via tools/gridfix.py: new x dummies 2' 5.80 (2+1.80), 3' 9.00 (2+1.80+1.70+1.50, = 3+1.50), 5'' 15.50 (5+2.00); 4' 11.50 re-confirmed (5-2.00). New y dummies จ' 3.50 (จ+0.50), จ'' 4.50 (ง-0.50), ค' 7.45 (ค+1.45) — renamed ค'' when S-04 (หน้า17) added 7.10. No existing line was renamed, so no earlier ref moved. [Renamed 2026-10-23 by S-05's ticks: 2' -> 2'', 5'' -> 5''' — the names above are the names at the time of the S-03 sweep.]",
     "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- ค' -> ค''; grid refs in every file of the house follow; prose in older warnings still uses the old names",
-    "S-04 roof-beam plan (หน้า17) swept 2026-10-23: main x/y rows identical to S-01..S-03; new y tick ค+1.10 = 7.10 (locates roof beam B23 in bay 1-2) became ค', so the S-03 line at 7.45 was re-sequenced to ค'' by tools/gridfix.py (refs in หน้า16 renamed with it, positions unchanged)."
+    "S-04 roof-beam plan (หน้า17) swept 2026-10-23: main x/y rows identical to S-01..S-03; new y tick ค+1.10 = 7.10 (locates roof beam B23 in bay 1-2) became ค', so the S-03 line at 7.45 was re-sequenced to ค'' by tools/gridfix.py (refs in หน้า16 renamed with it, positions unchanged).",
+    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 2' -> 2'', 5' -> 5'', 5'' -> 5'''; grid refs in every file of the house follow; prose in older warnings still uses the old names",
+    "S-05 roof-frame plan (หน้า18) swept 2026-10-23: x eave/hip ticks -1.20 (1.20 before 1) = 1', 1.50 and 2.50 (two 2.70 rows off the left-roof eaves) = 1''/1''', 5.20 (2+1.20, and ~2.30 to 3) = 2', 14.50 (3.20 back from the 6+1.20 eave) = 5', 17.70 (6+1.20) = 6'. gridfix re-sequenced the existing dummies: old 2' 5.80 -> 2'', old 5' 15.00 -> 5'', old 5'' 15.50 -> 5''' (refs in หน้า15/หน้า16 renamed, positions unchanged; prose in those files updated by hand). The two 3.20 rows over the right roof touch no known line and stay 'edge' chains; the vertical 2.70/3.20/1.20 roof dimensions are in unassigned_dimensions (row anchors not resolved at this scan)."
   ],
   "grid": {
     "x_lines": [
+      {
+        "id": "1'",
+        "pos_m": -1.2,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png"
+      },
       {
         "id": "1",
         "pos_m": 0.0,
         "type": "named",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า14.png"
+      },
+      {
+        "id": "1''",
+        "pos_m": 1.5,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png"
+      },
+      {
+        "id": "1'''",
+        "pos_m": 2.5,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png"
       },
       {
         "id": "2",
@@ -39,6 +63,13 @@
       },
       {
         "id": "2'",
+        "pos_m": 5.2,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png"
+      },
+      {
+        "id": "2''",
         "pos_m": 5.8,
         "type": "dummy",
         "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
@@ -78,13 +109,20 @@
       },
       {
         "id": "5'",
+        "pos_m": 14.5,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png"
+      },
+      {
+        "id": "5''",
         "pos_m": 15.0,
         "type": "dummy",
         "note": "beam B8, 1.50 right of grid 5 (S-01/S-02)",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า14.png"
       },
       {
-        "id": "5''",
+        "id": "5'''",
         "pos_m": 15.5,
         "type": "dummy",
         "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
@@ -95,6 +133,13 @@
         "pos_m": 16.5,
         "type": "named",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า14.png"
+      },
+      {
+        "id": "6'",
+        "pos_m": 17.7,
+        "type": "dummy",
+        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png"
       }
     ],
     "y_lines": [
@@ -250,7 +295,7 @@
         "segments": [
           {
             "from": "5",
-            "to": "5'",
+            "to": "5''",
             "value_m": 1.5
           }
         ]
@@ -348,7 +393,7 @@
         "segments": [
           {
             "from": "5",
-            "to": "5'",
+            "to": "5''",
             "value_m": 1.5
           }
         ]
@@ -432,11 +477,11 @@
         "segments": [
           {
             "from": "2",
-            "to": "2'",
+            "to": "2''",
             "value_m": 1.8
           },
           {
-            "from": "2'",
+            "from": "2''",
             "to": "3",
             "value_m": 1.7
           },
@@ -458,7 +503,7 @@
           },
           {
             "from": "5",
-            "to": "5''",
+            "to": "5'''",
             "value_m": 2.0
           }
         ]
@@ -619,12 +664,213 @@
             "value_m": 1.1
           }
         ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "1",
+            "to": "2",
+            "value_m": 4.0
+          },
+          {
+            "from": "2",
+            "to": "3",
+            "value_m": 3.5
+          },
+          {
+            "from": "3",
+            "to": "4",
+            "value_m": 3.0
+          },
+          {
+            "from": "4",
+            "to": "5",
+            "value_m": 3.0
+          },
+          {
+            "from": "5",
+            "to": "6",
+            "value_m": 3.0
+          },
+          {
+            "from": "6",
+            "to": "6'",
+            "value_m": 1.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "1'",
+            "to": "1",
+            "value_m": 1.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "2",
+            "to": "2'",
+            "value_m": 1.2
+          },
+          {
+            "from": "2'",
+            "to": "3",
+            "value_m": 2.3
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "5'",
+            "to": "6'",
+            "value_m": 3.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "1'",
+            "to": "1''",
+            "value_m": 2.7
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "1'''",
+            "to": "2'",
+            "value_m": 2.7
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "1'",
+            "to": "1''",
+            "value_m": 2.7
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "1'''",
+            "to": "2'",
+            "value_m": 2.7
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "edge",
+            "to": "edge",
+            "value_m": 3.2
+          }
+        ]
+      },
+      {
+        "axis": "x",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "segments": [
+          {
+            "from": "edge",
+            "to": "edge",
+            "value_m": 3.2
+          }
+        ]
       }
     ],
-    "unassigned_dimensions": []
+    "unassigned_dimensions": [
+      {
+        "value_m": 2.7,
+        "label": "2.70 (ด้านซ้ายหลังคาซ้าย บน)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 2.7,
+        "label": "2.70 (ด้านซ้ายหลังคาซ้าย ล่าง)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 1.2,
+        "label": "1.20 (ด้านซ้ายหลังคาซ้าย ล่าง)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 2.7,
+        "label": "2.70 (ด้านขวาหลังคาซ้าย บน)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 2.7,
+        "label": "2.70 (ด้านขวาหลังคาซ้าย ล่าง)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 3.2,
+        "label": "3.20 (ด้านซ้ายหลังคาขวา บน)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 3.2,
+        "label": "3.20 (ด้านซ้ายหลังคาขวา ล่าง)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 3.2,
+        "label": "3.20 (ด้านขวาหลังคาขวา บน)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 3.2,
+        "label": "3.20 (ด้านขวาหลังคาขวา ล่าง)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      },
+      {
+        "value_m": 1.2,
+        "label": "1.20 (ใต้หลังคาขวา ใกล้แนว 4)",
+        "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า18.png",
+        "note": "vertical eave-to-hip/ridge dimension on the roof-frame plan; which lettered row its ends sit on was not resolved at this scan, so no y line was made"
+      }
+    ]
   },
   "dummy_grid_rule_check": {
-    "negative_pos_m": "none",
-    "prime_ordering": "x: 5.80 2' (gap 2-3); 9.00 3' (gap 3-4); 11.50 4' (after 4); 15.00 5' then 15.50 5'' (gap 5-6, reading order). y: 3.50 จ' then 4.50 จ'' (gap จ-ง); 7.10 ค' then 7.45 ค'' (gap ค-ข, reading order)."
+    "negative_pos_m": "1' = -1.20 (roof eave tick printed 1.20 left of grid 1 on S-05) — before-origin dummy shares grid 1's prime sequence with 1''(1.50) and 1'''(2.50)",
+    "prime_ordering": "x: -1.20 1', 1.50 1'', 2.50 1''' (one sequence around grid 1); 5.20 2' then 5.80 2'' (gap 2-3); 9.00 3' (gap 3-4); 11.50 4' (gap 4-5); 14.50 5', 15.00 5'', 15.50 5''' (gap 5-6); 17.70 6' (after 6). y: 3.50 จ' then 4.50 จ'' (gap จ-ง); 7.10 ค' then 7.45 ค'' (gap ค-ข)."
   }
 }

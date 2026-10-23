@@ -3,7 +3,7 @@
   "doc_page": null,
   "discipline": "structural",
   "sheet_code": null,
-  "sheet_name": "Grid master (synthesized from S-01..S-05 + S-12 levels — หน้า 17-21, 28)",
+  "sheet_name": "Grid master (synthesized from S-01..S-05 + S-12 levels — หน้า 17-21, 28; dimension sweep of the whole set 2026-10-22/23)",
   "pattern": "grid_master",
   "source_pages": [
     "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า04.png",
@@ -31,34 +31,41 @@
     "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า13.png"
   ],
   "confidence_score": 0.85,
-  "confidence_flags": [
-    "partial_dimension_sweep"
-  ],
+  "confidence_flags": [],
   "warnings": [
     "Grid bubbles are printed on every structural plan: 1-9 along x (8 bays x 4.50 = 36.00, total printed) and A-C along y (A-B 6.00, B-C 3.00, total 9.00). Origin A1 (top-left as drawn). All four plans (S-01..S-04) agree on these values.",
-    "Dummy lines: every printed tick on the five structural plans is a line (§4 rule 4). y before origin and in the A-B gap share A's prime sequence in reading order: A' -1.60 (eave), A'' -1.23 (GS slab edge), A''' -0.83 (corridor slab S2 edge, printed '~0.83'), A'''' 2.40, A''''' 3.00 (B4 beam line), A'''''' 4.50. B-C gap: B' 6.60, B'' 7.60 (truss reinforcement-lap tick, S-05), B''' 8.27 (B5 line, '~0.73' above C). After C: C' 9.73 (S1 edge, '~0.73'), C'' 10.60 (eave). x: 1' -1.20 (eave), 1'' -1.18 (GS edge), 1''' -0.68 (S1 edge, '~0.68'); 9' 36.68, 9'' 37.20 (eave).",
-    "1' (-1.20, eave line on S-04) and 1'' (-1.18, GS ground-slab edge on S-02) are 0.02 apart. They are different edges printed on different sheets (eave vs ground slab), so both are kept per §4 rule 4, not merged.",
+    "Dummy lines: every printed tick on the five structural plans is a line (§4 rule 4). y before origin and in the A-B gap share A's prime sequence in reading order: A'' -1.60 (eave), A''' -1.23 (GS slab edge), A''''' -0.83 (corridor slab S2 edge, printed '~0.83'), A''''''' 2.40, A'''''''' 3.00 (B4 beam line), A''''''''' 4.50. B-C gap: B' 6.60, B'' 7.60 (truss reinforcement-lap tick, S-05), B''' 8.27 (B5 line, '~0.73' above C). After C: C'' 9.73 (S1 edge, '~0.73'), C'''' 10.60 (eave). x: 1'' -1.20 (eave), 1''' -1.18 (GS edge), 1''''' -0.68 (S1 edge, '~0.68'); 9'' 36.68, 9'''' 37.20 (eave).",
+    "1'' (-1.20, eave line on S-04) and 1''' (-1.18, GS ground-slab edge on S-02) are 0.02 apart. They are different edges printed on different sheets (eave vs ground slab), so both are kept per §4 rule 4, not merged.",
     "Several values are printed with a tilde ('~0.83', '~0.73', '~0.68') — the drawing itself marks them approximate. pos_m uses the printed number.",
-    "9' (36.68) is NOT printed: it is the end of the short cantilever BC at B9 on floors 1-2, scaled from the drawing (~0.68) and matching the printed '~0.68' on the grid-1 side (1'''). Kept as a scaled dummy with its own confidence so the BC stub has an endpoint (beam-endpoint rule). C' (9.73) is printed on S-04 (S1 slab edge); the BC stubs at C2/C8 on floors 1-2 scale to ~0.70 and are recorded against C'.",
+    "9'' (36.68) is NOT printed: it is the end of the short cantilever BC at B9 on floors 1-2, scaled from the drawing (~0.68) and matching the printed '~0.68' on the grid-1 side (1'''''). Kept as a scaled dummy with its own confidence so the BC stub has an endpoint (beam-endpoint rule). C'' (9.73) is printed on S-04 (S1 slab edge); the BC stubs at C2/C8 on floors 1-2 scale to ~0.70 and are recorded against C''.",
     "z_levels: the only labelled level is the ±0.00 building datum (S-01 note). Every other level is a member-top value printed in brackets next to a beam/slab mark on the plans (+0.10 ... +7.17) — ids are the printed value, type dummy.",
-    "Dimension sweep covers the five structural plans S-01..S-05 (pages 17-21) plus the truss elevations of S-06 (page 22), the level marks of S-12 (page 28) and the stair elevations of S-13 (page 29, x ticks 1'''' 1.22 / 1''''' 1.60 / 1'''''' 1.68 / 1''''''' 4.30 from grid 1 — drawn for the grid 1-2 stair only; the mirrored grid 8-9 stair prints none). The architectural sheets (A-01..A-15) and the detail sheets S-07..S-11 were not swept for grid ticks in this op04 run (shutdown deadline) — their dimensions are not in this file (element-internal dimensions of the extracted detail sheets live on their elements). The two beam-spacing rows of S-12's 'ขยายระดับ พื้นและคาน' (2.35/3.05/3.10 and 3.05/3.05/3.10, measured between beam faces/edges that do not add up to the 9.00 grid) are kept as unpositioned 'edge' chains rather than guessed onto lines. The stair tread note on S-02/S-03 ('20 x 0.18 = ...', too small to read reliably at this scan) is likewise not transcribed. [2026-10-22 resume run: S-09 (หน้า25), A-03 (หน้า04) and A-04 (หน้า05) are now swept too, and the remaining views of S-05 / S-06 / S-12 (หน้า21 view2, หน้า22 view2, หน้า28 view3) were read — see the warnings below. The rest of A-01..A-15 and the detail sheets S-07 / S-08 / S-10 / S-11 are still not swept for grid ticks.]",
+    "Dimension sweep covers the five structural plans S-01..S-05 (pages 17-21) plus the truss elevations of S-06 (page 22), the level marks of S-12 (page 28) and the stair elevations of S-13 (page 29, x ticks 1''''''' 1.22 / 1'''''''' 1.60 / 1'''''''''' 1.68 / 1''''''''''' 4.30 from grid 1 — drawn for the grid 1-2 stair only; the mirrored grid 8-9 stair prints none). The architectural sheets (A-01..A-15) and the detail sheets S-07..S-11 were not swept for grid ticks in this op04 run (shutdown deadline) — their dimensions are not in this file (element-internal dimensions of the extracted detail sheets live on their elements). The two beam-spacing rows of S-12's 'ขยายระดับ พื้นและคาน' (2.35/3.05/3.10 and 3.05/3.05/3.10, measured between beam faces/edges that do not add up to the 9.00 grid) are kept as unpositioned 'edge' chains rather than guessed onto lines. The stair tread note on S-02/S-03 ('20 x 0.18 = ...', too small to read reliably at this scan) is likewise not transcribed. [2026-10-22 resume run: S-09 (หน้า25), A-03 (หน้า04) and A-04 (หน้า05) are now swept too, and the remaining views of S-05 / S-06 / S-12 (หน้า21 view2, หน้า22 view2, หน้า28 view3) were read — see the warnings below. The rest of A-01..A-15 and the detail sheets S-07 / S-08 / S-10 / S-11 are still not swept for grid ticks.] [2026-10-23 rule-4 sweep (op04 follow-up subtask): every remaining sheet is now covered — A-05..A-09 (หน้า06-10: floor plans, roof plan, elevations 1-4, sections S-01..S-03, stair details), A-13..A-15 (หน้า14-16: ceiling and electrical plans), A-10..A-12 (หน้า11-13: door/window, eave, wall, bench and blackboard details — no grid bubble, numbers in unassigned_dimensions one entry per view) and the grid rows of S-10 / S-11 (หน้า26-27). Deliberately not swept: หน้า01 set cover, หน้า02 A-01 render, หน้า03 A-02 index/legend (no building dimension row; legend material sizes only) and S-07 / S-08 (หน้า23-24: footing/column member details with no grid bubble — their sizes already live on the section/schedule elements of หน้า23/24). The flag partial_dimension_sweep was dropped.]",
     "Scanned CAD-plotted government set (กองออกแบบและก่อสร้าง สำนักอำนวยการ สพฐ.); every value was read off zoomed crops of the page images.",
     "2026-10-22 resume run — S-09 (หน้า25) 'ตัวอย่างการเสริมเหล็กเสา LineA-5' (No,Scale) prints three clear heights between beam faces: H=0.87 / 2.15 / 2.85 (plus an unvalued 'H' from the footing to floor 1, not recorded). Each was anchored on a printed level and its far end added as a dummy z level (§4 rule 4, z axis): +0.15 (B1 top, S-12) + 2.85 = +3.00; +3.70 (B1 top, S-12) + 2.15 = +5.85; +6.10 (RB3 top, S-04) + 0.87 = +6.97. All three far ends independently equal a printed level minus a printed section depth (3.70 − B1 0.70, 6.10 − RB3 0.25, 7.17 − RB1 0.20), so the anchoring is checked, not assumed — and it confirms RB3's +6.10 at grid 5, which S-04 prints only on the end bays. The heights run from the deepest beam at each joint (B1, 0.30x0.70), as the sheet itself says ('นับระยะ lo จากหน้าตัดคานที่ลึกสุด'); anchoring H=2.15 on B3A (+3.65) instead would put RB3's soffit at 5.80, which no section depth supports. Risk accepted: the sheet is a No-Scale example, so the three levels carry confidence 0.75. The '▽ คานหลังคา / คานชั้น 2 / คานชั้น 1' markers print no value, and the tie-zone ticks (0.50 lo, 5 Cm, 0.075 / 0.15) are element-internal (§4 rule 4) — they stay on the S-09 section element.",
     "2026-10-22 resume run — datum ambiguity, recorded not resolved: A-03 (หน้า04) item 1 and the S-01 note set ±0.00 at the natural ground / nearby road level with the fill raised ~0.30 m above it (z +0.30, now also a z chain from A-03), but A-03 item 2 says building levels reference 0.00 at the top of the compacted fill, and S-12's GS detail labels '▽ +0.00(ระดับดินถม)'. Two statements each way. No level value was changed: every member level in this file is the bracketed value printed on the structural plans, measured from the building's ±0.00 whatever its physical position on site; the +0.30 line stays as printed. A-03's 2 m fill width went to unassigned_dimensions (measured from the building, on no grid line).",
     "2026-10-22 resume run — the other newly read views print only element-internal dimensions and add no line: S-05 plates (0.25x0.25 plate, ≥ 0.25 embedment, 0.35 / 0.45 column head), S-06 ขยาย 2/3 (stub post 0.20, truss-soffit clearance ~0.12 / ~0.14 — the same 0.12 S-04 prints, already in unassigned_dimensions), S-12 lintel 0.15x0.20 / sill band 0.10 / corbel 0.10-0.05-0.10. A-04 (หน้า05) prints no building dimension. Material sizes on the A-03/A-04 notes stay in their sections[] transcripts (house convention for notes sheets).",
-    "op_fix/gridfix: x tick at -0.65 is within 0.05 m of existing [\"1'''\"] but not the same point -- kept both (section 4 rule 4)",
-    "op_fix/gridfix: x tick at 1.65 is within 0.05 m of existing [\"1'''''\", \"1''''''\"] but not the same point -- kept both (section 4 rule 4)",
-    "op_fix/gridfix: x tick at 4.35 is within 0.05 m of existing [\"1'''''''\"] but not the same point -- kept both (section 4 rule 4)",
-    "op_fix/gridfix: x tick at 36.65 is within 0.05 m of existing [\"9'\"] but not the same point -- kept both (section 4 rule 4)",
-    "op_fix/gridfix: y tick at -0.8 is within 0.05 m of existing [\"A'''\"] but not the same point -- kept both (section 4 rule 4)",
-    "op_fix/gridfix: y tick at 9.7 is within 0.05 m of existing [\"C'\"] but not the same point -- kept both (section 4 rule 4)",
-    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 1' -> 1'', 1'' -> 1''', 1''' -> 1''''', 1'''' -> 1''''''', 1''''' -> 1'''''''', 1'''''' -> 1'''''''''', 1''''''' -> 1''''''''''', 9' -> 9'', 9'' -> 9'''', A' -> A'', A'' -> A''', A''' -> A''''', A'''' -> A''''''', A''''' -> A'''''''', A'''''' -> A''''''''', C' -> C'', C'' -> C''''; grid refs in every file of the house follow; prose in older warnings still uses the old names",
+    "op_fix/gridfix: x tick at -0.65 is within 0.05 m of existing [\"1'''''\"] but not the same point -- kept both (section 4 rule 4)",
+    "op_fix/gridfix: x tick at 1.65 is within 0.05 m of existing [\"1''''''''\", \"1''''''''''\"] but not the same point -- kept both (section 4 rule 4)",
+    "op_fix/gridfix: x tick at 4.35 is within 0.05 m of existing [\"1'''''''''''\"] but not the same point -- kept both (section 4 rule 4)",
+    "op_fix/gridfix: x tick at 36.65 is within 0.05 m of existing [\"9''\"] but not the same point -- kept both (section 4 rule 4)",
+    "op_fix/gridfix: y tick at -0.8 is within 0.05 m of existing [\"A'''''\"] but not the same point -- kept both (section 4 rule 4)",
+    "op_fix/gridfix: y tick at 9.7 is within 0.05 m of existing [\"C''\"] but not the same point -- kept both (section 4 rule 4)",
+    "2026-10-23 sweep (applied with tools/gridfix.py; its stamp says 2026-09-29): op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 1' -> 1'', 1'' -> 1''', 1''' -> 1''''', 1'''' -> 1''''''', 1''''' -> 1'''''''', 1'''''' -> 1'''''''''', 1''''''' -> 1''''''''''', 9' -> 9'', 9'' -> 9'''', A' -> A'', A'' -> A''', A''' -> A''''', A'''' -> A''''''', A''''' -> A'''''''', A'''''' -> A''''''''', C' -> C'', C'' -> C''''; grid refs in every file of the house follow (checked: every element id/floor/type/count/span/span_source unchanged). Prose in THIS master (older warnings, line notes, dummy_grid_rule_check) was updated to the new names; prose inside the page files หน้า18-22 (warnings and element notes) still uses the OLD names — read it through this map.",
     "op_fix: printed chain does not close against the lines (kept as printed): chain 96 z บ้าน_ใหญ่_2ชั้น_23_หน้า09.png: ระดับพื้นชั้น 1(0.25)->ห้องเรียน พื้น Topping(3.75) printed 3.8, lines say 3.500",
-    "op_fix: printed chain does not close against the lines (kept as printed): chain 96 z บ้าน_ใหญ่_2ชั้น_23_หน้า09.png: ห้องเรียน พื้น Topping(3.75)->ระดับชั้นหลังคา(7.3) printed 7.35, lines say 3.550"
+    "op_fix: printed chain does not close against the lines (kept as printed): chain 96 z บ้าน_ใหญ่_2ชั้น_23_หน้า09.png: ห้องเรียน พื้น Topping(3.75)->ระดับชั้นหลังคา(7.3) printed 7.35, lines say 3.550",
+    "2026-10-23 sweep — architectural vs structural edges (decision, att1235): the architectural plans print their own edge offsets close to, but not equal to, structural lines: A-05/A-13/A-14/A-15 0.65 left/right of grids 1/9 (1'''''' -0.65, 9' 36.65) beside S-04's slab edge '~0.68' (1''''' -0.68) and the scaled BC end 9'' (36.68); the floor-2 plans' 0.80 above A (A'''''' -0.80) beside S-03's corridor-slab edge '~0.83' (A'''''); A-09's 0.70 below C (C' 9.70) beside S-04's '~0.73' (C''); and the floor-1 outer edge 1.00 (1'''' / A'''' / C''') against S-02's GS slab edge 1.18 / 1.23. Every architectural tick is its own line (§4 rule 4); no existing line moved and no element ref changed. The structural values stay the ones the elements use: they come from the sheets that own the members, and the tilde values are the drawing's own approximations of the same edges. Risk accepted: a pair within 0.05 m may be one physical edge printed twice.",
+    "2026-10-23 sweep — stair ST1 conflict: A-09 'แปลนบันไดชั้นที่ 2' prints 1.65 from grid 1 and 2.70 ('9 ลูกนอน@0.30ม.=2.70ม.') → 4.35, while S-13 (หน้า29) prints 1.60 and 1.60 + 2.70 = 4.30. Both kept as lines (1''''''''' 1.65 and 1'''''''''''' 4.35 beside 1'''''''' 1.60 and 1''''''''''' 4.30); the ST1 element keeps S-13's values because the structural sheet governs the RC stair. Risk: one of the two sheets carries a 0.05 drafting slip, unknown which.",
+    "2026-10-23 sweep — second 'B' bubble: A-07 elevations 2/4 and A-08 sections S-02/S-03 draw a bubble lettered 'B' on the tick 2.50 below B (0.50 above C), next to the C bubble. Grid B already sits at 6.00 on every structural plan, so this bubble is read as a drafting slip and the tick became the dummy B'''' (8.50), not a second named line. Risk: if it was meant as a real line its name is lost, but its position is printed and correct.",
+    "2026-10-23 sweep — levels: the architectural sheets label finished levels 0.05 above the structural tops — ห้องเรียน +3.80 (A-05/A-08) vs S-12 'ห้องเรียน พื้น Topping' +3.75; ระเบียง +3.75 vs S-12's corridor +3.70; ระดับชานพัก +2.00 (A-09) vs BST +1.95 (S-13). Read as finish vs structure, not as conflicts; each is its own z level. At +3.75 the two disciplines name different surfaces (S-12 classroom topping; A-06..A-09 'ระดับพื้นชั้น 2' / ระเบียง) — the existing id was kept and the architectural labels are in its note. ระดับพื้นชั้น 1 (+0.25) and ระดับชั้นหลังคา (+7.30) are new named levels from the elevation/section rows.",
+    "2026-10-23 sweep — A-08 รูปตัด S-01 prints 3.80 and 7.35 between the level marks +0.25 / +3.75 / +7.30, which give 3.50 and 3.55 as the other seven elevation/section rows print. The row is kept as printed (gridfix --accept-mismatch); the level marks are trusted.",
+    "2026-10-23 sweep — A-13 ceiling plans: ceiling tags add z levels +3.45 (floor-1 canopy soffit), +5.60 (roof-level canopy soffit at the stair ends) and +7.15 (classrooms and corridor), and repeat +5.85. The floor-1 tag 'อเนกประสงค์ +5.60' is impossible for a floor-1 ceiling (floor 2 is +3.75) and is recorded only in the +5.60 note; the ชายคา / บันได คสล. '±0.00' tags are not heights and went to unassigned_dimensions.",
+    "2026-10-23 sweep — datum: A-06/A-07/A-08 print '±0.00 ระดับพื้นดิน' and A-09 prints 'ระดับ +0.00' on the ground line, i.e. more statements that ±0.00 is the natural ground (see the 2026-10-22 datum warning). Still not resolved; no level changed.",
+    "2026-10-23 sweep — S-10 / S-11 beam elevations: only their grid rows (A-C 9.00, A-B 6.00, B-C 3.00; the 4.50 bays 1-3, 7-9, 3-7) are recorded as chains, all on existing lines; the bay 3-7 of B3A/B4 is drawn broken with one '4.50' and is not recorded as a span. The rebar-extent and stirrup-zone rows (S-10 B2 '1.10 | 3.80 | 1.10' measured from grids A and B, 2.55 / 2.05 / 1.50 / 1.55 / 1.00; S-11 1.00 / 1.60 / 0.80) are element-internal (§4 rule 4, 'not an axis tick') and went to unassigned_dimensions without lines. Risk: S-10's 1.10 row does hang off grids A and B, and read literally rule 4 would make 1.10 and 4.90 lines.",
+    "2026-10-23 sweep — hand-written corrections, read as written and low confidence (unassigned_dimensions): 0.10 between the twin Cx posts on A-05 floor 2 (as S-03 prints), two 0.10 marks on A-06 elevation 1, and 0.20 at the same Cx posts on A-13's floor-2 ceiling plan (disagrees with the 0.10 of S-03/A-05; not resolved)."
   ],
   "dummy_grid_rule_check": {
-    "negative_pos_m": "x 1' -1.20, 1'' -1.18, 1''' -0.68; y A' -1.60, A'' -1.23, A''' -0.83 — before-origin dummies share the first main grid's prime sequence with the dummies in the gap after it.",
-    "prime_ordering": "y: A'..A'''''' in reading order top to bottom (-1.60, -1.23, -0.83, 2.40, 3.00, 4.50); B' 6.60, B'' 7.60, B''' 8.27; C' 9.73, C'' 10.60. x: 1'..1''''''' (-1.20, -1.18, -0.68, then 1.22, 1.60, 1.68, 4.30 in the 1-2 gap, one sequence); 9' 36.68, 9'' 37.20."
+    "negative_pos_m": "x 1'' -1.20, 1''' -1.18, 1''''' -0.68; y A'' -1.60, A''' -1.23, A''''' -0.83 — before-origin dummies share the first main grid's prime sequence with the dummies in the gap after it.",
+    "prime_ordering": "y: A''..A''''''''' in reading order top to bottom (-1.60, -1.23, -0.83, 2.40, 3.00, 4.50); B' 6.60, B'' 7.60, B''' 8.27; C'' 9.73, C'''' 10.60. x: 1''..1''''''''''' (-1.20, -1.18, -0.68, then 1.22, 1.60, 1.68, 4.30 in the 1-2 gap, one sequence); 9'' 36.68, 9'''' 37.20."
   },
   "grid": {
     "x_lines": [
@@ -66,7 +73,7 @@
         "id": "1'",
         "pos_m": -3.0,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 2.00 + 1.00 ซ้ายของกริด 1 — รูปตัด S-01 (A-08) ปลายเส้นดิน; ไม่มีชิ้นส่วนใช้",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า09.png"
       },
       {
@@ -81,13 +88,13 @@
         "pos_m": -1.18,
         "type": "dummy",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า18.png",
-        "note": "ขอบพื้น GS 1.18 ซ้ายของกริด 1 (แปลนเสา คาน พื้นชั้น 1 S-02) — ห่างจาก 1' แค่ 0.02 แต่เป็นคนละขอบ ดู warnings"
+        "note": "ขอบพื้น GS 1.18 ซ้ายของกริด 1 (แปลนเสา คาน พื้นชั้น 1 S-02) — ห่างจาก 1'' แค่ 0.02 แต่เป็นคนละขอบ ดู warnings"
       },
       {
         "id": "1''''",
         "pos_m": -1.0,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 1.00 ซ้ายของกริด 1 (ขอบนอกรอบอาคาร แนวป้าย ทางเดินรอบ) — แปลนพื้นชั้น 1 A-05, ผังฝ้าชั้น 1 A-13, ผังไฟฟ้าชั้น 1 A-14, รูปตัด S-01 A-08; S-02 ให้ขอบพื้น GS ที่ 1.18 (1''') ดู warnings",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า06.png"
       },
       {
@@ -101,7 +108,7 @@
         "id": "1''''''",
         "pos_m": -0.65,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 0.65 ซ้ายของกริด 1 — แปลนพื้นชั้น 1/2 A-05, A-13, A-14, A-15; ห่างจาก 1''''' (-0.68 ขอบพื้น S1 '~0.68' S-04) 0.03 คนละแผ่น เก็บทั้งคู่",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า06.png"
       },
       {
@@ -128,7 +135,7 @@
         "id": "1'''''''''",
         "pos_m": 1.65,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "A-09 แปลนบันไดชั้นที่ 2: 1.65 จากกริด 1 (ต้นลูกนอน 9 ขั้น) — S-13 พิมพ์ 1.60 (1'''''''') ดู warnings",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า10.png"
       },
       {
@@ -149,7 +156,7 @@
         "id": "1''''''''''''",
         "pos_m": 4.35,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "A-09 แปลนบันไดชั้นที่ 2: 1.65 + 2.70 ('9 ลูกนอน@0.30ม.=2.70ม.') — S-13 ให้ 4.30 (1''''''''''') ดู warnings",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า10.png"
       },
       {
@@ -204,7 +211,7 @@
         "id": "9'",
         "pos_m": 36.65,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 0.65 ขวาของกริด 9 — แปลนพื้นชั้น 1/2 A-05, A-13, A-14, A-15; ห่างจาก 9'' (36.68 วัดสเกล) 0.03 เก็บทั้งคู่",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า06.png"
       },
       {
@@ -217,13 +224,13 @@
           "scaled_from_grid",
           "no_printed_dimension"
         ],
-        "note": "ปลายคานยื่น BC ที่ B9 (ชั้น 1/ชั้น 2) — ไม่มีระยะพิมพ์ฝั่งขวา วัดสเกลได้ ~0.68 สมมาตรกับฝั่งกริด 1 (1''' พิมพ์ ~0.68 ที่ S-04)"
+        "note": "ปลายคานยื่น BC ที่ B9 (ชั้น 1/ชั้น 2) — ไม่มีระยะพิมพ์ฝั่งขวา วัดสเกลได้ ~0.68 สมมาตรกับฝั่งกริด 1 (1''''' พิมพ์ ~0.68 ที่ S-04)"
       },
       {
         "id": "9'''",
         "pos_m": 37.0,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 1.00 ขวาของกริด 9 — แถวนอกแปลนชั้น 1 A-05/A-13/A-14, รูปตัด S-01 A-08",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า06.png"
       },
       {
@@ -237,7 +244,7 @@
         "id": "9'''''",
         "pos_m": 39.0,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 1.00 + 2.00 ขวาของกริด 9 — รูปตัด S-01 (A-08) ปลายเส้นดิน",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า09.png"
       }
     ],
@@ -246,7 +253,7 @@
         "id": "A'",
         "pos_m": -3.0,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 2.00 + 1.00 เหนือแถว A — รูปตัด S-02/S-03 (A-08) ปลายเส้นดิน",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า09.png"
       },
       {
@@ -267,7 +274,7 @@
         "id": "A''''",
         "pos_m": -1.0,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 1.00 เหนือแถว A — แปลนพื้นชั้น 1 A-05, A-13, A-14; รูปตัด S-02/S-03 A-08; S-02 ให้ขอบพื้น GS ที่ 1.23 (A''') ดู warnings",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า06.png"
       },
       {
@@ -281,7 +288,7 @@
         "id": "A''''''",
         "pos_m": -0.8,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 0.80 เหนือแถว A — แปลนพื้นชั้น 2 A-05, ผังฝ้าชั้น 2 A-13, ผังไฟฟ้าชั้น 2 A-15; S-03 พิมพ์ '~0.83' ขอบพื้น S2 (A''''') ห่าง 0.03 เก็บทั้งคู่ ดู warnings",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า06.png"
       },
       {
@@ -329,7 +336,7 @@
         "pos_m": 7.6,
         "type": "dummy",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า21.png",
-        "note": "3.00 เหนือแนวชายคา C'' — ระยะทาบเสริมความแข็งแรงโครงถัก T1/T2 (แปลนโครงสร้างหลังคา S-05)"
+        "note": "3.00 เหนือแนวชายคา C'''' — ระยะทาบเสริมความแข็งแรงโครงถัก T1/T2 (แปลนโครงสร้างหลังคา S-05)"
       },
       {
         "id": "B'''",
@@ -342,14 +349,14 @@
         "id": "B''''",
         "pos_m": 8.5,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 2.50 ใต้แถว B (= 0.50 เหนือแถว C) — รูปด้าน 2/4 A-07, รูปตัด S-02/S-03 A-08; มีวงกลมพิมพ์ 'B' ซ้ำที่ขีดนี้ ถือเป็นความผิดพลาดของแบบ ไม่ใช่เส้นชื่อ ดู warnings",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า08.png"
       },
       {
         "id": "B'''''",
         "pos_m": 8.8,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 0.20 เหนือแถว C — แปลนพื้นชั้น 1/2 A-05, A-13, A-14, A-15 (ขีดวงกลมเปิด)",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า06.png"
       },
       {
@@ -362,7 +369,7 @@
         "id": "C'",
         "pos_m": 9.7,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 0.70 ใต้แถว C — แปลนบันไดชั้นที่ 1/2 A-09; S-04 พิมพ์ '~0.73' (C'') ห่าง 0.03 เก็บทั้งคู่ ดู warnings",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า10.png"
       },
       {
@@ -376,7 +383,7 @@
         "id": "C'''",
         "pos_m": 10.0,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 1.00 ใต้แถว C — แปลนพื้นชั้น 1 A-05, A-13, A-14; รูปตัด S-02/S-03 A-08",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า06.png"
       },
       {
@@ -390,7 +397,7 @@
         "id": "C'''''",
         "pos_m": 12.0,
         "type": "dummy",
-        "note": "dimension tick, section 4 rule 4 (added by op_fix 2026-09-29)",
+        "note": "ขีด 1.00 + 2.00 ใต้แถว C — รูปตัด S-02/S-03 (A-08) ปลายเส้นดิน",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า09.png"
       }
     ],
@@ -400,7 +407,7 @@
         "level_m": 0.0,
         "type": "datum",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า17.png",
-        "note": "หมายเหตุ S-01: ระดับ ±0.00 ของอาคาร ผู้ควบคุมงานกำหนดตามความเหมาะสมของสถานที่ก่อสร้าง"
+        "note": "หมายเหตุ S-01: ระดับ ±0.00 ของอาคาร ผู้ควบคุมงานกำหนดตามความเหมาะสมของสถานที่ก่อสร้าง | 2026-10-23 sweep: A-06 รูปด้าน 1, A-07 รูปด้าน 2/3/4, A-08 รูปตัด S-01/S-02/S-03 พิมพ์ '±0.00 ระดับพื้นดิน'; A-09 รูปตัด A พิมพ์ 'ระดับ +0.00' ที่แนวดิน"
       },
       {
         "id": "+0.10",
@@ -421,7 +428,7 @@
         "level_m": 0.2,
         "type": "dummy",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า18.png",
-        "note": "กำกับพื้น GS รอบอาคาร '+0.20' (S-02)"
+        "note": "กำกับพื้น GS รอบอาคาร '+0.20' (S-02) | 2026-10-23 sweep: A-05 ป้ายห้อง ทางเดินรอบ พ1 '±0.20' (แปลนชั้น 1); A-09 รูปตัด A 'ระดับทางเดินรอบอาคาร +0.20'"
       },
       {
         "id": "+0.30",
@@ -461,7 +468,7 @@
         "level_m": 3.6,
         "type": "dummy",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า19.png",
-        "note": "คาน B3/B5(+3.60), หูช้างรับแผ่นพื้น (+3.60) ชั้น 2"
+        "note": "คาน B3/B5(+3.60), หูช้างรับแผ่นพื้น (+3.60) ชั้น 2 | 2026-10-23 sweep: A-05 ป้าย กันสาด พ4 '+3.60' (แปลนชั้น 2); A-08 รูปตัด S-02/S-03 กันสาด '+3.60'"
       },
       {
         "id": "+3.65",
@@ -482,21 +489,21 @@
         "level_m": 3.75,
         "type": "named",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า28.png",
-        "note": "ขยายระดับ พื้นและคาน (S-12): '∇ + 3.75 (ห้องเรียน พื้น Topping)'; ระดับข้างเคียงพิมพ์ '∇ + 3.70 (ระเบียง พื้น Topping)', '∇ + 3.70 (หลังคาน B1)', '∇ + 0.20 (อเนกประสงค์ พื้น Topping)', '∇ + 0.20 ทางเดินรอบอาคาร', '∇ + 0.15 (หลังคาน B1)' — ค่าเดียวกับ +3.70 / +0.20 / +0.15 ด้านบน"
+        "note": "ขยายระดับ พื้นและคาน (S-12): '∇ + 3.75 (ห้องเรียน พื้น Topping)'; ระดับข้างเคียงพิมพ์ '∇ + 3.70 (ระเบียง พื้น Topping)', '∇ + 3.70 (หลังคาน B1)', '∇ + 0.20 (อเนกประสงค์ พื้น Topping)', '∇ + 0.20 ทางเดินรอบอาคาร', '∇ + 0.15 (หลังคาน B1)' — ค่าเดียวกับ +3.70 / +0.20 / +0.15 ด้านบน | 2026-10-23 sweep: A-06/A-07/A-08 รูปด้าน/รูปตัด '+3.75 ระดับพื้นชั้น 2'; A-05 และ A-08 ป้าย ระเบียง '+3.75'; A-09 'ระดับพื้นหน้าห้องเรียน ชั้น2 +3.75 ม.' — สถาปัตย์ใช้ +3.75 เป็นพื้นระเบียง/พื้นชั้น 2 (ห้องเรียน +3.80) ขณะที่ S-12 เรียกห้องเรียน Topping ดู warnings"
       },
       {
         "id": "+5.80",
         "level_m": 5.8,
         "type": "dummy",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า20.png",
-        "note": "คาน BS(+5.80), พื้น S1 +5.80 (S-04)"
+        "note": "คาน BS(+5.80), พื้น S1 +5.80 (S-04) | 2026-10-23 sweep: A-08 รูปตัด S-01 ป้าย กันสาด พ4 '+5.80'"
       },
       {
         "id": "+5.85",
         "level_m": 5.85,
         "type": "dummy",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า25.png",
-        "note": "ไม่ได้พิมพ์เป็นค่าระดับ — ท้องคาน RB3 ที่แนว A-5: S-09 'H=2.15' วัดจากหลังคาน B1 ชั้น 2 (+3.70) → +5.85; ตรงกับ RB3 +6.10 − ลึก 0.25 (S-11) พอดี; ห่างจาก +5.80 (BS/S1) 0.05 — คนละขอบ จึงเก็บแยก (§4 rule 4)",
+        "note": "ไม่ได้พิมพ์เป็นค่าระดับ — ท้องคาน RB3 ที่แนว A-5: S-09 'H=2.15' วัดจากหลังคาน B1 ชั้น 2 (+3.70) → +5.85; ตรงกับ RB3 +6.10 − ลึก 0.25 (S-11) พอดี; ห่างจาก +5.80 (BS/S1) 0.05 — คนละขอบ จึงเก็บแยก (§4 rule 4) | 2026-10-23 sweep: A-13 ผังฝ้าเพดานชั้น 2 ป้ายฝ้า กันสาด คสล. '+5.85' (C1) แถว A",
         "confidence_score": 0.75,
         "confidence_flags": [
           "derived_from_printed_clear_height",
@@ -508,7 +515,7 @@
         "level_m": 6.0,
         "type": "dummy",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า20.png",
-        "note": "พื้นยื่น S2 (+6.00) ระดับหลังคา (S-04)"
+        "note": "พื้นยื่น S2 (+6.00) ระดับหลังคา (S-04) | 2026-10-23 sweep: A-08 รูปตัด S-02/S-03 ป้าย กันสาด พ4 '+6.00'"
       },
       {
         "id": "+6.10",
@@ -541,7 +548,7 @@
         "level_m": 0.25,
         "type": "named",
         "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า07.png",
-        "note": "A-06 รูปด้าน 1, A-07 รูปด้าน 2/3/4, A-08 รูปตัด S-01/S-02/S-03 '+0.25 ระดับพื้นชั้น 1'; A-09 รูปตัด A 'ระดับพื้นชั้น 1 +0.25 ม.'; ป้ายห้อง อเนกประสงค์ A-05 พ3 และ A-08 พ1 พิมพ์ '±0.25'"
+        "note": "A-06 รูปด้าน 1, A-07 รูปด้าน 2/3/4, A-08 รูปตัด S-01/S-02/S-03 '+0.25 ระดับพื้นชั้น 1'; A-09 รูปตัด A 'ระดับพื้นชั้น 1 +0.25 ม.'; ป้ายห้อง อเนกประสงค์ A-05 พ3 และ A-08 พ1 พิมพ์ '±0.25' | 2026-10-23 sweep: A-10 ขยาย ป1 '+0.25 ระดับพื้นชั้นล่าง'"
       },
       {
         "id": "ระดับชานพัก",
