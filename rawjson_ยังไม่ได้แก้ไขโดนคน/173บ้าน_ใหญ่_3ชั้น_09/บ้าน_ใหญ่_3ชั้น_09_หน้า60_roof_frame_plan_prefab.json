@@ -1,0 +1,734 @@
+{
+ "png": "60",
+ "doc_page": 60,
+ "discipline": "structural",
+ "sheet_code": "PT-02",
+ "sheet_name": "แบบระบบโครงถัก หลังคาสำเร็จรูปขึ้นรูปเย็น พร้อมเคลือบ Anti-corrosion Coating — แปลนโครงหลังคาเหล็กสำเร็จรูป, แปลนแสดงแป C7575 (อาคารเรียน 318ล./55-ก แผ่นที่ PT-02)",
+ "source_image": "image/บ้าน_ใหญ่_3ชั้น_09/บ้าน_ใหญ่_3ชั้น_09_หน้า60.png",
+ "grid_source": "บ้าน_ใหญ่_3ชั้น_09_หน้า00_gridline.json",
+ "floor_level": "RF",
+ "view_title": "แปลนโครงหลังคาเหล็กสำเร็จรูป",
+ "scale": "1:200",
+ "pattern": "roof_frame_plan",
+ "views": [
+  "view1: แปลนโครงหลังคาเหล็กสำเร็จรูป 1:200 — prefab trusses 001/005/008/009/010 (this file)",
+  "view2: แปลนแสดงแป C7575 — purlin layout, no marks (not extracted as elements; its 2.15 eave chain is in the grid master)"
+ ],
+ "confidence_score": 0.75,
+ "confidence_flags": [
+  "alternative_roof_system"
+ ],
+ "warnings": [
+  "PT-02 is the ALTERNATIVE prefab cold-formed truss roof ('แบบระบบโครงถัก หลังคาสำเร็จรูปขึ้นรูปเย็น พร้อมเคลือบ Anti-corrosion Coating'; A-05: 'ให้เลือกทำโครงหลังคาเหล็กรูปพรรณ ... หรือเลือกใช้ระบบโครงหลังคาสำเร็จรูป'). The steel-section roof on S-07 (_หน้า41_view1_roof_frame_plan.json) is the other alternative; the two must not be summed.",
+  "Trusses are drawn as solid lines eave to eave, labelled with type numbers 001 / 010 / 009 / 008 at each hip end and 005 (41 lines) between; the printed chain '0.80 | 0.73 | 1.33 ...' places them at 0.60, 1.333, 2.667, 4.00 ... 62.667, 63.40 (grid master lines from this sheet, added with tools/gridfix.py). Each is one segment A-D (10.50, between the roof beams R7) with the 2.20 overhangs part of the member.",
+  "Not recorded as elements: the hip lines and the short unlabelled jack members at the hip ends (no marks), the dashed double end-wall lines at -0.20 / 64.20, the column squares, and the purlin plan 'แปลนแสดงแป C7575' (purlins 'แป C7575 @ 1.00 m', no marks). Purlin spec is on PT-03 (C75x35(37)x8.5x0.75 mm).",
+  "NOTE box on the sheet: 'Ensure roof bracing is installed in accordance with the Truss-Supplier Installation Manual. Lateral restraints (TOPSPAN40 / Top Chord material) continuing over adjacent trusses at 1.8m intervals are to be provided and braced to the ceiling plane.'"
+ ],
+ "elements": [
+  {
+   "element_id": "001",
+   "element_type": "truss",
+   "grid_ref_start": "A1'''''''",
+   "grid_ref_end": "D1'''''''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 001) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "010",
+   "element_type": "truss",
+   "grid_ref_start": "A1''''''''",
+   "grid_ref_end": "D1''''''''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 010) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "009",
+   "element_type": "truss",
+   "grid_ref_start": "A1'''''''''",
+   "grid_ref_end": "D1'''''''''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 009) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "008",
+   "element_type": "truss",
+   "grid_ref_start": "A2",
+   "grid_ref_end": "D2",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 008) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A2''",
+   "grid_ref_end": "D2''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A2'''",
+   "grid_ref_end": "D2'''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A3",
+   "grid_ref_end": "D3",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A3''",
+   "grid_ref_end": "D3''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A3'''''",
+   "grid_ref_end": "D3'''''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A4",
+   "grid_ref_end": "D4",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A4''",
+   "grid_ref_end": "D4''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A4'''",
+   "grid_ref_end": "D4'''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A5",
+   "grid_ref_end": "D5",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A5'",
+   "grid_ref_end": "D5'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A5''''",
+   "grid_ref_end": "D5''''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A6",
+   "grid_ref_end": "D6",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A6'",
+   "grid_ref_end": "D6'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A6''",
+   "grid_ref_end": "D6''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A7",
+   "grid_ref_end": "D7",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A7'",
+   "grid_ref_end": "D7'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A7''",
+   "grid_ref_end": "D7''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A8",
+   "grid_ref_end": "D8",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A8'",
+   "grid_ref_end": "D8'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A8''",
+   "grid_ref_end": "D8''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A9",
+   "grid_ref_end": "D9",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A9'",
+   "grid_ref_end": "D9'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A9''",
+   "grid_ref_end": "D9''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A10",
+   "grid_ref_end": "D10",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A10'",
+   "grid_ref_end": "D10'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A10''",
+   "grid_ref_end": "D10''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A11",
+   "grid_ref_end": "D11",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A11'",
+   "grid_ref_end": "D11'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A11''",
+   "grid_ref_end": "D11''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A12",
+   "grid_ref_end": "D12",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A12'",
+   "grid_ref_end": "D12'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A12''''",
+   "grid_ref_end": "D12''''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A13",
+   "grid_ref_end": "D13",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A13''",
+   "grid_ref_end": "D13''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A13'''",
+   "grid_ref_end": "D13'''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A14",
+   "grid_ref_end": "D14",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A14'",
+   "grid_ref_end": "D14'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A14''''",
+   "grid_ref_end": "D14''''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A15",
+   "grid_ref_end": "D15",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A15'",
+   "grid_ref_end": "D15'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "005",
+   "element_type": "truss",
+   "grid_ref_start": "A15''",
+   "grid_ref_end": "D15''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 005) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "008",
+   "element_type": "truss",
+   "grid_ref_start": "A16",
+   "grid_ref_end": "D16",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 008) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "drawn_eave_to_eave"
+   ]
+  },
+  {
+   "element_id": "009",
+   "element_type": "truss",
+   "grid_ref_start": "A16'",
+   "grid_ref_end": "D16'",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 009) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "010",
+   "element_type": "truss",
+   "grid_ref_start": "A16''",
+   "grid_ref_end": "D16''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 010) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  },
+  {
+   "element_id": "001",
+   "element_type": "truss",
+   "grid_ref_start": "A16'''",
+   "grid_ref_end": "D16'''",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "โครงถักหลังคาสำเร็จรูป (เลขชนิด 001) พาดแนว A-D ยื่นชายคา 2.20 ทั้งสองข้าง; ระยะจากโซ่ระยะโครงถักบนแปลนนี้ (0.80 | 0.73 | 1.33 ...)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "drawn_eave_to_eave",
+    "bears_on_beam:R7(start)",
+    "bears_on_beam:R7(end)"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "scope": "pass2_only",
+ "op": "op04",
+ "date": "2026-10-22",
+ "status": "done",
+ "house_design": "อาคารเรียน 108ล./59-ก — 'แบบมาตรฐาน สำหรับโรงเรียนในสังกัด สพฐ.' โดย กลุ่มออกแบบและก่อสร้าง สำนักอำนวยการ สำนักงานคณะกรรมการการศึกษาขั้นพื้นฐาน กระทรวงศึกษาธิการ (กรอบชื่อแบบทุกแผ่น); 59 แผ่น A2 = A-01..A-24, S-01..S-19, PT-01..PT-10 (แบบโครงหลังคาสำเร็จรูป), EE-01..EE-03, F-01..F-03 (ตามสารบัญ A-02); Folder 108-59 / 216-56C / 324-55B; วันที่ลายมือ 28-29/9/60 (พ.ศ. 2560). แหล่งที่มา: ไม่ได้บันทึกไว้ อนุมานจากกรอบชื่อแบบ (เตรียมเข้าชุดข้อมูลเมื่อ 2026-10-15); สแกนไม่มี text layer",
+ "subtasks_done": [
+  "gridline",
+  "plan_footing",
+  "plan_beam",
+  "plan_slab",
+  "section",
+  "schedule",
+  "notes"
+ ],
+ "subtasks_absent_from_this_house": [
+  "plan_column (no column plan sheet — columns are the C1/C2/C3 marks of the footing plans S-02/S-03, recorded in the S-02 file; the column table S-09 is extracted as a schedule)",
+  "soil_boring_log (none in the 59-sheet set; S-07 note 2 only requires 2 boreholes to be drilled for this building)"
+ ],
+ "subtasks_not_yet_reached": [
+  "plan_beam + section + notes of the PT-01..PT-10 prefabricated roof-truss ALTERNATIVE (pages 44-53: PT-02 truss layout plans, PT-03..PT-08 truss elevations TRUSS 001-016 span 10.55 + 1.055 overhangs, PT-08 material spec text, PT-09/PT-10 3D and connection details) — not extracted in this run. Reason: optional alternative to the steel roof already extracted from S-17..S-19 (S-19 note: 'ให้เลือกทำโครงเหล็กรูปพรรณตามแบบรูปหรือโครงหลังคาสำเร็จรูป'); its layout plan prints no grid bubbles or legible truss marks at scan resolution, and summing it with the primary roof would double-count. A later pass can add it as its own roof_frame_plan flagged as the alternative."
+ ],
+ "deliberately_skipped": [
+  "material_list",
+  "index",
+  "site_plan",
+  "side_profile",
+  "title",
+  "symbol",
+  "roof_plan",
+  "misc",
+  "bbs_schedule"
+ ],
+ "pages_extracted": 26,
+ "pages_in_house": 59,
+ "note": "Pass 2 subtasks only (op04) — this house is NOT fully extracted (26 of 59 pages; the PT alternative-roof sheets are Pass-2 content not extracted this run, see subtasks_not_yet_reached; everything else not extracted is Pass-3 or out of op04 scope, skipped on purpose). Read from the drawings: 2-storey 8-classroom school block, grid 1-19 x D/C/B/A = 72.00 x 10.50 m (18 bays x 4.00; D-C 2.50, C-B 5.50, B-A 2.50), two stair halls in bays 3-4 and 16-17, 1.50 m walkway/canopy ring (RS1) and 2.00 m eaves. Foundations: pile system S-02 (F2 two-pile cap at all 48 column positions, piles 0.26 I-section or 0.22 square, 21.00 m, 25 t/pile) and a spread-footing alternative S-03 (F1 2.50 / F2 1.80 / F3 2.20 square, 10 t/m2) — one footing_plan file each; columns C1/C2/C3 (table S-09). Beams: floor 1 G-series (S-04, 174 segments), floor 2 B/R-series with the cantilever ring (S-05, 260 segments), RC roof/wall-plate beams R6-R9 (S-06, 66 segments), steel hip-roof trusses T1-T8 (S-17 roof_frame_plan; T1 grouped with a count because positions are undimensioned). Slabs: precast solid plank 5 cm + 5 cm topping (PL) in the classrooms, cast-in-place S0-S5 / RS1 / RS2 (S-11). Sections: beams S-13..S-16, footings S-07/S-08, slabs S-11, stair S-12, level sections S-10, trusses S-18/S-19. Schedules: column table S-09, windows น1-น3 (A-19), doors D0-D4 (A-20), AL1 (A-21), AL2/W1 (A-22). Notes: A-05..A-08 (architectural/general spec), S-07 piles, S-08 spread footings, S-19 roof steel — the set prints no concrete strength (except the plank topping '210/240' on S-04) and no fy; rebar grade is the boxed 'เหล็กเสริมข้ออ้อยทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40' on every S-sheet; covers 4 cm columns / 9 cm underground pedestals. Skipped on purpose: A-01 cover, A-02 index, A-03 divider, A-04 symbols, A-09/A-10 architectural floor plans (A-09 swept for grid dimensions), A-11 architectural roof plan, A-12..A-16 sections/elevations (A-12 swept for levels), A-17/A-18 sanitary/toilet details, A-23 railing, A-24 architectural stair, S-01 divider, EE-01..EE-03 electrical, F-01..F-03 furniture. Scan has no text layer — every value read off zoomed crops; classroom floor-beam lines C'/C'' (thirds of D-B) are scaled, not printed, and flagged. Grid-master dimension sweep finished 2026-10-23 (op04 follow-up, gridfix): A-09 rows completed and every sheet the first run left unswept is now swept — A-10..A-24, PT-01..PT-10, EE-01..EE-03, F-01 (F-02/F-03 furniture details skipped as element-internal). New line 19''' (75.50, A-09 row end); new levels +6.20 (A-13) and +0.40 (A-18 walkway, conflicts with +0.45 on A-09/A-12, kept both); the grid master's partial_dimension_sweep flag is removed. Detail sheets without grid bubbles went to unassigned_dimensions.",
+ "decisions": [
+  "Origin D1 (top-left as drawn); rows lettered D, C, B, A top-down as printed.",
+  "Two printed eave values 0.05 apart (S-17 2.05 / A-12 & S-06 2.00) kept as two lines each side (§4 rule 4).",
+  "G3 / stair beams placed from their own printed details (S-13 '~1.94', S-12 '1.93', '2.55') rather than from the not-to-scale plan; conflicts written into the beam-plan warnings.",
+  "T1/T3-T8 recorded as grouped entries with counts (positions undimensioned); T2 atomic on grids 2 and 18.",
+  "Mark F2 means two different footings in the two alternative systems (S-07 pile cap vs S-08 spread footing); both kept as printed with footing_type pile/spread.",
+  "PT prefabricated-roof alternative not extracted (see subtasks_not_yet_reached)."
+ ]
+}

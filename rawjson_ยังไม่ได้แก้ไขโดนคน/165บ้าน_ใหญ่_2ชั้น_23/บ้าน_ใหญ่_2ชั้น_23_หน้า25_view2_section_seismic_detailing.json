@@ -1,0 +1,112 @@
+{
+  "png": "25",
+  "doc_page": 25,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "การจัดเหล็กเสริมในคานและเสา ต้านแผ่นดินไหว ตามกฎกระทรวง",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า25.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_23_หน้า00_gridline.json",
+  "view_title": "รูปขยายเหล็กปลอกคาน-เสา ต้านแผ่นดินไหว / ตัวอย่างการเสริมเหล็กเสา LineA-5",
+  "scale": "No,Scale",
+  "views": [
+    "view1: การจัดรายละเอียดเหล็กเสริมในคานและเสา สำหรับต้านแรงแผ่นดินไหว — ข้อ 1 เหล็กเสริมในคาน 1.1-1.3 + ข้อกำหนดเพิ่มเติม, ข้อ 2 เหล็กเสริมในเสา 1-2 + ข้อกำหนดเพิ่มเติม 1-3, หมายเหตุ 1-3, หมายเหตุ (ขยายเหล็กปลอกเสาอาคารทุกต้น) (split: notes, หน้า25_view1_notes.json)",
+    "view2: รูปขยายเหล็กเสริมในคาน (2h / S / 2h), รูปขยายเหล็กเสริมในเสา (lo / St / H/2), ตัวอย่างการเสริมเหล็กเสา LineA-5 No,Scale + กล่องคำนวณ lo (split: section, หน้า25_view2_section_seismic_detailing.json)"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "S-09 diagrams. The beam and column diagrams are generic detailing rules with symbolic dimensions only (h, d, 2h, S, a, a/2, lo, S/2, s, St, H, H/2) plus '5 cm' / '5 Cm' to the first stirrup/tie — recorded as detail_view elements with element_id null (§0.2: no printed mark).",
+    "'ตัวอย่างการเสริมเหล็กเสา LineA-5' applies the rules to the real column on grid A5, which S-01 marks C1. It is recorded with element_id null + element_name_assigned, NOT as 'C1': this sheet prints no mark and no tie diameter, and as a section element 'C1' would win the §7 join over the S-07 column table and replace C1's full spec (16/12-DB25, 3-RB9 ties) with a tie spacing only. Decision: keep the S-07 schedule as C1's spec, keep this as the seismic tie-zone overlay that applies to every column ('ขยายเหล็กปลอกเสาอาคารทุกต้น'); column_mark_on_plan carries 'C1' so the link is not lost. Risk accepted: a consumer that joins only by element_id will not see the 0.075 confinement zones.",
+    "LineA-5 tie zones: 0.075 (= S/2) within lo = 0.50 at the top and bottom of every storey and through every beam-column joint, 0.15 (= S, 'ตามแบบขยายเสา' — matches the S-07 C1 table's RB9@0.15 above floor 1) in mid-height; first tie 5 Cm from the beam face. The box prints lo = h/6 = 2.85/6 = 0.475 m → 'Use lo = 0.50 m (ตามข้อกำหนด)'. stirrup.spacing_mm = the smallest printed spacing (75) with variable_spacing true (§0.5); dia/type are not printed on this sheet and are left out rather than copied from S-07.",
+    "The clear heights printed on LineA-5 (H=0.87 RB3-RB1, H=2.15 floor 2-RB3, H=2.85 floor 1-floor 2, unvalued H footing-floor 1) are vertical building dimensions: swept into the grid master as a z chain anchored on printed levels (+6.10, +3.70, +0.15) with three new dummy z levels (+6.97, +5.85, +3.00) — each cross-checks exactly against a printed level minus a printed section depth (see grid master warnings). The 0.50 / 0.075 / 0.15 / 5 Cm ticks are tie-zone dimensions inside the element (§4 rule 4) and stay here. Extracted in the 2026-10-22 resume run."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "รูปขยายเหล็กเสริมในคาน ต้านแผ่นดินไหว",
+      "element_type": "detail_view",
+      "applies_to": "คานทุกตัวที่ไม่ได้กำหนดไว้ในแบบขยายคาน (ข้อ 1)",
+      "first_stirrup_offset_mm": 50,
+      "first_stirrup_offset_mm_printed_as": "5 cm",
+      "printed_parts": [
+        "5 cm",
+        "จุดต่อทาบเหล็ก",
+        "a/2",
+        "a",
+        "h",
+        "d",
+        "2h ระยะเหล็กปลอกแน่น",
+        "S ระยะห่างเหล็กปลอกตามปกติ"
+      ],
+      "note": "ปลอกแน่นระยะเรียง a/2 ในช่วง 2h จากหน้าเสาทั้งสองปลายคาน (และทั้งสองข้างของเสากลาง), ปลอกปกติระยะ a ในช่วง S กลางคาน; จุดต่อทาบเหล็กเสริมอยู่ในช่วง S เท่านั้น; ปลอกเส้นแรกห่างหน้าเสา 5 cm",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "รูปขยายเหล็กเสริมในเสา ต้านแผ่นดินไหว",
+      "element_type": "detail_view",
+      "applies_to": "เสาทุกต้น (ข้อ 2)",
+      "first_tie_offset_mm": 50,
+      "first_tie_offset_mm_printed_as": "5 Cm",
+      "printed_parts": [
+        "คานชั้นบน",
+        "คานชั้นล่าง",
+        "5 Cm",
+        "lo",
+        "S/2",
+        "s",
+        "St",
+        "H",
+        "H/2"
+      ],
+      "note": "เหล็กปลอก S/2 ในช่วง lo ทั้งบนและล่างของเสาแต่ละช่วงชั้น และต่อเนื่อง S/2 ผ่านข้อต่อคาน-เสา; ช่วงต่อทาบเหล็กยืน St (เหล็กปลอก S/2) อยู่ภายในครึ่งกลางความสูง H/2; นอกนั้นระยะปลอกปกติ s; ปลอกเส้นแรกห่างหน้าคาน 5 Cm",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ตัวอย่างการเสริมเหล็กเสา LineA-5",
+      "element_type": "column",
+      "grid_refs": [
+        "A5"
+      ],
+      "column_mark_on_plan": "C1",
+      "stirrup": {
+        "spacing_mm": 75,
+        "variable_spacing": true,
+        "printed_as": "0.075 (ช่วง lo = 0.50 ปลายบน-ล่างทุกช่วงชั้น และในข้อต่อคาน-เสา) / 0.15 (กลางเสา)"
+      },
+      "lo_mm": 500,
+      "lo_mm_printed_as": "Use lo = 0.50 m (ตามข้อกำหนด)",
+      "lo_calc_printed_as": "lo = h/6 =2.85/6=0.475 m; Use lo = 0.50 m (ตามข้อกำหนด); S = 0.15 (ตามแบบขยายเสา); S/2 = 0.075 m",
+      "first_tie_offset_mm": 50,
+      "first_tie_offset_mm_printed_as": "5 Cm",
+      "clear_heights_printed_as": "H=0.87 (ท้อง RB1 – หลัง RB3), H=2.15 (ท้อง RB3 – หลังคานชั้น 2), H=2.85 (ท้องคานชั้น 2 – หลังคานชั้น 1), H (ท้องคานชั้น 1 – หลังฐานราก, ไม่พิมพ์ค่า)",
+      "main_bar_printed_as": "เหล็กแกนเสา ตามแบบ",
+      "printed_parts": [
+        "▽ คานหลังคา",
+        "RB1",
+        "RB3",
+        "▽ คานชั้น 2",
+        "B3A",
+        "B1",
+        "▽ คานชั้น 1",
+        "B3",
+        "เหล็กแกนเสา ตามแบบ",
+        "นับระยะ lo จากหน้าตัดคานที่ลึกสุด",
+        "5 Cm",
+        "0.50",
+        "0.075",
+        "0.15"
+      ],
+      "note": "ตัวอย่างการเสริมเหล็กเสา LineA-5 (No,Scale) — เสาแนว A กริด 5 (C1 ตาม S-01) จากฐานรากถึงคานหลังคา: ช่วงปลายเสาทุกช่วงชั้นยาว lo = 0.50 ใช้ปลอก @0.075 (S/2), ข้อต่อคาน B3/B1 (ชั้น 1), B3A/B1 (ชั้น 2), RB3 และ RB1 ใช้ปลอก @0.075 ต่อเนื่อง, ช่วงกลางเสา @0.15 (S); นับระยะ lo จากหน้าตัดคานที่ลึกสุด",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "no_scale_example_diagram",
+        "mark_from_footing_plan_not_this_sheet"
+      ]
+    }
+  ]
+}

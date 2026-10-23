@@ -1,0 +1,905 @@
+{
+ "png": "40",
+ "doc_page": 40,
+ "discipline": "structural",
+ "sheet_code": "S-06",
+ "sheet_name": "แปลนโครงหลังคาเหล็กรูปพรรณ, แปลนคานหลังคา - โครงหลังคา",
+ "pattern": "roof_frame_plan",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_27/บ้าน_ใหญ่_2ชั้น_27_หน้า40.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_27_หน้า00_gridline.json",
+ "floor_level": "RF",
+ "view_title": "แปลนโครงหลังคาเหล็กรูปพรรณ",
+ "scale": "1:200",
+ "views": [
+  "view1: แปลนโครงหลังคาเหล็กรูปพรรณ 1:200 — steel trusses T1..T7 (split: roof_frame_plan, _view1_roof_frame_plan)",
+  "view2: แปลนคานหลังคา - โครงหลังคา 1:200 — RC roof beams R7..R14 + ridge line สันหลังคา (this split: beam_plan, _view2_beam_plan_roof)"
+ ],
+ "confidence_score": 0.75,
+ "confidence_flags": [],
+ "warnings": [
+  "Steel hip-roof framing ('โครงหลังคา ดูแบบขยาย' — truss details on S-22 / S-23). Common trusses T1 are drawn at three equal spaces per 4.00 bay (~1.33) from 5.33 to 74.67 — 53 trusses, each one prefabricated member recorded eave-to-eave (A'' to D'''''), like house 165. S-06 does not dimension the spacing: 17 trusses sit on grid lines; the 36 in between were placed at thirds of each bay by proportion, and the alternative prefab truss plan PT-02 (page 59) prints exactly those thirds (1.33), so the lines are printed ticks in the grid master. span_source is grid_table because the span (eave to eave) is read from the y lines. The printed 0.08 (hip apex to the first T1) confirms 5.33 - 5.25.",
+  "Hip ends (bays 1-2 and 20-21): T3 along the hips, jack trusses T4-T6 (S-23: each frames into T3) and T7 (= C-100x50x20x2.3mm). T2 on grids 2 / 20 is a full eave-to-eave truss (S-22 elevation: 2.20 + 10.50 + 2.20), carrying the hip trusses T3 / T4 at 3.94 from each support (S-22). T3-T7 are recorded by label count with no endpoints: the hips are diagonal and the jack positions are not dimensioned — a deliberate departure from the beam-endpoint rule, accepted because inventing ~20 more scaled dummy lines for short jacks would add guessed geometry, not read geometry; the detail sheets carry their shapes.",
+  "The left end prints fewer jack labels than the right end (no labels on the vertical jacks); counts are taken from the fully-labelled right end, doubled — flagged."
+ ],
+ "elements": [
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "A''2",
+   "grid_ref_end": "D'''''2",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T2 บนกริด 2 เต็มช่วงชายคาถึงชายคา (แบบขยาย S-22: 2.20 + 10.50 + 2.20) — โครงถักตามแนวสันตะเข้ T3 / T4 มาฝากที่ 3.94 จากแนวรองรับแต่ละข้าง",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''2'",
+   "grid_ref_end": "D'''''2'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''2''",
+   "grid_ref_end": "D'''''2''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''3",
+   "grid_ref_end": "D'''''3",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''3''",
+   "grid_ref_end": "D'''''3''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''3''''",
+   "grid_ref_end": "D'''''3''''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''4",
+   "grid_ref_end": "D'''''4",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''4'",
+   "grid_ref_end": "D'''''4'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''4''",
+   "grid_ref_end": "D'''''4''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''5",
+   "grid_ref_end": "D'''''5",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''5'",
+   "grid_ref_end": "D'''''5'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''5'''",
+   "grid_ref_end": "D'''''5'''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''6",
+   "grid_ref_end": "D'''''6",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''6'",
+   "grid_ref_end": "D'''''6'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''6''",
+   "grid_ref_end": "D'''''6''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''7",
+   "grid_ref_end": "D'''''7",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''7'",
+   "grid_ref_end": "D'''''7'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''7''",
+   "grid_ref_end": "D'''''7''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''8",
+   "grid_ref_end": "D'''''8",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''8'",
+   "grid_ref_end": "D'''''8'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''8''",
+   "grid_ref_end": "D'''''8''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''9",
+   "grid_ref_end": "D'''''9",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''9'",
+   "grid_ref_end": "D'''''9'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''9''",
+   "grid_ref_end": "D'''''9''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''10",
+   "grid_ref_end": "D'''''10",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''10'",
+   "grid_ref_end": "D'''''10'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''10''",
+   "grid_ref_end": "D'''''10''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''11",
+   "grid_ref_end": "D'''''11",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''11'",
+   "grid_ref_end": "D'''''11'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''11''",
+   "grid_ref_end": "D'''''11''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''12",
+   "grid_ref_end": "D'''''12",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''12'",
+   "grid_ref_end": "D'''''12'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''12''",
+   "grid_ref_end": "D'''''12''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''13",
+   "grid_ref_end": "D'''''13",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''13'",
+   "grid_ref_end": "D'''''13'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''13''",
+   "grid_ref_end": "D'''''13''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''14",
+   "grid_ref_end": "D'''''14",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''14'",
+   "grid_ref_end": "D'''''14'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''14''",
+   "grid_ref_end": "D'''''14''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''15",
+   "grid_ref_end": "D'''''15",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''15'",
+   "grid_ref_end": "D'''''15'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''15''",
+   "grid_ref_end": "D'''''15''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''16",
+   "grid_ref_end": "D'''''16",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''16'",
+   "grid_ref_end": "D'''''16'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''16'''",
+   "grid_ref_end": "D'''''16'''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''17",
+   "grid_ref_end": "D'''''17",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''17'",
+   "grid_ref_end": "D'''''17'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''17''",
+   "grid_ref_end": "D'''''17''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''18",
+   "grid_ref_end": "D'''''18",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''18'",
+   "grid_ref_end": "D'''''18'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''18'''",
+   "grid_ref_end": "D'''''18'''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''19",
+   "grid_ref_end": "D'''''19",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''19'",
+   "grid_ref_end": "D'''''19'",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "grid_ref_start": "A''19''",
+   "grid_ref_end": "D'''''19''",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T1 วางบนคาน R7 แถว A/D ยื่นถึงแนวชายคา 2.20 ทั้งสองด้าน — ตำแหน่ง 1/3 ช่วงเสา: S-06 ไม่พิมพ์ระยะ (วัดตามสัดส่วน) แต่แปลนโครงถักสำเร็จรูป PT-02 พิมพ์ระยะ 1.33 ที่แนวเดียวกัน",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member",
+    "position_thirds_of_bay_not_dimensioned_on_S-06"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "A''20",
+   "grid_ref_end": "D'''''20",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถักเหล็ก T2 บนกริด 20 เต็มช่วงชายคาถึงชายคา (แบบขยาย S-22: 2.20 + 10.50 + 2.20) — โครงถักตามแนวสันตะเข้ T3 / T4 มาฝากที่ 3.94 จากแนวรองรับแต่ละข้าง",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ],
+   "material": "steel"
+  },
+  {
+   "element_id": "T3",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 4,
+   "grid_ref": "A''-D''''' x 1''-2",
+   "grid_ref_other_end": "A''-D'''' x 20-21''''",
+   "note": "โครงถักตามแนวสันตะเข้ (ทแยง 45 องศา) 2 แนวต่อปลายอาคาร — ทแยง จึงไม่มีช่วงตามกริด",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "hip_jack_trusses_recorded_by_label_count_not_positioned"
+   ]
+  },
+  {
+   "element_id": "T4",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 6,
+   "grid_ref": "A''-D''''' x 1''-2",
+   "grid_ref_other_end": "A''-D'''' x 20-21''''",
+   "note": "โครงถักย่อยที่ปลายอาคาร 3 ตัวต่อปลาย (แนวนอนบนแปลน) — แบบขยาย S-23: ฐาน 4.07 + ชายคา 2.20 ต่อเข้า T3",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "hip_jack_trusses_recorded_by_label_count_not_positioned"
+   ]
+  },
+  {
+   "element_id": "T5",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 8,
+   "grid_ref": "A''-D''''' x 1''-2",
+   "grid_ref_other_end": "A''-D'''' x 20-21''''",
+   "note": "ต่อปลาย: แนวนอน 2 ตัว (~2.67 / ~7.83) + แนวตั้ง 2 ตัว (~1.33 ช่วงจากกริดปลาย) — ด้านขวาพิมพ์ป้ายครบ ด้านซ้ายพิมพ์เฉพาะแนวนอน นับตามด้านขวาเป็นสองเท่า",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "hip_jack_trusses_recorded_by_label_count_not_positioned"
+   ]
+  },
+  {
+   "element_id": "T6",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 8,
+   "grid_ref": "A''-D''''' x 1''-2",
+   "grid_ref_other_end": "A''-D'''' x 20-21''''",
+   "note": "ต่อปลาย: แนวนอน 2 ตัว (~1.33 / ~9.17) + แนวตั้ง 2 ตัว — นับแบบเดียวกับ T5",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "hip_jack_trusses_recorded_by_label_count_not_positioned"
+   ]
+  },
+  {
+   "element_id": "T7",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 12,
+   "grid_ref": "A''-D''''' x 1''-2",
+   "grid_ref_other_end": "A''-D'''' x 20-21''''",
+   "note": "T7 = C-100x50x20x3.2mm (กล่องข้อความมุมขวาบน) — ตัวสั้นที่มุมอาคาร: ต่อปลาย แนวตั้ง 4 ตัว + แนวนอน 2 ตัว ตามป้ายด้านขวา (ด้านซ้ายพิมพ์ป้าย T7 เพียง 5 ตัว)",
+   "confidence_score": 0.55,
+   "confidence_flags": [
+    "hip_jack_trusses_recorded_by_label_count_not_positioned"
+   ],
+   "steel_section": {
+    "designation": "C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "tw_mm": 3.2,
+    "printed_as": "T7 - C-100x50x20x3.2mm"
+   }
+  }
+ ]
+}

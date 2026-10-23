@@ -1,0 +1,282 @@
+{
+  "png": "26",
+  "doc_page": 26,
+  "discipline": "structural",
+  "sheet_code": "S-10",
+  "sheet_name": "แบบขยายโครงหลังคา (TRUSS) — TRUSS 1, 2, 3, 4-1, 4-2, แบบขยายการยึดโครงหลังคา, แบบขยายชายคา, แบบขยาย 2, รายการประกอบโครงหลังคา (แบบ สปช. 2/28 ปรับปรุง แผ่นที่ S-10, 24/24)",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_08/บ้าน_ใหญ่_3ชั้น_08_หน้า26.png",
+  "pattern": "section",
+  "view_title": "TRUSS 1 / TRUSS 2 / TRUSS 3 / TRUSS 4-1 / TRUSS 4-2 + แบบขยาย",
+  "scale": "No : Scale",
+  "views": [
+    "view1: TRUSS 1",
+    "view2: TRUSS 2",
+    "view3: TRUSS 3",
+    "view4: TRUSS 4-1, TRUSS 4-2",
+    "view5: แผ่นเหล็กรองหัวเสา (เจาะรูพอดี / เจาะรูยาว) + ขยายการยึดโครงหลังคา TRUSS แบบ FIXED-SUPPORT / FREE-SUPPORT",
+    "view6: แบบขยายชายคา, แบบขยาย 2 (แป)",
+    "view7: รายการประกอบโครงหลังคา (note_block) — all in this file"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Truss marks on the roof frame plan S-03 (หน้า19) are T1 / T2 / T3 / T4-1 / T4-2; this sheet titles them TRUSS 1 .. TRUSS 4-2 — joined by number.",
+    "This sheet's title block prints 'อาคารเรียน 3 ชั้น 18 ห้องเรียน' (the '18' is clear on the zoom) while the cover and every other title block checked (S-04..S-09) print '3 ชั้น 15 ห้องเรียน' — the truss sheet appears to be shared with the 18-classroom variant of the series. (Its date stamp '๒๒ ก.ค. ๒๕๕๙' is a revision stamp that also appears on A-01, A-08 and A-10, so it is not evidence either way.) Kept as this house's truss detail: the trusses span 9.40 (8 @ 1.175), the same as this house's column rows B-E (9.525 - 0.125 = 9.40), and the S-03 roof plan (หน้า19) uses the same marks T1/T2/T3/T4-1/T4-2.",
+    "steel_section designation 'L' (equal angle) is not mapped in section 6a; recorded as d_mm / b_mm plus t_mm (one leg thickness) with the printed string kept — the same key the sister house 168 (same series) used.",
+    "Each truss carries one steel_section (the chord angle L-65x65x6) plus member_sections[] listing every printed member size by role; the T1/T2 king post is printed 'L - 65 x 65 x 6 mm.คู่' (double angle).",
+    "TRUSS 2 is a truncated truss: its top chord stops at the two T3 bubbles (hip trusses frame in there) at ~1.35 above the column top, with the full ~1.67 ridge shown dashed. Spans of TRUSS 3 / 4-1 / 4-2 are printed 'ประมาณ' (approximate).",
+    "Heights printed relative to 'ระดับหัวเสา' (column-top level, no number printed): ~1.67 ridge, ~0.15 eave drop; truss depth at the support 0.41 and the column-top seat 0.35 — truss-local dimensions, not added to the grid master's z_levels (no numeric level is printed).",
+    "Eave datum: on TRUSS 1/2 the 2.05 eave dimension ends at a tick on the OUTER FACE of the supporting column, while the '8 @ 1.175 = 9.40' chain starts at the column centreline (⊕). This matches the roof frame plan S-03's reading of the 2.05 eave as hanging off the outer lines A/F (not the column rows B/E); truss-local dimensions, not used to move any grid line."
+  ],
+  "note_block": {
+    "heading": "รายการประกอบโครงหลังคา",
+    "items": [
+      "1. เหล็กโครงหลังคาต้องเป็นเหล็กรูปพรรณ ขนาดและความหนาให้เป็นไปตามแบบรูป",
+      "2. คุณสมบัติของเหล็กที่ใช้ทุกเส้น ต้องได้มาตรฐานอุตสาหกรรม มอก. 1228-2537 และ มอก. 1227-2539",
+      "3.ทุกรอยต่อให้เชื่อมด้วยไฟฟ้า แบบ FILLET WELDING ทั้ง SINGLE V และ DOUBLE V เต็มรอยต่อ ด้วยความปราณีต เคาะ SLAG",
+      "4. การทาสี ให้ทาสีกันสนิมโครงหลังคาและส่วนที่เป็นเหล็กทั้งหมดด้วย เรด-เลด อ๊อกไซด์ ไอออน อย่างน้อย 2 เที่ยว"
+    ]
+  },
+  "elements": [
+    {
+      "element_id": "T1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 65,
+        "b_mm": 65,
+        "t_mm": 6,
+        "printed_as": "L - 65 x 65 x 6 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน / คอร์ดล่าง",
+          "printed_as": "L - 65 x 65 x 6 mm."
+        },
+        {
+          "role": "เสาแขวนกลาง (king post)",
+          "printed_as": "L - 65 x 65 x 6 mm.คู่"
+        },
+        {
+          "role": "ค้ำ/เอว (web)",
+          "printed_as": "L - 50 x 50 x 5 mm."
+        },
+        {
+          "role": "ชายคา: ท้องชายคา / ค้ำชายคา",
+          "printed_as": "L - 65 x 65 x 6 mm. / L - 50 x 50 x 5 mm."
+        },
+        {
+          "role": "แผ่นประกับยอด",
+          "printed_as": "PL 6 mm."
+        }
+      ],
+      "span_m": 9.4,
+      "span_printed_as": "8 @ 1.175 = 9.40",
+      "eave_overhang_m": 2.05,
+      "eave_overhang_printed_as": "2.05 (ทั้งสองข้าง)",
+      "height_mm": 1670,
+      "height_mm_printed_as": "~ 1.67 (เหนือระดับหัวเสา)",
+      "depth_at_support_mm": 410,
+      "note": "TRUSS 1 — แปเหล็ก C-100x50x20x2.3 mm.@1.00 m. หลังคากระเบื้องลอนคู่; ชายคาลดระดับ ~0.15; บ่ารองรับที่หัวเสา 0.35",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 65,
+        "b_mm": 65,
+        "t_mm": 6,
+        "printed_as": "L - 65 x 65 x 6 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน / คอร์ดล่าง",
+          "printed_as": "L - 65 x 65 x 6 mm."
+        },
+        {
+          "role": "เสาแขวนกลาง (king post)",
+          "printed_as": "L - 65 x 65 x 6 mm.คู่"
+        },
+        {
+          "role": "ค้ำ/เอว (web)",
+          "printed_as": "L - 50 x 50 x 5 mm."
+        },
+        {
+          "role": "ชายคา: ท้องชายคา / ค้ำชายคา",
+          "printed_as": "L - 65 x 65 x 6 mm. / L - 50 x 50 x 5 mm."
+        }
+      ],
+      "span_m": 9.4,
+      "span_printed_as": "8 @ 1.175 = 9.40",
+      "eave_overhang_m": 2.05,
+      "eave_overhang_printed_as": "2.05 (ทั้งสองข้าง)",
+      "height_mm": 1350,
+      "height_mm_printed_as": "~ 1.35 (คอร์ดบนตัดราบที่จุด T3); ~ 1.67 ยอดจั่วเส้นประ",
+      "depth_at_support_mm": 410,
+      "note": "TRUSS 2 — โครงถักตัดยอด รับปลายโครงถัก T3 สองจุด (วงกลม T3)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "T3",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 65,
+        "b_mm": 65,
+        "t_mm": 6,
+        "printed_as": "L - 65 x 65 x 6 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน / คอร์ดล่าง",
+          "printed_as": "L - 65 x 65 x 6 mm."
+        },
+        {
+          "role": "ค้ำ/เอว (web)",
+          "printed_as": "L - 50 x 50 x 5 mm."
+        },
+        {
+          "role": "ชายคา: ท้องชายคา / ค้ำชายคา",
+          "printed_as": "L - 65 x 65 x 6 mm. / L - 50 x 50 x 5 mm."
+        }
+      ],
+      "span_m": 9.9,
+      "span_printed_as": "ประมาณ 9.90 (รวมชายคา 2.05)",
+      "eave_overhang_m": 2.05,
+      "depth_at_support_mm": 410,
+      "note": "TRUSS 3 — โครงถักตะเฆ่ (แนวทแยงบนแปลน S-03) ปลายบนเข้าหา T2",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "span_printed_approximate"
+      ]
+    },
+    {
+      "element_id": "T4-1",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 65,
+        "b_mm": 65,
+        "t_mm": 6,
+        "printed_as": "L - 65 x 65 x 6 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน / คอร์ดล่าง / เสาปลาย",
+          "printed_as": "L - 65 x 65 x 6 mm."
+        },
+        {
+          "role": "ค้ำ/เอว (web)",
+          "printed_as": "L - 50 x 50 x 5 mm."
+        },
+        {
+          "role": "ชายคา: เสาที่จุดรองรับ / ท้องชายคา / ค้ำชายคา",
+          "printed_as": "L - 65 x 65 x 6 mm. / L - 65 x 65 x 6 mm. / L - 50 x 50 x 5 mm."
+        },
+        {
+          "role": "แผ่นประกับ",
+          "printed_as": "PL 6 mm."
+        }
+      ],
+      "span_m": 5.8,
+      "span_printed_as": "ประมาณ 5.80 (รวมชายคา 2.05)",
+      "eave_overhang_m": 2.05,
+      "depth_at_support_mm": 410,
+      "note": "TRUSS 4-1 — โครงถักครึ่งตัว (ด้านสกัด) วางบนคาน 'B' ที่จุดรองรับ",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "span_printed_approximate"
+      ]
+    },
+    {
+      "element_id": "T4-2",
+      "element_type": "truss",
+      "material": "steel",
+      "steel_section": {
+        "designation": "L",
+        "d_mm": 65,
+        "b_mm": 65,
+        "t_mm": 6,
+        "printed_as": "L - 65 x 65 x 6 mm."
+      },
+      "member_sections": [
+        {
+          "role": "คอร์ดบน / คอร์ดล่าง / เสาปลาย",
+          "printed_as": "L - 65 x 65 x 6 mm."
+        },
+        {
+          "role": "ค้ำ/เอว (web)",
+          "printed_as": "L - 50 x 50 x 5 mm."
+        },
+        {
+          "role": "ชายคา: เสาที่จุดรองรับ / ท้องชายคา / ค้ำชายคา",
+          "printed_as": "L - 65 x 65 x 6 mm. / L - 65 x 65 x 6 mm. / L - 50 x 50 x 5 mm."
+        },
+        {
+          "role": "แผ่นประกับ",
+          "printed_as": "PL 6 mm."
+        }
+      ],
+      "span_m": 4.78,
+      "span_printed_as": "ประมาณ 4.78 (รวมชายคา 2.05)",
+      "eave_overhang_m": 2.05,
+      "depth_at_support_mm": 410,
+      "note": "TRUSS 4-2 — โครงถักครึ่งตัว (ด้านสกัด) วางบนคาน 'B' ที่จุดรองรับ",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "span_printed_approximate"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แปเหล็ก",
+      "element_type": "purlin",
+      "material": "steel",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 2.3,
+        "printed_as": "แปเหล็ก C - 100 x 50 x 20 x 2.3 mm.@1.00 m."
+      },
+      "spacing_mm": 1000,
+      "purlin_brace_printed_as": "เหล็กค้ำแป Ø 9 มม. เชื่อมติดโครง TRUSS (แบบขยาย 2)",
+      "note": "หลังคากระเบื้องลอนคู่",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แผ่นเหล็กรองหัวเสา + ANCHOR BOLTS",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "plate_printed_as": "แผ่นเหล็กรองหัวเสา 2-PL หนา 6 มม. 0.40 x 0.25 (รูห่างขอบ 0.06 / 0.045) — แผ่นบนเชื่อมติดโครง TRUSS, แผ่นล่างเชื่อมติด ANCHOR BOLTS ฝังหัวเสา",
+      "anchor_bolts": {
+        "count": 4,
+        "dia_mm": 15,
+        "length_m": 0.25,
+        "printed_as": "ANCHOR BOLTS 4 - Ø 15 x 0.25 มม."
+      },
+      "note": "สองแบบ: FIXED-SUPPORT (แผ่นบนเจาะรูพอดี Bolt) และ FREE-SUPPORT (แผ่นบนเจาะรูวงรี/เจาะรูยาว เพื่อการขยายตัวของเหล็ก)",
+      "confidence_score": 0.78,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แบบขยายชายคา",
+      "element_type": "installation_detail",
+      "printed_as": "เหล็ก C - 100 x 50 x 20 x 2.3 mm.@1.00 m; บัวเชิงชายแผ่นไฟเบอร์ซีเมนต์บอร์ด ขนาด 150 หนา 16 - 17 mm. พร้อมติดตั้งแผ่นกันพีวีซีกันนก สำเร็จรูป; เหล็ก C - 100 x 50 x 20 x 2.3 mm.; เชิงชายแผ่นไฟเบอร์ซีเมนต์บอร์ด ขนาด 200 หนา 16 -17 mm.; ฝ้าเพดานดูแบบขยาย",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}

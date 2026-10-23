@@ -1,0 +1,89 @@
+{
+ "png": "37",
+ "doc_page": 37,
+ "discipline": "structural",
+ "sheet_code": "S-03",
+ "sheet_name": "แปลนคานและพื้นชั้นล่าง, รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC, ขยายหูช้างลดระดับ (อาคารเรียน 318ล./55-ก แผ่นที่ S-03)",
+ "source_image": "image/บ้าน_ใหญ่_3ชั้น_09/บ้าน_ใหญ่_3ชั้น_09_หน้า37.png",
+ "view_title": "รูปตัดพื้นสำเร็จรูปชนิดแผ่นกลวง / ขยายหูช้างลดระดับ",
+ "scale": null,
+ "pattern": "section",
+ "views": [
+  "view1: แปลนคานและพื้นชั้นล่าง 1:200 — beams G1-G11, G10/1, Gx/Gy (split: _view1_beam_plan.json) + slab marks HC/S3-S6 (split: _view1_etc_plan_slab.json)",
+  "view2: รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC — notes (_view2_notes.json)",
+  "view3: รูปตัดพื้นสำเร็จรูปชนิดแผ่นกลวง, ขยายหูช้างลดระดับ, ขยายการวางพื้นสำเร็จรูประดับเดียวกับพื้นหล่อในที่ — section (_view3_section.json)"
+ ],
+ "confidence_score": 0.8,
+ "confidence_flags": [],
+ "warnings": [
+  "Hollow-core plank section (0.10 thick, 0.60 and 1.20 wide units) recorded as a precast_plank_detail (spec section 9); the corbel ('หูช้างลดระดับ') and flush-placement details as connection/installation details without marks (element_id null).",
+  "The corbel dimensions on this sheet are hand-written (0.16 / 0.15 / 0.10) and differ from the printed S-16 corbel (0.15 / 0.15 / 0.10); both recorded as found."
+ ],
+ "elements": [
+  {
+   "element_id": "HC",
+   "element_type": "precast_plank_detail",
+   "description": "พื้นสำเร็จรูปชนิดแผ่นกลวง (HOLLOW CORE) หนา 0.10 กว้าง 0.60 / 1.20",
+   "thickness_mm": 100,
+   "plank_width_options_mm": [
+    600,
+    1200
+   ],
+   "plank_width_printed_as": "0.60 / 1.20",
+   "topping_mesh": {
+    "dia_mm": 4,
+    "spacing_mm": 200,
+    "printed_as": "ตะแกรงเหล็กสำเร็จรูป ø4มม.@0.20ม."
+   },
+   "topping_thickness_min_mm": 50,
+   "safe_live_load_kg_m2": 300,
+   "standard": "มอก.828-2546",
+   "level_step_mm": null,
+   "confidence_score": 0.86,
+   "confidence_flags": []
+  },
+  {
+   "element_id": null,
+   "element_name_assigned": "ขยายหูช้างลดระดับ",
+   "element_type": "connection_detail",
+   "corbel_width_mm": 160,
+   "corbel_width_printed_as": "0.16 (เขียนด้วยมือ)",
+   "corbel_depth_mm": 150,
+   "corbel_drop_mm": 100,
+   "rebar": {
+    "dia_mm": 9,
+    "spacing_mm": 150,
+    "type": "RB",
+    "printed_as": "ø9mm@0.15m."
+   },
+   "additional_bars": [
+    {
+     "count": 2,
+     "dia_mm": 6,
+     "type": "RB",
+     "printed_as": "2-ø6mm",
+     "position": "ตามยาวในหูช้าง"
+    }
+   ],
+   "note": "ขนาดเขียนด้วยมือ 0.16 / 0.15 / 0.10 (S-16 พิมพ์หูช้าง 0.15 / 0.15 / 0.10)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "hand_written_dimensions"
+   ]
+  },
+  {
+   "element_id": null,
+   "element_name_assigned": "ขยายการวางพื้นสำเร็จรูประดับเดียวกับพื้นหล่อในที่",
+   "element_type": "installation_detail",
+   "items": [
+    "คอนกรีตหล่อในที่",
+    "คอนกรีตทับหน้า 0.05 (รวม 0.15)",
+    "พื้นสำเร็จรูป 0.10",
+    "บ่าหูช้าง",
+    "ระยะบ่า 0.15 (เขียนด้วยมือ)"
+   ],
+   "confidence_score": 0.78,
+   "confidence_flags": []
+  }
+ ]
+}

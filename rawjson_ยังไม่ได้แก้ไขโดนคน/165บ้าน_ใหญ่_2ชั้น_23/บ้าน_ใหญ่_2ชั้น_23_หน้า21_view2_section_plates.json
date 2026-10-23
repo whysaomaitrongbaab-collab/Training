@@ -1,0 +1,123 @@
+{
+  "png": "21",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "แปลนโครงสร้างหลังคา",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า21.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_23_หน้า00_gridline.json",
+  "view_title": "ติดตั้ง Plateเหล็ก 1 / ติดตั้ง Plateเหล็ก 2 / ระยะทาบแปเหล็กโครงหลังคา",
+  "scale": "1:10",
+  "views": [
+    "view1: แปลนโครงสร้างหลังคา 1:100 — steel trusses T1/T2 + purlins (split: roof_frame_plan, หน้า21_view1_roof_frame_plan.json)",
+    "view2: lower half — ตัดตามขวาง/ตัดตามยาว/แปลนติดตั้ง Plateเหล็ก 1, แปลนติดตั้ง/ตัดตามขวาง/ตัดตามยาว Plateเหล็ก 2, ระยะทาบแปเหล็กโครงหลังคา 1:10 (split: section, หน้า21_view2_section_plates.json)",
+    "view3: หมายเหตุ 1-2 — โครงหลังคาเหล็กอาบสังกะสีสำเร็จรูป (split: notes, หน้า21_view3_notes.json)"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [],
+  "warnings": [
+    "Lower half of S-05: the two embedded truss-anchor plates and the purlin lap, each drawn at 1:10. 'Plateเหล็ก 1' is embedded in the top of RB2 under T2 (S-04 plan: at 2.40 / 4.50 / 6.60 on grids 1 and 9 — grid dummies A'''' / A'''''' / B'; S-06 T2: 'Plateเหล็ก 1 (ดูขยาย) เชื่อมตลอดแนวสัมผัส T2'); 'Plateเหล็ก 2' sits on a column head 0.35 x 0.45 (S-04 plan: 'Plate เหล็ก 2 หัวเสา (ดูขยาย)'). element_id = the printed detail mark 'Plateเหล็ก N' (§0.3), same convention as house 125's 'แบบขยาย N'.",
+    "Both plates print the same parts: Plate 6 มม 0.25x0.25 ม + 2U-DB 12 mm welded along the contact line, embedded ≥ 0.25. They are kept as two elements because they are two different printed marks at two different supports (RB2 beam top vs column head), not merged.",
+    "'ระยะทาบแปเหล็กโครงหลังคา' prints the lap as '2เท่าของ D' with D the purlin depth; lap_length_mm 200 = 2 x 100 is arithmetic on the printed section, flagged lap_length_derived_2xD.",
+    "All dimensions on this view (0.25 plate, ≥ 0.25 embedment, 0.35 / 0.45 column head) are element-internal (§4 rule 4) and stay on the elements; none runs along a grid axis. Extracted in the 2026-10-22 resume run."
+  ],
+  "elements": [
+    {
+      "element_id": "Plateเหล็ก 1",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "part_of": "T2",
+      "location": "ฝังที่หลังคาน RB2 (ผนังสกัดกริด 1, 9) ใต้โครงถัก T2",
+      "plate": {
+        "thickness_mm": 6,
+        "width_mm": 250,
+        "depth_mm": 250,
+        "printed_as": "Plate หนา 6 มม ขนาด 0.25X0.25 ม"
+      },
+      "anchor_bar": {
+        "count": 2,
+        "dia_mm": 12,
+        "type": "DB",
+        "shape": "U",
+        "embed_min_mm": 250,
+        "embed_min_mm_printed_as": "≥ 0.25",
+        "printed_as": "2U-DB 12 mm เชื่อมติด Plate ตลอดแนวสัมผัส"
+      },
+      "printed_parts": [
+        "2U-DB 12 mm เชื่อมติด Plate ตลอดแนวสัมผัส",
+        "Plate หนา 6 มม ขนาด 0.25X0.25 ม",
+        "≥ 0.25",
+        "RB2",
+        "ตำแหน่งวางตั้งเหล็ก ตรวจสอบแนวก่ออิฐ",
+        "2U-DB 12 mm"
+      ],
+      "note": "ตัดตามขวางติดตั้ง Plateเหล็ก 1 / ตัดตามยาวติดตั้ง Plateเหล็ก 1 / แปลนติดตั้ง Plateเหล็ก 1 มาตราส่วน 1:10 — เหล็ก U 2 ตัวเชื่อมใต้แผ่นเหล็ก ฝังลงในคาน RB2 ลึกไม่น้อยกว่า 0.25; ตำแหน่งวางตั้งเหล็กให้ตรวจสอบแนวก่ออิฐ",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "Plateเหล็ก 2",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "part_of": "T1, T2",
+      "location": "หัวเสา 0.35 x 0.45 (หน้าตัด C1 เหนือชั้น 1 ตาม S-07)",
+      "plate": {
+        "thickness_mm": 6,
+        "width_mm": 250,
+        "depth_mm": 250,
+        "printed_as": "Plate หนา 6 มม ขนาด 0.25X0.25 ม"
+      },
+      "anchor_bar": {
+        "count": 2,
+        "dia_mm": 12,
+        "type": "DB",
+        "shape": "U",
+        "embed_min_mm": 250,
+        "embed_min_mm_printed_as": "≥ 0.25",
+        "printed_as": "2U-DB 12 mm เชื่อมติด Plate ตลอดแนวสัมผัส"
+      },
+      "printed_parts": [
+        "Plate หนา 6 มม ขนาด 0.25X0.25 ม",
+        "หัวเสา",
+        "2U-DB 12 mm",
+        "2U-DB 12 mm เชื่อมติด Plate ตลอดแนวสัมผัส",
+        "≥ 0.25",
+        "เสา"
+      ],
+      "column_head_printed_as": "0.35 x 0.45 (แปลนติดตั้ง), 0.35 (ตัดตามขวาง), 0.45 (ตัดตามยาว)",
+      "note": "แปลนติดตั้ง Plateเหล็ก 2 / ตัดตามขวางติดตั้ง Plateเหล็ก 2 / ตัดตามยาวติดตั้ง Plateเหล็ก 2 มาตราส่วน 1:10 — แผ่นเหล็ก 0.25x0.25 กลางหัวเสา ฝังเหล็ก U 2 ตัวลึกไม่น้อยกว่า 0.25; แปลน S-04 ชี้ 'Plate เหล็ก 2 หัวเสา (ดูขยาย)' ที่ A3",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ระยะทาบแปเหล็กโครงหลังคา",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "part_of": "แปเหล็ก",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "แปเหล็ก C – 100x50x20x3.2 มม"
+      },
+      "lap_length_mm": 200,
+      "lap_length_mm_printed_as": "2เท่าของ D",
+      "weld_printed_as": "เชื่อมตลอดแนวสัมผัส",
+      "printed_parts": [
+        "เชื่อมตลอดแนวสัมผัส",
+        "2เท่าของ D",
+        "แปเหล็ก C – 100x50x20x3.2 มม",
+        "D"
+      ],
+      "note": "ระยะทาบแปเหล็กโครงหลังคา มาตราส่วน 1:10 — แปต่อทาบกัน ยาว 2 เท่าของความลึกแป D และเชื่อมตลอดแนวสัมผัส",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "lap_length_derived_2xD"
+      ]
+    }
+  ]
+}

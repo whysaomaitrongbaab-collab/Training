@@ -1,0 +1,144 @@
+{
+ "png": "41",
+ "doc_page": 41,
+ "discipline": "structural",
+ "sheet_code": "S-17",
+ "sheet_name": "แปลนคานหลังคาเหล็กรูปพรรณ",
+ "pattern": "roof_frame_plan",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_25/บ้าน_ใหญ่_2ชั้น_25_หน้า41.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_25_หน้า00_gridline.json",
+ "floor_level": "RF",
+ "view_title": "แปลนคานหลังคาเหล็กรูปพรรณ",
+ "scale": "1:150",
+ "views": [
+  "view1: แปลนคานหลังคาเหล็กรูปพรรณ 1:150 — โครงถักเหล็ก T1-T8, หลังคาทรงปั้นหยา (this file)"
+ ],
+ "confidence_score": 0.72,
+ "confidence_flags": [],
+ "warnings": [
+  "Structural roof-framing plan (steel trusses on the RC roof beams of S-06) -> roof_frame_plan, not roof_plan (op04 extracts it).",
+  "Hip roof: common trusses T1 at ~1.33 m (three per 4.00 bay) between the two hip apexes, girder trusses T2 on grids 2 and 18, hip trusses T3 on the four hip lines, and jack trusses T4-T8 in the two hip ends. Only the grid chain (2.00 + 18 x 4.00 + 2.00) and the y chain (2.05 / 2.50 / 5.50 / 2.50 / 2.05) are printed; no truss spacing is printed.",
+  "Decision (att1235): T2 (on grid lines) is atomic, eave to eave. T1 and T3-T8 are recorded as one grouped entry per mark with a count read off the plan, because their positions are not dimensioned and would need ~35 scaled-only dummy lines to place one by one. Risk accepted: those members cannot be positioned individually from this file; counts were checked against the mirror-image right end (same counts each end).",
+  "Truss member sections are on S-18 (T1/T2, all members C-100x50x20x2.3mm); T3-T8 details are presumably on S-19, not read in this run."
+ ],
+ "elements": [
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "material": "steel",
+   "grid_ref_start": "D''2",
+   "grid_ref_end": "A'''2",
+   "span_length_m": 14.6,
+   "span_source": "grid_table",
+   "note": "โครงถัก T2 บนกริด 2 (ข้างจุดยอดสะโพกด้านซ้าย) ชายคาถึงชายคา; S-18: ช่วงรองรับ 10.50 (แถว D-A) + ยื่น 2.00 สองข้าง",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ]
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 47,
+   "grid_ref": "D''-A''' x 2-18",
+   "spacing_mm": 1333,
+   "spacing_mm_printed_as": "ไม่พิมพ์ (สัดส่วน 1/3 ของช่วง 4.00)",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "span_note": "ช่วงรองรับ D-A 10.50 (S-18), รวมชายคาประมาณ 14.50-14.60",
+   "note": "โครงถักเหล็ก T1 เส้นตั้งตลอดชายคาถึงชายคา ทุก ~1.33 ม. (3 ตัวต่อช่วงเสา 4.00 — ระยะไม่พิมพ์ อ่านจากสัดส่วน) จาก x ≈ 5.33 ถึง 66.67 จากกริด 1 (ระหว่างจุดยอดสะโพกทั้งสองด้าน); ทุกตัวที่สามอยู่บนเส้นกริด 3-17; พาดคาน R8 แถว D และ A",
+   "confidence_score": 0.7,
+   "confidence_flags": [
+    "truss_family_grouped_positions_not_dimensioned"
+   ]
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "material": "steel",
+   "grid_ref_start": "D''18",
+   "grid_ref_end": "A'''18",
+   "span_length_m": 14.6,
+   "span_source": "grid_table",
+   "note": "โครงถัก T2 บนกริด 18 (ข้างจุดยอดสะโพกด้านขวา) ชายคาถึงชายคา",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "truss_recorded_eave_to_eave_single_member"
+   ]
+  },
+  {
+   "element_id": "T3",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 4,
+   "grid_ref": "D''-A''' x 1''-2 / 18-19''",
+   "span_source": "unresolved",
+   "note": "โครงถักตามแนวสันตะเข้ (แนวทแยง 45° จากมุมชายคาถึงจุดยอดสะโพก) 2 ตัวต่อด้าน — แนวทแยงไม่มีช่วงตามกริด",
+   "confidence_score": 0.7,
+   "confidence_flags": [
+    "truss_family_grouped_positions_not_dimensioned"
+   ]
+  },
+  {
+   "element_id": "T4",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 6,
+   "grid_ref": "C-B x 1''-2 / 18-19''",
+   "note": "โครงถักย่อยแนวนอน 3 ตัวต่อด้าน (ช่วงกลางอาคาร รวมตัวที่แนวสัน) จากชายคาด้านสกัดถึงสันตะเข้/T2",
+   "confidence_score": 0.7,
+   "confidence_flags": [
+    "truss_family_grouped_positions_not_dimensioned"
+   ]
+  },
+  {
+   "element_id": "T5",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 8,
+   "grid_ref": "D''-A''' x 1''-2 / 18-19''",
+   "note": "โครงถักย่อย 4 ตัวต่อด้าน: แนวนอน 2 ตัว (เหนือ/ใต้ T4) + แนวตั้ง 2 ตัวในแถบชายคาด้านยาว",
+   "confidence_score": 0.7,
+   "confidence_flags": [
+    "truss_family_grouped_positions_not_dimensioned"
+   ]
+  },
+  {
+   "element_id": "T6",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 8,
+   "grid_ref": "D''-A''' x 1''-2 / 18-19''",
+   "note": "โครงถักย่อย 4 ตัวต่อด้าน (แนวนอน 2 + แนวตั้ง 2)",
+   "confidence_score": 0.7,
+   "confidence_flags": [
+    "truss_family_grouped_positions_not_dimensioned"
+   ]
+  },
+  {
+   "element_id": "T7",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 8,
+   "grid_ref": "D''-A''' x 1''-2 / 18-19''",
+   "note": "โครงถักย่อย 4 ตัวต่อด้าน (แนวนอน 2 + แนวตั้ง 2 — แนวตั้งอยู่บนกริด 1 / 19)",
+   "confidence_score": 0.7,
+   "confidence_flags": [
+    "truss_family_grouped_positions_not_dimensioned"
+   ]
+  },
+  {
+   "element_id": "T8",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 8,
+   "grid_ref": "D''-A''' x 1''-1 / 19-19''",
+   "note": "โครงถักย่อยที่มุมชายคา 4 ตัวต่อด้าน",
+   "confidence_score": 0.65,
+   "confidence_flags": [
+    "truss_family_grouped_positions_not_dimensioned"
+   ]
+  }
+ ]
+}

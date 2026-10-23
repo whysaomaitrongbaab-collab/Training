@@ -1,0 +1,587 @@
+{
+ "png": "40",
+ "doc_page": 40,
+ "discipline": "structural",
+ "sheet_code": "S-16",
+ "sheet_name": "ขยายคาน B8/1-B8, B9, R1-R9",
+ "pattern": "section",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_25/บ้าน_ใหญ่_2ชั้น_25_หน้า40.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_25_หน้า00_gridline.json",
+ "view_title": "ขยายคาน B8/1-B8, B9 + หน้าตัด R1-R1/1, R2, R3, R3/1, R4-R5, R6, R6/1, R7-R7/1, R8, R9",
+ "views": [
+  "view1: รูปด้าน+SECTION B8/1, B8, B9; กล่อง 'B10=G7 / B10/1=G7/1' (specs are in the S-14 file); หน้าตัดคาน R-series + รูปด้าน R4-R5 (this file)"
+ ],
+ "confidence_score": 0.84,
+ "confidence_flags": [],
+ "warnings": [
+  "B10 and B10/1 are not repeated here: this sheet only prints the box 'B10=G7, B10/1=G7/1'; their entries live in the S-14 file where the shared section is drawn.",
+  "R1, R1/1, R2, R3, R3/1, R4, R5 (0.15 x 0.70) carry a 0.10 upstand lip with 1-ø6mm. and ø6mm.@0.15m.; kept as 'upstand' on each element. Their mid-depth 2-DB12 / 2-DB12 rows are main_bar.middle (spec section 6).",
+  "R1-R1/1 and R3/1 print two lines at the top face ('2-DB12mm.' twice; R3/1's second reads 'ฝังคานใน 1.00ม.'). Read as two top rows and merged into main_bar.top = 4 with the printed text kept; flagged because the leaders could not be traced bar by bar at this scan resolution.",
+  "Every S-sheet carries the boxed note 'เหล็กเสริมข้ออ้อยทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40' — recorded as steel_grade on every deformed-bar member; round bars (ø) carry no printed grade."
+ ],
+ "elements": [
+  {
+   "element_id": "B8/1",
+   "element_type": "beam",
+   "width_mm": 200,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "3-DB20mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "2-DB20mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 100,
+    "printed_as": "ป-ø6mm.@ 0.10m."
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "note": "SECTION 1-1; รูปด้าน: B8/1 ลึก 0.70 ต่อเนื่องเป็น B8 ลึก 0.60 (ขั้น 0.10)",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B8",
+   "element_type": "beam",
+   "width_mm": 200,
+   "height_mm": 600,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "2-DB20mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "2-DB20mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "note": "SECTION 2-2; รูปด้าน: เหล็กบนช่วง 1.50 ที่ปลายต่อ B6",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B9",
+   "element_type": "beam",
+   "width_mm": 350,
+   "height_mm": 800,
+   "main_bar": {
+    "top": {
+     "count": 6,
+     "dia_mm": 25,
+     "type": "DB",
+     "printed_as": "4-DB25mm. + 2-DB25mm.",
+     "note": "2 ชั้น: 4 + 2"
+    },
+    "bottom": {
+     "count": 6,
+     "dia_mm": 25,
+     "type": "DB",
+     "printed_as": "2-DB25mm. + 4-DB25mm.",
+     "note": "2 ชั้น: 2 + 4"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 9,
+    "type": "RB",
+    "spacing_mm": 100,
+    "printed_as": "ป-ø9mm.@ 0.10m. (ช่วงปลาย 2.50) / ป-ø9mm.@ 0.15m. (กลางช่วง)",
+    "variable_spacing": true
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "note": "SECTION 1-1 (ปลาย) และ 2-2 (กลาง) เหล็กยืนเท่ากัน ต่างที่ระยะปลอก; รูปด้านไม่พิมพ์ความยาวช่วงรวม",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "R1",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 4,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm. + 2-DB12mm.",
+     "note": "พิมพ์ 2 บรรทัดที่ผิวบน"
+    },
+    "middle": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m. ตลอดช่วง"
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "upstand": {
+    "height_mm": 100,
+    "width_mm": 150,
+    "bars": "1-ø6mm. ที่ปลายครีบ + ø6mm.@ 0.15m.",
+    "note": "ครีบยกขอบบนคาน 0.10"
+   },
+   "note": "ป้ายหน้าตัด 'R1-R1/1'",
+   "confidence_score": 0.84,
+   "confidence_flags": [
+    "two_top_rows_printed_merged"
+   ]
+  },
+  {
+   "element_id": "R1/1",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 4,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm. + 2-DB12mm.",
+     "note": "พิมพ์ 2 บรรทัดที่ผิวบน"
+    },
+    "middle": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m. ตลอดช่วง"
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "upstand": {
+    "height_mm": 100,
+    "width_mm": 150,
+    "bars": "1-ø6mm. ที่ปลายครีบ + ø6mm.@ 0.15m.",
+    "note": "ครีบยกขอบบนคาน 0.10"
+   },
+   "note": "ป้ายหน้าตัด 'R1-R1/1'",
+   "confidence_score": 0.84,
+   "confidence_flags": [
+    "two_top_rows_printed_merged"
+   ]
+  },
+  {
+   "element_id": "R2",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "middle": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "bottom": {
+     "count": 3,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "3-DB12mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m. ตลอดช่วง"
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "upstand": {
+    "height_mm": 100,
+    "width_mm": 150,
+    "bars": "1-ø6mm. ที่ปลายครีบ + ø6mm.@ 0.15m.",
+    "note": "ครีบยกขอบบนคาน 0.10"
+   },
+   "confidence_score": 0.84,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "R3",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "middle": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m. ตลอดช่วง"
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "upstand": {
+    "height_mm": 100,
+    "width_mm": 150,
+    "bars": "1-ø6mm. ที่ปลายครีบ + ø6mm.@ 0.15m.",
+    "note": "ครีบยกขอบบนคาน 0.10"
+   },
+   "confidence_score": 0.84,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "R3/1",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 4,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm. + 2-DB12mm.ฝังคานใน 1.00ม.",
+     "note": "2 เส้นต่อเนื่อง + 2 เส้นฝังเข้าคานข้างเคียง 1.00 ม."
+    },
+    "middle": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m. ตลอดช่วง"
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "upstand": {
+    "height_mm": 100,
+    "width_mm": 150,
+    "bars": "1-ø6mm. ที่ปลายครีบ + ø6mm.@ 0.15m.",
+    "note": "ครีบยกขอบบนคาน 0.10"
+   },
+   "confidence_score": 0.84,
+   "confidence_flags": [
+    "anchored_top_bars_merged_into_top"
+   ]
+  },
+  {
+   "element_id": "R4",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "2-DB16mm."
+    },
+    "middle": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "2-DB16mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m.ตลอดช่วง"
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "span_length_m": 1.5,
+   "note": "ป้าย 'R4-R5'; รูปด้าน R4-R5: คานยื่น 1.50 จากเสา เหล็ก 'งอเข้าเสาหรือฝังเข้าคานใน 0.50ม.'",
+   "confidence_score": 0.84,
+   "confidence_flags": [
+    "cantilever"
+   ]
+  },
+  {
+   "element_id": "R5",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "2-DB16mm."
+    },
+    "middle": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "2-DB12mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "2-DB16mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m.ตลอดช่วง"
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "span_length_m": 1.5,
+   "note": "ป้าย 'R4-R5'; รูปด้าน R4-R5: คานยื่น 1.50 จากเสา เหล็ก 'งอเข้าเสาหรือฝังเข้าคานใน 0.50ม.'",
+   "confidence_score": 0.84,
+   "confidence_flags": [
+    "cantilever"
+   ]
+  },
+  {
+   "element_id": "R6",
+   "element_type": "beam",
+   "width_mm": 250,
+   "height_mm": 500,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "3-DB20mm."
+    },
+    "bottom": {
+     "count": 3,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "3-DB20mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "R6/1",
+   "element_type": "beam",
+   "width_mm": 250,
+   "height_mm": 500,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "2-DB20mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "2-DB20mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "R7",
+   "element_type": "beam",
+   "width_mm": 350,
+   "height_mm": 400,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "3-DB16mm."
+    },
+    "bottom": {
+     "count": 3,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "3-DB16mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "note": "ป้าย 'R7-R7/1'",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "R7/1",
+   "element_type": "beam",
+   "width_mm": 350,
+   "height_mm": 400,
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "3-DB16mm."
+    },
+    "bottom": {
+     "count": 3,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "3-DB16mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "note": "ป้าย 'R7-R7/1'",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "R8",
+   "element_type": "beam",
+   "width_mm": 200,
+   "height_mm": 400,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "2-DB16mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "2-DB16mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "R9",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 400,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "2-DB16mm."
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB",
+     "printed_as": "2-DB16mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  }
+ ]
+}

@@ -1,0 +1,236 @@
+{
+  "png": "24",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "แบบขยายพื้น S1 S2 S3 S4 S5 GS, พื้นสำเร็จรูป S2, รายการประกอบพื้นภายในห้อง S2 (แบบ สปช. 2/28 ปรับปรุง แผ่นที่ S-08, 22/24)",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_08/บ้าน_ใหญ่_3ชั้น_08_หน้า24.png",
+  "pattern": "section",
+  "view_title": "แบบขยายพื้น",
+  "scale": null,
+  "views": [
+    "view1: slab sections S1, S2, (cantilever = S3), S4, S5, GS — section (this file)",
+    "view2: S2 พื้นสำเร็จรูป (precast alternative) — recorded as S2.alternate in this file",
+    "view3: รายการประกอบพื้นภายในห้อง S2 (text block under the sections) — kept in this file as note_block"
+  ],
+  "confidence_score": 0.78,
+  "confidence_flags": [
+    "small_print_rebar_callouts"
+  ],
+  "warnings": [
+    "Slab rebar is printed by spacing (Ø @ spacing), so main_bar.top/bottom carry dia_mm + spacing_mm and no count. Bars drawn as a line along the span are the main bars; the bars drawn end-on (dots) are the distribution bars and go to additional_bars[] — this is how the S1/S2/S4 leaders resolve (the Ø6 leader always lands on the dot row).",
+    "The cantilever section (left of S4, an upturned edge on its left end, 1.00 long) carries no slab-mark circle on this sheet. Assigned to S3 — the only 1.00 m cantilever strip on the F2/F3 slab plans (A''''-B and F-F' strips, S-02). Flagged slab_mark_not_printed_assigned_by_1.00_cantilever.",
+    "Cantilever (S3) bar roles are ambiguous: the 'Ø 6 mm.@ 0.15 ม.' leader ends on the continuous bar line (the L-bar that turns up into the edge upstand) while the 'Ø 9 mm.@ 0.15 ม.' leader (second line begins 'เสริมบน…', rest illegible) ends on the end-on dot row — the reverse of the line=main / dots=distribution pattern of S1/S2/S4/S5. Recorded Ø9@0.15 as the main top bar because its own label calls it top reinforcement ('เสริมบน') and Ø6@0.15 alone would be far too light for a 1.00 m cantilever; Ø6@0.15 goes to additional_bars[]. The literal-leader reading (Ø6 main, Ø9 longitudinal) stays plausible, so confidence is lowered and bar_roles_inferred_from_leaders is set.",
+    "S5 is a single bar layer (one line + one dot row): Ø9@0.20 is the line along the 1.00 span (main, bottom) and Ø6@0.20 the end-on distribution bars, read the same way as S1/S2 — not a top/bottom pair.",
+    "Printed section spans (S1 2.40, S2 2.40 + 2.40, S4 4.00, S5 1.00, cantilever 1.00) are detail dimensions of the slab drawing, not grid dimensions — e.g. 3 x 2.40 = 7.20 does not equal the printed classroom depth B-D 7.00 of the plans, so these spans were NOT used to position the scaled third-point lines B''' / C'' of the grid master.",
+    "S4 top-bar lengths are printed asymmetric: 1.00 / 0.60 at the left support and 1.00 / 0.50 at the right support — recorded as printed.",
+    "GS thickness reads 0.08 (the second digit could be a 6 on the scan); its mesh is printed with '#' (two-way) and is recorded as one flat main_bar object, the section 6b mat convention, not top/bottom.",
+    "S2 has a printed precast alternative (S2 พื้นสำเร็จรูป, plank 0.05 + CONCRETE TOPPING หนา 0.05 ม., RB 6 mm.@ 0.25 m.#, bearing 0.04, top bars 0.50 over each beam) — recorded under S2.alternate together with the รายการประกอบพื้นภายในห้อง S2 text."
+  ],
+  "note_block": {
+    "heading": "รายการประกอบพื้นภายในห้อง S2",
+    "items": [
+      "1. ให้ผู้รับจ้างเลือกทำพื้นหล่อกับที่ หรือเลือกใช้พื้นสำเร็จรูปแบบแผ่นคอนกรีตอัดแรงของบริษัทพื้นสำเร็จรูปที่ได้รับอนุญาตตาม พรบ. ผลิตภัณฑ์มาตรฐานอุตสาหกรรม มอก. 828-2531 , มอก. 576-2531 ตกแต่งรอยต่อก่อนที่จะพ่นสีผสมทรายหรือสีดึงเกรียงหรือทาสีตามรายการสถาปัตยกรรม",
+      "-พื้นสำเร็จรูปที่ใช้จะต้องรับน้ำหนักจรอย่างน้อย 300 กก./ตารางเมตร ทุกช่วงพาด",
+      "-เทคอนกรีตทับหน้าอย่างน้อย 0.05 ม. เหล็กเสริม Ø 6 มม. @ 0.25 ม. หรือใช้ WIRE MESH ที่มีคุณสมบัติเทียบเท่ากันได้",
+      "-ควรค้ำยันกลางช่วงพื้นสำเร็จรูปขณะเทคอนกรีตทับหน้า การวางแผ่นให้วางพาดหลังคานที่ปรับระดับแล้ว โดยไม่ต้องทำหูช้าง"
+    ]
+  },
+  "elements": [
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "span_m_printed": 2.4,
+      "main_bar": {
+        "top": {
+          "dia_mm": 9,
+          "spacing_mm": 300,
+          "type": "RB",
+          "printed_as": "Ø 9 mm.@ 0.30 ม.",
+          "note": "เหล็กบนที่หัวคานทั้งสองข้าง ยาว 0.70 / 0.40"
+        },
+        "bottom": {
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø 9 mm.@ 0.15 ม."
+        }
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "Ø 6 mm.@ 0.20 ม.",
+          "position": "distribution / temperature bars (end-on dot row)"
+        }
+      ],
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "thickness_mm": 100,
+      "thickness_mm_printed_as": "0.10",
+      "span_m_printed": 2.4,
+      "main_bar": {
+        "top": {
+          "dia_mm": 9,
+          "spacing_mm": 300,
+          "type": "RB",
+          "printed_as": "Ø 9 mm.@ 0.30 ม. เสริมพิเศษ",
+          "note": "เหล็กบนเสริมที่คานกลาง ยาว 0.70+0.70 / 0.40+0.40 และที่ขอบ 0.70 / 0.40"
+        },
+        "bottom": {
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø 9 mm.@ 0.15 ม. ตรง 1 คม 1",
+          "note": "ตรง 1 คอม้า 1 สลับ"
+        }
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "Ø 6 mm.@ 0.20 ม.",
+          "position": "distribution / temperature bars (end-on dot row)"
+        }
+      ],
+      "alternate": {
+        "type": "พื้นสำเร็จรูปแผ่นคอนกรีตอัดแรง",
+        "plank_thickness_mm": 50,
+        "topping_thickness_mm": 50,
+        "topping_mesh": {
+          "dia_mm": 6,
+          "spacing_mm": 250,
+          "type": "RB",
+          "printed_as": "RB 6 mm.@ 0.25 m.#"
+        },
+        "top_bar_over_beam_length_m": 0.5,
+        "bearing_m": 0.04,
+        "printed_as": "S2 พื้นสำเร็จรูป, CONCRETE TOPPING หนา 0.05 ม., RB 6 mm.@ 0.25 m.# (2 แห่ง), 0.50 / 0.50 เหนือคาน, 0.04 ระยะวางบนคาน, 0.05 + 0.05"
+      },
+      "note": "พื้นต่อเนื่อง 2.40 + 2.40; ทางเลือกพื้นสำเร็จรูปดูรายการประกอบพื้นภายในห้อง S2 (note_block)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "thickness_mm": 70,
+      "thickness_mm_printed_as": "0.07 (ปลายพื้น); พิมพ์ 0.10 ที่ด้านขอบตั้ง",
+      "span_m_printed": 1.0,
+      "main_bar": {
+        "top": {
+          "dia_mm": 9,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø 9 mm.@ 0.15 ม. เสริมบน…คอ (บรรทัดที่สองอ่านไม่ชัด)",
+          "note": "เหล็กบนพื้นยื่น — บทบาทอนุมานจาก leader"
+        }
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 150,
+          "type": "RB",
+          "printed_as": "Ø 6 mm.@ 0.15 ม.",
+          "position": "second layer (leader on the bar line that turns up into the edge upstand)"
+        }
+      ],
+      "note": "พื้นยื่น 1.00 ม. มีขอบตั้งที่ปลายซ้าย (เหล็กงอขึ้นในขอบตั้ง); ไม่มีวงกลมป้ายใต้รูป — กำหนดเป็น S3 (แถบพื้นยื่น 1.00 บนแปลน S-02)",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "slab_mark_not_printed_assigned_by_1.00_cantilever",
+        "bar_roles_inferred_from_leaders"
+      ]
+    },
+    {
+      "element_id": "S4",
+      "element_type": "slab",
+      "thickness_mm": 70,
+      "thickness_mm_printed_as": "0.07",
+      "span_m_printed": 4.0,
+      "main_bar": {
+        "top": {
+          "dia_mm": 9,
+          "spacing_mm": 140,
+          "type": "RB",
+          "printed_as": "Ø 9 mm.@ 0.14 ม.",
+          "note": "เหล็กบนที่หัวคาน ยาว 1.00 / 0.60 (ซ้าย) และ 1.00 / 0.50 (ขวา)"
+        },
+        "bottom": {
+          "dia_mm": 9,
+          "spacing_mm": 70,
+          "type": "RB",
+          "printed_as": "Ø 9 mm.@ 0.07 ม. ตรง 1 คม. 1",
+          "note": "ตรง 1 คอม้า 1 สลับ"
+        }
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "Ø 6 mm.@ 0.20 ม.",
+          "position": "distribution / temperature bars (end-on dot row)"
+        }
+      ],
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "small_print_spacing"
+      ]
+    },
+    {
+      "element_id": "S5",
+      "element_type": "slab",
+      "thickness_mm": 70,
+      "thickness_mm_printed_as": "0.07",
+      "span_m_printed": 1.0,
+      "main_bar": {
+        "bottom": {
+          "dia_mm": 9,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "Ø 9 mm.@ 0.20 ม."
+        }
+      },
+      "additional_bars": [
+        {
+          "dia_mm": 6,
+          "spacing_mm": 200,
+          "type": "RB",
+          "printed_as": "Ø 6 mm.@ 0.20 ม.",
+          "position": "distribution bars (end-on dot row, same single layer)"
+        }
+      ],
+      "note": "เหล็กชั้นเดียว",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "GS",
+      "element_type": "slab",
+      "thickness_mm": 80,
+      "thickness_mm_printed_as": "0.08",
+      "main_bar": {
+        "dia_mm": 6,
+        "spacing_mm": 250,
+        "type": "RB",
+        "printed_as": "Ø 6 mm.@ 0.25 m.#",
+        "note": "ตะแกรง 2 ทาง (#) ชั้นเดียว"
+      },
+      "base_fill": "ทรายอัดแน่น",
+      "note": "พื้นวางบนดิน (ทรายอัดแน่น) ชิดคานด้านซ้าย",
+      "confidence_score": 0.68,
+      "confidence_flags": [
+        "thickness_digit_low_resolution"
+      ]
+    }
+  ]
+}

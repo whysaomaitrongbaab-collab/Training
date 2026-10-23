@@ -1,0 +1,205 @@
+{
+  "png": "22",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "ขยายโครงหลังคา T1, T2",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า22.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_23_หน้า00_gridline.json",
+  "view_title": "ขยาย 1 (เชิงชาย) / ขยาย 2 / ขยาย 3 (แปลน-รูปด้านหัวเสา) / ขยาย รูปตัด 1-1",
+  "scale": "No,Scale",
+  "views": [
+    "view1: ขยาย T1 / ขยาย T2 1:50 + ตารางเหล็กรูปพรรณ (split: section, หน้า22_view1_section_trusses.json)",
+    "view2: ขยาย 1 (เชิงชาย), ขยาย 2 แปลนหัวเสา / รูปด้านหัวเสา, ขยาย 3 แปลนหัวเสา / รูปด้านหัวเสา, ขยาย รูปตัด 1-1 — No,Scale (split: section, หน้า22_view2_section_roof_details.json)",
+    "view3: รายการประกอบแบบโครงหลังคา, งานทาสีโครงหลังคา, โครงหลังคาเหล็ก ข้อ 1-2, หมายเหตุ *** ใต้ตารางเหล็กรูปพรรณ (split: notes, หน้า22_view3_notes.json)"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "Truss connection details of S-06 (all 'No,Scale'). element_id = the printed callout ('ขยาย 1', 'ขยาย 2', 'ขยาย 3', cut '1-1'), the convention house 125 uses for 'แบบขยาย N'. Where each sits comes from the callout bubbles on the T1/T2 elevations: '(ขยาย 1)' at both eaves of T1 and T2, '(ขยาย 2)' at the A and C supports of T1, '(ขยาย 3)' at the A and C supports of T2, cut ① at the reinforced end panels ('ระยะทาบ ~3.00ม').",
+    "ขยาย 2 / ขยาย 3: the truss bears on two welded stub posts (เหล็กกล่อง 2 ◻ 100X50X3.2, 0.20 high) standing on the 0.25x0.25 x 6 มม plate on the column head 0.35 x 0.45; the truss soffit is '~0.12' (ขยาย 2, on RB1) and '~0.14' (ขยาย 3, on RB2) above the beam top — the same clearance S-04 prints as 'เว้นระยะ 0.12 ม' (already in the grid master's unassigned_dimensions). These offsets are inside one connection, so they stay on the elements (§4 rule 4: element-internal), not as z levels.",
+    "ขยาย 3's plan labels the chord 'T1 เหล็กกล่อง ◻ 100X50X3.2 mm' although its callout '(ขยาย 3)' is drawn only on the T2 elevation. Both trusses use the same ◻ 100x50x3.2 member (view1), so the section is unaffected; recorded as printed with part_of 'T2' from the callout position and flagged plan_label_reads_T1.",
+    "Cut 1-1 shows the end-panel reinforcement: chord ◻ 100X50X3.2 with a C-100x50x20x3.2 welded alongside over a ~3.00 m lap ('เชื่อมไฟฟ้าตลอดแนว') — the 'ระยะทาบเสริมความแข็งแรง T1 / T2 (ดูขยาย)' zone of S-05 (grid dummy B'').",
+    "ขยาย 1 carries no structural rebar — eave trim: fascia boards 6\" / 8\", bird stop, C-75x45x15x2.3 eave runner welded to the T1/T2 ends. Kept for the steel member it names. Extracted in the 2026-10-22 resume run."
+  ],
+  "elements": [
+    {
+      "element_id": "ขยาย 1",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "part_of": "T1, T2",
+      "location": "ปลายชายคา (เชิงชาย) ทั้งสองด้านของ T1 และ T2",
+      "steel_section": {
+        "designation": "C",
+        "d_mm": 75,
+        "b_mm": 45,
+        "lip_mm": 15,
+        "tw_mm": 2.3,
+        "printed_as": "C-75x45x15x2.3 mm (ตรึงแนวเชิงชาย เชื่อมติดกับปลาย T1,T2)"
+      },
+      "printed_parts": [
+        "หลังคากระเบื้องลอนคู่",
+        "กันนกสำเร็จรูป ติดตั้งตามมาตรฐานผู้ผลิต",
+        "ไม้ทับเชิงชายสำเร็จรูปขนาด 6 \"",
+        "ติดตั้งให้มั่นคงแข็งแรงด้วย Bolt หรือระบบ Rivet",
+        "ไม้เชิงชายสำเร็จรูปขนาด 8 \"",
+        "บัวฝ้าเพดาน",
+        "C-75x45x15x2.3 mm (ตรึงแนวเชิงชาย เชื่อมติดกับปลาย T1,T2)"
+      ],
+      "note": "ขยาย 1 (เชิงชาย) No,Scale — ตัวตรึงแนวเชิงชาย C-75x45x15x2.3 เชื่อมติดปลายโครงถัก ยึดไม้เชิงชาย/ไม้ทับเชิงชายด้วย Bolt หรือ Rivet",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ขยาย 2",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "part_of": "T1",
+      "location": "จุดรองรับ T1 บนหัวเสา/คาน RB1 แถว A และ C (กริด 2-8)",
+      "steel_section": {
+        "designation": "◻",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็กกล่อง ◻ 100X50X3.2 mm"
+      },
+      "reinforcement_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก C -100x50x20x3.2 mm (ระยะทาบ ~3.00 m เชื่อมประกบ T1)"
+      },
+      "stub_post": {
+        "count": 2,
+        "designation": "◻",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "height_mm": 200,
+        "height_mm_printed_as": "0.20",
+        "printed_as": "เสาตั้ง เชื่อมติดตลอดแนวสัมผัส เหล็กกล่อง 2 ◻ 100X50X3.2 mm"
+      },
+      "plate": {
+        "thickness_mm": 6,
+        "width_mm": 250,
+        "depth_mm": 250,
+        "printed_as": "Plate หนา 6 มม ขนาด 0.25X0.25 ม"
+      },
+      "truss_soffit_clearance_mm": 120,
+      "truss_soffit_clearance_mm_printed_as": "~0.12 (ท้อง TRUSS T1)",
+      "column_head_printed_as": "0.35 x 0.45",
+      "printed_parts": [
+        "เหล็ก C -100x50x20x3.2 mm (ระยะทาบ ~3.00 m เชื่อมประกบ T1)",
+        "T1 เหล็กกล่อง ◻ 100X50X3.2 mm",
+        "RB1",
+        "Plate หนา 6 มม ขนาด 0.25X0.25 ม",
+        "เหล็กกล่อง 2 ◻ 100X50X3.2 mm",
+        "0.45",
+        "0.35",
+        "เสาตั้ง เชื่อมติดตลอดแนวสัมผัส เหล็กกล่อง 2 ◻ 100X50X3.2 mm",
+        "ท้อง TRUSS T1",
+        "~0.12",
+        "0.20",
+        "เสา"
+      ],
+      "note": "ขยาย 2 แปลนหัวเสา + ขยาย 2 รูปด้านหัวเสา (No,Scale) — โครงถัก T1 วางบนเสาตั้งเหล็กกล่องคู่สูง 0.20 เชื่อมบนแผ่นเหล็กหัวเสา; ท้องโครงถักสูงกว่าหลังคาน ~0.12",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ขยาย 3",
+      "element_type": "connection_detail",
+      "material": "steel",
+      "part_of": "T2",
+      "location": "จุดรองรับ T2 (ผนังสกัดกริด 1, 9) บนหัวเสา/คาน RB2 ที่แถว A และ C",
+      "steel_section": {
+        "designation": "◻",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็กกล่อง ◻ 100X50X3.2 mm"
+      },
+      "reinforcement_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก C -100x50x20x3.2 mm (ระยะทาบ ~3.00 m เชื่อมประกบ T1)"
+      },
+      "stub_post": {
+        "count": 2,
+        "designation": "◻",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "height_mm": 200,
+        "height_mm_printed_as": "0.20",
+        "printed_as": "เสาตั้ง เชื่อมติดตลอดแนวสัมผัส เหล็กกล่อง 2 ◻ 100X50X3.2 mm"
+      },
+      "plate": {
+        "thickness_mm": 6,
+        "width_mm": 250,
+        "depth_mm": 250,
+        "printed_as": "Plate หนา 6 มม ขนาด 0.25X0.25 ม"
+      },
+      "truss_soffit_clearance_mm": 140,
+      "truss_soffit_clearance_mm_printed_as": "~0.14",
+      "column_head_printed_as": "0.35 x 0.45",
+      "printed_parts": [
+        "เหล็ก C -100x50x20x3.2 mm (ระยะทาบ ~3.00 m เชื่อมประกบ T1)",
+        "T1 เหล็กกล่อง ◻ 100X50X3.2 mm",
+        "Plate หนา 6 มม ขนาด 0.25X0.25 ม",
+        "RB1",
+        "RB2",
+        "เหล็กกล่อง 2 ◻ 100X50X3.2 mm",
+        "0.45",
+        "0.35",
+        "เสาตั้ง เชื่อมติดตลอดแนวสัมผัส เหล็กกล่อง 2 ◻ 100X50X3.2 mm",
+        "0.20",
+        "~0.14"
+      ],
+      "note": "ขยาย 3 แปลนหัวเสา + ขยาย 3 รูปด้านหัวเสา (No,Scale) — เหมือนขยาย 2 แต่วางบนคาน RB2 ใต้ T2, ระยะท้องโครงถัก ~0.14; แปลนพิมพ์ป้าย 'T1' ทั้งที่ callout อยู่บนรูป T2",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "plan_label_reads_T1"
+      ]
+    },
+    {
+      "element_id": "1-1",
+      "element_type": "section_view",
+      "element_name_assigned": "ขยาย รูปตัด 1-1",
+      "material": "steel",
+      "section_ref": "1-1",
+      "part_of": "T1, T2",
+      "steel_section": {
+        "designation": "◻",
+        "d_mm": 100,
+        "b_mm": 50,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็กกล่อง ◻ 100X50X3.2 mm"
+      },
+      "reinforcement_section": {
+        "designation": "C",
+        "d_mm": 100,
+        "b_mm": 50,
+        "lip_mm": 20,
+        "tw_mm": 3.2,
+        "printed_as": "เหล็ก C -100x50x20x3.2 mm ระยะทาบ ~ 3.00 m"
+      },
+      "lap_printed_as": "ระยะทาบ ~ 3.00 m",
+      "weld_printed_as": "เชื่อมไฟฟ้าตลอดแนว",
+      "printed_parts": [
+        "เชื่อมไฟฟ้าตลอดแนว",
+        "เหล็กกล่อง ◻ 100X50X3.2 mm",
+        "เหล็ก C -100x50x20x3.2 mm ระยะทาบ ~ 3.00 m"
+      ],
+      "note": "ขยาย รูปตัด ①-① (No,Scale) — ช่วงทาบเสริมความแข็งแรงปลายโครงถัก: เหล็กกล่องคอร์ดประกบด้วยเหล็ก C เชื่อมไฟฟ้าตลอดแนว ยาว ~3.00",
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    }
+  ]
+}

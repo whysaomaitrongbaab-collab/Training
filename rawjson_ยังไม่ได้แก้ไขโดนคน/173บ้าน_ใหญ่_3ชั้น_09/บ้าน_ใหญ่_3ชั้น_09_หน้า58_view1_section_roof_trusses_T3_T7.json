@@ -1,0 +1,168 @@
+{
+ "png": "58",
+ "doc_page": 58,
+ "discipline": "structural",
+ "sheet_code": "S-24",
+ "sheet_name": "แบบขยายโครงหลังคาเหล็กรูปพรรณ T3-T7, รายการประกอบโครงหลังคาเหล็กรูปพรรณ (อาคารเรียน 318ล./55-ก แผ่นที่ S-24)",
+ "source_image": "image/บ้าน_ใหญ่_3ชั้น_09/บ้าน_ใหญ่_3ชั้น_09_หน้า58.png",
+ "view_title": "แบบขยายโครงหลังคาเหล็กรูปพรรณ",
+ "scale": "1/50",
+ "pattern": "section",
+ "views": [
+  "view1: T3, T4, T5, T6 elevations + T7 = C-100x50x20x2.3mm — section (_view1_section_roof_trusses_T3_T7.json)",
+  "view2: รายการประกอบโครงหลังคาเหล็กรูปพรรณ ข้อ 1-7 — notes (_view2_notes.json)"
+ ],
+ "confidence_score": 0.78,
+ "confidence_flags": [],
+ "warnings": [
+  "Hip trusses and jack trusses T3-T6 + single member T7 (S-24, 1/50). Spans are the printed horizontal lengths.",
+  "Conflict, decided: T7 is printed 'C-100x50x20x3.2mm' in the S-07 plan legend and 'C-100x50x20x2.3mm' here. Detail sheet wins over plan (op1 precedence 2) -> 2.3 mm; flagged on the element.",
+  "The T4 elevation labels the purlin 'C-75x37x0.75mm' while note 5 prints 'C-75x35x8.5x0.75mm@ 1.00m.' — both recorded as printed (flag on T4).",
+  "The notes block on this sheet is recorded in _view2_notes.json (structural-steel standard มอก.1228-2549; no concrete/rebar spec)."
+ ],
+ "elements": [
+  {
+   "element_id": "T3",
+   "element_type": "truss",
+   "material": "steel",
+   "steel_section": {
+    "designation": "C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "C-100x50x20x2.3mm"
+   },
+   "member_sections": [
+    {
+     "role": "คอร์ด",
+     "printed_as": "C-100x50x20x2.3mm"
+    },
+    {
+     "role": "โครงถัก/ค้ำ",
+     "printed_as": "C-75x45x15x2.3mm"
+    }
+   ],
+   "span_m": 7.41,
+   "span_printed_as": "7.41 (ระยะราบ)",
+   "height_mm": 3610,
+   "height_mm_printed_as": "3.61",
+   "note": "ตะเฆ่ T3 — ยาวในแปลน 7.41, สูง 3.61 (~2.90 ที่ค้ำ), คอร์ดล่างช่วง ~1.13 x 5 = ~5.65; ปลายรับที่ T2",
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "T4",
+   "element_type": "truss",
+   "material": "steel",
+   "steel_section": {
+    "designation": "C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "C-100x50x20x2.3mm"
+   },
+   "member_sections": [
+    {
+     "role": "คอร์ด",
+     "printed_as": "C-100x50x20x2.3mm"
+    },
+    {
+     "role": "โครงถัก/ค้ำ",
+     "printed_as": "C-75x45x15x2.3mm"
+    },
+    {
+     "role": "แป",
+     "printed_as": "แปเหล็กสำเร็จรูป-เหล็กอาบสังกะสี C-75x37x0.75mm"
+    }
+   ],
+   "span_m": 4.07,
+   "span_printed_as": "4.07",
+   "eave_overhang_m": 2.2,
+   "height_mm": 2900,
+   "height_mm_printed_as": "~2.90 (2.80 ที่ค้ำ)",
+   "note": "โครงถักย่อยปลายจั่ว T4 — 1.36 + 1.31 + 1.31 = ~4.07 ถึง T3 (ป้าย 'ศูนย์กลางคาน' ที่หัวเสา); ชายคา 1.39 + 0.81 = 2.20",
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "purlin_size_differs_from_notes"
+   ]
+  },
+  {
+   "element_id": "T5",
+   "element_type": "truss",
+   "material": "steel",
+   "steel_section": {
+    "designation": "C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "C-100x50x20x2.3mm"
+   },
+   "member_sections": [
+    {
+     "role": "คอร์ด",
+     "printed_as": "C-100x50x20x2.3mm"
+    },
+    {
+     "role": "ค้ำ",
+     "printed_as": "C-75x45x15x2.3mm"
+    }
+   ],
+   "span_m": 2.74,
+   "span_printed_as": "2.74",
+   "eave_overhang_m": 2.2,
+   "note": "โครงถักย่อย T5 — 1.36 / 2.74 ถึง T3; ชายคา 1.39 + 0.81 = 2.20 (0.76, 0.75)",
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "T6",
+   "element_type": "truss",
+   "material": "steel",
+   "steel_section": {
+    "designation": "C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "C-100x50x20x2.3mm"
+   },
+   "member_sections": [
+    {
+     "role": "คอร์ด",
+     "printed_as": "C-100x50x20x2.3mm"
+    },
+    {
+     "role": "ค้ำ",
+     "printed_as": "C-75x45x15x2.3mm"
+    }
+   ],
+   "span_m": 1.41,
+   "span_printed_as": "1.41",
+   "eave_overhang_m": 2.2,
+   "note": "โครงถักย่อย T6 — 1.41 ถึง T3; ชายคา 1.39 + 0.81 = 2.20",
+   "confidence_score": 0.8,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "T7",
+   "element_type": "steel_member",
+   "material": "steel",
+   "steel_section": {
+    "designation": "C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "t_mm": 2.3,
+    "printed_as": "C-100x50x20x2.3mm"
+   },
+   "note": "พิมพ์ 'T7 = C-100x50x20x2.3mm' (ตัวเดี่ยว ไม่ใช่โครงถัก); แปลน S-07 พิมพ์ C-100x50x20x3.2mm — ถือตามแบบขยายนี้",
+   "confidence_score": 0.85,
+   "confidence_flags": [
+    "spec_conflict_plan_vs_detail"
+   ]
+  }
+ ]
+}

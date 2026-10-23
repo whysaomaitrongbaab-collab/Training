@@ -1,0 +1,89 @@
+{
+ "png": "48",
+ "doc_page": 48,
+ "discipline": "structural",
+ "sheet_code": "S-14",
+ "sheet_name": "แบบขยายบันได ค.ส.ล.",
+ "pattern": "section",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_26/บ้าน_ใหญ่_2ชั้น_26_หน้า48.png",
+ "view_title": "ขยายบันได 1 ชั้น 2 - ชั้น 3",
+ "scale": "1/25",
+ "views": [
+  "view1: ขยายบันได 1 1/25 ชั้น 2 - ชั้น 3 (สองช่วง) + ขยายลูกขั้นบันได (this split: section)"
+ ],
+ "confidence_score": 0.82,
+ "confidence_flags": [],
+ "warnings": [
+  "Every S-sheet prints the box \"เหล็กเสริมข้ออ้อย ทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40\" — so every DB bar on this sheet is SD40 (steel_grade). The RB/ø grade is not printed on this sheet.",
+  "Stair sections are drawn along the y axis of the stair halls (grids 4-5 and 13-14). The step enlargement (ขยายลูกขั้นบันได) prints riser 0.175, going 0.275 and nosing 0.025 (0.30 overall in the flights).",
+  "Riser counts are rise / 0.175 (2.45 -> 14, 1.75 -> 10); the steps are drawn but not numbered.",
+  "Chains 2.55 + 2.95 (S5 strip + flight run) fix the lower B3 line B' (5.45) of floors 2/3 in the grid master."
+ ],
+ "elements": [
+  {
+   "element_id": "บันได 1",
+   "element_type": "stair",
+   "level": "ชั้น 2 - ชั้น 3",
+   "thickness_mm": 150,
+   "thickness_mm_printed_as": "หนา 0.15 m.",
+   "riser_mm": 175,
+   "riser_printed_as": "0.175",
+   "tread_mm": 275,
+   "tread_printed_as": "0.275 (+ จมูก 0.025 = 0.30)",
+   "nosing_mm": 25,
+   "flights": [
+    {
+     "from": "ชั้นที่ 2",
+     "to": "ชานพัก 2",
+     "rise_m": 1.75,
+     "riser_count": 10,
+     "run_m": 2.95
+    },
+    {
+     "from": "ชานพัก 2",
+     "to": "ชั้นที่ 3",
+     "rise_m": 1.75,
+     "riser_count": 10,
+     "run_m": 2.95
+    }
+   ],
+   "landing_thickness_mm": 150,
+   "landing_span_m": 2.5,
+   "bar_layers": [
+    {
+     "location": "เหล็กหลักล่าง (แม่บันได)",
+     "dia_mm": 12,
+     "type": "DB",
+     "spacing_mm": 150,
+     "printed_as": "DB12mm.@0.15m."
+    },
+    {
+     "location": "เหล็กกระจาย/บน",
+     "dia_mm": 9,
+     "type": "RB",
+     "spacing_mm": 150,
+     "printed_as": "ø9mm.@0.15m."
+    },
+    {
+     "location": "เหล็กขั้นบันได",
+     "dia_mm": 6,
+     "type": "RB",
+     "spacing_mm": 150,
+     "printed_as": "ø6mm.@0.15m."
+    },
+    {
+     "location": "จมูกบันได (ทุกมุม)",
+     "count": 1,
+     "dia_mm": 6,
+     "type": "RB",
+     "printed_as": "1-ø6mm.ทุกมุม"
+    }
+   ],
+   "note": "ขยายบันได 1 1/25 ชั้น 2-ชั้น 3: สองช่วง ช่วงละ 1.75 (10 ลูกตั้ง x 0.175) ราบ 2.95; ชั้นบันไดเหลื่อมกัน 1 ชั้น; ชานพัก 2 (S5 หนา 0.15) ช่วงคาน B3-B6 2.50; ที่ชั้นบนพื้น S5 ช่วง 2.55 จากคาน B2",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "riser_count_derived_from_rise_div_riser"
+   ]
+  }
+ ]
+}

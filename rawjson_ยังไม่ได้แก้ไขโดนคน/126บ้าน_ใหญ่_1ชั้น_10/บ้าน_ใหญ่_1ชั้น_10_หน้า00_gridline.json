@@ -15,7 +15,11 @@
     "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า43.png",
     "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า44.png",
     "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า45.png",
-    "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า46.png"
+    "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า46.png",
+    "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า05.png",
+    "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า06.png",
+    "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า23.png",
+    "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า24.png"
   ],
   "confidence_score": 0.85,
   "confidence_flags": [
@@ -29,7 +33,8 @@
     "Several dummies coincide across sheets and are one line each: y 2.00 = S-02 BX line = T5 line; y 10.00 = S-02 B7/Cx1 line = T7 line; y 14.00 = S-02 outer 2.00 = eave line on S-03/S-04 = end of the T1/T2 overhang; y -2.00 = eave line = T1/T2 left end.",
     "x -1.00 (A'') is NOT printed: it is the left end of the BC stub that projects past A on row 4 of S-02, scaled from the plan (beam-endpoint rule) and flagged.",
     "The C2 columns on rows 1 and 4 are drawn 0.05 off the grid line (S-01) — element-local offset, recorded in unassigned_dimensions, not as lines.",
-    "Dummy naming follows section 4: one prime sequence per gap including the before-origin dummies (x: A' -1.50, A'' -1.00, then A''' .. A'''''''' inside A-B), so the beam lines 1.40 / 3.60 are A'''' / A'''''''."
+    "Dummy naming follows section 4: one prime sequence per gap including the before-origin dummies (x: A' -1.50, A'' -1.00, then A''' .. A'''''''' inside A-B), so the beam lines 1.40 / 3.60 are A'''' / A'''''''.",
+    "Sweep 2026-10-23 of A-03/A-04 (หน้า05-06, spec text) and A-21/A-22 (หน้า23-24, door/window sheets): no grid bubble or axis dimension row on any of the four; A-03 repeats the ±0.00 datum and the +0.30 fill level already held from S-01 (one z chain added), everything else is element-internal or a plan offset with no anchor and went to unassigned_dimensions. No new line, no rename."
   ],
   "grid": {
     "x_lines": [
@@ -1650,6 +1655,19 @@
           }
         ],
         "note": "5 ลูกตั้ง @ 0.16 ม."
+      },
+      {
+        "axis": "z",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า05.png",
+        "view": "รายการประกอบแบบ ข้อ 1.2 (A-03)",
+        "segments": [
+          {
+            "from": "±0.00",
+            "to": "+0.30",
+            "value_m": 0.3
+          }
+        ],
+        "note": "printed \"ให้ผู้รับจ้างปรับดินให้มีความสูงจาก ระดับ ± 0.00 ประมาณ +0.30 ม.\" (approximately) — same fill level as the S-01 note"
       }
     ],
     "unassigned_dimensions": [
@@ -1724,6 +1742,42 @@
         "label": "~0.50",
         "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า43.png",
         "note": "ST1 top landing length to the B7 CL (stair detail)"
+      },
+      {
+        "value_m": 0.5,
+        "label": "โดยรอบอาคารให้มีระยะห่าง จากอาคารไม่ต่ำกว่า 0.50 ม. ตามรูปตัด",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า05.png",
+        "note": "A-03 ข้อ 1.2: fill margin around the building — a plan offset with no grid anchor"
+      },
+      {
+        "value_m": 0.2,
+        "label": "200x600x75 มม. / 140x65x40 มม. / 65x110x250 มม.",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า05.png",
+        "note": "A-03 ข้อ 2.3.1-2.3.2: minimum block/brick sizes (lightweight concrete, common brick, hollow brick)"
+      },
+      {
+        "value_m": 0.004,
+        "label": "หนารวม 4 มม. / 1 1/2\"x 1 1/2\" , 1\"x2\" หนา 1.8 มม.",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า05.png",
+        "note": "A-03 ข้อ 2.3.3: aluminium composite panel thickness and its steel stud sizes"
+      },
+      {
+        "value_m": 1.8,
+        "label": "ทุกระยะไม่เกิน 1.80 ม.",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า06.png",
+        "note": "A-04 ข้อ 4.2: maximum pipe-hanger spacing"
+      },
+      {
+        "value_m": 3.8,
+        "label": "3.80 (0.90 / 0.95 / 0.95 / 0.90) / 2.50 / 2.00 / 0.40 / 0.80 / 0.70 / 2.20 (0.50 / 0.55 / 0.55 / 0.50) / 1.05 / 0.90 / 2.05",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า23.png",
+        "note": "A-21 door/window elevations D1-D3, W1-W3: element-internal sizes, recorded on the schedule rows (หน้า23); heights hang off ▽ระดับพื้นภายใน, whose level value is not printed on the sheet"
+      },
+      {
+        "value_m": 1.6,
+        "label": "1.60 (0.78 / 0.73) / 3.05 (0.70 x 4) / 0.80 (0.70) / 2.50 / 2.65 / 2.15 / 2.00 / 1.05 / 0.90 / 0.40",
+        "source_image": "image/บ้าน_ใหญ่_1ชั้น_10/บ้าน_ใหญ่_1ชั้น_10_หน้า24.png",
+        "note": "A-22 window elevations W4-W6: element-internal sizes, recorded on the schedule rows (หน้า24); W6 prints no ระดับพื้นภายใน label on its floor line"
       }
     ]
   },

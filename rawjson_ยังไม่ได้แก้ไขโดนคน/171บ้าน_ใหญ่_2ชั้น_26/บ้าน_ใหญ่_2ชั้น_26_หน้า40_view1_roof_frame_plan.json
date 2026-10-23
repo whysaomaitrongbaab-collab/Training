@@ -1,0 +1,139 @@
+{
+ "png": "40",
+ "doc_page": 40,
+ "discipline": "structural",
+ "sheet_code": "S-06",
+ "sheet_name": "แปลนคานหลังคาและโครงหลังคา",
+ "pattern": "roof_frame_plan",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_26/บ้าน_ใหญ่_2ชั้น_26_หน้า40.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_26_หน้า00_gridline.json",
+ "floor_level": "RF",
+ "view_title": "แปลนโครงหลังคาเหล็กรูปพรรณ",
+ "scale": "1:200",
+ "views": [
+  "view1: แปลนโครงหลังคาเหล็กรูปพรรณ 1:200 (บน) — T1-T7 + \"โครงหลังคา ดูแบบขยาย\" + \"T7 - C-100x50x20x3.2mm\" (split: roof_frame_plan, _view1_roof_frame_plan)",
+  "view2: แปลนคานหลังคา - โครงหลังคา 1:200 (ล่าง) — คาน ค.ส.ล. ระดับหลังคา R7-R14 + เส้นสันหลังคา/ตะเข้ (split: beam_plan, _view2_beam_plan_roof)"
+ ],
+ "confidence_score": 0.72,
+ "confidence_flags": [],
+ "warnings": [
+  "Upper view of S-06 = steel roof framing (hip roof) -> roof_frame_plan (structural roof framing is extracted, op04 roof_plan trap).",
+  "T1: 41 trusses — counted by detecting the vertical truss lines on the scan between the two T2 lines (3 per 4.00 bay, 1/3-bay spacing; the 13 on grid lines 3-15 included). Their positions between grids are not dimensioned, so T1 is one grouped element (count + area) instead of 41 atomic segments with invented lines.",
+  "T2 at grids 2 and 16 (hip-end girder trusses) recorded eave to eave A''-D'''. T3 = the four hip trusses (diagonal, no grid span). T4-T7 = the short members of the hip ends; counts read off the dense corners (right end clearer, left end drawn symmetric) — low confidence.",
+  "Legend box: \"T7 - C-100x50x20x3.2mm\" (T7 is a lipped C section, element_type rafter) CONFLICTS with S-23 \"T7 = C-100x50x20x2.3mm\": the detail sheet wins (op01 member-spec precedence), so tw_mm = 2.3 with the plan text kept in printed_as and flagged; member sizes of T1-T6 are on the detail sheets S-22/S-23 / PT (โครงหลังคา ดูแบบขยาย). Ridge end mark 0.08 recorded in the grid master unassigned list."
+ ],
+ "elements": [
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "A''2",
+   "grid_ref_end": "D''''2",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถัก T2 ที่กริด 2 (ปลายสันหลังคา/ต้นตะเข้)",
+   "confidence_score": 0.75,
+   "confidence_flags": [],
+   "material": "steel"
+  },
+  {
+   "element_id": "T2",
+   "element_type": "truss",
+   "grid_ref_start": "A''16",
+   "grid_ref_end": "D''''16",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "note": "โครงถัก T2 ที่กริด 16",
+   "confidence_score": 0.75,
+   "confidence_flags": [],
+   "material": "steel"
+  },
+  {
+   "element_id": "T1",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 41,
+   "grid_ref": "A''-D'''' x 2-16",
+   "span_length_m": 14.9,
+   "span_source": "grid_table",
+   "spacing_mm": 1333,
+   "spacing_mm_printed_as": null,
+   "note": "โครงถัก T1 ทุกระยะ 1/3 ช่วงเสา (3 ตัวต่อช่วง 4.00) ตั้งแต่กริด 2 + 1/3 ถึงกริด 16 - 1/3 รวม 41 ตัว (รวมตัวที่อยู่บนกริด 3-15) วางจากแนวชายคา A'' ถึง D''' (14.90)",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "count_from_line_detection_on_scan",
+    "spacing_not_printed_derived_from_count",
+    "grouped_not_atomic_positions_between_grids"
+   ]
+  },
+  {
+   "element_id": "T3",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 4,
+   "grid_ref": "A''-D'''' x 1''-2 / 16-17'''",
+   "note": "โครงถักตะเข้ (แนวทแยงจากมุมชายคาถึงปลายสันหลังคา) 2 ตัวต่อปลายอาคาร",
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "diagonal_member_no_grid_span"
+   ]
+  },
+  {
+   "element_id": "T4",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 6,
+   "grid_ref": "B-C x 1''-2 / 16-17'''",
+   "note": "จันทันพราง/โครงถักสั้นแนวนอนด้านสกัด 3 ตัวต่อปลาย (จากชายคาด้านสกัดถึงตะเข้)",
+   "confidence_score": 0.65,
+   "confidence_flags": [
+    "count_read_off_dense_hip_area"
+   ]
+  },
+  {
+   "element_id": "T5",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 8,
+   "grid_ref": "A''-D'''' x 1''-2 / 16-17'''",
+   "note": "ต่อปลาย: 2 ตัวแนวนอนด้านสกัด + 2 ตัวแนวตั้งด้านยาว (ชายคาถึงตะเข้)",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "count_read_off_dense_hip_area"
+   ]
+  },
+  {
+   "element_id": "T6",
+   "element_type": "truss",
+   "material": "steel",
+   "count": 8,
+   "grid_ref": "A''-D'''' x 1''-2 / 16-17'''",
+   "note": "ต่อปลาย: 2 ตัวแนวนอนด้านสกัด + 2 ตัวแนวตั้งด้านยาว",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "count_read_off_dense_hip_area"
+   ]
+  },
+  {
+   "element_id": "T7",
+   "element_type": "rafter",
+   "material": "steel",
+   "count": 12,
+   "grid_ref": "A''-D'''' x 1''-2 / 16-17'''",
+   "steel_section": {
+    "designation": "C",
+    "d_mm": 100,
+    "b_mm": 50,
+    "lip_mm": 20,
+    "tw_mm": 2.3,
+    "printed_as": "T7 - C-100x50x20x3.2mm (แปลนนี้) / T7 = C-100x50x20x2.3mm (S-23)"
+   },
+   "note": "ชิ้นสั้นที่มุมชายคา ต่อปลาย 2 แนวนอน + 4 แนวตั้ง (อ่านจากมุมขวาซึ่งชัดกว่า แล้วใช้กับปลายซ้ายที่วาดสมมาตร)",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "count_read_off_dense_hip_area",
+    "left_end_count_mirrored_from_right",
+    "spec_conflict_plan_legend_vs_detail"
+   ]
+  }
+ ]
+}

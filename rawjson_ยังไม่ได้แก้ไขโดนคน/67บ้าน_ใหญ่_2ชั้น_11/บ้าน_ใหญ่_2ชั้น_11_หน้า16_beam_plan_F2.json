@@ -1,0 +1,495 @@
+{
+  "png": "16",
+  "doc_page": 16,
+  "discipline": "structural",
+  "sheet_code": "S-03",
+  "sheet_name": "แปลน คาน พื้น ชั้นที่2",
+  "pattern": "beam_plan",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_11/บ้าน_ใหญ่_2ชั้น_11_หน้า16.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_11_หน้า00_gridline.json",
+  "floor_level": "F2",
+  "view_title": "แปลน คาน พื้น ชั้นที่2",
+  "scale": "1:100",
+  "confidence_score": 0.84,
+  "confidence_flags": [
+    "low_resolution_scan"
+  ],
+  "warnings": [
+    "Floor-2 plan (S-03). Dimension rows swept into the grid master: x 2'(2+1.80=5.80), 3'(5.80+1.70+1.50 = 3+1.50 = 9.00), 5''(5+2.00=15.50) and 4'(5-2.00=11.50, re-confirms the S-01/S-02 line); y จ'(จ+0.50=3.50), จ''(ง-0.50=4.50), ค''(ค+1.45=7.45; named ค' until S-04's 1.10 tick at 7.10 took the first prime). จ' carries no beam on this sheet — kept as a rule-4 tick.",
+    "Segmenting: beams split at columns and at corners; a girder that only receives secondary beams (B18 ซ5-ค5, B21 ช2-ค2, B17 ฉ3-ฉ5, B16A จ''3-จ''5, B20A ฉ3-ค3) is kept as one support-to-support segment and the secondary beams carry bears_on_beam flags — same convention as this house's floor-1 file (B7/B9). Risk accepted: a consumer that wants grid-to-grid pieces must split them itself.",
+    "B4: drawn as a dashed pair about 0.3-0.4 m east of the grid-4 centreline (flush past the column face, beside the stair) with no printed offset dimension; recorded on grid 4 (ซ4-ฉ4, frames into B17). A tiny label next to it at the stair edge is illegible at this scan. confidence lowered to 0.72.",
+    "Corner ซ2 has no column: B21X (1.00 m, continuation of the grid-2 line above column ช2) carries the end of edge beam B14 (flagged bears_on_beam:B21X). Same at the projecting bay ค-ค'' x 4'-5'': B15X stubs hang off B2A and carry B14 — read as a cantilevered bay; no column is drawn at ค''4'/ค''5''.",
+    "Mark B14 appears three times on this sheet in different places (ซ2-ซ3 edge, ฉ3'-จ''3' interior, ค''4'-ค''5'' bay edge); B16 twice (จ''2-จ''3 and จ''5-จ''6); kept as printed — the spec join is by mark.",
+    "No beam levels are printed on this sheet (no bracketed หลังคาน values), so no level_m is set.",
+    "Column dots carry no mark on this sheet: recorded once as an unnamed column entry (element_id null) — positions match S-02's C1/C2 set exactly (19)."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "เสา (จุดดำ) บนแปลนชั้น 2 — แผ่นนี้ไม่พิมพ์ mark เสา",
+      "element_type": "column",
+      "count": 19,
+      "grid_refs": [
+        "ซ3",
+        "ซ4",
+        "ซ5",
+        "ซ6",
+        "ช1",
+        "ช2",
+        "ฉ3",
+        "จ6",
+        "ง1",
+        "ค2",
+        "ค3",
+        "ค4",
+        "ค5",
+        "ค6",
+        "ข1",
+        "ข2",
+        "ก4",
+        "ก5",
+        "ก6"
+      ],
+      "note": "S-02 (หน้า15) ระบุตำแหน่งเดียวกันนี้เป็น C1 (17 ต้น) + C2 (ฉ3, ค3); ก4/ก5/ก6 เป็นเสาเฉลียงที่ไม่มีคานชั้น 2 ต่อ",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "no_mark_printed_on_this_sheet"
+      ]
+    },
+    {
+      "element_id": "B21X",
+      "element_type": "beam",
+      "grid_ref_start": "ซ2",
+      "grid_ref_end": "ช2",
+      "span_length_m": 1.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B14",
+      "element_type": "beam",
+      "grid_ref_start": "ซ2",
+      "grid_ref_end": "ซ3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B21X(start)"
+      ]
+    },
+    {
+      "element_id": "B20",
+      "element_type": "beam",
+      "grid_ref_start": "ซ3",
+      "grid_ref_end": "ฉ3",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ซ3",
+      "grid_ref_end": "ซ4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "grid_ref_start": "ซ4",
+      "grid_ref_end": "ฉ4",
+      "span_length_m": 2.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.72,
+      "confidence_flags": [
+        "bears_on_beam:B17(end)",
+        "drawn_off_gridline_no_printed_offset"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ซ4",
+      "grid_ref_end": "ซ5",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B18",
+      "element_type": "beam",
+      "grid_ref_start": "ซ5",
+      "grid_ref_end": "ค5",
+      "span_length_m": 6.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ซ5",
+      "grid_ref_end": "ซ6",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ซ6",
+      "grid_ref_end": "จ6",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ช1",
+      "grid_ref_end": "ง1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ช1",
+      "grid_ref_end": "ช2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B21",
+      "element_type": "beam",
+      "grid_ref_start": "ช2",
+      "grid_ref_end": "ค2",
+      "span_length_m": 5.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B19",
+      "element_type": "beam",
+      "grid_ref_start": "ช2",
+      "grid_ref_end": "ช3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B20(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ช2'",
+      "grid_ref_end": "จ''2'",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B19(start)",
+        "bears_on_beam:B16(end)"
+      ]
+    },
+    {
+      "element_id": "B20A",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ3",
+      "grid_ref_end": "ค3",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B17",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ3",
+      "grid_ref_end": "ฉ5",
+      "span_length_m": 6.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:B18(end)"
+      ]
+    },
+    {
+      "element_id": "B14",
+      "element_type": "beam",
+      "grid_ref_start": "ฉ3'",
+      "grid_ref_end": "จ''3'",
+      "span_length_m": 2.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B17(start)",
+        "bears_on_beam:B16A(end)"
+      ]
+    },
+    {
+      "element_id": "B2A",
+      "element_type": "beam",
+      "grid_ref_start": "จ6",
+      "grid_ref_end": "ค6",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B16",
+      "element_type": "beam",
+      "grid_ref_start": "จ''2",
+      "grid_ref_end": "จ''3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B21(start)",
+        "bears_on_beam:B20A(end)"
+      ]
+    },
+    {
+      "element_id": "B16A",
+      "element_type": "beam",
+      "grid_ref_start": "จ''3",
+      "grid_ref_end": "จ''5",
+      "span_length_m": 6.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B20A(start)",
+        "bears_on_beam:B18(end)"
+      ]
+    },
+    {
+      "element_id": "B15",
+      "element_type": "beam",
+      "grid_ref_start": "จ''4'",
+      "grid_ref_end": "ค4'",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B16A(start)",
+        "bears_on_beam:B2A(end)"
+      ]
+    },
+    {
+      "element_id": "B16",
+      "element_type": "beam",
+      "grid_ref_start": "จ''5",
+      "grid_ref_end": "จ''6",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "bears_on_beam:B18(start)",
+        "bears_on_beam:B2A(end)"
+      ]
+    },
+    {
+      "element_id": "B15",
+      "element_type": "beam",
+      "grid_ref_start": "จ''5''",
+      "grid_ref_end": "ค5''",
+      "span_length_m": 1.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B16(start)",
+        "bears_on_beam:B2A(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ง1",
+      "grid_ref_end": "ข1",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B13",
+      "element_type": "beam",
+      "grid_ref_start": "ง1",
+      "grid_ref_end": "ง2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": [
+        "bears_on_beam:B21(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ค2",
+      "grid_ref_end": "ข2",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ค2",
+      "grid_ref_end": "ค3",
+      "span_length_m": 3.5,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "grid_ref_start": "ค3",
+      "grid_ref_end": "ค4",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2A",
+      "element_type": "beam",
+      "grid_ref_start": "ค4",
+      "grid_ref_end": "ค5",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B15X",
+      "element_type": "beam",
+      "grid_ref_start": "ค4'",
+      "grid_ref_end": "ค''4'",
+      "span_length_m": 1.45,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B2A(start)"
+      ]
+    },
+    {
+      "element_id": "B2A",
+      "element_type": "beam",
+      "grid_ref_start": "ค5",
+      "grid_ref_end": "ค6",
+      "span_length_m": 3.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B15X",
+      "element_type": "beam",
+      "grid_ref_start": "ค5''",
+      "grid_ref_end": "ค''5''",
+      "span_length_m": 1.45,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B2A(start)"
+      ]
+    },
+    {
+      "element_id": "B14",
+      "element_type": "beam",
+      "grid_ref_start": "ค''4'",
+      "grid_ref_end": "ค''5''",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "bears_on_beam:B15X(start)",
+        "bears_on_beam:B15X(end)"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "grid_ref_start": "ข1",
+      "grid_ref_end": "ข2",
+      "span_length_m": 4.0,
+      "span_source": "grid_table",
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "grid_refs": [
+        "ช-ง x 1-2",
+        "ง-ข x 1-2"
+      ],
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "grid_refs": [
+        "ซ-ช x 2-3",
+        "ฉ-จ'' x 2-2'",
+        "ช-จ'' x 2'-3",
+        "จ''-ค x 2-3",
+        "ฉ-จ'' x 3-3'",
+        "ฉ-จ'' x 3'-5",
+        "ซ-ฉ x 4-5",
+        "จ''-ค x 3-4'",
+        "จ''-ค x 4'-5",
+        "จ''-ค x 5-5''",
+        "จ''-ค x 5''-6",
+        "ค-ค'' x 4'-5''"
+      ],
+      "confidence_score": 0.84,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3A",
+      "element_type": "slab",
+      "grid_refs": [
+        "ช-ฉ x 2-2'"
+      ],
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S4",
+      "element_type": "slab",
+      "grid_refs": [
+        "ซ-จ'' x 5-6"
+      ],
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "ST",
+      "element_type": "stair",
+      "grid_ref": "~ซ3",
+      "note": "ช่องบันได ซ-ฉ x 3-4 (พิมพ์ ST ในวงกลม)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}

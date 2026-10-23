@@ -1,0 +1,205 @@
+{
+ "png": "42",
+ "doc_page": 42,
+ "discipline": "structural",
+ "sheet_code": "S-08",
+ "sheet_name": "แบบขยายฐานรากตอกเสาเข็ม F1-F4, รายการประกอบแบบฐานราก (อาคารเรียน 318ล./55-ก แผ่นที่ S-08)",
+ "source_image": "image/บ้าน_ใหญ่_3ชั้น_09/บ้าน_ใหญ่_3ชั้น_09_หน้า42.png",
+ "view_title": "แบบขยายฐานราก (ตอกเสาเข็ม)",
+ "scale": null,
+ "pattern": "section",
+ "views": [
+  "view1: pile caps F4, F3 (+ 3-way bar diagram), F2, F1 plans and sections — section (this file)",
+  "view2: รายการประกอบแบบฐานราก กรณีต้องใช้ฐานรากตอกเสาเข็ม ข้อ 1-4 + NOTE — notes (_view2_notes.json)"
+ ],
+ "confidence_score": 0.84,
+ "confidence_flags": [],
+ "warnings": [
+  "Pile-cap details of the pile-footing system (S-02 view2). F1-F4 keep element_type 'footing' (same as the plan, spec section 0.4/6b) with footing_type 'pile_cap'; the spread-footing F1-F4 of the other system are on S-09/S-10 and share the marks — a consumer must keep the two systems apart by sheet.",
+  "Mats are printed per direction ('9-DB20mm' twice, '7-DB20mm'/'5-DB20mm', '4+4-DB16mm', 'เสริม 3 ทาง ทางละ 8-DB20mm'); main_bar.count = the sum, printed text in count_printed_as (spec 6b).",
+  "Cap thickness 0.70 (height_mm) is the concrete only; lean concrete 0.05 and sand 0.05 are in their own fields. D (top of cap to the reference level) is 'ประมาณ 1.50ม.' per the NOTE.",
+  "F3 is a triangular cap with cut corners — width_mm/depth_mm hold its base (1.69) and height (1.47); not a rectangle (flag non_rectangular_cap).",
+  "F1's extra bars ('4-DB12mm', '8-DB20mm') are recorded as additional_bars with their roles described from the leader lines; low confidence.",
+  "เหล็กเสริมข้ออ้อยทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40 (บรรทัดมุมล่างซ้าย)"
+ ],
+ "elements": [
+  {
+   "element_id": "F4",
+   "element_type": "footing",
+   "footing_type": "pile_cap",
+   "width_mm": 1600,
+   "height_mm": 700,
+   "main_bar": {
+    "count": 18,
+    "dia_mm": 20,
+    "type": "DB",
+    "count_printed_as": "9-DB20mm + 9-DB20mm",
+    "note": "ตะแกรง 2 ทาง ทางละ 9 เส้น"
+   },
+   "stirrup": {
+    "count": 1,
+    "dia_mm": 9,
+    "type": "RB",
+    "printed_as": "1-RB9mm รัดรอบ",
+    "note": "เหล็กรัดรอบขอบฐาน 1 เส้น"
+   },
+   "pile_count": 4,
+   "pile": {
+    "type": "เสาเข็มคอนกรีตอัดแรง",
+    "safe_load_t_per_pile": 35,
+    "printed_as": "เข็มคอนกรีตอัดแรง ... รับน้ำหนักปลอดภัยได้ไม่น้อยกว่า 35 ตัน ต่อต้น (ชนิด/ขนาดตามรายการประกอบแบบฐานราก ข้อ 1)"
+   },
+   "lean_concrete": {
+    "thickness_mm": 50,
+    "printed_as": "คอนกรีตหยาบ 0.05"
+   },
+   "sand_bed_thickness_m": 0.05,
+   "ground_reference": "ระดับที่กำหนด; D = ความลึกของฐานรากประมาณ 1.50ม. หรือตามที่วิศวกรกำหนด",
+   "steel_grade": "SD40",
+   "width_mm_printed_as": "0.30+0.50+0.50+0.30 = 1.60",
+   "note": "ฐานรากเสาเข็ม 4 ต้น 1.60 x 1.60 x 0.70 (ระยะเข็ม 0.30+0.50+0.50+0.30 สองทาง)",
+   "confidence_score": 0.86,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F3",
+   "element_type": "footing",
+   "footing_type": "pile_cap",
+   "width_mm": 1690,
+   "depth_mm": 1470,
+   "height_mm": 700,
+   "main_bar": {
+    "count": 24,
+    "dia_mm": 20,
+    "type": "DB",
+    "count_printed_as": "เสริม 3 ทาง ทางละ 8-DB20mm",
+    "note": "เหล็กเสริม 3 ทิศตามแนวเข็ม (แสดงการเสริมเหล็ก 3 ทาง)"
+   },
+   "stirrup": {
+    "count": 1,
+    "dia_mm": 9,
+    "type": "RB",
+    "printed_as": "1-RB9mm รัดรอบ",
+    "note": "เหล็กรัดรอบขอบฐาน 1 เส้น"
+   },
+   "pile_count": 3,
+   "pile": {
+    "type": "เสาเข็มคอนกรีตอัดแรง",
+    "safe_load_t_per_pile": 35,
+    "printed_as": "เข็มคอนกรีตอัดแรง ... รับน้ำหนักปลอดภัยได้ไม่น้อยกว่า 35 ตัน ต่อต้น (ชนิด/ขนาดตามรายการประกอบแบบฐานราก ข้อ 1)"
+   },
+   "lean_concrete": {
+    "thickness_mm": 50,
+    "printed_as": "คอนกรีตหยาบ 0.05"
+   },
+   "sand_bed_thickness_m": 0.05,
+   "ground_reference": "ระดับที่กำหนด; D = ความลึกของฐานรากประมาณ 1.50ม. หรือตามที่วิศวกรกำหนด",
+   "steel_grade": "SD40",
+   "plan_layout": "triangular",
+   "width_mm_printed_as": "1.69 (ฐานสามเหลี่ยม)",
+   "depth_mm_printed_as": "0.30+0.58+0.29+0.30 = 1.47",
+   "note": "ฐานรากเสาเข็ม 3 ต้น รูปสามเหลี่ยมตัดมุม: ฐาน 1.69, สูง 1.47 (0.30+0.58+0.29+0.30), ระยะเข็ม 0.50+0.50 (1.35 ถึงขอบ), มุมตัด 0.34",
+   "confidence_score": 0.8,
+   "confidence_flags": [
+    "non_rectangular_cap"
+   ]
+  },
+  {
+   "element_id": "F2",
+   "element_type": "footing",
+   "footing_type": "pile_cap",
+   "width_mm": 1600,
+   "depth_mm": 700,
+   "height_mm": 700,
+   "main_bar": {
+    "count": 12,
+    "dia_mm": 20,
+    "type": "DB",
+    "count_printed_as": "7-DB20mm + 5-DB20mm",
+    "note": "ตะแกรง 2 ทาง: 7 เส้นแนวหนึ่ง + 5 เส้นอีกแนว (รูปตัดไม่ระบุแนวชัด)"
+   },
+   "stirrup": {
+    "count": 1,
+    "dia_mm": 9,
+    "type": "RB",
+    "printed_as": "1-RB9mm รัดรอบ",
+    "note": "เหล็กรัดรอบขอบฐาน 1 เส้น"
+   },
+   "pile_count": 2,
+   "pile": {
+    "type": "เสาเข็มคอนกรีตอัดแรง",
+    "safe_load_t_per_pile": 35,
+    "printed_as": "เข็มคอนกรีตอัดแรง ... รับน้ำหนักปลอดภัยได้ไม่น้อยกว่า 35 ตัน ต่อต้น (ชนิด/ขนาดตามรายการประกอบแบบฐานราก ข้อ 1)"
+   },
+   "lean_concrete": {
+    "thickness_mm": 50,
+    "printed_as": "คอนกรีตหยาบ 0.05"
+   },
+   "sand_bed_thickness_m": 0.05,
+   "ground_reference": "ระดับที่กำหนด; D = ความลึกของฐานรากประมาณ 1.50ม. หรือตามที่วิศวกรกำหนด",
+   "steel_grade": "SD40",
+   "width_mm_printed_as": "0.30+1.00+0.30 = 1.60",
+   "depth_mm_printed_as": "0.35+0.35 = 0.70",
+   "note": "ฐานรากเสาเข็ม 2 ต้น 1.60 x 0.70 x 0.70 (0.30+1.00+0.30 x 0.35+0.35)",
+   "confidence_score": 0.82,
+   "confidence_flags": [
+    "bar_direction_not_stated"
+   ]
+  },
+  {
+   "element_id": "F1",
+   "element_type": "footing",
+   "footing_type": "pile_cap",
+   "width_mm": 700,
+   "height_mm": 700,
+   "main_bar": {
+    "count": 8,
+    "dia_mm": 16,
+    "type": "DB",
+    "count_printed_as": "4+4-DB16mm",
+    "note": "ตะแกรง 2 ทาง ทางละ 4 เส้น วางที่ระดับ 0.35 เหนือท้องฐาน (เหนือหัวเข็ม)"
+   },
+   "stirrup": {
+    "count": 1,
+    "dia_mm": 9,
+    "type": "RB",
+    "printed_as": "1-RB9mm รัดรอบ",
+    "note": "เหล็กรัดรอบขอบฐาน 1 เส้น"
+   },
+   "pile_count": 1,
+   "pile": {
+    "type": "เสาเข็มคอนกรีตอัดแรง",
+    "safe_load_t_per_pile": 35,
+    "printed_as": "เข็มคอนกรีตอัดแรง ... รับน้ำหนักปลอดภัยได้ไม่น้อยกว่า 35 ตัน ต่อต้น (ชนิด/ขนาดตามรายการประกอบแบบฐานราก ข้อ 1)"
+   },
+   "lean_concrete": {
+    "thickness_mm": 50,
+    "printed_as": "คอนกรีตหยาบ 0.05"
+   },
+   "sand_bed_thickness_m": 0.05,
+   "ground_reference": "ระดับที่กำหนด; D = ความลึกของฐานรากประมาณ 1.50ม. หรือตามที่วิศวกรกำหนด",
+   "steel_grade": "SD40",
+   "additional_bars": [
+    {
+     "count": 4,
+     "dia_mm": 12,
+     "type": "DB",
+     "printed_as": "4-DB12mm",
+     "position": "ชั้นเหล็กระดับเดียวกับตะแกรง 4+4-DB16 (เส้นชี้ลงที่ระดับ 0.35)"
+    },
+    {
+     "count": 8,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "8-DB20mm",
+     "position": "เหล็กรูปตัว U ตามขอบข้างฐาน (เส้นชี้ที่เหล็กตั้งขอบฐาน)"
+    }
+   ],
+   "note": "ฐานรากเข็มต้นเดียว 0.70 x 0.70 x 0.70; บทบาทของ 4-DB12 และ 8-DB20 อ่านจากเส้นชี้ — ดู additional_bars",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "bar_roles_from_leader_lines"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,147 @@
+{
+  "png": "19",
+  "doc_page": 19,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แบบแสดง แสดงการจัดระดับของคานและพื้น (แบบอาคารสำนักงานเขตพื้นที่การศึกษา แบบที่ 4)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_24/บ้าน_ใหญ่_2ชั้น_24_หน้า19.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_24_หน้า00_gridline.json",
+  "view_title": "แสดงการจัดระดับของคานและพื้นหล่อในที่ และการวางระดับคานหลักรับพื้นสำเร็จรูป",
+  "scale": null,
+  "views": [
+    "view1: บริเวณระเบียงและห้องเรียนชั้นบน — รูปตัดตามแกน y (R6 / คานหลัก B10 / คานหลัก / R6) (this file)",
+    "view2: บริเวณโถงบันไดชั้นบน — รูปตัดตามแกน x (B10 / B7-B8 / พื้น ค.ส.ล. โถงบันได / B7-B8 / B10) (this file)",
+    "view3: ขยาย B7-B8-B11 ด้านที่รับพื้นสำเร็จรูปทำหูช้างลดระดับ (this file)"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [
+    "schematic_level_section"
+  ],
+  "warnings": [
+    "Schematic level sections (no member rebar except the ledge detail). No printed mark names the two sections, so each is a section_view entry with element_id null and its title in element_name_assigned (precedent: house 170 S-10). Member specs stay on S-10..S-14; this sheet is not a spec source for B7/B8/B10/B11/R6.",
+    "Template wording kept verbatim: the title says 'ห้องเรียน' (classroom) and the room label 'พื้นห้อง' has its next word whited out on the scan - this office building reuses the สพฐ. school-building level sheet. Not corrected.",
+    "view2 prints B10 at both outer supports of the stair-hall cut, but the S-03 plan draws B10 only on C-D at grids 3/4/9/10 and B9 on grids 2/5/8/11. The cut (4.00 | 4.00 | 4.00 centre-to-centre, stair hall in the middle bay) can only be grids 2-5 or 8-11, where S-03 has B9 - so the 'B10' labels on this schematic disagree with the plan. Kept as printed; the plan (S-03) governs member positions (op01 precedence 2: the plan places members, the section only specifies them). Risk: none for quantities, this file carries no spec.",
+    "view1 is cut along the y axis through a stair-bay grid line (3/4/9/10): the 2.50 bay at the left is the C-D corridor where B10 is seen in elevation as 'คานหลัก B10'; the right-hand 'คานหลัก' is the A-C beam (B7/B8 there per S-03). Orientation is not printed; read from the 2.50 corridor bay.",
+    "Precast plank thickness printed 0.10 m here ('พื้นสำเร็จรูปหนา 0.10ม.วางพาดหลังคานหลัก', twice); the S-02 HC note reads '0.80-0.10 m.' (= 0.08-0.10). Topping 'คอนกรีตทับหน้าพื้นสำเร็จรูปหนา 5 ซม.'. Both kept as printed.",
+    "Ledge detail: 'ø' = RB (spec section 6). The detail gives only the ledge bars, not the beam's own main bars or stirrups, so it is recorded as one connection_detail entry (element_id null, applies_to B7/B8/B11) instead of three beam specs - writing B7/B8/B11 here would shadow their real S-12/S-13 specs in the spec join. Same ledge (0.15 / ø9mm@0.15m. / 2-ø6mm) is printed beside G6 on S-10.",
+    "Sheet box 'เหล็กเสริมข้ออ้อย ทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40' (same wording as S-05). Dimension rows on this sheet go to the grid master (y 1.50 | 10.50 | 1.50 and 2.50; x 4.00 | 4.00 | 4.00); member-internal sizes (0.70 beam depth, 0.05 / 0.10 steps, 0.60 plank width, 0.15 ledge) are kept on the elements below."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "บริเวณระเบียงและห้องเรียนชั้นบน",
+      "element_type": "section_view",
+      "cut_axis": "y",
+      "members_shown": [
+        "R6",
+        "B10",
+        "คานหลัก",
+        "R6"
+      ],
+      "printed_text": [
+        "ระดับกันสาดอยู่ระดับเดียวกับหลังคานหลัก (พิมพ์ทั้งสองข้าง)",
+        "พื้นสำเร็จรูปหนา 0.10ม.วางพาดหลังคานหลัก (พิมพ์ 2 จุด)",
+        "ระดับหลังคานรับพื้นสำเร็จรูป",
+        "คอนกรีตทับหน้าพื้นสำเร็จรูปหนา 5 ซม.",
+        "ปรับระดับหลังคานให้เรียบก่อนวางพื้นสำเร็จรูป",
+        "เทคอนกรีตปรับหลังคานก่อนวางพื้น",
+        "หลังคาน",
+        "คานหลัก B10",
+        "คานหลัก"
+      ],
+      "dimensions_printed": [
+        "1.50 | 10.50 | 1.50 (ปลายคานยื่น R6 ถึงแนวเสา / แนวเสาถึงแนวเสา / แนวเสาถึงปลายคานยื่น)",
+        "2.50 (แนวเสาซ้ายถึงแนวคานถัดไป — ช่วงทางเดิน)",
+        "0.70 (ความลึก R6 ซ้าย)",
+        "0.70 (ความลึกคานหลัก)",
+        "0.05 (ระดับต่าง หลังพื้นสำเร็จรูปช่วงทางเดิน)",
+        "0.05 (ระดับต่าง หลังพื้นสำเร็จรูปช่วงห้อง)",
+        "0.10 (ความหนาแผ่นพื้นสำเร็จรูป)",
+        "0.60 (ความกว้างแผ่นพื้นสำเร็จรูป)"
+      ],
+      "level_relations": [
+        "หลังพื้นกันสาด (R6) = หลังคานหลัก",
+        "แผ่นพื้นสำเร็จรูปหนา 0.10 วางบนหลังคานหลัก + คอนกรีตทับหน้า 5 ซม."
+      ],
+      "note": "รูปตัดตามแกน y ผ่านแนวเสาช่องบันได; R6 คานยื่น 1.50 สองข้าง ลึก 0.70; ช่วงซ้าย 2.50 = ทางเดิน C-D (เห็นคาน B10 ด้านยาว); ช่วงขวาเป็นห้อง แผ่นพื้นสำเร็จรูปกว้าง 0.60",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "schematic_level_section",
+        "orientation_inferred_from_2.50_bay"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "บริเวณโถงบันไดชั้นบน",
+      "element_type": "section_view",
+      "cut_axis": "x",
+      "members_shown": [
+        "B10",
+        "B7/B8",
+        "B7/B8",
+        "B10"
+      ],
+      "printed_text": [
+        "คอนกรีตทับหน้า (พิมพ์ทั้งสองข้าง)",
+        "พื้นห้อง[คำถัดไปถูกลบบนสแกน] (พิมพ์ทั้งสองข้าง)",
+        "พื้นสำเร็จรูป (พิมพ์ทั้งสองข้าง)",
+        "พื้น ค.ส.ล. โถงบันได",
+        "ด้านที่รับพื้นสำเร็จรูปทำหูช้างลดระดับ (พิมพ์ทั้งสองข้าง)"
+      ],
+      "dimensions_printed": [
+        "4.00 | 4.00 | 4.00 (ศูนย์กลาง B10 / B7-B8 / B7-B8 / B10)",
+        "0.10 (พื้น ค.ส.ล. โถงบันได สูงกว่าหลังคาน — พิมพ์ทั้งสองข้าง)",
+        "0.05 (หูช้างลดระดับ)"
+      ],
+      "level_relations": [
+        "พื้นห้อง (สำเร็จรูป + คอนกรีตทับหน้า) ช่องข้างวางบนหูช้างลดระดับของ B7/B8",
+        "พื้น ค.ส.ล. โถงบันได ช่องกลาง ระดับต่างจากหลังคาน 0.10"
+      ],
+      "note": "รูปตัดตามแกน x ผ่านโถงบันได (ช่องกลาง) — ช่องข้างเป็นพื้นสำเร็จรูป, ช่องกลางเป็นพื้นหล่อในที่; ป้าย B10 ที่ปลายทั้งสองข้างไม่ตรงกับแปลน S-03 (ที่กริด 2/5/8/11 เป็น B9) — ดู warnings",
+      "confidence_score": 0.75,
+      "confidence_flags": [
+        "schematic_level_section",
+        "end_labels_disagree_with_plan_S-03"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "B7-B8-B11 ด้านที่รับพื้นสำเร็จรูปทำหูช้างลดระดับ",
+      "element_type": "connection_detail",
+      "marks_printed": "B7-B8-B11",
+      "applies_to": [
+        "B7",
+        "B8",
+        "B11"
+      ],
+      "ledge_width_mm": 150,
+      "ledge_depth_mm": 100,
+      "ledge_step_mm": 50,
+      "bar_layers": [
+        {
+          "location": "เหล็กหูช้าง (ปลอก/เหล็กงอรับบ่า)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "ø9mm@0.15m."
+        },
+        {
+          "location": "เหล็กตามยาวในหูช้าง",
+          "count": 2,
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "2-ø6mm"
+        }
+      ],
+      "dimensions_printed": [
+        "0.15 (ความกว้างบ่า)",
+        "0.10 (ความลึกบ่า)",
+        "0.05 (ระดับต่าง)"
+      ],
+      "note": "รายละเอียดบ่าหูช้างด้านที่รับแผ่นพื้นสำเร็จรูปของคาน B7, B8, B11 — ไม่ใช่สเปกคานทั้งตัว (สเปกคานอยู่ S-12/S-13)",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    }
+  ]
+}

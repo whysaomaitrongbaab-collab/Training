@@ -7,28 +7,17 @@
     "gridline",
     "plan_footing",
     "plan_beam",
-    "plan_slab"
+    "plan_slab",
+    "section",
+    "notes"
   ],
   "subtasks_absent_from_this_house": [
     "plan_column (columns are printed as footing+column pair marks F1,C1 / F2,C2 / F3,C2 / C1' on the S-01 column-footing plan; no separate column sheet)",
-    "soil_boring_log"
+    "schedule (no door/window or column schedule table anywhere in the 26-page set — the per-storey column table on S-05 is recorded in its section file; door/window types ป1 / น1 appear only as architectural detail sheets A-09 / A-10)",
+    "soil_boring_log (S-04 only lists the boring requirements; no log is included)"
   ],
   "subtasks_not_yet_reached": [
-    {
-      "subtask": "section",
-      "pages": "หน้า20-26 (S-04..S-10: footing/column/beam/slab/stair/roof-truss details)",
-      "reason": "computer scheduled shutdown 23:43 (5-hour usage valve also at its limit at 23:21)"
-    },
-    {
-      "subtask": "schedule",
-      "pages": "column/footing tables on the S-sheet details (e.g. หน้า21) and any door/window schedule on the A-sheets — not checked",
-      "reason": "computer scheduled shutdown 23:43"
-    },
-    {
-      "subtask": "notes",
-      "pages": "หน้า20 (S-04 general structural notes) and the notes on the A-sheets",
-      "reason": "computer scheduled shutdown 23:43"
-    }
+
   ],
   "deliberately_skipped": [
     "material_list",
@@ -41,7 +30,8 @@
     "misc",
     "bbs_schedule"
   ],
-  "pages_extracted": 3,
+  "pages_extracted": 10,
   "pages_in_house": 26,
-  "note": "Pass 2 subtasks only, and PARTIAL — section / schedule / notes were not reached before the scheduled shutdown; this house is NOT fully extracted. Done: grid master from S-01..S-03 (grid 1-13 x A-F printed; 12 x 4.00 = 48.00; A/F are 0.125 outside the column rows B/E), footing+column plan S-01 (34 positions: F1 18 / F2 8 / F3 8; C1 15 / C1' 5 / C2 14), beam plans F1 (S-01, 115 segments incl. B1/G1 stacked pairs), F2 and F3 (S-02, 96 + 92), roof framing S-03 (R1 roof beams + trusses T1-T4, 55 elements), slab marks F1/F2/F3 (S-02 one-way panels, S1, S3/S4 cantilevers, ST1/ST2, S5, GS). Flags: the classroom third-point B1 lines and the roof ridge end are not dimensioned and were placed by proportion (scaled_from_grid); the F1 front strip (G2/G4/G5 below row E) and the F2 bottom projection (B10/B8) are low confidence. Grid master sweep covers S-01..S-03 only (no A-sheet elevations/sections)."
+  "note": "Pass 2 subtasks only — this house is NOT fully extracted (skipped pages were skipped on purpose, tune_ai/t03/dataset_sizing.md), and the grid master's dimension sweep covers the structural sheets only (see subtasks_not_yet_reached). Run 1 (2026-10-19, stopped by the scheduled shutdown): grid master from S-01..S-03 (grid 1-13 x A-F printed; 12 x 4.00 = 48.00; A/F are 0.125 outside the column rows B/E), footing+column plan S-01 (34 positions: F1 18 / F2 8 / F3 8; C1 15 / C1' 5 / C2 14), beam plans F1 (S-01, 115 segments incl. B1/G1 stacked pairs), F2 and F3 (S-02, 96 + 92), roof framing S-03 (R1 + trusses T1-T4, 55 elements), slab marks F1/F2/F3. Run 2 (2026-10-22, resume): notes S-04 (หน้า20, foundation requirements — procedural, no concrete/steel/cover spec anywhere in the set, so no notes{} object); sections S-05 (หน้า21, column table C1'/C1/C2 x 4 storey ranges + ฐานรากแบบที่ 1 pile caps F1/F2/F3), S-06 (หน้า22, ฐานรากแบบที่ 2 spread footings F1/F2/F3), S-07 (หน้า23, beams G1-G5, B1-B12, R1, R2 + unmarked fins), S-08 (หน้า24, slabs S1-S5, GS + S2 precast option), S-09 (หน้า25, stairs ST1 x4 flights, ST2, beam B4A), S-10 (หน้า26, steel trusses T1/T2/T3/T4-1/T4-2 + purlin + seat plate). Every mark on the plans now joins to a spec. Flags: S3's bar roles, F2's spread-footing spacing digit (0.10 vs 0.30), F3's 0.16 edge thickness, and the S-10 title block printing '18 ห้องเรียน' (shared sheet) are recorded in the files' warnings. Skipped on purpose: หน้า01-02 cover, หน้า03 A-01 index/material/paint list (read only to confirm it carries no structural spec), หน้า04-14 architectural, หน้า15-16 electrical. Run 3 (2026-10-23, resume — grid master only, no plan/section re-extraction): dimension sweep of the architectural sheets A-02..A-12 (หน้า04-14), plus A-01 (หน้า03) and the electrical plans E-01/E-02 (หน้า15-16): 74 new dimension_chains (37 -> 111), 15 z_levels (1 -> 16: datum ระดับดินถม +0.00, every printed floor/walkway/beam level), 35 unassigned (2 -> 37), 2 new y dummy lines (F''''' 12.025 = E + 2.50 entrance canopy/step edge, F'''''' 12.40 = F'' + 1.25 floor-1 outline step-out); no rename, no line moved. A-06 (and A-07) letter the column lines A, B, D, E / A, C, D: mapped by position (A-06 'A' = B, 'B' = C), structural ids untouched. Printed conflicts kept and flagged in the master warnings: floor 1 +0.95 (elevations) vs +0.85 (A-06) vs +0.80 (A-07/A-08); ระดับท้องคาน +10.85 (A-06) vs +11.45 (A-04 rear); section ข z-chain off by 0.10 against its own labels; E-sheets print A-C 3.58/3.57, D-F 2.48, B-C 3.60. adapt_check unchanged (66 elements, unresolved spans []).",
+  "resumed": "2026-10-22"
 }

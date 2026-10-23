@@ -17,10 +17,12 @@
   "warnings": [
     "Roof beam + steel roof-framing plan (hip roof, eave 2.20 all round). RC roof beams: R7 on rows A and D, R8 / R8/1 on grids 1 and 12 (bottom level = R7, three steel posts LG.☐100x100x3.2mm. on each R8), R9 / R10 on grids 3, 4, 9, 10 (top of beam = top of column). T-marks typed truss.",
     "'R7/R7' in the stair bays 3-4 / 9-10 and 'T4/R9' on grids 3/4/9/10 B-C are stacked labels; each recorded as two members on one segment with a lowered score.",
-    "PARTIAL: the T2 hip members are NOT recorded - they run diagonally from each eave corner through the corner columns to (2.00, 2.00) / (2.00, 8.50) (mirror 42.00 at grid 12), ends that sit on no grid line, with a dashed continuation to grid 2/11; also not recorded: the unlabelled steel lines along x 2.00/3.00 (41.00/42.00) between the hips, the unlabelled eave-overhang lines on grids 3/4/9/10 beyond rows A/D, and a lone 'R6' label in bay 5-6 near row C that marks no visible member. Shutdown deadline - left for a later pass rather than guessed.",
+    "[2026-10-19, superseded 2026-10-22/23: the T2 hips, their dashed continuations and the unlabelled x 2.00/3.00 (41.00/42.00) lines are now recorded - see the last warning; the eave-overhang lines and the lone R6 label are still open] PARTIAL: the T2 hip members are NOT recorded - they run diagonally from each eave corner through the corner columns to (2.00, 2.00) / (2.00, 8.50) (mirror 42.00 at grid 12), ends that sit on no grid line, with a dashed continuation to grid 2/11; also not recorded: the unlabelled steel lines along x 2.00/3.00 (41.00/42.00) between the hips, the unlabelled eave-overhang lines on grids 3/4/9/10 beyond rows A/D, and a lone 'R6' label in bay 5-6 near row C that marks no visible member. Shutdown deadline - left for a later pass rather than guessed.",
     "T3 is printed only in the two end bays; the same continuous heavy ridge line (B' 5.25) across bays 2-11 is recorded as T3 with a lower score.",
     "T1 recorded as one member per grid line, eave to eave (14.90), since a truss is not split at its bearing beams; small square supports drawn on each T1 at row C.",
-    "Scale text not read; the plan measures 1:125 like S-01..S-03 - left null rather than claimed."
+    "Scale text not read; the plan measures 1:125 like S-01..S-03 - left null rather than claimed.",
+    "2026-10-22/23 resume: ADDED the hip framing that the 2026-10-19 pass left out (24 entries, appended at the end of elements[] rather than re-sorted, to keep the existing entries untouched): at each of the 4 corners the T2 hip in two atomic segments - eave corner to the corner column (A'1'-A1, D''''1'-D1, A'12''-A12, D''''12''-D12) and corner column to where the heavy T2 line stops on the printed x line 1''''' 2.00 / 11'' 42.00; plus the unlabelled dashed continuation of each hip toward grid 2 / 11 (upper ones end on B2 / B11), the unlabelled heavy line along x 2.00 / 42.00 joining the two hip ends, and the unlabelled dashed line along x 3.00 / 41.00 (A'''''' to B''''''). All diagonals carry span_length_m null + span_source 'unresolved' + flag 'diagonal' (section 4: a diagonal span is never scaled; precedent house 102). The hip ends sit at y 2.00 and 8.50 on the 45° hip, but no y dimension is printed there, so NO dummy y line was created and those ends are null with the missing line named in missing_line (rule: an off-grid end stays unresolved, never invented). Not added (still open): the unlabelled eave-overhang lines on grids 3/4/9/10 beyond rows A/D, and the lone 'R6' label in bay 5-6.",
+    "2026-10-23 op04 resume CORRECTION: the 4 T4 entries (grids 3, 4, 9, 10) were recorded B-C 4.00 only, from where the stacked 'T4/R9' label is printed. S-16 (หน้า28) draws T4 as one truss eave to eave (2.20 | 2.50 | 4.70 | 3.30 | 2.20 = 14.90, R7 at both rows), and on this plan the line on those grids runs from eave to eave exactly like the T1 lines (which this file already records A' to D'''' with the label printed once). So each T4 is now A' -> D'''' 14.90 (flag extent_from_S-16_elevation). This also accounts for the 'unlabelled eave-overhang lines on grids 3/4/9/10 beyond rows A/D' that the 2026-10-19 pass listed as open - they are T4's eave portions. Risk: if T4 were meant only between R9 supports, steel is over-counted by 10.90 m per truss; S-16's full-width elevation makes that unlikely."
   ],
   "elements": [
     {
@@ -38,7 +40,7 @@
       "element_id": "T1",
       "element_type": "truss",
       "grid_ref_start": "A'2",
-      "grid_ref_end": "D'''2",
+      "grid_ref_end": "D''''2",
       "span_length_m": 14.9,
       "span_source": "grid_table",
       "note": "โครงถัก T1 แนวกริดเต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D''' = 14.90); ป้ายพิมพ์ครั้งเดียวกลางช่วง; มีจุดรองรับสี่เหลี่ยมเล็กที่แถว C",
@@ -49,7 +51,7 @@
       "element_id": "T1",
       "element_type": "truss",
       "grid_ref_start": "A'5",
-      "grid_ref_end": "D'''5",
+      "grid_ref_end": "D''''5",
       "span_length_m": 14.9,
       "span_source": "grid_table",
       "note": "โครงถัก T1 แนวกริดเต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D''' = 14.90); ป้ายพิมพ์ครั้งเดียวกลางช่วง; มีจุดรองรับสี่เหลี่ยมเล็กที่แถว C",
@@ -60,7 +62,7 @@
       "element_id": "T1",
       "element_type": "truss",
       "grid_ref_start": "A'6",
-      "grid_ref_end": "D'''6",
+      "grid_ref_end": "D''''6",
       "span_length_m": 14.9,
       "span_source": "grid_table",
       "note": "โครงถัก T1 แนวกริดเต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D''' = 14.90); ป้ายพิมพ์ครั้งเดียวกลางช่วง; มีจุดรองรับสี่เหลี่ยมเล็กที่แถว C",
@@ -71,7 +73,7 @@
       "element_id": "T1",
       "element_type": "truss",
       "grid_ref_start": "A'7",
-      "grid_ref_end": "D'''7",
+      "grid_ref_end": "D''''7",
       "span_length_m": 14.9,
       "span_source": "grid_table",
       "note": "โครงถัก T1 แนวกริดเต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D''' = 14.90); ป้ายพิมพ์ครั้งเดียวกลางช่วง; มีจุดรองรับสี่เหลี่ยมเล็กที่แถว C",
@@ -82,7 +84,7 @@
       "element_id": "T1",
       "element_type": "truss",
       "grid_ref_start": "A'8",
-      "grid_ref_end": "D'''8",
+      "grid_ref_end": "D''''8",
       "span_length_m": 14.9,
       "span_source": "grid_table",
       "note": "โครงถัก T1 แนวกริดเต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D''' = 14.90); ป้ายพิมพ์ครั้งเดียวกลางช่วง; มีจุดรองรับสี่เหลี่ยมเล็กที่แถว C",
@@ -93,7 +95,7 @@
       "element_id": "T1",
       "element_type": "truss",
       "grid_ref_start": "A'11",
-      "grid_ref_end": "D'''11",
+      "grid_ref_end": "D''''11",
       "span_length_m": 14.9,
       "span_source": "grid_table",
       "note": "โครงถัก T1 แนวกริดเต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D''' = 14.90); ป้ายพิมพ์ครั้งเดียวกลางช่วง; มีจุดรองรับสี่เหลี่ยมเล็กที่แถว C",
@@ -344,8 +346,8 @@
     {
       "element_id": "T6",
       "element_type": "truss",
-      "grid_ref_start": "A'''1'",
-      "grid_ref_end": "A'''1",
+      "grid_ref_start": "A''''''1'",
+      "grid_ref_end": "A''''''1",
       "span_length_m": 2.2,
       "span_source": "grid_table",
       "note": "ปลายอาคาร: จากขอบชายคาถึงกริด 1 (ข้ามดั้งเหล็กบน R8)",
@@ -355,8 +357,8 @@
     {
       "element_id": "T6",
       "element_type": "truss",
-      "grid_ref_start": "A'''1",
-      "grid_ref_end": "A'''1''''",
+      "grid_ref_start": "A''''''1",
+      "grid_ref_end": "A''''''1''''''",
       "span_length_m": 3.0,
       "span_source": "grid_table",
       "note": "ต่อจากกริด 1 ถึง 3.00 (โซ่ 1.00 | 1.00) พบแนวตะเฆ่ T2",
@@ -366,8 +368,8 @@
     {
       "element_id": "T6",
       "element_type": "truss",
-      "grid_ref_start": "A'''11'",
-      "grid_ref_end": "A'''12",
+      "grid_ref_start": "A''''''11'",
+      "grid_ref_end": "A''''''12",
       "span_length_m": 3.0,
       "span_source": "grid_table",
       "note": "ปลายอาคารด้านกริด 12: จาก 41.00 (โซ่ 1.00 | 1.00) ถึงกริด 12",
@@ -377,8 +379,8 @@
     {
       "element_id": "T6",
       "element_type": "truss",
-      "grid_ref_start": "A'''12",
-      "grid_ref_end": "A'''12''",
+      "grid_ref_start": "A''''''12",
+      "grid_ref_end": "A''''''12''",
       "span_length_m": 2.2,
       "span_source": "grid_table",
       "note": "จากกริด 12 ถึงขอบชายคา (ข้ามดั้งเหล็กบน R8)",
@@ -401,13 +403,14 @@
     {
       "element_id": "T4",
       "element_type": "truss",
-      "grid_ref_start": "B3",
-      "grid_ref_end": "C3",
-      "span_length_m": 4.0,
+      "grid_ref_start": "A'3",
+      "grid_ref_end": "D''''3",
+      "span_length_m": 14.9,
       "span_source": "grid_table",
-      "note": "ป้ายซ้อน 'T4/R9' — โครงถัก T4 บนคาน R9",
+      "note": "ป้ายซ้อน 'T4/R9' พิมพ์ช่วง B-C — โครงหลังคา T4 วางบนคาน R9/R10 แนวกริดนี้ เต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D'''' = 14.90) ตามรูปขยาย S-16 (2.20 | 10.50 | 2.20) เช่นเดียวกับ T1 — แก้ไข 2026-10-23 จากเดิม B-C 4.00",
       "confidence_score": 0.75,
       "confidence_flags": [
+        "extent_from_S-16_elevation",
         "stacked_label_upper_lower_member"
       ]
     },
@@ -427,13 +430,14 @@
     {
       "element_id": "T4",
       "element_type": "truss",
-      "grid_ref_start": "B4",
-      "grid_ref_end": "C4",
-      "span_length_m": 4.0,
+      "grid_ref_start": "A'4",
+      "grid_ref_end": "D''''4",
+      "span_length_m": 14.9,
       "span_source": "grid_table",
-      "note": "ป้ายซ้อน 'T4/R9' — โครงถัก T4 บนคาน R9",
+      "note": "ป้ายซ้อน 'T4/R9' พิมพ์ช่วง B-C — โครงหลังคา T4 วางบนคาน R9/R10 แนวกริดนี้ เต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D'''' = 14.90) ตามรูปขยาย S-16 (2.20 | 10.50 | 2.20) เช่นเดียวกับ T1 — แก้ไข 2026-10-23 จากเดิม B-C 4.00",
       "confidence_score": 0.75,
       "confidence_flags": [
+        "extent_from_S-16_elevation",
         "stacked_label_upper_lower_member"
       ]
     },
@@ -453,13 +457,14 @@
     {
       "element_id": "T4",
       "element_type": "truss",
-      "grid_ref_start": "B9",
-      "grid_ref_end": "C9",
-      "span_length_m": 4.0,
+      "grid_ref_start": "A'9",
+      "grid_ref_end": "D''''9",
+      "span_length_m": 14.9,
       "span_source": "grid_table",
-      "note": "ป้ายซ้อน 'T4/R9' — โครงถัก T4 บนคาน R9",
+      "note": "ป้ายซ้อน 'T4/R9' พิมพ์ช่วง B-C — โครงหลังคา T4 วางบนคาน R9/R10 แนวกริดนี้ เต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D'''' = 14.90) ตามรูปขยาย S-16 (2.20 | 10.50 | 2.20) เช่นเดียวกับ T1 — แก้ไข 2026-10-23 จากเดิม B-C 4.00",
       "confidence_score": 0.75,
       "confidence_flags": [
+        "extent_from_S-16_elevation",
         "stacked_label_upper_lower_member"
       ]
     },
@@ -479,21 +484,22 @@
     {
       "element_id": "T4",
       "element_type": "truss",
-      "grid_ref_start": "B10",
-      "grid_ref_end": "C10",
-      "span_length_m": 4.0,
+      "grid_ref_start": "A'10",
+      "grid_ref_end": "D''''10",
+      "span_length_m": 14.9,
       "span_source": "grid_table",
-      "note": "ป้ายซ้อน 'T4/R9' — โครงถัก T4 บนคาน R9",
+      "note": "ป้ายซ้อน 'T4/R9' พิมพ์ช่วง B-C — โครงหลังคา T4 วางบนคาน R9/R10 แนวกริดนี้ เต็มความกว้างหลังคา ชายคาถึงชายคา (A' ถึง D'''' = 14.90) ตามรูปขยาย S-16 (2.20 | 10.50 | 2.20) เช่นเดียวกับ T1 — แก้ไข 2026-10-23 จากเดิม B-C 4.00",
       "confidence_score": 0.75,
       "confidence_flags": [
+        "extent_from_S-16_elevation",
         "stacked_label_upper_lower_member"
       ]
     },
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'1'",
-      "grid_ref_end": "B'1",
+      "grid_ref_start": "B''1'",
+      "grid_ref_end": "B''1",
       "span_length_m": 2.2,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร",
@@ -503,8 +509,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'1",
-      "grid_ref_end": "B'2",
+      "grid_ref_start": "B''1",
+      "grid_ref_end": "B''2",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -516,8 +522,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'2",
-      "grid_ref_end": "B'3",
+      "grid_ref_start": "B''2",
+      "grid_ref_end": "B''3",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -529,8 +535,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'3",
-      "grid_ref_end": "B'4",
+      "grid_ref_start": "B''3",
+      "grid_ref_end": "B''4",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -542,8 +548,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'4",
-      "grid_ref_end": "B'5",
+      "grid_ref_start": "B''4",
+      "grid_ref_end": "B''5",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -555,8 +561,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'5",
-      "grid_ref_end": "B'6",
+      "grid_ref_start": "B''5",
+      "grid_ref_end": "B''6",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -568,8 +574,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'6",
-      "grid_ref_end": "B'7",
+      "grid_ref_start": "B''6",
+      "grid_ref_end": "B''7",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -581,8 +587,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'7",
-      "grid_ref_end": "B'8",
+      "grid_ref_start": "B''7",
+      "grid_ref_end": "B''8",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -594,8 +600,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'8",
-      "grid_ref_end": "B'9",
+      "grid_ref_start": "B''8",
+      "grid_ref_end": "B''9",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -607,8 +613,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'9",
-      "grid_ref_end": "B'10",
+      "grid_ref_start": "B''9",
+      "grid_ref_end": "B''10",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -620,8 +626,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'10",
-      "grid_ref_end": "B'11",
+      "grid_ref_start": "B''10",
+      "grid_ref_end": "B''11",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -633,8 +639,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'11",
-      "grid_ref_end": "B'12",
+      "grid_ref_start": "B''11",
+      "grid_ref_end": "B''12",
       "span_length_m": 4.0,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร; ช่องกลางเป็นเส้นเดียวกันต่อเนื่อง ไม่มีป้ายซ้ำ — ถือเป็น T3",
@@ -646,8 +652,8 @@
     {
       "element_id": "T3",
       "element_type": "truss",
-      "grid_ref_start": "B'12",
-      "grid_ref_end": "B'12''",
+      "grid_ref_start": "B''12",
+      "grid_ref_end": "B''12''",
       "span_length_m": 2.2,
       "span_source": "grid_table",
       "note": "แนวสันหลังคา (B' 5.25) — ป้าย T3 พิมพ์ที่ช่องปลายอาคาร",
@@ -657,8 +663,8 @@
     {
       "element_id": "T6",
       "element_type": "truss",
-      "grid_ref_start": "B'''1'",
-      "grid_ref_end": "B'''1",
+      "grid_ref_start": "B''''''1'",
+      "grid_ref_end": "B''''''1",
       "span_length_m": 2.2,
       "span_source": "grid_table",
       "note": "ปลายอาคาร: จากขอบชายคาถึงกริด 1 (ข้ามดั้งเหล็กบน R8)",
@@ -668,8 +674,8 @@
     {
       "element_id": "T6",
       "element_type": "truss",
-      "grid_ref_start": "B'''1",
-      "grid_ref_end": "B'''1''''",
+      "grid_ref_start": "B''''''1",
+      "grid_ref_end": "B''''''1''''''",
       "span_length_m": 3.0,
       "span_source": "grid_table",
       "note": "ต่อจากกริด 1 ถึง 3.00 (โซ่ 1.00 | 1.00) พบแนวตะเฆ่ T2",
@@ -679,8 +685,8 @@
     {
       "element_id": "T6",
       "element_type": "truss",
-      "grid_ref_start": "B'''11'",
-      "grid_ref_end": "B'''12",
+      "grid_ref_start": "B''''''11'",
+      "grid_ref_end": "B''''''12",
       "span_length_m": 3.0,
       "span_source": "grid_table",
       "note": "ปลายอาคารด้านกริด 12: จาก 41.00 (โซ่ 1.00 | 1.00) ถึงกริด 12",
@@ -690,8 +696,8 @@
     {
       "element_id": "T6",
       "element_type": "truss",
-      "grid_ref_start": "B'''12",
-      "grid_ref_end": "B'''12''",
+      "grid_ref_start": "B''''''12",
+      "grid_ref_end": "B''''''12''",
       "span_length_m": 2.2,
       "span_source": "grid_table",
       "note": "จากกริด 12 ถึงขอบชายคา (ข้ามดั้งเหล็กบน R8)",
@@ -773,7 +779,7 @@
       "element_id": "T5",
       "element_type": "truss",
       "grid_ref_start": "D1",
-      "grid_ref_end": "D'''1",
+      "grid_ref_end": "D''''1",
       "span_length_m": 2.2,
       "span_source": "grid_table",
       "note": "โครงชายคามุมอาคาร ตามกริด 1 จากขอบชายคาถึงแถว D",
@@ -894,7 +900,7 @@
       "element_id": "T5",
       "element_type": "truss",
       "grid_ref_start": "D12",
-      "grid_ref_end": "D'''12",
+      "grid_ref_end": "D''''12",
       "span_length_m": 2.2,
       "span_source": "grid_table",
       "note": "โครงชายคามุมอาคาร ตามกริด 12 จากแถว D ถึงขอบชายคา",
@@ -911,6 +917,372 @@
       "note": "โครงชายคามุมอาคาร ตามแถว D จากกริด 12 ถึงขอบชายคา",
       "confidence_score": 0.8,
       "confidence_flags": []
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A'1'",
+      "grid_ref_end": "A1",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้ T2 ช่วงชายคา จากมุมชายคาถึงเสามุม A1; แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); ยาวในแปลน 2.20 x √2 ≈ 3.11 (คำนวณ ไม่ได้อ่าน)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A1",
+      "grid_ref_end": null,
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "y 2.00 (between A 0.00 and A'''''' 3.00): the thick T2 stops on the printed x line 1''''' (2.00); on the 45° hip its y is 2.00, which no y dimension prints - no dummy created",
+      "note": "ตะเข้ T2 จากเสามุม A1 ถึงแนวโครงเหล็ก x 2.00 (เส้นหนา T2 สิ้นสุดที่นี่) — แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal",
+        "end_off_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แนวตะเข้เส้นประ ต่อจาก T2 (ด้านแถว A)",
+      "element_type": "steel_member",
+      "grid_ref_start": null,
+      "grid_ref_end": "B2",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "start at x 2.00 / y 2.00 - no y line there",
+      "note": "เส้นประทแยงต่อจากปลาย T2 (x 2.00, y 2.00) ถึงจุดบนกริด 2 แถว B (B2); ไม่มีป้ายชื่อ — แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved)",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "diagonal",
+        "dashed_line",
+        "start_off_grid",
+        "unlabelled"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "D''''1'",
+      "grid_ref_end": "D1",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้ T2 ช่วงชายคา จากมุมชายคาถึงเสามุม D1; แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); ยาวในแปลน 2.20 x √2 ≈ 3.11 (คำนวณ ไม่ได้อ่าน)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "D1",
+      "grid_ref_end": null,
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "y 8.50 (between B'''''' 7.50 and C 8.00): the thick T2 stops on the printed x line 1''''' (2.00); y 8.50 = 2.00 from row D on the 45° hip, printed nowhere - no dummy created",
+      "note": "ตะเข้ T2 จากเสามุม D1 ถึงแนวโครงเหล็ก x 2.00 — แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal",
+        "end_off_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แนวตะเข้เส้นประ ต่อจาก T2 (ด้านแถว D)",
+      "element_type": "steel_member",
+      "grid_ref_start": null,
+      "grid_ref_end": null,
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "start x 2.00 / y 8.50 and end on grid 2 at y 6.50 - neither y is a line",
+      "note": "เส้นประทแยงจากปลาย T2 (x 2.00, y 8.50) ถึงจุดบนกริด 2 ที่ y ≈ 6.50 (4.00 จากแถว D, วัดจากรูป); ไม่มีป้ายชื่อ — แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved)",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "diagonal",
+        "dashed_line",
+        "start_off_grid",
+        "end_off_grid",
+        "unlabelled"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กไม่มีป้าย แนว x 2.00 (ระหว่างปลายตะเข้ T2 สองข้าง)",
+      "element_type": "steel_member",
+      "grid_ref_start": null,
+      "grid_ref_end": "A''''''1'''''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "start y 2.00 (T2 end) - no y line",
+      "note": "ช่วงจากปลาย T2 ถึงแนว T6 (A'''''' 3.00)",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "unlabelled",
+        "start_off_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กไม่มีป้าย แนว x 2.00 (ระหว่างปลายตะเข้ T2 สองข้าง)",
+      "element_type": "steel_member",
+      "grid_ref_start": "A''''''1'''''",
+      "grid_ref_end": "B''1'''''",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "note": "ช่วง A'''''' ถึงแนวสัน B''",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "unlabelled"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กไม่มีป้าย แนว x 2.00 (ระหว่างปลายตะเข้ T2 สองข้าง)",
+      "element_type": "steel_member",
+      "grid_ref_start": "B''1'''''",
+      "grid_ref_end": "B''''''1'''''",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "note": "ช่วงแนวสัน B'' ถึงแนว T6 (B'''''' 7.50)",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "unlabelled"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กไม่มีป้าย แนว x 2.00 (ระหว่างปลายตะเข้ T2 สองข้าง)",
+      "element_type": "steel_member",
+      "grid_ref_start": "B''''''1'''''",
+      "grid_ref_end": null,
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "end y 8.50 (T2 end) - no y line",
+      "note": "ช่วงจากแนว T6 (B'''''') ถึงปลาย T2 ด้านแถว D",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "unlabelled",
+        "end_off_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เส้นประไม่มีป้าย แนว x 3.00",
+      "element_type": "steel_member",
+      "grid_ref_start": "A''''''1''''''",
+      "grid_ref_end": "B''1''''''",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "note": "เส้นประแนว x 3.00 จากแนว T6 (A'''''') ถึงแนวสัน B''",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "unlabelled",
+        "dashed_line"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เส้นประไม่มีป้าย แนว x 3.00",
+      "element_type": "steel_member",
+      "grid_ref_start": "B''1''''''",
+      "grid_ref_end": "B''''''1''''''",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "note": "เส้นประแนว x 3.00 จากแนวสัน B'' ถึงแนว T6 (B'''''')",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "unlabelled",
+        "dashed_line"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A'12''",
+      "grid_ref_end": "A12",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้ T2 ช่วงชายคา จากมุมชายคาถึงเสามุม A12; แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); ยาวในแปลน 2.20 x √2 ≈ 3.11 (คำนวณ ไม่ได้อ่าน)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "A12",
+      "grid_ref_end": null,
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "y 2.00 (between A 0.00 and A'''''' 3.00): the thick T2 stops on the printed x line 11'' (42.00); on the 45° hip its y is 2.00, which no y dimension prints - no dummy created",
+      "note": "ตะเข้ T2 จากเสามุม A12 ถึงแนวโครงเหล็ก x 42.00 (เส้นหนา T2 สิ้นสุดที่นี่) — แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal",
+        "end_off_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แนวตะเข้เส้นประ ต่อจาก T2 (ด้านแถว A)",
+      "element_type": "steel_member",
+      "grid_ref_start": null,
+      "grid_ref_end": "B11",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "start at x 42.00 / y 2.00 - no y line there",
+      "note": "เส้นประทแยงต่อจากปลาย T2 (x 42.00, y 2.00) ถึงจุดบนกริด 11 แถว B (B11); ไม่มีป้ายชื่อ — แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved)",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "diagonal",
+        "dashed_line",
+        "start_off_grid",
+        "unlabelled"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "D''''12''",
+      "grid_ref_end": "D12",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "note": "ตะเข้ T2 ช่วงชายคา จากมุมชายคาถึงเสามุม D12; แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved); ยาวในแปลน 2.20 x √2 ≈ 3.11 (คำนวณ ไม่ได้อ่าน)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal"
+      ]
+    },
+    {
+      "element_id": "T2",
+      "element_type": "truss",
+      "grid_ref_start": "D12",
+      "grid_ref_end": null,
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "y 8.50 (between B'''''' 7.50 and C 8.00): the thick T2 stops on the printed x line 11'' (42.00); y 8.50 = 2.00 from row D on the 45° hip, printed nowhere - no dummy created",
+      "note": "ตะเข้ T2 จากเสามุม D12 ถึงแนวโครงเหล็ก x 42.00 — แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved)",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "diagonal",
+        "end_off_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "แนวตะเข้เส้นประ ต่อจาก T2 (ด้านแถว D)",
+      "element_type": "steel_member",
+      "grid_ref_start": null,
+      "grid_ref_end": null,
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "start x 42.00 / y 8.50 and end on grid 11 at y 6.50 - neither y is a line",
+      "note": "เส้นประทแยงจากปลาย T2 (x 42.00, y 8.50) ถึงจุดบนกริด 11 ที่ y ≈ 6.50 (4.00 จากแถว D, วัดจากรูป); ไม่มีป้ายชื่อ — แนวทแยง 45° ในแปลน — ความยาวไม่อ่านจาก grid (section 4: diagonal stays unresolved)",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "diagonal",
+        "dashed_line",
+        "start_off_grid",
+        "end_off_grid",
+        "unlabelled"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กไม่มีป้าย แนว x 42.00 (ระหว่างปลายตะเข้ T2 สองข้าง)",
+      "element_type": "steel_member",
+      "grid_ref_start": null,
+      "grid_ref_end": "A''''''11''",
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "start y 2.00 (T2 end) - no y line",
+      "note": "ช่วงจากปลาย T2 ถึงแนว T6 (A'''''' 3.00)",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "unlabelled",
+        "start_off_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กไม่มีป้าย แนว x 42.00 (ระหว่างปลายตะเข้ T2 สองข้าง)",
+      "element_type": "steel_member",
+      "grid_ref_start": "A''''''11''",
+      "grid_ref_end": "B''11''",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "note": "ช่วง A'''''' ถึงแนวสัน B''",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "unlabelled"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กไม่มีป้าย แนว x 42.00 (ระหว่างปลายตะเข้ T2 สองข้าง)",
+      "element_type": "steel_member",
+      "grid_ref_start": "B''11''",
+      "grid_ref_end": "B''''''11''",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "note": "ช่วงแนวสัน B'' ถึงแนว T6 (B'''''' 7.50)",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "unlabelled"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "โครงเหล็กไม่มีป้าย แนว x 42.00 (ระหว่างปลายตะเข้ T2 สองข้าง)",
+      "element_type": "steel_member",
+      "grid_ref_start": "B''''''11''",
+      "grid_ref_end": null,
+      "span_length_m": null,
+      "span_source": "unresolved",
+      "missing_line": "end y 8.50 (T2 end) - no y line",
+      "note": "ช่วงจากแนว T6 (B'''''') ถึงปลาย T2 ด้านแถว D",
+      "confidence_score": 0.6,
+      "confidence_flags": [
+        "unlabelled",
+        "end_off_grid"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เส้นประไม่มีป้าย แนว x 41.00",
+      "element_type": "steel_member",
+      "grid_ref_start": "A''''''11'",
+      "grid_ref_end": "B''11'",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "note": "เส้นประแนว x 41.00 จากแนว T6 (A'''''') ถึงแนวสัน B''",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "unlabelled",
+        "dashed_line"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เส้นประไม่มีป้าย แนว x 41.00",
+      "element_type": "steel_member",
+      "grid_ref_start": "B''11'",
+      "grid_ref_end": "B''''''11'",
+      "span_length_m": 2.25,
+      "span_source": "grid_table",
+      "note": "เส้นประแนว x 41.00 จากแนวสัน B'' ถึงแนว T6 (B'''''')",
+      "confidence_score": 0.55,
+      "confidence_flags": [
+        "unlabelled",
+        "dashed_line"
+      ]
     }
   ]
 }

@@ -13,8 +13,8 @@
   "views": [
     "view1: แปลนคานและพื้นชั้นล่าง 1:125 — ground beams G0-G11 (this file: beam_plan)",
     "view2: same drawing — slab marks S0/S1/S2/S4 + precast hollow-core panels HC (etc_plan — this split: _view2_etc_plan_slab.json)",
-    "view3: รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC + รูปตัดพื้นสำเร็จรูป (notes/section, not extracted in this run)",
-    "view4: ขยายหูช้างลดระดับ / ขยายการวางพื้นสำเร็จรูประดับเดียวกับพื้นหล่อในที่ (section, not extracted in this run)"
+    "view3: รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC + รูปตัดพื้นสำเร็จรูป (extracted 2026-10-23 -> _view3_section_hc_slab.json)",
+    "view4: ขยายหูช้างลดระดับ / ขยายการวางพื้นสำเร็จรูประดับเดียวกับพื้นหล่อในที่ (extracted 2026-10-23 -> _view3_section_hc_slab.json)"
   ],
   "confidence_score": 0.87,
   "confidence_flags": [],
@@ -23,7 +23,8 @@
     "G8 spans at C2, C5-C8, C11 end on G11 (no column there per S-01) - flagged bears_on_beam.",
     "'G10/1' is printed as one mark (same '/1' variant style as R1/1, R5/1, R8/1 on S-03/S-04), not a stacked pair - kept verbatim as element_id.",
     "Stair 2 boxes (บันได 2): at both building ends (between rows C-D, outside grids 1 and 12) and below row D in bays 3-4 and 9-10. Short G1 beams cantilever from the columns and the G0 edge beam sits on their ends; G0 is drawn on the printed 1.50 slab-edge line (1''/12'/D'), so it is placed there with a lowered score (its centreline may sit ~0.1 m inside the edge by scale).",
-    "Beam sections (S-10..S-14, pages 22-26) were not extracted in this op04 run (shutdown deadline) - no specs{} here."
+    "Beam sections (S-10..S-14, pages 22-26) were not extracted in this op04 run (shutdown deadline) - no specs{} here.",
+    "2026-10-23 op04 resume: views 3 and 4 of this sheet (HC plank notes + section, the two ledge details) are now extracted into _view3_section_hc_slab.json; the views[] entries were updated to say so (they previously read 'not extracted in this run')."
   ],
   "elements": [
     {
@@ -331,8 +332,8 @@
     {
       "element_id": "G0",
       "element_type": "beam",
-      "grid_ref_start": "C1''",
-      "grid_ref_end": "D1''",
+      "grid_ref_start": "C1'''",
+      "grid_ref_end": "D1'''",
       "span_length_m": 2.5,
       "span_source": "grid_table",
       "note": "ขอบนอกกล่องบันได 2 — วางบนปลายคาน G1 สองตัว; เขียนชิดเส้นขอบพื้น 1.50 (แนว 1''/12'/D') จึงใช้แนวนั้น",
@@ -346,7 +347,7 @@
     {
       "element_id": "G1",
       "element_type": "beam",
-      "grid_ref_start": "C1''",
+      "grid_ref_start": "C1'''",
       "grid_ref_end": "C1",
       "span_length_m": 1.5,
       "span_source": "grid_table",
@@ -640,7 +641,7 @@
     {
       "element_id": "G1",
       "element_type": "beam",
-      "grid_ref_start": "D1''",
+      "grid_ref_start": "D1'''",
       "grid_ref_end": "D1",
       "span_length_m": 1.5,
       "span_source": "grid_table",

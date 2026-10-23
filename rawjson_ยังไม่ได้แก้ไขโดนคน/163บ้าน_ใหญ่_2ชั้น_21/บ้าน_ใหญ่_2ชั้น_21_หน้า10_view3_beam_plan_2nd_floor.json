@@ -25,17 +25,18 @@
  ],
  "warnings": [
   "2nd-floor beam plan (แปลนคาน พื้นชั้น 2 1:100). The floor carries a 2.00 balcony all round: B13 cantilevers on every grid (and every column row at grids 1 and 10), B12 edge beams (B12' at the corners), B23/B23' along rows A and G, B18 on the inner grid lines 1 and 10.",
-  "Secondary beams B14 are NOT dimensioned: in the interior bays 2-9 they sit at the third points of the 8.00 spans A-C and E-G (scaled 2.667 / 5.333 / 14.667 / 17.333) plus on rows C, D, E; in the end bays 1-2 and 9-10 they sit every 2.00 (scaled 2.00 / 6.00 / 14.00 / 18.00) with B23' on rows B, F (and C, E in bay 1-2). Third-point and mid-point lines are scaled_from_grid (grid master per-line flags); spans along them are grid spans.",
+  "Secondary beams B14 are NOT dimensioned: in the interior bays 2-9 they sit at the third points of the 8.00 spans A-C and E-G (scaled 2.667 / 5.333 / 14.667 / 17.333) plus on rows C, D, E; in the end bays 1-2 and 9-10 they sit every 2.00 (scaled 2.00 / 6.00 / 14.00 / 18.00) with B23' on rows B, F (and C, E in bay 1-2). Third-point and mid-point lines are scaled_from_grid (grid master per-line flags); spans along them are grid spans. Second op04 pass (2026-10-22): the stage framing plan on หน้า06 prints 1.00 + 1.00 from rows B and F, so the 6.00 and 14.00 lines are printed positions now (their 4 B14 segments lost the scaled flag); the third-point lines stay scaled.",
   "Grids 2 and 9 carry B17 split at a small post 'เสา .15 x .15 ม.' on rows B and F; grids 3-8 carry B15 as single 8.00 members A-C / E-G; every interior grid carries B16' C-E.",
-  "NOT recorded (judgement, not missed): the left stair junction at row D beyond grid 1 (B19, B4' 'เอียงตามบันได', B13' — the stair beams of รูปตัด 1-1), the left balcony edge between rows C and E (interrupted by the stair), the right stair landing framing between rows C and E in bay 10-11 (B19, B20, B14 at the landing edge — only B21 on grid 11 recorded), and the sub-beams 'B' / B9 inside the S3 group of bay 1-2 rows F-G. Their marks are listed here so the sections can still be joined.",
-  "Note on the sheet: 'เสาเอ็น 0.30x0.30 4-ø19 มม. ป ø6 มม. @0.15' at the stair-landing columns on grid 11 (B20)."
+  "REVERSED in the second op04 pass (2026-10-22) — the first pass wrote: 'NOT recorded (judgement, not missed): the left stair junction at row D beyond grid 1 (B19, B4' 'เอียงตามบันได', B13'), the left balcony edge between rows C and E (interrupted by the stair), the right stair landing framing between rows C and E in bay 10-11 (B19, B20, B14 — only B21 on grid 11 recorded), and the sub-beams 'B' / B9 inside the S3 group of bay 1-2 rows F-G.' All of them are now in elements: left stair — B12 continued C→C' and D'→E on the 1'''' balcony line, B4' (header, rotated label beside the 1'''' line at row D; section B-B cuts it at the top of the flights) C'→D→D', B13' (landing beams, both leader arrows end on the landing edge 1'') C'→D→D', and the shaded band along row D from column D1'' to the 1'''' line carrying two labels (B19 under it, 'B4' เอียงตามบันได' pointing at the flight edge beside it) — recorded as both members on the same plan line with low scores, because the plan cannot say whether the label pair is one sloped member or a level beam plus a sloped stringer (section B-B shows a solid flight and a dashed sloped B4'); a consumer summing concrete should treat that pair as possibly one member. Right stair — B19 on rows C and E (10→10''→11; the 10→10'' piece has no label of its own), B20 11→11' to the stub columns, B14 on the 10'' line and on grid 11 between C and E. S3 group — two short 'B' beams (x scaled 1.35 / 2.75), the B14 under the cubicle front at y 17.00 (printed 1.00 on หน้า06, drawn ≈1.5), and B9 at x 1.875 (from ขยาย S3 1.65 | .15 | 1.90) down to row G.",
+  "Note on the sheet: 'เสาเอ็น 0.30x0.30 4-ø19 มม. ป ø6 มม. @0.15' at the stair-landing columns on grid 11 (B20).",
+  "B21 position corrected (second op04 pass, 2026-10-22): the first pass recorded B21 on grid 11 (C11→E11). Re-read at 4.6x: grid 11 between rows C and E carries the double line with the two columns C11 / E11 and a vertical 'B14' label beside it; 'B21' is printed to the right of the next line out (measured ≈40.9, the 1.10 line 11' = 41.10 of the ground-floor plan), whose ends hold the hatched 'เสาเอ็น 0.30x0.30' squares that the B20 stubs from C11 / E11 reach. B21 is now C11'→E11'; the grid-11 member is B14."
  ],
  "elements": [
   {
    "element_id": "B12'",
    "element_type": "beam",
-   "grid_ref_start": "A''1'''",
-   "grid_ref_end": "A1'''",
+   "grid_ref_start": "A''1''''",
+   "grid_ref_end": "A1''''",
    "span_length_m": 2.0,
    "span_source": "grid_table",
    "note": "ขอบระเบียงมุมอาคาร",
@@ -45,7 +46,7 @@
   {
    "element_id": "B12'",
    "element_type": "beam",
-   "grid_ref_start": "A''1'''",
+   "grid_ref_start": "A''1''''",
    "grid_ref_end": "A''1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -285,8 +286,8 @@
   {
    "element_id": "B12",
    "element_type": "beam",
-   "grid_ref_start": "A1'''",
-   "grid_ref_end": "B1'''",
+   "grid_ref_start": "A1''''",
+   "grid_ref_end": "B1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.8,
@@ -295,7 +296,7 @@
   {
    "element_id": "B13",
    "element_type": "beam",
-   "grid_ref_start": "A1'''",
+   "grid_ref_start": "A1''''",
    "grid_ref_end": "A1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -635,8 +636,8 @@
   {
    "element_id": "B12",
    "element_type": "beam",
-   "grid_ref_start": "B1'''",
-   "grid_ref_end": "C1'''",
+   "grid_ref_start": "B1''''",
+   "grid_ref_end": "C1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.8,
@@ -645,7 +646,7 @@
   {
    "element_id": "B13",
    "element_type": "beam",
-   "grid_ref_start": "B1'''",
+   "grid_ref_start": "B1''''",
    "grid_ref_end": "B1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -741,8 +742,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''2",
-   "grid_ref_end": "B'''3",
+   "grid_ref_start": "B''''2",
+   "grid_ref_end": "B''''3",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -753,8 +754,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''3",
-   "grid_ref_end": "B'''4",
+   "grid_ref_start": "B''''3",
+   "grid_ref_end": "B''''4",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -765,8 +766,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''4",
-   "grid_ref_end": "B'''5",
+   "grid_ref_start": "B''''4",
+   "grid_ref_end": "B''''5",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -777,8 +778,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''5",
-   "grid_ref_end": "B'''6",
+   "grid_ref_start": "B''''5",
+   "grid_ref_end": "B''''6",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -789,8 +790,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''6",
-   "grid_ref_end": "B'''7",
+   "grid_ref_start": "B''''6",
+   "grid_ref_end": "B''''7",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -801,8 +802,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''7",
-   "grid_ref_end": "B'''8",
+   "grid_ref_start": "B''''7",
+   "grid_ref_end": "B''''8",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -813,8 +814,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''8",
-   "grid_ref_end": "B'''9",
+   "grid_ref_start": "B''''8",
+   "grid_ref_end": "B''''9",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -825,31 +826,40 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''''1",
-   "grid_ref_end": "B'''''2",
+   "grid_ref_start": "B''''''1",
+   "grid_ref_end": "B''''''2",
    "span_length_m": 4.0,
    "span_source": "grid_table",
-   "confidence_score": 0.72,
-   "confidence_flags": [
-    "line_position_scaled_from_grid"
-   ]
+   "confidence_score": 0.78,
+   "confidence_flags": []
   },
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "B'''''9",
-   "grid_ref_end": "B'''''10",
+   "grid_ref_start": "B''''''9",
+   "grid_ref_end": "B''''''10",
    "span_length_m": 4.0,
    "span_source": "grid_table",
-   "confidence_score": 0.72,
+   "confidence_score": 0.78,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B12",
+   "element_type": "beam",
+   "grid_ref_start": "C1''''",
+   "grid_ref_end": "C'1''''",
+   "span_length_m": 0.75,
+   "span_source": "grid_table",
+   "note": "ขอบระเบียงต่อจาก B12 แนวเดียวกัน ถึงขอบบันไดซ้าย (ไม่มีป้ายบนช่วงสั้นนี้)",
+   "confidence_score": 0.6,
    "confidence_flags": [
-    "line_position_scaled_from_grid"
+    "label_not_printed_on_segment"
    ]
   },
   {
    "element_id": "B13",
    "element_type": "beam",
-   "grid_ref_start": "C1'''",
+   "grid_ref_start": "C1''''",
    "grid_ref_end": "C1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -1050,16 +1060,156 @@
    "confidence_flags": []
   },
   {
-   "element_id": "B21",
+   "element_id": "B19",
+   "element_type": "beam",
+   "grid_ref_start": "C10",
+   "grid_ref_end": "C10''",
+   "span_length_m": 2.0,
+   "span_source": "grid_table",
+   "note": "คานแนวแถว C จากเสา C10 ถึง B14 แนว 10'' — ป้าย B19 พิมพ์บนช่วงถัดไป (10''-11) เส้นคานต่อเนื่อง",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "label_printed_on_adjacent_segment"
+   ]
+  },
+  {
+   "element_id": "B14",
+   "element_type": "beam",
+   "grid_ref_start": "C10''",
+   "grid_ref_end": "E10''",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "คานซอยแนว 10'' ระหว่างแถว C-E (ป้าย B14 เขียนตั้ง)",
+   "confidence_score": 0.66,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B19",
+   "element_type": "beam",
+   "grid_ref_start": "C10''",
+   "grid_ref_end": "C11",
+   "span_length_m": 2.0,
+   "span_source": "grid_table",
+   "note": "คานขอบชานพักบันไดขวาแนวแถว C",
+   "confidence_score": 0.68,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B14",
    "element_type": "beam",
    "grid_ref_start": "C11",
    "grid_ref_end": "E11",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "คานซอยบนกริด 11 ระหว่างเสา C11-E11 กลางชานพัก (ป้าย B14 เขียนตั้ง)",
+   "confidence_score": 0.66,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B20",
+   "element_type": "beam",
+   "grid_ref_start": "C11",
+   "grid_ref_end": "C11'",
+   "span_length_m": 1.1,
+   "span_source": "grid_table",
+   "note": "คานยื่นจากเสา C11 รับเสาเอ็น 0.30x0.30 ที่ C11'",
+   "confidence_score": 0.62,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B21",
+   "element_type": "beam",
+   "grid_ref_start": "C11'",
+   "grid_ref_end": "E11'",
    "span_length_m": 4,
    "span_source": "grid_table",
-   "note": "คานรับชานพักบันไดขวาบนกริด 11 ระหว่างเสาเอ็น 0.30x0.30 (B20 ที่หัวเสา)",
-   "confidence_score": 0.6,
+   "note": "คานรับชานพักบันไดขวาบนแนว 1.10 นอกกริด 11 ระหว่างเสาเอ็น 0.30x0.30 ที่ C11' / E11' (ปลาย B20) — ตำแหน่งแก้ในรอบที่สอง 2026-10-22 จากกริด 11 (ดู warnings)",
+   "confidence_score": 0.66,
    "confidence_flags": [
-    "stair_landing_framing_partly_resolved"
+    "position_corrected_second_pass"
+   ]
+  },
+  {
+   "element_id": "B13'",
+   "element_type": "beam",
+   "grid_ref_start": "C'1''",
+   "grid_ref_end": "D1''",
+   "span_length_m": 1.25,
+   "span_source": "grid_table",
+   "note": "คานชานพักบันไดซ้าย 0.30x0.40 'ระดับชานพักบันได' บนแนวขอบชานพัก (ลูกศรของป้าย B13' ทั้งสองชี้แนวนี้)",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "left_stair_junction_reading",
+    "position_read_from_leader_arrows"
+   ]
+  },
+  {
+   "element_id": "B4'",
+   "element_type": "beam",
+   "grid_ref_start": "C'1''''",
+   "grid_ref_end": "D1''''",
+   "span_length_m": 1.25,
+   "span_source": "grid_table",
+   "note": "คานหัวบันไดซ้ายที่ระดับพื้นชั้น 2 บนแนวขอบระเบียง (ป้าย B4' เขียนตั้งข้างแนวนี้ที่แถว D; รูปตัด B-B ตัด B4' เป็นหน้าตัดที่ปลายบนลูกบันได)",
+   "confidence_score": 0.55,
+   "confidence_flags": [
+    "left_stair_junction_reading"
+   ]
+  },
+  {
+   "element_id": "B13'",
+   "element_type": "beam",
+   "grid_ref_start": "D1''",
+   "grid_ref_end": "D'1''",
+   "span_length_m": 1.25,
+   "span_source": "grid_table",
+   "note": "คานชานพักบันไดซ้าย (ต่อ) — แยกที่เสา D1'' (F1C1)",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "left_stair_junction_reading",
+    "position_read_from_leader_arrows"
+   ]
+  },
+  {
+   "element_id": "B19",
+   "element_type": "beam",
+   "grid_ref_start": "D1''",
+   "grid_ref_end": "D1''''",
+   "span_length_m": 2.625,
+   "span_source": "grid_table",
+   "note": "แถบคานแรเงาแนวแถว D กลางบันไดซ้าย จากเสา D1'' ถึงแนวขอบระเบียง — ป้าย B19 พิมพ์ใต้แถบ; ระดับของคานไม่ได้ระบุบนแปลน (ดู warnings)",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "left_stair_junction_reading",
+    "member_level_not_resolved"
+   ]
+  },
+  {
+   "element_id": "B4'",
+   "element_type": "beam",
+   "grid_ref_start": "D1''",
+   "grid_ref_end": "D1''''",
+   "span_length_m": 2.625,
+   "span_source": "grid_table",
+   "note": "'B4' เอียงตามบันได' — คานเอียงตามลูกบันได ลูกศรชี้ขอบลูกบันไดที่ติดแถบเดียวกับ B19; span เป็นระยะในแปลน ไม่ใช่ความยาวเอียง",
+   "confidence_score": 0.45,
+   "confidence_flags": [
+    "left_stair_junction_reading",
+    "sloped_member_plan_projection_span",
+    "same_plan_line_as_B19"
+   ]
+  },
+  {
+   "element_id": "B4'",
+   "element_type": "beam",
+   "grid_ref_start": "D1''''",
+   "grid_ref_end": "D'1''''",
+   "span_length_m": 1.25,
+   "span_source": "grid_table",
+   "note": "คานหัวบันไดซ้าย (ต่อ) — แยกที่แถว D ซึ่ง B19/B4' แนวกลางบันไดมาถึง",
+   "confidence_score": 0.55,
+   "confidence_flags": [
+    "left_stair_junction_reading"
    ]
   },
   {
@@ -1165,8 +1315,21 @@
   {
    "element_id": "B12",
    "element_type": "beam",
-   "grid_ref_start": "E1'''",
-   "grid_ref_end": "F1'''",
+   "grid_ref_start": "D'1''''",
+   "grid_ref_end": "E1''''",
+   "span_length_m": 0.75,
+   "span_source": "grid_table",
+   "note": "ขอบระเบียงต่อจาก B12 แนวเดียวกัน (ไม่มีป้ายบนช่วงสั้นนี้)",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "label_not_printed_on_segment"
+   ]
+  },
+  {
+   "element_id": "B12",
+   "element_type": "beam",
+   "grid_ref_start": "E1''''",
+   "grid_ref_end": "F1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.8,
@@ -1175,7 +1338,7 @@
   {
    "element_id": "B13",
    "element_type": "beam",
-   "grid_ref_start": "E1'''",
+   "grid_ref_start": "E1''''",
    "grid_ref_end": "E1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -1384,6 +1547,19 @@
    "confidence_flags": []
   },
   {
+   "element_id": "B19",
+   "element_type": "beam",
+   "grid_ref_start": "E10",
+   "grid_ref_end": "E10''",
+   "span_length_m": 2.0,
+   "span_source": "grid_table",
+   "note": "คานแนวแถว E จากเสา E10 ถึง B14 แนว 10'' — ป้าย B19 พิมพ์บนช่วงถัดไป",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "label_printed_on_adjacent_segment"
+   ]
+  },
+  {
    "element_id": "B12",
    "element_type": "beam",
    "grid_ref_start": "E10''",
@@ -1394,16 +1570,36 @@
    "confidence_flags": []
   },
   {
+   "element_id": "B19",
+   "element_type": "beam",
+   "grid_ref_start": "E10''",
+   "grid_ref_end": "E11",
+   "span_length_m": 2.0,
+   "span_source": "grid_table",
+   "note": "คานขอบชานพักบันไดขวาแนวแถว E",
+   "confidence_score": 0.68,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B20",
+   "element_type": "beam",
+   "grid_ref_start": "E11",
+   "grid_ref_end": "E11'",
+   "span_length_m": 1.1,
+   "span_source": "grid_table",
+   "note": "คานยื่นจากเสา E11 รับเสาเอ็น 0.30x0.30 ที่ E11'",
+   "confidence_score": 0.62,
+   "confidence_flags": []
+  },
+  {
    "element_id": "B14",
    "element_type": "beam",
    "grid_ref_start": "E'1",
    "grid_ref_end": "E'2",
    "span_length_m": 4.0,
    "span_source": "grid_table",
-   "confidence_score": 0.72,
-   "confidence_flags": [
-    "line_position_scaled_from_grid"
-   ]
+   "confidence_score": 0.78,
+   "confidence_flags": []
   },
   {
    "element_id": "B14",
@@ -1412,10 +1608,8 @@
    "grid_ref_end": "E'10",
    "span_length_m": 4.0,
    "span_source": "grid_table",
-   "confidence_score": 0.72,
-   "confidence_flags": [
-    "line_position_scaled_from_grid"
-   ]
+   "confidence_score": 0.78,
+   "confidence_flags": []
   },
   {
    "element_id": "B14",
@@ -1504,8 +1698,8 @@
   {
    "element_id": "B12",
    "element_type": "beam",
-   "grid_ref_start": "F1'''",
-   "grid_ref_end": "G1'''",
+   "grid_ref_start": "F1''''",
+   "grid_ref_end": "G1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.8,
@@ -1514,7 +1708,7 @@
   {
    "element_id": "B13",
    "element_type": "beam",
-   "grid_ref_start": "F1'''",
+   "grid_ref_start": "F1''''",
    "grid_ref_end": "F1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -1542,6 +1736,32 @@
    "span_source": "grid_table",
    "confidence_score": 0.8,
    "confidence_flags": []
+  },
+  {
+   "element_id": "B",
+   "element_type": "beam",
+   "grid_ref_start": "F1''''''",
+   "grid_ref_end": "F'1''''''",
+   "span_length_m": 1.0,
+   "span_source": "grid_table",
+   "note": "คานย่อย 'B' กั้นห้องส้วม (กลุ่มพื้น S3)",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "line_position_scaled_from_grid"
+   ]
+  },
+  {
+   "element_id": "B",
+   "element_type": "beam",
+   "grid_ref_start": "F1''''''''",
+   "grid_ref_end": "F'1''''''''",
+   "span_length_m": 1.0,
+   "span_source": "grid_table",
+   "note": "คานย่อย 'B' กั้นห้องส้วม (กลุ่มพื้น S3)",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "line_position_scaled_from_grid"
+   ]
   },
   {
    "element_id": "B17",
@@ -1610,8 +1830,34 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "F'2",
-   "grid_ref_end": "F'3",
+   "grid_ref_start": "F'1",
+   "grid_ref_end": "F'2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "คาน B14 ใต้ผนังหน้าห้องส้วม (ป้าย 'B14' ที่จุดต่อกับ B9) — ตำแหน่งตามระยะพิมพ์ 1.00 จากแถว F (หน้า06)",
+   "confidence_score": 0.55,
+   "confidence_flags": [
+    "line_position_printed_1.00_drawn_1.5"
+   ]
+  },
+  {
+   "element_id": "B9",
+   "element_type": "beam",
+   "grid_ref_start": "F'1'''''''",
+   "grid_ref_end": "G1'''''''",
+   "span_length_m": 3.0,
+   "span_source": "grid_table",
+   "note": "คาน B9 แบ่งห้องน้ำชาย/หญิง (ขยาย S3: 1.65 | .15 | 1.90)",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "line_position_from_member_detail"
+   ]
+  },
+  {
+   "element_id": "B14",
+   "element_type": "beam",
+   "grid_ref_start": "F''2",
+   "grid_ref_end": "F''3",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -1622,8 +1868,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "F'3",
-   "grid_ref_end": "F'4",
+   "grid_ref_start": "F''3",
+   "grid_ref_end": "F''4",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -1634,8 +1880,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "F'4",
-   "grid_ref_end": "F'5",
+   "grid_ref_start": "F''4",
+   "grid_ref_end": "F''5",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -1646,8 +1892,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "F'5",
-   "grid_ref_end": "F'6",
+   "grid_ref_start": "F''5",
+   "grid_ref_end": "F''6",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -1658,8 +1904,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "F'6",
-   "grid_ref_end": "F'7",
+   "grid_ref_start": "F''6",
+   "grid_ref_end": "F''7",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -1670,8 +1916,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "F'7",
-   "grid_ref_end": "F'8",
+   "grid_ref_start": "F''7",
+   "grid_ref_end": "F''8",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -1682,8 +1928,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "F'8",
-   "grid_ref_end": "F'9",
+   "grid_ref_start": "F''8",
+   "grid_ref_end": "F''9",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -1694,8 +1940,8 @@
   {
    "element_id": "B14",
    "element_type": "beam",
-   "grid_ref_start": "F''9",
-   "grid_ref_end": "F''10",
+   "grid_ref_start": "F'''9",
+   "grid_ref_end": "F'''10",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.72,
@@ -1706,8 +1952,8 @@
   {
    "element_id": "B12'",
    "element_type": "beam",
-   "grid_ref_start": "G1'''",
-   "grid_ref_end": "G''1'''",
+   "grid_ref_start": "G1''''",
+   "grid_ref_end": "G''1''''",
    "span_length_m": 2.0,
    "span_source": "grid_table",
    "note": "ขอบระเบียงมุมอาคาร",
@@ -1717,7 +1963,7 @@
   {
    "element_id": "B13",
    "element_type": "beam",
-   "grid_ref_start": "G1'''",
+   "grid_ref_start": "G1''''",
    "grid_ref_end": "G1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -1950,7 +2196,7 @@
   {
    "element_id": "B12'",
    "element_type": "beam",
-   "grid_ref_start": "G''1'''",
+   "grid_ref_start": "G''1''''",
    "grid_ref_end": "G''1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -2088,7 +2334,7 @@
     "G-G'' x 8-9",
     "A''-A x 9-10",
     "G-G'' x 9-10",
-    "A''-G'' x 1'''-1 (ระเบียงซ้าย ทุกช่องระหว่าง B13)",
+    "A''-G'' x 1''''-1 (ระเบียงซ้าย ทุกช่องระหว่าง B13)",
     "A''-G'' x 10-10'' (ระเบียงขวา ทุกช่องระหว่าง B13)",
     "A-G x 1-10 (ทุกช่องระหว่างคาน B14/B23/B23')"
    ],
@@ -2104,10 +2350,10 @@
    "grid_refs": [
     "F-G x 1-2"
    ],
-   "note": "กลุ่มพื้น S3 5 ช่อง พร้อมคานย่อย 'B' และ B9 ในช่วงเสา 1-2 ระหว่างแถว F-G (ห้องน้ำ/ห้องเก็บของ) — คานย่อยในกลุ่มนี้ไม่ได้บันทึกตำแหน่ง",
+   "note": "กลุ่มพื้น S3 5 ช่อง (ห้องส้วม 3 ช่องบน + ห้องน้ำชาย/หญิง 2 ช่องล่าง) ในช่วงเสา 1-2 ระหว่างแถว F-G — คานย่อย 'B' / B14 / B9 ในกลุ่มนี้บันทึกตำแหน่งแล้วในรอบที่สอง (2026-10-22)",
    "confidence_score": 0.65,
    "confidence_flags": [
-    "sub_panel_layout_not_recorded"
+    "sub_beam_positions_partly_scaled"
    ]
   }
  ]

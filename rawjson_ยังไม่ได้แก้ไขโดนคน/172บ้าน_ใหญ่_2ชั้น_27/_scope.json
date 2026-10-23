@@ -1,0 +1,36 @@
+{
+ "scope": "pass2_only",
+ "op": "op04",
+ "date": "2026-10-22",
+ "status": "FINISHED for op04 / pass2-only: every Pass-2 subtask present in the set is extracted (gridline, plan_footing, plan_beam incl. both roof systems, plan_slab, section, schedule, notes) and the rule-4 dimension sweep of all 72 pages was completed on 2026-10-23 (the flag partial_dimension_sweep is gone). Pass-3 pages were skipped on purpose.",
+ "house_design": "อาคารเรียน 216ล./57-ก (แบบมาตรฐานอาคารเรียน สพฐ.) — title block: กลุ่มออกแบบและก่อสร้าง สำนักอำนวยการ สำนักงานคณะกรรมการการศึกษาขั้นพื้นฐาน กระทรวงศึกษาธิการ; 'ลักษณะอาคารสูง 3 ชั้น ชั้นล่างโล่ง มีห้องน้ำบนอาคาร'; Folder name 216-56C; stamped 25 ก.ค. 2559; 71 numbered sheets + the cover 'แบบรูปรายการใช้สำหรับ ปีงบประมาณ 2562' = 72 pages. NOTE: the corpus folder name says 2ชั้น but every sheet read says 3 storeys (A-09/A-10/A-11 = ชั้นล่าง/ชั้นที่ 2/ชั้นที่ 3; title block 'สูง 3 ชั้น'). 16 classrooms on floors 2-3 (A-08: 16 blackboards, 640 desk sets), open ground floor, two stair halls (bays 4-5 and 17-18) with entrance projections, toilets in end bays 1-2 / 20-21 on floor 2. Grid 1-21 x A-E: 20 bays x 4.00 = 80.00 by A-B 2.50 / B-C 5.50 / C-D 2.50 (+ D-E 4.00 at the stair projections); 1.50 cantilever corridors both sides on floors 2-3; hip roof, eaves 2.20. Two alternative foundation systems on S-02 (spread footings F1/F2A/F2B/F3 for soil >= 10 t/m2, or pile caps F1/F2/F3 on 0.22x0.22 / dia 0.25 x 21.00 m piles, 25 t/pile) and two alternative roof systems (steel-section trusses T1-T7 S-06/S-22/S-23, or cold-formed prefab trusses PT-01..PT-05).",
+ "source": "not recorded, inferred from the title block: a สพฐ. standard school-building set (อาคารเรียน 216ล./57-ก, กลุ่มออกแบบและก่อสร้าง สำนักอำนวยการ สพฐ.) issued in the 'แบบรูปรายการใช้สำหรับ ปีงบประมาณ 2562' package; the PDF (Adobe Illustrator CS3, created 2018-09-18) is a scan with a text layer on the cover page only; prepared for this corpus 2026-10-15; the exact URL / download location is not recorded anywhere.",
+ "subtasks_done": [
+  "gridline",
+  "plan_footing",
+  "plan_beam",
+  "plan_slab",
+  "section",
+  "schedule",
+  "notes"
+ ],
+ "subtasks_absent_from_this_house": [
+  "plan_column (no column plan sheet — columns are the C1-C5 marks on the footing plan S-02, and the column table S-10 is extracted as a schedule)",
+  "soil_boring_log (none in the set)"
+ ],
+ "subtasks_not_yet_reached": [],
+ "deliberately_skipped": [
+  "material_list",
+  "index",
+  "site_plan",
+  "side_profile",
+  "title",
+  "symbol",
+  "roof_plan",
+  "misc",
+  "bbs_schedule"
+ ],
+ "pages_extracted": 35,
+ "pages_in_house": 72,
+ "note": "Pass 2 subtasks only — this house is NOT fully extracted (35 of 72 pages have files; A-09 หน้า10 and A-14 หน้า15 were read for the grid master only). Files: grid master (79 x-lines, 18 y-lines, 16 levels, 70 chains, 44 unassigned); footing_plan S-02 x2 (spread / pile systems); beam_plan S-03 (floor 1), S-04 (floor 2), S-05 (floor 3) + S-05 water-tank platform, S-06 RC roof beams; roof_frame_plan S-06 (steel trusses) and PT-02 (alternative prefab trusses); etc_plan slab marks S-03 / S-04 / S-05; sections: pile caps S-07, spread footings S-08 / S-09, level arrangement + corbel S-11 / S-03, slabs S-12, stairs S-13 / S-14, beams S-15..S-21, steel trusses S-22 / S-23, prefab trusses PT-03..PT-05, lintel / stiffener post / fin A-31; schedules: column table S-10, windows A-27 / A-28 / A-29, doors A-30 / A-31; notes: A-05..A-08 (general specification), S-07, S-08, S-09, S-23, PT-03. The set prints NO concrete strength anywhere that was read; rebar grade SD 40 (box on every S-sheet, no fy value) and covers 4 / 9 cm (S-07, S-10) are the only structural spec values, so no notes file carries fc_ksc and no flat alias is filled. Deliberately not extracted: covers / dividers / index / symbols (A-01..A-04, หน้า35 แบบวิศวกรรม, PT-01), architectural plans / elevations / details, EE / SN / F sheets (the SN-03 septic-tank and water-tank RC base details on หน้า69 are sanitary equipment, not building structure). Decisions recorded in each file's warnings[]: S7->S4 overstruck slab mark (S-03), B14=B10 label vs its own section (S-19), F3 printed chain 1.40 vs total 1.37 (S-07), floor level +0.70 vs A-14 chain 0.90, T3-T7 hip / jack trusses counted by label without endpoints (S-06), duct-box beams Gx/Gy/Bx on lines scaled by proportion, marks detailed but not on any plan (B6/1, R2, R15). DIMENSION SWEEP (2026-10-23, tools/gridfix.py, batches 1-8, adapt_check identical before/after — no element span or count changed): A-10 / A-11 / A-12 plans (toilet-row ticks, stair-hall window line), sections A-13 / A-15 (fill strip 2.00, levels confirming +0.70: 3 prints vs the 0.90 of A-14), elevations A-16..A-22 (A-20 / A-21 sill levels +3.55 / +7.05 / +10.00), details A-23..A-26 (pump-room / toilet partitions), A-32 / A-33 stair plans (tread lines 0.275 apart; conflict kept: A-32 prints 2.475 for a 13-tread run = 3.575), member elevations S-15..S-21 + PT-03 (spans between column lines, no new tick), SN-03 / F-02 / F-03 (equipment / furniture sizes, unassigned only). Pages with no building dimension (swept, nothing to add): cover, A-01..A-04, S-01, PT-01, EE-01..EE-04, SN-01, SN-02, F-01. Pages whose numbers are all member-internal or specification values (rule 4 \"not an axis tick\", kept on the elements / sections[]): S-07..S-10, S-12, A-05..A-08, A-27..A-31, PT-04, PT-05. Grid master now: 89 x-lines, 42 y-lines, 19 levels, 171 chains, 145 unassigned. Several dummy primes were re-sequenced by gridfix; refs in every file and the dummy names in warnings / notes were updated to match."
+}

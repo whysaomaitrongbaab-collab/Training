@@ -1,0 +1,147 @@
+{
+  "png": "21",
+  "doc_page": 21,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "แบบแสดง ขยายบันได 1 (แบบอาคารสำนักงานเขตพื้นที่การศึกษา แบบที่ 4)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_24/บ้าน_ใหญ่_2ชั้น_24_หน้า21.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_24_หน้า00_gridline.json",
+  "view_title": "ขยายบันได 1 1/25 ชั้นล่าง - ชั้น 2 + ขยายลูกขั้นบันได",
+  "scale": "1/25",
+  "views": [
+    "view1: ขยายบันได 1 1/25 ชั้นล่าง - ชั้น 2 (ช่วงล่าง + ชานพัก 1 + ช่วงบน) (this file)",
+    "view2: ขยายลูกขั้นบันได (this file, folded into the stair entry)"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "Dog-leg stair 1 in the stair halls (bays 3-4 / 9-10). The section is cut along the y axis: left = row D side (1.60 | 2.50 | 1.20 = D''-D, D-C, C-B'''' at floor 2), lower support G3 on row C, middle G4 on row B, G7 on row A (4.00 | 4.00 at the bottom) - matched to the S-02/S-03 beam positions, the sheet itself prints no grid bubbles.",
+    "Lower flight: floor 1 (ชั้นที่ 1, at G3) up 2.45 to ชานพัก 1 (landing slab S3 on B6/B3); upper flight: ชานพัก 1 up 1.05 to floor 2, run 2.80 (= B to B'''' 6.80, the B5 landing-beam line of S-03). 2.45 + 1.05 = 3.50 floor to floor. Step detail (ขยายลูกขั้นบันได): riser 0.175, tread 0.275 + nosing 0.025 (flights print 0.30 / 0.025). Riser count not printed - 2.45/0.175 = 14 and 1.05/0.175 = 6 by arithmetic, kept out of the data.",
+    "Bar callouts are listed per flight as printed. 'DB12mm.@0.10m.' is boxed on the lower flight (probably flagged as the governing main bar); 'DB12mm.@0.20m.' is also printed on that flight. Which bar is top/bottom of the waist is not labelled - recorded with neutral locations.",
+    "Grid sweep: the y rows 1.60 | 2.50 | 1.20, 2.80 and 4.00 | 4.00 bind to existing lines (D'', D, C, B'''', B, A). The '0.65 | 0.65' pair either side of G4 (row B) bounds the 'ลดระดับประมาณ 5 ซม.' strip of slab S2 - two new y ticks (B -0.65 / B +0.65) staged for the grid master. Vertical 2.45 / 1.05 / 2.05 are z rows (staged when the datum is known).",
+    "Sheet box: 'เหล็กเสริมข้ออ้อย ทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40' (4th S-sheet with that wording)."
+  ],
+  "elements": [
+    {
+      "element_id": "บันได 1",
+      "element_type": "stair",
+      "waist_thickness_mm": 150,
+      "waist_thickness_mm_printed_as": "หนา0.15 m.",
+      "riser_mm": 175,
+      "tread_mm": 275,
+      "nosing_mm": 25,
+      "step_printed_as": "ขยายลูกขั้นบันได: 0.175 / 0.275 / 0.025; ช่วงบันไดพิมพ์ 0.30 / 0.025",
+      "flights": [
+        {
+          "name": "ช่วงล่าง",
+          "rise_m": 2.45,
+          "from": "พื้นชั้นที่ 1 (คาน G3, หลังคาน G6)",
+          "to": "ชานพัก 1 (พื้น S3 บนคาน B6)",
+          "bar_layers": [
+            {
+              "location": "เหล็กหลักท้องบันได",
+              "dia_mm": 12,
+              "type": "DB",
+              "spacing_mm": 200,
+              "printed_as": "DB12mm.@0.20m."
+            },
+            {
+              "location": "เหล็กหลักท้องบันได (พิมพ์ในกรอบ)",
+              "dia_mm": 12,
+              "type": "DB",
+              "spacing_mm": 100,
+              "printed_as": "DB12mm.@0.10m."
+            },
+            {
+              "location": "เหล็กกระจาย",
+              "dia_mm": 9,
+              "type": "RB",
+              "spacing_mm": 150,
+              "printed_as": "ø9mm.@0.15m."
+            },
+            {
+              "location": "เหล็กลูกขั้น",
+              "dia_mm": 6,
+              "type": "RB",
+              "spacing_mm": 150,
+              "printed_as": "ø6mm.@0.15m."
+            },
+            {
+              "location": "มุมลูกขั้น",
+              "count": 1,
+              "dia_mm": 6,
+              "type": "RB",
+              "printed_as": "1-ø6mm.ทุกมุม"
+            }
+          ]
+        },
+        {
+          "name": "ช่วงบน",
+          "rise_m": 1.05,
+          "run_m": 2.8,
+          "from": "ชานพัก 1 (ขอบคาน B3)",
+          "to": "พื้นชั้น 2 (คาน B7/B8 แนว B'''')",
+          "bar_layers": [
+            {
+              "location": "เหล็กหลักท้องบันได",
+              "dia_mm": 12,
+              "type": "DB",
+              "spacing_mm": 150,
+              "printed_as": "DB12mm.@0.15m."
+            },
+            {
+              "location": "เหล็กกระจาย / เหล็กบน",
+              "dia_mm": 9,
+              "type": "RB",
+              "spacing_mm": 150,
+              "printed_as": "ø9mm.@0.15m."
+            },
+            {
+              "location": "เหล็กลูกขั้น",
+              "dia_mm": 6,
+              "type": "RB",
+              "spacing_mm": 150,
+              "printed_as": "ø6mm.@0.15m."
+            },
+            {
+              "location": "มุมลูกขั้น",
+              "count": 1,
+              "dia_mm": 6,
+              "type": "RB",
+              "printed_as": "1-ø6mm.ทุกมุม"
+            }
+          ]
+        }
+      ],
+      "landing": {
+        "name": "ชานพัก 1",
+        "slab": "S3",
+        "thickness_mm": 120,
+        "thickness_mm_printed_as": "0.12m.",
+        "support_beams": [
+          "B6",
+          "B3"
+        ]
+      },
+      "head_slab_note": "ปลายบนรับด้วยพื้นชั้น 2 หนา 0.15 (ø9mm.@0.15m. บน/ล่าง, ø9mm.@0.20m.) ช่วงทางเดินกล่องบันไดมีหมายเหตุ 'เทคอนกรีตเสริม shop drawing'",
+      "dimensions_printed": [
+        "2.45 (ช่วงล่าง)",
+        "1.05 (ช่วงบน)",
+        "2.05 (ใต้ชานพักถึงพื้นชั้น 1 ข้าง G4)",
+        "2.80 (ระยะราบช่วงบน)",
+        "0.65 | 0.65 (แถบลดระดับประมาณ 5 ซม. สองข้าง G4)",
+        "0.05",
+        "0.60 (ความลึก G6)",
+        "0.15m. (หนาชานพัก/พื้นหัวบันได)"
+      ],
+      "grid_ref": "~B3",
+      "note": "ขยายบันได 1 1/25 ชั้นล่าง - ชั้น 2; ช่องบันไดกริด 3-4 และ 9-10 (แบบเดียวกัน)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "stair_location_grid_approximate",
+        "waist_bar_face_not_labelled"
+      ]
+    }
+  ]
+}

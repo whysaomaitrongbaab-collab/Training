@@ -1,0 +1,848 @@
+{
+ "png": "37",
+ "doc_page": 37,
+ "discipline": "structural",
+ "sheet_code": "S-03",
+ "sheet_name": "แปลนคานและพื้นชั้นล่าง, รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC, ขยายหูช้างลดระดับ (อาคารเรียน 318ล./55-ก แผ่นที่ S-03)",
+ "source_image": "image/บ้าน_ใหญ่_3ชั้น_09/บ้าน_ใหญ่_3ชั้น_09_หน้า37.png",
+ "grid_source": "บ้าน_ใหญ่_3ชั้น_09_หน้า00_gridline.json",
+ "floor_level": "F1",
+ "view_title": "แปลนคานและพื้นชั้นล่าง",
+ "scale": "1:200",
+ "pattern": "beam_plan",
+ "views": [
+  "view1: แปลนคานและพื้นชั้นล่าง 1:200 — beams G1-G11, G10/1, Gx/Gy (split: _view1_beam_plan.json) + slab marks HC/S3-S6 (split: _view1_etc_plan_slab.json)",
+  "view2: รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC — notes (_view2_notes.json)",
+  "view3: รูปตัดพื้นสำเร็จรูปชนิดแผ่นกลวง, ขยายหูช้างลดระดับ, ขยายการวางพื้นสำเร็จรูประดับเดียวกับพื้นหล่อในที่ — section (_view3_section.json)"
+ ],
+ "confidence_score": 0.85,
+ "confidence_flags": [
+  "no_grid_bubbles_on_sheet"
+ ],
+ "warnings": [
+  "Ground-floor beam plan (ชั้นล่าง). No grid bubbles on S-03; positions from the printed chains (1.50 | 4.00 x16 | 1.50; A-B 2.50, B-C 5.50, C-D 2.50, D-E 4.00) named with the A-09 bubbles.",
+  "Split at supports only (spec section 5): G11 on grids 2, 3, 6-12, 15, 16 is one segment A-D (10.50) because the footing plan S-02 has no column at B or C on those grids; G10 on grids 1/17 runs A-C (8.00) because there is a column at C (C4-F3) but none at B.",
+  "G3 (stair hall beam under S5) bears on G6 at both ends. Its y position is taken from the stair section S-14 (bottom chain 'ประมาณ 1.93m | 3.57 | 2.50' = C-G3 / G3-B / B-A, total 5.50), i.e. 6.07 from A; the plan draws it ~0.2 m further from B (~6.3 by scale). The printed section dimension wins over scaling.",
+  "Corner pipe boxes at A1 and A17 (Gx top + Gy/GY + Gx bottom) are dimensioned from the column C2 faces (0.50 x 1.10); their lines are derived from the S-11 column size (see grid master) and carry confidence 0.6. The left box prints 'Gy', the right 'GY' — recorded as printed; the spec section on S-16 should be checked for which spelling it uses.",
+  "Slab marks (HC precast hollow-core panels with span arrows, S3/S4/S5/S6, levels +0.70/+0.65) are in _view1_etc_plan_slab.json."
+ ],
+ "elements": [
+  {
+   "element_id": "Gy",
+   "element_type": "beam",
+   "grid_ref_start": "A''''''1'''''",
+   "grid_ref_end": "A'''''''1'''''",
+   "span_length_m": 1.1,
+   "span_source": "grid_table",
+   "note": "พิมพ์ 'Gy' — ขอบนอกกล่อง 0.50 จากผิวเสา, ยาว 1.10 จากผิวบนเสา",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "position_derived_from_column_face"
+   ]
+  },
+  {
+   "element_id": "Gx",
+   "element_type": "beam",
+   "grid_ref_start": "A''''''1'''''",
+   "grid_ref_end": "A''''''1",
+   "span_length_m": 0.675,
+   "span_source": "grid_table",
+   "note": "คานเล็กขอบบนกล่องมุมอาคาร (ตรงผิวบนเสา C2)",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "position_derived_from_column_face"
+   ]
+  },
+  {
+   "element_id": "Gx",
+   "element_type": "beam",
+   "grid_ref_start": "A''''''17",
+   "grid_ref_end": "A''''''17''",
+   "span_length_m": 0.675,
+   "span_source": "grid_table",
+   "note": "คานเล็กขอบบนกล่องมุมอาคารด้านขวา",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "position_derived_from_column_face"
+   ]
+  },
+  {
+   "element_id": "GY",
+   "element_type": "beam",
+   "grid_ref_start": "A''''''17''",
+   "grid_ref_end": "A'''''''17''",
+   "span_length_m": 1.1,
+   "span_source": "grid_table",
+   "note": "พิมพ์ 'GY' (ตัวพิมพ์ใหญ่) ฝั่งขวา ส่วนฝั่งซ้ายพิมพ์ 'Gy'",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "position_derived_from_column_face"
+   ]
+  },
+  {
+   "element_id": "G10",
+   "element_type": "beam",
+   "grid_ref_start": "A1",
+   "grid_ref_end": "C1",
+   "span_length_m": 8.0,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B บนกริดนี้ — ช่วงเดียว A-C",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A1",
+   "grid_ref_end": "A2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A2",
+   "grid_ref_end": "D2",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A2",
+   "grid_ref_end": "A3",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A3",
+   "grid_ref_end": "D3",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A3",
+   "grid_ref_end": "A4",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G7",
+   "element_type": "beam",
+   "grid_ref_start": "A4",
+   "grid_ref_end": "B4",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G9",
+   "element_type": "beam",
+   "grid_ref_start": "A4",
+   "grid_ref_end": "A5",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G7",
+   "element_type": "beam",
+   "grid_ref_start": "A5",
+   "grid_ref_end": "B5",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A5",
+   "grid_ref_end": "A6",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A6",
+   "grid_ref_end": "D6",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A6",
+   "grid_ref_end": "A7",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A7",
+   "grid_ref_end": "D7",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A7",
+   "grid_ref_end": "A8",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A8",
+   "grid_ref_end": "D8",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A8",
+   "grid_ref_end": "A9",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A9",
+   "grid_ref_end": "D9",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A9",
+   "grid_ref_end": "A10",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A10",
+   "grid_ref_end": "D10",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A10",
+   "grid_ref_end": "A11",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A11",
+   "grid_ref_end": "D11",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A11",
+   "grid_ref_end": "A12",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A12",
+   "grid_ref_end": "D12",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A12",
+   "grid_ref_end": "A13",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G7",
+   "element_type": "beam",
+   "grid_ref_start": "A13",
+   "grid_ref_end": "B13",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G9",
+   "element_type": "beam",
+   "grid_ref_start": "A13",
+   "grid_ref_end": "A14",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G7",
+   "element_type": "beam",
+   "grid_ref_start": "A14",
+   "grid_ref_end": "B14",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A14",
+   "grid_ref_end": "A15",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A15",
+   "grid_ref_end": "D15",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A15",
+   "grid_ref_end": "A16",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "grid_ref_start": "A16",
+   "grid_ref_end": "D16",
+   "span_length_m": 10.5,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B/C บนกริดนี้ — ช่วงเดียว A-D",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "A16",
+   "grid_ref_end": "A17",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G10",
+   "element_type": "beam",
+   "grid_ref_start": "A17",
+   "grid_ref_end": "C17",
+   "span_length_m": 8.0,
+   "span_source": "grid_table",
+   "note": "ไม่มีเสาที่แนว B บนกริดนี้ — ช่วงเดียว A-C",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "Gx",
+   "element_type": "beam",
+   "grid_ref_start": "A'''''''1'''''",
+   "grid_ref_end": "A'''''''1",
+   "span_length_m": 0.675,
+   "span_source": "grid_table",
+   "note": "คานเล็กขอบล่างกล่องมุมอาคาร",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "position_derived_from_column_face",
+    "bears_on_beam:G10(end)"
+   ]
+  },
+  {
+   "element_id": "Gx",
+   "element_type": "beam",
+   "grid_ref_start": "A'''''''17",
+   "grid_ref_end": "A'''''''17''",
+   "span_length_m": 0.675,
+   "span_source": "grid_table",
+   "note": "คานเล็กขอบล่างกล่องมุมอาคารด้านขวา",
+   "confidence_score": 0.6,
+   "confidence_flags": [
+    "position_derived_from_column_face",
+    "bears_on_beam:G10(start)"
+   ]
+  },
+  {
+   "element_id": "G6",
+   "element_type": "beam",
+   "grid_ref_start": "B4",
+   "grid_ref_end": "C4",
+   "span_length_m": 5.5,
+   "span_source": "grid_table",
+   "note": "แนวหูช้างลดระดับ (เส้นประข้างคาน)",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G4",
+   "element_type": "beam",
+   "grid_ref_start": "B4",
+   "grid_ref_end": "B5",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G6",
+   "element_type": "beam",
+   "grid_ref_start": "B5",
+   "grid_ref_end": "C5",
+   "span_length_m": 5.5,
+   "span_source": "grid_table",
+   "note": "แนวหูช้างลดระดับ (เส้นประข้างคาน)",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G6",
+   "element_type": "beam",
+   "grid_ref_start": "B13",
+   "grid_ref_end": "C13",
+   "span_length_m": 5.5,
+   "span_source": "grid_table",
+   "note": "แนวหูช้างลดระดับ (เส้นประข้างคาน)",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G4",
+   "element_type": "beam",
+   "grid_ref_start": "B13",
+   "grid_ref_end": "B14",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G6",
+   "element_type": "beam",
+   "grid_ref_start": "B14",
+   "grid_ref_end": "C14",
+   "span_length_m": 5.5,
+   "span_source": "grid_table",
+   "note": "แนวหูช้างลดระดับ (เส้นประข้างคาน)",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G3",
+   "element_type": "beam",
+   "grid_ref_start": "B'''''4",
+   "grid_ref_end": "B'''''5",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "คานรับบันได/พื้น S5 — ตำแหน่งแนว y จาก S-14 (3.57 จากแนว B); บนแปลนวาดไว้ราว 3.8",
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "bears_on_beam:G6(start)",
+    "bears_on_beam:G6(end)",
+    "line_position_from_stair_section"
+   ]
+  },
+  {
+   "element_id": "G3",
+   "element_type": "beam",
+   "grid_ref_start": "B'''''13",
+   "grid_ref_end": "B'''''14",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "คานรับบันได/พื้น S5 — ตำแหน่งแนว y จาก S-14 (3.57 จากแนว B); บนแปลนวาดไว้ราว 3.8",
+   "confidence_score": 0.75,
+   "confidence_flags": [
+    "bears_on_beam:G6(start)",
+    "bears_on_beam:G6(end)",
+    "line_position_from_stair_section"
+   ]
+  },
+  {
+   "element_id": "G10/1",
+   "element_type": "beam",
+   "grid_ref_start": "C1",
+   "grid_ref_end": "D1",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G5",
+   "element_type": "beam",
+   "grid_ref_start": "C4",
+   "grid_ref_end": "D4",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G4",
+   "element_type": "beam",
+   "grid_ref_start": "C4",
+   "grid_ref_end": "C5",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G5",
+   "element_type": "beam",
+   "grid_ref_start": "C5",
+   "grid_ref_end": "D5",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G5",
+   "element_type": "beam",
+   "grid_ref_start": "C13",
+   "grid_ref_end": "D13",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G4",
+   "element_type": "beam",
+   "grid_ref_start": "C13",
+   "grid_ref_end": "C14",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G5",
+   "element_type": "beam",
+   "grid_ref_start": "C14",
+   "grid_ref_end": "D14",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G10/1",
+   "element_type": "beam",
+   "grid_ref_start": "C17",
+   "grid_ref_end": "D17",
+   "span_length_m": 2.5,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D1",
+   "grid_ref_end": "D2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D2",
+   "grid_ref_end": "D3",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D3",
+   "grid_ref_end": "D4",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G1",
+   "element_type": "beam",
+   "grid_ref_start": "D4",
+   "grid_ref_end": "E4",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G4",
+   "element_type": "beam",
+   "grid_ref_start": "D4",
+   "grid_ref_end": "D5",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G1",
+   "element_type": "beam",
+   "grid_ref_start": "D5",
+   "grid_ref_end": "E5",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D5",
+   "grid_ref_end": "D6",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D6",
+   "grid_ref_end": "D7",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D7",
+   "grid_ref_end": "D8",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D8",
+   "grid_ref_end": "D9",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D9",
+   "grid_ref_end": "D10",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D10",
+   "grid_ref_end": "D11",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D11",
+   "grid_ref_end": "D12",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D12",
+   "grid_ref_end": "D13",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G1",
+   "element_type": "beam",
+   "grid_ref_start": "D13",
+   "grid_ref_end": "E13",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G4",
+   "element_type": "beam",
+   "grid_ref_start": "D13",
+   "grid_ref_end": "D14",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G1",
+   "element_type": "beam",
+   "grid_ref_start": "D14",
+   "grid_ref_end": "E14",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D14",
+   "grid_ref_end": "D15",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D15",
+   "grid_ref_end": "D16",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G2",
+   "element_type": "beam",
+   "grid_ref_start": "D16",
+   "grid_ref_end": "D17",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G1",
+   "element_type": "beam",
+   "grid_ref_start": "E4",
+   "grid_ref_end": "E5",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G1",
+   "element_type": "beam",
+   "grid_ref_start": "E13",
+   "grid_ref_end": "E14",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "confidence_score": 0.85,
+   "confidence_flags": []
+  }
+ ]
+}

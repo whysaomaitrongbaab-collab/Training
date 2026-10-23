@@ -1,0 +1,124 @@
+{
+  "png": "28",
+  "doc_page": 28,
+  "discipline": "structural",
+  "sheet_code": "S-12",
+  "sheet_name": "ขยายระดับพื้นและคาน, ขยายพื้น",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_23/บ้าน_ใหญ่_2ชั้น_23_หน้า28.png",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_23_หน้า00_gridline.json",
+  "view_title": "ขยายเอ็นใต้หน้าต่าง / ขยายทับหลังทั่วไป / ขยายหูช้างรับแผ่นพื้น",
+  "scale": null,
+  "views": [
+    "view1: ขยายระดับ พื้นและคาน (2 รูป) — levels along B1 (z only, swept into the grid master)",
+    "view2: ขยายพื้น 1:25 — GS, S1, S2, Sx, แบบขยายการเสริมเหล็กพื้นสำเร็จรูป, เสริมเหล็กมุมเสา (ขยาย 1) (split: section, หน้า28_view2_section_slabs.json)",
+    "view3: ขยายเอ็นใต้หน้าต่าง / ขยายทับหลังทั่วไป / ขยายหูช้างรับแผ่นพื้น (split: section, หน้า28_view3_section_lintels_corbel.json)"
+  ],
+  "confidence_score": 0.8,
+  "confidence_flags": [],
+  "warnings": [
+    "Three small unmarked members of S-12 (no scale printed under them): element_id null + element_name_assigned (§0.2); element_type follows the corpus precedent — lintel and sill band 'beam', corbel 'connection_detail' (houses 156, 159).",
+    "Lintel conflict, recorded not resolved: this general lintel 'ขยายทับหลังทั่วไป' is 0.15 x 0.20 with 2-ø9 top + 2-ø9 bottom and 1ป-ø6mm@0.15 m, while the door/window schedules A-10 / A-11 (หน้า11-12) print the lintel over those openings as 'ทับหลัง ค.ส.ล. 0.15x0.25 ม. เหล็กเสริม 9 มม. 4 เส้น ปลอก 6 มม. @0.15 ม.' Same bars and ties, 50 mm deeper. The S-12 detail is the general case, the schedule is opening-specific, so neither overrides the other (§7 section-wins applies to one mark, and neither is a mark); both kept, flagged lintel_depth_differs_from_door_window_schedule.",
+    "เอ็นใต้หน้าต่าง: depth 0.10, width printed only as 'L — ระยะเท่ากับผนังฉาบ' (equal to the plastered wall thickness) → width_mm null, never guessed. Its 2-RB9 lie side by side in the flat section, so they go in bar_layers[] with no top/bottom face (house 159 precedent).",
+    "หูช้างรับแผ่นพื้น is drawn against beam B4 (projection 0.10, top step 0.05, nose 0.10, sloping soffit; RB9mm@0.15m hooked from the beam + one RB6mm longitudinal bar). The S-03 plan prints the corbels at the Cx posts on row B ('หูช้างรับแผ่นพื้น (+3.60)', z level +3.60) — both locations noted on the element. Its 0.10 / 0.05 / 0.10 and the lintel/sill sizes are element-internal (§4 rule 4). Extracted in the 2026-10-22 resume run."
+  ],
+  "elements": [
+    {
+      "element_id": null,
+      "element_name_assigned": "ทับหลังทั่วไป",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 200,
+      "width_mm_printed_as": "0.15",
+      "height_mm_printed_as": "0.20",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9 mm"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9 mm"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "1ป-ø6mm@0.15 m"
+      },
+      "note": "ขยายทับหลังทั่วไป — ทับหลัง ค.ส.ล. เหนือช่องประตู-หน้าต่าง; ตารางประตู-หน้าต่าง A-10/A-11 พิมพ์ทับหลังเหนือช่องเปิด 0.15x0.25 ม. เหล็ก 9 มม. 4 เส้น ปลอก 6 มม.@0.15",
+      "confidence_score": 0.82,
+      "confidence_flags": [
+        "detail_member_unmarked",
+        "lintel_depth_differs_from_door_window_schedule"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "เอ็นใต้หน้าต่าง",
+      "element_type": "beam",
+      "width_mm": null,
+      "width_mm_printed_as": "L — ระยะเท่ากับผนังฉาบ",
+      "height_mm": 100,
+      "height_mm_printed_as": "0.10",
+      "bar_layers": [
+        {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-RB9mm",
+          "location": "วางคู่ในหน้าตัดแบน (ไม่ระบุบน/ล่าง)"
+        }
+      ],
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ป-RB6mm@0.15m"
+      },
+      "note": "ขยายเอ็นใต้หน้าต่าง — เอ็น ค.ส.ล. ใต้ช่องหน้าต่าง หนา 0.10 กว้างเท่าผนังฉาบ",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "detail_member_unmarked",
+        "width_equals_wall_thickness_not_printed"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "หูช้างรับแผ่นพื้น",
+      "element_type": "connection_detail",
+      "part_of": "B4",
+      "width_mm": 100,
+      "width_mm_printed_as": "0.10",
+      "dims_printed_as": "0.10 (ยื่น) / 0.05 (บ่าบน) / 0.10 (ความลึกปลายหูช้าง)",
+      "bar_layers": [
+        {
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "RB9mm@0.15m",
+          "location": "เหล็กงอจากคาน B4 เข้าหูช้าง"
+        },
+        {
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "RB6mm",
+          "location": "เหล็กตามยาวในหูช้าง (วาด 1 เส้น, ไม่พิมพ์จำนวน)"
+        }
+      ],
+      "level_m": 3.6,
+      "level_m_printed_as": "หูช้างรับแผ่นพื้น (+3.60) — แปลน S-03",
+      "note": "ขยายหูช้างรับแผ่นพื้น — หูช้างรับแผ่นพื้นสำเร็จรูป หล่อติดคาน B4 (ตามรูปขยาย); แปลน S-03 ระบุหูช้างที่เสา Cx แถว B กริด 3-7 ระดับ +3.60 รับแผ่นพื้น PS2",
+      "confidence_score": 0.76,
+      "confidence_flags": [
+        "detail_member_unmarked",
+        "corbel_host_B4_on_detail_vs_Cx_on_plan"
+      ]
+    }
+  ]
+}

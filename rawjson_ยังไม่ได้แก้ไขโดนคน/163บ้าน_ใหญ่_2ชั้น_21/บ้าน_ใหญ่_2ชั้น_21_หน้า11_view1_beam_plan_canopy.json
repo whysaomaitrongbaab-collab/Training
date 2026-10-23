@@ -15,7 +15,7 @@
   "view1: แปลนคานกันสาด 1:125 — beam_plan (canopy beams B7/B8/B22/B4' + S1)",
   "view2: แปลนคานหลังคา และโครงหลังคา 1:125 — roof_frame_plan",
   "view3: แปลนคานหลังคาและโครงหลังคามุขด้านหน้า 1:125 — roof_frame_plan (front porch)",
-  "view4: ขยายคาน B1-B12, B3', เสาริมระเบียง, เสามุมระเบียง, S1, S2, S3, SB ชั้นบน/ชั้นล่าง — section"
+  "view4: ขยายคาน B1-B12, B23', เสาริมระเบียง, เสามุมระเบียง, S1, S2, S3, SB ชั้นบน/ชั้นล่าง — section"
  ],
  "confidence_score": 0.78,
  "confidence_flags": [
@@ -24,15 +24,16 @@
  ],
  "warnings": [
   "Canopy beam plan (แปลนคานกันสาด 1:125) at the roof of the 2.00 balconies: B7 edge beams all round at -2.00 / 22.00 and -2.00 / 38.00, B8 along rows A and G (grid 1 to 10, on the columns), B22 at the four corners, B4' along the inner lines grid 1 and grid 10 (split at the column rows), S1 canopy slabs between them.",
-  "The x row prints 2.00 / 4.00 x 9 / 5.10 / 1.50 with a 2.00 sub-row: the canopy ends at 38.00 (2.00 past grid 10) except between rows C and E, where the front porch (มุขหน้า) projects 5.10 + 1.50 beyond grid 10: B10 gutter beams on rows C and E out to 42.60, B9 on the 41.10 line with a stub column 'เสาเอ็น' at row D. The stair-roof panel in bay 1-2 rows A-B (SB, B9, 'B', 'เสา คสล .15x.15', 'ท่อเหล็ก ø 3\" ตั้งรับพื้นกันสาด ทุก 4 ม.') was not extracted (time limit).",
-  "Canopy beams B7 are labelled per bay; the small dots on the B7 line sit on grid lines 2-9."
+  "The x row prints 2.00 / 4.00 x 9 / 5.10 / 1.50 with a 2.00 sub-row: the canopy ends at 38.00 (2.00 past grid 10) except between rows C and E, where the front porch (มุขหน้า) projects 5.10 + 1.50 beyond grid 10: B10 gutter beams on rows C and E out to 42.60, B9 on the 41.10 line with a stub column 'เสาเอ็น' at row D. The first pass left 'the stair-roof panel in bay 1-2 rows A-B' unextracted (time limit). Second op04 pass (2026-10-22): it is the floor framing of the two control rooms (ห้องควบคุม แสง, เสียง of แปลนพื้นชั้นลอย เหนือเวที, หน้า06, +7.60 = the canopy level) and it is drawn at BOTH ends of bay 1-2 — rows A-B and, mirrored, rows F-G. Extracted: B9 on grid 2 and on rows B / F, the 1.00 stair strip beyond them (B9 at y 5.00 / 15.00, short cantilevers B9' on grid 2, a 'B' beam at x≈3.20 scaled), SB slabs, and the 'เสา คสล. .15x.15' posts at B2 / F2. The strip's 1.00 is printed twice here and twice on the stage framing plan (หน้า06) but drawn ≈1.44 on this sheet — printed value used.",
+  "Canopy beams B7 are labelled per bay; the small dots on the B7 line sit on grid lines 2-9.",
+  "Note printed at the top right of this plan (no member mark, not an element): 'ท่อเหล็ก ø 3\" ตั้งรับพื้นกันสาด ทุก 4 ม.' — steel pipe posts ø3\" under the canopy slab every 4 m."
  ],
  "elements": [
   {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "A''1'''",
-   "grid_ref_end": "A1'''",
+   "grid_ref_start": "A''1''''",
+   "grid_ref_end": "A1''''",
    "span_length_m": 2.0,
    "span_source": "grid_table",
    "note": "คานขอบกันสาดด้านสกัด",
@@ -42,7 +43,7 @@
   {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "A''1'''",
+   "grid_ref_start": "A''1''''",
    "grid_ref_end": "A''1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -194,8 +195,8 @@
   {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "A1'''",
-   "grid_ref_end": "B1'''",
+   "grid_ref_start": "A1''''",
+   "grid_ref_end": "B1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "note": "คานขอบกันสาดด้านสกัด",
@@ -205,7 +206,7 @@
   {
    "element_id": "B22",
    "element_type": "beam",
-   "grid_ref_start": "A1'''",
+   "grid_ref_start": "A1''''",
    "grid_ref_end": "A1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -232,6 +233,17 @@
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "confidence_score": 0.82,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B9",
+   "element_type": "beam",
+   "grid_ref_start": "A2",
+   "grid_ref_end": "B2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "กรอบพื้นห้องควบคุม (ชั้นลอยเหนือเวที +7.60) ช่วงเสา 1-2 แถว A-B — คานบนกริด 2",
+   "confidence_score": 0.74,
    "confidence_flags": []
   },
   {
@@ -350,8 +362,8 @@
   {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "B1'''",
-   "grid_ref_end": "C1'''",
+   "grid_ref_start": "B1''''",
+   "grid_ref_end": "C1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "note": "คานขอบกันสาดด้านสกัด",
@@ -368,6 +380,43 @@
    "note": "แนวกริดด้านในของกันสาดด้านสกัด",
    "confidence_score": 0.78,
    "confidence_flags": []
+  },
+  {
+   "element_id": "B9",
+   "element_type": "beam",
+   "grid_ref_start": "B1",
+   "grid_ref_end": "B2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "กรอบพื้นห้องควบคุม (ชั้นลอยเหนือเวที +7.60) ช่วงเสา 1-2 — คานแนวแถว B ขอบแถบบันได",
+   "confidence_score": 0.74,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B",
+   "element_type": "beam",
+   "grid_ref_start": "B1'''''''''",
+   "grid_ref_end": "B'''1'''''''''",
+   "span_length_m": 1.0,
+   "span_source": "grid_table",
+   "note": "คาน 'B' ในแถบบันไดห้องควบคุม ข้างพื้น SB ช่องเล็ก",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "line_position_scaled_from_grid"
+   ]
+  },
+  {
+   "element_id": "B9'",
+   "element_type": "beam",
+   "grid_ref_start": "B2",
+   "grid_ref_end": "B'''2",
+   "span_length_m": 1.0,
+   "span_source": "grid_table",
+   "note": "คานยื่นสั้นต่อจาก B9 กริด 2 (เหล็กบนต่อจาก B9) ยาว 1.00 ตามระยะพิมพ์",
+   "confidence_score": 0.62,
+   "confidence_flags": [
+    "printed_1.00_drawn_1.44"
+   ]
   },
   {
    "element_id": "B4'",
@@ -392,10 +441,23 @@
    "confidence_flags": []
   },
   {
+   "element_id": "B9",
+   "element_type": "beam",
+   "grid_ref_start": "B'''1",
+   "grid_ref_end": "B'''2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "คานขอบแถบบันไดห้องควบคุม 1.00 ใต้แถว B",
+   "confidence_score": 0.62,
+   "confidence_flags": [
+    "printed_1.00_drawn_1.44"
+   ]
+  },
+  {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "C1'''",
-   "grid_ref_end": "E1'''",
+   "grid_ref_start": "C1''''",
+   "grid_ref_end": "E1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "note": "คานขอบกันสาดด้านสกัด",
@@ -470,8 +532,8 @@
   {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "E1'''",
-   "grid_ref_end": "F1'''",
+   "grid_ref_start": "E1''''",
+   "grid_ref_end": "F1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "note": "คานขอบกันสาดด้านสกัด",
@@ -534,10 +596,49 @@
    "confidence_flags": []
   },
   {
+   "element_id": "B9",
+   "element_type": "beam",
+   "grid_ref_start": "E''''1",
+   "grid_ref_end": "E''''2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "คานขอบแถบบันไดห้องควบคุม 1.00 เหนือแถว F",
+   "confidence_score": 0.62,
+   "confidence_flags": [
+    "printed_1.00_drawn_1.44"
+   ]
+  },
+  {
+   "element_id": "B",
+   "element_type": "beam",
+   "grid_ref_start": "E''''1'''''''''",
+   "grid_ref_end": "F1'''''''''",
+   "span_length_m": 1.0,
+   "span_source": "grid_table",
+   "note": "คาน 'B' ในแถบบันไดห้องควบคุม ข้างพื้น SB ช่องเล็ก",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "line_position_scaled_from_grid"
+   ]
+  },
+  {
+   "element_id": "B9'",
+   "element_type": "beam",
+   "grid_ref_start": "E''''2",
+   "grid_ref_end": "F2",
+   "span_length_m": 1.0,
+   "span_source": "grid_table",
+   "note": "คานยื่นสั้นต่อจาก B9 กริด 2 ยาว 1.00 ตามระยะพิมพ์",
+   "confidence_score": 0.62,
+   "confidence_flags": [
+    "printed_1.00_drawn_1.44"
+   ]
+  },
+  {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "F1'''",
-   "grid_ref_end": "G1'''",
+   "grid_ref_start": "F1''''",
+   "grid_ref_end": "G1''''",
    "span_length_m": 4.0,
    "span_source": "grid_table",
    "note": "คานขอบกันสาดด้านสกัด",
@@ -554,6 +655,30 @@
    "note": "แนวกริดด้านในของกันสาดด้านสกัด",
    "confidence_score": 0.78,
    "confidence_flags": []
+  },
+  {
+   "element_id": "B9",
+   "element_type": "beam",
+   "grid_ref_start": "F1",
+   "grid_ref_end": "F2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "กรอบพื้นห้องควบคุม (ชั้นลอยเหนือเวที +7.60) ช่วงเสา 1-2 — คานแนวแถว F ขอบแถบบันได",
+   "confidence_score": 0.74,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B9",
+   "element_type": "beam",
+   "grid_ref_start": "F2",
+   "grid_ref_end": "G2",
+   "span_length_m": 4.0,
+   "span_source": "grid_table",
+   "note": "กรอบพื้นห้องควบคุม (ชั้นลอยเหนือเวที +7.60) ช่วงเสา 1-2 แถว F-G — คานบนกริด 2 (ป้ายพิมพ์คล้าย 'F9' = B9)",
+   "confidence_score": 0.72,
+   "confidence_flags": [
+    "label_printed_as_F9"
+   ]
   },
   {
    "element_id": "B4'",
@@ -580,8 +705,8 @@
   {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "G1'''",
-   "grid_ref_end": "G''1'''",
+   "grid_ref_start": "G1''''",
+   "grid_ref_end": "G''1''''",
    "span_length_m": 2.0,
    "span_source": "grid_table",
    "note": "คานขอบกันสาดด้านสกัด",
@@ -591,7 +716,7 @@
   {
    "element_id": "B22",
    "element_type": "beam",
-   "grid_ref_start": "G1'''",
+   "grid_ref_start": "G1''''",
    "grid_ref_end": "G1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -736,7 +861,7 @@
   {
    "element_id": "B7",
    "element_type": "beam",
-   "grid_ref_start": "G''1'''",
+   "grid_ref_start": "G''1''''",
    "grid_ref_end": "G''1",
    "span_length_m": 2.0,
    "span_source": "grid_table",
@@ -856,13 +981,44 @@
    "element_id": "S1",
    "element_type": "slab",
    "grid_refs": [
-    "A''-A x 1'''-10''",
-    "G-G'' x 1'''-10''",
-    "A-G x 1'''-1",
+    "A''-A x 1''''-10''",
+    "G-G'' x 1''''-10''",
+    "A-G x 1''''-1",
     "A-G x 10-10''"
    ],
    "note": "พื้นกันสาด S1 รอบอาคาร (ลูกศรทิศทางพื้น) — ดูขยาย S1 แผ่นเดียวกัน",
    "confidence_score": 0.78,
+   "confidence_flags": []
+  },
+  {
+   "element_id": null,
+   "element_name_assigned": "เสา คสล. .15x.15",
+   "element_type": "column",
+   "count": 2,
+   "grid_refs": [
+    "B2",
+    "F2"
+   ],
+   "width_mm": 150,
+   "height_mm": 150,
+   "width_mm_printed_as": ".15x.15",
+   "note": "ป้าย 'เสา คสล. .15x.15' ชี้จุด B2 และ F2 (ตรงกับ 'เสา .15 x .15 ม.' บน B17 ของแปลนคานชั้น 2); ที่ F2 มีข้อความต่อ '4ø12 มม. ป ø...' อ่านไม่ครบ ไม่ได้บันทึกเหล็ก",
+   "confidence_score": 0.5,
+   "confidence_flags": [
+    "rebar_callout_partly_illegible"
+   ]
+  },
+  {
+   "element_id": "SB",
+   "element_type": "slab",
+   "grid_refs": [
+    "A-B x 1-2",
+    "F-G x 1-2",
+    "B-B''' x 1'''''''''-2",
+    "E''''-F x 1'''''''''-2"
+   ],
+   "note": "พื้นห้องควบคุม SB (ลูกศรทิศพื้น) และพื้น SB ช่องเล็กในแถบบันได",
+   "confidence_score": 0.66,
    "confidence_flags": []
   }
  ]

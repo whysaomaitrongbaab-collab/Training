@@ -1,0 +1,788 @@
+{
+  "png": "24",
+  "doc_page": 24,
+  "discipline": "structural",
+  "sheet_code": "S-09",
+  "sheet_name": "แบบขยายคาน ค.ส.ล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_18/บ้าน_ใหญ่_2ชั้น_18_หน้า24.png",
+  "view_title": "B9-B13/1, R1-R16",
+  "scale": "1:20",
+  "views": [
+    "view1: elevation + SECTIONs 1-1/2-2 of B9, B9 level detail (แสดงการจัดระดับคานและพื้นชั้นที่ 2-3), sections B10-B13/1, R1-R16, elevations R3 and R11-R16, COVERRING block (this split: section; the COVERRING / SD 40 block repeats S-08 word for word and is recorded once, in หน้า23_view2_notes)"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [
+    "scanned_set"
+  ],
+  "warnings": [
+    "Sheet S-09 (scale 1:20 on the B9 drawings). Sheet note 'เหล็กเสริมข้ออ้อย ... ตั้งแต่ 16มม. ขึ้นไป ให้ใช้เหล็กชั้นคุณภาพ SD 40' -> steel_grade SD40 on every beam (DB12 bars are below the 16 mm threshold, so strictly the note does not name their grade; kept SD40 at the element level, flag only).",
+    "Marks printed as equal: 'R2 = R1', 'R8=R4', 'R11=R16' (section 'R11-R16'), sections 'R9-R10' and 'B13-B13/1' — written out as one element per mark with the shared spec so every plan mark joins.",
+    "B9 carries two cuts (SECTION 1-1 at the 2.50 m end zones, 2-2 at midspan): main_bar holds the governing counts, the other cut is in the note.",
+    "Mixed-diameter faces (B12, R5, R13 bottoms) carry the total count with the larger diameter and a note listing the printed split — flagged mixed_bar_diameters_in_one_face.",
+    "The B9 level detail prints +3.90, TOPPING 5 cm., HOLLOW CORE 8-10 cm. THICKNESS, 0.05 / 0.08-0.10 and '5-7 cm.' (floor-2/3 level set-out) — level/finish dimensions, not member specs; not transcribed here."
+  ],
+  "elements": [
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "width_mm": 300,
+      "height_mm": 800,
+      "size_printed_as": "0.30 x 0.80",
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "5-DB25mm.",
+          "note": "both sections; the elevation shows the top as 3-DB25mm. + 2-DB25mm. rows"
+        },
+        "bottom": {
+          "count": 8,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "6-DB25mm. + 2-DB25mm. กลางช่วง 5.00ม.",
+          "note": "SECTION 2-2 (midspan): 6 continuous + 2 extra at midspan, 5.00 m long; SECTION 1-1 prints 6-DB25mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "ป-ø9mm.@ 0.10m.",
+        "note": "SECTION 1-1 / 2.50 m end zones; SECTION 2-2 (midspan) prints ป-ø9mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "note": "elevation B9 1:20: 10.50 overall (2.50 | 5.00 | 2.50 zones), supported on B1/B2; cover 0.04 printed on both sections; DB25 butt-welded per the S-08 detail",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 700,
+      "size_printed_as": "0.25 x 0.70",
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "3-DB25mm."
+        },
+        "bottom": {
+          "count": 6,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "6-DB25mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 9,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø9mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 700,
+      "size_printed_as": "0.25 x 0.70",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "2-DB25mm."
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "3-DB25mm. + 2-DB25mm. กลางช่วง 5.00m.",
+          "note": "3 continuous + 2 extra at midspan, 5.00 m long"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "size_printed_as": "0.15 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB12mm. + 2-DB16mm.",
+          "note": "bottom drawn as two rows: 2-DB12mm. and 2-DB16mm. — mixed diameters, dia_mm is the larger"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "mixed_bar_diameters_in_one_face"
+      ]
+    },
+    {
+      "element_id": "B13",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 500,
+      "size_printed_as": "0.20 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm. + 2-DB20mm.",
+          "note": "two top rows"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "note": "section titled 'B13-B13/1' (one section for both marks)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B13/1",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 500,
+      "size_printed_as": "0.20 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm. + 2-DB20mm.",
+          "note": "two top rows"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "note": "section titled 'B13-B13/1' (one section for both marks)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "size_printed_as": "0.15 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        },
+        "middle": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9mm.",
+          "note": "mid-depth side bars"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "additional_bars": [
+        {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "position": "in the 0.10 x 0.10 upstand (nib) on top of the beam",
+          "printed_as": "1-ø9mm."
+        }
+      ],
+      "note": "0.15 wide x 0.50 deep with a 0.10 x 0.10 upstand on top",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "size_printed_as": "0.15 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        },
+        "middle": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9mm.",
+          "note": "mid-depth side bars"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "additional_bars": [
+        {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "position": "in the 0.10 x 0.10 upstand (nib) on top of the beam",
+          "printed_as": "1-ø9mm."
+        }
+      ],
+      "note": "printed 'R2 = R1' — no own section",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1/1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "size_printed_as": "0.15 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        },
+        "middle": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-ø9mm.",
+          "note": "mid-depth side bars"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R3",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "size_printed_as": "0.15 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "4-DB16mm. ฝังคานใน 0.40 ม.",
+          "note": "two top rows; anchored 0.40 m into the inner beam (B9)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "note": "SECTION 1-1; cantilever 1.50 off B9 (elevations R3 ด้านหน้า / ด้านหลัง)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R4",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "size_printed_as": "0.15 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R5",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 500,
+      "size_printed_as": "0.25 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm."
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm+1-DB16mm. + 2-DB16mm. กลางช่วง 5.00m.",
+          "note": "bottom row 2-DB20 + 1-DB16, plus 2-DB16 at midspan (5.00 m) — mixed diameters, dia_mm is the larger"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "mixed_bar_diameters_in_one_face"
+      ]
+    },
+    {
+      "element_id": "R6",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 250,
+      "size_printed_as": "0.15 x 0.25",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R7",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 600,
+      "size_printed_as": "0.25 x 0.60",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm."
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "3-DB20mm. + 2-DB20mm. กลางช่วง 5.00m.",
+          "note": "3 continuous + 2 extra at midspan, 5.00 m long"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R8",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "size_printed_as": "0.15 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "note": "printed 'R8=R4' — no own section",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R9",
+      "element_type": "beam",
+      "width_mm": 350,
+      "height_mm": 400,
+      "size_printed_as": "0.35 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "note": "section titled 'R9-R10'",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R10",
+      "element_type": "beam",
+      "width_mm": 350,
+      "height_mm": 400,
+      "size_printed_as": "0.35 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "note": "section titled 'R9-R10'",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R11",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm. งอเข้าเสา 0.40 ม.",
+          "note": "top bars bent into the column 0.40 m"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "note": "section titled 'R11-R16' with the box 'R11=R16'; cantilever 1.50 (elevation R11-R16)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R12",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "size_printed_as": "0.15 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm.งอเข้าเสา 0.60 ม.",
+          "note": "bent into the column 0.60 m"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R13",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 500,
+      "size_printed_as": "0.25 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm."
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB16mm. + 3-DB20mm.",
+          "note": "two bottom rows: 3-DB20mm. at the bottom and 2-DB16mm. above — mixed diameters, dia_mm is the larger"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "mixed_bar_diameters_in_one_face"
+      ]
+    },
+    {
+      "element_id": "R14",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 500,
+      "size_printed_as": "0.20 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R15",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 500,
+      "size_printed_as": "0.15 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2-DB12mm. + 2-DB12mm.",
+          "note": "two bottom rows"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R16",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "3-DB16mm. งอเข้าเสา 0.40 ม.",
+          "note": "top bars bent into the column 0.40 m"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "note": "printed 'R11=R16'; section 'R11-R16'",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}

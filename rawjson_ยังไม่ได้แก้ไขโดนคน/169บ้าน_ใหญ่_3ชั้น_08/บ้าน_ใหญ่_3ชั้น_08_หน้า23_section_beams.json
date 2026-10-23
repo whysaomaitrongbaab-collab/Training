@@ -1,0 +1,778 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-07",
+  "sheet_name": "แบบขยายคาน G1-G5, B1-B12, R1, R2, ครีบนอน, ครีบตั้งตรงช่องบันได (แบบ สปช. 2/28 ปรับปรุง แผ่นที่ S-07, 21/24)",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_08/บ้าน_ใหญ่_3ชั้น_08_หน้า23.png",
+  "pattern": "section",
+  "view_title": "แบบขยายคาน",
+  "scale": null,
+  "views": [
+    "view1: ground beam sections G1-G5 + G5 elevation",
+    "view2: B1 elevation (cuts (1)/(2), ช่วงต่อเนื่อง 0.90 + 0.90, spans 4.00 + 4.00) + B1 (1)/(2)",
+    "view3: B2, B3 elevation + B3 (1)/(2), B4,B6, B5",
+    "view4: B7, B8 (+ elevation), B9 (+ elevation), B10 (+ elevation)",
+    "view5: B11, B12, R1, R2, ครีบนอน, ครีบตั้งตรงช่องบันได (all in this file)"
+  ],
+  "confidence_score": 0.82,
+  "confidence_flags": [],
+  "warnings": [
+    "B1 and B3 are each drawn as two cuts '(1)' and '(2)' of the same mark (cut positions marked on the elevations); recorded as two entries with element_id B1/B3 and section_ref '(1)'/'(2)' — the same member, not a collision. Cut (1) is midspan (bottom-heavy), cut (2) is over the support (top-heavy, the bent-up bars plus '1-Ø12 mm.เสริมพิเศษ').",
+    "'คม.L/5' = เหล็กคอม้า bent up at L/5 — counted into main_bar.bottom with the straight bars (precedent houses 157/168), printed text kept in printed_as.",
+    "B9 bottom printed '3-Ø25 mm.' + '6-Ø25 mm.' (stacked rows in the 0.25 section; the elevation shows 6-Ø25 straight + 2-Ø25 and 1-Ø25 bent up at 1.80 / 2.05) = 9. B8 top printed '6-Ø15 mm.งอเข้าเสา 1.20 ม.' and its elevation shows three top layers of 2-Ø15 = 6, consistent; B8's diagonal 2-Ø15 at the support (0.30 drop over 0.90) belongs to no longitudinal face and is in additional_bars[].",
+    "B10 (0.07 x 0.80) and R2 (0.08 x 0.40) are thin fins with a single vertical bar row; the printed label gives only the total (6-Ø9 / 3-Ø9). Split by the dots drawn in the section: B10 top 1 / middle 4 / bottom 1, R2 top 1 / middle 1 / bottom 1 — the total count is exact, the face split is a reading of dot positions (low confidence, flagged).",
+    "B4A (used on the F1/F2 plans) has no section on this sheet — it is drawn on the stair sheet S-09 (หน้า25). R2 is detailed here but appears on none of the plan sheets S-01..S-03 (the roof frame plan uses R1 only).",
+    "The unmarked fins are recorded with element_id null + element_name_assigned (section 0.2): 'ครีบนอน' (0.06 x 0.30, 2-Ø9, ป-Ø6@0.15 ลูกโซ่) as element_type beam, and 'ครีบตั้งตรงช่องบันได' (two cuts: a 0.45 x 0.06 plate with 2-Ø9 and an L-section 0.20+0.25 x 0.07 / 0.25 with 1-Ø9 + ป-Ø6@0.15) as element_type wall (vertical RC fin; precedent house 130 typed a ครีบ ค.ส.ล. as wall). The type choice for these fins is a judgement call — no listed value is an exact fit.",
+    "Bars are printed with the circle symbol Ø throughout → type RB (section 6). No concrete grade, steel grade or cover is printed on this sheet."
+  ],
+  "elements": [
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 250,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-Ø 9 mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-Ø 9 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G2",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "1-Ø12 mm.คม.L/5 + 2-Ø 12 mm.",
+          "note": "เส้นตรง + เหล็กคอม้า (คม. ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่าง (ตามแบบอย่างบ้าน 157/168)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G3",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø 15 mm."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "1-Ø15 mm.คม.L/5 + 2-Ø 15 mm.",
+          "note": "เส้นตรง + เหล็กคอม้า (คม. ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่าง (ตามแบบอย่างบ้าน 157/168)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G4",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "1-Ø12 mm.คม.L/5 + 2-Ø 12 mm.",
+          "note": "เส้นตรง + เหล็กคอม้า (คม. ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่าง (ตามแบบอย่างบ้าน 157/168)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G5",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "4-Ø 15 mm.",
+          "note": "รูปด้านยาว: เหล็กบนงอขึ้นเข้าเสา 1.00 ม. ที่ปลายรองรับ"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø 15 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.15m."
+      },
+      "note": "รูปด้านยาว G5 (เหล็กบน 4-Ø15 งอขึ้น 1.00 / เหล็กล่าง 2-Ø15 / ป-Ø6@0.15)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm. + 2-Ø 12 mm.",
+          "note": "สองแถวล่าง (รูปด้านยาว: 2-Ø12 ตรง + 2-Ø12 ดัดคอม้าขึ้นที่หัวคาน)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "section_ref": "(1)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "section_cut_1_of_2"
+      ]
+    },
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm. + 1-Ø 12 mm.เสริมพิเศษ + 2-Ø 12 mm.",
+          "note": "ลำดับป้ายบนลงล่าง: สามป้ายแรกอยู่เหนือป้ายปลอก — นับเป็นเหล็กบน (2 ตรง + 1 เสริมพิเศษ + 2 ดัดคอม้าขึ้นมาบนที่หัวคาน ช่วงต่อเนื่อง 0.90 + 0.90)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "section_ref": "(2)",
+      "confidence_score": 0.74,
+      "confidence_flags": [
+        "section_cut_2_of_2",
+        "top_count_from_label_order"
+      ]
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø 15 mm."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "1-Ø15 mm.คม.L/5 + 2-Ø 15 mm.",
+          "note": "เส้นตรง + เหล็กคอม้า (คม. ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่าง (ตามแบบอย่างบ้าน 157/168)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm. + 2-Ø 12 mm.",
+          "note": "สองแถวล่าง (รูปด้านยาว: 2-Ø12 ตรง + 2-Ø12 ดัดคอม้าขึ้นที่หัวคาน)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "section_ref": "(1)",
+      "confidence_score": 0.86,
+      "confidence_flags": [
+        "section_cut_1_of_2"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 5,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm. + 1-Ø 12 mm.เสริมพิเศษ + 2-Ø 12 mm.",
+          "note": "ลำดับป้ายบนลงล่าง: สามป้ายแรกอยู่เหนือป้ายปลอก — นับเป็นเหล็กบน"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "section_ref": "(2)",
+      "confidence_score": 0.74,
+      "confidence_flags": [
+        "section_cut_2_of_2",
+        "top_count_from_label_order"
+      ]
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø 19 mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 mm.คม.L/5 + 2-Ø 19 mm.",
+          "note": "เส้นตรง + เหล็กคอม้า (คม. ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่าง (ตามแบบอย่างบ้าน 157/168)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "note": "รูปตัดเดียวกับ B6 (พิมพ์ 'B4,B6')",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø 19 mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 mm.คม.L/5 + 2-Ø 19 mm.",
+          "note": "เส้นตรง + เหล็กคอม้า (คม. ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่าง (ตามแบบอย่างบ้าน 157/168)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "note": "รูปตัดเดียวกับ B4 (พิมพ์ 'B4,B6')",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 500,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø 19 mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø19 mm.คม.L/5 + 2-Ø 19 mm.",
+          "note": "เส้นตรง + เหล็กคอม้า (คม. ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่าง (ตามแบบอย่างบ้าน 157/168)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø 19 mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø 19 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 600,
+      "main_bar": {
+        "top": {
+          "count": 6,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "6-Ø15 mm.งอเข้าเสา 1.20 ม.",
+          "note": "รูปด้านยาว: 2-Ø15 + 2-Ø15 + 2-Ø15 สามชั้นบน งอลงเข้าเสา 1.20 ม. (2+2+2 = 6 ตรงกับป้ายรูปตัด)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "printed_as": "2-Ø 15 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.15m."
+      },
+      "additional_bars": [
+        {
+          "count": 2,
+          "dia_mm": 15,
+          "type": "RB",
+          "position": "diagonal bar at the support end — starts inside the beam above the bottom bars and runs down 0.30 below the beam soffit over a 0.90 run into the column, hooked both ends",
+          "printed_as": "2-Ø 15 mm.",
+          "note": "รูปด้านยาว B8 — เหล็กทแยงไม่อยู่บนผิวบน/ล่าง"
+        }
+      ],
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B9",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 800,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø 25 mm.",
+          "note": "รูปด้านยาว: 3-Ø25 บนตลอด"
+        },
+        "bottom": {
+          "count": 9,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø 25 mm. + 6-Ø 25 mm.",
+          "note": "รูปด้านยาว: 6-Ø25 ล่างตลอด + 3-Ø25 (2-Ø25 + 1-Ø25) ดัดคอม้าขึ้นที่ 1.80 / 2.05 จากหน้าเสา; รวมเป็นเหล็กล่าง"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m.คู่",
+        "note": "ปลอกคู่"
+      },
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B10",
+      "element_type": "beam",
+      "width_mm": 70,
+      "height_mm": 800,
+      "main_bar": {
+        "top": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "6-Ø 9 mm.",
+          "note": "ครีบบาง 0.07 — 6 เส้นเรียงแถวเดียวตามความลึก: จุดเหล็กในรูปตัด บน 1 / กลาง 4 / ล่าง 1"
+        },
+        "middle": {
+          "count": 4,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "6-Ø 9 mm."
+        },
+        "bottom": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "6-Ø 9 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.15m.ลูกโซ่",
+        "note": "ปลอกลูกโซ่"
+      },
+      "note": "คานยื่น/ครีบ 1.00 ม. (รูปด้านยาวข้างรูปตัด: 6-Ø9 แนวนอนทั้ง 6 เส้นงอเข้าเสา ป-Ø6@0.15)",
+      "confidence_score": 0.62,
+      "confidence_flags": [
+        "single_bar_row_split_by_dot_position"
+      ]
+    },
+    {
+      "element_id": "B11",
+      "element_type": "beam",
+      "width_mm": 250,
+      "height_mm": 1000,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø 25 mm."
+        },
+        "bottom": {
+          "count": 7,
+          "dia_mm": 25,
+          "type": "RB",
+          "printed_as": "3-Ø25 mm.คม.L/5, L/4 + 4-Ø 25 mm.",
+          "note": "เส้นตรง + เหล็กคอม้า (คม. ดัดขึ้นที่ L/5) — รวมเป็นเหล็กล่าง (ตามแบบอย่างบ้าน 157/168)"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m.คู่",
+        "note": "ปลอกคู่"
+      },
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B12",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 800,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø 19 mm."
+        },
+        "middle": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm.",
+          "note": "เหล็กกลางความลึก (จุดเหล็กแถวกลางในรูปตัด)"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 19,
+          "type": "RB",
+          "printed_as": "2-Ø 19 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R1",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "RB",
+          "printed_as": "2-Ø 12 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.20m."
+      },
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "R2",
+      "element_type": "beam",
+      "width_mm": 80,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "3-Ø 9 mm.",
+          "note": "ครีบบาง 0.08 — 3 เส้นแถวเดียวตามความลึก: บน 1 / กลาง 1 / ล่าง 1 ตามจุดในรูปตัด"
+        },
+        "middle": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "3-Ø 9 mm."
+        },
+        "bottom": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "3-Ø 9 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.15m.ลูกโซ่",
+        "note": "ปลอกลูกโซ่"
+      },
+      "note": "R2 ไม่ปรากฏบนแปลนโครงหลังคา S-03 (มีแต่ R1) — บันทึกตามรูปตัดเท่านั้น",
+      "confidence_score": 0.58,
+      "confidence_flags": [
+        "single_bar_row_split_by_dot_position",
+        "mark_not_on_any_plan"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครีบนอน",
+      "element_type": "beam",
+      "width_mm": 60,
+      "height_mm": 300,
+      "main_bar": {
+        "top": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-Ø 9 mm."
+        },
+        "bottom": {
+          "count": 1,
+          "dia_mm": 9,
+          "type": "RB",
+          "printed_as": "2-Ø 9 mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.15m.ลูกโซ่",
+        "note": "ปลอกลูกโซ่"
+      },
+      "note": "ครีบ คสล. ไม่มีมาร์ค — 2-Ø9 จุดบน 1 ล่าง 1",
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "unmarked_member"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครีบตั้งตรงช่องบันได (รูปตัดแผ่น 0.45)",
+      "element_type": "wall",
+      "width_mm": 450,
+      "thickness_mm": 60,
+      "main_bar": {
+        "count": 2,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "2-Ø 9 mm.",
+        "note": "เหล็กที่ปลายแผ่นทั้งสองข้าง"
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.15m.ลูกโซ่",
+        "note": "ปลอกลูกโซ่"
+      },
+      "confidence_score": 0.7,
+      "confidence_flags": [
+        "unmarked_member"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ครีบตั้งตรงช่องบันได (รูปตัดมุม L)",
+      "element_type": "wall",
+      "width_mm": 450,
+      "width_mm_printed_as": "0.20 + 0.25",
+      "thickness_mm": 70,
+      "depth_mm": 250,
+      "main_bar": {
+        "count": 1,
+        "dia_mm": 9,
+        "type": "RB",
+        "printed_as": "1-Ø 9 mm."
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-Ø 6 mm.@0.15m."
+      },
+      "note": "รูปตัดรูปตัว L: แผ่นบนหนา 0.07 กว้าง 0.20 + 0.25, ขาตั้งลึก 0.25 กว้าง 0.25",
+      "confidence_score": 0.65,
+      "confidence_flags": [
+        "unmarked_member"
+      ]
+    }
+  ]
+}

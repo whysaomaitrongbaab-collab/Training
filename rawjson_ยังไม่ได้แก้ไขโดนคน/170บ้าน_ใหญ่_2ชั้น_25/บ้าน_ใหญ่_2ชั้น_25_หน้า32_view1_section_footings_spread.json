@@ -1,0 +1,123 @@
+{
+ "png": "32",
+ "doc_page": 32,
+ "discipline": "structural",
+ "sheet_code": "S-08",
+ "sheet_name": "ขยายฐานรากแบบแผ่ F1, F2, F3",
+ "pattern": "section",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_25/บ้าน_ใหญ่_2ชั้น_25_หน้า32.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_25_หน้า00_gridline.json",
+ "view_title": "ขยายฐานรากแบบแผ่",
+ "views": [
+  "view1: ขยายฐานรากแบบแผ่ F1 / F2 / F3 (แปลน + รูปตัด) (this split: section)",
+  "view2: NOTE ความลึก D / ระยะหุ้ม + หมายเหตุ การใช้ฐานรากแผ่ (กำลังแบกทาน 10 ตัน/ตร.ม.) + กล่อง SD 40 (split: notes)"
+ ],
+ "confidence_score": 0.82,
+ "confidence_flags": [],
+ "warnings": [
+  "Spread-footing alternative F1/F2/F3 (used where piles are not driven; S-03 plan). Each mat '11+11-DB16mm.#' etc. is a two-way mat: count = sum, printed text in count_printed_as (spec 6b).",
+  "Sloped footings: height_mm is the printed thickness at the column face, edge_thickness_mm the printed edge thickness. F2 is the odd one: drawn with a flat top at 0.25 yet dimensioned 0.40 to a point above it, so its height is lower-confidence.",
+  "Lean concrete 0.05 (1:2:4) and levelling sand 0.05 are kept in their own fields, not added to height_mm (spec 6b).",
+  "Every S-sheet carries the boxed note 'เหล็กเสริมข้ออ้อยทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40'."
+ ],
+ "elements": [
+  {
+   "element_id": "F1",
+   "element_type": "footing",
+   "footing_type": "spread",
+   "width_mm": 2500,
+   "width_mm_printed_as": "2.50 x 2.50",
+   "height_mm": 350,
+   "height_mm_printed_as": "0.35 (ที่หน้าเสา)",
+   "edge_thickness_mm": 250,
+   "edge_thickness_mm_printed_as": "0.25",
+   "main_bar": {
+    "count": 22,
+    "dia_mm": 16,
+    "type": "DB",
+    "count_printed_as": "11+11-DB16mm.#",
+    "note": "ตะแกรงสองทาง ปลายงอยาวประมาณ 0.40ม.",
+    "bend_m": 0.4
+   },
+   "lean_concrete": {
+    "thickness_m": 0.05,
+    "mix": "1:2:4",
+    "printed_as": "คอนกรีตรองพื้น 1:2:4"
+   },
+   "sand_bed_thickness_m": 0.05,
+   "depth_below_level_m": 1.5,
+   "depth_below_level_m_printed_as": "D- ความลึกของฐานรากประมาณ 1.50ม. หรือตามที่วิศวกรกำหนด (อ้างจาก '▽ ระดับดินเดิม')",
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "allowable_bearing_t_m2": 10,
+   "note": "ขอบ 0.25 ลาดขึ้น 0.10 ถึงหน้าเสา (พิมพ์ 0.25 / 0.10 / 0.35)",
+   "confidence_score": 0.86,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F2",
+   "element_type": "footing",
+   "footing_type": "spread",
+   "width_mm": 1800,
+   "width_mm_printed_as": "1.80 x 1.80",
+   "height_mm": 400,
+   "height_mm_printed_as": "0.40 (ที่หน้าเสา)",
+   "edge_thickness_mm": 250,
+   "edge_thickness_mm_printed_as": "0.25",
+   "main_bar": {
+    "count": 16,
+    "dia_mm": 16,
+    "type": "DB",
+    "count_printed_as": "8+8-DB16mm.#",
+    "note": "ตะแกรงสองทาง ปลายงอยาวประมาณ 0.30ม.",
+    "bend_m": 0.3
+   },
+   "lean_concrete": {
+    "thickness_m": 0.05,
+    "mix": "1:2:4",
+    "printed_as": "คอนกรีตรองพื้น 1:2:4"
+   },
+   "sand_bed_thickness_m": 0.05,
+   "depth_below_level_m": 1.5,
+   "depth_below_level_m_printed_as": "D- ความลึกของฐานรากประมาณ 1.50ม. หรือตามที่วิศวกรกำหนด (อ้างจาก '▽ ระดับดินเดิม')",
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "allowable_bearing_t_m2": 10,
+   "note": "รูปตัด F2 วาดหลังฐานเรียบที่ 0.25 แต่พิมพ์มิติ 0.40 สูงขึ้นไปถึงหน้าเสา (เส้นลาดไม่ได้วาด) — บันทึก 0.40 เป็นความหนาที่หน้าเสาตามที่พิมพ์",
+   "confidence_score": 0.7,
+   "confidence_flags": [
+    "f2_top_drawn_flat_but_dimensioned_0.40_and_0.25"
+   ]
+  },
+  {
+   "element_id": "F3",
+   "element_type": "footing",
+   "footing_type": "spread",
+   "width_mm": 2200,
+   "width_mm_printed_as": "2.20 x 2.20",
+   "height_mm": 300,
+   "height_mm_printed_as": "0.30 (ที่หน้าเสา)",
+   "edge_thickness_mm": 250,
+   "edge_thickness_mm_printed_as": "0.25",
+   "main_bar": {
+    "count": 18,
+    "dia_mm": 16,
+    "type": "DB",
+    "count_printed_as": "9+9-DB16mm.#",
+    "note": "ตะแกรงสองทาง ปลายงอยาวประมาณ 0.40ม.",
+    "bend_m": 0.4
+   },
+   "lean_concrete": {
+    "thickness_m": 0.05,
+    "mix": "1:2:4",
+    "printed_as": "คอนกรีตรองพื้น 1:2:4"
+   },
+   "sand_bed_thickness_m": 0.05,
+   "depth_below_level_m": 1.5,
+   "depth_below_level_m_printed_as": "D- ความลึกของฐานรากประมาณ 1.50ม. หรือตามที่วิศวกรกำหนด (อ้างจาก '▽ ระดับดินเดิม')",
+   "steel_grade": "SD40 (เหล็กข้ออ้อย)",
+   "allowable_bearing_t_m2": 10,
+   "note": "ขอบ 0.25 ลาดขึ้นถึง 0.30 ที่หน้าเสา (เส้นประ)",
+   "confidence_score": 0.86,
+   "confidence_flags": []
+  }
+ ]
+}

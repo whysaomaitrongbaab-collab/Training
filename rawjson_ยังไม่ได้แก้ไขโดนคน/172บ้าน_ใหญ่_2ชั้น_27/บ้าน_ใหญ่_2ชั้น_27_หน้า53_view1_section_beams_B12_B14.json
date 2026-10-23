@@ -1,0 +1,120 @@
+{
+ "png": "53",
+ "doc_page": 53,
+ "discipline": "structural",
+ "sheet_code": "S-19",
+ "sheet_name": "ขยายคาน B12, B13, B14",
+ "pattern": "section",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_27/บ้าน_ใหญ่_2ชั้น_27_หน้า53.png",
+ "view_title": "ขยายคาน B12 / B13 / B14 (=B10)",
+ "scale": "1:20",
+ "views": [
+  "view1: elevation B12 + sections 1-1 / 2-2, section B13, elevation B14=B10 + sections 1-1 / 2-2 (this split: section)"
+ ],
+ "confidence_score": 0.85,
+ "confidence_flags": [],
+ "warnings": [
+  "Conflict: the B14 elevation is tagged 'B14=B10', but its own section 2-2 prints 2+4 bottom bars at mid-span against B10's 4+4 (S-18). The member's own section was taken (spec 7: the detail wins; the 'equals' tag is the summary).",
+  "B13 prints a mid-depth 2-DB12 row -> main_bar.middle.",
+  "หมายเหตุมุมซ้ายล่างทุกแผ่นรายละเอียดคาน: 'เหล็กเสริมข้ออ้อย ทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40'"
+ ],
+ "elements": [
+  {
+   "element_id": "B12",
+   "element_type": "beam",
+   "width_mm": 250,
+   "height_mm": 600,
+   "main_bar": {
+    "top": {
+     "count": 5,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "3-DB20mm. + 2-DB20mm. (รูปตัด 2-2)",
+     "note": "ปลายคาน 2-2: 3+2 = 5 เส้น (เสริมยาว 1.80 จากแนวเสาแต่ละข้าง); กลางช่วง 1-1: 2-DB20"
+    },
+    "bottom": {
+     "count": 4,
+     "dia_mm": 20,
+     "type": "DB"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 100,
+    "printed_as": "ป-ø6mm.@ 0.10m. (ช่วงปลาย 1.80) / ป-ø6mm.@ 0.15m. (กลางช่วง)",
+    "variable_spacing": true
+   },
+   "span_length_m": 8.0,
+   "note": "รูปด้าน B12 ยาว 8.00 (A ถึง C บนกริดปลาย 1/21 ชั้น 2)",
+   "confidence_score": 0.86,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B13",
+   "element_type": "beam",
+   "width_mm": 150,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB"
+    },
+    "middle": {
+     "count": 2,
+     "dia_mm": 12,
+     "type": "DB"
+    },
+    "bottom": {
+     "count": 2,
+     "dia_mm": 16,
+     "type": "DB"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "confidence_score": 0.86,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "B14",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 700,
+   "main_bar": {
+    "top": {
+     "count": 6,
+     "dia_mm": 25,
+     "type": "DB",
+     "printed_as": "4-DB25mm. + 2-DB25mm. (รูปตัด 1-1)",
+     "note": "ปลายคาน 1-1: 4+2 = 6 เส้น (2 เส้นเสริมยาว 2.60); กลางช่วง 2-2: 4-DB25"
+    },
+    "bottom": {
+     "count": 6,
+     "dia_mm": 25,
+     "type": "DB",
+     "printed_as": "2-DB25mm.กลางช่วง 5.00ม. + 4-DB25mm. (รูปตัด 2-2)",
+     "note": "กลางช่วง 2-2: 4+2 = 6 เส้น (2 เส้นเสริมกลางช่วง 5.00 ม.); ปลายคาน 1-1: 4-DB25"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 9,
+    "type": "RB",
+    "spacing_mm": 50,
+    "printed_as": "ป-ø9mm.@ 0.05m. (ช่วงปลาย 2.60) / ป-ø9mm.@ 0.10m. (กลางช่วง)",
+    "variable_spacing": true
+   },
+   "span_length_m": 10.5,
+   "note": "รูปด้านพิมพ์ป้าย 'B14=B10' แต่รูปตัด B14 2-2 เขียนเหล็กล่างกลางช่วง 2-DB25 + 4-DB25 (6 เส้น) ขณะที่ B10 แผ่น S-18 เขียน 4-DB25 + 4-DB25 (8 เส้น) — ใช้ค่ารูปตัดของ B14 เอง",
+   "confidence_score": 0.78,
+   "confidence_flags": [
+    "label_B14_equals_B10_conflicts_with_section"
+   ]
+  }
+ ]
+}

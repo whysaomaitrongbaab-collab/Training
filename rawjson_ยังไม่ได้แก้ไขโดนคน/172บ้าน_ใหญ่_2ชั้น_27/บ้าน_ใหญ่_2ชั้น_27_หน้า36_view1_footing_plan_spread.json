@@ -1,0 +1,238 @@
+{
+ "png": "36",
+ "doc_page": 36,
+ "discipline": "structural",
+ "sheet_code": "S-02",
+ "sheet_name": "แปลนฐานรากแผ่และเสา, แปลนฐานรากตอกเข็มและเสา",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_27/บ้าน_ใหญ่_2ชั้น_27_หน้า36.png",
+ "grid_source": "บ้าน_ใหญ่_2ชั้น_27_หน้า00_gridline.json",
+ "floor_level": "F1",
+ "scale": "1:200",
+ "views": [
+  "view1: แปลนฐานรากแผ่และเสา 1:200 — spread footings F1/F2A/F2B/F3 + column marks C1-C5 (split: footing_plan, _view1_footing_plan_spread)",
+  "view2: แปลนฐานรากตอกเข็มและเสา 1:200 — pile caps F1/F2/F3 (split: footing_plan, _view2_footing_plan_pile)"
+ ],
+ "pattern": "footing_plan",
+ "view_title": "แปลนฐานรากแผ่และเสา",
+ "confidence_score": 0.9,
+ "confidence_flags": [],
+ "warnings": [
+  "No grid bubbles on S-02: ids 1-21 / A-E are the bubbles of the architectural plan A-09 (หน้า10); positions from S-02's own chains (x 20 x 4.00 = 80.00, y 1.50 / 2.50 / 5.50 / 2.50 / 4.00, A-C 8.00, A-D 10.50).",
+  "Every label is printed 'column-footing' (e.g. 'C1-F3'); the footing mark is the part after the dash.",
+  "The same marks F1 and F3 are used by both systems for different members (spread footing vs pile cap) — S-08/S-09 detail the spread F1/F2A/F2B/F3, S-07 the pile caps F1/F2/F3.",
+  "Two alternative foundation systems are drawn on one sheet; this file is the spread-footing plan (top drawing). Which system applies on site is not stated on S-02 — the spread details (S-08/S-09) print 'BEARING=10 Ton/Sq.m.', i.e. spread footings are for soil of at least that bearing capacity.",
+  "Column marks C1-C5 are recorded once, here, as column point elements (the pile plan prints the identical column marks at the identical positions; repeating them in view2 would double-count every column)."
+ ],
+ "elements": [
+  {
+   "element_id": "F2A",
+   "element_type": "footing",
+   "count": 20,
+   "grid_refs": [
+    "A1",
+    "A4",
+    "A5",
+    "A17",
+    "A18",
+    "A21",
+    "B4",
+    "B5",
+    "B17",
+    "B18",
+    "C1",
+    "C4",
+    "C5",
+    "C17",
+    "C18",
+    "C21",
+    "D4",
+    "D5",
+    "D17",
+    "D18"
+   ],
+   "footing_type": "spread",
+   "note": "ป้าย 'C2-F2A' ที่ A1/A21, 'C3-F2A' ที่ A4/A5/A17/A18/D4/D5/D17/D18, 'C4-F2A' ที่ B4/B5/B17/B18/C1/C4/C5/C17/C18/C21",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F3",
+   "element_type": "footing",
+   "count": 30,
+   "grid_refs": [
+    "A2",
+    "A3",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "A11",
+    "A12",
+    "A13",
+    "A14",
+    "A15",
+    "A16",
+    "A19",
+    "A20",
+    "D2",
+    "D3",
+    "D6",
+    "D7",
+    "D8",
+    "D9",
+    "D10",
+    "D11",
+    "D12",
+    "D13",
+    "D14",
+    "D15",
+    "D16",
+    "D19",
+    "D20"
+   ],
+   "footing_type": "spread",
+   "note": "ป้าย 'C1-F3' แถว A และ D ทุกกริดยกเว้นกริดบันได 4/5/17/18 และกริดปลาย 1/21 (ฐานรากแผ่ F3 คนละชิ้นกับฐานรากเข็ม F3 ในไฟล์ view2 แม้ใช้มาร์คเดียวกัน)",
+   "confidence_score": 0.9,
+   "confidence_flags": [
+    "same_mark_as_pile_system_F3"
+   ]
+  },
+  {
+   "element_id": "F2B",
+   "element_type": "footing",
+   "count": 2,
+   "grid_refs": [
+    "D1",
+    "D21"
+   ],
+   "footing_type": "spread",
+   "note": "ป้าย 'C3-F2B' ที่ D1 และ D21",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F1",
+   "element_type": "footing",
+   "count": 4,
+   "grid_refs": [
+    "E4",
+    "E5",
+    "E17",
+    "E18"
+   ],
+   "footing_type": "spread",
+   "note": "ป้าย 'C5-F1' แถว E ใต้ส่วนยื่นทางขึ้น (ฐานรากแผ่ F1 คนละชิ้นกับฐานรากเข็ม F1 ในไฟล์ view2)",
+   "confidence_score": 0.9,
+   "confidence_flags": [
+    "same_mark_as_pile_system_F1"
+   ]
+  },
+  {
+   "element_id": "C2",
+   "element_type": "column",
+   "count": 2,
+   "grid_refs": [
+    "A1",
+    "A21"
+   ],
+   "note": "เสามุมที่ป้าย 'C2-F2A'",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "C1",
+   "element_type": "column",
+   "count": 30,
+   "grid_refs": [
+    "A2",
+    "A3",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "A11",
+    "A12",
+    "A13",
+    "A14",
+    "A15",
+    "A16",
+    "A19",
+    "A20",
+    "D2",
+    "D3",
+    "D6",
+    "D7",
+    "D8",
+    "D9",
+    "D10",
+    "D11",
+    "D12",
+    "D13",
+    "D14",
+    "D15",
+    "D16",
+    "D19",
+    "D20"
+   ],
+   "note": "เสาที่ป้าย 'C1-F3'",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "C3",
+   "element_type": "column",
+   "count": 10,
+   "grid_refs": [
+    "A4",
+    "A5",
+    "A17",
+    "A18",
+    "D1",
+    "D4",
+    "D5",
+    "D17",
+    "D18",
+    "D21"
+   ],
+   "note": "เสาที่ป้าย 'C3-F2A' / 'C3-F2B'",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "C4",
+   "element_type": "column",
+   "count": 10,
+   "grid_refs": [
+    "B4",
+    "B5",
+    "B17",
+    "B18",
+    "C1",
+    "C4",
+    "C5",
+    "C17",
+    "C18",
+    "C21"
+   ],
+   "note": "เสาที่ป้าย 'C4-F2A' (แถว B/C ช่องบันได + C1/C21)",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "C5",
+   "element_type": "column",
+   "count": 4,
+   "grid_refs": [
+    "E4",
+    "E5",
+    "E17",
+    "E18"
+   ],
+   "note": "เสาตอม่อส่วนยื่นทางขึ้น ป้าย 'C5-F1'",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  }
+ ]
+}

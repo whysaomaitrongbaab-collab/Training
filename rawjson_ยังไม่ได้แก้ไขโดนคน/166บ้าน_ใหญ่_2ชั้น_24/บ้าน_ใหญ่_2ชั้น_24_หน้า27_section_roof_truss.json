@@ -16,7 +16,8 @@
   "warnings": [
     "Steel pipe trusses: section sizes from the sheet's own table 'ขนาดของเหล็กกลมตามมาตรฐาน' (ø-2 1/2\" = 76.1 x 3.2 mm, ø-2\" = 60.3 x 2.9 mm). Table notes: tolerance per standard or the designer's approval; all joints fully welded.",
     "Not recorded (shutdown deadline): the column-head details (ขยายหัวเสา - dowel bar 4-DB16mm ฝังในเสา ค.ส.ล. 0.25 ซม., 6/9 mm plates, 4-ø12mm expansion bolt), the roofing notes (กระเบื้องลอนคู่ 5 มม., แผ่นอลูมิเนียมฟอยล์), and the per-panel dimensions of T1/T2. The sheet subtitle line of the title block was not read; sheet code S-15 from the title block.",
-    "T4 is detailed on S-16 (page 28) and T3/T5/T6 on S-17 (page 29) - separate files."
+    "T4 is detailed on S-16 (page 28) and T3/T5/T6 on S-17 (page 29) - separate files.",
+    "2026-10-22/23 resume: ADDED the column-head detail 'ขยายหัวเสา' (two views, side + front) as one connection_detail entry (element_id null - no mark printed): base plate 9 mm on the RC column top, 6 mm gusset plates, chord ø-2 1/2\", 'DOWEL BAR 4-DB16mm ฝังในเสา ค.ส.ล. 0.25 ซม.' (printed 'ซม.' kept verbatim - 0.25 cm is not a usable embedment, probably 0.25 m; not converted), 0.12 seat height, '4-ø12mm-EXPANSION BOLT' (callout on the T1 elevation at the R7 post), purlin C-100x50x20x3.2mm. Also ADDED dimensions_printed to T1 (2.20 | 10.50 | 2.20, panels 1.25, rise 3.26, eave posts 0.75 / 1.12 / 1.00 / 0.40 / 0.12) and the roofing/eave callouts as printed_text. Existing values untouched."
   ],
   "elements": [
     {
@@ -35,7 +36,28 @@
       "rise_printed_as": "3.26",
       "note": "ขยายโครงหลังคา T1 1:25 — โครงถักท่อเหล็กกลม คอร์ดบน/ล่าง ø-2 1/2\", ค้ำ ø-2\", แผ่นเหล็กหนา 6 มม. ที่จุดต่อ; วางบนคาน R7 (ระยะ 1.25 ช่วงแผงล่าง)",
       "confidence_score": 0.82,
-      "confidence_flags": []
+      "confidence_flags": [],
+      "dimensions_printed": [
+        "2.20 | 10.50 | 2.20 (ปลายชายคา / แนวเสา R7 - R7 / ปลายชายคา)",
+        "1.25 (จากหัวเสาถึงจุดต่อแรก) + 1.25 x 3 (ระยะช่องโครงถัก)",
+        "3.26 (ความสูงกลางโครงถัก)",
+        "0.75 / 1.12 / 1.00 (ความสูงช่วงชายคา)",
+        "0.40 (ความลึกคาน R7)",
+        "0.12 (ความสูงฐานหัวเสา)"
+      ],
+      "printed_text": [
+        "ครอบสันหลังคาจั่วครอบโค้งกระเบื้องลอนคู่สีเดียวกัน",
+        "มุงด้วยกระเบื้องลอนคู่สี หนา 5 มม. มอก.",
+        "แผ่นอลูมิเนียมฟอยล์ 2 หน้า วางพาดหลังแป",
+        "แปเหล็ก C-100x50x20x3.2mm@1.00m",
+        "GUSSET PLATE 4 mm.",
+        "แผ่นเหล็กหนา 6 มม.",
+        "C-100x50x20x3.2mm (เชิงชาย)",
+        "C-75x45x15x2.3mm.",
+        "ไม้ทับเชิงชายไม้ฝาสำเร็จรูป 6\" หนา 8มม.",
+        "ไม้เชิงชายไฟเบอร์ซีเมนต์บอร์ด 6\" หนา 17 มม.",
+        "ดูขยายหัวเสา 4-ø12mm-EXPANSION BOLT"
+      ]
     },
     {
       "element_id": "T2",
@@ -97,6 +119,45 @@
       "note": "พิมพ์ที่ปลายชายคาทั้งสองข้างของรูป T1 คู่กับ C-100x50x20x3.2mm",
       "confidence_score": 0.75,
       "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ขยายหัวเสา",
+      "element_type": "connection_detail",
+      "applies_to": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "base_plate": {
+        "thickness_mm": 9,
+        "printed_as": "แผ่นเหล็กหนา 9 มม."
+      },
+      "gusset_plates": {
+        "thickness_mm": 6,
+        "printed_as": "แผ่นเหล็กหนา 6 มม. (หลายแผ่น)"
+      },
+      "chord_printed_as": "ø-2 1/2\"",
+      "dowel_bar": {
+        "count": 4,
+        "dia_mm": 16,
+        "type": "DB",
+        "printed_as": "DOWEL BAR 4-DB16mm ฝังในเสา ค.ส.ล. 0.25 ซม.",
+        "embedment_printed_as": "0.25 ซม."
+      },
+      "anchor_bolt": {
+        "count": 4,
+        "dia_mm": 12,
+        "printed_as": "4-ø12mm-EXPANSION BOLT"
+      },
+      "seat_height_mm": 120,
+      "seat_height_mm_printed_as": "0.12",
+      "purlin_printed_as": "แปเหล็ก C-100x50x20x3.2mm",
+      "note": "ขยายหัวเสา 2 รูป (ด้านข้าง / ด้านหน้า) — ฐานโครงถักเหล็กกลมบนหัวเสา ค.ส.ล. (คาน R7)",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "dowel_embedment_unit_printed_cm"
+      ]
     }
   ]
 }

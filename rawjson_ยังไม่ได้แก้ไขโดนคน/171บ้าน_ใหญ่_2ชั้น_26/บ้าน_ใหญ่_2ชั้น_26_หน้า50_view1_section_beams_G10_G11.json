@@ -1,0 +1,128 @@
+{
+ "png": "50",
+ "doc_page": 50,
+ "discipline": "structural",
+ "sheet_code": "S-16",
+ "sheet_name": "แบบขยายคาน ค.ส.ล.",
+ "pattern": "section",
+ "source_image": "image/บ้าน_ใหญ่_2ชั้น_26/บ้าน_ใหญ่_2ชั้น_26_หน้า50.png",
+ "view_title": "ขยายคาน G10/1, G10, G11",
+ "scale": null,
+ "views": [
+  "view1: รูปด้าน G10/1-G10 (2.50 + 8.00) + SECTION 1-1..4-4; รูปด้าน G11 (10.50) + SECTION 1-1, 2-2 (this split: section)"
+ ],
+ "confidence_score": 0.85,
+ "confidence_flags": [],
+ "warnings": [
+  "Every S-sheet prints the box \"เหล็กเสริมข้ออ้อย ทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40\" — so every DB bar on this sheet is SD40 (steel_grade). The RB/ø grade is not printed on this sheet.",
+  "Section sizes are read as printed: the horizontal dimension above the section = width_mm, the vertical one = height_mm. Where a beam has more than one cut (SECTION 1-1 / 2-2 ...), main_bar.top/bottom carry the governing (largest) count of the cuts and the other cut is written in that face's note (same convention as house 165).",
+  "No scale is printed on this sheet; the scan has no text layer, every value was read off zoomed crops."
+ ],
+ "elements": [
+  {
+   "element_id": "G10/1",
+   "element_type": "beam",
+   "width_mm": 250,
+   "height_mm": 700,
+   "width_mm_printed_as": "0.25 x 0.70",
+   "main_bar": {
+    "top": {
+     "count": 3,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "3-DB20mm."
+    },
+    "bottom": {
+     "count": 3,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "3-DB20mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 150,
+    "printed_as": "ป-ø6mm.@ 0.15m."
+   },
+   "steel_grade": "SD40",
+   "span_length_m": 2.5,
+   "note": "SECTION 1-1; รูปด้านยาว 2.50 ต่อกับ G10",
+   "confidence_score": 0.88,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "G10",
+   "element_type": "beam",
+   "width_mm": 250,
+   "height_mm": 700,
+   "width_mm_printed_as": "0.25 x 0.70",
+   "main_bar": {
+    "top": {
+     "count": 5,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "3-DB20mm. + 2-DB20mm.",
+     "count_printed_as": "3+2",
+     "note": "SECTION 4-4 (หัวเสาขวา เสริม 2-DB20mm ยาว 2.20); SECTION 2-2/3-3 บน 3-DB20mm."
+    },
+    "bottom": {
+     "count": 5,
+     "dia_mm": 20,
+     "type": "DB",
+     "printed_as": "2-DB20mm.กลางช่วง 5.00ม. + 3-DB20mm.",
+     "count_printed_as": "2+3",
+     "note": "SECTION 3-3 (กลางช่วง); SECTION 2-2/4-4 ล่าง 3-DB20mm."
+    }
+   },
+   "stirrup": {
+    "dia_mm": 6,
+    "type": "RB",
+    "spacing_mm": 100,
+    "printed_as": "ป-ø6mm.@ 0.10m."
+   },
+   "steel_grade": "SD40",
+   "span_length_m": 8.0,
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "multiple_sections_governing_counts_recorded"
+   ]
+  },
+  {
+   "element_id": "G11",
+   "element_type": "beam",
+   "width_mm": 300,
+   "height_mm": 700,
+   "width_mm_printed_as": "0.30 x 0.70",
+   "main_bar": {
+    "top": {
+     "count": 4,
+     "dia_mm": 25,
+     "type": "DB",
+     "printed_as": "4-DB25mm.",
+     "note": "SECTION 1-1 ช่วงปลาย 2.60 จากหน้าเสา; SECTION 2-2 กลางช่วง 2-DB25mm."
+    },
+    "bottom": {
+     "count": 4,
+     "dia_mm": 25,
+     "type": "DB",
+     "printed_as": "4-DB25mm.",
+     "note": "ทั้งสองรูปตัด"
+    }
+   },
+   "stirrup": {
+    "dia_mm": 9,
+    "type": "RB",
+    "spacing_mm": 100,
+    "printed_as": "ป-ø9mm.@ 0.10m. (ปลาย) / ป-ø9mm.@ 0.20m. (กลาง)",
+    "variable_spacing": true
+   },
+   "steel_grade": "SD40",
+   "span_length_m": 10.5,
+   "confidence_score": 0.88,
+   "confidence_flags": [
+    "two_sections_governing_counts_recorded"
+   ]
+  }
+ ]
+}

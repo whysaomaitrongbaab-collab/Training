@@ -1,0 +1,285 @@
+{
+  "png": "23",
+  "doc_page": 23,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "แบบขยายคาน ค.ส.ล.",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_18/บ้าน_ใหญ่_2ชั้น_18_หน้า23.png",
+  "view_title": "B1-B8",
+  "scale": "1:20",
+  "views": [
+    "view1: elevations + SECTIONs of B1, B2, B7/B8 and sections B3-B6 (this split: section)",
+    "view2: DETAIL การต่อเหล็กคาน-เสาแบบเชื่อมชน, DETAIL การต่อเหล็กแบบเชื่อมสำหรับคาน B9, COVERRING notes (split: notes)"
+  ],
+  "confidence_score": 0.84,
+  "confidence_flags": [
+    "scanned_set"
+  ],
+  "warnings": [
+    "Sheet S-08 'แบบขยายคาน ค.ส.ล.' (scale 1:20 printed on every section). Each beam with two cuts (SECTION 1-1 midspan / 2-2 at the support) carries the governing (larger) count per face in main_bar, the other cut's figure in that face's note (same convention as houses 165/171).",
+    "The sheet's own note 'เหล็กเสริมข้ออ้อย ขนาดเส้นผ่า ศ.ก ตั้งแต่ 16มม. ขึ้นไป ให้ใช้เหล็กชั้นคุณภาพ SD 40' covers every DB bar here (all are DB16-DB25) -> steel_grade SD40. Stirrups are ø (RB); their grade is not printed.",
+    "Stirrup spacing: where the elevation shows 1.25 m end zones at 0.15 and the middle at 0.20 (B1), spacing_mm carries the support-zone value printed on SECTION 2-2 and the note gives the other."
+  ],
+  "elements": [
+    {
+      "element_id": "B1",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm. + 2-DB16mm.หัวเสา2.50m.",
+          "note": "SECTION 2-2 (at the support): 2 continuous + 2 extra over the column, 2.50 m long; SECTION 1-1 prints 2-DB16mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm. + 2-DB16mm.กลางช่วง2.50m.",
+          "note": "SECTION 1-1 (midspan): 2 continuous + 2 extra at midspan, 2.50 m long; SECTION 2-2 prints 2-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m.",
+        "note": "SECTION 2-2 / 1.25 m end zones; SECTION 1-1 (midspan) prints ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "note": "continuous over 4.00 m bays (elevation B1 1:20)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B2",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm. + 2-DB16mm.หัวเสา2.50m.",
+          "note": "SECTION 2-2 prints 2 + 2 extra over the column; the B2 elevation prints '2-DB16mm.+1-DB16mm. หัวเสา2.50m.' (2 + 1) at both supports — conflict, section taken; SECTION 1-1 prints 2-DB16mm."
+        },
+        "bottom": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm. + 1-DB16mm.กลางช่วง2.50m.",
+          "note": "SECTION 1-1 (midspan) — the elevation agrees (2-DB16mm.+1-DB16mm. กลางช่วง2.50m.); SECTION 2-2 prints 2-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m.",
+        "note": "both sections and the elevation print 0.20"
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.78,
+      "confidence_flags": [
+        "section_vs_elevation_conflict"
+      ]
+    },
+    {
+      "element_id": "B3",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B4",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm. + 2-DB16mmกลางช่วง2.50m.",
+          "note": "2 continuous + 2 extra at midspan, 2.50 m long"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B5",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "size_printed_as": "0.20 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "2-DB20mm."
+        },
+        "bottom": {
+          "count": 5,
+          "dia_mm": 20,
+          "type": "DB",
+          "printed_as": "3-DB20mm. + 2-DB20mmกลางช่วง2.50m.",
+          "note": "3 continuous in the bottom row + 2 extra at midspan (2.50 m) drawn as a second row"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B6",
+      "element_type": "beam",
+      "width_mm": 350,
+      "height_mm": 400,
+      "size_printed_as": "0.35 x 0.40",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "2-DB16mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 16,
+          "type": "DB",
+          "printed_as": "4-DB16mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "B7",
+      "element_type": "beam",
+      "width_mm": 350,
+      "height_mm": 500,
+      "size_printed_as": "0.35 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 4,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "2-DB25mm. + 2-DB20mm.",
+          "note": "SECTION 2-2 (at the B7/B8 support): 2-DB25mm. + 2-DB20mm. — the extra pair is DB20 (elevation: 2-DB25mm.+2-DB20mm.หัวเสา2.50m.); dia_mm is the continuous DB25; SECTION 1-1 prints 2-DB25mm."
+        },
+        "bottom": {
+          "count": 4,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "4-DB25mm.",
+          "note": "SECTION 1-1 (midspan); SECTION 2-2 prints 2-DB25mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 150,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.15m.",
+        "note": "both sections print ø6 @0.15; the elevation labels the zones next to the supports 'ป-ø9mm.@ 0.15m.' — conflict, section taken"
+      },
+      "steel_grade": "SD40",
+      "note": "span 4.70 (elevation B7/B8, continuous into B8 3.30); DB25 bars 10 m long are butt-welded per the B9 weld detail on this sheet",
+      "confidence_score": 0.8,
+      "confidence_flags": [
+        "mixed_bar_diameters_in_one_face",
+        "section_vs_elevation_conflict"
+      ]
+    },
+    {
+      "element_id": "B8",
+      "element_type": "beam",
+      "width_mm": 350,
+      "height_mm": 500,
+      "size_printed_as": "0.35 x 0.50",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "2-DB25mm."
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 25,
+          "type": "DB",
+          "printed_as": "2-DB25mm."
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "spacing_mm": 200,
+        "type": "RB",
+        "printed_as": "ป-ø6mm.@ 0.20m."
+      },
+      "steel_grade": "SD40",
+      "note": "SECTION 3-3; span 3.30 (elevation B7/B8)",
+      "confidence_score": 0.86,
+      "confidence_flags": []
+    }
+  ]
+}

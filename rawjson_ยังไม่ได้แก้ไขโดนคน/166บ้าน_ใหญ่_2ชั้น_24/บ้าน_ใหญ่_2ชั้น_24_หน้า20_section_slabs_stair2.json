@@ -1,0 +1,364 @@
+{
+  "png": "20",
+  "doc_page": 20,
+  "discipline": "structural",
+  "sheet_code": "S-08",
+  "sheet_name": "แบบแสดง แบบขยายพื้น ค.ส.ล. (แบบอาคารสำนักงานเขตพื้นที่การศึกษา แบบที่ 4)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_24/บ้าน_ใหญ่_2ชั้น_24_หน้า20.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_24_หน้า00_gridline.json",
+  "view_title": "ขยายพื้น S1 / S2 / S3 / S4 / RS1 (2 รูป) / S0 ขยายพื้นทางเท้า + ขยายพื้น บันได 2 + ขยายคานรับ บันได 2 (หน้าตัด G0, G1)",
+  "scale": "1:20",
+  "views": [
+    "view1: ขยายพื้น S1 1:20 (this file)",
+    "view2: ขยายพื้น S2 1:20 (this file)",
+    "view3: ขยายพื้น S3 1:20 (this file)",
+    "view4: ขยายพื้น S4 1:20 (this file)",
+    "view5: ขยายพื้น RS1 1:20 + ขยายพื้น RS1 ช่วง 4.00 ม. ต่อเนื่อง (this file)",
+    "view6: S0 1:20 ขยายพื้นทางเท้า (this file)",
+    "view7: ขยายพื้น บันได 2 + ขยายคานรับ บันได 2 + หน้าตัดคาน G0, G1 (this file)"
+  ],
+  "confidence_score": 0.88,
+  "confidence_flags": [
+    "handwritten_label_on_top_bars"
+  ],
+  "warnings": [
+    "Cast-in-place slab details, one entry per mark; each bar row is a bar_layers[] entry with its printed text ('ตรง สลับคอม้า' = straight bars alternating with bent-up bars). On S1/S2/S3 the two top-bar callouts end in a HANDWRITTEN 'เสริมพิเศษ' (extra top bars at the supports); read as such, both rows kept. Top bars extend 0.80 = 0.2L from each support (printed '0.80 / 0.2L').",
+    "Slab thicknesses read from the rotated vertical ticks: S1 0.14, S2 0.12, S3 0.12, S4 0.15, RS1 0.08, S0 0.08.",
+    "S4 is the only slab detailed in deformed bars (DB12); the sheet box says 'เหล็กเสริมข้ออ้อย ทั้งหมด ให้ใช้ชั้นคุณภาพ SD 40' (third S-sheet with the same 'ทั้งหมด' wording: S-05, S-07, S-08) - so S4's DB12 is SD40 by this sheet, while the architect's A-02 note covers only >=16 mm (see หน้า03_notes.json). Both S4 top rows are printed 'เสริมพิเศษทางยาว' (the second one probably meant ทางสั้น) - kept as printed.",
+    "S2 has no slab mark on the second-floor plan S-03 and S3 none on S-02 (S-02 marks S0/S1/S2/S4/HC, S-03 marks RS1/S3/HC); each mark is recorded here as detailed, the plan files say where they sit.",
+    "G0 and G1 sections (stair-2 support beams, ground floor) are printed only here (S-10 has none), so they are recorded as full beam specs: G0 0.15x0.40 2-DB16 / 2-DB16 ST-ø6mm@0.15m., G1 0.20x0.40 3-DB16 / 2-DB16 ST-ø6mm@0.15m. They join the G0/G1 segments of the S-02 beam plan. 'ST-ø6mm' = stirrup, ø = RB (spec section 6).",
+    "Stair 2 (บันได 2, the outside entrance stairs at the stair boxes on S-02): 5 treads 0.30 and 5 risers 0.15 (= 0.75 total rise, counted on the rotated tick row), waist 0.10 m, two bar rows ø9mm@0.15m., spanning from G0 to the floor beam, 1.60 printed from G0's outer face to the column line. No mark beyond 'บันได 2', so element_id 'บันได 2' as printed (precedent house 170 'บันได 1').",
+    "Grid sweep: every number on this sheet is a member-internal size (thickness, bar extent 0.80/0.60, tread/riser, beam 0.15/0.20 x 0.40, stair 1.60) - member-detail sheet, nothing goes to x/y lines (section 4 rule 4 exception)."
+  ],
+  "elements": [
+    {
+      "element_id": "S1",
+      "element_type": "slab",
+      "slab_type": "cast_in_place",
+      "thickness_mm": 140,
+      "thickness_mm_printed_as": "0.14",
+      "bar_layers": [
+        {
+          "location": "ล่าง ตรง สลับคอม้า",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "ø9mm. @ 0.15m. ตรง สลับคอม้า"
+        },
+        {
+          "location": "ล่าง ตรง สลับคอม้า (แถวที่ 2)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "ø9mm. @ 0.15m. ตรง สลับคอม้า"
+        },
+        {
+          "location": "บน เสริมพิเศษ",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 300,
+          "printed_as": "ø9mm. @ 0.30m. เสริมพิเศษ (เขียนมือ)",
+          "extent_m": 0.8
+        },
+        {
+          "location": "บน เสริมพิเศษ (แถวที่ 2)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 300,
+          "printed_as": "ø9mm. @ 0.30m. เสริมพิเศษ (เขียนมือ)",
+          "extent_m": 0.8
+        }
+      ],
+      "span_printed_as": "L=4.00M.x4.00M.",
+      "note": "เหล็กบนยาว 0.80 = 0.2L จากขอบทั้งสองข้าง",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S2",
+      "element_type": "slab",
+      "slab_type": "cast_in_place",
+      "thickness_mm": 120,
+      "thickness_mm_printed_as": "0.12",
+      "bar_layers": [
+        {
+          "location": "ล่าง ตรง สลับคอม้า",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "printed_as": "ø9mm. @ 0.20m. ตรง สลับคอม้า"
+        },
+        {
+          "location": "ล่าง ตรง สลับคอม้า (แถวที่ 2)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "printed_as": "ø9mm. @ 0.20m. ตรง สลับคอม้า"
+        },
+        {
+          "location": "บน เสริมพิเศษ",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 400,
+          "printed_as": "ø9mm. @ 0.40m. เสริมพิเศษ (เขียนมือ)",
+          "extent_m": 0.8
+        },
+        {
+          "location": "บน เสริมพิเศษ (แถวที่ 2)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 400,
+          "printed_as": "ø9mm. @ 0.40m. เสริมพิเศษ (เขียนมือ)",
+          "extent_m": 0.8
+        }
+      ],
+      "span_printed_as": "L=4.00M.x4.00M.",
+      "note": "เหล็กบนยาว 0.80 = 0.2L",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S3",
+      "element_type": "slab",
+      "slab_type": "cast_in_place",
+      "thickness_mm": 120,
+      "thickness_mm_printed_as": "0.12",
+      "bar_layers": [
+        {
+          "location": "ล่าง ตรง สลับคอม้า",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "ø9mm. @ 0.15m. ตรง สลับคอม้า"
+        },
+        {
+          "location": "ล่าง ตรง สลับคอม้า (แถวที่ 2)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "ø9mm. @ 0.15m. ตรง สลับคอม้า"
+        },
+        {
+          "location": "บน เสริมพิเศษ",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 300,
+          "printed_as": "ø9mm. @ 0.30m. เสริมพิเศษ (เขียนมือ)",
+          "extent_m": 0.8
+        },
+        {
+          "location": "บน เสริมพิเศษ (แถวที่ 2)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 300,
+          "printed_as": "ø9mm. @ 0.30m. เสริมพิเศษ (เขียนมือ)",
+          "extent_m": 0.8
+        }
+      ],
+      "span_printed_as": "L=4.00M.x4.00M.",
+      "note": "เหล็กบนยาว 0.80 = 0.2L",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S4",
+      "element_type": "slab",
+      "slab_type": "cast_in_place",
+      "thickness_mm": 150,
+      "thickness_mm_printed_as": "0.15",
+      "bar_layers": [
+        {
+          "location": "ล่าง ตรง สลับคอม้า (ทางยาว)",
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 200,
+          "printed_as": "DB12mm. @ 0.20m. ตรง สลับคอม้า (ทางยาว)"
+        },
+        {
+          "location": "ล่าง ตรง สลับคอม้า (ทางสั้น)",
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 150,
+          "printed_as": "DB12mm. @ 0.15m. ตรง สลับคอม้า (ทางสั้น)"
+        },
+        {
+          "location": "บน เสริมพิเศษทางยาว",
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 400,
+          "printed_as": "DB12mm. @ 0.40m. เสริมพิเศษทางยาว",
+          "extent_m": 0.8
+        },
+        {
+          "location": "บน เสริมพิเศษทางยาว (แถวที่ 2)",
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 300,
+          "printed_as": "DB12mm. @ 0.30m. เสริมพิเศษทางยาว",
+          "extent_m": 0.8
+        }
+      ],
+      "steel_grade": "SD40",
+      "span_printed_as": "L=4.00M.x8.00M.",
+      "note": "เหล็กบนยาว 0.80 = 0.2L; ทั้งสองแถวบนพิมพ์ว่า 'ทางยาว'",
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "both_top_rows_printed_tangyao"
+      ]
+    },
+    {
+      "element_id": "RS1",
+      "element_type": "slab",
+      "slab_type": "cast_in_place_cantilever",
+      "thickness_mm": 80,
+      "thickness_mm_printed_as": "0.08",
+      "bar_layers": [
+        {
+          "location": "ตะแกรง ø9 @0.25",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250,
+          "printed_as": "ø9mm. @ 0.25m."
+        },
+        {
+          "location": "ตะแกรง ø9 @0.20",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 200,
+          "printed_as": "ø9mm. @ 0.20m."
+        },
+        {
+          "location": "บน ข้ามคาน R4 (ช่วง 4.00 ม. ต่อเนื่อง)",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 250,
+          "printed_as": "ø9mm. @ 0.25m. (0.60 + 0.60 ข้าม R4)",
+          "extent_m": 0.6
+        }
+      ],
+      "span_printed_as": "L=1.50M.x4.00M.",
+      "printed_text": [
+        "ท่อระบายน้ำ พีวีซี ø1 1/2\"",
+        "ทำร่องน้ำกว้าง 0.15ม.ตลอดแนว",
+        "ผิวขัดมันเอียงลาด",
+        "ขยายพื้น RS1 ช่วง 4.00 ม. ต่อเนื่อง (ข้ามคาน R4)"
+      ],
+      "note": "พื้นยื่น 1.50; รูปที่สองแสดงช่วงต่อเนื่อง 4.00 ม. เหนือคาน R4: เหล็กบน ø9mm.@0.25m. ยาว 0.60 + 0.60, ล่าง ø9mm.@0.20m. / ø9mm.@0.25m.",
+      "confidence_score": 0.85,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "S0",
+      "element_type": "slab",
+      "slab_type": "slab_on_ground",
+      "thickness_mm": 80,
+      "thickness_mm_printed_as": "0.08",
+      "mesh": {
+        "type": "wire_mesh",
+        "dia_mm": 4,
+        "spacing_mm": 200,
+        "printed_as": "wire mesh-ø4mm@0.20m."
+      },
+      "base_fill": "ทรายอัดแน่น",
+      "note": "S0 1:20 ขยายพื้นทางเท้า",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "บันได 2",
+      "element_type": "stair",
+      "waist_thickness_mm": 100,
+      "waist_thickness_mm_printed_as": "0.10m.",
+      "riser_mm": 150,
+      "tread_mm": 300,
+      "riser_count": 5,
+      "tread_count": 5,
+      "step_printed_as": "0.30 x5 (ลูกนอน) / 0.15 x5 (ลูกตั้ง)",
+      "bar_layers": [
+        {
+          "location": "เหล็กท้องบันได แถวที่ 1",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "ø9mm@0.15m."
+        },
+        {
+          "location": "เหล็กท้องบันได แถวที่ 2",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "ø9mm@0.15m."
+        }
+      ],
+      "supported_by": [
+        "G0",
+        "G1"
+      ],
+      "dimensions_printed": [
+        "1.60 (จากขอบนอก G0 ถึงแนวเสา)"
+      ],
+      "note": "บันไดทางขึ้นนอกอาคาร (กล่องบันได 2 ใน S-02) รูปที่สอง 'ขยายคานรับ บันได 2' แสดง G1 คานยื่นรับบันไดและ G0 ขอบนอก",
+      "confidence_score": 0.82,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G0",
+      "element_type": "beam",
+      "width_mm": 150,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ST-ø6mm@0.15m."
+      },
+      "main_bar_printed_as": "2-DB16mm / 2-DB16mm",
+      "steel_grade": "SD40",
+      "note": "หน้าตัด G0 ใต้รูปขยายบันได 2 (คานขอบนอกกล่องบันได 2)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "G1",
+      "element_type": "beam",
+      "width_mm": 200,
+      "height_mm": 400,
+      "main_bar": {
+        "top": {
+          "count": 3,
+          "dia_mm": 16,
+          "type": "DB"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 16,
+          "type": "DB"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 150,
+        "printed_as": "ST-ø6mm@0.15m."
+      },
+      "main_bar_printed_as": "3-DB16mm / 2-DB16mm",
+      "steel_grade": "SD40",
+      "note": "หน้าตัด G1 คานยื่นรับบันได 2 — เหล็กบน 3 เส้น (คานยื่น)",
+      "confidence_score": 0.88,
+      "confidence_flags": []
+    }
+  ]
+}

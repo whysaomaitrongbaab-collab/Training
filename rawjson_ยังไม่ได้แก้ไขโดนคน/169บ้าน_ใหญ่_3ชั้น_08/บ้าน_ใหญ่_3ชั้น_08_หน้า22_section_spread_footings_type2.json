@@ -1,0 +1,113 @@
+{
+  "png": "22",
+  "doc_page": 22,
+  "discipline": "structural",
+  "sheet_code": "S-06",
+  "sheet_name": "แบบขยายฐานรากแบบที่ 2 (ไม่มีเสาเข็ม) F1 F2 F3 (แบบ สปช. 2/28 ปรับปรุง แผ่นที่ S-06, 20/24)",
+  "source_image": "image/บ้าน_ใหญ่_3ชั้น_08/บ้าน_ใหญ่_3ชั้น_08_หน้า22.png",
+  "pattern": "section",
+  "view_title": "ฐานรากแบบที่ 2 — ฐานรากแผ่ F1, F2, F3 (แปลน + รูปตัด)",
+  "scale": null,
+  "views": [
+    "view1: F1 3.20 x 3.20 plan + section",
+    "view2: F2 2.40 x 2.40 plan + section",
+    "view3: F3 2.00 x 2.00 plan + section (all three in this file)"
+  ],
+  "confidence_score": 0.76,
+  "confidence_flags": [
+    "small_print_rebar_callouts"
+  ],
+  "warnings": [
+    "Printed under F1: 'หมายเหตุ ถ้าเลือกใช้ฐานรากชนิดแผ่ (ฐานรากแบบที่2) สภาพชั้นดินจะต้องรับน้ำหนักบรรทุกปลอดภัยได้ไม่น้อยกว่า 8,000 กก./ตร.ม.' — the alternative to the pile footings of ฐานรากแบบที่ 1 (S-05, หน้า21) for the same marks F1/F2/F3; the title block says 'แบบขยายฐานรากแบบที่2 (ไม่มีเสาเข็ม)'.",
+    "Sloped footings: height_mm = edge thickness + slope rise to the pedestal, as printed on each section's vertical chain (F1 0.25 + 0.25, F2 0.20 + 0.20, F3 0.15 + 0.16); the 0.05 lean concrete and 0.10 sand below are not part of height_mm (section 6b).",
+    "F3's chain reads '0.15' (slope rise) over '0.16' (edge): the lower glyph has a closed lower bowl (a 6) while the '0.15' printed directly above it in the same font has the open-left bowl of a 5. Taken as printed (height 0.31); the series pattern (F1 0.25 + 0.25, F2 0.20 + 0.20) makes 0.15 + 0.15 = 0.30 plausible, so it is flagged edge_thickness_reads_0.16_possibly_0.15 with lowered confidence.",
+    "Mat callouts are tiny on the scan: F1 'Ø 15 mm. @ 0.08 m.#', F2 'Ø 15 mm. @ 0.10 m.# ℄-℄', F3 'Ø 12 mm. @ 0.08 m.# ℄-℄'. F2's spacing digit could be taken for 0.30 at a glance; decided 0.10 by pixel comparison with the '1' of '15' in the same callout (same 3 px stem and 5-6 px serif foot; a '3' or '0' in this font is 7 px wide) — flagged spacing_digit_low_resolution. F3's '8' shows both bowls; F1's last digit is filled in by the blur (8 or 6), read 0.08 like F3 and flagged. '℄-℄' = spacing measured centre to centre. The bar dots drawn in the sections are at a uniform ~0.10 m for all three footings, so they are schematic and were not used to decide spacing.",
+    "Depth note printed vertically beside every section: F1 and F2 read 'ความลึกถึงชั้นดินแข็ง หรือประมาณ 1.60 ม.', F3 reads '... ประมาณ 1.50 ม.' (upright zoom; the F1/F2 digit has the closed bowl of a 6, F3's the flat top of a 5). Recorded per footing as printed.",
+    "The mat is printed '#' (two-way grid by spacing) with no bar count, so main_bar carries dia_mm + spacing_mm and no count (section 6b: a footing that prints a repeating spacing uses spacing_mm and omits count). The column bars are drawn bent onto the mat (starter bars), not separately labelled."
+  ],
+  "elements": [
+    {
+      "element_id": "F1",
+      "element_type": "footing",
+      "footing_type": "ฐานรากแบบที่ 2 (ฐานรากแผ่ ไม่มีเสาเข็ม)",
+      "width_mm": 3200,
+      "width_mm_printed_as": "3.20 x 3.20",
+      "height_mm": 500,
+      "height_mm_printed_as": "0.25 (ขอบ) + 0.25 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "dia_mm": 15,
+        "spacing_mm": 80,
+        "type": "RB",
+        "printed_as": "Ø 15 mm. @ 0.08 m.#",
+        "note": "ตะแกรง 2 ทาง (#)"
+      },
+      "lean_concrete": {
+        "thickness_mm": 50,
+        "printed_as": "คอนกรีตหยาบ 0.05"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "base_fill": "ทรายหยาบ 0.10",
+      "ground_reference": "ความลึกถึงชั้นดินแข็ง หรือประมาณ 1.60 ม. (ข้อความแนวตั้งข้างรูปตัด)",
+      "confidence_score": 0.74,
+      "confidence_flags": [
+        "spacing_last_digit_8_or_6_low_resolution",
+        "depth_note_digit_low_resolution"
+      ]
+    },
+    {
+      "element_id": "F2",
+      "element_type": "footing",
+      "footing_type": "ฐานรากแบบที่ 2 (ฐานรากแผ่ ไม่มีเสาเข็ม)",
+      "width_mm": 2400,
+      "width_mm_printed_as": "2.40 x 2.40",
+      "height_mm": 400,
+      "height_mm_printed_as": "0.20 (ขอบ) + 0.20 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "dia_mm": 15,
+        "spacing_mm": 100,
+        "type": "RB",
+        "printed_as": "Ø 15 mm. @ 0.10 m.# ℄-℄",
+        "note": "ตะแกรง 2 ทาง (#) ระยะศูนย์ถึงศูนย์"
+      },
+      "lean_concrete": {
+        "thickness_mm": 50,
+        "printed_as": "คอนกรีตหยาบ 0.05"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "base_fill": "ทรายหยาบ 0.10",
+      "ground_reference": "ความลึกถึงชั้นดินแข็ง หรือประมาณ 1.60 ม. (ข้อความแนวตั้งข้างรูปตัด)",
+      "confidence_score": 0.66,
+      "confidence_flags": [
+        "spacing_digit_low_resolution",
+        "depth_note_digit_low_resolution"
+      ]
+    },
+    {
+      "element_id": "F3",
+      "element_type": "footing",
+      "footing_type": "ฐานรากแบบที่ 2 (ฐานรากแผ่ ไม่มีเสาเข็ม)",
+      "width_mm": 2000,
+      "width_mm_printed_as": "2.00 x 2.00",
+      "height_mm": 310,
+      "height_mm_printed_as": "0.16 (ขอบ) + 0.15 (ลาดขึ้นถึงตอม่อ)",
+      "main_bar": {
+        "dia_mm": 12,
+        "spacing_mm": 80,
+        "type": "RB",
+        "printed_as": "Ø 12 mm. @ 0.08 m.# ℄-℄",
+        "note": "ตะแกรง 2 ทาง (#) ระยะศูนย์ถึงศูนย์"
+      },
+      "lean_concrete": {
+        "thickness_mm": 50,
+        "printed_as": "คอนกรีตหยาบ 0.05"
+      },
+      "sand_bed_thickness_m": 0.1,
+      "base_fill": "ทรายหยาบ 0.10",
+      "ground_reference": "ความลึกถึงชั้นดินแข็ง หรือประมาณ 1.50 ม. (ข้อความแนวตั้งข้างรูปตัด)",
+      "confidence_score": 0.66,
+      "confidence_flags": [
+        "edge_thickness_reads_0.16_possibly_0.15"
+      ]
+    }
+  ]
+}

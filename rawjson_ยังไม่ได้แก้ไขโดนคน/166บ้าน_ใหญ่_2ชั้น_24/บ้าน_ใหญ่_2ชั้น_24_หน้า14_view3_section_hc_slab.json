@@ -1,0 +1,116 @@
+{
+  "png": "14",
+  "doc_page": 14,
+  "discipline": "structural",
+  "sheet_code": "S-02",
+  "sheet_name": "แบบแสดง แปลนคานและพื้นชั้นล่าง (แบบอาคารสำนักงานเขตพื้นที่การศึกษา แบบที่ 4)",
+  "source_image": "image/บ้าน_ใหญ่_2ชั้น_24/บ้าน_ใหญ่_2ชั้น_24_หน้า14.png",
+  "pattern": "section",
+  "grid_source": "บ้าน_ใหญ่_2ชั้น_24_หน้า00_gridline.json",
+  "view_title": "รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC + รูปตัดพื้นสำเร็จรูปชนิดแผ่นกลวง + ขยายหูช้างลดระดับ + ขยายการวางพื้นสำเร็จรูประดับเดียวกับพื้นหล่อในที่",
+  "scale": null,
+  "views": [
+    "view1: แปลนคานและพื้นชั้นล่าง 1:125 — beam_plan (_view1_beam_plan.json)",
+    "view2: same drawing — slab marks (_view2_etc_plan_slab.json)",
+    "view3: รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC + รูปตัดพื้นสำเร็จรูปชนิดแผ่นกลวง (this file)",
+    "view4: ขยายหูช้างลดระดับ / ขยายการวางพื้นสำเร็จรูประดับเดียวกับพื้นหล่อในที่ (this file)"
+  ],
+  "confidence_score": 0.85,
+  "confidence_flags": [],
+  "warnings": [
+    "Added 2026-10-23 (op04 resume): views 3-4 of S-02 were left unextracted on 2026-10-19. The HC block is recorded as one precast_plank_detail entry with element_id 'HC' - the same mark the S-02/S-03 slab plans print on every hollow-core field, so it joins as their spec.",
+    "Plank thickness is printed '0.80-0.10 m.' twice (beside both plank sections) - read as a misprint of 0.08-0.10 (an 0.80 m plank is impossible next to the 0.60/1.20 widths and S-07's 'พื้นสำเร็จรูปหนา 0.10ม.'); thickness_mm_printed_as keeps the print, thickness_mm is left null rather than choosing 80 or 100.",
+    "The two ledge details carry no mark (G6 / B7-B8-B11 print the same ledge on S-10 / S-07), so they are connection_detail entries with element_id null.",
+    "Boxed note 'ห้ามนำพื้นชนิดแผ่นตันมาใช้ในการก่อสร้าง' (solid planks forbidden) kept in printed_text."
+  ],
+  "elements": [
+    {
+      "element_id": "HC",
+      "element_type": "precast_plank_detail",
+      "description": "พื้นสำเร็จรูปชนิดแผ่นกลวง (HOLLOW CORE)",
+      "plank_widths_mm": [
+        600,
+        1200
+      ],
+      "plank_widths_printed_as": "0.60 / 1.20",
+      "thickness_mm": null,
+      "thickness_mm_printed_as": "0.80-0.10 m.",
+      "topping_thickness_min_mm": 50,
+      "topping_thickness_printed_as": "คอนกรีตทับหน้า หนา 5 ซม.",
+      "topping_mesh": {
+        "type": "wire_mesh",
+        "dia_mm": 4,
+        "spacing_mm": 200,
+        "printed_as": "ตะแกรงเหล็กสำเร็จรูป ø4มม.@0.20ม."
+      },
+      "safe_load_kg_m2": 400,
+      "standard": "มอก.828-2546",
+      "printed_text": [
+        "รายการประกอบพื้นสำเร็จรูปชนิดแผ่นกลวง HC",
+        "คอนกรีตทับหน้า หนา 5 ซม. ตะแกรงเหล็กสำเร็จรูป ø4มม.@0.20ม.",
+        "มีรายการคำนวณประกอบการใช้งาน กำหนด น.น.บรรทุกปลอดภัย 400 กก/ตร.ม.",
+        "มีคุณสมบัติตาม มอก.828-2546",
+        "น.น บรรทุกปลอดภัยพื้น HC 400 kg/m²",
+        "[กรอบ] ห้ามนำพื้นชนิดแผ่นตันมาใช้ในการก่อสร้าง",
+        "รูปตัดพื้นสำเร็จรูปชนิดแผ่นกลวง (กว้าง 0.60 และ 1.20, หนา 0.80-0.10 m.)"
+      ],
+      "level_step_mm": null,
+      "confidence_score": 0.85,
+      "confidence_flags": [
+        "plank_thickness_misprinted"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ขยายหูช้างลดระดับ",
+      "element_type": "connection_detail",
+      "ledge_width_mm": 150,
+      "ledge_depth_mm": 100,
+      "ledge_step_mm": 150,
+      "bar_layers": [
+        {
+          "location": "เหล็กหูช้าง",
+          "dia_mm": 9,
+          "type": "RB",
+          "spacing_mm": 150,
+          "printed_as": "ø9mm@0.15m."
+        },
+        {
+          "location": "เหล็กตามยาวในหูช้าง",
+          "count": 2,
+          "dia_mm": 6,
+          "type": "RB",
+          "printed_as": "2-ø6mm"
+        }
+      ],
+      "dimensions_printed": [
+        "0.15 (ความกว้างบ่า)",
+        "0.15 (ระดับต่าง)",
+        "0.10 (ความหนาบ่า)"
+      ],
+      "note": "บ่าหูช้างลดระดับรับแผ่นพื้นสำเร็จรูป (พิมพ์ข้างคาน G6 บนแปลน 'หูช้างลดระดับ')",
+      "confidence_score": 0.8,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_name_assigned": "ขยายการวางพื้นสำเร็จรูประดับเดียวกับพื้นหล่อในที่",
+      "element_type": "connection_detail",
+      "ledge_width_mm": 150,
+      "printed_text": [
+        "คอนกรีตทับหน้า",
+        "คอนกรีตหล่อในที่",
+        "พื้นสำเร็จรูป",
+        "บ่าหูช้าง"
+      ],
+      "dimensions_printed": [
+        "0.15 (ความกว้างบ่า)",
+        "0.15",
+        "0.10"
+      ],
+      "note": "รอยต่อพื้นสำเร็จรูปกับพื้นหล่อในที่ระดับเดียวกัน วางบนบ่าหูช้างของคาน",
+      "confidence_score": 0.75,
+      "confidence_flags": []
+    }
+  ]
+}

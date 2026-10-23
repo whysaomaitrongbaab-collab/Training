@@ -1,0 +1,117 @@
+{
+ "png": "36",
+ "doc_page": 36,
+ "discipline": "structural",
+ "sheet_code": "S-02",
+ "sheet_name": "แปลนฐานรากแบบตอกเข็มและเสา, แปลนฐานรากแผ่และเสา (อาคารเรียน 318ล./55-ก แผ่นที่ S-02)",
+ "source_image": "image/บ้าน_ใหญ่_3ชั้น_09/บ้าน_ใหญ่_3ชั้น_09_หน้า36.png",
+ "grid_source": "บ้าน_ใหญ่_3ชั้น_09_หน้า00_gridline.json",
+ "floor_level": "F1",
+ "view_title": "แปลนฐานรากแผ่และเสา",
+ "scale": "1:200",
+ "pattern": "footing_plan",
+ "views": [
+  "view1 (บน): แปลนฐานรากแผ่และเสา 1:200 — spread footings F1-F4 (this split: _view1_footing_plan.json)",
+  "view2 (ล่าง): แปลนฐานรากตอกเข็มและเสา 1:200 — pile footings F1-F4 + columns C1-C5 (_view2_footing_plan.json)"
+ ],
+ "confidence_score": 0.9,
+ "confidence_flags": [
+  "no_grid_bubbles_on_sheet"
+ ],
+ "warnings": [
+  "No grid bubbles are printed on S-02; positions are read against the dimension chains (4.00 x 16 = 64.00; A-B 2.50, B-C 5.50, C-D 2.50, D-E 4.00) and named with the A-09 bubbles (see grid master).",
+  "Every position is printed as a column-footing pair 'Cn-Fm' (C1-F4, C2-F3, C3-F2, C4-F3, C5-F1). 48 positions: F4 x22 (rows A and D, grids 2, 3, 6-12, 15, 16), F3 x12 (A1, A17 under C2; B4, B5, B13, B14, C1, C4, C5, C13, C14, C17 under C4), F2 x10 (A4, A5, A13, A14, D1, D4, D5, D13, D14, D17 under C3), F1 x4 (E4, E5, E13, E14 under C5). Both views print the identical layout.",
+  "This is the spread-footing system (แปลนฐานรากแผ่และเสา, details S-09/S-10, which print 'BEARING=10 Ton/Sq.m.'). The pile system (view2, S-08) is the other alternative on the same sheet; the marks F1-F4 are printed in both systems but are different members (spread pads vs pile caps) — a consumer joining specs by element_id must keep them apart by sheet.",
+  "Column marks printed in the pairs are recorded once, in the pile-system file (view2), to avoid double-counting columns when both footing files are read (precedent: house 165)."
+ ],
+ "elements": [
+  {
+   "element_id": "F3",
+   "element_type": "footing",
+   "count": 12,
+   "grid_refs": [
+    "A1",
+    "A17",
+    "B4",
+    "B5",
+    "B13",
+    "B14",
+    "C1",
+    "C4",
+    "C5",
+    "C13",
+    "C14",
+    "C17"
+   ],
+   "note": "พิมพ์ 'C2-F3' (A1, A17) และ 'C4-F3' — ฐานแผ่สี่เหลี่ยม",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F4",
+   "element_type": "footing",
+   "count": 22,
+   "grid_refs": [
+    "A2",
+    "A3",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "A11",
+    "A12",
+    "A15",
+    "A16",
+    "D2",
+    "D3",
+    "D6",
+    "D7",
+    "D8",
+    "D9",
+    "D10",
+    "D11",
+    "D12",
+    "D15",
+    "D16"
+   ],
+   "note": "พิมพ์ 'C1-F4' — ฐานแผ่ขนาดใหญ่สุดแนว A และ D",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F2",
+   "element_type": "footing",
+   "count": 10,
+   "grid_refs": [
+    "A4",
+    "A5",
+    "A13",
+    "A14",
+    "D1",
+    "D4",
+    "D5",
+    "D13",
+    "D14",
+    "D17"
+   ],
+   "note": "พิมพ์ 'C3-F2' — ฐานแผ่ใต้เสา C3 (โถงบันได/มุมแนว D)",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  },
+  {
+   "element_id": "F1",
+   "element_type": "footing",
+   "count": 4,
+   "grid_refs": [
+    "E4",
+    "E5",
+    "E13",
+    "E14"
+   ],
+   "note": "พิมพ์ 'C5-F1' — ฐานแผ่เล็กใต้เสา C5 แนว E (หน้าโถงบันได)",
+   "confidence_score": 0.9,
+   "confidence_flags": []
+  }
+ ]
+}

@@ -8,7 +8,8 @@
  "building": "อาคารส่วนต่อเติม (โรงอาหาร 101ล./27 พิเศษ)",
  "source_pages": [
   "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า03.png",
-  "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า04.png"
+  "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า04.png",
+  "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png"
  ],
  "confidence_score": 0.8,
  "confidence_flags": [
@@ -17,12 +18,25 @@
  "warnings": [
   "Second building of the set (section 11a): the 3-sheet 'แบบอาคารส่วนต่อเติม โรงอาหาร 101ล./27 (พิเศษ)' (หน้า 02-04) — a single-storey strip 32.00 x 2.50 with its own printed grid bubbles 1-10 and A-B (2.00 / 4.00 x 7 / 2.00). It reuses the names 1-10 / A-B of the main building's assigned grid at different spacings, so it has its own master and every extension file points here through grid_source.",
   "Only the two printed rows A and B are named. The beam lines B2, B3 (counter / drain) and the second R2 line between A and B, carry no printed dimension: their positions are scaled from the 2.50 A-B bay (per-line flags). The B1 line beyond row B is placed at 1.50 from row B by the B5/1 beam elevation on sheet 3/3 (scaled from the plan ≈1.40); the same elevation prints B5 = 2.90 although the plan prints A-B = 2.50 twice — the plan wins for grid geometry (op01 precedence 1), the 2.90 is kept in the section file. ขยายเคาน์เตอร์ 1:20 prints the counter 0.80 wide and the drain 0.25 wide, consistent with the scaled 0.75 / 1.00.",
-  "Sheet หน้า02 (แผ่นที่ 1/3: elevation, sections and the legend of the extension) was not swept for levels in this op04 run (time limit) — z_levels[] is empty for that reason."
+  "The first pass did not sweep sheet หน้า02 (แผ่นที่ 1/3) for levels (time limit) and left z_levels[] empty — done in the second op04 pass (2026-10-22), see the next warnings.",
+  "Second op04 pass (2026-10-22): sheet หน้า02 (แผ่นที่ 1/3) swept tick by tick and the footing sections of หน้า04 swept for z. The first pass had left z_levels[] as an empty array with a 'not swept (time limit)' warning; it now holds the extension's own levels with ระดับดินเดิม (printed on the footing sections) as the datum — the elevations and sections of sheet 1/3 print no level marks, only chains standing on the same ground line.",
+  "x: the roof plan prints 1.15 eaves beyond grids 1 and 10 (overall 34.30) while the floor plan prints the 1.10 end boxes (overall 34.20) — the eave lines -1.15 / 33.15 sit 0.05 outside the box lines -1.10 / 33.10. Two different edges, both printed, so both kept as lines (section 4 rule 4: within 0.05 m → keep both and say so); -1.15 takes 1' and the box line becomes 1'' (gridfix re-sequence).",
+  "y: the floor plan's left row prints 1.10 / 1.40 / 1.50 = 4.00 (A → 1.10 → B → the B1 line) — this confirms the 2.50 A-B and the 1.50 B → B1 line that the first pass had to take from the B5/1 elevation; the B1 line is now a printed position. The new 1.10 tick (corridor / counter edge) sits 0.10 below the scaled B3 line (≈1.00) — it may be the same counter edge measured to a face, but the 1.00 line was never printed, so both stay. The two 0.70 / 0.80 rows beside the cubicles put a tick at 3.20 (B + 0.70).",
+  "op_fix/gridfix: x tick at -1.15 is within 0.05 m of existing [\"1'\"] but not the same point -- kept both (section 4 rule 4)",
+  "op_fix/gridfix: x tick at 33.15 is within 0.05 m of existing [\"10'\"] but not the same point -- kept both (section 4 rule 4)",
+  "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 1' -> 1'', B' -> B''; grid refs in every file of the house follow; prose in older warnings still uses the old names"
  ],
  "grid": {
   "x_lines": [
    {
     "id": "1'",
+    "pos_m": -1.15,
+    "type": "dummy",
+    "note": "ชายคา 1.15 ซ้ายของกริด 1 (ผังหลังคา หน้า02 แถวบน 1.15 / 2.00 / 4.00 ... รวม 34.30) — ห่างเส้นกล่องยื่น -1.10 เพียง 0.05 แต่เป็นขอบคนละอย่าง",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png"
+   },
+   {
+    "id": "1''",
     "pos_m": -1.1,
     "type": "dummy",
     "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า03.png",
@@ -94,6 +108,13 @@
     "type": "dummy",
     "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า03.png",
     "note": "1.10 ขวาของกริด 10 — ปลายกล่องยื่น (หน้า03)"
+   },
+   {
+    "id": "10''",
+    "pos_m": 33.15,
+    "type": "dummy",
+    "note": "ชายคา 1.15 ขวาของกริด 10 (ผังหลังคา หน้า02) — ห่างเส้นกล่องยื่น 33.10 เพียง 0.05 แต่เป็นขอบคนละอย่าง",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png"
    }
   ],
   "y_lines": [
@@ -137,6 +158,13 @@
     ]
    },
    {
+    "id": "A''''",
+    "pos_m": 1.1,
+    "type": "dummy",
+    "note": "1.10 ใต้แถว A — ขอบทางเดิน/เคาน์เตอร์ (ผังพื้น หน้า02 โซ่ซ้าย 1.10 / 1.40 / 1.50)",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png"
+   },
+   {
     "id": "B",
     "pos_m": 2.5,
     "type": "named",
@@ -144,17 +172,91 @@
    },
    {
     "id": "B'",
+    "pos_m": 3.2,
+    "type": "dummy",
+    "note": "แถว B + 0.70 (ผังพื้น หน้า02 โซ่ 0.70 / 0.80 ข้างห้องส้วมทั้งสองปลาย)",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png"
+   },
+   {
+    "id": "B''",
     "pos_m": 4.0,
     "type": "dummy",
     "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า04.png",
-    "note": "แนวคาน B1 ใต้แถว B (แปลนพื้น เสา คานคอดิน หน้า03) — ไม่มีระยะในแปลน; รูปด้านคาน B5/1 (แผ่นที่ 3/3 หน้า04) พิมพ์ช่วง 1.50 จากแถว B → 4.00 (วัดตามสัดส่วนจากแปลนได้ ≈1.40); รูปด้าน B5 พิมพ์ 2.90 ซึ่งขัดกับ A-B 2.50 ของแปลน ดู warnings",
-    "confidence_score": 0.6,
-    "confidence_flags": [
-     "position_from_member_elevation_not_plan_chain"
-    ]
+    "note": "แนวคาน B1 ใต้แถว B — ผังพื้น หน้า02 พิมพ์ 1.50 จากแถว B (โซ่ซ้าย 1.10 / 1.40 / 1.50 = 4.00) ยืนยันระยะที่รอบแรกต้องเอาจากรูปด้านคาน B5/1 (แผ่นที่ 3/3); รูปด้าน B5 พิมพ์ 2.90 ซึ่งขัดกับ A-B 2.50 ของแปลน ดู warnings"
    }
   ],
-  "z_levels": [],
+  "z_levels": [
+   {
+    "id": "ระดับดินเดิม",
+    "level_m": 0.0,
+    "type": "datum",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า04.png",
+    "note": "พิมพ์ '▽ ระดับดินเดิม' ในรูปตัดฐานราก F1/F2 (แผ่นที่ 3/3); รูปด้าน/รูปตัดแผ่นที่ 1/3 วัดจากเส้นดินเดียวกัน"
+   },
+   {
+    "id": "-1.00",
+    "level_m": -1.0,
+    "type": "dummy",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า04.png",
+    "note": "1.00 ใต้ระดับดินเดิม (รูปตัดฐานราก F1/F2)"
+   },
+   {
+    "id": "+0.10",
+    "level_m": 0.1,
+    "type": "named",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "พิมพ์ '+0.10' ในกล่องยื่นปลายอาคารทั้งสองข้าง (ผังพื้น)"
+   },
+   {
+    "id": "+0.20",
+    "level_m": 0.2,
+    "type": "named",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "พิมพ์ '+0.20' ทางเดินและห้องส้วม (ผังพื้น) = โซ่ 0.20 ล่างสุดของรูปตัด"
+   },
+   {
+    "id": "+0.40",
+    "level_m": 0.4,
+    "type": "dummy",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "+0.20 + 0.20 — โซ่สั้นที่ขั้นพื้นในรูปตัด"
+   },
+   {
+    "id": "+0.50",
+    "level_m": 0.5,
+    "type": "dummy",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "แถบฐาน 0.50 (รูปด้านหน้า/รูปด้านข้าง)"
+   },
+   {
+    "id": "+2.55",
+    "level_m": 2.55,
+    "type": "dummy",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "0.50 + 2.05 (รูปด้านข้าง) = 0.20 + 2.35 (รูปตัด, แบบขยาย)"
+   },
+   {
+    "id": "+2.65",
+    "level_m": 2.65,
+    "type": "dummy",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "0.50 + 2.15 (รูปด้านหน้า)"
+   },
+   {
+    "id": "+3.45",
+    "level_m": 3.45,
+    "type": "dummy",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "ยอดรูปตัด/แบบขยาย 3.45"
+   },
+   {
+    "id": "+3.55",
+    "level_m": 3.55,
+    "type": "dummy",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "ยอดรูปด้าน 3.55"
+   }
+  ],
   "dimension_chains": [
    {
     "axis": "x",
@@ -252,7 +354,7 @@
     "view": "แปลน พื้น เสา คานคอดิน",
     "segments": [
      {
-      "from": "1'",
+      "from": "1''",
       "to": "1",
       "value_m": 1.1
      },
@@ -352,7 +454,7 @@
     "view": "แปลนคานหลังคา",
     "segments": [
      {
-      "from": "1'",
+      "from": "1''",
       "to": "1",
       "value_m": 1.1
      },
@@ -445,6 +547,450 @@
       "value_m": 2.5
      }
     ]
+   },
+   {
+    "axis": "x",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังพื้น 1:100",
+    "segments": [
+     {
+      "from": "1''",
+      "to": "1",
+      "value_m": 1.1
+     },
+     {
+      "from": "1",
+      "to": "2",
+      "value_m": 2.0
+     },
+     {
+      "from": "2",
+      "to": "3",
+      "value_m": 4.0
+     },
+     {
+      "from": "3",
+      "to": "4",
+      "value_m": 4.0
+     },
+     {
+      "from": "4",
+      "to": "5",
+      "value_m": 4.0
+     },
+     {
+      "from": "5",
+      "to": "6",
+      "value_m": 4.0
+     },
+     {
+      "from": "6",
+      "to": "7",
+      "value_m": 4.0
+     },
+     {
+      "from": "7",
+      "to": "8",
+      "value_m": 4.0
+     },
+     {
+      "from": "8",
+      "to": "9",
+      "value_m": 4.0
+     },
+     {
+      "from": "9",
+      "to": "10",
+      "value_m": 2.0
+     },
+     {
+      "from": "10",
+      "to": "10'",
+      "value_m": 1.1
+     }
+    ]
+   },
+   {
+    "axis": "x",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังพื้น 1:100",
+    "segments": [
+     {
+      "from": "1''",
+      "to": "10'",
+      "value_m": 34.2
+     }
+    ],
+    "note": "overall row"
+   },
+   {
+    "axis": "y",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังพื้น 1:100 (โซ่ด้านซ้าย)",
+    "segments": [
+     {
+      "from": "A",
+      "to": "B''",
+      "value_m": 4.0
+     }
+    ],
+    "note": "outer row"
+   },
+   {
+    "axis": "y",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังพื้น 1:100 (โซ่ด้านซ้าย)",
+    "segments": [
+     {
+      "from": "A",
+      "to": "A''''",
+      "value_m": 1.1
+     },
+     {
+      "from": "A''''",
+      "to": "B",
+      "value_m": 1.4
+     },
+     {
+      "from": "B",
+      "to": "B''",
+      "value_m": 1.5
+     }
+    ]
+   },
+   {
+    "axis": "y",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังพื้น 1:100 (ข้างห้องส้วมซ้าย)",
+    "segments": [
+     {
+      "from": "B",
+      "to": "B'",
+      "value_m": 0.7
+     },
+     {
+      "from": "B'",
+      "to": "B''",
+      "value_m": 0.8
+     }
+    ],
+    "note": "the 0.70 is smudged on this copy (reads 0.7?) — the right-hand copy prints 0.70 clearly; both drawn ≈0.1 m above B / B' on the scan but summing to the 1.50 B–B' of the outer row, so anchored on B and B'"
+   },
+   {
+    "axis": "y",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังพื้น 1:100 (ข้างห้องส้วมขวา)",
+    "segments": [
+     {
+      "from": "B",
+      "to": "B'",
+      "value_m": 0.7
+     },
+     {
+      "from": "B'",
+      "to": "B''",
+      "value_m": 0.8
+     }
+    ]
+   },
+   {
+    "axis": "x",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังหลังคา 1:100",
+    "segments": [
+     {
+      "from": "1'",
+      "to": "1",
+      "value_m": 1.15
+     },
+     {
+      "from": "1",
+      "to": "2",
+      "value_m": 2.0
+     },
+     {
+      "from": "2",
+      "to": "3",
+      "value_m": 4.0
+     },
+     {
+      "from": "3",
+      "to": "4",
+      "value_m": 4.0
+     },
+     {
+      "from": "4",
+      "to": "5",
+      "value_m": 4.0
+     },
+     {
+      "from": "6",
+      "to": "7",
+      "value_m": 4.0
+     },
+     {
+      "from": "7",
+      "to": "8",
+      "value_m": 4.0
+     },
+     {
+      "from": "8",
+      "to": "9",
+      "value_m": 4.0
+     },
+     {
+      "from": "9",
+      "to": "10",
+      "value_m": 2.0
+     },
+     {
+      "from": "10",
+      "to": "10''",
+      "value_m": 1.15
+     }
+    ],
+    "note": "top row; bay 5-6 is dimensioned on a lower row (the roof steps back there)"
+   },
+   {
+    "axis": "x",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังหลังคา 1:100",
+    "segments": [
+     {
+      "from": "5",
+      "to": "6",
+      "value_m": 4.0
+     }
+    ],
+    "note": "lower row at the stepped bay"
+   },
+   {
+    "axis": "x",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "ผังหลังคา 1:100",
+    "segments": [
+     {
+      "from": "1'",
+      "to": "10''",
+      "value_m": 34.3
+     }
+    ],
+    "note": "overall row"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปด้านหน้า 1:100",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+0.50",
+      "value_m": 0.5
+     },
+     {
+      "from": "+0.50",
+      "to": "+2.65",
+      "value_m": 2.15
+     },
+     {
+      "from": "+2.65",
+      "to": "+3.55",
+      "value_m": 0.9
+     }
+    ]
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปด้านหน้า 1:100",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+3.55",
+      "value_m": 3.55
+     }
+    ],
+    "note": "overall row"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปด้านข้าง (บน) 1:100",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+0.50",
+      "value_m": 0.5
+     },
+     {
+      "from": "+0.50",
+      "to": "+2.55",
+      "value_m": 2.05
+     },
+     {
+      "from": "+2.55",
+      "to": "+3.55",
+      "value_m": 1.0
+     }
+    ]
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปด้านข้าง (บน) 1:100",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+3.55",
+      "value_m": 3.55
+     }
+    ],
+    "note": "overall row"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปด้านข้าง (ล่าง) 1:100",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+0.50",
+      "value_m": 0.5
+     },
+     {
+      "from": "+0.50",
+      "to": "+2.55",
+      "value_m": 2.05
+     },
+     {
+      "from": "+2.55",
+      "to": "+3.55",
+      "value_m": 1.0
+     }
+    ]
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปด้านข้าง (ล่าง) 1:100",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+3.55",
+      "value_m": 3.55
+     }
+    ],
+    "note": "overall row"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปตัด 1:100",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+0.20",
+      "value_m": 0.2
+     },
+     {
+      "from": "+0.20",
+      "to": "+2.55",
+      "value_m": 2.35
+     },
+     {
+      "from": "+2.55",
+      "to": "+3.45",
+      "value_m": 0.9
+     }
+    ]
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปตัด 1:100",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+3.45",
+      "value_m": 3.45
+     }
+    ],
+    "note": "overall row"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "รูปตัด 1:100",
+    "segments": [
+     {
+      "from": "+0.20",
+      "to": "+0.40",
+      "value_m": 0.2
+     }
+    ],
+    "note": "small row at the floor step beside the wall"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "แบบขยาย 1:50",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+0.20",
+      "value_m": 0.2
+     },
+     {
+      "from": "+0.20",
+      "to": "+2.55",
+      "value_m": 2.35
+     },
+     {
+      "from": "+2.55",
+      "to": "+3.45",
+      "value_m": 0.9
+     }
+    ],
+    "note": "middle value smudged on the scan; read 2.35 because the row closes against the printed overall 3.45 (and matches รูปตัด)"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "view": "แบบขยาย 1:50",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "+3.45",
+      "value_m": 3.45
+     }
+    ],
+    "note": "overall row (last digit faint)"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า04.png",
+    "view": "รูปตัดฐานราก F1",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "-1.00",
+      "value_m": 1.0
+     }
+    ],
+    "note": "ระดับดินเดิม to the top of the 0.05 layer; the cap's own 0.05 / 0.20 / 0.10 are on the F1 element (height_mm, lean_concrete)"
+   },
+   {
+    "axis": "z",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า04.png",
+    "view": "รูปตัดฐานราก F2",
+    "segments": [
+     {
+      "from": "ระดับดินเดิม",
+      "to": "-1.00",
+      "value_m": 1.0
+     }
+    ],
+    "note": "same 1.00; F2's own 0.05 / 0.15 / 0.10 are on the F2 element"
    }
   ],
   "unassigned_dimensions": [
@@ -465,11 +1011,29 @@
     "label": "0.25 / 0.30 / 0.10",
     "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า03.png",
     "note": "รายละเอียดร่องระบายน้ำ — กว้าง 0.25 ลึก 0.30 พื้น 0.10 (ระยะในรายละเอียด)"
+   },
+   {
+    "value_m": 2.3,
+    "label": "2.30 | EQ. | EQ. | EQ. | EQ. | EQ. | 2.30 = 15.30",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "รูปด้านหน้า — โซ่ x ใต้ปีกอาคารแต่ละข้าง (พิมพ์สองชุด); รูปด้านไม่มีหมุดกริด ปลายโซ่ไม่ผูกกับเส้นใดได้ จึงไม่สร้างเส้น"
+   },
+   {
+    "value_m": 0.2,
+    "label": "0.20",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "ผังหลังคา — ระยะหลบของขอบหลังคาที่ช่วง 5-6 (แนว y) ไม่ได้ผูกกับเส้นใด"
+   },
+   {
+    "value_m": 1.0,
+    "label": "1.00 x 2.00",
+    "source_image": "image/บ้าน_ใหญ่_2ชั้น_21/บ้าน_ใหญ่_2ชั้น_21_หน้า02.png",
+    "note": "แบบขยายประตู D1 — กว้าง 1.00 สูง 2.00"
    }
   ]
  },
  "dummy_grid_rule_check": {
-  "negative_pos_m": "x 1' -1.10 (cantilever box beyond grid 1).",
-  "prime_ordering": "y: A' 0.35, A'' 0.75, A''' 1.00 between A and B; B' 4.00 after B. x: 10' 33.10 after grid 10."
+  "negative_pos_m": "x 1' -1.15 (roof eave), 1'' -1.10 (cantilever box) — re-sequenced by tools/gridfix.py on 2026-10-22 when the eave line was added; refs to the box line followed.",
+  "prime_ordering": "y: A' 0.35, A'' 0.75, A''' 1.00, A'''' 1.10 between A and B; B' 3.20, B'' 4.00 after B (the B1 line, renamed from B'). x: 10' 33.10 (box), 10'' 33.15 (eave) after grid 10."
  }
 }
