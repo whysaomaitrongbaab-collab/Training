@@ -299,7 +299,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-09-01 · sanitize_elements() silently deleted every element with a negative level, wiping ground beams from the BOQ
 
-**What happened.** `sanitize_elements()` in `worker.py` used the regex `_NEG_DIM_KEYS = r"(_mm|_m|_cm)$"` to treat any key ending in a unit suffix as 'garbage' if its value was negative. But negative values are valid for `level_m` (ground beams below datum, written on Thai drawings as "GB1(-0.50)"), `pos_m` (grid lines before origin) and `level_step_mm` (stepped precast slabs for bathrooms). Whole elements were dropped before reaching BOQ, and the warning blamed the model ('generation หลุด') even though the model had answered correctly. Confirmed on real GT: house 07บ้าน_ใหญ่_2ชั้น_01 page 35 lost 3 of 11 elements.
+**What happened.** `sanitize_elements()` in `worker.py` used the regex `_NEG_DIM_KEYS = r"(_mm|_m|_cm)$"` to treat any key ending in a unit suffix as 'garbage' if its value was negative. But negative values are valid for `level_m` (ground beams below datum, written on Thai drawings as "GB1(-0.50)"), `pos_m` (grid lines before origin) and `level_step_mm` (stepped precast slabs for bathrooms). Whole elements were dropped before reaching BOQ, and the warning blamed the model ('generation หลุด' (generation broke off)) even though the model had answered correctly. Confirmed on real GT: house 07บ้าน_ใหญ่_2ชั้น_01 page 35 lost 3 of 11 elements.
 
 **Root cause.** A blanket denylist regex on key *suffix* rather than an allowlist of dimensions that genuinely cannot be negative. The validator encoded an assumption ('a measurement is never negative') that is false for elevation/offset fields, and the failure was silent-with-wrong-attribution because the warning text blamed model generation instead of the filter.
 
@@ -509,13 +509,13 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-25 · MAX_PIXELS 7,680 + MAX_LENGTH 47,104 written into the training script before the mandatory 5-step VRAM check was run
 
-**What happened.** Both values were changed in train_t03.py and documented as 'ทำจริงแล้ว', cutting free VRAM from 7.5GB to 4.0GB — while the diary itself records the rule that a short 5-step run must confirm the config before any full run, because a previous run OOM'd with 470MB left.
+**What happened.** Both values were changed in train_t03.py and documented as 'ทำจริงแล้ว' (actually done), cutting free VRAM from 7.5GB to 4.0GB — while the diary itself records the rule that a short 5-step run must confirm the config before any full run, because a previous run OOM'd with 470MB left.
 
 **Root cause.** The change was made on a spreadsheet estimate of peak VRAM (90.9GB), not on a measured run. The estimate was produced by the same reasoning that had already been wrong once about image capacity.
 
 **Impact.** Next full training round can OOM hours in and burn the round's GPU cost, at a moment when only $8.91 credit remains.
 
-**Fix.** not fixed — flagged in the diary as ⚠️ 'ต้องรันทดสอบสั้น 5 step ยืนยันก่อนรันเต็มทุกครั้ง', not yet executed
+**Fix.** not fixed — flagged in the diary as ⚠️ 'ต้องรันทดสอบสั้น 5 step ยืนยันก่อนรันเต็มทุกครั้ง' (must run a short 5-step test to confirm before every full run), not yet executed
 
 **→ Rule.** A config edit is not 'done' until the smoke test that validates it has run. Writing the value and validating the value are two separate tasks; only the second one prevents the burn.
 
@@ -523,7 +523,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-25 · Only footings were scored against a true count — beams and columns shipped with eyeball verification only, yet the summary claims all three work
 
-**What happened.** The results table gives footings 14/14 and 12/12 against real counts, but beams are reported as bare counts ('17 แถบ', '19 แถบ') with no denominator and the note 'คลุมโครงคานเกือบครบ'. Columns are reported as 14 and 13 with no stated truth either (the 13 was later found to contain a duplicate). The day's summary nonetheless states the tool 'มาร์ค เสา/คาน/ฐานราก ได้จริง'.
+**What happened.** The results table gives footings 14/14 and 12/12 against real counts, but beams are reported as bare counts ('17 แถบ' (17 strips), '19 แถบ' (19 strips)) with no denominator and the note 'คลุมโครงคานเกือบครบ' (covers the beam framing almost completely). Columns are reported as 14 and 13 with no stated truth either (the 13 was later found to contain a duplicate). The day's summary nonetheless states the tool 'มาร์ค เสา/คาน/ฐานราก ได้จริง' (can really mark columns/beams/footings).
 
 **Root cause.** Footings are countable discrete icons so a ground truth was easy; beams are variable-length runs with no obvious unit, so no ground truth was established and the gap was filled with visual inspection.
 
@@ -531,7 +531,7 @@ By theme:
 
 **Fix.** not fixed — no beam ground-truth count was produced
 
-**→ Rule.** The subtask you built the tool for is the one that needs a number, not the one that was easy to count. 'เกือบครบ' is not a measurement.
+**→ Rule.** The subtask you built the tool for is the one that needs a number, not the one that was easy to count. 'เกือบครบ' (almost complete) is not a measurement.
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-25(teach mk).md` · unmeasured-claim</sub>
 
@@ -551,7 +551,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-25 · A 22px "+" template poisoned the bank and produced 636 phantom footings on a page with none
 
-**What happened.** A harvested template from บ้าน 11 was a 22px "+" crosshair. It matched every line intersection on the drawing, ballooning footing detections to 636 on a page containing no footings at all.
+**What happened.** A harvested template from house 11 was a 22px "+" crosshair. It matched every line intersection on the drawing, ballooning footing detections to 636 on a page containing no footings at all.
 
 **Root cause.** The harvest step accepted any repeated icon-sized contour, and a crosshair is a universal drawing primitive rather than a distinguishing symbol. There was no minimum-size or distinctiveness gate on templates entering the bank.
 
@@ -565,7 +565,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-25 · Two tightly-cropped templates scored garbage as high as real matches, making a threshold impossible
 
-**What happened.** The solid-shaded 31px templates from บ้าน 05/33 scored 0.87–1.00 on genuine matches in their own house but garbage on other houses reached 0.90 — the score ranges overlap, so no threshold can separate them. A per-template table showed those 2 templates alone emitted 224 junk detections while the other 9 emitted zero.
+**What happened.** The solid-shaded 31px templates from houses 05/33 scored 0.87–1.00 on genuine matches in their own house but garbage on other houses reached 0.90 — the score ranges overlap, so no threshold can separate them. A per-template table showed those 2 templates alone emitted 224 junk detections while the other 9 emitted zero.
 
 **Root cause.** The templates were cropped tight to the icon, discarding the surrounding white space. Real icons float alone on white; Thai text characters sit crowded together — the surrounding context is the actual discriminator, and cropping it away removed the only signal that separates them.
 
@@ -641,7 +641,7 @@ By theme:
 
 **Impact.** The one model the project is relying on has an unconfirmed, single-sample, leniently-scored accuracy number and unknown end-to-end behaviour. Any downstream planning built on the 43% figure is built on sand.
 
-**Fix.** Not fixed — explicitly recorded as outstanding: 'ยังไม่เคยรันครบทั้งสายพานกับการ์ดจอจริงสักครั้ง'.
+**Fix.** Not fixed — explicitly recorded as outstanding: 'ยังไม่เคยรันครบทั้งสายพานกับการ์ดจอจริงสักครั้ง' (has never once been run through the full pipeline on a real GPU).
 
 **→ Rule.** A model is not validated until it has run the complete production pipeline at least once on real hardware, and its headline metric has been reproduced under strict (not forgiving) matching. State both conditions explicitly whenever quoting the number.
 
@@ -1027,7 +1027,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · First hypothesis wrong: F1 vs F2 footings differ in shape, not scale — multi-scale matching missed all F1s
 
-**What happened.** Multi-scale template matching was expected to handle footing variation across houses. On the second house tested (บ้าน 12), F2 turned out to be a tall rectangle with 2 pile crosses — a different symbol entirely, not a resized F1 — and multi-scale alone still found only 6 of 12 footings, missing every F1.
+**What happened.** Multi-scale template matching was expected to handle footing variation across houses. On the second house tested (house 12), F2 turned out to be a tall rectangle with 2 pile crosses — a different symbol entirely, not a resized F1 — and multi-scale alone still found only 6 of 12 footings, missing every F1.
 
 **Root cause.** Assumed the appearance difference between footing types was a scale difference, without inspecting the actual symbols side by side first.
 
@@ -1041,7 +1041,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · F2 tall-rect footing template false-fired on beam plans
 
-**What happened.** The F2 template (a tall rectangle) matched vertical beams passing through column boxes, producing 3 false footing detections on บ้าน12 หน้า22, a beam plan with no footings at all.
+**What happened.** The F2 template (a tall rectangle) matched vertical beams passing through column boxes, producing 3 false footing detections on house 12 page 22, a beam plan with no footings at all.
 
 **Root cause.** The template captures a generic geometric shape that recurs in a different structural context; template matching has no semantic notion of what page it is looking at.
 
@@ -1055,7 +1055,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · Multi-scale matching on a tiny 28x34 column template inflated detections 14 → 21 with noise
 
-**What happened.** Applying multi-scale matching to the small column template (28×34 px) on บ้าน17 raised detections from a correct 14 to 21, the extra 7 being noise. Reverted to single-scale for columns.
+**What happened.** Applying multi-scale matching to the small column template (28×34 px) on house 17 raised detections from a correct 14 to 21, the extra 7 being noise. Reverted to single-scale for columns.
 
 **Root cause.** A very small template carries little distinguishing structure; scaling it further reduces the information per match and lets background texture cross the threshold.
 
@@ -1069,7 +1069,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · tpl_footing9 was too generic — leaked junk on other houses while scoring poorly on its own
 
-**What happened.** The square-plus-cross template from บ้าน 30 scored only 5/9 on its own house with scores dropping 1.0→0.76, while emitting junk at 0.72–0.73 on other houses — its junk scores overlap its real scores.
+**What happened.** The square-plus-cross template from house 30 scored only 5/9 on its own house with scores dropping 1.0→0.76, while emitting junk at 0.72–0.73 on other houses — its junk scores overlap its real scores.
 
 **Root cause.** The symbol is too geometrically generic (a square with a cross) to be distinctive across drawing offices; adding it traded a real gain on one house for noise across the whole set.
 
@@ -1125,7 +1125,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · Pattern recognition validated on only 2 houses from the same drawing series
 
-**What happened.** The tool was verified on บ้าน17 and บ้าน12 only, both from the same BMA "แบบบ้านยิ้ม" series. Other series and other drawing offices are untested, and 07บ้าน_ใหญ่_2ชั้น_01 has no plan_footing/plan_beam ground truth to compare against.
+**What happened.** The tool was verified on house 17 and house 12 only, both from the same BMA "แบบบ้านยิ้ม" series. Other series and other drawing offices are untested, and 07บ้าน_ใหญ่_2ชั้น_01 has no plan_footing/plan_beam ground truth to compare against.
 
 **Root cause.** Validation used whichever houses had ground truth available, which happen to share a drawing office and therefore share symbol conventions — so the test set does not exercise the cross-office variance the method is most fragile to.
 
@@ -1167,7 +1167,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-29 · The blanket punctuation-stripping rule would have collapsed the stirrup abbreviation ป. into ป and collided it with ประตู (door)
 
-**What happened.** While removing `.` `_` `*` `#` etc. from all prompts, the glossary entry `ป.` → stirrup had to be exempted: stripping the dot makes it indistinguishable from the prefix of ประตู.
+**What happened.** While removing `.` `_` `*` `#` etc. from all prompts, the glossary entry `ป.` → stirrup had to be exempted: stripping the dot makes it indistinguishable from the prefix of ประตู (door).
 
 **Root cause.** A mechanical character-removal rule applied across Thai text, where the period is load-bearing as an abbreviation marker rather than decoration.
 
@@ -1279,7 +1279,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-25 · Duplicate column detection at grid (B,2) — 13 boxes for 12 real columns
 
-**What happened.** บ้าน12 หน้า20 produced 13 column boxes against 12 true columns, one of them a doubled box at grid position (B,2). บ้าน17 หน้า15 shows 19 columns which were not individually verified and may contain further doubles.
+**What happened.** House 12 page 20 produced 13 column boxes against 12 true columns, one of them a doubled box at grid position (B,2). House 17 page 15 shows 19 columns which were not individually verified and may contain further doubles.
 
 **Root cause.** The greedy NMS suppression radius is not tight enough for two overlapping matches on the same symbol at slightly different offsets.
 
@@ -1293,7 +1293,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-26 · Molmo-72B's real bf16 footprint is ~147GB, not what '72B' implies — the model-size column and the GPU you must rent are different numbers
 
-**What happened.** The catalogue's size column carries a parenthetical for Molmo: '72B (bf16 จริง ~147GB)'. Every other row lists parameter count alone, so a shortlist sized on the label alone would under-provision the rental for this candidate by more than 2×.
+**What happened.** The catalogue's size column carries a parenthetical for Molmo: '72B (bf16 จริง ~147GB)' ("72B (actual bf16 ~147GB)"). Every other row lists parameter count alone, so a shortlist sized on the label alone would under-provision the rental for this candidate by more than 2×.
 
 **Root cause.** Parameter count was used as the screening axis because it is the number vendors advertise; actual weight bytes at the precision you intend to run were only checked for one model and only recorded as an aside.
 
@@ -1371,7 +1371,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-25 · The one guard against the project's most expensive bug was 4x too lenient and would have waved it through
 
-**What happened.** train_t03.py's first assert is commented "ตัวอย่างแรก (ภาพเดียว)" and does `_tok = (grid[:,1]*grid[:,2]).sum() // 4` then `assert _tok > 1000`. But `train_ds[0]` in the op04 dataset has 4 images and `.sum()` totals across all of them while the threshold is per-image. Simulation confirmed t01's exact failure level (266 tokens/image) × 4 images = 1,064 > 1,000, so the assert passes.
+**What happened.** train_t03.py's first assert is commented "ตัวอย่างแรก (ภาพเดียว)" (first example (single image)) and does `_tok = (grid[:,1]*grid[:,2]).sum() // 4` then `assert _tok > 1000`. But `train_ds[0]` in the op04 dataset has 4 images and `.sum()` totals across all of them while the threshold is per-image. Simulation confirmed t01's exact failure level (266 tokens/image) × 4 images = 1,064 > 1,000, so the assert passes.
 
 **Root cause.** The guard was written when the first example had exactly one image, and the dataset shape later changed to multi-image examples without the guard being revisited. The assert's own comment still documented the old assumption.
 
@@ -1433,7 +1433,7 @@ By theme:
 
 **Impact.** Dangerous for a real construction BOQ — three footings appeared to require no reinforcement. Exactly the kind of wrong number that ships.
 
-**Fix.** Added `needs_review` / `main_bar_missing` flags and replaced the text with '(ไม่ทราบขนาดเหล็ก — ตรวจสอบแบบ)'. Verified it matches exactly F4/F6/F3.
+**Fix.** Added `needs_review` / `main_bar_missing` flags and replaced the text with '(ไม่ทราบขนาดเหล็ก — ตรวจสอบแบบ)' (rebar size unknown — check the drawings). Verified it matches exactly F4/F6/F3.
 
 **→ Rule.** Missing input must never render as zero cost or zero quantity. Any cost path must distinguish 'measured as zero' from 'unknown' and flag the latter loudly — a silently-zero structural line is a safety issue, not a display issue.
 
@@ -1615,7 +1615,7 @@ By theme:
 
 **Impact.** Element types with zero central-library coverage remain permanently missing from the confirmed inventory that feeds pass 3, and therefore from the BOQ.
 
-**Fix.** Not fixed — documented as a known limitation of the approach ('ข้อจำกัดโดยหลักการ').
+**Fix.** Not fixed — documented as a known limitation of the approach ('ข้อจำกัดโดยหลักการ' (a limitation in principle)).
 
 **→ Rule.** Document the structural blind spots of every recovery mechanism, and add explicit monitoring for the blind-spot case (pages where CV detects zero) so those pages are routed to human review rather than silently passing through.
 
@@ -1743,7 +1743,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-25 · section 0% was mostly a broken metric, not a broken model — perfect AI could score at most 4%
 
-**What happened.** The section evaluation compares element_id strings exactly. But section ground-truth IDs are human-invented labels (gate_front, door_lock_detail, SP_at_bathroom, purlin_rafter_connection, ห้องนอน) that appear nowhere on the drawing. Measured ceilings: section 37% overall, and only 1 of 23 = 4% on house 08, the house actually used for evaluation. notes was even worse at 2%.
+**What happened.** The section evaluation compares element_id strings exactly. But section ground-truth IDs are human-invented labels (gate_front, door_lock_detail, SP_at_bathroom, purlin_rafter_connection, ห้องนอน (bedroom)) that appear nowhere on the drawing. Measured ceilings: section 37% overall, and only 1 of 23 = 4% on house 08, the house actually used for evaluation. notes was even worse at 2%.
 
 **Root cause.** Ground-truth IDs were created for human bookkeeping convenience and then reused verbatim as the evaluation key, without checking whether the information needed to produce them exists on the source image at all.
 
@@ -1757,7 +1757,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-25 · Workflow doc claimed images were never downscaled; measurement showed 100% of them were
 
-**What happened.** `t03_workflow.md` row 7 recorded "ภาพจริง 2339×1654 ต่ำกว่า cap 5,120 อยู่แล้ว = ไม่ย่อเลย". A direct measurement found 973/973 image instances (100%) exceed the cap — the smallest image in train.jsonl is 3307×2339 (7,554 tokens) and the largest 4631×3473 (15,707 tokens, losing 67% of its detail). No image of the recorded size exists in the current train set.
+**What happened.** `t03_workflow.md` row 7 recorded "ภาพจริง 2339×1654 ต่ำกว่า cap 5,120 อยู่แล้ว = ไม่ย่อเลย" (real images are 2339×1654, already below the 5,120 cap = no downscaling at all). A direct measurement found 973/973 image instances (100%) exceed the cap — the smallest image in train.jsonl is 3307×2339 (7,554 tokens) and the largest 4631×3473 (15,707 tokens, losing 67% of its detail). No image of the recorded size exists in the current train set.
 
 **Root cause.** The earlier record was produced by looking at a single sample (`train_ds[0]`) and generalising it to the whole dataset — the same failure mode already recorded as rule_of_tune #12, repeating.
 
@@ -1827,7 +1827,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-29 · build_dataset was modified to put val houses (01-05) into train too — val stopped being held out
 
-**What happened.** A code comment records "2026-08-29 มะขามสั่ง: val houses (01-05) go in train too". train.jsonl is now 956 rows (727+229), val 229, test 33. Val is no longer a clean held-out set — the model sees the exam during training, so val numbers will be inflated by memorization and only measure fit.
+**What happened.** A code comment records "2026-08-29 มะขามสั่ง: val houses (01-05) go in train too" (มะขามสั่ง = Makham's order). train.jsonl is now 956 rows (727+229), val 229, test 33. Val is no longer a clean held-out set — the model sees the exam during training, so val numbers will be inflated by memorization and only measure fit.
 
 **Root cause.** A split change was made directly in code with only a comment, and it was discovered incidentally by a later session rather than announced. The consequence for metric interpretation was not recorded alongside the change.
 
@@ -1869,7 +1869,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-31 · The go/no-go test prompt contained the ground-truth answers, so a blind model passed 3/3
 
-**What happened.** The v1 vision gate prompt included examples 'เช่น F1, B2, C1, ผ2'. F1 and ผ2 happened to be in the GT. The model copied the examples back verbatim, gave the identical string for both a footing plan and a section drawing, and the scoring script counted it as correct. Another page 'passed' by counting B1..B34 which coincidentally started with the right marks.
+**What happened.** The v1 vision gate prompt included examples 'เช่น F1, B2, C1, ผ2' (e.g. F1, B2, C1, ผ2). F1 and ผ2 happened to be in the GT. The model copied the examples back verbatim, gave the identical string for both a footing plan and a section drawing, and the scoring script counted it as correct. Another page 'passed' by counting B1..B34 which coincidentally started with the right marks.
 
 **Root cause.** Test design leaked the answer into the input, and the scorer used string containment with no check that different inputs produce different outputs.
 
@@ -1925,7 +1925,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-09-01 · The $2 go/no-go gate first returned a false green because the test prompt leaked the answers
 
-**What happened.** The first run of the pre-training gate passed. Investigation showed the test prompt written by Claude included illustrative examples 'เช่น F1, B2, C1, ผ2' — and F1 and ผ2 happened to be actual ground-truth answers. The blind model simply echoed the examples back and the scoring script counted them as correct. On another page the model enumerated B1, B2, B3 … up to B34, and the first three coincidentally matched the answer key.
+**What happened.** The first run of the pre-training gate passed. Investigation showed the test prompt written by Claude included illustrative examples 'เช่น F1, B2, C1, ผ2' (e.g. F1, B2, C1, ผ2) — and F1 and ผ2 happened to be actual ground-truth answers. The blind model simply echoed the examples back and the scoring script counted them as correct. On another page the model enumerated B1, B2, B3 … up to B34, and the first three coincidentally matched the answer key.
 
 **Root cause.** Two compounding flaws: (1) the prompt author put concrete examples in a prompt whose purpose is to test whether the model can read, contaminating the test; (2) the scoring script credited any matching token without checking for enumeration or echo patterns, so brute-force sequential guessing scored partial credit.
 
@@ -2037,7 +2037,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-07-24 · Local dry run used a 10.8GB stand-in, so it proved 'it runs' but never that it runs usably
 
-**What happened.** Phase 0.3 on 2026-07-24 validated local inference by downloading a small ~10.8GB test model, running llama.cpp against a real drawing page, and declaring 'ผ่าน'. The real artifact turned out to be 21.2GB — roughly double — and on the same 8GB-VRAM laptop it ran at 3.46 token/s, 13-21 minutes per page, with llama.cpp logging 'failed to fit params to free device memory ... abort'.
+**What happened.** Phase 0.3 on 2026-07-24 validated local inference by downloading a small ~10.8GB test model, running llama.cpp against a real drawing page, and declaring 'ผ่าน' (pass). The real artifact turned out to be 21.2GB — roughly double — and on the same 8GB-VRAM laptop it ran at 3.46 token/s, 13-21 minutes per page, with llama.cpp logging 'failed to fit params to free device memory ... abort'.
 
 **Root cause.** The dry run was sized for convenience, not for the artifact it was supposed to represent, and its pass criterion was binary ('does it run?') with no throughput threshold. A 10.8GB model fits VRAM far better than 21.2GB, so the CPU-offload bottleneck could not appear.
 
@@ -2163,13 +2163,13 @@ By theme:
 
 #### 🟠 HIGH · 2026-07-29 · The 'do not switch to Qwen3-VL' verdict may be wrong on the path that actually ships — t02's training resolution matches llama.cpp's runtime exactly
 
-**What happened.** On 2026-07-28 the A/B concluded Qwen3.6 (t01) beats Qwen3-VL (t02) on every metric and recorded 'อย่าเปลี่ยนไปใช้ Qwen3-VL'. The next night it emerged that t02 was trained at ~3,796 visual tokens per image, which is exactly what llama.cpp feeds at inference, while t01 was trained at ~266 — so on the real local deployment path t02 may in fact be the better model.
+**What happened.** On 2026-07-28 the A/B concluded Qwen3.6 (t01) beats Qwen3-VL (t02) on every metric and recorded 'อย่าเปลี่ยนไปใช้ Qwen3-VL' (don't switch to Qwen3-VL). The next night it emerged that t02 was trained at ~3,796 visual tokens per image, which is exactly what llama.cpp feeds at inference, while t01 was trained at ~266 — so on the real local deployment path t02 may in fact be the better model.
 
 **Root cause.** The comparison was run on the bf16 + runtime-adapter path (the measurement path), not on the merged/quantized GGUF path (the deployment path), and train/inference token parity was never a comparison criterion.
 
 **Impact.** A recorded, apparently settled model-selection decision is now unreliable — and the alternative it rejected is currently unusable anyway because the same MoE merge bug blocks its GGUF export, so the merge bug now blocks both rounds rather than only t02.
 
-**Fix.** Not fixed — flagged as 'ยังไม่ได้พิสูจน์' in the open-questions section.
+**Fix.** Not fixed — flagged as 'ยังไม่ได้พิสูจน์' (not yet proven) in the open-questions section.
 
 **→ Rule.** Judge candidate models on the path you will actually deploy, and treat train/inference input parity as a first-class comparison variable, not an afterthought.
 
@@ -2205,7 +2205,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-24 · Initial val split was 10:1 — too small to measure anything, especially plan_beam
 
-**What happened.** The dataset was first built with val = house03 only, giving a 10:1 train:val ratio and just 4 plan_beam validation examples. Makham overruled it ("4/1 ดีกว่า").
+**What happened.** The dataset was first built with val = house03 only, giving a 10:1 train:val ratio and just 4 plan_beam validation examples. Makham overruled it ("4/1 ดีกว่า" (4/1 is better)).
 
 **Root cause.** The val set was sized by house count convenience rather than by how many examples the *bottleneck subtask* would get. With plan_beam as the whole point of the round, 4 val examples cannot distinguish signal from noise.
 
@@ -2223,7 +2223,7 @@ By theme:
 
 **Root cause.** The controlled baseline was scheduled last, after training and the tuned run, in a time-boxed overnight session. The most scientifically load-bearing measurement got the least slack.
 
-**Impact.** t03's improvement over t02 cannot be attributed to fine-tuning — the comparison chart had to ship with the base column marked "n/a จริงๆ ไม่ใช่ยังไม่วัด". Still outstanding.
+**Impact.** t03's improvement over t02 cannot be attributed to fine-tuning — the comparison chart had to ship with the base column marked "n/a จริงๆ ไม่ใช่ยังไม่วัด" (truly n/a, not "not measured yet"). Still outstanding.
 
 **Fix.** Not fixed. Comparison image (เปรียบเทียบผลทูน_t03_2026-08-25.png) explicitly states the causal claim is unproven. Deferred to the next round.
 
@@ -2287,9 +2287,9 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-25(teach mk).md` · eval-methodology</sub>
 
-#### 🟠 HIGH · 2026-08-25 · Every round's subtask scoreboard comes from a single evaluation house (บ้าน 08), whose section pages are fences and plumbing
+#### 🟠 HIGH · 2026-08-25 · Every round's subtask scoreboard comes from a single evaluation house (house 08), whose section pages are fences and plumbing
 
-**What happened.** The section ceiling was computed 'เฉพาะบ้าน 08 ที่ใช้วัดผลจริง' — revealing that the numbers steering three training rounds are one-house measurements. House 08 is single-storey and its section sheets are almost all รั้ว/ประตู/ท่อน้ำ details, not beam/column cross-sections, which is why its ceiling collapses to 4% while the corpus-wide ceiling is 37%.
+**What happened.** The section ceiling was computed 'เฉพาะบ้าน 08 ที่ใช้วัดผลจริง' (only on house 08, the house actually used for evaluation) — revealing that the numbers steering three training rounds are one-house measurements. House 08 is single-storey and its section sheets are almost all รั้ว/ประตู/ท่อน้ำ (fence/gate/water-pipe) details, not beam/column cross-sections, which is why its ceiling collapses to 4% while the corpus-wide ceiling is 37%.
 
 **Root cause.** One house was chosen as the eval set, presumably for speed, and its representativeness was never checked against the corpus before its numbers were used to pick what to fix.
 
@@ -2345,7 +2345,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-30 · Falling train_loss and 96-100% valid JSON were read as 'training is healthy, folds converge consistently' while the model was learning nothing but the schema
 
-**What happened.** fold0 finished at train_loss 0.5503 with 'ลดต่อเนื่องตลอด ไม่มีสัญญาณ overfit'; fold2 finished at 0.5590 and was recorded as 'สัญญาณดีว่าทั้ง 4 folds converge สอดคล้องกัน'. Both readings were used as evidence the run was fine. The post-mortem showed the loss was falling because the model was memorising the JSON schema and the answers of houses it had already seen — it could not read the drawings at all (every image collapsed to one 256-token tile). The same misplaced comfort appears again when the 17773>8192 truncation warning was partly waved off with 'loss ที่ลดปกติดีเป็นสัญญาณบวก'.
+**What happened.** fold0 finished at train_loss 0.5503 with 'ลดต่อเนื่องตลอด ไม่มีสัญญาณ overfit' (falling steadily throughout, no sign of overfit); fold2 finished at 0.5590 and was recorded as 'สัญญาณดีว่าทั้ง 4 folds converge สอดคล้องกัน' (a good sign that all 4 folds converge consistently). Both readings were used as evidence the run was fine. The post-mortem showed the loss was falling because the model was memorising the JSON schema and the answers of houses it had already seen — it could not read the drawings at all (every image collapsed to one 256-token tile). The same misplaced comfort appears again when the 17773>8192 truncation warning was partly waved off with 'loss ที่ลดปกติดีเป็นสัญญาณบวก' (a loss that falls normally is a positive sign).
 
 **Root cause.** train_loss and output-format validity are both blind to a preprocessing bug: a model that memorises schema plus seen answers drives loss down exactly the same way a model that learned to read does. No metric in the loop measured whether the visual input carried information.
 
@@ -2359,7 +2359,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-30 · Only aggregate recall numbers were tracked; nobody opened a raw output file until Makham demanded a root cause — the model was answering about a completely different house and sheet
 
-**What happened.** Eval was reported as plan_beam 6/6=0%, plan_footing 1/1=0%. Makham had to order 'หาสาเหตุก่อน มันไม่ควรแย่ขนาดนั้น' before anyone opened an actual output file. Doing so immediately revealed the model was not producing near-miss element ids — it was answering with a plan of a different house and a different sheet entirely (fed a footing plan, it answered with someone else's roof plan). That qualitative fact, invisible in a recall percentage, is what pointed at a perception failure rather than an accuracy failure.
+**What happened.** Eval was reported as plan_beam 6/6=0%, plan_footing 1/1=0%. Makham had to order 'หาสาเหตุก่อน มันไม่ควรแย่ขนาดนั้น' (find the cause first, it shouldn't be that bad) before anyone opened an actual output file. Doing so immediately revealed the model was not producing near-miss element ids — it was answering with a plan of a different house and a different sheet entirely (fed a footing plan, it answered with someone else's roof plan). That qualitative fact, invisible in a recall percentage, is what pointed at a perception failure rather than an accuracy failure.
 
 **Root cause.** The eval harness reported a scalar (recall) and the workflow trusted it as the whole picture. A 0% score has many possible causes — near misses, format failure, total blindness — and the scalar cannot distinguish them, so diagnosis stalled at 'the score is bad' until a human forced a look at the raw text.
 
@@ -2435,7 +2435,7 @@ By theme:
 
 **Impact.** Combined with the leaked-example bug this produced a false green on the go/no-go gate; acting on it would have burned the full $60–70 training run on a blind model, repeating t04 exactly.
 
-**Fix.** The diary records the prompt-leak rule ('ห้ามใส่ตัวอย่างที่อยู่ในเฉลย ลงไปใน prompt ที่ใช้ทดสอบ') but records no precision/over-generation penalty in the scorer — the enumeration hole is described, not closed. Not fixed.
+**Fix.** The diary records the prompt-leak rule ('ห้ามใส่ตัวอย่างที่อยู่ในเฉลย ลงไปใน prompt ที่ใช้ทดสอบ' (never put examples that appear in the answer key into a prompt used for testing)) but records no precision/over-generation penalty in the scorer — the enumeration hole is described, not closed. Not fixed.
 
 **→ Rule.** A recall-only score is gameable by guessing everything. Any gate metric must penalise over-generation (precision, or a hard cap on emitted items) or a model that outputs the whole naming space always passes.
 
@@ -2569,7 +2569,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-07-29 · Judged the model for emitting zero confidence fields that the prompt and dataset had deliberately stripped out
 
-**What happened.** Section 2.จ of the 2026-07-29 review lists 'ชั้นความมั่นใจหายทั้งหมด' as a defect: confidence_score and confidence_flags appeared 0 times in 6 files. But Appendix B records that confidence was deliberately cut from PROMPT_SHORT during prompt design ('confidence/price-table/specs join ... ตัดออกทั้งหมดเพราะ dataset ไม่มีให้สอนอยู่แล้ว') — the model was never asked for them and never trained on them.
+**What happened.** Section 2.จ of the 2026-07-29 review lists 'ชั้นความมั่นใจหายทั้งหมด' (the confidence layer is missing entirely) as a defect: confidence_score and confidence_flags appeared 0 times in 6 files. But Appendix B records that confidence was deliberately cut from PROMPT_SHORT during prompt design ('confidence/price-table/specs join ... ตัดออกทั้งหมดเพราะ dataset ไม่มีให้สอนอยู่แล้ว' (… all cut out, because the dataset has nothing to teach them from anyway)) — the model was never asked for them and never trained on them.
 
 **Root cause.** The evaluation compared model output against the human ground-truth schema, which contains confidence fields, while the model was trained and prompted against a deliberately reduced schema that does not. The two schemas were never reconciled before the comparison.
 
@@ -2599,7 +2599,7 @@ By theme:
 
 **What happened.** When the GT-vs-AI overlays were rendered for house 09, the human-reviewed ground truth resolved 45 of 48 beams on one page and 52 of 53 on another — not 100%. The measuring stick used to score the model has its own small gap, which was noted in passing and not investigated.
 
-**Root cause.** Some ground-truth elements carry grid refs that cannot be resolved against the grid master (missing/ambiguous refs), the same class of gap as the หน้า28 calibration failure — but here in the human data, not the printed sheet.
+**Root cause.** Some ground-truth elements carry grid refs that cannot be resolved against the grid master (missing/ambiguous refs), the same class of gap as the page 28 calibration failure — but here in the human data, not the printed sheet.
 
 **Impact.** Every recall number computed against this ground truth carries an unquantified few-percent floor; the 3 unplaceable GT beams are silently excluded from any overlay-based comparison.
 
@@ -2793,7 +2793,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-31 · Two different final-loss figures were recorded on the same day, and the overfit verdict rests on the lower pair
 
-**What happened.** The merge entry records final loss for fold0/2/3 as 0.273/0.259/0.250. Hours later, when diagnosing the greedy failure, the diary states "loss < 0.2 = overfit — ของเราจบที่ 0.10-0.13". The two numbers cannot both describe the same metric, yet the overfit conclusion (and the plan to cut epochs next round) is built on 0.10-0.13.
+**What happened.** The merge entry records final loss for fold0/2/3 as 0.273/0.259/0.250. Hours later, when diagnosing the greedy failure, the diary states "loss < 0.2 = overfit — ของเราจบที่ 0.10-0.13" (ours ended at 0.10-0.13). The two numbers cannot both describe the same metric, yet the overfit conclusion (and the plan to cut epochs next round) is built on 0.10-0.13.
 
 **Root cause.** The metric behind each figure is not named (train vs eval, last step vs smoothed) and neither was traced back to the logs before being used as evidence.
 
@@ -2851,7 +2851,7 @@ By theme:
 
 **What happened.** The doc states the 40 houses were split into 5 groups of 8 ('5 กอง กองละ 8 หลัง'), but the fold table lists only fold 0–3, and the merge equation uses k = 4 with weight 0.25 each. Group 5 is therefore in the training set of all four models and is held out by none of them.
 
-**Root cause.** A 5-way split was declared and a 4-way cross-validation was executed; nobody reconciled the two. The 'ทุกตัวเห็นข้อมูลเท่ากันเป๊ะ (32 จาก 40 หลัง)' justification for equal soup weights checks the count of training houses but not which houses, so the asymmetry is invisible to that argument.
+**Root cause.** A 5-way split was declared and a 4-way cross-validation was executed; nobody reconciled the two. The 'ทุกตัวเห็นข้อมูลเท่ากันเป๊ะ (32 จาก 40 หลัง)' (every model sees exactly the same amount of data (32 of 40 houses)) justification for equal soup weights checks the count of training houses but not which houses, so the asymmetry is invisible to that argument.
 
 **Impact.** 8 of 40 hand-annotated houses (20% of the most expensive asset in the project) produce zero evaluation signal, and every fold model has seen them, so no fold score is clean with respect to that group. The soup is 'unbenchmarked' partly for this structural reason, not only because the union covers 40.
 
@@ -2861,7 +2861,7 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/สอนมะขาม_ทำไม_Purson_กับ_Voldemort_พัง_2026-09-01.md` · eval-methodology</sub>
 
-#### 🟡 MEDIUM · 2026-09-01 · The warning printed when elements were dropped blamed the model ('generation หลุด') for data our own sanitizer had deleted
+#### 🟡 MEDIUM · 2026-09-01 · The warning printed when elements were dropped blamed the model ('generation หลุด' (generation broke off)) for data our own sanitizer had deleted
 
 **What happened.** When `sanitize_elements()` discarded valid negative-level elements, the warning it emitted said the generation had been truncated — pointing every future debugger at the model, at 4-bit quantisation, at timeouts, at anything except the twelve-line regex that actually threw the data away. Confirmed on real ground truth: 07บ้าน_ใหญ่_2ชั้น_01 page 35 lost 3 of 11 elements under a 'model failed' banner while the model had answered correctly.
 
@@ -2903,9 +2903,9 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-25(teach mk).md` · vendor/evaluation</sub>
 
-#### ⚪ LOW · 2026-08-25 · A 19-column detection count on บ้าน17 หน้า15 was reported without ever being verified against the drawing
+#### ⚪ LOW · 2026-08-25 · A 19-column detection count on house 17 page 15 was reported without ever being verified against the drawing
 
-**What happened.** Among the visual verification results, บ้าน17 หน้า15 was recorded as showing 19 columns with the caveat that it was "not individually verified — some may be doubles", sitting in the same list as the fully-checked 14/14 and 12/12 results.
+**What happened.** Among the visual verification results, house 17 page 15 was recorded as showing 19 columns with the caveat that it was "not individually verified — some may be doubles", sitting in the same list as the fully-checked 14/14 and 12/12 results.
 
 **Root cause.** Verification was done by eyeballing overlays page by page, and one page was reported from the count alone without the per-box check the other pages received.
 
@@ -3041,7 +3041,7 @@ By theme:
 
 **What happened.** The 8x reference-glyph sweep that reverted the house-10 'fix' also uncovered a series of further errors in the same table: #1 corrected to 1,020,000, #2 to 1,460,000 (this project's own house 2 price), #4 spread to 1,824,000, a house design size to 3/8=156, and in house 1's fifth copy #8 spread 1,662,000→1,622,000 and #10 spread 2,235,000→2,035,000.
 
-**Root cause.** Thai numerals were being judged glyph-by-glyph in isolation at high zoom, where ๑ and ๙ are easily confused, instead of against a reference glyph elsewhere on the same sheet. The error was systematic, so it recurred in every independent reading of the same table.
+**Root cause.** Thai numerals were being judged glyph-by-glyph in isolation at high zoom, where ๑ (1) and ๙ (9) are easily confused, instead of against a reference glyph elsewhere on the same sheet. The error was systematic, so it recurred in every independent reading of the same table.
 
 **Impact.** Six-plus wrong price figures across five houses' files, including the project's own house price. Only found because one row's 'correction' happened to be checked a second time.
 
@@ -3277,7 +3277,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-31 · Batch-labelled 89 pass0 pages with sheet_code null even though the ground truth was clearly readable
 
-**What happened.** While batch-labelling material_list pages, sheet_code and sheet_name were set to null on all 89 pages despite the GT plainly showing values like 'ปร.4 (แผ่นที่ 1/23)'. The pass0 prompt itself states this is the only chance to capture them because the title block is cropped away for later passes.
+**What happened.** While batch-labelling material_list pages, sheet_code and sheet_name were set to null on all 89 pages despite the GT plainly showing values like 'ปร.4 (แผ่นที่ 1/23)' (ปร.4, sheet 1/23). The pass0 prompt itself states this is the only chance to capture them because the title block is cropped away for later passes.
 
 **Root cause.** The batch script was written for the layout question (which half is which sheet) and never revisited the other required fields; the prompt's own 'only chance' warning was not re-read before generating 89 labels.
 
@@ -3711,7 +3711,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-07 · House 14's beam runs on pages 18/19 were not fully traced — left at confidence ≤0.6
 
-**What happened.** Beam runs on หน้า18 and หน้า19 of house 14 were not fully traced; entries were left at confidence ≤ 0.6 and flagged `needs_zoom_review`, with the house otherwise reported complete.
+**What happened.** Beam runs on page 18 and page 19 of house 14 were not fully traced; entries were left at confidence ≤ 0.6 and flagged `needs_zoom_review`, with the house otherwise reported complete.
 
 **Root cause.** Beam tracing across a plan is the hardest and least automatable part of extraction, and the workflow allows a house to be marked done with low-confidence beam entries outstanding — the same class of gap as the houses 01–05 missing-beam problem.
 
@@ -3825,7 +3825,7 @@ By theme:
 
 **What happened.** Only 24 of 40 grid masters had z-axis level data. Filling the gap took three different recovery routes: 6 houses reconstructed from existing elements, 2 dug out of prose text, and 8 required opening the original drawing images and reading them by hand. Z-chains were also verified closed on 9 houses.
 
-**Root cause.** z_levels was added to the gridmaster spec after many houses had already been extracted, and no back-fill sweep was run when the spec changed. The data existed in four different ad-hoc storage shapes across houses (Thai-label keys, prose "ระดับ… +X.XX", level_labels_as_printed, levels_m dicts).
+**Root cause.** z_levels was added to the gridmaster spec after many houses had already been extracted, and no back-fill sweep was run when the spec changed. The data existed in four different ad-hoc storage shapes across houses (Thai-label keys, prose "ระดับ… +X.XX" (level … +X.XX), level_labels_as_printed, levels_m dicts).
 
 **Impact.** 40% of houses had no vertical dimension available to any consumer; recovering it required manual image reading for 8 houses.
 
@@ -3893,7 +3893,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-30 · Measured CV template coverage: only 23 of 44 houses come out exact — 19 under-detect and 2 produce false positives, and beams have no templates at all
 
-**What happened.** A direct survey of the real library (measured, not read off an old report) found 3,149 pages, a bank of only 17 templates (14 footing, 3 column), and harvest_report coverage of 'พอดี 23 / ขาด 19 / เกิน(FP) 2 หลัง'. Beams use no template bank whatsoever — beam detection is synthesised as a pair of lines from BEAM_GAP. So the CV layer that the t05 plan intends to feed the model as production-shaped input is itself wrong on roughly half the houses, and is weakest on exactly the element the model already scores 0% on (plan_beam).
+**What happened.** A direct survey of the real library (measured, not read off an old report) found 3,149 pages, a bank of only 17 templates (14 footing, 3 column), and harvest_report coverage of 'พอดี 23 / ขาด 19 / เกิน(FP) 2 หลัง' (exact 23 / under 19 / over (FP) 2 houses). Beams use no template bank whatsoever — beam detection is synthesised as a pair of lines from BEAM_GAP. So the CV layer that the t05 plan intends to feed the model as production-shaped input is itself wrong on roughly half the houses, and is weakest on exactly the element the model already scores 0% on (plan_beam).
 
 **Root cause.** The bank was grown opportunistically from whatever harvested cleanly rather than driven to coverage per house; beams were handled by a heuristic instead of templates because their shape does not match the icon-template approach. Coverage was never a release gate.
 
@@ -3955,7 +3955,7 @@ By theme:
 
 **Impact.** Even a perfectly designed split cannot measure whether the model learned pass0 or pass3 — the capability being built is structurally unmeasurable with the current data. Any training run aimed at those passes ends with 'still don't know if it worked'.
 
-**Fix.** Not fixed — the diary records the count and the conclusion ('ถ้าใช้ fold เดิมต่อ = เทรนไปแล้วก็ยังไม่รู้อยู่ดี'), but no annotation backfill is recorded.
+**Fix.** Not fixed — the diary records the count and the conclusion ('ถ้าใช้ fold เดิมต่อ = เทรนไปแล้วก็ยังไม่รู้อยู่ดี' (if we keep using the old folds = even after training we still won't know)), but no annotation backfill is recorded.
 
 **→ Rule.** Before designing an eval split, count examples per capability, not per house. A capability with 5 labelled examples has no eval set at any k; the fix is annotation, not a better splitter.
 
@@ -4187,7 +4187,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-07-29 · Two rooms given identical corner points but different names
 
-**What happened.** On page 06, F6 = ["C-2","C-3","D-3","D-2"] labelled 'เตรียมอาหาร' and F7 = ["C-3","C-2","D-2","D-3"] labelled 'นอน 2' — the exact same four points, declared to be two different rooms.
+**What happened.** On page 06, F6 = ["C-2","C-3","D-3","D-2"] labelled 'เตรียมอาหาร' (food prep) and F7 = ["C-3","C-2","D-2","D-3"] labelled 'นอน 2' (bedroom 2) — the exact same four points, declared to be two different rooms.
 
 **Root cause.** Nothing in the extraction or validation step checks that geometry is unique across elements, so the model can emit duplicated footprints with different labels and nothing objects.
 
@@ -4201,7 +4201,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-07-29 · Real Thai room names dumped into notes while element_id was invented as F1–F11
 
-**What happened.** Gold element_ids are the real room names (นอน1, จอดรถ). The model invented F1–F11 as ids and pushed the actual room names into the notes field instead.
+**What happened.** Gold element_ids are the real room names (นอน1 (bedroom 1), จอดรถ (parking)). The model invented F1–F11 as ids and pushed the actual room names into the notes field instead.
 
 **Root cause.** The model had read the correct information but placed it in the wrong field — a schema-mapping failure, not a reading failure, consistent with the untuned-model hypothesis.
 
@@ -4243,7 +4243,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-07-29 · Thai construction terms mis-spelled into non-words
 
-**What happened.** เฉลียง → เจี๊ยง, บันได → บ้านได้, ยิปซั่มบอร์ด → อีปซั่มบอร์ด across the output.
+**What happened.** เฉลียง (veranda) → เจี๊ยง, บันได (stairs) → บ้านได้, ยิปซั่มบอร์ด (gypsum board) → อีปซั่มบอร์ด across the output.
 
 **Root cause.** Character-level degradation consistent with the resolution mismatch (training at ~266 visual tokens vs 3,796 at inference) plus quantization damage — the model reads shapes it never practised at this density.
 
@@ -4395,7 +4395,7 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-02.md` · data-quality</sub>
 
-#### 🟡 MEDIUM · 2026-08-02 · Rebar printed with a 'หยุดที่ L/8' / mid-span qualifier in houses 10-11 is still not merged into a bar face
+#### 🟡 MEDIUM · 2026-08-02 · Rebar printed with a 'หยุดที่ L/8' (stop at L/8) / mid-span qualifier in houses 10-11 is still not merged into a bar face
 
 **What happened.** Houses 10 and 11 print some bars with a stop-at-L/8 or mid-span qualifier. Those bars were never merged into a top/middle/bottom face as §7 requires, because doing so needs the leader lines checked against the drawing image. Listed as pending on 08-02 rounds 2, 3, 4, at session close, and again on 08-04.
 
@@ -4453,7 +4453,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-07 · House 14 has no sheet codes or index page at all — sheet_code null throughout
 
-**What happened.** House 14, the first from the BMA 'แบบบ้านยิ้ม...เพื่อประชาชน' series rather than the กรมโยธาธิการ series, has no sheet codes and no index page, so `sheet_code` is null across every file.
+**What happened.** House 14, the first from the BMA 'แบบบ้านยิ้ม...เพื่อประชาชน' ('Smile House' plans... for the people) series rather than the Department of Public Works (กรมโยธาธิการ) series, has no sheet codes and no index page, so `sheet_code` is null across every file.
 
 **Root cause.** The extraction workflow and schema assumed every drawing set has title-block sheet codes — an assumption formed from 13 houses that all came from one publisher.
 
@@ -4509,7 +4509,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-18 · Eight BOQ pages shipped as reference stubs instead of real transcriptions
 
-**What happened.** House 24's pile-footing-system BOQ pages หน้า47-54 were not individually re-transcribed. The first/last sheet of both foundation-system BOQs were spot-checked, categories 2-4 confirmed identical (matching house 22's precedent), and reference stubs written instead of reading eight near-duplicate pages.
+**What happened.** House 24's pile-footing-system BOQ pages 47-54 were not individually re-transcribed. The first/last sheet of both foundation-system BOQs were spot-checked, categories 2-4 confirmed identical (matching house 22's precedent), and reference stubs written instead of reading eight near-duplicate pages.
 
 **Root cause.** A deliberate time-saving shortcut under the 90-minute op3 ceiling, based on a two-page sample generalized to eight pages. Sound in this instance, but it means eight files in the dataset are not real extraction ground truth.
 
@@ -4523,7 +4523,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-20 · Slab markers (SO/SI/ST) carry no grid_ref at all, so slabs can never be positioned or overlaid
 
-**What happened.** During the house 01 หน้า19 overlay proof, every beam segment resolved (24/24) but the SO/SI/ST slab markers drew nothing — they carry no grid_ref in the schema, so the overlay had no position to draw. Recorded as 'exactly as expected' rather than as a gap.
+**What happened.** During the house 01 page 19 overlay proof, every beam segment resolved (24/24) but the SO/SI/ST slab markers drew nothing — they carry no grid_ref in the schema, so the overlay had no position to draw. Recorded as 'exactly as expected' rather than as a gap.
 
 **Root cause.** The schema's position model is grid-ref based and slab markers were never given one; a slab is an area, not a point or a line between two grid refs, and no field was defined for it.
 
@@ -4627,7 +4627,7 @@ By theme:
 
 **Impact.** A day of citing ACI values with an "unverified against มยผ." caveat that could have been resolved sooner; downstream, an entire standards registry was later migrated once the real text was read.
 
-**Fix.** Found and read the text-layer PDF, corrected the 08-24 record, and re-verified the ปลายยื่นปลอก clause (5.3.4.2) in bbs-shapes.js against the real document.
+**Fix.** Found and read the text-layer PDF, corrected the 08-24 record, and re-verified the ปลายยื่นปลอก (stirrup hook extension) clause (5.3.4.2) in bbs-shapes.js against the real document.
 
 **→ Rule.** "The PDF is a scan" is a property of one hosted copy, not of the standard. Search for another host before recording a source as unreadable and substituting a foreign standard.
 
@@ -4655,7 +4655,7 @@ By theme:
 
 **Impact.** Strength values stay missing for ~76 files — the same class of silently-absent data that §4a had already flagged as "never reached a consumer in any house", now only partly closed.
 
-**Fix.** not fixed — recorded as deliberate ("จงใจไม่ทำ ไม่ใช่ลืม"); filling them requires re-reading the drawing pages, and writing empty arrays would be lying that the data was read and absent.
+**Fix.** not fixed — recorded as deliberate ("จงใจไม่ทำ ไม่ใช่ลืม" — deliberately not done, not forgotten); filling them requires re-reading the drawing pages, and writing empty arrays would be lying that the data was read and absent.
 
 **→ Rule.** A parse-from-own-file fix only heals files already in the new shape; count and record the remainder explicitly, or the fix reads as complete when it covered half the set.
 
@@ -4677,11 +4677,11 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · The one available non-BMA-series house has no plan_footing/plan_beam GT, so cross-series validation is blocked by missing data
 
-**What happened.** The template-matching tool was validated only on two houses of the same BMA "แบบบ้านยิ้ม" series. The obvious cross-series candidate, 07บ้าน_ใหญ่_2ชั้น_01, cannot be used as a numeric check because it has no plan_footing/plan_beam GT jsons to compare against.
+**What happened.** The template-matching tool was validated only on two houses of the same BMA "แบบบ้านยิ้ม" (Smile House plans) series. The obvious cross-series candidate, 07บ้าน_ใหญ่_2ชั้น_01, cannot be used as a numeric check because it has no plan_footing/plan_beam GT jsons to compare against.
 
 **Root cause.** GT coverage grew per-house without tracking series diversity, so the houses with GT happen to cluster in one drawing office's series — the exact axis the tool most needs to be tested on.
 
-**Impact.** The generalization claim for the whole detector stays untestable numerically; only an eyeball check is possible, and the cross-series over-detection later suspected on บ้าน 08/18 has no GT-backed way to be confirmed.
+**Impact.** The generalization claim for the whole detector stays untestable numerically; only an eyeball check is possible, and the cross-series over-detection later suspected on houses 08/18 has no GT-backed way to be confirmed.
 
 **Fix.** not fixed — recorded as pending ("Test on a non-BMA-series house once one has comparable pages"), with a visual-only check accepted as the interim.
 
@@ -4719,7 +4719,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-28 · Four recurring drawing-classification traps documented after repeatedly getting them wrong
 
-**What happened.** Four traps were added to §1 of the spec: 'แป' is a subset of 'แปลน' (substring collision), sheet_name on multi-view pages misleads classification, 'คานอะเส' is a beam_plan, and steel roof framing is entirely `steel_member`.
+**What happened.** Four traps were added to §1 of the spec: 'แป' (purlin) is a subset of 'แปลน' (plan) (substring collision), sheet_name on multi-view pages misleads classification, 'คานอะเส' (eave beam) is a beam_plan, and steel roof framing is entirely `steel_member`.
 
 **Root cause.** Thai construction terminology has substring collisions and domain-specific meanings that a naive classifier (human or model) gets wrong repeatedly. These were being re-discovered each time rather than written down.
 
@@ -4887,7 +4887,7 @@ By theme:
 
 #### ⚪ LOW · 2026-07-31 · House 11's S-01 sheet index lists names that don't match the sheets themselves
 
-**What happened.** The S-01 index page names sheets differently from what each sheet's own title block says — e.g. S-07 is really the column/spread-footing schedule, not the 'เชิงชายกันน้ำ' the index claims. The index file was left unfixed.
+**What happened.** The S-01 index page names sheets differently from what each sheet's own title block says — e.g. S-07 is really the column/spread-footing schedule, not the 'เชิงชายกันน้ำ' (waterproof fascia) the index claims. The index file was left unfixed.
 
 **Root cause.** The published index page is itself wrong (a source defect); extraction had been reading the index as an authority on what each sheet contains.
 
@@ -4901,7 +4901,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-02 · House 01's series price table is still unstructured raw text, flagged PENDING rather than converted
 
-**What happened.** When the identical series price table was unified to series_price_table[] across five houses, house 01's copy on หน้า60 could not be converted and was left as raw text under a PENDING_STRUCTURING_2026-08-02 flag. It was still listed as outstanding at session close and again in the 2026-08-04 pending list.
+**What happened.** When the identical series price table was unified to series_price_table[] across five houses, house 01's copy on page 60 could not be converted and was left as raw text under a PENDING_STRUCTURING_2026-08-02 flag. It was still listed as outstanding at session close and again in the 2026-08-04 pending list.
 
 **Root cause.** The other four copies had enough structure to map onto the majority form; house 01's did not, and guessing the structure was correctly refused.
 
@@ -5413,7 +5413,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-21 · First fix for the repetition loop only made failure less likely, and its n-gram guard was trivially evaded
 
-**What happened.** The 2026-08-21 fix added `repetition_penalty=1.15` + `no_repeat_ngram_size=8` to treat a structural output problem with a scoring nudge. Result: 'พังทุกครั้ง' became 'พังบางครั้ง' — it never removed the failure. Worse, the n-gram guard was directly evaded on house 08 หน้า07 because the model alternated its separators (`_ide`, `_ida`, `_ife`), so no exact 8-token window ever repeated.
+**What happened.** The 2026-08-21 fix added `repetition_penalty=1.15` + `no_repeat_ngram_size=8` to treat a structural output problem with a scoring nudge. Result: 'broken every time' became 'broken sometimes' — it never removed the failure. Worse, the n-gram guard was directly evaded on house 08 page 07 because the model alternated its separators (`_ide`, `_ida`, `_ife`), so no exact 8-token window ever repeated.
 
 **Root cause.** A probabilistic penalty ('asking') was applied to a problem that required a hard constraint ('forbidding'). The n-gram rule matches exact token windows, which a varying-separator loop slips past by construction.
 
@@ -6471,7 +6471,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · BEAM_GAP=21px is calibrated to one scan batch's DPI and drawing scale
 
-**What happened.** The beam template's line gap is hardcoded at 21px, measured off บ้าน17 หน้า16 (faces at y=758-760/777-779). It is valid only for this scan batch's DPI at 1:75 scale; a different DPI or drawing scale would break beam detection entirely.
+**What happened.** The beam template's line gap is hardcoded at 21px, measured off house 17 page 16 (faces at y=758-760/777-779). It is valid only for this scan batch's DPI at 1:75 scale; a different DPI or drawing scale would break beam detection entirely.
 
 **Root cause.** A pixel measurement from one document was baked in as a constant with no derivation from DPI and drawing scale.
 
@@ -6527,7 +6527,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-30 · Epoch count changed three times (3→5→4→3) on non-technical reasoning, forcing two training restarts and wiping outputs twice
 
-**What happened.** num_train_epochs went 3.0 → 5.0 (to 'match the k-fold=5 idea', explicitly noted in the yaml as technically unrelated to epochs), then 5.0 → 4.0 for the stated reason 'ถูกชะตากับเลข 4' (t04 + Sicilian44 + epochs4), then 4 → 3 to fit the k-fold budget. Each change required killing the tmux `train` session, wiping `outputs_t04`, and restarting.
+**What happened.** num_train_epochs went 3.0 → 5.0 (to 'match the k-fold=5 idea', explicitly noted in the yaml as technically unrelated to epochs), then 5.0 → 4.0 for the stated reason 'ถูกชะตากับเลข 4' (= "had a good feeling about the number 4": t04 + Sicilian44 + epochs4), then 4 → 3 to fit the k-fold budget. Each change required killing the tmux `train` session, wiping `outputs_t04`, and restarting.
 
 **Root cause.** A cost-driving hyperparameter was set from analogy and preference rather than from a measured convergence signal, and was allowed to change after training had already started.
 
@@ -6801,7 +6801,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-07-19 · A cross-house price-table 'fix' was itself a misread and corrupted four files before being reverted
 
-**What happened.** On 2026-07-16 a cross-house check concluded house 3's reading (2,945,000/2,034,000) was correct and 'fixed' house 2's file (2,145,000/2,035,000) to match. On 2026-07-19, zooming 8x and comparing against reference glyphs on the same sheet showed all four copies agree on 2,145,000/2,035,000 — house 2 had been right all along; ๑ had been misread as ๙ while zoomed in.
+**What happened.** On 2026-07-16 a cross-house check concluded house 3's reading (2,945,000/2,034,000) was correct and 'fixed' house 2's file (2,145,000/2,035,000) to match. On 2026-07-19, zooming 8x and comparing against reference glyphs on the same sheet showed all four copies agree on 2,145,000/2,035,000 — house 2 had been right all along; ๑ (1) had been misread as ๙ (9) while zoomed in.
 
 **Root cause.** A glyph was judged in isolation at high zoom rather than compared against known instances of the same digit elsewhere on the same sheet. High zoom degrades the glyph and removes the surrounding context that disambiguates it.
 
@@ -7263,7 +7263,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-01 · ku_project_jop cannot be pushed at all — a 2.1GB zip is baked into commit history
 
-**What happened.** The `ku_project_jop` repo cannot be pushed. A 2.1GB zip ('data from รุ่นพี่') was committed, then deleted in a later commit — but the blob remains in history, so every push still carries it. History has to be rewritten to strip it.
+**What happened.** The `ku_project_jop` repo cannot be pushed. A 2.1GB zip ('data from รุ่นพี่' — data from the senior students) was committed, then deleted in a later commit — but the blob remains in history, so every push still carries it. History has to be rewritten to strip it.
 
 **Root cause.** A large archive was committed without checking its size, and the 'fix' was `rm` + commit, which does not remove the blob from history — a very common misunderstanding of how git stores data.
 
@@ -7591,7 +7591,7 @@ By theme:
 
 **Impact.** Full house re-runs on paid GPUs for single-page failures (directly caused the job 43323920 re-run).
 
-**Fix.** `save_checkpoint()` writes `result` after pass0/gridline/each page of pass2/pass2.5; `claim_next_job()` also fetches `result` so `run_house_extract` skips any pass already checkpointed — real resume, not just saving. Web side remembers the last job id per project and offers a '🔁 ทำต่อ' button that PATCHes the existing job back to pending rather than creating a new one.
+**Fix.** `save_checkpoint()` writes `result` after pass0/gridline/each page of pass2/pass2.5; `claim_next_job()` also fetches `result` so `run_house_extract` skips any pass already checkpointed — real resume, not just saving. Web side remembers the last job id per project and offers a '🔁 ทำต่อ' (resume) button that PATCHes the existing job back to pending rather than creating a new one.
 
 **→ Rule.** Any paid long-running job must checkpoint after every expensive unit of work, and resume must actually skip completed units — 'we save results' is not resume.
 
@@ -7627,7 +7627,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-09-02 · Job reported 'success 9/9' while three of its output pages contained invalid JSON
 
-**What happened.** Job f63bc71e finished and reported จบสำเร็จ 9/9, but three pages (page_03_notes, page_12_plan_footing, page_13_notes) had corrupt/truncated JSON. Nothing between generation and the 'done' status validated that each page's output actually parsed.
+**What happened.** Job f63bc71e finished and reported จบสำเร็จ (finished successfully) 9/9, but three pages (page_03_notes, page_12_plan_footing, page_13_notes) had corrupt/truncated JSON. Nothing between generation and the 'done' status validated that each page's output actually parsed.
 
 **Root cause.** The worker's completion status counts pages generated, not pages that produced valid parseable JSON — the server-side generation timeout cuts mid-token and the worker still marks the page done.
 
@@ -8005,7 +8005,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · MiniMax M3 carries the same hidden commercial-use licence trap as Pixtral-Large, and it was left unresolved
 
-**What happened.** MiniMax M3 is free for non-commercial use, but fine-tuning it for real use counts as commercial and requires a separate licence — explicitly identified as 'คล้ายดักของ Pixtral-Large'. The diary records it as still not conclusively ruled out, pending a closer read of the terms.
+**What happened.** MiniMax M3 is free for non-commercial use, but fine-tuning it for real use counts as commercial and requires a separate licence — explicitly identified as 'similar to the Pixtral-Large trap'. The diary records it as still not conclusively ruled out, pending a closer read of the terms.
 
 **Root cause.** Licence pages state a headline ('free') that does not survive contact with the actual use case (fine-tune + deploy for STECON). The trap had already been hit once with Pixtral-Large in the same session and was recognised but not closed out.
 
@@ -8019,7 +8019,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · The PRINTED_ID classifier is a regex heuristic that misclassifies genuinely-printed Thai labels
 
-**What happened.** `measure_id_ceiling.py` classifies GT ids as printed-vs-invented by regex. `ห้องนอน` is classed as "invented" although it is physically printed on the drawing — it is a room label, not an element mark. So the reported ceilings are conservative estimates, not proven values.
+**What happened.** `measure_id_ceiling.py` classifies GT ids as printed-vs-invented by regex. `ห้องนอน` (bedroom) is classed as "invented" although it is physically printed on the drawing — it is a room label, not an element mark. So the reported ceilings are conservative estimates, not proven values.
 
 **Root cause.** A regex cannot distinguish "text present on the page" from "text that is an element mark"; the two concepts were collapsed into one pattern.
 
@@ -8207,7 +8207,7 @@ By theme:
 
 **Impact.** Several minutes of paid instance time plus destroy/re-rent cycle time during a demo-day session, contributing to the demo not finishing that day.
 
-**Fix.** Destroyed the instance and rented a new one, per the pre-existing rule 'host มีอาการ = destroy แล้วเช่าใหม่'.
+**Fix.** Destroyed the instance and rented a new one, per the pre-existing rule 'host มีอาการ = destroy แล้วเช่าใหม่' ('host misbehaving = destroy and re-rent').
 
 **→ Rule.** When a freshly rented host misbehaves and your own config verifies clean, destroy and re-rent immediately — do not spend more than a couple of minutes debugging someone else's provisioning. Verify the fingerprint first so you know it is theirs, not yours.
 
@@ -8663,7 +8663,7 @@ By theme:
 
 **Impact.** Would have been discovered only after renting a GPU and attempting the run, had the team not checked the issue tracker during evaluation.
 
-**Fix.** Caught during catalogue research; the criterion 'มีเครื่องมือเทรน LoRA ที่ยืนยันว่าใช้ได้จริง (ไม่ใช่แค่เอกสารอ้าง)' was applied explicitly.
+**Fix.** Caught during catalogue research; the criterion 'has a LoRA training tool confirmed to actually work (not just claimed in documentation)' was applied explicitly.
 
 **→ Rule.** Verify training-framework support by finding someone who actually ran it, or by checking the issue tracker for open blockers — never by reading a support matrix. Documentation claims are not evidence.
 
@@ -8967,7 +8967,7 @@ By theme:
 
 **What happened.** ELEMENT_TYPES = ("footing", "column") is hardcoded in the King-try prototype; line elements (beams) are not handled anywhere in diff, render, or calibration.
 
-**Root cause.** The prototype was validated on one page (house 01 หน้า19, a footing/column plan) and the element-type list was frozen to what that one page contained, rather than driven from the schema's element taxonomy.
+**Root cause.** The prototype was validated on one page (house 01 page 19, a footing/column plan) and the element-type list was frozen to what that one page contained, rather than driven from the schema's element taxonomy.
 
 **Impact.** The overlay cannot display or verify beams — which are the exact elements the whole pipeline struggles with most (11% recall) and the one thing an overlay would be most valuable for.
 
@@ -9007,13 +9007,13 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · Column and beam detection ship on one hand-cropped template and one code-synthesized template respectively — neither ever harvested
 
-**What happened.** While the footing bank grew to 14 harvested templates across many houses, the column bank still holds exactly one template cropped from บ้าน 17, and the beam "template" is not a template at all — it is two parallel dark lines synthesized in code at a gap measured off a single page of บ้าน 17. Neither has been harvested across houses or series.
+**What happened.** While the footing bank grew to 14 harvested templates across many houses, the column bank still holds exactly one template cropped from house 17, and the beam "template" is not a template at all — it is two parallel dark lines synthesized in code at a gap measured off a single page of house 17. Neither has been harvested across houses or series.
 
 **Root cause.** Harvesting was built and iterated for footings only (GT filenames identify foundation-plan pages), and the other two classes were left on their bootstrap artifacts while their numbers were still being quoted in verification results.
 
 **Impact.** Every column/beam count reported (14 columns, 17 beam bands, 13 columns, 19 beam bands) rests on a one-house sample; the two classes are far less validated than the footing numbers reported beside them, which reads as equal confidence.
 
-**Fix.** not fixed — "harvest ฝั่ง column/beam ยังไม่เริ่ม" left as next-round work.
+**Fix.** not fixed — "column/beam-side harvest not yet started" left as next-round work.
 
 **→ Rule.** When one class of a multi-class detector is validated far more than the others, say so beside the numbers — otherwise a single well-tested class lends unearned credibility to the rest.
 
@@ -9049,7 +9049,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-29 · Subagents hit a spend limit for an entire session — all op04 extraction had to be done by hand
 
-**What happened.** During op04 extraction of two new houses (บ้านไทยพอเพียง 1 and 2), subagents were blocked by a spend limit for the whole session, so all extraction — S sheets (11+12), A-11 doors/windows, A-09/A-06 z_levels and roof form — was done directly instead of in parallel.
+**What happened.** During op04 extraction of two new houses (บ้านไทยพอเพียง 1 and 2 — 'Thai Sufficiency House' designs), subagents were blocked by a spend limit for the whole session, so all extraction — S sheets (11+12), A-11 doors/windows, A-09/A-06 z_levels and roof form — was done directly instead of in parallel.
 
 **Root cause.** No spend-limit check before dispatching a parallelizable workload, and no fallback plan for when the parallel path is unavailable.
 
@@ -9273,7 +9273,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-20 · The house 01 overlay render — the strongest proof produced all week — was a scratch script never added to the repo
 
-**What happened.** The 24/24 grid-ref overlay proof (HoughCircles calibration + linear per-axis fit, 55.55 vs 55.65 px/m) was produced by a script written to scratch and explicitly not added to the Training repo. Later the same week two more comparison/overlay scripts met the same fate, and by 08-21 an overlay script finally had to be written a third time (`overlay_gt_vs_ai_house09.py`) using 'วิธีเดียวกับ overlay บ้าน01 20/8'.
+**What happened.** The 24/24 grid-ref overlay proof (HoughCircles calibration + linear per-axis fit, 55.55 vs 55.65 px/m) was produced by a script written to scratch and explicitly not added to the Training repo. Later the same week two more comparison/overlay scripts met the same fate, and by 08-21 an overlay script finally had to be written a third time (`overlay_gt_vs_ai_house09.py`) using 'the same method as the house 01 overlay of 20/8'.
 
 **Root cause.** Proof-of-concept scripts were treated as disposable even after producing the result the whole argument rests on; no rule required promoting a script the moment its output is cited.
 
@@ -9285,9 +9285,9 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-20.md` · throwaway-tooling</sub>
 
-#### ⚪ LOW · 2026-08-21 · House 09 หน้า28 overlay skipped — grid circles incomplete on the printed sheet, calibration impossible
+#### ⚪ LOW · 2026-08-21 · House 09 page 28 overlay skipped — grid circles incomplete on the printed sheet, calibration impossible
 
-**What happened.** The GT-vs-AI overlay for house 09 หน้า28 (roof frame) had to be skipped: the printed grid-label circles on that sheet are incomplete, so the OpenCV HoughCircles + linear-fit calibration used on the other pages cannot establish a px/m mapping.
+**What happened.** The GT-vs-AI overlay for house 09 page 28 (roof frame) had to be skipped: the printed grid-label circles on that sheet are incomplete, so the OpenCV HoughCircles + linear-fit calibration used on the other pages cannot establish a px/m mapping.
 
 **Root cause.** The overlay calibration method depends entirely on printed grid-label circles being present and detectable on every sheet — a source-data assumption that holds on most sheets but not all, with no fallback path.
 
@@ -9771,7 +9771,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-07-29 · Output contradicted itself: two rooms assigned the identical four grid points
 
-**What happened.** F6 was given grid points ["C-2","C-3","D-3","D-2"] and named 'เตรียมอาหาร'; F7 was given the same four points in a different order and named 'นอน 2'.
+**What happened.** F6 was given grid points ["C-2","C-3","D-3","D-2"] and named 'เตรียมอาหาร' (food preparation); F7 was given the same four points in a different order and named 'นอน 2' (bedroom 2).
 
 **Root cause.** Nothing in the pipeline cross-checks emitted entries against each other; the model generates each entry locally with no global consistency constraint.
 
@@ -9841,7 +9841,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-21 · On beam plans the model collapses a whole sheet into ~2 zone-notation elements instead of per-beam rows
 
-**What happened.** Overlay comparison on house 09 หน้า26 showed the model reducing a sheet of 48 real beams to 2 elements, packing the entire page into one string of zone notation (`"F-F x 1'-2', F-F x 2'-3', …"`) whose boxes float free of any real beam line; หน้า27 could not be placed at all. This is a distinct failure mode from the fence-detail hallucination and from JSON parse failure — the JSON here is valid, the content is structurally wrong.
+**What happened.** Overlay comparison on house 09 page 26 showed the model reducing a sheet of 48 real beams to 2 elements, packing the entire page into one string of zone notation (`"F-F x 1'-2', F-F x 2'-3', …"`) whose boxes float free of any real beam line; page 27 could not be placed at all. This is a distinct failure mode from the fence-detail hallucination and from JSON parse failure — the JSON here is valid, the content is structurally wrong.
 
 **Root cause.** Too few beam-plan training examples (~13) to teach one-row-per-segment output, so the model falls back on summarising the sheet in a compressed notation it has seen in captions/schedules.
 
@@ -9903,7 +9903,7 @@ By theme:
 
 **Impact.** Would have selected an apparent alternative that carries the identical dependency and identical failure modes as the incumbent — defeating the whole purpose of the search.
 
-**Fix.** Both explicitly disqualified in the catalogue with the reason recorded ('ข้างในใช้ Qwen2.5-72B เป็นสมอง').
+**Fix.** Both explicitly disqualified in the catalogue with the reason recorded ('ข้างในใช้ Qwen2.5-72B เป็นสมอง' — it uses Qwen2.5-72B as its brain under the hood).
 
 **→ Rule.** When evaluating a model to avoid a specific dependency, check the actual backbone in the architecture section, never the brand name. Record the backbone in your comparison table as a first-class column.
 
@@ -9931,7 +9931,7 @@ By theme:
 
 **Impact.** A GPU-rental decision was about to be made on a model whose core required capability was completely unmeasured — the same class of mistake as training t04 without checking image resolution.
 
-**Fix.** Not fixed — flagged as a recommendation ('แนะนำ zero-shot Thai-OCR test ก่อนตัดสินใจลงทุนเช่า GPU จริง') rather than executed.
+**Fix.** Not fixed — flagged as a recommendation ('แนะนำ zero-shot Thai-OCR test ก่อนตัดสินใจลงทุนเช่า GPU จริง' — recommend a zero-shot Thai-OCR test before deciding to invest in renting a real GPU) rather than executed.
 
 **→ Rule.** Include the task-critical capability in the selection criteria itself, and run a free zero-shot test of it before any rental decision. Feasibility criteria (size/licence/tooling) do not measure whether the model can do the job.
 
@@ -10043,7 +10043,7 @@ By theme:
 
 **Impact.** Even after a successful training run it would have been impossible to measure whether the model learned pass0 or pass3 at all. Reusing these folds would have meant training and still not knowing the answer.
 
-**Fix.** Caught by Makham directly ('อย่าเอา fold ของ t04 ไปใช้') and confirmed by counting the actual files; the t04 fold layout was rejected for reuse.
+**Fix.** Caught by Makham directly ('อย่าเอา fold ของ t04 ไปใช้' — don't reuse t04's folds) and confirmed by counting the actual files; the t04 fold layout was rejected for reuse.
 
 **→ Rule.** Before splitting data into folds, count coverage per sub-task and stratify on the sparse dimension, not just on the total item count. Verify every fold has non-zero eval examples for every capability you intend to measure.
 
@@ -10247,7 +10247,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-21 · One page still failed after grammar-constrained decoding: the model looped inside a string literal
 
-**What happened.** House 08 หน้า07 still hit the token cap after xgrammar was enabled, emitting "description": "ct_igh_igh_igh_ide_igh_igh_igh_ida_igh_igh_igh_ife_igh...". Grammar cannot catch it because inside a JSON string every character is grammatically valid, and no_repeat_ngram_size=8 was evaded because the rotating separators (_ide, _ida, _ife) meant no 8-token sequence repeated exactly.
+**What happened.** House 08 page 07 still hit the token cap after xgrammar was enabled, emitting "description": "ct_igh_igh_igh_ide_igh_igh_igh_ida_igh_igh_igh_ife_igh...". Grammar cannot catch it because inside a JSON string every character is grammatically valid, and no_repeat_ngram_size=8 was evaded because the rotating separators (_ide, _ida, _ife) meant no 8-token sequence repeated exactly.
 
 **Root cause.** Grammar constraints enforce syntax, not semantics — inside a string literal the grammar imposes no restriction at all, so a repetition loop can run freely there. The n-gram guard has a structural blind spot: any loop that varies one token per cycle slips under an exact-repeat rule.
 
@@ -10373,7 +10373,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-09-02 · pass3 finds zero CV anchors on steel C-channel drawings — an entire drawing style it can never measure
 
-**What happened.** Running pass3 retroactively over the two salvaged house2 pages returned ok:false 'หมุดไม่พอ'. Investigation showed the CV scanner found not a single symbol anywhere on the page, because it is a special-style steel C-channel drawing with no coordinate anchor points of the kind CV was built to recognise — a different failure from the already-known beam-centroid limitation.
+**What happened.** Running pass3 retroactively over the two salvaged house2 pages returned ok:false 'หมุดไม่พอ' (not enough anchors). Investigation showed the CV scanner found not a single symbol anywhere on the page, because it is a special-style steel C-channel drawing with no coordinate anchor points of the kind CV was built to recognise — a different failure from the already-known beam-centroid limitation.
 
 **Root cause.** cv_scan's symbol vocabulary was built from RC footing/column drawings; a steel-member drawing presents none of those shapes, so the anchor set is empty rather than merely sparse.
 
@@ -10437,11 +10437,11 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-21 · Greedy decoding with no repetition guard made the model loop until the token cap, destroying whole pages of valid output
 
-**What happened.** House 08's beam-plan page (หน้า20, S-03) failed to parse. Root cause: run_house_batch.py and infer_t02.py used pure greedy decoding (do_sample=False) with no repetition guard, so the model looped repeating fake B2 beam entries across nearly every grid cell until hitting max_new_tokens, never closing the JSON. The page had 31 real beams; all 31 were lost because the brackets never closed.
+**What happened.** House 08's beam-plan page (page 20, S-03) failed to parse. Root cause: run_house_batch.py and infer_t02.py used pure greedy decoding (do_sample=False) with no repetition guard, so the model looped repeating fake B2 beam entries across nearly every grid cell until hitting max_new_tokens, never closing the JSON. The page had 31 real beams; all 31 were lost because the brackets never closed.
 
 **Root cause.** Autoregressive decoding is self-reinforcing on repetitive content: each repeated pattern raises the evidence for repeating again, so the stop token never wins. Greedy decoding with no penalty and no structural constraint makes this a guaranteed failure mode on element-dense pages, and JSON is all-or-nothing so partial correct output is worth zero.
 
-**Impact.** Element-dense pages — exactly the highest-value structural sheets — produced zero usable output. The 57.9% JSON-valid rate and the 11% element recall are both largely this bug; หน้า20 alone had 31 uncounted ground-truth elements.
+**Impact.** Element-dense pages — exactly the highest-value structural sheets — produced zero usable output. The 57.9% JSON-valid rate and the 11% element recall are both largely this bug; page 20 alone had 31 uncounted ground-truth elements.
 
 **Fix.** Added repetition_penalty=1.15 and no_repeat_ngram_size=8 to both scripts (partial fix, 'asking' not 'forbidding'), then grammar-constrained decoding via xgrammar the following night, which took JSON validity from 57.9% to 96.8%.
 
@@ -10591,7 +10591,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-28 · BEAM_GAP hardcoded to a single 21px value was blind to half the drawing library
 
-**What happened.** Beam detection used one hardcoded gap of 21px. Measuring 33 houses revealed two distinct series: the กรมโยธา series at ~16px and the house-17 series at ~21px. The single value could only ever see one of them.
+**What happened.** Beam detection used one hardcoded gap of 21px. Measuring 33 houses revealed two distinct series: the Department of Public Works (กรมโยธา) series at ~16px and the house-17 series at ~21px. The single value could only ever see one of them.
 
 **Root cause.** The constant was derived from whichever house was open when the detector was written, and never validated against the corpus. Drawings from different issuing bodies use different line spacings.
 
@@ -10975,7 +10975,7 @@ By theme:
 
 **Impact.** Users could not tell a running job from a dead one, encouraging duplicate worker launches; direct user complaint.
 
-**Fix.** Progress bar always visible (0% while waiting, elapsed/ETA-based estimate when done/total unknown), plus a prominent 'ตอนนี้: <current step>' line.
+**Fix.** Progress bar always visible (0% while waiting, elapsed/ETA-based estimate when done/total unknown), plus a prominent 'ตอนนี้: <current step>' ('now: <current step>') line.
 
 **→ Rule.** For any long-running job, the UI must always show a state — 0% plus the current step name beats a hidden bar. An invisible progress indicator on a 75-minute job actively causes duplicate-run bugs.
 
@@ -11273,7 +11273,7 @@ By theme:
 
 **What happened.** During the house-4 cross-house price check, house 7's price had been recorded as 1,572,000; houses 2 and 3 both read 1,528,000, and the cross-check confirmed the latter.
 
-**Root cause.** Digit-level misreading of a small table entry with no same-sheet reference-glyph comparison — the same failure mode that later produced the much larger ๑/๙ price-table incident.
+**Root cause.** Digit-level misreading of a small table entry with no same-sheet reference-glyph comparison — the same failure mode that later produced the much larger ๑/๙ (Thai digits 1/9) price-table incident.
 
 **Impact.** A wrong price in the dataset until the cross-house check caught it; part of a pattern of three digit errors found across two rounds.
 
@@ -11545,7 +11545,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-21 · The vertical axis had no field anywhere in the schema despite levels being printed on every elevation and section
 
-**What happened.** z-levels such as +3.75 ระดับหลังคาน, +0.60 ระดับพื้นชั้น 1 and ±0.00 ระดับอ้างอิง are printed on every elevation and section in the set, yet the schema had no field for them at all — x_lines/y_lines are plan axes only. Discovered when Makham instructed 'make the grid master record every value it finds on every page'.
+**What happened.** z-levels such as +3.75 ระดับหลังคาน (top of beam), +0.60 ระดับพื้นชั้น 1 (floor 1 level) and ±0.00 ระดับอ้างอิง (reference level) are printed on every elevation and section in the set, yet the schema had no field for them at all — x_lines/y_lines are plan axes only. Discovered when Makham instructed 'make the grid master record every value it finds on every page'.
 
 **Root cause.** The schema's grid model was built entirely from plan-view thinking (two horizontal axes) and nobody checked it against a section or elevation sheet. Compounded by the earlier assumption that elevations were low-value.
 
@@ -11559,7 +11559,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-25 · Teaching PDF shipped a wrong claim that raising MAX_LENGTH requires renting a bigger card
 
-**What happened.** The teaching document written at 15:00 said §2.3 "MAX_LENGTH เพิ่มได้ แต่ต้องเช่าการ์ดใหญ่ขึ้น = จ่ายแพงขึ้น". The VRAM decomposition done an hour later showed 79.7 of 87.5 GB does not scale with sequence length at all, so +32% resolution fits the existing card with 4.0 GB spare and no extra cost. The document had gone stale inside the same session.
+**What happened.** The teaching document written at 15:00 said §2.3 "MAX_LENGTH เพิ่มได้ แต่ต้องเช่าการ์ดใหญ่ขึ้น = จ่ายแพงขึ้น" (MAX_LENGTH can be raised, but it needs a bigger rented GPU = higher cost). The VRAM decomposition done an hour later showed 79.7 of 87.5 GB does not scale with sequence length at all, so +32% resolution fits the existing card with 4.0 GB spare and no extra cost. The document had gone stale inside the same session.
 
 **Root cause.** A conclusion was written into a durable document before the measurement that would decide it had been done, and the document had no mechanism linking it back to the numbers it depended on.
 
@@ -11671,7 +11671,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-30 · `t04_workflow.md` was badly stale — header still said 'never rented a GPU' while 2 of 4 folds were nearly finished training
 
-**What happened.** An audit of `t04_workflow.md` found the document header still claiming 'ยังไม่เคยเช่า GPU สักครั้ง' while training was almost complete on 2/4 folds; item 3 still listed epochs=5.0 when the final value was 3.0; and items 4/5/6/7 of the rental task sequence still described the 2-fold plan hours after the expansion to 4 folds.
+**What happened.** An audit of `t04_workflow.md` found the document header still claiming 'ยังไม่เคยเช่า GPU สักครั้ง' (have never rented a GPU even once) while training was almost complete on 2/4 folds; item 3 still listed epochs=5.0 when the final value was 3.0; and items 4/5/6/7 of the rental task sequence still described the 2-fold plan hours after the expansion to 4 folds.
 
 **Root cause.** The working document was updated opportunistically instead of at each decision point, so every mid-flight change (epochs, fold count, rental status) accumulated as drift.
 
@@ -11769,7 +11769,7 @@ By theme:
 
 #### ⚪ LOW · 2026-07-21 · Teaching doc states a LoRA adapter is 'a few hundred MB'; the real t01 adapter is 7.5GB
 
-**What happened.** Section 6 of the 2026-07-21 teaching document explains that the LoRA output file is 'เล็กมาก (ไม่กี่ร้อย MB)'. Section 7 of the 2026-07-28 document gives the actual t01 adapter size as ~7.5GB — about 25x larger — because the MoE architecture replicates the adapter across 256 experts, the same multiplication that caused the original OOM.
+**What happened.** Section 6 of the 2026-07-21 teaching document explains that the LoRA output file is 'เล็กมาก (ไม่กี่ร้อย MB)' (very small — a few hundred MB). Section 7 of the 2026-07-28 document gives the actual t01 adapter size as ~7.5GB — about 25x larger — because the MoE architecture replicates the adapter across 256 experts, the same multiplication that caused the original OOM.
 
 **Root cause.** The 'a few hundred MB' figure is the standard dense-model intuition for LoRA; it was written into the teaching doc without being reconciled against the MoE 256-expert multiplication explained two sections later in the same document.
 
@@ -11823,9 +11823,9 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-18.md` · spec-gap</sub>
 
-#### ⚪ LOW · 2026-08-20 · House 01 หน้า19 is recorded as a footing/column plan on 08-18 and a beam plan on 08-20 — same page, two sheet types
+#### ⚪ LOW · 2026-08-20 · House 01 page 19 is recorded as a footing/column plan on 08-18 and a beam plan on 08-20 — same page, two sheet types
 
-**What happened.** The 2026-08-18 entry describes the Gemini overlay proof as running on 'house 01 หน้า19 (footing/column plan)' scoring 24/24. The 2026-08-20 entry describes rendering an overlay on 'house 01 หน้า19 (S-02) beam plan' with '24/24 beam segments resolved'. Same house, same page number, same 24/24, two incompatible sheet-type labels.
+**What happened.** The 2026-08-18 entry describes the Gemini overlay proof as running on 'house 01 page 19 (footing/column plan)' scoring 24/24. The 2026-08-20 entry describes rendering an overlay on 'house 01 page 19 (S-02) beam plan' with '24/24 beam segments resolved'. Same house, same page number, same 24/24, two incompatible sheet-type labels.
 
 **Root cause.** Two sessions wrote up the same artifact from memory/context without checking the page's actual pattern field; nothing cross-checked the two entries.
 
@@ -11839,13 +11839,13 @@ By theme:
 
 #### ⚪ LOW · 2026-08-21 · roof_plan subtask had no input row in the pass-design table despite being a grid-master source
 
-**What happened.** In Makham's draft pass table, the roof_plan subtask was missing its own input row even though it is a grid-master source. 'json ของ Gridmaster' was added back as its input, for consistency with plan/site_plan/side_profile.
+**What happened.** In Makham's draft pass table, the roof_plan subtask was missing its own input row even though it is a grid-master source. 'json ของ Gridmaster' (the Gridmaster json) was added back as its input, for consistency with plan/site_plan/side_profile.
 
 **Root cause.** The table was built pattern-by-pattern by hand with no completeness check that every grid-master-consuming subtask declares the grid master as an input — an omission a table cannot self-detect.
 
 **Impact.** Caught during review. Had it shipped, Pass 1 would not have copied/referenced the grid master into the roof_plan folder and every roof_plan extraction would have had no grid context.
 
-**Fix.** Added 'json ของ Gridmaster' as roof_plan's input in pass_design.csv.
+**Fix.** Added 'json ของ Gridmaster' (the Gridmaster json) as roof_plan's input in pass_design.csv.
 
 **→ Rule.** Hand-built dependency tables need a mechanical consistency check — if any subtask of a class declares an input, assert all subtasks of that class do, rather than relying on reading the table row by row.
 
@@ -11867,7 +11867,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-29 · The operator asked about 'apply_arm.py', a file that does not exist — the arm switcher is a function buried inside the inference runner
 
-**What happened.** The whole teaching doc was written in response to 'ผมอยากเข้าใจ apply_arm.py and all file in t04_Purson'. There is no apply_arm.py; apply_arm() is a function inside tune_ai/t03/data_before_tune/infer_house_t03.py, in a different training round's folder than the one being asked about.
+**What happened.** The whole teaching doc was written in response to 'ผมอยากเข้าใจ apply_arm.py and all file in t04_Purson' (I want to understand apply_arm.py and all files in t04_Purson). There is no apply_arm.py; apply_arm() is a function inside tune_ai/t03/data_before_tune/infer_house_t03.py, in a different training round's folder than the one being asked about.
 
 **Root cause.** The experiment-arm switch — the single most consequential runtime knob, deciding whether a GPU night is arm 2 or arm 2.4a — lives as an unnamed function inside a large runner file in t03, while the arm's contract and examples live in t04. The pointer-README structure that prevents drift also makes the real code hard to locate.
 
@@ -12049,7 +12049,7 @@ By theme:
 
 **Impact.** A confidently wrong root cause sat in the project's SUMMARY.md, ready to send the next reader (or the same person three months later) down the wrong path. The diary calls this the most expensive lesson of the night, and it became rule_of_tune Lesson #14.
 
-**Fix.** Traced the real cause by reading code layer by layer; switched the default grammar backend to xgrammar (which cannot emit a trailing comma at source) with lm-format-enforcer as fallback; corrected SUMMARY.md and recorded the incident as rule_of_tune ข้อ 14.
+**Fix.** Traced the real cause by reading code layer by layer; switched the default grammar backend to xgrammar (which cannot emit a trailing comma at source) with lm-format-enforcer as fallback; corrected SUMMARY.md and recorded the incident as rule_of_tune item 14.
 
 **→ Rule.** Never write a root cause into a document until it is proven by reading the actual code or a one-line reproduction — if evidence is insufficient, write 'cause unknown, suspects A or B'; a confidently wrong conclusion in a doc is more damaging than no conclusion at all.
 
@@ -12071,7 +12071,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-25 · The "downscaling causes plan_beam's 0% recall" hypothesis was concluded from token math alone and then disproven visually
 
-**What happened.** An earlier research pass concluded from token arithmetic that image downscaling was the cause of plan_beam's 0% recall. A direct visual test — cropping the most-downscaled real training image (บ้าน_ใหญ่_1ชั้น_01 หน้า15) at native resolution and at the actual scale the model receives at MAX_PIXELS=7680 — showed grid bubbles, beam marks, column marks and dimension text equally legible in both.
+**What happened.** An earlier research pass concluded from token arithmetic that image downscaling was the cause of plan_beam's 0% recall. A direct visual test — cropping the most-downscaled real training image (บ้าน_ใหญ่_1ชั้น_01 page 15) at native resolution and at the actual scale the model receives at MAX_PIXELS=7680 — showed grid bubbles, beam marks, column marks and dimension text equally legible in both.
 
 **Root cause.** A causal claim was made from an indirect proxy (token count) without ever looking at what the model actually sees. Token loss and legibility loss are not the same thing.
 
@@ -12087,7 +12087,7 @@ By theme:
 
 **What happened.** The round went from 'dry-run 5 steps passed' straight to 4 folds × 306 steps running in parallel on 4 rented cards, ~15-16 h each. Every one of the 4 ran to completion and produced an adapter, and only after all 4 finished and eval scored 0% on plan_beam/plan_footing did the investigation find that `crop_to_patches: true` was missing, so no image was ever legible at training time. The entire round's GPU spend produced 4 adapters that cannot read drawings. The corrective rule written for t05 says it plainly: train one fold first, do not start with 4 parallel folds.
 
-**Root cause.** The dry-run only proved the plumbing (VRAM fits, loss is a number, checkpoint saves) — it never proved the model was seeing readable pixels. There was no cheap gate between 'config parses / 5 steps run' and 'commit 60 GPU-hours across 4 cards'. Scale-out was decided on schedule pressure ('เวลาจริงลดครึ่ง 29→~16 ชม.') and budget-permission ('อย่าสนงบ ผมจ่ายเอง'), not on a validated config.
+**Root cause.** The dry-run only proved the plumbing (VRAM fits, loss is a number, checkpoint saves) — it never proved the model was seeing readable pixels. There was no cheap gate between 'config parses / 5 steps run' and 'commit 60 GPU-hours across 4 cards'. Scale-out was decided on schedule pressure ('เวลาจริงลดครึ่ง 29→~16 ชม.' — real time cut in half, 29→~16 h) and budget-permission ('อย่าสนงบ ผมจ่ายเอง' — never mind the budget, I'll pay), not on a validated config.
 
 **Impact.** ~$63 of GPU rental plus ~60 GPU-hours and roughly 24 h of wall-clock across two days, producing 4 unusable adapters. Also forced 4 separate HF uploads, 4 sha256 verifies, 4 destroys, and an eval round on top.
 
@@ -12099,7 +12099,7 @@ By theme:
 
 #### 🔴 CRITICAL · 2026-08-26 · Repo-wide JSON pretty-print pass ran over 343 files including 16 a teammate had just finished checking
 
-**What happened.** Commit `be9ad80` ("แก้ระบบ") ran a repo-wide JSON pretty-print pass touching 343 files under json_แก้ไขแล้ว, including 16 files across houses 24, 26, 27 that Ark had committed only moments earlier. Discovered days later while tracing house 42's history.
+**What happened.** Commit `be9ad80` ("แก้ระบบ" — fix the system) ran a repo-wide JSON pretty-print pass touching 343 files under json_แก้ไขแล้ว, including 16 files across houses 24, 26, 27 that Ark had committed only moments earlier. Discovered days later while tracing house 42's history.
 
 **Root cause.** A broad automated pass was run without first checking `git log` for other people's fresh commits in the same paths. No ownership or freshness check gated the operation.
 
@@ -12827,7 +12827,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-05 · House 13's 10 missing pages were only caught after all 7 background agents had already finished
 
-**What happened.** The coordinator's page-coverage check found 10 missing files (หน้า01/02/28-33 plus a grid_ref fix on หน้า34) for house 13 only after all 7 parallel background agents had already returned. A follow-up run was needed to complete the house.
+**What happened.** The coordinator's page-coverage check found 10 missing files (pages 01/02/28-33 plus a grid_ref fix on page 34) for house 13 only after all 7 parallel background agents had already returned. A follow-up run was needed to complete the house.
 
 **Root cause.** Page coverage was checked as a final gate rather than as an assignment-time invariant — nothing verified that the union of the agents' assigned page ranges covered all 92 pages before dispatch.
 
@@ -13023,13 +13023,13 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-25 · pass0 page classification — the riskiest stage in the pipeline — had no cross-check of any kind
 
-**What happened.** Makham proposed Pass 0.5 (a CV template scan of every page producing a page fingerprint) specifically because pass0's page labels are "ด่านเสี่ยงสุด เดิมไม่มีใครตรวจ" — the stage everything downstream depends on had zero verification. A mislabeled page silently routes to the wrong extraction prompt and its content disappears.
+**What happened.** Makham proposed Pass 0.5 (a CV template scan of every page producing a page fingerprint) specifically because pass0's page labels are "ด่านเสี่ยงสุด เดิมไม่มีใครตรวจ" (the riskiest gate, which nobody used to check) — the stage everything downstream depends on had zero verification. A mislabeled page silently routes to the wrong extraction prompt and its content disappears.
 
 **Root cause.** Verification effort went to the extraction outputs (element counts, ids, recall) and none to the routing decision upstream of them, so a whole class of failure could only surface as unexplained missing data much later.
 
 **Impact.** Every page mislabeled by pass0 to date went uncaught — this is the same shape as the roof_plan→plan bug where mis-tagged pages made roof-beam BOQ quantities vanish with no error anywhere.
 
-**Fix.** tools/cv_scan.py built this evening as the Pass 0.5 cross-check; not yet wired into the real pipeline ("ต่อ cv_scan เข้าสายพาน: เริ่มจาก pass0 cross-check" is still pending).
+**Fix.** tools/cv_scan.py built this evening as the Pass 0.5 cross-check; not yet wired into the real pipeline ("ต่อ cv_scan เข้าสายพาน: เริ่มจาก pass0 cross-check" — wire cv_scan into the conveyor, starting from the pass0 cross-check — is still pending).
 
 **→ Rule.** Verify the routing stage, not just the output stage — an unchecked classifier turns every downstream error into an unexplained absence.
 
@@ -13135,7 +13135,7 @@ By theme:
 
 #### 🟠 HIGH · 2026-08-30 · Hand-written SKIP_SUBTASKS blocklist missed 3 subtasks with prompts but zero training examples — worker would have fired prompts the model never saw
 
-**What happened.** Makham caught that 'ระบบ pass ผิด'. The SKIP_SUBTASKS list had been written from memory rather than checked against `pass_io_table_detailed.csv`, so it missed 3 subtasks that have prompts but 0 training examples: `plan_column` (dead), `material_list` (prompt never loaded into training) and `soil_boring_log` (no GT at all).
+**What happened.** Makham caught that 'ระบบ pass ผิด' (the system's passes are wrong). The SKIP_SUBTASKS list had been written from memory rather than checked against `pass_io_table_detailed.csv`, so it missed 3 subtasks that have prompts but 0 training examples: `plan_column` (dead), `material_list` (prompt never loaded into training) and `soil_boring_log` (no GT at all).
 
 **Root cause.** A blocklist was authored by guessing what to exclude instead of deriving from the authoritative training manifest. A blocklist fails open — anything forgotten gets executed — which is exactly the wrong failure direction here.
 
@@ -13653,7 +13653,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-07-28 · Re-verifying t01 on the same machine was not planned into the rental, forcing a second ~70GB base-model download on the clock
 
-**What happened.** Doubt about the t01 numbers only arose after the library-drift bug proved that library versions matter. The re-measurement (Phase 7.5) was then added mid-rental, but the machine had only ever loaded Qwen3-VL-30B-A3B for t02 — so the full ~70GB Qwen3.6-35B-A3B base had to be downloaded from scratch while paying, prompting Makham's 'ทำไมโหลดนาน'.
+**What happened.** Doubt about the t01 numbers only arose after the library-drift bug proved that library versions matter. The re-measurement (Phase 7.5) was then added mid-rental, but the machine had only ever loaded Qwen3-VL-30B-A3B for t02 — so the full ~70GB Qwen3.6-35B-A3B base had to be downloaded from scratch while paying, prompting Makham's 'ทำไมโหลดนาน' (why is the download taking so long?).
 
 **Root cause.** The A/B experiment plan treated the two arms as independent runs on separate machines instead of requiring both to be measured on one machine in one session; the need for a same-machine control was recognised only after a version-drift bug surfaced.
 
@@ -13783,7 +13783,7 @@ By theme:
 
 **Root cause.** op03 ends with a shutdown gate that requires files written, check_format pass, data-log row, git commit and a printed summary — but writing the diary entry is not one of the six gate conditions, so a walk-away run finishes with no diary. The reconstruction then only recovers what a commit message happened to record.
 
-**Impact.** Everything a commit message did not capture is gone: house 15's commit said only 'บ้านต่อมา', so its check_format status is unrecoverable and had to be left as a to-verify item. Reasoning, near-misses and rejected options from those sessions are unrecorded. Backfilling seven days from git log is itself rework.
+**Impact.** Everything a commit message did not capture is gone: house 15's commit said only 'บ้านต่อมา' (the next house), so its check_format status is unrecoverable and had to be left as a to-verify item. Reasoning, near-misses and rejected options from those sessions are unrecorded. Backfilling seven days from git log is itself rework.
 
 **Fix.** not fixed — the backfill note is repeated on each affected file rather than the gap being closed
 
@@ -13791,7 +13791,7 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-05.md` · process</sub>
 
-#### 🟡 MEDIUM · 2026-08-08 · House 15 was committed with the message 'บ้านต่อมา' and no check_format.py status recorded
+#### 🟡 MEDIUM · 2026-08-08 · House 15 was committed with the message 'บ้านต่อมา' (the next house) and no check_format.py status recorded
 
 **What happened.** House 15's 35 JSON files were committed with a message that said only 'บ้านต่อมา' (the next house). Unlike the `op03:`-prefixed commits which report ALL CHECKS PASS directly, no pass/fail status was recorded, so whether the house passes the format checker is unknown.
 
@@ -13855,7 +13855,7 @@ By theme:
 
 **Impact.** A fix of unknown effectiveness sat in the repo as if it were the answer. When it was finally tested the next night, it turned out to be insufficient anyway — grammar-constrained decoding was needed.
 
-**Fix.** Tested the following night (คืน → เช้า 2026-08-22); the real fix turned out to be xgrammar grammar-constrained decoding, taking validity from 57.9% to 96.8%.
+**Fix.** Tested the following night (night → morning, 2026-08-22); the real fix turned out to be xgrammar grammar-constrained decoding, taking validity from 57.9% to 96.8%.
 
 **→ Rule.** A decoding-parameter change is untested until it has generated real tokens on the failing page — label it explicitly as unverified in both the code and the diary, and do not let it close the bug.
 
@@ -13933,13 +13933,13 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-24 · Decisions delegated under att1235 were written up as "waiting for Makham" instead of decided
 
-**What happened.** Claude had been given att1235 (decide everything yourself) but wrote all four t03 dataset decisions in the workflow doc as "รอมะขามเคาะ" (awaiting Makham's ruling). Makham called it out: "ผมให้ att1235 ไปแล้วหนิ".
+**What happened.** Claude had been given att1235 (decide everything yourself) but wrote all four t03 dataset decisions in the workflow doc as "รอมะขามเคาะ" (awaiting Makham's ruling). Makham called it out: "ผมให้ att1235 ไปแล้วหนิ" (I already gave you att1235).
 
 **Root cause.** Defaulting to a request-permission posture despite an explicit standing order to decide. The doc format encouraged listing open questions rather than recording rulings with accepted risk.
 
 **Impact.** Blocked the night's work on decisions that were already delegated; wasted a round trip and Makham's time.
 
-**Fix.** Rewrote all four decisions as ตัดสินแล้ว ✅ with reasons and accepted risks (model=Qwen3.6; plan_column folded into plan_footing; gridline=multi-image→gridmaster; unreviewed houses 06-11 stay in train). Logged to Claude memory as feedback_att1235_decide_fully.md.
+**Fix.** Rewrote all four decisions as ตัดสินแล้ว ✅ (decided ✅) with reasons and accepted risks (model=Qwen3.6; plan_column folded into plan_footing; gridline=multi-image→gridmaster; unreviewed houses 06-11 stay in train). Logged to Claude memory as feedback_att1235_decide_fully.md.
 
 **→ Rule.** When given a standing decide-yourself order, document outcomes as "decided ✅ + reason + risk accepted", never as "awaiting approval". Bouncing a delegated decision back is itself the failure.
 
@@ -14003,7 +14003,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-25 · The training set was rebuilt AFTER the TEST_STEPS sanity check ran, so the recorded check described data that no longer existed
 
-**What happened.** t03_workflow.md row 7 recorded "ภาพจริง 2339×1654 ต่ำกว่า cap 5,120 อยู่แล้ว = ไม่ย่อเลย" from a TEST_STEPS run at 22:00, but train.jsonl on disk is timestamped 22:13 — the dataset was rebuilt 13 minutes after the check. No image of the recorded size exists in the current train set, and the old 3,778-token figure cannot be proven or disproven.
+**What happened.** t03_workflow.md row 7 recorded "ภาพจริง 2339×1654 ต่ำกว่า cap 5,120 อยู่แล้ว = ไม่ย่อเลย" (the real image, 2339×1654, is already below the 5,120 cap = no downscaling at all) from a TEST_STEPS run at 22:00, but train.jsonl on disk is timestamped 22:13 — the dataset was rebuilt 13 minutes after the check. No image of the recorded size exists in the current train set, and the old 3,778-token figure cannot be proven or disproven.
 
 **Root cause.** A verification result was recorded as a durable fact without pinning it to the dataset version it measured; the rebuild step does not invalidate or re-trigger the checks that ran against the previous build.
 
@@ -14059,7 +14059,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-26 · GT correction commits say only "final"/a house number — reasoning is unrecoverable
 
-**What happened.** Seven GT-correction commits across houses 01, 28, 29, 30, 34, 35, 36, 43, 44 carried messages like "บ้าน 34 final", "29", "แก้ระบบ", "แก้แบบ". The diary entry had to be reconstructed from git log alone, and the reasoning behind each individual fix is not captured anywhere.
+**What happened.** Seven GT-correction commits across houses 01, 28, 29, 30, 34, 35, 36, 43, 44 carried messages like "บ้าน 34 final" (house 34 final), "29", "แก้ระบบ" (fix the system), "แก้แบบ" (fix the drawing). The diary entry had to be reconstructed from git log alone, and the reasoning behind each individual fix is not captured anywhere.
 
 **Root cause.** Commits were made during focused solo GT work with no session transcript and no per-fix note. The commit message was treated as a checkpoint marker rather than a record.
 
@@ -14073,7 +14073,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-27 · A 156-line GT page deleted from house 37 with no recorded reason
 
-**What happened.** Commit `1d01d98` "บ้าน 37 final" deleted `หน้า26_section_slab_stair.json` (156 lines). The diary can only speculate: "likely folded into another page or found invalid".
+**What happened.** Commit `1d01d98` "บ้าน 37 final" (house 37 final) deleted `หน้า26_section_slab_stair.json` (156 lines). The diary can only speculate: "likely folded into another page or found invalid".
 
 **Root cause.** Same as the commit-message problem — a data deletion was bundled into a batch "final" commit with no note explaining whether the page was merged elsewhere or judged invalid.
 
@@ -14087,7 +14087,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-29 · The hint-block contract lives in two places (prompt.md and cv_hint_text()) with only a comment preventing drift
 
-**What happened.** pass2.4_hint/prompt.md documents what a hint block must contain, while the code that actually generates the text is cv_hint_text() inside tools/cv_scan.py. The README explicitly notes the file exists 'กันสองที่ drift กัน' — as a contract to stop the two diverging.
+**What happened.** pass2.4_hint/prompt.md documents what a hint block must contain, while the code that actually generates the text is cv_hint_text() inside tools/cv_scan.py. The README explicitly notes the file exists 'กันสองที่ drift กัน' (to keep the two places from drifting apart) — as a contract to stop the two diverging.
 
 **Root cause.** Specification and implementation are stored separately with no automated conformance test; the only thing keeping them aligned is a human remembering to update both.
 
@@ -14101,7 +14101,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-29 · pass 4 prompts were fully written and then cancelled as unnecessary
 
-**What happened.** pass 4 covered secondary sheets (architectural, electrical, sanitary, cover, table of contents). On 2026-08-29 Makham cancelled it outright — 'หน้าพวกนั้นไม่จำเป็น'. The prompts remain parked in t03/pass4_unused/.
+**What happened.** pass 4 covered secondary sheets (architectural, electrical, sanitary, cover, table of contents). On 2026-08-29 Makham cancelled it outright — 'หน้าพวกนั้นไม่จำเป็น' (those pages aren't needed). The prompts remain parked in t03/pass4_unused/.
 
 **Root cause.** Scope was set before confirming which sheet types the downstream BOQ/BBS calculation actually consumes. Work was built for pages that were never required.
 
@@ -14115,13 +14115,13 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-08-29 · Experiment arm 2.4b (numbered marked images) was built into the pipeline and then cancelled
 
-**What happened.** The CV scan produces a numbered marked-up image per page, originally intended to be fed to the model as experiment arm 2.4b. That arm was cancelled on 2026-08-29 ('ใส่แต่ hint พอ'), leaving the marked image as a human-viewing artifact only, and apply_arm() had to be simplified back down.
+**What happened.** The CV scan produces a numbered marked-up image per page, originally intended to be fed to the model as experiment arm 2.4b. That arm was cancelled on 2026-08-29 ('ใส่แต่ hint พอ' — the hint alone is enough), leaving the marked image as a human-viewing artifact only, and apply_arm() had to be simplified back down.
 
 **Root cause.** A third experimental arm was implemented before deciding whether three arms were affordable or necessary, so both the image-generation path and the arm-switching code carried dead complexity.
 
 **Impact.** Wasted implementation effort on the 2.4b path plus rework to strip it out of apply_arm(); the marked-image generation now runs with no consumer other than human inspection.
 
-**Fix.** Arm cancelled, apply_arm() reduced to two arms ('หลังตัด 2.4b แล้ว เหลือเรียบมาก').
+**Fix.** Arm cancelled, apply_arm() reduced to two arms ('หลังตัด 2.4b แล้ว เหลือเรียบมาก' — with 2.4b cut, it's very clean).
 
 **→ Rule.** Decide the experiment's arm count before implementing the switching machinery. Start with the control plus one treatment; add arms only when the first comparison shows they are needed.
 
@@ -14135,7 +14135,7 @@ By theme:
 
 **Impact.** An entire prompt's worth of work is at risk of being discarded; meanwhile the pipeline has an untested final stage, so end-to-end capability is unknown.
 
-**Fix.** Not fixed — status explicitly recorded as 'เขียนเต็ม ยังไม่เคยรัน' with the dependency named.
+**Fix.** Not fixed — status explicitly recorded as 'เขียนเต็ม ยังไม่เคยรัน' (fully written, never run yet) with the dependency named.
 
 **→ Rule.** Do not fully build a stage whose design depends on an unanswered upstream question. Run the cheap experiment that resolves the assumption first, then build.
 
@@ -14275,7 +14275,7 @@ By theme:
 
 **Impact.** Any of the untested boundaries could have failed on presentation day. Subsequent sessions did close most of them (migration applied, Supabase e2e passed, real GPU test run) but the blocking-call bug and the browser-path test were still open at end of day.
 
-**Fix.** Explicitly written down as 'ยังไม่พิสูจน์เลยสักขั้น' with the rule 'rehearse the full end-to-end round before the presentation, do not debut mid-event'. Later sessions proved the Supabase hop, the importer path, and partial model output.
+**Fix.** Explicitly written down as 'ยังไม่พิสูจน์เลยสักขั้น' (not a single step proven yet) with the rule 'rehearse the full end-to-end round before the presentation, do not debut mid-event'. Later sessions proved the Supabase hop, the importer path, and partial model output.
 
 **→ Rule.** For anything with a hard demo date, rehearse the complete end-to-end path at least once well before the date. Write down explicitly which steps have never executed, and treat that list as the schedule.
 
@@ -14409,7 +14409,7 @@ By theme:
 
 #### 🟡 MEDIUM · 2026-09-01 · t44 was built on InternVL3-78B, a model the team's own catalogue had disqualified days earlier
 
-**What happened.** The 26 Aug catalogue disqualified InternVL3-78B because it uses Qwen2.5-72B as its backbone, violating the 'not Qwen by backbone' criterion. Days later, t44 (Voldemort) was launched on exactly that model, described in the 1 Sep write-up as 'โมเดลคนละตัว'.
+**What happened.** The 26 Aug catalogue disqualified InternVL3-78B because it uses Qwen2.5-72B as its backbone, violating the 'not Qwen by backbone' criterion. Days later, t44 (Voldemort) was launched on exactly that model, described in the 1 Sep write-up as 'โมเดลคนละตัว' (a different model).
 
 **Root cause.** The catalogue's findings were not treated as a binding shortlist when the next branch was launched — the research artifact and the decision that followed it were disconnected, so the disqualification reason did not carry forward.
 
@@ -14771,13 +14771,13 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-25(teach mk).md` · requirements-gap</sub>
 
-#### ⚪ LOW · 2026-08-25 · The combined teaching book is named for July but already carries an August chapter, blocking the ตอนที่ 4 append
+#### ⚪ LOW · 2026-08-25 · The combined teaching book is named for July but already carries an August chapter, blocking the ตอนที่ 4 (Part 4) append
 
-**What happened.** สอน_AI_อ่านแบบบ้าน_รวม_21-24กค.pdf is named for 21-24 July, but ตอนที่ 3 had already been appended to it, so the filename no longer describes the contents. This left ตอนที่ 4 as a standalone PDF because appending it would deepen the misnaming, and the rename decision was punted to Makham twice in one day.
+**What happened.** สอน_AI_อ่านแบบบ้าน_รวม_21-24กค.pdf is named for 21-24 July, but ตอนที่ 3 (Part 3) had already been appended to it, so the filename no longer describes the contents. This left ตอนที่ 4 (Part 4) as a standalone PDF because appending it would deepen the misnaming, and the rename decision was punted to Makham twice in one day.
 
 **Root cause.** A date range was baked into a filename for a document that grows by appending — the name goes stale on the first append and nobody renames it at that moment.
 
-**Impact.** ตอนที่ 4 (19 pages, the one containing the corrected VRAM claim) is not in the book Makham may show his teacher; the decision stayed open at end of day.
+**Impact.** ตอนที่ 4 (Part 4 — 19 pages, the one containing the corrected VRAM claim) is not in the book Makham may show his teacher; the decision stayed open at end of day.
 
 **Fix.** not fixed — left standalone, decision deferred to Makham along with a possible rename.
 
@@ -14799,9 +14799,9 @@ By theme:
 
 <sub>`D:/00mk/steel project/training/Training/workmen's_diary/2026-08-25.md` · process</sub>
 
-#### ⚪ LOW · 2026-08-26 · Teaching PDF written condensed, then rewritten from scratch at 13 pages after "ขอละเอียดกว่านี้"
+#### ⚪ LOW · 2026-08-26 · Teaching PDF written condensed, then rewritten from scratch at 13 pages after "ขอละเอียดกว่านี้" (more detail than this, please)
 
-**What happened.** The "AI ในตลาด" explainer PDF was first produced as a condensed 5-page version. Makham asked for more depth, and it had to be rewritten to 13 pages with the full investigation narrative, embedded real crop images, all 8 model candidates (not just the 2 survivors), and a live pricing table.
+**What happened.** The "AI ในตลาด" (AI on the market) explainer PDF was first produced as a condensed 5-page version. Makham asked for more depth, and it had to be rewritten to 13 pages with the full investigation narrative, embedded real crop images, all 8 model candidates (not just the 2 survivors), and a live pricing table.
 
 **Root cause.** Depth level was assumed rather than asked. For a teaching artifact the default assumption was "shorter is kinder", but the audience wanted the full reasoning chain including the rejected options.
 
@@ -14815,7 +14815,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-26 · Commit named "t04" as a joke, containing no t04 module — a naming landmine
 
-**What happened.** Commit `4319991` "t04 อยากได้ชื่อเท่ ๆ อ่ะมันตัวนำโชค" contained only cv_scan.py test-artifact sidecars (*_cv.json / *_marked.png / *_hint.txt) from diagnosing self-harvest thresholds on houses 05/09/10. No t04 module existed in the codebase at that point.
+**What happened.** Commit `4319991` "t04 อยากได้ชื่อเท่ ๆ อ่ะมันตัวนำโชค" (t04 — I want a cool name, it's a lucky charm) contained only cv_scan.py test-artifact sidecars (*_cv.json / *_marked.png / *_hint.txt) from diagnosing self-harvest thresholds on houses 05/09/10. No t04 module existed in the codebase at that point.
 
 **Root cause.** A joke commit message on a real commit. Since t01/t02/t03 are real pipeline generations, "t04" reads as a module name to anyone scanning git log later.
 
@@ -14857,7 +14857,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-29 · Schema §1 carried a stale claim that the prompt didn't teach split — it already did
 
-**What happened.** Schema §1 stated "prompt ยังไม่สอน split" when plan.md had in fact already been taught the split. The claim was found and closed during template work.
+**What happened.** Schema §1 stated "prompt ยังไม่สอน split" (the prompt doesn't teach split yet) when plan.md had in fact already been taught the split. The claim was found and closed during template work.
 
 **Root cause.** Documentation stating what another file does not do, with no mechanism to notice when that other file changes. Negative claims about other components age badly.
 
@@ -14871,7 +14871,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-29 · Pass 4 cancelled after being built and wired into the pipeline
 
-**What happened.** Pass 4 was cancelled on Makham's call ("หน้าพวกนั้นไม่จำเป็น"), reducing the t04 conveyor from 8 to 7 stages. This required updating README, pass_design_v2 and the pass4 pointer; the prompt itself was kept at t03/pass4_unused/ rather than deleted.
+**What happened.** Pass 4 was cancelled on Makham's call ("หน้าพวกนั้นไม่จำเป็น" — those pages aren't needed), reducing the t04 conveyor from 8 to 7 stages. This required updating README, pass_design_v2 and the pass4 pointer; the prompt itself was kept at t03/pass4_unused/ rather than deleted.
 
 **Root cause.** The pass was built and integrated before its necessity was confirmed with the decision-maker. It had earlier already been renamed from pass3 → pass4 during the v2 conveyor restructure — so effort was spent twice on a stage that was then dropped.
 
@@ -14885,7 +14885,7 @@ By theme:
 
 #### ⚪ LOW · 2026-08-29 · Experiment arm 2.4b built with marked-image swapping, then cancelled before ever running
 
-**What happened.** Arm 2.4b (feeding the model the Set-of-Mark annotated image) was implemented in apply_arm() with image-swapping logic, then cancelled on Makham's call ("ใส่แต่ hint พอ") — every arm now always gets the blank image, and --arm reduced to {2, 2.4a}. Six documentation files needed updating.
+**What happened.** Arm 2.4b (feeding the model the Set-of-Mark annotated image) was implemented in apply_arm() with image-swapping logic, then cancelled on Makham's call ("ใส่แต่ hint พอ" — the hint alone is enough) — every arm now always gets the blank image, and --arm reduced to {2, 2.4a}. Six documentation files needed updating.
 
 **Root cause.** Three experimental arms were built before any of them ran, so a design decision that could have been made cheaply up front was made after implementation instead.
 
@@ -14919,7 +14919,7 @@ By theme:
 
 **Impact.** The task turned from 'extract two houses' into 'identify 19 existing cover sheets to avoid duplicates, search a government portal, download and convert 131 pages to PNG' — a materially different and longer job than the one ordered.
 
-**Fix.** listed the drawing names of all 19 existing single-storey houses to avoid duplicates, found the unseen 'บ้านไทยพอเพียง 1-10' set, downloaded and converted houses 1 and 2
+**Fix.** listed the drawing names of all 19 existing single-storey houses to avoid duplicates, found the unseen 'บ้านไทยพอเพียง 1-10' (Thai Sufficiency houses 1-10) set, downloaded and converted houses 1 and 2
 
 **→ Rule.** Keep an extracted/remaining counter where orders get given. Checking the backlog before accepting the order is what turned a duplicate-download risk into a clean new series.
 
@@ -15708,7 +15708,7 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 - 🟡 MEDIUM The identical series price table was stored 5 different ways in 5 houses
 - 🟡 MEDIUM A folder rename required editing 454 JSON files because full paths were embedded in data fields
 - 🟡 MEDIUM The schema's specs{} block is populated in only 24 of 1,183 files — two houses have none at all
-- 🟡 MEDIUM Rebar printed with a 'หยุดที่ L/8' / mid-span qualifier in houses 10-11 is still not merged into a bar face
+- 🟡 MEDIUM Rebar printed with a 'หยุดที่ L/8' (stop at L/8) / mid-span qualifier in houses 10-11 is still not merged into a bar face
 - 🟡 MEDIUM House 04's 10 BOQ files were stored as pattern=unknown with elements[] instead of a material list
 - 🟡 MEDIUM Numeric fields were stored as strings and arrays across the corpus — ~170 level_m values alone
 - 🟡 MEDIUM A known footgun: a bulk regex written for grid refs also matches sheet_code values
@@ -15750,7 +15750,7 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 
 **2026-08-08** — 1 entry
 
-- 🟡 MEDIUM House 15 was committed with the message 'บ้านต่อมา' and no check_format.py status recorded
+- 🟡 MEDIUM House 15 was committed with the message 'บ้านต่อมา' (the next house) and no check_format.py status recorded
 
 **2026-08-09** — 3 entries
 
@@ -15794,7 +15794,7 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 - 🟡 MEDIUM Destroy of the rented GPU instance was requested twice mid-run before results were downloaded — near-miss data loss
 - ⚪ LOW Overlay click-to-accept toggle only console.logged — nothing was saved
 - ⚪ LOW Deployed-site login failed with 'Invalid login credentials' — cause could not be distinguished
-- ⚪ LOW House 01 หน้า19 is recorded as a footing/column plan on 08-18 and a beam plan on 08-20 — same page, two sheet types
+- ⚪ LOW House 01 page 19 is recorded as a footing/column plan on 08-18 and a beam plan on 08-20 — same page, two sheet types
 - ⚪ LOW The Constistant accept/reject checklist work (preview/save split + UI) was left uncommitted
 - ⚪ LOW The house 01 overlay render — the strongest proof produced all week — was a scratch script never added to the repo
 
@@ -15842,7 +15842,7 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 - ⚪ LOW roof_plan subtask had no input row in the pass-design table despite being a grid-master source
 - ⚪ LOW Pass 1 designed as an ordering/queue when it is actually a physical folder reorganisation
 - ⚪ LOW 18 precast plank layout sheets carry pattern:section despite plank_layout filenames — probably right, easy to 'fix' wrongly
-- ⚪ LOW House 09 หน้า28 overlay skipped — grid circles incomplete on the printed sheet, calibration impossible
+- ⚪ LOW House 09 page 28 overlay skipped — grid circles incomplete on the printed sheet, calibration impossible
 - ⚪ LOW Teaching chapter written in Thai against the diary's own English-only rule
 - ⚪ LOW Pass 2 was defined as 'the 7 patterns Constistant consumes' but the traced adapter reads only 6 — soil_boring_log is not among them
 - ⚪ LOW The t03 spec-gap text was written into two READMEs at once and would have drifted — caught only during the folder reorg
@@ -15911,7 +15911,7 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 - 🟠 HIGH MAX_PIXELS 7,680 + MAX_LENGTH 47,104 written into the training script before the mandatory 5-step VRAM check was run
 - 🟠 HIGH Only footings were scored against a true count — beams and columns shipped with eyeball verification only, yet the summary claims all three work
 - 🟠 HIGH The ID-ceiling problem is not section-only — notes can score at most 2%, and every subtask's scoreboard is uncorrected for its ceiling
-- 🟠 HIGH Every round's subtask scoreboard comes from a single evaluation house (บ้าน 08), whose section pages are fences and plumbing
+- 🟠 HIGH Every round's subtask scoreboard comes from a single evaluation house (house 08), whose section pages are fences and plumbing
 - 🟠 HIGH Thai-reading ability was never a screening criterion in the model search — both surviving candidates are untested on Thai
 - 🟠 HIGH The 08-24 roof_plan→plan fix was incomplete; 7 more files still hid the missing-roof-beam BOQ bug
 - 🟠 HIGH raw-extraction-adapter.js ADAPTED_PATTERNS still does not accept roof_plan — the bug can silently recur
@@ -15995,8 +15995,8 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 - ⚪ LOW Junk detections sitting 4px outside a beam band escaped the footing-in-beam filter
 - ⚪ LOW Duplicate column detection at grid (B,2) — 13 boxes for 12 real columns
 - ⚪ LOW Three files had the literal strings 'grid'/'dummy' sitting in grid_ref instead of a real grid reference
-- ⚪ LOW The combined teaching book is named for July but already carries an August chapter, blocking the ตอนที่ 4 append
-- ⚪ LOW A 19-column detection count on บ้าน17 หน้า15 was reported without ever being verified against the drawing
+- ⚪ LOW The combined teaching book is named for July but already carries an August chapter, blocking the ตอนที่ 4 (Part 4) append
+- ⚪ LOW A 19-column detection count on house 17 page 15 was reported without ever being verified against the drawing
 - ⚪ LOW The professor's 'pattern_recognition.py' was searched for across three repos and full git history — it exists nowhere
 
 **2026-08-26** — 24 entries
@@ -16022,7 +16022,7 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 - ⚪ LOW Molmo-72B's real bf16 footprint is ~147GB, not what '72B' implies — the model-size column and the GPU you must rent are different numbers
 - ⚪ LOW graphify CLI not installed — documented workflow step silently skipped
 - ⚪ LOW Plan assumed grid master carried pixel coordinates — it only has pos_m
-- ⚪ LOW Teaching PDF written condensed, then rewritten from scratch at 13 pages after "ขอละเอียดกว่านี้"
+- ⚪ LOW Teaching PDF written condensed, then rewritten from scratch at 13 pages after "ขอละเอียดกว่านี้" (more detail than this, please)
 - ⚪ LOW Commit named "t04" as a joke, containing no t04 module — a naming landmine
 - ⚪ LOW CLAUDE.md merge conflict because two people appended work-log entries at the same spot
 
@@ -16329,7 +16329,7 @@ Every entry again, in the order it happened, so a single bad day can be read as 
 - 🟡 MEDIUM pass3 can now measure unresolved beam spans but was never wired into the adapter to replace the nulls
 - 🟡 MEDIUM k-fold was designed as 5 groups but only 4 folds were run, so 8 houses sit in every training set and are never evaluated
 - 🟡 MEDIUM Whole demo environment torn down and re-set-up a second time because the first run was not screen-recorded
-- 🟡 MEDIUM The warning printed when elements were dropped blamed the model ('generation หลุด') for data our own sanitizer had deleted
+- 🟡 MEDIUM The warning printed when elements were dropped blamed the model ('generation หลุด' — the generation broke off) for data our own sanitizer had deleted
 - 🟡 MEDIUM Codebase could not be reorganised because scripts hard-code paths, so a 115 MB duplicate copy was made instead — two sources that will drift
 - ⚪ LOW CV/pass3 sidecar files would have been fed into the raw-extraction adapter as unknown patterns
 - ⚪ LOW pass2.5 self-harvest output written to results with no consumer anywhere

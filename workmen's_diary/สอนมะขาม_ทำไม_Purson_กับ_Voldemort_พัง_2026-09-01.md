@@ -1,297 +1,297 @@
-# สอนมะขาม — ทำไม Purson กับ Voldemort ถึงใช้ไม่ได้ (และสมการรวมโมเดลคืออะไร)
+# Teaching Makham — why Purson and Voldemort didn't work (and what the model-merging equation is)
 
-> อธิบายแบบง่ายที่สุด ไม่ใช้ศัพท์ถ้าไม่จำเป็น · เนื้อหาจาก workmen's diary 29–31 ส.ค. 2026
-> เขียน 2026-09-01
-
----
-
-## ตอนที่ 0 — ปูพื้นก่อน: เราสอนโมเดลยังไง
-
-ลองนึกว่าโมเดล AI คือ **เด็กฝึกงาน** คนหนึ่ง
-
-เราอยากให้เขา **อ่านแบบก่อสร้างแล้วพิมพ์เป็นตาราง** เราก็เลย:
-
-1. เอาแบบจริงมา 40 หลัง
-2. ให้ **คนอ่านเฉลยไว้ก่อน** (นี่คือไฟล์ใน `json_แก้ไขแล้ว/`)
-3. เอา "รูปแบบ + เฉลย" ยัดให้เด็กฝึกงานดูซ้ำ ๆ จนจำได้ว่าต้องตอบยังไง
-
-การยัดให้ดูซ้ำ ๆ นี่แหละเรียกว่า **"เทรน" (train)**
-
-แล้วเราตั้งชื่อรอบการเทรนแต่ละครั้งว่า t01, t02, t03, **t04 (ชื่อเล่น Purson)**,
-**t44 (ชื่อเล่น Voldemort)**, t05 (ชื่อเล่น Courser → ตอนนี้เปลี่ยนเป็น **Destrier**)
+> Explained as simply as possible, no jargon unless necessary · content from the workmen's diary, Aug 29–31, 2026
+> Written 2026-09-01
 
 ---
 
-## ตอนที่ 1 — Purson (t04) พัง เพราะ "แว่นตาผิดอัน"
+## Part 0 — Groundwork first: how we train a model
 
-### เกิดอะไรขึ้น
+Try to imagine that the AI model is an **intern**.
 
-เทรนเสร็จ เสียเงินไปหลายพัน เอามาทดสอบ ผลออกมา:
+We wanted him to **read construction drawings and type them up as a table**, so we:
+
+1. Took real drawings from 40 houses
+2. Had **a person read them and write the answer key first** (these are the files in `json_แก้ไขแล้ว/`)
+3. Crammed "drawing image + answer key" in front of the intern over and over until he memorized how he's supposed to answer
+
+That repeated cramming is exactly what's called **"training"**.
+
+Then we named each training run t01, t02, t03, **t04 (nickname Purson)**,
+**t44 (nickname Voldemort)**, t05 (nickname Courser → now renamed **Destrier**).
+
+---
+
+## Part 1 — Purson (t04) failed because of "the wrong pair of glasses"
+
+### What happened
+
+Training finished, several thousand THB spent, we tested it, and the result came out:
 
 ```
-plan_beam    อ่านถูก 0%
-plan_footing อ่านถูก 0%
+plan_beam    read correctly 0%
+plan_footing read correctly 0%
 ```
 
-**ศูนย์เปอร์เซ็นต์** ทั้งที่ดูเหมือนทุกอย่างจะถูกหมด
+**Zero percent**, even though it looked as if everything was correct.
 
-### ตอนแรกดูเหมือนโมเดลเก่ง
+### At first the model looked smart
 
-มันตอบมาเป็น JSON สวยงามถูกฟอร์แมต **96–100%** ทุกครั้ง
+Every time, it answered with beautiful JSON, **96–100%** correctly formatted.
 
-แต่พอเปิดไฟล์คำตอบดูจริง ๆ (ไม่ใช่ดูแค่ตัวเลขคะแนน) ก็เจอว่า —
+But once we actually opened the answer files and looked (not just at the score numbers), we found that —
 
-> **ป้อนแปลนฐานรากเข้าไป มันตอบเป็นแปลนหลังคาของบ้านหลังอื่น**
+> **Feed it a foundation plan, and it answers with the roof plan of a different house**
 
-ไม่ใช่ตอบผิดนิดหน่อย แต่คือ **ไม่รู้เลยว่ากำลังดูอะไรอยู่**
+It wasn't a case of answering slightly wrong; it **had no idea at all what it was looking at**.
 
-### สาเหตุจริง: บรรทัดเดียวที่ขาดไป
+### The real cause: one missing line
 
-ในไฟล์ตั้งค่ามีบรรทัดหนึ่งที่**ต้องเขียนแต่ไม่ได้เขียน**:
+The config file had one line that **had to be written but wasn't**:
 
 ```yaml
-crop_to_patches: true      # ← บรรทัดนี้หายไป
+crop_to_patches: true      # ← this line was missing
 ```
 
-บรรทัดนี้แปลว่า *"เวลาป้อนรูป ให้ซอยรูปเป็นชิ้นเล็ก ๆ แล้วดูทีละชิ้น"*
+This line means *"when an image is fed in, slice it into small pieces and look at them one piece at a time"*.
 
-**ไม่ใส่บรรทัดนี้ = โมเดลย่อรูปทั้งแผ่นให้เหลือ 448×448 pixel แล้วดูทีเดียวจบ**
+**Leaving this line out = the model shrinks the whole sheet down to 448×448 pixels and looks at it just once, and that's it**
 
-### เปรียบเทียบให้เห็นภาพ
+### A comparison to help you picture it
 
-| | เหมือนอะไร |
+| | What it's like |
 |---|---|
-| **ที่ควรจะเป็น** | เอาแบบ A1 มาวางบนโต๊ะ แล้วเดินดูทีละมุมด้วยแว่นขยาย |
-| **ที่เกิดขึ้นจริง** | เอาแบบ A1 ทั้งแผ่นไปย่อเป็น **รูปแสตมป์** แล้วให้อ่านชื่อคาน |
+| **What should have happened** | Lay the A1 drawing on a table, then walk around and look at one corner at a time with a magnifying glass |
+| **What actually happened** | Shrink the entire A1 drawing down to **a postage-stamp-sized picture** and then ask it to read the beam names |
 
-รูปแสตมป์นั่นแหละ อ่านไม่ออกแน่นอน ต่อให้ตาดีแค่ไหน
+A postage-stamp-sized picture like that is definitely unreadable, no matter how good your eyes are.
 
-### พิสูจน์ 3 ชั้น ไม่ใช่เดา
+### 3 layers of proof, not a guess
 
-1. **นับเลขจริงจาก log ตอนเทรน** — 768 token ต่อ 3 รูป = **256 token ต่อรูปเป๊ะ**
-   (256 token ≈ รูปเล็กมาก ๆ · แบบก่อสร้างจริงต้องใช้หลักพัน)
-2. **ไล่อ่านโค้ดของไลบรารี** (`mm_plugin.py`) → เจอว่าการซอยรูปต้องเปิดด้วยบรรทัดนั้นจริง
-3. **ทดลองด้วยตาตัวเอง** — เอาแปลนคานจริงย่อเหลือ 448×448 แล้วเปิดดู →
-   **อ่านชื่อคาน ขนาด เหล็ก ไม่ออกสักตัว**
+1. **Counted the real numbers in the training log** — 768 tokens per 3 images = **exactly 256 tokens per image**
+   (256 tokens ≈ a very, very small image · a real construction drawing needs thousands)
+2. **Read through the library's code** (`mm_plugin.py`) → found that image slicing really does have to be switched on by that line
+3. **Tried it with our own eyes** — shrank a real beam plan down to 448×448 and opened it to look →
+   **couldn't read a single beam name, size, or rebar**
 
-### แล้วมันเรียนอะไรไปแทน
+### So what did it learn instead
 
-เรียน **"หน้าตาของคำตอบ"** ไม่ได้เรียน **"วิธีอ่านแบบ"**
+It learned **"what the answer looks like"**, not **"how to read the drawings"**.
 
-มันจำได้ว่า *"เวลาเจอรูปแบบนี้ ต้องตอบเป็น JSON มีช่อง element_id, count, grid_refs"*
-และ **จำคำตอบของบ้านที่เคยเห็นตอนเทรนได้** — แต่พอเจอบ้านใหม่ที่ไม่เคยเห็น ก็มั่วทันที
+It memorized that *"when you see a drawing image like this, you have to answer in JSON with the fields element_id, count, grid_refs"*
+and **memorized the answers for the houses it had seen during training** — but as soon as it met a new house it had never seen, it immediately started making things up.
 
-เหมือนเด็กที่ท่องข้อสอบเก่าได้หมด แต่ไม่เข้าใจเนื้อหาเลย
+Like a kid who has memorized every old exam but doesn't understand the material at all.
 
-### ⚠️ บทเรียนที่แพงที่สุด: นี่คือบั๊กชนิดเดียวกัน **ครั้งที่ 3**
+### ⚠️ The most expensive lesson: this is the same kind of bug, for the **3rd time**
 
-| รอบ | อาการเดียวกัน |
+| Run | Same symptom |
 |---|---|
-| t01 | Unsloth แอบย่อรูปเหลือ 512px โดยไม่บอก |
-| t02 | ตัวจัดข้อมูลย่อรูป แล้วไม่มีใครเทียบว่าย่อไปเท่าไร |
-| t04 | ไม่รู้ว่ามีปุ่ม `crop_to_patches` อยู่ |
+| t01 | Unsloth secretly shrank the images to 512px without telling anyone |
+| t02 | The data-prep tool shrank the images, and nobody checked how much they'd been shrunk |
+| t04 | Didn't know the `crop_to_patches` switch existed |
 
-**ทุกครั้งคือ "รูปถูกย่อโดยที่ไม่มีใครรู้"** และทุกครั้ง**ไม่มี error ขึ้นเลย** — เงียบสนิท
+**Every time it was "the images got shrunk without anyone knowing"**, and every time **no error showed up at all** — dead silent.
 
-จึงตั้งกฎใหม่ (`rule_of_tune.md` ข้อ 15):
+So we set a new rule (`rule_of_tune.md` rule 15):
 
-> **ก่อนเทรนจริงทุกครั้ง ต้องวัดก่อนว่า "1 รูป = กี่ token"**
-> วัดด้วย CPU ได้ ไม่ต้องเปิดการ์ดจอ ไม่เสียเงินสักบาท
+> **Before every real training run, first measure "1 image = how many tokens"**
+> It can be measured on a CPU, no need to start a GPU, and it doesn't cost even 1 THB.
 
 ---
 
-## ตอนที่ 2 — Voldemort (t44) พัง คนละสาเหตุกันเลย
+## Part 2 — Voldemort (t44) failed, for a completely different reason
 
-หลังรู้ว่า Purson ตายเพราะรูปเล็ก เราก็เปิดแขนใหม่ชื่อ **Voldemort**
-ใช้โมเดลคนละตัว (InternVL3-78B ตัวใหญ่กว่ามาก) **และแก้เรื่องซอยรูปเรียบร้อยแล้ว**
+After learning that Purson died because the images were too small, we started a new arm called **Voldemort**,
+using a different model (InternVL3-78B, a much bigger one) **and with the image-slicing problem already fixed**.
 
-ซอยรูปทำงานถูกจริง — 13 ชิ้นต่อหน้า 3,482 token ✅
+Image slicing really did work correctly — 13 pieces per page, 3,482 tokens ✅
 
-**แต่ตายด้วยโรคที่สอง**
+**But it died of a second disease**
 
-### โรคที่สอง: บีบอัดโมเดลจนตาบอด
+### The second disease: compressing the model until it went blind
 
-โมเดลตัวใหญ่กินหน่วยความจำเยอะมาก เราเลย **"บีบอัด" (4-bit quantization)**
-ให้เล็กลงจะได้ใส่การ์ดจอได้
+The big model eats a huge amount of memory, so we **"compressed" it (4-bit quantization)**
+to make it smaller so it would fit on the GPU.
 
-ปัญหาคือ — โมเดลมี 2 ส่วน:
+The problem is — the model has 2 parts:
 
-| ส่วน | หน้าที่ |
+| Part | Job |
 |---|---|
-| **ตา** (InternViT-6B) | ดูรูป |
-| **สมอง** | คิด + ตอบ |
+| **Eyes** (InternViT-6B) | Look at the image |
+| **Brain** | Think + answer |
 
-การบีบอัดของเรา **บีบทั้งสองส่วนพร้อมกัน รวมทั้งตาด้วย**
+Our compression **squeezed both parts at the same time, eyes included**.
 
-และเอกสารทางการของ InternVL **เตือนไว้ตรง ๆ คำต่อคำ** ว่าอย่าบีบตา:
+And InternVL's official documentation **warns directly, word for word**, not to compress the eyes:
 
 > *"produce nonsensical outputs and fail to understand images"*
-> (ให้คำตอบไร้สาระ และไม่เข้าใจภาพ)
+> (it gives nonsense answers and doesn't understand the images)
 
-### หลักฐานที่ตลกร้ายที่สุดของโปรเจกต์
+### The most darkly comic evidence in the whole project
 
-เราถามมันว่าเห็นอะไรในรูป:
+We asked it what it saw in the image:
 
-| ป้อนอะไรเข้าไป | มันตอบว่าเห็นอะไร |
+| What we fed in | What it said it saw |
 |---|---|
-| ผังฐานรากบ้านไทย | *"เอกสารทรงกลม พื้นหลังชมพู โลโก้ Facebook/Apple/Barbie ข้อความ **Happy Birthday**"* |
-| ผังคานบ้านไทย | *"โลโก้ **BB-8 จาก Star Wars** ล้อมด้วย Facebook/Twitter/Instagram/Snapchat"* |
-| "ตัวหนังสือใหญ่สุดบนหน้าคืออะไร" | *"Happy Birthday"* / *"Facebook"* |
+| Foundation plan of a Thai house | *"a round document, pink background, Facebook/Apple/Barbie logos, the text **Happy Birthday**"* |
+| Beam plan of a Thai house | *"a logo of **BB-8 from Star Wars**, surrounded by Facebook/Twitter/Instagram/Snapchat"* |
+| "ตัวหนังสือใหญ่สุดบนหน้าคืออะไร" ("What is the largest text on the page?") | *"Happy Birthday"* / *"Facebook"* |
 
-**นี่ไม่ใช่ "อ่านตัวเล็กไม่ออก" — นี่คือตาบอดสนิท แล้วเห็นภาพหลอนคนละเรื่อง**
+**This isn't "can't read the small text" — this is total blindness, then hallucinating something completely unrelated**
 
-### 💰 ประตู $2 ที่คุ้มที่สุด
+### 💰 The most worthwhile $2 gate
 
-ก่อนเทรนเต็ม เราตั้ง **"ประตูตรวจก่อนจ่าย"** (go/no-go gate) ราคาประมาณ **$2**
-คือแค่เปิดโมเดลขึ้นมาแล้วให้ดูแบบจริง 3 หน้า
+Before full training, we set up a **"check-before-you-pay gate"** (go/no-go gate) costing about **$2**,
+which just means starting up the model and having it look at 3 real drawing pages.
 
-- ถ้าอ่านออก → เดินหน้าเทรนเต็ม
-- ถ้าอ่านไม่ออก → หยุด
+- If it can read them → go ahead with full training
+- If it can't read them → stop
 
-**ผล: ตก 0/3 → หยุดทันที ประหยัดเงินไป $60–70**
+**Result: failed 0/3 → stopped immediately, saving $60–70**
 
-### ⚠️ กับดักที่เกือบหลอกเราสำเร็จ
+### ⚠️ The trap that nearly fooled us
 
-**ประตูรอบแรกขึ้นเขียว!** แต่เขียวเพราะเหตุผลผิด
+**The gate's first round came up green!** But it was green for the wrong reason.
 
-ใน prompt ที่ Claude เขียนไปทดสอบ ดันใส่ตัวอย่างว่า *"เช่น F1, B2, C1, ผ2"*
-ซึ่ง **F1 กับ ผ2 บังเอิญเป็นคำตอบจริงในเฉลยพอดี**
+In the prompt Claude wrote for the test, it went and put in the example *"เช่น F1, B2, C1, ผ2"* (e.g. F1, B2, C1, ผ2)
+and **F1 and ผ2 just happened to be real answers in the answer key**.
 
-โมเดลเลย **ลอกตัวอย่างในคำถามกลับมาเป็นคำตอบ** — แล้วสคริปต์นับว่า "ตรง!" ✅
+So the model **copied the example from the question back as its answer** — and the script counted it as a "match!" ✅
 
-อีกหน้าตอบ B1, B2, B3 … ไปจนถึง B34 (ไล่เลขไปเรื่อย ๆ) และบังเอิญ 3 ตัวแรกตรงเฉลย
+On another page it answered B1, B2, B3 … all the way to B34 (just counting upward), and by coincidence the first 3 matched the answer key.
 
-> **ถ้าเชื่อผลรอบแรก = เผาเงินทั้งคืนกับโมเดลที่มองไม่เห็นอะไรเลย ซ้ำรอย t04 เป๊ะ**
+> **Trusting the first round's result = burning money all night on a model that can't see anything at all, an exact repeat of t04**
 
-**กฎใหม่: ห้ามใส่ตัวอย่างที่อยู่ในเฉลย ลงไปใน prompt ที่ใช้ทดสอบ**
+**New rule: never put examples that are in the answer key into a prompt used for testing**
 
 ---
 
-## ตอนที่ 3 — สรุปเทียบสองตัว
+## Part 3 — Side-by-side summary of the two
 
 |  | **Purson (t04)** | **Voldemort (t44)** |
 |---|---|---|
-| ป่วยเป็นอะไร | รูปถูกย่อจนเล็กเกิน | บีบอัดจนตาพัง |
-| ซอยรูป | ❌ ไม่ได้เปิด | ✅ เปิดถูกแล้ว |
-| อาการ | ตอบสวย แต่เป็นคำตอบของบ้านอื่น | เห็น Barbie กับ BB-8 ในแบบก่อสร้าง |
-| จับได้ตอนไหน | **หลัง**เทรนเสร็จ (เสียเงินแล้ว) | **ก่อน**เทรน ที่ประตู $2 |
-| เสียไปเท่าไร | หลายพันบาท | ~$2 |
+| What it was sick with | Images shrunk until they were too small | Compressed until its eyes broke |
+| Image slicing | ❌ Not turned on | ✅ Turned on correctly |
+| Symptom | Pretty answers, but they were another house's answers | Saw Barbie and BB-8 in the construction drawings |
+| When it was caught | **After** training finished (money already spent) | **Before** training, at the $2 gate |
+| How much was lost | Several thousand THB | ~$2 |
 
-**ข้อคิด:** ตัวที่สองเจ็บน้อยกว่าเยอะ ไม่ใช่เพราะเราเก่งขึ้น
-แต่เพราะเรา **ตั้งประตูตรวจถูก ๆ ไว้ก่อนจ่ายแพง** — บทเรียนจากตัวแรกโดยตรง
+**Takeaway:** the second one hurt far less, not because we got better
+but because we **set up a cheap check gate before spending big** — a lesson taken straight from the first one
 
 ---
 
-## ตอนที่ 4 — สมการรวมโมเดล (ที่ Claude เอาของมารวมกัน)
+## Part 4 — The model-merging equation (what Claude used to merge things)
 
-### ปัญหาก่อน: ทำไมต้องรวม
+### The problem first: why merge at all
 
-เรามีบ้าน 40 หลัง ถ้าเอาทั้ง 40 หลังไปเทรนหมด → **ไม่เหลือบ้านไว้สอบเลย**
-เหมือนให้เด็กท่องข้อสอบทุกข้อ แล้วเอาข้อสอบเดิมมาสอบ — ได้ 100% แต่ไม่รู้ว่าเก่งจริงไหม
+We have 40 houses. If we train on all 40 → **there are no houses left to test on at all**
+It's like having a kid memorize every exam question and then testing them with that same exam — they score 100%, but you don't know whether they're really any good
 
-### วิธีแก้: k-fold (แบ่งกองสลับกันสอบ)
+### The fix: k-fold (split into piles that take turns being the exam)
 
-แบ่งบ้าน 40 หลังเป็น **5 กอง กองละ 8 หลัง**
+Split the 40 houses into **5 piles of 8 houses each**
 
-| รอบ | เอาไปเทรน | เก็บไว้สอบ |
+| Round | Used for training | Held out for testing |
 |---|---|---|
-| fold 0 | กอง 2,3,4,5 (32 หลัง) | **กอง 1** (8 หลัง) |
-| fold 1 | กอง 1,3,4,5 | **กอง 2** |
-| fold 2 | กอง 1,2,4,5 | **กอง 3** |
-| fold 3 | กอง 1,2,3,5 | **กอง 4** |
+| fold 0 | Piles 2,3,4,5 (32 houses) | **Pile 1** (8 houses) |
+| fold 1 | Piles 1,3,4,5 | **Pile 2** |
+| fold 2 | Piles 1,2,4,5 | **Pile 3** |
+| fold 3 | Piles 1,2,3,5 | **Pile 4** |
 
-จบแล้วได้ **โมเดล 4 ตัว** ที่แต่ละตัวเคยเห็นบ้าน 32 หลัง (คนละชุดกัน)
-และมีคะแนนสอบที่**เชื่อถือได้** เพราะสอบด้วยบ้านที่ไม่เคยเห็น
+In the end you get **4 models**, each of which has seen 32 houses (a different set each)
+and test scores you can **trust**, because each was tested on houses it had never seen
 
-### แล้วเอา 4 ตัวมารวมเป็นตัวเดียวยังไง — **สมการ**
-
-```
-โมเดลรวม  =  (1/k) × โมเดล₁  +  (1/k) × โมเดล₂  +  ...  +  (1/k) × โมเดล_k
-```
-
-`k` = จำนวนโมเดล · ของเรา **k = 4** → น้ำหนักตัวละ **0.25**
+### So how do the 4 get merged into one — **the equation**
 
 ```
-โมเดลรวม = 0.25×A + 0.25×B + 0.25×C + 0.25×D
+merged model  =  (1/k) × model₁  +  (1/k) × model₂  +  ...  +  (1/k) × model_k
 ```
 
-วิธีนี้ฝรั่งเรียกว่า **"model soup"** (ซุปโมเดล — เทรวมหม้อเดียว)
+`k` = number of models · ours is **k = 4** → each gets a weight of **0.25**
 
-### ทำไมน้ำหนักต้องเท่ากันหมด
+```
+merged model = 0.25×A + 0.25×B + 0.25×C + 0.25×D
+```
 
-เพราะ **ทุกตัวเห็นข้อมูลเท่ากันเป๊ะ (32 จาก 40 หลัง)**
-ไม่มีตัวไหนได้เปรียบโดยโครงสร้าง → **ไม่มีเหตุผลจะให้ใครมากกว่าใคร**
+The English name for this method is **"model soup"** (a soup of models — everything poured into one pot)
 
-> ถ้าจะให้น้ำหนักต่างกัน **ต้องมีผลสอบมายืนยันก่อน** ห้ามให้ตามความรู้สึก
+### Why the weights all have to be equal
 
-### ⚠️ เงื่อนไขสำคัญที่พลาดไม่ได้ (same-basin)
+Because **every model saw exactly the same amount of data (32 of the 40 houses)**
+None of them has a structural advantage → **there's no reason to give any one more weight than another**
 
-การรวมแบบนี้จะได้ผล **ก็ต่อเมื่อทุกตัวเริ่มจากจุดตั้งต้นเดียวกัน**
+> If you want to weight them differently, **you need test results to back it up first** — never weight by gut feeling
 
-เปรียบเทียบ: ถ้าให้ 4 คนวาดรูปบ้านหลังเดียวกัน **โดยเริ่มจากสเก็ตช์ร่างอันเดียวกัน** →
-เอามาซ้อนกันแล้วยังเป็นบ้าน ✅
+### ⚠️ A critical condition you must not get wrong (same-basin)
 
-แต่ถ้าต่างคน**ต่างเริ่มจากกระดาษเปล่าคนละใบ** → ซ้อนกันแล้วได้รอยเปื้อน ❌
+This kind of merge works **only if every model starts from the same starting point**
 
-ทางเทคนิคเรียกว่า **ต้อง init LoRA A ตัวเดียวกัน** — เรื่องนี้เคยเกือบพลาดมาแล้ว
-และบันทึกไว้เป็นบทเรียนใน diary 30 ส.ค.
+Analogy: if you have 4 people draw the same house **all starting from the same rough sketch** →
+stack their drawings on top of each other and it's still a house ✅
 
-### ทำไมไม่วัดผลตัวที่รวมแล้ว
+But if each person **starts from their own separate blank sheet of paper** → stacking them gives you a smudge ❌
 
-เพราะพอรวม 4 ตัวเข้าด้วยกัน = **มันเคยเห็นบ้านครบทั้ง 40 หลังแล้ว**
-ไม่เหลือบ้านสะอาดให้สอบเลย
+In technical terms: **they must all use the same LoRA A init** — we nearly got this wrong once before
+and it's recorded as a lesson in the Aug 30 diary
 
-เราจึงตัดสินใจ (มะขามเคาะเอง):
-- **วัดผลทีละ fold** บนบ้านที่ตัวเองไม่เคยเห็น → ได้ตัวเลขที่เชื่อได้
-- **ตัวรวม (soup) ไม่วัด** แต่ติดป้ายไว้ตรง ๆ ว่า `unbenchmarked` (ยังไม่ได้วัด)
-- ประหยัดค่า eval ไป **$6–9**
+### Why we don't evaluate the merged one
 
-**ป้ายบอกความจริงสำคัญกว่าตัวเลขสวย ๆ ที่ไม่มีความหมาย**
+Because once the 4 are merged together = **it has already seen all 40 houses**
+There are no clean houses left to test it on at all
+
+So we decided (Makham made the call):
+- **Evaluate one fold at a time** on the houses that fold has never seen → numbers you can trust
+- **The merged one (soup) is not evaluated**, but it's labeled plainly as `unbenchmarked` (not yet measured)
+- Saved **$6–9** in eval costs
+
+**A label that tells the truth matters more than a pretty number that means nothing**
 
 ---
 
-## ตอนที่ 5 — เรื่องที่มะขามจับได้เอง (และถูกด้วย)
+## Part 5 — Something Makham caught independently (and got right)
 
-> **"อย่าเอา fold ของ t04 ไปใช้ เพราะ t04 ไม่มีระบบ tune pass0/2.5/3"**
+> **"Don't use t04's folds, because t04 has no system for tuning pass0/2.5/3"**
 
-ถูกต้องเป๊ะ และพอไปนับไฟล์จริงก็เจอตามนั้น:
+Exactly right — and when we went and counted the actual files, that's just what we found:
 
-| fold (แบ่งแบบ t04) | บ้านไว้สอบ pass1 | pass0 | pass2.4 | pass3 |
+| fold (split the t04 way) | Held-out test houses: pass1 | pass0 | pass2.4 | pass3 |
 |---|---|---|---|---|
 | fold1 | 204 | **0** | **0** | **0** |
 | fold2 | 204 | **0** | 9 | 2 |
 | fold3 | 204 | **0** | 9 | 1 |
 
-**สาเหตุ:** t04 แบ่งบ้าน 40 หลังโดย**ไม่รู้ว่ามีแค่ 10 หลังที่มีข้อมูล pass0/2.4/3**
-(pass0 มีแค่ 5 หลัง!) พอสุ่มแบ่ง บ้านพิเศษเลยไปกองอยู่ฝั่ง "เทรน" เกือบหมด
+**Cause:** t04 split the 40 houses **without knowing that only 10 houses have pass0/2.4/3 data**
+(pass0 has only 5 houses!) When the split was randomized, the special houses ended up piled almost entirely on the "train" side
 
-ผลคือ **ไม่เหลือบ้านพิเศษไว้สอบเลย → วัดไม่ได้ว่าโมเดลเรียน pass0/pass3 เป็นหรือเปล่า**
+The result: **no special houses left for testing at all → no way to measure whether the model learned to do pass0/pass3 or not**
 
-ถ้าใช้ fold เดิมต่อ = เทรนไปแล้วก็ยัง**ไม่รู้อยู่ดี**ว่าได้ผลไหม
-
----
-
-## ตอนที่ 6 — สรุปบทเรียนทั้งหมดใน 6 บรรทัด
-
-1. **บั๊กที่แพงที่สุดคือบั๊กที่เงียบ** — ไม่มี error สักตัว แต่ผลลัพธ์เป็นขยะทั้งหมด
-2. **ตัวเลขสวยไม่ได้แปลว่าถูก** — JSON ถูกฟอร์แมต 96-100% แต่อ่านแบบไม่ออกเลย
-3. **ต้องเปิดไฟล์คำตอบดูด้วยตา** ไม่ใช่ดูแต่คะแนน
-4. **ตั้งประตูราคาถูกไว้ก่อนจ่ายแพงเสมอ** — $2 ประหยัด $70
-5. **ห้ามใส่เฉลยลงในคำถามที่ใช้ทดสอบ** ไม่งั้นได้ผลเขียวปลอม
-6. **ก่อนเทรนทุกครั้ง วัดก่อนว่า 1 รูป = กี่ token** (ทำบน CPU ฟรี)
+If we kept using the old folds = even after training we would **still not know** whether it worked
 
 ---
 
-## ภาคผนวก — ตอนนี้เราอยู่ตรงไหน (1 ก.ย. 2026)
+## Part 6 — All the lessons summed up in 6 lines
 
-| ตัว | สถานะ |
+1. **The most expensive bug is the silent one** — not a single error, yet the output is all garbage
+2. **A pretty number doesn't mean it's right** — the JSON was correctly formatted 96-100% of the time, yet it couldn't read the drawings at all
+3. **You have to open the answer files and look with your own eyes**, not just look at the scores
+4. **Always put a cheap gate in place before spending big** — $2 saved $70
+5. **Never put the answer key into the questions used for testing**, otherwise you get a fake green result
+6. **Before every training run, first measure how many tokens 1 image becomes** (done on a CPU, for free)
+
+---
+
+## Appendix — Where we stand now (Sep 1, 2026)
+
+| Model | Status |
 |---|---|
-| Purson (t04) | ☠️ ตายแล้ว — รูปเล็กเกิน |
-| Voldemort (t44) | ☠️ ตายแล้ว — บีบอัดจนตาบอด (ตกประตู $2) |
-| **Destrier (t05)** | ✅ เทรนเสร็จ รวม soup แล้ว อยู่บน HF (`dacarokann/destrier`) |
+| Purson (t04) | ☠️ Dead — images too small |
+| Voldemort (t44) | ☠️ Dead — compressed until it went blind (failed the $2 gate) |
+| **Destrier (t05)** | ✅ Training finished, soup merged, on HF (`dacarokann/destrier`) |
 
-**Destrier ยังต้องพิสูจน์ต่อ:** เคยวัด recall ครั้งเดียวได้ ~43% (แบบให้อภัยเรื่องรูปแบบชื่อ)
-และ **ยังไม่เคยรันครบทั้งสายพานกับการ์ดจอจริงสักครั้ง**
+**Destrier still has more to prove:** recall has been measured only once, at ~43% (scored leniently on name formatting)
+and it **has never once been run through the full pipeline on a real GPU**
 
-ส่วนฝั่งโปรแกรม (Constistant) — วันนี้ 1 ก.ย. จำลองรันทั้งบ้านโดยไม่เช่าการ์ดจอ
-แล้ว**เจอบั๊กจริง 8 ตัว แก้หมดแล้ว** รายละเอียดอยู่ใน diary วันนี้
+On the software side (Constistant) — today, Sep 1, we simulated a run of a whole house without renting a GPU
+and **found 8 real bugs, all fixed now**; details are in today's diary
