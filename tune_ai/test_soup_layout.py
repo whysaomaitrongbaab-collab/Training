@@ -334,6 +334,49 @@ assert all(v.dtype == torch.float32 for v in m_h.values()), "ผลจาก fol
 assert S.check_soup(ref_h, m_h, R, log=quiet), "fold bf16 ที่รวมถูกต้องโดนปฏิเสธ"
 print("OK  7d. fold bf16 -> ผล fp32 · ด่านผ่าน")
 
+# 7e — t07 Palfrey: K=4 (r 16 → 64, alpha 32 → 128) ผ่าน --fold-repo 'dacarokann/Palfrey_{}' --out-repo
+#      fold ทุกตัวแบบที่ชุด A (zoo 2026.9.9 + env grouped_by_expert) เซฟ: ด้านปกติ · grouped · มีคีย์ lora_B_layout
+K4 = 4
+R4 = RF * K4
+sds9, cfgs9, truth9 = build([(S.CANON, S.GROUPED, True)] * K4, seed=11)
+for c in cfgs9:
+    c["peft_version"] = "0.21.2"
+for letter, sd, cfg in zip("abcd", sds9, cfgs9):
+    d = work / f"Palfrey_{letter}"
+    d.mkdir()
+    save_file({k: v.contiguous() for k, v in sd.items()}, str(d / "adapter_model.safetensors"))
+    (d / "adapter_config.json").write_text(json.dumps(cfg), encoding="utf-8")
+    repo_dir[f"dacarokann/Palfrey_{letter}"] = str(d)
+run = work / "run_palfrey"
+run.mkdir()
+os.chdir(run)
+try:
+    import builtins
+    builtins.print = quiet
+    S.main(["--folds", "0", "1", "2", "3", "--fold-repo", "dacarokann/Palfrey_{}", "--out-repo", "dacarokann/palfrey"])
+finally:
+    builtins.print = _print
+    os.chdir(cwd)
+cfg = json.loads((run / "destrier_local" / "adapter_config.json").read_text(encoding="utf-8"))
+assert (cfg["r"], cfg["lora_alpha"], cfg["lora_B_layout"]) == (R4, 32 * K4, S.GROUPED) == (64, 128, S.GROUPED), cfg
+m9 = load_file(str(run / "destrier_local" / "adapter_model.safetensors"))
+for ka in (KA, KD):
+    err = rel(served_dw(m9[ka], m9[S.b_key(ka)], R4), truth9[ka])
+    assert err < 1e-12, f"K=4: {ka.split('.')[-3]} ΔW ไม่ตรงค่าเฉลี่ยจริง ({err})"
+assert rel(m9[S.b_key(KQ)] @ m9[KQ], truth9[KQ]) < 1e-12, "K=4: attn ไม่ตรง"
+os.chdir(work)
+try:
+    for bad_args in (["--fold-repo", "dacarokann/Palfrey_"],                                  # ไม่มี {}
+                     ["--fold-repo", "dacarokann/Palfrey_{}"],                                # ปลายทางค่าเริ่ม destrier-v2
+                     ["--fold-repo", "dacarokann/Palfrey_{}", "--out-repo", "dacarokann/Palfrey_a"],
+                     ["--fold-repo", "dacarokann/Palfrey_{}", "--out-repo", "dacarokann/Courser_b"],
+                     ["--out-repo", "dacarokann/palfrey"]):                                    # fold t05 → soup t07
+        assert refuses(lambda: S.main(["--folds", "0", "1", "2", "3", *bad_args])), f"ต้องหยุด: {bad_args}"
+finally:
+    os.chdir(cwd)
+print("OK  7e. t07 K=4 (Palfrey_{a..d} → palfrey): r=64 alpha=128 grouped · ΔW ทุก expert ตรง · "
+      "ไม่มี {} / ปลายทาง destrier / ทับ fold / ปนรอบ = หยุด")
+
 # 8 — การแปลง layout ไป-กลับต้องได้ของเดิม
 b = torch.randn(5, E * RF, dtype=torch.float64)
 assert torch.equal(S.b_to_grouped(S.b_from_grouped(b, RF, S.RANK_MAJOR), RF, S.RANK_MAJOR), b)

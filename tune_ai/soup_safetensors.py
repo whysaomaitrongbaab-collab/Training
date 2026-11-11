@@ -44,10 +44,14 @@ t05_Destrier/proof/03_destrier_expert_LoRA_ปนผิด.md และ fix_dest
     python soup_safetensors.py --folds 0 2 3            # เซฟลงเครื่อง ./destrier_local
     python soup_safetensors.py --folds 0 2 3 --push     # อัปขึ้น repo (ดู --out) — อย่าทับ destrier เดิม
     python test_soup_layout.py                          # ตรวจสูตรด้วยตัวเลขสังเคราะห์ (ไม่ใช้เน็ต)
+  t07 (2026-11-11): --fold-repo / --out-repo — ค่าเริ่มเดิม (Courser_{} → destrier-v2) ไม่เปลี่ยน
+    OMP_NUM_THREADS=4 python soup_safetensors.py --folds 0 1 2 3 --fold-repo 'dacarokann/Palfrey_{}' \\
+        --out-repo dacarokann/palfrey --push            # k=4 → r 64 / alpha 128 (Lesson 19: จำกัด thread ก่อนเสมอ)
 """
 import argparse
 import json
 import os
+import re
 import shutil
 import sys
 
@@ -327,15 +331,24 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--folds", nargs="+", type=int, required=True)
     ap.add_argument("--push", action="store_true")
-    ap.add_argument("--out", default=OUT_REPO)
+    ap.add_argument("--out", "--out-repo", dest="out", default=OUT_REPO, help="repo ปลายทางของ soup")
+    ap.add_argument("--fold-repo", default=FOLD_REPO,
+                    help="template ของ repo fold — {} แทนตัวอักษร a-d (t07: dacarokann/Palfrey_{})")
     args = ap.parse_args(argv)
 
     if args.out.rstrip("/").endswith("dacarokann/destrier"):
         raise SystemExit("⛔ ห้ามทับ dacarokann/destrier เดิม (rev e229403 ตัวที่ปนผิด เก็บไว้ย้อนดู)")
+    if args.fold_repo.count("{}") != 1:
+        raise SystemExit(f"⛔ --fold-repo {args.fold_repo!r} ต้องมี {{}} หนึ่งตัวแทนตัวอักษร fold")
+    if args.out in {args.fold_repo.format(c) for c in LETTERS} or re.search(r"/courser_", args.out, re.I):
+        raise SystemExit(f"⛔ --out {args.out} คือ repo ของ fold — ห้ามเอา soup ไปทับ")
+    fr, out_l = args.fold_repo.lower(), args.out.lower()
+    if ("palfrey" in fr and "destrier" in out_l) or ("courser" in fr and "palfrey" in out_l):
+        raise SystemExit(f"⛔ fold {args.fold_repo} กับปลายทาง {args.out} คนละรอบ (t05 ↔ t07) — ห้ามปน")
     if args.push and not (os.environ.get("HF_TOKEN") or os.environ.get("HUGGING_FACE_HUB_TOKEN")):
         raise SystemExit("⛔ --push ต้องมี HF_TOKEN")
 
-    repos = [FOLD_REPO.format(LETTERS[k]) for k in args.folds]
+    repos = [args.fold_repo.format(LETTERS[k]) for k in args.folds]
     k = len(repos)
     print(f"รวม {k} fold — ต่อแกน rank แบบ exact: ΔW = (1/{k})·Σ ΔW_i")
 
