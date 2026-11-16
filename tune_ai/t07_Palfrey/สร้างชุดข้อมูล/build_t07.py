@@ -8,7 +8,7 @@ Read-only on json_แก้ไขแล้ว/, rawjson_ยังไม่ได
 
     python build_t07.py                            # default set (siamplan included, D2)
     python build_t07.py --exclude-source siamplan  # variant B (111 houses)
-    python build_t07.py --root <dir>               # write somewhere else (tests); default = this folder
+    python build_t07.py --root <dir>               # write somewhere else (tests); default = the t07 root (parent of สร้างชุดข้อมูล/)
     python build_t07.py --selftest                 # pure helpers only, no data
 
 Decisions D1-D13 (2026-11-11) are implemented, not re-decided. Choices this file made where the
@@ -36,7 +36,7 @@ hallucinates less"):
   - about half of the pass0 rows of houses with a usable index page get the "SHEET LIST" tail (see
     SHEET_LIST_format.md); which half = parity of sha256(row id); the 400-row cap is unchanged
 
-Output (under --root): data_raw/{train,val}_fold{0..3}.jsonl -> sanitize -> data/ (the trainer reads
+Output (under --root): ข้อมูลก่อนล้าง/{train,val}_fold{0..3}.jsonl -> sanitize -> ข้อมูลเทรน/ (the trainer reads
 data/), manifest.json, build_report.md. Image paths are relative to the Training root.
 """
 import argparse
@@ -53,8 +53,9 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.dont_write_bytecode = True
-HERE = Path(__file__).resolve().parent                     # tune_ai/t07_Palfrey
-TR = HERE.parents[1]                                       # Training repo root
+HERE = Path(__file__).resolve().parent                     # tune_ai/t07_Palfrey/สร้างชุดข้อมูล (this script + its siblings)
+T07 = HERE.parent                                          # tune_ai/t07_Palfrey (prompt tree + ข้อมูลเทรน/ live here)
+TR = T07.parents[1]                                        # Training repo root
 GT_ROOT = TR / "json_แก้ไขแล้ว"
 RAW_ROOT = TR / "rawjson_ยังไม่ได้แก้ไขโดนคน"
 IMG_ROOT = TR / "image"
@@ -68,8 +69,8 @@ sys.path.insert(0, str(HERE))
 import sanitize_labels as SL  # noqa: E402  (same folder; the second net, and the D5 rule set)
 import grid_incremental as G  # noqa: E402  (same folder; the page-by-page grid master rules, shared with the worker)
 
-PROMPTS_DIR = HERE                                         # D12: PURSON_PROMPTS_DIR = tune_ai/t07_Palfrey
-KEYS = json.loads((HERE / "pass2" / "KEYS.json").read_text(encoding="utf-8"))
+PROMPTS_DIR = T07                                          # D12: PURSON_PROMPTS_DIR = tune_ai/t07_Palfrey
+KEYS = json.loads((T07 / "pass2" / "KEYS.json").read_text(encoding="utf-8"))
 assert (KEYS["gridline.grid"] == ["x_lines", "y_lines", "z_levels"]
         and KEYS["gridline.grid.z_levels"] == ["id", "level_m", "type"]), \
     "KEYS.json nested allowlist for z_levels is missing or changed"
@@ -1229,7 +1230,7 @@ def kind_of(r):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--exclude-source", action="append", default=[], choices=["siamplan"])
-    ap.add_argument("--root", default=str(HERE), help="output root (data_raw/, data/, manifest.json, build_report.md)")
+    ap.add_argument("--root", default=str(T07), help="output root (ข้อมูลก่อนล้าง/, ข้อมูลเทรน/, manifest.json, build_report.md)")
     ap.add_argument("--selftest", action="store_true")
     a = ap.parse_args()
     if a.selftest:
@@ -1269,8 +1270,8 @@ def main():
     groups, missing_members = build_groups(list(houses), FAMILIES)
     folds_of, fold_totals = assign_folds(groups, rows_of_house)
 
-    # write data_raw/ and data/
-    raw_dir, data_dir = root / "data_raw", root / "data"
+    # write ข้อมูลก่อนล้าง/ and ข้อมูลเทรน/
+    raw_dir, data_dir = root / "ข้อมูลก่อนล้าง", root / "ข้อมูลเทรน"
     for dd in (raw_dir, data_dir):
         dd.mkdir(parents=True, exist_ok=True)
         for old in dd.glob("*.jsonl"):
@@ -1460,7 +1461,7 @@ def incremental_report(rows, b, res):
     L = ["## 2026-11-11 evening: gridline is page-by-page (grid_incremental.py)\n"]
     L.append("One page image + the GRID SO FAR tail per row; the label is only what THIS page adds. Order: beam plan, footing "
              "plan, roof frame, other plans, then sections/elevations. The old rows (up to 4 images, whole master in one "
-             "answer) are gone from the data; the old build is kept in `data_20261111_0146/` / `build_report_20261111_0146.md`.\n")
+             "answer) are gone from the data; the old build is kept in `ของเก่า/data_20261111_0146/` / `ของเก่า/build_report_20261111_0146.md`.\n")
     L.append(table(["measured", "value"], [
         ["masters seen", i["masters_seen"]],
         ["masters cut into page rows", i["masters_used"]],
@@ -1529,8 +1530,8 @@ def change_stats(rows, b, res):
 def change_report(rows, b, res):
     c = change_stats(rows, b, res)
     L = ["## 2026-11-11 afternoon: gridline z_levels (slim) + pass0 SHEET LIST\n"]
-    L.append("Before this change (first build, 2026-11-11 01:46; its data is kept in `data_20261111_0146/` and "
-             "`data_raw_20261111_0146/`, its report in `build_report_20261111_0146.md`): gridline rows with z 0, pass0 rows "
+    L.append("Before this change (first build, 2026-11-11 01:46; its data is kept in `ของเก่า/data_20261111_0146/` and "
+             "`ของเก่า/data_raw_20261111_0146/`, its report in `ของเก่า/build_report_20261111_0146.md`): gridline rows with z 0, pass0 rows "
              "with the sheet list 0, longest gridline row 34,503 tokens, longest pass0 row 8,961, 3,573 rows, same "
              "houses, same folds (row counts per house do not change, so the fold assignment does not).\n")
     L.append(f"gridline rows {c['gridline_rows']}: **{c['gridline_rows_with_z']} carry `z_levels`**, "

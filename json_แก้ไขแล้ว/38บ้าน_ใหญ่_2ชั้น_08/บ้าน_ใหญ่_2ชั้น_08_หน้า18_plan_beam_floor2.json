@@ -11,13 +11,7 @@
   "confidence_flags": [
     "This plan is substantially cleaner/more regular than the floor-1 plan (matching the architectural bedroom layout, which is a simpler rectangle than the ground-floor kitchen/carport area), so most of it is read with good confidence. The one dense cluster is the stair void (ช่องบันได) near grid1, row B-D, which carries a landing beam (B3') at a different level plus 'RB2' stair-edge beams — those entries use approximate grid_refs and are flagged individually, same convention as the floor-1 file."
   ],
-  "warnings": [
-    "CORRECTED 2026-08-24 โ€” span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections (Pythagoras where the beam is diagonal, so chamfered members get a real length too). This is pure computation from the grid per the ยง4 rule that span is calculated by code and never estimated by the model โ€” no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
-    "'B0' tie-beam stubs (+3.65) appear repeatedly flanking each main column along row A, same light 100x400mm member as the floor-1 B0 — merged point-style here too, per the same precedent (house 29).",
-    "Grid3's vertical beam is labeled 'B2(+3.60)' — 0.05m different from the +3.65 used everywhere else on this sheet. Printed as-is; not corrected to +3.65, since grid3 carries no footing and could plausibly sit at a slightly different soffit level.",
-    "Two S1 slab bays (+3.65, one printed once as +3.60) sit side-by-side in the row A-B bay between grid2 and grid5 — matches the architectural upper floor plan's ห้องน้ำ 3/4 (bathrooms) directly below the roof void seen on the structural roof plan.",
-    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 25 beam-family elements. Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "B0",

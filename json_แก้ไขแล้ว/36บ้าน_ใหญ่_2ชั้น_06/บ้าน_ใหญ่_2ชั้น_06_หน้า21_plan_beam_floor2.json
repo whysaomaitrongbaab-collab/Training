@@ -11,12 +11,7 @@
   "confidence_flags": [
     "Same density/approximation caveat as the ground-floor plan_beam file: the perimeter/bay-window run is traced with reasonable confidence, the dense interior partition beams (grid3-6, bedroom/bath cluster) are representative marks with approximate grid_ref, not an exhaustive segment trace. The upper-floor bow-window turret at the NW corner is visibly LARGER/more octagonal than the ground-floor footing footprint (a cantilevered overhang, consistent with the architectural elevations) and its own facet coordinates were not independently resolved into new dummy grid lines — its beams use approximate '~' grid_refs anchored to the nearest resolved point, per the gridline master warning."
   ],
-  "warnings": [
-    "CORRECTED 2026-08-24 โ€” span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections (Pythagoras where the beam is diagonal, so chamfered members get a real length too). This is pure computation from the grid per the ยง4 rule that span is calculated by code and never estimated by the model โ€” no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
-    "Thin diagonal lines converging to a center point inside the bay-window octagon and inside two hip-roofed rooms near grid3-4 are unlabeled (no beam mark, no level) — read as roof hip/ridge-line overlays shown for coordination on the structural plan, not as separate structural beams, and not recorded as elements[].",
-    "S1 slab markers (+4.00/+3.95) recorded as element_type 'slab', matching the same convention as the ground-floor plan.",
-    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 19 beam-family elements. Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "B1",

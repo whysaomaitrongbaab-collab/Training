@@ -1,6 +1,6 @@
 #!/bin/bash
 # t07 Palfrey — เฝ้าการ์ดเทรนหลายใบจาก PC (git-bash) · ⚠️ ไฟล์ต้อง LF เท่านั้น
-#   bash watch4.sh 'H0:P0 H1:P1 H2:P2 H3:P3' 900        # (นาทีสูงสุด) — รันผ่าน Claude Bash run_in_background ได้
+#   bash tools/watch4.sh 'H0:P0 H1:P1 H2:P2 H3:P3' 900        # (นาทีสูงสุด) — รันผ่าน Claude Bash run_in_background ได้
 # ทุก INTERVAL วิ (ค่าเริ่ม 600) ต่อการ์ด: MARKERS (DONE/FAIL) · PROC train/runner ALIVE/DEAD · OOM · step/loss ล่าสุด · GPU mem
 # รอบแรกพิมพ์ทันที — อ่านรอบแรกด้วยตาเสมอว่ามีตัวเลขจริง (Lesson 17)
 # exit 0 = ทุกใบ DONE · 1 = มี FAIL / DEAD โดยไม่มี DONE / โฟลเดอร์งานหาย · 2 = ssh ไม่ติด 3 รอบติดกัน (ใบใดใบหนึ่ง) · 3 = หมดเวลา
@@ -9,7 +9,7 @@ set -u
 HOSTS=${1:?"ใส่ 'host:port host:port ...'"}
 MAXMIN=${2:?"ใส่นาทีสูงสุด"}
 INTERVAL=${INTERVAL:-600}
-RDIR=${REMOTE_DIR:-/workspace/Training/tune_ai/t07_Palfrey}
+RDIR=${REMOTE_DIR:-/workspace/Training/tune_ai/t07_Palfrey/รันบนการ์ด}   # run_fold.sh เขียน DONE/FAIL/log ใน รันบนการ์ด/
 SSH=${SSH:-ssh}
 read -r -d '' REMOTE <<'EOF'
 cd "$RDIR" 2>/dev/null || { echo "DIR: missing $RDIR"; echo END_REPORT; exit 0; }

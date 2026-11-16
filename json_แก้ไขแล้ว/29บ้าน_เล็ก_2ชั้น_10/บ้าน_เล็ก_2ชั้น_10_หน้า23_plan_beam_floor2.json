@@ -9,15 +9,7 @@
   "grid_source": "บ้าน_เล็ก_2ชั้น_10_หน้า00_gridline.json",
   "confidence_score": 0.8,
   "confidence_flags": [],
-  "warnings": [
-    "'พื้นชั้น 2' is the elevated, enclosed main living floor (bedroom/bathroom); its beams use a plain 'B' prefix, distinct from the ground-level 'GB'-prefixed beams on S-04. Spec confirmed on S-11: B1/B2/B3/B3A/B3B = 150x400mm (B3/B3A/B3B share one section on S-11); B4/BST1 = 150x350mm.",
-    "B3A appears twice at two different physical locations sharing the same mark: once as the row-A beam segment A2-A3, and again as a separate horizontal beam at dummy row A' (y=2.40) spanning grid2-grid3, splitting that bay into an upper slab room (S1) and a lower precast-plank room (SP). Both are genuine distinct beam instances with the same printed mark — kept as two atomic entries, not merged, per the 'reuse the mark, keep the position atomic' convention used throughout this house.",
-    "Beam B3A at row A' bears on the vertical B2 beams at both its grid2 and grid3 ends (a T-junction into a continuous through-beam, not a grid/column intersection) — flagged bears_on_beam at both ends rather than splitting B2.",
-    "'CS' point markers at row C (grid3, grid4) are steel square-tube posts (□-100x100x3.2mm per the legend on S-06/หน้า24, ขนาด confirmed there) — not RC columns; recorded as element_type 'column' with material 'steel' and a steel_section object, since the schema has no dedicated 'post' type and this member functions as a vertical support.",
-    "Grid3's vertical member changes mark from B2 (A-B span) to BST1 (B-C span) at row B — a stair-opening edge beam per S-12 (บันได ST1); BST1's spec (150x350mm) confirmed on S-11.",
-    "The row-C beam (B4, grid3-4) and both CS posts sit directly above the S-04 bay that has no footing/column at C1/C1' — architecturally this is the balcony over the open ground floor below, consistent with the balcony visible in the cover render (p.1).",
-    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 14 beam-family elements. Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "B1",

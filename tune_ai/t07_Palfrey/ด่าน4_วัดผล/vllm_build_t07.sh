@@ -41,7 +41,7 @@ step "รอ pip ของ onstart แล้วตรวจชุด A (D9) · l
 while pgrep -f '[v]env/main/bin/python -m pip install' > /dev/null; do sleep 10; done
 tail -3 /workspace/pip.log 2>/dev/null
 $PY - <<'EOF' || fail deps
-# ชุด A = freeze_venv_main.txt ของ 3 ต.ค. — ต้องตรงกับ PIN_SETS["A"] ใน t07_Palfrey/train_t07.py (ห้ามมีสองชุด)
+# ชุด A = freeze_venv_main.txt ของ 3 ต.ค. — ต้องตรงกับ PIN_SETS["A"] ใน t07_Palfrey/รันบนการ์ด/train_t07.py (ห้ามมีสองชุด)
 import torch
 from importlib import metadata as m
 pins = {"torch": "2.11.0+cu128", "torchvision": "0.26.0+cu128", "unsloth": "2026.9.14", "unsloth_zoo": "2026.9.9",

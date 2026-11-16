@@ -9,17 +9,7 @@
   "grid_source": "บ้าน_เล็ก_2ชั้น_10_หน้า00_gridline.json",
   "confidence_score": 0.8,
   "confidence_flags": [],
-  "warnings": [
-    "'พื้นชั้น 1' here is the ground-level structural framing (this is an elevated/stilt house — see the cover render p.1 — so floor 1 is the open ground level, not an enclosed room); its members are marked with a 'GB' (ground beam) prefix, distinct from the 'B'-prefixed beams on the elevated floor-2 plan (S-05).",
-    "GB1/GB2 member sizes and rebar are not printed on this plan — spec confirmed on S-11 (บ้าน_เล็ก_2ชั้น_10_หน้า29_section_beam_slab.json): GB1 = 350x350mm, GB2 = 150x350mm.",
-    "BST2 (grid 1' , B to C) bears on the row-B GB2 beam at its start (a T-junction, not a grid/column intersection) and is not itself supported by a footing/column at its C end (no footing exists at grid intersection C1 on either foundation plan) — flagged bears_on_beam rather than split into the row-B GB2 run, per §5's beam-splitting rule (splitting is for a beam bearing ON this one being folded in, not for the beam that receives the bearing).",
-    "Row-C GB2 (from dummy grid 1' to grid 4) has no support at its own west end beyond BST2's foot — no footing exists at C1' or C1; recorded as printed (grid_ref_start '1'C' — i.e. C1') without inventing a support.",
-    "S0 tags (4 bays) are recorded as element_type 'slab' per §10; their spec (100mm slab-on-grade with Ø6mm@0.20m mesh over compacted sand, expansion joint at panel edges) is confirmed on S-11. SP tag (1 bay) is a precast-plank floor area (element_type 'precast_plank_detail'), see S-13 for the plank-joint spec.",
-    "ROW B-C STRIP re-read at high zoom 2026-08-26 after Makham flagged it. Two vertical GB2 beams were missing: B3-C3 and B4-C4, both drawn as 0.15m-wide double lines with their own printed GB2 marks and both landing on real column nodes at C3 and C4. Pixel scan (157.4 px/m, calibrated on grid1-grid4 = 6.60m and A-C = 5.40m) puts their centrelines exactly on grid 3 (4.20) and grid 4 (6.60).",
-    "The row-C beam is ONE 3.10m member from 1' to grid 3, not two. Grid 2 crosses row C with only its dash-dot centreline — no beam pair, no column node, no footing at C2 on either foundation plan — and the sheet prints a single GB2 mark over the whole run. An earlier pass split it at C2 into 1.60 + 1.50, which would have produced two members and a phantom support in a takeoff. Row A and row B are genuinely split at their grid 2 and grid 3 crossings (real columns there), so the merge applies to row C only.",
-    "'GS' or similar overhang markers were not observed on this particular sheet (unlike some other houses in this series) — none omitted.",
-    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 15 beam-family elements. Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "GB2",
