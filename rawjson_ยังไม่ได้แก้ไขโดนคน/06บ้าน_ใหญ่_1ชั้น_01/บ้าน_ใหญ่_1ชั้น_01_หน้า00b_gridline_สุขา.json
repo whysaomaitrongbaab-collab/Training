@@ -74,12 +74,5 @@
   "confidence_flags": [
     "dummy_pos_undimensioned"
   ],
-  "warnings": [
-    "SEPARATE BUILDING -- do not mix with the main row building's grid. Both buildings use the identical grid names ก/ข/ค and 1/2, but at completely different spacings: this block is 4.50 m between letter lines and 6.00 m between number lines, while the main building is 3.60 m in both directions. A grid_ref such as \"ก-1\" is ambiguous unless the file states which grid_source it belongs to (spec §11a).",
-    "This block has its own origin. Its grid bubbles ① and ② are ALSO drawn on the main building's top axis row on S-02 (between main grids 7 and 11) to show roughly where the toilet block sits relative to the main building, but no dimension ties the two coordinate systems together, so the offset between the two grids is unresolved and must not be inferred from bubble positions on the sheet.",
-    "Footprint is a full 2 x 3 grid (6 columns): footings read off S-01 are C2/F3 at ค-1, ค-2, C2/F4 at ข-1, ข-2, and C2/F3 at ก-1, ก-2 -- i.e. pedestal C2 throughout, footing F4 on the middle row and F3 on the two outer rows.",
-    "TWO DUMMY GRIDS added 2026-07-25 after applying the beam-endpoint rule (spec §4) to S-02: the toilet block has a horizontal B5 beam in the middle of each 4.50 m half (between ก-ข and between ข-ค) landing on no named grid line. Per the rule these are real structural lines and get dummy grids, rather than being dropped or recorded as a prose description. pos_m is null because no dimension is printed for either -- do NOT assume 2.25 m, the four S1 slab panels are not visibly equal in depth.",
-    "Beam layout confirmed at high magnification on S-02: B4 on the two outer named rows (ค and ก), B6 on the middle named row (ข), B5 on the two dummy rows AND as the vertical edge beams on grid lines 1 and 2. Four S1 slab panels, one per bay. C2 columns sit at the six NAMED grid intersections only -- the dummy rows carry a beam but no column.",
-    "NORMALIZED_2026-08-02: x_lines/y_lines moved from top level into a nested grid{} object, matching the reviewed convention in houses 01-05 (สิ่งที่ต้องแก้ item 35). Key order and every entry's content are byte-identical, only the nesting level changed."
-  ]
+  "warnings": []
 }

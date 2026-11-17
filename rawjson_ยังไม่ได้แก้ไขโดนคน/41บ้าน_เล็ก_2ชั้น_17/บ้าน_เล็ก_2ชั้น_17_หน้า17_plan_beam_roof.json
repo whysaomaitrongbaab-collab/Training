@@ -9,12 +9,7 @@
   "grid_source": "บ้าน_เล็ก_2ชั้น_17_หน้า00_gridline.json",
   "confidence_score": 0.75,
   "confidence_flags": [],
-  "warnings": [
-    "This is a STRUCTURAL roof framing plan (steel hip-roof members with printed sizes/spacing over the grid) — recorded as pattern 'plan' per the primary_rawjson_schema.md §1 roof_plan-vs-plan rule, NOT as pattern 'roof_plan' (the architectural-only pattern). This is exactly the trap the op04 skill calls out.",
-    "The roof is an all-steel hip roof over the same 8.20x6.00m (grid 1-4 x A-C) footprint, plus a smaller secondary hip over a setback extension to the south/southeast (matching the ground-floor entry/stair-landing canopy visible on the architecture elevations, หน้า05/หน้า06 — roof slope 35°). All members are repeating/spacing-based (rafters @1.00m) or run the full perimeter/ridge/hip length without individual printed marks or grid endpoints, so each member TYPE is recorded once with its steel_section spec and a descriptive position, per §6a's precedent for spacing-based repeated members (purlins) — the same treatment the already-extracted house 28บ้าน_เล็ก_2ชั้น_12 used for its equivalent all-steel roof.",
-    "'จุดติดตั้งเหล็ก PLATE หนา __มม.' (steel connection-plate installation point, thickness blank/illegible on the printed sheet) is a callout with no legible thickness value — recorded with thickness_mm: null rather than a guessed number.",
-    "Fascia (เชิงชาย) and barge boards (ปั้นลม) are hardwood (ไม้เนื้อแข็ง 1\"x8\" ทับ 1\"x6\"), not steel — recorded with material 'wood', no steel_section."
-  ],
+  "warnings": [],
   "elements": [
     { "element_id": "อะเส", "element_type": "beam", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3มม." }, "description": "wall-plate / eave beam, doubled channel, runs the full perimeter of the main roof footprint (grid 1-4 along A and C, grid A-C along 1 and 4)", "confidence_score": 0.75, "confidence_flags": [] },
     { "element_id": "ตะเข้สัน", "element_type": "rafter", "material": "steel", "steel_section": { "designation": "C", "d_mm": 125, "b_mm": 50, "tw_mm": 20, "tf_mm": 2.3, "printed_as": "2C 125x50x20x2.3มม." }, "description": "hip rafter, doubled channel, diagonal from each of the 4 building corners up to the ridge", "confidence_score": 0.75, "confidence_flags": [] },

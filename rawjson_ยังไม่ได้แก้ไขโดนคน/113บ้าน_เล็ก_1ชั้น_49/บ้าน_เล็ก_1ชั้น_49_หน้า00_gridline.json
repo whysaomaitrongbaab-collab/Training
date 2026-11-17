@@ -22,17 +22,7 @@
   ],
   "confidence_score": 0.95,
   "confidence_flags": [],
-  "warnings": [
-    "Axes: x = 1-3 at 4.00 + 4.00 (8.00); y = A-F at 1.50 + 3.00 + 3.00 + 3.00 + 2.00 (12.50). Origin A1. Clean CAD vector PDF; every structural and architectural sheet reprints the same chains and they all close.",
-    "Rule 4 dummies: x 1' (-1.00) / 3' (9.00) and y A'' (-1.00) / F' (13.50) are the roof overhang edges on A-04 / S-04; x 1'''' (2.90) and 2' (5.00) and y A' (-2.10) / B''' (3.00) come from the S-02 / A-03 chains; y E' (11.50) is the 1.00 + 1.00 split of E-F on A-04 / S-04 (and the TRUSS T3 chain); x 2'' (5.10) comes from the A-09 bathroom chain; x 1'' / 1''' / 1''''' / 2''' / 2'''' and y A''' / B' / B'' / B'''' / C' / C'' / D' / D'' are the S-05 truss panel ticks. Only 2' (beam B1) and B''' (beam B2) and A' / 2' (GS slab edges) carry structural members.",
-    "Before-origin dummies share the first main grid's prime sequence: x 1' = -1.00 then 1'' = 1.00, 1''' = 2.00, 1'''' = 2.90, 1''''' = 3.00; y A' = -2.10, A'' = -1.00 then A''' = 0.90 (reading order).",
-    "S-03 leader prints 'หลังอะเสระดับ +4.44' for the 150x100x3.2 plate, while the view title and all four elevations / two sections print +4.45 — z_levels takes +4.45 (six sheets against one); +4.44 kept in unassigned_dimensions.",
-    "Truss panel chains (S-05: T1 8 x 1.00 = 4.00 + 4.00 = 8.00, T2 1.00 x 3 + 1.00 x 3 + 0.90 x 5 = 3.00 + 3.00 + 4.50 = 10.50, T3 1.00 + 1.00 = 2.00): REVERSED on resume. The first pass kept them on the truss elements as element detail because the S-05 elevations print no grid bubbles. On re-check every row closes exactly on the grid (T1 = grid 1 to 3 with 4.00 + 4.00 landing on 2; T2 supports = T1 at E, D, C, A per S-04; T3 = E to F), so they are rows along the building axes, and the batch precedents (houses 95 and 111, same siamplan designer) promote truss panel ticks to lines under section 4 rule 4 — every tick became a line. Door/window sizes (A-10), footing plan sizes and depths (S-06) and stair risers/treads (S-07) are still dimensions inside one element's own detail — kept on those elements.",
-    "Footing sections reference 'ระดับดินเดิม', which no sheet ties to the ±0.00 road datum — footing depths are not placed on the z axis.",
-    "A-09 bathroom enlargement prints 2.90 from grid 3 to the bathroom's left wall (= 5.10), while S-02 / A-03 put the bathroom's beam line 2' at 5.00 (1.00 from grid 2). The two ticks are 0.10 apart, so both are kept as lines (2' = 5.00 structural, 2'' = 5.10 from A-09 only); the A-09 figure most likely runs to a wall face rather than the beam centreline. Its A-B 1.50 agrees with the grid.",
-    "Dimension sweep covers the structural sheets S-01..S-07 plus A-03..A-10. Sanitary-fixture install heights on A-09, the electrical plan E-01 and the sanitary sheets SN-01 / SN-02 were not dimension-swept in this op04 (pass2-only) run; door/window sizes on A-10 stay on the schedule elements.",
-    "Resume 2026-10-14: adding the truss ticks re-sequenced two existing dummies into reading order (spec section 4 Dummy grid, done with tools/gridfix.py) -- x 1'' (2.90) -> 1'''', y B' (3.00) -> B'''; the S-02 beam-plan refs (beam B2 B'''1-B'''2, PS panels A-B''' / B'''-C) follow, and every warning above is rewritten with the new names."
-  ],
+  "warnings": [],
   "grid": {
     "x_lines": [
       {

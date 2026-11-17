@@ -28,7 +28,6 @@ PATTERNS = PLAN_FAMILY | GRID_FAMILY | {'section', 'schedule', 'notes', 'index',
                                         'unknown'}
 WRAPPER = ['png', 'doc_page', 'discipline', 'sheet_code', 'sheet_name', 'pattern',
            'confidence_score', 'confidence_flags', 'warnings']
-EMPTY_WARNINGS = {'beam_plan'}   # section 2: patterns whose warnings[] must stay [] (tools/empty_warnings.py)
 # section 2, pinned 2026-08-21. 'architecture' is the wrong spelling of 'architectural'
 # (an audit found 182 files one way, 157 the other). Anything genuinely outside goes to misc.
 DISCIPLINES = {'structural', 'architectural', 'sanitary', 'electrical', 'mechanical',
@@ -160,9 +159,9 @@ def check_house(house_dir):
             fails['wrapper fields'].append(f'{name}: missing {img_key}')
         if 'phase_note' in doc:
             fails['phase_note left'].append(name)
-        # section 2, 2026-11-16: beam_plan warnings[] were emptied (audit history mixed with
-        # real notes) -- they stay [] so the mess can't creep back in.
-        if doc.get('pattern') in EMPTY_WARNINGS and doc.get('warnings'):
+        # section 2, 2026-11-16: every warnings[] was emptied (edit history mixed with real
+        # notes, and the model learned to copy it) -- it stays [] so the mess can't creep back in.
+        if doc.get('warnings'):
             fails['warnings must be []'].append(name)
         for k in doc:
             if k in ELEMENT_KIND_ARRAYS and isinstance(doc[k], list) and doc[k]:

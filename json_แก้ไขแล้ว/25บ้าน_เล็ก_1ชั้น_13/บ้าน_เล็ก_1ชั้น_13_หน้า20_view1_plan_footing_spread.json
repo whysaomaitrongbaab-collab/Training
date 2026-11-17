@@ -9,12 +9,7 @@
   "grid_source": "บ้าน_เล็ก_1ชั้น_13_หน้า00_gridline.json",
   "confidence_score": 0.85,
   "confidence_flags": [],
-  "warnings": [
-    "This sheet is one of two alternate foundation-type plans on S-02 (spread footing, used when soil bearing >= 8 t/m2 per S-01 note 3.1) — the pile-footing alternative is the companion file _view2_plan_footing_pile.json. Both share the same grid positions; only the footing type/size differs per S-01's design intent.",
-    "element_id uses the printed size string (this sheet prints no F-number, unlike the pile-footing view) — 'F1.00x1.00' etc. Genuinely different structural positions can print the same size string: F0.80x0.80 covers the (D,2) position (marked 3-pile F3 on the companion pile view), the accessible-bathroom appendage north-west position C1' (marked 2-pile F2 there), and the two D'-row appendage positions (marked 1-pile F1 there). Merged under one element_id per the spec's point-element merge rule since that is what this sheet itself prints, but flagging that this masks a real capacity difference visible only on the pile-footing companion view.",
-    "Pedestal (เสาตอม่อ) marks C0/C1 printed alongside each footing size are recorded per-position in each element's note field, not split into separate pedestal elements — full rebar/size spec for C0 vs C1 lives in the column schedule (S-05/S-10/S-11, schedule pattern).",
-    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 3 footing-family elements. Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "F1.00x1.00",

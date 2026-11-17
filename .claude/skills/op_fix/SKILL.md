@@ -30,7 +30,7 @@ came after most houses were finished. So every older master is wrong in one of t
 - Authority is `rawjson_ยังไม่ได้แก้ไขโดนคน/00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`
   §4 — read "Dummy grid", "The grid master records EVERY printed dimension" (arrays 1–4) and the
   beam-endpoint rule **every run**, don't work from memory.
-- Every judgement call goes into the master's `warnings[]`: what was ambiguous, what was taken, why.
+- Decide every judgement call; `warnings[]` stays `[]` (spec §2, 2026-11-16) — don't write what was ambiguous or why.
 - The only thing never allowed: inventing a value that is printed on no sheet.
 - **Older Makham rulings in the master** (`CORRECTED/CLOSED/RULED BY MAKHAM …`) are read before touching
   anything. Rule 4 is his own later rule and wins where they collide (typical case: a printed roofline or
@@ -86,14 +86,14 @@ came after most houses were finished. So every older master is wrong in one of t
 5. **Dry-run:** `python tools/gridfix.py wait_for_ทิ้ง/opfix_staging/<file>.json` — prints the new dummies,
    every rename, and **every segment whose printed value disagrees with the line positions**. A mismatch is
    a misread digit or a wrong anchor: go back to the image and fix the staging. Don't apply over a mismatch
-   you can't explain; if one is genuinely printed that way (the drawing itself doesn't close), keep it and
-   say so in `warnings`.
+   you can't explain; if one is genuinely printed that way (the drawing itself doesn't close), keep it as
+   printed (`warnings[]` stays `[]`).
    Three kinds of line stop `--apply`, each needs a decision, not a retry:
    - **`ERROR … a line the master did not have`** — a page ref already named a line that didn't exist
      (house 11 bathroom `"A-B x 1-1'"`, footprint 2.30), and a new line would now give it a position nobody
      checked. Read that page, then edit the ref by hand: if the line it means is created by this run, first
      take the name out (`"A-B x 1-(2.30 wall)"`), apply, then put the new line's real name in; if it means
-     nothing on the grid, leave it prose. Say what you did in the master's `warnings`.
+     nothing on the grid, leave it prose.
    - **`CHECK BY HAND`** — a non-ref field equals a renamed id; decide what it is and fix it.
    - **`EYEBALL`** — a ref the tokenizer can't read with certainty (quoted label, glued Thai like
      `แนวข'-ค`, possessive) that involves a name this run renames or creates. Neither renamed nor
@@ -154,5 +154,5 @@ before the next round trains on swept houses.
   only the values that changed, so `git diff` shows the fix and nothing else. Verify with `git diff --numstat`.
   An axis the run doesn't touch keeps its order (pos-less dummies keep their slot); staging numbers are
   rounded to the millimetre on read (`2.8 + 0.15` is `2.95`, not `2.9499999999999997`).
-- Prose inside old `warnings[]` is **not** rewritten; the master gets one warning listing the renames.
+- `gridfix.py` prints the renames and its notes on screen only; the master's `warnings[]` stays `[]` (spec §2).
 - `--selftest` covers every case above, including the 13 of the adversarial review (2026-09-29).

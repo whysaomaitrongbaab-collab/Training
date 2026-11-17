@@ -243,7 +243,7 @@ png, doc_page, discipline, sheet_code, sheet_name, pattern,
 source_image, confidence_score, confidence_flags, warnings
 ```
 
-**`warnings` is always `[]` in `beam_plan` (2026-11-16).** All 294 beam_plan files had their warnings emptied by `tools/empty_warnings.py`: the text mixed edit history ("CORRECTED 2026-08-24 …") with real notes, and the model learned to copy it. Keep the key and leave it empty. Wherever this spec says "say so in `warnings[]`", a beam_plan writes nothing there. `check_format.py` fails a beam_plan with a non-empty list. The old text is still in git history.
+**`warnings` is always `[]`, in every pattern (2026-11-16).** All 5,336 files that had warnings were emptied by `tools/empty_warnings.py` (beam_plan first, then the rest): the text mixed edit history ("CORRECTED 2026-08-24 …") with real notes, and the model learned to copy it. Keep the key and leave it empty. **Wherever this spec says "say so in `warnings[]`" or "flag it in `warnings[]`", write nothing there** — decide, and lower `confidence_score` / add a `confidence_flags` entry when the losing reading was genuinely plausible. `check_format.py` fails any file with a non-empty list. The old text is in git history (commit f1a1dd5 and earlier).
 
 **`discipline` — closed vocabulary (pinned 2026-08-21 after an audit found two spellings of one value):** `structural` · `architectural` · `sanitary` · `electrical` · `mechanical` · `boq` · `material_list` · `general` · `front_matter` · `regulatory` · `misc`. **`architecture` is wrong — the canonical spelling is `architectural`.** The audit counted 182 files spelling it one way and 157 the other, across the same 11 houses. Nothing consumes `discipline` today so nothing is broken yet, but the first code that filters on it would silently drop roughly half the set. Anything genuinely outside this list goes to `misc`, not to a newly-invented word.
 
@@ -267,8 +267,8 @@ Purpose: let a stage that **cannot** resolve something — because it does not h
 
 Hard rules:
 
-- **`warnings[]` is append-or-rewrite only. NEVER delete a warning** (except `beam_plan`, whose warnings stay `[]` — §2). When a later stage overturns an earlier reading, **rewrite** the warning so it records the reversal: what was believed, what overturned it, and how many sheets agreed. That reversal narrative is the single most valuable training signal in the file (precedent: the house-06 grid reversal, and house-07's `F16` vs `F18`, where three marks on the drawing beat one in the title block).
-- **`phase_note` must be ABSENT from every finished file.** Stage 3 folds each note into `warnings[]` (or discards it as resolved) and then deletes the field. A file still carrying a `phase_note` is by definition unfinished.
+- **`warnings[]` is append-or-rewrite only. NEVER delete a warning** — **void since 2026-11-16: `warnings[]` is always `[]` (§2).** When a later stage overturns an earlier reading, **rewrite** the warning so it records the reversal: what was believed, what overturned it, and how many sheets agreed. That reversal narrative is the single most valuable training signal in the file (precedent: the house-06 grid reversal, and house-07's `F16` vs `F18`, where three marks on the drawing beat one in the title block).
+- **`phase_note` must be ABSENT from every finished file.** Stage 3 resolves each note (nothing goes into `warnings[]` — §2) and then deletes the field. A file still carrying a `phase_note` is by definition unfinished.
 - A `phase_note` is never a substitute for a decision. If the stage that holds the evidence *can* decide, it decides and writes a `warnings[]` entry — same standing order as `op1`.
 - Never put a `phase_note` on the grid master. A grid problem is escalated by re-running Stage 1, not annotated (see the README's `op2` escalation rule).
 

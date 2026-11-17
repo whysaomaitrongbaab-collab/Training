@@ -16,15 +16,7 @@
   ],
   "confidence_score": 0.85,
   "confidence_flags": [],
-  "warnings": [
-    "The set has no separate structural notes sheet; the project-wide specification is this block on A-01 (architectural sheet), transcribed verbatim in sections[].",
-    "Steel conflict, decided: the notes say footing-column-beam rebar is SR24 (2,400 ksc), but the S-05/S-06/S-07 details print deformed main bars in exactly those members (DB12 pile-cap mats, DB12/DB16 beam bars, DB12 column bars, DB12 stair waist). Member spec follows the detail sheets (op01 precedence: detail beats general; three detail sheets against one note), so main bars are deformed. The notes give deformed steel only as \"SD30 ,SD40 ... 3,000 ksc 4.000 ksc ตามลำดับ\" without saying which grade applies to which bar, so deformed_bar.fy_ksc and the flat fy_main_ksc are null -- both grades stay readable in printed_as. \"4.000\" is printed with a period and read as 4,000. (Same notes text and same decision as the sibling siamplan set, house 95; checked against this set's own pages.)",
-    "fy_stirrup_ksc = 2400: every stirrup/tie in the details is RB6/RB9 (round) and the notes give round bar as SR24 2,400 ksc; slab bars (S1 and GS RB9, PS RB6) are round too, matching the slab line of the notes. Neither steel line prints the RB/DB notation itself, so notation is null on both.",
-    "fc 240 ksc is a CUBE strength (แท่งทดสอบลูกบาศก์มาตรฐาน), not a cylinder strength -- kept as printed (concrete.printed_as). Formwork stripping times, mix ratios (1:3:5 lean, 1:2:4 structural) and the precast plank live load (>= 200 kg/m2, bearing >= 5 cm) are in the transcript only -- section 4a defines no notes{} field for them.",
-    "No concrete cover is printed anywhere in the notes -- cover_mm null, no cover object.",
-    "±0.00 is defined here as ระดับถนนภายในโครงการ; A-07/A-08 label it ระดับดินถม ±0.00 (grid master z_levels).",
-    "The index lists A-02 (แผนที่สังเขป ผังบริเวณ), which is not in the downloaded PDF (the 21 pages jump from A-01 to A-03); it is a site plan (Pass 3) and does not affect this op04 extraction."
-  ],
+  "warnings": [],
   "sections": [
     {
       "heading": "ลักษณะอาคาร",

@@ -16,7 +16,7 @@ Argument: `<house_name>` (e.g. `บ้านเอกมัย`). All paths belo
   1. **Grid geometry** → the STRUCTURAL footing/column plans win (S-sheets). An architectural site plan, or a sheet self-declared "เพื่อประมาณราคา/ตัวอย่าง", never overrides them.
   2. **Member spec** → the detail/section sheet wins over the plan; `section` wins over `schedule`.
   3. **More sheets agreeing beats fewer** — count them, and say so in the warning.
-- **Every decision gets written down where the data lives** — a `warnings[]` entry stating what conflicted, which reading was taken, and why. Lower `confidence_score` and flag when the losing reading was genuinely plausible.
+- **Decide, don't narrate** — `warnings[]` stays `[]` (spec §2, 2026-11-16): no note about what conflicted or why. Lower `confidence_score` and add a `confidence_flags` entry when the losing reading was genuinely plausible.
 - **Never leave a field blank because a choice was hard.** Blank is only for "the drawing genuinely does not say" — never for "two sheets said different things."
 - Asking mid-run is only correct if continuing would require **inventing data that appears on no sheet at all**.
 - Label Studio is cancelled (2026-08-02) — never generate Label Studio task files, regardless of what an older transcript suggests.

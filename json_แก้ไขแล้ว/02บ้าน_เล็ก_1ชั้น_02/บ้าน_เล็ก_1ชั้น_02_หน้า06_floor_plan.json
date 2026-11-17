@@ -185,12 +185,5 @@
   ],
   "confidence_score": 0.77,
   "confidence_flags": [],
-  "warnings": [
-    "This is the floor-plan-only sheet (A-04) — unlike house 1, this house prints the roof plan on a separate sheet (A-05, หน้า07) rather than combining both views on one sheet.",
-    "GRID-RELEVANT FOR หน้า00 MASTER: top dimension chain reads left to right: 1.00 (beyond grid1) | 3.20 (grid1-2, sub-split 1.30+1.90 -- see below) | 3.20 (grid2-3) | 3.20 (grid3-4, sub-split 1.30+1.90) | 1.00 (beyond grid4). Left dimension chain reads top to bottom: 0.60 (beyond gridF) then, continuing on the same tick past gridF, 0.90 (interior, gridF to a partition line) | 3.10 (that partition line to gridE) | 2.00 (gridE-D) | 3.60 (gridD-C) | 1.80 (gridC-B) | 3.15 (gridB-A), total 14.55. CORRECTED_2026-07-16_by_user: contrary to this file's earlier conclusion that none of these needed a dummy grid line, 6 dummy grid lines were added to the master (หน้า00_gridline.json) from these exact figures: x-axis 1'=-1.0 (the 1.00 beyond grid1), 1''=1.8 (from A-10's width breakdown, see ห้องน้ำ1/หน้า12_wc1_plan.json), 3'=7.7 (the 1.30 sub-split point in the grid3-4 bay, 6.4+1.30), 4'=10.6 (the 1.00 beyond grid4); y-axis F'=-0.6 (the exterior 0.60 tick beyond gridF) and F''=0.9 (the interior partition 0.90m south of gridF, the real ซักล้าง/ห้องครัว boundary -- previously mis-estimated here as '~1.50m', now pinned exactly). The earlier reading that lumped 0.60+0.90 together as one continuous '1.50m north roof overhang' was wrong -- they are two separate features (0.60 exterior canopy/eave edge, 0.90 an interior partition), not one continuous exterior dimension.",
-    "Individual door/window counts and the circle-vs-hexagon (door-vs-window) glyph distinction per room were not confidently resolvable at this image resolution — flagged for zoom review rather than guessed, consistent with the same caveat on house 1's floor plan.",
-    "ห้องนอน3's grid_ref is marked partial because ห้องน้ำ2 and a small hallway also occupy part of the grid3-4 x D-C bay; exact internal partition line position not independently re-measured here (visually consistent with the wall lines shown).",
-    "WC.1 and WC.2 are both detailed on separate 1:25 sheets: WC.1 plan is on A-10 (หน้า12) with its sections on A-11 (หน้า13); WC.2 plan is on A-12 (หน้า14) with its sections on A-13 (หน้า15). This floor-plan-level box is superseded by those sheets for exact fixture layout — see _หน้า12_wc1_plan.json and _หน้า14_wc2_plan.json.",
-    "NORMALIZED_2026-08-02: element_id reduced to the mark printed on the drawing; the original is kept in element_id_printed_as on each entry. Position belongs in grid_refs, not in the id (it broke cross-page joins)."
-  ]
+  "warnings": []
 }

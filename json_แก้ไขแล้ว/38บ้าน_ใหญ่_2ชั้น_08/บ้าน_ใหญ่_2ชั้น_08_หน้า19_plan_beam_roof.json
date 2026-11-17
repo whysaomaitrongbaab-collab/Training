@@ -12,10 +12,7 @@
     "This sheet is a STRUCTURAL roof-framing plan (RC ring beams RB1/RB2/RB1'/RB3' with element marks and grid refs, plus a light-gauge steel purlin/rafter system) — recorded as pattern 'plan' per the roof_plan-vs-plan rule (op04 SKILL.md), not as the Pass-3 'roof_plan' pattern. This is a hybrid structural system: RC ring beams at wall-top level (rebar-detailed, หน้า24-25) carry a light-gauge steel roof frame above (steel_section members, no individual grid position — see the steel_member entries below, which record the spec only, per §6a).",
     "The ring beam follows a hip-roof outline with diagonal hip/valley lines running from each corner (labelled RB1' at the corners) toward interior intersection points (circular RB1/RB2 tags) — the diagonal members' true two-grid-point span was not resolved (their far end is a roof ridge/valley intersection, not a plan grid point), so those entries carry a single approximate grid_ref rather than an invented span endpoint."
   ],
-  "warnings": [
-    "CORRECTED 2026-08-24 — span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections. This is pure computation from the grid per the §4 rule that span is calculated by code and never estimated by the model — no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
-    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 20 beams on a roof-framing sheet (floor_level=None). Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "RB1",

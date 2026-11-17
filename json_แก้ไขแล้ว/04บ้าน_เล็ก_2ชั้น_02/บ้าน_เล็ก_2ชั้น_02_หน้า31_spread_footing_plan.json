@@ -136,10 +136,5 @@
   ],
   "confidence_score": 0.88,
   "confidence_flags": [],
-  "warnings": [
-    "Row A has no footing/column at col1 (only col2/col3 present).",
-    "MERGED_2026-07-20 per user rule: all 4 footing marks (F0.60x0.60, F1.30x1.30, F1.60x1.60, F1.00x1.00) were each split across 2 entries; each is now ONE entry with summed count and concatenated grid_refs (12 elements -> 8). No grid_ref appeared in more than one entry, so this is a pure merge with no change to the total footing count (16 footings before and after, and each entry's count now equals the length of its grid_refs array). This SUPERSEDES the previous warning here, which had justified keeping F1.00x1.00 split because its paired column mark differs (C1A at E3 vs C1 at B1) -- elements[] is positional-only, so the column pairing lives in its own C1A/C1 entries and is not a reason to split a footing entry.",
-    "CAUTION for anyone applying this rule elsewhere: merging is correct only when the entries' grid_refs do NOT overlap. Where the same grid_ref appears in two entries of the same mark (as found on house #3's หน้า29/หน้า30 at B3) that is a genuine double-count bug and the duplicate must be DELETED, not summed.",
-    "pattern re-labelled 'etc_plan' -> 'footing_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 4 footing-family elements. Nothing else in this file changed."
-  ]
+  "warnings": []
 }

@@ -150,13 +150,5 @@
   "confidence_flags": [
     "contains_genuine_rebar_specs_for_a_perimeter_fence_column/tie-beam/footing_-_NOT_part_of_the_main_house_structural_(S-series)_scope_this_dataset_otherwise_covers_kept_here_because_it_is_printed_on_an_architectural_(A-series)_sheet_and_the_task_asked_to_capture_what_is_printed"
   ],
-  "warnings": [
-    "PATTERN unchanged from t3 ('section') -- this sheet has genuine RC rebar specs (bar counts/diameters/spacing) for column/tie-beam/footing marks, a textbook fit for the new taxonomy's 'section' definition.",
-    "This is a garden/perimeter fence structural detail sheet, drawn with its own C1 (column), GB (tie beam) and F (footing) marks. These mark LETTERS are commonly also used for the main house's real structural columns/ground-beams/footings in the S-series structural drawings (outside this extraction's page range) — treat C1/GB/F here as belonging exclusively to 'รั้วบ้าน แบบที่ 1' (fence type 1), not as evidence about the main house's C1/GB/F specs.",
-    "CONTENT DISAGREEMENT vs t3: flagged at the C1 element above -- t3's main_bar.top/bottom=4/4 for the column risks a 2x overcount (8 vs the printed 4) if summed per the schema doc's own beam convention. This is a genuine independent-read finding, not a copy of t3, since my own first-pass read of the 'ขยายเสา C1' box also saw only one '4-ø12' line. Added 'total_main_bar_count':4 to disambiguate without removing the schema-mandated top/bottom structure.",
-    "All primary rebar counts/diameters/spacings (4-ø12, STR:ø6@150 for C1; 2-ø9+1ø9 BENT L/5, STR:ø6@150 for GB; 3-ø9, STR:ø6@100 for F) are printed clearly and read at high confidence; per rule 5.4 all 'ø' (plain circle) symbols were read as RB (round bar), never inferred as DB from diameter size.",
-    "Sibling sheet A-15 (แบบขยายรั้วแบบที่ 2, หน้า17) shows the same C1 column and F footing specs but a different infill (concrete block instead of steel pickets) and a ทับหลัง (lintel) instead of a GB tie beam — see _หน้า17_fence_type2.json.",
-    "Nothing here changes or adds to the main building gridline master file (หน้า00_gridline.json) — no named or dummy grid intersections are referenced on this sheet.",
-    "NORMALIZED_2026-08-02: these element_id values contain an underscore but no identifiable printed mark and are a STRUCTURAL element type, so a cross-page spec join cannot find them: pile_under_F. Left as-is rather than guessed at - needs the drawing to say what the real mark is (or to confirm the drawing never marked it)."
-  ]
+  "warnings": []
 }

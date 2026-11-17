@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""empty_warnings.py — ล้าง warnings[] ระดับ wrapper ของ pattern หนึ่งให้เป็น [] (ทั้งสองโฟลเดอร์)
+"""empty_warnings.py — ล้าง warnings[] ระดับ wrapper ให้เป็น [] (ทั้งสองโฟลเดอร์)
 
-    python tools/empty_warnings.py beam_plan            # ดูว่าจะแก้กี่ไฟล์ ไม่เขียน
-    python tools/empty_warnings.py beam_plan --apply    # เขียนจริง
+    python tools/empty_warnings.py                  # ทุก pattern — ดูว่าจะแก้กี่ไฟล์ ไม่เขียน
+    python tools/empty_warnings.py beam_plan        # pattern เดียว
+    python tools/empty_warnings.py --apply          # เขียนจริง
 
 แก้ที่ข้อความตรงๆ เฉพาะค่าของ key "warnings" ชั้นบนสุด — การจัดหน้า/CRLF/บรรทัดอื่นไม่ขยับ
 แล้วตรวจว่า parse กลับได้เท่ากับของเดิมทุกอย่างยกเว้น warnings ก่อนเขียน
@@ -46,7 +47,7 @@ def top_level_value_span(text, key):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("pattern")
+    ap.add_argument("pattern", nargs="?", help="ไม่ใส่ = ทุก pattern")
     ap.add_argument("--apply", action="store_true")
     a = ap.parse_args()
     changed = skipped = 0
@@ -56,7 +57,7 @@ def main():
                 continue
             text = f.read_bytes().decode("utf-8")
             d = json.loads(text)
-            if not isinstance(d, dict) or d.get("pattern") != a.pattern or d.get("warnings") in ([], None):
+            if not isinstance(d, dict) or not d.get("pattern") or a.pattern not in (None, d["pattern"]) or d.get("warnings") in ([], None):
                 continue
             span = top_level_value_span(text, "warnings")
             if not span:
@@ -70,7 +71,7 @@ def main():
             changed += 1
             if a.apply:
                 f.write_bytes(new.encode("utf-8"))
-    print(f"{a.pattern}: {'แก้แล้ว' if a.apply else 'จะแก้'} {changed} ไฟล์ · ข้าม {skipped}")
+    print(f"{a.pattern or 'ทุก pattern'}: {'แก้แล้ว' if a.apply else 'จะแก้'} {changed} ไฟล์ · ข้าม {skipped}")
 
 
 if __name__ == "__main__":

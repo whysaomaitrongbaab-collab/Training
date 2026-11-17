@@ -11,12 +11,7 @@
   "confidence_flags": [
     "This is a STRUCTURAL roof framing plan (purlins, rafters, ridge beam with grid refs) — recorded as pattern 'plan' per the roof_plan trap (op04 SKILL.md), not skipped as 'roof_plan'."
   ],
-  "warnings": [
-    "Purlins (แปเหล็ก, 25x25x3.2mm) and rafters (จันทันเหล็ก C-100x50x20x3.2mm) are drawn as a repeating spacing pattern across the whole roof (arrows + '@1.00ม'/'@ไม่เกิน1.00ม' callouts), not as individually marked/numbered members — recorded as one typical-pattern element each (no grid_ref, since they are not tied to specific grid points) rather than invented as a numbered series.",
-    "The ridge member is printed with mark 'BS1' (125x75x3.2mm), the SAME mark as the ground-floor-level eave tie beams on S-05 (plan_beam_roof_edge). This is a physically different beam (roof-ridge level, running along grid 2 through the CS1 columns) despite the shared mark — flagged rather than silently merged or silently renamed.",
-    "Roof sheathing overhangs the building footprint by 1.00m (x, both sides) and 1.20m (y, both sides) — already recorded in the grid master's dimension_chains; the overhang itself carries no beam member (purlins/rafters cantilever past the ridge/eave beams).",
-    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 2 roof-framing elements. Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "BS1",

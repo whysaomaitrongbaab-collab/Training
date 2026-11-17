@@ -8,7 +8,7 @@ description: Extract one house into raw JSON covering ONLY the Pass 2 subtasks �
 Argument: `<house_name>` (e.g. `บ้านเอกมัย`). All paths are relative to the **Training repo root**.
 
 `op04` is `op01` with one change: **scope**. Everything else — the authority, the conflict
-precedence, "decide don't ask", `warnings[]` discipline, the output folder, `check_format.py`,
+precedence, "decide don't ask", `warnings[]` stays `[]`, the output folder, `check_format.py`,
 the log row — is `op01`'s, unchanged. Read `.claude/skills/op01/SKILL.md` and follow it; this
 file only states where `op04` differs.
 

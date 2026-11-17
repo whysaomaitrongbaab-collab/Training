@@ -26,16 +26,7 @@
     "approximate_tilde_dimension",
     "low_resolution_scan"
   ],
-  "warnings": [
-    "Axes: letters A-E run along the TOP edge at 5.00 (20.00) and numbers 1-4 down the LEFT edge at 4.00 (12.00), so x_lines carry the letters and y_lines the numbers (section 4 axis definition by position; house 19 precedent; check_format accepts the swapped assignment). Point refs stay letter+number (e.g. C2); area refs put the vertical axis (numbers) first, e.g. '1-2 x A-B'. Origin A1 (top-left).",
-    "Scanned สพฐ. standard set (library building, S-01..S-14). Only the structural sheets S-01..S-14 were swept for ticks; the architectural elevations/sections (A-sheets) were not swept (op04 scope).",
-    "Truss panel chains (S-12 T1/T2 on y, S-13/S-14 T3-T7 on x) print every panel as '~1.00' with one '~1.015' (T1/T2) or '~1.0125' (T3-T7) end panel; per rule 4 every panel tick is a dummy line. The chains do not close exactly on the printed totals (11 x 1.00 + 1.015 = 12.015 against 12.00; the T3-T7 '~1.0125' panel starts at the truss end set ~0.0125 outside the column line). Decision: panel ticks placed at whole metres from the named line, chain ends taken as the named lines themselves (the printed 12.00 / 5.00 totals govern), the '~' values kept verbatim in dimension_chains. These lines carry confidence_flags approximate_tilde_dimension.",
-    "Several dummies coincide across sheets and are one line each: y 2.00 = S-02 BX line = T5 line; y 10.00 = S-02 B7/Cx1 line = T7 line; y 14.00 = S-02 outer 2.00 = eave line on S-03/S-04 = end of the T1/T2 overhang; y -2.00 = eave line = T1/T2 left end.",
-    "x -1.00 (A'') is NOT printed: it is the left end of the BC stub that projects past A on row 4 of S-02, scaled from the plan (beam-endpoint rule) and flagged.",
-    "The C2 columns on rows 1 and 4 are drawn 0.05 off the grid line (S-01) — element-local offset, recorded in unassigned_dimensions, not as lines.",
-    "Dummy naming follows section 4: one prime sequence per gap including the before-origin dummies (x: A' -1.50, A'' -1.00, then A''' .. A'''''''' inside A-B), so the beam lines 1.40 / 3.60 are A'''' / A'''''''.",
-    "Sweep 2026-10-23 of A-03/A-04 (หน้า05-06, spec text) and A-21/A-22 (หน้า23-24, door/window sheets): no grid bubble or axis dimension row on any of the four; A-03 repeats the ±0.00 datum and the +0.30 fill level already held from S-01 (one z chain added), everything else is element-internal or a plan offset with no anchor and went to unassigned_dimensions. No new line, no rename."
-  ],
+  "warnings": [],
   "grid": {
     "x_lines": [
       {
