@@ -1,0 +1,431 @@
+{
+  "png": "06",
+  "doc_page": 6,
+  "discipline": "structural",
+  "sheet_code": "S-05",
+  "sheet_name": "ข้อกำหนดทั่วไป 5",
+  "pattern": "section",
+  "source_image": "image/บ้าน_ใหญ่_5ชั้น_01/บ้าน_ใหญ่_5ชั้น_01_หน้า06.png",
+  "grid_source": "บ้าน_ใหญ่_5ชั้น_01_หน้า00_gridline.json",
+  "view_title": "DROP PANEL DETAIL / BX / CORBEL DETAIL / SHEAR STIRRUP TYPE \"A\" \"B\" \"C\" / TYP. REINFORCEMENT AT OPENING",
+  "scale": null,
+  "confidence_score": 0.91,
+  "confidence_flags": [],
+  "warnings": [],
+  "elements": [
+    {
+      "element_id": null,
+      "element_type": "slab",
+      "element_name_assigned": "DROP PANEL",
+      "view_title": "DROP PANEL DETAIL (PLAN + SECTION B-B)",
+      "section_ref": "B-B",
+      "thickness_mm": 400,
+      "thickness_mm_printed_as": "0.40",
+      "slab_thickness_mm": 250,
+      "slab_thickness_printed_as": "0.25 (PTS.)",
+      "plan_size_printed_as": "SEE DWG.PLAN + COLUMN WIDTH + SEE DWG.PLAN (both directions)",
+      "rebar": {
+        "dia_mm": 12,
+        "type": "DB",
+        "spacing_mm": 250,
+        "mesh": true,
+        "printed_as": "DB12 @ 0.25# U-SHAPE"
+      },
+      "stirrup": {
+        "count": 1,
+        "dia_mm": 12,
+        "type": "DB",
+        "printed_as": "1-DB12 (รัดรอบ)",
+        "note": "perimeter bar at the top of the U-shape mesh"
+      },
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "BX",
+      "element_type": "beam",
+      "height_mm": null,
+      "height_printed_as": "T",
+      "main_bar": {
+        "top": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2 DB 12"
+        },
+        "bottom": {
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "2 DB 12"
+        }
+      },
+      "stirrup": {
+        "dia_mm": 6,
+        "type": "RB",
+        "spacing_mm": 100,
+        "loops_per_set": 1,
+        "printed_as": "1ป -RB6 @0.10 M."
+      },
+      "confidence_score": 0.88,
+      "confidence_flags": [
+        "depth_printed_as_T_no_width_printed",
+        "mark_BX_also_detailed_on_S-23_as_0.12x0.40_1DB16_top_bottom"
+      ]
+    },
+    {
+      "element_id": null,
+      "element_type": "connection_detail",
+      "element_name_assigned": "CORBEL",
+      "view_title": "CORBEL DETAIL (PLAN + SECTION A)",
+      "section_ref": "A",
+      "extension_mm": 200,
+      "extension_printed_as": "(A)=0.20m. (each side of COLUMN WIDTH)",
+      "thickness_mm": 300,
+      "thickness_printed_as": "(B)=0.30m.",
+      "total_depth_with_slab_mm": 550,
+      "total_depth_printed_as": "0.55m.",
+      "bar_layers": [
+        {
+          "location": "(C) top mesh",
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 100,
+          "mesh": true,
+          "printed_as": "(C)=DB12 @ 0.10#"
+        },
+        {
+          "location": "(D) closed-loop stirrups",
+          "dia_mm": 12,
+          "type": "DB",
+          "printed_as": "(D)(CLOSE LOOP)",
+          "note": "table: 5 DB12 STIR"
+        },
+        {
+          "location": "(E) bottom mesh",
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 100,
+          "mesh": true,
+          "printed_as": "(E)=DB12 @ 0.10#"
+        }
+      ],
+      "labels_printed_as": [
+        "TOP&BOT REINF.",
+        "STIRRUP (CLOSE LOOP)",
+        "COLUMN",
+        "COLUMN WIDTH",
+        "PTS.",
+        "พื้น POST SLIDE ON CORBEL",
+        "เทคอนกรีตเสาภายหลังจากดึงลวดอัดแรงเสร็จเรียบร้อยแล้ว",
+        "กั้นรอบเหล็กยืนเสาด้วยลวดตาข่าย",
+        "บ่า CORBEL ผิวขัดเรียบและปูด้วยพลาสติก"
+      ],
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SHEAR STIRRUP TYPE A",
+      "element_type": "connection_detail",
+      "element_id_printed_as": "SHEAR STIRRUP TYPE \"A\"",
+      "arms": 4,
+      "column_position": "interior column",
+      "stirrup": {
+        "dia_mm": 12,
+        "type": "DB",
+        "spacing_mm": 75,
+        "sets_per_arm": 16,
+        "loops_per_set": 2,
+        "printed_as": "16-2ป DB12 @ 0.075",
+        "note": "Close loops; first set 7.5cm. from the column face"
+      },
+      "sections": [
+        {
+          "mark": "1-1",
+          "title_printed_as": "SECTION 1-1 FOR T = 22 cm",
+          "main_bar": {
+            "top": {
+              "count": 3,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "3-DB12"
+            },
+            "bottom": {
+              "count": 3,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "3-DB12"
+            }
+          },
+          "stirrup_printed_as": "16-2ป DB12 @7.5 cm. (Close loops)",
+          "cover_mm": 20,
+          "cover_printed_as": "2.0cm."
+        },
+        {
+          "mark": "2-2",
+          "title_printed_as": "SECTION 2-2",
+          "main_bar": {
+            "top": {
+              "count": 4,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "4-DB12"
+            },
+            "bottom": {
+              "count": 4,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "4-DB12"
+            }
+          },
+          "stirrup_printed_as": "16-2ป DB12 @7.5 cm. (Close loops)",
+          "cover_mm": 20,
+          "cover_printed_as": "2.0cm."
+        }
+      ],
+      "dims_printed_as": [
+        "0.40m.",
+        "7.5cm.",
+        "COLUMN WIDTH"
+      ],
+      "note": "0.40m. is printed past the end of each stirrup arm (dashed extent lines); slab thickness printed as t",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SHEAR STIRRUP TYPE B",
+      "element_type": "connection_detail",
+      "element_id_printed_as": "SHEAR STIRRUP TYPE \"B\"",
+      "arms": 3,
+      "column_position": "edge column",
+      "stirrup": {
+        "dia_mm": 12,
+        "type": "DB",
+        "spacing_mm": 75,
+        "sets_per_arm": 16,
+        "loops_per_set": 2,
+        "printed_as": "16-2ป DB12 @ 0.075",
+        "note": "Close loops; first set 7.5cm. from the column face"
+      },
+      "sections": [
+        {
+          "mark": "1-1",
+          "title_printed_as": "SECTION 1-1 FOR T = 22 cm",
+          "main_bar": {
+            "top": {
+              "count": 3,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "3-DB12"
+            },
+            "bottom": {
+              "count": 3,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "3-DB12"
+            }
+          },
+          "stirrup_printed_as": "16-2ป DB12 @7.5 cm. (Close loops)",
+          "cover_mm": 20,
+          "cover_printed_as": "2.0cm."
+        },
+        {
+          "mark": "2-2",
+          "title_printed_as": "SECTION 2-2",
+          "main_bar": {
+            "top": {
+              "count": 4,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "4-DB12"
+            },
+            "bottom": {
+              "count": 4,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "4-DB12"
+            }
+          },
+          "stirrup_printed_as": "16-2ป DB12 @7.5 cm. (Close loops)",
+          "cover_mm": 20,
+          "cover_printed_as": "2.0cm."
+        }
+      ],
+      "dims_printed_as": [
+        "0.40m.",
+        "7.5cm.",
+        "COLUMN WIDTH"
+      ],
+      "note": "0.40m. is printed past the end of each stirrup arm (dashed extent lines); slab thickness printed as t",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": "SHEAR STIRRUP TYPE C",
+      "element_type": "connection_detail",
+      "element_id_printed_as": "SHEAR STIRRUP TYPE \"C\"",
+      "arms": 2,
+      "column_position": "corner column",
+      "stirrup": {
+        "dia_mm": 12,
+        "type": "DB",
+        "spacing_mm": 75,
+        "sets_per_arm": 16,
+        "loops_per_set": 2,
+        "printed_as": "16-2ป DB12 @ 0.075",
+        "note": "Close loops; first set 7.5cm. from the column face"
+      },
+      "sections": [
+        {
+          "mark": "1-1",
+          "title_printed_as": "SECTION 1-1 FOR T = 22 cm",
+          "main_bar": {
+            "top": {
+              "count": 3,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "3-DB12"
+            },
+            "bottom": {
+              "count": 3,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "3-DB12"
+            }
+          },
+          "stirrup_printed_as": "16-2ป DB12 @7.5 cm. (Close loops)",
+          "cover_mm": 20,
+          "cover_printed_as": "2.0cm."
+        },
+        {
+          "mark": "2-2",
+          "title_printed_as": "SECTION 2-2",
+          "main_bar": {
+            "top": {
+              "count": 4,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "4-DB12"
+            },
+            "bottom": {
+              "count": 4,
+              "dia_mm": 12,
+              "type": "DB",
+              "printed_as": "4-DB12"
+            }
+          },
+          "stirrup_printed_as": "16-2ป DB12 @7.5 cm. (Close loops)",
+          "cover_mm": 20,
+          "cover_printed_as": "2.0cm."
+        }
+      ],
+      "dims_printed_as": [
+        "0.40m.",
+        "7.5cm.",
+        "COLUMN WIDTH"
+      ],
+      "note": "0.40m. is printed past the end of each stirrup arm (dashed extent lines); slab thickness printed as t",
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "detail_view",
+      "element_name_assigned": "TYP. REINFORCEMENT AT OPENING a,b ≯ 0.30 m. (OR SLEEVE Ø ≯ 10\")",
+      "opening_size_limit_printed_as": "a,b ≯ 0.30 m. (OR SLEEVE Ø ≯ 10\")",
+      "bar_layers": [
+        {
+          "location": "each side of opening, parallel to b",
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "face": "TOP & BOT",
+          "printed_as": "DB 12 L=(b+0.60)m. (TOP & BOT)",
+          "length_printed_as": "L=(b+0.60)m."
+        },
+        {
+          "location": "each side of opening, parallel to a",
+          "count": 1,
+          "dia_mm": 12,
+          "type": "DB",
+          "face": "TOP & BOT",
+          "printed_as": "DB 12 L=(a+0.60)m. (TOP & BOT)",
+          "length_printed_as": "L=(a+0.60)m."
+        }
+      ],
+      "confidence_score": 0.9,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "detail_view",
+      "element_name_assigned": "TYP. REINFORCEMENT AT OPENING a,b ≯ 0.80 m.",
+      "opening_size_limit_printed_as": "a,b ≯ 0.80 m.",
+      "bar_layers": [
+        {
+          "location": "each side of opening, parallel to b",
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 100,
+          "face": "TOP & BOT",
+          "printed_as": "2 DB 12 @ 0.10 m.,L=(b+1.20)m. (TOP & BOT)",
+          "length_printed_as": "L=(b+1.20)m."
+        },
+        {
+          "location": "each side of opening, parallel to a",
+          "count": 2,
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 100,
+          "face": "TOP & BOT",
+          "printed_as": "2 DB 12 @ 0.10 m.,L=(a+1.20)m. (TOP & BOT)",
+          "length_printed_as": "L=(a+1.20)m."
+        }
+      ],
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    },
+    {
+      "element_id": null,
+      "element_type": "detail_view",
+      "element_name_assigned": "TYP. REINFORCEMENT AT OPENING a,b ≯ 1.50 m.",
+      "opening_size_limit_printed_as": "a,b ≯ 1.50 m.",
+      "bar_layers": [
+        {
+          "location": "each side of opening, parallel to b",
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 100,
+          "face": "TOP & BOT",
+          "printed_as": "3 DB 12 @ 0.10 m.,L=(b+1.20)m. (TOP & BOT)",
+          "length_printed_as": "L=(b+1.20)m."
+        },
+        {
+          "location": "diagonal at each corner",
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 100,
+          "face": "TOP & BOT",
+          "printed_as": "3 DB 12 @ 0.10 m.,L=1.20 m. (TOP & BOT)",
+          "length_m": 1.2,
+          "length_printed_as": "L=1.20 m."
+        },
+        {
+          "location": "each side of opening, parallel to a",
+          "count": 3,
+          "dia_mm": 12,
+          "type": "DB",
+          "spacing_mm": 100,
+          "face": "TOP & BOT",
+          "printed_as": "3 DB 12 @ 0.10 m.,L=(a+1.20)m. (TOP & BOT)",
+          "length_printed_as": "L=(a+1.20)m."
+        }
+      ],
+      "confidence_score": 0.93,
+      "confidence_flags": []
+    }
+  ]
+}
