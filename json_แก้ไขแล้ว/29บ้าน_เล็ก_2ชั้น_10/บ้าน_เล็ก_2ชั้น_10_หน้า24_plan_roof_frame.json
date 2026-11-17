@@ -11,16 +11,7 @@
   "confidence_flags": [
     "structural steel roof-framing plan — kept as pattern 'plan' (not 'roof_plan') per the established rule that a marked steel roof frame belongs in plan_beam scope"
   ],
-  "warnings": [
-    "This is a STRUCTURAL roof-framing plan (member marks BS1-BS4/CS with a printed steel legend, grid_refs on the same 1-4/A-C grid as every other structural plan) — classified pattern 'plan' per the pinned 2026-08-21 rule, not 'roof_plan' (which is architectural-only, ridge/eave lines with no marks).",
-    "Legend printed on this sheet (also repeated on S-13): แปเหล็ก (purlin) = C-100x50x20x3.2mm @1.00m or closer, spacing-based, no individual grid_ref (§6a) — not itemised per-purlin, recorded once with spacing_mm. BS1 = C-150x50x20x3.2mm. BS2 = C-100x50x20x3.2mm. BS3 = C-125x50x20x3.2mm. BS4 = C-100x50x20x3.2mm. CS = square tube □-100x100x3.2mm.",
-    "At every grid column (1,2,3,4), BOTH a BS1 and a BS3 run in parallel along the same A-B span in plan — interpreted as two distinct steel members occupying nearly the same plan position (e.g. a sloped rafter alongside a parallel hip/fascia member per the S-13 roof-truss section, where BS1 is drawn on the sloped line and BS3 on a horizontal edge/ridge-transition line), not a duplicate label for one member. Recorded as two separate atomic entries per grid column; exact structural role of each beyond its size/mark is not fully resolvable from the plan view alone.",
-    "Row-B members are printed 'BS3(บน-ล่าง)' (upper-lower) at every span — interpreted as two stacked/paired BS3 instances at that row (see grid master warnings); both recorded as separate atomic BS3 entries distinguished by a 'note' field. At grid3-4 an additional 'BS4(กลาง)' (middle) member is also printed alongside — recorded as a third, separate BS4 entry at that span.",
-    "The secondary (porch/balcony) roof section only covers the grid3-4 bay: BS4 posts run B to a dummy row B' (y=4.65), then the mark changes to BS2 for B' to C — recorded as two atomic vertical segments per post rather than one BS4-then-BS2 span, since the mark genuinely changes at that point (an endpoint, per the grid master's beam-endpoint rule).",
-    "Down-arrow symbols on the dash-dot lines within each bay are the purlin/slope direction indicators for the แปเหล็ก note, not individually marked members — not recorded as elements, consistent with §6a's spacing-based-member treatment.",
-    "The thick dash-dot lines with corner arrowheads running the full roof outline (with 'A' cross-section callouts at both ends) are the S-13 section-cut markers (รูปตัด 1-1) — not a structural element, not recorded here.",
-    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 19 beams on a roof-framing sheet (floor_level=None). Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "CS",

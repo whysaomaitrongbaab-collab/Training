@@ -9,14 +9,7 @@
   "grid_source": "บ้าน_เล็ก_2ชั้น_13_หน้า00_gridline.json",
   "confidence_score": 0.65,
   "confidence_flags": [],
-  "warnings": [
-    "This is view 2 of 2 on this page (หน้า24) — the floor-2 beam plan (view 1) is in a separate file, _view1_plan_beam_floor2.json.",
-    "This IS a structural roof-framing plan (member marks, grid refs, real steel sections printed) and is correctly classified pattern:'plan', not 'roof_plan' — per the op04 SKILL.md roof_plan trap.",
-    "The RC ring/tie beam grid (mark 'B3', full spec on หน้า25_section.json — 150x350mm, 2-DB12mm top/bottom, stirrup Ø6@0.15m) is printed on every grid line (A/B/C verticals, 1/2/3/4 horizontals) at the wall-plate level — extracted as a full beam grid identical in layout to the floor plans, using the same 12-point main grid (this sheet does not show the small overhangs/bay-windows of the floor plans, so no dummy grids beyond the main 12 points are used here).",
-    "The steel roof structure above the tie-beam grid (จันทัน/ตะเข้สัน/อกไก่/ดั้ง/ระแนง) is a hip roof converging on two ridge/king-post points along the column-B centerline. Individual purlins (@0.32-0.34m) and jack rafters (@1.00m) are recorded as ONE aggregated element each with spacing_mm, per §6a/§0.5 (spacing-based repeated members), not enumerated one-by-one. The two hip-rafter sets (4 diagonals total, one per corner) and the ridge/king-post members are recorded as aggregated type-level entries with an approximate grid_ref rather than precise coordinates for the two ridge peak points, which are not dimensioned on this sheet.",
-    "The printed section string 'ø25x25x1.6mm' for the purlin (ระแนง) uses the ø (diameter) symbol ahead of two equal numbers, which is unusual — most likely a 25x25mm light steel SQUARE tube, 1.6mm thick, with 'ø' used loosely rather than meaning a round pipe. Recorded designation as best-effort 'SHS' with the raw printed_as string kept verbatim; flagged rather than silently assumed round.",
-    "pattern re-labelled 'etc_plan' -> 'roof_frame_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 17 beams on a roof-framing sheet (floor_level=None). Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "B3",

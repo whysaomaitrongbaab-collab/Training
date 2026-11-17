@@ -159,6 +159,10 @@ def check_house(house_dir):
             fails['wrapper fields'].append(f'{name}: missing {img_key}')
         if 'phase_note' in doc:
             fails['phase_note left'].append(name)
+        # section 2, 2026-11-16: every warnings[] was emptied (edit history mixed with real
+        # notes, and the model learned to copy it) -- it stays [] so the mess can't creep back in.
+        if doc.get('warnings'):
+            fails['warnings must be []'].append(name)
         for k in doc:
             if k in ELEMENT_KIND_ARRAYS and isinstance(doc[k], list) and doc[k]:
                 fails['element-kind array'].append(f'{name}: {k}')

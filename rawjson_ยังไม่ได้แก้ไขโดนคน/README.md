@@ -44,7 +44,7 @@ If the user (Makham) types **`op1 <house_name>`** (e.g. `op1 บ้านเอ�
   1. **Grid geometry** → the STRUCTURAL footing/column plans win (S-sheets). The grid master has always been derived from them (spec §4, and every existing house's `view_title`). An architectural site plan or a sheet that self-declares "เพื่อประมาณราคา/ตัวอย่าง" never overrides them.
   2. **Member spec** → the detail/section sheet wins over the plan; `section` wins over `schedule` (spec §7).
   3. **More sheets agreeing beats fewer.** Count them, and say so in the warning.
-- **Every decision must be written down where the data lives** — a `warnings[]` entry that states what conflicted, which reading was taken, and why. Lower `confidence_score` and add a flag when the losing reading is genuinely plausible. The user reviews decisions after the fact; they do not arbitrate during the run.
+- **Decide, don't narrate** — `warnings[]` stays `[]` (spec §2, 2026-11-16). Lower `confidence_score` and add a `confidence_flags` entry when the losing reading is genuinely plausible. The user reviews decisions after the fact; they do not arbitrate during the run.
 - **Never leave a field blank because a choice was hard.** Blank is only for "the drawing genuinely does not say" (e.g. an undimensioned gap, per spec §4's rule against guessing a `pos_m`) — never for "two sheets said different things."
 - Asking mid-run is only correct if continuing would require **inventing data that appears on no sheet at all**.
 
@@ -54,7 +54,7 @@ This command does **not** skip any `rule_of_tune.md` protections — the output 
 
 **`op2` produces exactly the same finished output as `op1`, under exactly the same standing order** ("produce the finished extraction, no matter what — decide, don't ask"). The only difference is that the work is split into 4 stages and **each stage runs on a different model**, so the expensive model is spent only where it earns its keep.
 
-Everything in the `op1` standing-order section above — the authority of `primary_rawjson_schema.md`, the conflict-precedence list, "every decision written into `warnings[]`", "never leave a field blank because a choice was hard" — applies unchanged to every stage of `op2`. Do not re-derive those rules; they are one ruleset, not two.
+Everything in the `op1` standing-order section above — the authority of `primary_rawjson_schema.md`, the conflict-precedence list, "`warnings[]` stays `[]`", "never leave a field blank because a choice was hard" — applies unchanged to every stage of `op2`. Do not re-derive those rules; they are one ruleset, not two.
 
 **Before Stage 0 ever runs: the duplicate check (`op1` step 2) still applies, first.** Does any existing `0N<house_name>/` folder already match `<house_name>`? If so, stop and report it before spending a single model call.
 
@@ -91,16 +91,16 @@ Move one grid line and **every `span_length_m` in every `plan` file is wrong**. 
 | **0** | `sonnet` | สารบัญ + page offset + build `_stage0_manifest.json`: which PNG is which sheet, which are `pattern: plan`, which sheet carries the full grid dimension chain, how many buildings (§11a) | yes, a few pages |
 | **1** | `fable` | Grid master(s) + **every** `pattern: plan` file. One coupled unit. | yes, heavily zoomed |
 | **2** | `opus` / `sonnet` | Everything else — section, detail, elevation, schedule, notes, index, BOQ. Grid master is **read-only**. Parallelisable by discipline. | yes |
-| **3** | `opus` | Cross-sheet contradictions, from the JSON only — no images. Rewrites `warnings[]`, clears every `phase_note`. | no |
+| **3** | `opus` | Cross-sheet contradictions, from the JSON only — no images. Resolves every `phase_note` and clears it (`warnings[]` stays `[]`). | no |
 
 Switch models with the `Agent` tool's `model` parameter (`sonnet` / `opus` / `fable` / `haiku`) — one subagent per stage, launched in order. Stage 2 may launch several agents at once (e.g. architectural / structural-details / SN-EE-M / BOQ) since each writes only its own PNGs.
 
 ### Handoff contract between stages
 
 - **Stage 0 → 1.** Output is `0N<house>/_stage0_manifest.json`. The leading `_` matters: downstream tooling (incl. `tools/check_format.py`) skips files named `_*`, so it is never picked up as house data. It is orchestration metadata only. *(The original reason for this convention was the Label Studio task generator's filter; Label Studio is cancelled as of 2026-08-02, but the `_` convention stays.)*
-- **Stage 1 → 2.** The grid master must be complete: every `x_lines`/`y_lines` entry carries `pos_m` (or an explicit `null` for a dummy grid whose position the drawing genuinely does not give), and **both dimension chains must be shown to close against the printed overall dimension** in a `warnings[]` entry. Stage 1 must also state explicitly whether the set uses **drawing break lines** — checking for them is mandatory, not optional (house-06 lesson: zooming to 6× was not enough; the zigzag symbol sits mid-line and needs ~4.5× on a tight crop of the middle of the double line).
+- **Stage 1 → 2.** The grid master must be complete: every `x_lines`/`y_lines` entry carries `pos_m` (or an explicit `null` for a dummy grid whose position the drawing genuinely does not give), and **both dimension chains must close against the printed overall dimension** (`tools/gridfix.py` checks it; nothing goes into `warnings[]`). Stage 1 must also state explicitly whether the set uses **drawing break lines** — checking for them is mandatory, not optional (house-06 lesson: zooming to 6× was not enough; the zigzag symbol sits mid-line and needs ~4.5× on a tight crop of the middle of the double line).
 - **Stage 2 → 3.** Stage 2 **never edits the grid master or any `plan` file.** If it finds evidence bearing on the grid — e.g. house 07's A-07 architectural roof plan independently confirming the S-06 ridge position that had to be traced from line weights — it writes a `phase_note` and moves on.
-- **Stage 3.** Folds every `phase_note` into `warnings[]`, then deletes the field. Per spec §2a, a finished file has no `phase_note`.
+- **Stage 3.** Resolves every `phase_note` (nothing goes into `warnings[]` — spec §2), then deletes the field. Per spec §2a, a finished file has no `phase_note`.
 
 ### Escalation rule
 
@@ -186,7 +186,7 @@ Don't use it if anything else on the machine is still running (a training job, a
 
 > Also a Claude Code skill — `.claude/skills/op04/SKILL.md` loads this flow directly. This section stays canonical; keep the skill file in sync whenever it changes.
 
-**`op4` is `op1` with one change: scope.** Same standing order, same authority, same conflict precedence, same `warnings[]` discipline, same output folder, same `check_format.py` gate, same log row. It extracts only the subtasks Pass 2 covers — the pages Constistant actually consumes — and skips the rest on purpose.
+**`op4` is `op1` with one change: scope.** Same standing order, same authority, same conflict precedence, same `warnings[]` = `[]`, same output folder, same `check_format.py` gate, same log row. It extracts only the subtasks Pass 2 covers — the pages Constistant actually consumes — and skips the rest on purpose.
 
 ### Why — the measured reason
 

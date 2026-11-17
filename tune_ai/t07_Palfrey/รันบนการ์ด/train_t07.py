@@ -46,7 +46,7 @@ t01/train_qwen36.py หรือ t02/train_qwen3vl.py แต่ทุกค่�
   [t03] = วัดจากข้อมูลจริงรอบนี้ (2026-08-24):
         ⛔ ถ้า OOM: ลดจำนวนภาพ gridline หรือลด lora_r — ห้ามลด MAX_LENGTH (จะตัด label กลาง JSON)
 
-dataset [t07]: build_t07.py → data_raw/ → sanitize → data/{train,val}_fold{0..3}.jsonl (D13)
+dataset [t07]: build_t07.py → ข้อมูลก่อนล้าง/ → sanitize → ข้อมูลเทรน/{train,val}_fold{0..3}.jsonl (D13)
   5 group-fold (D8) เทรน fold 0-3 — บ้านของ fold 4 อยู่ใน train ของทุก adapter (เหมือน t05)
   path รูปในไฟล์เทียบ "รากรีโป Training" (image/<บ้าน>/<ไฟล์>.png)
 
@@ -307,8 +307,8 @@ if FOLD not in ("0", "1", "2", "3"):   # [t07] 'abcd' = 4 fold เท่าน�
     raise SystemExit(f"⛔ FOLD={FOLD!r} — t07 เทรน fold 0-3 เท่านั้น")
 HERE = Path(__file__).resolve().parent                     # [t07] resolve(): run_fold.sh เรียกด้วย path สัมพัทธ์
 # [t05] path รูปใน jsonl เทียบ "รากรีโป Training" ไม่ใช่โฟลเดอร์สคริปต์ — บนการ์ดต้องเป็น /workspace/Training/{image,tune_ai/t07_Palfrey}
-REPO_ROOT = HERE.parent.parent
-DATA_DIR = HERE / "data"                                   # [t07] D13 — ไม่ใช่ HERE/*.jsonl แบบ t05
+REPO_ROOT = HERE.parents[2]                                # [16 พ.ย.] สคริปต์อยู่ใน t07_Palfrey/รันบนการ์ด/ → ราก Training ขึ้นไป 3 ชั้น
+DATA_DIR = HERE.parent / "ข้อมูลเทรน"                            # [t07] D13 — ไม่ใช่ HERE/*.jsonl แบบ t05 · [16 พ.ย.] ข้อมูลเทรน/ อยู่ที่ราก t07 ไม่ใช่ใน รันบนการ์ด/
 TRAIN_SPLIT = f"train_fold{FOLD}"
 VAL_SPLIT = f"val_fold{FOLD}"
 OUT_DIR = str(HERE / f"outputs_t07_fold{FOLD}")            # [t07] แยกจาก outputs_t05_* — ห้ามทับ adapter รอบเก่า

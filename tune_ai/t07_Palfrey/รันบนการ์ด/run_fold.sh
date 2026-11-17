@@ -1,6 +1,6 @@
 #!/bin/bash
 # t07 Palfrey — เทรน 1 fold บนการ์ด (D10) · ⚠️ ไฟล์ต้อง LF เท่านั้น
-#   cd /workspace/Training/tune_ai/t07_Palfrey
+#   cd /workspace/Training/tune_ai/t07_Palfrey/รันบนการ์ด
 #   setsid nohup bash run_fold.sh 0 > train_fold0.log 2>&1 < /dev/null &
 # ลองสูงสุด 3 ครั้ง: ครั้งแรกตาม RESUME ที่ส่งมา (ค่าเริ่ม 0) · ครั้งที่ 2-3 = RESUME=1 (ต่อจาก checkpoint ล่าสุด)
 #   ลองใหม่เฉพาะ CUDA OOM — ล้มแบบอื่น (config ผิด / push ล้ม / เวอร์ชันเพี้ยน) ลองซ้ำก็ล้มซ้ำ = เขียน FAIL ทันที

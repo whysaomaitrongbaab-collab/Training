@@ -18,13 +18,13 @@ All paths are relative to the **Training repo root**. Read these before doing an
 
 ## Steps (summary — details and checklists live in t07_workflow.md)
 0. **Free prep:** pin versions in t07 `onstart.sh`; set `UNSLOTH_MOE_LORA_B_LAYOUT` explicitly for train and serve; rebuild gridline examples so the longest one fits MAX_LENGTH (measure, never lower MAX_LENGTH); copy prompts from `t04_Purson/` into `t07_Palfrey/prompts/` and drop `source_image`/`source_pages` from their schemas.
-1. **Dataset:** `build_t07.py` (copy of `build_t05_night.py`, same folds) → `python tune_ai/t07_Palfrey/sanitize_labels.py <all jsonl> --out tune_ai/t07_Palfrey/data/`. Pass = every file reports house names 0, audit notes 0, source_* 0, not-JSON 0.
+1. **Dataset:** `build_t07.py` (copy of `build_t05_night.py`, same folds) → `python tune_ai/t07_Palfrey/สร้างชุดข้อมูล/sanitize_labels.py <all jsonl> --out tune_ai/t07_Palfrey/ข้อมูลเทรน/`. Pass = every file reports house names 0, audit notes 0, source_* 0, not-JSON 0.
 2. **Phase 0 on a cheap card:** load, 10 steps, save, reload, one inference; expert-LoRA check must say grouped_by_expert for all 80.
 3. **Ask Makham**, then train 4 folds and soup with the fixed soup script + `test_soup_layout.py`.
 4. **Merge → verify A/B/C → serve vLLM → gate D → bench** (83b8e52c + the 3 web houses ×3 runs + `micro --repeat 4`). Compare against the pass table in t07_workflow.md.
 5. Write a proof doc (`tune_ai/t07_Palfrey/proof/01_…md`), diary entry, and Constistant CLAUDE.md log; deploy steps are listed at the end of t07_workflow.md.
 
 ## Check before claiming done
-- `python tune_ai/t07_Palfrey/sanitize_labels.py --selftest` passes.
+- `python tune_ai/t07_Palfrey/สร้างชุดข้อมูล/sanitize_labels.py --selftest` passes.
 - The pass table is filled with measured numbers, not estimates.
 - Card destroyed and 0 instances confirmed after outputs are downloaded.

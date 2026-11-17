@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """make_bundle.py — รวมทุกอย่างที่การ์ดเทรน t07 ต้องใช้เป็น tar เดียว (ไม่บีบอัด) + manifest + sha256 (รันบน PC)
 
-  python make_bundle.py                                 # อ่าน t07_Palfrey/data/ → D:\\00mk\\steel project\\training\\t07_bundle\\
-  python make_bundle.py --out <dir> [--tr <ราก Training>] [--data <โฟลเดอร์ jsonl>]
+  python tools/make_bundle.py                           # (จากราก t07) อ่าน t07_Palfrey/ข้อมูลเทรน/ → D:\\00mk\\steel project\\training\\t07_bundle\\
+  python tools/make_bundle.py --out <dir> [--tr <ราก Training>] [--data <โฟลเดอร์ jsonl>]
 
 ในไฟล์ (path เทียบรากรีโป Training — แตกที่ /workspace/Training บนการ์ด):
-  ทุกรูปที่ data/*.jsonl อ้างถึง (ต้องมีจริงทุกไฟล์ ไม่งั้นหยุด) · data/*.jsonl · manifest.json · prompt tree
-  (_common.md, pass0/, pass2/) · train_t07.py onstart_t07.sh run_fold.sh gate2_* · tune_ai/verify_hf_push.py
-  · freeze_train.txt ถ้ามี (pip freeze จากการ์ด gate 2 — การ์ด gate 3 ลงตามนี้, Lesson 18a)
-  ไม่ใส่ data_raw/ (ก่อนล้าง) · ไม่ใส่ token/config ใดๆ (มีด่านสแกน) · .sh แปลง CRLF→LF ตอนใส่ tar (autocrlf=true)
+  ทุกรูปที่ ข้อมูลเทรน/*.jsonl อ้างถึง (ต้องมีจริงทุกไฟล์ ไม่งั้นหยุด) · ข้อมูลเทรน/*.jsonl · manifest.json · prompt tree
+  (_common.md, pass0/, pass2/) · รันบนการ์ด/ (train_t07.py onstart_t07.sh run_fold.sh gate2_*) · tune_ai/verify_hf_push.py
+  · รันบนการ์ด/freeze_train.txt ถ้ามี (pip freeze จากการ์ด gate 2 — การ์ด gate 3 ลงตามนี้, Lesson 18a)
+  ไม่ใส่ ข้อมูลก่อนล้าง/ · ไม่ใส่ token/config ใดๆ (มีด่านสแกน) · .sh แปลง CRLF→LF ตอนใส่ tar (autocrlf=true)
 ผลใน --out: t07_bundle.tar · t07_bundle.tar.sha256 (ใช้ sha256sum -c) · BUNDLE_MANIFEST.sha256 (ทุกไฟล์ LF —
   อยู่ใน tar ที่ tune_ai/t07_Palfrey/ ด้วย: หลังแตก `sha256sum -c --quiet tune_ai/t07_Palfrey/BUNDLE_MANIFEST.sha256`)
 """
@@ -22,12 +22,14 @@ import tarfile
 import time
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
+HERE = Path(__file__).resolve().parent                   # tune_ai/t07_Palfrey/tools
 DEFAULT_OUT = Path(r"D:\00mk\steel project\training\t07_bundle")
 REL_T07 = "tune_ai/t07_Palfrey"
-SCRIPTS = ["train_t07.py", "onstart_t07.sh", "run_fold.sh", "gate2_smoke.sh", "gate2_check.py",
-           "gate2_hf_write.py", "manifest.json"]
-OPTIONAL = ["freeze_train.txt"]
+CARD, DATA = "รันบนการ์ด", "ข้อมูลเทรน"                # [16 พ.ย.] ชื่อโฟลเดอร์ไทย — บนการ์ดเป็นชื่อเดียวกัน
+# [16 พ.ย.] สคริปต์ที่รันบนการ์ดอยู่ใน รันบนการ์ด/ (บนการ์ด: cd /workspace/Training/tune_ai/t07_Palfrey/รันบนการ์ด) · manifest.json อยู่คู่ ข้อมูลเทรน/ ที่ราก t07
+SCRIPTS = [f"{CARD}/{s}" for s in ("train_t07.py", "onstart_t07.sh", "run_fold.sh", "gate2_smoke.sh", "gate2_check.py",
+                                    "gate2_hf_write.py")] + ["manifest.json"]
+OPTIONAL = [f"{CARD}/freeze_train.txt"]                 # freeze จากการ์ด gate 2 → วางที่ t07_Palfrey/รันบนการ์ด/ บน PC
 SECRET_RE = re.compile(rb"hf_[A-Za-z0-9]{30,}|service_role|SUPABASE_KEY")
 TEXT_EXT = {".py", ".sh", ".md", ".json", ".jsonl", ".txt"}
 
@@ -40,7 +42,7 @@ def collect(tr, data):
     if not jsonls:
         raise SystemExit(f"⛔ ไม่มี *.jsonl ใน {data}")
     for j in jsonls:
-        files[f"{REL_T07}/data/{j.name}"] = j
+        files[f"{REL_T07}/{DATA}/{j.name}"] = j
         with open(j, encoding="utf-8") as f:
             for line in f:
                 if line.strip():
@@ -114,12 +116,12 @@ def write_bundle(files, out):
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tr", default=str(HERE.parent.parent), help="รากรีโป Training")
-    ap.add_argument("--data", default=None, help="ค่าเริ่ม <tr>/tune_ai/t07_Palfrey/data")
+    ap.add_argument("--tr", default=str(HERE.parents[2]), help="รากรีโป Training")
+    ap.add_argument("--data", default=None, help="ค่าเริ่ม <tr>/tune_ai/t07_Palfrey/ข้อมูลเทรน")
     ap.add_argument("--out", default=str(DEFAULT_OUT))
     a = ap.parse_args(argv)
     tr = Path(a.tr).resolve()
-    data = Path(a.data) if a.data else tr / REL_T07 / "data"
+    data = Path(a.data) if a.data else tr / REL_T07 / DATA
     out = Path(a.out).resolve()
     if out == tr or tr in out.parents:
         raise SystemExit(f"⛔ --out ต้องอยู่นอกรีโป ({out})")
@@ -128,7 +130,7 @@ def main(argv=None):
     print(f"✓ {tar_p}  {tar_p.stat().st_size / 1e9:.2f} GB · {len(files) + 1} ไฟล์ (รูป {n_img}) · "
           f"เนื้อไฟล์ {total / 1e9:.2f} GB")
     print(f"  sha256 {sha}" + (f" · แปลง CRLF→LF: {conv}" if conv else ""))
-    print(f"  {'freeze_train.txt รวมแล้ว' if f'{REL_T07}/freeze_train.txt' in files else '⚠️ ไม่มี freeze_train.txt (gate 2 ยังไม่ได้ส่งกลับ — gate 3 จะลงตาม PIN_SET แทน)'}")
+    print(f"  {'freeze_train.txt รวมแล้ว' if f'{REL_T07}/{CARD}/freeze_train.txt' in files else '⚠️ ไม่มี freeze_train.txt (gate 2 ยังไม่ได้ส่งกลับ — gate 3 จะลงตาม PIN_SET แทน)'}")
     print(f"  ต่อ: python {HERE / 'hf_setup.py'} (dry-run) → --apply อัปขึ้น dataset repo")
     return 0
 

@@ -11,13 +11,7 @@
   "confidence_flags": [
     "Dense plan with 25+ beam marks, most individually carrying their own beam-top level (e.g. 'B2(+0.40)'), plus S0/S1 slab markers and several sub-bay dimension ticks not resolved to new dummy grids (see gridline master). The bow-window perimeter (rows A/C around grid1-2) and the main row-A run were traced with confidence; the dense interior partition beams (grid3-6 x rows B-F, kitchen/bath/stair cluster) are recorded from the clearest visible marks with approximate grid_ref_start/end (prefixed '~' where the exact endpoint was not pixel-confirmed) rather than an exhaustive segment-by-segment re-trace — this file should be treated as representative, not exhaustive, for that interior cluster, matching the precedent set by house #29's equivalent files."
   ],
-  "warnings": [
-    "CORRECTED 2026-08-24 โ€” span_length_m was ABSENT on every beam in this file (the key was missing entirely, not null). It has been computed from the grid master for every beam whose grid_ref_start and grid_ref_end are both exact, using the straight distance between the two grid intersections (Pythagoras where the beam is diagonal, so chamfered members get a real length too). This is pure computation from the grid per the ยง4 rule that span is calculated by code and never estimated by the model โ€” no position or mark was changed. Beams whose refs still carry a ~ are left without a span, because an approximate endpoint cannot yield an exact length.",
-    "B7A(+0.85) and B9A(+0.40) are both printed stacked on the same grid-2 column line (A2 to C2) at two different levels — recorded as two separate beam entries rather than merged, since the drawing genuinely shows two distinct level callouts at the same plan location.",
-    "S0/S1 slab markers recorded as element_type 'slab' with approximate grid_ref (nearest room), per the precast-plank field convention documented on หน้า24/หน้า27 (PLANK topping + RB6@0.20 mesh detail).",
-    "Small triangular arrow symbols (marked 1, 2, 3) on the plan indicate plank-laying direction per the sheet's own legend ('แสดงทิศทางการวางพื้นสำเร็จรูป PLANK') — not structural elements, not recorded as elements[].",
-    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 26 beam-family elements. Nothing else in this file changed."
-  ],
+  "warnings": [],
   "elements": [
     {
       "element_id": "B1",

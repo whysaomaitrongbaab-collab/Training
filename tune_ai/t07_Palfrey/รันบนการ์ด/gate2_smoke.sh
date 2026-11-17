@@ -1,6 +1,6 @@
 #!/bin/bash
 # t07 Palfrey — gate 2 (Phase 0) ทั้งลำดับบนการ์ดใบเดียว · ⚠️ ไฟล์ต้อง LF เท่านั้น
-#   cd /workspace/Training/tune_ai/t07_Palfrey && bash gate2_smoke.sh 2>&1 | tee /workspace/gate2_smoke.log
+#   cd /workspace/Training/tune_ai/t07_Palfrey/รันบนการ์ด && bash gate2_smoke.sh 2>&1 | tee /workspace/gate2_smoke.log
 # 1) TEST_STEPS=10 FOLD=0 → adapter เซฟ · 2) adapter_config r16 α32 lora_B_layout grouped_by_expert
 # 3) RESUME=1 TEST_STEPS=12 ต่อจาก checkpoint-10 (D10 — กลไกนี้ยังไม่เคยรันกับโมเดลนี้)
 # 4) SORT_LONGEST=1 TEST_STEPS=3 บน fold ที่มีแถวยาวสุด → peak VRAM
@@ -76,7 +76,7 @@ fi
 
 # 5 ─ โหลดใหม่ + LoRA expert + อนุมาน 1 แถว
 if [ -d "$G/adapter_s10" ]; then
-  "$PY" gate2_check.py reload --adapter "$G/adapter_s10" --val data/val_fold0.jsonl \
+  "$PY" gate2_check.py reload --adapter "$G/adapter_s10" --val ../ข้อมูลเทรน/val_fold0.jsonl \
         --out "$G/infer" --results "$G/results.tsv" > "$G/s5_reload.log" 2>&1 \
     || echo "(s5 ไม่ผ่านบางข้อ — ดู $G/s5_reload.log)"
   grep -q '^5a' "$G/results.tsv" || rec "5 โหลดใหม่ + อนุมาน" FAIL "ไม่ได้ผลเลย — ดู $G/s5_reload.log"

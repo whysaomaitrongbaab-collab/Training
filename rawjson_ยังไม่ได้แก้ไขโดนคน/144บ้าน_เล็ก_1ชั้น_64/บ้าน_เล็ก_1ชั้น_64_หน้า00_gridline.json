@@ -16,13 +16,7 @@
   ],
   "confidence_score": 0.93,
   "confidence_flags": [],
-  "warnings": [
-    "Axes: x = 1-2 at 5.00; y = A-B at 5.00. Origin A1 (top-left on S-01). Only two named lines per axis; the same 5.00 x 5.00 frame prints on S-01 (both views), S-02, A-03 (plan + roof plan), A-04 (4 elevations), A-05 and A-06, and all agree. Vector CAD PDF with no text layer; every figure was read off the rendered page.",
-    "Section 4 rule 4 (every printed x/y tick is a line): structural ticks 1'' (2.00), 1'''' (3.05), 1''''' (3.20), A''' (1.50), A'''''' (3.60) from the S-01 / A-03 chains; T2 panel ticks A'' / A'''' / A''''' / A''''''' (S-02); roof ticks 1' / 2' / A' / B' (1.00 eaves, A-03 and S-02) and 1''' (2.50 ridge, A-03 roof plan).",
-    "B5 sits on 1'' (2.00) although the S-01 tick touches the beam's left face, not its centre (B5 drawn 2.00-2.20, centre ~2.10 by scale). Took the printed tick rather than inventing a 2.10 line nobody dimensioned; spans that end on B5 (B2 = 3.00, long B1 = 2.00) are therefore face-referenced at that end and may be ~0.10 off centre-to-centre. Confidence of those segments is lowered.",
-    "Truss chains on S-02: TRUSS T2 (1.00 x 5 = 5.00) runs between the two T1 trusses, which the S-02 plan puts on rows A and B, so its four panel points are positioned and became y dummies A'' 1.00, A'''' 2.00, A''''' 3.00, A''''''' 4.00 (also the rafter lines, จันทัน @1.00). TRUSS T1 (0.83 x 6 = 4.98 against its own printed total 5.00) is kept in dimension_chains with edge ends and NOT turned into lines: its panel row does not close on its own total, so accumulating it from either end would put phantom lines 0.01-0.02 m off real ones (e.g. 2.49 next to the 2.50 ridge). The ridge/apex position is still covered by 1''' (2.50) from the A-03 roof plan.",
-    "Not swept: A-07 (sanitary fixture standard heights), A-08 door/window details (their sizes live on the schedule elements), E-01, SN-01, SN-02. Element-internal dimensions (F1 cap 1.65 x 1.20 with pile spacing 0.45, 0.30 / 0.05 / 0.05 depths, ST-1 / ST-2 tread and riser, PS bearing 0.05, truss heights 1.66) stay on their elements."
-  ],
+  "warnings": [],
   "dummy_grid_rule_check": {
     "negative_pos_m": "x: 1' = -1.00 (eave left of grid 1). y: A' = -1.00 (eave beyond row A).",
     "prime_ordering": "x: 1' -1.00, 1'' 2.00, 1''' 2.50, 1'''' 3.05, 1''''' 3.20 (one sequence off grid 1, before-origin dummy first); 2' 6.00. y: A' -1.00, A'' 1.00, A''' 1.50, A'''' 2.00, A''''' 3.00, A'''''' 3.60, A''''''' 4.00 (structural ticks and T2 panel points in one sequence off row A); B' 6.00."

@@ -491,18 +491,5 @@
   ],
   "confidence_score": 0.87,
   "confidence_flags": [],
-  "warnings": [
-    "34 beam segments total (13 B1, 17 B2, 4 B2X). Every endpoint resolves to a named or dummy grid line -- the 7 dummy lines in the grid master (1', 1'', 2', 3', 4', F', B') were derived from THIS sheet plus S-05 via the schema §4 beam-endpoint rule, each with a printed dimension (see grid master sources). Sections for B1/B2/B2X are on S-07 (Stage 2 spec join).",
-    "NO beam on grid 1 or grid 4 between rows E and D at floor level (pixel scan of the band strip found line pairs only at 1', 1'', 2, 3, 3', 4') -- the bathroom slabs S1 run continuously across grids 1/4 out to the band extensions. S-05 DOES have ring beams there ('RB1/RB1'), a level difference, not a contradiction.",
-    "The 2' line (x 4.80) carries NO floor-level member -- it exists only at ring level (S-05's RB1 + CX column). Conversely F' (0.90) and the band B1s at 1''/3' are floor-level only. Dummy lines are shared house-wide per the master-file convention even when a given level uses only some of them.",
-    "The B2 verticals F-E and D-C were deliberately NOT split at F' / at the band B1 bearing points: those crossings are points where the B2 SUPPORTS a lighter B1 (beam-on-beam), not supports of the B2 itself -- per §5 a segment runs between its own adjacent supports (columns at F/E/D/C rows). The supported B1s carry the bears_on_beam flags instead.",
-    "SLAB MARK GLYPHS: circles print 'S1'/'S0' in the stick font (digit 1 = bare stroke, digit 0 = O-shape). Read as S-one / S-zero per S-01's own sheet index for S-07 ('ขยายคาน B1,B2,B2X,RB1,S0,RB1A,RB2, ขยายพื้น S1 และ SX') which uses unambiguous digits. Schema §10 SI-vs-S1 check applied: these are S1 (in-situ floor slab) and S0 (slab on ground), NOT letter-I marks.",
-    "The plank bays (F-E and D-C main bays, and the E-D corridor bay 2-3) carry only a one-way span DIRECTION ARROW each -- no slab mark circle. These are the precast SP plank zones detailed on S-13/S-14 (Stage 2). The arrow symbol (thin line with zigzag hooks) resembles a drawing break line at low zoom -- it is not one; see grid master break-line warning.",
-    "No drawing break lines on this sheet (explicitly checked; dimension chains close and pixel geometry matches printed dims at uniform scale).",
-    "Main C1/C1A columns at grid intersections are not repeated as elements here (they are carried by the S-02/S-03 footing plans and the S-08 column schedule); only the four CN posts are listed because this sheet is the only plan that places them.",
-    "[from phase_note, folded 2026-08-02 per schema section 2a] Stage 2: stair detail-sheet numbering conflict to resolve when reading หน้า16-18 -- A-04's printed callouts say ST1 -> A-14 and ST2 -> A-15, but the Stage-0 index read A-14 = แบบขยายห้องน้ำ WC.2, A-15 = แบบขยายบันได ST.1, A-16 = ST.2. Verify which sheet actually carries each stair and fold the answer into warnings[].",
-    "[from phase_note, folded 2026-08-02 per schema section 2a] Stage 2: when extracting S-07 (หน้า29), confirm the B1/B2/B2X section specs join to exactly the marks used here, and confirm S1/SX slab details match the S1/SX marks read on S-04/S-05 (glyph decision documented in warnings).",
-    "NORMALIZED_2026-08-02: phase_note folded into warnings[] and the field removed - section 2a says a file still carrying phase_note is by definition unfinished. The questions inside were NOT resolved (that needs the sheets open); they are preserved verbatim above so the next reader still sees them.",
-    "NORMALIZED_2026-08-02: point-type grid refs were written with a dash (C-1). Schema section 4 reserves the dash for a RANGE only; a point is row+column with no dash (C1), which is what houses 01-05 use throughout. Only values under grid_ref/grid_ref_start/grid_ref_end/grid_refs were touched, so sheet_code (S-04) could not be hit."
-  ]
+  "warnings": []
 }

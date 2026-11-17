@@ -89,7 +89,7 @@ fi
 date '+%F %T' > $W/ONSTART_DONE
 cat <<MSG
 === onstart_t07 เสร็จ (PIN_SET=$PIN_SET) ===
-ต่อไป: tune_ai/t07_Palfrey/RUNBOOK_gate2-3.md — โหลด bundle → sha256sum -c → แตก tar → พิมพ์ HF_TOKEN แบบจำกัดสิทธิ์
+ต่อไป: tune_ai/t07_Palfrey/เอกสาร/RUNBOOK_gate2-3.md — โหลด bundle → sha256sum -c → แตก tar → พิมพ์ HF_TOKEN แบบจำกัดสิทธิ์
 ฐานโมเดลกำลังโหลด: tail -f $W/prefetch_base.log (รอ PREFETCH_OK)
 ⛔ ห้าม vastai destroy จนกว่า adapter อยู่บน HF + verify_hf_push.py --sha ผ่าน (Day of Shame)
 MSG

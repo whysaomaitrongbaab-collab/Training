@@ -81,10 +81,5 @@
   "confidence_flags": [
     "compass_direction_(N/S/E/W)_of_this_elevation_not_independently_verified_-_only_the_sheet-number_to_compass-slot_mapping_(1=A-07,_bottom_of_the_floor-plan_callout_bubble)_is_used"
   ],
-  "warnings": [
-    "GRID-RELEVANT (reporting only, master file NOT edited): bottom dimension chain reads '0.20 | 1.10 | 3.50 | 3.00 | 0.50 | 0.80' with bracket groupings '1.30 | 6.50 | 1.30', verified at 3-4x zoom for exact tick alignment against the circled grid markers 1/2/3 below. grid1 (relative x=0) confirmed at the boundary between '1.10' and '3.50' (cumulative 1.30 from the west roof edge, matching the west overhang). grid3 (relative x=7.00) confirmed BY DIRECT ZOOM at the boundary between '0.50' and '0.80' (cumulative 8.30), NOT at the '3.00|0.50' boundary as a naive symmetric read of the bracket groupings would suggest — 3.50+3.00+0.50 = 7.00 exactly matches the grid master's grid1-to-grid3 distance, so grid1 and grid3 both cleanly reconcile. HOWEVER this leaves an genuinely asymmetric implied overhang within this specific chain: west overhang (roof edge to grid1) = 0.20+1.10 = 1.30m, but east overhang (grid3 to roof edge) = only 0.80m (the segment after the confirmed grid3 tick) — NOT 1.30m as the west side and as the roof plan sheet (_หน้า08_roof_plan.json, which explicitly prints 1.30m on all 4 sides including east) both show. This asymmetry is not resolved here — flagged as a genuine minor cross-sheet discrepancy for the coordinating session rather than silently forced to match the roof plan's symmetric figure. It does not affect grid1/grid2/grid3 themselves, which all reconcile cleanly.",
-    "This elevation corresponds to compass-slot '1' on the floor plan's 4-way elevation callout bubble (sheet A-07) — cardinal direction not independently confirmed from this sheet alone.",
-    "Individual door/window opening-number-to-schedule cross-match not confidently resolvable at this resolution — the door/window schedule sheet (A-14) is outside this agent's assigned page range (หน้า03-14 stops at A-12).",
-    "The recurring small triangle-'1' markers (also seen throughout the plan sheets) remain unidentified against the symbol legend (หน้า03) — flagged consistently across every sheet where they appear."
-  ]
+  "warnings": []
 }

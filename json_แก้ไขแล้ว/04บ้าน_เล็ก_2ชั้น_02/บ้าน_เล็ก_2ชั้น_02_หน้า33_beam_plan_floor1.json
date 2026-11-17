@@ -722,13 +722,5 @@
     "specs{}_completed_-_no_element_id_is_now_used_without_a_spec_except_the_position-less_BX",
     "remaining_low-confidence_entries_are_the_original_extraction's_E'_row_and_stairwell_cluster_reads,_not_the_user-supplied_additions"
   ],
-  "warnings": [
-    "REPAIRED_2026-07-20 by user -- this sheet was the worst in the set. 8 beams were missing entirely: B5X at E1'-E1; B1 at E1'-D1', E1'''-D1''', C3'-B3', B3-A3; B0A at D1'-C1' and D1''-C1''; B2 at D1''''-C1''''. All are recorded at confidence 1 (user-supplied). Every one of them sits on a dummy grid column the master only gained on 2026-07-20 (1', 1'', 1''', 1'''', 3'), which is why the original extraction had nowhere to put them -- it saw the beams but had no grid line to name them against.",
-    "The old position-less 'B0A count 3' placeholder is now RESOLVED and removed: its 3 lumped segments were 2x B0A (at columns 1' and 1'') plus 1x B2 (at column 1''''), all in the D-C band. The original extraction had correctly counted 3 small beams there but mis-attributed all 3 to B0A and could not place them.",
-    "STILL OPEN: 'BX' remains the only beam on this sheet with no grid_ref -- described as a small beam marker near col1 in the C-B area. Its spec (150x400) is now defined in specs{}, but its position is not. Needs a zoom read or a user call.",
-    "specs{} was missing 4 marks that elements[] was already using (B0, B0A, B5X, BX) -- all four added, joined from S-08 (หน้า37). B5X was absent from BOTH specs{} and elements[] before this pass.",
-    "The old warning about a 1.90 vs 2.00 E'-offset discrepancy between this sheet and S-02/S-03 is superseded: the user set E' = -2 in the master on 2026-07-20 and added E'' = -1.1 to account for the S-05 floor-2 reading. The E'-row spans here (2.0m) follow the corrected -2 value.",
-    "CORRECTED_2026-07-16: B4A/B4X/B5's additional_bars merged into main_bar per the corrected S-08 (หน้า37) spec, matching the fix made there.",
-    "pattern re-labelled 'etc_plan' -> 'beam_plan' on 2026-08-28, closing the schema section-1 plan-family split (the split created beam_plan/footing_plan/roof_frame_plan but every legacy file had been bulk-renamed to etc_plan, which section 1 defines as the residual 'not a beam plan, not a footing plan, not a roof-framing plan'). Decided from what the sheet DRAWS -- discipline plus the element_type mix, with the view's own title as tie-breaker -- never from the filename alone. Reason: 30 beam-family elements. Nothing else in this file changed."
-  ]
+  "warnings": []
 }

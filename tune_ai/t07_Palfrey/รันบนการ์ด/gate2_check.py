@@ -2,8 +2,9 @@
 """gate2_check.py — ตัวตรวจของ gate 2 (t07 Palfrey) · gate2_smoke.sh เรียกให้ทีละข้อ
 
   python gate2_check.py config <adapter_dir>        # r16 · α32 · lora_B_layout grouped_by_expert · มี training_env.txt
-  python gate2_check.py longest [--data data]       # fold (0-3) ที่ train มีแถวยาวสุด — ประเมินแบบเดียวกับ SORT_LONGEST
-  python gate2_check.py reload --adapter DIR --val data/val_fold0.jsonl [--row N] [--out DIR] [--results tsv]
+  python gate2_check.py longest [--data ../ข้อมูลเทรน]    # fold (0-3) ที่ train มีแถวยาวสุด — ประเมินแบบเดียวกับ SORT_LONGEST
+  python gate2_check.py reload --adapter DIR --val ../ข้อมูลเทรน/val_fold0.jsonl [--row N] [--out DIR] [--results tsv]
+  (รันจาก t07_Palfrey/รันบนการ์ด/ — ข้อมูลเทรน/ อยู่ที่ราก t07)
       process ใหม่ + env grouped → โหลด adapter ผ่าน Unsloth (แบบ serve_purson.load) → เช็ค LoRA ของ expert
       (port จาก Constistant server/purson-worker/serve_purson.py check_expert_lora — ไม่ import Constistant)
       → อนุมาน 1 แถว val ด้วยข้อความในแถวเอง (= prompt จริงของ t07 ที่ build_t07 ใช้) → ต้อง parse เป็น JSON + ไม่มีชื่อบ้านเทรน
@@ -21,8 +22,8 @@ import sys
 import time
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
-ROOT = HERE.parent.parent
+HERE = Path(__file__).resolve().parent                   # tune_ai/t07_Palfrey/รันบนการ์ด
+ROOT = HERE.parents[2]                                   # ราก Training (path รูปใน jsonl เทียบที่นี่)
 GROUPED = "grouped_by_expert"
 MAX_PIXELS, MIN_PIXELS, MAX_LENGTH = 6912 * 1024, 256 * 1024, 47104      # = train_t07.py
 EXPECT_EXPERT_WRAPPERS = 80                                             # 40 ชั้น × gate_up_proj/down_proj
@@ -266,7 +267,7 @@ def main(argv=None):
     p = sub.add_parser("config")
     p.add_argument("adapter")
     p = sub.add_parser("longest")
-    p.add_argument("--data", default=str(HERE / "data"))
+    p.add_argument("--data", default=str(HERE.parent / "ข้อมูลเทรน"))   # ข้อมูลเทรน/ อยู่ที่ราก t07
     p = sub.add_parser("reload")
     p.add_argument("--adapter", required=True)
     p.add_argument("--val", required=True)

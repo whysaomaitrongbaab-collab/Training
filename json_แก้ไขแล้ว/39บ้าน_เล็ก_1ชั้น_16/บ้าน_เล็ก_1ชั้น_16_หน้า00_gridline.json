@@ -14,18 +14,7 @@
   ],
   "confidence_score": 0.9,
   "confidence_flags": ["dummy_grid_naming_judgment_call"],
-  "warnings": [
-    "z_levels and part of the dimension chains come from architectural sheets A-09 (รูปตัด A-A, หน้า16) and A-06 (แปลนหลังคา, หน้า13), which are outside op04's extraction scope as page files. They were consulted for the grid master only, per schema §4 ('elevations and sections are first-class sources' — the structural sheets label levels like ระดับดินเดิม ±0.00 but only A-09 prints the full metric z chain). No page JSON is produced for A-09/A-06; their contribution lives here with source_image recorded per entry. This follows §4's sweep rule; house-14's op04 precedent left z_levels empty instead — this house chooses completeness because the source pages were actually read.",
-    "Two dummy x-lines both anchor to main grid '1' (the roof-eave line before the origin at x=-1.25, and the ridge/B1 wall line at x=1.90 between grids 1 and 2). Following house #14's recorded precedent for this exact situation: scan the whole x-axis left-to-right and assign primes in encounter order — x=-1.25 -> '1''(negative pos_m, house #04/#05 precedent), x=1.90 -> '1'''.",
-    "Three dummy x-lines anchor to main grid '2': the right roof-eave line at x=5.25 (printed 1.25 right of grid 2 on S-04/A-06/A-09), and the stair-landing footing F2's two edge lines at x=5.35 and x=6.65 (printed 1.35/1.30/1.35 chain between grids 2 and 3 on S-02/S-03). Scan order left-to-right: 5.25 -> 2', 5.35 -> 2'', 6.65 -> 2'''. Note 2' and 2'' are only 0.10 m apart — they are genuinely different lines (roof eave vs. landing edge).",
-    "Dummy y-line B' at 5.90 exists because beam B1's south endpoint lands there (S-03 prints 1.90 below grid B): the interior beams B3 (1->2) and B2 (2->3) run along y=5.90 and B1 bears on B3 at that line. Without B' those beams' endpoints would have no grid ref (schema §4 beam-endpoint rule).",
-    "Dummy y-lines below C: C' = 9.00 (roof gable-overhang edge, printed 1.00 below C on S-04/A-06 — the อกไก่/อะเส members end there) and C'' = 9.85 (stair-landing beam B0's centerline: printed 1.35 from C to the landing edge on S-02/S-03, plus 0.50 from the landing edge to the pile/beam centerline on S-05's F2 detail). Scan order top-to-bottom: 9.00 -> C', 9.85 -> C''. The landing-slab S0 edges at y=9.35 and y=10.35 get NO dummy (slab-only edges, §4).",
-    "The stair-landing footing F2's detail on S-05 is drawn rotated 90° relative to the building plan: its detail-plan reads 1.00 wide × 1.30 tall, while S-02/S-03 place the landing 1.30 along building-x × 1.00 along building-y. All grid positions here use building coordinates.",
-    "Dummy y-line A' at -1.00 is the north roof gable-overhang edge (printed 1.00 above A on S-04/A-06); named A' per house #14 precedent for a before-origin line (negative pos_m, keeps the origin on the first named grid).",
-    "op_fix 2026-09-29 (Claude, att1235): old \"edge\" ends of chains that hang off known lines promoted to lines per spec section 4 rule 4 -- pos_m = anchor +/- the printed segments; no page re-swept",
-    "op_fix: y 1.35 + 1.00 below C on S-02 (หน้า26) are two consecutive ticks (9.35 / 10.35 = top and bottom edges of footing F2) -- checked on the image",
-    "op_fix/gridfix 2026-09-29: dummy primes re-sequenced into reading order (spec section 4 Dummy grid) -- 2' -> 2'', 2'' -> 2''', 2''' -> 2'''', C'' -> C'''; grid refs in every file of the house follow; prose in older warnings still uses the old names"
-  ],
+  "warnings": [],
   "grid": {
     "x_lines": [
       { "id": "1'", "pos_m": -1.25, "type": "dummy", "note": "roof eave line, printed 1.25 left of grid 1 (S-04, A-06, A-09) — จันทัน endpoints", "source_image": "image/บ้าน_เล็ก_1ชั้น_16/บ้าน_เล็ก_1ชั้น_16_หน้า28.png" },

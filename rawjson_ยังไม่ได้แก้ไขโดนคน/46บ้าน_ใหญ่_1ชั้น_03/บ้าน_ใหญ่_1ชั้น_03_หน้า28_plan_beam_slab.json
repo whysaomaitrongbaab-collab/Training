@@ -9,13 +9,7 @@
   "grid_source": "บ้าน_ใหญ่_1ชั้น_03_หน้า00_gridline.json",
   "confidence_score": 0.65,
   "confidence_flags": ["dense_interior_layout_reduced_precision"],
-  "warnings": [
-    "This is the busiest single sheet in the house: an entry vestibule with a stair (ST1, near grid1/E-D), an accessible ramp (SO, below row A between grid1 and grid1'') with 3 short stub beams (B3A) landing on it, and a repeated precast-plank bay pattern (SP/SPA/SP1/SI/S2/SX markers) across all 3 main bays.",
-    "PERIMETER CHORDS and EDGE VERTICALS (rows E/D/C/B, grid columns 1/1'/1''/2/3/4, and the ramp stubs at row A-A') are recorded with full grid_ref_start/grid_ref_end precision, cross-checked pixel-by-pixel against the established grid master.",
-    "INTERIOR PARTITION/SUPPORT BEAMS (marks B2, B2A, B3, B4, B4A, B4B recurring inside each bay, supporting the SP/SPA precast-plank fields) do NOT have their own printed local dimension chain on this sheet — unlike the footing plan (S-02), no witness-line dimension pins their exact x-position inside a bay. Per §4's beam-endpoint rule these are still recorded (never dropped), but with span_source:'unresolved' and a descriptive bay location instead of an invented grid_ref_start/end. This is a deliberate, flagged simplification for a dense room layout, consistent with op04's pass-2 scope — the alternative (guessing sub-bay positions) would violate the 'never estimate pos_m' rule.",
-    "Slab marker 'SI' (letter I) vs 'S1' (digit 1): this sheet uses 'S1' (digit) at the grid3-4 bay per the printed circles — double-checked per §10 since these two are known lookalikes in this dataset.",
-    "Row A between grid1''-grid2 shows a hatched 'stair nosing' pocket (พอกขั้นบันได, detailed on S-15) rather than a clear ground beam mark between footings F5@A2 and F5@A3 — recorded as unresolved rather than assuming a beam mark not clearly legible at this scan resolution."
-  ],
+  "warnings": [],
   "elements": [
     { "element_id": "B1", "element_type": "beam", "grid_ref_start": "E1", "grid_ref_end": "E1'", "span_length_m": 1.50, "span_source": "grid_table", "note": "entry-vestibule roof-edge beam", "confidence_score": 0.65, "confidence_flags": [] },
     { "element_id": "B5", "element_type": "beam", "grid_ref_start": "E1'", "grid_ref_end": "E2", "span_length_m": 3.50, "span_source": "grid_table", "confidence_score": 0.75, "confidence_flags": [] },

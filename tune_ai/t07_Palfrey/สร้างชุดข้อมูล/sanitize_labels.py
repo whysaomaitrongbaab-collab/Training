@@ -124,7 +124,7 @@ ALLOW = {
 }
 ALLOW_SOURCE = "D5"
 try:
-    _k = json.loads((Path(__file__).resolve().parent / "pass2" / "KEYS.json").read_text(encoding="utf-8"))
+    _k = json.loads((Path(__file__).resolve().parent.parent / "pass2" / "KEYS.json").read_text(encoding="utf-8"))  # สร้างชุดข้อมูล/ → ราก t07
     if isinstance(_k, dict) and all(isinstance(v, list) and all(isinstance(x, str) for x in v) for v in _k.values()):
         ALLOW, ALLOW_SOURCE = {s: set(v) for s, v in _k.items()}, "pass2/KEYS.json"
 except (OSError, ValueError):

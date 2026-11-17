@@ -31,16 +31,16 @@
 1. ด่าน 3 จบจริง: `Palfrey_a..d` มี adapter ตัวสุดท้าย · `verify_hf_push.py` ผ่าน · sha256 ของ LFS บน HF = `sha256sum` ของ adapter บนการ์ดเทรน (Lesson 23)
 2. `python -B tune_ai/test_soup_layout.py` ผ่าน (soup ฉบับ t07 มี `--fold-repo` / `--out-repo` แล้ว — วัดซ้ำ 11 พ.ย. 01:40 exit 0
    รวมข้อ 7e K=4 → r64 / alpha128) · ตั้ง `TMP`/`TEMP` ไปโฟลเดอร์ชั่วคราวก่อน (มันเขียนไฟล์ทดสอบลง temp)
-3. `python tune_ai/t07_Palfrey/gate4/gate_d_t07.py --selftest` → `selftest ผ่าน 9 ข้อ`
+3. `python tune_ai/t07_Palfrey/ด่าน4_วัดผล/gate_d_t07.py --selftest` → `selftest ผ่าน 9 ข้อ`
 4. ห่อ bundle (ต้องมี prompt ของ t07 ครบ 7 subtask + pass0 + `_common.md` แล้ว ไม่งั้นมันหยุดเอง):
-   `python tune_ai/t07_Palfrey/gate4/make_bundle_t07.py "D:/00mk/steel project/training/t07_bench/gate4_bundle"`
+   `python tune_ai/t07_Palfrey/ด่าน4_วัดผล/make_bundle_t07.py "D:/00mk/steel project/training/t07_bench/gate4_bundle"`
    → ต้องขึ้น ✅ · ถ้าขึ้น "launch_vllm_*.txt ไม่ตรง" = flag ของ production เปลี่ยนตั้งแต่ 11 พ.ย. → สร้างไฟล์ launch ใหม่แล้วถามมะขามก่อนใช้
    (อย่าตั้ง `T07_DIR` — ตัวนั้นไว้ลองบน PC เท่านั้น)
    ห่อใหม่ทุกครั้งก่อนเช่า: `worker.py` ในก้อนคือไฟล์บนดิสก์ตอนห่อ (11 พ.ย. Constistant มี worker.py ที่ยังไม่ commit
    และมีคนแก้อยู่) — sha ของมันอยู่ใน `ft/MANIFEST.sha256` + สถานะ git อยู่ใน `ft/BUNDLE_INFO.txt`
    ซ้อม bench ฟรีบน PC (โมเดลปลอม ~3.5 นาที — จับ worker ที่พัง/ต้องใช้เน็ตก่อนเสียค่าการ์ด):
    `B="/d/00mk/steel project/training/t07_bench/gate4_bundle"; mkdir -p "$B/x" && tar -xf "$B/ft_t07.tar" -C "$B/x"`
-   `python -B tune_ai/t07_Palfrey/gate4/dryrun_bench_stub.py "D:/00mk/steel project/training/t07_bench/gate4_bundle/x/ft" <โฟลเดอร์ออก>`
+   `python -B tune_ai/t07_Palfrey/ด่าน4_วัดผล/dryrun_bench_stub.py "D:/00mk/steel project/training/t07_bench/gate4_bundle/x/ft" <โฟลเดอร์ออก>`
    → ต้องขึ้น `exit 0` ทั้งสองบรรทัด แล้ว `analyze_houses.py <โฟลเดอร์ออก>/out t07` ต้องรันจบ (ตัวเลขต่ำ = ปกติ โมเดลปลอม)
    ด่าน 3 เทรนด้วย `PIN_SET=t05` ก็ยังใช้ชุด A ในด่านนี้ได้ (อนุมาน: soup วัด layout จากตัวเลขเองแล้วเขียน grouped —
    destrier_fixed ที่เทรนด้วยชุด t05 ผ่าน A/B/C ด้วยชุด A มาแล้ว 3 ต.ค. / 8 พ.ย. ตาม proof/06)
@@ -56,7 +56,7 @@
 
 - RTX PRO 6000 96 GB (sm120) ตัวเดียวที่ทั้งสูตรผ่านมา · **ดิสก์ ≥ 400 GB** (base 72 + fold 15 + soup 15 + merged 67 + vLLM ~15 + destrier 72 ถ้าวัดซ้ำ)
 - image `vastai/pytorch:cuda-12.8.1-auto` (torch 2.11.0+cu128 มากับ image ใน `/venv/main` — ไม่มี `python` บน PATH)
-- หา offer: `python tune_ai/t07_Palfrey/offers_t07.py --n 1 --disk 400` (ตัวกรองเดียวกับ build_vllm_card + บัญชีดำ)
+- หา offer: `python tune_ai/t07_Palfrey/tools/offers_t07.py --n 1 --disk 400` (ตัวกรองเดียวกับ build_vllm_card + บัญชีดำ)
 - เช่า (หลังมะขามอนุญาต):
 
 ```
@@ -166,9 +166,9 @@ ssh ... "cd /workspace/ft && setsid --fork nohup bash gate4/run_bench_t07.sh des
 mkdir -p "/d/00mk/steel project/training/t07_bench/gate4_out"
 scp -P <PORT> -r root@<IP>:/workspace/ft/out root@<IP>:/workspace/ft/logs "/d/00mk/steel project/training/t07_bench/gate4_out/"
 scp -P <PORT> root@<IP>:/workspace/ft/ref.pt root@<IP>:/workspace/ft/mrg.pt root@<IP>:/workspace/ft/base.pt root@<IP>:/workspace/ft/base_u.pt "/d/00mk/steel project/training/t07_bench/gate4_out/"
-python tune_ai/t07_Palfrey/gate4/analyze_houses.py "D:/00mk/steel project/training/t07_bench/gate4_out/out" t07 destrier
+python tune_ai/t07_Palfrey/ด่าน4_วัดผล/analyze_houses.py "D:/00mk/steel project/training/t07_bench/gate4_out/out" t07 destrier
 O="D:/00mk/steel project/training/t07_bench/gate4_out/out"
-python tune_ai/t07_Palfrey/gate4/score_house.py t07_r1="$O/t07_house_r1/result.json" t07_r2="$O/t07_house_r2/result.json" t07_r3="$O/t07_house_r3/result.json"
+python tune_ai/t07_Palfrey/ด่าน4_วัดผล/score_house.py t07_r1="$O/t07_house_r1/result.json" t07_r2="$O/t07_house_r2/result.json" t07_r3="$O/t07_house_r3/result.json"
 ```
 
 เกณฑ์ผ่าน t07 (จาก `t07_workflow.md` · ฐาน = Destrier ตัวซ่อมบน vLLM proof/04 — ไม่ใช่ตัวที่ปนผิด):

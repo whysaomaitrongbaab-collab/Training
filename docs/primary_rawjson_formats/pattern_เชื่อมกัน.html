@@ -1,0 +1,96 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><title>pattern เชื่อมกัน</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<style>body{font-family:Tahoma,'Leelawadee UI',sans-serif;max-width:1500px;margin:20px auto;padding:0 16px;color:#1a1a1a;background:#fff;line-height:1.6}
+h1{color:#10315e;border-bottom:3px solid #2066DF;padding-bottom:6px} h2{color:#10315e}
+table{border-collapse:collapse} th,td{border:1px solid #c4c4c4;padding:4px 10px} th{background:#e8eef8}
+code{font-family:Consolas,monospace;background:#f2f2f2;padding:1px 4px;border-radius:3px} pre.mermaid{background:none}</style></head>
+<body><h1>pattern ไหนเชื่อมกับอันไหน — primary rawjson</h1>
+<p>นับจากไฟล์จริง 16 พ.ย. 69 (194 บ้าน บ้านละหนึ่งฉบับ)</p>
+<pre class="mermaid">flowchart LR
+  subgraph PLAN[&quot;แปลน — มีตำแหน่งบนกริด&quot;]
+    BP[&quot;beam_plan&lt;br/&gt;แปลนคาน&quot;]
+    FP[&quot;footing_plan&lt;br/&gt;แปลนฐานราก&quot;]
+    RFP[&quot;roof_frame_plan&lt;br/&gt;แปลนโครงหลังคา&quot;]
+    EP[&quot;etc_plan&lt;br/&gt;แปลนอื่นๆ&quot;]
+  end
+
+  subgraph SPEC[&quot;ที่มาของสเปก — ขนาดและเหล็ก&quot;]
+    SEC[&quot;section&lt;br/&gt;แบบขยาย / รูปตัด&quot;]
+    SCH[&quot;schedule&lt;br/&gt;ตาราง&quot;]
+    SEC -.-|&quot;ขัดกัน: section ชนะ&quot;| SCH
+  end
+
+  subgraph VIEW[&quot;หน้าที่ให้ระดับและระยะ&quot;]
+    SIDE[&quot;side_profile&lt;br/&gt;รูปด้าน / รูปตัดอาคาร&quot;]
+    SITE[&quot;site_plan&lt;br/&gt;ผังบริเวณ&quot;]
+    ROOF[&quot;roof_plan&lt;br/&gt;แปลนหลังคา (สถาปัตย์)&quot;]
+  end
+
+  GM[(&quot;grid_master&lt;br/&gt;กริดหลักของบ้าน&lt;br/&gt;(ไฟล์หน้า00)&quot;)]
+  NOTES[&quot;notes&lt;br/&gt;ข้อกำหนดทั่วไป&quot;]
+  BOQ[&quot;material_list&lt;br/&gt;ใบ BOQ&quot;]
+  WEB[[&quot;Constistant&lt;br/&gt;ตัวแปลงข้อมูล → BOQ / BBS&quot;]]
+
+  PLAN ==&gt;|&quot;มาร์คเดียวกัน → ต่อสเปก&quot;| SPEC
+  PLAN --&gt;|&quot;grid_source 88–100%&quot;| GM
+  SPEC --&gt;|&quot;17–48%&quot;| GM
+  VIEW --&gt;|&quot;49–83% · ระดับ z_levels&quot;| GM
+
+  GM --&gt;|&quot;ตำแหน่ง + ระยะช่วง&quot;| WEB
+  PLAN --&gt;|&quot;ชิ้นส่วน + จำนวน&quot;| WEB
+  SPEC --&gt;|&quot;ขนาด + เหล็ก&quot;| WEB
+  NOTES --&gt;|&quot;fc · fy · ระยะหุ้ม&quot;| WEB
+  BOQ -.-&gt;|&quot;เก็บไว้ ยังไม่เข้า BOQ&quot;| WEB
+
+  subgraph ALONE[&quot;ไม่เชื่อมกับหน้าอื่น&quot;]
+    IDX[&quot;index&lt;br/&gt;สารบัญ&quot;]
+    TTL[&quot;title&lt;br/&gt;หน้าปก&quot;]
+    SYM[&quot;symbol&lt;br/&gt;สัญลักษณ์&quot;]
+    MISC[&quot;misc&lt;br/&gt;เบ็ดเตล็ด&quot;]
+    UNK[&quot;unknown&quot;]
+  end
+
+  subgraph EMPTY[&quot;มีในสเปก ยังไม่มีไฟล์&quot;]
+    BBS[&quot;bbs_schedule&lt;br/&gt;ตารางตัดเหล็ก&quot;]
+    SOIL[&quot;soil_boring_log&lt;br/&gt;ผลเจาะดิน&quot;]
+  end
+</pre>
+<h2>ตัวเลขแยกราย pattern</h2>
+<p><strong>ต่อสเปก</strong> (<code>element_id</code> เดียวกันโผล่ทั้งในแปลนและหน้าสเปกของบ้านเดียวกัน — สเปก §7) · จำนวนมาร์คที่ตรงกัน / จำนวนบ้าน</p>
+<table>
+<thead>
+<tr>
+<th>แปลน</th>
+<th>→ section</th>
+<th>→ schedule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beam_plan</td>
+<td>1,680 / 145</td>
+<td>49 / 17</td>
+</tr>
+<tr>
+<td>footing_plan</td>
+<td>641 / 155</td>
+<td>97 / 36</td>
+</tr>
+<tr>
+<td>etc_plan</td>
+<td>506 / 48</td>
+<td>85 / 19</td>
+</tr>
+<tr>
+<td>roof_frame_plan</td>
+<td>310 / 72</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>grid_source</code></strong> (ไฟล์ระบุชื่อไฟล์กริดหลัก) — beam_plan, footing_plan, roof_frame_plan 100% · etc_plan 88% · roof_plan 83% · site_plan 53% · side_profile 49% · section 48% · schedule 17% · notes 1% · ที่เหลือ 0%</p>
+<h2>หมายเหตุ</h2>
+<ul>
+<li>ทุกหน้าที่พิมพ์ระยะหรือระดับ ต้องส่งตัวเลขเข้า <code>grid_master</code> (สเปก §4) — ในรูปวาดเฉพาะกลุ่มที่มี <code>grid_source</code></li>
+<li>Constistant อ่าน 9 ประเภท: แปลน 4 แบบ, <code>section</code>, <code>schedule</code>, <code>notes</code>, <code>grid_master</code>, <code>material_list</code> · ที่เหลือเก็บดิบพร้อมคำเตือน</li>
+</ul><script>mermaid.initialize({startOnLoad:true});</script></body></html>

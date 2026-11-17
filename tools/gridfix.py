@@ -560,7 +560,8 @@ def run(stg_path, apply=False, accept_mismatch=False, log=print):
                      + '; grid refs in every file of the house follow; prose in older warnings still uses the old names')
     if bad_new and accept_mismatch:
         notes += [f'op_fix: printed chain does not close against the lines (kept as printed): {b}' for b in bad_new]
-    doc.setdefault('warnings', []).extend(notes)
+    for note in notes:   # spec section 2 (2026-11-16): warnings[] stays [] -- notes go to the console only
+        log(f'   note: {note}')
 
     log(f'== {mname}')
     log(f'   chains: {len(chains)} ({len(stg.get("dimension_chains") or [])} new, {len(stg.get("chain_fixes") or [])} fixed)'
