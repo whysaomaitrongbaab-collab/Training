@@ -1,0 +1,217 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><title>แผนผัง 14 pass t07</title>
+<style>
+body{margin:0;padding:28px 36px;font-family:"Leelawadee UI",Tahoma,sans-serif;color:#1b2430;background:#fff}
+h1{font-size:24px;margin:0 0 4px;color:#17324d} .sub{color:#5d6b7a;font-size:14px;margin-bottom:14px}
+h2{font-size:18px;color:#17324d;border-bottom:2px solid #17324d;padding-bottom:3px;margin:26px 0 10px}
+.legend span{display:inline-block;margin:0 10px 6px 0;padding:3px 10px;border-radius:6px;font-size:13px;font-weight:700}
+.legend .ln{border-radius:0;padding:3px 0 3px 34px;font-weight:400;background-repeat:no-repeat;background-position:0 50%}
+.mermaid{text-align:center}
+.note{margin:10px auto 0;max-width:900px;padding:8px 14px;border:1px dashed #94a3b8;background:#f8fafc;color:#334155;font-size:14px}
+.mermaid foreignObject div, .mermaid .nodeLabel, .mermaid .edgeLabel, .mermaid .cluster-label div{line-height:1.6 !important}
+.mermaid .edgeLabel, .mermaid .edgeLabel div, .mermaid .edgeLabel p{background:#fff !important}
+</style></head><body>
+<h1>แผนผังระบบ 14 pass ของ t07</h1>
+<div class="sub">สร้างจาก pass_ทำอะไร.csv ฉบับแก้ 18 พ.ย. 69 · เลข pass เดิม → ใหม่: 1→1 · 2→2 · 3→3 · 3.5→4 · 4→5 · 4b→6 · 5→7 · 5.5→8 · 5.6→9 · 6→10 · 7→11 · 8→12 · 9→13 · 10→14</div>
+<div class="legend"><span style="background:#17324d;color:#fff">t07 (AI บนการ์ด)</span><span style="background:#0f766e;color:#fff">cv2</span><span style="background:#e2e8f0;border:1px solid #64748b">โค้ดธรรมดา</span><span style="background:#fde68a;border:1px solid #b45309">t07 + โค้ดตรวจ</span><span style="background:#e2e8f0;border:2px dashed #17324d">โค้ด + t07 สำรอง (ยังไม่ตัดสิน)</span><span style="background:#16a34a;color:#fff">เว็บ</span></div>
+<h2>1) ภาพรวมทั้ง 14 pass (เรียงตามลำดับทำงาน)</h2><div class="mermaid">%%{init: {&quot;theme&quot;:&quot;base&quot;,&quot;themeVariables&quot;:{&quot;fontFamily&quot;:&quot;Leelawadee UI, Tahoma, sans-serif&quot;,&quot;fontSize&quot;:&quot;15px&quot;,&quot;lineColor&quot;:&quot;#64748b&quot;,&quot;edgeLabelBackground&quot;:&quot;#ffffff&quot;},&quot;flowchart&quot;:{&quot;curve&quot;:&quot;basis&quot;,&quot;nodeSpacing&quot;:36,&quot;rankSpacing&quot;:36,&quot;padding&quot;:14}}}%%
+flowchart TD
+  WEB0([&quot;&lt;b&gt;เว็บเตรียมไฟล์&lt;/b&gt;&lt;br/&gt;PDF → PNG 200 dpi + vectors_v1.json&quot;]):::web
+
+  subgraph G1[&quot;① อ่านข้อความ จำแนก และตัดวิว&quot;]
+    direction TB
+    P1[&quot;&lt;b&gt;pass 1 · ดึงข้อความ&lt;/b&gt;&lt;br/&gt;CAD อ่านจาก vectors_v1.json ไม่ต้อง OCR&lt;br/&gt;หน้าสแกนค่อย OCR กรอบชื่อแบบ&lt;br/&gt;&lt;i&gt;ส่ง: ข้อความรายหน้า + มาร์คต่อหน้า + สารบัญ&lt;/i&gt;&quot;]:::code
+    P2[&quot;&lt;b&gt;pass 2 · จำแนกรายวิว&lt;/b&gt;&lt;br/&gt;หน้าเดียวมีได้หลายวิว · ใหม่: column_plan / slab_plan (ติดด่าน)&lt;br/&gt;&lt;i&gt;ส่ง: views[] (ตำแหน่ง · pattern · also_gridline · อาคาร)&lt;/i&gt;&quot;]:::ai
+    P3[&quot;&lt;b&gt;pass 3 · ตัดวิว&lt;/b&gt;&lt;br/&gt;organize.py บน/ล่าง + ซ้าย/ขวา · หน้ารูปตัดตัดทีละรูป&lt;br/&gt;&lt;i&gt;ส่ง: ครอปรายวิว + manifest&lt;/i&gt;&quot;]:::code
+    P4[&quot;&lt;b&gt;pass 4 · คัดชนิดรูปตัด&lt;/b&gt;&lt;br/&gt;beam_section · footing_section&lt;br/&gt;column_section · section (ชนิดอื่น)&lt;br/&gt;โค้ดดูตัวนำหน้ามาร์ค · t07 เมื่อไม่มีมาร์ค (ยังไม่ตัดสิน)&quot;]:::mix
+    P1 --&gt; P2 --&gt; P3 --&gt; P4
+  end
+
+  subgraph G2[&quot;② ผังกริดและระดับชั้น&quot;]
+    direction TB
+    P5[&quot;&lt;b&gt;pass 5 · Grid master&lt;/b&gt;&lt;br/&gt;รายอาคาร · อ่านทีละหน้าแล้วโค้ดรวม · ตรวจ 4 ข้อ&lt;br/&gt;&lt;i&gt;ส่ง: x/y lines + z_levels + ผลตรวจ&lt;/i&gt;&quot;]:::check
+    P6[&quot;&lt;b&gt;pass 6 · Level master&lt;/b&gt;&lt;br/&gt;ชั้นไหนอยู่ระดับเท่าไร · ผูกวิวแปลนเข้ากับชั้น&lt;br/&gt;&lt;i&gt;ส่ง: หน้า00_level.json + ธง (ความสูงชั้นไป pass 14)&lt;/i&gt;&quot;]:::code
+    P5 --&gt; P6
+  end
+
+  subgraph G3[&quot;③ ชี้เป้าบนภาพครอป&quot;]
+    direction TB
+    P7[&quot;&lt;b&gt;pass 7 · cv2 หา element&lt;/b&gt;&lt;br/&gt;แปลน 4 ชนิด + column_plan (ไม่มีแม่แบบพื้น)&lt;br/&gt;ไม่เจอชิ้นเลย = ตัดผิด → ใช้เต็มหน้า&lt;br/&gt;&lt;i&gt;ส่ง: #n + พิกัด + จำนวนต่อชนิด&lt;/i&gt;&quot;]:::cv
+    P8[&quot;&lt;b&gt;pass 8 · หาเส้นกริดบนภาพ&lt;/b&gt;&lt;br/&gt;อย่างน้อย 3 มุม · cv2 + OCR + เวกเตอร์&lt;br/&gt;&lt;i&gt;ส่ง: ตัวแปลงพิกเซล ↔ เมตร + ค่าคลาด&lt;/i&gt;&quot;]:::cv
+    P9[&quot;&lt;b&gt;pass 9 · วาดเส้นกริด dummy&lt;/b&gt;&lt;br/&gt;วาดลงภาพครอปพร้อมชื่อเส้น (2&#x27;, A&#x27;&#x27;)&lt;br/&gt;วาดเฉพาะเมื่อ pass 8 คลาดน้อย&quot;]:::cv
+    P7 --&gt; P8 --&gt; P9
+  end
+
+  subgraph G4[&quot;④ อ่านชิ้นส่วน&quot;]
+    direction TB
+    P10[&quot;&lt;b&gt;pass 10 · จัดระเบียบ&lt;/b&gt;&lt;br/&gt;รวมผล pass 3, 4, 5, 7 + ภาพเส้น dummy จาก pass 9&lt;br/&gt;แล้วแยกโฟลเดอร์ตาม pattern&quot;]:::code
+    P11[&quot;&lt;b&gt;pass 11 · t07 หา element&lt;/b&gt;&lt;br/&gt;prompt ต่างกันตาม pattern&lt;br/&gt;คานเขียนเป็น span [เริ่ม, จบ, ยาว]&quot;]:::ai
+    P12[&quot;&lt;b&gt;pass 12 · t07 + คำใบ้&lt;/b&gt;&lt;br/&gt;เฉพาะแปลน (ไม่รวม slab_plan)&lt;br/&gt;hint จาก pass 7&quot;]:::ai
+    P10 --&gt; P11
+    P10 --&gt; P12
+  end
+
+  subgraph G5[&quot;⑤ วัดระยะและรวมผล&quot;]
+    direction TB
+    P13[&quot;&lt;b&gt;pass 13 · วัดระยะ&lt;/b&gt;&lt;br/&gt;ไม้บรรทัดเวกเตอร์ก่อน · CV เป็นตัวสำรอง&lt;br/&gt;รายงานอย่างเดียว ไม่ทับผลที่อ่านมา&quot;]:::code
+    P14[&quot;&lt;b&gt;pass 14 · combine&lt;/b&gt;&lt;br/&gt;โค้ดล้วน ไม่ใช้โมเดล · ใช้ความสูงชั้นจาก pass 6&lt;br/&gt;&lt;i&gt;ส่ง: raw JSON รายวิว + ธง + ที่มาต่อชิ้น&lt;/i&gt;&quot;]:::code
+    P13 --&gt; P14
+  end
+
+  WEB1([&quot;&lt;b&gt;เว็บ&lt;/b&gt;&lt;br/&gt;ตรวจ → ยืนยันนำเข้า → BOQ&quot;]):::web
+
+  WEB0 --&gt; G1
+  G1 --&gt; G2
+  G2 --&gt; G3
+  G3 --&gt; G4
+  G4 --&gt; G5
+  G5 --&gt; WEB1
+
+  classDef ai fill:#17324d,stroke:#0b1b2b,color:#fff,stroke-width:2px;
+  classDef cv fill:#0f766e,stroke:#0a4f4a,color:#fff,stroke-width:2px;
+  classDef code fill:#e2e8f0,stroke:#64748b,color:#1b2430,stroke-width:2px;
+  classDef check fill:#fde68a,stroke:#b45309,color:#1b2430,stroke-width:2px;
+  classDef mix fill:#e2e8f0,stroke:#17324d,color:#1b2430,stroke-width:3px,stroke-dasharray:6 3;
+  classDef web fill:#16a34a,stroke:#166534,color:#fff,stroke-width:2px;
+  style G1 fill:#f8fafc,stroke:#cbd5e1,color:#334155
+  style G2 fill:#f8fafc,stroke:#cbd5e1,color:#334155
+  style G3 fill:#f8fafc,stroke:#cbd5e1,color:#334155
+  style G4 fill:#f8fafc,stroke:#cbd5e1,color:#334155
+  style G5 fill:#f8fafc,stroke:#cbd5e1,color:#334155
+</div>
+<div class="note"><b>ยังไม่ตัดสิน:</b> pass 11 กับ pass 12 วาดเป็นทางคู่ขนาน (ต่างคนต่างรับโฟลเดอร์จาก pass 10) — จะให้ทำคู่กันหรือทำต่อกันเป็นลำดับ รอมะขามตัดสิน</div>
+<h2>2) ใครส่งอะไรให้ใคร (ทุกเส้นมาจากช่อง input ใน CSV)</h2><div class="legend"><span class="ln" style="background-image:linear-gradient(#16a34a,#16a34a);background-size:26px 2px">ภาพหน้า / เวกเตอร์จากเว็บ</span><span class="ln" style="background-image:linear-gradient(#b45309,#b45309);background-size:26px 3px">grid master จาก pass 5</span><span class="ln" style="background-image:repeating-linear-gradient(90deg,#94a3b8 0 5px,transparent 5px 9px);background-size:26px 2px">ข้อความ / มาร์คจาก pass 1</span><span class="ln" style="background-image:linear-gradient(#64748b,#64748b);background-size:26px 2px">ข้อมูลอื่น (views, ภาพครอป, json)</span></div><div class="mermaid">%%{init: {&quot;theme&quot;:&quot;base&quot;,&quot;themeVariables&quot;:{&quot;fontFamily&quot;:&quot;Leelawadee UI, Tahoma, sans-serif&quot;,&quot;fontSize&quot;:&quot;15px&quot;,&quot;lineColor&quot;:&quot;#64748b&quot;,&quot;edgeLabelBackground&quot;:&quot;#ffffff&quot;},&quot;flowchart&quot;:{&quot;curve&quot;:&quot;basis&quot;,&quot;nodeSpacing&quot;:30,&quot;rankSpacing&quot;:46,&quot;padding&quot;:12}}}%%
+flowchart TD
+  W0([&quot;&lt;b&gt;เว็บ&lt;/b&gt; · PNG + vectors_v1.json&quot;]):::web
+  S1[&quot;&lt;b&gt;1&lt;/b&gt; · ดึงข้อความ&quot;]:::code
+  S2[&quot;&lt;b&gt;2&lt;/b&gt; · จำแนกรายวิว&quot;]:::ai
+  S3[&quot;&lt;b&gt;3&lt;/b&gt; · ตัดวิว&quot;]:::code
+  S4[&quot;&lt;b&gt;4&lt;/b&gt; · คัดชนิดรูปตัด&quot;]:::mix
+  S5[&quot;&lt;b&gt;5&lt;/b&gt; · grid master&quot;]:::check
+  S6[&quot;&lt;b&gt;6&lt;/b&gt; · level master&quot;]:::code
+  S7[&quot;&lt;b&gt;7&lt;/b&gt; · cv2 หา element&quot;]:::cv
+  S8[&quot;&lt;b&gt;8&lt;/b&gt; · หาเส้นกริดบนภาพ&quot;]:::cv
+  S9[&quot;&lt;b&gt;9&lt;/b&gt; · วาดเส้น dummy&quot;]:::cv
+  S10[&quot;&lt;b&gt;10&lt;/b&gt; · จัดระเบียบ&quot;]:::code
+  S11[&quot;&lt;b&gt;11&lt;/b&gt; · t07 หา element&quot;]:::ai
+  S12[&quot;&lt;b&gt;12&lt;/b&gt; · t07 + คำใบ้&quot;]:::ai
+  S13[&quot;&lt;b&gt;13&lt;/b&gt; · วัดระยะ&quot;]:::code
+  S14[&quot;&lt;b&gt;14&lt;/b&gt; · combine&quot;]:::code
+  W1([&quot;&lt;b&gt;เว็บ&lt;/b&gt; · ตรวจ → BOQ&quot;]):::web
+
+  W0 --&gt; S1
+  S1 -.-&gt; S2
+  S2 --&gt; S3
+  S3 --&gt; S4
+  S2 --&gt; S5
+  S5 --&gt; S6
+  S2 --&gt; S6
+  S3 --&gt; S6
+  S3 --&gt; S7
+  S7 --&gt; S8
+  S3 --&gt; S8
+  S8 --&gt; S9
+  S3 --&gt; S9
+  S3 --&gt; S10
+  S4 --&gt; S10
+  S7 --&gt; S10
+  S9 --&gt; S10
+  S10 --&gt; S11
+  S10 --&gt; S12
+  S7 --&gt; S13
+  S11 --&gt; S13
+  S12 --&gt; S13
+  S11 --&gt; S14
+  S12 --&gt; S14
+  S13 --&gt; S14
+  S6 --&gt; S14
+  S14 --&gt; W1
+  S5 --&gt; S8
+  S5 --&gt; S9
+  S5 --&gt; S10
+  S5 --&gt; S13
+  S5 --&gt; S14
+  S1 -.-&gt; S3
+  S1 -.-&gt; S4
+  S1 -.-&gt; S5
+  S1 -.-&gt; S6
+  S1 -.-&gt; S8
+  S1 -.-&gt; S11
+  S1 -.-&gt; S12
+  S1 -.-&gt; S14
+  W0 --&gt; S2
+  W0 --&gt; S3
+  W0 --&gt; S5
+  W0 --&gt; S8
+  W0 --&gt; S13
+
+  classDef ai fill:#17324d,stroke:#0b1b2b,color:#fff,stroke-width:2px;
+  classDef cv fill:#0f766e,stroke:#0a4f4a,color:#fff,stroke-width:2px;
+  classDef code fill:#e2e8f0,stroke:#64748b,color:#1b2430,stroke-width:2px;
+  classDef check fill:#fde68a,stroke:#b45309,color:#1b2430,stroke-width:2px;
+  classDef mix fill:#e2e8f0,stroke:#17324d,color:#1b2430,stroke-width:3px,stroke-dasharray:6 3;
+  classDef web fill:#16a34a,stroke:#166534,color:#fff,stroke-width:2px;
+  linkStyle 0,40,41,42,43,44 stroke:#16a34a,stroke-width:2px;
+  linkStyle 1,32,33,34,35,36,37,38,39 stroke:#94a3b8,stroke-width:1.5px;
+  linkStyle 5,27,28,29,30,31 stroke:#b45309,stroke-width:2.5px;
+</div>
+<h2>3) แต่ละชนิดหน้าแบบ (pattern) ไปทางไหน</h2><div class="mermaid">%%{init: {&quot;theme&quot;:&quot;base&quot;,&quot;themeVariables&quot;:{&quot;fontFamily&quot;:&quot;Leelawadee UI, Tahoma, sans-serif&quot;,&quot;fontSize&quot;:&quot;15px&quot;,&quot;lineColor&quot;:&quot;#64748b&quot;,&quot;edgeLabelBackground&quot;:&quot;#ffffff&quot;},&quot;flowchart&quot;:{&quot;curve&quot;:&quot;basis&quot;,&quot;nodeSpacing&quot;:36,&quot;rankSpacing&quot;:36,&quot;padding&quot;:14}}}%%
+flowchart TD
+  R([&quot;&lt;b&gt;pass 3 · ครอปรายวิว&lt;/b&gt;&lt;br/&gt;pattern จาก pass 2&quot;]):::code
+
+  PL[&quot;&lt;b&gt;แปลน 5 ชนิด&lt;/b&gt;&lt;br/&gt;beam_plan · footing_plan&lt;br/&gt;roof_frame_plan · etc_plan&lt;br/&gt;column_plan (ใหม่ · ติดด่าน)&quot;]:::grp
+  SL[&quot;&lt;b&gt;slab_plan&lt;/b&gt;&lt;br/&gt;(ใหม่ · ติดด่าน)&lt;br/&gt;cv2 ไม่มีแม่แบบพื้น&quot;]:::grp
+  SEC[&quot;&lt;b&gt;รูปตัด 4 ชนิด&lt;/b&gt;&lt;br/&gt;section · beam_section&lt;br/&gt;footing_section · column_section&quot;]:::grp
+  SN[&quot;&lt;b&gt;ตาราง · ข้อกำหนด&lt;/b&gt;&lt;br/&gt;schedule · notes&quot;]:::grp
+  GR[&quot;&lt;b&gt;กริด และ ระดับ&lt;/b&gt;&lt;br/&gt;grid_master · side_profile&quot;]:::grp
+  KP[&quot;&lt;b&gt;เก็บไว้ ยังไม่อ่านชิ้นส่วน&lt;/b&gt;&quot;]:::grp
+
+  A5[&quot;&lt;b&gt;pass 5&lt;/b&gt;&lt;br/&gt;ใช้ถ้าติด also_gridline&quot;]:::check
+  A6[&quot;&lt;b&gt;pass 6&lt;/b&gt;&lt;br/&gt;ระดับของชั้นที่วิวนี้อยู่&quot;]:::code
+  A7[&quot;&lt;b&gt;pass 7&lt;/b&gt; · cv2&lt;br/&gt;หาชิ้น + เช็คครอป&quot;]:::cv
+  A8[&quot;&lt;b&gt;pass 8&lt;/b&gt;&lt;br/&gt;พิกเซลเส้นกริด ↔ เมตร&quot;]:::cv
+  A9[&quot;&lt;b&gt;pass 9&lt;/b&gt;&lt;br/&gt;วาดเส้น dummy (เมื่อ pass 8 ผ่าน)&quot;]:::cv
+  B4[&quot;&lt;b&gt;pass 4&lt;/b&gt;&lt;br/&gt;คัดชนิดต่อครอป&quot;]:::mix
+  P10([&quot;&lt;b&gt;pass 10&lt;/b&gt;&lt;br/&gt;แยกโฟลเดอร์ตาม pattern&quot;]):::code
+  A11[&quot;&lt;b&gt;pass 11&lt;/b&gt; · t07&lt;br/&gt;ภาพ + grid master&quot;]:::ai
+  A12[&quot;&lt;b&gt;pass 12&lt;/b&gt; · t07&lt;br/&gt;ภาพ + grid master + json pass 7&quot;]:::ai
+  A13[&quot;&lt;b&gt;pass 13&lt;/b&gt;&lt;br/&gt;วัดระยะ&quot;]:::code
+  B11[&quot;&lt;b&gt;pass 11&lt;/b&gt; · t07&lt;br/&gt;ภาพอย่างเดียว&lt;br/&gt;ไม่ต้องมีกริด/คำใบ้&quot;]:::ai
+  P14([&quot;&lt;b&gt;pass 14&lt;/b&gt;&lt;br/&gt;combine&quot;]):::code
+
+  N1[&quot;&lt;b&gt;grid_master&lt;/b&gt; อ่านที่ pass 5 แล้ว ไม่ต้องเข้า pass 11&lt;br/&gt;&lt;b&gt;side_profile&lt;/b&gt; ใช้อ่านระดับ z_levels ใน pass 5&lt;br/&gt;&lt;b&gt;level_master&lt;/b&gt; = ไฟล์ผลของ pass 6 ไม่ใช่หน้าในแบบ&quot;]:::note
+  N2[&quot;&lt;b&gt;ใช้ทีหลัง:&lt;/b&gt; material_list · bbs_schedule · title · symbol&lt;br/&gt;&lt;b&gt;ตรวจไฟล์ขาดหน้า:&lt;/b&gt; index (สารบัญจาก pass 1)&lt;br/&gt;&lt;b&gt;ไม่อ่าน:&lt;/b&gt; site_plan · roof_plan · misc · unknown&lt;br/&gt;&lt;b&gt;เว็บอ่านเอง:&lt;/b&gt; soil_boring_log (หน้า Site Investigate)&quot;]:::note
+
+  R --&gt; PL
+  R --&gt; SL
+  R --&gt; SEC
+  R --&gt; SN
+  R --&gt; GR
+  R --&gt; KP
+  PL --&gt; A5
+  SL --&gt; A5
+  A5 --&gt; A6
+  A6 --&gt;|แปลน 5 ชนิด| A7
+  A6 --&gt;|slab_plan ข้าม pass 7| A8
+  A7 --&gt; A8 --&gt; A9 --&gt; P10
+  SEC --&gt; B4 --&gt; P10
+  SN --&gt; P10
+  P10 --&gt;|แปลนทั้ง 6 ชนิด| A11
+  P10 --&gt;|แปลน 5 ชนิด · ไม่มี slab_plan| A12
+  A11 --&gt; A13
+  A12 --&gt; A13
+  A13 --&gt; P14
+  P10 --&gt;|รูปตัด · ตาราง · ข้อกำหนด| B11 --&gt; P14
+  GR --&gt; N1
+  KP --&gt; N2
+
+  classDef ai fill:#17324d,stroke:#0b1b2b,color:#fff,stroke-width:2px;
+  classDef cv fill:#0f766e,stroke:#0a4f4a,color:#fff,stroke-width:2px;
+  classDef code fill:#e2e8f0,stroke:#64748b,color:#1b2430,stroke-width:2px;
+  classDef check fill:#fde68a,stroke:#b45309,color:#1b2430,stroke-width:2px;
+  classDef mix fill:#e2e8f0,stroke:#17324d,color:#1b2430,stroke-width:3px,stroke-dasharray:6 3;
+  classDef grp fill:#fef3c7,stroke:#b45309,color:#1b2430,stroke-width:2px;
+  classDef note fill:#f8fafc,stroke:#94a3b8,color:#334155,stroke-dasharray:4 3;
+</div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:false,securityLevel:"loose"});document.fonts.ready.then(()=>mermaid.run());</script>
+</body></html>

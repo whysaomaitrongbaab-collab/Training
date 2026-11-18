@@ -27,7 +27,7 @@ If the user (Makham) types **`op1 <house_name>`** (e.g. `op1 บ้านเอ�
 
 1. Read [`00file_for_making_rawjson_from_claude/primary_rawjson_schema.md`](00file_for_making_rawjson_from_claude/primary_rawjson_schema.md) in full (every time — don't rely on memory of a past session).
 2. **Check for a duplicate first:** does any existing `0N<house_name>/` folder in this directory already match `<house_name>`? If so, **stop and report it** — don't silently re-extract a house that's already done, that only burns a full vision-extraction pass for a duplicate. Otherwise, determine the next sequence number `N` (2 digits): highest existing `0N<house>/` folder + 1 — don't ask the user to supply it.
-3. Actually read every page image in `image/<house_name>/*.png` (never guess, never copy another house's data) and extract per the spec — grid master first (`<house>_หน้า00_gridline.json`), then page-by-page/view-by-view. This is real vision extraction work done in-session; there is no script that does this part automatically.
+3. Actually read every page image in `image/<house_name>/*.png` (never guess, never copy another house's data) and extract per the spec — grid master first (`<house>_หน้า00_gridline.json`, read one page at a time and merged once, spec §4), then the level master (`<house>_หน้า00_level.json`, spec §4b: floor code → printed level, written once the grid master is complete, only when the drawings print floor levels), then page-by-page/view-by-view. This is real vision extraction work done in-session; there is no script that does this part automatically.
 4. Save every file into the new `0N<house_name>/` folder.
 5. Run `python tools/check_format.py 0N<house_name>` (repo root) — every check must PASS before the house counts as finished (schema §0.10).
 6. Report back: files created, page count, any low-confidence flags or open questions (e.g. duplicate `element_id` across sections).
@@ -44,7 +44,7 @@ If the user (Makham) types **`op1 <house_name>`** (e.g. `op1 บ้านเอ�
   1. **Grid geometry** → the STRUCTURAL footing/column plans win (S-sheets). The grid master has always been derived from them (spec §4, and every existing house's `view_title`). An architectural site plan or a sheet that self-declares "เพื่อประมาณราคา/ตัวอย่าง" never overrides them.
   2. **Member spec** → the detail/section sheet wins over the plan; `section` wins over `schedule` (spec §7).
   3. **More sheets agreeing beats fewer.** Count them, and say so in the warning.
-- **Decide, don't narrate** — `warnings[]` stays `[]` (spec §2, 2026-11-16). Lower `confidence_score` and add a `confidence_flags` entry when the losing reading is genuinely plausible. The user reviews decisions after the fact; they do not arbitrate during the run.
+- **Decide, don't narrate** — `warnings[]` stays `[]` (spec §2, 2026-11-16), and since 2026-11-18 so does every other self-assessment: wrapper `confidence_score: null`, `confidence_flags: []`, no element-level confidence keys, no `note` (spec §0.0). Pick the reading the precedence below gives and move on. The user reviews decisions after the fact; they do not arbitrate during the run.
 - **Never leave a field blank because a choice was hard.** Blank is only for "the drawing genuinely does not say" (e.g. an undimensioned gap, per spec §4's rule against guessing a `pos_m`) — never for "two sheets said different things."
 - Asking mid-run is only correct if continuing would require **inventing data that appears on no sheet at all**.
 

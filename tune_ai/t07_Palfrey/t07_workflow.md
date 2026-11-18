@@ -99,3 +99,26 @@
 - ยิงทีละหน้า greedy ดูดีสุด (นิ่ง + มาร์คดี) แต่ทั้งบ้านแย่สุด → ปัญหา 5 (ผลแกว่ง) แก้ด้วย temperature ไม่ได้
   ทางที่เหลือ: t07 (ปัญหา 1–2 ทำให้ gridline วนอยู่) + อ่านหลายรอบโหวต (Constistant docs/research 2026-10-03)
 - t07 ต้องวัด sampling ใหม่หลังเทรน (โมเดลใหม่ ค่าที่ดีสุดอาจย้าย) — วัดทั้งบ้านเสมอ ห้ามตัดสินจาก micro
+
+
+## 18 พ.ย. 69 — pass 6 (level master, เดิมเรียก 4b) และงานที่ยังค้างก่อนเทรน
+
+### pass 6 (เดิม 4b) — level master + ตารางเชื่อมชั้น (ทำแล้ว ไม่ใช้โมเดล)
+- อยู่ต่อจาก pass 5 (grid master) ในตาราง `เอกสาร/pass_ทำอะไร.csv` คอลัมน์ `6` · ตารางเปลี่ยนเลขใหม่เป็น 1-14 เมื่อ 18 พ.ย. (เลขเดิม→ใหม่อยู่ในชีตที่สองของ `pass_ทำอะไร.xlsx`)
+- **ไฟล์ผล:** `<บ้าน>_หน้า00_level.json` (pattern `level_master`, สเปก §4b) ชั้น → ระดับ เขียนหลังรวมกริดครบทุกหน้า
+- **ตารางเชื่อม:** `python tools/level_link.py <โฟลเดอร์บ้าน>` อ่านอย่างเดียว ต่อชั้นแสดง ระดับ · ความสูงชั้น · วิวแปลนที่อยู่บนชั้นนั้น (beam / footing / roof frame / column) + ธง `view_floor_not_in_level_master` · `floor_without_plan_view` · `title_floor_mismatch` · `no_level_master`
+- ลองกับบ้าน 174 (ของจริง): 9 ชั้น B1 -1.00 … RF2 +25.65, ความสูง 2.90-3.60 ม., 18 วิวแปลนเชื่อมครบ, 0 ธง
+- ฝั่ง Constistant: adapter อ่าน `level_master` ได้แล้ว (`levelStore`) แต่ pipeline ยังไม่เอาไปใช้คิดความสูงชั้น
+
+### ฝั่ง Constistant (consumer) ทำแล้ว 18 พ.ย. — ยังไม่ merge
+- `js/drawing/raw-extraction-adapter.js`: `column_plan` เป็น plan · `beam_section`/`footing_section`/`column_section` เข้า join สเปกแบบ `section` เงียบๆ · อ่าน `"span": [เริ่ม, จบ, ความยาว]` · อ่าน `level_master`
+- ทดสอบ `tests/raw-extraction-patterns-2026-11-18.test.js` (11 ข้อ) + ทั้งชุด 2708/2708 ผ่าน
+
+### ยังไม่ได้ทำ (ต้องทำก่อนเทรน t07 ตามสเปก §0.0 / §1)
+ตัวสร้างชุดข้อมูล `สร้างชุดข้อมูล/build_t07.py` กับ worker (`Constistant/server/purson-worker/worker.py`) ผูกกันด้วย `check_worker_parity()` (ตาราง subtask→pattern และข้อความ prompt ต้องเท่ากันทุกไบต์) จึงต้องแก้พร้อมกันและรันสร้างชุดข้อมูลใหม่ตรวจ:
+1. `pass2/KEYS.json`: เหลือแค่ `elements` (ตัดฟิลด์หัวไฟล์ + `confidence_*` ออกจากสิ่งที่โมเดลเขียน)
+2. ป้ายคำตอบ: ตัด `confidence_score`/`confidence_flags`/`note`/`offset_note` ทุกระดับ · แปลงคานเป็น `"span": [เริ่ม, จบ, ความยาว]` · รวมชิ้นแบบจุดที่ `element_id` เดียวกัน (ฝั่งอ่านทำแล้ว ฝั่งสร้างยัง)
+3. `plan_column`: prompt + งาน pass 2 + ย้ายเสาออกจากป้ายฐานราก/คาน (Pass 0 มี `plan_column` แล้ว)
+4. รูปตัด: pass 3 ตัดทีละรูป แล้ว pass 4 คัดเป็น `beam_section` / `footing_section` / `column_section` / `section`
+5. รายการ OCR ของหน้าเข้า prompt ของ `element_id` (ต้องมีในชุดเทรนด้วย) — ยังไม่ได้ออกแบบว่าชุดเทรนได้รายการ OCR จากไหน
+6. worker: ประทับฟิลด์หัวไฟล์ + OCR ตามสเปก §0.0

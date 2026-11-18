@@ -16,7 +16,7 @@ Argument: `<house_name>` (e.g. `บ้านเอกมัย`). All paths belo
   1. **Grid geometry** → the STRUCTURAL footing/column plans win (S-sheets). An architectural site plan, or a sheet self-declared "เพื่อประมาณราคา/ตัวอย่าง", never overrides them.
   2. **Member spec** → the detail/section sheet wins over the plan; `section` wins over `schedule`.
   3. **More sheets agreeing beats fewer** — count them, and say so in the warning.
-- **Decide, don't narrate** — `warnings[]` stays `[]` (spec §2, 2026-11-16): no note about what conflicted or why. Lower `confidence_score` and add a `confidence_flags` entry when the losing reading was genuinely plausible.
+- **Decide, don't narrate** — `warnings[]` stays `[]` (spec §2, 2026-11-16): no note about what conflicted or why. Since 2026-11-18 (spec §0.0) also: wrapper `confidence_score: null`, `confidence_flags: []`, no element-level confidence keys, no `note`. Pick the reading the precedence gives and move on.
 - **Never leave a field blank because a choice was hard.** Blank is only for "the drawing genuinely does not say" — never for "two sheets said different things."
 - Asking mid-run is only correct if continuing would require **inventing data that appears on no sheet at all**.
 - Label Studio is cancelled (2026-08-02) — never generate Label Studio task files, regardless of what an older transcript suggests.
@@ -25,7 +25,7 @@ Argument: `<house_name>` (e.g. `บ้านเอกมัย`). All paths belo
 
 1. Read `rawjson_ยังไม่ได้แก้ไขโดนคน/00file_for_making_rawjson_from_claude/primary_rawjson_schema.md` in full — **every time**, don't rely on memory of a past session.
 2. **Check for a duplicate first:** does any existing `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house_name>/` folder already match `<house_name>`? If so, **stop and report it** — don't silently re-extract a house that's already done, that only burns a full vision-extraction pass for a duplicate. Otherwise, determine the next sequence number `N` (2 digits): highest existing `0N<house>/` folder + 1. Don't ask the user to supply it.
-3. Actually read every page image in `image/<house_name>/*.png` and extract per the spec — grid master first (`<house>_หน้า00_gridline.json`), then page-by-page/view-by-view. Never guess, never copy another house's data. This is real vision extraction work done in-session; no script does this part.
+3. Actually read every page image in `image/<house_name>/*.png` and extract per the spec — grid master first (`<house>_หน้า00_gridline.json`, read one page at a time and merged once, spec §4), then the level master (`<house>_หน้า00_level.json`, spec §4b: floor code → printed level, written once the grid master is complete, only when the drawings print floor levels), then page-by-page/view-by-view. Never guess, never copy another house's data. This is real vision extraction work done in-session; no script does this part.
 4. Save every file into the new `rawjson_ยังไม่ได้แก้ไขโดนคน/0N<house_name>/` folder.
 5. Run `python tools/check_format.py 0N<house_name>` — every check must **PASS** before the house counts as finished.
 6. Report back: files created, page count, any low-confidence flags or open questions (e.g. duplicate `element_id` across sections).

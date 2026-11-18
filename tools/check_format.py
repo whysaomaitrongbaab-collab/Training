@@ -16,7 +16,7 @@ import json, sys, os, re, glob, collections
 # 'plan' is a DEAD spelling per section 1 -- renamed to 'etc_plan' along with all 899 files that
 # carried it. Kept readable here on purpose: a stray old file should fail on its real problem,
 # not on an unrecognised pattern. PLAN_FAMILY mirrors Constistant's PLAN_PATTERNS.
-PLAN_FAMILY = {'beam_plan', 'footing_plan', 'roof_frame_plan', 'etc_plan', 'plan'}
+PLAN_FAMILY = {'beam_plan', 'footing_plan', 'roof_frame_plan', 'column_plan', 'slab_plan', 'etc_plan', 'plan'}   # column_plan #20 / slab_plan #25: gated for writing
 # 'gridline' renamed to 'grid_master' 2026-08-28 (section 1) -- an audit of all 93 files found
 # every one is a หน้า00 master, so the old name's "per-page companion" never existed.
 # Old spelling kept readable for the same reason as 'plan': a stray file should fail on its
@@ -25,7 +25,8 @@ GRID_FAMILY = {'grid_master', 'gridline'}
 PATTERNS = PLAN_FAMILY | GRID_FAMILY | {'section', 'schedule', 'notes', 'index', 'material_list',
                                         'site_plan', 'side_profile', 'title', 'symbol',
                                         'roof_plan', 'misc', 'bbs_schedule', 'soil_boring_log',
-                                        'unknown'}
+                                        'unknown', 'level_master',   # level_master: section 4b, 2026-11-18
+                                        'beam_section', 'footing_section', 'column_section'}   # section 1 #22-24
 WRAPPER = ['png', 'doc_page', 'discipline', 'sheet_code', 'sheet_name', 'pattern',
            'confidence_score', 'confidence_flags', 'warnings']
 # section 2, pinned 2026-08-21. 'architecture' is the wrong spelling of 'architectural'
@@ -123,6 +124,53 @@ def grid_tick_notes(name, grid):
     return out
 
 
+FLOOR_CODE = re.compile(r'^(B\d+|F\d+M?|RF\d*)$')
+SECTION_KINDS = {'beam': {'beam', 'tie_beam', 'girder'}, 'footing': {'footing', 'pile_cap', 'pile'},
+                 'column': {'column', 'pedestal'}, 'other': None}   # section 1 #5; other = anything
+SECTION_KIND_PATTERNS = {'beam_section': 'beam', 'footing_section': 'footing', 'column_section': 'column'}   # #22-24
+
+
+def house_z_levels(house_dir):
+    """Every z_levels[] level_m (to the mm) in the house's grid master."""
+    z = set()
+    for g in glob.glob(os.path.join(house_dir, '*หน้า00*gridline*.json')):
+        try:
+            grid = json.load(open(g, encoding='utf-8')).get('grid', {})
+        except Exception:
+            continue
+        z |= {round(e['level_m'], 3) for e in grid.get('z_levels') or []
+              if isinstance(e, dict) and isinstance(e.get('level_m'), (int, float))}
+    return z
+
+
+def floors_error(level, z):
+    """section 4b level_master (2026-11-18): level{floors[]}. Codes unique and bottom to top; every level
+    equal to a z_levels[] value of the same house (z = set of level_m rounded to 3 places)."""
+    floors = level.get('floors')
+    if not isinstance(floors, list) or not floors:
+        return 'floors[] missing or empty (no printed floor level = no file, section 4b)'
+    seen, prev = set(), None
+    for e in floors:
+        code = e.get('floor_level') if isinstance(e, dict) else None
+        if not isinstance(code, str) or not FLOOR_CODE.match(code):
+            return f'bad floor_level {code!r}'
+        if code in seen:
+            return f'{code} twice'
+        seen.add(code)
+        for k in ('level_m', 'structure_level_m'):
+            v = e.get(k)
+            if v is None and k == 'structure_level_m':
+                continue
+            if not isinstance(v, (int, float)):
+                return f'{code} {k} not a number'
+            if round(v, 3) not in z:
+                return f'{code} {k}={v} not in z_levels'
+        if prev is not None and e['level_m'] <= prev:
+            return f'{code} not above the floor before it'
+        prev = e['level_m']
+    return ''
+
+
 def data_files(house_dir):
     """The house's data JSON, i.e. every *.json except the '_'-prefixed markers (_scope.json)."""
     return sorted(p for p in glob.glob(os.path.join(house_dir, '*.json'))
@@ -150,11 +198,11 @@ def check_house(house_dir):
             if k not in doc:
                 fails['wrapper fields'].append(f'{name}: missing {k}')
         if doc.get('pattern') not in PATTERNS:
-            fails['pattern in 19'].append(f'{name}: {doc.get("pattern")!r}')
+            fails['pattern in spec'].append(f'{name}: {doc.get("pattern")!r}')
         if doc.get('discipline') not in DISCIPLINES:
             fails['discipline vocabulary'].append(f'{name}: {doc.get("discipline")!r}')
         # section 2: source_image on every file; the grid master uses source_pages instead
-        img_key = 'source_pages' if doc.get('pattern') in GRID_FAMILY else 'source_image'
+        img_key = 'source_pages' if doc.get('pattern') in GRID_FAMILY | {'level_master'} else 'source_image'
         if img_key not in doc:
             fails['wrapper fields'].append(f'{name}: missing {img_key}')
         if 'phase_note' in doc:
@@ -179,6 +227,17 @@ def check_house(house_dir):
                 soft.append(('grid master not dimension-swept yet (section 4 -- absent != empty)',
                              f'{name}: {",".join(miss)}'))
             soft.extend(grid_tick_notes(name, doc.get('grid') or {}))
+        if doc.get('pattern') in SECTION_KIND_PATTERNS:
+            # section 1 #22-24 (2026-11-18): the kind is the pattern; the file holds only that kind's element types
+            kind = SECTION_KIND_PATTERNS[doc['pattern']]
+            odd = sorted({e.get('element_type') for e in doc.get('elements') or []
+                          if isinstance(e, dict) and e.get('element_type') not in SECTION_KINDS[kind]}, key=str)
+            if odd:
+                fails['section kind pattern holds other kinds'].append(f'{name}: {doc["pattern"]} holds {odd}')
+        if doc.get('pattern') == 'level_master':
+            err = floors_error(doc.get('level') or {}, house_z_levels(house_dir))
+            if err:
+                fails['level_master inconsistent'].append(f'{name}: {err}')
         if doc.get('pattern') == 'notes':
             bad = sorted(k for k in doc if k in NOTES_ONEOFF)
             if bad:
@@ -299,9 +358,9 @@ def main(argv):
         soft_all.extend(s)
 
     print(f'checked {len(targets)} house folder(s)\n')
-    order = ['no data files', 'parse', 'wrapper fields', 'pattern in 19', 'discipline vocabulary',
-             'phase_note left', 'element-kind array',
-             'grid not nested', 'notes one-off container key', 'structural roof framing must be pattern roof_frame_plan',
+    order = ['no data files', 'parse', 'wrapper fields', 'pattern in spec', 'discipline vocabulary',
+             'phase_note left', 'warnings must be []', 'element-kind array',
+             'grid not nested', 'level_master inconsistent', 'section kind pattern holds other kinds', 'notes one-off container key', 'structural roof framing must be pattern roof_frame_plan',
              'rebar is a string', 'stirrup misnamed',
              'rebar/steel as array (use bar_layers/spans_m)', 'numeric field wrong type',
              'grid_ref is an array', 'element missing element_id', 'element missing element_type',

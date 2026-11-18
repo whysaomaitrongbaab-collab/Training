@@ -259,3 +259,181 @@ applies: this changes how ground truth is named, so it changes training data. Ma
   10, 12, 13, 27, 30): 125 renames, refs followed in every page, `check_format.py` "primes out of order"
   22 → 2 (the two left are house 12's printed-name case). Tool: `tools/gridfix.py`; procedure:
   `.claude/skills/op_fix/SKILL.md`.
+
+## 2026-11-18 — §0.0 added: who writes each field (model / code / OCR); confidence, note and free-text grid fields retired; `span` array (Makham's order)
+
+**Why this file could be edited:** `primary_rawjson_schema.md` is a `.md` doc, not raw JSON, so Rule 1 of
+`rule_of_tune.md` doesn't protect it; Lesson 7 requires saying so and logging it here. Rule 2 applies: this
+changes the training target. Makham: "แก้ใน primary rawjson เลย ... พิจารณาเลยนะว่าอันไหนควรใช้ร่วมกับ pattern อื่นๆ".
+Decisions were taken one by one in the session of 2026-11-18 afternoon (diary `workmen's_diary/2026-11-18.md`,
+entries 14:30-17:35); this edit writes them down and decides which ones apply beyond `beam_plan`.
+
+- **New §0.0** (before §0.1): the model writes only what is printed and readable. Two layers: model output
+  (compact) vs stored file (built by code, keys unchanged so no reader changes).
+  - Wrapper, all 19 patterns: `png`, `doc_page`, `source_image`/`source_pages`, `grid_source`, `pattern`
+    (pass 0, per view), `discipline`, `views[]` = code; `sheet_code`, `sheet_name`, `view_title`, `scale` = OCR;
+    `floor_level` = code rule on `view_title`, `null` when no match; `confidence_score` always `null`,
+    `confidence_flags`/`warnings` always `[]` (keys kept for readers).
+  - Elements, all patterns with marks: `element_id` picked by the model from the page's OCR list and kept only
+    if it is in that list. Confidence keys removed from elements. `note`/`offset_note` removed at every level;
+    printed words go to `*_printed_as`.
+  - Span elements of the whole plan family (not only beam_plan): `span: [start, end, length]`; length only when
+    an end is off the named/dummy lines (number = printed, `"~N.NN"` = scaled, `null` = not given); code
+    expands to `grid_ref_start`/`grid_ref_end`/`span_length_m`/`span_source`. Point elements unchanged.
+  - Retired with no replacement: `bears_on_beam` flag, raw-file `spec_conflict_section_vs_schedule`, the §0.10
+    merge exception, grid-master per-line confidence / `dummy_grid_rule_check` /
+    `non_grid_dimensions_do_not_confuse`, `spec_confidence_score` / `spec_confidence_flags`.
+- **Edited to agree with §0.0:** §0.2 (four fields -> two), §0.4 (`tendon` added with its shape), §0.10 (exception
+  retired, new checklist line), §1 `etc_plan` (TENDON LAYOUT sheets), §2 (who fills the wrapper; the
+  "lower confidence instead of warnings" sentence), §3 (pass 0 inventories views, `pattern` per view), §4 Span
+  amendment + `span_source` (code-filled; 4 stray spellings found on 5 legacy beams named as non-values),
+  `unassigned_dimensions` example (no `note`), grid ambiguity fields retired, §5 rule 2, §6/§6b/§7/§9 examples
+  (`note` -> `printed_as`, confidence keys removed), §7 join field list and conflict rule.
+- **Synced outside the spec:** `rawjson_ยังไม่ได้แก้ไขโดนคน/README.md` op1 "Decide, don't narrate" bullet and
+  `.claude/skills/op01/SKILL.md` (both told extractors to lower confidence / add flags).
+- **Measured, used as reasons:** retired fields = 39% of characters in the 32 human-corrected beam plans;
+  `grid_table` = 94% of 11,076 beams in 302 beam plans.
+- **Not done (spec only):** t07 dataset builder, `pass2/KEYS.json`, prompts, worker stamping/OCR/expansion.
+  Existing files are legacy and not rewritten. `check_format.py` unchanged (new files pass as is).
+- **Correction, same day:** the first draft of §0.0 cited as evidence a "real output" with `source_image` from
+  house `เล็ก_1ชั้น_44` and `grid_source` from house `ใหญ่_3ชั้น_09`, and looping text ("หลั ลังคาน",
+  "แบบโครงสร้ ร้ าง"). Both came from the format-catalog PDF of 2026-11-17, not from a model: the catalog shows
+  the most common value of each field independently (from different files), and copying Thai text out of the
+  PDF duplicates combining marks. No JSON file contains the stutter. Replaced with the measured t05 evidence of
+  2026-10-03. The decisions do not depend on it.
+- **PDF:** `docs/primary_rawjson_formats/รูปแบบJSON_primary_rawjson_2026-11-18.pdf` (22 pages) replaces the
+  2026-11-17 file (to be deleted; it was open in a viewer and locked at the time). `tools/rawjson_format_catalog.py`
+  now renders the §0.0 form (`to_spec()`), labels who fills each wrapper field, says what `// มีใน N%` means,
+  replaces house names in paths with `‹บ้าน›`, and warns about Thai copy-paste artifacts.
+- **2026-11-17 PDF deleted** (later the same day, once the viewer released it).
+
+## 2026-11-18 (evening) — the noted items applied: `column_plan` (gated), `grid.floors[]`, `section` kinds
+
+- **`column_plan` = pattern #20** (Makham). Appended, not inserted, so every "#N" reference stays valid. Same merged
+  point shape as `footing_plan`. **Gated:** not written into any file until Constistant's `PLAN_PATTERNS`, then
+  `check_format.py` `PLAN_FAMILY`, then the Pass 0/2 prompts + t07 builder know it; until then a column plan stays
+  `etc_plan`. Edited: §0.0 Table 1 title, §0.9, §0.10 checklist, §1 (title, intro, row 20, plan-family heading,
+  test table, etc_plan list, "never invent", gate paragraph, automation scope).
+- **Level master = `grid.floors[]`** in the grid master (§4 rule 1a; §0.1 container row; §0.10 checklist; Master
+  file paragraph). One entry per floor, bottom to top: `floor_level` (wrapper codes), `level_m`,
+  `structure_level_m`, `printed_as`; each level must equal a `z_levels[]` value; storey height derived by code.
+  Kept in the grid master, not a new `_level.json` / pattern: the `z_levels` check stays inside one file and no
+  gate is needed. `check_format.py` checks it when present (new FAIL `grid floors[] inconsistent`).
+- **`section`:** one pattern for beam, column and footing sections; kind = `element_type`; crop routing per crop;
+  bar-cutting tables are `bbs_schedule` (§1 row 5).
+- **§0.0:** point elements line now says "merged: one `element_id` once per file".
+- **Not done:** bar shape pattern (Makham will define it himself); code batch (t07 builder/KEYS/prompts, worker,
+  Constistant adapter + floor heights); `floors[]` retrofit of older grid masters.
+- **PDF** regenerated over the 2026-11-18 file: merged point example (`["A2","A3"]`, `count 2`), `floors[]` and
+  `section` notes, row 20, nested `source_image` paths hidden too, PDF title = file name (was "page.html").
+
+## 2026-11-18 (later) — `section` split into kinds, sorted by pass 0 (Makham)
+
+- Reverses the same evening's "one pattern for every member kind" wording. §1 row 5 now: 5.1 beam (`beam`,
+  `tie_beam`, `girder`, §6) · 5.2 footing (`footing`, `pile_cap`, `pile`, §6b) · 5.3 column (`column`,
+  `pedestal`, §6) · `other`. Pass 0 sorts each view into one kind; a mixed sheet becomes one view per kind.
+- Kind lives in a new wrapper field `section_kind` (§0.0 Table 1, code-stamped from pass 0). `pattern` stays
+  `section` so Constistant's spec join is untouched (a new pattern value would need a consumer gate).
+- §0.10 checklist + `check_format.py`: FAIL `section_kind wrong` when a value is outside the four, or a
+  beam/footing/column file holds another kind's element types. Checked only when present.
+- Catalog PDF: section page split into 5.1-5.4, built from each element's `element_type` (legacy files mix kinds).
+- Not done: t07 pass 0 prompt/labels (`tune_ai/t07_Palfrey/pass0/prompt.md` still has one `section` subtask) and
+  the builder; legacy files carry no `section_kind`.
+
+## 2026-11-18 (later still) — `column_plan` redefined as the column view of every plan
+
+- Makham found column plans missing from the PDF (row 20 showed 0 files). Cause: my own gate wording made
+  `column_plan` "a column-only sheet, written as `etc_plan` until lifted", and such sheets barely exist.
+- Measured: columns sit inside 112 footing plans, 147 beam plans, 53 `etc_plan`, 28 roof-frame plans (340 files,
+  183 houses). Only ~2 views in the set are column-only.
+- §1 row 20, plan-family table, etc_plan list, §0.9, gate paragraph: `column_plan` = the column view of any
+  structural plan; pass 0 (already has `plan_column`) sends each plan with column marks to it as a second view.
+  Gate kept: until lifted, columns stay in the file of the plan they were read from.
+- Catalog: page 20 built from the columns of all plan files.
+
+## 2026-11-18 (night) — §6b footing: field map checked against references, stray spellings listed (Makham)
+
+- Makham sent a reference picture (components of an RC footing) and asked for the footing format to be checked
+  against the web and fixed now. Online: STRUCTURE magazine Part 5 (Foundations), ACI 318 summaries (dowels with
+  hooks, 3 in. cover cast against earth, bar distribution per direction). Thai standards (มยผ.) for dowels and lean
+  concrete were not found online, so none is cited. These are summaries, not code text.
+- Measured on the 820 `footing` / `pile_cap` / `pile` elements in `section` files: `dowel_bar` 51, `cover_mm` 18,
+  `lean_concrete` 449, `pile` 353; stray spellings `bars_by_direction` 25, `bar_layers` 21, `rebar` 15, top-level
+  `thickness_mm` 120 (70 also have `height_mm`), `dowel_bar.length_m` 7, `pile_length_m` 22.
+- §6b added: a field map (picture component -> field), what is not extracted, the non-square rule (`count` = sum,
+  split kept in `count_printed_as`), top mat of a deep cap = `additional_bars[]` `position: "top"`, a forbidden-
+  spellings table. `dowel_bar{}`, `cover_mm`, `cover_printed_as` added to the context fields (they were in 51 / 18
+  elements but never in the spec).
+- Not changed: lean concrete / sand bed names (metre vs mm split left as is), `check_format.py` (the strays are in
+  legacy files; a check would fail hundreds), the `section` -> `footing_section` rename (noted only).
+
+## 2026-11-18 (night, later) — §6b: footings get a top mat, `top_bar` (Makham)
+
+- Makham, from a strip-footing reference picture (an illustration, not a drawing): a footing must have top bars.
+- Measured: 40 of 789 footing / pile-cap elements in `section` files already print a top mat, written four ways:
+  `main_bar.top` 13, `bar_layers` position top 6, the word `บน` inside a `main_bar`/`rebar` callout 21 (`additional_bars`
+  position top was the form this edit log's earlier entry suggested; replaced).
+- §6b: new field `top_bar` (same shape as `main_bar`), only when the sheet prints a top mat; a combined callout
+  `3-Ø9 บน + 3-Ø9 ล่าง` is split between `top_bar` and `main_bar`; `main_bar` stays the bottom mat and still never
+  gets `top`/`bottom` keys. Field-map rows added for top bars, side/edge tie bars (`stirrup`) and starter bars
+  (`dowel_bar`). Forbidden table: `bar_layers`, `main_bar.top/bottom`, `บน`/`ล่าง` inside one callout.
+- **Consumer gap:** Constistant's footing steel reads `main_bar` only; a `top_bar` is not priced until it reads it
+  (legacy files that folded top bars into one summed `count` were priced, so splitting without the reader lowers
+  steel). Reader first, then files that rely on the field.
+- Not changed: `check_format.py`, any data file.
+
+## 2026-11-18 (night, later still) — grid master is built one page per call, merged once (Makham)
+
+- Makham: the grid master pass reads page by page, then everything is merged in one place; a 25-page job is 25 calls.
+- §4, new subsection after "Master file": one call = one page; which pages (grid page, plans with `also_gridline`,
+  elevations/sections); each call returns only what its page adds, empty is a normal answer; the merge is code, once,
+  in the master file (same `pos_m` to the mm = one line, origin and primes redone by code); `floors[]` assembled after
+  the merge; why (house 83b8e52c read 0/6/12 for 3+3, BOQ +30.8%); today's t07 pipeline also shows the merged master
+  so far (`GRID SO FAR`) and shares `grid_incremental.py` between training rows and the worker; hand extraction does the
+  same page by page.
+- Already how t07 works (`pass2/gridline/prompt_gridline.md`, `สร้างชุดข้อมูล/grid_incremental.py`, 2026-11-11); the
+  spec just never said it. No code changed. The spec does not require the model to see the master so far: pipeline choice.
+
+## 2026-11-18 (night, final) — level master is its own pattern, `level_master` #21 (Makham: "it is not a separate pattern, do it")
+
+- Reverses the earlier decision to keep it inside the grid master as `grid.floors[]`. That field is gone from the
+  grid master (§0.1 row, §4 rule 1a is now a pointer, "Master file" paragraph, checklist).
+- New §4b: file `<house>_หน้า00_level.json`, container `level{ floors[] }` (fourth §0.1 exception), entries
+  `{floor_level, level_m, structure_level_m, printed_as}` bottom to top, every level equal to a `z_levels[]` value of
+  the same house, no printed floor level = no file, storey height derived by code, written after the grid master is merged.
+- Pattern table: row 21; counts 20 -> 21 (Table 1, §0.9, §1 title); row 19 "other 20"; automation-scope list.
+- `tools/check_format.py`: `level_master` accepted (no longer the 19-pattern set; key renamed `pattern in spec`),
+  `floors_error(level, z)` with the house's `z_levels[]`, FAIL `level_master inconsistent`; the file uses `source_pages`
+  like the grid master. Tested: unit cases, a broken copy (F2 9.07 caught), house 174 passes, full run unchanged.
+- Gate: no data-loss risk. Constistant stores an unknown pattern raw with a warning (project CLAUDE.md), no BOQ line
+  depends on it. Reading `floors[]` for storey heights is future code.
+- First real file: house 174 (`หน้า00_level.json`, 7 floors F1..RF, every level equals a `z_levels[]` value and the
+  source page of each matches its plan page). Basement and the roof-frame sheet print no level: left out.
+- README op1 step 3 and op01 SKILL step 3: grid master (page by page, merged once), then the level master.
+
+- **`RF2` floor code (decided, same night):** §0.0 Table 1 now lists `RF2` = a second roof level above `RF` (roof frame
+  on an RC roof slab). Only one file in the corpus uses it (house 174, 1 of 160 `RF*` files); kept rather than
+  rewritten because 174 has both an RC roof slab (`RF`, +22.90) and a roof frame above it, and `RF` for both would
+  put the frame on the wrong level. Unverified: how Constistant treats an unknown floor code.
+
+## 2026-11-18 (night, last) — section kinds became patterns; consumer-first code; level pass
+
+- **`section_kind` field removed.** Makham's order (noted earlier): `beam_section` #22, `footing_section` #23,
+  `column_section` #24 are patterns of their own; `section` (#5) stays for other detail sections and the 1,218 legacy
+  files. Table 1 row, §0.10 checklist, §1 rows, counts (21 -> 24), automation-scope line. No gate needed: Constistant's
+  alias rule already maps any name containing `section` to `section` (with a vocabulary warning); now silent.
+- `check_format.py`: accepts #20 `column_plan` and #22-24; FAIL `section kind pattern holds other kinds`
+  (tested on a fake house). `section_kind` check removed.
+- **Column-plan gate, step by step:** (1) adapter change written + tested in Constistant, NOT merged; (2) check_format
+  done; (3) t07 not done. Gate stays open until (1) is merged.
+- **Level pass:** pass 4b in `pass_ทำอะไร.csv`, `tools/level_link.py` (report only), t07_workflow section.
+- **Correction to my own entry above:** house 174 does print a level for the basement and the roof frame
+  (`(-1.00)` on page 8, `+25.65` on page 23's members). I had said it printed none and left both out. Now in its
+  `หน้า00_level.json` (9 floors) and the spec text.
+- Not done: t07 builder / KEYS / prompts / worker (list in `t07_workflow.md`, last section).
+
+- **§1 row 5 (later):** who sorts a section into its kind is now "cut first, then sort each cut" (t07 pass 3 + new
+  pass 3.5), not pass 0 per view (Makham).
+
+- **Pass numbers (later):** the t07 pass table was renumbered 1-14 (3.5->4, 4->5, 4b->6, 5->7, 5.5->8, 5.6->9,
+  6->10, 7->11, 8->12, 9->13, 10->14); §1 row 5 now says pass 3 cuts, pass 4 sorts. Spec section numbers (§4b) unchanged.

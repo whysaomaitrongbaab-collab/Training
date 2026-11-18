@@ -12,6 +12,7 @@ text shaping ที่ถูกต้อง — สระบน/ล่างแ�
 ของเดิมถูกสำรองเป็น <ชื่อไฟล์>.bak.pdf ก่อนเขียนทับเสมอ
 """
 import argparse
+import html as html_lib
 import re
 import subprocess
 import sys
@@ -90,7 +91,9 @@ def md_to_pdf(md_path: Path, out_pdf: Path):
         extensions=["tables", "fenced_code", "sane_lists"],
     )
     html_body = absolutize_images(html_body, md_path.parent)
+    # <title> = ชื่อใน metadata ของ PDF; ไม่ใส่แล้วแท็บเบราว์เซอร์ขึ้นชื่อไฟล์ชั่วคราว "page.html"
     html = (f'<!doctype html><html lang="th"><head><meta charset="utf-8">'
+            f"<title>{html_lib.escape(out_pdf.stem)}</title>"
             f"<style>{CSS}</style></head><body>{html_body}</body></html>")
 
     # เขียน html ลง temp dir — ชื่อไฟล์ต้องไม่มีอักษรไทย/ช่องว่าง เพราะ
