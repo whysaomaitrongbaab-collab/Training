@@ -162,6 +162,13 @@ def _align_tol(d):
     return max(ALIGN_TOL, ALIGN_FRAC * d)
 
 
+def _row_tol(a, b):
+    """ระยะเยื้องที่ยอมให้วงสองวงอยู่แถวเดียวกัน: เส้นยาวทั้งคู่ (หลักฐานแข็ง) ได้ 0.5d — แปลนขยายห้องน้ำวาดวง D กับ E
+    เยื้องกัน 6.8 pt = 0.34d (1ชั้น_04 หน้า 13, 1ชั้น_05 หน้า 14 — ตรวจรอบสอง 21 พ.ย.); ก้านสั้นคงเกณฑ์เดิม"""
+    d = a["bubble"][2]
+    return 0.5 * d if a.get("kind") == "long" and b.get("kind") == "long" else _align_tol(d)
+
+
 def _on_curve(it):
     """จุดที่อยู่บนเส้นจริงของท่อน 'l'/'c' (จุดควบคุม Bezier ยื่นออกนอกวง ใช้ทำกรอบไม่ได้ — 1ชั้น_03 หน้า 6)
     เส้นตรงให้จุดกลางด้วย: สี่เหลี่ยมมุมมน/ตัดมุม (สัญลักษณ์เสา) มีจุดยอดห่างศูนย์กลางเท่ากันแต่กลางขอบไม่เท่า จึงไม่ผ่านเป็นวง"""
@@ -336,15 +343,31 @@ def bubble_lines(circs, segs, W, H):
                                 bubble=(cx, cy, d), dir=s, kind=kind))
     raw = {}
     for ax in out:   # แถว/คอลัมน์ของวงต้องมีอย่างน้อย 2 วงขนาดเท่ากัน ก้านชี้ทางเดียวกัน (วงเดี่ยว = ป้ายอื่น)
-        keep = [ln for ln in out[ax] if any(_mate(m, ln) and abs(_along(m, ax) - _along(ln, ax)) <= _align_tol(ln["bubble"][2])
+        keep = [ln for ln in out[ax] if any(_mate(m, ln) and abs(_along(m, ax) - _along(ln, ax)) <= _row_tol(ln, m)
                                             for m in out[ax])]
-        # วงเยื้อง: เส้นห่างเส้นของแถวไม่ถึง 1 วง วงจึงถูกยกพ้นแถว (1' ห่าง 1 = 0.20 ม. วงยกขึ้น ~2 วง — 1ชั้น_52 หน้า 11, 12)
+        # วงเยื้อง: เส้นชิดเส้นของแถวไม่ถึง 2 วง วงจึงถูกยกพ้นแถว (1' ห่าง 1 = 0.20 ม. = 0.5 วง — 1ชั้น_52 หน้า 11, 12;
+        # 2' ห่าง 3 = 1.31 วง ยกขึ้น 1.56 วง — 1ชั้น_36 หน้า 15; C' ห่าง D 1.31 วง — 1ชั้น_67 หน้า 14, ตรวจรอบสอง 21 พ.ย.)
         for ln in out[ax]:
             if all(ln is not k for k in keep) and any(
-                    _mate(m, ln) and abs(m["pos"] - ln["pos"]) < ln["bubble"][2]
+                    _mate(m, ln) and abs(m["pos"] - ln["pos"]) < 2 * ln["bubble"][2]
                     and abs(_along(m, ax) - _along(ln, ax)) <= 3 * ln["bubble"][2] for m in keep):
                 ln["lone"] = True
                 keep.append(ln)
+        # วงที่ไม่มีก้านเลย แต่อยู่ในแถวที่ยืนยันแล้ว >= 2 วงขนาดเท่ากัน (วง 6 ของ 1ชั้น_38 หน้า 14: เส้นบอกระยะเริ่มห่างวง 21 pt)
+        # รับเป็นก้าน — ต้องอ่านชื่อได้ถึงจะรอด (confirmed); วงที่มีเส้นแตะ/ทะลุอยู่แล้วถูกตัดสินไปแล้ว ไม่กู้
+        across_i, along_i = (0, 1) if ax == "v" else (1, 0)
+        used = [ln["bubble"] for ln in out[ax]]
+        for c in circs:
+            if c in used:
+                continue
+            pos, mid, d = c[across_i], c[along_i], c[2]
+            if any(abs(p - pos) <= LINE_TOL and a0 < mid + d / 2 + 1 and a1 > mid - d / 2 - 1 for p, a0, a1 in segs[ax]):
+                continue
+            row = [k for k in keep if abs(k["bubble"][2] - d) <= 0.12 * d and abs(_along(k, ax) - mid) <= _align_tol(d)]
+            if len(row) >= 2 and not any(abs(k["pos"] - pos) <= d for k in keep):
+                s = 1 if sum(k["dir"] for k in row) >= 0 else -1
+                keep.append(dict(pos=round(pos, 1), lo=round(mid - d / 2), hi=round(mid + d / 2), vlo=round(mid - d / 2),
+                                 vhi=round(mid + d / 2), bubble=c, dir=s, kind="stem", stemless=True))
         raw[ax], out[ax] = out[ax], _merge(keep)
     for ax, other in (("v", "h"), ("h", "v")):
         # แกนที่ไม่มีแถววงเลย (แปลนขยายแสดงกริดแกนนั้นเส้นเดียว — 1ชั้น_03 หน้า 11 แปลนห้องน้ำ วง 1 เดี่ยว): รับวงเดี่ยวที่อยู่
@@ -373,7 +396,7 @@ def _rows(lines_ax, ax):
     """จัดเส้นของแกนเดียวกันเป็นแถววง: วงอยู่แนวเดียวกัน (ALIGN_TOL หรือ ALIGN_FRAC*d) และก้านชี้ทางเดียวกัน"""
     gs = []
     for ln in sorted(lines_ax, key=lambda l: _along(l, ax)):
-        g = next((g for g in gs if abs(_along(g[0], ax) - _along(ln, ax)) <= _align_tol(g[0]["bubble"][2])
+        g = next((g for g in gs if abs(_along(g[0], ax) - _along(ln, ax)) <= _row_tol(g[0], ln)
                   and g[0]["dir"] == ln["dir"]), None)
         (g.append(ln) if g else gs.append([ln]))
     return gs
@@ -399,6 +422,13 @@ def consistent_labels(lines):
     return lines
 
 
+def _reaches(g, s, targets, d):
+    """เส้นจริง (vlo/vhi ก่อนยืด) ของแถว g ที่ก้านชี้ทาง s ลากถึงตำแหน่ง targets ใกล้สุดภายใน 3 วงไหม"""
+    if s > 0:
+        return max(l.get("vhi", l["hi"]) for l in g) >= min(targets) - 3 * d
+    return min(l.get("vlo", l["lo"]) for l in g) <= max(targets) + 3 * d
+
+
 def extend_to_plan(lines):
     """ความยาวเส้นตอนวาด: จับคู่แต่ละแถววง (แกนหนึ่ง) กับกลุ่มวงของอีกแกนที่อยู่ฝั่งที่ก้านชี้ไปและใกล้สุด
     แล้วให้เส้นเริ่มที่วงและจบที่เส้นสุดท้ายของกลุ่มนั้น +1 วง (แทนระยะที่ลากตามเวกเตอร์ ซึ่งทะลุไปแปลนข้างๆ/กรอบชื่อแบบได้)
@@ -418,7 +448,10 @@ def extend_to_plan(lines):
             med = gaps[len(gaps) // 2] if gaps else 0
             cur = [g[0]]
             for a, b in zip(g, g[1:]):
-                if b["pos"] - a["pos"] > 1.5 * med and any(a["pos"] < s < b["pos"] for s in seps):
+                # ชื่อซ้ำในแถว = แปลนที่สอง (ชื่อกริดในแกนเดียวกันของแปลนเดียวไม่ซ้ำ): แปลนไฟฟ้า/เต้ารับคู่กัน แปลนขวาไม่มีคอลัมน์วง
+                # ของตัวเอง แถวบน 1,2,3,1,2,3 เลยไม่ถูกตัด แล้วเมตรของแปลนขวาเพี้ยน (1ชั้น_06 หน้า 44 — ตรวจรอบสอง 21 พ.ย.)
+                rep = b.get("label") and b["label"] in {x.get("label") for x in cur}
+                if rep or (b["pos"] - a["pos"] > 1.5 * med and any(a["pos"] < s < b["pos"] for s in seps)):
                     groups[ax].append(cur)
                     cur = []
                 cur.append(b)
@@ -429,9 +462,22 @@ def extend_to_plan(lines):
         while parent.setdefault(k, k) != k:
             k = parent[k]
         return k
+    # ชื่อในแต่ละแปลน: {root: {(แกน, ชื่อ): [ตำแหน่ง]}} — ห้ามรวมสองกลุ่มเป็นแปลนเดียวถ้าชื่อเดียวกันจะไปอยู่คนละตำแหน่ง
+    # (แปลนขวาไม่มีคอลัมน์วงของตัวเองจึงจับคอลัมน์ของแปลนซ้าย — 1ชั้น_06 หน้า 44); ชื่อเดียวกันตำแหน่งเดียวกัน = เส้นเดียว
+    # ที่มีวงสองปลาย รวมได้
+    names = {}
+    for ax in groups:
+        for gi, g in enumerate(groups[ax]):
+            nm = names.setdefault(root((ax, gi)), collections.defaultdict(list))
+            for ln in g:
+                if ln.get("label"):
+                    nm[(ax, ln["label"])].append(ln["pos"])
+
+    def clash(r1, r2):
+        a, b = names.get(r1, {}), names.get(r2, {})
+        return r1 != r2 and any(abs(x - y) > 2 * LINE_TOL for k in a if k in b for x in a[k] for y in b[k])
     for ax, other in (("v", "h"), ("h", "v")):
         for gi, g in enumerate(groups[ax]):
-            root((ax, gi))
             at, s, dg = _along(g[0], ax), g[0]["dir"], g[0]["bubble"][2]
             span = (min(l["pos"] for l in g), max(l["pos"] for l in g))
             labelled = any(l.get("label") for l in g)
@@ -444,15 +490,21 @@ def extend_to_plan(lines):
                     continue     # ต้องชี้เข้าหากันทั้งสองทาง: ไม่งั้นแปลนซ้ายจับคอลัมน์วงของแปลนขวาที่อยู่ใกล้กว่า (2ชั้น_37 หน้า 13)
                 if labelled and not any(l.get("label") for l in p):
                     continue     # แถวไม่มีชื่อ (ป้ายพื้น) ห้ามชนะคู่ของแถวที่มีชื่อ (ใหญ่_1ชั้น_02 หน้า 28 เคยทำเส้น 1-3 ขาดก่อนถึง A)
-                if longrow and (max(l.get("vhi", l["hi"]) for l in g) < min(ps) - 3 * dg if s > 0
-                                else min(l.get("vlo", l["lo"]) for l in g) > max(ps) + 3 * dg):
-                    continue     # แถวที่วาดเส้นยาวจริง ต้องลากถึงอีกแกน: รูปด้าน/รูปตัดในแผ่นเดียวกับแปลนเคยถูกจับเป็นแปลนเดียวกัน
-                                 # จนชื่อซ้ำในแปลน (2ชั้น_02 หน้า 25 — รีวิว 21 พ.ย.)
+                if longrow and not _reaches(g, s, ps, dg) and _reaches(p, p[0]["dir"], span, p[0]["bubble"][2]):
+                    continue     # อีกแกนลากเส้นถึงแถวนี้ แต่แถวนี้ลากไม่ถึงอีกแกน = รูปด้าน/รูปตัดในแผ่นเดียวกับแปลน (2ชั้น_02 หน้า 25
+                                 # เคยถูกจับเป็นแปลนเดียวกันจนชื่อซ้ำในแปลน — รีวิว 21 พ.ย.); ถ้าไม่ถึงกันทั้งคู่ = แปลนที่วาดแค่หัวกริด
+                                 # กับเส้นบอกระยะ จับคู่ได้ (2ชั้น_09 หน้า 25 เคยแยกเป็นสองแปลน — ตรวจรอบสอง 21 พ.ย.)
+                if clash(root((ax, gi)), root((other, pj))):
+                    continue
                 score = max(span[0] - pa, pa - span[1], 0) + min(abs(x - at) for x in ps)
                 if best is None or score < best[0]:
                     best = (score, ps, pj)
             if best:
-                parent[root((ax, gi))] = root((other, best[2]))
+                r1, r2 = root((ax, gi)), root((other, best[2]))
+                if r1 != r2:
+                    parent[r1] = r2
+                    for k, v in names.pop(r1, {}).items():
+                        names.setdefault(r2, collections.defaultdict(list))[k].extend(v)
                 for ln in g:
                     bc, d = _along(ln, ax), ln["bubble"][2]
                     if s > 0:
@@ -535,7 +587,7 @@ def confirmed(lines):
             if any(l["label"] for l in g):
                 keep += [l for l in g if l["kind"] == "long" or l["label"]]
         lines[ax] = [l for l in keep if l.get("lone") or any(
-            _mate(m, l) and abs(_along(m, ax) - _along(l, ax)) <= _align_tol(l["bubble"][2]) for m in keep)]
+            _mate(m, l) and abs(_along(m, ax) - _along(l, ax)) <= _row_tol(l, m) for m in keep)]
     return lines
 
 
@@ -724,14 +776,15 @@ def demo():
     assert [ln["pos"] for ln in got["v"]] == [100, 200, 300], got["v"]
     assert all(ln["kind"] == "long" and ln["dir"] == 1 for ln in got["v"]) and got["h"] == []
     # วงเยื้องจากแถว 3 pt (0.21d) ยังเป็นแถวเดียวกัน (1ชั้น_49 หน้า 11: วง 3 ต่ำกว่า 1,2 อยู่ 2.4-3.1 pt)
-    got = bubble_lines([(100, 50, 14), (200, 53, 14), (300, 50, 14)],
-                       {"v": [(100, 57, 600), (200, 60, 600), (300, 57, 600)], "h": []}, 1000, 800)
-    assert [ln["pos"] for ln in got["v"]] == [100, 200, 300], got["v"]
+    got = bubble_lines([(100, 50, 14), (200, 53, 14), (300, 50, 14)],      # ก้านสั้น -> ใช้เกณฑ์ _align_tol (0.3d)
+                       {"v": [(100, 57, 70), (200, 60, 73), (300, 57, 70)], "h": []}, 1000, 800)
+    assert [(ln["pos"], ln["kind"]) for ln in got["v"]] == [(100, "stem"), (200, "stem"), (300, "stem")], got["v"]
     # ขาตัว B/1 ที่วาดเป็นเส้น (0.76d เยื้องกลาง 0.2d) ไม่ใช่เส้นแบ่งวง (2ชั้น_36 หน้า 12)
     assert not divided((100, 50, 14), {"v": [(97.2, 44.7, 55.3)], "h": []})
     # กากบาทโคมไฟ (ยื่นสองฝั่งเท่ากัน) ไม่ใช่ก้าน; เส้นยาวที่เริ่มห่างวง 16 pt (> 0.5d) ไม่ใช่ เริ่มห่าง 6 pt ยังเป็น
-    got = bubble_lines([(150, 500, 10), (250, 500, 10), (100, 400, 14), (200, 400, 14), (300, 400, 14), (400, 400, 14)],
-                       {"v": [(150, 492, 508), (250, 492, 508), (100, 422, 750), (200, 422, 750),
+    # (วงที่เส้นเริ่มไกลอยู่คนละแถวกับวงจริง — ถ้าอยู่แถวเดียวกับหัวกริดที่ยืนยันแล้ว กฎ "วงไม่มีก้านในแถว" จะรับไว้ ตั้งใจ)
+    got = bubble_lines([(150, 500, 10), (250, 500, 10), (100, 450, 14), (200, 450, 14), (300, 400, 14), (400, 400, 14)],
+                       {"v": [(150, 492, 508), (250, 492, 508), (100, 472, 750), (200, 472, 750),
                               (300, 412, 750), (400, 412, 750)], "h": []}, 1000, 800)
     assert [ln["pos"] for ln in got["v"]] == [300, 400], got["v"]
     # วงเยื้อง (เส้น 108 ห่างเส้น 100 ไม่ถึง 1 วง วงยกขึ้นไป y=22) ถูกเก็บ; วงเดี่ยวที่เยื้องแต่ไกลจากทุกเส้นของแถวยังถูกทิ้ง
@@ -782,6 +835,34 @@ def demo():
     assert all(ln["plan"] == pv[100] and ln["hi"] == 300 + 14 for ln in left_h), left_h   # จบที่เส้น 3 ของแปลนตัวเอง
     assert all(ln["hi"] == 450 + 14 for ln in L["v"])                                      # เส้นตั้งจบที่ C +1 วง
 
+    # ตรวจรอบสอง 21 พ.ย.: (1) เส้นยาวทั้งคู่เยื้อง 0.34d ยังเป็นแถวเดียวกัน (แปลนขยายห้องน้ำ 1ชั้น_04 หน้า 13)
+    got = bubble_lines([(100, 50, 14), (200, 54.8, 14)], {"v": [(100, 57, 600), (200, 61.8, 600)], "h": []}, 1000, 800)
+    assert [ln["pos"] for ln in got["v"]] == [100, 200], got["v"]
+    # (2) วงยกพ้นแถว ห่างเส้นข้างเคียง 1.3 วง (2' ของ 1ชั้น_36 หน้า 15) ถูกกู้
+    got = bubble_lines(circs[:3] + [(118, 28, 14)], dict(segs, v=segs["v"][:3] + [(118, 35, 43)]), 1000, 800)
+    assert [ln["pos"] for ln in got["v"]] == [100, 118, 200, 300], got["v"]
+    # (3) วงไม่มีก้านในแถวที่ยืนยันแล้ว (วง 6 ของ 1ชั้น_38 หน้า 14) รับเป็นก้าน; วงไม่มีก้านนอกแถวไม่รับ
+    got = bubble_lines(circs[:3] + [(400, 50, 14), (500, 200, 14)], dict(segs, v=segs["v"][:3]), 1000, 800)
+    assert [(ln["pos"], ln["kind"]) for ln in got["v"]] == [(100, "long"), (200, "long"), (300, "long"), (400, "stem")], got["v"]
+    # (4) ชื่อซ้ำในแถวเดียว = สองแปลน แม้ไม่มีคอลัมน์วงคั่น (แปลนไฟฟ้า/เต้ารับคู่กัน 1ชั้น_06 หน้า 44)
+    v = [mk("v", x, 50, ch) for x, ch in ((100, "1"), (200, "2"), (300, "3"), (420, "1"), (520, "2"), (620, "3"))]
+    L = extend_to_plan({"v": v, "h": [mk("h", y, 50, ch) for y, ch in ((150, "A"), (300, "B"))]})
+    pv = {ln["pos"]: ln["plan"] for ln in L["v"]}
+    assert pv[100] == pv[300] != pv[420] == pv[620], pv
+    # (5) รูปด้านใต้แปลน (แถววงล่าง ก้านชี้ขึ้น เส้นยาวไม่ถึงแปลน แต่เส้นนอนของแปลนลากผ่าน) ไม่ใช่แปลนเดียวกัน;
+    #     แปลนที่วาดแค่หัวกริด (ไม่ถึงกันทั้งสองแกน 2ชั้น_09 หน้า 25) ยังจับคู่ได้
+    def lg(ax, pos, along, label, s, vlo, vhi):
+        return mk(ax, pos, along, label, s=s) | dict(kind="long", vlo=vlo, vhi=vhi, lo=vlo, hi=vhi)
+    top = [lg("v", x, 50, ch, 1, 43, 420) for x, ch in ((200, "1"), (300, "2"), (400, "3"))]
+    elev = [lg("v", x, 700, ch, -1, 500, 707) for x, ch in ((200, "1"), (300, "2"), (400, "3"))]
+    col = [lg("h", y, 40, ch, 1, 33, 600) for y, ch in ((100, "A"), (200, "B"), (300, "C"))]
+    L = extend_to_plan({"v": top + elev, "h": col})
+    pl = {(ln["pos"], _along(ln, "v")): ln["plan"] for ln in L["v"]}
+    assert pl[(200, 50)] == L["h"][0]["plan"] != pl[(200, 700)], (pl, L["h"][0]["plan"])
+    stub_v = [lg("v", x, 50, ch, 1, 43, 120) for x, ch in ((200, "1"), (300, "2"))]
+    stub_h = [lg("h", y, 40, ch, 1, 33, 150) for y, ch in ((300, "A"), (400, "B"))]
+    L = extend_to_plan({"v": stub_v, "h": stub_h})
+    assert len({ln["plan"] for ax in L for ln in L[ax]}) == 1, L
     assert norm_ocr_label("1)") == "1" and norm_ocr_label(" a ") == "A" and norm_ocr_label("PS") is None
     print("OK — self-check ผ่าน (ตรรกะวงหัวกริด/คัดทิ้ง/จับคู่แปลน/regex — ไม่ได้เทียบกับ PDF จริง ใช้ --eval)")
 
