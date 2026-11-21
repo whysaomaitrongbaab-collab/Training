@@ -164,27 +164,33 @@ def _reader():
     return _READER
 
 
-def _strip_image(page, spec):
-    """render แถบตามสัดส่วนหน้า (ตามที่ตามองเห็น) -> ภาพ numpy RGB + (กว้าง, สูง) พิกเซล"""
+def _strip_image(page, spec, turns=0):
+    """render แถบตามสัดส่วนหน้า (ตามที่ตามองเห็น) -> ภาพ numpy RGB + (กว้าง, สูง) พิกเซล
+    turns = จำนวนครั้ง 90° ตามเข็มที่ต้องหมุนหน้าให้ตั้งตรง (หน้าสแกนตะแคง ดู page_orient.py) — สัดส่วนของ spec
+    อ้างอิงหน้าที่ตั้งตรงแล้ว; 0 = ไม่หมุน (พฤติกรรมเดิมทุกไบต์)"""
     import fitz
     import numpy as np
     W, H = page.rect.width, page.rect.height
-    clip = fitz.Rect(W * spec["x0"], H * spec["y0"], W, H)
     dpi = int(MAX_PAGE_PX / (max(W, H) / 72))   # PyMuPDF set_dpi ต้องเป็น int
+    clip = None if turns else fitz.Rect(W * spec["x0"], H * spec["y0"], W, H)
     pix = page.get_pixmap(dpi=dpi, clip=clip)
     img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)
     if pix.n == 4:
         img = img[:, :, :3]
     if pix.n == 1:
         img = np.repeat(img, 3, axis=2)
-    return np.ascontiguousarray(img), pix.width, pix.height
+    if turns:                                    # หมุนทั้งหน้าให้ตั้งตรงก่อน แล้วค่อยตัดแถบ
+        img = np.rot90(img, -turns)
+        h, w = img.shape[:2]
+        img = img[int(h * spec["y0"]):, int(w * spec["x0"]):]
+    return np.ascontiguousarray(img), img.shape[1], img.shape[0]
 
 
-def ocr_strip(page, strip):
+def ocr_strip(page, strip, turns=0):
     """render แถบ -> OCR -> คืน (ผู้สมัครรหัสที่ชิดมุมขวาล่างสุด (cx, cy, text) หรือ None, จำนวนบรรทัดที่ OCR อ่านได้)
     ไม่เก็บข้อความดิบออกไป: ใน title block มีชื่อ/เลขใบอนุญาตวิศวกร (ข้อมูลส่วนบุคคล ไม่เข้า label)"""
     spec = OCR_REGIONS[strip]
-    img, pw, ph = _strip_image(page, spec)
+    img, pw, ph = _strip_image(page, spec, turns)
     cands, n_lines = [], 0
     for r in _reader().predict(img):
         for txt, box in zip(r.get("rec_texts", []), r.get("rec_boxes", [])):
@@ -298,8 +304,8 @@ def name_from_text(page, spec):
     return pick_name(group_rows(items)) if items else None
 
 
-def name_from_ocr(page, spec):
-    img, pw, ph = _strip_image(page, spec)
+def name_from_ocr(page, spec, turns=0):
+    img, pw, ph = _strip_image(page, spec, turns)
     items = []
     for r in _reader_th().predict(img):
         for txt, box in zip(r.get("rec_texts", []), r.get("rec_boxes", [])):
@@ -308,7 +314,7 @@ def name_from_ocr(page, spec):
     return pick_name(group_rows(items))
 
 
-def extract_name(page, strip_hint=None, use_ocr=True):
+def extract_name(page, strip_hint=None, use_ocr=True, turns=0):
     """-> dict(sheet_name, name_source text|ocr, name_strip) หรือ sheet_name=None + reason
     ลองแถบที่รหัสแผ่นเจอก่อน แล้วอีกแถบ; ข้อความฝังก่อน OCR; ไม่เก็บข้อความดิบของแถบ (มีชื่อวิศวกร)"""
     order = ["bottom", "right"] if strip_hint == "bottom" else ["right", "bottom"]
@@ -318,26 +324,26 @@ def extract_name(page, strip_hint=None, use_ocr=True):
         if name:
             return dict(sheet_name=name, name_source="text", name_strip=strip)
         if use_ocr:
-            name = name_from_ocr(page, spec)
+            name = name_from_ocr(page, spec, turns)
             if name:
                 return dict(sheet_name=name, name_source="ocr", name_strip=strip)
     return dict(sheet_name=None, name_source=None, name_strip=None, name_reason="no_name_label_in_strips")
 
 
-def extract_page(page, use_ocr=False, with_name=False):
-    res = extract_code(page, use_ocr)
+def extract_page(page, use_ocr=False, with_name=False, turns=0):
+    res = extract_code(page, use_ocr, turns)
     if with_name:
-        res.update(extract_name(page, res.get("strip"), use_ocr))
+        res.update(extract_name(page, res.get("strip"), use_ocr, turns))
     return res
 
 
-def extract_code(page, use_ocr=False):
+def extract_code(page, use_ocr=False, turns=0):
     res = text_layer(page)
     res["pdf_page"] = page.number + 1
     if res["found"] or not use_ocr:
         return res
     for strip in OCR_REGIONS:           # corner -> right -> bottom (เล็ก/เร็วก่อน ขยายเมื่อไม่เจอ)
-        best, n = ocr_strip(page, strip)
+        best, n = ocr_strip(page, strip, turns)
         if best:
             return dict(found=True, strip=strip, sheet_code=best[2], source="ocr", pdf_page=page.number + 1,
                         code_pos=(round(best[0], 3), round(best[1], 3)))

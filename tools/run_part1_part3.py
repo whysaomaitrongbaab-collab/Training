@@ -62,6 +62,7 @@ def run(house, out_dir, ocr=True, with_name=False, pages=None, png=False):
     import fitz
     import gridlab_probe as G
     import gridlab_scale as S
+    import page_orient as O
     import titleblock_extract as T
     out = Path(out_dir) / house
     out.mkdir(parents=True, exist_ok=True)
@@ -71,10 +72,18 @@ def run(house, out_dir, ocr=True, with_name=False, pages=None, png=False):
         page = doc[i]
         info = page_info(page)
         rec = dict(pdf_page=i + 1, kind=kind_of(**info), **info)
+        # Pass 0: ทิศหน้า — ข้อมูลทิศจาก PDF + (หน้าสแกนที่ตามองเห็นเป็นแนวตั้ง = ตะแคง) หาว่าต้องหมุนกี่ครั้งให้ตั้ง
+        d = O.decide(page, info["n_words"] >= 30, allow_ocr=ocr)
+        rec["orient"] = dict(O.orientation_info(page), turns=d["turns"], how=d["how"], checked=d["checked"],
+                             **({"scores": d["scores"]} if "scores" in d else {}))
+        turns = d["turns"] or 0        # None (ไม่แน่ใจ) = ไม่หมุน
         if png and rec["kind"] in ("raster", "mixed"):    # ส่วน 1: "หน้าภาพแปลงเป็น PNG" (200 dpi = เดียวกับภาพเทรน)
             rec["png"] = str(out / f"page_p{i + 1:02d}.png")
-            page.get_pixmap(dpi=200).save(rec["png"])
-        tb = T.extract_page(page, use_ocr=ocr, with_name=with_name)
+            if turns:
+                O.save_upright_png(page, turns, rec["png"])      # หมุนให้ตั้งตรงก่อนเข้าส่วนถัดไป
+            else:
+                page.get_pixmap(dpi=200).save(rec["png"])
+        tb = T.extract_page(page, use_ocr=ocr, with_name=with_name, turns=turns)
         tbs.append(tb)
         rec["title"] = tb
         rec["grid"] = None
@@ -89,7 +98,8 @@ def run(house, out_dir, ocr=True, with_name=False, pages=None, png=False):
                                             ("pos", "pos_m", "lo", "hi", "label", "src", "method", "kind", "plan")}
                                            for ln in lines[ax]] for ax in lines})
         recs.append(rec)
-        print(f"  หน้า {i + 1}: {rec['kind']} รหัส={tb.get('sheet_code')}"
+        print(f"  หน้า {i + 1}: {rec['kind']}" + (f" หมุน {d['turns']}" if d["turns"] or d["turns"] is None and d["checked"] else "")
+              + f" รหัส={tb.get('sheet_code')}"
               + (f" กริด {len(rec['grid']['lines']['v'])}x{len(rec['grid']['lines']['h'])}" if rec["grid"] else ""), flush=True)
     T.flag_moved(tbs)    # ใส่ "flag" ลงใน dict เดียวกับ rec["title"]
     result = dict(house=house, pages=recs, seconds=round(time.time() - t0, 1), ocr=ocr, with_name=with_name)
@@ -110,11 +120,18 @@ def report(r):
          f"รัน {len(pages)} หน้า ใน {r['seconds']} วินาที · OCR={'เปิด' if r['ocr'] else 'ปิด'} · ชื่อแผ่น={'อ่าน' if r['with_name'] else 'ไม่อ่าน'}", "",
          "## ส่วน 1 — ชนิดหน้าและสารบัญจาก title block", "",
          "ชนิดหน้า: " + " · ".join(f"{k} {v}" for k, v in sorted(kinds.items())), "",
-         f"หารหัสแผ่นเจอ {len(found)}/{len(pages)} หน้า · ติดธง {len(flagged)} หน้า", "",
-         "| หน้า PDF | ชนิด | รหัสแผ่น | ที่มา | ชื่อแผ่น | ธง |", "|---|---|---|---|---|---|"]
-    for p in pages:
+         f"หารหัสแผ่นเจอ {len(found)}/{len(pages)} หน้า · ติดธง {len(flagged)} หน้า", ""]
+    ori = [p.get("orient") or {} for p in pages]
+    turned = [p for p, o in zip(pages, ori) if o.get("turns")]
+    unsure = [p for p, o in zip(pages, ori) if o.get("checked") and o.get("turns") is None]
+    portrait_unchecked = [p for p, o in zip(pages, ori) if o.get("orientation") == "portrait" and not o.get("checked")]
+    L += [f"ทิศหน้า (Pass 0): หน้าที่ตามองเห็นเป็นแนวตั้ง {sum(o.get('orientation') == 'portrait' for o in ori)} หน้า · "
+          f"หมุนให้ตั้งก่อนอ่านกรอบชื่อแบบ {len(turned)} หน้า · ตรวจแล้วไม่แน่ใจ {len(unsure)} หน้า (ไม่หมุน) · "
+          f"แนวตั้งที่ไม่ได้ตรวจ {len(portrait_unchecked)} หน้า — หน้าสแกนแนวนอนไม่มีวิธีตรวจทิศที่วัดแล้วว่าใช้ได้ (page_orient.py) จึงไม่ได้ตรวจ", "",
+          "| หน้า PDF | ชนิด | หมุน | รหัสแผ่น | ที่มา | ชื่อแผ่น | ธง |", "|---|---|---|---|---|---|---|"]
+    for p, o in zip(pages, ori):
         t = p["title"]
-        L.append(f"| {p['pdf_page']} | {p['kind']} | {t.get('sheet_code') or '—'} | {t.get('source') or '—'} | "
+        L.append(f"| {p['pdf_page']} | {p['kind']} | {('ไม่แน่ใจ' if o.get('turns') is None else o['turns']) if o.get('checked') else '—'} | {t.get('sheet_code') or '—'} | {t.get('source') or '—'} | "
                  f"{t.get('sheet_name') or '—'} | {t.get('flag') or ''} |")
     L += ["", "## ส่วน 3 — grid lab (หน้าเวกเตอร์ที่มีวงหัวกริดทั้งสองแกน)", "",
           f"หน้าที่มีกริด {len(grid)} หน้า (หน้าภาพ {kinds.get('raster', 0)} หน้ายังไม่รองรับ — เริ่มจากเวกเตอร์ตามที่ King สั่ง)", "",
