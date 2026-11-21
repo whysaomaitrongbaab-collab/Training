@@ -137,13 +137,15 @@ def evaluate():
 OCR_LEVEL = re.compile(r"([+\-−±])\s?(\d{1,2})[.,](\d{2})(?!\d)")
 
 
-def _page_img(page):
-    """whole page as RGB numpy, long side <= titleblock_extract.MAX_PAGE_PX (PaddleOCR crashes above ~4000 px here)"""
+def _page_img(page, turns=0):
+    """whole page as RGB numpy, long side <= titleblock_extract.MAX_PAGE_PX (PaddleOCR crashes above ~4000 px here).
+    turns = clockwise quarter turns that make the page upright (page_orient.py); 0 = as displayed (old behaviour)"""
     import numpy as np
     W, H = page.rect.width, page.rect.height
     pix = page.get_pixmap(dpi=int(T.MAX_PAGE_PX / (max(W, H) / 72)))
     img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)
-    return np.ascontiguousarray(img[:, :, :3] if pix.n >= 3 else np.repeat(img, 3, axis=2))
+    img = img[:, :, :3] if pix.n >= 3 else np.repeat(img, 3, axis=2)
+    return np.ascontiguousarray(np.rot90(img, -turns) if turns else img)
 
 
 def _ocr(img, reader):
@@ -329,11 +331,11 @@ def core_sim(got, gt):
     return T.name_sim(core(got), [core(gt)])
 
 
-def ocr_page_lines(page):
+def ocr_page_lines(page, turns=0):
     """both readers on one page -> cache record: Latin lines holding a level number + the Thai lines bind_names could use
     for one (_reach), minus people's names. Kept that narrow on purpose: the title block holds engineer names and
     licence numbers, which must not end up in a file (rebinding with wider limits needs a fresh OCR run)."""
-    img = _page_img(page)
+    img = _page_img(page, turns)
     lat = [[t, b] for t, b in _ocr(img, T._reader()) if OCR_LEVEL.search(t)]
     th = _ocr(img, T._reader_th()) if lat else []
     return {"lat": lat, "th": [[t, b] for t, b in th if _THC.search(t) and not PERSON.search(t)
