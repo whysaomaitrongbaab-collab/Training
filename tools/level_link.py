@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """level_link.py - the level pass: which plan views sit at which height (report only, no model, writes nothing)
 
-    python tools/level_link.py <house-folder> [--md out.md]
+    python tools/level_link.py <house-folder> [--md out.md] [--level-master ../logic_test_out/<house>/level_marks.json]
+    python tools/level_link.py --demo                                  # self-check (temp files only)
 
 Spec section 4b. Reads the house's level master (`*หน้า00_level.json`) and every plan view file
 (beam_plan / footing_plan / roof_frame_plan / etc_plan / column_plan), joins each view's `floor_level` to the
@@ -44,12 +45,18 @@ def heights(floors):
     return out
 
 
-def link(house_dir):
-    lm_files = glob.glob(os.path.join(house_dir, '*หน้า00_level.json'))
-    floors = []
-    if lm_files:
-        doc = load(lm_files[0]) or {}
-        floors = (doc.get('level') or {}).get('floors') or []
+def read_floors(path):
+    """a level master file -> floors: the spec file (`{level: {floors}}`) or level_marks.py output (`{level_master: ...}`).
+    Floors whose level_m is unknown (level_marks leaves a tie empty) are dropped here - they cannot give a height."""
+    doc = load(path) or {}
+    doc = doc.get('level_master', doc)
+    floors = [f for f in (doc.get('level') or {}).get('floors') or [] if isinstance(f.get('level_m'), (int, float))]
+    return sorted(floors, key=lambda f: f['level_m'])
+
+
+def link(house_dir, level_master=None):
+    lm_files = [level_master] if level_master else glob.glob(os.path.join(house_dir, '*หน้า00_level.json'))
+    floors = read_floors(lm_files[0]) if lm_files else []
     flags, views = [], []
     if not floors:
         flags.append(('no_level_master', os.path.basename(os.path.normpath(house_dir))))
@@ -93,12 +100,49 @@ def render(house_dir, floors, views, flags):
     return '\n'.join(L) + '\n'
 
 
+def demo():
+    import tempfile
+
+    def put(path, obj):
+        with open(path, 'w', encoding='utf-8') as fh:
+            json.dump(obj, fh, ensure_ascii=False)
+
+    with tempfile.TemporaryDirectory() as d:
+        spec = os.path.join(d, 'x_หน้า00_level.json')          # spec file, floors out of order on purpose
+        put(spec, {'level': {'floors': [{'floor_level': 'F2', 'level_m': 3.5}, {'floor_level': 'F1', 'level_m': 0.0},
+                                        {'floor_level': 'RF', 'level_m': 6.8}]}})
+        lm = os.path.join(d, 'level_marks.json')                 # level_marks.py output, one tie left empty
+        put(lm, {'level_master': {'level': {'floors': [{'floor_level': 'F1', 'level_m': 2.0},
+                                                       {'floor_level': 'F1M', 'level_m': None},
+                                                       {'floor_level': 'F2', 'level_m': 9.0}]}}})
+        put(os.path.join(d, 'x_หน้า05.json'), {'pattern': 'beam_plan', 'floor_level': 'F2', 'view_title': 'แปลนคานชั้นที่ 2'})
+        assert [f['floor_level'] for f in read_floors(spec)] == ['F1', 'F2', 'RF']
+        assert heights(read_floors(spec)) == {'F1': 3.5, 'F2': 3.3, 'RF': None}   # a roof code has no storey height
+        assert [f['floor_level'] for f in read_floors(lm)] == ['F1', 'F2']        # unknown level: cannot give a height
+        assert read_floors(os.path.join(d, 'missing.json')) == []
+        floors, views, flags = link(d)                           # the house's own level master
+        assert [(v['floor_level'], v['level_m'], v['title_check']) for v in views] == [('F2', 3.5, 'ok')]
+        assert ('floor_without_plan_view', 'F1') in flags and not any(k == 'no_level_master' for k, _ in flags)
+        floors, views, flags = link(d, lm)                       # --level-master wins over the house's file
+        assert views[0]['level_m'] == 9.0 and len(floors) == 2
+        assert link(os.path.join(d, 'empty'))[2][0][0] == 'no_level_master'
+    print('level_link demo OK')
+    return 0
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
-    ap.add_argument('house')
+    ap.add_argument('house', nargs='?')
     ap.add_argument('--md')
+    ap.add_argument('--level-master', help='use this level master instead of the house\'s own *หน้า00_level.json '
+                                           '(e.g. ../logic_test_out/<house>/level_marks.json from level_marks.py)')
+    ap.add_argument('--demo', action='store_true')
     a = ap.parse_args(argv[1:])
-    floors, views, flags = link(a.house)
+    if a.demo:
+        return demo()
+    if not a.house:
+        ap.error('house folder needed (or --demo)')
+    floors, views, flags = link(a.house, a.level_master)
     text = render(a.house, floors, views, flags)
     if a.md:
         open(a.md, 'w', encoding='utf-8').write(text)
